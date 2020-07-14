@@ -1,0 +1,150 @@
+//apps rely on some named colors to be exported
+
+// Sass thinks we're using the colors in the variables as strings and may shoot
+// warning, it's innocuous and can be defeated by using "" + $var
+@define-color theme_fg_color #{"" + $fg_color};
+@define-color theme_text_color #{"" + $text_color};
+@define-color theme_bg_color #{"" + $bg_color};
+@define-color theme_base_color #{"" + $base_color};
+@define-color theme_selected_bg_color #{"" + $selected_bg_color};
+@define-color theme_selected_fg_color #{"" + $selected_fg_color};
+@define-color fg_color #{"" + $fg_color};
+@define-color text_color #{"" + $text_color};
+@define-color bg_color #{"" + $bg_color};
+@define-color base_color #{"" + $base_color};
+@define-color selected_bg_color #{"" + $selected_bg_color};
+@define-color selected_fg_color #{"" + $selected_fg_color};
+@define-color insensitive_bg_color #{"" + $disabled_fg_color};
+@define-color insensitive_fg_color alpha(#{"" + $disabled_fg_color}, 0.5);
+@define-color insensitive_base_color #{"" + $base_color};
+@define-color theme_unfocused_fg_color #{"" + $fg_color};
+@define-color theme_unfocused_text_color #{"" + $text_color};
+@define-color theme_unfocused_bg_color #{"" + $bg_color};
+@define-color theme_unfocused_base_color #{"" + $base_color};
+@define-color borders #{"" + $borders_color};
+@define-color unfocused_borders #{"" + $borders_color};
+
+@define-color warning_color #{"" + $warning_color};
+@define-color error_color #{"" + $error_color};
+@define-color success_color #{"" + $success_color};
+@define-color placeholder_text_color #{#A8A8A8};
+@define-color link_color #{"" + $link_color};
+@define-color content_view_bg #{"" + $base_color};
+
+//WM
+$wm_highlight: lighten(opacify($header_highlight, 1), 10%);
+$wm_bg_unfocused: opacify($header_bg_backdrop, 1);
+
+@define-color wm_title alpha(#{"" + opacify($header_fg, 1)}, 0.8);
+@define-color wm_unfocused_title alpha(#{"" + opacify($header_fg, 1)}, 0.5);
+
+@define-color wm_bg #{"" + opacify($header_bg, 1)};
+@define-color wm_bg_unfocused #{"" + $wm_bg_unfocused};
+
+@define-color wm_highlight #{"" + $wm_highlight};
+@define-color wm_shadow alpha(#{black}, 0.75);
+
+//WM Buttons
+
+// Close
+@define-color wm_button_close_bg #{"" + $wm_button_close_bg};
+@define-color wm_button_close_hover_bg #{"" + $wm_button_close_hover_bg};
+@define-color wm_button_close_active_bg #{"" + $wm_button_close_active_bg};
+
+@define-color wm_icon_close_bg #{"" + $wm_icon_close_bg};
+
+// Minimize, Maximize
+@define-color wm_button_hover_bg #{"" + $wm_button_hover_bg};
+@define-color wm_button_active_bg #{"" + $wm_button_active_bg};
+
+@define-color wm_button_hover_border #{"" + $wm_button_hover_border};
+
+@define-color wm_icon_bg #{"" + $wm_icon_bg};
+@define-color wm_icon_unfocused_bg #{"" + $wm_icon_unfocused_bg};
+@define-color wm_icon_hover_bg #{"" + $wm_icon_hover_bg};
+@define-color wm_icon_active_bg #{"" + $wm_icon_active_bg};
+
+// Titlebar
+@define-color titlebar_gradient_a #{"" + $header_bg};
+@define-color titlebar_gradient_b #{"" + $header_bg};
+
+//
+// Budgie-desktop specific indicator colours
+//
+
+// unfocused window 'dot(s)'
+@define-color budgie_tasklist_indicator_color #{"" + $selected_bg_color};
+// focused window 'line'
+@define-color budgie_tasklist_indicator_color_active #{"" + $selected_bg_color};
+// group-ed and unfocused window 'line(s)'
+@define-color budgie_tasklist_indicator_color_active_window #{"" + mix($selected_bg_color, $panel_bg, 54%)};
+// attention 'dot'
+// FIXME: we can't fill whole widget backgrounds with our suggestion colour
+//        because of lacking specific style-class on 'needs_attention' state,
+//        so use warning orange dot instead.
+@define-color budgie_tasklist_indicator_color_attention #{"" + $warning_color};
+
+//
+// Color Palette Definitions for compatibility with Granite.
+//
+
+//* Strawberry *
+@define-color STRAWBERRY_100 #{#FF9262};
+@define-color STRAWBERRY_300 #{#FF793E};
+@define-color STRAWBERRY_500 #{#F15D22};
+@define-color STRAWBERRY_700 #{#CF3B00};
+@define-color STRAWBERRY_900 #{#AC1800};
+//* Orange *
+@define-color ORANGE_100 #{#FFDB91};
+@define-color ORANGE_300 #{#FFCA40};
+@define-color ORANGE_500 #{#FAA41A};
+@define-color ORANGE_700 #{#DE8800};
+@define-color ORANGE_900 #{#C26C00};
+//* Banana *
+@define-color BANANA_100 #{#FFFFA8};
+@define-color BANANA_300 #{#FFFA7D};
+@define-color BANANA_500 #{#FFCE51};
+@define-color BANANA_700 #{#D1A023};
+@define-color BANANA_900 #{#A27100};
+//* Lime *
+@define-color LIME_100 #{#A2F3BE};
+@define-color LIME_300 #{#8ADBA6};
+@define-color LIME_500 #{#73C48F};
+@define-color LIME_700 #{#479863};
+@define-color LIME_900 #{#1C6D38};
+//* Blueberry *
+@define-color BLUEBERRY_100 #{#94A6FF};
+@define-color BLUEBERRY_300 #{#6A7CE0};
+@define-color BLUEBERRY_500 #{#3F51B5};
+@define-color BLUEBERRY_700 #{#213397};
+@define-color BLUEBERRY_900 #{#031579};
+//* Grape *
+@define-color GRAPE_100 #{#D25DE6};
+@define-color GRAPE_300 #{#B84ACB};
+@define-color GRAPE_500 #{#9C27B0};
+@define-color GRAPE_700 #{#830E97};
+@define-color GRAPE_900 #{#6A007E};
+//* Cocoa *
+@define-color COCOA_100 #{#9F9792};
+@define-color COCOA_300 #{#7B736E};
+@define-color COCOA_500 #{#574F4A};
+@define-color COCOA_700 #{#463E39};
+@define-color COCOA_900 #{#342C27};
+//* Silver *
+@define-color SILVER_100 #{#EEE};
+@define-color SILVER_300 #{#CCC};
+@define-color SILVER_500 #{#AAA};
+@define-color SILVER_700 #{#888};
+@define-color SILVER_900 #{#666};
+//* Slate *
+@define-color SLATE_100 #{#888};
+@define-color SLATE_300 #{#666};
+@define-color SLATE_500 #{#444};
+@define-color SLATE_700 #{#222};
+@define-color SLATE_900 #{#111};
+//* Black *
+@define-color BLACK_100 #{#474341};
+@define-color BLACK_300 #{#403C3A};
+@define-color BLACK_500 #{#393634};
+@define-color BLACK_700 #{#33302F};
+@define-color BLACK_900 #{#2B2928};

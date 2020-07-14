@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32"
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg7384"
+   height="32"
+   sodipodi:docname="key-shift-uppercase.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="736"
+     id="namedview18"
+     showgrid="false"
+     inkscape:zoom="10.429825"
+     inkscape:cx="-9.2175337"
+     inkscape:cy="5.1404848"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7384" />
+  <metadata
+     id="metadata90">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Gnome Symbolic Icon Theme</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title
+     id="title9167">Gnome Symbolic Icon Theme</title>
+  <defs
+     id="defs7386">
+    <linearGradient
+       osb:paint="solid"
+       id="linearGradient19282"
+       gradientTransform="matrix(-2.7365795,0.28202934,-0.18908311,-0.99988321,239.54008,-879.45557)">
+      <stop
+         style="stop-color:#666666;stop-opacity:1;"
+         offset="0"
+         id="stop19284" />
+    </linearGradient>
+  </defs>
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="layer9" />
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="layer10" />
+  <g
+     transform="translate(-141.0002,-791)"
+     id="layer11" />
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="layer13" />
+  <g
+     transform="translate(-141.0002,-791)"
+     id="layer14" />
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="layer15" />
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="g71291" />
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="g4953" />
+  <g
+     transform="matrix(2,0,0,2,-282.0008,-1614.2187)"
+     style="display:inline;fill:#ffac00;fill-opacity:1"
+     id="layer12">
+    <path
+       id="path16548"
+       d="m 147.0002,820 v -4 h -3.1248 l 5.125,-5.7813 5.125,5.7813 h -3.1875 v 4 z"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ffac00;fill-opacity:1;stroke:none;stroke-width:2;marker:none;enable-background:new"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

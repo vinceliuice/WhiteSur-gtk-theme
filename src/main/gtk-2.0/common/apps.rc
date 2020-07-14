@@ -1,0 +1,157 @@
+#
+# Thunar
+#
+style "thunar-handle" { GtkPaned::handle-size = 2 }
+
+style "dark-sidebar" {
+  GtkTreeView::odd_row_color = @dark_sidebar_bg
+  GtkTreeView::even_row_color = @dark_sidebar_bg
+
+
+  base[NORMAL] = @dark_sidebar_bg
+  base[INSENSITIVE] = @dark_sidebar_bg
+
+  text[NORMAL] = @fg_color
+  text[ACTIVE] = @selected_fg_color
+  text[SELECTED] = @selected_fg_color
+}
+
+style "thunar-frame" {
+  xthickness = 0
+  ythickness = 0
+}
+
+widget_class "*ThunarWindow*.<GtkScrolledWindow>"       style "thunar-frame"
+widget_class "*ThunarShortcutsView*"                    style "dark-sidebar"
+widget_class "*ThunarTreeView*"                         style "dark-sidebar"
+widget_class "*ThunarWindow*.<GtkHPaned>"               style "thunar-handle"
+
+#
+# Workaround for colored entries
+#
+style "entry_border" {
+
+  xthickness = 7
+  ythickness = 5
+
+  engine "pixmap" {
+
+    image {
+      function = SHADOW
+      state = NORMAL
+      detail = "entry"
+      file = "assets/entry-border-bg.png"
+      border = {6, 6, 6, 6}
+      stretch = TRUE
+    }
+
+    image {
+      function = SHADOW
+      state = ACTIVE
+      detail = "entry"
+      file = "assets/entry-border-active-bg.png"
+      border = {6, 6, 6, 6}
+      stretch = TRUE
+    }
+
+    image {
+      function = FLAT_BOX
+      state    = ACTIVE
+      detail   = "entry_bg"
+      file     = "assets/null.png"
+    }
+
+    image {
+      function = FLAT_BOX
+      state    = INSENSITIVE
+      detail   = "entry_bg"
+      file     = "assets/null.png"
+    }
+
+    image {
+      function = FLAT_BOX
+      detail   = "entry_bg"
+      file     = "assets/null.png"
+    }
+  }
+}
+
+style "combobox_entry_border" = "combobox_entry" {
+
+  engine "pixmap" {
+
+    image {
+      function = SHADOW
+      detail = "entry"
+      state = NORMAL
+      shadow = IN
+      file = "assets/combo-entry-border.png"
+      border = { 4, 4, 12, 12 }
+      stretch = TRUE
+      direction = LTR
+    }
+
+    image {
+      function = SHADOW
+      detail = "entry"
+      state = ACTIVE
+      file = "assets/combo-entry-border-focus.png"
+      border = { 4, 4, 12, 12 }
+      stretch = TRUE
+      direction = LTR
+    }
+
+    image {
+      function = SHADOW
+      detail = "entry"
+      state = NORMAL
+      shadow = IN
+      file = "assets/combo-entry-border-rtl.png"
+      border = { 4, 4, 12, 12 }
+      stretch = TRUE
+      direction = RTL
+    }
+
+    image {
+      function = SHADOW
+      detail = "entry"
+      state = ACTIVE
+      file = "assets/combo-entry-border-focus-rtl.png"
+      border = { 4, 4, 12, 12 }
+      stretch = TRUE
+      direction = RTL
+    }
+
+    image {
+      function = FLAT_BOX
+      state    = INSENSITIVE
+      detail   = "entry_bg"
+      file     = "assets/null.png"
+    }
+
+    image {
+      function = FLAT_BOX
+      detail   = "entry_bg"
+      file     = "assets/null.png"
+    }
+  }
+}
+
+
+# Mousepad search entry
+widget_class "*MousepadSearchBar*.<GtkEntry>"         style "entry_border"
+
+# Mousepad find and replace
+widget_class "*MousepadReplaceDialog*.<GtkEntry>"     style "entry_border"
+
+# Thunar bulk rename
+widget_class "*ThunarRenamerDialog*.<GtkEntry>"         style "entry_border"
+
+# Hexchat input box
+class "SexySpellEntry"                                style:highest "entry_border"
+
+# Geany search entries
+widget "*GeanyToolbar.*geany-search-entry-no-match*"  style "entry_border"
+widget "*GeanyToolbar.*GtkEntry*"                     style "entry_border"
+
+widget "GeanyDialogSearch.*GtkComboBoxEntry*.*geany-search-entry-no-match*"  style "combobox_entry_border"

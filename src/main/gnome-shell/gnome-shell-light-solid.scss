@@ -1,0 +1,9 @@
+$variant: 'light';
+$laptop: 'true';
+$trans: 'false';
+
+@import '../../sass/colors';
+@import '../../sass/variables';
+@import '../../sass/gnome-shell/drawing';
+@import '../../sass/gnome-shell/common';
+@import '../../sass/gnome-shell/extensions';

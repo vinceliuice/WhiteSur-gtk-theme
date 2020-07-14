@@ -1,0 +1,4027 @@
+
+* {
+  padding: 0;
+  background-clip: padding-box;
+  -GtkToolButton-icon-spacing: 4;
+  -GtkTextView-error-underline-color: $error_color;
+
+  -GtkScrolledWindow-scrollbar-spacing: 0;
+  -GtkToolItemGroup-expander-size: 11;
+
+  -GtkWidget-text-handle-width: 20;
+  -GtkWidget-text-handle-height: 20;
+
+  -GtkDialog-button-spacing: 4;
+  -GtkDialog-action-area-border: 0;
+
+  // We use the outline properties to signal the focus properties
+  outline-color: gtkalpha(currentColor, 0.15);
+  outline-style: solid;
+  outline-offset: -4px;
+  outline-width: 2px;
+  -gtk-outline-radius: $bt_radius;
+  -gtk-secondary-caret-color: $selected_bg_color;
+}
+
+//
+// Base States
+//
+.background {
+  // border-radius: 0 0 $wm_radius $wm_radius;
+  color: $fg_color;
+  background-color: rgba($bg_color, 0.999);
+
+  // > box > stack { background-color: $bg_color; }
+
+  &.csd { border-radius: 0 0 $wm_radius $wm_radius; } // Set csd windows botttom border radius
+  &.maximized, &.solid-csd { border-radius: 0; } // No radius when windows maximized
+}
+
+.popup.background {
+  background-color: transparent; // without this menus transparency doesn't work
+}
+
+*:disabled { -gtk-icon-effect: dim; }
+
+.gtkstyle-fallback {
+  background-color: $bg_color;
+  color: $fg_color;
+
+  &:hover {
+    background-color: lighten($bg_color, 10%);
+    color: $fg_color;
+  }
+
+  &:active {
+    background-color: darken($bg_color, 10%);
+    color: $fg_color;
+  }
+
+  &:disabled {
+    background-color: $disabled_bg_color;
+    color: $disabled_fg_color;
+  }
+
+  &:selected {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+}
+
+%view, .view {
+  color: $text_color;
+  background-color: $base_color;
+  transition: all 200ms $ease-out-quad;
+
+  &:hover { background-color: if($variant=='light', darken($base_color, 3%), lighten($base_color, 3%)); }
+
+  &:selected {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+    transition: all 350ms $ease-out-quad;
+
+    &:focus {
+      @extend %selected_items;
+    }
+  }
+}
+
+textview {
+  background-color: $base_color; // This will get overridden by .view, needed by gedit line numbers
+
+  text {
+    background-color: $base_color;
+    // @extend %view;
+    selection { &:focus, & { @extend %selected_items; }}
+  }
+
+  border {
+    background-color: mix($bg_color, $base_color, 50%);
+  }
+}
+
+iconview {
+  @extend %view;
+
+  &, &:hover, &:selected { border-radius: $bt_radius; }
+}
+
+%rubberband,
+rubberband,
+.rubberband {
+  border: 1px solid darken($selected_bg_color, 10%);
+  background-color: transparentize(darken($selected_bg_color, 10%), 0.8);
+}
+
+flowbox {
+  rubberband { @extend %rubberband; }
+
+  flowboxchild {
+    padding: 3px;
+    border-radius: $bt_radius;
+
+    &:selected {
+      @extend %selected_items;
+
+      outline-offset: -2px;
+    }
+  }
+
+  &.search-bar { border-bottom: 1px solid $header_border; }
+}
+
+label {
+  &.separator {
+    @extend %dim-label;
+
+    color: $fg_color;
+  }
+
+  row:selected &,
+  &:selected { @extend %nobg_selected_items; }
+
+  selection {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+  }
+
+  &:disabled {
+    color: $disabled_fg_color;
+    selection { @extend %selected_items, :disabled; }
+  }
+}
+
+%dim-label, .dim-label {
+  opacity: 0.55;
+}
+
+assistant {
+  // min-height: 38px;
+  .sidebar {
+    background-color: $base_color;
+    border-top: 1px solid $borders_color;
+  }
+
+  &.csd .sidebar { border-top-style: none; }
+
+  .sidebar label { padding: 6px 12px; }
+
+  .sidebar label.highlight {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+}
+
+%osd, .osd {
+  color: $osd_fg_color;
+  border: none;
+  background-color: $osd_bg_color;
+  background-clip: padding-box;
+  box-shadow: none;
+}
+
+//
+// Spinner Animations
+//
+@keyframes spin {
+  to { -gtk-icon-transform: rotate(1turn); }
+}
+
+spinner {
+  background: none;
+  opacity: 0; // non spinning spinner makes no sense
+  -gtk-icon-source: -gtk-icontheme('process-working-symbolic');
+
+  &:checked {
+    opacity: 1;
+    animation: spin 1s linear infinite;
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+}
+
+//
+// Text Entries
+//
+
+%Linked_entrys {
+  @include entry(normal);
+  border: none;
+
+  &:focus {
+    @include entry(focus);
+  }
+
+  &:disabled {
+    @include entry(insensitive);
+  }
+}
+
+entry {
+  min-height: 24px;
+  border: none;
+  padding: 2px 8px;
+  border-radius: $bt_radius;
+  caret-color: currentColor;
+
+  &.search { border-radius: $bt_radius; }
+
+  @include entry(normal);
+
+  image { // icons inside the entry
+    color: mix($fg_color, $base_color, 80%);
+
+    &.left { padding-left: 0; padding-right: 5px; }
+    &.right { padding-right: 0; padding-left: 5px; }
+  }
+
+  @at-root %flat_entry, &.flat {
+    &, &:focus {
+      min-height: 0;
+      background-image: none;
+      border-color: transparent;
+      border-radius: 0;
+    }
+  }
+
+  &:focus {
+    @include entry(focus);
+  }
+
+  &:disabled {
+    @include entry(insensitive);
+  }
+
+  selection { &:focus, & { @extend %selected_items; }}
+
+  // error and warning style
+  @each $e_type, $e_color, $e_fg_color in (warning, $warning_color, $light_fg_color),
+                                          (error, $error_color, $light_fg_color),
+                                          (search-missing, $error_color, $light_fg_color) { // entry.search-missing for Gnome-Builder
+    &.#{$e_type} {
+      color: $e_fg_color;
+      background-color: mix($e_color, $base_color, 60%);
+      border-image: none;
+
+      image { color: $e_fg_color; }
+
+      &:focus {
+        color: $e_fg_color;
+        background-color: $e_color;
+        box-shadow: none;
+      }
+
+      selection, selection:focus {
+        background-color: $e_fg_color;
+        color: $e_color;
+      }
+    }
+  }
+
+  &:drop(active) {
+    &:focus, & {
+      border-color: $drop_target_color;
+      box-shadow: none;
+      border-image: none;
+    }
+  }
+
+  .osd & {
+    @include entry(osd);
+    border-image: none;
+    &:focus { @include entry(osd-focus); border-image: none; }
+    &:disabled { @include entry(osd-insensitive); border-image: none; }
+
+    selection {
+      &:focus, & {
+        color: $selected_bg_color;
+        background-color: $selected_fg_color;
+      }
+    }
+  }
+
+  progress {
+    margin: 0 -6px;
+    border-radius: 0;
+    border-width: 0 0 2px;
+    border-color: $progress_color;
+    border-style: solid;
+    background-image: none;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  // linked entries
+  .linked:not(.vertical) > &,
+  .linked:not(.vertical) > &:focus {
+    @extend %linked;
+    min-height: 20px;
+  }
+
+  .linked.vertical > &,
+  .linked.vertical > &:focus {
+    @extend %linked_vertical;
+  }
+
+  .linked > &:not(:only-child) {
+    @extend %Linked_entrys;
+  }
+
+  .linked:not(.vertical) > & + button.combo { padding-left: 0; }
+  .linked.vertical > & + button.combo { padding: 0; }
+}
+
+.entry-tag {
+  $tag_height: 24px;
+  $tag_margin: 8px;
+
+  margin: $tag_margin; // instead of min-height: $tag_height;
+  border-radius: 50px;
+  box-shadow: none;
+  background-color: $destructive_color;
+  color: $light_fg_color;
+  border: none;
+
+  &:hover { box-shadow: 0 0 0 1px $borders_color; }
+
+  // side margins: compensate the entry padding with a negative margin
+  // then the negative margin itself
+  :dir(ltr) & {
+    margin-left: 8px;
+    margin-right: $tag_margin - 8px;
+    padding-left: 8px;
+    padding-right: ($tag_height - 16px) / 2;
+  }
+
+  :dir(rtl) & {
+    margin-left: $tag_margin - 8px;
+    margin-right: 8px;
+    padding-left: ($tag_height - 16px) / 2;
+    padding-right: 8px;
+  }
+
+  // seems any sizing doesn't work
+  &.button {
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+
+    &:not(:hover):not(:active) { color: $disabled_fg_color; }
+  }
+}
+
+//
+// Buttons
+//
+// stuff for .needs-attention
+$_dot_color: $selected_bg_color;
+
+@keyframes needs_attention {
+  from {
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.01,
+                                    to($_dot_color),
+                                    to(transparent));
+  }
+
+  to {
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.5,
+                                    to($selected_bg_color),
+                                    to(transparent));
+  }
+}
+
+button {
+  min-height: 20px;
+  min-width: 16px;
+  transition: $button_transition;
+  border: 1px solid;
+  border-radius: $bt_radius;
+  padding: 0 6px;
+  @include button(normal);
+
+  separator { margin: 4px 1px; }
+
+  @at-root %flat_button, &.flat {
+    min-height: if($variant =='light', 24px, 24px);
+    @include button(flat-normal);
+    // to avoid adiacent buttons borders clashing when transitioning, the transition on the normal state is set
+    // to none, while it's added back in the hover state, so the button decoration will fade in on hover, but
+    // it won't fade out when the pointer leave the button allocation area. To make the transition more evident
+    // in this case the duration is increased.
+    transition: none;
+
+    &:hover {
+      @include button(flat-hover);
+      transition: $button_transition;
+      transition-duration: 350ms;
+
+      &:active { transition: $button_transition; }
+     }
+
+    &:active, &:checked { @include button(flat-active); }
+    &:checked:hover { background-image: none; }
+    &:disabled { @include button(undecorated); }
+
+    &.toggle.popup {
+      min-width: 20px;
+    }
+  }
+
+  &:hover {
+    @include button(hover);
+    -gtk-icon-effect: highlight;
+  }
+
+  &:active, &:checked {
+    @include button(active);
+
+    background-clip: if($variant=='light', border-box, padding-box);
+    transition-duration: 200ms;
+
+    &:not(:disabled) label:disabled { color: inherit; opacity: 0.6; }
+  }
+
+  //Webkitgtk workaround start
+  &:active { color: $fg_color; }
+  &:active:hover, &:checked { color: $selected_fg_color; }
+  //Webkitgtk workaround end
+
+  &:disabled {
+    @include button(insensitive);
+
+    &:active, &:checked {
+      @include button(insensitive-active);
+    }
+  }
+
+  &.image-button {
+    min-height: 24px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  &.text-button {
+    min-height: 20px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  &.text-button.image-button {
+    min-height: 24px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    label {
+      &:first-child {
+        padding-left: 8px;
+        padding-right: 2px;
+      }
+
+      &:last-child {
+        padding-right: 8px;
+        padding-left: 2px;
+      }
+
+      &:only-child {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+
+    &.popup { padding-right: 6px; padding-left: 6px; }
+  }
+
+  &.close { // The Bloody Circul Button
+    @extend %circular_button;
+  }
+
+  &:drop(active) {
+    color: $drop_target_color;
+    border-color: $drop_target_color;
+    box-shadow: none;
+  }
+
+  // big standalone buttons like in Documents pager
+  &.osd {
+    color: $osd_fg_color;
+    background-color: $osd_bg_color;
+    border-color: darken($osd_bg_color, 8%);
+
+    &.image-button {
+      padding: 0;
+      min-height: 42px;
+      min-width: 42px;
+    }
+
+    &:hover { color: $selected_bg_color; }
+    &:active, &:checked {@include button(osd-active); }
+    &:disabled { @include button(osd-insensitive); }
+  }
+
+  //overlay / OSD style
+  .osd & {
+    @include button(osd);
+
+    &:hover { @include button(osd-hover); }
+    &:active, &:checked { @include button(osd-active); }
+    &:disabled { @include button(osd-insensitive); }
+
+    &.flat {
+      @include button(undecorated);
+      box-shadow: none;
+
+      &:hover { @include button(osd-hover); }
+
+      &:disabled {
+        @include button(osd-insensitive);
+        background-image: none;
+      }
+
+      &:active, &:checked { @include button(osd-active); }
+    }
+  }
+
+  .osd .linked:not(.vertical):not(.path-bar) > &:hover:not(:checked):not(:active):not(:only-child),
+  .osd .linked:not(.vertical):not(.path-bar) > &:hover:not(:checked):not(:active) + &:not(:checked):not(:active) { box-shadow: none; }
+
+  // Suggested and Destructive Action buttons
+  @each $b_type, $b_color, $b_fg in (suggested-action, $suggested_color, $light_fg_color),
+                                    (destructive-action, $destructive_color, $light_fg_color) {
+    &.#{$b_type} {
+      @include button(suggested_destructive, $b_color, $b_fg);
+
+      &.flat {
+        @include button(undecorated);
+        color: $b_color;
+      }
+
+      &:hover {
+        @include button(suggested_destructive, lighten($b_color, 5%), $b_fg);
+      }
+
+      &:active, &:checked {
+        @include button(suggested_destructive, lighten($b_color, 10%), $b_fg);
+        box-shadow: none;
+      }
+
+      &.flat:disabled {
+        @include button(undecorated);
+        color: $disabled_fg_color;
+      }
+
+      &:disabled { @include button(insensitive); }
+    }
+  }
+
+  .stack-switcher > & {
+    // to position the needs attention dot, padding is added to the button
+    // child, a label needs just lateral padding while an icon needs vertical
+    // padding added too.
+
+    outline-offset: -3px; // needs to be set or it gets overridden by GtkRadioButton outline-offset
+
+    > label {
+      padding-left: 6px;  // label padding
+      padding-right: 6px; //
+    }
+    > image {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+    &.text-button {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    &.image-button {
+      padding-left: 2px;
+      padding-right: 2px;
+    }
+
+    &.needs-attention {
+
+      > label, > image { @extend %needs_attention; }
+
+      &:active, &:checked {
+        > label, > image {
+          animation: none;
+          background-image: none;
+        }
+      }
+    }
+  }
+
+  %needs_attention {
+    animation: needs_attention 150ms ease-in;
+    background-image: -gtk-gradient(radial,
+                                    center center, 0,
+                                    center center, 0.5,
+                                    to($_dot_color),
+                                    to(transparent));
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    @if $variant == 'light' { background-position: right 3px, right 4px; }
+    @else { background-position: right 3px, right 2px; }
+
+    &:dir(rtl) {
+      @if $variant == 'light' { background-position: left 3px, left 4px; }
+      @else { background-position: left 3px, left 2px; }
+    }
+  }
+
+  // hide separators
+  &.font,
+  &.file { separator { background-color: transparent; }}
+
+  //inline-toolbar buttons
+  .inline-toolbar &, .inline-toolbar &:backdrop {
+    border-radius: $bt_radius;
+    // border: none;
+    @extend %linked;
+  }
+
+  .linked:not(.vertical) > & { @extend %linked; }
+
+  .linked.vertical > & { @extend %linked_vertical; }
+}
+
+// all the following is for the +|- buttons on inline toolbars, that way
+// should really be deprecated...
+.inline-toolbar toolbutton > button { // redefining the button look is
+                                          // needed since those are flat...
+  min-height: 20px;
+  @include button(flat-normal);
+  &:hover { @include button(flat-hover); }
+  &:active,
+  &:checked{ @include button(flat-active); }
+  &:disabled { @include button(flat-insensitive); }
+  &:disabled:active,
+  &:disabled:checked { @include button(flat-insensitive-active); }
+}
+
+// More inline toolbar buttons
+toolbar.inline-toolbar toolbutton {
+  & > button.flat { @extend %linked; }
+
+  &:first-child > button.flat {
+    border-top-left-radius: $bt_radius;
+    border-bottom-left-radius: $bt_radius;
+  }
+
+  &:last-child > button.flat {
+    border-top-right-radius: $bt_radius;
+    border-bottom-right-radius: $bt_radius;
+    border-right-style: solid;
+  }
+
+  &:only-child > button.flat {
+    border-radius: $bt_radius;
+    border-style: solid;
+  }
+}
+
+// Some crazy linking stuff
+@mixin linking_rules($a:0.7, $var:$variant, $vert:'false', $entry_rules:'true', $button_rules:'true',
+                     $e_border:$entry_border, $b_border:$button_border) {
+
+  $_border: if($vert=='false', left, top);
+
+  @if $entry_rules=='true' {
+    @each $e_type, $e_color in (':focus', $entry_highlight),
+                               (':drop(active)', $drop_target_color),
+                               ('.warning:focus', $warning_color),
+                               ('.error:focus', $error_color) {
+
+      > entry#{$e_type}:not(:only-child) {
+        box-shadow: inset 0 0 0 2px $e_color;
+      }
+    }
+  }
+
+  @if $button_rules=='true' {
+    $_uncolored_button: 'button:not(:checked):not(:active):not(.suggested-action):not(.destructive-action)';
+
+    > button + button { border-#{$_border}-style: none; }
+  }
+}
+
+// special case, because path-bars are bugged
+@mixin pathbar_linking_rules ($sep_color: $button_border, $button_rules: 'true') {
+
+  @if $button_rules == 'true' {
+    > button + button {
+      border-left-style: none;
+    }
+  }
+
+  @if $button_rules == 'header' {
+    > button:first-child { border-left-style: if($variant == 'light', solid, none); }
+    > button + button { border-left-style: solid; }
+
+    @if $variant == 'light' {
+      > button:active + button {
+        border-left-color: mix(black, $header_button_active_bg, 15%);
+      }
+
+      > button:active + button:checked,
+      > button:checked + button {
+        border-left-color: mix(black, $header_button_checked_bg, 15%);
+      }
+    }
+  }
+}
+
+// Apply the rules defined above
+.linked:not(.vertical) {
+  &:not(.path-bar) { @include linking_rules(); }
+  &.path-bar { @include pathbar_linking_rules(); }
+}
+
+.linked.vertical { @include linking_rules($vert:'true'); }
+
+%linked_middle {
+  border-radius: 0;
+  border-right-style: none;
+}
+
+%linked {
+  @extend %linked_middle;
+  &:first-child {
+    border-top-left-radius: $bt_radius;
+    border-bottom-left-radius: $bt_radius;
+  }
+  &:last-child {
+    border-top-right-radius: $bt_radius;
+    border-bottom-right-radius: $bt_radius;
+    border-right-style: solid;
+  }
+  &:only-child {
+    border-radius: $bt_radius;
+    border-style: solid;
+  }
+}
+
+%linked-flat {
+  @extend %linked_middle;
+  &:first-child {
+    border-top-left-radius: $bt_radius;
+    border-bottom-left-radius: 0;
+  }
+  &:last-child {
+    border-top-right-radius: $bt_radius;
+    border-bottom-right-radius: 0;
+    border-right-style: solid;
+  }
+  &:only-child {
+    border-radius: $bt_radius $bt_radius 0 0;
+    border-style: solid;
+  }
+}
+
+%linked_vertical_middle {
+  border-radius: 0;
+  border-bottom-style: none;
+}
+
+%linked_vertical{
+  @extend %linked_vertical_middle;
+  &:first-child {
+    border-top-left-radius: $bt_radius;
+    border-top-right-radius: $bt_radius;
+  }
+  &:last-child {
+    border-bottom-left-radius: $bt_radius;
+    border-bottom-right-radius: $bt_radius;
+    border-bottom-style: solid;
+  }
+  &:only-child {
+    border-radius: $bt_radius;
+    border-style: solid;
+  }
+}
+
+%undecorated_button {
+  border-color: transparent;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+
+// menu buttons
+menuitem.button.flat,
+modelbutton.flat {
+  transition: $shorter_transition;
+  min-height: 26px;
+  padding-left: 8px;
+  padding-right: 8px;
+  outline-offset: -3px;
+  border-radius: $bt_radius;
+
+  @extend %undecorated_button;
+
+  &:hover {
+    background-color: if($variant=='light', mix($fg_color,$bg_color,5%), mix($fg_color,$bg_color,10%));
+    transition-duration: 50ms;
+  }
+
+  &:active, &:selected {
+    &, arrow {
+      @extend %selected_items;
+      transition: none;
+      animation: none;
+    }
+  }
+
+  &:checked { color: $fg_color; }
+  &:disabled { color: $disabled_fg_color; }
+
+  // FIXME: temporary workaround
+  check:last-child,
+  radio:last-child { margin-left: 8px; }
+
+  check:first-child,
+  radio:first-child { margin-right: 8px; }
+}
+
+modelbutton.flat arrow {
+  &.left { -gtk-icon-source: -gtk-icontheme("pan-start-symbolic"); }
+  &.right { -gtk-icon-source: -gtk-icontheme("pan-end-symbolic"); }
+}
+
+//
+// Links
+//
+%links, *:link {
+  color: $link_color;
+
+  &:visited {
+    color: $link_visited_color;
+    *:selected & { color: mix($selected_fg_color, $selected_bg_color, 60%); }
+  }
+  &:hover {
+    color: lighten($link_color,10%);
+    *:selected & { color: mix($selected_fg_color, $selected_bg_color, 90%); }
+  }
+  &:active {
+    color: $link_color;
+    *:selected & { color: mix($selected_fg_color, $selected_bg_color, 80%); }
+  }
+
+  @at-root %link_selected,
+  &:selected,
+  *:selected & { color: mix($selected_fg_color, $selected_bg_color, 80%); }
+}
+
+button:link, button:visited {
+  @extend %undecorated_button;
+  @extend %links;
+
+  &:hover, &:active, &:checked {
+    @extend %undecorated_button;
+  }
+  > label { text-decoration-line: underline; }
+}
+
+//
+// Spinbuttons
+//
+spinbutton {
+  &:drop(active) { box-shadow: none; }
+
+  button:active { color: $selected_fg_color; }
+  &:disabled { color: $disabled_fg_color; }
+
+  entry {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    @extend %Linked_entrys;
+    border: 1px solid $borders_color;
+
+    &:focus {
+      border-color: $entry_highlight;
+      @if $variant == 'dark' { box-shadow: inset 0 0 0 1px $entry_highlight; }
+      @if $variant == 'light' { box-shadow: 0 1px 1px 0 transparent, inset 0 0 0 1px $entry_highlight; }
+    }
+
+    &:drop(active) {
+      border-color: $drop_target_color;
+      @if $variant == 'dark' { box-shadow: inset 0 0 0 1px $drop_target_color; }
+      @if $variant == 'light' { box-shadow: 0 1px 1px 0 transparent, inset 0 0 0 1px $drop_target_color; }
+    }
+  }
+
+  &:not(.vertical) {
+    entry {
+      padding-top: 2px;
+      padding-bottom: 2px;
+      min-width: 28px;
+    }
+
+    button, entry { @extend %linked; }
+
+    &:dir(ltr) entry,
+    &:dir(rtl) button.up { border-radius: $bt_radius 0 0 $bt_radius; }
+
+    > button + button { border-left-style: none; }
+
+    > button:hover:not(:active),
+    > button:hover + button { box-shadow: inset 1px 0 $button_border; }
+
+    > button:disabled + button:not(:disabled):not(:active):not(:checked):not(:hover),
+    > button:not(:disabled):not(:active):not(:checked):not(:hover) + button:disabled { box-shadow: inset 1px 0 transparentize($button_border, 0.5); }
+
+    > button:first-child:hover:not(:active),
+    > button.up:dir(rtl):hover:not(:active),
+    > entry + button:not(:active):hover { box-shadow: none; }
+
+    > entry:focus + button { border-left-color: $entry_highlight; }
+    > entry:drop(active) + button { border-left-color: $drop_target_color; }
+
+    .osd & {
+      &, &:focus, &:drop(active) { border-image: none; }
+      > button:hover:not(:active),
+      > button:hover + button { box-shadow: inset 1px 0 $osd_button_border; }
+
+      > button:first-child:hover:not(:active),
+      > button.up:dir(rtl):hover:not(:active),
+      > entry + button:not(:active):hover { box-shadow: none; }
+
+      > entry:focus + button { border-left-color: $entry_highlight; }
+    }
+  }
+
+  &.vertical {
+    button, entry {
+      padding-left: 4px;
+      padding-right: 4px;
+      min-width: 0;
+
+      @extend %linked_vertical;
+    }
+
+    button.up { border-radius: $bt_radius $bt_radius 0 0; }
+
+    > entry:focus + button { border-top-color: $entry_highlight; }
+    > entry:drop(active) + button { border-top-color: $drop_target_color; }
+  }
+}
+
+//
+// Comboboxes
+//
+combobox {
+  min-height: 16px;
+
+  button.combo {
+    min-width: 0;       // otherwise the arrow placement is unsymmetric
+    min-height: 16px;
+    // margin: 0;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  arrow {
+    -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+    min-height: 16px;
+    min-width: 16px;
+  }
+
+  .background & button.combo arrow {
+    @include button(active);
+    -gtk-icon-source: -gtk-scaled(
+                       url("assets/combobox-arrow-dark.png"),
+                       url("assets/combobox-arrow-dark@2.png"));
+    min-height: 16px;
+    min-width: 18px;
+    padding: 0;
+    margin: 2px -10px 2px 0;
+    border-radius: $bt_radius - 1px;
+    border: none;
+  }
+
+  // .background & menu arrow { // Reset menu overflow arrow
+  //   @extend %menu_overflow_arrow;
+  // }
+
+  decoration,
+  button.combo:checked,
+  .background & button.combo:checked { transition: none; } // workaround for menuitem selection
+
+  &:drop(active) button.combo {
+    color: $drop_target_color;
+    border-color: $drop_target_color;
+    box-shadow: none;
+  }
+
+  .linked:not(.vertical) > entry + button.combo,
+  .linked:not(.vertical) > & > box > button.combo {
+    arrow {
+      background-color: transparent;
+      -gtk-icon-source: -gtk-scaled(
+                         url("assets/combobox-arrow#{$asset_suffix}.png"),
+                         url("assets/combobox-arrow#{$asset_suffix}@2.png"));
+    }
+  }
+
+  .linked:not(.vertical) > entry + button.combo:checked,
+  .linked:not(.vertical) > & > box > button.combo:checked {
+    arrow {
+      border-radius: 0;
+      background-color: transparent;
+      -gtk-icon-source: -gtk-scaled(
+                         url("assets/combobox-arrow-dark.png"),
+                         url("assets/combobox-arrow-dark@2.png"));
+    }
+  }
+
+  .linked:not(.vertical) > & > box > button.combo {
+    // the combobox is a composite widget so the way we do button linking doesn't
+    // work, special case needed.
+    &:dir(ltr),
+    &:dir(rtl) { @extend %linked_middle; } // specificity bump
+  }
+
+  .linked:not(.vertical) > &:first-child > box > button.combo {
+    border-top-left-radius: $bt_radius;
+    border-bottom-left-radius: $bt_radius
+  }
+
+  .linked:not(.vertical) > &:last-child > box > button.combo {
+    border-top-right-radius: $bt_radius;
+    border-bottom-right-radius: $bt_radius;
+    border-right: 1px solid $button_borders;
+  }
+
+  .linked:not(.vertical) > &:only-child > box > button.combo {
+    border-radius: $bt_radius;
+  }
+
+  // .linked.vertical > & > box > button.combo { @extend %linked_vertical_middle; }
+  .linked.vertical > &:first-child > box > button.combo {
+    border-top-left-radius: $bt_radius;
+    border-top-right-radius: $bt_radius;
+  }
+
+  .linked.vertical > &:last-child > box > button.combo {
+    border-bottom-left-radius: $bt_radius;
+    border-bottom-right-radius: $bt_radius;
+  }
+
+  .linked.vertical > &:only-child > box > button.combo {
+    border-radius: $bt_radius;
+  }
+}
+
+//
+// Toolbars
+//
+%toolbar, toolbar {
+  -GtkWidget-window-dragging: true;
+  padding: 4px;
+  background-color: $header_bg;
+  // border-radius: $wm_radius;
+
+  &.horizontal { border-bottom: 1px solid $borders_color; }
+
+  separator { background: none; }
+  &.horizontal separator { margin: 0 6px; }
+  &.vertical separator { margin: 6px 0; }
+
+  .osd & { background-color: transparent; }
+
+  &.osd {
+    padding: 8px;
+    border: 1px solid $borders_color;
+    border-radius: $bt_radius;
+    background-color: $base_color;
+
+    &.left,
+    &.right,
+    &.top,
+    &.bottom { border-radius: 0; } // positional classes for `attached` osd toolbars
+
+    &.top { border-width: 0 0 1px 0; }
+    &.bottom { border-width: 1px 0 0 0; }
+    &.left { border-width: 0 1px 0 0; }
+    &.right { border-width: 0 0 0 1px; }
+  }
+
+  &:not(.inline-toolbar) {
+    switch,
+    scale,
+    entry,
+    spinbutton,
+    button {
+      margin-right: 1px;
+      margin-bottom: 1px;
+    }
+
+    .linked > button,
+    .linked > entry { margin-right:0; }
+  }
+}
+
+.primary-toolbar:not(.libreoffice-toolbar) {  // LO messes up the toolbar styling, so exclude LO toolbars
+  color: $text_color;
+  background-color: transparent;
+  box-shadow: none;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, $borders_color, $borders_color) 1 0 1 0; //temporary hack for rhythmbox 3.1
+
+  //  &:backdrop { background-color: opacify($header_bg_backdrop, 1); }
+
+  separator { @extend %header_separator; }
+}
+
+.inline-toolbar {
+  @extend %toolbar;
+  background-color: darken($bg_color, 3%);
+  border-style: solid;
+  border-color: $borders_color;
+  border-width: 0 1px 1px;
+  padding: 3px;
+
+  .background.csd & {
+    border-radius: 0 0 $bt_radius $bt_radius;
+  }
+}
+
+searchbar {
+  background-color: $bg_color;
+  padding: 0;
+  margin: 0;
+  border: none;
+
+  > revealer > box {
+    padding: 6px;
+    margin: -6px;
+    border-style: solid;
+    border-color: $solid_borders_color;
+    border-width: 0 0 1px;
+  }
+
+  .linked:not(.vertical) {
+    > entry {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  // Close button on searchbar
+  button.flat {
+    @extend %circular_button;
+  }
+}
+
+actionbar {
+  padding: 6px;
+  border-top: 1px solid $borders_color;
+  background-color: darken($bg_color, 3%);
+
+  .background.csd & {
+    border-radius: 0 0 $wm_radius $wm_radius;
+  }
+}
+
+//
+// Headerbars
+//
+
+headerbar,
+%titlebar {
+  min-height: 40px;
+  padding: 0 16px;
+  color: $header_fg;
+  background-color: $header_bg;
+  border-bottom: 1px solid $header_border;
+
+  &:backdrop {
+    transition: $backdrop_transition;
+    color: transparentize($header_fg, 0.3);
+    background-color: $header_bg_backdrop;
+    border-color: if($variant=='light', lighten($header_border, 5%), darken($header_border, 3%));
+  }
+
+  .title {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .subtitle {
+    font-size: smaller;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-top: -3px;
+    @extend %dim-label;
+  }
+
+  entry { @extend %headerbar_entrys; }
+
+  button { @extend %headerbar_buttons; }
+
+  button, spinbutton {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  // button.toggle.popup { margin-right: 3px; } // Nautilus 3.30 popup button
+
+  // Reset linked buttons
+  .linked:not(.vertical):not(.stack-switcher) > button {
+    min-width: 20px;
+    border-radius: $bt_radius;
+    border: none;
+    box-shadow: none;
+
+    &:disabled { background: none; }
+  }
+
+  stackswitcher.linked.stack-switcher:not(.vertical) > button {
+    min-height: 26px;
+    min-width: 20px;
+    border-radius: $bt_radius;
+  }
+
+  // Reset linking entrys
+  .linked:not(.vertical) > entry {
+    @include entry(header-normal);
+    margin: 8px 3px;
+    padding: 0 8px;
+    border-radius: $bt_radius;
+    border: none;
+
+    &:focus {
+      border-radius: $bt_radius;
+      @include entry(header-focus);
+    }
+
+    &:disabled {
+      border-radius: $bt_radius;
+      @include entry(header-insensitive);
+    }
+
+    &:backdrop { opacity: 0.65; background-image: none; }
+  }
+
+  stackswitcher {
+    box-shadow: inset 0 0 0 1px $light_borders_color;
+    border-radius: $bt_radius;
+    margin: 8px 0;
+    padding: 0;
+
+    button {
+      min-height: 26px;
+      margin: 0;
+      font-weight: 500;
+
+      &:not(:first-child) {
+        border-width: 0 0 0 1px;
+        border-style: none solid none none;
+        border-radius: 0;
+        border-image: linear-gradient(to bottom,
+                                      transparent 16%,
+                                      $light_borders_color 16%,
+                                      $light_borders_color 84%,
+                                      transparent 84%) 0 0 0 1 / 0 0 0 1px stretch;
+      }
+
+      &:checked {
+        border-image: none;
+      }
+    }
+
+    button:checked + button { border-image: none; }
+  }
+
+  // Headerbar Switches
+  switch {
+    //  @extend %switch;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    &:backdrop { opacity: 0.75; }
+  }
+
+  &.titlebar headerbar:not(.titlebar) {
+    background: none;
+    box-shadow: none;
+  }
+
+  // Selectionmode
+  .selection-mode &,
+  &.selection-mode {
+    color: $light_fg_color;
+    background-color: $selection_mode_bg;
+    border-color: darken($selection_mode_bg, 4%);
+    box-shadow: none;
+    background-image: none;
+    text-shadow: none;
+
+    &:backdrop {
+      background-color: $selection_mode_bg;
+      color: transparentize($light_fg_color, 0.4);
+      border-color: darken($selection_mode_bg, 4%);
+    }
+
+    button {
+      @include button(undecorated);
+      @extend %selected-button;
+    }
+
+    .subtitle:link { @extend %link_selected;  }
+
+    .selection-menu {
+      box-shadow: none;
+      padding-left: 10px;
+      padding-right: 10px;
+      GtkArrow { -GtkArrow-arrow-scaling: 1; }
+
+      .arrow {
+        -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+      }
+    }
+
+    .maximized & { background-color: $selection_mode_bg; }
+  }
+
+  .tiled &, .tiled &:backdrop,
+  .maximized &, .maximized &:backdrop {
+    border-radius: 0; // squared corners when the window is max'd or tiled
+    box-shadow: none;
+  }
+
+  .maximized & {
+    background-color: $header_bg;
+    border-color: opacify($header_border, 1);
+    box-shadow: none;
+
+    &:backdrop {
+      background-color: $header_bg_backdrop;
+      border-color: if($variant=='light', lighten($header_border, 15%), darken($header_border, 3%));
+    }
+  }
+
+  &.default-decoration {
+    min-height: 32px;
+    padding: 0 12px;
+    background-color: $header_bg;
+
+    .tiled &,
+    .maximized &,
+    .fullscreen & { box-shadow: none; }
+
+    button.titlebutton {
+      border: none;
+      min-width: 16px;
+      min-height: 16px;
+      margin: 0;
+      padding: 0;
+
+      &.appmenu {
+        &, &:active, &:checked {
+          background-color: transparent;
+          box-shadow: none;
+          background-image: -gtk-scaled(url("assets/setting-icon#{$con_asset_suffix}.png"),
+                                        url("assets/setting-icon#{$con_asset_suffix}@2.png"));
+        }
+      }
+    }
+  }
+
+  &.default-decoration,
+  .csd &.default-decoration,             // needed under wayland, since all gtk3 windows are csd windows
+  &.default-decoration:backdrop,
+  .csd &.default-decoration:backdrop {
+    // box-shadow: none;
+    border: none;
+  }
+
+  separator.titlebutton { @extend %header_separator; }
+
+  // Fixes split headerbars
+  separator:first-child + &,
+  &:first-child {
+    &, &:backdrop {
+      border-top-left-radius: $wm_radius;
+
+      .maximized &,
+      .tiled & { border-radius: 0; }
+    }
+  }
+
+  &:last-child {
+    &, &:backdrop {
+      border-top-right-radius: $wm_radius;
+
+      .maximized &,
+      .tiled & { border-radius: 0; }
+    }
+  }
+
+  stack & { // tackles the stacked headerbars case
+    &:first-child, &:last-child {
+      border-top-left-radius: $wm_radius;
+      border-top-right-radius: $wm_radius;
+    }
+  }
+
+  window separator:first-child + &,
+  window &:first-child { &:backdrop, & { border-top-left-radius: $wm_radius; }}
+  window &:last-child { &:backdrop, & { border-top-right-radius: $wm_radius; }}
+
+  window stack & { // tackles the stacked headerbars case
+    &:first-child, &:last-child {
+      &:backdrop, & {
+        border-top-left-radius: $wm_radius;
+        border-top-right-radius: $wm_radius;
+      }
+    }
+  }
+
+  window.tiled &,
+  window.tiled-top &,
+  window.tiled-right &,
+  window.tiled-bottom &,
+  window.tiled-left &,
+  window.maximized &,
+  window.fullscreen &,
+  .solid-csd & {
+    &,
+    &:first-child,
+    &:last-child,
+    &:only-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}
+
+.titlebar {
+  &, &.background {
+    border-top-left-radius: $wm_radius;
+    border-top-right-radius: $wm_radius;
+  }
+
+  &, & headerbar {
+    box-shadow: inset 0 1px $highlight_color;
+
+    .tiled &,
+    .maximized &,
+    .fullscreen & { box-shadow: none; }
+  }
+}
+
+window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar style for not CSD window
+  border-radius: 0 0 0 0;
+  box-shadow: none;
+
+  // Fixes split headerbars
+  separator:first-child + &,
+  &:first-child {
+    &, &:backdrop {
+      border-top-left-radius: 0;
+    }
+  }
+
+  &:last-child {
+    &, &:backdrop {
+      border-top-right-radius: 0;
+    }
+  }
+}
+
+// Fixes split headerbars too
+.titlebar:not(headerbar) {
+  window > &,
+  window.csd > & {
+    &, &:backdrop {
+      padding: 0;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  > separator {
+    min-width: 1px;
+    @extend %side_separator;
+  }
+
+  // @extend %titlebar;
+}
+
+headerbar, .titlebar {
+  button {
+    min-height: 26px;
+    min-width: 22px;
+  }
+
+  entry { // Reset entrys
+    min-height: 22px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 2px 8px;
+  }
+}
+
+%header_separator {
+  min-width: 0;
+  min-height: 0;
+  background-color: transparent;
+  border: none;
+
+  &:backdrop { opacity: 0.65; }
+}
+
+// Headerbar Entries
+%headerbar_entrys {
+  min-height: 22px;
+  @include entry(header-normal);
+
+  &:backdrop { opacity: 0.65; background-image: none; }
+
+  &:focus {
+    @include entry(header-focus);
+  }
+
+  &:disabled {
+    @include entry(header-insensitive);
+  }
+
+  selection:focus {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+
+  progress {
+    border-color: $progress_color;
+    background-image: none;
+    background-color: transparent;
+  }
+
+  @each $e_type, $e_color, $e_fg_color in (warning, $warning_color, $light_fg_color),
+                                          (error, $error_color, $light_fg_color) {
+    &.#{$e_type} {
+      color: $e_fg_color;
+      border-color: if($variant=='light', $e_color, $entry_border);
+      background-color: mix($e_color, $header_bg, 60%);
+
+      &:focus {
+        color: $e_fg_color;
+        background-color: $e_color;
+      }
+
+      selection, selection:focus {
+        background-color: $e_fg_color;
+        color: $e_color;
+      }
+    }
+  }
+}
+
+// Headerbar Buttons
+%headerbar_buttons {
+  min-height: 26px;
+  min-width: 22px;
+  @include button(header-normal);
+
+  &:backdrop { opacity: 0.65; background-image: none; }
+
+  &:hover {
+    @include button(header-hover);
+    transition: $button_transition;
+  }
+
+  &:active, &:active:hover {
+    @include button(header-active);
+    transition: $button_transition;
+    transition-duration: 300ms;
+  }
+
+  &:active:hover, &:checked { color: $header_fg; }
+
+  &:checked {
+    @include button(header-checked);
+    transition: $button_transition;
+    transition-duration: 300ms;
+
+    &:hover { background-image: none; }
+  }
+
+  &:disabled {
+    &, &:checked, &:active { @include button(header-insensitive); }
+  }
+
+  &.flat {
+    @include button(undecorated);
+  }
+}
+
+//
+// Pathbars
+//
+.path-bar button {
+  min-width: 12px;
+  min-height: if($variant == 'light', 24px, 26px);
+
+  &.text-button, &.image-button, & {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  &:hover { box-shadow: none; }
+
+  &:active, &:checked {
+    @include button(header-checked);
+    border-color: $button_borders;
+  }
+
+  &:disabled {
+    border-color: $button_borders;
+  }
+
+  &.text-button.image-button label { padding-left: 0; padding-right: 0; }
+
+  &.text-button.image-button, & {
+    label:last-child { padding-right: 10px; }
+    label:first-child { padding-left: 10px; }
+  }
+
+  &.slider-button,
+  &:not(.image-button):not(.text-button) {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  image {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+//
+// Tree Views
+//
+treeview.view {
+  @at-root * {
+    -GtkTreeView-horizontal-separator: 4;
+    -GtkTreeView-grid-line-width: 1;
+    -GtkTreeView-grid-line-pattern: '';
+    -GtkTreeView-tree-line-width: 1;
+    -GtkTreeView-tree-line-pattern: '';
+    -GtkTreeView-expander-size: 16;
+  }
+
+  border-radius: 0;
+  margin: 0 0;
+
+  border-left-color: rgba($fg_color, 0.15); // this is actually the tree lines color,
+  border-top-color: $borders_color; // while this is the grid lines color, better then nothing
+
+  rubberband { @extend %rubberband; } // to avoid borders being overridden by the previously set props
+
+  acceleditor > label { background-color: $selected_bg_color; }
+
+  &:selected {
+    &, &:focus {
+      border-radius: 0;
+      border-left-color: mix($selected_fg_color, $selected_bg_color, 50%);
+      border-top-color: rgba($fg_color, 0.15); // doesn't work unfortunately
+
+      @extend %selected_items;
+    }
+  }
+
+  &:disabled {
+    color: $disabled_fg_color;
+
+    &:selected {
+      color: mix($selected_fg_color, $selected_bg_color, 40%);
+    }
+  }
+
+  &.separator {
+    min-height: 2px;
+    color: $borders_color;
+  }
+
+  &:drop(active) {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: mix($fg_color, $selected_bg_color, 50%);
+
+    &.after { border-top-style: none; }
+    &.before { border-bottom-style: none; }
+  }
+
+  &.expander {
+    -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+
+    &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
+
+    color: mix($fg_color, $base_color, 50%);
+
+    &:hover { color: $fg_color; }
+
+    &:selected {
+      color: mix($selected_fg_color, $selected_bg_color, 70%);
+      &:hover { color: $selected_fg_color; }
+    }
+
+    &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+  }
+
+  &.progressbar, &.progressbar:focus { // progress bar in treeviews
+    color: $selected_fg_color;
+    border-radius: $bt_radius;
+    background-color: $progress_color;
+
+    &:selected, &:selected:focus {
+      color: $selected_bg_color;
+      box-shadow: none;
+      background-color: $selected_fg_color;
+    }
+  }
+
+  &.trough { // progress bar trough in treeviews
+    color: $fg_color;
+    background-color: $button_border;
+    border-radius: $bt_radius;
+    border-width: 0;
+
+    &:selected, &:selected:focus {
+      color: $selected_fg_color;
+      background-color: transparentize(black, 0.8);
+      border-radius: $bt_radius;
+      border-width: 0;
+    }
+  }
+
+  header {
+    button {
+      $_column_header_color: mix($fg_color,$base_color,80%);
+
+      min-height: if($variant =='light', 24px, 26px);
+      min-width: 38px;
+      padding: 0 6px;
+      font-weight: bold;
+
+      color: $_column_header_color;
+      background-color: $base_color;
+      background-image: none;
+      box-shadow: none;
+      border-style: none solid none none;
+      border-radius: 0;
+      border-image: linear-gradient(to bottom,
+                                    $base_color 20%,
+                                    transparentize(if($variant == 'light', black, white), 0.89) 20%,
+                                    transparentize(if($variant == 'light', black, white), 0.89) 80%,
+                                    $base_color 80%) 0 1 0 0 / 0 1px 0 0 stretch;
+
+      &:hover { color: $selected_bg_color; }
+      &:active { color: $fg_color; }
+
+      &:active, &:hover { background-color: $base_color; }
+      &:active:hover { color: $fg_color; }
+
+      &:disabled {
+        border-color: $bg_color;
+        background-image: none;
+      }
+
+      &:last-child {
+        border-right-style: none;
+        border-image: none;
+      }
+    }
+  }
+
+  button.dnd,
+  header.button.dnd {
+    &, &:selected, &:hover, &:active {
+      padding: 0 6px;
+      transition: none;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+      border-radius: 0;
+      border-style: none;
+    }
+  }
+}
+
+//
+// Menus
+//
+
+menubar,
+.menubar {
+  -GtkWidget-window-dragging: true;
+  padding: 0;
+  background-color: $header_bg;
+  color: $header_fg;
+  box-shadow: inset 0 -1px $borders_color;
+
+  &:backdrop {
+    color: transparentize($header_fg, 0.2);
+    // background-image: none;
+    // background-color: opacify($header_bg_backdrop, 1);
+  }
+
+  > menuitem {
+    transition: all 0.2s cubic-bezier(0.0, 0.0, 0.2, 1);
+    padding: 4px 8px;
+    border: none;
+    border-radius: $bt_radius;
+
+    // > window.popup.background.csd > decoration { border-radius: 0 0 $wm_radius $wm_radius; }
+
+    > window.popup.background.csd > menu {
+      // border-radius: 0 0 $wm_radius $wm_radius;
+
+      > menuitem { transition: none; }
+    }
+
+    &:hover { //Seems like it :hover even with keyboard focus
+      transition: none;
+      @include button(header-hover);
+    }
+
+    &:disabled {
+      color: transparentize($header_fg, 0.6);
+    }
+  }
+}
+
+.context-menu,
+menu,
+.menu {
+  // margin: 4px;
+  padding: 6px 4px;
+  border-radius: $mn_radius;
+  background-color: opacify($menu_bg, 1);
+  border: 1px solid $solid_borders_color;
+  color: $fg_color;
+
+  .csd & {
+    background-color: $menu_bg;
+    @if $variant == 'light' { border: none; }
+    @if $variant == 'dark' { border: 1px solid lighten($menu_bg, 6%); }
+  }
+
+  separator,
+  .csd & separator {
+    margin: 2px 4px;
+    min-height: 0;
+    border-bottom: 2px solid $menu_bd;
+    background-color: transparent;
+  }
+
+  > menuitem {
+    transition: background-color 50ms cubic-bezier(0.0, 0.0, 0.2, 1);
+    min-height: 12px;
+    min-width: 40px;
+    padding: 3px 6px;
+    border-radius: $mn_radius - 3px;
+    margin: 0 2px;
+    text-shadow: none;
+    color: $fg_color;
+
+    &:hover {
+      transition: none;
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+
+      arrow {
+        transition: none;
+        color: $selected_fg_color;
+      }
+
+      menu { //sunmenu
+        arrow {
+          color: $fg_color;
+          text-shadow: none;
+          -gtk-icon-shadow: none;
+        }
+
+        menuitem:hover {
+          arrow { color: $selected_fg_color; }
+        }
+      }
+    }
+
+    &:disabled {
+      color: $disabled_fg_color;
+    }
+
+    //submenu indicators
+    arrow {
+      min-height: 16px;
+      min-width: 16px;
+      background-color: transparent;
+      background-image: none;
+      border: none;
+      color: $fg_color;
+
+      &:dir(ltr) {
+        -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+        margin-right: 0;
+      }
+
+      &:dir(rtl) {
+        -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl');
+        margin-left: 0;
+      }
+    }
+
+    @at-root menuitem {
+      accelerator { color: gtkalpha(currentColor, 0.55); }
+
+      check, radio {
+        min-height: 16px;
+        min-width: 16px;
+        &:dir(ltr) { margin-right: 6px; margin-left: 2px; }
+        &:dir(rtl) { margin-left: 6px; margin-right: 2px; }
+      }
+    }
+  }
+
+  // overflow buttons
+  %menu_overflow_arrow,
+  > arrow {
+    min-width: 16px;
+    min-height: 16px;
+    padding: 2px;
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    background-image: none;
+    color: $fg_color;
+
+    &.top {
+      margin-top: -6px;
+      border-radius: $wm_radius $wm_radius 0 0;
+      border-bottom: 1px solid $borders_color;
+      -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
+    }
+
+    &.bottom {
+      margin-top: 12px;
+      margin-bottom: -16px;
+      border-radius: 0 0 $wm_radius $wm_radius;
+      border-top: 1px solid $borders_color;
+      -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+    }
+
+    &:hover { background-color: rgba($fg_color, 0.08); }
+
+    &:disabled {
+      color: transparent;
+      background-color: transparent;
+      border-color: transparent ;
+    }
+  }
+}
+
+//
+// Popovers
+//
+popover,
+popover.background {
+  padding: 0;
+  border-radius: $wm_radius;
+  background-clip: border-box;
+  background-color: $menu_bg;
+
+  box-shadow: 0 3px 6px 0 if($variant=='light', transparentize(black, 0.85), transparentize(black, 0.85)),
+              0 0 0 1px if($variant=='light', rgba($borders_color, 0.03), rgba($dark_borders_color, 0.55));
+
+  .csd &, & {
+    border-radius: $wm_radius;
+    border: 1px solid if($variant=='light', rgba($borders_color, 0.2), lighten($menu_bg, 6%));
+  }
+
+  separator,
+  & separator,
+  .csd & separator {
+    // margin: 4px -9px;
+    // min-height: 2px;
+    border: none;
+    background-color: transparent;
+  }
+
+  label.separator {
+    @extend %dim-label;
+    color: $fg_color;
+  }
+
+  entry {
+    background-color: mix($fg_color, $menu_bg, 5%);
+  }
+
+  > list,
+  > .view,
+  > toolbar {
+    border-style: none;
+    background-color: transparent;
+  }
+
+  &, .csd & {
+    &.osd, &.magnifier { @extend %osd; }
+    &.touch-selection { font: initial; }
+
+    &.osd { @extend %osd; }
+  }
+}
+
+//touch selection handlebars for the Popover.osd above
+cursor-handle {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border-style: none;
+  &.top { -gtk-icon-source: -gtk-icontheme('selection-start-symbolic'); }
+  &.bottom { -gtk-icon-source: -gtk-icontheme('selection-end-symbolic'); }
+}
+
+//
+// Notebooks and Tabs
+//
+notebook {
+  padding: 0;
+  // margin-top: -1px;
+
+  &.frame {
+    border: 1px solid $solid_borders_color;
+
+    > header {
+      &.top,
+      &.bottom {
+        tabs > tab {
+          &:first-child { border-left-style: none; }
+          &:last-child { border-right-style: solid; }
+        }
+      }
+
+      &.left,
+      &.right {
+        tabs > tab {
+          &:first-child { border-top-style: none; }
+          &:last-child { border-bottom-style: solid; }
+        }
+      }
+    }
+  }
+
+  > stack:not(:only-child) { // the :not(:only-child) is for "hidden" notebooks
+    background-color: $base_color;
+  }
+
+  > header {
+    padding: 0;
+    background-color: darken($header_bg, 10%);
+
+    // Set box-shadow to make the header frame color more easy to see
+    // Set margin to hide the ugly borders around the header
+    &.top {
+      box-shadow: inset 0 1px $solid_borders_color, inset 0 -1px $borders_color;
+      @if $variant=='light' {
+          box-shadow: inset 0 1px $borders_color,
+                      inset 0 -1px $borders_color,
+                            1px 0 $borders_color,
+                            -1px 0 $borders_color;
+      }
+      margin-top: -1px;
+    }
+
+    &.bottom {
+      box-shadow: inset 0 1px $borders_color, inset 0 -1px $solid_borders_color;
+      @if $variant=='light' {
+          box-shadow: inset 0 1px $borders_color,
+                      inset 0 -1px $borders_color,
+                      1px 0 $borders_color,
+                      -1px 0 $borders_color;
+      }
+      margin-bottom: -1px;
+    }
+
+    &.right {
+      box-shadow: inset 1px 0 $borders_color, inset -1px 0 $solid_borders_color;
+      @if $variant=='light' {
+          box-shadow: inset 1px 0 $borders_color,
+                      inset -1px 0 $borders_color,
+                      0 1px $borders_color,
+                      0 -1px $borders_color;
+      }
+      margin-right: -1px;
+    }
+
+    &.left {
+      box-shadow: inset 1px 0 $solid_borders_color, inset -1px 0 $borders_color;
+      @if $variant=='light' {
+          box-shadow: inset 1px 0 $borders_color,
+                      inset -1px 0 $borders_color,
+                      0 1px $borders_color,
+                      0 -1px $borders_color;
+      }
+      margin-left: -1px;
+    }
+
+    button.flat.toggle.popup {
+      min-width: 28px;
+      border-radius: 0;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      margin: 0;
+
+      &:active, &:checked {
+        color: $fg_color;
+        background-color: if($variant=='light', rgba(black, 0.20), rgba(white, 0.15));
+      }
+    }
+
+    @each $_pos, $_bpos in (top, bottom), (bottom, top), (right, left), (left, right) {
+      // sizing and borders
+      &.#{$_pos} {
+        padding: 0;
+
+        tab {
+          padding: 2px 10px;
+          min-width: 24px;
+          min-height: 24px;
+          border-radius: 0;
+          outline-offset: -4px;
+          // border-#{$_pos}: none;
+
+          // tab overlap
+          + tab {
+            @if $_pos==top or $_pos==bottom { margin-left: -1px; }
+            @else { margin-top: -1px; }
+          }
+        }
+      }
+    }
+
+    // overflow arrows
+    &.top, &.bottom {
+      > tabs > arrow.up {
+        -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+        &:last-child { margin-left: 2px; }
+      }
+
+      > tabs > arrow.down {
+        -gtk-icon-source: -gtk-icontheme('pan-start-symbolic');
+        &:first-child { margin-right: 2px; }
+      }
+    }
+
+    &.left, &.right {
+      > tabs > arrow.up {
+        -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+        &:last-child { margin-top: 2px; }
+      }
+
+      > tabs > arrow.down {
+        -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
+        &:first-child { margin-bottom: 2px; }
+      }
+    }
+
+    > tabs > arrow {
+      color: $disabled_fg_color;
+
+      &:hover { color: mix($fg_color, $disabled_fg_color, 50%); }
+      &:active { color: $fg_color; }
+      &:disabled { color: transparentize($disabled_fg_color,0.3); }
+    }
+
+    &.top,
+    &.bottom {
+      tabs > tab {
+        &:first-child { border-left-style: none; }
+        &:last-child { border-right-style: none; }
+      }
+    }
+
+    &.left,
+    &.right {
+      tabs > tab {
+        &:first-child { border-top-style: none; }
+        &:last-child { border-bottom-style: none; }
+      }
+    }
+
+    &.top {
+
+    }
+
+    tabs > tab {
+      color: $disabled_fg_color;
+      background-color: transparentize($base_color, 1);
+      border: 1px solid transparent;
+      transition: all 150ms ease-out;
+
+      &:hover:not(:checked) {
+        color: mix($fg_color, $disabled_fg_color, 50%);
+        background-color: if($variant == 'light', rgba(white, 0.2), rgba(white, 0.05));
+        border-color: if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
+      }
+
+      &:checked {
+        color: $fg_color;
+        background-color: $header_bg;
+        border-color: if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
+      }
+
+      // close button
+      button.flat {
+        min-height: 20px;
+        min-width: 20px;
+        border-radius: 3px;
+        padding: 0;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        color: mix($bg_color, $fg_color, 35%);
+
+        &:hover {
+          @extend %undecorated_button;
+          color: $fg_color;
+          background-color: rgba($borders_color, 0.1);
+        }
+
+        &:active, &:active:hover {
+          @extend %undecorated_button;
+          color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
+          background-color: rgba($borders_color, 0.2);
+        }
+      }
+    }
+  }
+}
+
+//
+// Scrollbars
+//
+$_scrollbar_bg_color: if($variant == 'light', darken($base_color, 1%), lighten($base_color, 1%));
+
+scrollbar {
+  $_slider_min_length: 40px;
+
+  // disable steppers
+  @at-root * {
+    -GtkScrollbar-has-backward-stepper: false;
+    -GtkScrollbar-has-forward-stepper: false;
+  }
+
+  background-color: transparent;
+  transition: 300ms $ease-out-quad;
+
+  // scrollbar border
+  // &.top { border-bottom: 1px solid $borders_color; }
+  // &.bottom { border-top: 1px solid $borders_color; }
+  // &.left { border-right: 1px solid $borders_color; }
+  // &.right { border-left: 1px solid $borders_color; }
+
+  border: none;
+
+  button { border: none; }
+
+  &.vertical button {
+    &.down { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+    &.up { -gtk-icon-source: -gtk-icontheme('pan-up-symbolic'); }
+  }
+
+  &.horizontal button {
+    &.down { -gtk-icon-source: -gtk-icontheme('pan-right-symbolic'); }
+    &.up { -gtk-icon-source: -gtk-icontheme('pan-left-symbolic'); }
+  }
+
+  // slider
+  slider {
+    min-width: 4px;
+    min-height: 4px;
+    margin: -1px;
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-clip: padding-box;
+    background-color: mix($fg_color, $bg_color, 40%);
+
+    &:hover { background-color: mix($fg_color, $bg_color, 30%); }
+    &:hover:active { background-color: $header_button_checked_bg; }
+    &:disabled { background-color: transparent; }
+  }
+
+  &.fine-tune {
+    slider {
+      min-width: 4px;
+      min-height: 4px;
+    }
+
+    &.horizontal slider { border-width: 5px 4px; }
+    &.vertical slider { border-width: 4px 5px; }
+  }
+
+  &.overlay-indicator {
+    &:not(.dragging):not(.hovering) {
+      opacity: 0.4;
+      border-color: transparent;
+      background-color: transparent;
+
+      slider {
+        margin: 0;
+        min-width: 4px;
+        min-height: 4px;
+        background-color: mix($fg_color, $bg_color, 70%);
+        border: 1px solid $borders_color;
+      }
+
+      &.horizontal slider {
+        margin: 0 3px;
+        min-width: $_slider_min_length;
+      }
+
+      &.vertical slider {
+        margin: 3px 0;
+        min-height: $_slider_min_length;
+      }
+    }
+
+    &.dragging,
+    &.hovering { opacity: 0.99; }
+  }
+
+  &.horizontal slider { min-width: $_slider_min_length; }
+  &.vertical slider { min-height: $_slider_min_length; }
+}
+
+//
+// Switches
+//
+
+%reset_switch {
+  &, &:disabled { // specificity bump
+    padding: 0;
+    border: none;
+    color: transparent;
+    background: unset;
+    background-image: unset;
+    background-repeat: no-repeat;
+    background-position: right center;
+    box-shadow: none;
+    animation: none;
+    font-size: 0;
+    outline-color: transparent;
+
+    &:dir(rtl) { background-position: left center; }
+  }
+}
+
+%switch_pixmap {
+  // 'indeterminate' is the synthetic wildcard
+  &:not(:indeterminate) {
+    @extend %reset_switch;
+    min-width: 40px;
+    min-height: 24px;
+    margin: 0;
+    background-size: 40px 24px;
+    transition: all 350ms $ease-out-quad;
+
+    slider:not(:indeterminate) {
+      @extend %reset_switch;
+      margin: 0;
+      background-size: 40px 24px;
+    }
+
+    // use ugly pixmaps
+    background-image: -gtk-scaled(
+                      url("assets/switch.png"),
+                      url("assets/switch@2.png"));
+    &:hover {
+      transition: all 350ms $ease-out-quad;
+      background-image: -gtk-scaled(
+                        url("assets/switch-hover.png"),
+                        url("assets/switch-hover@2.png"));
+    }
+
+    &:checked {
+      transition: all 350ms $ease-out-quad;
+      background-image: -gtk-scaled(
+                        url("assets/switch-active.png"),
+                        url("assets/switch-active@2.png"));
+
+      &:hover {
+        background-image: -gtk-scaled(
+                          url("assets/switch-active-hover.png"),
+                          url("assets/switch-active-hover@2.png"));
+      }
+
+      &:disabled,
+      &:disabled:hover {
+        background-image: -gtk-scaled(
+                          url("assets/switch-active-insensitive.png"),
+                          url("assets/switch-active-insensitive@2.png"));
+      }
+    }
+
+    &:disabled,
+    &:disabled:hover {
+      background-image: -gtk-scaled(
+                        url("assets/switch-insensitive#{$asset_suffix}.png"),
+                        url("assets/switch-insensitive#{$asset_suffix}@2.png"));
+    }
+  }
+}
+
+%switch_mac {
+    // 'indeterminate' is the synthetic wildcard
+    &:not(:indeterminate) {
+      @extend %reset_switch;
+      min-width: 50px;
+      min-height: 20px;
+      margin: 6px 2px;
+      background-size: 50px 20px;
+      transition: all 350ms $ease-out-quad;
+
+      slider:not(:indeterminate) {
+        @extend %reset_switch;
+        margin: 0;
+        background-size: 50px 20px;
+      }
+
+      // use ugly pixmaps
+      background-image: -gtk-scaled(url("assets/toggle-off.png"),
+                                    url("assets/toggle-off@2.png"));
+
+      &:checked {
+        transition: all 350ms $ease-out-quad;
+        background-image: -gtk-scaled(url("assets/toggle-on.png"),
+                                      url("assets/toggle-on@2.png"));
+
+        &:disabled {
+          background-image: -gtk-scaled(url("assets/toggle-on-disabled.png"),
+                                        url("assets/toggle-on-disabled@2.png"));
+        }
+      }
+
+      &:disabled {
+        background-image: -gtk-scaled(url("assets/toggle-off-disabled.png"),
+                                      url("assets/toggle-off-disabled@2.png"));
+    }
+  }
+}
+
+%switch,
+switch {
+  transition: $longer_transition;
+  // margin: 6px 0;
+  border-radius: 50px;
+  background-color: rgba($fg_color, 0.3);
+  background-clip: padding-box;
+  color: rgba($fg_color, 0.3);
+  font-size: 0;
+
+  &:disabled {
+    color: rgba($fg_color, 0.15);
+    background-color: rgba($fg_color, 0.15);
+  }
+
+  &:checked {
+    animation: $switch_animation;
+    background-color: $selected_bg_color;
+    color: rgba(white, 0.65);
+
+    &:disabled {
+      background-color: rgba($selected_bg_color, 0.45);
+      color: rgba(white, 0.35);
+    }
+  }
+
+  slider {
+    transition: $longer_transition, $shadow_transition, margin 0;
+    min-width: 18px;
+    min-height: 18px;
+    margin: 2px 0 2px 2px;
+    border-radius: 50px;
+    -gtk-outline-radius: 50px;
+    background-color: white;
+    box-shadow: $shadow_5;
+  }
+
+  &:hover slider { box-shadow: $shadow_4; }
+
+  &:checked slider {
+    margin: 2px 2px 2px 0;
+    background-color: $selected_fg_color;
+  }
+
+  &:disabled slider { @include entry(disabled); }
+
+  &:checked:disabled slider { animation: none; }
+
+  row & { @extend %switch_pixmap; }
+}
+
+//
+// Check and Radio items
+//
+@each $w,$a in ('check', 'checkbox'),
+               ('radio','radio') {
+
+  //standard checks and radios
+  @each $s,$as in ('','-unchecked'),
+                  (':disabled','-unchecked-insensitive'),
+                  (':indeterminate', '-mixed'),
+                  (':indeterminate:disabled', '-mixed-insensitive'),
+                  (':checked', '-checked'),
+                  (':checked:disabled','-checked-insensitive') {
+    .#{$w}#{$s},
+    #{$w}#{$s},
+    treeview.#{$w}#{$s} {
+      -gtk-icon-source: -gtk-scaled(url("assets/#{$a}#{$as}#{$asset_suffix}.png"),
+                                    url("assets/#{$a}#{$as}#{$asset_suffix}@2.png"));
+    }
+
+    .osd,
+    %osd_check_radio {
+      #{$w}#{$s} {
+        -gtk-icon-source: -gtk-scaled(url("assets/#{$a}#{$as}-dark.png"),
+                                      url("assets/#{$a}#{$as}-dark@2.png"));
+      }
+    }
+
+    // the borders of checks and radios are
+    // too similar in luminosity to the selected background color, hence
+    // we need special casing.
+
+    // menuitem #{$w}#{$s}:hover,
+    // .view #{$w}#{$s}:selected,
+    // treeview.#{$w}#{$s}:selected,
+    // row:selected #{$w}#{$s},
+    infobar #{$w}#{$s} {
+      -gtk-icon-source: -gtk-scaled(url("assets/#{$a}#{$as}-selected.png"),
+                                    url("assets/#{$a}#{$as}-selected@2.png"));
+    }
+  }
+}
+
+// Selectionmode
+@each $s,$as in ('','-selectionmode'),
+                  (':checked', '-checked-selectionmode') {
+  .view.content-view.check#{$s}:not(list) {
+    -gtk-icon-source: -gtk-scaled(url("assets/checkbox#{$as}#{$asset_suffix}.png"),
+                                  url("assets/checkbox#{$as}#{$asset_suffix}@2.png"));
+    background-color: transparent;
+  }
+}
+
+checkbutton, radiobutton {
+    // this is for a nice focus on check and radios text
+    &.text-button {
+      padding: 2px 0;
+      outline-offset: 0;
+      &:hover { color: darken($fg_color, 15%); }
+      &:disabled { color: $disabled_fg_color; }
+    }
+
+  label:not(:only-child) {
+    &:first-child { margin-left: 4px; }
+    &:last-child { margin-right: 4px; }
+  }
+}
+
+check,
+radio {
+  min-width: 16px;
+  min-height: 16px;
+  margin: 0 2px;
+
+  &:only-child,
+  menu menuitem & { margin: 0; }
+}
+
+//checkbutton > check,
+//radiobutton > radio {
+//  &:hover, &:active { }
+//}
+
+//
+// GtkScale
+//
+scale {
+  $_marks_length: 3px;
+  $_marks_distance: 1px;
+
+  min-height: 15px;
+  min-width: 15px;
+  padding: 3px;
+
+  &.horizontal {
+    trough { padding: 0 4px; }
+    highlight, fill { margin: 0 -4px; }
+  }
+
+  &.vertical {
+    trough { padding: 4px 0; }
+    highlight, fill { margin: -4px 0; }
+  }
+
+  // The slider is inside the trough, negative margin to make it bigger
+  slider {
+    min-height: 15px;
+    min-width: 15px;
+    margin: -7px;
+  }
+
+  // Click-and-hold the slider to activate
+  &.fine-tune {
+    // Make the trough grow in fine-tune mode
+    slider { margin: -4px; }
+
+    fill,
+    highlight,
+    trough {
+      border-radius: 5px;
+      -gtk-outline-radius: 7px;
+    }
+  }
+
+  // Trough
+  trough {
+    $_scale_trough_bg: rgba(black, 0.2);
+
+    outline-offset: 2px;
+    -gtk-outline-radius: 6px;
+
+    border-radius: $bt_radius;
+    background-color: $_scale_trough_bg;
+
+    &:disabled { background-color: rgba($_scale_trough_bg, 0.12); }
+
+    //OSD troughs
+    .osd & {
+      background-color: $_scale_trough_bg;
+
+      highlight {
+        background-color: $selected_bg_color;
+
+        &:disabled {  }
+      }
+
+      &:disabled {  }
+    }
+
+    // Troughs in selected list-rows and infobars
+    menuitem:hover &,
+    row:selected &,
+    infobar & {
+      background-color: transparentize(black, 0.8);
+
+      highlight {
+        background-color: $selected_fg_color;
+
+        &:disabled { background-color: mix($selected_fg_color, $selected_bg_color, 55%); }
+      }
+
+      &:disabled { background-color: transparentize(black, 0.9); }
+    }
+  }
+
+  // The colored part of trough
+  highlight {
+    border-radius: $bt_radius;
+    background-color: $selected_bg_color;
+
+    &:disabled { background-color: transparentize($selected_bg_color, 0.45); }
+  }
+
+  // this is another differently styled part of the trough, the most relevant use case is for example
+  // in media player to indicate how much video stream as been cached
+  fill {
+    border-radius: $bt_radius;
+    background-color: transparentize($selected_bg_color, 0.5);
+
+    &:disabled { background-color: transparent; }
+  }
+
+  slider {
+    $_slider_border: if($variant=='light', transparentize(darken($button_border, 0%), 0), transparentize($button_border, 0));
+
+    background-color: $selected_fg_color;
+    border: 1px solid $_slider_border;
+    border-radius: 100%;
+    box-shadow: $shadow_2;
+
+    transition: $button_transition;
+    transition-property: background, border;
+
+    &:hover {
+        background-color: lighten($selected_fg_color, 3%);
+        border-color: $_slider_border;
+        box-shadow: $shadow_0;
+      }
+
+    &:active {
+      background-clip: border-box;
+      background-color: $selected_fg_color;
+      border-color: $_slider_border;
+      box-shadow: $shadow_3;
+    }
+
+    &:disabled {
+      background-color: darken($selected_fg_color, 5%);
+      border-color: darken($_slider_border, 5%);
+    }
+
+    // Selected list-row and infobar sliders
+    menuitem:hover &,
+    row:selected &,
+    infobar & {
+      background-clip: border-box;
+      background-color: $selected_fg_color;
+      border-color: $selected_fg_color;
+
+      &:hover {
+        background-color: mix($selected_fg_color, $selected_bg_color, 85%);
+        border-color: mix($selected_fg_color, $selected_bg_color, 85%);
+      }
+      &:active {
+        background-color: mix($selected_fg_color, $selected_bg_color, 50%);
+        border-color: mix($selected_fg_color, $selected_bg_color, 50%);
+      }
+      &:disabled{
+        background-color: mix($selected_fg_color, $selected_bg_color, 55%);
+        border-color: mix($selected_fg_color, $selected_bg_color, 55%);
+      }
+    }
+
+    // OSD sliders
+    .osd & {
+      background-clip: border-box;
+      background-color: $selected_fg_color;
+      border-color: $_slider_border;
+
+      &:hover {
+        background-color: lighten($selected_fg_color, 3%);
+        border-color: $_slider_border;
+        box-shadow: $shadow_0;
+        }
+
+      &:active {
+        background-color: darken($selected_fg_color, 3%);
+        border-color: $_slider_border;
+        box-shadow: $shadow_3;
+      }
+
+      &:disabled {  }
+    }
+  }
+
+  value { color: gtkalpha(currentColor, 0.4); }
+
+  marks {
+    color: gtkalpha(currentColor, 0.4);
+
+    @each $marks_class, $marks_pos, $marks_margin in (top, top, bottom),
+                                                     (bottom, bottom, top),
+                                                     (top, left, right),
+                                                     (bottom, right, left) {
+      &.#{$marks_class} {
+        margin-#{$marks_margin}: $_marks_distance;
+        margin-#{$marks_pos}: -($_marks_distance + $_marks_length);
+      }
+    }
+  }
+
+  &.fine-tune marks {
+    @each $marks_class, $marks_pos, $marks_margin in (top, top, bottom),
+                                                     (bottom, bottom, top),
+                                                     (top, left, right),
+                                                     (bottom, right, left) {
+      &.#{$marks_class} {
+        margin-#{$marks_margin}: ($_marks_distance - 1px);
+        margin-#{$marks_pos}: -($_marks_distance + $_marks_length - 2px);
+      }
+    }
+  }
+  &.horizontal {
+    indicator {
+      min-height: $_marks_length;
+      min-width: 1px;
+    }
+
+    &.fine-tune indicator { min-height: ($_marks_length - 1px); }
+  }
+  &.vertical {
+    indicator {
+      min-height: 1px;
+      min-width: $_marks_length;
+    }
+
+    &.fine-tune indicator { min-width: ($_marks_length - 1px); }
+  }
+
+  // *WARNING* scale with marks madness following
+
+  // FIXME: OSD and selected list rows missing, I don't feel like adding the other 144 assets needed for those...
+//  $suffix: if($variant == 'light', '', '-dark');
+
+  @each $dir_class, $dir_infix in ('horizontal', 'horz'),
+                                  ('vertical', 'vert') {
+    @each $marks_infix, $marks_class in ('scale-has-marks-above', 'marks-before:not(.marks-after)'),
+                                        ('scale-has-marks-below', 'marks-after:not(.marks-before)') {
+      @each $state, $state_infix in ('', ''),
+                                    (':hover', '-hover'),
+                                    (':active', '-active'),
+                                    (':disabled', '-insensitive') {
+        &.#{$dir_class}.#{$marks_class} {
+
+          slider {
+            &#{$state} {
+              // an asymmetric slider asset is used here, so the margins are uneven, the smaller
+              // margin is set on the point side.
+              margin: -10px;
+              $_scale_asset: 'assets/slider-#{$dir_infix}-#{$marks_infix}#{$state_infix}';
+              border-style: none;
+              border-radius: 0;
+
+              background-color: transparent;
+              background-image: -gtk-scaled(url('#{$_scale_asset}.png'), url('#{$_scale_asset}@2.png'));
+
+              $_scale_slider_bg_pos: bottom;
+
+              @if $dir_class == 'horizontal' {
+                min-height: 26px;
+                min-width: 24px;
+
+                @if $marks_infix == 'scale-has-marks-above' {
+                  margin-top: -14px;
+
+                  $_scale_slider_bg_pos: top;
+                }
+
+                @else { margin-bottom: -14px; }
+              }
+
+              @else {
+                min-height: 24px;
+                min-width: 26px;
+
+                @if $marks_infix == 'scale-has-marks-above' {
+                  margin-left: -14px;
+
+                  $_scale_slider_bg_pos: left bottom;
+                }
+
+                @else {
+                  margin-right: -14px;
+
+                  $_scale_slider_bg_pos: right bottom;
+                }
+              }
+
+              background-position: $_scale_slider_bg_pos;
+              background-repeat: no-repeat;
+              box-shadow: none;
+            }
+          }
+
+          &.fine-tune slider {
+            // bigger negative margins to make the trough grow here as well
+            margin: -7px;
+
+            @if $dir_class == 'horizontal' {
+              @if $marks_infix == 'scale-has-marks-above' { margin-top: -11px; }
+
+              @else { margin-bottom: -11px; }
+            }
+
+            @else {
+              @if $marks_infix == 'scale-has-marks-above' { margin-left: -11px; }
+
+              @else { margin-right: -11px; }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//
+// Progress bars
+//
+progressbar {
+  padding: 0;
+  font-size: smaller;
+  color: transparentize($fg_color, 0.3);
+
+  &.osd {
+    min-width: 3px;
+    min-height: 3px;
+    background-color: transparent;
+
+    trough {
+      border-style: none;
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+  // Moving bit
+  progress {
+    min-height: 4px;
+    min-width: 4px;
+    background-color: $progress_color;
+    border: none;
+    border-radius: $bt_radius;
+    box-shadow: none; //needed for clipping
+
+    row:selected &,
+    infobar & { background-color: $selected_fg_color; }
+  }
+  // Trough
+  trough {
+    min-height: 4px;
+    min-width: 4px;
+    border: none;
+    border-radius: $bt_radius;
+    background-color: if($variant == 'light', $button_border, darken($bg_color, 5%));
+
+    row:selected &,
+    infobar & { background-color: transparentize(black, 0.8); }
+  }
+}
+
+//
+// Level Bar
+//
+levelbar {
+  block {
+    min-width: 32px;
+    min-height: 1px;
+  }
+  &.vertical block {
+    min-width: 1px;
+    min-height: 32px;
+  }
+
+  trough {
+    border: none;
+    padding: 3px;
+    border-radius: $bt_radius;
+    background-color: if($variant == 'light', $button_border, darken($bg_color, 5%));
+  }
+
+  &.horizontal.discrete block { margin: 0 1px; }
+  &.vertical.discrete block { margin: 1px 0; }
+
+  block:not(.empty) {
+    border: 1px solid $selected_bg_color;
+    background-color: $selected_bg_color;
+    border-radius: $bt_radius;
+  }
+  block.low {
+    border-color: $warning_color;
+    background-color: $warning_color;
+  }
+  block.high {
+    border-color: $selected_bg_color;
+    background-color: $selected_bg_color;
+  }
+  block.full {
+    border-color: $success_color;
+    background-color: $success_color;
+  }
+  block.empty {
+    background-color: if($variant=='light', transparentize($fg_color,0.8), $base_color);
+    border-color: if($variant=='light', transparentize($fg_color,0.8), $base_color);
+  }
+}
+
+//
+// Print dialog
+//
+printdialog {
+  paper {
+    border: 1px solid $borders_color;
+    background: $base_color;
+    padding: 0;
+  }
+
+  .dialog-action-box { margin: 12px; }
+}
+
+//
+// Frames
+//
+frame > border,
+.frame {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  border: 1px solid $borders_color;
+}
+
+frame.flat > border,
+frame > border.flat,
+.frame.flat {
+  border-style: none;
+}
+
+scrolledwindow {
+  viewport.frame { // avoid double borders when viewport inside scrolled window
+    border-style: none;
+  }
+
+  // This is used by GtkScrolledWindow, when content is touch-dragged past boundaries.
+  // This draws a box on top of the content, the size changes programmatically.
+  overshoot {
+    &.top { @include overshoot(top); }
+    &.bottom { @include overshoot(bottom); }
+    &.left { @include overshoot(left); }
+    &.right { @include overshoot(right); }
+  }
+
+  // Overflow indication, works similarly to the overshoot, the size if fixed tho.
+  undershoot {
+    &.top { @include undershoot(top); }
+    &.bottom { @include undershoot(bottom); }
+    &.left { @include undershoot(left); }
+    &.right { @include undershoot(right); }
+  }
+
+  @at-root junction { // the small square between two scrollbars
+    border-style: solid none none solid;
+    border-width: 1px;
+    border-color: $borders_color;
+    background-color: $_scrollbar_bg_color;
+
+    &:dir(rtl) { border-style: solid solid none none; }
+  }
+}
+
+//vbox and hbox separators
+separator {
+  background-color: $borders_color;
+  min-width: 1px;
+  min-height: 1px;
+
+  // &.vertical {
+  //   background-color: if($variant=='light', $borders_color, $header_border);
+  // }
+}
+
+//
+// Lists
+//
+list {
+  background-color: $base_color;
+  border-color: $borders_color;
+  // border-radius: $wm_radius;
+
+  row { padding: 2px; }
+}
+
+%row_activatable {
+  &.has-open-popup,
+  &:hover { background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05)); }
+
+  &:active {
+    color: $fg_color;
+    background-color: if($variant == 'light', rgba(black, 0.2), rgba(white, 0.2));
+    transition-duration: 200ms;
+  }
+
+  &:disabled {
+    color: $disabled_fg_color;
+    image { color: inherit; }
+  }
+
+  &:selected {
+    &, &:active {
+      color: $fg_color;
+      background-color: if($variant == 'light', rgba(black, 0.15), rgba(white, 0.15));
+
+      label { color: $fg_color; }
+    }
+
+    &.has-open-popup,
+    &:hover { background-color: if($variant == 'light', rgba(black, 0.2), rgba(white, 0.2)); }
+  }
+}
+
+row {
+  &:not(:hover) { transition: all 300ms $ease-out-quad; }
+
+  button.circular { @extend %circular_button; }
+
+  &:selected {
+    color: $fg_color;
+    background-color: if($variant == 'light', rgba(black, 0.15), rgba(white, 0.15));
+
+    label { color: $fg_color; }
+
+    // button { @extend %selected-button; }
+  }
+
+  &.activatable {
+    @extend %row_activatable;
+  }
+}
+
+//
+// App Notifications
+//
+.app-notification {
+  padding: 16px;
+  margin: 0 8px 8px 8px;
+  color: $fg_color;
+  background-color: rgba($header_bg, 0.85);
+  // background-image: linear-gradient(0deg, $bg_color 0%, $bg_color 85%, darken($bg_color, 5%) 95%, darken($bg_color, 15%) 100%);
+  border-radius: 0 0 $bt_radius $bt_radius;
+  border: none;
+  box-shadow: $shadow_5, 0 0 0 1px if($variant=='light', rgba(black, 0.12), rgba(black, 0.75));
+
+  border { border: none; }
+
+  button {
+    @extend %undecorated_button;
+
+    &:not(.text-button).image-button {
+      @extend %circular_button;
+    }
+
+    &:hover { @include button(flat-hover); }
+    &:active, &:checked { @include button(flat-active); }
+    &:disabled { @include button(flat-insensitive); }
+  }
+}
+
+//
+// Expanders
+//
+expander {
+  arrow {
+    min-width: 16px;
+    min-height: 16px;
+    -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+
+    &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
+    &:hover { color: lighten($fg_color,30%); } //only lightens the arrow
+    &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+  }
+}
+
+//
+// Calendar
+//
+%calendar,
+calendar {
+  color: $fg_color;
+  border: 1px solid $borders_color;
+  border-radius: $bt_radius;
+  padding: 2px 6px;
+  margin: 0;
+
+  &:selected {
+    @extend %selected_items;
+    border-radius: 50px;
+  }
+
+  &:disabled { color: $disabled_fg_color; }
+
+  &.header {
+    color: $fg_color;
+    border: none;
+  }
+
+  &.button {
+    @extend %undecorated_button;
+
+    color: rgba($fg_color, 0.45);
+
+    &:hover { color: $fg_color; }
+
+    &:disabled { color: $disabled_fg_color; }
+  }
+
+  &:indeterminate { color: rgba($fg_color, 0.55); }
+  &.highlight { color: rgba($fg_color, 0.65); font-weight: 500; }
+}
+
+//
+// Dialogs
+//
+
+messagedialog { // Message Dialog styling
+
+  &.background {
+    background-color: rgba($bg_color, 0.95);
+  }
+
+  .titlebar {
+    min-height: 28px;
+    background-color: rgba($bg_color, 0.95);
+    border: none;
+  }
+
+  .dialog-action-area {
+    padding: 6px;
+
+    button {
+      min-height: 20px;
+      padding: 4px 8px;
+      box-shadow: none;
+      border-radius: $bt_radius;
+      margin: 0 3px 3px 3px;
+      border: none;
+
+      &:not(.suggested-action):not(.destructive-action) {
+        border-radius: $bt_radius;
+        background-color: transparent;
+
+        &:hover {
+          @include button(flat-hover);
+          transition: $button_transition;
+        }
+
+        &:active, &:checked {
+
+          @if $variant == 'light' {
+            background-color: $selected_bg_color;
+            color: $selected_fg_color;
+          }
+
+          @else {
+            @include button(active);
+          }
+        }
+      }
+
+      &.suggested-action, &.destructive-action {
+        border-radius: $bt_radius;
+      }
+    }
+  }
+
+  &.csd { // rounded bottom border styling for csd version
+    &.background {
+      border-bottom-left-radius: $wm_radius;
+      border-bottom-right-radius: $wm_radius;
+      border: none;
+    }
+  }
+}
+
+//
+// Filechooser
+//
+filechooser {
+  #pathbarbox { border-bottom: 1px solid transparentize($borders_color, 0.5); }
+
+  stack.view {
+    background-color: transparent;
+
+    scrolledwindow {
+      background-color: $base_color;
+      border-radius: 0 0 $wm_radius $wm_radius;
+
+      treeview.view {
+        @extend %view;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+filechooserbutton:drop(active) {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+//
+// Sidebar
+//
+.sidebar {
+  border-style: none;
+  background-color: $bg_color;
+
+  @at-root %sidebar_left,
+  &:dir(ltr),
+  &.left,
+  &.left:dir(rtl) {
+    border-right: 1px solid $borders_color;
+    border-left-style: none;
+  }
+
+  @at-root %sidebar_right,
+  &:dir(rtl),
+  &.right {
+    border-left: 1px solid $borders_color;
+    border-right-style: none;
+  }
+
+  list {
+    background-color: transparent;
+
+    > separator {
+      min-height: 0;
+      background: none;
+      border: none;
+    }
+  }
+
+  paned & { &.left, &.right, &.left:dir(rtl), &:dir(rtl), &:dir(ltr), & { border-style: none; }}
+}
+
+stacksidebar {
+  &.sidebar {
+    &:dir(ltr) list,
+    &.left list,
+    &.left:dir(rtl) list { @extend %sidebar_left; }
+
+    &:dir(rtl) list,
+    &.right list { @extend %sidebar_right; }
+  }
+
+  row {
+    padding: 4px 4px;
+
+    > label {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+    &.needs-attention > label {
+      @extend %needs_attention;
+      background-size: 6px 6px, 0 0;
+    }
+  }
+}
+
+placessidebar {
+  > viewport.frame { border-style: none; }
+
+  row {
+    // Needs overriding of the GtkListBoxRow padding
+    min-height: 24px;
+    padding: 2px 10px;
+    // Using margins/padding directly in the SidebarRow
+    // will make the animation of the new bookmark row jump
+    > revealer {
+      padding: 0 10px;
+    }
+
+    image.sidebar-icon {
+      &:dir(ltr) { padding-right: 6px; }
+      &:dir(rtl) { padding-left: 6px; }
+    }
+
+    label.sidebar-label {
+      &:dir(ltr) { padding-right: 6px; }
+      &:dir(rtl) { padding-left: 6px; }
+    }
+
+    @at-root button.sidebar-button {
+      min-width: 22px;
+      min-height: 22px;
+      margin-top: 2px;
+      margin-bottom: 2px;
+      padding: 0;
+      border-radius: 100px;
+      -gtk-outline-radius: 100px;
+
+      > image { opacity: 0.85 };
+
+      &:active, &:checked {
+        @include button(flat-active);
+        border-color: if($variant=='light', rgba(black, 0.3), $dark_borders_color);
+      }
+
+      &:not(:hover):not(:active) > image { opacity: 0.65 };
+    }
+
+    &:selected button.sidebar-button {
+      @include button(normal);
+
+      &:active, &:checked {
+        @include button(flat-active);
+        border-color: if($variant=='light', rgba(black, 0.3), rgba(white, 0.25));
+      }
+    }
+
+    &.sidebar-placeholder-row {
+      padding: 0 8px;
+      min-height: 2px;
+      background-image: _solid($drop_target_color);
+      background-clip: content-box;
+    }
+
+    &.sidebar-new-bookmark-row { color: $selected_bg_color; }
+
+    &:drop(active):not(:disabled) {
+      &, label, image { color: $drop_target_color; }
+
+      box-shadow: inset 0 1px $drop_target_color,
+                  inset 0 -1px $drop_target_color;
+
+      &:selected {
+        &, label, image { color: $dark_sidebar_fg; }
+        background-color: $drop_target_color;
+      }
+    }
+  }
+}
+
+//
+// Placesview
+//
+placesview {
+  .server-list-button > image {
+    -gtk-icon-transform: rotate(0turn);
+  }
+
+  .server-list-button:checked > image {
+    transition: 200ms $ease-out-quad;
+    -gtk-icon-transform: rotate(-0.5turn);
+  }
+
+  // this selects the "connect to server" label
+  > actionbar > revealer > box > label {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+//
+// Paned
+//
+paned {
+  > separator {
+    min-width: 1px;
+    min-height: 1px;
+    -gtk-icon-source: none;
+    border-style: none;
+    background-color: transparent;
+    background-image: _solid($borders_color);
+    background-size: 1px 1px;
+
+    &:selected { background-image: _solid($selected_bg_color); }
+
+    &.wide {
+      min-width: 5px;
+      min-height: 5px;
+      background-color: $bg_color;
+      background-image: _solid($solid_borders_color), _solid($solid_borders_color);
+      background-size: 1px 1px, 1px 1px;
+    }
+  }
+
+  &.horizontal > separator {
+    background-repeat: repeat-y;
+    &:dir(ltr) {
+      margin: 0 -8px 0 0;
+      padding: 0 8px 0 0;
+      background-position: left;
+    }
+    &:dir(rtl) {
+      margin: 0 0 0 -8px;
+      padding: 0 0 0 8px;
+      background-position: right;
+    }
+
+    &.wide {
+      margin: 0;
+      padding: 0;
+      background-repeat: repeat-y, repeat-y;
+      background-position: left, right;
+    }
+  }
+
+  &.vertical > separator {
+    margin: 0 0 -8px 0;
+    padding: 0 0 8px 0;
+    background-repeat: repeat-x;
+    background-position: top;
+
+    &.wide {
+      margin: 0;
+      padding: 0;
+      background-repeat: repeat-x, repeat-x;
+      background-position: bottom, top;
+    }
+  }
+}
+
+//
+// GtkInfoBar
+//
+
+infobar {
+  border-style: none;
+  background-color: $bg_color;
+
+  &.info { background-color: $selected_bg_color; }
+  &.question { background-color: $suggested_color; }
+  &.warning { background-color: $warning_color; }
+  &.error { background-color: $error_color; }
+
+  &.info,
+  &.question,
+  &.warning,
+  &.error {
+    color: $selected_fg_color;
+    caret-color: currentColor;
+
+    button {
+      min-height: 28px;
+      @extend %selected-button;
+    }
+
+    selection {
+      color: $selected_bg_color;
+      background-color: $selected_fg_color;
+    }
+
+    *:link { @extend %link_selected; }
+  }
+}
+
+//
+// Buttons on selected backgrounds
+//
+
+%selected-button {
+  color: $selected_fg_color;
+  background-color: transparentize($selected_fg_color, 1);
+  border-color: transparentize($selected_fg_color, 0.5);
+  background-image: none;
+  box-shadow: none;
+
+  &.flat {
+    @include button(undecorated);
+    color: $selected_fg_color;
+    background-color: transparentize($selected_fg_color, 1);
+    background-image: none;
+  }
+
+  &.flat:disabled {
+    &, label { color: transparentize($selected_fg_color, 0.6); }
+  }
+
+  &:hover {
+    color: $selected_fg_color;
+    background-color: transparentize($selected_fg_color, 0.8);
+    border-color: transparentize($selected_fg_color, 0.5);
+    box-shadow: none;
+  }
+
+  &:active, &:active:hover, &:checked {
+    color: $selected_fg_color;
+    background-color: transparentize($selected_fg_color, 0.6);
+    border-color: transparentize($selected_fg_color, 0.5);
+    box-shadow: none;
+  }
+
+  &:disabled {
+    &, label { color: transparentize($selected_fg_color, 0.5); }
+    background-color: transparentize($selected_fg_color, 1);
+    border-color: transparentize($selected_fg_color, 0.6);
+    box-shadow: none;
+  }
+
+  &:disabled:active, &:disabled:checked {
+    color: $selected_bg_color;
+    background-color: transparentize($selected_fg_color, 0.5);
+    border-color: transparentize($selected_fg_color, 0.6);
+  }
+}
+
+%normal_selected_button {
+  color: $selected_fg_color;
+  background-color: transparentize($selected_fg_color, 1);
+  border-color: transparentize($selected_fg_color, 0.5);
+  background-image: none;
+}
+
+//
+// Tooltips
+//
+tooltip {
+  &.background {
+    &, &.csd {
+    // background-color needs to be set this way otherwise it gets drawn twice
+    // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
+    background-color: lighten($osd_bg_color, 10%);
+    background-clip: padding-box;
+    border-radius: $bt_radius;
+
+    label { padding: 4px; }
+    }
+  }
+
+  border-radius: $bt_radius;
+  box-shadow: none;
+
+  decoration { background-color: transparent; }
+
+  * { //Yeah this is ugly
+    background-color: transparent;
+    color: $osd_fg_color; // just to be sure
+  }
+}
+
+//
+// Color Chooser
+//
+colorswatch {
+  // This widget is made of two boxes one on top of the other, the lower box is GtkColorSwatch {} the other one
+  // is GtkColorSwatch .overlay {}, GtkColorSwatch has the programmatically set background, so most of the style
+  // is applied to the overlay box.
+
+  $_colorswatch-radius: 2px;
+
+  &, &:drop(active) { border-style: none; }
+
+  // border rounding
+  &.top {
+    border-top-left-radius: $_colorswatch-radius + 0.5px;
+    border-top-right-radius: $_colorswatch-radius + 0.5;
+
+    overlay {
+      border-top-left-radius: $_colorswatch-radius;
+      border-top-right-radius: $_colorswatch-radius;
+    }
+  }
+  &.bottom {
+    border-bottom-left-radius: $_colorswatch-radius + 0.5px;
+    border-bottom-right-radius: $_colorswatch-radius + 0.5;
+
+    overlay {
+      border-bottom-left-radius: $_colorswatch-radius;
+      border-bottom-right-radius: $_colorswatch-radius;
+    }
+  }
+  &.left, &:first-child:not(.top) {
+    border-top-left-radius: $_colorswatch_radius + 0.5px;
+    border-bottom-left-radius: $_colorswatch_radius + 0.5px;
+    overlay {
+      border-top-left-radius: $_colorswatch_radius;
+      border-bottom-left-radius: $_colorswatch_radius;
+    }
+  }
+  &.right, &:last-child:not(.bottom) {
+    border-top-right-radius: $_colorswatch_radius + 0.5px;
+    border-bottom-right-radius: $_colorswatch_radius + 0.5px;
+    overlay {
+      border-top-right-radius: $_colorswatch_radius;
+      border-bottom-right-radius: $_colorswatch_radius;
+    }
+  }
+
+  &.dark overlay {
+    color: transparentize(white, 0.3);
+    &:hover {
+      border-color: if($variant == 'light', transparentize(black, 0.5), $borders_color);
+    }
+  }
+  &.light overlay {
+    color: transparentize(black, 0.3);
+    &:hover {
+      border-color: if($variant == 'light', transparentize(black, 0.7), $borders_color);
+    }
+  }
+
+  overlay {
+    border: 1px solid if($variant == 'light', transparentize(black, 0.85), $borders_color);
+    &:hover { background-color: transparentize(white, 0.8) }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    overlay {
+      border-color: transparentize(black, 0.4);
+      box-shadow: none;
+    }
+  }
+
+  &#add-color-button {
+    border-style: solid; // the borders are drawn by the overlay for standard colorswatches to have them semi
+    border-width: 1px;   // translucent on the colored background, here it's not necessary so they need to be set
+    @include button(normal);
+    &:hover { @include button(hover); }
+    overlay { @include button(undecorated); } // reset the overlay to not cover the button style underneath
+  }
+}
+
+button.color {
+  padding: 0;
+
+  colorswatch:first-child:last-child {
+    &, overlay {
+      margin: 4px;
+      border-radius: 0;
+    }
+  }
+}
+
+// colorscale popup
+colorchooser .popover.osd { border-radius: $bt_radius; }
+
+//
+// Misc
+//
+//content view (grid/list)
+.content-view {
+  background-color: $base_color;
+
+  &:hover { -gtk-icon-effect: highlight; }
+
+  rubberband { @extend %rubberband; }
+}
+
+.scale-popup {
+  .osd & { @extend %osd; }
+
+  button { // +/- buttons on GtkVolumeButton popup
+    &:hover {
+      @include button(hover);
+    }
+  }
+}
+
+// Decouple the font of context menus from their entry/textview
+.context-menu { font: initial; }
+.monospace { font-family: Monospace; }
+
+//
+// Shortcuts Help
+//
+%circular_button,
+button.circular {
+  border-radius: 100px;
+  -gtk-outline-radius: 100px;
+  padding: 0 0 0 0;
+  min-height: 28px;
+  min-width: 28px;
+
+  &:active, &:checked {
+    @if $variant=='light' {
+      @include button(flat-active);
+      border-color: rgba(black, 0.2);
+    }
+  }
+
+  // label { padding: 0; }
+}
+
+.keycap {
+  min-width: 16px;
+  min-height: 20px;
+
+  padding: 3px 6px 4px 6px;
+
+  color: $fg_color;
+  background-color: $base_color;
+  border: 1px solid $borders_color;
+  border-radius: $bt_radius;
+  box-shadow: inset 0px -2px 0px if($variant=='light', transparentize(black, 0.95), transparentize(black, 0.85));
+}
+
+stackswitcher {
+  button.text-button { min-width: 80px; }
+  button.circular {
+    @extend %circular_button;
+  }
+}
+
+//
+// Dnd
+//
+*:drop(active):focus,
+*:drop(active) {
+  box-shadow: inset 0 0 0 1px $drop_target_color;
+}
+
+//
+// Window Decorations
+//
+
+decoration {
+  transition: $shadow_transition;
+  border-radius: if($variant=='light', $wm_radius, $wm_radius);
+  box-shadow: 0 3px 3px 0 $wm_shadow,
+              0 8px 8px 0 $wm_shadow,
+              0 16px 16px 0 $wm_shadow,
+              $wm_border;
+
+  // this is used for the resize cursor area
+  margin: 6px;
+
+  &:backdrop {
+    // the transparent shadow here is to enforce that the shadow extents don't
+    // change when we go to backdrop, to prevent jumping windows
+    box-shadow: 0 3px 3px 0 $wm_shadow,
+                0 8px 8px 0 transparent,
+                0 16px 16px 0 transparent,
+                $wm_border;
+  }
+
+  .maximized &,
+  .fullscreen &,
+  .tiled &,
+  .tiled-top &,
+  .tiled-right &,
+  .tiled-bottom &,
+  .tiled-left & {
+    border-radius: 0;
+    box-shadow: 0 3px 3px 0 $wm_shadow, $wm_border;
+  }
+
+  .popup & {
+    box-shadow: none;
+    border-radius: $wm_radius;
+  }
+
+  // server-side decorations as used by mutter
+  .ssd & {
+    margin: -5px;
+    border-radius: $wm_radius $wm_radius 0 0;
+    box-shadow: 0 0 5px 0 $wm_shadow, $wm_border;
+    &.maximized { border-radius: 0; }
+  }
+
+  .csd.popup & {
+    border-radius: $mn_radius;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15), 0 8px 15px rgba(0, 0, 0, 0.08), $wm_border;
+  }
+
+  tooltip.csd & {
+    border-radius: $wm_radius;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  messagedialog.csd & {
+    border-radius: $wm_radius;
+  }
+
+  .solid-csd & {
+    border: 1px solid $header_border;
+    border-radius: 0;
+    margin: 0;
+    background-color: $header_bg;
+    box-shadow: none;
+  }
+}
+
+//
+// Titlebuttons
+//
+headerbar,
+.titlebar {
+  button.titlebutton {
+    &.appmenu {
+      transition: background-color 0.1s $ease-out-quad,
+                  box-shadow 0.1s $ease-out-quad,
+                  background-image 0,
+                  background-size 0;
+
+      color: transparent;
+      background-image: -gtk-scaled(url("assets/setting#{$asset_suffix}.png"),
+                                    url("assets/setting#{$asset_suffix}@2.png"));
+      background-repeat: no-repeat;
+      background-position: center;
+
+      image { opacity: 0; } // Make menu button default icon invisible
+
+      &:active, &:checked {
+        transition: background-color 0.3s $ease-out-quad,
+                    box-shadow 0.3s $ease-out-quad,
+                    background-image 0,
+                    background-size 0;
+        background-image: -gtk-scaled(url("assets/setting-icon#{$asset_suffix}.png"),
+                                      url("assets/setting-icon#{$asset_suffix}@2.png"));
+      }
+
+      &:backdrop {
+        background-image: -gtk-scaled(url("assets/setting-icon#{$con_asset_suffix}.png"),
+                                      url("assets/setting-icon#{$con_asset_suffix}@2.png"));
+      }
+    }
+
+    &.close, &.maximize, &.minimize {
+      min-width: 16px;
+      min-height: 16px;
+      margin: 0;
+      padding: 0;
+      color: transparent;
+      background-color: transparent;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto;
+      border-width: 0;
+      box-shadow: none;
+
+      &:backdrop { opacity: 1; }
+    }
+
+    // Load png assets for each button, Fix the Chrome window restore button bug
+    @each $k in ('close', 'maximize', 'minimize') {
+      @each $l, $m in ('',''), (':backdrop','-backdrop'), (':backdrop:hover','-backdrop-hover'), (':hover','-hover'), (':active','-active') {
+        &.#{$k}#{$l} {
+          background-image: -gtk-scaled(url('windows-assets/titlebutton-#{$k}#{$m}#{$asset_suffix}.png'),
+                                        url('windows-assets/titlebutton-#{$k}#{$m}#{$asset_suffix}@2.png'));
+        }
+      }
+    }
+  }
+
+  .fullscreen &,
+  .maximized & {
+    button.titlebutton {
+      @each $l, $m in ('',''), (':backdrop','-backdrop'), (':backdrop:hover','-backdrop-hover'), (':hover','-hover'), (':active','-active') {
+        &.maximize#{$l} {
+          background-image: -gtk-scaled(url('windows-assets/titlebutton-restore#{$m}#{$asset_suffix}.png'),
+                                        url('windows-assets/titlebutton-restore#{$m}#{$asset_suffix}@2.png'));
+        }
+      }
+    }
+  }
+}
+
+// catch all extend
+%selected_items {
+  background-color: $selected_bg_color;
+  color: $selected_fg_color;
+
+  &:disabled { color: mix($selected_fg_color, $selected_bg_color, 50%); }
+}
+
+%nobg_selected_items {
+  color: $selected_fg_color;
+
+  &:disabled { color: mix($selected_fg_color, $selected_bg_color, 50%); }
+}
+
+/*********
+ * Emoji *
+ *********/
+popover.emoji-picker {
+  padding: 0;
+  border-radius: $wm_radius;
+
+  entry {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
+    border-width: 0 0 1px 0;
+    padding: 6px 12px;
+    background: none;
+
+    &, &:focus, &:disabled {
+      margin: -1px -1px 0 -1px;
+      border-image: none;
+      border-bottom: 1px solid $borders_color;
+    }
+  }
+
+  scrolledwindow {
+    border-bottom: 1px solid $borders_color;
+
+    &.view {
+      background: none;
+    }
+  }
+}
+
+// mimic tab style
+button.emoji-section {
+  margin: 2px 1px;
+  padding: 1px 12px;
+  border-radius: $wm_radius;
+  border: none;
+  outline-offset: -2px;
+  box-shadow: none;
+  // &:first-child { border-radius: 0 0 0 $wm_radius; }
+  // &:last-child { border-radius: 0 0 $wm_radius 0; }
+}
+
+.emoji {
+  min-width: 3em;
+  min-height: 3em;
+  padding: 0;
+  // font-size: large;
+
+  widget {
+    transition: $shorter_transition;
+
+    &:hover { font-size: larger; }
+  }
+}

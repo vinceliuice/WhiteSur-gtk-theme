@@ -1,0 +1,73 @@
+
+style "notify-window" {
+  XfceNotifyWindow::summary-bold = 1
+  XfceNotifyWindow::border-color = shade(1.3, @tooltip_bg_color)
+  XfceNotifyWindow::border-color-hover = shade(1.3, @tooltip_bg_color)
+  XfceNotifyWindow::border-radius = 3.0
+  XfceNotifyWindow::border-width = 1.0
+  XfceNotifyWindow::border-width-hover = 1.0
+
+  bg[NORMAL] = @tooltip_bg_color
+}
+
+style "notify-button" {
+  bg[NORMAL] = shade(1.1, @tooltip_bg_color)
+  bg[PRELIGHT] = shade(1.2, @tooltip_bg_color)
+  bg[ACTIVE] = shade(1.15, @tooltip_bg_color)
+
+  fg[NORMAL] = @tooltip_fg_color
+  fg[PRELIGHT] = shade(1.1, @tooltip_fg_color)
+  fg[ACTIVE] = @selected_fg_color
+
+  engine "murrine" {
+    gradient_shades = { 1.0, 1.0, 1.0, 1.0 }
+    border_shades = { 1.0, 1.0 }
+    roundness = 2
+    textstyle = 0
+  }
+}
+
+style "notify-text" {
+  GtkWidget::link-color = @selected_bg_color
+
+  fg[NORMAL] = shade(1.0, @tooltip_fg_color)
+  fg[PRELIGHT] = shade(1.1, @tooltip_fg_color)
+  fg[ACTIVE] = shade(1.0, @tooltip_fg_color)
+
+  engine "murrine" {
+    textstyle = 0
+  }
+}
+
+style "notify-summary" {
+    font_name = "Bold"
+}
+
+style "notify-progressbar" {
+  GtkProgressBar::min-horizontal-bar-height = 4
+
+  xthickness   = 0
+  ythickness   = 0
+
+  fg[PRELIGHT] = shade(0.8, @tooltip_bg_color)
+  bg[NORMAL]   = @selected_bg_color
+  bg[ACTIVE] = shade(0.8, @tooltip_bg_color)
+  bg[SELECTED] = @selected_bg_color
+
+  engine "murrine" {
+    gradient_shades = { 1.0, 1.0, 1.0, 1.0 }
+    border_shades = { 1.0, 1.0 }
+    trough_shades = { 1.0, 1.0 }
+    trough_border_shades = { 1.0, 1.0 }
+    progressbarstyle = 0
+    roundness = 2
+    textstyle = 0
+  }
+}
+
+class "XfceNotifyWindow" style "notify-window"
+widget "XfceNotifyWindow.*.summary" style "notify-summary"
+widget_class "XfceNotifyWindow.*<GtkButton>" style "notify-button"
+widget_class "XfceNotifyWindow.*.<GtkLabel>" style "notify-text"
+widget_class "XfceNotifyWindow.*.<GtkProgress>" style "notify-progressbar"
+widget_class "XfceNotifyWindow.*.<GtkProgressBar>" style "notify-progressbar"

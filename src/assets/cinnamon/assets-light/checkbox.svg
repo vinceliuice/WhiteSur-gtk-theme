@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="checkbox.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#hightlight"
+       id="linearGradient1632"
+       x1="18.000006"
+       y1="38.36219"
+       x2="31.999994"
+       y2="38.36219"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="hightlight"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#5887fc;stop-opacity:1;"
+         offset="0"
+         id="stop1628" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#dark_checked_bg"
+       id="linearGradient1590"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.99167598,0,0.37759569)"
+       x1="24"
+       y1="45.362179"
+       x2="24"
+       y2="32.253059" />
+    <linearGradient
+       id="dark_checked_bg"
+       osb:paint="gradient">
+      <stop
+         style="stop-color:#3458c0;stop-opacity:1"
+         offset="0"
+         id="stop1580" />
+      <stop
+         style="stop-color:#3d67e3;stop-opacity:1"
+         offset="1"
+         id="stop1582" />
+    </linearGradient>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter1536">
+      <feFlood
+         flood-opacity="0.352941"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood1526" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite1528" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="0"
+         result="blur"
+         id="feGaussianBlur1530" />
+      <feOffset
+         dx="0"
+         dy="0.5"
+         result="offset"
+         id="feOffset1532" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite1534" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="704"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="9.8333333"
+     inkscape:cx="12"
+     inkscape:cy="12"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <g
+     transform="translate(-32,3.6378183)"
+     style="display:inline;opacity:1"
+     id="checkbox-checked-dark"
+     inkscape:label="#g10758">
+    <g
+       inkscape:label="#g22047"
+       id="checkbox-unchecked-5-59"
+       style="display:inline"
+       transform="translate(19)">
+      <g
+         id="sdsd-7-54"
+         inkscape:label="#g21853">
+        <g
+           transform="translate(0,-30)"
+           inkscape:label="#g14325"
+           id="scdsdcd-5-8">
+          <g
+             transform="matrix(0.92951982,0,0,0.92914368,-156.75069,-212.9618)"
+             id="g15812-6-6-1-5-4"
+             style="display:inline">
+            <g
+               style="display:inline"
+               id="g5489-2-9-6-8-8-53-5"
+               transform="matrix(0.5089163,0,0,0.51739823,161.7932,197.56426)">
+              <g
+                 id="g5428-8-1-4-0-0-4-2" />
+            </g>
+          </g>
+          <rect
+             style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:none;stroke-width:2;marker:none;enable-background:accumulate"
+             id="rect13523-7-11"
+             width="16"
+             height="16"
+             x="17"
+             y="30.362183" />
+          <g
+             id="g5400-6-68">
+            <rect
+               ry="2.2857065"
+               style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.12000002;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.14285803;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:fill markers stroke;enable-background:accumulate"
+               id="rect1924"
+               width="16"
+               height="16.000002"
+               x="17"
+               y="30.362181"
+               rx="2.2857096" />
+            <rect
+               rx="1.9999943"
+               y="31.362196"
+               x="18.000006"
+               height="13.99999"
+               width="13.999989"
+               id="rect5147-9-1-5-7-6-7-4"
+               style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:url(#linearGradient1632);fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:fill markers stroke;enable-background:accumulate"
+               ry="1.9999917" />
+            <rect
+               ry="1.8571372"
+               style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:url(#linearGradient1590);fill-opacity:1;stroke:none;stroke-width:0.96399999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:fill markers stroke;enable-background:accumulate"
+               id="rect1578"
+               width="13.999989"
+               height="13.000006"
+               x="18.000006"
+               y="32.362179"
+               rx="1.9999943" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       inkscape:label="Ebene 1"
+       id="checkbox-checked-dark-7-37"
+       transform="translate(36,-1036)"
+       style="display:inline">
+      <g
+         id="g3981-6-4-97"
+         transform="rotate(45,-3.2604448,1033.6624)"
+         style="opacity:0.85;fill:#1a1a1a;fill-opacity:1" />
+      <g
+         id="g4049-2-5"
+         transform="rotate(45,7.4999938,1026.3622)">
+        <g
+           id="g4056-7-6"
+           transform="translate(12.374375,11.531233)">
+          <g
+             id="g3981-0-8"
+             transform="translate(-3,-4.9999826)"
+             style="fill:#3b3c3e;fill-opacity:1">
+            <path
+               style="fill:#ffffff;fill-opacity:1;stroke:none;filter:url(#filter1536)"
+               d="m 154.15625,15.880859 c -0.25562,0 -0.51116,0.0971 -0.70703,0.292969 l -3.53516,3.535156 -1.47851,-1.476562 c -0.35638,-0.356375 -0.95788,-0.329234 -1.34961,0.0625 -0.39174,0.391734 -0.42083,0.995188 -0.0645,1.351562 l 2.18555,2.183594 0.0644,0.06445 c 0.35638,0.356375 0.95788,0.327281 1.34961,-0.06445 l 4.24219,-4.242187 c 0.39174,-0.391738 0.39174,-1.022326 0,-1.414063 -0.19587,-0.195868 -0.45141,-0.292969 -0.70703,-0.292969 z"
+               transform="rotate(-45,1304.0439,694.22022)"
+               id="rect3977-39-90"
+               inkscape:connector-curvature="0" />
+          </g>
+          <rect
+             style="fill:#eeeeee;fill-opacity:0;stroke:none"
+             id="rect4047-81-5"
+             width="3"
+             height="1"
+             x="5"
+             y="-8"
+             transform="translate(0,1036.3622)" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32"
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg7384"
+   height="32"
+   sodipodi:docname="key-layout.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="736"
+     id="namedview19"
+     showgrid="false"
+     inkscape:zoom="14.75"
+     inkscape:cx="10.712791"
+     inkscape:cy="18.055923"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7384" />
+  <metadata
+     id="metadata90">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Gnome Symbolic Icon Theme</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title
+     id="title9167">Gnome Symbolic Icon Theme</title>
+  <defs
+     id="defs7386">
+    <linearGradient
+       osb:paint="solid"
+       id="linearGradient19282"
+       gradientTransform="matrix(-2.7365795,0.28202934,-0.18908311,-0.99988321,239.54008,-879.45557)">
+      <stop
+         style="stop-color:#666666;stop-opacity:1;"
+         offset="0"
+         id="stop19284" />
+    </linearGradient>
+  </defs>
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="layer9" />
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="layer10" />
+  <g
+     transform="translate(-141.0002,-791)"
+     id="layer11" />
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="layer13" />
+  <g
+     transform="translate(-141.0002,-791)"
+     id="layer14" />
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="layer15" />
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="g71291" />
+  <g
+     transform="translate(-141.0002,-791)"
+     style="display:inline"
+     id="g4953" />
+  <g
+     inkscape:label="preferences-desktop-locale"
+     id="g11728"
+     transform="matrix(2,0,0,2,-522.0004,-1086)"
+     style="display:inline;stroke-width:1;opacity:0.7">
+    <rect
+       style="fill:none;stroke:none;stroke-width:1"
+       id="rect11724"
+       width="16"
+       height="16"
+       x="20"
+       y="326"
+       transform="translate(241.0002,217)" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1"
+       d="m 265.69612,545.23396 c -3.58218,0 -4.66582,1.39975 -4.66582,1.39975 v 10.04946 c 0,0 1.08364,-1.07673 4.66582,-1.07673 2.9161,0 4.47225,1.07673 7.17818,1.07673 2.08923,0 3.19429,-1.39975 3.19429,-1.39975 v -10.04946 c 0,0 -1.14095,1.04084 -3.23018,1.04084 -3.3734,0 -3.97619,-1.04084 -7.14229,-1.04084 z m 2.93145,2.77148 c 1.32876,0 2.375,1.08037 2.375,2.4375 0,1.35713 -1.04624,2.46875 -2.375,2.46875 -1.32876,0 -2.40625,-1.11162 -2.40625,-2.46875 0,-1.35713 1.07749,-2.4375 2.40625,-2.4375 z m -4.5625,0.96875 0.96875,1.03125 -0.9375,-0.0312 0.9375,1 -0.96875,-0.0312 0.96875,1.03125 -1,-0.0312 0.0312,-1 h -0.0312 l 0.0312,-0.9688 h -0.0312 z m 4.5625,0 c -0.794,0 -1.46875,0.6578 -1.46875,1.46875 0,0.81095 0.67475,1.46875 1.46875,1.46875 0.79399,0 1.4375,-0.6578 1.4375,-1.46875 0,-0.81095 -0.64351,-1.46875 -1.4375,-1.46875 z m 4.375,0 v 1 l 0.0312,0.96875 h -0.0312 l 0.0312,1 -1,0.0312 0.96875,-1.03125 -0.96875,0.0312 0.9375,-1 -0.9375,0.0312 z m -7.9375,2.96875 0.96875,1.03125 -1,-0.0312 z m 6.9375,0 0.0312,1 -1,0.0312 z m -5.9375,1 0.96875,1.03125 -1,-0.0312 z m 4.9375,0 0.0312,1 -1,0.0312 z"
+       id="path11726"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sccssccsssssssccccccccccccsssssccccccccccccccccccccccccccc" />
+  </g>
+</svg>

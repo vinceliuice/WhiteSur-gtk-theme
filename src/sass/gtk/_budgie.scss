@@ -1,0 +1,1252 @@
+// based css:
+// https://github.com/budgie-desktop/budgie-desktop/tree/master/src/theme
+
+/******************
+ * Budgie Desktop *
+ ******************/
+// Container for both the "panel" area and the shadow. Wise to keep
+// this transparent..
+
+// Raven
+$raven_base_color: if($variant =='light', #f5f5f5, #1b1b1b);
+$raven_bg_color: if($variant =='light', #dedede, #1f1f1f);
+$raven_fg_color: $text_color;
+$raven_header_bg_color: if($variant =='light', #efefef, #181818);
+$raven_header_fg_color: $text_color;
+$raven_button_bg_color: $button_bg;
+$raven_border_color: if($variant =='light', rgba(black, 0.10), rgba(black, 0.35));
+
+$raven_radius: 10px;
+$raven_padding: 8px;
+
+%raven_middle_button {
+  border-radius: 0;
+  border-right-style: none;
+  border-bottom-style: none;
+}
+
+%raven_last_button {
+  border-radius: 0 0 $raven_radius 0;
+  border-right-style: none;
+  border-bottom-style: none;
+}
+
+%raven_first_button {
+  border-radius: 0 0 0 $raven_radius;
+  border-left-style: none;
+  border-bottom-style: none;
+}
+
+%raven_single_button {
+  border-radius: 0 0 $raven_radius $raven_radius;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+}
+
+%budgie_button {
+  @include button(flat-normal);
+  &:hover { @include button(flat-hover); }
+  &:checked { @include button(flat-checked); }
+  &:active { @include button(flat-active); }
+  &:disabled { @include button(flat-insensitive); }
+}
+
+%raven_button {
+  @include button(header-normal);
+  &:hover { @include button(header-hover); }
+  &:active { @include button(header-active); }
+  &:checked { @include button(header-checked); }
+  &:disabled { @include button(header-insensitive); }
+
+  &.flat {
+    @include button(undecorated);
+    &:hover { @include button(flat-hover); }
+    &:checked { @include button(flat-checked); }
+    &:active { @include button(flat-active); }
+    &:disabled { @include button(flat-insensitive); }
+  }
+
+  &.linked {
+    @include button(undecorated);
+    background-color: $menu_bg;
+
+    &:hover {
+      background-color: if($variant =='light', darken($menu_bg, 5%), lighten($menu_bg, 5%));
+    }
+
+    &:active, &:checked {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+    }
+
+    &:disabled { @include button(flat-insensitive); }
+  }
+}
+
+.budgie-container { background-color: transparent; }
+
+.budgie-settings-window {
+  buttonbox.inline-toolbar {
+    border-style: none none solid;
+
+    button {
+      border-radius: $bt_radius;
+      -gtk-outline-radius: $bt_radius;
+
+      @extend %budgie_button;
+    }
+  }
+
+  list.sidebar {
+    background-color: $base_color;
+    border-radius: 0 0 0 $wm_radius;
+    border-color: if($variant =='light', $solid_borders_color, $header_border);
+  }
+}
+
+.budgie-popover {
+  margin: 0;
+  padding: 0;
+  border-color: if($variant=='light', $borders_color, lighten($menu_bg, 8%));
+  border-radius: $wm_radius;
+  background-color: if($trans == 'true', rgba($bg_color, 0.95), $bg_color);
+  box-shadow: 0 1px 2px 0 if($variant == 'light', opacify($wm_shadow, 0.15), opacify($wm_shadow, 0.1)),
+              0 2px 3px 0 if($variant == 'light', opacify($wm_shadow, 0.15), opacify($wm_shadow, 0.1)),
+              0 0 0 1px if($variant=='light', $borders_color, rgba($dark_borders_color, 0.55)),
+              inset 0 0 0 1px if($variant=='light', rgba(black, 0.0), rgba(white, 0.08));
+
+  .container { padding: 2px; border: none; }
+  border { border: none; }
+  list { background-color: transparent; }
+
+  row {
+    padding: 0;
+    background-color: transparent;
+
+    &:hover { box-shadow: none; background-color: transparent; }
+  }
+
+  switch { margin-left: 56px; margin-right: 6px; }
+
+  &:not(.budgie-menu) button.flat:not(.image-button) {
+    @extend %budgie_button;
+    min-height: 28px;
+    padding: 0 8px;
+    color: $fg_color;
+    font-weight: normal;
+
+    &:disabled { color: $disabled_fg_color; }
+  }
+
+  &.budgie-menu {
+    .container { padding: 0; }
+  }
+
+  &.user-menu {
+    .container { padding: 8px; }
+    separator { margin: 4px 0; }
+  }
+
+  &.sound-popover {
+    separator { margin: 3px 0; }
+  }
+
+  &.night-light-indicator {
+    .container { padding: 8px; }
+  }
+
+  &.places-menu {
+    .container { padding: 8px; }
+
+    .places-list:not(.always-expand) {
+      margin-top: 4px;
+      padding-top: 4px;
+      border-top: 1px solid $borders_color;
+    }
+
+    // I guess this really should be hard-coded as well as other dim-labels.
+    .alternative-label {
+      padding: 3px;
+      font-size: 15px;
+    }
+  }
+
+  &.workspace-popover {
+    .container { padding: 2px 8px 8px; }
+
+    separator { margin: 4px 0; }
+    flowboxchild { padding: 0; }
+  }
+}
+
+// budgie specific popover widgets
+window.budgie-popover:not(.csd) {
+  > frame.container {
+    margin: 0 -1px -1px; // remove gap
+
+    .bottom & { padding: 2px 0 2px; } // revive bottom padding
+
+    &,
+    > border {
+      border-style: none; // hide container borders
+    }
+  }
+}
+
+// FIXME: workspace has unnecessary/unknown margin
+.workspace-switcher {
+  .workspace-layout {
+    border: 0 solid $borders_color;
+
+    .top &,
+    .bottom & {
+      &:dir(ltr) { border-left-width: 1px; }
+      &:dir(rtl) { border-right-width: 1px; }
+    }
+
+    .left &,
+    .right & { border-top-width: 1px; }
+  }
+
+  .workspace-item,
+  .workspace-add-button {
+    border: 0 solid $borders_color;
+
+    .top &,
+    .bottom & {
+      &:dir(ltr) { border-right-width: 1px; }
+      &:dir(rtl) { border-left-width: 1px; }
+    }
+
+    .left &,
+    .right & { border-bottom-width: 1px; }
+  }
+
+  .workspace-item {
+    transition: $shorter_transition;
+
+    &.current-workspace { background-color: $borders_color; }
+  }
+
+  .workspace-add-button {
+    background-color: transparent;
+    background-image: none;
+    @extend %budgie_button;
+
+    &:hover { box-shadow: none; }
+    &:active { background-image: none; }
+    &:active image { margin: 1px 0 -1px; }
+  }
+
+  .workspace-icon-button {
+    .budgie-panel & { // to overwrite the .budgie-panel button style below
+      min-height: 24px;
+      min-width: 24px;
+      padding: 0;
+      border-radius: $bt_radius;
+    }
+  }
+}
+
+// Budgie Menu
+.budgie-menu {
+  &.background {
+    padding: 0;
+    background-color: $base_color;
+  }
+
+  scrollbar,
+  entry.search { background-color: transparent; }
+
+  entry.search {
+    // margin: 6px 6px 0 6px;
+    padding: 5px 10px;
+    border: none;
+    border-bottom: 1px solid $borders_color;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 110%;
+    // &:focus { @include entry(focus); }
+  }
+
+  .categories {
+    &:dir(ltr) { border-bottom-left-radius: $bt_radius; }
+    &:dir(rtl) { border-bottom-right-radius: $bt_radius; }
+  }
+
+  button {
+    @extend %row_activatable;
+    min-height: 32px;
+    padding: 0 8px;
+    border-radius: 0;
+    color: $fg_color;
+    font-weight: normal;
+    border: none;
+    box-shadow: none;
+
+    &:hover { transition: none; }
+    &:disabled { color: $disabled_fg_color; }
+    &:checked { @extend %selected_items; }
+
+    &:checked:hover {
+      background-image: none;
+      background-color: lighten($selected_bg_color, 5%);
+    }
+
+    &:checked:disabled { background-color: rgba($selected_bg_color, 0.5); } // overriding
+  }
+
+  row {
+    padding: 0;
+    &:hover { box-shadow: none; }
+  }
+}
+
+// Menu Button
+button.budgie-menu-launcher {
+  // padding: 0 2px;
+  @extend %flat_button;
+}
+
+// User Menu
+popover.background.user-menu {
+  padding: 8px;
+
+  .content-box { background-color: transparent; }
+  separator { margin: 4px 0; }
+
+  row {
+    padding: 0;
+    box-shadow: none;
+    background-image: none;
+  }
+}
+
+// Raven Trigger
+// button.raven-trigger {
+//   padding: 0 4px;
+// }
+
+// Places Menu
+popover.background.places-menu {
+  padding: 8px;
+
+  // FIXME: untested
+  // .message-bar {
+  //   margin-bottom: 4px;
+  // }
+
+  .name-button.text-button {
+    // padding: 4px 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    image {
+      &:dir(ltr) { margin-right: 8px - 5px; }
+      &:dir(rtl) { margin-left: 8px - 5px; }
+    }
+  }
+
+  // FIXME: untested
+  // .unmount-button {
+  //   padding: ($medium_size - 24px) / 2;
+  // }
+
+  .places-section-header > image {
+    &:dir(ltr) { margin: 0 8px - 10px 0 8px - 3px; }
+    &:dir(rtl) { margin: 0 8px - 3px 0 8px - 10px; }
+  }
+
+  .places-list {
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px solid $borders_color;
+    background-color: transparent;
+  }
+
+  row {
+    padding: 0;
+    box-shadow: none;
+    background-image: none;
+  }
+}
+
+// Panel
+.budgie-panel {
+  transition: background-color 0.2s cubic-bezier(0, 0, 0.2, 1);
+  background-color: $panel_bg;
+  color: $panel_fg;
+  font-weight: 500;
+  box-shadow: none;
+  background-clip: padding-box;
+
+  &.transparent {
+    background-color: rgba($panel_bg, 0.65);
+    box-shadow: none;
+  }
+
+  .top & {
+    border-bottom: 1px solid if($variant == 'light', $panel_border_color, $header_border);
+    background-image: linear-gradient(0deg, $panel_bottom_color 0%, $panel_top_color 100%);
+  }
+
+  .top &.transparent {
+    background-color: transparent;
+    background-image: linear-gradient(0deg, rgba($panel_bottom_color, 0.85) 0%, rgba($panel_top_color, 0.85) 100%);
+  }
+
+  .bottom & {
+    border: solid $panel_border_color;
+    border-width: 1px 1px 0 1px;
+    border-radius: $wm_radius $wm_radius 0 0;
+
+    &.dock-mode {
+      border-radius: 0 0 0 0;
+      border-width: 1px 0 0 0;
+    }
+  }
+
+  .left & {
+    border: solid $panel_border_color;
+    border-width: 1px 1px 1px 0;
+    border-radius: 0 $wm_radius $wm_radius 0;
+
+    &.dock-mode {
+      border-radius: 0 0 0 0;
+      border-width: 0 1px 0 0;
+    }
+  }
+
+  .right & {
+    border: solid $panel_border_color;
+    border-width: 1px 0 1px 1px;
+    border-radius: $wm_radius 0 0 $wm_radius;
+
+    &.dock-mode {
+      border-radius: 0 0 0 0;
+      border-width: 0 0 0 1px;
+    }
+  }
+
+  button {
+    min-height: 16px;
+    min-width: 16px;
+    padding: 0;
+    border-radius: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border: none;
+    box-shadow: none;
+    color: rgba($panel_fg, 0.85);
+    background: none;
+
+    &:hover {
+      background-color: rgba($panel_fg, 0.10);
+      color: rgba($panel_fg, 0.95);
+      background-image: none;
+    }
+
+    &:active {
+      background-color: rgba($panel_fg, 0.15);
+      color: $panel_fg;
+      background-image: none;
+    }
+
+    &:checked {
+      background-color: rgba($panel_fg, 0.12);
+      color: $panel_fg;
+    }
+  }
+
+  &.horizontal button { padding: 0 4px; }
+  &.vertical button { padding: 4px 0; }
+
+  separator { background-color: $borders_color; }
+
+  // Budgie styled Gtk Menus
+  menubar,
+  .menubar {
+    box-shadow: none;
+    color: $panel_fg;
+    background-image: none;
+    background-color: transparent;
+
+    > menuitem {
+      border: none;
+      background-image: none;
+      font-weight: normal;
+
+      > window.background.popup > decoration,
+      > window.background.popup > menu { border-radius: 0 0 $wm_radius $wm_radius; }
+
+      &:hover { background-color: $selected_bg_color; }
+      &:disabled { color: transparentize($panel_fg, 0.6); }
+
+      &.budgie-menubar {
+        &:hover { background-color: rgba($panel_fg, 0.10); }
+      }
+    }
+  }
+
+  menubar.-vala-panel-appmenu-private { // appmenu plugin
+    > menuitem {
+      font-weight: normal;
+    }
+  }
+
+  // used to indicate unread notifications
+  .alert { color: $destructive_color; }
+
+  // End Section needs to be fancy
+  // .end-region {
+  //   background-color: rgba(0,0,0,0.2);
+  // }
+
+  &.vertical #tasklist-button { min-height: 32px; }
+
+  // Icon Tasklist
+  button.flat.launcher {
+    padding: 0;
+    @extend %flat_button;
+    @extend %underscores;
+
+    // for indicator colors
+    &:not(:checked) {
+      color: $fg_color;
+
+      &:hover, &:active { color: rgba($fg_color, 0.8); }
+      &:disabled { color: rgba($fg_color, 0.5); }
+    }
+
+    &:active { background-color: rgba($fg_color, 0.20); }
+    &:checked { background-color: rgba($fg_color, 0.15); }
+  }
+}
+
+%underscores {
+  @each $pos, $b_pos, $b_wid in (top,    center calc(1px),        3 0 0 0 / 3px 0 0 0),
+                                (bottom, center calc(100% - 1px), 0 0 3 0 / 0 0 3px 0),
+                                (left,   calc(1px) center,        0 0 0 3 / 0 0 0 3px),
+                                (right,  calc(100% - 1px) center, 0 3 0 0 / 0 3px 0 0) {
+    .#{$pos} & {
+      & {
+        border-image: radial-gradient(circle closest-corner at #{$b_pos},
+                                      $selection_mode_bg 0%,
+                                      transparent 0%)
+                                      0 0 0 0 / 0 0 0 0;
+      }
+
+      &:checked {
+        border-image: radial-gradient(circle closest-corner at #{$b_pos},
+                                      $selection_mode_bg 100%,
+                                      transparent 0%)
+                                      #{$b_wid};
+      }
+    }
+  }
+}
+
+// Tasklist
+#tasklist-button {
+  padding: 0 4px;
+  box-shadow: none;
+  background-image: none;
+  color: $fg_color;
+
+  @extend %underscores;
+
+  &:active {
+    background-color: rgba($fg_color, 0.15);
+    color: if($variant=='light', darken($fg_color, 5%), lighten($fg_color, 5%));
+  }
+
+  &:checked {
+    background-color: rgba($fg_color, 0.12);
+    color: if($variant=='light', darken($fg_color, 5%), lighten($fg_color, 5%));
+  }
+}
+
+.budgie-panel {
+  @at-root %budgie_icon_tasklist_button,
+  button.flat.launcher {
+    min-width: 16px;
+    min-height: 16px;
+    padding: 0;
+    border-radius: 0;
+    background-position: center center;
+
+    > image { opacity: 0.87; }
+
+    &:hover {
+      -gtk-icon-effect: highlight;
+      > image { opacity: 1.0; }
+    }
+
+    &:active {
+      > image { opacity: 1.0; }
+    }
+
+    &:checked {
+      &:hover { -gtk-icon-effect: highlight; }
+      > image { opacity: 1.0; }
+    }
+  }
+
+  @at-root %running_budgie_icon_tasklist_button,
+  .unpinned button.flat.launcher,
+  .pinned button.flat.launcher.running,
+  .pinned button.launcher.running.sidebar-button {
+    &:hover { -gtk-icon-effect: highlight; }
+
+    > image {
+      background-repeat: no-repeat;
+      opacity: 1.0;
+    }
+
+    &:checked {
+      > image { background-image: none; }
+    }
+  }
+}
+
+// draw underscores and dots
+@each $position, $_dot in (top, 6px 3px),
+                          (bottom, 6px 3px),
+                          (left, 3px 6px),
+                          (right, 3px 6px) {
+  .#{$position} .budgie-panel {
+
+    .unpinned button.flat.launcher,
+    .pinned button.flat.launcher.running,
+    .pinned button.launcher.running.sidebar-button {
+      > image {
+        background-size: #{$_dot};
+        background-position: #{$position} center;
+        background-image: image($selected_bg_color);
+      }
+
+      &:checked { > image { background-image: none; } }
+    }
+  }
+}
+
+box:not(.unpinned):not(.pinned) > revealer > button.flat.launcher { border-image: none; } // unset before drawing indicators
+
+// Raven borders
+.left frame.raven-frame > border {
+  border: none;
+  border-right: 1px solid $panel_border_color;
+}
+
+.right frame.raven-frame > border {
+  border: none;
+  border-left: 1px solid $panel_border_color;
+}
+
+$pos_list: ((top, bottom), (left, right), (right, left));
+
+@each $pos, $b_pos in $pos_list {
+  // Panel borders
+  // .#{$pos} .budgie-panel {
+  //   border-#{$b_pos}: 1px solid $panel_border_color;
+  // }
+
+  // Raven borders
+  // .#{$pos} frame.raven-frame > border {
+  //   border: none;
+  //   border-#{$b_pos}: 1px solid $panel_border_color;
+  // }
+
+  // Shadows
+   .#{$pos} .shadow-block {
+     background-image: linear-gradient(to $b_pos, rgba(black, 0.35) 0%, rgba(black, 0.23) 10%, rgba(black, 0.08) 60%, transparent);
+   }
+}
+
+// .bottom .shadow-block { background-image: none; }
+
+$raven_opacity: if($variant =='light', 0.85, 0.95);
+
+// Raven
+.raven {
+  background-color: if($trans == 'true', rgba($raven_bg_color, $raven_opacity), $raven_bg_color);
+  color: $raven_fg_color;
+
+  // for >=10.4
+  > box { margin-bottom: -10px; }
+
+  // for <10.4
+  > stack { margin-bottom: -10px; }
+
+  // > stack > box:last-child > stack { margin-top: -6px; }
+
+  button {
+    @extend %raven_button;
+    &.image-button { @extend %circular_button; }
+  }
+
+  stackswitcher { padding: 0 8px 12px 8px; }
+  stackswitcher.linked > button { @extend %raven_button; }
+
+  .raven-header {
+    min-height: 36px;
+    padding: 2px;
+
+    &:not(.top) {
+      margin-top: -6px; // remove extra spaces, but not perfect :(
+
+      button {
+        @extend %raven_button, .flat;
+        min-height: 32px;
+        min-width: 32px;
+        margin: 0;
+        padding: 0;
+
+        &.image-button {
+          border-radius: 100px;
+          -gtk-outline-radius: 100px;
+        }
+      }
+    }
+
+    &.top {
+      padding: 2px 12px $raven_padding;
+      // background-color: rgba($raven_bg_color, 0.95);
+      color: $raven_fg_color;
+      border-bottom: 1px solid $borders_color;
+
+      stackswitcher {
+        padding: 6px 0 0 0;
+        margin: 0;
+
+        button {
+          margin: 0;
+          padding: 0 20px;
+          min-height: 20px;
+        }
+      }
+
+      // for <10.4
+      button.image-button {
+        &:dir(ltr) { margin-right: 2px; }
+        &:dir(rtl) { margin-left: 2px; }
+      }
+
+      // for <10.4
+      > image { margin: 0 8px; }
+
+      // for <10.4
+      > label {
+        margin: 0 -8px;
+        font-weight: bold;
+      }
+    }
+
+    &.bottom { border-top: 1px solid $borders_color; }
+  }
+
+  scrolledwindow > .frame { // stacking raised-grid
+    // reserve L/R shadow region
+    // FIXME: Do not set any L/R margins and borders
+    padding: 0 $raven_padding;
+    transition-duration: 0s;
+    border: none;
+
+    > box.vertical > box.vertical {
+      margin: $raven_padding 0; // do not set L/R margins
+      border-radius: $raven_radius;
+      background-color: $raven_header_bg_color;
+      // draw side edges via opaque box-shadows
+      transition-duration: 0s;
+      border: 1px solid $raven_border_color;
+    }
+
+    .raven-header {
+      margin-top: -$raven_padding * 2; // unset parent margin
+      border-radius: $raven_radius $raven_radius 0 0;
+    }
+
+    .raven-background {
+      margin-bottom: -$raven_padding * 2; // unset parent margin
+      border-radius: 0 0 $raven_radius $raven_radius;
+      background-color: $raven_base_color;
+    }
+
+    > box.vertical > box.vertical:last-child {
+      // FIXME: we can't crop album-art images horizontally with any borders,
+      // paddings, and margins. And parent GtkBox does not sync to the size
+      // of album-art dynamically while transitioning images. so set specific
+      // depth-0 OSD materials for MPRIS.
+      border-radius: $raven_radius;
+      border: none;
+      background-color: if($variant =='light', rgba(black, 0.65), rgba(black, 0.35));
+      color: rgba(white, 0.65);
+
+      // .raven-header {
+      //   background-color: rgba(black, 0.65);
+      //   color: rgba(white, 0.75);
+      // }
+
+      .raven-background {
+        background-color: rgba(black, 0.25);
+        margin-bottom: 0; // unset parent margin
+
+        image { color: rgba(white, 0.15); }
+
+        // MPRIS Applet
+        .raven-mpris {
+          background-color: rgba(black, 0.35);
+          color: $selected_fg_color;
+          border-radius: 0 0 $raven_radius $raven_radius;
+
+          label { min-height: 24px; }
+
+          image {  //reset image color
+            color: rgba(white, 0.85);
+            &:disabled {
+              color: rgba(white, 0.35);
+            }
+          }
+
+          button.image-button {
+            padding: 8px;
+            border: none;
+            @extend %selected-button;
+          }
+        }
+      }
+
+      button.flat {
+        @extend %selected-button;
+      }
+    }
+
+    // audio app/device switcher
+    box.audio-widget stackswitcher.linked {
+      padding: 0; // limit child horizontal spacing
+
+      > button.text-button.radio {
+        padding-top: $raven_padding;
+        padding-bottom: $raven_padding;
+        border-top: 1px solid $dark_borders_color;
+        @extend %raven_middle_button;
+        @include button(undecorated);
+        background-color: $menu_bg;
+
+        &:hover {
+          background-color: if($variant =='light', darken($menu_bg, 5%), lighten($menu_bg, 5%));
+        }
+
+        &:active, &:checked {
+          color: $selected_fg_color;
+          background-color: $selected_bg_color;
+        }
+
+        &:disabled { @include button(flat-insensitive); }
+
+        &:first-child{ @extend %raven_first_button; }
+        &:last-child { @extend %raven_last_button; }
+        &:only-child { @extend %raven_single_button; }
+      }
+    }
+  }
+
+  viewport.frame .raven-header { margin-top: -$raven_padding; }
+
+  .expander-button {
+    border-radius: 100px;
+    -gtk-outline-radius: 100px; }
+
+  .raven-background {
+    &.middle { border-bottom-style: none; } // applet background between two headers
+
+    checkbutton, radiobutton { // this is for a nice focus on check and radios text
+      &.text-button {
+        &:hover { color: darken($raven_fg_color, 15%); }
+        &:disabled { color: rgba($raven_fg_color, 0.45); }
+      }
+    }
+
+    switch { @extend %switch_mac; }
+
+    list { color: $raven_fg_color; background-color: $raven_base_color; }
+
+    // for <10.4
+    &.frame { border-style: solid none; border-width: 1px; border-color: $borders_color; }
+
+    > overlay > widget > image { color: rgba($raven_fg_color, 0.12); }
+
+    // for <10.4
+    grid > label:first-child { min-height: 26px; } // workaround to fix vertical-align
+
+    // for <10.4
+    spinbutton:not(.vertical) { @extend %flat_entry; }
+
+    // for <10.4
+    // button.combo { }
+  }
+
+  scrolledwindow.raven-background { border-bottom-style: none; }
+
+  // for <10.4
+  .raven-header.top + .raven-background {
+    border-style: none;
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+
+    stackswitcher button { margin: -4px 0; }
+  }
+
+  .powerstrip button.image-button {
+    min-height: 28px;
+    min-width: 28px;
+    margin: 0 4px;
+    padding: 6px;
+  }
+
+  .option-subtitle { font-size: smaller; }
+
+  // notification list
+  box.vertical > stack > box.vertical {
+    > .raven-header { background-color: $raven_header_bg_color; }
+    > .raven-background > viewport.frame {
+      padding: 0; // reset padding for full-width list node
+
+      list { background-color: $raven_base_color; }
+
+      > list > row.activatable {
+        margin-left: -8px;
+        margin-right: -2px;
+        background-color: transparent;
+
+        > grid > *, // legacy
+        > box.vertical * { color: $raven_fg_color; }
+
+        image { padding-left: 8px; }
+
+        button.image-button { // 'dismiss'
+          @extend %circular_button;
+          margin: 8px;
+          padding: 2px;
+          image { padding: 0; }
+          &:active, &:checked {
+            image { color: white; }
+          }
+        }
+
+        // sub-list rows grouping
+        list {
+          border-radius: 0;
+          border-top: 1px solid $borders_color;
+          border-bottom: 1px solid $borders_color;
+
+          > row.activatable {
+            border-bottom: 1px solid $borders_color;
+            &:last-child { border-bottom: none; }
+
+            &:selected {
+              background-color: rgba($raven_fg_color, 0.06);
+            }
+
+            label { padding: 0 16px; }
+
+            button.image-button { // 'close'
+              min-height: 24px;
+              min-width: 24px;
+              image { padding: 0; }
+            }
+
+           // box.horizontal > label:first-child { font-weight: 500; } // title labels
+          }
+        }
+
+        &:selected {
+          background-color: rgba($selected_bg_color, 0.75);
+         // &:dir(ltr) { box-shadow: inset 2px 0 $selected_bg_color; }
+         // &:dir(rtl) { box-shadow: inset -2px 0 $selected_bg_color; }
+
+          > grid > *,
+          > box.vertical * { color: $selected_fg_color; }
+
+          button.image-button { // 'dismiss'
+            border: none;
+
+            &:hover { background-color: rgba(white, 0.25); }
+            &:active, &:checked { background-color: rgba(white, 0.35); }
+          }
+
+          list {
+            border: 1px solid rgba(white, 0.12);
+            background: none;
+
+            > row.activatable {
+              border-bottom: 1px solid rgba(white, 0.12);
+              &:last-child { border-bottom: none; }
+
+              &:selected {
+                background-color: rgba($selected_bg_color, 0.65);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .audio-widget {
+    // scale.marks-after {
+    //   label { }
+    // }
+
+    // button.flat.expander-button { }
+
+    list.devices-list.sound-devices {
+      > row.activatable {
+        &:selected, &:checked {
+          background-color: rgba($fg_color, 0.06);
+          color: $fg_color;
+
+          label { color: $fg_color; }
+        }
+
+        label { padding-left: 12px; }
+      }
+    }
+  }
+}
+
+// some specific scale styling
+box.audio-widget,
+window.sound-popover.background {
+  scale.horizontal.marks-after { // overdrive-mode scale
+    padding-top: 0; // unset default padding
+    padding-bottom: 0;
+
+    trough { // overdrive-mode trough styling
+      background-color: transparent; // unset default trough color
+      @each $_dir, $_opp_end in (ltr, right),
+                                (rtl, left) {
+        &:dir(#{$_dir}) {
+          background-image:
+            linear-gradient(to $_opp_end,
+                            rgba($success_color, 0.25) calc(66% - 3px),
+                            rgba($destructive_color, 0.25) calc(66% - 3px),
+                            rgba($destructive_color, 0.25) 100%);
+        }
+      }
+    }
+
+    mark {
+      // hide label for vertically centered troughs
+      label { font-size: 0; }
+    }
+  }
+}
+
+// Calendar
+calendar.raven-calendar {
+  margin: 2px 0;
+  padding: 4px;
+  border-style: none;
+  background-color: transparent;
+  color: $raven_fg_color;
+
+  &:selected {
+    border-radius: 3px;
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+
+  &.button {
+    @extend %undecorated_button;
+    color: transparentize($raven_fg_color, 0.55);
+
+    &:hover { color: $raven_fg_color; }
+    &:disabled { color: transparentize($raven_fg_color, 0.75); }
+  }
+
+  &:indeterminate { color: gtkalpha($raven_fg_color, 0.35); }
+  &.highlight { color: $raven_fg_color; }
+}
+
+// Notifications
+%budgie-notification-window,
+.budgie-notification-window {
+  background-color: transparent;
+  background-image: none;
+  border-radius: $wm_radius;
+
+  button.image-button { // 'close'
+    margin: 0;
+    padding: 0;
+    min-height: 28px;
+    min-width: 28px;
+    border-radius: 100px;
+  }
+}
+
+%budgie-notification,
+.budgie-notification {
+  background-color: transparent;
+  background-image: none;
+
+  .notification-title { font-size: 120%; }
+  .notification-body { @extend %dim-label; }
+}
+
+// On Screen Display in Budgie
+.budgie-osd-window {
+  @extend %budgie-notification-window;
+}
+
+// Internal part of the OSD
+.budgie-osd {
+  background-color: transparent;
+  background-image: none;
+  .budgie-osd-text { font-size: 120%; }
+}
+
+// Alt+tab switcher in Budgie
+.budgie-switcher-window {
+  @extend %budgie-notification-window;
+}
+
+window.budgie-switcher-window {
+  border-radius: $wm_radius;
+  background-color: transparent;
+  background-image: none;
+
+  // draw actual backgrounds and shadows
+  .drop-shadow {
+    @extend %drop-shadow;
+
+    // label.budgie-switcher-title { // bottom label for app titles
+    // }
+  }
+
+  flowboxchild { // icon-tiles
+    margin: 2px;
+    border-radius: $wm_radius;
+    -gtk-outline-radius: $wm_radius;
+    // background-color: transparent;
+    background-image: none;
+  }
+}
+
+// Internal part of the Switcher
+.budgie-switcher {
+  @extend %budgie-notification;
+  // background-color: transparent;
+  // background-image: none;
+}
+
+%drop-shadow, .drop-shadow {
+  margin: 5px 9px;
+  padding: 8px;
+  border-radius: $wm_radius;
+  box-shadow: 0 5px 5px 0 transparent, 0 8px 15px 0 transparent,
+              0 3px 3px 0 if($variant == 'light', opacify($wm_shadow, 0.15), opacify($wm_shadow, 0.1)),
+              0 0 0 1px if($variant=='light', rgba($borders_color, 0.15), rgba($dark_borders_color, 0.55)),
+              inset 0 0 0 1px rgba(white, 0.06);
+
+  background-color: if($trans == 'true', rgba($base_color, 0.95), $base_color);
+  background-image: none;
+
+  button { @extend %budgie_button; }
+
+  .linked > button { border-radius: $bt_radius; }
+}
+
+%budgie_dialog {
+  border-radius: $wm_radius;
+  background-color: $bg_color;
+  @if $variant == 'dark' { border: 1px solid lighten($menu_bg, 10%); }
+
+  &.background {border-radius: $wm_radius; }
+  decoration { border-radius: $wm_radius; }
+}
+
+// Session Dialog
+.budgie-session-dialog,
+.budgie-polkit-dialog {
+  @extend %budgie_dialog;
+
+  label:not(:last-child),
+  .dialog-title { font-size: 120%; }
+
+  buttonbox.linked.horizontal > button {
+    padding: 4px 16px;
+    border: none;
+    border-top: 1px solid $dark_borders_color;
+    border-radius: 0;
+
+    &:first-child { border-bottom-left-radius: $wm_radius; }
+    &:last-child { border-bottom-right-radius: $wm_radius; }
+  }
+
+  buttonbox.linked.horizontal > button:not(.suggested-action):not(.destructive-action) {
+    &:hover {
+      @include button(flat-hover);
+      border-color: $dark_borders_color;
+      transition: $button_transition;
+    }
+
+    &:active, &:checked {
+      @include button(flat-active);
+      border-color: $dark_borders_color;
+      text-shadow: $text_shadow;
+    }
+  }
+}
+
+// PolKit Dialog
+.budgie-polkit-dialog {
+  @extend %budgie_dialog;
+
+  .message { color: gtkalpha(currentColor, 0.6); }
+  .failure { color: $destructive_color; }
+}
+
+// Run Dialog
+.budgie-run-dialog {
+  @extend %budgie_dialog;
+
+  background-color: $base_color;
+
+  entry.search {
+    font-size: 120%;
+    padding: 6px 12px;
+    box-shadow: inset 0 1px $highlight_color;
+    background-color: transparent;
+  }
+
+  list .dim-label { opacity: 1; }
+
+  scrolledwindow { border-top: 1px solid $borders_color; }
+}
+
+// pixel-saver(?) applet
+.budgie-panel box.titlebar {
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  border: none;
+
+  > widget > label { color: rgba($panel_fg, 0.75); } // titles
+
+  > button.image-button.titlebutton { padding: 0 3px; }
+
+  &.horizontal { // spacing
+    padding: 0 3px;
+
+    > widget > label {
+      &:dir(ltr) { padding-right: 3px; }
+      &:dir(rtl) { padding-left: 3px; }
+    }
+
+    > button.image-button.titlebutton { padding: 0 3px; }
+  }
+}

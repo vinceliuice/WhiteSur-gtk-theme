@@ -1,0 +1,252 @@
+// Dash to Dock
+
+$dash_panel_bg: if($variant == 'light', rgba(#f1f1f1, 0.15), rgba(#101010, 0.25));
+$dash_panel_fg: if($variant == 'light', black, white);
+
+#dashtodockContainer {
+  background: transparent;
+
+  .app-well-app-running-dot {
+    background-color: $dash_panel_fg;
+  }
+
+  #dash,
+  &:overview #dash,
+  &.extended #dash,
+  &.extended:overview #dash {
+    padding: 0;
+    border: none;
+    margin: 0;
+  }
+
+  @each $_dock, $_radius in (top, $wm_radius),
+                            (bottom, $wm_radius),
+                            (left, $wm_radius),
+                            (right, $wm_radius) {
+    &.#{$_dock} #dash,
+    &.#{$_dock}:overview #dash { border-radius: #{$_radius}; }
+
+    &.#{$_dock}.extended #dash,
+    &.#{$_dock}.extended:overview #dash { border-radius: #{$_radius}; }
+  }
+
+  &.top, &.bottom {
+    #dash { padding: 0 4px; }
+  }
+
+  &.left, &.right {
+    #dash { padding: 4px 0; }
+  }
+
+  #dash { // default-mode
+    background-color: $dash_panel_bg;
+    box-shadow: inset 0 0 0 1px rgba(white, 0.05);
+
+    .app-well-app-running-dot {
+      background-color: rgba($dash_panel_fg, 0.85);
+    }
+
+    StWidget.focused .app-well-app-running-dot {
+      background-color: $primary_color;
+    }
+  }
+
+  &.opaque #dash { // solid-mode
+    background-color: $dash_panel_bg;
+  }
+
+  &.transparent #dash { // translucent-mode
+    background-color: $dash_panel_bg; // does not work
+  }
+
+  &:overview #dash { // overview-mode #1
+    background-color: $light_divider_color;
+
+    .app-well-app-running-dot {
+      background-color: $light_alt_fg_color;
+    }
+
+    StWidget.focused .app-well-app-running-dot {
+      background-color: $primary_color;
+    }
+  }
+
+  &.opaque:overview,
+  &.transparent:overview { // overview-mode #2
+    #dash {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+  }
+
+  &.extended:overview, // overview-mode #3
+  &.opaque.extended:overview,
+  &.transparent.extended:overview {
+    #dash {
+      background-color: $dash_panel_bg;
+    }
+  }
+
+  .app-well-app,
+  .show-apps {
+    .overview-icon {
+      padding: 8px;
+      background-size: contain;
+    }
+  }
+}
+
+
+// Simple Dock
+
+#dash:desktop {
+  background-color: $dash_panel_bg;
+}
+
+//  OpenWeather Extension
+
+.openweather {
+  &-button,
+  &-button-action,
+  &-menu-button-container,
+  &-button-box {
+    border: 1px solid transparent;
+  }
+
+  &-provider {
+    // generic text buttons are allocated with y-expand-ed
+    padding: 0 16px;
+    font-weight: 500;
+    @include button(flat-normal);
+    &:hover { @include button(flat-hover); }
+    &:focus { @include button(flat-focus); }
+    &:active { @include button(flat-active); }
+    &:insensitive { @include button(flat-disabled); }
+  }
+
+  &-current {
+    &-icon,
+    &-summary,
+    &-summarybox {
+      background: none;
+      color: $fg_color;
+    }
+
+    &-databox-values {
+      background: none;
+      color: $hint_fg_color;
+    }
+
+    &-databox-captions {
+      background: none;
+      color: $hint_fg_color;
+    }
+  }
+
+  &-forecast {
+    &-icon,
+    &-summary {
+      background: none;
+      color: $alt_fg_color;
+    }
+
+    &-day,
+    &-temperature {
+      background: none;
+      color: $hint_fg_color;
+    }
+  }
+
+  &-sunrise-icon,
+  &-sunset-icon,
+  &-build-icon { color: $alt_fg_color; }
+}
+
+// GPaste
+
+.popup-menu {
+  .search-entry {
+    color: $fg_color;
+    selection-background-color: $primary_color;
+    selected-color: $light_fg_color;
+    @include entry(normal);
+
+    &:focus {
+      @include entry(focus);
+      color: $fg_color;
+    }
+
+    .search-entry-icon { color: $hint_fg_color; }
+
+    &:hover, &:focus {
+      .search-entry-icon { color: $fg_color; }
+    }
+  }
+}
+
+// * Workspaces-to-dock *
+
+/* shortcuts panel button window count indicators */
+#workspacestodockDock.right .workspacestodock-shortcut-button-windowcount-image-1 {
+    background-image: url("assets/dash/right-running1.svg");
+}
+
+#workspacestodockDock.left .workspacestodock-shortcut-button-windowcount-image-1 {
+    background-image: url("assets/dash/left-running1.svg");
+}
+
+#workspacestodockDock.top .workspacestodock-shortcut-button-windowcount-image-1 {
+    background-image: url("assets/dash/top-running1.svg");
+}
+
+#workspacestodockDock.bottom .workspacestodock-shortcut-button-windowcount-image-1 {
+    background-image: url("assets/dash/bottom-running1.svg");
+}
+
+#workspacestodockDock.right .workspacestodock-shortcut-button-windowcount-image-2 {
+    background-image: url("assets/dash/right-running2.svg");
+}
+
+#workspacestodockDock.left .workspacestodock-shortcut-button-windowcount-image-2 {
+    background-image: url("assets/dash/left-running2.svg");
+}
+
+#workspacestodockDock.top .workspacestodock-shortcut-button-windowcount-image-2 {
+    background-image: url("assets/dash/top-running2.svg");
+}
+
+#workspacestodockDock.bottom .workspacestodock-shortcut-button-windowcount-image-2 {
+    background-image: url("assets/dash/bottom-running2.svg");
+}
+
+#workspacestodockDock.right .workspacestodock-shortcut-button-windowcount-image-3 {
+    background-image: url("assets/dash/right-running3.svg");
+}
+
+#workspacestodockDock.left .workspacestodock-shortcut-button-windowcount-image-3 {
+    background-image: url("assets/dash/left-running3.svg");
+}
+
+#workspacestodockDock.top .workspacestodock-shortcut-button-windowcount-image-3 {
+    background-image: url("assets/dash/top-running3.svg");
+}
+
+#workspacestodockDock.bottom .workspacestodock-shortcut-button-windowcount-image-3 {
+    background-image: url("assets/dash/bottom-running3.svg");
+}
+
+#workspacestodockDock.right .workspacestodock-shortcut-button-windowcount-image-4 {
+    background-image: url("assets/dash/right-running4.svg");
+}
+
+#workspacestodockDock.left .workspacestodock-shortcut-button-windowcount-image-4 {
+    background-image: url("assets/dash/left-running4.svg");
+}
+
+#workspacestodockDock.top .workspacestodock-shortcut-button-windowcount-image-4 {
+    background-image: url("assets/dash/top-running4.svg");
+}
+
+#workspacestodockDock.bottom .workspacestodock-shortcut-button-windowcount-image-4 {
+    background-image: url("assets/dash/bottom-running4.svg");
+}
