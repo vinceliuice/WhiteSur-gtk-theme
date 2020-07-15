@@ -2193,28 +2193,23 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
 
 %panel_button {
   color: $panel_fg;
-  border-radius: 0;
+  border-radius: $bt_radius;
   border: none;
-  background-color: transparent;
 
   &:hover:not(:active):not(:checked) {
-    color: $fg_color;
-    box-shadow: inset 0 -2px rgba($selected_bg_color, 0.5);
+    color: $panel_fg;
+    background-color: rgba($panel_fg, 0.2);
   }
 
   &:checked {
-    color: $fg_color;
-    box-shadow: inset 0 -2px $selected_bg_color;
-    background-color: rgba($fg_color, 0.12);
-    background-image: none;
+    color: $panel_fg;
+    background-color: rgba($panel_fg, 0.25);
     label, image { color: inherit; }
   }
 
   &:active {
-    background-color: rgba($fg_color, 0.18);
-    color: $fg_color;
-    background-image: none;
-    box-shadow: inset 0 -2px $selected_bg_color;
+    color: $panel_fg;
+    background-color: rgba($panel_fg, 0.3);
   }
 }
 
@@ -2241,6 +2236,8 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
   font-weight: 700;
   text-shadow: none;
   -gtk-icon-shadow: none;
+  box-shadow: none;
+  border-width: 0;
 
   &, // unset borders
   frame > border { border: none; }
@@ -2981,21 +2978,29 @@ button.flat.-panel-icon-button {
 }
 
 // vala-panel-appmenu
-// menubar.-vala-panel-appmenu-private, // xfce4 appmenu plugin
-// menubar.-vala-panel-background {
-//   background: none;
-//   border: none;
-//   box-shadow: none;
-//
-//   > menuitem {
-//     color: $panel_fg;
-//     font-weight: normal;
-//     &:hover { color: $selected_fg_color; }
-//
-//     // > window.background.popup > decoration,
-//     // > window.background.popup > menu { border-radius: 0 0 $wm_radius $wm_radius; }
-//   }
-// }
+menubar.-vala-panel-appmenu-private, // xfce4 appmenu plugin
+menubar.-vala-panel-background {
+  background: none;
+  border: none;
+  box-shadow: none;
+
+  > menuitem {
+    color: $panel_fg;
+    font-weight: normal;
+
+    &:hover {
+      color: $panel_fg;
+      background-color: rgba($panel_fg, 0.2);
+    }
+
+    &:disabled {
+      color: transparentize($panel_fg, 0.6);
+    }
+
+    // > window.background.popup > decoration,
+    // > window.background.popup > menu { border-radius: 0 0 $wm_radius $wm_radius; }
+  }
+}
 
 // * Elementary Apps *
 

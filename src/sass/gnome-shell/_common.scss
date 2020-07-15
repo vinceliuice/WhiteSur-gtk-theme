@@ -58,7 +58,6 @@ StEntry {
   min-width: $large_size;
   padding: 0 8px;
   margin: 3px;
-  border-radius: 3px;
   border-width: 0;
   color: $fg_color;
   caret-color: $fg_color;
@@ -66,7 +65,7 @@ StEntry {
   selected-color: $light_alt_fg_color;
   @include font(subheading);
   @include entry(normal);
-  //&:hover { @include entry(hover);}
+  &:hover { @include entry(hover);}
   &:focus { @include entry(focus);}
   &:insensitive { @include entry(insensitive);}
   StIcon.capslock-warning {
@@ -2029,7 +2028,12 @@ $message_bg: if($variant == 'light', #ffffff, #383838);
 .grid-search-result {
   & .overview-icon {
     @extend %icon_tile;
+
+    &, & > StIcon {
+      icon-shadow: $panel_asset_shadow;
+    }
   }
+
   &:hover .overview-icon,
   &:focus .overview-icon,
   &:selected .overview-icon {
@@ -2038,6 +2042,7 @@ $message_bg: if($variant == 'light', #ffffff, #383838);
     border-image: none;
     background-image: none;
   }
+
   &:active .overview-icon,
   &:checked .overview-icon {
     background-color: $light_track_color;

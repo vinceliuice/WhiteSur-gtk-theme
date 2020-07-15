@@ -38,9 +38,7 @@ filechooser,
   placessidebar.sidebar {
     border: none;
     background-color: transparent;
-    max-width: $nautilus_sidebar_size;
     min-width: $nautilus_sidebar_size;
-    width: $nautilus_sidebar_size;
 
     row.sidebar-row {
       color: $dark_sidebar_fg;

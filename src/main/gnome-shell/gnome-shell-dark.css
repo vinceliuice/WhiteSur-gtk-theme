@@ -86,7 +86,6 @@ StEntry {
   min-width: 44px;
   padding: 0 8px;
   margin: 3px;
-  border-radius: 3px;
   border-width: 0;
   color: #dedede;
   caret-color: #dedede;
@@ -96,18 +95,19 @@ StEntry {
   font-weight: 400;
   background-color: #212121;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: none;
+  box-shadow: inset 0 0 0 2px transparent;
+}
+
+StEntry:hover {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 0 0 2px transparent;
 }
 
 StEntry:focus {
-  border: 1px solid #4d8ef9;
-  box-shadow: 0 0 0 1px #4d8ef9;
+  box-shadow: inset 0 0 0 2px #4d8ef9;
 }
 
 StEntry:insensitive {
   color: rgba(222, 222, 222, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 StEntry StIcon.capslock-warning {
@@ -1386,7 +1386,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #panel.solid {
-  background-color: rgba(42, 42, 42, 0.85);
+  background-color: rgba(42, 42, 42, 0.25);
   /* transition from transparent to solid */
   transition-duration: 250ms;
   background-gradient-direction: none;
@@ -1398,11 +1398,11 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #panel.solid .panel-corner {
-  -panel-corner-background-color: rgba(42, 42, 42, 0.85);
+  -panel-corner-background-color: rgba(42, 42, 42, 0.25);
 }
 
 #panel.solid .panel-button {
-  color: #dadada;
+  color: white;
   text-shadow: none;
 }
 
@@ -2353,6 +2353,14 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   transition-duration: 150ms;
 }
 
+.grid-search-result .overview-icon, .search-provider-icon .overview-icon, .grid-search-result .overview-icon > StIcon, .search-provider-icon .overview-icon > StIcon,
+.show-apps .overview-icon,
+.show-apps .overview-icon > StIcon,
+.app-well-app .overview-icon,
+.app-well-app .overview-icon > StIcon {
+  icon-shadow: 0 1px 3px 3px rgba(0, 0, 0, 0.15);
+}
+
 .search-provider-icon:hover .overview-icon, .search-provider-icon:focus .overview-icon, .search-provider-icon:selected .overview-icon,
 .show-apps:hover .overview-icon,
 .show-apps:focus .overview-icon,
@@ -2999,18 +3007,15 @@ StWidget.focused .app-well-app-running-dot {
   min-height: 20px;
   background-color: #212121;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: none;
+  box-shadow: inset 0 0 0 2px transparent;
 }
 
 .login-dialog StEntry:focus {
-  border: 1px solid #4d8ef9;
-  box-shadow: 0 0 0 1px #4d8ef9;
+  box-shadow: inset 0 0 0 2px #4d8ef9;
 }
 
 .login-dialog StEntry:insensitive {
   color: rgba(222, 222, 222, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .login-dialog .modal-dialog-button-box {
@@ -3687,13 +3692,11 @@ StWidget.focused .app-well-app-running-dot {
   selected-color: white;
   background-color: #212121;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: none;
+  box-shadow: inset 0 0 0 2px transparent;
 }
 
 .popup-menu .search-entry:focus {
-  border: 1px solid #4d8ef9;
-  box-shadow: 0 0 0 1px #4d8ef9;
+  box-shadow: inset 0 0 0 2px #4d8ef9;
   color: #dedede;
 }
 
