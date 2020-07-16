@@ -73,7 +73,7 @@ install() {
   cp -ur ${SRC_DIR}/main/gnome-shell/gnome-shell${color}${opacity}.css                  ${THEME_DIR}/gnome-shell/gnome-shell.css
   cp -ur ${SRC_DIR}/assets/gnome-shell/common-assets                                    ${THEME_DIR}/gnome-shell/assets
   cp -ur ${SRC_DIR}/assets/gnome-shell/assets${color}/*.svg                             ${THEME_DIR}/gnome-shell/assets
-  cp -ur ${SRC_DIR}/assets/gnome-shell/assets${color}/activities/activities${icon}.svg  ${THEME_DIR}/gnome-shell/assets/activities.svg
+  cp -ur ${SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg                 ${THEME_DIR}/gnome-shell/assets/activities.svg
   cd ${THEME_DIR}/gnome-shell
   ln -s assets/no-events.svg no-events.svg
   ln -s assets/process-working.svg process-working.svg

@@ -15,7 +15,7 @@
    height="416"
    id="svg9892"
    version="1.1"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:version="0.92.5 (unknown)"
    sodipodi:docname="assets-light.svg">
   <defs
      id="defs9894">
@@ -74,18 +74,6 @@
          style="stop-color:#5999ff;stop-opacity:1;"
          offset="0"
          id="stop1755" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       id="button-hover-back">
-      <stop
-         style="stop-color:#ffffff;stop-opacity:1;"
-         offset="0"
-         id="stop1777" />
-      <stop
-         style="stop-color:#f9f9f9;stop-opacity:1"
-         offset="1"
-         id="stop1779" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -931,24 +919,6 @@
          stdDeviation="0.56"
          id="feGaussianBlur1988" />
     </filter>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#button-normal-back"
-       id="linearGradient1775"
-       x1="10"
-       y1="-256.63782"
-       x2="10"
-       y2="-278.63782"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#button-hover-back"
-       id="linearGradient1783"
-       x1="44"
-       y1="-278.63782"
-       x2="44"
-       y2="-256.63782"
-       gradientUnits="userSpaceOnUse" />
     <filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
@@ -1192,17 +1162,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.9883496"
-     inkscape:cx="146.57049"
-     inkscape:cy="353.51518"
+     inkscape:zoom="2.811951"
+     inkscape:cx="93.526896"
+     inkscape:cy="351.02992"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     showgrid="true"
+     showgrid="false"
      showborder="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="683"
+     inkscape:window-width="1920"
+     inkscape:window-height="1022"
      inkscape:window-x="0"
-     inkscape:window-y="34"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
      inkscape:snap-nodes="true"
      inkscape:snap-bbox="true"
@@ -1287,7 +1257,7 @@
          height="21.999998"
          width="22"
          id="rect7903"
-         style="opacity:1;fill:url(#linearGradient1775);fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.03921569;filter:url(#filter1798)"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.03921569;filter:url(#filter1798)"
          ry="3.9999974" />
       <rect
          rx="4.5"
@@ -1319,7 +1289,7 @@
          height="21.999998"
          width="22"
          id="rect7903-2"
-         style="opacity:1;fill:url(#linearGradient1783);fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0" />
+         style="opacity:1;fill:#f9f9f9;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0" />
       <rect
          ry="4.4999976"
          rx="4.5"
