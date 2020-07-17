@@ -1,6 +1,0 @@
-<svg width="32" height="32" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb">
- <title>Gnome Symbolic Icon Theme</title>
- <g transform="matrix(2 0 0 2 -281.56 -1615)" opacity=".7">
-  <path transform="matrix(.5 0 0 .5 140.78 807.5)" d="m24.438 5v9c0 1.6805-1.3195 3-3 3h-10.125l2.5625-2.5625c0.3763-0.3764 0.5625-0.9069 0.5625-1.4375v-2h-2c-0.53062 0-1.0612 0.1861-1.4375 0.5625-2.4792 2.479-7.4375 7.4375-7.4375 7.4375l7.4375 7.4375c0.37636 0.3764 0.90694 0.5625 1.4375 0.5625h2v-2c8e-5 -0.5306-0.18628-1.0613-0.5625-1.4375l-2.5625-2.5625h10.125c3.8423 0 7-3.1577 7-7v-9h-4z" color="#000000" fill="#fff" style="text-decoration-line:none;text-indent:0;text-transform:none"/>
- </g>
-</svg>

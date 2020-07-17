@@ -87,7 +87,7 @@
 }
 
 
-@mixin entry($t, $fc: $primary_color) {
+@mixin entry($t, $fc: $primary_color, $bc: $entry_shell_bg) {
 //
 // entry
 //
@@ -96,8 +96,8 @@
 //
 
   @if $t == normal {
-    background-color: if($variant == 'light', darken($base_color, 2%), darken($base_color, 1%));
-    border-radius: $bt_radius;
+    background-color: $bc;
+    border-radius: $mn_radius;
     box-shadow: inset 0 0 0 2px transparent;
   }
 
@@ -106,7 +106,7 @@
   }
 
   @if $t == focus {
-    box-shadow: inset 0 0 0 2px lighten($primary_color, 15%);
+    box-shadow: inset 0 0 0 2px lighten($fc, 15%);
   }
 
   @if $t == insensitive {
@@ -194,7 +194,7 @@
   }
 
   @if $t == flat-normal {
-    color: if($tc != $light_fg_color, $alt_fg_color, $light_alt_fg_color);
+    color: if($tc != $light_fg_color, $alt_fg_color, $light_fg_color);
     background-color: transparent;
     border-color: transparent;
     box-shadow: $shadow_0;

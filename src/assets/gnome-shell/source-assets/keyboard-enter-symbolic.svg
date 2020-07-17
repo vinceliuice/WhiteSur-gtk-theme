@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+    <g font-weight="400" fill="#2e3436">
+        <path d="M11.994 3v4.004c.002.666-.183.72-.445.852-.262.13-.555.144-.555.144H4v2h6.994s.71.014 1.45-.355c.738-.37 1.552-1.313 1.55-2.645V3z" style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;white-space:normal;shape-padding:0;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1;marker:none" color="#000" font-family="sans-serif" overflow="visible"/>
+        <path d="M6 12v-1c0-.257-.13-.528-.313-.719l-1.28-1.303 1.28-1.26C5.87 7.529 6 7.258 6 7V6H5c-.31 0-.552.09-.75.281L1.594 8.978l2.656 2.74c.198.192.44.282.75.282z" style="line-height:normal;-inkscape-font-specification:'Bitstream Vera Sans';text-indent:0;text-align:start;text-decoration-line:none;text-transform:none;marker:none" color="#bebebe" font-family="Bitstream Vera Sans" overflow="visible"/>
+    </g>
+</svg>

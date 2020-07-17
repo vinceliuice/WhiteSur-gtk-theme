@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+    <g fill="#2e3436">
+        <path d="M6 8H2.937l5.126-5.781L13.186 8H10v2H6z" style="marker:none" color="#000" overflow="visible"/>
+        <path d="M6 11h4v2H6z" style="marker:none"/>
+    </g>
+</svg>

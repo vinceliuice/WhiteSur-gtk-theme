@@ -128,6 +128,7 @@ $panel_border_color:                if($variant =='light', rgba(black, 0.2), rgb
 
 // Entry colors
 $entry_bg:                          if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05));
+$entry_shell_bg:                    if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
 $entry_border:                      $borders_color;
 $entry_highlight:                   if($variant == 'light', rgba(#67a4e9, 0.75), rgba($selection_mode_bg, 0.75));
 
