@@ -153,6 +153,10 @@ $nautilus_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
       border-radius: 0 0 $nautilus_radius $nautilus_radius;
     }
 
+    > stack {
+      background-color: $base_color;
+    }
+
     > stack:not(:only-child) {
       searchbar { background-color: transparent; }
     }

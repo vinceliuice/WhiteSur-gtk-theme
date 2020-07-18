@@ -4003,14 +4003,17 @@ popover.emoji-picker {
 
 // mimic tab style
 button.emoji-section {
-  margin: 2px 1px;
+  margin: 3px 1px;
   padding: 1px 12px;
-  border-radius: $wm_radius;
+  border-radius: $bt_radius;
   border: none;
   outline-offset: -2px;
   box-shadow: none;
-  // &:first-child { border-radius: 0 0 0 $wm_radius; }
-  // &:last-child { border-radius: 0 0 $wm_radius 0; }
+  transition: none;
+  animation: none;
+
+  &:first-child { margin-left: 6px; }
+  &:last-child { margin-right: 6px; }
 }
 
 .emoji {
@@ -4020,8 +4023,9 @@ button.emoji-section {
   // font-size: large;
 
   widget {
-    transition: $shorter_transition;
+    border-radius: $bt_radius;
+    transition: none;
 
-    &:hover { font-size: larger; }
+    &:hover { @extend %selected_items; }
   }
 }

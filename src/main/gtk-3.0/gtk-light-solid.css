@@ -4697,7 +4697,7 @@ headerbar button.titlebutton.minimize:active,
 }
 
 .budgie-menu button:checked, #MozillaGtkWidget.background > widget > scrolledwindow > textview text:selected, #MozillaGtkWidget.background > widget > scrolledwindow > textview text:selected:focus,
-#MozillaGtkWidget.background > widget > scrolledwindow > textview text selection, .nemo-window .nemo-window-pane widget.entry:selected:focus, .nemo-window .nemo-window-pane widget.entry:selected, .view:selected:focus, textview text selection:focus, textview text selection, iconview:selected:focus, flowbox flowboxchild:selected, label:disabled selection, entry selection:focus, entry selection, menuitem.button.flat:active, .raven .raven-header:not(.top) button.button:active, menuitem.button.flat:active arrow, .raven .raven-header:not(.top) button.button:active arrow, menuitem.button.flat:selected, .raven .raven-header:not(.top) button.button:selected, menuitem.button.flat:selected arrow, .raven .raven-header:not(.top) button.button:selected arrow,
+#MozillaGtkWidget.background > widget > scrolledwindow > textview text selection, .nemo-window .nemo-window-pane widget.entry:selected:focus, .nemo-window .nemo-window-pane widget.entry:selected, .emoji widget:hover, .view:selected:focus, textview text selection:focus, textview text selection, iconview:selected:focus, flowbox flowboxchild:selected, label:disabled selection, entry selection:focus, entry selection, menuitem.button.flat:active, .raven .raven-header:not(.top) button.button:active, menuitem.button.flat:active arrow, .raven .raven-header:not(.top) button.button:active arrow, menuitem.button.flat:selected, .raven .raven-header:not(.top) button.button:selected, menuitem.button.flat:selected arrow, .raven .raven-header:not(.top) button.button:selected arrow,
 modelbutton.flat:active,
 modelbutton.flat:active arrow,
 modelbutton.flat:selected,
@@ -4708,7 +4708,7 @@ calendar:selected {
 }
 
 .budgie-menu button:disabled:checked, #MozillaGtkWidget.background > widget > scrolledwindow > textview text:disabled:selected,
-#MozillaGtkWidget.background > widget > scrolledwindow > textview text selection:disabled, .nemo-window .nemo-window-pane widget.entry:disabled:selected {
+#MozillaGtkWidget.background > widget > scrolledwindow > textview text selection:disabled, .nemo-window .nemo-window-pane widget.entry:disabled:selected, .emoji widget:disabled:hover {
   color: #84b0f9;
 }
 
@@ -4748,12 +4748,22 @@ popover.emoji-picker scrolledwindow.view {
 }
 
 button.emoji-section {
-  margin: 2px 1px;
+  margin: 3px 1px;
   padding: 1px 12px;
-  border-radius: 14px;
+  border-radius: 6px;
   border: none;
   outline-offset: -2px;
   box-shadow: none;
+  transition: none;
+  animation: none;
+}
+
+button.emoji-section:first-child {
+  margin-left: 6px;
+}
+
+button.emoji-section:last-child {
+  margin-right: 6px;
 }
 
 .emoji {
@@ -4763,11 +4773,8 @@ button.emoji-section {
 }
 
 .emoji widget {
-  transition: all 100ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.emoji widget:hover {
-  font-size: larger;
+  border-radius: 6px;
+  transition: none;
 }
 
 .mate-terminal notebook > header.top > tabs > tab {
@@ -4897,6 +4904,10 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
 
 .nautilus-window notebook, .nautilus-window notebook > stack {
   border-radius: 0 0 16px 16px;
+}
+
+.nautilus-window notebook > stack {
+  background-color: #ffffff;
 }
 
 .nautilus-window notebook > stack:not(:only-child) searchbar {
