@@ -111,24 +111,22 @@ window.background.csd { // gnome-terminal 3.32 setting
 
 $nautilus_radius: $wm_radius + 2px;
 $nautilus_sidebar_size: 180px;
-$nautilus_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
-                                        $dark_sidebar_bg $nautilus_sidebar_size,
-                                        darken($dark_sidebar_bg, 15%) ($nautilus_sidebar_size + 1px),
-                                        $base_color ($nautilus_sidebar_size + 1px),
-                                        $base_color 100%);
+// color of nautilus side bar and top bar
+$titlebar_image: image(darken($dark_sidebar_bg, 5%));
+$sidebar_image: image($dark_sidebar_bg);
 
 .nautilus-window {
   border-radius: $wm_radius $wm_radius $nautilus_radius $nautilus_radius;
 
   &.background.csd {
     background-color: transparent;
-    background-image: $nautilus_image;
+    background-image: $sidebar_image;
 
     > headerbar.titlebar {
       border: none;
       box-shadow: inset 0 1px rgba(white, 0.1);
       background: none;
-      background-image: $nautilus_image;
+      background-image: $titlebar_image;
 
       > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 72px; }
     }
