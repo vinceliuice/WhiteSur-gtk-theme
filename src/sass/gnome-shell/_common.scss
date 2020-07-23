@@ -25,10 +25,10 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 
 
 /* GLOBALS */
-* {
-  // transition-timing-function: $deceleration_curve;
-  transition-duration: $longer_duration;
-}
+// * {
+//   // transition-timing-function: $deceleration_curve;
+//   transition-duration: $longer_duration;
+// }
 
 stage {
   font-family: $font-family;
@@ -63,7 +63,7 @@ StEntry {
   caret-color: $fg_color;
   selection-background-color: $primary_color;
   selected-color: $light_alt_fg_color;
-  @include font(subheading);
+  // @include font(subheading);
   @include entry(normal);
   &:hover { @include entry(hover);}
   &:focus { @include entry(focus);}
@@ -1561,14 +1561,20 @@ $message_bg: if($variant == 'light', #ffffff, #383838);
   border-radius: $bt_radius;
   border: none;
   color: $alt_fg_color;
-  background-color: $message_bg;
+  background-color: transparent;
   margin: 4px;
   box-shadow: none;
   text-shadow: none;
 
-  &:hover, &:focus { color: $fg_color; background-color: $divider_color; }
+  &:hover, &:focus {
+    color: $fg_color;
+    background-color: $message_bg;
+  }
 
-  &:active { color: $fg_color; background-color: $track_color; }
+  &:active {
+    color: $fg_color;
+    background-color: rgba($message_bg, 0.8);
+  }
 
   // icon container
   .message-icon-bin {
@@ -2075,21 +2081,21 @@ StWidget.focused .app-well-app-running-dot {
   background-color: $light_divider_color;
 }
 
-.show-apps .show-apps-icon {
-  color: transparent;
-  background-image: url("assets/startup@2.svg");
-  background-size: contain;
-}
+// .show-apps .show-apps-icon {
+//   color: transparent;
+//   background-image: url("assets/startup@2.svg");
+//   background-size: contain;
+// }
 
 .show-apps .overview-icon {
-  color: transparent;
+  color: $light_fg_color;
 }
 
 .show-apps:hover .show-apps-icon,
 .show-apps:active .show-apps-icon,
 .show-apps:checked .show-apps-icon,
 .show-apps:focus .show-apps-icon {
-  color: transparent;
+  color: $light_fg_color;
   transition-duration: $longer_duration;
 }
 
@@ -2590,10 +2596,16 @@ $login_entry_bg: if($variant == 'dark', rgba(black, 0.1), rgba(white, 0.1));
     StIcon { icon-size: 16px; }
   }
 
-  .caps-lock-warning-label,
   .login-dialog-message-warning {
     color: $light_alt_fg_color;
   }
+}
+
+// Caps-lock warning
+.caps-lock-warning-label {
+  text-align: center;
+  padding-bottom: 8px;
+  color: $warning_color;
 }
 
 .login-dialog-logo-bin { padding: 24px 0px; }
@@ -2666,20 +2678,46 @@ $login_entry_bg: if($variant == 'dark', rgba(black, 0.1), rgba(white, 0.1));
   color: $light_alt_fg_color;
 }
 
-.user-widget.horizontal .user-widget-label {
-  // @include font(title);
-  font-weight: bold;
-  text-align: left;
-  padding-left: 15px;
+.user-widget.horizontal {
+  .user-widget-label {
+    // @include font(title);
+    font-weight: bold;
+    text-align: left;
+    padding-left: 15px;
 
-  &:ltr { padding-left: 14px; }
-  &:rtl { padding-right: 14px; }
+    &:ltr { padding-left: 14px; }
+    &:rtl { padding-right: 14px; }
+  }
+
+  .user-icon {
+    icon-size: 64px; // 64px
+
+    & StIcon {
+      padding: 12px; // 12px
+      width: 40px;
+      height: 40px; // 40px;
+    }
+  }
 }
 
-.user-widget.vertical .user-widget-label {
-  text-align: center;
-  font-weight: normal;
-  padding-top: 16px;
+.user-widget.vertical {
+  .user-widget-label {
+    text-align: center;
+    font-weight: normal;
+    padding-top: 16px;
+  }
+
+  .user-icon {
+    icon-size: 96px; // 128px
+
+    & StIcon {
+      padding: 20px; // 20px
+      padding-top: 18px; // 18 px
+      padding-bottom: 22px; // 22px
+      width: 88px;
+      height: 88px; // 88px;
+    }
+  }
 }
 
 .login-dialog-prompt-entry {

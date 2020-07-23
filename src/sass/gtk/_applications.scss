@@ -1468,19 +1468,7 @@ stack#titlebar_container.titlebar {
   > stack > headerbar {
     border: none;
 
-    entry.suggestion.url_entry {
-      box-shadow: inset 0 0 0 2px transparent;
-
-      &:hover {
-        box-shadow: inset 0 0 0 1px rgba($borders_color, 0.03), inset 0 0 0 2px transparent;
-        transition-duration: 200ms;
-      }
-
-      &:focus {
-        box-shadow: inset 0 0 0 2px $entry_highlight;
-        transition-duration: 300ms;
-      }
-    }
+    // entry.suggestion.url_entry {}
   }
 }
 
@@ -1488,9 +1476,13 @@ notebook.main-notebook {
   > header.top {
     margin-top: 0;
 
-    tabs > tab {
+    > tabs > tab {
       &:checked {
         border-top-color: $header_bg;
+      }
+
+      &:first-child { //Not use
+        border-left-width: 0;
       }
     }
   }
@@ -2891,13 +2883,58 @@ window.background.csd {
 }
 
 //
-// Pamac
+// Inkscape
 //
+toolbar#SubToolBox {
+  min-height: 36px;
 
+  // > toolitem#select-x {
+  //   spinbutton {
+  //     entry {
+  //       min-width: 0;
+  //     }
+  //   }
+  // }
 
-// /************
-//  * Synaptic *
-//  ************/
+  entry, button {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+
+  > toolbutton > button.flat {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+}
+
+widget#ToolboxCommon {
+  button.flat {
+    &:active {
+      background-color: rgba($fg_color, 0.25);
+    }
+
+    &:checked {
+      background-color: rgba($fg_color, 0.15);
+    }
+  }
+
+  // > toolbar > toolitem > button.flat, // Left side
+  > toolbar > toolbutton > button.flat { // Right side
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+}
+
+box#DesktopStatusBar {
+  spinbutton, button.combo {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+}
+
+//
+//  Synaptic
+//
 window > box.vertical > box.horizontal {
   > toolbar {
     background-color: transparent;

@@ -18,10 +18,6 @@
  * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
  */
 /* GLOBALS */
-* {
-  transition-duration: 150ms;
-}
-
 stage {
   font-family: "M+ 1c", Roboto, Cantarell, Sans-Serif;
   font-size: 9.75pt;
@@ -91,8 +87,6 @@ StEntry {
   caret-color: #242424;
   selection-background-color: #0860f2;
   selected-color: rgba(255, 255, 255, 0.85);
-  font-size: 11.25pt;
-  font-weight: 400;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   box-shadow: inset 0 0 0 2px transparent;
@@ -1827,7 +1821,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   border-radius: 6px;
   border: none;
   color: #424242;
-  background-color: #ffffff;
+  background-color: transparent;
   margin: 4px;
   box-shadow: none;
   text-shadow: none;
@@ -1835,12 +1829,12 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .message:hover, .message:focus {
   color: #242424;
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: #ffffff;
 }
 
 .message:active {
   color: #242424;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .message .message-icon-bin {
@@ -2422,21 +2416,15 @@ StWidget.focused .app-well-app-running-dot {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
-.show-apps .show-apps-icon {
-  color: transparent;
-  background-image: url("assets/startup@2.svg");
-  background-size: contain;
-}
-
 .show-apps .overview-icon {
-  color: transparent;
+  color: white;
 }
 
 .show-apps:hover .show-apps-icon,
 .show-apps:active .show-apps-icon,
 .show-apps:checked .show-apps-icon,
 .show-apps:focus .show-apps-icon {
-  color: transparent;
+  color: white;
   transition-duration: 150ms;
 }
 
@@ -3100,9 +3088,14 @@ StWidget.focused .app-well-app-running-dot {
   icon-size: 16px;
 }
 
-.login-dialog .caps-lock-warning-label,
 .login-dialog .login-dialog-message-warning {
   color: rgba(255, 255, 255, 0.85);
+}
+
+.caps-lock-warning-label {
+  text-align: center;
+  padding-bottom: 8px;
+  color: #F27835;
 }
 
 .login-dialog-logo-bin {
@@ -3249,10 +3242,32 @@ StWidget.focused .app-well-app-running-dot {
   padding-right: 14px;
 }
 
+.user-widget.horizontal .user-icon {
+  icon-size: 64px;
+}
+
+.user-widget.horizontal .user-icon StIcon {
+  padding: 12px;
+  width: 40px;
+  height: 40px;
+}
+
 .user-widget.vertical .user-widget-label {
   text-align: center;
   font-weight: normal;
   padding-top: 16px;
+}
+
+.user-widget.vertical .user-icon {
+  icon-size: 96px;
+}
+
+.user-widget.vertical .user-icon StIcon {
+  padding: 20px;
+  padding-top: 18px;
+  padding-bottom: 22px;
+  width: 88px;
+  height: 88px;
 }
 
 .login-dialog-prompt-entry {

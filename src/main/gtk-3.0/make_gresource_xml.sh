@@ -9,7 +9,7 @@ fi
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' >> gtk.gresource.xml
 echo "<gresources>" >> gtk.gresource.xml
-echo '  <gresource prefix="/org/gnome/Mcata-theme">' >> gtk.gresource.xml
+echo '  <gresource prefix="/org/gnome/theme">' >> gtk.gresource.xml
 
 for i in `cat $INDEX`
 do

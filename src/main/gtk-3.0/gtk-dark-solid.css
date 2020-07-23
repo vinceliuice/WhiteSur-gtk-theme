@@ -204,6 +204,7 @@ spinner:checked:disabled, label:disabled selection:checked {
 entry.contacts-postal-entry, spinbutton entry, .linked > entry:not(:only-child) {
   color: #dadada;
   background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 2px transparent;
   border: none;
 }
 
@@ -211,6 +212,7 @@ entry.contacts-postal-entry:focus, spinbutton entry:focus, .linked > entry:focus
   color: #dadada;
   background-color: rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 0 0 2px rgba(104, 135, 205, 0.75);
+  transition-duration: 300ms;
 }
 
 entry.contacts-postal-entry:disabled, spinbutton entry:disabled, .linked > entry:disabled:not(:only-child) {
@@ -226,6 +228,7 @@ entry {
   caret-color: currentColor;
   color: #dadada;
   background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 2px transparent;
 }
 
 entry.search {
@@ -253,10 +256,18 @@ entry image.right {
   border-radius: 0;
 }
 
+entry:hover {
+  color: #dadada;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 0 0 2px transparent;
+  transition-duration: 200ms;
+}
+
 entry:focus {
   color: #dadada;
   background-color: rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 0 0 2px rgba(104, 135, 205, 0.75);
+  transition-duration: 300ms;
 }
 
 entry:disabled {
@@ -1084,8 +1095,6 @@ spinbutton:disabled {
 }
 
 spinbutton entry {
-  padding-top: 2px;
-  padding-bottom: 2px;
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -1103,6 +1112,10 @@ spinbutton:not(.vertical) entry {
   padding-top: 2px;
   padding-bottom: 2px;
   min-width: 28px;
+}
+
+spinbutton:not(.vertical) button, spinbutton:not(.vertical) entry {
+  min-height: 20px;
 }
 
 spinbutton:not(.vertical):dir(ltr) entry, spinbutton:not(.vertical):dir(rtl) button.up {
@@ -1308,25 +1321,6 @@ combobox .linked:not(.vertical) > entry + button.combo:checked arrow, .linked:no
   border-width: 0 0 0 1px;
 }
 
-.inline-toolbar:not(.inline-toolbar) switch,
-.inline-toolbar:not(.inline-toolbar) scale,
-.inline-toolbar:not(.inline-toolbar) entry,
-.inline-toolbar:not(.inline-toolbar) spinbutton,
-.inline-toolbar:not(.inline-toolbar) button, toolbar:not(.inline-toolbar) switch,
-toolbar:not(.inline-toolbar) scale,
-toolbar:not(.inline-toolbar) entry,
-toolbar:not(.inline-toolbar) spinbutton,
-toolbar:not(.inline-toolbar) button {
-  margin-right: 1px;
-  margin-bottom: 1px;
-}
-
-.inline-toolbar:not(.inline-toolbar) .linked > button,
-.inline-toolbar:not(.inline-toolbar) .linked > entry, toolbar:not(.inline-toolbar) .linked > button,
-toolbar:not(.inline-toolbar) .linked > entry {
-  margin-right: 0;
-}
-
 .primary-toolbar:not(.libreoffice-toolbar) {
   color: #dadada;
   background-color: transparent;
@@ -1430,7 +1424,7 @@ headerbar stackswitcher.linked.stack-switcher:not(.vertical) > button {
 headerbar .linked:not(.vertical) > entry {
   color: #FDFDFD;
   background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: none;
+  box-shadow: inset 0 0 0 2px transparent;
   margin: 8px 3px;
   padding: 0 8px;
   border-radius: 6px;
@@ -1690,7 +1684,7 @@ headerbar entry, .titlebar entry {
   min-height: 22px;
   color: #FDFDFD;
   background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: none;
+  box-shadow: inset 0 0 0 2px transparent;
 }
 
 .nemo-window .primary-toolbar entry image, headerbar entry image, headerbar entry image:hover {
@@ -1700,6 +1694,13 @@ headerbar entry, .titlebar entry {
 .nemo-window .primary-toolbar entry:backdrop, headerbar entry:backdrop {
   opacity: 0.65;
   background-image: none;
+}
+
+.nemo-window .primary-toolbar entry:hover, headerbar entry:hover {
+  color: #FDFDFD;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 0 0 2px transparent;
+  transition-duration: 200ms;
 }
 
 .nemo-window .primary-toolbar entry:focus, headerbar entry:focus {
@@ -2302,22 +2303,6 @@ notebook {
 
 notebook.frame {
   border: 1px solid #474747;
-}
-
-notebook.frame > header.top tabs > tab:first-child, notebook.frame > header.bottom tabs > tab:first-child {
-  border-left-style: none;
-}
-
-notebook.frame > header.top tabs > tab:last-child, notebook.frame > header.bottom tabs > tab:last-child {
-  border-right-style: solid;
-}
-
-notebook.frame > header.left tabs > tab:first-child, notebook.frame > header.right tabs > tab:first-child {
-  border-top-style: none;
-}
-
-notebook.frame > header.left tabs > tab:last-child, notebook.frame > header.right tabs > tab:last-child {
-  border-bottom-style: solid;
 }
 
 notebook > stack:not(:only-child) {
@@ -5388,7 +5373,7 @@ omnibar.linked > entry:not(:only-child) {
   margin-right: 1px;
   color: #FDFDFD;
   background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: none;
+  box-shadow: inset 0 0 0 2px transparent;
   border-left: none;
 }
 
@@ -5399,7 +5384,7 @@ omnibar.linked > entry:not(:only-child) image, omnibar.linked > entry:not(:only-
 omnibar.linked > entry:not(:only-child):backdrop {
   color: #FDFDFD;
   background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: none;
+  box-shadow: inset 0 0 0 2px transparent;
   opacity: 0.65;
 }
 
@@ -5908,26 +5893,16 @@ stack#titlebar_container.titlebar > stack > headerbar {
   border: none;
 }
 
-stack#titlebar_container.titlebar > stack > headerbar entry.suggestion.url_entry {
-  box-shadow: inset 0 0 0 2px transparent;
-}
-
-stack#titlebar_container.titlebar > stack > headerbar entry.suggestion.url_entry:hover {
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), inset 0 0 0 2px transparent;
-  transition-duration: 200ms;
-}
-
-stack#titlebar_container.titlebar > stack > headerbar entry.suggestion.url_entry:focus {
-  box-shadow: inset 0 0 0 2px rgba(104, 135, 205, 0.75);
-  transition-duration: 300ms;
-}
-
 notebook.main-notebook > header.top {
   margin-top: 0;
 }
 
-notebook.main-notebook > header.top tabs > tab:checked {
+notebook.main-notebook > header.top > tabs > tab:checked {
   border-top-color: #373737;
+}
+
+notebook.main-notebook > header.top > tabs > tab:first-child {
+  border-left-width: 0;
 }
 
 stack.view.polari-entry-area {
@@ -6186,7 +6161,7 @@ window.background > grid.vertical > box.vertical grid.math-buttons button:not(.s
 headerbar.titlebar.incognito-mode entry {
   color: #FDFDFD;
   background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: none;
+  box-shadow: inset 0 0 0 2px transparent;
 }
 
 headerbar.titlebar.incognito-mode entry image, headerbar.titlebar.incognito-mode entry image:hover {
@@ -6211,7 +6186,7 @@ notebook > box > stack > box.vertical > paned.vertical > overlay > .floating-bar
 .background headerbar entry.starred, .background headerbar entry.non-starred {
   color: #FDFDFD;
   background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: none;
+  box-shadow: inset 0 0 0 2px transparent;
 }
 
 .background headerbar entry.starred image, .background headerbar entry.starred image:hover, .background headerbar entry.non-starred image, .background headerbar entry.non-starred image:hover {
@@ -7273,6 +7248,38 @@ window.background.csd > box.horizontal > stack > box.vertical > notebook > stack
   border-bottom-right-radius: 14px;
 }
 
+toolbar#SubToolBox {
+  min-height: 36px;
+}
+
+toolbar#SubToolBox entry, toolbar#SubToolBox button {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+toolbar#SubToolBox > toolbutton > button.flat, .raven .raven-header:not(.top) toolbar#SubToolBox > toolbutton > button {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+widget#ToolboxCommon button.flat:active, widget#ToolboxCommon .raven .raven-header:not(.top) button:active, .raven .raven-header:not(.top) widget#ToolboxCommon button:active {
+  background-color: rgba(222, 222, 222, 0.25);
+}
+
+widget#ToolboxCommon button.flat:checked, widget#ToolboxCommon .raven .raven-header:not(.top) button:checked, .raven .raven-header:not(.top) widget#ToolboxCommon button:checked {
+  background-color: rgba(222, 222, 222, 0.15);
+}
+
+widget#ToolboxCommon > toolbar > toolbutton > button.flat, .raven .raven-header:not(.top) widget#ToolboxCommon > toolbar > toolbutton > button {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+box#DesktopStatusBar spinbutton, box#DesktopStatusBar button.combo {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
 window > box.vertical > box.horizontal > toolbar {
   background-color: transparent;
   box-shadow: none;
@@ -7581,7 +7588,7 @@ MarlinViewWindow FMListView, MarlinViewWindow FMColumnView {
   padding-right: 4px;
   color: #FDFDFD;
   background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: none;
+  box-shadow: inset 0 0 0 2px transparent;
 }
 
 .marlin-pathbar.pathbar image, .marlin-pathbar.pathbar image:hover {
@@ -8648,12 +8655,14 @@ filechooser actionbar button:active, filechooser actionbar button:checked {
 filechooser actionbar entry {
   color: #dadada;
   background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 2px transparent;
 }
 
 filechooser actionbar entry:focus {
   color: #dadada;
   background-color: rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 0 0 2px rgba(104, 135, 205, 0.75);
+  transition-duration: 300ms;
 }
 
 

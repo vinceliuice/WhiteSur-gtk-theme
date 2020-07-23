@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/org/gnome/Mcata-theme">
+  <gresource prefix="/org/gnome/theme">
     <file>assets/checkbox-checked.png</file>
     <file>assets/checkbox-checked@2.png</file>
     <file>assets/checkbox-checked-insensitive.png</file>

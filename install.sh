@@ -97,8 +97,8 @@ install() {
 
   glib-compile-resources --sourcedir=${THEME_DIR}/gtk-3.0 --target=${THEME_DIR}/gtk-3.0/gtk.gresource ${SRC_DIR}/main/gtk-3.0/gtk.gresource.xml
   rm -rf ${THEME_DIR}/gtk-3.0/{assets,windows-assets,gtk.css,gtk-dark.css}
-  echo '@import url("resource:///org/gnome/Mcata-theme/gtk.css");' >>                   ${THEME_DIR}/gtk-3.0/gtk.css
-  echo '@import url("resource:///org/gnome/Mcata-theme/gtk-dark.css");' >>              ${THEME_DIR}/gtk-3.0/gtk-dark.css
+  echo '@import url("resource:///org/gnome/theme/gtk.css");' >>                         ${THEME_DIR}/gtk-3.0/gtk.css
+  echo '@import url("resource:///org/gnome/theme/gtk-dark.css");' >>                    ${THEME_DIR}/gtk-3.0/gtk-dark.css
 
   mkdir -p                                                                              ${THEME_DIR}/metacity-1
   cp -ur ${SRC_DIR}/main/metacity-1/metacity-theme${color}.xml                          ${THEME_DIR}/metacity-1/metacity-theme-1.xml
