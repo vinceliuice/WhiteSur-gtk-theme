@@ -830,7 +830,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 /* Popovers/Menus */
 .candidate-popup-boxpointer, .popup-menu .popup-menu-content, .modal-dialog {
-  background-color: rgba(36, 36, 36, 0.95);
+  background-color: #242424;
   border-radius: 14px;
   border: none;
 }
@@ -971,7 +971,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .candidate-popup-boxpointer {
   -arrow-border-radius: 2px;
-  -arrow-background-color: rgba(36, 36, 36, 0.95);
+  -arrow-background-color: #242424;
   -arrow-border-width: 0;
   -arrow-border-color: transparent;
   -arrow-base: 5px;
