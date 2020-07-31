@@ -203,7 +203,7 @@ $switch_animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
 
     border-color: if($variant == 'light', $button_border, $dark_borders_color);
     background-color: rgba($button_bg, 0.55);
-    @if $variant=='light' { box-shadow: $shadow_3; }
+    box-shadow: none;
   }
 
   @else if $t==insensitive-active {
@@ -325,6 +325,7 @@ $switch_animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
   //
     label, & { color: rgba($header_fg, 0.35); }
     background: none;
+    box-shadow: none;
   }
 
   @else if $t==header-insensitive-active {

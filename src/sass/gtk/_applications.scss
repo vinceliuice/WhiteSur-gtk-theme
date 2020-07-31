@@ -61,6 +61,149 @@ window.background.csd { // gnome-terminal 3.32 setting
 // Nautilus
 //
 
+$nautilus_radius: $wm_radius + 2px;
+$nautilus_sidebar_size: 200px;
+$nautilus_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
+                                        $dark_sidebar_bg $nautilus_sidebar_size,
+                                        darken($dark_sidebar_bg, 15%) ($nautilus_sidebar_size + 1px),
+                                        $base_color ($nautilus_sidebar_size + 1px),
+                                        $base_color 100%);
+
+filechooser,
+.nautilus-window {
+  paned > separator { // Use paned separator to hide stack border-bottom-left-radius
+    border: none;
+    background-color: transparent;
+    background-image: image($base_color);
+    background-size: 8px 8px;
+    background-position: left bottom;
+
+    &:dir(ltr) { margin-left: -1px; }
+    &:dir(rtl) { margin-right: -1px; }
+  }
+}
+
+.nautilus-window {
+  paned > separator {
+    background-image: none;
+    background-size: 0 0;
+      min-width: 0;
+      min-height: 0;
+  }
+}
+
+
+filechooser placessidebar.sidebar.frame { border-right: 1px solid if($variant=='light', $solid_borders_color, $header_border); }
+
+// transparent sidebars
+%placessidebar,
+.nautilus-window {
+  &.csd.background, placessidebar list { background-color: transparent; }
+  &.csd.background, placessidebar { background-color: transparent; }
+
+  placessidebar.sidebar {
+    border: none;
+    background-color: transparent;
+    min-width: $nautilus_sidebar_size;
+
+    row.sidebar-row {
+      color: $dark_sidebar_fg;
+      background-color: transparent;
+      transition: background-image 0;
+
+      .sidebar-icon { color: $selected_bg_color; }
+
+      &.has-open-popup,
+      &:disabled {
+        &, label, image { color: transparentize($dark_sidebar_fg, 0.6); }
+      }
+
+      &:backdrop { opacity: 0.85; }
+
+      &:hover {
+        transition: background-image 0;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-position: left center;
+        background-size: $nautilus_sidebar_size 28px;
+        background-image: -gtk-scaled(url("assets/sidebar-view-hover#{$asset_suffix}.png"), url("assets/sidebar-view-hover#{$asset_suffix}@2.png"));
+      }
+
+      &:active, &:active:hover {
+        transition: background-image ease-out 200ms;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-position: left center;
+        background-size: $nautilus_sidebar_size 28px;
+        background-image: -gtk-scaled(url("assets/sidebar-view-active#{$asset_suffix}.png"), url("assets/sidebar-view-active#{$asset_suffix}@2.png"));
+      }
+
+      &:selected.has-open-popup,
+      &:selected, &:selected:hover {
+        color: $fg_color;
+        transition: background-image ease-out 200ms;
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: $nautilus_sidebar_size 28px;
+        background-color: transparent;
+        background-image: -gtk-scaled(url("assets/sidebar-view-checked#{$asset_suffix}.png"), url("assets/sidebar-view-checked#{$asset_suffix}@2.png"));
+
+        &, label { color: $fg_color; }
+      }
+
+      &.sidebar-new-bookmark-row {
+        color: $selected_bg_color;
+
+        .sidebar-icon { color: inherit; }
+      }
+
+      &:drop(active):not(:disabled) {
+        &, label, .sidebar-icon { color: $dark_sidebar_fg; }
+
+        &:selected {
+          &, label, .sidebar-icon { color: $dark_sidebar_fg; }
+          background-color: $drop_target_color;
+        }
+      }
+    }
+
+    separator { background-color: transparent; }
+  }
+
+  &.maximized headerbar,
+  &.maximized placessidebar { border-radius: 0; }
+
+  placesview {
+    actionbar.background { border-radius: 0 0 $wm_radius 0; }
+  }
+}
+
+filechooser {
+  placessidebar.sidebar {
+    border: none;
+    background-color: transparent;
+  }
+
+  actionbar {
+    color: $dark_sidebar_fg;
+    background-color: $dark_sidebar_bg;
+    border-color: $borders_color;
+
+    label, combobox { color: $dark_sidebar_fg; }
+  }
+
+  box.vertical > paned > separator { // Use paned separator to hide stack border-bottom-left-radius
+    border: none;
+    background-color: transparent;
+    background-image: image($base_color);
+    background-size: 8px 8px;
+    background-position: left bottom;
+
+    &:dir(ltr) { margin-left: -1px; }
+    &:dir(rtl) { margin-right: -1px; }
+  }
+}
+
 .nautilus-window headerbar {
   .path-bar-box {
     color: transparent;
@@ -108,14 +251,6 @@ window.background.csd { // gnome-terminal 3.32 setting
     color: mix($selected_fg_color, $selected_bg_color, 80%);
   }
 }
-
-$nautilus_radius: $wm_radius + 2px;
-$nautilus_sidebar_size: 180px;
-$nautilus_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
-                                        $dark_sidebar_bg $nautilus_sidebar_size,
-                                        darken($dark_sidebar_bg, 15%) ($nautilus_sidebar_size + 1px),
-                                        $base_color ($nautilus_sidebar_size + 1px),
-                                        $base_color 100%);
 
 .nautilus-window {
   border-radius: $wm_radius $wm_radius $nautilus_radius $nautilus_radius;
@@ -2132,9 +2267,23 @@ panel-toplevel.background {
   border-top: 1px solid $borders_color;
 }
 
-// .caja-pathbar {
-//   button { }
-// }
+.caja-side-pane {
+  &, text, treeview,
+  > notebook > stack > widget > box {
+    color: $dark_sidebar_fg;
+    caret-color: $dark_sidebar_fg;
+    background-color: opacify($dark_sidebar_bg, 1);
+  }
+
+  > box button {
+    &:not(:active):not(:checked) { color: $dark_sidebar_fg; }
+    // &:hover:not(:active) { @include button(hover); }
+  }
+
+  .frame { border-color: $borders_color; }
+
+  junction { background-color: darken($dark_sidebar_bg, 5%); }
+}
 
 .caja-navigation-window {
   .primary-toolbar {

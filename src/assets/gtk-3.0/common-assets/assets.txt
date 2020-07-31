@@ -85,4 +85,3 @@ sidebar-view-checked
 sidebar-view-hover-dark
 sidebar-view-active-dark
 sidebar-view-checked-dark
-

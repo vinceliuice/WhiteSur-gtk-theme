@@ -535,7 +535,7 @@ button:active:hover, button:checked {
 button:disabled {
   border-color: rgba(0, 0, 0, 0.12);
   background-color: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.03), 0 1px 2px 0 rgba(0, 0, 0, 0.01);
+  box-shadow: none;
 }
 
 button:disabled label, button:disabled {
@@ -739,7 +739,7 @@ button.suggested-action.flat:disabled, .raven .raven-header:not(.top) button.sug
 button.suggested-action:disabled, label:disabled selection.suggested-action {
   border-color: rgba(0, 0, 0, 0.12);
   background-color: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.03), 0 1px 2px 0 rgba(0, 0, 0, 0.01);
+  box-shadow: none;
 }
 
 button.suggested-action:disabled label, label:disabled selection.suggested-action label, button.suggested-action:disabled, label:disabled selection.suggested-action {
@@ -793,7 +793,7 @@ button.destructive-action.flat:disabled, .raven .raven-header:not(.top) button.d
 button.destructive-action:disabled, label:disabled selection.destructive-action {
   border-color: rgba(0, 0, 0, 0.12);
   background-color: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.03), 0 1px 2px 0 rgba(0, 0, 0, 0.01);
+  box-shadow: none;
 }
 
 button.destructive-action:disabled label, label:disabled selection.destructive-action label, button.destructive-action:disabled, label:disabled selection.destructive-action {
@@ -1820,6 +1820,7 @@ window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerb
 
 window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:disabled, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:disabled:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:disabled:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:disabled:not(.image-button), .nemo-window .primary-toolbar button:disabled {
   background: none;
+  box-shadow: none;
 }
 
 window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:disabled label, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:disabled:not(.image-button) label, window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:disabled:not(.image-button) label, .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:disabled:not(.image-button) label, .nemo-window .primary-toolbar button:disabled label, window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:disabled, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:disabled:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:disabled:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:disabled:not(.image-button), .nemo-window .primary-toolbar button:disabled {
@@ -2777,8 +2778,7 @@ treeview.check {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked.png"), url("assets/checkbox-unchecked@2.png"));
 }
 
-.osd check,
-filechooser actionbar check {
+.osd check {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked-dark.png"), url("assets/checkbox-unchecked-dark@2.png"));
 }
 
@@ -2792,8 +2792,7 @@ treeview.check:disabled {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked-insensitive.png"), url("assets/checkbox-unchecked-insensitive@2.png"));
 }
 
-.osd check:disabled,
-filechooser actionbar check:disabled {
+.osd check:disabled {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-unchecked-insensitive-dark.png"), url("assets/checkbox-unchecked-insensitive-dark@2.png"));
 }
 
@@ -2807,8 +2806,7 @@ treeview.check:indeterminate {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed.png"), url("assets/checkbox-mixed@2.png"));
 }
 
-.osd check:indeterminate,
-filechooser actionbar check:indeterminate {
+.osd check:indeterminate {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed-dark.png"), url("assets/checkbox-mixed-dark@2.png"));
 }
 
@@ -2822,11 +2820,7 @@ treeview.check:indeterminate:disabled {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed-insensitive.png"), url("assets/checkbox-mixed-insensitive@2.png"));
 }
 
-.osd check:indeterminate:disabled, .osd label:disabled selection:indeterminate, label:disabled .osd selection:indeterminate,
-filechooser actionbar check:indeterminate:disabled,
-filechooser actionbar label:disabled selection:indeterminate,
-label:disabled filechooser actionbar selection:indeterminate,
-filechooser label:disabled actionbar selection:indeterminate {
+.osd check:indeterminate:disabled, .osd label:disabled selection:indeterminate, label:disabled .osd selection:indeterminate {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-mixed-insensitive-dark.png"), url("assets/checkbox-mixed-insensitive-dark@2.png"));
 }
 
@@ -2840,8 +2834,7 @@ treeview.check:checked {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked.png"), url("assets/checkbox-checked@2.png"));
 }
 
-.osd check:checked,
-filechooser actionbar check:checked {
+.osd check:checked {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked-dark.png"), url("assets/checkbox-checked-dark@2.png"));
 }
 
@@ -2855,11 +2848,7 @@ treeview.check:checked:disabled {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked-insensitive.png"), url("assets/checkbox-checked-insensitive@2.png"));
 }
 
-.osd check:checked:disabled, .osd label:disabled selection:checked, label:disabled .osd selection:checked,
-filechooser actionbar check:checked:disabled,
-filechooser actionbar label:disabled selection:checked,
-label:disabled filechooser actionbar selection:checked,
-filechooser label:disabled actionbar selection:checked {
+.osd check:checked:disabled, .osd label:disabled selection:checked, label:disabled .osd selection:checked {
   -gtk-icon-source: -gtk-scaled(url("assets/checkbox-checked-insensitive-dark.png"), url("assets/checkbox-checked-insensitive-dark@2.png"));
 }
 
@@ -2873,8 +2862,7 @@ treeview.radio {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked.png"), url("assets/radio-unchecked@2.png"));
 }
 
-.osd radio,
-filechooser actionbar radio {
+.osd radio {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked-dark.png"), url("assets/radio-unchecked-dark@2.png"));
 }
 
@@ -2888,8 +2876,7 @@ treeview.radio:disabled {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked-insensitive.png"), url("assets/radio-unchecked-insensitive@2.png"));
 }
 
-.osd radio:disabled,
-filechooser actionbar radio:disabled {
+.osd radio:disabled {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-unchecked-insensitive-dark.png"), url("assets/radio-unchecked-insensitive-dark@2.png"));
 }
 
@@ -2903,8 +2890,7 @@ treeview.radio:indeterminate {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed.png"), url("assets/radio-mixed@2.png"));
 }
 
-.osd radio:indeterminate,
-filechooser actionbar radio:indeterminate {
+.osd radio:indeterminate {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed-dark.png"), url("assets/radio-mixed-dark@2.png"));
 }
 
@@ -2918,11 +2904,7 @@ treeview.radio:indeterminate:disabled {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed-insensitive.png"), url("assets/radio-mixed-insensitive@2.png"));
 }
 
-.osd radio:indeterminate:disabled, .osd label:disabled selection:indeterminate, label:disabled .osd selection:indeterminate,
-filechooser actionbar radio:indeterminate:disabled,
-filechooser actionbar label:disabled selection:indeterminate,
-label:disabled filechooser actionbar selection:indeterminate,
-filechooser label:disabled actionbar selection:indeterminate {
+.osd radio:indeterminate:disabled, .osd label:disabled selection:indeterminate, label:disabled .osd selection:indeterminate {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-mixed-insensitive-dark.png"), url("assets/radio-mixed-insensitive-dark@2.png"));
 }
 
@@ -2936,8 +2918,7 @@ treeview.radio:checked {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-checked.png"), url("assets/radio-checked@2.png"));
 }
 
-.osd radio:checked,
-filechooser actionbar radio:checked {
+.osd radio:checked {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-checked-dark.png"), url("assets/radio-checked-dark@2.png"));
 }
 
@@ -2951,11 +2932,7 @@ treeview.radio:checked:disabled {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-checked-insensitive.png"), url("assets/radio-checked-insensitive@2.png"));
 }
 
-.osd radio:checked:disabled, .osd label:disabled selection:checked, label:disabled .osd selection:checked,
-filechooser actionbar radio:checked:disabled,
-filechooser actionbar label:disabled selection:checked,
-label:disabled filechooser actionbar selection:checked,
-filechooser label:disabled actionbar selection:checked {
+.osd radio:checked:disabled, .osd label:disabled selection:checked, label:disabled .osd selection:checked {
   -gtk-icon-source: -gtk-scaled(url("assets/radio-checked-insensitive-dark.png"), url("assets/radio-checked-insensitive-dark@2.png"));
 }
 
@@ -4800,6 +4777,208 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
   border-bottom-right-radius: 14px;
 }
 
+filechooser paned > separator,
+.nautilus-window paned > separator {
+  border: none;
+  background-color: transparent;
+  background-image: image(#ffffff);
+  background-size: 8px 8px;
+  background-position: left bottom;
+}
+
+filechooser paned > separator:dir(ltr),
+.nautilus-window paned > separator:dir(ltr) {
+  margin-left: -1px;
+}
+
+filechooser paned > separator:dir(rtl),
+.nautilus-window paned > separator:dir(rtl) {
+  margin-right: -1px;
+}
+
+.nautilus-window paned > separator {
+  background-image: none;
+  background-size: 0 0;
+  min-width: 0;
+  min-height: 0;
+}
+
+filechooser placessidebar.sidebar.frame {
+  border-right: 1px solid #d6d6d6;
+}
+
+
+.nautilus-window.csd.background,
+.nautilus-window placessidebar list {
+  background-color: transparent;
+}
+
+
+.nautilus-window.csd.background,
+.nautilus-window placessidebar {
+  background-color: transparent;
+}
+
+
+.nautilus-window placessidebar.sidebar {
+  border: none;
+  background-color: transparent;
+  min-width: 200px;
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row {
+  color: #363636;
+  background-color: transparent;
+  transition: background-image 0;
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row .sidebar-icon {
+  color: #0860f2;
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup,
+.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup label,
+.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup image,
+.nautilus-window placessidebar.sidebar row.sidebar-row:disabled,
+.nautilus-window placessidebar.sidebar label:disabled selection.sidebar-row,
+label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row,
+.nautilus-window placessidebar.sidebar row.sidebar-row:disabled label,
+.nautilus-window placessidebar.sidebar label:disabled selection.sidebar-row label,
+label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row label,
+.nautilus-window placessidebar.sidebar row.sidebar-row:disabled image,
+.nautilus-window placessidebar.sidebar label:disabled selection.sidebar-row image,
+label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row image {
+  color: rgba(54, 54, 54, 0.4);
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row:backdrop {
+  opacity: 0.85;
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row:hover {
+  transition: background-image 0;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: left center;
+  background-size: 200px 28px;
+  background-image: -gtk-scaled(url("assets/sidebar-view-hover.png"), url("assets/sidebar-view-hover@2.png"));
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row:active,
+.nautilus-window placessidebar.sidebar row.sidebar-row:active:hover {
+  transition: background-image ease-out 200ms;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: left center;
+  background-size: 200px 28px;
+  background-image: -gtk-scaled(url("assets/sidebar-view-active.png"), url("assets/sidebar-view-active@2.png"));
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup:selected,
+.nautilus-window placessidebar.sidebar row.sidebar-row:selected,
+.nautilus-window placessidebar.sidebar row.sidebar-row:selected:hover {
+  color: #242424;
+  transition: background-image ease-out 200ms;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 200px 28px;
+  background-color: transparent;
+  background-image: -gtk-scaled(url("assets/sidebar-view-checked.png"), url("assets/sidebar-view-checked@2.png"));
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup:selected,
+.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup:selected label,
+.nautilus-window placessidebar.sidebar row.sidebar-row:selected,
+.nautilus-window placessidebar.sidebar row.sidebar-row:selected label,
+.nautilus-window placessidebar.sidebar row.sidebar-row:selected:hover,
+.nautilus-window placessidebar.sidebar row.sidebar-row:selected:hover label {
+  color: #242424;
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row.sidebar-new-bookmark-row {
+  color: #0860f2;
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row.sidebar-new-bookmark-row .sidebar-icon {
+  color: inherit;
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled),
+.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled) label,
+.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled) .sidebar-icon {
+  color: #363636;
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected {
+  background-color: #F08437;
+}
+
+
+.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected,
+.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected label,
+.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected .sidebar-icon {
+  color: #363636;
+}
+
+
+.nautilus-window placessidebar.sidebar separator {
+  background-color: transparent;
+}
+
+
+.nautilus-window.maximized headerbar,
+.nautilus-window.maximized placessidebar {
+  border-radius: 0;
+}
+
+
+.nautilus-window placesview actionbar.background {
+  border-radius: 0 0 14px 0;
+}
+
+filechooser placessidebar.sidebar {
+  border: none;
+  background-color: transparent;
+}
+
+filechooser actionbar {
+  color: #363636;
+  background-color: rgba(240, 240, 240, 0.94);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+filechooser actionbar label, filechooser actionbar combobox {
+  color: #363636;
+}
+
+filechooser box.vertical > paned > separator {
+  border: none;
+  background-color: transparent;
+  background-image: image(#ffffff);
+  background-size: 8px 8px;
+  background-position: left bottom;
+}
+
+filechooser box.vertical > paned > separator:dir(ltr) {
+  margin-left: -1px;
+}
+
+filechooser box.vertical > paned > separator:dir(rtl) {
+  margin-right: -1px;
+}
+
 .nautilus-window headerbar .path-bar-box {
   color: transparent;
   background: none;
@@ -4856,18 +5035,18 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
 
 .nautilus-window.background.csd {
   background-color: transparent;
-  background-image: linear-gradient(90deg, rgba(240, 240, 240, 0.94) 0%, rgba(240, 240, 240, 0.94) 180px, rgba(202, 202, 202, 0.94) 181px, #ffffff 181px, #ffffff 100%);
+  background-image: linear-gradient(90deg, rgba(240, 240, 240, 0.94) 0%, rgba(240, 240, 240, 0.94) 200px, rgba(202, 202, 202, 0.94) 201px, #ffffff 201px, #ffffff 100%);
 }
 
 .nautilus-window.background.csd > headerbar.titlebar {
   border: none;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
   background: none;
-  background-image: linear-gradient(90deg, rgba(240, 240, 240, 0.94) 0%, rgba(240, 240, 240, 0.94) 180px, rgba(202, 202, 202, 0.94) 181px, #ffffff 181px, #ffffff 100%);
+  background-image: linear-gradient(90deg, rgba(240, 240, 240, 0.94) 0%, rgba(240, 240, 240, 0.94) 200px, rgba(202, 202, 202, 0.94) 201px, #ffffff 201px, #ffffff 100%);
 }
 
 .nautilus-window.background.csd > headerbar.titlebar > .linked.raised > button:first-child {
-  margin-left: 108px;
+  margin-left: 128px;
 }
 
 .nautilus-window notebook {
@@ -6542,6 +6721,25 @@ panel-toplevel.background na-tray-applet {
   border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+.caja-side-pane, .caja-side-pane text, .caja-side-pane treeview,
+.caja-side-pane > notebook > stack > widget > box {
+  color: #363636;
+  caret-color: #363636;
+  background-color: #f0f0f0;
+}
+
+.caja-side-pane > box button:not(:active):not(:checked) {
+  color: #363636;
+}
+
+.caja-side-pane .frame {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.caja-side-pane junction {
+  background-color: rgba(227, 227, 227, 0.94);
+}
+
 .caja-navigation-window .primary-toolbar {
   background-color: #ffffff;
 }
@@ -6815,6 +7013,7 @@ window.thunar toolbar#location-toolbar .raven .raven-header:not(.top) button:dis
 window.thunar toolbar#location-toolbar label:disabled selection.flat,
 label:disabled window.thunar toolbar#location-toolbar selection.flat {
   background: none;
+  box-shadow: none;
 }
 
 window.thunar toolbar#location-toolbar button.path-bar-button:disabled label, window.thunar toolbar#location-toolbar label:disabled selection.path-bar-button label, label:disabled window.thunar toolbar#location-toolbar selection.path-bar-button label, window.thunar toolbar#location-toolbar button.path-bar-button:disabled, window.thunar toolbar#location-toolbar label:disabled selection.path-bar-button, label:disabled window.thunar toolbar#location-toolbar selection.path-bar-button,
@@ -7525,7 +7724,7 @@ menubar.-vala-panel-background > menuitem:disabled {
 .menubar.panel popover .linked > button:disabled {
   border-color: rgba(0, 0, 0, 0.12);
   background-color: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.03), 0 1px 2px 0 rgba(0, 0, 0, 0.01);
+  box-shadow: none;
 }
 
 .menubar.panel popover .linked > button:disabled label, .menubar.panel popover .linked > button:disabled {
@@ -8295,7 +8494,7 @@ GtkListBox .h4 {
 #content_frame button:disabled {
   border-color: rgba(0, 0, 0, 0.12);
   background-color: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.03), 0 1px 2px 0 rgba(0, 0, 0, 0.01);
+  box-shadow: none;
 }
 
 #content_frame button:disabled label, #content_frame button:disabled {
@@ -8416,353 +8615,6 @@ GtkListBox .h4 {
   font-weight: bold;
 }
 
-filechooser paned > separator,
-.nautilus-window paned > separator {
-  border: none;
-  background-color: transparent;
-  background-image: image(#ffffff);
-  background-size: 8px 8px;
-  background-position: left bottom;
-}
-
-filechooser paned > separator:dir(ltr),
-.nautilus-window paned > separator:dir(ltr) {
-  margin-left: -1px;
-}
-
-filechooser paned > separator:dir(rtl),
-.nautilus-window paned > separator:dir(rtl) {
-  margin-right: -1px;
-}
-
-.nautilus-window paned > separator {
-  background-image: none;
-  background-size: 0 0;
-  min-width: 0;
-  min-height: 0;
-}
-
-filechooser placessidebar.sidebar.frame {
-  border-right: 1px solid #d6d6d6;
-}
-
-
-filechooser.csd.background,
-filechooser placessidebar list,
-.nautilus-window.csd.background,
-.nautilus-window placessidebar list {
-  background-color: transparent;
-}
-
-
-filechooser.csd.background,
-filechooser placessidebar,
-.nautilus-window.csd.background,
-.nautilus-window placessidebar {
-  background-color: transparent;
-}
-
-
-filechooser placessidebar.sidebar,
-.nautilus-window placessidebar.sidebar {
-  border: none;
-  background-color: transparent;
-  min-width: 180px;
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row,
-.nautilus-window placessidebar.sidebar row.sidebar-row {
-  color: #363636;
-  background-color: transparent;
-  transition: background-image 0;
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row .sidebar-icon,
-.nautilus-window placessidebar.sidebar row.sidebar-row .sidebar-icon {
-  color: #0860f2;
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row.has-open-popup,
-filechooser placessidebar.sidebar row.sidebar-row.has-open-popup label,
-filechooser placessidebar.sidebar row.sidebar-row.has-open-popup image,
-filechooser placessidebar.sidebar row.sidebar-row:disabled,
-filechooser placessidebar.sidebar label:disabled selection.sidebar-row,
-label:disabled filechooser placessidebar.sidebar selection.sidebar-row,
-filechooser placessidebar.sidebar row.sidebar-row:disabled label,
-filechooser placessidebar.sidebar label:disabled selection.sidebar-row label,
-label:disabled filechooser placessidebar.sidebar selection.sidebar-row label,
-filechooser placessidebar.sidebar row.sidebar-row:disabled image,
-filechooser placessidebar.sidebar label:disabled selection.sidebar-row image,
-label:disabled filechooser placessidebar.sidebar selection.sidebar-row image,
-.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup,
-.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup label,
-.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup image,
-.nautilus-window placessidebar.sidebar row.sidebar-row:disabled,
-.nautilus-window placessidebar.sidebar label:disabled selection.sidebar-row,
-label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row,
-.nautilus-window placessidebar.sidebar row.sidebar-row:disabled label,
-.nautilus-window placessidebar.sidebar label:disabled selection.sidebar-row label,
-label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row label,
-.nautilus-window placessidebar.sidebar row.sidebar-row:disabled image,
-.nautilus-window placessidebar.sidebar label:disabled selection.sidebar-row image,
-label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row image {
-  color: rgba(54, 54, 54, 0.4);
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row:backdrop,
-.nautilus-window placessidebar.sidebar row.sidebar-row:backdrop {
-  opacity: 0.85;
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row:hover,
-.nautilus-window placessidebar.sidebar row.sidebar-row:hover {
-  transition: background-image 0;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-position: left center;
-  background-size: 180px 28px;
-  background-image: -gtk-scaled(url("assets/sidebar-view-hover.png"), url("assets/sidebar-view-hover@2.png"));
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row:active,
-filechooser placessidebar.sidebar row.sidebar-row:active:hover,
-.nautilus-window placessidebar.sidebar row.sidebar-row:active,
-.nautilus-window placessidebar.sidebar row.sidebar-row:active:hover {
-  transition: background-image ease-out 200ms;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-position: left center;
-  background-size: 180px 28px;
-  background-image: -gtk-scaled(url("assets/sidebar-view-active.png"), url("assets/sidebar-view-active@2.png"));
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row.has-open-popup:selected,
-filechooser placessidebar.sidebar row.sidebar-row:selected,
-filechooser placessidebar.sidebar row.sidebar-row:selected:hover,
-.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup:selected,
-.nautilus-window placessidebar.sidebar row.sidebar-row:selected,
-.nautilus-window placessidebar.sidebar row.sidebar-row:selected:hover {
-  color: #242424;
-  transition: background-image ease-out 200ms;
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: 180px 28px;
-  background-color: transparent;
-  background-image: -gtk-scaled(url("assets/sidebar-view-checked.png"), url("assets/sidebar-view-checked@2.png"));
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row.has-open-popup:selected,
-filechooser placessidebar.sidebar row.sidebar-row.has-open-popup:selected label,
-filechooser placessidebar.sidebar row.sidebar-row:selected,
-filechooser placessidebar.sidebar row.sidebar-row:selected label,
-filechooser placessidebar.sidebar row.sidebar-row:selected:hover,
-filechooser placessidebar.sidebar row.sidebar-row:selected:hover label,
-.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup:selected,
-.nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup:selected label,
-.nautilus-window placessidebar.sidebar row.sidebar-row:selected,
-.nautilus-window placessidebar.sidebar row.sidebar-row:selected label,
-.nautilus-window placessidebar.sidebar row.sidebar-row:selected:hover,
-.nautilus-window placessidebar.sidebar row.sidebar-row:selected:hover label {
-  color: #242424;
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row.sidebar-new-bookmark-row,
-.nautilus-window placessidebar.sidebar row.sidebar-row.sidebar-new-bookmark-row {
-  color: #0860f2;
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row.sidebar-new-bookmark-row .sidebar-icon,
-.nautilus-window placessidebar.sidebar row.sidebar-row.sidebar-new-bookmark-row .sidebar-icon {
-  color: inherit;
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled),
-filechooser placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled) label,
-filechooser placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled) .sidebar-icon,
-.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled),
-.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled) label,
-.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled) .sidebar-icon {
-  color: #363636;
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected,
-.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected {
-  background-color: #F08437;
-}
-
-
-filechooser placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected,
-filechooser placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected label,
-filechooser placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected .sidebar-icon,
-.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected,
-.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected label,
-.nautilus-window placessidebar.sidebar row.sidebar-row:drop(active):not(:disabled):selected .sidebar-icon {
-  color: #363636;
-}
-
-
-filechooser placessidebar.sidebar separator,
-.nautilus-window placessidebar.sidebar separator {
-  background-color: transparent;
-}
-
-
-filechooser.maximized headerbar,
-filechooser.maximized placessidebar,
-.nautilus-window.maximized headerbar,
-.nautilus-window.maximized placessidebar {
-  border-radius: 0;
-}
-
-
-filechooser placesview actionbar.background,
-.nautilus-window placesview actionbar.background {
-  border-radius: 0 0 14px 0;
-}
-
-filechooser actionbar {
-  color: #363636;
-  background-color: rgba(240, 240, 240, 0.94);
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-filechooser actionbar label, filechooser actionbar combobox {
-  color: #363636;
-}
-
-filechooser box#pathbarbox.view stack entry.search, filechooser box#pathbarbox.view stack entry.search:focus {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-filechooser box#pathbarbox.view stack entry.search:disabled, filechooser box#pathbarbox.view stack label:disabled selection.search, label:disabled filechooser box#pathbarbox.view stack selection.search {
-  background-color: rgba(0, 0, 0, 0.55);
-}
-
-filechooser box.vertical > paned > separator {
-  border: none;
-  background-color: transparent;
-  background-image: image(#ffffff);
-  background-size: 8px 8px;
-  background-position: left bottom;
-}
-
-filechooser box.vertical > paned > separator:dir(ltr) {
-  margin-left: -1px;
-}
-
-filechooser box.vertical > paned > separator:dir(rtl) {
-  margin-right: -1px;
-}
-
-.caja-side-pane, .caja-side-pane text, .caja-side-pane treeview,
-.caja-side-pane > notebook > stack > widget > box {
-  color: #363636;
-  caret-color: #363636;
-  background-color: #f0f0f0;
-}
-
-.caja-side-pane > box button:not(:active):not(:checked) {
-  color: #363636;
-}
-
-.caja-side-pane .frame {
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-.caja-side-pane junction {
-  background-color: rgba(227, 227, 227, 0.94);
-}
-
-filechooser actionbar button {
-  color: #242424;
-  border-color: rgba(0, 0, 0, 0.12);
-  background-color: white;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.03), 0 1px 2px 0 rgba(0, 0, 0, 0.01);
-}
-
-filechooser actionbar button:hover {
-  color: #0b0b0b;
-  border-color: rgba(0, 0, 0, 0.12);
-  background-color: #f7f7f7;
-  box-shadow: none;
-}
-
-filechooser actionbar button:active, filechooser actionbar button:checked {
-  color: white;
-  background-color: #0860f2;
-  border-color: #0860f2;
-  box-shadow: none;
-}
-
-filechooser actionbar entry {
-  color: #363636;
-  background-color: rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 0 0 2px transparent;
-}
-
-filechooser actionbar entry:focus {
-  color: #363636;
-  background-color: rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 0 0 2px rgba(103, 164, 233, 0.75);
-  transition-duration: 300ms;
-}
-
-
-filechooser placessidebar.sidebar scrollbar,
-.nautilus-window placessidebar.sidebar scrollbar, .caja-side-pane scrollbar {
-  border-color: transparent;
-}
-
-
-filechooser placessidebar.sidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider,
-.nautilus-window placessidebar.sidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider, .caja-side-pane scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider {
-  background-color: rgba(92, 92, 92, 0.35);
-  border: none;
-}
-
-
-filechooser placessidebar.sidebar scrollbar slider,
-.nautilus-window placessidebar.sidebar scrollbar slider, .caja-side-pane scrollbar slider {
-  min-width: 4px;
-  background-color: rgba(92, 92, 92, 0.7);
-}
-
-
-filechooser placessidebar.sidebar scrollbar slider:hover,
-.nautilus-window placessidebar.sidebar scrollbar slider:hover, .caja-side-pane scrollbar slider:hover {
-  background-color: dimgray;
-}
-
-
-filechooser placessidebar.sidebar scrollbar slider:hover:active,
-.nautilus-window placessidebar.sidebar scrollbar slider:hover:active, .caja-side-pane scrollbar slider:hover:active {
-  background-color: #686868;
-}
-
-
-filechooser placessidebar.sidebar scrollbar slider:disabled,
-.nautilus-window placessidebar.sidebar scrollbar slider:disabled, .caja-side-pane scrollbar slider:disabled {
-  background-color: transparent;
-}
-
-
-filechooser placessidebar.sidebar scrollbar trough,
-.nautilus-window placessidebar.sidebar scrollbar trough, .caja-side-pane scrollbar trough {
-  background-color: transparent;
-}
-
 /******************
  * Budgie Desktop *
  ******************/
@@ -8856,6 +8708,7 @@ window.budgie-switcher-window .drop-shadow button, .drop-shadow button, .workspa
 
 .raven .raven-header:not(.top) button:disabled, .raven stackswitcher.linked > button:disabled, .raven button:disabled {
   background: none;
+  box-shadow: none;
 }
 
 .raven .raven-header:not(.top) button:disabled label, .raven button:disabled label, .raven .raven-header:not(.top) button:disabled, .raven stackswitcher.linked > button:disabled, .raven button:disabled {
