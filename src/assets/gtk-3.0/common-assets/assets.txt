@@ -78,10 +78,3 @@ toggle-on
 toggle-off
 toggle-on-disabled
 toggle-off-disabled
-
-sidebar-view-hover
-sidebar-view-active
-sidebar-view-checked
-sidebar-view-hover-dark
-sidebar-view-active-dark
-sidebar-view-checked-dark

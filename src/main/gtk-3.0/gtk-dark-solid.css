@@ -4845,7 +4845,7 @@ label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row imag
   background-color: transparent;
   background-position: left center;
   background-size: 200px 28px;
-  background-image: -gtk-scaled(url("assets/sidebar-view-hover-dark.png"), url("assets/sidebar-view-hover-dark@2.png"));
+  background-image: -gtk-scaled(url("assets/sidebar-view-hover-200px-dark.png"), url("assets/sidebar-view-hover-200px-dark@2.png"));
 }
 
 
@@ -4856,7 +4856,7 @@ label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row imag
   background-color: transparent;
   background-position: left center;
   background-size: 200px 28px;
-  background-image: -gtk-scaled(url("assets/sidebar-view-active-dark.png"), url("assets/sidebar-view-active-dark@2.png"));
+  background-image: -gtk-scaled(url("assets/sidebar-view-active-200px-dark.png"), url("assets/sidebar-view-active-200px-dark@2.png"));
 }
 
 
@@ -4869,7 +4869,7 @@ label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row imag
   background-position: left center;
   background-size: 200px 28px;
   background-color: transparent;
-  background-image: -gtk-scaled(url("assets/sidebar-view-checked-dark.png"), url("assets/sidebar-view-checked-dark@2.png"));
+  background-image: -gtk-scaled(url("assets/sidebar-view-checked-200px-dark.png"), url("assets/sidebar-view-checked-200px-dark@2.png"));
 }
 
 

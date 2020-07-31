@@ -126,7 +126,8 @@ filechooser placessidebar.sidebar.frame { border-right: 1px solid if($variant=='
         background-color: transparent;
         background-position: left center;
         background-size: $nautilus_sidebar_size 28px;
-        background-image: -gtk-scaled(url("assets/sidebar-view-hover#{$asset_suffix}.png"), url("assets/sidebar-view-hover#{$asset_suffix}@2.png"));
+        background-image: -gtk-scaled(url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                      url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
       }
 
       &:active, &:active:hover {
@@ -135,7 +136,8 @@ filechooser placessidebar.sidebar.frame { border-right: 1px solid if($variant=='
         background-color: transparent;
         background-position: left center;
         background-size: $nautilus_sidebar_size 28px;
-        background-image: -gtk-scaled(url("assets/sidebar-view-active#{$asset_suffix}.png"), url("assets/sidebar-view-active#{$asset_suffix}@2.png"));
+        background-image: -gtk-scaled(url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                      url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
       }
 
       &:selected.has-open-popup,
@@ -146,7 +148,8 @@ filechooser placessidebar.sidebar.frame { border-right: 1px solid if($variant=='
         background-position: left center;
         background-size: $nautilus_sidebar_size 28px;
         background-color: transparent;
-        background-image: -gtk-scaled(url("assets/sidebar-view-checked#{$asset_suffix}.png"), url("assets/sidebar-view-checked#{$asset_suffix}@2.png"));
+        background-image: -gtk-scaled(url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                      url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
 
         &, label { color: $fg_color; }
       }
