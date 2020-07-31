@@ -81,15 +81,14 @@ Usage:  `./Install`  **[OPTIONS...]**
 [WhiteSur-kde](https://github.com/vinceliuice/WhiteSur-kde)
 
 ### Icon theme
-[McMojave-circle](https://github.com/vinceliuice/McMojave-circle)
+[WhiteSur-icon](https://github.com/vinceliuice/WhiteSur-icon-theme)
 
 ### Wallpaper
-[WhiteSur default wallpapers](https://github.com/vinceliuice/Mojave-gtk-theme/blob/images/macOS_Mojave_Wallpapers.tar.xz)
+[WhiteSur wallpaper](https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper)
 
 ### Firefox theme
 [Intall Firefox theme](src/other/firefox)
+![firefox](src/other/firefox/preview.png)
 
 ## Preview
-
 ![gtk](preview-gtk.png)
-![shell](preview-shell.png)

@@ -5905,6 +5905,16 @@ notebook.main-notebook > header.top > tabs > tab:first-child {
   border-left-width: 0;
 }
 
+#weather-page,
+#weekly-forecast-frame {
+  border-bottom-right-radius: 14px;
+}
+
+#weather-page-content-view {
+  border-bottom-right-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
 stack.view.polari-entry-area {
   background-color: #333333;
   border-top: 1px solid rgba(255, 255, 255, 0.12);

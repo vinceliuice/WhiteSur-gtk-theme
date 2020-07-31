@@ -1489,6 +1489,18 @@ notebook.main-notebook {
 }
 
 //
+// Gnome Weather
+#weather-page,
+#weekly-forecast-frame {
+	border-bottom-right-radius: $wm_radius;
+}
+
+#weather-page-content-view {
+	border-bottom-right-radius: $wm_radius;
+	border-bottom-left-radius: $wm_radius;
+}
+
+//
 // Polari
 //
 stack.view.polari-entry-area {
