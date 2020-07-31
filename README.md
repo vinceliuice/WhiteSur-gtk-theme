@@ -87,10 +87,7 @@ If you want to change the nautilus sidebar width size, then you can run:
 | Kde theme           | [WhiteSur-kde](https://github.com/vinceliuice/WhiteSur-kde)| ![kde](pictures/whitesur-kde-theme.png) |
 | Icon theme          | [WhiteSur-icon](https://github.com/vinceliuice/WhiteSur-icon-theme)| ![icon](pictures/whitesur-icon-theme.png) |
 | Wallpaper           | [WhiteSur wallpaper](https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper)| ![wallpaper](pictures/whitesur-wallpaper.png) |
+| Firefox theme       | [Firefox theme](src/other/firefox)| ![firefox](pictures/firefox-theme.png) |
 
-### Firefox theme
-[Intall Firefox theme](src/other/firefox)
-![firefox](src/other/firefox/preview.png)
-
-## Preview
+## Theme Preview
 ![gtk](pictures/preview-gtk.png)
