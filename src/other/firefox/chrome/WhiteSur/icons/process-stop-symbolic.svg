@@ -1,0 +1,6 @@
+<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(.5 -.5)" fill="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.1483">
+  <rect transform="rotate(45)" x="3.8137" y=".20711" width="15" height="1" ry=".5"/>
+  <rect transform="rotate(135)" x="-6.7929" y="-11.814" width="15" height="1" ry=".5"/>
+ </g>
+</svg>

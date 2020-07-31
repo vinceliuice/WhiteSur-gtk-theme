@@ -1,0 +1,8 @@
+<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ <g class="ColorScheme-Text" color="#363636" fill="#333">
+  <path d="m8 0a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8zm0 1a7 7 0 0 1 7 7 7 7 0 0 1-7 7 7 7 0 0 1-7-7 7 7 0 0 1 7-7z"/>
+  <circle cx="4" cy="8" r="1"/>
+  <circle cx="8" cy="8" r="1"/>
+  <circle cx="12" cy="8" r="1"/>
+ </g>
+</svg>

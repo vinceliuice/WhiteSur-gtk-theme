@@ -1,0 +1,10 @@
+/* Rounded title buttons (headerbar window controls) */
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+:root[tabsintitlebar] #titlebar .titlebar-button {
+	border-radius: 100% !important;
+	height: 30px !important;
+	width: 30px !important;
+	margin: 2px 5px !important;
+}

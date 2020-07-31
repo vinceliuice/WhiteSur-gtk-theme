@@ -1,0 +1,49 @@
+/* Find bar  */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+findbar {
+    position: relative;
+}
+
+.findbar-container {
+	padding: 6px !important;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	flex-direction: row;
+	width: calc(100% - 42px);
+}
+
+hbox[anonid="findbar-textbox-wrapper"] {
+	position: absolute;
+	right: calc(50vw - 36px);
+	transform: translate(50%, 0);
+	display: flex !important;
+}
+
+.findbar-find-status, .found-matches {
+	order: -1;
+	padding: 7px 0;
+}
+.findbar-find-status {
+	padding-left: 6px;
+	flex: 1;
+}
+
+.findbar-closebutton {
+	margin: 6px 6px 6px 0 !important;
+	padding: 0 0 !important;
+	border-radius: 100px !important;
+}
+
+@media (max-width: 1100px) {
+	hbox[anonid="findbar-textbox-wrapper"] {
+		position: relative;
+		right: 0;
+		transform: none;
+	}
+	.findbar-find-status, .found-matches {
+		order: 0;
+	}
+}

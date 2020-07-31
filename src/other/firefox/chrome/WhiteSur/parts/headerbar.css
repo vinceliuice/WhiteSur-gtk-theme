@@ -1,0 +1,110 @@
+/* Header bar */
+@import "headerbar-urlbar.css";
+@import "headerbar-private-urlbar.css";
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Headerbar */
+#nav-bar {
+	padding: 8px 16px !important;
+}
+
+/* Headerbar CSD colors */
+:root[tabsintitlebar] #nav-bar {
+	background: var(--gnome-headerbar-background) !important;
+	border: none !important;
+	border-bottom: none !important;
+	box-shadow: var(--gnome-headerbar-box-shadow) !important;
+}
+:root[tabsintitlebar] #nav-bar:-moz-window-inactive {
+	background: var(--gnome-inactive-headerbar-background) !important;
+	box-shadow: var(--gnome-inactive-headerbar-box-shadow) !important;
+}
+
+/* Headerbar buttons */
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton) {
+	border: none !important;
+	box-shadow: none !important;
+	background: none !important;
+	-moz-appearance: none !important;
+	border-radius: 8px !important;
+	padding: 0 4px !important;
+	min-height: 28px !important;
+	min-width: 28px !important;
+	color: var(--gnome-toolbar-color) !important;
+	transition: background 200ms;
+}
+
+/* Hover headerbar buttons */
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([open]):not([disabled]):not([checked]):hover {
+	outline: 0 !important;
+	background: var(--gnome-headerbar-button-hover-background) !important;
+}
+
+/* Active headerbar buttons */
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([disabled]):not(#hack):active,
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.subviewbutton):not([disabled])[open],
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([disabled])[checked] {
+	background: var(--gnome-headerbar-button-active-background) !important;
+}
+
+/* Disabled headerbar buttons */
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton)[disabled] {
+}
+
+/* Inactive window buttons */
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):-moz-window-inactive {
+}
+
+/* Buttons with margins */
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton) {
+	margin: 0 2px !important;
+}
+
+#nav-bar #back-button:not(#hack),
+#nav-bar #forward-button:not(#hack) {
+	padding: 0 4px !important;
+	width: 34px !important;
+	min-width: 34px !important;
+}
+
+#nav-bar #forward-button:not(#hack) {
+	margin-left: 0 !important;
+}
+
+#nav-bar #back-button:not(#hack) {
+	margin-right: 1px !important;
+}
+
+/* Headerbar entries */
+#nav-bar #searchbar,
+#urlbar #urlbar-input-container {
+	-moz-appearance: none !important;
+	background: var(--gnome-urlbar-background) !important;
+	border: none !important;
+	box-shadow: none !important;
+	border-radius: 8px !important;
+	color: var(--gnome-urlbar-color) !important;
+	padding: 0 6px !important;
+	height: 32px !important;
+	max-height: 32px !important;
+	transition: box-shadow 200ms;
+}
+
+#nav-bar #searchbar:hover,
+#urlbar #urlbar-input-container:hover {
+	box-shadow: inset 0 0 0 1px var(--gnome-hover-urlbar-border-color) !important;
+	transition-duration: 100ms;
+}
+
+#urlbar[breakout][breakout-extend] #urlbar-input-container,
+#urlbar[breakout][breakout-extend] #urlbar-input-container:hover {
+	background: none !important;
+	box-shadow: none !important;
+	padding: 0 6px !important;
+}
+
+#nav-bar #searchbar:focus-within {
+	border: none !important;
+	background: var(--gnome-urlbar-background) !important;
+	box-shadow: inset 0 0 0 2px var(--gnome-focused-urlbar-highlight-color) !important;
+}
