@@ -279,45 +279,53 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 }
 
 #tracking-protection-icon {
-    list-style-image: url("../icons/tracking-protection.svg") !important;
+	list-style-image: url("../icons/tracking-protection.svg") !important;
 }
 
 #identity-icon {
-    list-style-image: url("../icons/folder-locked-symbolic.svg") !important;
+	list-style-image: url("../icons/folder-locked-symbolic.svg") !important;
 }
 
 #pageActionButton, .share-more-button {
-    list-style-image: url("../icons/page-action.svg") !important;
+	list-style-image: url("../icons/page-action.svg") !important;
 }
 
 #pocket-button, #pageAction-panel-pocket {
-    list-style-image: url("../icons/save-to-pocket.svg") !important;
+	list-style-image: url("../icons/save-to-pocket.svg") !important;
 }
 
 #star-button {
-    list-style-image: url("../icons/star-symbolic.svg") !important;
+	list-style-image: url("../icons/star-symbolic.svg") !important;
 }
 
 #star-button[starred] {
-    list-style-image: url("../icons/starred-symbolic.svg") !important;
+	list-style-image: url("../icons/starred-symbolic.svg") !important;
 }
 
 #plugins-notification-icon:not(.plugin-blocked)[extraAttr="inactive"] > .plugin-icon {
-    fill-opacity: 0.25;
-    list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
+	fill-opacity: 0.25;
+	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
 }
 
 #plugins-notification-icon:not(.plugin-blocked)[extraAttr="active"] > .plugin-icon {
-    fill-opacity: 1;
-    list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
+	fill-opacity: 1;
+	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
 }
 
 /* #plugin-icon-badge {
     list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
 } */
 
+#reader-mode-button {
+	list-style-image: url("../icons/reader-mode.svg") !important;
+}
+
+#permissions-granted-icon {
+	list-style-image: url("../icons/permissions-granted.svg") !important;
+}
+
 .bookmark-item[container] {
-    list-style-image: url("../icons/folder-symbolic.svg") !important;
+	list-style-image: url("../icons/folder-symbolic.svg") !important;
 }
 
 /* Invert icons color in dark variant */
