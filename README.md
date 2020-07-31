@@ -35,7 +35,7 @@ ArchLinux:
 Fedora/RedHat distros:
 
     dnf install sassc optipng inkscape glib2-devel
-    
+
 Ubuntu/Mint/Debian distros:
 
     sudo apt install sassc optipng inkscape
@@ -71,11 +71,15 @@ Usage:  `./Install`  **[OPTIONS...]**
 |-c, --color          | Specify theme color variant(s) **[light/dark]** (Default: All variants)|
 |-o, --opacity        | Specify theme opacity variant(s) **[standard/solid]** (Default: All variants)|
 |-a, --alt            | Specify titlebutton variant(s) **[standard/alt]** (Default: All variants)|
-|-s, --small          | Specify titlebutton size variant(s) **[standard/small]** (Default: standard variants)|
+|-s, --size           | Run a dialg to change the nautilus sidebar width size (Default: 200px)|
 |-i, --icon           | activities icon variant(s) **[standard/normal/gnome/ubuntu/arch/manjaro/fedora/debian/void]** (Default: standard variant)|
 |-g, --gdm            | Install GDM theme, you should run this with sudo!|
 |-r, --revert         | revert GDM theme, you should run this with sudo!|
 |-h, --help           | Show this help|
+
+If you want to change the nautilus sidebar width size, then you can run:
+
+    ./install.sh -s
 
 ### Kde theme
 [WhiteSur-kde](https://github.com/vinceliuice/WhiteSur-kde)
