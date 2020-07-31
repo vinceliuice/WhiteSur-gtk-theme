@@ -234,7 +234,7 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 }
 /* Bookmarks menu button */
 #bookmarks-menu-button {
-	list-style-image: url("../icons/starred-symbolic.svg") !important;
+	list-style-image: url("../icons/bookmarks-symbolic.svg") !important;
 }
 /* History button */
 #history-panelmenu {
