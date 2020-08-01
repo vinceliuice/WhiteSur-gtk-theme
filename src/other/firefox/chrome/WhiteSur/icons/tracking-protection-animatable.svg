@@ -1,0 +1,10 @@
+<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style id="current-color-scheme" type="text/css">.ColorScheme-Text { color:#363636; }</style>
+  <linearGradient id="linearGradient845" x1="8.0169" x2="8.0169" y1="14.709" y2="1.3859" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#005ed6" offset="0"/>
+   <stop stop-color="#730aeb" offset="1"/>
+  </linearGradient>
+ </defs>
+ <path d="m8 0.94531c-2.3334 0.77793-4.6667 1.556-7 2.334v1.7207c1.944e-4 4.6616 2.6974 8.8103 6.7246 9.9609l0.27539 0.078124 0.27539-0.078124c4.0272-1.1507 6.7244-5.2994 6.7246-9.9609v-1.7207zm0 1.0547 6 2v1c-1.78e-4 4.2749-2.4797 7.9941-6 9-3.5203-1.0059-5.9998-4.7251-6-9v-1zm0 1-5 1.666v0.83398c1.294e-4 3.5624 2.0664 6.6618 5 7.5z" fill="url(#linearGradient845)" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+</svg>

@@ -97,16 +97,18 @@
 
   @if $t == normal {
     background-color: $bc;
-    border-radius: $mn_radius;
-    box-shadow: inset 0 0 0 2px transparent;
+    border-radius: 100px;
+    border: 2px solid transparent;
+    box-shadow: none;
   }
 
   @if $t == hover {
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05), inset 0 0 0 2px transparent;
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05);
   }
 
   @if $t == focus {
-    box-shadow: inset 0 0 0 2px lighten($fc, 15%);
+    border: 2px solid lighten($fc, 15%);
+    box-shadow: none;
   }
 
   @if $t == insensitive {

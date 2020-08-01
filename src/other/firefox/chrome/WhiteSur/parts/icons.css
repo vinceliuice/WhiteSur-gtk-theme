@@ -278,10 +278,6 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	animation: none !important;
 }
 
-#tracking-protection-icon {
-	list-style-image: url("../icons/tracking-protection.svg") !important;
-}
-
 #identity-icon {
 	list-style-image: url("../icons/folder-locked-symbolic.svg") !important;
 }
@@ -322,6 +318,14 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 
 #permissions-granted-icon {
 	list-style-image: url("../icons/permissions-granted.svg") !important;
+}
+
+#tracking-protection-icon {
+	list-style-image: url("../icons/tracking-protection.svg") !important;
+}
+
+#tracking-protection-icon-animatable-image {
+	background-image: url("../icons/tracking-protection-animatable.svg") !important;
 }
 
 .bookmark-item[container] {

@@ -88,16 +88,18 @@ StEntry {
   selection-background-color: #0860f2;
   selected-color: rgba(255, 255, 255, 0.85);
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 2px transparent;
+  border-radius: 100px;
+  border: 2px solid transparent;
+  box-shadow: none;
 }
 
 StEntry:hover {
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 0 0 2px transparent;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 StEntry:focus {
-  box-shadow: inset 0 0 0 2px #4d8ef9;
+  border: 2px solid #4d8ef9;
+  box-shadow: none;
 }
 
 StEntry:insensitive {
@@ -2985,13 +2987,15 @@ StWidget.focused .app-well-app-running-dot {
   padding: 4px 8px;
   min-height: 20px;
   background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 2px transparent;
+  border-radius: 100px;
+  border: 2px solid transparent;
+  box-shadow: none;
   border-radius: 9999px;
 }
 
 .login-dialog StEntry:focus {
-  box-shadow: inset 0 0 0 2px #4d8ef9;
+  border: 2px solid #4d8ef9;
+  box-shadow: none;
 }
 
 .login-dialog StEntry:insensitive {
@@ -3714,12 +3718,14 @@ StWidget.focused .app-well-app-running-dot {
   selection-background-color: #0860f2;
   selected-color: white;
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 2px transparent;
+  border-radius: 100px;
+  border: 2px solid transparent;
+  box-shadow: none;
 }
 
 .popup-menu .search-entry:focus {
-  box-shadow: inset 0 0 0 2px #4d8ef9;
+  border: 2px solid #4d8ef9;
+  box-shadow: none;
   color: #dedede;
 }
 
