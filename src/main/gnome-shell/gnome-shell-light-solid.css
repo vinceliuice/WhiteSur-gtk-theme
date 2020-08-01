@@ -1398,7 +1398,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #panel.solid .panel-button {
-  color: white;
+  color: #363636;
   text-shadow: none;
 }
 

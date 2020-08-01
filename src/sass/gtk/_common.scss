@@ -1195,8 +1195,7 @@ actionbar {
 // Headerbars
 //
 
-headerbar,
-%titlebar {
+headerbar {
   min-height: 40px;
   padding: 0 16px;
   color: $header_fg;
@@ -1477,6 +1476,11 @@ headerbar,
     .maximized &,
     .fullscreen & { box-shadow: none; }
   }
+
+  > box.left.horizontal,
+  > box.right.horizontal {
+    padding: 0 6px;
+  }
 }
 
 window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar style for not CSD window
@@ -1514,8 +1518,6 @@ window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar
     min-width: 1px;
     @extend %side_separator;
   }
-
-  // @extend %titlebar;
 }
 
 headerbar, .titlebar {

@@ -408,6 +408,9 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	#tracking-protection-icon,
 	#identity-icon,
 	#pageActionButton,
+	#permissions-granted-icon,
+	#tracking-protection-icon-animatable-image,
+	#reader-mode-button,
 	#star-button:not([starred]),
 	#plugins-notification-icon:not(.plugin-blocked) > .plugin-icon,
 	.bookmark-item[container] .toolbarbutton-icon {

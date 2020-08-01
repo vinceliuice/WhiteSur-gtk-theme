@@ -379,21 +379,12 @@ popover.background.places-menu {
   color: $panel_fg;
   font-weight: 500;
   box-shadow: none;
+  border: none;
   background-clip: padding-box;
 
   &.transparent {
-    background-color: rgba($panel_bg, 0.65);
+    background-color: rgba($panel_bg, 0.1);
     box-shadow: none;
-  }
-
-  .top & {
-    border-bottom: 1px solid if($variant == 'light', $panel_border_color, $header_border);
-    background-image: linear-gradient(0deg, $panel_bottom_color 0%, $panel_top_color 100%);
-  }
-
-  .top &.transparent {
-    background-color: transparent;
-    background-image: linear-gradient(0deg, rgba($panel_bottom_color, 0.85) 0%, rgba($panel_top_color, 0.85) 100%);
   }
 
   .bottom & {
@@ -408,8 +399,6 @@ popover.background.places-menu {
   }
 
   .left & {
-    border: solid $panel_border_color;
-    border-width: 1px 1px 1px 0;
     border-radius: 0 $wm_radius $wm_radius 0;
 
     &.dock-mode {
@@ -419,8 +408,6 @@ popover.background.places-menu {
   }
 
   .right & {
-    border: solid $panel_border_color;
-    border-width: 1px 0 1px 1px;
     border-radius: $wm_radius 0 0 $wm_radius;
 
     &.dock-mode {
@@ -616,7 +603,6 @@ popover.background.places-menu {
                           (left, 3px 6px),
                           (right, 3px 6px) {
   .#{$position} .budgie-panel {
-
     .unpinned button.flat.launcher,
     .pinned button.flat.launcher.running,
     .pinned button.launcher.running.sidebar-button {
@@ -660,7 +646,7 @@ $pos_list: ((top, bottom), (left, right), (right, left));
 
   // Shadows
    .#{$pos} .shadow-block {
-     background-image: linear-gradient(to $b_pos, rgba(black, 0.35) 0%, rgba(black, 0.23) 10%, rgba(black, 0.08) 60%, transparent);
+     background-image: linear-gradient(to $b_pos, rgba(black, 0.35) 0%, rgba(black, 0.15) 15%, rgba(black, 0.03) 60%, transparent);
    }
 }
 
@@ -716,14 +702,29 @@ $raven_opacity: if($variant =='light', 0.85, 0.95);
       color: $raven_fg_color;
       border-bottom: 1px solid $borders_color;
 
-      stackswitcher {
-        padding: 6px 0 0 0;
-        margin: 0;
+      > stackswitcher.linked {
+        padding: 2px;
+        margin: 6px 0 0 0;
+        background-color: rgba($fg_color, 0.05);
+        border-radius: $bt_radius;
 
-        button {
+        > button {
+          border-radius: $bt_radius;
           margin: 0;
           padding: 0 20px;
           min-height: 20px;
+
+          &:hover {
+            background-color: rgba($button_bg, 0.35);
+          }
+
+          &:active, &:checked {
+            background-color: $button_bg;
+          }
+
+          &:checked {
+            box-shadow: 0 1px 2px rgba(black, 0.08), 0 2px 3px rgba(black, 0.05);
+          }
         }
       }
 

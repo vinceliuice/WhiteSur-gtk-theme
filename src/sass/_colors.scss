@@ -118,13 +118,18 @@ $menu_bd:                           if($variant == 'light', rgba(black, 0.05), r
 $panel_bg:                          if($variant == 'light', #f1f1f1, #2a2a2a);
 
 @if $trans == 'true' {
-  $panel_bg:                        if($variant == 'light', rgba(#f1f1f1, 0.25), rgba(#2a2a2a, 0.25));
+  $panel_bg:                        if($variant == 'light', rgba(white, 0.15), rgba(black, 0.15));
 }
 
-$panel_fg:                          white;
+$panel_fg:                          $text_color;
+
+@if $trans == 'true' {
+  $panel_fg:                        white;
+}
+
 $panel_top_color:                   if($variant == 'dark', #333333, #f5f5f5);
 $panel_bottom_color:                if($variant == 'dark', #2a2a2a, #e2e2e2);
-$panel_border_color:                if($variant =='light', rgba(black, 0.2), rgba(black, 0.72));
+$panel_border_color:                if($variant =='light', rgba(white, 0.22), rgba(black, 0.22));
 
 // Entry colors
 $entry_bg:                          if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05));
