@@ -5165,8 +5165,7 @@ filechooser box.vertical > paned > separator:dir(rtl) {
 .nemo-window .primary-toolbar button {
   padding-top: 0;
   padding-bottom: 0;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin: 6px 1px;
 }
 
 .nemo-window .primary-toolbar entry {
@@ -5183,9 +5182,10 @@ filechooser box.vertical > paned > separator:dir(rtl) {
 
 .nemo-window .primary-toolbar .linked.path-bar > button, .nemo-window .primary-toolbar .linked.path-bar > button.image-button {
   min-height: 0;
-  min-width: 20px;
+  min-width: 0;
   padding-top: 0;
   padding-bottom: 0;
+  border-radius: 6px;
 }
 
 .nemo-window .floating-bar {
@@ -9398,10 +9398,6 @@ box:not(.unpinned):not(.pinned) > revealer > button.flat.launcher, .raven .raven
   padding: 0 8px 12px 8px;
 }
 
-.raven stackswitcher.linked > button {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
 .raven .raven-header {
   min-height: 36px;
   padding: 2px;
@@ -9441,7 +9437,6 @@ box:not(.unpinned):not(.pinned) > revealer > button.flat.launcher, .raven .raven
   margin: 0;
   padding: 0 20px;
   min-height: 20px;
-  border: none;
 }
 
 .raven .raven-header.top > stackswitcher.linked > button:hover {

@@ -470,8 +470,7 @@ $disk_space_free: darken($bg_color, 3%);
       @extend %headerbar_buttons;
       padding-top: 0;
       padding-bottom: 0;
-      margin-top: 6px;
-      margin-bottom: 6px;
+      margin: 6px 1px;
     }
 
     entry {
@@ -491,9 +490,10 @@ $disk_space_free: darken($bg_color, 3%);
     .linked.path-bar {
       > button, > button.image-button {
         min-height: 0;
-        min-width: 20px;
+        min-width: 0;
         padding-top: 0;
         padding-bottom: 0;
+        border-radius: $bt_radius;
       }
     }
   }
