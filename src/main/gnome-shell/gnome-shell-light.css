@@ -777,7 +777,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .audio-selection-device:hover, .audio-selection-device:focus {
-  background-color: rgba(0, 0, 0, 0.16);
+  background-color: rgba(0, 0, 0, 0.35);
 }
 
 .audio-selection-device:active {
@@ -1252,7 +1252,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 /* TOP BAR */
 #panel {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.16);
   /* transition from solid to transparent */
   transition-duration: 250ms;
   font-weight: bold;
@@ -1261,7 +1261,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #panel:overview, #panel.unlock-screen, #panel.login-screen, #panel.lock-screen {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.16);
 }
 
 #panel #panelLeft, #panel #panelCenter {
@@ -1270,7 +1270,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 #panel .panel-corner {
   -panel-corner-radius: 0;
-  -panel-corner-background-color: rgba(255, 255, 255, 0.15);
+  -panel-corner-background-color: rgba(255, 255, 255, 0.16);
   -panel-corner-border-width: 2px;
   -panel-corner-border-color: transparent;
 }
@@ -1382,7 +1382,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #panel.solid {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.16);
   /* transition from transparent to solid */
   transition-duration: 250ms;
   background-gradient-direction: none;
@@ -1394,7 +1394,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #panel.solid .panel-corner {
-  -panel-corner-background-color: rgba(255, 255, 255, 0.15);
+  -panel-corner-background-color: rgba(255, 255, 255, 0.16);
 }
 
 #panel.solid .panel-button {
@@ -1428,6 +1428,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 #panel #panelActivities.panel-button > * {
   background-image: url("assets/activities.svg");
   background-position: center top;
+  background-size: 18px 18px;
   width: 24px;
   height: 24px;
   background-color: transparent !important;

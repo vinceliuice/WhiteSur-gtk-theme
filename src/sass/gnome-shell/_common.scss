@@ -1070,13 +1070,13 @@ $popop_menuitem_radius: $wm_radius - 4px;
   }
 
 /* TOP BAR */
-$panel_bg_color: if($variant == 'light', rgba(white, 0.15), rgba(black, 0.15));
-$panel_fg_color: white;
 $panel_shadow: 0 2px 3px rgba(black, 0.03), 0 3px 5px rgba(black, 0.03), 0 5px 10px rgba(black, 0.02);
 $panel_asset_shadow: 0 1px 3px 3px rgba(black, 0.15);
 
+@if $black == 'true' { $panel_fg: $text_color; }
+
 #panel {
-  background-color: $panel_bg_color;
+  background-color: $panel_bg;
   /* transition from solid to transparent */
   transition-duration: 250ms;
   font-weight: bold;
@@ -1087,7 +1087,7 @@ $panel_asset_shadow: 0 1px 3px 3px rgba(black, 0.15);
   &.unlock-screen,
   &.login-screen,
   &.lock-screen {
-    background-color: $panel_bg_color;
+    background-color: $panel_bg;
   }
 
   #panelLeft, #panelCenter { // spacing between activities<>app menu and such
@@ -1096,12 +1096,12 @@ $panel_asset_shadow: 0 1px 3px 3px rgba(black, 0.15);
 
   .panel-corner {
     -panel-corner-radius: $panel-corner-radius;
-    -panel-corner-background-color: $panel_bg_color;
+    -panel-corner-background-color: $panel_bg;
     -panel-corner-border-width: 2px;
     -panel-corner-border-color: transparent;
 
     &:active, &:overview, &:focus {
-      -panel-corner-border-color: $panel_fg_color;
+      -panel-corner-border-color: $panel_fg;
     }
 
     &.lock-screen, &.login-screen, &.unlock-screen {
@@ -1117,7 +1117,7 @@ $panel_asset_shadow: 0 1px 3px 3px rgba(black, 0.15);
     -natural-hpadding: 8px;
     -minimum-hpadding: 8px;
     font-weight: bold;
-    color: $panel_fg_color;
+    color: $panel_fg;
     transition-duration: $longer_duration;
     border-radius: $bt_radius;
     // margin-top: 2px;
@@ -1147,14 +1147,14 @@ $panel_asset_shadow: 0 1px 3px 3px rgba(black, 0.15);
     .popup-menu-arrow { width: 0; height: 0; } // Remove arrow on panel button
 
     &:hover {
-      color: $panel_fg_color;
+      color: $panel_fg;
       background-color: $light_divider_color;
     }
 
     &:active, &:overview, &:focus, &:checked {
       &, &:hover {
         background-color: $light_track_color;
-        color: $panel_fg_color;
+        color: $panel_fg;
         box-shadow: none;
       }
     }
@@ -1163,8 +1163,8 @@ $panel_asset_shadow: 0 1px 3px 3px rgba(black, 0.15);
     .unlock-screen &,
     .login-screen &,
     .lock-screen & {
-      color: $panel_fg_color;
-      &:focus, &:hover, &:active { color: $panel_fg_color; }
+      color: $panel_fg;
+      &:focus, &:hover, &:active { color: $panel_fg; }
     }
   }
 
@@ -1227,10 +1227,10 @@ $panel_asset_shadow: 0 1px 3px 3px rgba(black, 0.15);
 
 // Activities button
 #panel #panelActivities.panel-button {
-
   > * {
     background-image: url("assets/activities.svg");
     background-position: center top;
+    background-size: 18px 18px;
     width: 24px;
     height: 24px;
     background-color: transparent !important;

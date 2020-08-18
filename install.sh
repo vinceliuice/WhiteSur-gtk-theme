@@ -69,6 +69,7 @@ usage() {
   printf "  %-25s%s\n" "-o, --opacity VARIANTS" "Specify theme opacity variant(s) [standard|solid] (Default: All variants)"
   printf "  %-25s%s\n" "-c, --color VARIANTS" "Specify theme color variant(s) [light|dark] (Default: All variants)"
   printf "  %-25s%s\n" "-a, --alt VARIANTS" "Specify theme titilebutton variant(s) [standard|alt] (Default: All variants)"
+  printf "  %-25s%s\n" "-t, --trans VARIANTS" "Run a dialg to change the panel transparency (Default: 85%)"
   printf "  %-25s%s\n" "-s, --size VARIANTS" "Run a dialg to change the nautilus sidebar width size (Default: 200px)"
   printf "  %-25s%s\n" "-i, --icon VARIANTS" "Specify activities icon variant(s) for gnome-shell [standard|normal|gnome|ubuntu|arch|manjaro|fedora|debian|void] (Default: standard variant)"
   printf "  %-25s%s\n" "-g, --gdm" "Install GDM theme, this option need root user authority! please run this with sudo"
@@ -111,10 +112,15 @@ install() {
 
   mkdir -p                                                                              ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/assets/gnome-shell/source-assets/*                                   ${THEME_DIR}/gnome-shell
-  cp -r ${SRC_DIR}/main/gnome-shell/gnome-shell${color}${opacity}.css                   ${THEME_DIR}/gnome-shell/gnome-shell.css
+  cp -r ${SRC_DIR}/main/gnome-shell/gnome-shell${color}${opacity}${alt}.css             ${THEME_DIR}/gnome-shell/gnome-shell.css
   cp -r ${SRC_DIR}/assets/gnome-shell/common-assets                                     ${THEME_DIR}/gnome-shell/assets
   cp -r ${SRC_DIR}/assets/gnome-shell/assets${color}/*.svg                              ${THEME_DIR}/gnome-shell/assets
   cp -r ${SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg                  ${THEME_DIR}/gnome-shell/assets/activities.svg
+
+  if [[ ${alt} == '-alt' || ${opacity} == '-solid' ]] &&  [[ ${color} == '-light' ]]; then
+    cp -r ${SRC_DIR}/assets/gnome-shell/activities-black/activities${icon}.svg          ${THEME_DIR}/gnome-shell/assets/activities.svg
+  fi
+
   cd ${THEME_DIR}/gnome-shell
 
   mkdir -p                                                                              ${THEME_DIR}/gtk-2.0
@@ -256,10 +262,10 @@ install_dialog() {
   fi
 }
 
-run_dialog() {
+run_sidebar_dialog() {
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-    --radiolist "Choose your nautilus sidebar size (default is 200px width): " 15 40 5 \
+    --radiolist "Choose your nautilus sidebar size (default is 200px width):" 15 40 5 \
       1 "200px" on  \
       2 "220px" off \
       3 "240px" off  \
@@ -276,6 +282,37 @@ run_dialog() {
   fi
 }
 
+run_shell_dialog() {
+  if [[ -x /usr/bin/dialog ]]; then
+    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
+    --radiolist "Choose your panel transparency
+                 (default is 85%, 100% is full transparent!):" 20 50 10 \
+      1 "80%" on  \
+      2 "75%" off \
+      3 "70%" off \
+      4 "65%" off \
+      5 "60%" off \
+      6 "55%" off \
+      7 "50%" off \
+      8 "45%" off \
+      9 "40%" off \
+      0 "35%" off --output-fd 1 )
+      case "$tui" in
+        1) panel_trans="0.20" ;;
+        2) panel_trans="0.25" ;;
+        3) panel_trans="0.30" ;;
+        4) panel_trans="0.35" ;;
+        5) panel_trans="0.40" ;;
+        6) panel_trans="0.45" ;;
+        7) panel_trans="0.50" ;;
+        8) panel_trans="0.55" ;;
+        9) panel_trans="0.60" ;;
+        0) panel_trans="0.65" ;;
+        *) operation_canceled ;;
+     esac
+  fi
+}
+
 parse_sass() {
   cd ${REPO_DIR} && ./parse-sass.sh
 }
@@ -287,11 +324,25 @@ change_size() {
   prompt -w "Change nautilus sidebar size ..."
 }
 
-restore_file() {
+change_transparency() {
+  cd ${SRC_DIR}/sass
+  cp -an _colors.scss _colors.scss.bak
+  sed -i "s/0.16/$panel_trans/g" _colors.scss
+  prompt -w "Change panel transparency ..."
+}
+
+restore_applications_file() {
   cd ${SRC_DIR}/sass/gtk
   [[ -f _applications.scss.bak ]] && rm -rf _applications.scss
   mv _applications.scss.bak _applications.scss
-  prompt -w "Restore scss file ..."
+  prompt -w "Restore _applications.scss file ..."
+}
+
+restore_colors_file() {
+  cd ${SRC_DIR}/sass
+  [[ -f _colors.scss.bak ]] && rm -rf _colors.scss
+  mv _colors.scss.bak _colors.scss
+  prompt -w "Restore _colors.scss file ..."
 }
 
 while [[ $# -gt 0 ]]; do
@@ -314,6 +365,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     -s|--size)
       size='true'
+      shift 1
+      ;;
+    -t|--trans)
+      trans='true'
       shift 1
       ;;
     -r|--revert)
@@ -465,11 +520,15 @@ done
 }
 
 if [[ "${size:-}" == 'true' ]]; then
-  install_dialog && run_dialog
+  install_dialog && run_sidebar_dialog
 
   if [[ "$sidebar_size" != '200px' ]]; then
     change_size && parse_sass
   fi
+fi
+
+if [[ "${trans:-}" == 'true' ]]; then
+  install_dialog && run_shell_dialog && change_transparency && parse_sass
 fi
 
 if [[ "${gdm:-}" != 'true' && "${revert:-}" != 'true' ]]; then
@@ -485,7 +544,11 @@ if [[ "${gdm:-}" != 'true' && "${revert:-}" == 'true' && "$UID" -eq "$ROOT_UID" 
 fi
 
 if [[ -f "${SRC_DIR}"/sass/gtk/_applications.scss.bak ]]; then
-  restore_file && parse_sass
+  restore_applications_file && parse_sass
+fi
+
+if [[ -f "${SRC_DIR}"/sass/_colors.scss.bak ]]; then
+  restore_colors_file && parse_sass
 fi
 
 echo
