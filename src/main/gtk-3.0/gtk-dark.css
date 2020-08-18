@@ -4766,7 +4766,7 @@ filechooser paned > separator,
   border: none;
   background-color: transparent;
   background-image: image(#242424);
-  background-size: 8px 8px;
+  background-size: 14px 14px;
   background-position: left bottom;
 }
 
@@ -4781,7 +4781,7 @@ filechooser paned > separator:dir(rtl),
 }
 
 .nautilus-window.background.csd {
-  border-radius: 0 0 16px 16px;
+  border-radius: 0 0 14px 14px;
   background-color: transparent;
   background-image: linear-gradient(90deg, rgba(51, 51, 51, 0.95) 0%, rgba(51, 51, 51, 0.95) 200px, rgba(13, 13, 13, 0.95) 201px, #242424 201px, #242424 100%);
 }

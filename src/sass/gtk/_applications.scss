@@ -75,7 +75,7 @@ filechooser,
     border: none;
     background-color: transparent;
     background-image: image($base_color);
-    background-size: 8px 8px;
+    background-size: $wm_radius $wm_radius;
     background-position: left bottom;
 
     &:dir(ltr) { margin-left: -1px; }
@@ -85,7 +85,7 @@ filechooser,
 
 .nautilus-window {
   &.background.csd {
-    border-radius: 0 0 $nautilus_radius $nautilus_radius;
+    border-radius: 0 0 $wm_radius $wm_radius;
     background-color: transparent;
     background-image: $nautilus_image;
 
