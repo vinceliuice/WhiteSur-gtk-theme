@@ -8,9 +8,9 @@
 	content: "";
 	display: block;
 	position: absolute;
-	width: 64px;
-	height: 64px;
-	top: 0;
+	width: 32px;
+	height: 32px;
+	top: 8px;
 	opacity: 0.3;
 	transform: translate(15px, 0);
 }
