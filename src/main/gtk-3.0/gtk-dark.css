@@ -3736,34 +3736,34 @@ list row {
   padding: 2px;
 }
 
-.budgie-menu button.has-open-popup, .nemo-window .sidebar .has-open-popup.view, .nemo-window .sidebar row.has-open-popup, row.has-open-popup.activatable, .budgie-menu button:hover, .nemo-window .sidebar .view:hover, .nemo-window .sidebar row:hover, row.activatable:hover {
+.budgie-menu button.has-open-popup, window.background.csd > box.vertical > paned.horizontal > scrolledwindow treeview.has-open-popup.view, .nemo-window .sidebar .has-open-popup.view, .nemo-window .sidebar row.has-open-popup, row.has-open-popup.activatable, .budgie-menu button:hover, window.background.csd > box.vertical > paned.horizontal > scrolledwindow treeview.view:hover, .nemo-window .sidebar .view:hover, .nemo-window .sidebar row:hover, row.activatable:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.budgie-menu button:active, .nemo-window .sidebar .view:active, .nemo-window .sidebar row:active, row.activatable:active {
+.budgie-menu button:active, window.background.csd > box.vertical > paned.horizontal > scrolledwindow treeview.view:active, .nemo-window .sidebar .view:active, .nemo-window .sidebar row:active, row.activatable:active {
   color: #dedede;
   background-color: rgba(255, 255, 255, 0.2);
   transition-duration: 200ms;
 }
 
-.budgie-menu button:disabled, .nemo-window .sidebar .view:disabled, .nemo-window .sidebar row:disabled, row.activatable:disabled {
+.budgie-menu button:disabled, window.background.csd > box.vertical > paned.horizontal > scrolledwindow treeview.view:disabled, .nemo-window .sidebar .view:disabled, .nemo-window .sidebar row:disabled, row.activatable:disabled {
   color: rgba(222, 222, 222, 0.35);
 }
 
-.budgie-menu button:disabled image, .nemo-window .sidebar .view:disabled image, .nemo-window .sidebar row:disabled image, row.activatable:disabled image {
+.budgie-menu button:disabled image, window.background.csd > box.vertical > paned.horizontal > scrolledwindow treeview.view:disabled image, .nemo-window .sidebar .view:disabled image, .nemo-window .sidebar row:disabled image, row.activatable:disabled image {
   color: inherit;
 }
 
-.budgie-menu button:selected, .nemo-window .sidebar .view:selected, .nemo-window .sidebar row:selected, row.activatable:selected {
+.budgie-menu button:selected, window.background.csd > box.vertical > paned.horizontal > scrolledwindow treeview.view:selected, .nemo-window .sidebar .view:selected, .nemo-window .sidebar row:selected, row.activatable:selected {
   color: #dedede;
   background-color: rgba(255, 255, 255, 0.15);
 }
 
-.budgie-menu button:selected label, .nemo-window .sidebar .view:selected label, .nemo-window .sidebar row:selected label, row.activatable:selected label {
+.budgie-menu button:selected label, window.background.csd > box.vertical > paned.horizontal > scrolledwindow treeview.view:selected label, .nemo-window .sidebar .view:selected label, .nemo-window .sidebar row:selected label, row.activatable:selected label {
   color: #dedede;
 }
 
-.budgie-menu button.has-open-popup:selected, .nemo-window .sidebar .view.has-open-popup:selected, .nemo-window .sidebar row.has-open-popup:selected, row.activatable.has-open-popup:selected, .budgie-menu button:selected:hover, .nemo-window .sidebar .view:selected:hover, .nemo-window .sidebar row:selected:hover, row.activatable:selected:hover {
+.budgie-menu button.has-open-popup:selected, window.background.csd > box.vertical > paned.horizontal > scrolledwindow treeview.view.has-open-popup:selected, .nemo-window .sidebar .view.has-open-popup:selected, .nemo-window .sidebar row.has-open-popup:selected, row.activatable.has-open-popup:selected, .budgie-menu button:selected:hover, window.background.csd > box.vertical > paned.horizontal > scrolledwindow treeview.view:selected:hover, .nemo-window .sidebar .view:selected:hover, .nemo-window .sidebar row:selected:hover, row.activatable:selected:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -5148,6 +5148,12 @@ filechooser box.vertical > paned > separator:dir(rtl) {
   box-shadow: none;
 }
 
+.nemo-window .nemo-window-pane treeview.view entry, .nemo-window .nemo-window-pane treeview.view:selected entry {
+  color: #dedede;
+  background-color: #242424;
+  border-radius: 6px;
+}
+
 .nemo-window .toolbar > button {
   margin-top: 2px;
   margin-bottom: 2px;
@@ -5818,7 +5824,7 @@ window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sideba
 }
 
 .geary-main-window.background.csd > overlay > box.vertical > paned > separator,
-window#GearyMainWindow.background.csd > overlay > box.vertical > paned > separator, window.background.csd > overlay > hdyleaflet > separator.sidebar, box.horizontal > separator.sidebar,
+window#GearyMainWindow.background.csd > overlay > box.vertical > paned > separator, window.background.csd > box.vertical > paned.horizontal > separator, window.background.csd > overlay > hdyleaflet > separator.sidebar, box.horizontal > separator.sidebar,
 hdyleaflet > separator.sidebar, window.background.csd > box.horizontal:not(.titlebar) > separator.vertical, window.background.csd > headerbar.titlebar > box.horizontal > separator.sidebar,
 window.background.csd > headerbar.titlebar > hdyleaflet > separator.sidebar, window.background.csd > hdyleaflet > separator.vertical, .titlebar:not(headerbar) > separator, window.org-gnome-gedit > paned.titlebar > separator, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator, window.org-gnome-gedit > paned.titlebar > separator:backdrop, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator:backdrop {
   background-image: image(#0e0e0e);
@@ -6476,8 +6482,26 @@ box.vertical > box.vertical > box.vertical > paned.horizontal {
   background-color: #0e0e0e;
 }
 
+window.background.csd > box.vertical > paned.horizontal > scrolledwindow treeview.view {
+  min-width: 240px;
+}
+
 window.background.csd > box.vertical > paned.horizontal > scrolledwindow treeview.view:not(:selected):not(:hover) {
-  border-bottom-left-radius: 14px;
+  background-color: transparent;
+}
+
+window.background.csd > paned.titlebar {
+  background-color: #373737;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
+}
+
+window.background.csd > paned.titlebar > headerbar {
+  background: none;
+  box-shadow: none;
+}
+
+window.background.csd > paned.titlebar > separator {
+  background: none;
 }
 
 dialog.background.csd > headerbar.titlebar > label:not(.title):not(.subtitle) {
