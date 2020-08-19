@@ -4804,18 +4804,22 @@ filechooser paned > separator:dir(rtl),
 .nautilus-window.background.csd {
   border-radius: 0 0 14px 14px;
   background-color: transparent;
-  background-image: linear-gradient(90deg, #f0f0f0 0%, #f0f0f0 200px, #cacaca 201px, #ffffff 201px, #ffffff 100%);
+  background-image: linear-gradient(90deg, #f0f0f0 0%, #f0f0f0 200px, #d1d1d1 200px, #d1d1d1 201px, #ffffff 201px, #ffffff 100%);
 }
 
 .nautilus-window.background.csd > headerbar.titlebar {
   border: none;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
   background: none;
-  background-image: linear-gradient(90deg, #f0f0f0 0%, #f0f0f0 200px, #cacaca 201px, #ffffff 201px, #ffffff 100%);
+  background-image: linear-gradient(90deg, #f0f0f0 0%, #f0f0f0 200px, #d1d1d1 200px, #d1d1d1 201px, #ffffff 201px, #ffffff 100%);
 }
 
 .nautilus-window.background.csd > headerbar.titlebar > .linked.raised > button:first-child {
   margin-left: 120px;
+}
+
+.nautilus-window.background.csd > grid.horizontal > paned.horizontal > box.vertical > placessidebar {
+  border-bottom-left-radius: 14px;
 }
 
 .nautilus-window headerbar .path-bar-box {
@@ -4844,9 +4848,11 @@ filechooser paned > separator:dir(rtl),
 }
 
 .nautilus-window placessidebar.sidebar {
+  margin-bottom: 14px;
   border: none;
-  background-color: transparent;
   min-width: 200px;
+  background-color: transparent;
+  background-image: linear-gradient(90deg, #f0f0f0 0%, #f0f0f0 200px, transparent 200px, transparent 100%);
 }
 
 .nautilus-window placessidebar.sidebar row.sidebar-row {
@@ -4920,6 +4926,37 @@ filechooser paned > separator:dir(rtl),
 }
 
 .nautilus-window placessidebar.sidebar separator {
+  background-color: transparent;
+}
+
+.nautilus-window placessidebar.sidebar scrollbar {
+  background: none;
+  border: none;
+}
+
+.nautilus-window placessidebar.sidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider {
+  background-color: rgba(92, 92, 92, 0.35);
+  border: none;
+}
+
+.nautilus-window placessidebar.sidebar scrollbar slider {
+  min-width: 4px;
+  background-color: rgba(92, 92, 92, 0.7);
+}
+
+.nautilus-window placessidebar.sidebar scrollbar slider:hover {
+  background-color: dimgray;
+}
+
+.nautilus-window placessidebar.sidebar scrollbar slider:hover:active {
+  background-color: #686868;
+}
+
+.nautilus-window placessidebar.sidebar scrollbar slider:disabled {
+  background-color: transparent;
+}
+
+.nautilus-window placessidebar.sidebar scrollbar trough {
   background-color: transparent;
 }
 

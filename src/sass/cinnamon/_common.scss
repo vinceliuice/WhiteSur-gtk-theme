@@ -445,7 +445,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     color: $panel_fg;
     font-size: 1em;
     padding: 0px;
-    background-color: if($trans == 'true', rgba($panel_bg, 0.95), $panel_bg);
+    background-color: $panel_bg;
     box-shadow: 0 0 5px rgba(#000, 0.5), 0 0 16px rgba(#000, 0.24);
 
     .panel-button,

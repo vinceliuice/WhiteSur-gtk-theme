@@ -103,20 +103,18 @@ stage {
   transition-duration: 300ms;
   border-radius: 5px;
   color: #dadada;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 2px solid transparent;
   background-color: rgba(255, 255, 255, 0.05);
 }
 
 #menu-search-entry:focus, .notification StEntry:focus, .menu #notification StEntry:focus, .popup-menu #notification StEntry:focus, #notification StEntry:focus, #menu-search-entry:hover, .notification StEntry:hover, .menu #notification StEntry:hover, .popup-menu #notification StEntry:hover, #notification StEntry:hover {
   color: #dadada;
-  border: 1px solid #6887cd;
+  border: 2px solid rgba(104, 135, 205, 0.75);
   background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 0 2px rgba(104, 135, 205, 0.75);
 }
 
 #menu-search-entry:insensitive, .notification StEntry:insensitive, .menu #notification StEntry:insensitive, .popup-menu #notification StEntry:insensitive, #notification StEntry:insensitive {
   color: rgba(222, 222, 222, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.12);
   background-color: rgba(255, 255, 255, 0);
 }
 
@@ -518,7 +516,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   color: white;
   font-size: 1em;
   padding: 0px;
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 0.16);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5), 0 0 16px rgba(0, 0, 0, 0.24);
 }
 
@@ -617,7 +615,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   -cinnamon-caption-spacing: 4px;
   color: #dadada;
   background-color: rgba(98, 98, 98, 0.96);
-  border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -1104,14 +1101,12 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   selection-background-color: #0860f2;
   color: #dadada;
   background-color: rgba(98, 98, 98, 0.96);
-  border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .run-dialog-entry:focus {
   color: white;
   background-color: #0860f2;
-  border: 1px solid #0860f2;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
