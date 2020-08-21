@@ -109,6 +109,15 @@ filechooser,
       background-image: $nautilus_header_image;
 
       > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
+
+      @if $trans == 'false' {
+        > box.left.horizontal {
+          background-image: linear-gradient(0deg, $dark_sidebar_bg 0%,
+                                        $dark_sidebar_bg 95%,
+                                        transparent 95%,
+                                        transparent 100%);
+        }
+      }
     }
 
     > grid.horizontal > paned.horizontal > box.vertical > placessidebar {

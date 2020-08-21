@@ -4818,6 +4818,10 @@ filechooser paned > separator:dir(rtl),
   margin-left: 120px;
 }
 
+.nautilus-window.background.csd > headerbar.titlebar > box.left.horizontal {
+  background-image: linear-gradient(0deg, #f0f0f0 0%, #f0f0f0 95%, transparent 95%, transparent 100%);
+}
+
 .nautilus-window.background.csd > grid.horizontal > paned.horizontal > box.vertical > placessidebar {
   border-bottom-left-radius: 14px;
 }
