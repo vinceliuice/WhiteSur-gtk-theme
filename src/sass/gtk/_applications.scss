@@ -3120,6 +3120,23 @@ window.background.csd {
 }
 
 //
+// Lollypop
+//
+window.background.csd {
+  > grid.vertical > overlay > grid.vertical {
+    > grid.horizontal {
+      > .sidebar {
+        border-bottom-left-radius: $wm_radius;
+      }
+
+      > paned.horizontal > stack {
+        border-bottom-right-radius: $wm_radius;
+      }
+    }
+  }
+}
+
+//
 // Inkscape
 //
 toolbar#SubToolBox {

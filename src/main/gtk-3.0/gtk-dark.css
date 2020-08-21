@@ -7470,6 +7470,14 @@ window.background.csd > box.horizontal > stack > box.vertical > notebook > stack
   border-bottom-right-radius: 14px;
 }
 
+window.background.csd > grid.vertical > overlay > grid.vertical > grid.horizontal > .sidebar {
+  border-bottom-left-radius: 14px;
+}
+
+window.background.csd > grid.vertical > overlay > grid.vertical > grid.horizontal > paned.horizontal > stack {
+  border-bottom-right-radius: 14px;
+}
+
 toolbar#SubToolBox {
   min-height: 36px;
 }
