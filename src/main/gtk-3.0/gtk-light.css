@@ -7084,6 +7084,23 @@ window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sideba
   border-bottom-left-radius: 14px;
 }
 
+.geary-main-window.background.csd > overlay > box.vertical > paned > .sidebar treeview.view.sidebar,
+window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sidebar treeview.view.sidebar {
+  padding: 3px 0;
+}
+
+.geary-main-window.background.csd > overlay > box.vertical > paned > .sidebar treeview.view.sidebar:hover,
+window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sidebar treeview.view.sidebar:hover {
+  color: #242424;
+  background-color: rgba(36, 36, 36, 0.1);
+}
+
+.geary-main-window.background.csd > overlay > box.vertical > paned > .sidebar treeview.view.sidebar:selected,
+window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sidebar treeview.view.sidebar:selected {
+  color: #242424;
+  background-color: rgba(36, 36, 36, 0.15);
+}
+
 .geary-main-window.background.csd stack#conversation_viewer,
 window#GearyMainWindow.background.csd stack#conversation_viewer {
   border-bottom-right-radius: 14px;
@@ -7108,6 +7125,7 @@ window#GearyMainWindow.background.csd stack#conversation_viewer searchbar > reve
 .geary-main-window.background.csd paned.geary-sidebar-pane-separator > separator,
 window#GearyMainWindow.background.csd paned.geary-sidebar-pane-separator > separator {
   margin-left: -1px;
+  background: none;
 }
 
 .geary-main-window.background.csd paned.geary-sidebar-pane-separator statusbar,
@@ -7154,19 +7172,18 @@ window#GearyMainWindow.background.csd paned.geary-sidebar-pane-separator frame.g
 
 .geary-main-window.background.csd paned.geary-sidebar-pane-separator frame.geary-conversation-frame scrolledwindow treeview.view,
 window#GearyMainWindow.background.csd paned.geary-sidebar-pane-separator frame.geary-conversation-frame scrolledwindow treeview.view {
-  border-image: none;
+  border: none;
   background-image: none;
 }
 
 .geary-main-window.background.csd paned.geary-sidebar-pane-separator frame.geary-conversation-frame scrolledwindow treeview.view:hover,
 window#GearyMainWindow.background.csd paned.geary-sidebar-pane-separator frame.geary-conversation-frame scrolledwindow treeview.view:hover {
-  background-color: rgba(8, 96, 242, 0.1);
+  background-color: rgba(36, 36, 36, 0.1);
 }
 
 .geary-main-window.background.csd paned.geary-sidebar-pane-separator frame.geary-conversation-frame scrolledwindow treeview.view:selected,
 window#GearyMainWindow.background.csd paned.geary-sidebar-pane-separator frame.geary-conversation-frame scrolledwindow treeview.view:selected {
-  background-color: rgba(8, 96, 242, 0.15);
-  box-shadow: inset 2px 0 #0860f2;
+  background-color: rgba(36, 36, 36, 0.15);
   color: #242424;
 }
 
@@ -9468,12 +9485,10 @@ box:not(.unpinned):not(.pinned) > revealer > button.flat.launcher, .raven .raven
 
 .left frame.raven-frame > border {
   border: none;
-  border-right: 1px solid rgba(255, 255, 255, 0.22);
 }
 
 .right frame.raven-frame > border {
   border: none;
-  border-left: 1px solid rgba(255, 255, 255, 0.22);
 }
 
 .top .shadow-block {

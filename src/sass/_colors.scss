@@ -110,20 +110,18 @@ $osd_borders_color:                 $borders_color;
 $menu_bg:                           if($variant == 'light', $base_color, $bg_color);
 $menu_bd:                           if($variant == 'light', rgba(black, 0.05), rgba(white, 0.08));
 
-@if $trans == 'true' {
-  $menu_bg:                         if($variant == 'light', rgba($base_color, 0.95), rgba($bg_color, 0.95));
-}
+@if $trans == 'true' { $menu_bg:    if($variant == 'light', rgba($base_color, 0.95), rgba($bg_color, 0.95)); }
 
 // Panel colors
 $panel_opacity: 0.16;
 
 $panel_bg:                          if($variant == 'light', #f1f1f1, #2a2a2a);
 
-@if $trans == 'true' {
-  $panel_bg:                        if($variant == 'light', rgba(white, $panel_opacity), rgba(black, $panel_opacity));
-}
+@if $trans == 'true' { $panel_bg:   if($variant == 'light', rgba(white, $panel_opacity), rgba(black, $panel_opacity)); }
 
 $panel_fg:                          if($trans == 'true', white, $text_color);
+
+@if $black == 'true' { $panel_fg:   $text_color; }
 
 $panel_top_color:                   if($variant == 'dark', #333333, #f5f5f5);
 $panel_bottom_color:                if($variant == 'dark', #2a2a2a, #e2e2e2);

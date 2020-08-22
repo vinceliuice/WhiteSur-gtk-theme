@@ -622,12 +622,10 @@ box:not(.unpinned):not(.pinned) > revealer > button.flat.launcher { border-image
 // Raven borders
 .left frame.raven-frame > border {
   border: none;
-  border-right: 1px solid $panel_border_color;
 }
 
 .right frame.raven-frame > border {
   border: none;
-  border-left: 1px solid $panel_border_color;
 }
 
 $pos_list: ((top, bottom), (left, right), (right, left));

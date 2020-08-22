@@ -2670,6 +2670,20 @@ window#GearyMainWindow.background.csd {
         > searchbar {
           @extend %side_searchbar;
         }
+
+        treeview.view.sidebar {
+          padding: 3px 0;
+
+          &:hover {
+            color: $fg_color;
+            background-color: rgba($fg_color, 0.1);
+          }
+
+          &:selected {
+            color: $fg_color;
+            background-color: rgba($fg_color, 0.15);
+          }
+        }
       }
     }
   }
@@ -2696,7 +2710,10 @@ window#GearyMainWindow.background.csd {
   }
 
   paned.geary-sidebar-pane-separator {
-    > separator { margin-left: -1px }
+    > separator {
+      margin-left: -1px;
+      background: none;
+    }
 
     statusbar {
       margin: -8px -12px;
@@ -2730,14 +2747,13 @@ window#GearyMainWindow.background.csd {
         border-radius: $bt_radius;
 
         treeview.view {
-          border-image: none;
+          border: none;
           background-image: none;
 
-          &:hover { background-color: rgba($selected_bg_color, 0.1); }
+          &:hover { background-color: rgba($fg_color, 0.1); }
 
           &:selected {
-            background-color: rgba($selected_bg_color, 0.15);
-            box-shadow: inset 2px 0 $selected_bg_color;
+            background-color: rgba($fg_color, 0.15);
             color: if($variant == 'light', $fg_color, $selected_fg_color);
           }
 

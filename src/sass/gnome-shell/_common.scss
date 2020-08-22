@@ -1073,8 +1073,6 @@ $popop_menuitem_radius: $wm_radius - 4px;
 $panel_shadow: 0 2px 3px rgba(black, 0.03), 0 3px 5px rgba(black, 0.03), 0 5px 10px rgba(black, 0.02);
 $panel_asset_shadow: 0 1px 3px 3px rgba(black, 0.15);
 
-@if $black == 'true' { $panel_fg: $text_color; }
-
 #panel {
   background-color: $panel_bg;
   /* transition from solid to transparent */
