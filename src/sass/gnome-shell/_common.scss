@@ -1135,11 +1135,15 @@ $panel_asset_shadow: 0 1px 3px 3px rgba(black, 0.15);
 
     .app-menu-icon {
       -st-icon-style: symbolic;
-      height: 0;
-      width: 0;
       margin-left: 0;
       margin-right: 0;
+      icon-size: 16px;
       //dimensions of the icon are hardcoded
+
+      > StIcon {
+        padding-left: 4px;
+        padding-right: 6px;
+      }
     }
 
     .popup-menu-arrow { width: 0; height: 0; } // Remove arrow on panel button

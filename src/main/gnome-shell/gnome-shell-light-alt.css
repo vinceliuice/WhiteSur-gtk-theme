@@ -1324,10 +1324,14 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 #panel .panel-button .app-menu-icon {
   -st-icon-style: symbolic;
-  height: 0;
-  width: 0;
   margin-left: 0;
   margin-right: 0;
+  icon-size: 16px;
+}
+
+#panel .panel-button .app-menu-icon > StIcon {
+  padding-left: 4px;
+  padding-right: 6px;
 }
 
 #panel .panel-button .popup-menu-arrow {
