@@ -405,6 +405,7 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	#nav-bar-overflow-button .toolbarbutton-icon,
 	#reload-button .toolbarbutton-icon,
 	#stop-button .toolbarbutton-icon,
+	#downloads-button .toolbarbutton-icon,
 	#tracking-protection-icon,
 	#identity-icon,
 	#pageActionButton,

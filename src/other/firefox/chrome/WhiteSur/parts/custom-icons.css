@@ -43,7 +43,7 @@
 
 /* Popovers subview menu arrow */
 .PanelUI-subView .subviewbutton-nav::after {
-    content: "" !important;
+	content: "" !important;
 	filter: var(--gnome-icons-hack-filter);
 	background: url("moz-icon://stock/pan-start-symbolic?size=dialog");
 	background-size: contain;
