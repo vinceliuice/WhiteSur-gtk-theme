@@ -6213,17 +6213,25 @@ gf-candidate-box:hover, gf-candidate-box:selected {
   border-radius: 2px;
 }
 
-.sidebar-paned .inline-toolbar.horizontal.sidebar-toolbar {
-  box-shadow: inset 0 1px rgba(0, 0, 0, 0.12);
-  padding: 4px;
-  background-color: #ededed;
-}
-
-.sidebar-paned .inline-toolbar.horizontal.sidebar-toolbar button.image-button:active, .sidebar-paned .inline-toolbar.horizontal.sidebar-toolbar button.image-button:checked {
+window.background > box.vertical > toolbar.primary-toolbar > toolitem > box.horizontal:not(.linked) > button.toggle:active,
+window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button:active:not(.toggle):not(.raised):not(.flat), window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised:active, window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button:active,
+window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button:active,
+window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button:active,
+window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button:active, .sidebar-paned .inline-toolbar.horizontal.sidebar-toolbar button.image-button:active, window.background > box.vertical > toolbar.primary-toolbar > toolitem > box.horizontal:not(.linked) > button.toggle:checked,
+window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button:checked:not(.toggle):not(.raised):not(.flat), window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised:checked, window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button:checked,
+window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button:checked,
+window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button:checked,
+window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button:checked, .sidebar-paned .inline-toolbar.horizontal.sidebar-toolbar button.image-button:checked {
   background-image: none;
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
   border-color: rgba(0, 0, 0, 0.12);
+}
+
+.sidebar-paned .inline-toolbar.horizontal.sidebar-toolbar {
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.12);
+  padding: 4px;
+  background-color: #ededed;
 }
 
 .sidebar-paned .inline-toolbar.horizontal.sidebar-toolbar button.image-button > widget > box > image {
@@ -6254,19 +6262,6 @@ window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem >
   margin-bottom: 8px;
 }
 
-window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button:active, window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button:checked,
-window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button:active,
-window.csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button:checked,
-window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button:active,
-window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > .linked > button:checked,
-window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button:active,
-window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem > box.horizontal > button:checked {
-  background-image: none;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
 window.csd > box.vertical > box.vertical > frame,
 window.solid-csd > box.vertical > box.vertical > frame {
   margin: -1px 0;
@@ -6283,13 +6278,6 @@ window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked 
   min-width: 36px;
   padding: 0;
   margin: 0;
-}
-
-window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised:active, window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised:checked {
-  background-image: none;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-color: rgba(0, 0, 0, 0.12);
 }
 
 window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised > widget > box > image {
@@ -6310,15 +6298,6 @@ window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked 
   min-width: 28px;
   padding: 0;
   margin: 0;
-}
-
-window.background > box.vertical > toolbar.primary-toolbar > toolitem > box.horizontal:not(.linked) > button.toggle:active, window.background > box.vertical > toolbar.primary-toolbar > toolitem > box.horizontal:not(.linked) > button.toggle:checked,
-window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button:not(.toggle):not(.raised):not(.flat):active,
-window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button:not(.toggle):not(.raised):not(.flat):checked {
-  background-image: none;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-color: rgba(0, 0, 0, 0.12);
 }
 
 /********************
