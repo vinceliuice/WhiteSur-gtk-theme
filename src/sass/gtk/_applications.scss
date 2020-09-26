@@ -90,9 +90,17 @@ filechooser,
     background-image: image($base_color);
     background-size: $wm_radius $wm_radius;
     background-position: left bottom;
+    background-repeat: no-repeat;
 
-    &:dir(ltr) { margin-left: -1px; }
-    &:dir(rtl) { margin-right: -1px; }
+    // &:dir(ltr) { margin-left: -1px; }
+    // &:dir(rtl) { margin-right: -1px; }
+
+    &:hover {
+      background-image: -gtk-scaled(url("assets/paned-separator#{$asset_suffix}.png"),
+                                    url("assets/paned-separator#{$asset_suffix}@2.png"));
+      background-size: 2px 64px;
+      background-position: center center;
+    }
   }
 }
 
@@ -279,6 +287,13 @@ filechooser,
     > stack:not(:only-child) {
       searchbar { background-color: transparent; }
     }
+
+    infobar {
+      margin: 6px 10px 10px 6px;
+      border-radius: $wm_radius;
+      box-shadow: $shadow_5;
+      padding: 0 6px;
+    }
   }
 
   // Floating Bar
@@ -309,7 +324,13 @@ filechooser,
   }
 
   placesview {
-    actionbar.background { border-radius: 0 0 $wm_radius 0; }
+    actionbar.background {
+      background-color: $menu_bg;
+      margin: 6px;
+      border-radius: $wm_radius - 6px;
+      box-shadow: $shadow_5, inset 0 1px $highlight_color;
+      border: none;
+    }
   }
 }
 
@@ -1272,6 +1293,10 @@ button.documents-favorite:active:hover {
   transition: opacity 0.2s ease-out;
 }
 
+//
+// Gnome Tweak Tool ( Gnome tweaks )
+//
+
 %side_headerbar_left {
   background-image: none;
   background-color: rgba($dark_sidebar_bg, 1);
@@ -1334,11 +1359,8 @@ $list_shadow: if($variant == 'light',
 %sidebar_row {
   margin: 2px 4px;
   border-radius: $wm_radius - 4px;
+  -gtk-outline-radius : $wm_radius - 6px;
 }
-
-//
-// Gnome Tweak Tool ( Gnome tweaks )
-//
 
 hdyleaflet {
   frame > border { border: none; }

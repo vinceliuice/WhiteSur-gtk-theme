@@ -74,6 +74,9 @@ setting-icon-dark
 combobox-arrow
 combobox-arrow-dark
 
+paned-separator
+paned-separator-dark
+
 toggle-on
 toggle-off
 toggle-on-disabled

@@ -1627,7 +1627,7 @@ window.tiled headerbar, window.tiled headerbar:first-child, window.tiled headerb
 }
 
 .titlebar, .titlebar headerbar {
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .tiled .titlebar, .maximized .titlebar, .fullscreen .titlebar, .tiled .titlebar headerbar, .maximized .titlebar headerbar, .fullscreen .titlebar headerbar {
@@ -4768,16 +4768,14 @@ filechooser paned > separator,
   background-image: image(#242424);
   background-size: 14px 14px;
   background-position: left bottom;
+  background-repeat: no-repeat;
 }
 
-filechooser paned > separator:dir(ltr),
-.nautilus-window paned > separator:dir(ltr) {
-  margin-left: -1px;
-}
-
-filechooser paned > separator:dir(rtl),
-.nautilus-window paned > separator:dir(rtl) {
-  margin-right: -1px;
+filechooser paned > separator:hover,
+.nautilus-window paned > separator:hover {
+  background-image: -gtk-scaled(url("assets/paned-separator-dark.png"), url("assets/paned-separator-dark@2.png"));
+  background-size: 2px 64px;
+  background-position: center center;
 }
 
 .nautilus-window.background.csd {
@@ -4968,6 +4966,13 @@ filechooser paned > separator:dir(rtl),
   background-color: transparent;
 }
 
+.nautilus-window notebook infobar {
+  margin: 6px 10px 10px 6px;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+  padding: 0 6px;
+}
+
 .nautilus-window .floating-bar {
   padding: 2px;
   background-color: #0860f2;
@@ -4996,7 +5001,11 @@ filechooser paned > separator:dir(rtl),
 }
 
 .nautilus-window placesview actionbar.background {
-  border-radius: 0 0 14px 0;
+  background-color: rgba(51, 51, 51, 0.95);
+  margin: 6px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px rgba(255, 255, 255, 0.1);
+  border: none;
 }
 
 filechooser placessidebar.sidebar {
@@ -5838,7 +5847,7 @@ window.background.csd > headerbar.titlebar > box.horizontal > headerbar:first-ch
 window.background.csd > headerbar.titlebar > hdyleaflet > headerbar:first-child, window.background.csd > box.titlebar.horizontal > headerbar:first-child, .titlebar > headerbar.titlebar.tweak-titlebar-left {
   background-image: none;
   background-color: #333333;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
   border: none;
 }
 
@@ -5846,7 +5855,7 @@ window.background.csd > headerbar.titlebar > box.horizontal > headerbar:last-chi
 window.background.csd > headerbar.titlebar > hdyleaflet > headerbar:last-child, window.background.csd > box.titlebar.horizontal > headerbar:last-child, .titlebar > headerbar.titlebar.tweak-titlebar-right {
   background-image: none;
   background-color: #242424;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
   border: none;
 }
 
@@ -5898,6 +5907,7 @@ list.tweak-group list row.activatable:only-child, hdyleaflet list.view.frame row
 hdyleaflet list > row.activatable {
   margin: 2px 4px;
   border-radius: 10px;
+  -gtk-outline-radius: 8px;
 }
 
 hdyleaflet frame > border {
@@ -6529,7 +6539,7 @@ window.background.csd > box.vertical > paned.horizontal > scrolledwindow treevie
 
 window.background.csd > paned.titlebar {
   background-color: #373737;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
 }
 
 window.background.csd > paned.titlebar > headerbar {
@@ -8054,7 +8064,7 @@ scale.warmth trough {
 .terminal-window headerbar.titlebar.default-decoration {
   background-color: #373737;
   border-bottom: 1px solid #0e0e0e;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .terminal-window headerbar.titlebar.default-decoration:backdrop {
@@ -10038,7 +10048,7 @@ window.budgie-switcher-window .drop-shadow, .drop-shadow {
 .budgie-run-dialog entry.search {
   font-size: 120%;
   padding: 6px 12px;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
   background-color: transparent;
 }
 

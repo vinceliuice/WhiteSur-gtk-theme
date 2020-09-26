@@ -4789,16 +4789,14 @@ filechooser paned > separator,
   background-image: image(#ffffff);
   background-size: 14px 14px;
   background-position: left bottom;
+  background-repeat: no-repeat;
 }
 
-filechooser paned > separator:dir(ltr),
-.nautilus-window paned > separator:dir(ltr) {
-  margin-left: -1px;
-}
-
-filechooser paned > separator:dir(rtl),
-.nautilus-window paned > separator:dir(rtl) {
-  margin-right: -1px;
+filechooser paned > separator:hover,
+.nautilus-window paned > separator:hover {
+  background-image: -gtk-scaled(url("assets/paned-separator.png"), url("assets/paned-separator@2.png"));
+  background-size: 2px 64px;
+  background-position: center center;
 }
 
 .nautilus-window.background.csd {
@@ -4989,6 +4987,13 @@ filechooser paned > separator:dir(rtl),
   background-color: transparent;
 }
 
+.nautilus-window notebook infobar {
+  margin: 6px 10px 10px 6px;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+  padding: 0 6px;
+}
+
 .nautilus-window .floating-bar {
   padding: 2px;
   background-color: #0860f2;
@@ -5017,7 +5022,11 @@ filechooser paned > separator:dir(rtl),
 }
 
 .nautilus-window placesview actionbar.background {
-  border-radius: 0 0 14px 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  margin: 6px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px rgba(255, 255, 255, 0.65);
+  border: none;
 }
 
 filechooser placessidebar.sidebar {
@@ -5920,6 +5929,7 @@ list.tweak-group list row.activatable:only-child, hdyleaflet list.view.frame row
 hdyleaflet list > row.activatable {
   margin: 2px 4px;
   border-radius: 10px;
+  -gtk-outline-radius: 8px;
 }
 
 hdyleaflet frame > border {
