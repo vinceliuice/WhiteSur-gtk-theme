@@ -9,7 +9,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="assets.svg"
    id="svg1220"
    version="1.1"
@@ -36,14 +36,14 @@
      showguides="true"
      inkscape:current-layer="layer2"
      inkscape:window-maximized="1"
-     inkscape:window-y="28"
+     inkscape:window-y="44"
      inkscape:window-x="0"
-     inkscape:cy="146.26942"
-     inkscape:cx="368.52077"
-     inkscape:zoom="9.7474048"
+     inkscape:cy="229.71615"
+     inkscape:cx="563.59541"
+     inkscape:zoom="0.6092128"
      showgrid="false"
      id="namedview1222"
-     inkscape:window-height="1020"
+     inkscape:window-height="1004"
      inkscape:window-width="1920"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0"
@@ -3966,21 +3966,21 @@
     </g>
     <rect
        ry="0"
-       rx="1"
+       rx="2"
        y="120"
        x="345"
-       height="64"
-       width="2"
+       height="100"
+       width="4"
        id="paned-separator"
-       style="opacity:0.15;fill:#000000;stroke-width:1.07872" />
+       style="opacity:0.15;fill:#000000;stroke-width:1.90692" />
     <rect
-       style="opacity:0.15;fill:#ffffff;stroke-width:1.07872"
+       style="opacity:0.15;fill:#ffffff;stroke-width:1.90693"
        id="paned-separator-dark"
-       width="2"
-       height="64"
+       width="4"
+       height="100"
        x="400"
        y="120"
-       rx="1"
+       rx="2"
        ry="0" />
   </g>
 </svg>

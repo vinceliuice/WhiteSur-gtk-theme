@@ -92,13 +92,12 @@ filechooser,
     background-position: left bottom;
     background-repeat: no-repeat;
 
-    // &:dir(ltr) { margin-left: -1px; }
-    // &:dir(rtl) { margin-right: -1px; }
+    &:dir(ltr) { margin-left: -1px; }
+    &:dir(rtl) { margin-right: -1px; }
 
     &:hover {
-      background-image: -gtk-scaled(url("assets/paned-separator#{$asset_suffix}.png"),
-                                    url("assets/paned-separator#{$asset_suffix}@2.png"));
-      background-size: 2px 64px;
+      background-image: image($borders_color);
+      background-size: 2px 100px;
       background-position: center center;
     }
   }
@@ -272,7 +271,6 @@ filechooser,
     scrolledwindow {
       .view:not(:hover):not(:active):not(:selected) {
         background-color: transparent;
-        // @extend %view;
       }
     }
 
@@ -324,6 +322,11 @@ filechooser,
   }
 
   placesview {
+    row.activatable {
+      border-radius: $bt_radius;
+      margin-right: 6px;
+    }
+
     actionbar.background {
       background-color: $menu_bg;
       margin: 6px;
@@ -342,10 +345,11 @@ filechooser {
     &.frame { border-right: 1px solid if($variant=='light', $solid_borders_color, $header_border); }
   }
 
-  actionbar {
+  actionbar.background {
     color: $dark_sidebar_fg;
     background-color: $dark_sidebar_bg;
     border-color: $borders_color;
+    border-radius: 0 0 $wm_radius 0;
 
     label, combobox { color: $dark_sidebar_fg; }
   }
@@ -1700,6 +1704,8 @@ notebook.main-notebook {
 
 //
 // Gnome Weather
+//
+
 #weather-page,
 #weekly-forecast-frame {
 	border-bottom-right-radius: $wm_radius;
@@ -1708,6 +1714,14 @@ notebook.main-notebook {
 #weather-page-content-view {
 	border-bottom-right-radius: $wm_radius;
 	border-bottom-left-radius: $wm_radius;
+}
+
+//
+// Gnome Clocks
+//
+hdyviewswitcherbar > actionbar {
+  background: none;
+  border: none;
 }
 
 //
@@ -2050,24 +2064,46 @@ flowboxchild.bookmark-tag-widget {
   &-selected { color: $selected_fg_color; } // checked
 }
 
+
+//
+// Fractal
+//
+.background.csd.main-window {
+  .sidebar.rooms-sidebar {
+    border-bottom-left-radius: $wm_radius;
+  }
+}
+
 //
 // documents-scrolledwi (Totem, Documents, EvView)
 //
 .documents-scrolledwin {
   background-color: transparent;
 
-  .content-view {
+  .content-view:not(:selected):not(:hover) {
     background-color: transparent;
-    border-radius: 0 0 $wm_radius $wm_radius;
+    // border-radius: 0 0 $wm_radius $wm_radius;
   }
+
+  .content-view:hover { background-color: rgba($fg_color, 0.08); }
 
   viewport.frame { // Documents
     background-color: transparent;
 
-    widget > frame.content-view {
+    widget > frame.content-view:not(:selected):not(:hover) {
       border { border: none; }
 
       background-color: transparent;
+      // border-radius: 0 0 $wm_radius $wm_radius;
+    }
+  }
+}
+
+// Documents
+
+window.background.csd { // Documents actionbar
+  > box.vertical > overlay > stack > box.vertical {
+    > actionbar {
       border-radius: 0 0 $wm_radius $wm_radius;
     }
   }
@@ -2452,6 +2488,7 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
 %panel_button {
   color: $panel_fg;
   border-radius: $bt_radius;
+  background: none;
   border: none;
 
   &:hover:not(:active):not(:checked) {
@@ -3347,20 +3384,20 @@ menubar.-vala-panel-background {
   .panel {
     &, &.color-light, &.color-dark {
       background-color: transparent;
-      background-image: linear-gradient(0deg, rgba($panel_bottom_color, 0.95) 0%, rgba($panel_top_color, 0.95) 100%);
-      border-bottom: 1px solid if($variant == 'light', $panel_border_color, $header_border);
+      background-image: image(rgba($panel_bg, 0.1));
+      border-bottom: none;
       transition: all 100ms ease-in-out;
       color: $panel_fg;
     }
 
     &.maximized {
-      background-color: $panel_bg;
+      background-color: rgba($panel_bg, 0.2);
       background-image: none;
       border: none;
     }
 
     &.translucent {
-      background-color: rgba($panel_bg, 0.75);
+      background-color: rgba($panel_bg, 0.1);
       background-image: none;
       border: none;
     }

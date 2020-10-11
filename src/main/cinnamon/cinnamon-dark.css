@@ -280,7 +280,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 #Tooltip {
   border-radius: 3px;
   padding: 5px 12px;
-  background-color: #2a2a2a;
+  background-color: rgba(42, 42, 42, 0.9);
   color: #dadada;
   font-size: 1em;
   font-weight: normal;
@@ -589,8 +589,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .window-caption {
-  background-color: #2a2a2a;
-  border: 1px solid #2a2a2a;
+  background-color: rgba(42, 42, 42, 0.9);
+  border: 1px solid rgba(42, 42, 42, 0.9);
   color: #dadada;
   spacing: 25px;
   border-radius: 2px;
@@ -949,7 +949,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .switcher-list {
   color: #dadada;
-  background-color: #2a2a2a;
+  background-color: rgba(42, 42, 42, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 3px;
   padding: 20px;
@@ -1204,7 +1204,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 #keyboard {
-  background-color: #2a2a2a;
+  background-color: rgba(42, 42, 42, 0.9);
   border-width: 0;
   border-top-width: 1px;
   border-color: rgba(0, 0, 0, 0.4);
@@ -1253,7 +1253,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   color: #dadada;
   padding: 5px;
   -arrow-border-radius: 2px;
-  -arrow-background-color: #2a2a2a;
+  -arrow-background-color: rgba(42, 42, 42, 0.9);
   -arrow-border-width: 1px;
   -arrow-border-color: rgba(0, 0, 0, 0.4);
   -arrow-base: 20px;
@@ -1956,8 +1956,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   height: 70px;
   padding: 15px;
   spacing: 0.5em;
-  background: rgba(29, 29, 29, 0.9);
-  border: 0px solid #161616;
+  background: rgba(29, 29, 29, 0.8);
+  border: 0px solid rgba(22, 22, 22, 0.9);
   border-bottom: 1px;
   color: #dadada;
 }
@@ -1999,7 +1999,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 .sound-player .slider {
   height: 0.5em;
   padding: 0;
-  border: 0px solid #161616;
+  border: 0px solid rgba(22, 22, 22, 0.9);
   border-bottom: 1px;
   -slider-height: 0.5em;
   -slider-background-color: #262626;
@@ -2228,7 +2228,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .desklet-with-borders {
   color: #dadada;
-  background-color: #2a2a2a;
+  background-color: rgba(42, 42, 42, 0.9);
   padding: 12px;
   padding-bottom: 16px;
 }
@@ -2239,7 +2239,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .desklet-with-borders-and-header {
   color: #dadada;
-  background-color: #2a2a2a;
+  background-color: rgba(42, 42, 42, 0.9);
   border-radius: 6px;
   border-radius-topleft: 0;
   border-radius-topright: 0;
@@ -2253,7 +2253,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .desklet-header {
   color: #dadada;
-  background-color: #2a2a2a;
+  background-color: rgba(42, 42, 42, 0.9);
   border-radius: 0;
   border-radius-topleft: 6px;
   border-radius-topright: 6px;
@@ -2269,7 +2269,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .photoframe-box {
   color: #dadada;
-  background-color: #2a2a2a;
+  background-color: rgba(42, 42, 42, 0.9);
   padding: 12px;
   padding-bottom: 16px;
 }
