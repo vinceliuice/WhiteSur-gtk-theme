@@ -1703,6 +1703,16 @@ notebook.main-notebook {
 }
 
 //
+// Gnome Music
+//
+
+window.background.csd {
+  > box.vertical > overlay > stack.background {
+    border-radius: 0 0 $wm_radius $wm_radius;
+  }
+}
+
+//
 // Gnome Weather
 //
 
