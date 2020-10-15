@@ -81,17 +81,17 @@
   color: white;
 }
 
-filechooser stack.view scrolledwindow treeview.view, iconview, .view {
+.csd filechooser stack.view scrolledwindow treeview.view, iconview, .view {
   color: #363636;
   background-color: #ffffff;
   transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-filechooser stack.view scrolledwindow treeview.view:hover, iconview:hover, .view:hover {
+.csd filechooser stack.view scrolledwindow treeview.view:hover, iconview:hover, .view:hover {
   background-color: #f7f7f7;
 }
 
-filechooser stack.view scrolledwindow treeview.view:selected, iconview:selected, .view:selected {
+.csd filechooser stack.view scrolledwindow treeview.view:selected, iconview:selected, .view:selected {
   color: white;
   background-color: #0860f2;
   transition: all 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -3965,21 +3965,69 @@ messagedialog.csd.background {
   border: none;
 }
 
-filechooser #pathbarbox {
-  border-bottom: 1px solid rgba(0, 0, 0, 0);
-}
-
-filechooser stack.view {
-  background-color: transparent;
-}
-
-filechooser stack.view scrolledwindow {
+.csd filechooser {
   background-color: #ffffff;
   border-radius: 0 0 14px 14px;
 }
 
-filechooser stack.view scrolledwindow treeview.view {
+.csd filechooser placessidebar.sidebar {
   background-color: transparent;
+}
+
+.csd filechooser actionbar {
+  color: #363636;
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.12);
+  border-radius: 0 0 14px 0;
+}
+
+.csd filechooser actionbar label, .csd filechooser actionbar combobox {
+  color: #363636;
+}
+
+.csd filechooser stack.view {
+  background-color: transparent;
+}
+
+.csd filechooser stack.view scrolledwindow {
+  background-color: transparent;
+  border-radius: 0 0 14px 14px;
+}
+
+.csd filechooser stack.view scrolledwindow list {
+  background-color: transparent;
+}
+
+.csd filechooser stack.view scrolledwindow treeview.view {
+  background-color: transparent;
+}
+
+.csd filechooser box.vertical > paned > separator {
+  border: none;
+  background-color: transparent;
+  background-image: image(#ffffff);
+  background-size: 8px 8px;
+  background-position: left bottom;
+}
+
+.csd filechooser box.vertical > paned > separator:dir(ltr) {
+  margin-left: -1px;
+}
+
+.csd filechooser box.vertical > paned > separator:dir(rtl) {
+  margin-right: -1px;
+}
+
+filechooser placessidebar.sidebar {
+  border: none;
+}
+
+filechooser placessidebar.sidebar.frame {
+  border-right: 1px solid #d6d6d6;
+}
+
+filechooser #pathbarbox {
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
 }
 
 filechooserbutton:drop(active) {
@@ -4686,7 +4734,7 @@ modelbutton.flat:active,
 modelbutton.flat:active arrow,
 modelbutton.flat:selected,
 modelbutton.flat:selected arrow, treeview.view:selected, treeview.view:selected:focus,
-calendar:selected {
+calendar:selected, .csd filechooser stack.view scrolledwindow treeview.view:selected:focus {
   background-color: #0860f2;
   color: white;
 }
@@ -5059,42 +5107,6 @@ filechooser paned > separator:hover,
   border-radius: 8px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.1), inset 0 1px rgba(255, 255, 255, 0.65);
   border: none;
-}
-
-filechooser placessidebar.sidebar {
-  border: none;
-  background-color: transparent;
-}
-
-filechooser placessidebar.sidebar.frame {
-  border-right: 1px solid #d6d6d6;
-}
-
-filechooser actionbar.background {
-  color: #363636;
-  background-color: rgba(240, 240, 240, 0.94);
-  border-color: rgba(0, 0, 0, 0.12);
-  border-radius: 0 0 14px 0;
-}
-
-filechooser actionbar.background label, filechooser actionbar.background combobox {
-  color: #363636;
-}
-
-filechooser box.vertical > paned > separator {
-  border: none;
-  background-color: transparent;
-  background-image: image(#ffffff);
-  background-size: 8px 8px;
-  background-position: left bottom;
-}
-
-filechooser box.vertical > paned > separator:dir(ltr) {
-  margin-left: -1px;
-}
-
-filechooser box.vertical > paned > separator:dir(rtl) {
-  margin-right: -1px;
 }
 
 .nautilus-canvas-item {
@@ -6142,6 +6154,10 @@ notebook.main-notebook > header.top > tabs > tab:checked {
 
 notebook.main-notebook > header.top > tabs > tab:first-child {
   border-left-width: 0;
+}
+
+window.background.csd > box.vertical > overlay > stack.background {
+  border-radius: 0 0 14px 14px;
 }
 
 #weather-page,
@@ -8876,7 +8892,6 @@ window.budgie-switcher-window .drop-shadow button, .drop-shadow button, .workspa
 }
 
 .budgie-popover .container {
-  padding: 2px;
   border: none;
 }
 
@@ -8914,6 +8929,22 @@ window.budgie-switcher-window .drop-shadow button, .drop-shadow button, .workspa
   color: rgba(36, 36, 36, 0.45);
 }
 
+.budgie-popover treeview.view.sidebar {
+  min-height: 36px;
+  background: none;
+  border-right: none;
+  color: #242424;
+}
+
+.budgie-popover treeview.view.sidebar:hover {
+  background-color: rgba(36, 36, 36, 0.05);
+}
+
+.budgie-popover treeview.view.sidebar:selected, .budgie-popover treeview.view.sidebar:selected:hover {
+  color: white;
+  background-color: #0860f2;
+}
+
 .budgie-popover.budgie-menu .container {
   padding: 0;
 }
@@ -8930,12 +8961,16 @@ window.budgie-switcher-window .drop-shadow button, .drop-shadow button, .workspa
   margin: 3px 0;
 }
 
-.budgie-popover.night-light-indicator .container {
+.budgie-popover.caffeine-popover .container {
   padding: 8px;
 }
 
+.budgie-popover.night-light-indicator .container {
+  padding: 6px;
+}
+
 .budgie-popover.places-menu .container {
-  padding: 8px;
+  padding: 6px;
 }
 
 .budgie-popover.places-menu .places-list:not(.always-expand) {
@@ -9256,13 +9291,6 @@ popover.background.places-menu row {
   border: none;
   background-image: none;
   font-weight: normal;
-}
-
-.budgie-panel menubar > menuitem > window.background.popup > decoration,
-.budgie-panel menubar > menuitem > window.background.popup > menu,
-.budgie-panel .menubar > menuitem > window.background.popup > decoration,
-.budgie-panel .menubar > menuitem > window.background.popup > menu {
-  border-radius: 0 0 14px 14px;
 }
 
 .budgie-panel menubar > menuitem:hover,
@@ -10140,6 +10168,42 @@ window.budgie-switcher-window .drop-shadow, .drop-shadow {
 
 .budgie-panel box.titlebar > button.image-button.titlebutton {
   padding: 0 3px;
+}
+
+.budgie-panel box.titlebar > button.image-button.titlebutton.close:backdrop {
+  background-image: -gtk-scaled(url("windows-assets/titlebutton-close.png"), url("windows-assets/titlebutton-close@2.png"));
+}
+
+.budgie-panel box.titlebar > button.image-button.titlebutton.close:backdrop:hover {
+  background-image: -gtk-scaled(url("windows-assets/titlebutton-close-hover.png"), url("windows-assets/titlebutton-close-hover@2.png"));
+}
+
+.budgie-panel box.titlebar > button.image-button.titlebutton.close:backdrop:active {
+  background-image: -gtk-scaled(url("windows-assets/titlebutton-close-active.png"), url("windows-assets/titlebutton-close-active@2.png"));
+}
+
+.budgie-panel box.titlebar > button.image-button.titlebutton.maximize:backdrop {
+  background-image: -gtk-scaled(url("windows-assets/titlebutton-maximize.png"), url("windows-assets/titlebutton-maximize@2.png"));
+}
+
+.budgie-panel box.titlebar > button.image-button.titlebutton.maximize:backdrop:hover {
+  background-image: -gtk-scaled(url("windows-assets/titlebutton-maximize-hover.png"), url("windows-assets/titlebutton-maximize-hover@2.png"));
+}
+
+.budgie-panel box.titlebar > button.image-button.titlebutton.maximize:backdrop:active {
+  background-image: -gtk-scaled(url("windows-assets/titlebutton-maximize-active.png"), url("windows-assets/titlebutton-maximize-active@2.png"));
+}
+
+.budgie-panel box.titlebar > button.image-button.titlebutton.minimize:backdrop {
+  background-image: -gtk-scaled(url("windows-assets/titlebutton-minimize.png"), url("windows-assets/titlebutton-minimize@2.png"));
+}
+
+.budgie-panel box.titlebar > button.image-button.titlebutton.minimize:backdrop:hover {
+  background-image: -gtk-scaled(url("windows-assets/titlebutton-minimize-hover.png"), url("windows-assets/titlebutton-minimize-hover@2.png"));
+}
+
+.budgie-panel box.titlebar > button.image-button.titlebutton.minimize:backdrop:active {
+  background-image: -gtk-scaled(url("windows-assets/titlebutton-minimize-active.png"), url("windows-assets/titlebutton-minimize-active@2.png"));
 }
 
 .budgie-panel box.titlebar.horizontal {

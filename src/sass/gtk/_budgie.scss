@@ -116,7 +116,7 @@ $raven_padding: 8px;
               0 0 0 1px if($variant=='light', $borders_color, rgba($dark_borders_color, 0.55)),
               inset 0 0 0 1px if($variant=='light', rgba(black, 0.0), rgba(white, 0.08));
 
-  .container { padding: 2px; border: none; }
+  .container { border: none; }
   border { border: none; }
   list { background-color: transparent; }
 
@@ -139,6 +139,20 @@ $raven_padding: 8px;
     &:disabled { color: $disabled_fg_color; }
   }
 
+  treeview.view.sidebar { //AppMenu (Elementary)
+    min-height: 36px;
+    background: none;
+    border-right: none;
+    color: $fg_color;
+
+    &:hover { background-color: rgba($fg_color, 0.05); }
+
+    &:selected, &:selected:hover {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+    }
+  }
+
   &.budgie-menu {
     .container { padding: 0; }
   }
@@ -152,12 +166,16 @@ $raven_padding: 8px;
     separator { margin: 3px 0; }
   }
 
-  &.night-light-indicator {
+  &.caffeine-popover {
     .container { padding: 8px; }
   }
 
+  &.night-light-indicator {
+    .container { padding: 6px; }
+  }
+
   &.places-menu {
-    .container { padding: 8px; }
+    .container { padding: 6px; }
 
     .places-list:not(.always-expand) {
       margin-top: 4px;
@@ -464,8 +482,8 @@ popover.background.places-menu {
       background-image: none;
       font-weight: normal;
 
-      > window.background.popup > decoration,
-      > window.background.popup > menu { border-radius: 0 0 $wm_radius $wm_radius; }
+      // > window.background.popup > decoration,
+      // > window.background.popup > menu { border-radius: 0 0 $wm_radius $wm_radius; }
 
       &:hover { background-color: $selected_bg_color; }
       &:disabled { color: transparentize($panel_fg, 0.6); }
@@ -1236,7 +1254,19 @@ window.budgie-switcher-window {
 
   > widget > label { color: rgba($panel_fg, 0.75); } // titles
 
-  > button.image-button.titlebutton { padding: 0 3px; }
+  > button.image-button.titlebutton {
+    padding: 0 3px;
+
+    // Load png assets for each button, Fix the Chrome window restore button bug
+    @each $k in ('close', 'maximize', 'minimize') {
+      @each $l, $m in (':backdrop',''), (':backdrop:hover','-hover'), (':backdrop:active','-active') {
+        &.#{$k}#{$l} {
+          background-image: -gtk-scaled(url('windows-assets/titlebutton-#{$k}#{$m}#{$asset_suffix}.png'),
+                                        url('windows-assets/titlebutton-#{$k}#{$m}#{$asset_suffix}@2.png'));
+        }
+      }
+    }
+  }
 
   &.horizontal { // spacing
     padding: 0 3px;

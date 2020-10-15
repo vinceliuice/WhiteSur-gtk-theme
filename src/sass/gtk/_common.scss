@@ -3291,21 +3291,56 @@ messagedialog { // Message Dialog styling
 // Filechooser
 //
 filechooser {
-  #pathbarbox { border-bottom: 1px solid transparentize($borders_color, 0.5); }
+  .csd & {
+    background-color: $base_color;
+    border-radius: 0 0 $wm_radius $wm_radius;
 
-  stack.view {
-    background-color: transparent;
+    placessidebar.sidebar { background-color: transparent; }
 
-    scrolledwindow {
-      background-color: $base_color;
-      border-radius: 0 0 $wm_radius $wm_radius;
+    actionbar {
+      color: $dark_sidebar_fg;
+      background-color: transparent;
+      border-color: $borders_color;
+      border-radius: 0 0 $wm_radius 0;
 
-      treeview.view {
-        @extend %view;
+      label, combobox { color: $dark_sidebar_fg; }
+    }
+
+    stack.view {
+      background-color: transparent;
+
+      scrolledwindow {
         background-color: transparent;
+        border-radius: 0 0 $wm_radius $wm_radius;
+
+        list { background-color: transparent; }
+
+        treeview.view {
+          @extend %view;
+          background-color: transparent;
+        }
       }
     }
+
+    box.vertical > paned > separator { // Use paned separator to hide stack border-bottom-left-radius
+      border: none;
+      background-color: transparent;
+      background-image: image($base_color);
+      background-size: 8px 8px;
+      background-position: left bottom;
+
+      &:dir(ltr) { margin-left: -1px; }
+      &:dir(rtl) { margin-right: -1px; }
+    }
   }
+
+  placessidebar.sidebar {
+    border: none;
+
+    &.frame { border-right: 1px solid if($variant=='light', $solid_borders_color, $header_border); }
+  }
+
+  #pathbarbox { border-bottom: 1px solid transparentize($borders_color, 0.5); }
 }
 
 filechooserbutton:drop(active) {

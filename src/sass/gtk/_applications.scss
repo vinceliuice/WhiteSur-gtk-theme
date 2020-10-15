@@ -337,35 +337,6 @@ filechooser,
   }
 }
 
-filechooser {
-  placessidebar.sidebar {
-    border: none;
-    background-color: transparent;
-
-    &.frame { border-right: 1px solid if($variant=='light', $solid_borders_color, $header_border); }
-  }
-
-  actionbar.background {
-    color: $dark_sidebar_fg;
-    background-color: $dark_sidebar_bg;
-    border-color: $borders_color;
-    border-radius: 0 0 $wm_radius 0;
-
-    label, combobox { color: $dark_sidebar_fg; }
-  }
-
-  box.vertical > paned > separator { // Use paned separator to hide stack border-bottom-left-radius
-    border: none;
-    background-color: transparent;
-    background-image: image($base_color);
-    background-size: 8px 8px;
-    background-position: left bottom;
-
-    &:dir(ltr) { margin-left: -1px; }
-    &:dir(rtl) { margin-right: -1px; }
-  }
-}
-
 .nautilus-canvas-item { border-radius: 5px; }
 
 // .view.nautilus-desktop,
