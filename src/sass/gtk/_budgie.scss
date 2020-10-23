@@ -396,23 +396,19 @@ popover.background.places-menu {
   background-color: $panel_bg;
   color: $panel_fg;
   font-weight: 500;
-  box-shadow: none;
-  border: none;
-  background-clip: padding-box;
+  // box-shadow: $panel_shadow;
+  border-width: 0;
 
   &.transparent {
     background-color: rgba($panel_bg, 0.1);
-    box-shadow: none;
+    border-width: 0;
   }
 
   .bottom & {
-    border: solid $panel_border_color;
-    border-width: 1px 1px 0 1px;
     border-radius: $wm_radius $wm_radius 0 0;
 
     &.dock-mode {
       border-radius: 0 0 0 0;
-      border-width: 1px 0 0 0;
     }
   }
 
@@ -421,7 +417,6 @@ popover.background.places-menu {
 
     &.dock-mode {
       border-radius: 0 0 0 0;
-      border-width: 0 1px 0 0;
     }
   }
 
@@ -430,7 +425,6 @@ popover.background.places-menu {
 
     &.dock-mode {
       border-radius: 0 0 0 0;
-      border-width: 0 0 0 1px;
     }
   }
 
@@ -638,15 +632,11 @@ popover.background.places-menu {
 box:not(.unpinned):not(.pinned) > revealer > button.flat.launcher { border-image: none; } // unset before drawing indicators
 
 // Raven borders
-.left frame.raven-frame > border {
-  border: none;
+frame.raven-frame > border {
+  border-style: none;
 }
 
-.right frame.raven-frame > border {
-  border: none;
-}
-
-$pos_list: ((top, bottom), (left, right), (right, left));
+$pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
 @each $pos, $b_pos in $pos_list {
   // Panel borders
@@ -656,24 +646,25 @@ $pos_list: ((top, bottom), (left, right), (right, left));
 
   // Raven borders
   // .#{$pos} frame.raven-frame > border {
-  //   border: none;
-  //   border-#{$b_pos}: 1px solid $panel_border_color;
+  //   margin-#{$b_pos}: 16px;
   // }
 
   // Shadows
    .#{$pos} .shadow-block {
-     background-image: linear-gradient(to $b_pos, rgba(black, 0.35) 0%, rgba(black, 0.15) 15%, rgba(black, 0.03) 60%, transparent);
+     background-image: linear-gradient(to $b_pos, rgba(black, 0.05) 0%, rgba(black, 0.03) 15%, rgba(black, 0.02) 60%, transparent);
    }
 }
 
 // .bottom .shadow-block { background-image: none; }
 
 $raven_opacity: if($variant =='light', 0.85, 0.95);
+$raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px 0 rgba(black, 0.1);
 
 // Raven
 .raven {
   background-color: if($trans == 'true', rgba($raven_bg_color, $raven_opacity), $raven_bg_color);
   color: $raven_fg_color;
+  box-shadow: $shadow_4;
 
   // for >=10.4
   > box { margin-bottom: -10px; }

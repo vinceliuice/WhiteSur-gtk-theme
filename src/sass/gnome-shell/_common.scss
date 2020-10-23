@@ -1070,22 +1070,19 @@ $popop_menuitem_radius: $wm_radius - 4px;
   }
 
 /* TOP BAR */
-$panel_shadow: 0 2px 3px rgba(black, 0.03), 0 3px 5px rgba(black, 0.03), 0 5px 10px rgba(black, 0.02);
-$panel_asset_shadow: 0 1px 3px 3px rgba(black, 0.15);
-
 #panel {
   background-color: $panel_bg;
   /* transition from solid to transparent */
   transition-duration: 250ms;
   font-weight: bold;
   height: $menuitem_size;
-  box-shadow: $panel_shadow;
+  box-shadow: 0 3px 6px rgba(black, 0.22), 0 5px 16px rgba(black, 0.35);
 
   &:overview,
   &.unlock-screen,
   &.login-screen,
   &.lock-screen {
-    background-color: $panel_bg;
+    background-color: transparent;
   }
 
   #panelLeft, #panelCenter { // spacing between activities<>app menu and such

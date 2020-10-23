@@ -4728,8 +4728,8 @@ headerbar button.titlebutton.minimize:active,
   background-image: -gtk-scaled(url("windows-assets/titlebutton-restore-active.png"), url("windows-assets/titlebutton-restore-active@2.png"));
 }
 
-.budgie-menu button:checked, #MozillaGtkWidget.background > widget > scrolledwindow > textview text:selected, #MozillaGtkWidget.background > widget > scrolledwindow > textview text:selected:focus,
-#MozillaGtkWidget.background > widget > scrolledwindow > textview text selection, .nemo-window .nemo-window-pane widget.entry:selected:focus, .nemo-window .nemo-window-pane widget.entry:selected, .emoji widget:hover, .view:selected:focus, textview text selection:focus, textview text selection, iconview:selected:focus, flowbox flowboxchild:selected, label:disabled selection, entry selection:focus, entry selection, menuitem.button.flat:active, .raven .raven-header:not(.top) button.button:active, menuitem.button.flat:active arrow, .raven .raven-header:not(.top) button.button:active arrow, menuitem.button.flat:selected, .raven .raven-header:not(.top) button.button:selected, menuitem.button.flat:selected arrow, .raven .raven-header:not(.top) button.button:selected arrow,
+.budgie-menu button:checked, #MozillaGtkWidget > widget > scrolledwindow > textview text:selected, #MozillaGtkWidget > widget > scrolledwindow > textview text:selected:focus,
+#MozillaGtkWidget > widget > scrolledwindow > textview text selection, .nemo-window .nemo-window-pane widget.entry:selected:focus, .nemo-window .nemo-window-pane widget.entry:selected, .emoji widget:hover, .view:selected:focus, textview text selection:focus, textview text selection, iconview:selected:focus, flowbox flowboxchild:selected, label:disabled selection, entry selection:focus, entry selection, menuitem.button.flat:active, .raven .raven-header:not(.top) button.button:active, menuitem.button.flat:active arrow, .raven .raven-header:not(.top) button.button:active arrow, menuitem.button.flat:selected, .raven .raven-header:not(.top) button.button:selected, menuitem.button.flat:selected arrow, .raven .raven-header:not(.top) button.button:selected arrow,
 modelbutton.flat:active,
 modelbutton.flat:active arrow,
 modelbutton.flat:selected,
@@ -4739,8 +4739,8 @@ calendar:selected, .csd filechooser stack.view scrolledwindow treeview.view:sele
   color: white;
 }
 
-.budgie-menu button:disabled:checked, #MozillaGtkWidget.background > widget > scrolledwindow > textview text:disabled:selected,
-#MozillaGtkWidget.background > widget > scrolledwindow > textview text selection:disabled, .nemo-window .nemo-window-pane widget.entry:disabled:selected, .emoji widget:disabled:hover {
+.budgie-menu button:disabled:checked, #MozillaGtkWidget > widget > scrolledwindow > textview text:disabled:selected,
+#MozillaGtkWidget > widget > scrolledwindow > textview text selection:disabled, .nemo-window .nemo-window-pane widget.entry:disabled:selected, .emoji widget:disabled:hover {
   color: #84b0f9;
 }
 
@@ -7337,72 +7337,71 @@ window.background:not(.csd) > window > menu menuitem {
   transition: none;
 }
 
-#MozillaGtkWidget.background {
+#MozillaGtkWidget {
   background-color: #f5f5f5;
 }
 
-#MozillaGtkWidget.background .background,
-#MozillaGtkWidget.background frame,
-#MozillaGtkWidget.background separator,
-#MozillaGtkWidget.background scrolledwindow {
+#MozillaGtkWidget .background,
+#MozillaGtkWidget frame,
+#MozillaGtkWidget separator,
+#MozillaGtkWidget scrolledwindow {
   background-color: #ffffff;
 }
 
-#MozillaGtkWidget.background scrollbar {
+#MozillaGtkWidget scrollbar {
   background-color: transparent;
 }
 
-#MozillaGtkWidget.background scrollbar slider {
+#MozillaGtkWidget scrollbar slider {
   background-color: #979797;
 }
 
-#MozillaGtkWidget.background scrollbar slider:hover {
+#MozillaGtkWidget scrollbar slider:hover {
   background-color: #787878;
 }
 
-#MozillaGtkWidget.background scrollbar slider:hover:active {
+#MozillaGtkWidget scrollbar slider:hover:active {
   background-color: #585858;
 }
 
-#MozillaGtkWidget.background scrollbar slider:disabled {
+#MozillaGtkWidget scrollbar slider:disabled {
   background-color: transparent;
 }
 
-#MozillaGtkWidget.background *:not(menuitem):hover, #MozillaGtkWidget.background *:not(menuitem):hover button,
-#MozillaGtkWidget.background *:focus,
-#MozillaGtkWidget.background *:focus button,
-#MozillaGtkWidget.background *:active,
-#MozillaGtkWidget.background *:active button,
-#MozillaGtkWidget.background *:checked,
-#MozillaGtkWidget.background *:checked button {
-  color: #242424;
-}
-
-#MozillaGtkWidget.background > window.background > menu {
+#MozillaGtkWidget > window.background > menu {
   border: none;
   background-color: #ffffff;
   border-radius: 0;
 }
 
-#MozillaGtkWidget.background > window.background > menu > separator {
+#MozillaGtkWidget > window.background > menu > separator {
   margin-top: 2px;
   margin-bottom: 2px;
   background-color: rgba(0, 0, 0, 0.12);
 }
 
-#MozillaGtkWidget.background > widget border {
+#MozillaGtkWidget > widget > frame > border {
   border-color: #cfcfcf;
 }
 
-#MozillaGtkWidget.background > widget separator {
+#MozillaGtkWidget > widget text {
+  background-color: #f5f5f5;
+}
+
+#MozillaGtkWidget > widget text:selected {
+  background-color: #0860f2;
+  color: white;
+}
+
+#MozillaGtkWidget > widget separator {
   background-color: rgba(0, 0, 0, 0.12);
 }
 
-#MozillaGtkWidget.background > widget > scrolledwindow > textview {
+#MozillaGtkWidget > widget > scrolledwindow > textview {
   background-color: #ffffff;
 }
 
-#MozillaGtkWidget.background > widget > scrolledwindow > textview text {
+#MozillaGtkWidget > widget > scrolledwindow > textview text {
   background-color: transparent;
   color: #363636;
 }
@@ -9201,25 +9200,20 @@ popover.background.places-menu row {
   background-color: #f1f1f1;
   color: #363636;
   font-weight: 500;
-  box-shadow: none;
-  border: none;
-  background-clip: padding-box;
+  border-width: 0;
 }
 
 .budgie-panel.transparent {
   background-color: rgba(241, 241, 241, 0.1);
-  box-shadow: none;
+  border-width: 0;
 }
 
 .bottom .budgie-panel {
-  border: solid rgba(255, 255, 255, 0.22);
-  border-width: 1px 1px 0 1px;
   border-radius: 14px 14px 0 0;
 }
 
 .bottom .budgie-panel.dock-mode {
   border-radius: 0 0 0 0;
-  border-width: 1px 0 0 0;
 }
 
 .left .budgie-panel {
@@ -9228,7 +9222,6 @@ popover.background.places-menu row {
 
 .left .budgie-panel.dock-mode {
   border-radius: 0 0 0 0;
-  border-width: 0 1px 0 0;
 }
 
 .right .budgie-panel {
@@ -9237,7 +9230,6 @@ popover.background.places-menu row {
 
 .right .budgie-panel.dock-mode {
   border-radius: 0 0 0 0;
-  border-width: 0 0 0 1px;
 }
 
 .budgie-panel button {
@@ -9553,29 +9545,30 @@ box:not(.unpinned):not(.pinned) > revealer > button.flat.launcher, .raven .raven
   border-image: none;
 }
 
-.left frame.raven-frame > border {
-  border: none;
-}
-
-.right frame.raven-frame > border {
-  border: none;
+frame.raven-frame > border {
+  border-style: none;
 }
 
 .top .shadow-block {
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.03) 60%, transparent);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.03) 15%, rgba(0, 0, 0, 0.02) 60%, transparent);
+}
+
+.bottom .shadow-block {
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.03) 15%, rgba(0, 0, 0, 0.02) 60%, transparent);
 }
 
 .left .shadow-block {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.03) 60%, transparent);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.03) 15%, rgba(0, 0, 0, 0.02) 60%, transparent);
 }
 
 .right .shadow-block {
-  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.03) 60%, transparent);
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.03) 15%, rgba(0, 0, 0, 0.02) 60%, transparent);
 }
 
 .raven {
   background-color: #dedede;
   color: #363636;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.15);
 }
 
 .raven > box {

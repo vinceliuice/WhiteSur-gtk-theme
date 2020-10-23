@@ -1256,11 +1256,11 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   transition-duration: 250ms;
   font-weight: bold;
   height: 28px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03), 0 3px 5px rgba(0, 0, 0, 0.03), 0 5px 10px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22), 0 5px 16px rgba(0, 0, 0, 0.35);
 }
 
 #panel:overview, #panel.unlock-screen, #panel.login-screen, #panel.lock-screen {
-  background-color: #f1f1f1;
+  background-color: transparent;
 }
 
 #panel #panelLeft, #panel #panelCenter {

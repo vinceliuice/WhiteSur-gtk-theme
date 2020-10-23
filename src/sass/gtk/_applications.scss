@@ -2904,7 +2904,7 @@ window.background:not(.csd) {
 //  * Firefox Quantum *
 //  *******************/
 
-#MozillaGtkWidget.background {
+#MozillaGtkWidget {
   // blend with weird toolbar backgrounds
   background-color: $bg_color;
 
@@ -2928,13 +2928,6 @@ window.background:not(.csd) {
     }
   }
 
-  *:not(menuitem):hover, // exclude menuitem node
-  *:focus,
-  *:active,
-  *:checked {
-    &, button { color: $fg_color; } // enforce opaque foregrounds
-  }
-
   > window.background > menu { // context-menus
     border: none; // hide ugly double borders
     background-color: $menu_bg;
@@ -2949,7 +2942,18 @@ window.background:not(.csd) {
   }
 
   > widget {
-    border { border-color: if($variant == 'light', darken($bg_color, 15%), lighten($bg_color, 20%)); }
+    // Emphasize toolbar's border-bottom
+    > frame > border { border-color: if($variant == 'light', darken($bg_color, 15%), lighten($bg_color, 20%)); }
+
+    // For popover, entry in toolbar, etc.
+    text { background-color: $bg_color; }
+
+    // For selection, active tab indicator, etc.
+    text:selected {
+      // Use traditional selection style as workaround
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+    }
 
     separator { background-color: $borders_color; }
 
