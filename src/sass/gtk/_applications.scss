@@ -2931,7 +2931,7 @@ window.background:not(.csd) {
   > window.background > menu { // context-menus
     border: none; // hide ugly double borders
     background-color: $menu_bg;
-    border-radius: 0;
+    border-radius: 2px;
 
     // revert to standard separators
     > separator {
@@ -2972,6 +2972,9 @@ window.background:not(.csd) {
       }
     }
   }
+
+  // remove ugly border around the menus
+  menu { border: none; }
 }
 
 /***************

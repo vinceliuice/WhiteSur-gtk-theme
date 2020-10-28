@@ -7341,7 +7341,7 @@ window.background:not(.csd) > window > menu menuitem {
 #MozillaGtkWidget > window.background > menu {
   border: none;
   background-color: rgba(51, 51, 51, 0.95);
-  border-radius: 0;
+  border-radius: 2px;
 }
 
 #MozillaGtkWidget > window.background > menu > separator {
@@ -7374,6 +7374,10 @@ window.background:not(.csd) > window > menu menuitem {
 #MozillaGtkWidget > widget > scrolledwindow > textview text {
   background-color: transparent;
   color: #aaaaaa;
+}
+
+#MozillaGtkWidget menu {
+  border: none;
 }
 
 /***************
