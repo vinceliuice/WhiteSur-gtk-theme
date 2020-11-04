@@ -2809,6 +2809,10 @@ window#GearyMainWindow.background.csd {
   }
 }
 
+.geary-settings {
+  entry { background-color: $entry_bg !important; }
+}
+
 //
 // * Firefox and Thunderbird *
 //

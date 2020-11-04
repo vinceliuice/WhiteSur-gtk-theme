@@ -13,7 +13,6 @@
 	background: url("../titlebuttons/titlebutton-minimize.svg") no-repeat;
 	background-size: contain;
 }
-
 :root[tabsintitlebar] #titlebar .titlebar-buttonbox .titlebar-restore,
 :root[tabsintitlebar] #titlebar #titlebar-restore,
 :root[tabsintitlebar][sizemode="maximized"] #titlebar .titlebar-buttonbox .titlebar-max,
@@ -120,6 +119,8 @@
 	background: url("../titlebuttons/titlebutton-minimize-backdrop.svg") no-repeat;
 	background-size: contain;
 }
+:root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-buttonbox:hover .titlebar-restore,
+:root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-restore:hover,
 :root[tabsintitlebar][sizemode="maximized"] #titlebar:-moz-window-inactive .titlebar-buttonbox:hover .titlebar-max,
 :root[tabsintitlebar][sizemode="maximized"] #titlebar:-moz-window-inactive #titlebar-max:hover {
 	background: url("../titlebuttons/titlebutton-unmaximize-backdrop.svg") no-repeat;

@@ -7250,6 +7250,10 @@ window#GearyMainWindow.background.csd paned.geary-sidebar-pane-separator frame.g
   background: none;
 }
 
+.geary-accounts-editor-pane .geary-accounts-editor-pane-content .geary-labelled-row.geary-settings entry {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
 window.background:not(.csd) > widget > separator {
   padding-top: 1px;
   margin-top: 1px;
