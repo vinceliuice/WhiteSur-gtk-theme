@@ -308,9 +308,29 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
 }
 
+.plugin-icon {
+	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
+}
+
+.plugin-blocked > .plugin-icon {
+	list-style-image: url("../icons/application-x-addon-blocked-symbolic.svg") !important;
+}
+
 /* #plugin-icon-badge {
     list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
 } */
+
+.autoplay-media-icon {
+	list-style-image: url("../icons/autoplay-media-symbolic.svg") !important;
+}
+
+.autoplay-media-icon.blocked-permission-icon {
+	list-style-image: url("../icons/autoplay-media-blocked-symbolic.svg") !important;
+}
+
+.popup-notification-icon[popupid="drmContentPlaying"], .drm-icon {
+	list-style-image: url("../icons/drm-symbolic.svg") !important;
+}
 
 #reader-mode-button {
 	list-style-image: url("../icons/reader-mode.svg") !important;
@@ -413,7 +433,8 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	#tracking-protection-icon-animatable-image,
 	#reader-mode-button,
 	#star-button:not([starred]),
-	#plugins-notification-icon:not(.plugin-blocked) > .plugin-icon,
+	.plugin-icon, .autoplay-media-icon,
+	.popup-notification-icon[popupid="drmContentPlaying"], .drm-icon,
 	.bookmark-item[container] .toolbarbutton-icon {
 		filter: invert(60%) brightness(150%);
 	}

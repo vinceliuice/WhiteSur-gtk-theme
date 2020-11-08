@@ -254,7 +254,7 @@ menulist[open] .menulist-label-box,
 .subviewbutton.panel-subview-footer:not(:only-of-type):not(:last-of-type),
 .panel-footer button:not(:only-of-type):not(:last-of-type),
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(:last-of-type):not(#appMenu-zoomEnlarge-button),
-#context-navigation menuitem:not(:last-of-type),
+#context-navigation menuitem:not(:only-of-type):not(:last-of-type),
 .findbar-container toolbarbutton.findbar-find-previous,
 .findbar-button:not(:last-of-type) {
 	border-top-right-radius: 0 !important;
@@ -267,7 +267,7 @@ menulist[open] .menulist-label-box,
 .subviewbutton.panel-subview-footer:not(:only-of-type):not(:first-of-type),
 .panel-footer button:not(:only-of-type):not(:first-of-type),
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton:not(:first-of-type):not(#appMenu-fullscreen-button),
-#context-navigation menuitem:not(:first-of-type),
+#context-navigation menuitem:not(:only-of-type):not(:first-of-type),
 .findbar-container toolbarbutton.findbar-find-previous,
 .findbar-container toolbarbutton.findbar-find-next,
 .findbar-button:not(:first-of-type) {
