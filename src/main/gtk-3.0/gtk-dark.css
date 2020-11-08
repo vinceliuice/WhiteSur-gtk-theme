@@ -6148,7 +6148,18 @@ window.background.csd > box.vertical > overlay > stack.background {
   border-bottom-left-radius: 14px;
 }
 
-hdyviewswitcherbar > actionbar {
+window.background.csd.unified {
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+window.background.csd.unified > deck > deck > deck > box.vertical > headerbar.titlebar.windowhandle > viewswitchertitle > squeezer > viewswitcher > box.horizontal > button.radio {
+  margin: 0;
+  border-radius: 0;
+}
+
+hdyviewswitcherbar > actionbar,
+viewswitcherbar > actionbar {
   background: none;
   border: none;
 }
@@ -7229,6 +7240,10 @@ window#GearyMainWindow.background.csd paned.geary-sidebar-pane-separator frame.g
 .geary-main-window.background.csd paned.geary-sidebar-pane-separator frame.geary-conversation-frame scrolledwindow treeview.view:not(:hover):not(:selected),
 window#GearyMainWindow.background.csd paned.geary-sidebar-pane-separator frame.geary-conversation-frame scrolledwindow treeview.view:not(:hover):not(:selected) {
   background: none;
+}
+
+.geary-settings entry {
+  background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
 window.background:not(.csd) > widget > separator {

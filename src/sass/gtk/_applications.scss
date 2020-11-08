@@ -1700,7 +1700,26 @@ window.background.csd {
 //
 // Gnome Clocks
 //
-hdyviewswitcherbar > actionbar {
+window.background.csd.unified {
+  border-top-left-radius: $wm_radius;
+  border-top-right-radius: $wm_radius;
+
+  > deck > deck > deck {
+    > box.vertical > headerbar.titlebar.windowhandle {
+      > viewswitchertitle > squeezer {
+        > viewswitcher > box.horizontal {
+          > button.radio {
+            margin: 0;
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+hdyviewswitcherbar > actionbar,
+viewswitcherbar > actionbar { // Gnome 3.38
   background: none;
   border: none;
 }
@@ -2807,6 +2826,10 @@ window#GearyMainWindow.background.csd {
       }
     }
   }
+}
+
+.geary-settings {
+  entry { background-color: $entry_bg !important; }
 }
 
 //
