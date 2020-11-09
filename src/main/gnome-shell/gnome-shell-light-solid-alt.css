@@ -1445,6 +1445,39 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   border: none;
 }
 
+.message, .world-clocks-button,
+.weather-button,
+.events-button,
+.events-section-title {
+  border-radius: 10px;
+  border: none;
+  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0.75);
+  text-shadow: none;
+  color: #424242;
+}
+
+.message:hover, .world-clocks-button:hover,
+.weather-button:hover,
+.events-button:hover,
+.events-section-title:hover, .message:focus, .world-clocks-button:focus,
+.weather-button:focus,
+.events-button:focus,
+.events-section-title:focus {
+  color: #242424;
+  background-color: white;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message:active, .world-clocks-button:active,
+.weather-button:active,
+.events-button:active,
+.events-section-title:active {
+  color: #242424;
+  background-color: rgba(255, 255, 255, 0.65);
+  box-shadow: none;
+}
+
 .clock-display-box {
   spacing: 4px;
 }
@@ -1459,14 +1492,15 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .calendar {
-  margin-bottom: 0;
+  margin: 4px 12px 6px;
   border: none;
   box-shadow: none;
-  background: none;
-  padding: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 4px 8px;
+  text-shadow: none;
+  border-radius: 10px;
 }
 
-.calendar,
 .datemenu-today-button,
 .datemenu-displays-box,
 .message-list-sections {
@@ -1497,6 +1531,12 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .datemenu-today-button {
   min-height: 48px;
+  border: none;
+  box-shadow: none;
+  background: none;
+  padding: 4px 8px;
+  text-shadow: none;
+  color: #424242;
 }
 
 .datemenu-today-button .date-label {
@@ -1504,132 +1544,14 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   font-weight: 400;
 }
 
-.message-list-section-list:ltr {
-  padding-left: 0;
-}
-
-.message-list-section-list:rtl {
-  padding-right: 0;
-}
-
-.datemenu-today-button,
-.world-clocks-button,
-.weather-button,
-.events-section-title {
-  min-height: 20px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  border: none;
-  box-shadow: none;
-  background: none;
-  text-shadow: none;
-  color: #424242;
-}
-
-.datemenu-today-button:hover, .datemenu-today-button:focus,
-.world-clocks-button:hover,
-.world-clocks-button:focus,
-.weather-button:hover,
-.weather-button:focus,
-.events-section-title:hover,
-.events-section-title:focus {
-  color: #242424;
-  background-color: rgba(0, 0, 0, 0.12);
-}
-
-.datemenu-today-button:active,
-.world-clocks-button:active,
-.weather-button:active,
-.events-section-title:active {
-  color: #242424;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.world-clocks-header,
-.weather-header,
-.events-section-title {
-  color: #424242;
-  font-weight: bold;
-}
-
-/* World Clock */
-.world-clocks-grid,
-.weather-grid {
-  spacing-rows: 0.4em;
-  spacing-columns: 0.8em;
-}
-
-.world-clocks-city {
-  color: #565656;
-  font-weight: bold;
-  font-size: 0.9em;
-}
-
-.world-clocks-time {
-  color: #565656;
-  font-feature-settings: "tnum";
-  font-size: 1.2em;
-}
-
-.world-clocks-timezone {
-  color: #565656;
-  font-feature-settings: "tnum";
-  font-size: 0.9em;
-}
-
-/* Weather */
-.weather-button {
-  padding: 12px;
-}
-
-.weather-button .weather-box {
-  spacing: 0.5em;
-}
-
-.weather-button .weather-header-box {
-  spacing: 6px;
-}
-
-.weather-button .weather-header {
-  color: #424242;
-  font-weight: bold;
-}
-
-.weather-button .weather-header.location {
-  font-weight: normal;
-  color: #565656;
-}
-
-.weather-button .weather-grid {
-  spacing-rows: 6px;
-  spacing-columns: 12px;
-}
-
-.weather-button .weather-forecast-time {
-  color: #424242;
-  font-feature-settings: "tnum";
-  font-size: 9pt;
-  font-weight: normal;
-  padding-top: 0.2em;
-  padding-bottom: 0.4em;
-}
-
-.weather-button .weather-forecast-icon {
-  icon-size: 32px;
-}
-
-.weather-button .weather-forecast-temp {
-  font-weight: bold;
-}
-
 .calendar-month-label {
   height: 20px;
   margin: 2px;
   padding: 6px 16px;
-  border-radius: 6px;
   color: #242424;
   font-weight: bold;
   text-align: center;
+  text-shadow: none;
 }
 
 .calendar-month-label:focus {
@@ -1694,14 +1616,14 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .calendar-day-base:active {
-  color: inherit;
+  color: #424242;
   background-color: rgba(0, 0, 0, 0.2);
   border-color: transparent;
 }
 
 .calendar-day-base:selected {
-  color: rgba(255, 255, 255, 0.85);
-  background-color: #0860f2;
+  color: #242424;
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: transparent;
 }
 
@@ -1758,10 +1680,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .calendar-day-with-events {
-  color: #3484e2;
-  font-weight: normal;
-  text-decoration: underline;
-  background-image: none;
+  color: #565656;
+  background-image: url("assets/calendar-today.svg");
 }
 
 .calendar-day-with-events.calendar-work-day {
@@ -1775,16 +1695,124 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .calendar-week-number {
-  width: 28px;
-  height: 21px;
-  margin: 2px;
-  padding: 7px 0 0;
-  border-radius: 100px;
-  background-color: transparent;
+  width: 22px;
+  height: 16px;
+  margin: 6px 6px 6px 4px;
+  padding: 0 0;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.05);
   color: #565656;
   font-size: inherit;
   font-weight: bold;
   text-align: center;
+}
+
+.world-clocks-button,
+.weather-button,
+.events-button,
+.events-section-title {
+  min-height: 20px;
+  padding: 4px 8px;
+}
+
+.world-clocks-header,
+.weather-header,
+.events-section-title {
+  color: #424242;
+  font-weight: bold;
+}
+
+/* Events */
+.events-button .events-box {
+  spacing: 6px;
+}
+
+.events-button .events-list {
+  spacing: 12px;
+  text-shadow: none;
+}
+
+.events-button .events-title {
+  color: #565656;
+  font-weight: bold;
+  margin-bottom: 4px;
+  text-shadow: none;
+}
+
+.events-button .event-time {
+  color: #565656;
+  font-feature-settings: "tnum";
+}
+
+/* World Clock */
+.world-clocks-grid,
+.weather-grid {
+  spacing-rows: 0.4em;
+  spacing-columns: 0.8em;
+}
+
+.world-clocks-city {
+  color: #565656;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.world-clocks-time {
+  color: #565656;
+  font-feature-settings: "tnum";
+  font-size: 1.2em;
+}
+
+.world-clocks-timezone {
+  color: #565656;
+  font-feature-settings: "tnum";
+  font-size: 0.9em;
+}
+
+/* Weather */
+.weather-button {
+  padding: 12px;
+  margin-bottom: 6px;
+}
+
+.weather-button .weather-box {
+  spacing: 0.5em;
+}
+
+.weather-button .weather-header-box {
+  spacing: 6px;
+}
+
+.weather-button .weather-header {
+  color: #424242;
+  font-weight: bold;
+}
+
+.weather-button .weather-header.location {
+  font-weight: normal;
+  color: #565656;
+}
+
+.weather-button .weather-grid {
+  spacing-rows: 6px;
+  spacing-columns: 12px;
+}
+
+.weather-button .weather-forecast-time {
+  color: #424242;
+  font-feature-settings: "tnum";
+  font-size: 9pt;
+  font-weight: normal;
+  padding-top: 0.2em;
+  padding-bottom: 0.4em;
+}
+
+.weather-button .weather-forecast-icon {
+  icon-size: 32px;
+}
+
+.weather-button .weather-forecast-temp {
+  font-weight: bold;
 }
 
 /* Message list */
@@ -1817,6 +1845,14 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   spacing: 8px;
 }
 
+.message-list-section-list:ltr {
+  padding-left: 0;
+}
+
+.message-list-section-list:rtl {
+  padding-right: 0;
+}
+
 .message-list-controls {
   margin: 8px 16px 0;
   padding: 4px;
@@ -1824,23 +1860,11 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .message {
-  border-radius: 6px;
-  border: none;
-  color: #424242;
-  background-color: transparent;
-  margin: 4px;
-  box-shadow: none;
-  text-shadow: none;
+  margin: 2px 4px 6px;
 }
 
-.message:hover, .message:focus {
-  color: #242424;
-  background-color: #ffffff;
-}
-
-.message:active {
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.8);
+.message:first-child {
+  margin-top: 8px;
 }
 
 .message .message-icon-bin {

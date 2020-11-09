@@ -2484,7 +2484,6 @@ scrollbar {
   }
 }
 
-%switch,
 switch {
   transition: $longer_transition;
   // margin: 6px 0;
@@ -2532,7 +2531,7 @@ switch {
 
   &:checked:disabled slider { animation: none; }
 
-  row & { @extend %switch_pixmap; }
+  // row & { @extend %switch_pixmap; }
 }
 
 //

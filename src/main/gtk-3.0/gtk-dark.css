@@ -2643,87 +2643,21 @@ scrollbar.vertical slider {
   min-height: 40px;
 }
 
-.raven .raven-background switch:not(:indeterminate) slider:not(:indeterminate), .raven .raven-background switch:not(:indeterminate), row switch:not(:indeterminate) slider:not(:indeterminate), row switch:not(:indeterminate) {
-  padding: 0;
-  border: none;
-  color: transparent;
-  background: unset;
-  background-image: unset;
-  background-repeat: no-repeat;
-  background-position: right center;
-  box-shadow: none;
-  animation: none;
-  font-size: 0;
-  outline-color: transparent;
-}
-
-.raven .raven-background switch:not(:indeterminate) slider:dir(rtl):not(:indeterminate), .raven .raven-background switch:dir(rtl):not(:indeterminate), row switch:not(:indeterminate) slider:dir(rtl):not(:indeterminate), row switch:dir(rtl):not(:indeterminate) {
-  background-position: left center;
-}
-
-row switch:not(:indeterminate) {
-  min-width: 40px;
-  min-height: 24px;
-  margin: 0;
-  background-size: 40px 24px;
-  transition: all 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background-image: -gtk-scaled(url("assets/switch.png"), url("assets/switch@2.png"));
-}
-
-row switch:not(:indeterminate) slider:not(:indeterminate) {
-  margin: 0;
-  background-size: 40px 24px;
-}
-
-row switch:not(:indeterminate):hover {
-  transition: all 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background-image: -gtk-scaled(url("assets/switch-hover.png"), url("assets/switch-hover@2.png"));
-}
-
-row switch:not(:indeterminate):checked {
-  transition: all 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background-image: -gtk-scaled(url("assets/switch-active.png"), url("assets/switch-active@2.png"));
-}
-
-row switch:not(:indeterminate):checked:hover {
-  background-image: -gtk-scaled(url("assets/switch-active-hover.png"), url("assets/switch-active-hover@2.png"));
-}
-
-row switch:not(:indeterminate):checked:disabled, label:disabled selection:checked {
+label:disabled selection:checked {
   background-image: -gtk-scaled(url("assets/switch-active-insensitive.png"), url("assets/switch-active-insensitive@2.png"));
 }
 
-row switch:not(:indeterminate):disabled, label:disabled selection:not(:indeterminate) {
+label:disabled selection:not(:indeterminate) {
   background-image: -gtk-scaled(url("assets/switch-insensitive-dark.png"), url("assets/switch-insensitive-dark@2.png"));
 }
 
-.raven .raven-background switch:not(:indeterminate) {
-  min-width: 50px;
-  min-height: 20px;
-  margin: 6px 2px;
-  background-size: 50px 20px;
-  transition: all 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background-image: -gtk-scaled(url("assets/toggle-off.png"), url("assets/toggle-off@2.png"));
-}
-
-.raven .raven-background switch:not(:indeterminate) slider:not(:indeterminate) {
-  margin: 0;
-  background-size: 50px 20px;
-}
-
-.raven .raven-background switch:not(:indeterminate):checked {
-  transition: all 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background-image: -gtk-scaled(url("assets/toggle-on.png"), url("assets/toggle-on@2.png"));
-}
-
-.raven .raven-background switch:not(:indeterminate):checked:disabled, label:disabled selection:checked {
+label:disabled selection:checked {
   background-image: -gtk-scaled(url("assets/toggle-on-disabled.png"), url("assets/toggle-on-disabled@2.png"));
 }
 
-.raven .raven-background switch:not(:indeterminate):disabled, label:disabled selection:not(:indeterminate) {
+label:disabled selection:not(:indeterminate) {
   background-image: -gtk-scaled(url("assets/toggle-off-disabled.png"), url("assets/toggle-off-disabled@2.png"));
 }
-
 
 switch {
   transition: all 150ms cubic-bezier(0, 0, 0.2, 1);
@@ -2734,12 +2668,10 @@ switch {
   font-size: 0;
 }
 
-
 switch:disabled {
   color: rgba(222, 222, 222, 0.15);
   background-color: rgba(222, 222, 222, 0.15);
 }
-
 
 switch:checked {
   animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
@@ -2747,12 +2679,10 @@ switch:checked {
   color: rgba(255, 255, 255, 0.65);
 }
 
-label:disabled selection:checked,
-switch:checked:disabled {
+switch:checked:disabled, label:disabled selection:checked {
   background-color: rgba(8, 96, 242, 0.45);
   color: rgba(255, 255, 255, 0.35);
 }
-
 
 switch slider {
   transition: all 150ms cubic-bezier(0, 0, 0.2, 1), box-shadow 150ms cubic-bezier(0, 0, 0.2, 1), margin 0;
@@ -2765,19 +2695,16 @@ switch slider {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.1);
 }
 
-
 switch:hover slider {
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.15);
 }
-
 
 switch:checked slider {
   margin: 2px 2px 2px 0;
   background-color: white;
 }
 
-label:disabled selection:checked slider,
-switch:checked:disabled slider {
+switch:checked:disabled slider, label:disabled selection:checked slider {
   animation: none;
 }
 
