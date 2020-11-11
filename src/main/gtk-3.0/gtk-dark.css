@@ -6118,8 +6118,9 @@ entry.contacts-postal-entry:focus + entry.contacts-postal-entry {
   border-top-color: rgba(104, 135, 205, 0.75);
 }
 
-stack#titlebar_container.titlebar > stack > headerbar {
-  border: none;
+stack#titlebar_container.titlebar > stack > headerbar,
+stack#titlebar_container.titlebar > headerbar.titlebar > deck > headerbar {
+  border-color: #373737;
 }
 
 notebook.main-notebook > header.top {
@@ -6132,6 +6133,10 @@ notebook.main-notebook > header.top > tabs > tab:checked {
 
 notebook.main-notebook > header.top > tabs > tab:first-child {
   border-left-width: 0;
+}
+
+notebook.main-notebook webkitwebview {
+  border-radius: 0 0 14px 14px;
 }
 
 window.background.csd > box.vertical > overlay > stack.background {
