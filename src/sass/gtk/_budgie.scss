@@ -876,7 +876,7 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
       }
     }
 
-    switch { @extend %switch_mac; }
+    // switch { }
 
     list { color: $raven_fg_color; background-color: $raven_base_color; }
 

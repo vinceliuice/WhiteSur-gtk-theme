@@ -108,7 +108,7 @@
 	margin-top: 10px;
 	z-index: 10;
 }
-#customization-panelWrapper > .panel-arrowbox {    
+#customization-panelWrapper > .panel-arrowbox {
 	margin-bottom: -5px !important;
 }
 
@@ -205,8 +205,9 @@
 	border-radius: 5px 5px 0 0;
 	min-height: 34px !important;
 }
+
 #protections-popup[toast] #protections-popup-mainView-panel-header {
-	border-radius: 5px !important;
+	border-radius: 5px 5px 5px 5px !important;
 }
 
 #protections-popup-message {
