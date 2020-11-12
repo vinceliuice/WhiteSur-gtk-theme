@@ -28,6 +28,7 @@ ArchLinux:
 - sassc.
 - optipng.
 - inkscape.
+- libglib2.0-dev-bin `ubuntu 20.04`
 - libglib2.0-dev. `ubuntu 18.04` `debian 10.03` `linux mint 19`
 - libxml2-utils. `ubuntu 18.04` `debian 10.03` `linux mint 19`
 - glib2-devel. `Fedora` `Redhat`
@@ -38,7 +39,7 @@ Fedora/RedHat distros:
 
 Ubuntu/Mint/Debian distros:
 
-    sudo apt install sassc optipng inkscape
+    sudo apt install sassc optipng inkscape libglib2.0-dev-bin
 
 Debian 10:
 
