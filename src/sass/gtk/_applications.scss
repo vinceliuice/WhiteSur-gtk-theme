@@ -171,7 +171,7 @@ filechooser,
       background-color: transparent;
       transition: background-image 0;
 
-      .sidebar-icon { color: $selected_bg_color; }
+      .sidebar-icon { color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%)); }
 
       &.has-open-popup,
       &:disabled {
@@ -2826,10 +2826,6 @@ window#GearyMainWindow.background.csd {
       }
     }
   }
-}
-
-.geary-settings {
-  entry { background-color: $entry_bg !important; }
 }
 
 //

@@ -4841,7 +4841,7 @@ filechooser paned > separator:hover,
 }
 
 .nautilus-window placessidebar.sidebar row.sidebar-row .sidebar-icon {
-  color: #0860f2;
+  color: #669efa;
 }
 
 .nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup, .nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup label, .nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup image, .nautilus-window placessidebar.sidebar row.sidebar-row:disabled, .nautilus-window placessidebar.sidebar label:disabled selection.sidebar-row, label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row, .nautilus-window placessidebar.sidebar row.sidebar-row:disabled label, .nautilus-window placessidebar.sidebar label:disabled selection.sidebar-row label, label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row label, .nautilus-window placessidebar.sidebar row.sidebar-row:disabled image, .nautilus-window placessidebar.sidebar label:disabled selection.sidebar-row image, label:disabled .nautilus-window placessidebar.sidebar selection.sidebar-row image {
@@ -7167,10 +7167,6 @@ window#GearyMainWindow.background.csd paned.geary-sidebar-pane-separator frame.g
 .geary-main-window.background.csd paned.geary-sidebar-pane-separator frame.geary-conversation-frame scrolledwindow treeview.view:not(:hover):not(:selected),
 window#GearyMainWindow.background.csd paned.geary-sidebar-pane-separator frame.geary-conversation-frame scrolledwindow treeview.view:not(:hover):not(:selected) {
   background: none;
-}
-
-.geary-settings entry {
-  background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
 window.background:not(.csd) > widget > separator {
