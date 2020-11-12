@@ -1650,8 +1650,9 @@ entry.contacts-postal-entry:focus + entry.contacts-postal-entry { border-top-col
 // Gnome Web
 //
 stack#titlebar_container.titlebar {
-  > stack > headerbar {
-    border: none;
+  > stack > headerbar,
+  > headerbar.titlebar > deck > headerbar { // Gnome 3.38
+    border-color: $header_bg;
 
     // entry.suggestion.url_entry {}
   }
@@ -1670,6 +1671,10 @@ notebook.main-notebook {
         border-left-width: 0;
       }
     }
+  }
+
+  webkitwebview {
+    border-radius: 0 0 $wm_radius $wm_radius;
   }
 }
 
