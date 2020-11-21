@@ -4548,7 +4548,7 @@ headerbar button.titlebutton.close, headerbar button.titlebutton.maximize, heade
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: 16px 16px;
   border-width: 0;
   box-shadow: none;
 }

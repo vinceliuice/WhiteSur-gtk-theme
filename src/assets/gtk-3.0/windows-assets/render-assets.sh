@@ -30,7 +30,7 @@ else
     echo
     echo Rendering $ASSETS_DIR/$i$d@2.png
     $INKSCAPE --export-id=$i$d \
-              --export-dpi=180 \
+              --export-dpi=192 \
               --export-id-only \
               --export-png=$ASSETS_DIR/$i$d@2.png $SRC_FILE >/dev/null \
     && $OPTIPNG -o7 --quiet $ASSETS_DIR/$i$d@2.png 
