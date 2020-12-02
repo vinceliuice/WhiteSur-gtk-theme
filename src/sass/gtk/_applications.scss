@@ -1271,7 +1271,6 @@ button.documents-favorite:active:hover {
 //
 // Gnome Tweak Tool ( Gnome tweaks )
 //
-
 %side_headerbar_left {
   background-image: none;
   background-color: rgba($dark_sidebar_bg, 1);
@@ -1287,7 +1286,7 @@ button.documents-favorite:active:hover {
 }
 
 %side_searchbar {
-  background-color: $dark_sidebar_bg;
+  background-color: rgba($dark_sidebar_bg, 1);
 
   > revealer > box {
     border-color: if($variant == 'light', $solid_borders_color, $header_border);
@@ -1296,9 +1295,10 @@ button.documents-favorite:active:hover {
 
 %side_separator {
   &, &:backdrop {
-    background-image: if($variant == 'light', image($solid_borders_color), image($header_border));
-    background-color: transparent;
-    border-right: none;
+    min-width: 0;
+    background: none;
+    border-right-color: if($variant == 'light', $solid_borders_color, $header_border);
+    border-bottom-color: if($variant == 'light', $solid_borders_color, $header_border);
   }
 }
 
@@ -1370,7 +1370,7 @@ hdyleaflet, leaflet {
     }
   }
 
-  list.view.frame {
+  list.frame {
     @extend %circular_list;
 
     row.activatable { @extend %circular_row; }
@@ -1407,7 +1407,8 @@ list {
 window.background.csd {
   > hdyleaflet {
     > separator.vertical {
-      @extend %side_separator;
+      min-width: 1px;
+      background-color: if($variant == 'light', $solid_borders_color, $header_border);
     }
 
     > box.vertical {
@@ -1470,17 +1471,20 @@ window.background.csd {
 
   > headerbar.titlebar { // gnome 3.32 or later
     > box.horizontal > headerbar:first-child,
-    > hdyleaflet > headerbar:first-child {
+    > hdyleaflet > headerbar:first-child,
+    > leaflet > headerbar:first-child {
       @extend %side_headerbar_left;
     }
 
     > box.horizontal > headerbar:last-child,
-    > hdyleaflet > headerbar:last-child {
+    > hdyleaflet > headerbar:last-child,
+    > leaflet > headerbar:last-child {
       @extend %side_headerbar_right;
     }
 
     > box.horizontal > separator.sidebar,
-    > hdyleaflet > separator.sidebar {
+    > hdyleaflet > separator.sidebar,
+    > leaflet > separator.sidebar {
       @extend %side_separator;
     }
   }
@@ -1493,6 +1497,7 @@ window.background.csd {
     @extend %side_separator;
   }
 
+  > leaflet > stack.background, // > 3.38.0
   > hdyleaflet > stack.background, // > 3.34.0
   > box.horizontal > stack.background {
     background-color: $base_color;
@@ -1523,9 +1528,10 @@ window.background.csd {
     }
   }
 
+  > leaflet > box.vertical > scrolledwindow.view, // > 3.38.0
   > hdyleaflet > box.vertical > scrolledwindow.view, // > 3.34.0
   > box.horizontal > box.vertical > scrolledwindow.view { // > 3.25.90
-    background-color: $dark_sidebar_bg;
+    background-color: rgba($dark_sidebar_bg, 1);
     border-bottom-left-radius: $wm_radius + 1px;
 
     > viewport.frame > stack {
@@ -1542,11 +1548,12 @@ window.background.csd {
       }
     }
   }
-}
 
-box.horizontal > separator.sidebar,
-hdyleaflet > separator.sidebar { // reset
-  @extend %side_separator;
+  > leaflet > separator.sidebar,
+  > hdyleaflet > separator.sidebar,
+  > box.horizontal > separator.sidebar {
+    @extend %side_separator;
+  }
 }
 
 //
@@ -1590,7 +1597,8 @@ stack {
 //
 window.background.csd {
   > headerbar.titlebar.selection-mode {
-    > hdyleaflet > headerbar {
+    > hdyleaflet > headerbar,
+    > leaflet > headerbar {
       color: $header_fg;
 
       > button { @extend %headerbar_buttons; }
@@ -1611,9 +1619,10 @@ window.background.csd {
     }
   }
 
-  > overlay > hdyleaflet {
+  > overlay > hdyleaflet,
+  > overlay > leaflet {
     > stack > frame > grid.vertical {
-      background-color: $dark_sidebar_bg;
+      background-color: rgba($dark_sidebar_bg, 1);
       border-bottom-left-radius: $wm_radius;
 
       // list.contacts-contact-list {}
@@ -1623,8 +1632,11 @@ window.background.csd {
       @extend %side_separator;
     }
 
-    > overlay > scrolledwindow > viewport.frame > hdycolumn {
-      > stack > box.horizontal > box.vertical > box.horizontal {
+    > overlay > scrolledwindow > viewport.frame {
+      background-color: rgba($base_color, 1);
+      border-bottom-right-radius: $wm_radius;
+
+      > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal {
         > button.image-button {
           @extend %circular_button;
           padding: 2px;
@@ -1681,7 +1693,6 @@ notebook.main-notebook {
 //
 // Gnome Music
 //
-
 window.background.csd {
   > box.vertical > overlay > stack.background {
     border-radius: 0 0 $wm_radius $wm_radius;
@@ -1691,7 +1702,6 @@ window.background.csd {
 //
 // Gnome Weather
 //
-
 #weather-page,
 #weekly-forecast-frame {
   border-bottom-right-radius: $wm_radius;
@@ -1732,9 +1742,17 @@ viewswitcherbar > actionbar { // Gnome 3.38
 //
 // Polari
 //
+.polari-room-list {
+  .sidebar {
+    background-color: $dark_sidebar_bg;
+    border-bottom-left-radius: $wm_radius;
+  }
+}
+
 stack.view.polari-entry-area {
   background-color: $bg_color;
   border-top: 1px solid $borders_color;
+  border-bottom-right-radius: $wm_radius;
 
   button.popup.flat.toggle.polari-nick-button {
     &:hover {
@@ -1821,7 +1839,7 @@ gf-candidate-box {
 }
 
 //
-//  * rhythmbox *
+// rhythmbox
 //
 
 %toolbar_radio_button {
@@ -1918,9 +1936,9 @@ window.background > box.vertical > toolbar.primary-toolbar {
   }
 }
 
- /********************
-  * Gnome Calculator *
-  ********************/
+//
+// Gnome Calculator
+//
 window.background {
   > headerbar.titlebar { // mode-selector button
     > button.flat.popup.toggle.text-button.title {
@@ -1953,9 +1971,9 @@ window.background {
   }
 }
 
-/************
- * Epiphany *
- ************/
+//
+// Epiphany
+//
 
 $question_bg_color: #FFEA00;
 
@@ -2722,9 +2740,9 @@ window.thunar {
   }
 }
 
- /*********
-  * Geary *
-  *********/
+//
+// Geary
+//
 .geary-main-window.background.csd,
 window#GearyMainWindow.background.csd {
   > overlay > box.vertical {
@@ -2761,7 +2779,7 @@ window#GearyMainWindow.background.csd {
     scrolledwindow.geary-conversation-scroller {
       viewport.frame {
         list.conversation-listbox {
-          background-color: $base_color;
+          background-color: transparent;
           border-bottom-right-radius: $wm_radius;
         }
       }
@@ -2834,7 +2852,7 @@ window#GearyMainWindow.background.csd {
 }
 
 //
-// * Firefox and Thunderbird *
+// Firefox and Thunderbird
 //
 
 window.background:not(.csd) {
@@ -2924,9 +2942,9 @@ window.background:not(.csd) {
   }
 }
 
-// /*******************
-//  * Firefox Quantum *
-//  *******************/
+//
+// Firefox Quantum
+//
 
 #MozillaGtkWidget {
   // blend with weird toolbar backgrounds
@@ -3001,9 +3019,9 @@ window.background:not(.csd) {
   menu { border: none; }
 }
 
-/***************
- * Chrome(ium) *
- ***************/
+//
+// Chrome(ium)
+//
 
 $chrome_bg_color: $bg_color;
 $chrome_fg_color: $text_color;
@@ -3095,9 +3113,9 @@ window.background.chromium {
   // }
 }
 
-/****************
- * Libre-Office *
- ****************/
+//
+// Libre-Office
+//
 window.background:not(.solid-csd) {
   // reserved area at the most-right side of GtkMenuBar
   > grid.horizontal > grid.horizontal {
@@ -3142,9 +3160,9 @@ window.background:not(.solid-csd) {
   }
 }
 
-// /*********
-//  * Tilix *
-//  *********/
+//
+// Tilix
+//
 
 // in-line titlebars
 widget > box.terminal-titlebar {
@@ -3277,7 +3295,7 @@ box#DesktopStatusBar {
 }
 
 //
-//  Synaptic
+// Synaptic
 //
 window > box.vertical > box.horizontal {
   > toolbar {

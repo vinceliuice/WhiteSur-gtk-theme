@@ -1791,7 +1791,8 @@ headerbar entry, .titlebar entry {
   color: #FC4138;
 }
 
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:not(.image-button), .nemo-window .primary-toolbar button, headerbar button {
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:not(.image-button), .nemo-window .primary-toolbar button, headerbar button {
   min-height: 26px;
   min-width: 22px;
   color: #575757;
@@ -1801,12 +1802,14 @@ window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerb
   box-shadow: none;
 }
 
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:backdrop, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:backdrop:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:backdrop:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:backdrop:not(.image-button), .nemo-window .primary-toolbar button:backdrop, headerbar button:backdrop {
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:backdrop,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:backdrop, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:backdrop:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:backdrop:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:backdrop:not(.image-button), .nemo-window .primary-toolbar button:backdrop, headerbar button:backdrop {
   opacity: 0.65;
   background-image: none;
 }
 
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:hover, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:hover:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:hover:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:hover:not(.image-button), .nemo-window .primary-toolbar button:hover, headerbar button:hover {
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:hover,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:hover, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:hover:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:hover:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:hover:not(.image-button), .nemo-window .primary-toolbar button:hover, headerbar button:hover {
   color: #525252;
   background-color: rgba(87, 87, 87, 0.1);
   background-image: none;
@@ -1814,7 +1817,8 @@ window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerb
   transition: all 100ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:active, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:active:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:active:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:active:not(.image-button), .nemo-window .primary-toolbar button:active, headerbar button:active {
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:active,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:active, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:active:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:active:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:active:not(.image-button), .nemo-window .primary-toolbar button:active, headerbar button:active {
   color: #575757;
   background-color: rgba(87, 87, 87, 0.25);
   background-image: none;
@@ -1823,11 +1827,14 @@ window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerb
   transition-duration: 300ms;
 }
 
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:active:hover, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:active:hover:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:active:hover:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:active:hover:not(.image-button), .nemo-window .primary-toolbar button:active:hover, headerbar button:active:hover, window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:checked, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:checked:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:checked:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:checked:not(.image-button), .nemo-window .primary-toolbar button:checked, headerbar button:checked {
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:active:hover,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:active:hover, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:active:hover:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:active:hover:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:active:hover:not(.image-button), .nemo-window .primary-toolbar button:active:hover, headerbar button:active:hover, window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:checked,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:checked, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:checked:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:checked:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:checked:not(.image-button), .nemo-window .primary-toolbar button:checked, headerbar button:checked {
   color: #575757;
 }
 
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:checked, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:checked:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:checked:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:checked:not(.image-button), .nemo-window .primary-toolbar button:checked, headerbar button:checked {
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:checked,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:checked, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:checked:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:checked:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:checked:not(.image-button), .nemo-window .primary-toolbar button:checked, headerbar button:checked {
   color: #575757;
   background-color: rgba(87, 87, 87, 0.12);
   background-image: none;
@@ -1836,20 +1843,26 @@ window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerb
   transition-duration: 300ms;
 }
 
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:checked:hover, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:checked:hover:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:checked:hover:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:checked:hover:not(.image-button), .nemo-window .primary-toolbar button:checked:hover, headerbar button:checked:hover {
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:checked:hover,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:checked:hover, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:checked:hover:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:checked:hover:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:checked:hover:not(.image-button), .nemo-window .primary-toolbar button:checked:hover, headerbar button:checked:hover {
   background-image: none;
 }
 
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:disabled, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:disabled:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:disabled:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:disabled:not(.image-button), .nemo-window .primary-toolbar button:disabled {
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:disabled,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:disabled, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:disabled:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:disabled:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:disabled:not(.image-button), .nemo-window .primary-toolbar button:disabled {
   background: none;
   box-shadow: none;
 }
 
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:disabled label, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:disabled:not(.image-button) label, window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:disabled:not(.image-button) label, .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:disabled:not(.image-button) label, .nemo-window .primary-toolbar button:disabled label, window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:disabled, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:disabled:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:disabled:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:disabled:not(.image-button), .nemo-window .primary-toolbar button:disabled {
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:disabled label,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:disabled label, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:disabled:not(.image-button) label, window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:disabled:not(.image-button) label, .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:disabled:not(.image-button) label, .nemo-window .primary-toolbar button:disabled label, window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:disabled,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:disabled, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:disabled:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:disabled:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:disabled:not(.image-button), .nemo-window .primary-toolbar button:disabled {
   color: rgba(87, 87, 87, 0.35);
 }
 
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button.flat, .raven .raven-header:not(.top) window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:not(.image-button), .nemo-window .primary-toolbar button.flat, .nemo-window .primary-toolbar .raven .raven-header:not(.top) button, .raven .raven-header:not(.top) .nemo-window .primary-toolbar button, headerbar button.flat, headerbar .raven .raven-header:not(.top) button, .raven .raven-header:not(.top) headerbar button {
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button.flat, .raven .raven-header:not(.top) window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button.flat,
+.raven .raven-header:not(.top) window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:not(.image-button), window.org-gnome-gedit > paned.titlebar > headerbar .raven .raven-header:not(.top) button.toggle.popup:not(.image-button), .raven .raven-header:not(.top) window.org-gnome-gedit > paned.titlebar > headerbar button.toggle.popup:not(.image-button), .nemo-window .primary-toolbar button.flat, .nemo-window .primary-toolbar .raven .raven-header:not(.top) button, .raven .raven-header:not(.top) .nemo-window .primary-toolbar button, headerbar button.flat, headerbar .raven .raven-header:not(.top) button, .raven .raven-header:not(.top) headerbar button {
   border-color: transparent;
   background-color: transparent;
   background-image: none;
@@ -4419,7 +4432,8 @@ colorchooser .popover.osd {
   font-family: Monospace;
 }
 
-.raven box.vertical > stack > box.vertical > .raven-background > viewport.frame > list > row.activatable button.image-button, .raven button.image-button, window.background.csd > overlay > hdyleaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button, button.nautilus-circular-button.image-button, stackswitcher button.circular, button.close, searchbar button.flat, searchbar .raven .raven-header:not(.top) button, .raven .raven-header:not(.top) searchbar button, row button.circular, .app-notification button.image-button:not(.text-button),
+.raven box.vertical > stack > box.vertical > .raven-background > viewport.frame > list > row.activatable button.image-button, .raven button.image-button, window.background.csd > overlay > hdyleaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button,
+window.background.csd > overlay > leaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button, button.nautilus-circular-button.image-button, stackswitcher button.circular, button.close, searchbar button.flat, searchbar .raven .raven-header:not(.top) button, .raven .raven-header:not(.top) searchbar button, row button.circular, .app-notification button.image-button:not(.text-button),
 button.circular {
   border-radius: 100px;
   -gtk-outline-radius: 100px;
@@ -4428,7 +4442,9 @@ button.circular {
   min-width: 28px;
 }
 
-.raven box.vertical > stack > box.vertical > .raven-background > viewport.frame > list > row.activatable button.image-button:active, .raven button.image-button:active, window.background.csd > overlay > hdyleaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button:active, button.nautilus-circular-button.image-button:active, button.close:active, searchbar button.flat:active, searchbar .raven .raven-header:not(.top) button:active, .raven .raven-header:not(.top) searchbar button:active, .app-notification button.image-button:active:not(.text-button), .raven box.vertical > stack > box.vertical > .raven-background > viewport.frame > list > row.activatable button.image-button:checked, .raven button.image-button:checked, window.background.csd > overlay > hdyleaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button:checked, button.nautilus-circular-button.image-button:checked, button.close:checked, searchbar button.flat:checked, searchbar .raven .raven-header:not(.top) button:checked, .raven .raven-header:not(.top) searchbar button:checked, .app-notification button.image-button:checked:not(.text-button),
+.raven box.vertical > stack > box.vertical > .raven-background > viewport.frame > list > row.activatable button.image-button:active, .raven button.image-button:active, window.background.csd > overlay > hdyleaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button:active,
+window.background.csd > overlay > leaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button:active, button.nautilus-circular-button.image-button:active, button.close:active, searchbar button.flat:active, searchbar .raven .raven-header:not(.top) button:active, .raven .raven-header:not(.top) searchbar button:active, .app-notification button.image-button:active:not(.text-button), .raven box.vertical > stack > box.vertical > .raven-background > viewport.frame > list > row.activatable button.image-button:checked, .raven button.image-button:checked, window.background.csd > overlay > hdyleaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button:checked,
+window.background.csd > overlay > leaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button:checked, button.nautilus-circular-button.image-button:checked, button.close:checked, searchbar button.flat:checked, searchbar .raven .raven-header:not(.top) button:checked, .raven .raven-header:not(.top) searchbar button:checked, .app-notification button.image-button:checked:not(.text-button),
 button.circular:active,
 button.circular:checked {
   background-image: none;
@@ -5838,7 +5854,8 @@ button.documents-favorite:active:hover {
 }
 
 window.background.csd > headerbar.titlebar > box.horizontal > headerbar:first-child,
-window.background.csd > headerbar.titlebar > hdyleaflet > headerbar:first-child, window.background.csd > box.titlebar.horizontal > headerbar:first-child, .titlebar > headerbar.titlebar.tweak-titlebar-left {
+window.background.csd > headerbar.titlebar > hdyleaflet > headerbar:first-child,
+window.background.csd > headerbar.titlebar > leaflet > headerbar:first-child, window.background.csd > box.titlebar.horizontal > headerbar:first-child, .titlebar > headerbar.titlebar.tweak-titlebar-left {
   background-image: none;
   background-color: #f0f0f0;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.65);
@@ -5846,7 +5863,8 @@ window.background.csd > headerbar.titlebar > hdyleaflet > headerbar:first-child,
 }
 
 window.background.csd > headerbar.titlebar > box.horizontal > headerbar:last-child,
-window.background.csd > headerbar.titlebar > hdyleaflet > headerbar:last-child, window.background.csd > box.titlebar.horizontal > headerbar:last-child, .titlebar > headerbar.titlebar.tweak-titlebar-right {
+window.background.csd > headerbar.titlebar > hdyleaflet > headerbar:last-child,
+window.background.csd > headerbar.titlebar > leaflet > headerbar:last-child, window.background.csd > box.titlebar.horizontal > headerbar:last-child, .titlebar > headerbar.titlebar.tweak-titlebar-right {
   background-image: none;
   background-color: white;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.65);
@@ -5855,7 +5873,7 @@ window.background.csd > headerbar.titlebar > hdyleaflet > headerbar:last-child, 
 
 .geary-main-window.background.csd > overlay > box.vertical > paned > .sidebar > searchbar,
 window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sidebar > searchbar, window.background.csd > hdyleaflet > box.vertical > searchbar {
-  background-color: rgba(240, 240, 240, 0.94);
+  background-color: #f0f0f0;
 }
 
 .geary-main-window.background.csd > overlay > box.vertical > paned > .sidebar > searchbar > revealer > box,
@@ -5864,37 +5882,41 @@ window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sideba
 }
 
 .geary-main-window.background.csd > overlay > box.vertical > paned > separator,
-window#GearyMainWindow.background.csd > overlay > box.vertical > paned > separator, window.background.csd > box.vertical > paned.horizontal > separator, window.background.csd > overlay > hdyleaflet > separator.sidebar, box.horizontal > separator.sidebar,
-hdyleaflet > separator.sidebar, window.background.csd > box.horizontal:not(.titlebar) > separator.vertical, window.background.csd > headerbar.titlebar > box.horizontal > separator.sidebar,
-window.background.csd > headerbar.titlebar > hdyleaflet > separator.sidebar, window.background.csd > hdyleaflet > separator.vertical, .titlebar:not(headerbar) > separator, window.org-gnome-gedit > paned.titlebar > separator, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator, window.org-gnome-gedit > paned.titlebar > separator:backdrop, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator:backdrop {
-  background-image: image(#d6d6d6);
-  background-color: transparent;
-  border-right: none;
+window#GearyMainWindow.background.csd > overlay > box.vertical > paned > separator, window.background.csd > box.vertical > paned.horizontal > separator, window.background.csd > overlay > hdyleaflet > separator.sidebar,
+window.background.csd > overlay > leaflet > separator.sidebar, window.background.csd > leaflet > separator.sidebar,
+window.background.csd > hdyleaflet > separator.sidebar,
+window.background.csd > box.horizontal > separator.sidebar, window.background.csd > box.horizontal:not(.titlebar) > separator.vertical, window.background.csd > headerbar.titlebar > box.horizontal > separator.sidebar,
+window.background.csd > headerbar.titlebar > hdyleaflet > separator.sidebar,
+window.background.csd > headerbar.titlebar > leaflet > separator.sidebar, .titlebar:not(headerbar) > separator, window.org-gnome-gedit > paned.titlebar > separator, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator, window.org-gnome-gedit > paned.titlebar > separator:backdrop, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator:backdrop {
+  min-width: 0;
+  background: none;
+  border-right-color: #d6d6d6;
+  border-bottom-color: #d6d6d6;
 }
 
-.tweak-group-startup, list.tweak-group list, hdyleaflet list.view.frame, leaflet list.view.frame, hdyleaflet frame.view, leaflet frame.view, hdyleaflet frame:not(.view) list:not(.contacts-contact-list), leaflet frame:not(.view) list:not(.contacts-contact-list) {
+.tweak-group-startup, list.tweak-group list, hdyleaflet list.frame, leaflet list.frame, hdyleaflet frame.view, leaflet frame.view, hdyleaflet frame:not(.view) list:not(.contacts-contact-list), leaflet frame:not(.view) list:not(.contacts-contact-list) {
   border-radius: 14px;
   box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.02), inset 0 0 3px rgba(0, 0, 0, 0.01), inset 0 0 0 1px rgba(0, 0, 0, 0.04), inset 0 1px rgba(0, 0, 0, 0.05);
   background-color: rgba(0, 0, 0, 0.03);
   border: none;
 }
 
-.tweak-group-startup > separator, list.tweak-group list > separator, hdyleaflet list.view.frame > separator, leaflet list.view.frame > separator, hdyleaflet frame.view > separator, leaflet frame.view > separator, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) > separator, leaflet frame:not(.view) list:not(.contacts-contact-list) > separator {
+.tweak-group-startup > separator, list.tweak-group list > separator, hdyleaflet list.frame > separator, leaflet list.frame > separator, hdyleaflet frame.view > separator, leaflet frame.view > separator, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) > separator, leaflet frame:not(.view) list:not(.contacts-contact-list) > separator {
   background: none;
   min-height: 0;
 }
 
-list.tweak-group list row.activatable:first-child, hdyleaflet list.view.frame row.activatable:first-child, leaflet list.view.frame row.activatable:first-child, hdyleaflet frame.view list row.activatable:first-child, leaflet frame.view list row.activatable:first-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child {
+list.tweak-group list row.activatable:first-child, hdyleaflet list.frame row.activatable:first-child, leaflet list.frame row.activatable:first-child, hdyleaflet frame.view list row.activatable:first-child, leaflet frame.view list row.activatable:first-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child {
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
 }
 
-list.tweak-group list row.activatable:last-child, hdyleaflet list.view.frame row.activatable:last-child, leaflet list.view.frame row.activatable:last-child, hdyleaflet frame.view list row.activatable:last-child, leaflet frame.view list row.activatable:last-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child {
+list.tweak-group list row.activatable:last-child, hdyleaflet list.frame row.activatable:last-child, leaflet list.frame row.activatable:last-child, hdyleaflet frame.view list row.activatable:last-child, leaflet frame.view list row.activatable:last-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child {
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
 }
 
-list.tweak-group list row.activatable:only-child, hdyleaflet list.view.frame row.activatable:only-child, leaflet list.view.frame row.activatable:only-child, hdyleaflet frame.view list row.activatable:only-child, leaflet frame.view list row.activatable:only-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child {
+list.tweak-group list row.activatable:only-child, hdyleaflet list.frame row.activatable:only-child, leaflet list.frame row.activatable:only-child, hdyleaflet frame.view list row.activatable:only-child, leaflet frame.view list row.activatable:only-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child {
   border-radius: 14px;
 }
 
@@ -5927,6 +5949,11 @@ hdyleaflet frame.view list > separator, leaflet frame.view list > separator {
 .titlebar > headerbar.titlebar.tweak-titlebar-left,
 .titlebar > headerbar.titlebar.tweak-titlebar-right {
   border: none;
+}
+
+window.background.csd > hdyleaflet > separator.vertical {
+  min-width: 1px;
+  background-color: #d6d6d6;
 }
 
 window.background.csd > hdyleaflet > box.vertical > stack.main-container {
@@ -5963,12 +5990,14 @@ window.background.csd > stack {
   border-radius: 0 0 14px 14px;
 }
 
+window.background.csd > leaflet > stack.background,
 window.background.csd > hdyleaflet > stack.background,
 window.background.csd > box.horizontal > stack.background {
   background-color: #ffffff;
   border-bottom-right-radius: 14px;
 }
 
+window.background.csd > leaflet > stack.background > widget > box.horizontal > box.horizontal > box.vertical > button:active,
 window.background.csd > hdyleaflet > stack.background > widget > box.horizontal > box.horizontal > box.vertical > button:active,
 window.background.csd > box.horizontal > stack.background > widget > box.horizontal > box.horizontal > box.vertical > button:active {
   color: #242424;
@@ -5977,38 +6006,45 @@ window.background.csd > box.horizontal > stack.background > widget > box.horizon
   border-color: rgba(0, 0, 0, 0.08);
 }
 
+window.background.csd > leaflet > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame,
 window.background.csd > hdyleaflet > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame,
 window.background.csd > box.horizontal > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame {
   background-color: #ffffff;
   border-bottom-right-radius: 15px;
 }
 
+window.background.csd > leaflet > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame > box.vertical,
 window.background.csd > hdyleaflet > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame > box.vertical,
 window.background.csd > box.horizontal > stack.background > widget > box.vertical > box.vertical > scrolledwindow > viewport.frame > box.vertical {
   background: none;
 }
 
+window.background.csd > leaflet > box.vertical > scrolledwindow.view,
 window.background.csd > hdyleaflet > box.vertical > scrolledwindow.view,
 window.background.csd > box.horizontal > box.vertical > scrolledwindow.view {
-  background-color: rgba(240, 240, 240, 0.94);
+  background-color: #f0f0f0;
   border-bottom-left-radius: 15px;
 }
 
+window.background.csd > leaflet > box.vertical > scrolledwindow.view > viewport.frame > stack,
 window.background.csd > hdyleaflet > box.vertical > scrolledwindow.view > viewport.frame > stack,
 window.background.csd > box.horizontal > box.vertical > scrolledwindow.view > viewport.frame > stack {
   background-color: transparent;
 }
 
+window.background.csd > leaflet > box.vertical > scrolledwindow.view > viewport.frame > stack list,
 window.background.csd > hdyleaflet > box.vertical > scrolledwindow.view > viewport.frame > stack list,
 window.background.csd > box.horizontal > box.vertical > scrolledwindow.view > viewport.frame > stack list {
   background-color: transparent;
 }
 
+window.background.csd > leaflet > box.vertical > scrolledwindow.view > viewport.frame > stack list separator,
 window.background.csd > hdyleaflet > box.vertical > scrolledwindow.view > viewport.frame > stack list separator,
 window.background.csd > box.horizontal > box.vertical > scrolledwindow.view > viewport.frame > stack list separator {
   background: none;
 }
 
+window.background.csd > leaflet > box.vertical > scrolledwindow.view > viewport.frame > stack list row.activatable:not(:hover):not(:active):not(:selected),
 window.background.csd > hdyleaflet > box.vertical > scrolledwindow.view > viewport.frame > stack list row.activatable:not(:hover):not(:active):not(:selected),
 window.background.csd > box.horizontal > box.vertical > scrolledwindow.view > viewport.frame > stack list row.activatable:not(:hover):not(:active):not(:selected) {
   background-color: transparent;
@@ -6036,7 +6072,8 @@ stack > grid.vertical scrolledwindow.frame.emptyGrid {
   border: none;
 }
 
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar {
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar {
   color: #575757;
 }
 
@@ -6050,12 +6087,20 @@ window.background.csd > overlay > grid.horizontal > overlay > stack > box.horizo
   border-bottom-right-radius: 15px;
 }
 
-window.background.csd > overlay > hdyleaflet > stack > frame > grid.vertical {
-  background-color: rgba(240, 240, 240, 0.94);
+window.background.csd > overlay > hdyleaflet > stack > frame > grid.vertical,
+window.background.csd > overlay > leaflet > stack > frame > grid.vertical {
+  background-color: #f0f0f0;
   border-bottom-left-radius: 14px;
 }
 
-window.background.csd > overlay > hdyleaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button {
+window.background.csd > overlay > hdyleaflet > overlay > scrolledwindow > viewport.frame,
+window.background.csd > overlay > leaflet > overlay > scrolledwindow > viewport.frame {
+  background-color: white;
+  border-bottom-right-radius: 14px;
+}
+
+window.background.csd > overlay > hdyleaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button,
+window.background.csd > overlay > leaflet > overlay > scrolledwindow > viewport.frame > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal > button.image-button {
   padding: 2px;
 }
 
@@ -6118,9 +6163,15 @@ viewswitcherbar > actionbar {
   border: none;
 }
 
+.polari-room-list .sidebar {
+  background-color: rgba(240, 240, 240, 0.94);
+  border-bottom-left-radius: 14px;
+}
+
 stack.view.polari-entry-area {
   background-color: #f5f5f5;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom-right-radius: 14px;
 }
 
 stack.view.polari-entry-area button.popup.flat.toggle.polari-nick-button:hover, stack.view.polari-entry-area .raven .raven-header:not(.top) button.popup.toggle.polari-nick-button:hover, .raven .raven-header:not(.top) stack.view.polari-entry-area button.popup.toggle.polari-nick-button:hover {
@@ -6297,9 +6348,6 @@ window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked 
   margin: 0;
 }
 
-/********************
-  * Gnome Calculator *
-  ********************/
 window.background > headerbar.titlebar > button.flat.popup.toggle.text-button.title, .raven .raven-header:not(.top) window.background > headerbar.titlebar > button.popup.toggle.text-button.title {
   margin: 6px 0;
 }
@@ -6340,9 +6388,6 @@ window.background > grid.vertical > box.vertical grid.math-buttons button:not(.s
   border-color: rgba(0, 0, 0, 0.12);
 }
 
-/************
- * Epiphany *
- ************/
 headerbar.titlebar.incognito-mode entry {
   color: #575757;
   background-color: rgba(0, 0, 0, 0.05);
@@ -7073,9 +7118,6 @@ window.thunar notebook header.top tab.reorderable-page > box > label {
   min-height: 0;
 }
 
-/*********
-  * Geary *
-  *********/
 .geary-main-window.background.csd > overlay > box.vertical > paned > .sidebar,
 window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sidebar {
   border-bottom-left-radius: 14px;
@@ -7105,7 +7147,7 @@ window#GearyMainWindow.background.csd stack#conversation_viewer {
 
 .geary-main-window.background.csd stack#conversation_viewer scrolledwindow.geary-conversation-scroller viewport.frame list.conversation-listbox,
 window#GearyMainWindow.background.csd stack#conversation_viewer scrolledwindow.geary-conversation-scroller viewport.frame list.conversation-listbox {
-  background-color: #ffffff;
+  background-color: transparent;
   border-bottom-right-radius: 14px;
 }
 
@@ -7349,9 +7391,6 @@ window.background:not(.csd) > window > menu menuitem {
   border: none;
 }
 
-/***************
- * Chrome(ium) *
- ***************/
 window.background.chromium {
   background-color: #f5f5f5;
   color: #363636;
@@ -7409,9 +7448,6 @@ window.background.chromium > menubar {
   background-color: #ffffff;
 }
 
-/****************
- * Libre-Office *
- ****************/
 window.background:not(.solid-csd) > grid.horizontal > grid.horizontal {
   background-color: #ffffff;
   box-shadow: inset 0 -1px rgba(0, 0, 0, 0.12);
