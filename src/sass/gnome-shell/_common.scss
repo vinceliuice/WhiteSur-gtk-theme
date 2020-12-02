@@ -2246,7 +2246,7 @@ StWidget.focused .app-well-app-running-dot {
 }
 .app-folder-dialog-container {
   padding: 12px;
-  width: 800px;
+  width: 600px;
   height: 600px;
 }
 
@@ -2474,7 +2474,6 @@ StWidget.focused .app-well-app-running-dot {
 
   // &.default-key { background-size: 20px; } // backspace button
   &.default-key,
-  &.enter-key,
   &.shift-key-lowercase,
   &.shift-key-uppercase,
   &.hide-key,
@@ -2487,6 +2486,7 @@ StWidget.focused .app-well-app-running-dot {
   &.enter-key {
     color: $light_fg_color;
     background-color: $primary_color;
+    box-shadow: 0 1px rgba(black, 0.2);
     // background-image: url("assets/key-enter.svg");
     &:focus, &:hover { color: $light_fg_color; background-color: lighten($primary_color, 5%); }
     &:checked, &:active { color: $light_fg_color; background-color: darken($primary_color, 10%); }

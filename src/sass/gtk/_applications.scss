@@ -1337,7 +1337,7 @@ $list_shadow: if($variant == 'light',
   -gtk-outline-radius : $wm_radius - 6px;
 }
 
-hdyleaflet {
+hdyleaflet, leaflet {
   frame > border { border: none; }
 
   frame:not(.view) list:not(.contacts-contact-list) { // Don't set this to Gnome-Contacts
@@ -3622,21 +3622,36 @@ window.background.csd {
 }
 
 .dynamic-notebook {
-  notebook > stack {
-    border-bottom-right-radius: $wm_radius;
-    background-color: $base_color;
+  > notebook {
+    > stack {
+      border-bottom-right-radius: $wm_radius;
+      background-color: $base_color;
 
-    scrolledwindow.view.h2 {
-      background-color: transparent;
+      scrolledwindow.view.h2 {
+        background-color: transparent;
+      }
+
+      treeview.view,
+      iconview.view {
+        &:not(:hover):not(:selected) { background: none; }
+        &:hover { background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05)); }
+        &:selected {
+          color: $fg_color;
+          background-color: if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
+        }
+      }
     }
 
-    treeview.view,
-    iconview.view {
-      &:not(:hover):not(:selected) { background: none; }
-      &:hover { background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05)); }
-      &:selected {
-        color: $fg_color;
-        background-color: if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
+    treeview.view {
+      > frame.cell {
+        > entry {
+          border-image-width: 0;
+          background-color: $bg_color;
+
+          &:focus { background-color: $base_color; }
+        }
+
+        > border { border: none; }
       }
     }
   }
@@ -3645,14 +3660,15 @@ window.background.csd {
 headerbar.titlebar {
   > box.horizontal > entry.pathbar {
     min-height: 20px;
-    padding: 2px 16px;
+    padding: 2px 6px;
     margin-top: 0;
     margin-bottom: 0;
   }
 
-  > button.flat.image-button.toggle {
-    margin-top: 5px;
-    margin-bottom: 5px;
+  > button.flat.image-button.toggle:dir-ltr {
+    min-height: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
 
     &:not(:checked):not(:active) {
       background-clip: if($variant=='light', padding-box, padding-box);
@@ -3672,6 +3688,11 @@ headerbar.titlebar {
     &:backdrop { opacity: 0.7; background-image: none;}
 
     + button.flat.image-button.toggle { margin-right: if($variant=='light', -6px, -5px); }
+  }
+
+  > .linked.raised > button.toggle {
+    margin-top: 4px;
+    margin-bottom: 4px;
   }
 
   // Hide Code header format-bar

@@ -5876,54 +5876,54 @@ window.background.csd > headerbar.titlebar > hdyleaflet > separator.sidebar, win
   border-right: none;
 }
 
-.tweak-group-startup, list.tweak-group list, hdyleaflet list.view.frame, hdyleaflet frame.view, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) {
+.tweak-group-startup, list.tweak-group list, hdyleaflet list.view.frame, leaflet list.view.frame, hdyleaflet frame.view, leaflet frame.view, hdyleaflet frame:not(.view) list:not(.contacts-contact-list), leaflet frame:not(.view) list:not(.contacts-contact-list) {
   border-radius: 14px;
   box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.02), inset 0 0 3px rgba(0, 0, 0, 0.01), inset 0 0 0 1px rgba(0, 0, 0, 0.04), inset 0 1px rgba(0, 0, 0, 0.05);
   background-color: rgba(0, 0, 0, 0.03);
   border: none;
 }
 
-.tweak-group-startup > separator, list.tweak-group list > separator, hdyleaflet list.view.frame > separator, hdyleaflet frame.view > separator, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) > separator {
+.tweak-group-startup > separator, list.tweak-group list > separator, hdyleaflet list.view.frame > separator, leaflet list.view.frame > separator, hdyleaflet frame.view > separator, leaflet frame.view > separator, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) > separator, leaflet frame:not(.view) list:not(.contacts-contact-list) > separator {
   background: none;
   min-height: 0;
 }
 
-list.tweak-group list row.activatable:first-child, hdyleaflet list.view.frame row.activatable:first-child, hdyleaflet frame.view list row.activatable:first-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child {
+list.tweak-group list row.activatable:first-child, hdyleaflet list.view.frame row.activatable:first-child, leaflet list.view.frame row.activatable:first-child, hdyleaflet frame.view list row.activatable:first-child, leaflet frame.view list row.activatable:first-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child {
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
 }
 
-list.tweak-group list row.activatable:last-child, hdyleaflet list.view.frame row.activatable:last-child, hdyleaflet frame.view list row.activatable:last-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child {
+list.tweak-group list row.activatable:last-child, hdyleaflet list.view.frame row.activatable:last-child, leaflet list.view.frame row.activatable:last-child, hdyleaflet frame.view list row.activatable:last-child, leaflet frame.view list row.activatable:last-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child {
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
 }
 
-list.tweak-group list row.activatable:only-child, hdyleaflet list.view.frame row.activatable:only-child, hdyleaflet frame.view list row.activatable:only-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child {
+list.tweak-group list row.activatable:only-child, hdyleaflet list.view.frame row.activatable:only-child, leaflet list.view.frame row.activatable:only-child, hdyleaflet frame.view list row.activatable:only-child, leaflet frame.view list row.activatable:only-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child {
   border-radius: 14px;
 }
 
-hdyleaflet list > row.activatable {
+hdyleaflet list > row.activatable, leaflet list > row.activatable {
   margin: 2px 4px;
   border-radius: 10px;
   -gtk-outline-radius: 8px;
 }
 
-hdyleaflet frame > border {
+hdyleaflet frame > border, leaflet frame > border {
   border: none;
 }
 
-hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable .row-header > button:not(.text-button) {
+hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable .row-header > button:not(.text-button), leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable .row-header > button:not(.text-button) {
   min-height: 28px;
   min-width: 28px;
   padding: 0;
   margin: 4px 0;
 }
 
-hdyleaflet frame.view list {
+hdyleaflet frame.view list, leaflet frame.view list {
   background: none;
 }
 
-hdyleaflet frame.view list > separator {
+hdyleaflet frame.view list > separator, leaflet frame.view list > separator {
   background: none;
   min-height: 0;
 }
@@ -7950,41 +7950,55 @@ window.background.csd > stack > stack > paned.horizontal > scrolledwindow > view
   border-bottom-left-radius: 14px;
 }
 
-.dynamic-notebook notebook > stack {
+.dynamic-notebook > notebook > stack {
   border-bottom-right-radius: 14px;
   background-color: #ffffff;
 }
 
-.dynamic-notebook notebook > stack scrolledwindow.view.h2 {
+.dynamic-notebook > notebook > stack scrolledwindow.view.h2 {
   background-color: transparent;
 }
 
-.dynamic-notebook notebook > stack treeview.view:not(:hover):not(:selected),
-.dynamic-notebook notebook > stack iconview.view:not(:hover):not(:selected) {
+.dynamic-notebook > notebook > stack treeview.view:not(:hover):not(:selected),
+.dynamic-notebook > notebook > stack iconview.view:not(:hover):not(:selected) {
   background: none;
 }
 
-.dynamic-notebook notebook > stack treeview.view:hover,
-.dynamic-notebook notebook > stack iconview.view:hover {
+.dynamic-notebook > notebook > stack treeview.view:hover,
+.dynamic-notebook > notebook > stack iconview.view:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.dynamic-notebook notebook > stack treeview.view:selected,
-.dynamic-notebook notebook > stack iconview.view:selected {
+.dynamic-notebook > notebook > stack treeview.view:selected,
+.dynamic-notebook > notebook > stack iconview.view:selected {
   color: #242424;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.dynamic-notebook > notebook treeview.view > frame.cell > entry {
+  border-image-width: 0;
+  background-color: #f5f5f5;
+}
+
+.dynamic-notebook > notebook treeview.view > frame.cell > entry:focus {
+  background-color: #ffffff;
+}
+
+.dynamic-notebook > notebook treeview.view > frame.cell > border {
+  border: none;
+}
+
 headerbar.titlebar > box.horizontal > entry.pathbar {
   min-height: 20px;
-  padding: 2px 16px;
+  padding: 2px 6px;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle {
-  margin-top: 5px;
-  margin-bottom: 5px;
+headerbar.titlebar > button.flat.image-button.toggle:dir-ltr, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr {
+  min-height: 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
   border-width: 1px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.12);
@@ -7995,42 +8009,47 @@ headerbar.titlebar > button.flat.image-button.toggle, .raven .raven-header:not(.
   box-shadow: none;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:not(:checked):not(:active), .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:not(:checked):not(:active) {
+headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:not(:checked):not(:active), .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:not(:checked):not(:active) {
   background-clip: padding-box;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:hover, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:hover {
+headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:hover, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:hover {
   color: #525252;
   background-color: rgba(87, 87, 87, 0.1);
   background-image: none;
   box-shadow: none;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:active, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:active {
+headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:active, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:active {
   color: #575757;
   background-color: rgba(87, 87, 87, 0.25);
   background-image: none;
   box-shadow: none;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:checked, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:checked {
+headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:checked, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:checked {
   color: #575757;
   background-color: rgba(87, 87, 87, 0.12);
   background-image: none;
   box-shadow: none;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:disabled, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:disabled, label:disabled headerbar.titlebar > selection.toggle {
+headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:disabled, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:disabled, label:disabled headerbar.titlebar > selection:dir-ltr {
   color: rgba(87, 87, 87, 0.6);
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:backdrop, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:backdrop {
+headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:backdrop, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:backdrop {
   opacity: 0.7;
   background-image: none;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle + button.flat.image-button.toggle, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle + button.image-button.toggle {
+headerbar.titlebar > button.flat.image-button.toggle:dir-ltr + button.flat.image-button.toggle, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr + button.image-button.toggle {
   margin-right: -6px;
+}
+
+headerbar.titlebar > .linked.raised > button.toggle {
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 headerbar.titlebar > grid.linked.horizontal.format-bar {

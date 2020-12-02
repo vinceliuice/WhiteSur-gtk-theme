@@ -2574,7 +2574,7 @@ StWidget.focused .app-well-app-running-dot {
 
 .app-folder-dialog-container {
   padding: 12px;
-  width: 800px;
+  width: 600px;
   height: 600px;
 }
 
@@ -2872,17 +2872,17 @@ StWidget.focused .app-well-app-running-dot {
   border-color: rgba(0, 0, 0, 0.3);
 }
 
-.keyboard-key.default-key, .keyboard-key.enter-key, .keyboard-key.shift-key-lowercase, .keyboard-key.shift-key-uppercase, .keyboard-key.hide-key, .keyboard-key.layout-key {
+.keyboard-key.default-key, .keyboard-key.shift-key-lowercase, .keyboard-key.shift-key-uppercase, .keyboard-key.hide-key, .keyboard-key.layout-key {
   background-color: #242424;
   box-shadow: 0 1px rgba(0, 0, 0, 0.2);
 }
 
-.keyboard-key.default-key:focus, .keyboard-key.default-key:hover, .keyboard-key.enter-key:focus, .keyboard-key.enter-key:hover, .keyboard-key.shift-key-lowercase:focus, .keyboard-key.shift-key-lowercase:hover, .keyboard-key.shift-key-uppercase:focus, .keyboard-key.shift-key-uppercase:hover, .keyboard-key.hide-key:focus, .keyboard-key.hide-key:hover, .keyboard-key.layout-key:focus, .keyboard-key.layout-key:hover {
+.keyboard-key.default-key:focus, .keyboard-key.default-key:hover, .keyboard-key.shift-key-lowercase:focus, .keyboard-key.shift-key-lowercase:hover, .keyboard-key.shift-key-uppercase:focus, .keyboard-key.shift-key-uppercase:hover, .keyboard-key.hide-key:focus, .keyboard-key.hide-key:hover, .keyboard-key.layout-key:focus, .keyboard-key.layout-key:hover {
   color: #dedede;
   background-color: #555555;
 }
 
-.keyboard-key.default-key:checked, .keyboard-key.default-key:active, .keyboard-key.enter-key:checked, .keyboard-key.enter-key:active, .keyboard-key.shift-key-lowercase:checked, .keyboard-key.shift-key-lowercase:active, .keyboard-key.shift-key-uppercase:checked, .keyboard-key.shift-key-uppercase:active, .keyboard-key.hide-key:checked, .keyboard-key.hide-key:active, .keyboard-key.layout-key:checked, .keyboard-key.layout-key:active {
+.keyboard-key.default-key:checked, .keyboard-key.default-key:active, .keyboard-key.shift-key-lowercase:checked, .keyboard-key.shift-key-lowercase:active, .keyboard-key.shift-key-uppercase:checked, .keyboard-key.shift-key-uppercase:active, .keyboard-key.hide-key:checked, .keyboard-key.hide-key:active, .keyboard-key.layout-key:checked, .keyboard-key.layout-key:active {
   color: #dedede;
   background-color: #464646;
 }
@@ -2890,6 +2890,7 @@ StWidget.focused .app-well-app-running-dot {
 .keyboard-key.enter-key {
   color: white;
   background-color: #0860f2;
+  box-shadow: 0 1px rgba(0, 0, 0, 0.2);
 }
 
 .keyboard-key.enter-key:focus, .keyboard-key.enter-key:hover {
