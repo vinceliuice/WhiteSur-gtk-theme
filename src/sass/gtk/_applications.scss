@@ -1295,10 +1295,9 @@ button.documents-favorite:active:hover {
 
 %side_separator {
   &, &:backdrop {
-    min-width: 0;
-    background: none;
-    border-right-color: if($variant == 'light', $solid_borders_color, $header_border);
-    border-bottom-color: if($variant == 'light', $solid_borders_color, $header_border);
+    background-image: if($variant == 'light', image($solid_borders_color), image($header_border));
+    background-color: transparent;
+    border-right: none;
   }
 }
 
@@ -1370,7 +1369,7 @@ hdyleaflet, leaflet {
     }
   }
 
-  list.frame {
+  list.view, list.frame {
     @extend %circular_list;
 
     row.activatable { @extend %circular_row; }
@@ -1405,10 +1404,9 @@ list {
 
 // separator of sidebar on Gnome contol center and Gnome tweaks
 window.background.csd {
-  > hdyleaflet {
+  > hdyleaflet, > leaflet {
     > separator.vertical {
-      min-width: 1px;
-      background-color: if($variant == 'light', $solid_borders_color, $header_border);
+      @extend %side_separator;
     }
 
     > box.vertical {
@@ -1548,12 +1546,12 @@ window.background.csd {
       }
     }
   }
+}
 
-  > leaflet > separator.sidebar,
-  > hdyleaflet > separator.sidebar,
-  > box.horizontal > separator.sidebar {
-    @extend %side_separator;
-  }
+box.horizontal > separator.sidebar,
+hdyleaflet > separator.sidebar,
+leaflet > separator.sidebar { // reset
+  @extend %side_separator;
 }
 
 //
@@ -2205,7 +2203,7 @@ window.background.csd {
     }
 
     > separator {
-      @extend %side_separator;
+      background-image: if($variant == 'light', image($solid_borders_color), image($header_border));
     }
   }
 
@@ -2778,9 +2776,11 @@ window#GearyMainWindow.background.csd {
 
     scrolledwindow.geary-conversation-scroller {
       viewport.frame {
+        background-color: $base_color;
+        border-bottom-right-radius: $wm_radius;
+
         list.conversation-listbox {
           background-color: transparent;
-          border-bottom-right-radius: $wm_radius;
         }
       }
     }
