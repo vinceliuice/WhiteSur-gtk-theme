@@ -61,6 +61,29 @@ After all the dependencies are installed, you can Run
 
     ./install.sh
 
+### On Snapcraft
+
+<a href="https://snapcraft.io/whitesur-gtk-theme">
+<img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
+</a>
+
+You can install the theme from the Snap Store оr by running:
+
+```
+sudo snap install whitesur-gtk-theme
+```
+To connect the theme to an app run:
+```
+sudo snap connect [other snap]:gtk-3-themes whitesur-gtk-theme:gtk-3-themes
+```
+```
+sudo snap connect [other snap]:icon-themes whitesur-gtk-theme:icon-themes
+```
+To connect the theme to all apps which have available plugs to gtk-common-themes you can run:
+```
+for i in $(snap connections | grep gtk-common-themes:gtk-3-themes | awk '{print $2}'); do sudo snap connect $i whitesur-gtk-theme:gtk-3-themes; done
+```
+
 #### Install tips
 
 Usage:  `./Install`  **[OPTIONS...]**
