@@ -8005,7 +8005,7 @@ headerbar.titlebar > box.horizontal > entry.pathbar {
   margin-bottom: 0;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:dir-ltr, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr {
+headerbar.titlebar > button.flat.image-button.toggle:dir(ltr), .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir(ltr) {
   min-height: 0;
   margin-top: 8px;
   margin-bottom: 8px;
@@ -8016,41 +8016,41 @@ headerbar.titlebar > button.flat.image-button.toggle:dir-ltr, .raven .raven-head
   box-shadow: none;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:not(:checked):not(:active), .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:not(:checked):not(:active) {
+headerbar.titlebar > button.flat.image-button.toggle:dir(ltr):not(:checked):not(:active), .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir(ltr):not(:checked):not(:active) {
   background-clip: padding-box;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:hover, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:hover {
+headerbar.titlebar > button.flat.image-button.toggle:dir(ltr):hover, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir(ltr):hover {
   color: #f8f8f8;
   background-color: rgba(253, 253, 253, 0.1);
   background-image: none;
   box-shadow: none;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:active, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:active {
+headerbar.titlebar > button.flat.image-button.toggle:dir(ltr):active, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir(ltr):active {
   color: #FDFDFD;
   background-color: rgba(253, 253, 253, 0.25);
   background-image: none;
   box-shadow: none;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:checked, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:checked {
+headerbar.titlebar > button.flat.image-button.toggle:dir(ltr):checked, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir(ltr):checked {
   color: #FDFDFD;
   background-color: rgba(253, 253, 253, 0.12);
   background-image: none;
   box-shadow: none;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:disabled, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:disabled, label:disabled headerbar.titlebar > selection:dir-ltr {
+headerbar.titlebar > button.flat.image-button.toggle:dir(ltr):disabled, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir(ltr):disabled, label:disabled headerbar.titlebar > selection:dir(ltr) {
   color: rgba(253, 253, 253, 0.6);
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:dir-ltr:backdrop, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr:backdrop {
+headerbar.titlebar > button.flat.image-button.toggle:dir(ltr):backdrop, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir(ltr):backdrop {
   opacity: 0.7;
   background-image: none;
 }
 
-headerbar.titlebar > button.flat.image-button.toggle:dir-ltr + button.flat.image-button.toggle, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir-ltr + button.image-button.toggle {
+headerbar.titlebar > button.flat.image-button.toggle:dir(ltr) + button.flat.image-button.toggle, .raven .raven-header:not(.top) headerbar.titlebar > button.image-button.toggle:dir(ltr) + button.image-button.toggle {
   margin-right: -5px;
 }
 

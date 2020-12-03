@@ -3683,7 +3683,7 @@ headerbar.titlebar {
     margin-bottom: 0;
   }
 
-  > button.flat.image-button.toggle:dir-ltr {
+  > button.flat.image-button.toggle:dir(ltr) {
     min-height: 0;
     margin-top: 8px;
     margin-bottom: 8px;
