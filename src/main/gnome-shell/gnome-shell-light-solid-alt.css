@@ -18,10 +18,6 @@
  * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
  */
 /* GLOBALS */
-* {
-  transition-duration: 150ms;
-}
-
 stage {
   font-size: 9.75pt;
   font-weight: 400;
