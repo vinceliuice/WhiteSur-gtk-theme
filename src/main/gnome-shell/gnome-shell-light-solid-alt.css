@@ -361,6 +361,11 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   color: #F27835;
 }
 
+.headline {
+  font-size: 15pt;
+  font-weight: 500;
+}
+
 .lightbox {
   background-color: black;
 }
@@ -370,9 +375,24 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 /* Modal Dialogs */
-.headline {
-  font-size: 15pt;
-  font-weight: 500;
+.modal-dialog-linked-button:last-child {
+  color: white;
+  background-color: #0860f2;
+}
+
+.modal-dialog-linked-button:hover:last-child {
+  color: white;
+  background-color: #307bf8;
+}
+
+.modal-dialog-linked-button:active:last-child {
+  color: white;
+  background-color: #0756d9;
+}
+
+.modal-dialog-linked-button:insensitive:last-child {
+  background-color: rgba(8, 96, 242, 0.05);
+  color: rgba(8, 96, 242, 0.35);
 }
 
 .modal-dialog {
@@ -545,26 +565,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   color: #424242;
   font-size: 15pt;
   font-weight: 500;
-}
-
-.prompt-dialog .modal-dialog-linked-button:last-child, .end-session-dialog .modal-dialog-linked-button:last-child {
-  color: white;
-  background-color: #0860f2;
-}
-
-.prompt-dialog .modal-dialog-linked-button:hover:last-child, .end-session-dialog .modal-dialog-linked-button:hover:last-child {
-  color: white;
-  background-color: #307bf8;
-}
-
-.prompt-dialog .modal-dialog-linked-button:active:last-child, .end-session-dialog .modal-dialog-linked-button:active:last-child {
-  color: white;
-  background-color: #0756d9;
-}
-
-.prompt-dialog .modal-dialog-linked-button:insensitive:last-child, .end-session-dialog .modal-dialog-linked-button:insensitive:last-child {
-  background-color: rgba(8, 96, 242, 0.05);
-  color: rgba(8, 96, 242, 0.35);
 }
 
 /* End Session Dialog */

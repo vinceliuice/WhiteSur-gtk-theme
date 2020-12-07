@@ -301,12 +301,31 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
   color: $warning_color;
 }
 
+.headline { @include font(title); }
 .lightbox { background-color: black; }
 .flashspot { background-color: white; }
 
 /* Modal Dialogs */
 
-.headline { @include font(title); }
+%last_dialog_button {
+  color: white;
+  background-color: $primary_color;
+
+  &:hover {
+    color: white;
+    background-color: lighten($primary_color, 9%);
+  }
+
+  &:active {
+    color: white;
+    background-color: darken($primary_color, 5%);
+  }
+
+  &:insensitive {
+    background-color: rgba($primary_color, 0.05);
+    color: rgba($primary_color, 0.35);
+  }
+}
 
 .modal-dialog {
   color: $fg_color;
@@ -325,6 +344,10 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
     &:active { @include button(flat-active); }
     &:insensitive { @include button(flat-insensitive); }
     &:focus { @include button(flat-focus); }
+  }
+
+  &-linked-button:last-child {
+    @extend %last_dialog_button;
   }
 
   .modal-dialog-content-box {
@@ -425,34 +448,10 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
   }
 }
 
-%last_dialog_button {
-  color: white;
-  background-color: $primary_color;
-
-  &:hover {
-    color: white;
-    background-color: lighten($primary_color, 9%);
-  }
-
-  &:active {
-    color: white;
-    background-color: darken($primary_color, 5%);
-  }
-
-  &:insensitive {
-    background-color: rgba($primary_color, 0.05);
-    color: rgba($primary_color, 0.35);
-  }
-}
-
 /* End Session Dialog */
 .end-session-dialog {
   width: 30em;
   border: none;
-
-  .modal-dialog-linked-button:last-child {
-    @extend %last_dialog_button;
-  }
 
   .end-session-dialog-battery-warning,
   .dialog-list-title {
@@ -594,10 +593,6 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
   //this is the width of the entire modal popup
   width: 28em;
   border: none;
-
-  .modal-dialog-linked-button:last-child {
-    @extend %last_dialog_button;
-  }
 
   .modal-dialog-content-box {
     margin-bottom: 24px;
