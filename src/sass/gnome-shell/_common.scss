@@ -25,15 +25,33 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 
 
 /* GLOBALS */
-// * {
-//   // transition-timing-function: $deceleration_curve;
-//   transition-duration: $longer_duration;
-// }
+* {
+  // transition-timing-function: $deceleration_curve;
+  transition-duration: $longer_duration;
+}
 
 stage {
   // font-family: $font-family;
   @include font(body-1);
   color: $fg_color;
+}
+
+// Pointer location
+.ripple-pointer-location {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px; // radius equals the size of the box to give us the curve
+  background-color: lighten(transparentize($primary_color, 0.7), 30%);
+  box-shadow: 0 0 2px 2px lighten($primary_color, 20%);
+}
+
+// Pointer accessibility notifications
+.pie-timer {
+  width: 60px;
+  height: 60px;
+  -pie-border-width: 3px;
+  -pie-border-color: $primary_color;
+  -pie-background-color: lighten(transparentize($primary_color, 0.7), 40%);
 }
 
 /* WIDGETS */
@@ -170,7 +188,7 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
     padding: 8px 0;
   }
 
-  StBoxLayout { spacing: 8px; }
+  StBoxLayout { spacing: .8em; }
   StBin {
     width: 24px;
     height: 24px;
@@ -238,11 +256,57 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
   }
 }
 
+// User icon
+.user-icon {
+  background-size: contain;
+  color: $light_alt_fg_color;
+  border-radius: $circular_radius;
+  border: 2px $light_alt_fg_color;
+
+  &:hover {
+    color: $light_fg_color;
+  }
+
+  & StIcon {
+    background-color: transparentize($light_alt_fg_color, 0.95);
+    border-radius: 99px;
+  }
+}
+
+.user-widget.vertical .user-icon {
+  icon-size: 128px; // 128px
+
+  & StIcon {
+    padding: $container_padding * 3 + 2px; // 20px
+    padding-top: $container_padding * 3; // 18 px
+    padding-bottom: $container_padding * 3 + 4px; // 22px
+    width: 88px; height:  88px; // 88px;
+  }
+}
+
+.user-widget.horizontal .user-icon {
+  icon-size: 64px;
+
+  & StIcon {
+    padding: $container_padding * 2 ; // 12px
+    width: $container_padding * 2.5; height:  $container_padding * 2.5; // 40px;
+  }
+}
+
+// Caps-lock warning
+.caps-lock-warning-label {
+  text-align: center;
+  padding-bottom: 8px;
+  @include font(body-1);
+  color: $warning_color;
+}
+
+.lightbox { background-color: black; }
+.flashspot { background-color: white; }
+
 /* Modal Dialogs */
 
 .headline { @include font(title); }
-.lightbox { background-color: black; }
-.flashspot { background-color: white; }
 
 .modal-dialog {
   color: $fg_color;
@@ -264,7 +328,9 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
   }
 
   .modal-dialog-content-box {
-    padding: 24px;
+    margin: 32px 40px;
+    spacing: 32px;
+    max-width: 28em;
   }
   .run-dialog-entry { width: 20em; margin-bottom: 6px; }
   .run-dialog-error-box {
@@ -294,8 +360,7 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
 }
 
 .message-dialog-content {
-  max-width: 28em;
-  spacing: 20px;
+  spacing: 18px;
 
   .message-dialog-title {
     text-align: center;
@@ -360,14 +425,43 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
   }
 }
 
+%last_dialog_button {
+  color: white;
+  background-color: $primary_color;
+
+  &:hover {
+    color: white;
+    background-color: lighten($primary_color, 9%);
+  }
+
+  &:active {
+    color: white;
+    background-color: darken($primary_color, 5%);
+  }
+
+  &:insensitive {
+    background-color: rgba($primary_color, 0.05);
+    color: rgba($primary_color, 0.35);
+  }
+}
+
 /* End Session Dialog */
 .end-session-dialog {
-  spacing: 42px;
+  width: 30em;
   border: none;
+
+  .modal-dialog-linked-button:last-child {
+    @extend %last_dialog_button;
+  }
+
+  .end-session-dialog-battery-warning,
+  .dialog-list-title {
+    color: $warning_color;
+  }
 }
 
 .end-session-dialog-list {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .end-session-dialog-layout {
@@ -376,7 +470,6 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
 }
 
 .end-session-dialog-description {
-  width: 28em;
   padding-bottom: 10px;
   &:rtl {
     text-align: right;
@@ -499,8 +592,12 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
 
 .prompt-dialog {
   //this is the width of the entire modal popup
-  width: 34em;
+  width: 28em;
   border: none;
+
+  .modal-dialog-linked-button:last-child {
+    @extend %last_dialog_button;
+  }
 
   .modal-dialog-content-box {
     margin-bottom: 24px;
@@ -529,7 +626,7 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
 }
 
 .prompt-dialog-password-entry {
-  width: 18em;
+  width: 20em;
 }
 
 .prompt-dialog-error-label,
@@ -588,8 +685,10 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
   }
 
   .polkit-dialog-user-icon {
-    border-radius: 1000px;
+    border-radius: $circular_radius;
     background-size: contain;
+    width: 48px;
+    height: 48px;
     margin: 6px;
   }
 }
@@ -904,6 +1003,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
 
 /* OSD */
 .osd-window {
+  @extend %osd-panel;
   text-align: center;
   font-weight: bold;
   spacing: 1em;
@@ -953,7 +1053,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
 /* App Switcher */
 .switcher-popup {
   padding: 8px;
-  spacing: 16px;
+  spacing: 24px;
 }
 
 .osd-window,
@@ -1083,6 +1183,12 @@ $popop_menuitem_radius: $wm_radius - 4px;
   &.login-screen,
   &.lock-screen {
     background-color: transparent;
+
+    .panel-corner {
+      -panel-corner-radius: 0;
+      -panel-corner-background-color: transparent;
+      -panel-corner-border-color: transparent;
+    }
   }
 
   #panelLeft, #panelCenter { // spacing between activities<>app menu and such
@@ -1253,6 +1359,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
   background-color: if($variant == 'light', rgba(white, 0.75), rgba(lighten($base_color, 8%), 0.75));
   text-shadow: none;
   color: $alt_fg_color;
+  transition: none;
 
   &:hover, &:focus {
     color: $fg_color;
@@ -1278,11 +1385,11 @@ $popop_menuitem_radius: $wm_radius - 4px;
 }
 
 #calendarArea {
-  padding: 8px 12px;
+  padding: 12px 0;
 }
 
 .calendar {
-  margin: 4px 12px 6px;
+  margin: 2px 12px;
   border: none;
   box-shadow: none;
   background-color: if($variant == 'light', rgba(white, 0.75), rgba(lighten($base_color, 8%), 0.75));
@@ -1294,7 +1401,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
 .datemenu-today-button,
 .datemenu-displays-box,
 .message-list-sections {
-  margin: 0 8px;
+  margin: 4px 8px;
 }
 
 .datemenu-displays-section { padding-bottom: 0; }
@@ -1303,9 +1410,9 @@ $popop_menuitem_radius: $wm_radius - 4px;
 .datemenu-calendar-column {
   spacing: 8px;
   border: none;
-  padding: 0 0;
-  &:ltr { border-left-width: 0; }
-  &:rtl { border-right-width: 0; }
+  padding: 0 $container_padding * 2;
+  &:ltr { margin-right: $container_padding * 2; border-left-width: 0; }
+  &:rtl { margin-left: $container_padding * 2; border-right-width: 0; }
 }
 
 .datemenu-today-button {
@@ -1317,6 +1424,13 @@ $popop_menuitem_radius: $wm_radius - 4px;
   text-shadow: none;
   color: $alt_fg_color;
 
+  // weekday label
+  .day-label {
+    @include font(title);
+    font-weight: bold;
+  }
+
+  // date label
   .date-label {
     @include font(headline);
   }
@@ -1462,7 +1576,8 @@ $popop_menuitem_radius: $wm_radius - 4px;
 .events-section-title {
   @extend %popover_bubble;
   min-height: $menuitem_size - 4px * 2;
-  padding: 4px 8px;
+  padding: 12px;
+  margin: 2px 4px;
 }
 
 .world-clocks-header,
@@ -1523,7 +1638,6 @@ $popop_menuitem_radius: $wm_radius - 4px;
 
 /* Weather */
 .weather-button {
-  padding: 12px;
   margin-bottom: 6px;
 
   .weather-box {
@@ -1820,6 +1934,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
   -horizontal-spacing: 16px;
   -vertical-spacing: 16px;
   padding: 0 16px 32px;
+  spacing: 12px;
 
   &.external-monitor { padding: 16px; }
 }
@@ -2001,6 +2116,11 @@ $popop_menuitem_radius: $wm_radius - 4px;
   -shell-grid-horizontal-item-size: 136px;
   -shell-grid-vertical-item-size: 136px;
 
+  row-spacing: $container_padding * 6;
+  column-spacing: $container_padding * 6;
+  max-row-spacing: $container_padding * 12;
+  max-column-spacing: $container_padding * 12;
+
   .overview-icon { icon-size: 96px; }
 }
 //.app-display { spacing: 20px; }
@@ -2065,7 +2185,6 @@ $popop_menuitem_radius: $wm_radius - 4px;
 %app-well-app,
 .show-apps,
 .app-well-app,
-.app-well-app.app-folder,
 .grid-search-result {
   & .overview-icon {
     @extend %icon_tile;
@@ -2187,24 +2306,39 @@ StWidget.focused .app-well-app-running-dot {
 
 .no-frequent-applications-label { @extend %status_text; }
 
-.app-well-app > .overview-icon.overview-icon-with-label,
+.overview-icon.overview-icon-with-label,
 .grid-search-result .overview-icon.overview-icon-with-label {
   padding: 10px 8px 5px 8px;
-  spacing: 4px;
+  spacing: 6px;
+
+  > StBoxLayout {
+    spacing: 6px;
+  }
 }
 
 // App Folders
 
-// .app-folder {
-//   .overview-icon { }
-// }
+.app-folder {
+  background: none;
+  transition: $longer_transition;
+
+  .overview-icon {
+    background-color: $light_divider_color;
+    // padding: 16px;
+    border-radius: $bt_radius * 2;
+  }
+
+  &:hover .overview-icon  {
+    background-color: rgba(white, 0.2);
+  }
+}
 
 // expanded folder
 .app-folder-dialog {
   border-radius: $bd_radius * 4;
   border: none;
-  spacing: 12px;
-  background-color: rgba(#101010, 0.95);
+  padding: 12px;
+  background-color: rgba(#242424, 0.95);
 
   & .folder-name-container {
     padding: 24px 36px 0;
@@ -2218,6 +2352,7 @@ StWidget.focused .app-well-app-running-dot {
 
     & .folder-name-entry {
       @extend %search-entry;
+      width: 300px;
     }
 
     /* FIXME: this is to keep the label in sync with the entry */
@@ -2240,12 +2375,25 @@ StWidget.focused .app-well-app-running-dot {
     }
   }
 
+  & .icon-grid {
+    row-spacing: $container_padding * 2;
+    column-spacing: $container_padding * 5;
+  }
+
+  & .page-indicators {
+    margin-bottom: 18px;
+
+    .page-indicator {
+      padding: 15px 12px;
+    }
+  }
+
   & StButton#vhandle,
   & StButton#vhandle:hover,
   & StButton#vhandle:active { background-color: transparent; }
 }
 .app-folder-dialog-container {
-  padding: 12px;
+  padding: $container_padding;
   width: 600px;
   height: 600px;
 }
@@ -2256,31 +2404,44 @@ StWidget.focused .app-well-app-running-dot {
   spacing-columns: $container_padding;
 }
 
-  // Workspace pager
-  .workspace-thumbnails { //container ala dash
-    @extend %overview-panel;
-    visible-width: 32px; //amount visible before hover
-    spacing: 12px;
-    padding: 16px;
-    border-radius: $bt_radius;
-    margin: 6px;
-    // border-width: 0; //fixme: can't have non unoform borders :(
-    // &:rtl { border-radius: $bt_radius; }
+// Rename popup for app folders
+.rename-folder-popup {
+  .rename-folder-popup-item {
+    spacing: $container_padding;
+    &:ltr, &:rtl { padding: 0 $container_padding * 2; }
   }
-  .workspace-thumbnail-indicator {
-    border: 0 solid $primary_color;
-    border-width: 2px;
-    padding: 6px;
-    border-radius: 2px;
-  }
+}
 
-  //Some hacks I don't even
-  .search-display > StBoxLayout,
-  .all-apps,
-  .frequent-apps > StBoxLayout {
-    // horizontal padding to make sure scrollbars or dash don't overlap content
-    padding: 0px 88px 10px 88px;
+// Workspace pager
+.workspace-thumbnails { //container ala dash
+  @extend %overview-panel;
+  visible-width: 32px; //amount visible before hover
+  spacing: 12px;
+  padding: 16px;
+  border-radius: $bt_radius;
+  margin: 6px;
+  // border-width: 0; //fixme: can't have non unoform borders :(
+  // &:rtl { border-radius: $bt_radius; }
+
+  .placeholder {
+    background-image: url("assets/dash-placeholder.svg");
+    background-size: contain;
+    height: 24px;
   }
+}
+.workspace-thumbnail-indicator {
+  border: 2px solid $primary_color;
+  padding: 6px;
+  border-radius: 2px;
+}
+
+//Some hacks I don't even
+.all-apps,
+.search-display > StBoxLayout,
+.frequent-apps > StBoxLayout {
+  // horizontal padding to make sure scrollbars or dash don't overlap content
+  padding: 0px 88px 10px 88px;
+}
 
 %overview-panel {
   color: $light_alt_fg_color;
@@ -2333,6 +2494,7 @@ StWidget.focused .app-well-app-running-dot {
   }
 }
 
+// counter
 .summary-source-counter {
   font-size: 1em;
   font-weight: bold;
@@ -2369,6 +2531,34 @@ StWidget.focused .app-well-app-running-dot {
   &:rtl { padding-left: 0; padding-right: 4px; }
 }
 
+%bubble_button {
+  @include button(normal);
+  padding: $container_padding * 2;
+  border-style: solid;
+  border-width: 0;
+  border-left-width: 0;
+  border-bottom-width: 0;
+
+  &:insensitive { @include button(insensitive); }
+  &:hover { @include button(hover); }
+  &:focus { @include button(focus); }
+  &:active { @include button(active); }
+
+  // radius is 2 pixel less to fit in bubble
+  &:first-child {
+    border-radius: 0 0 0 $bt_radius;
+  }
+
+  &:last-child {
+    border-right-width: 0;
+    border-radius: 0 0 $bt_radius 0;
+  }
+
+  &:first-child:last-child {
+    border-radius: 0 0 $bt_radius $bt_radius;
+  }
+}
+
 //hotplug
 .hotplug-transient-box {
   spacing: 6px;
@@ -2377,6 +2567,7 @@ StWidget.focused .app-well-app-running-dot {
 
 .hotplug-notification-item {
   padding: 2px 10px;
+  @extend %bubble_button;
   &:focus { padding: 1px 71px 1px 11px; }
 }
 
@@ -2520,6 +2711,22 @@ StWidget.focused .app-well-app-running-dot {
   -arrow-rise: 10px;
   -boxpointer-gap: 5px;
   box-shadow: $shadow_2;
+}
+
+// emoji
+.emoji-page {
+  .keyboard-key {
+    background-color: transparent;
+    border: none;
+    color: initial;
+  }
+}
+
+.emoji-panel {
+  .keyboard-key:latched {
+    border-color: lighten($primary_color, 5%);
+    background-color: $primary_color;
+  }
 }
 
 // IBus Candidate Popup
@@ -2843,6 +3050,67 @@ $login_entry_bg: if($variant == 'dark', rgba(black, 0.1), rgba(white, 0.1));
   box-shadow: $shadow_5;
 }
 
+/* Screen Shield */
+
+.unlock-dialog-clock {
+  color: white;
+  font-weight: 300;
+  text-align: center;
+  spacing: 24px;
+  padding-bottom: 2.5em;
+}
+
+.unlock-dialog-clock-time {
+  font-size: 64pt;
+  padding-top: 42px;
+  font-feature-settings: "tnum";
+}
+
+.unlock-dialog-clock-date {
+  font-size: 16pt;
+  font-weight: normal;
+}
+
+.unlock-dialog-clock-hint {
+  font-weight: normal;
+  padding-top: 48px;
+}
+
+.unlock-dialog-notifications-container {
+  margin: 12px 0;
+  spacing: 6px;
+  width: 23em;
+  background-color: transparent;
+  .summary-notification-stack-scrollview {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .notification,
+  .unlock-dialog-notification-source {
+    padding: 12px 6px;
+    border: none;
+    background-color: $dark_bg_color;
+    color: $light_fg_color;
+    border-radius: $bt_radius;
+
+    &.critical { background-color: $alt_dark_bg_color; }
+  }
+}
+
+.unlock-dialog-notification-label {
+  padding: 0px 0px 0px 12px;
+}
+
+.unlock-dialog-notification-count-text {
+  weight: bold;
+  padding: 0 6px;
+  color: $dark_sidebar_bg;
+  background-color: $light_alt_fg_color;
+  border-radius: 99px;
+  margin-right: 12px;
+}
+
 #lockDialogGroup {
   background: url("assets/background.jpg");
   background-size: cover;
@@ -2851,7 +3119,6 @@ $login_entry_bg: if($variant == 'dark', rgba(black, 0.1), rgba(white, 0.1));
 #screenShieldNotifications {
   StScrollBar { @extend %overview_scrollbar; }
 }
-
 
 // Looking Glass
 #LookingGlassDialog {

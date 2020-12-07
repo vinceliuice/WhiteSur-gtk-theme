@@ -3,6 +3,7 @@
   <gresource prefix="/org/gnome/shell/theme">
     <file>assets/calendar-arrow-left.svg</file>
     <file>assets/calendar-arrow-right.svg</file>
+    <file>assets/calendar-today.svg</file>
     <file>assets/checkbox.svg</file>
     <file>assets/checkbox-off.svg</file>
     <file>assets/close.svg</file>

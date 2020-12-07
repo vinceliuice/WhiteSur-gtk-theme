@@ -157,7 +157,7 @@
 //
 
   @if $t == normal {
-    color: if($tc == $fg_color, $button_fg_color, $tc);
+    color: if($tc == $fg_color, $fg_color, $tc);
     background-color: $c;
     border: 1px solid $button_borders;
 
