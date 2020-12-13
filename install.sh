@@ -272,6 +272,17 @@ install_dialog() {
   fi
 }
 
+install_depends() {
+  if [ ! "$(which glib-compile-resources 2> /dev/null)" ]; then
+    prompt -w "\n 'glib2.0' needs to be installed for this shell"
+    if has_command apt; then
+      sudo apt install libglib2.0-dev-bin
+    elif has_command dnf; then
+      sudo dnf install -y glib2-devel
+    fi
+  fi
+}
+
 run_sidebar_dialog() {
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
@@ -518,6 +529,9 @@ while [[ $# -gt 0 ]]; do
 done
 
 install_theme() {
+  # install depends
+  install_depends
+
   for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
     for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
       for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do

@@ -2821,19 +2821,31 @@ StWidget.focused .app-well-app-running-dot {
   background-color: transparent;
   color: #afafaf;
   font-weight: 500;
+  border-width: 0;
 }
 
 .notification-banner .notification-button:first-child {
-  border-radius: 0 0 0 2px;
+  border-radius: 0 0 0 6px;
 }
 
 .notification-banner .notification-button:last-child {
-  border-radius: 0 0 2px 0;
+  border-radius: 0 0 6px 0;
 }
 
-.notification-banner .notification-button:hover, .notification-banner .notification-buttonfocus {
+.notification-banner .notification-button:only-child, .notification-banner .notification-button:first-child:last-child {
+  border-radius: 0 0 6px 6px;
+}
+
+.notification-banner .notification-button:focus {
+  background-color: transparent;
+  color: #afafaf;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.06);
+}
+
+.notification-banner .notification-button:hover, .notification-banner .notification-button:focus:hover {
   background-color: rgba(255, 255, 255, 0.06);
   color: #dedede;
+  box-shadow: none;
 }
 
 .notification-banner .notification-button:active {

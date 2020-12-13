@@ -1917,7 +1917,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
 /* OVERVIEW */
 
 #overview {
-  spacing: 24px; //
+  spacing: 24px;
   StScrollBar { @extend %overview_scrollbar; }
 }
 
@@ -2464,6 +2464,7 @@ StWidget.focused .app-well-app-running-dot {
   background-color: rgba($base_color, 0.92);
   border: none;
   box-shadow: $shadow_2;
+
   &:hover { background-color: rgba($base_color, 0.95); }
   &:focus { background-color: $base_color; }
 
@@ -2476,16 +2477,37 @@ StWidget.focused .app-well-app-running-dot {
     border-top: 1px solid $borders_color;
     spacing: 1px;
   }
+
   .notification-button {
     min-height: 40px;
     padding: 0 16px;
     background-color: transparent;
     color: $alt_fg_color;
     font-weight: 500;
-    &:first-child { border-radius: 0 0 0 2px; }
-    &:last-child { border-radius: 0 0 2px 0; }
-    &:hover, &focus { background-color: $divider_color; color: $fg_color; }
-    &:active { background-color: $track_color; color: $fg_color; }
+    border-width: 0;
+
+    &:first-child { border-radius: 0 0 0 $bt_radius; }
+
+    &:last-child { border-radius: 0 0 $bt_radius 0; }
+
+    &:only-child, &:first-child:last-child { border-radius: 0 0 $bt_radius $bt_radius; }
+
+    &:focus {
+      background-color: transparent;
+      color: $alt_fg_color;
+      box-shadow: inset 0 0 0 2px $divider_color;
+    }
+
+    &:hover, &:focus:hover {
+      background-color: $divider_color;
+      color: $fg_color;
+      box-shadow: none;
+    }
+
+    &:active {
+      background-color: $track_color;
+      color: $fg_color;
+    }
   }
 }
 
