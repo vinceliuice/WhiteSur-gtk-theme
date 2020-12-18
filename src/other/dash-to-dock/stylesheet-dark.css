@@ -12,10 +12,6 @@
   background-color: transparent;
 }
 
-#dashtodockContainer .app-well-app-running-dot {
-  background-color: white;
-}
-
 #dashtodockContainer .number-overlay {
   color: white;
   background-color: rgba(0, 0, 0, 0.75);
@@ -49,7 +45,7 @@
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-#dashtodockContainer.top.shrink #dash, #dashtodockContainer.top.dashtodock #dash {
+#dashtodockContainer.top.shrink #dash {
   border-top-width: 0;
 }
 
@@ -67,7 +63,7 @@
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-#dashtodockContainer.bottom.shrink #dash, #dashtodockContainer.bottom.dashtodock #dash {
+#dashtodockContainer.bottom.shrink #dash {
   border-bottom-width: 0;
 }
 
@@ -85,7 +81,7 @@
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-#dashtodockContainer.left.shrink #dash, #dashtodockContainer.left.dashtodock #dash {
+#dashtodockContainer.left.shrink #dash {
   border-left-width: 0;
 }
 
@@ -103,7 +99,7 @@
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-#dashtodockContainer.right.shrink #dash, #dashtodockContainer.right.dashtodock #dash {
+#dashtodockContainer.right.shrink #dash {
   border-right-width: 0;
 }
 
@@ -128,36 +124,20 @@
   padding-bottom: 0;
 }
 
-#dashtodockContainer #dash {
-  background-color: rgba(16, 16, 16, 0.25);
-}
-
-#dashtodockContainer #dash .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.85);
-}
-
-#dashtodockContainer #dash StWidget.focused .app-well-app-running-dot {
-  background-color: #0860f2;
+#dashtodockContainer.dashtodock #dash {
+  background: rgba(16, 16, 16, 0.25);
 }
 
 #dashtodockContainer.opaque #dash {
-  background-color: rgba(16, 16, 16, 0.25);
+  background: rgba(16, 16, 16, 0.25);
 }
 
 #dashtodockContainer.transparent #dash {
-  background-color: rgba(16, 16, 16, 0.25);
+  background: rgba(16, 16, 16, 0.25);
 }
 
 #dashtodockContainer:overview #dash {
-  background-color: rgba(255, 255, 255, 0.15);
-}
-
-#dashtodockContainer:overview #dash .app-well-app-running-dot {
-  background-color: rgba(255, 255, 255, 0.85);
-}
-
-#dashtodockContainer:overview #dash StWidget.focused .app-well-app-running-dot {
-  background-color: #0860f2;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 #dashtodockContainer.opaque:overview #dash, #dashtodockContainer.transparent:overview #dash {

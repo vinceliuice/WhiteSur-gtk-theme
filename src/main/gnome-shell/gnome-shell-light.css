@@ -3914,7 +3914,7 @@ StWidget.focused .app-well-app-running-dot {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-#dashtodockContainer.top.shrink #dash, #dashtodockContainer.top.dashtodock #dash {
+#dashtodockContainer.top.shrink #dash {
   border-top-width: 0;
 }
 
@@ -3932,7 +3932,7 @@ StWidget.focused .app-well-app-running-dot {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-#dashtodockContainer.bottom.shrink #dash, #dashtodockContainer.bottom.dashtodock #dash {
+#dashtodockContainer.bottom.shrink #dash {
   border-bottom-width: 0;
 }
 
@@ -3950,7 +3950,7 @@ StWidget.focused .app-well-app-running-dot {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-#dashtodockContainer.left.shrink #dash, #dashtodockContainer.left.dashtodock #dash {
+#dashtodockContainer.left.shrink #dash {
   border-left-width: 0;
 }
 
@@ -3968,7 +3968,7 @@ StWidget.focused .app-well-app-running-dot {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-#dashtodockContainer.right.shrink #dash, #dashtodockContainer.right.dashtodock #dash {
+#dashtodockContainer.right.shrink #dash {
   border-right-width: 0;
 }
 
@@ -3993,7 +3993,7 @@ StWidget.focused .app-well-app-running-dot {
   padding-bottom: 0;
 }
 
-#dashtodockContainer #dash {
+#dashtodockContainer.dashtodock #dash {
   background-color: rgba(241, 241, 241, 0.15);
 }
 

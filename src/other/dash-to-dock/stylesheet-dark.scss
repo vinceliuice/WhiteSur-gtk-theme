@@ -1,0 +1,8 @@
+$variant: 'dark';
+$laptop: 'false';
+$trans: 'true';
+$black: 'false';
+
+@import '../../sass/colors';
+@import '../../sass/variables';
+@import '_dash-to-dock.scss';

@@ -1,0 +1,87 @@
+
+// Simple Dock
+
+#dash:desktop {
+  background-color: $dash_panel_bg;
+}
+
+//  OpenWeather Extension
+
+.openweather {
+  &-button,
+  &-button-action,
+  &-menu-button-container,
+  &-button-box {
+    border: 1px solid transparent;
+  }
+
+  &-provider {
+    // generic text buttons are allocated with y-expand-ed
+    padding: 0 16px;
+    font-weight: 500;
+    @include button(flat-normal);
+    &:hover { @include button(flat-hover); }
+    &:focus { @include button(flat-focus); }
+    &:active { @include button(flat-active); }
+    &:insensitive { @include button(flat-disabled); }
+  }
+
+  &-current {
+    &-icon,
+    &-summary,
+    &-summarybox {
+      background: none;
+      color: $fg_color;
+    }
+
+    &-databox-values {
+      background: none;
+      color: $hint_fg_color;
+    }
+
+    &-databox-captions {
+      background: none;
+      color: $hint_fg_color;
+    }
+  }
+
+  &-forecast {
+    &-icon,
+    &-summary {
+      background: none;
+      color: $alt_fg_color;
+    }
+
+    &-day,
+    &-temperature {
+      background: none;
+      color: $hint_fg_color;
+    }
+  }
+
+  &-sunrise-icon,
+  &-sunset-icon,
+  &-build-icon { color: $alt_fg_color; }
+}
+
+// GPaste
+
+.popup-menu {
+  .search-entry {
+    color: $fg_color;
+    selection-background-color: $primary_color;
+    selected-color: $light_fg_color;
+    @include entry(normal);
+
+    &:focus {
+      @include entry(focus);
+      color: $fg_color;
+    }
+
+    .search-entry-icon { color: $hint_fg_color; }
+
+    &:hover, &:focus {
+      .search-entry-icon { color: $fg_color; }
+    }
+  }
+}

@@ -49,3 +49,8 @@ for color in "${_COLOR_VARIANTS[@]}"; do
     done
   done
 done
+
+sassc $SASSC_OPT src/other/dash-to-dock/stylesheet.{scss,css}
+echo "==> Generating dash-to-dock stylesheet.css..."
+sassc $SASSC_OPT src/other/dash-to-dock/stylesheet-dark.{scss,css}
+echo "==> Generating dash-to-dock stylesheet-dark.css..."
