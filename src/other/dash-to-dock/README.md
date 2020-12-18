@@ -21,6 +21,5 @@ then you can:
 
 1. Open `Dash to Dock Settings`.
 2. Go to `[Appearance]` > `[Use built-in theme]` and turn it on.
-3. Copy `chrome` folder Firefox config folder.
-4. Restart Dash to Dock.
-5. Be happy with your new dash-to-dock theme.
+3. Restart Dash to Dock or gnome-shell.
+4. Be happy with your new dash-to-dock theme.
