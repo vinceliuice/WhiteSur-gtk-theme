@@ -719,6 +719,8 @@ window.org-gnome-gedit {
   border-top: 1px solid $borders_color;
   background-color: $bg_color;
   border-radius: 0 0 $wm_radius $wm_radius;
+
+  frame > border { border: none; }
 }
 
 .gedit-search-slider {
@@ -752,7 +754,6 @@ window.org-gnome-gedit {
     }
   }
 }
-
 
 //
 // Pluma

@@ -1,0 +1,90 @@
+#dashtodockContainer {
+  background: transparent;
+}
+
+#dashtodockContainer .app-well-app-running-dot {
+  background-color: black;
+}
+
+#dashtodockContainer #dash, #dashtodockContainer:overview #dash, #dashtodockContainer.extended #dash, #dashtodockContainer.extended:overview #dash {
+  padding: 0;
+  border: none;
+  margin: 0;
+}
+
+#dashtodockContainer.top #dash, #dashtodockContainer.top:overview #dash, #dashtodockContainer.top.extended #dash, #dashtodockContainer.top.extended:overview #dash {
+  margin-top: 4px;
+  border-radius: 18px;
+}
+
+#dashtodockContainer.bottom #dash, #dashtodockContainer.bottom:overview #dash, #dashtodockContainer.bottom.extended #dash, #dashtodockContainer.bottom.extended:overview #dash {
+  margin-bottom: 4px;
+  border-radius: 18px;
+}
+
+#dashtodockContainer.left #dash, #dashtodockContainer.left:overview #dash, #dashtodockContainer.left.extended #dash, #dashtodockContainer.left.extended:overview #dash {
+  margin-left: 4px;
+  border-radius: 18px;
+}
+
+#dashtodockContainer.right #dash, #dashtodockContainer.right:overview #dash, #dashtodockContainer.right.extended #dash, #dashtodockContainer.right.extended:overview #dash {
+  margin-right: 4px;
+  border-radius: 18px;
+}
+
+#dashtodockContainer.top #dash, #dashtodockContainer.bottom #dash {
+  padding: 0 0;
+}
+
+#dashtodockContainer.left #dash, #dashtodockContainer.right #dash {
+  padding: 0 0;
+}
+
+#dashtodockContainer #dash {
+  background-color: rgba(241, 241, 241, 0.15);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+#dashtodockContainer #dash .app-well-app-running-dot {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+#dashtodockContainer #dash StWidget.focused .app-well-app-running-dot {
+  background-color: #0860f2;
+}
+
+#dashtodockContainer.opaque #dash {
+  background-color: rgba(241, 241, 241, 0.15);
+}
+
+#dashtodockContainer.transparent #dash {
+  background-color: rgba(241, 241, 241, 0.15);
+}
+
+#dashtodockContainer:overview #dash {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+#dashtodockContainer:overview #dash .app-well-app-running-dot {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+#dashtodockContainer:overview #dash StWidget.focused .app-well-app-running-dot {
+  background-color: #0860f2;
+}
+
+#dashtodockContainer.opaque:overview #dash, #dashtodockContainer.transparent:overview #dash {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+#dashtodockContainer.extended:overview #dash, #dashtodockContainer.opaque.extended:overview #dash, #dashtodockContainer.transparent.extended:overview #dash {
+  background-color: rgba(241, 241, 241, 0.15);
+}
+
+#dashtodockContainer .app-well-app .overview-icon,
+#dashtodockContainer .show-apps .overview-icon {
+  padding: 8px;
+  background-size: contain;
+}

@@ -26,7 +26,7 @@ $small_size: if($laptop == 'false', 24px, 20px);
 $medium_size: if($laptop == 'false', 36px, 32px);
 $large_size: if($laptop == 'false', 48px, 44px);
 $menuitem_size: if($laptop == 'false', 32px, 28px);
-$container_padding: 6px;
+$container_padding: if($laptop == 'false', 6px, 4px);
 
 // radiuses
 $circular_radius: 9999px;

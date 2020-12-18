@@ -125,6 +125,7 @@ If you want to remove installed gdm theme, then you can run:
 | Icon theme          | [WhiteSur-icon](https://github.com/vinceliuice/WhiteSur-icon-theme)| ![icon](pictures/whitesur-icon-theme.png) |
 | Wallpaper           | [WhiteSur wallpaper](https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper)| ![wallpaper](pictures/whitesur-wallpaper.png) |
 | Firefox theme       | [WhiteSur firefox theme](src/other/firefox)| ![firefox](pictures/firefox-theme.png) |
+| Dash to Dock theme  | [WhiteSur dash-to-dock theme](src/other/dash-to-dock)| ![firefox](pictures/dash-to-dock.png) |
 
 ## Theme Preview
 ![gtk](pictures/preview-gtk.png)

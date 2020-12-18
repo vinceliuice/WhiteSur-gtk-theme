@@ -2094,6 +2094,10 @@ notebook {
     background-color: $base_color;
   }
 
+  &:not(.frame), &:not(.frame) > stack {
+    border-radius: 0 0 $wm_radius $wm_radius;
+  }
+
   > header {
     padding: 0;
     background-color: darken($header_bg, 10%);

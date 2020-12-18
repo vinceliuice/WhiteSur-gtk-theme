@@ -2348,6 +2348,10 @@ notebook > stack:not(:only-child) {
   background-color: #242424;
 }
 
+notebook:not(.frame), notebook:not(.frame) > stack {
+  border-radius: 0 0 14px 14px;
+}
+
 notebook > header {
   padding: 0;
   background-color: #1e1e1e;
@@ -5353,6 +5357,10 @@ window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned s
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   background-color: #333333;
   border-radius: 0 0 14px 14px;
+}
+
+.gedit-side-panel-paned statusbar frame > border {
+  border: none;
 }
 
 .gedit-search-slider {

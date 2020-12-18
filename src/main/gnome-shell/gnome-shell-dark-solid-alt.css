@@ -336,9 +336,9 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .user-widget.vertical .user-icon StIcon {
-  padding: 20px;
-  padding-top: 18px;
-  padding-bottom: 22px;
+  padding: 14px;
+  padding-top: 12px;
+  padding-bottom: 16px;
   width: 88px;
   height: 88px;
 }
@@ -348,9 +348,9 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .user-widget.horizontal .user-icon StIcon {
-  padding: 12px;
-  width: 15px;
-  height: 15px;
+  padding: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 .caps-lock-warning-label {
@@ -1614,16 +1614,16 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 .datemenu-calendar-column {
   spacing: 8px;
   border: none;
-  padding: 0 12px;
+  padding: 0 8px;
 }
 
 .datemenu-calendar-column:ltr {
-  margin-right: 12px;
+  margin-right: 8px;
   border-left-width: 0;
 }
 
 .datemenu-calendar-column:rtl {
-  margin-left: 12px;
+  margin-left: 8px;
   border-right-width: 0;
 }
 
@@ -2414,10 +2414,10 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   spacing: 30px;
   -shell-grid-horizontal-item-size: 136px;
   -shell-grid-vertical-item-size: 136px;
-  row-spacing: 36px;
-  column-spacing: 36px;
-  max-row-spacing: 72px;
-  max-column-spacing: 72px;
+  row-spacing: 24px;
+  column-spacing: 24px;
+  max-row-spacing: 48px;
+  max-column-spacing: 48px;
 }
 
 .icon-grid .overview-icon {
@@ -2696,8 +2696,8 @@ StWidget.focused .app-well-app-running-dot {
 }
 
 .app-folder-dialog .icon-grid {
-  row-spacing: 12px;
-  column-spacing: 30px;
+  row-spacing: 8px;
+  column-spacing: 20px;
 }
 
 .app-folder-dialog .page-indicators {
@@ -2713,23 +2713,23 @@ StWidget.focused .app-well-app-running-dot {
 }
 
 .app-folder-dialog-container {
-  padding: 6px;
+  padding: 4px;
   width: 600px;
   height: 600px;
 }
 
 .app-folder-icon {
-  padding: 6px;
-  spacing-rows: 6px;
-  spacing-columns: 6px;
+  padding: 4px;
+  spacing-rows: 4px;
+  spacing-columns: 4px;
 }
 
 .rename-folder-popup .rename-folder-popup-item {
-  spacing: 6px;
+  spacing: 4px;
 }
 
 .rename-folder-popup .rename-folder-popup-item:ltr, .rename-folder-popup .rename-folder-popup-item:rtl {
-  padding: 0 12px;
+  padding: 0 8px;
 }
 
 .workspace-thumbnails {
@@ -2924,7 +2924,7 @@ StWidget.focused .app-well-app-running-dot {
   border: 1px solid rgba(0, 0, 0, 0.15);
   text-shadow: none;
   icon-shadow: none;
-  padding: 12px;
+  padding: 8px;
   border-style: solid;
   border-width: 0;
   border-left-width: 0;
@@ -3877,49 +3877,38 @@ StWidget.focused .app-well-app-running-dot {
   margin: 0;
 }
 
-#dashtodockContainer.top #dash, #dashtodockContainer.top:overview #dash {
-  border-radius: 14px;
+#dashtodockContainer.top #dash, #dashtodockContainer.top:overview #dash, #dashtodockContainer.top.extended #dash, #dashtodockContainer.top.extended:overview #dash {
+  margin-top: 4px;
+  border-radius: 18px;
 }
 
-#dashtodockContainer.top.extended #dash, #dashtodockContainer.top.extended:overview #dash {
-  border-radius: 14px;
+#dashtodockContainer.bottom #dash, #dashtodockContainer.bottom:overview #dash, #dashtodockContainer.bottom.extended #dash, #dashtodockContainer.bottom.extended:overview #dash {
+  margin-bottom: 4px;
+  border-radius: 18px;
 }
 
-#dashtodockContainer.bottom #dash, #dashtodockContainer.bottom:overview #dash {
-  border-radius: 14px;
+#dashtodockContainer.left #dash, #dashtodockContainer.left:overview #dash, #dashtodockContainer.left.extended #dash, #dashtodockContainer.left.extended:overview #dash {
+  margin-left: 4px;
+  border-radius: 18px;
 }
 
-#dashtodockContainer.bottom.extended #dash, #dashtodockContainer.bottom.extended:overview #dash {
-  border-radius: 14px;
-}
-
-#dashtodockContainer.left #dash, #dashtodockContainer.left:overview #dash {
-  border-radius: 14px;
-}
-
-#dashtodockContainer.left.extended #dash, #dashtodockContainer.left.extended:overview #dash {
-  border-radius: 14px;
-}
-
-#dashtodockContainer.right #dash, #dashtodockContainer.right:overview #dash {
-  border-radius: 14px;
-}
-
-#dashtodockContainer.right.extended #dash, #dashtodockContainer.right.extended:overview #dash {
-  border-radius: 14px;
+#dashtodockContainer.right #dash, #dashtodockContainer.right:overview #dash, #dashtodockContainer.right.extended #dash, #dashtodockContainer.right.extended:overview #dash {
+  margin-right: 4px;
+  border-radius: 18px;
 }
 
 #dashtodockContainer.top #dash, #dashtodockContainer.bottom #dash {
-  padding: 0 4px;
+  padding: 0 0;
 }
 
 #dashtodockContainer.left #dash, #dashtodockContainer.right #dash {
-  padding: 4px 0;
+  padding: 0 0;
 }
 
 #dashtodockContainer #dash {
   background-color: rgba(16, 16, 16, 0.25);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.35);
 }
 
 #dashtodockContainer #dash .app-well-app-running-dot {
