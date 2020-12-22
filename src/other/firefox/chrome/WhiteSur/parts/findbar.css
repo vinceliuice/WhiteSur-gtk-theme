@@ -3,7 +3,7 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 findbar {
-    position: relative;
+	position: relative;
 }
 
 .findbar-container {

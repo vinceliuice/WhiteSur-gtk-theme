@@ -14,33 +14,6 @@
 	list-style-image: url("moz-icon://stock/go-next-symbolic?size=dialog") !important;
 }
 
-/* Reload button */
-/* Glitch - animations (may be possible to fix in about:config)
-#reload-button .toolbarbutton-icon {
-	filter: var(--gnome-icons-hack-filter);
-	list-style-image: url("moz-icon://stock/view-refresh-symbolic?size=dialog") !important;
-}*/
-/* Reload button */
-/* Glitch - animations (may be possible to fix in about:config)
-#stop-button .toolbarbutton-icon {
-	filter: var(--gnome-icons-hack-filter);
-	list-style-image: url("moz-icon://stock/process-stop-symbolic?size=dialog") !important;
-}*/
-
-/* Downloads button */
-/* Glitch - it swaps to the default one anyway
-#downloads-button {
-	filter: var(--gnome-icons-hack-filter);
-	list-style-image: url("moz-icon://stock/folder-download-symbolic?size=dialog") !important;
-} */
-
-/* Downloads button */
-/* Default is ok
-#PanelUI-menu-button {
-	filter: var(--gnome-icons-hack-filter);
-	list-style-image: url("moz-icon://stock/open-menu-symbolic?size=dialog") !important;
-} */
-
 /* Popovers subview menu arrow */
 .PanelUI-subView .subviewbutton-nav::after {
 	content: "" !important;

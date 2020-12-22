@@ -26,13 +26,13 @@ $raven_padding: 8px;
 }
 
 %raven_last_button {
-  border-radius: 0 0 $raven_radius 0;
+  border-radius: 0 0 ($raven_radius - 1px) 0;
   border-right-style: none;
   border-bottom-style: none;
 }
 
 %raven_first_button {
-  border-radius: 0 0 0 $raven_radius;
+  border-radius: 0 0 0 ($raven_radius - 1px);
   border-left-style: none;
   border-bottom-style: none;
 }
@@ -58,14 +58,6 @@ $raven_padding: 8px;
   &:active { @include button(header-active); }
   &:checked { @include button(header-checked); }
   &:disabled { @include button(header-insensitive); }
-
-  &.flat {
-    @include button(undecorated);
-    &:hover { @include button(flat-hover); }
-    &:checked { @include button(flat-checked); }
-    &:active { @include button(flat-active); }
-    &:disabled { @include button(flat-insensitive); }
-  }
 
   &.linked {
     @include button(undecorated);
@@ -116,15 +108,24 @@ $raven_padding: 8px;
               0 0 0 1px if($variant=='light', $borders_color, rgba($dark_borders_color, 0.55)),
               inset 0 0 0 1px if($variant=='light', rgba(black, 0.0), rgba(white, 0.08));
 
-  .container { border: none; }
-  border { border: none; }
-  list { background-color: transparent; }
-
-  row {
+  .container {
     padding: 0;
+    border: none;
+  }
+
+  border { border: none; }
+
+  list {
     background-color: transparent;
 
-    &:hover { box-shadow: none; background-color: transparent; }
+    &.content-box {
+      row.activatable {
+        padding: 0;
+        background: 0;
+        border: none;
+        box-shadow: none;
+      }
+    }
   }
 
   switch { margin-left: 56px; margin-right: 6px; }
@@ -139,17 +140,26 @@ $raven_padding: 8px;
     &:disabled { color: $disabled_fg_color; }
   }
 
-  treeview.view.sidebar { //AppMenu (Elementary)
-    min-height: 36px;
+  treeview.view.sidebar,
+  scrolledwindow.sidebar { //AppMenu (Elementary)
+    // min-height: 36px;
     background: none;
     border-right: none;
     color: $fg_color;
+
+    label { padding: 3px 8px; }
 
     &:hover { background-color: rgba($fg_color, 0.05); }
 
     &:selected, &:selected:hover {
       color: $selected_fg_color;
       background-color: $selected_bg_color;
+    }
+  }
+
+  > frame.container > grid.horizontal > grid.horizontal {
+    > widget > grid.horizontal > stack {
+      border-top: 1px solid $borders_color;
     }
   }
 
@@ -690,7 +700,7 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
       margin-top: -6px; // remove extra spaces, but not perfect :(
 
       button {
-        @extend %raven_button, .flat;
+        @extend %flat_button;
         min-height: 32px;
         min-width: 32px;
         margin: 0;
@@ -713,7 +723,7 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
         padding: 2px;
         margin: 6px 0 0 0;
         background-color: rgba($fg_color, 0.05);
-        border-radius: $bt_radius;
+        border-radius: $bt_radius + 2px;
 
         > button {
           border-radius: $bt_radius;
@@ -838,9 +848,8 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
         padding-top: $raven_padding;
         padding-bottom: $raven_padding;
         border-top: 1px solid $dark_borders_color;
-        @extend %raven_middle_button;
-        @include button(undecorated);
         background-color: $menu_bg;
+        @extend %raven_middle_button;
 
         &:hover {
           background-color: if($variant =='light', darken($menu_bg, 5%), lighten($menu_bg, 5%));
@@ -853,7 +862,7 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
 
         &:disabled { @include button(flat-insensitive); }
 
-        &:first-child{ @extend %raven_first_button; }
+        &:first-child { @extend %raven_first_button; }
         &:last-child { @extend %raven_last_button; }
         &:only-child { @extend %raven_single_button; }
       }
@@ -1184,26 +1193,25 @@ window.budgie-switcher-window {
   .dialog-title { font-size: 120%; }
 
   buttonbox.linked.horizontal > button {
-    padding: 4px 16px;
+    padding: 8px 16px;
+    margin: 8px 3px;
     border: none;
-    border-top: 1px solid $dark_borders_color;
-    border-radius: 0;
+    border-radius: $wm_radius - 8px;
 
-    &:first-child { border-bottom-left-radius: $wm_radius; }
-    &:last-child { border-bottom-right-radius: $wm_radius; }
+    &:first-child { margin-left: 8px; }
+    &:last-child { margin-right: 8px; }
   }
 
   buttonbox.linked.horizontal > button:not(.suggested-action):not(.destructive-action) {
+    @include button(flat-normal);
+
     &:hover {
       @include button(flat-hover);
-      border-color: $dark_borders_color;
       transition: $button_transition;
     }
 
     &:active, &:checked {
       @include button(flat-active);
-      border-color: $dark_borders_color;
-      text-shadow: $text_shadow;
     }
   }
 }

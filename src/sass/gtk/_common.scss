@@ -400,6 +400,14 @@ $_dot_color: $selected_bg_color;
   }
 }
 
+%flat_button {
+  @include button(flat-normal);
+  &:hover { @include button(flat-hover); }
+  &:active { @include button(flat-active); }
+  &:checked { @include button(flat-checked); }
+  &:disabled { @include button(flat-insensitive); }
+}
+
 button {
   min-height: 20px;
   min-width: 16px;
@@ -411,26 +419,19 @@ button {
 
   separator { margin: 4px 1px; }
 
-  @at-root %flat_button, &.flat {
+  &.flat {
+    @extend %flat_button;
     min-height: if($variant =='light', 24px, 24px);
-    @include button(flat-normal);
-    // to avoid adiacent buttons borders clashing when transitioning, the transition on the normal state is set
-    // to none, while it's added back in the hover state, so the button decoration will fade in on hover, but
-    // it won't fade out when the pointer leave the button allocation area. To make the transition more evident
-    // in this case the duration is increased.
     transition: none;
 
     &:hover {
-      @include button(flat-hover);
       transition: $button_transition;
       transition-duration: 350ms;
 
       &:active { transition: $button_transition; }
      }
 
-    &:active, &:checked { @include button(flat-active); }
     &:checked:hover { background-image: none; }
-    &:disabled { @include button(undecorated); }
 
     &.toggle.popup {
       min-width: 20px;

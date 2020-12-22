@@ -32,6 +32,7 @@ tab > stack {
 	--toolbarbutton-active-background: transparent !important;
 	--toolbarbutton-hover-background: transparent !important;
 	padding: 0 0 !important;
+	box-shadow: inset 0 1px var(--gnome-toolbar-border-color), inset 0 1px 3px rgba(0, 0, 0, 0.08) !important;
 }
 
 /* New hover effect */
@@ -211,8 +212,11 @@ tab[selected]:-moz-window-inactive {
 	border-image: none !important;
 	margin-left: -1px !important;
 	margin-right: -1px !important;
-	box-shadow: 1px 0 var(--gnome-toolbar-border-color), -1px 0 var(--gnome-toolbar-border-color), inset 0 -1px var(--gnome-toolbar-border-color) !important;
+	box-shadow: 1px 0 var(--gnome-toolbar-border-color),
+	            -1px 0 var(--gnome-toolbar-border-color),
+	            inset 0 -1px var(--gnome-toolbar-border-color) !important;
 }
+
 .tab-background[selected=true]:-moz-window-inactive {
 	background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
 	border-image: none !important;
