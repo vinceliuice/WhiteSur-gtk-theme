@@ -2,10 +2,6 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-toolbarbutton#alltabs-button {
-	-moz-binding: url("scrollbars.xml#js");
-}
-
 #alltabs-button:not(#hack) {
 	list-style-image: none !important;
 	position: relative;
@@ -20,7 +16,7 @@ toolbarbutton#alltabs-button {
 
 #alltabs-button::before {
 	position: relative;
-	top: 2px;	
+	top: 2px;
 	content: url("../icons/pan-down-symbolic.svg");
 }
 @media (prefers-color-scheme: dark) {
@@ -28,6 +24,7 @@ toolbarbutton#alltabs-button {
 		filter: invert(100%) brightness(200%);
 	}
 }
+
 #alltabs-button:-moz-window-inactive::before {
 	opacity: 0.7 !important;
 }

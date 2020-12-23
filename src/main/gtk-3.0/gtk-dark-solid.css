@@ -7228,10 +7228,10 @@ window.background:not(.csd) > widget > separator {
 }
 
 window.background:not(.csd) > widget > scrollbar {
-  background-clip: border-box;
+  background: none;
+  border: none;
 }
 
-window.background:not(.csd) > widget > scrollbar,
 window.background:not(.csd) > widget > frame > border {
   border-color: rgba(255, 255, 255, 0.12);
 }
@@ -7308,7 +7308,8 @@ window.background:not(.csd) > window > menu menuitem {
 }
 
 #MozillaGtkWidget scrollbar {
-  background-color: transparent;
+  background: none;
+  border: none;
 }
 
 #MozillaGtkWidget scrollbar slider {

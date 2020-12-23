@@ -40,7 +40,7 @@
 	box-shadow: var(--gnome-button-box-shadow) !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
 	border-bottom-color: var(--gnome-button-border-accent-color) !important;
-	border-radius: 5px !important;
+	border-radius: 8px !important;
 	padding: 0 4px !important;
 	height: 28px !important;
 	max-height: 28px !important;
@@ -184,7 +184,7 @@ menulist[open] .menulist-label-box,
 	background: transparent !important;
 	box-shadow: none !important;
 	border-color: transparent !important;
-	border-radius: 5px !important;
+	border-radius: 8px !important;
 }
 
 .subviewbutton-back:not(#hack):not(:active):hover,
@@ -198,7 +198,7 @@ menulist[open] .menulist-label-box,
 	background: transparent !important;
 	box-shadow: none !important;
 	border: 1px solid transparent !important;
-	border-radius: 5px !important;
+	border-radius: 8px !important;
 	padding: 0 0 !important;
 	height: 28px !important;
 	width: 28px !important;
@@ -291,7 +291,7 @@ button.popup-notification-primary-button,
 	border-color: var(--gnome-button-suggested-action-border-color) !important;
 	border-bottom-color: var(--gnome-button-suggested-action-border-accent-color) !important;
 	box-shadow: var(--gnome-button-suggested-action-box-shadow) !important;
-	text-shadow: 0 -1px rgba(0, 0, 0, 0.559216) !important;
+	text-shadow: 0 -1px rgba(0, 0, 0, 0.5) !important;
 }
 
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:hover,

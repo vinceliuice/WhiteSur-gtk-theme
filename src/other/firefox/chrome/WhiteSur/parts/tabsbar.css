@@ -212,8 +212,8 @@ tab[selected]:-moz-window-inactive {
 	border-image: none !important;
 	margin-left: -1px !important;
 	margin-right: -1px !important;
-	box-shadow: 1px 0 var(--gnome-toolbar-border-color),
-	            -1px 0 var(--gnome-toolbar-border-color),
+	box-shadow: 1px 0 var(--gnome-toolbar-border-color), 1px 0 3px rgba(0, 0, 0, 0.08),
+	            -1px 0 var(--gnome-toolbar-border-color), -1px 0 3px rgba(0, 0, 0, 0.08),
 	            inset 0 -1px var(--gnome-toolbar-border-color) !important;
 }
 

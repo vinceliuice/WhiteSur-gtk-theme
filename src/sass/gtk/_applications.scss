@@ -2867,10 +2867,14 @@ window.background:not(.csd) {
     }
 
     // avoid black border
-    > scrollbar { background-clip: border-box; }
+    > scrollbar {
+      background: none;
+      border: none;
+      // background-clip: border-box;
+    }
 
     // emphasize borders color
-    > scrollbar,
+    // > scrollbar,
     > frame > border { border-color: $borders_color; }
 
     > entry,
@@ -2961,7 +2965,8 @@ window.background:not(.csd) {
   scrolledwindow { background-color: $base_color; }
 
   scrollbar {
-    background-color: transparent;
+    background: none;
+    border: none;
 
     slider {
       background-color: mix($fg_color, $bg_color, 45%);

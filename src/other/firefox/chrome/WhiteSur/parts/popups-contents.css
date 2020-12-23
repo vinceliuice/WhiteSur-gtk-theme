@@ -63,7 +63,7 @@
 #downloadsPanel-mainView .download-state {
 	padding: 8px !important;
 	border: 0 !important;
-	border-radius: 5px !important;
+	border-radius: 8px !important;
 	display: flex;
 	align-items: center;
 }
@@ -202,12 +202,12 @@
 #protections-popup-mainView-panel-header {
 	background: var(--gnome-button-suggested-action-background) !important;
 	border: 1px solid var(--gnome-button-suggested-action-border-color) !important;
-	border-radius: 5px 5px 0 0;
+	border-radius: 8px 8px 0 0;
 	min-height: 34px !important;
 }
 
 #protections-popup[toast] #protections-popup-mainView-panel-header {
-	border-radius: 5px 5px 5px 5px !important;
+	border-radius: 8px 8px 8px 8px !important;
 }
 
 #protections-popup-message {
@@ -220,7 +220,7 @@
 	background: var(--gnome-button-background) !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
 	border-top: 0 !important;
-	border-radius: 0 0 5px 5px;
+	border-radius: 0 0 8px 8px;
 }
 #protections-popup[hasException] #protections-popup-tp-switch-section {
 	margin-bottom: 10px !important;

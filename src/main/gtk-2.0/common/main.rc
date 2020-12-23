@@ -1042,17 +1042,6 @@ style "button_label" {
   fg[NORMAL] = @text_color
   fg[PRELIGHT] = @fg_color
   fg[INSENSITIVE] = @insensitive_button_fg_color
-  fg[ACTIVE] = @selected_fg_color
-
-  engine "murrine" { textstyle = 0 }
-
-}
-
-style "misc_button_label" {
-
-  fg[NORMAL] = @text_color
-  fg[PRELIGHT] = @fg_color
-  fg[INSENSITIVE] = @insensitive_button_fg_color
   fg[ACTIVE] = @fg_color
 
   engine "murrine" { textstyle = 0 }
@@ -2433,10 +2422,10 @@ widget_class "*<GtkComboBox>*<GtkCellView>"                         style "butto
 #widget_class "*<GtkSpinButton>*<GtkLabel>"                          style "button_label"
 
 widget_class "*<GtkToolbar>*<GtkButton>"                            style "toolbar_button"
-widget_class "*<GtkToolbar>*<GtkButton>*<GtkLabel>"                 style "misc_button_label"
+widget_class "*<GtkToolbar>*<GtkButton>*<GtkLabel>"                 style "button_label"
 
 widget_class "*<GtkCheckButton>"                                    style "toolbar_button"
-widget_class "*<GtkCheckButton>*<GtkLabel>"                         style "misc_button_label"
+widget_class "*<GtkCheckButton>*<GtkLabel>"                         style "button_label"
 
 # Entries in notebooks draw with notebook's base color, but not if there's
 # something else in the middle that draws gray again
