@@ -102,7 +102,9 @@ Usage:  `./Install`  **[OPTIONS...]**
 |-r, --remove         | remove theme, this will remove all installed themes!|
 |-h, --help           | Show this help|
 
-If you want to change the nautilus sidebar width size, then you can run:
+If you want to change the nautilus sidebar width size,
+(Nautilus cannot change the structure of the sidebar, so I added a picture as a background to achieve the effect of bigsur)
+then you can run:
 
     ./install.sh -s
 
