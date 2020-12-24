@@ -16,19 +16,23 @@
     <file>assets/window-close-hover.svg</file>
     <file>assets/window-close-active.svg</file>
     <file>assets/activities.svg</file>
-    <file>assets/startup.svg</file>
-    <file>assets/startup@2.svg</file>
     <file>assets/background.jpg</file>
-    <file>message-indicator-symbolic.svg</file>
-    <file>eye-not-looking-symbolic.svg</file>
-    <file>eye-open-negative-filled-symbolic.svg</file>
-    <file>pointer-double-click-symbolic.svg</file>
-    <file>pointer-drag-symbolic.svg</file>
-    <file>pointer-primary-click-symbolic.svg</file>
-    <file>pointer-secondary-click-symbolic.svg</file>
-    <file>no-events.svg</file>
-    <file>no-notifications.svg</file>
-    <file>process-working.svg</file>
+    <file>icons/color-pick.svg</file>
+    <file>icons/eye-not-looking-symbolic.svg</file>
+    <file>icons/eye-open-negative-filled-symbolic.svg</file>
+    <file>icons/keyboard-caps-lock-filled-symbolic.svg</file>
+    <file>icons/keyboard-enter-symbolic.svg</file>
+    <file>icons/keyboard-hide-symbolic.svg</file>
+    <file>icons/keyboard-layout-filled-symbolic.svg</file>
+    <file>icons/keyboard-shift-filled-symbolic.svg</file>
+    <file>icons/message-indicator-symbolic.svg</file>
+    <file>icons/pointer-double-click-symbolic.svg</file>
+    <file>icons/pointer-drag-symbolic.svg</file>
+    <file>icons/pointer-primary-click-symbolic.svg</file>
+    <file>icons/pointer-secondary-click-symbolic.svg</file>
     <file>gnome-shell.css</file>
+    <file alias="assets/no-events.svg">no-events.svg</file>
+    <file alias="assets/no-notifications.svg">no-notifications.svg</file>
+    <file alias="assets/process-working.svg">process-working.svg</file>
   </gresource>
 </gresources>

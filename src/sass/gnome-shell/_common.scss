@@ -2663,57 +2663,46 @@ StWidget.focused .app-well-app-running-dot {
 //  .keyboard-row { spacing: 15px; }
 
 .keyboard-key {
-  min-height: 2em;
-  min-width: 2em;
-  font-size: 14pt;
+  min-height: 1.2em;
+  min-width: 1.2em;
   font-weight: bold;
-  border-radius: $bt_radius;
+  font-size: round(16) + pt;
+  border-radius: $mn_radius;
   border: none;
-  color: inherit;
+  color: $alt_fg_color;
   background-color: $solid_bg_color;
-  box-shadow: 0 1px rgba(black, 0.2);
-  &:focus, &:hover { color: $light_fg_color; background-color: $primary_color; }
-  &:checked, &:active { color: $light_fg_color; background-color: darken($primary_color, 6%); }
+  box-shadow: 0 1px 3px rgba(black, 0.15);
+
+  &:focus, &:hover { color: $fg_color; background-color: if($variant == 'light', white, lighten($solid_bg_color, 10%)); }
+  &:checked, &:active { color: $fg_color; background-color: darken($solid_bg_color, 10%); }
   &:grayed { //FIXME
     background-color: $alt_dark_bg_color;
     color: $light_alt_fg_color;
     border-color: $alt_dark_bg_color;
   }
 
-  // &.default-key { background-size: 20px; } // backspace button
-  &.default-key,
-  &.shift-key-lowercase,
-  &.shift-key-uppercase,
-  &.hide-key,
-  &.layout-key {
+  &.default-key { // non-character keys
     background-color: $alt_solid_bg_color;
-    box-shadow: 0 1px rgba(black, 0.2);
-    &:focus, &:hover { color: $fg_color; background-color: $solid_bg_color; }
-    &:checked, &:active { color: $fg_color; background-color: darken($solid_bg_color, 6%); }
+    box-shadow: 0 2px 3px rgba(black, 0.15);
+
+    &:focus, &:hover { color: $fg_color; background-color: lighten($alt_solid_bg_color, 10%); }
+    &:checked, &:active { color: $fg_color; background-color: darken($alt_solid_bg_color, 10%); }
   }
-  &.enter-key {
+
+  &.enter-key { // enter key is suggested-action
     color: $light_fg_color;
     background-color: $primary_color;
-    box-shadow: 0 1px rgba(black, 0.2);
-    // background-image: url("assets/key-enter.svg");
+    box-shadow: 0 2px 3px rgba(black, 0.15);
+
     &:focus, &:hover { color: $light_fg_color; background-color: lighten($primary_color, 5%); }
     &:checked, &:active { color: $light_fg_color; background-color: darken($primary_color, 10%); }
   }
-  // &.shift-key-lowercase {
-  //   background-image: url("assets/key-shift.svg");
-  // }
-  // &.shift-key-uppercase {
-  //   background-image: url("assets/key-shift-uppercase.svg");
-  // }
-  // &.shift-key-uppercase:latched {
-  //   background-image: url("assets/key-shift-latched-uppercase.svg");
-  // }
-  // &.hide-key {
-  //   background-image: url("assets/key-hide.svg");
-  // }
-  // &.layout-key {
-  //   background-image: url("assets/key-layout.svg");
-  // }
+
+  &.shift-key-uppercase {
+    &, &:focus, &:hover, &:checked, &:active {
+      color: $primary_color;
+    }
+  }
 
   StIcon { icon-size: 1.125em; }
 }

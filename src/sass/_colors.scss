@@ -40,8 +40,8 @@ $highlight_color:                   if($variant == 'light', rgba(white, 0.65), r
 // Background colors
 $dark_bg_color:                     rgba(black, 0.6);
 $alt_dark_bg_color:                 rgba(black, 0.3);
-$solid_bg_color:                    if($variant == 'light', #FAFAFA, #555555); // for gnome-shell keyboard
-$alt_solid_bg_color:                if($variant == 'light', #E0E0E0, #242424); // for gnome-shell keyboard
+$solid_bg_color:                    if($variant == 'light', #eeeeee, #555555); // for gnome-shell keyboard
+$alt_solid_bg_color:                if($variant == 'light', #c0c0c0, #242424); // for gnome-shell keyboard
 
 // Link colors
 $link_color:                        #3484e2;

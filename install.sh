@@ -111,11 +111,16 @@ install() {
   echo "ButtonLayout=close,minimize,maximize:menu" >>                                   ${THEME_DIR}/index.theme
 
   mkdir -p                                                                              ${THEME_DIR}/gnome-shell
-  cp -r ${SRC_DIR}/assets/gnome-shell/source-assets/*                                   ${THEME_DIR}/gnome-shell
+  cp -r ${SRC_DIR}/assets/gnome-shell/icons                                             ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/main/gnome-shell/gnome-shell${color}${opacity}${alt}.css             ${THEME_DIR}/gnome-shell/gnome-shell.css
   cp -r ${SRC_DIR}/assets/gnome-shell/common-assets                                     ${THEME_DIR}/gnome-shell/assets
   cp -r ${SRC_DIR}/assets/gnome-shell/assets${color}/*.svg                              ${THEME_DIR}/gnome-shell/assets
   cp -r ${SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg                  ${THEME_DIR}/gnome-shell/assets/activities.svg
+
+  cd "${THEME_DIR}/gnome-shell"
+  ln -s assets/no-events.svg no-events.svg
+  ln -s assets/process-working.svg process-working.svg
+  ln -s assets/no-notifications.svg no-notifications.svg
 
   if [[ ${alt} == '-alt' || ${opacity} == '-solid' ]] &&  [[ ${color} == '-light' ]]; then
     cp -r ${SRC_DIR}/assets/gnome-shell/activities-black/activities${icon}.svg          ${THEME_DIR}/gnome-shell/assets/activities.svg

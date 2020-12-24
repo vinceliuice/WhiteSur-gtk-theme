@@ -1,0 +1,4 @@
+<svg width="64px" height="64px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ <path d="m10 2.3636c-4.2096 0-8 3.3803-8 7.75v44.5c0 4.3696 3.7905 7.75 8 7.75h44c4.2096 0 8-3.3803 8-7.75v-44.5c0-4.3696-3.7905-7.75-8-7.75zm0 20h12.125v8h-12.125zm16.125 0h11.875v8h-11.875zm15.875 0h12v8h-12zm-32 12h12.125v8h-12.125zm16.125 0h11.875v8h-11.875zm15.875 0h12v8h-12zm-32 12h12.125v8h-12.125zm16.125 0h11.875v8h-11.875zm15.875 0h12v8h-12z" fill="#dedede"/>
+ <rect x="42" y="34.364" width="12" height="8" fill="#dedede" opacity=".35" stroke-width="4"/>
+</svg>

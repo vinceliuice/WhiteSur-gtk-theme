@@ -2180,10 +2180,14 @@ window.background.csd {
 //
 // Eye of GNOME Image Viewer
 //
-box.vertical > box.vertical > box.vertical{
-  > paned.horizontal {
-    background-image: none;
-    background-color: $header_border;
+.background.csd {
+  > box.vertical > box.vertical > box.vertical{
+    > paned.horizontal {
+      > separator {
+        background-image: none;
+        background-color: $header_border;
+      }
+    }
   }
 }
 

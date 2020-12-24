@@ -6586,7 +6586,7 @@ window.background.csd evview.view.content-view {
   background-color: transparent;
 }
 
-box.vertical > box.vertical > box.vertical > paned.horizontal {
+.background.csd > box.vertical > box.vertical > box.vertical > paned.horizontal > separator {
   background-image: none;
   background-color: #e0e0e0;
 }
