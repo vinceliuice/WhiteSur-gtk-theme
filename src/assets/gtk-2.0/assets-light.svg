@@ -10,7 +10,7 @@
    <stop stop-color="#f5f6f7" offset="0"/>
   </linearGradient>
   <linearGradient id="entry_highlight" osb:paint="solid">
-   <stop stop-color="#5999ff" offset="0"/>
+   <stop stop-color="#0860f2" offset="0"/>
   </linearGradient>
   <linearGradient id="button-normal-back">
    <stop stop-color="#f1f1f1" offset="0"/>
@@ -18,9 +18,6 @@
   </linearGradient>
   <linearGradient id="selected_fg_color" osb:paint="solid">
    <stop stop-color="#ffffffgit" offset="0"/>
-  </linearGradient>
-  <linearGradient id="selected_bg_color" osb:paint="solid">
-   <stop stop-color="#0860f2" offset="0"/>
   </linearGradient>
   <clipPath id="clipPath4466">
    <rect transform="scale(-1,1)" x="-18" y="-280.64" width="21" height="26" fill="#ff1111" opacity=".558"/>
@@ -117,17 +114,17 @@
   </clipPath>
   <linearGradient id="linearGradient5017" x1="44" x2="44" y1="-279.64" y2="-255.64" gradientTransform="matrix(.96308 0 0 .95987 1.6244 -10.74)" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
   <linearGradient id="linearGradient5023" x1="43.5" x2="43.5" y1="-279.64" y2="-255.64" gradientTransform="translate(.5)" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
-  <linearGradient id="linearGradient5043" x1="220" x2="220" y1="281" y2="286" gradientUnits="userSpaceOnUse" xlink:href="#selected_bg_color"/>
-  <linearGradient id="linearGradient5049" x1="-54.638" x2="-54.638" y1="-235" y2="-227" gradientTransform="translate(283.64,-7)" gradientUnits="userSpaceOnUse" xlink:href="#selected_bg_color"/>
-  <linearGradient id="linearGradient5051" x1="231" x2="231" y1="-82.638" y2="-74.638" gradientTransform="translate(7,283.64)" gradientUnits="userSpaceOnUse" xlink:href="#selected_bg_color"/>
-  <linearGradient id="linearGradient5053" x1="240.5" x2="240.5" y1="-154.64" y2="-129.64" gradientUnits="userSpaceOnUse" xlink:href="#selected_bg_color"/>
-  <linearGradient id="linearGradient5055" x1="66.303" x2="66.303" y1="126.56" y2="155.48" gradientUnits="userSpaceOnUse" xlink:href="#selected_bg_color"/>
-  <linearGradient id="linearGradient5057" x1="66.294" x2="66.294" y1="126.56" y2="155.48" gradientUnits="userSpaceOnUse" xlink:href="#selected_bg_color"/>
-  <linearGradient id="linearGradient5059" x1="25" x2="25" y1="31.362" y2="45.362" gradientUnits="userSpaceOnUse" xlink:href="#selected_bg_color"/>
-  <linearGradient id="linearGradient5071" x1="67.353" x2="67.353" y1="128.63" y2="155.48" gradientUnits="userSpaceOnUse" xlink:href="#selected_bg_color"/>
-  <linearGradient id="linearGradient5073" x1="25.5" x2="25.5" y1="32.362" y2="45.362" gradientUnits="userSpaceOnUse" xlink:href="#selected_bg_color"/>
-  <linearGradient id="linearGradient5075" x1="25.121" x2="25.121" y1="32.448" y2="45.448" gradientUnits="userSpaceOnUse" xlink:href="#selected_bg_color"/>
-  <linearGradient id="linearGradient5021" x1="124" x2="124" y1="6.3622" y2="10.362" gradientUnits="userSpaceOnUse" xlink:href="#selected_fg_color"/>
+  <linearGradient id="linearGradient5043" x1="220" x2="220" y1="281" y2="286" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
+  <linearGradient id="linearGradient5049" x1="-54.638" x2="-54.638" y1="-235" y2="-227" gradientTransform="translate(283.64,-7)" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
+  <linearGradient id="linearGradient5051" x1="231" x2="231" y1="-82.638" y2="-74.638" gradientTransform="translate(7,283.64)" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
+  <linearGradient id="linearGradient5053" x1="240.5" x2="240.5" y1="-154.64" y2="-129.64" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
+  <linearGradient id="linearGradient5055" x1="66.303" x2="66.303" y1="126.56" y2="155.48" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
+  <linearGradient id="linearGradient5057" x1="66.294" x2="66.294" y1="126.56" y2="155.48" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
+  <linearGradient id="linearGradient5059" x1="25" x2="25" y1="31.362" y2="45.362" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
+  <linearGradient id="linearGradient5071" x1="67.353" x2="67.353" y1="128.63" y2="155.48" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
+  <linearGradient id="linearGradient5073" x1="25.5" x2="25.5" y1="32.362" y2="45.362" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
+  <linearGradient id="linearGradient5075" x1="25.121" x2="25.121" y1="32.448" y2="45.448" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
+  <linearGradient id="linearGradient5021" x1="124" x2="124" y1="6.3622" y2="10.362" gradientTransform="matrix(1.5 0 0 1.5 -62 -4.1811)" gradientUnits="userSpaceOnUse" xlink:href="#selected_fg_color"/>
   <linearGradient id="linearGradient5026" x1="44.094" x2="44.094" y1="64.781" y2="71.875" gradientUnits="userSpaceOnUse" xlink:href="#selected_fg_color"/>
   <linearGradient id="linearGradient5028" x1="10.5" x2="10.5" y1="1033.4" y2="1035.4" gradientUnits="userSpaceOnUse" xlink:href="#selected_fg_color"/>
   <linearGradient id="linearGradient5030" x1="12" x2="12" y1="1027.4" y2="1035.4" gradientUnits="userSpaceOnUse" xlink:href="#selected_fg_color"/>
@@ -178,7 +175,8 @@
   <linearGradient id="linearGradient1844" x1="65" x2="91" y1="-267.64" y2="-267.64" gradientUnits="userSpaceOnUse" xlink:href="#toolbar_bg_color"/>
   <linearGradient id="linearGradient1846" x1="31" x2="57" y1="-267.64" y2="-267.64" gradientUnits="userSpaceOnUse" xlink:href="#toolbar_bg_color"/>
   <linearGradient id="linearGradient1848" x1="-3" x2="23" y1="-267.64" y2="-267.64" gradientUnits="userSpaceOnUse" xlink:href="#toolbar_bg_color"/>
-  <linearGradient id="linearGradient1595" x1="263" x2="263" y1="-152.64" y2="-137.64" gradientUnits="userSpaceOnUse" xlink:href="#selected_bg_color"/>
+  <linearGradient id="linearGradient1595" x1="263" x2="263" y1="-152.64" y2="-137.64" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
+  <linearGradient id="linearGradient1950" x1="245" x2="270" y1="-145.14" y2="-145.14" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
  </defs>
  <rect transform="scale(1,-1)" x=".2773" y="-415.73" width="507" height="416" rx="0" ry="0" color="#000000" fill="#f5f6f7"/>
  <g id="button" transform="translate(7,283.64)">
@@ -203,24 +201,24 @@
  </g>
  <g id="menu-checkbox-unchecked" transform="translate(221 -1035.4)">
   <g transform="translate(-19,1037)">
-   <path d="m20.857 2.375c-1.0289 0-1.8571 0.82829-1.8571 1.8571v9.2857c0 1.0289 0.82828 1.8571 1.8571 1.8571h9.2857c1.0289 0 1.8571-0.82828 1.8571-1.8571v-9.2857c0-1.0289-0.82828-1.8571-1.8571-1.8571zm0.14285 1h9c0.51443 0 1 0.48557 1 1v9c0 0.51443-0.48559 1.004-1 1l-9.1429-0.07143c-0.51441-4e-3 -0.85714-0.41414-0.85714-0.92857v-9c0-0.51443 0.48557-1 1-1z" fill="#cecece" stroke-width="0"/>
-   <g transform="translate(0,-30)">
-    <rect transform="translate(-2.0349e-6)" x="20" y="33.375" width="11" height="10.987" rx="1" ry="1" color="#000000" fill="#ffffff" stroke-width="0"/>
+   <g transform="translate(0,-30)" stroke-width="0">
+    <rect x="19.024" y="32.4" width="12.952" height="12.937" rx="2.9762" ry="2.9762" color="#000000" fill="#cecece"/>
+    <rect x="20" y="33.4" width="11" height="10.987" rx="2" ry="2" color="#000000" fill="#ffffff"/>
    </g>
   </g>
  </g>
  <g id="menu-checkbox-unchecked-insensitive" transform="translate(236 -1035.4)" opacity=".55">
   <g transform="translate(-19,1037)" opacity="1">
-   <path d="m20.857 2.375c-1.0289 0-1.8571 0.82829-1.8571 1.8571v9.2857c0 1.0289 0.82828 1.8571 1.8571 1.8571h9.2857c1.0289 0 1.8571-0.82828 1.8571-1.8571v-9.2857c0-1.0289-0.82828-1.8571-1.8571-1.8571zm0.14285 1h9c0.51443 0 1 0.48557 1 1v9c0 0.51443-0.48559 1.004-1 1l-9.1429-0.07143c-0.51441-4e-3 -0.85714-0.41414-0.85714-0.92857v-9c0-0.51443 0.48557-1 1-1z" fill="#cecece" opacity="1" stroke-width="0"/>
-   <g transform="translate(0,-30)">
-    <rect transform="translate(-2.0349e-6)" x="20" y="33.375" width="11" height="10.987" rx="1" ry="1" color="#000000" fill="#ffffff" stroke-width="0"/>
+   <g transform="translate(0,-30)" stroke-width="0">
+    <rect x="19" y="32.376" width="13" height="12.984" rx="3" ry="3" color="#000000" fill="#dfe0e0"/>
+    <rect transform="translate(-2.0349e-6)" x="20" y="33.375" width="11" height="10.987" rx="2" ry="2" color="#000000" fill="#ffffff"/>
    </g>
   </g>
  </g>
  <g id="menu-checkbox-checked" transform="translate(215.38,1.55)">
   <g transform="translate(19)">
    <g transform="translate(0,-30)">
-    <rect x="18.621" y="32.448" width="13" height="13" rx="2" ry="2" color="#000000" fill="url(#linearGradient5075)" stroke-width="0"/>
+    <rect x="18.621" y="32.448" width="13" height="13" rx="3.001" ry="3.001" color="#000000" fill="url(#linearGradient5075)" stroke-width="0"/>
    </g>
   </g>
   <g transform="translate(36,-1036)">
@@ -256,7 +254,7 @@
  <g id="menu-checkbox-checked-insensitive" transform="translate(231,1.64)" opacity=".55">
   <g transform="translate(19)">
    <g transform="translate(0,-30)">
-    <rect x="19" y="32.362" width="13" height="13" rx="2" ry="2" color="#000000" fill="url(#linearGradient5073)" opacity="1" stroke-width="0"/>
+    <rect x="19" y="32.362" width="13" height="13" rx="3" ry="3" color="#000000" fill="url(#linearGradient5073)" opacity="1" stroke-width="0"/>
    </g>
   </g>
   <g transform="translate(36,-1036)">
@@ -289,17 +287,17 @@
   </g>
  </g>
  <g id="checkbox-unchecked" transform="translate(272,1.64)">
-  <path d="m20 1.375c-1.108 0-2 0.892-2 2v10c0 1.108 0.892 2 2 2h10c1.108 0 2-0.892 2-2v-10c0-1.108-0.892-2-2-2zm0 1h10c0.554 0 1 0.446 1 1v10c0 0.554-0.446 1-1 1h-10c-0.554 0-1-0.446-1-1v-10c0-0.554 0.446-1 1-1z" fill="#cecece" stroke-width="0"/>
   <g transform="translate(0,-30)">
    <rect x="17" y="30.362" width="16" height="16" color="#000000" fill="none"/>
-   <rect x="19" y="32.362" width="12" height="12" rx="1" ry="1" color="#000000" fill="#ffffff" stroke-width="0"/>
+   <rect x="18" y="31.362" width="14" height="14" rx="3" ry="3" color="#000000" fill="#cecece" stroke-width="0"/>
+   <rect x="19" y="32.362" width="12" height="12" rx="2" ry="2" color="#000000" fill="#ffffff" stroke-width="0"/>
   </g>
  </g>
  <g id="checkbox-checked" transform="translate(285,1.64)">
   <g transform="translate(19)">
    <g transform="translate(0,-30)">
     <rect x="17" y="30.362" width="16" height="16" color="#000000" fill="none"/>
-    <rect x="18" y="31.362" width="14" height="14" rx="2" ry="2" color="#000000" fill="url(#linearGradient5059)" stroke-width="0"/>
+    <rect x="18" y="31.362" width="14" height="14" rx="3" ry="3" color="#000000" fill="url(#linearGradient5059)" stroke-width="0"/>
    </g>
   </g>
   <g transform="translate(36,-1036)">
@@ -332,20 +330,20 @@
     </g>
    </g>
   </g>
-  <rect x="122" y="6.3622" width="4" height="4" rx="1.9989" ry="2" color="#000000" fill="url(#linearGradient5021)"/>
+  <rect x="121" y="5.3622" width="6" height="6" rx="2.9984" ry="3" color="#000000" fill="url(#linearGradient5021)" stroke-width="1.5"/>
  </g>
  <g id="checkbox-unchecked-insensitive" transform="translate(288,1.64)" opacity=".55">
-  <path d="m20 1.375c-1.108 0-2 0.892-2 2v10c0 1.108 0.892 2 2 2h10c1.108 0 2-0.892 2-2v-10c0-1.108-0.892-2-2-2zm0 1h10c0.554 0 1 0.446 1 1v10c0 0.554-0.446 1-1 1h-10c-0.554 0-1-0.446-1-1v-10c0-0.554 0.446-1 1-1z" fill="#cecece" opacity="1" stroke-width="0"/>
   <g transform="translate(0,-30)">
    <rect x="17" y="30.362" width="16" height="16" color="#000000" fill="none"/>
-   <rect x="19" y="32.362" width="12" height="12" rx="1" ry="1" color="#000000" fill="#ffffff" stroke-width="0"/>
+   <rect x="18" y="31.362" width="14" height="14" rx="3" ry="3" color="#000000" fill="#dfe0e0" stroke-width="0"/>
+   <rect x="19" y="32.362" width="12" height="12" rx="2" ry="2" color="#000000" fill="#ffffff" stroke-width="0"/>
   </g>
  </g>
  <g id="checkbox-checked-insensitive" transform="translate(301,1.64)" opacity=".55">
   <g transform="translate(19)">
    <g transform="translate(0,-30)">
     <rect x="17" y="30.362" width="16" height="16" color="#000000" fill="none"/>
-    <rect x="18" y="31.362" width="14" height="14" rx="2" ry="2" color="#000000" fill="url(#linearGradient5059)" opacity="1" stroke-width="0"/>
+    <rect x="18" y="31.362" width="14" height="14" rx="3" ry="3" color="#000000" fill="url(#linearGradient5059)" opacity="1" stroke-width="0"/>
    </g>
   </g>
   <g transform="translate(36,-1036)">
@@ -377,7 +375,7 @@
     </g>
    </g>
   </g>
-  <rect x="122" y="6.3622" width="4" height="4" rx="1.9989" ry="2" color="#000000" fill="url(#linearGradient5021)" opacity="1"/>
+  <rect x="121" y="5.3622" width="6" height="6" rx="2.9984" ry="3" color="#000000" fill="url(#linearGradient5021)" opacity="1" stroke-width="1.5"/>
  </g>
  <g id="entry-bg" transform="translate(6,345.64)">
   <rect x="-3" y="-279.64" width="26" height="24" fill="url(#linearGradient1818)"/>
@@ -893,7 +891,7 @@
    <rect x="245" y="-152.64" width="25" height="15" fill="none"/>
   </g>
   <g transform="matrix(1 0 0 .13333 57.5 -119.29)">
-   <rect x="245" y="-152.64" width="25" height="15" fill="#315bef"/>
+   <rect x="245" y="-152.64" width="25" height="15" fill="url(#linearGradient1950)"/>
   </g>
  </g>
  <g id="pathbar_button_prelight" transform="translate(124.5,473.64)" opacity=".5">
@@ -901,7 +899,7 @@
    <rect x="245" y="-152.64" width="25" height="15" fill="none" opacity="1"/>
   </g>
   <g transform="matrix(1 0 0 .13333 57.5 -119.29)">
-   <rect x="245" y="-152.64" width="25" height="15" fill="#315bef" opacity="1"/>
+   <rect x="245" y="-152.64" width="25" height="15" fill="url(#linearGradient1950)" opacity="1"/>
   </g>
  </g>
  <g id="toolbar-button-active-hover" transform="translate(40,313.64)">

@@ -109,7 +109,7 @@ stage {
 
 #menu-search-entry:focus, .notification StEntry:focus, .menu #notification StEntry:focus, .popup-menu #notification StEntry:focus, #notification StEntry:focus, #menu-search-entry:hover, .notification StEntry:hover, .menu #notification StEntry:hover, .popup-menu #notification StEntry:hover, #notification StEntry:hover {
   color: #363636;
-  border: 2px solid rgba(103, 164, 233, 0.75);
+  border: 2px solid rgba(77, 142, 249, 0.75);
   background-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -250,8 +250,8 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .toggle-switch {
-  width: 50px;
-  height: 20px;
+  width: 40px;
+  height: 24px;
   background-size: contain;
   background-image: url("assets/toggle-off.svg");
 }

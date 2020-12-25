@@ -10,6 +10,8 @@ DARK_ASSETS_DIR="assets-dark"
 
 INDEX="assets.txt"
 
+[[ -d $ASSETS_DIR ]] && rm -rf $ASSETS_DIR
+[[ -d $DARK_ASSETS_DIR ]] && rm -rf $DARK_ASSETS_DIR
 mkdir -p $ASSETS_DIR && mkdir -p $DARK_ASSETS_DIR
 
 for i in `cat $INDEX`
@@ -21,7 +23,7 @@ else
     echo Rendering $ASSETS_DIR/$i.png
     $INKSCAPE --export-id=$i \
               --export-id-only \
-              --export-png=$ASSETS_DIR/$i.png $SRC_FILE >/dev/null \
+              --export-filename=$ASSETS_DIR/$i.png $SRC_FILE >/dev/null \
     && $OPTIPNG -o7 --quiet $ASSETS_DIR/$i.png 
 fi
 if [ -f $DARK_ASSETS_DIR/$i.png ]; then
@@ -31,7 +33,7 @@ else
     echo Rendering $DARK_ASSETS_DIR/$i.png
     $INKSCAPE --export-id=$i \
               --export-id-only \
-              --export-png=$DARK_ASSETS_DIR/$i.png $DARK_SRC_FILE >/dev/null \
+              --export-filename=$DARK_ASSETS_DIR/$i.png $DARK_SRC_FILE >/dev/null \
     && $OPTIPNG -o7 --quiet $DARK_ASSETS_DIR/$i.png 
 fi
 done

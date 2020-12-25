@@ -1,88 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="50"
-   height="20"
-   viewBox="0 0 50 20"
-   version="1.1"
-   id="svg6"
-   sodipodi:docname="toggle-off.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
-  <metadata
-     id="metadata12">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs10" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1366"
-     inkscape:window-height="704"
-     id="namedview8"
-     showgrid="false"
-     inkscape:zoom="4.775"
-     inkscape:cx="19.157491"
-     inkscape:cy="18.778767"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg6" />
-  <circle
-     cx="10"
-     cy="10"
-     r="6"
-     id="circle4"
-     style="fill:#ffffff" />
-  <g
-     style="display:inline"
-     transform="translate(0.02128202,-1032.3623)"
-     id="toggle-off"
-     inkscape:label="Layer 1">
-    <g
-       transform="translate(-5.1851991,-0.59123127)"
-       id="g4562">
-      <g
-         id="g4556"
-         transform="matrix(1.0109881,0,0,0.96970664,-0.43462179,32.056001)">
-        <path
-           id="rect4140"
-           d="m 15.787004,1034.4777 h 29 c 4.432,0 8,3.568 8,8 0,4.432 -3.568,8 -8,8 h -29 c -4.432,0 -8.0000005,-3.568 -8.0000005,-8 0,-4.432 3.5680005,-8 8.0000005,-8 z"
-           style="fill:#535353;fill-opacity:1;stroke:#555555;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           inkscape:connector-curvature="0" />
-        <circle
-           r="8.2498779"
-           cy="1042.4775"
-           cx="15.744821"
-           id="circle4587"
-           style="opacity:0.35;fill:#333333;fill-opacity:1;stroke:none;stroke-width:1.37497962" />
-        <circle
-           style="fill:#d8d8d8;fill-opacity:1;stroke:none;stroke-width:1.20311427"
-           id="circle4531"
-           cx="15.744821"
-           cy="1042.4775"
-           r="7.2186861" />
-      </g>
-    </g>
-  </g>
+<svg width="40" height="24" version="1.1" viewBox="0 0 40 24" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter id="m" x="-.17328" y="-.17328" width="1.3466" height="1.3466" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="1.2996"/>
+  </filter>
+  <linearGradient id="a" x1="41" x2="41" y1="1032.4" y2="1050.4" gradientTransform="matrix(.88889 0 0 .88889 -25.444 -913.65)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#ffffff" offset="0"/>
+  </linearGradient>
+ </defs>
+ <rect x="1" y="2" width="38" height="20" rx="10" ry="10" fill="#000000" opacity=".25" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:markers stroke fill"/>
+ <circle transform="matrix(.93214 0 0 .93214 -195.25 113.81)" cx="221.26" cy="-108.14" r="9" filter="url(#m)" opacity=".25"/>
+ <circle cx="11" cy="12" r="8" fill="url(#a)" stroke-width=".88889"/>
 </svg>

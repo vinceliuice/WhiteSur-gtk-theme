@@ -26,7 +26,7 @@ $light_track_color:                 rgba(white, 0.30);
 $light_divider_color:               rgba(white, 0.15);
 
 $selected_fg_color:                 $light_fg_color;
-$selected_bg_color:                 if($variant == 'light', #0860f2, #0860f2);
+$selected_bg_color:                 #0860f2;
 $primary_color:                     $selected_bg_color;
 
 $selected_borders_color:            darken($selected_bg_color, 10%);
@@ -48,7 +48,7 @@ $link_color:                        #3484e2;
 $link_visited_color:                if($variant == 'light', lighten($text_color, 10%), darken($text_color, 15%));
 
 // Theme colors
-$selection_mode_bg:                 #6887cd;
+$selection_mode_bg:                 lighten($selected_bg_color, 15%);
 $warning_color:                     #F27835;
 $error_color:                       #FC4138;
 $success_color:                     #30D158;
@@ -131,7 +131,7 @@ $panel_border_color:                if($variant == 'light', rgba(white, 0.22), r
 $entry_bg:                          if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05));
 $entry_shell_bg:                    if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
 $entry_border:                      $borders_color;
-$entry_highlight:                   if($variant == 'light', rgba(#67a4e9, 0.75), rgba($selection_mode_bg, 0.75));
+$entry_highlight:                   rgba($selection_mode_bg, 0.75);
 
 // Button colors
 $button_bg:                         if($variant == 'light', white, #656565);

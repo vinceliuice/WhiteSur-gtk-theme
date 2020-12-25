@@ -7,6 +7,7 @@ SRC_FILE="assets.svg"
 ASSETS_DIR="assets"
 INDEX="assets.txt"
 
+[[ -d $ASSETS_DIR ]] && rm -rf $ASSETS_DIR
 mkdir -p $ASSETS_DIR
 
 for i in `cat $INDEX`
@@ -18,7 +19,7 @@ else
     echo Rendering $ASSETS_DIR/$i.png
     $INKSCAPE --export-id=$i \
               --export-id-only \
-              --export-png=$ASSETS_DIR/$i.png $SRC_FILE >/dev/null #\
+              --export-filename=$ASSETS_DIR/$i.png $SRC_FILE >/dev/null #\
     # && $OPTIPNG -o7 --quiet $ASSETS_DIR/$i.png
 fi
 done

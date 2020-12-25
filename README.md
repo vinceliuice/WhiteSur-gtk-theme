@@ -61,6 +61,43 @@ After all the dependencies are installed, you can Run
 
     ./install.sh
 
+#### Install tips
+
+Usage:  `./Install`  **[OPTIONS...]**
+
+|  OPTIONS:           | |
+|:--------------------|:-------------|
+|-d, --dest           | Specify theme destination directory (Default: $HOME/.themes)|
+|-n, --name           | Specify theme name (Default: WhiteSur)|
+|-c, --color          | Specify theme color variant(s) **[light/dark]** (Default: All variants)|
+|-o, --opacity        | Specify theme opacity variant(s) **[standard/solid]** (Default: All variants)|
+|-a, --alt            | Specify titlebutton variant(s) **[standard/alt]** (Default: All variants)|
+|-t, --theme          | Run a terminal dialog to change the theme accent color (Default: blue)|
+|-p, --panel          | Run a terminal dialog to change the panel transparency (Default: 85%)|
+|-s, --size           | Run a terminal dialog to change the nautilus sidebar width size (Default: 200px)|
+|-i, --icon           | activities icon variant(s) **[standard/normal/gnome/ubuntu/arch/manjaro/fedora/debian/void]** (Default: standard variant)|
+|-g, --gdm            | Install GDM theme, you should run this with sudo!|
+|-r, --remove         | remove theme, this will remove all installed themes!|
+|-h, --help           | Show this help|
+
+If you want to change the nautilus sidebar width size,
+(Nautilus cannot change the structure of the sidebar, so I added a picture as a background to achieve the effect of bigsur)
+then you can run:
+
+    ./install.sh -s
+
+If you want to change the panel transparency, then you can run:
+
+    ./install.sh -p
+
+If you want to remove all installed themes, then you can run:
+
+    ./install.sh -r
+
+If you want to remove installed gdm theme, then you can run:
+
+    ./install.sh -r -g
+
 ### On Snapcraft
 
 <a href="https://snapcraft.io/whitesur-gtk-theme">
@@ -83,42 +120,6 @@ To connect the theme to all apps which have available plugs to gtk-common-themes
 ```
 for i in $(snap connections | grep gtk-common-themes:gtk-3-themes | awk '{print $2}'); do sudo snap connect $i whitesur-gtk-theme:gtk-3-themes; done
 ```
-
-#### Install tips
-
-Usage:  `./Install`  **[OPTIONS...]**
-
-|  OPTIONS:           | |
-|:--------------------|:-------------|
-|-d, --dest           | Specify theme destination directory (Default: $HOME/.themes)|
-|-n, --name           | Specify theme name (Default: WhiteSur)|
-|-c, --color          | Specify theme color variant(s) **[light/dark]** (Default: All variants)|
-|-o, --opacity        | Specify theme opacity variant(s) **[standard/solid]** (Default: All variants)|
-|-a, --alt            | Specify titlebutton variant(s) **[standard/alt]** (Default: All variants)|
-|-t, --trans          | Run a dialg to change the panel transparency (Default: 85%)|
-|-s, --size           | Run a dialg to change the nautilus sidebar width size (Default: 200px)|
-|-i, --icon           | activities icon variant(s) **[standard/normal/gnome/ubuntu/arch/manjaro/fedora/debian/void]** (Default: standard variant)|
-|-g, --gdm            | Install GDM theme, you should run this with sudo!|
-|-r, --remove         | remove theme, this will remove all installed themes!|
-|-h, --help           | Show this help|
-
-If you want to change the nautilus sidebar width size,
-(Nautilus cannot change the structure of the sidebar, so I added a picture as a background to achieve the effect of bigsur)
-then you can run:
-
-    ./install.sh -s
-
-If you want to change the panel transparency, then you can run:
-
-    ./install.sh -t
-
-If you want to remove all installed themes, then you can run:
-
-    ./install.sh -r
-
-If you want to remove installed gdm theme, then you can run:
-
-    ./install.sh -r -g
 
 ### Suggested themes
 |  Suggested themes   | links | preview |

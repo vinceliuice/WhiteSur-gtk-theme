@@ -68,9 +68,10 @@ usage() {
   printf "  %-25s%s\n" "-n, --name NAME" "Specify theme name (Default: ${THEME_NAME})"
   printf "  %-25s%s\n" "-o, --opacity VARIANTS" "Specify theme opacity variant(s) [standard|solid] (Default: All variants)"
   printf "  %-25s%s\n" "-c, --color VARIANTS" "Specify theme color variant(s) [light|dark] (Default: All variants)"
+  printf "  %-25s%s\n" "-t, --theme VARIANTS" "Run a dialog to change the theme color (Default: blue)"
   printf "  %-25s%s\n" "-a, --alt VARIANTS" "Specify theme titilebutton variant(s) [standard|alt] (Default: All variants)"
-  printf "  %-25s%s\n" "-t, --trans VARIANTS" "Run a dialg to change the panel transparency (Default: 85%)"
-  printf "  %-25s%s\n" "-s, --size VARIANTS" "Run a dialg to change the nautilus sidebar width size (Default: 200px)"
+  printf "  %-25s%s\n" "-p, --panel VARIANTS" "Run a dialog to change the panel transparency (Default: 85%)"
+  printf "  %-25s%s\n" "-s, --size VARIANTS" "Run a dialog to change the nautilus sidebar width size (Default: 200px)"
   printf "  %-25s%s\n" "-i, --icon VARIANTS" "Specify activities icon variant(s) for gnome-shell [standard|normal|gnome|ubuntu|arch|manjaro|fedora|debian|void] (Default: standard variant)"
   printf "  %-25s%s\n" "-g, --gdm" "Install GDM theme, this option need root user authority! please run this with sudo"
   printf "  %-25s%s\n" "-r, --remove" "remove theme, remove all installed themes"
@@ -338,6 +339,32 @@ run_shell_dialog() {
   fi
 }
 
+run_theme_dialog() {
+  if [[ -x /usr/bin/dialog ]]; then
+    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
+    --radiolist "Choose your theme color (default is Mac Blue):" 20 50 10 \
+      1 "Blue" on  \
+      2 "Purple" off \
+      3 "Pink" off \
+      4 "Red" off \
+      5 "Orange" off \
+      6 "Yellow" off \
+      7 "Green" off \
+      8 "Grey" off --output-fd 1 )
+      case "$tui" in
+        1) theme_color="#2E7CF7" ;;
+        2) theme_color="#9A57A3" ;;
+        3) theme_color="#E55E9C" ;;
+        4) theme_color="#ED5F5D" ;;
+        5) theme_color="#E9873A" ;;
+        6) theme_color="#F3BA4B" ;;
+        7) theme_color="#79B757" ;;
+        8) theme_color="#8C8C8C" ;;
+        *) operation_canceled ;;
+     esac
+  fi
+}
+
 parse_sass() {
   cd ${REPO_DIR} && ./parse-sass.sh
 }
@@ -347,6 +374,105 @@ change_size() {
   cp -an _applications.scss _applications.scss.bak
   sed -i "s/200px/$sidebar_size/g" _applications.scss
   prompt -w "Change nautilus sidebar size ..."
+}
+
+change_theme_color() {
+  notify-send "Notice" "It will take a few minutes to regenerate the assets files, please be patient!" -i face-wink
+
+  cd ${SRC_DIR}/sass
+  cp -an _colors.scss _colors.scss.bak
+  sed -i "s/#0860f2/$theme_color/g" _colors.scss
+
+  cd ${SRC_DIR}/assets/gtk-3.0
+  cp -an thumbnail.svg thumbnail.svg.bak
+  mv thumbnail-dark.png thumbnail-dark.png.bak
+  mv thumbnail-light.png thumbnail-light.png.bak
+  sed -i "s/#0860f2/$theme_color/g" thumbnail.svg
+  ./render-thumbnails.sh
+
+  cd ${SRC_DIR}/assets/gtk-3.0/common-assets
+  cp -an assets.svg assets.svg.bak
+  mv assets assets-bak
+  sed -i "s/#0860f2/$theme_color/g" assets.svg
+  ./render-assets.sh
+
+  cd ${SRC_DIR}/assets/gnome-shell/common-assets
+  cp -an checkbox.svg checkbox.svg.bak
+  cp -an more-results.svg more-results.svg.bak
+  cp -an toggle-on.svg toggle-on.svg.bak
+  sed -i "s/#0860f2/$theme_color/g" {checkbox.svg,more-results.svg,toggle-on.svg}
+
+  cd ${SRC_DIR}/main/gtk-2.0
+  cp -an gtkrc-dark gtkrc-dark.bak
+  cp -an gtkrc-light gtkrc-light.bak
+  sed -i "s/#0860f2/$theme_color/g" {gtkrc-dark,gtkrc-light}
+
+  cd ${SRC_DIR}/assets/gtk-2.0
+  cp -an assets-dark.svg assets-dark.svg.bak
+  cp -an assets-light.svg assets-light.svg.bak
+  mv assets-dark assets-dark-bak
+  mv assets-light assets-light-bak
+  sed -i "s/#0860f2/$theme_color/g" {assets-dark.svg,assets-light.svg}
+  ./render-assets.sh
+
+  cd ${SRC_DIR}/assets/cinnamon
+  cp -an thumbnail.svg thumbnail.svg.bak
+  mv thumbnail-dark.png thumbnail-dark.png.bak
+  mv thumbnail-light.png thumbnail-light.png.bak
+  sed -i "s/#0860f2/$theme_color/g" thumbnail.svg
+  ./render-thumbnails.sh
+
+  cd ${SRC_DIR}/assets/cinnamon/common-assets
+  cp -an checkbox.svg checkbox.svg.bak
+  cp -an radiobutton.svg radiobutton.svg.bak
+  cp -an add-workspace-active.svg add-workspace-active.svg.bak
+  cp -an menu-hover.svg menu-hover.svg.bak
+  cp -an toggle-on.svg toggle-on.svg.bak
+  cp -an corner-ripple.svg corner-ripple.svg.bak
+  sed -i "s/#0860f2/$theme_color/g" {checkbox.svg,radiobutton.svg,menu-hover.svg,add-workspace-active.svg,corner-ripple.svg,toggle-on.svg}
+
+  prompt -w "Change theme color ..."
+}
+
+restore_assets_files() {
+  cd ${SRC_DIR}/assets/gtk-3.0
+  mv -f thumbnail.svg.bak thumbnail.svg
+  mv -f thumbnail-dark.png.bak thumbnail-dark.png
+  mv -f thumbnail-light.png.bak thumbnail-light.png
+
+  cd ${SRC_DIR}/assets/gtk-3.0/common-assets
+  mv -f assets.svg.bak assets.svg
+  [[ -d assets-bak ]] && rm -rf assets && mv assets-bak assets
+
+  cd ${SRC_DIR}/assets/gnome-shell/common-assets
+  mv -f checkbox.svg.bak checkbox.svg
+  mv -f more-results.svg.bak more-results.svg
+  mv -f toggle-on.svg.bak toggle-on.svg
+
+  cd ${SRC_DIR}/main/gtk-2.0
+  mv -f gtkrc-dark.bak gtkrc-dark
+  mv -f gtkrc-light.bak gtkrc-light
+
+  cd ${SRC_DIR}/assets/gtk-2.0
+  mv -f assets-dark.svg.bak assets-dark.svg
+  mv -f assets-light.svg.bak assets-light.svg
+  [[ -d assets-dark-bak ]] && rm -rf assets-dark && mv assets-dark-bak assets-dark
+  [[ -d assets-light-bak ]] && rm -rf assets-light && mv assets-light-bak assets-light
+
+  cd ${SRC_DIR}/assets/cinnamon
+  mv -f thumbnail.svg.bak thumbnail.svg
+  mv -f thumbnail-dark.png.bak thumbnail-dark.png
+  mv -f thumbnail-light.png.bak thumbnail-light.png
+
+  cd ${SRC_DIR}/assets/cinnamon/common-assets
+  mv -f checkbox.svg.bak checkbox.svg
+  mv -f radiobutton.svg.bak radiobutton.svg
+  mv -f add-workspace-active.svg.bak add-workspace-active.svg
+  mv -f menu-hover.svg.bak menu-hover.svg
+  mv -f toggle-on.svg.bak toggle-on.svg
+  mv -f corner-ripple.svg.bak corner-ripple.svg
+
+  prompt -w "restore assets files ..."
 }
 
 change_transparency() {
@@ -392,8 +518,12 @@ while [[ $# -gt 0 ]]; do
       size='true'
       shift 1
       ;;
-    -t|--trans)
-      trans='true'
+    -t|--theme)
+      theme='true'
+      shift 1
+      ;;
+    -p|--panel)
+      panel='true'
       shift 1
       ;;
     -r|--remove)
@@ -555,7 +685,11 @@ if [[ "${size:-}" == 'true' ]]; then
   fi
 fi
 
-if [[ "${trans:-}" == 'true' ]]; then
+if [[ "${theme:-}" == 'true' ]]; then
+  install_dialog && run_theme_dialog && change_theme_color && parse_sass
+fi
+
+if [[ "${panel:-}" == 'true' ]]; then
   install_dialog && run_shell_dialog && change_transparency && parse_sass
 fi
 
@@ -582,6 +716,12 @@ fi
 if [[ -f "${SRC_DIR}"/sass/_colors.scss.bak ]]; then
   restore_colors_file && parse_sass
 fi
+
+if [[ -f "${SRC_DIR}"/assets/gtk-3.0/thumbnail.svg.bak ]]; then
+  restore_assets_files
+fi
+
+notify-send "Finished" "Enjoy you new WhiteSur theme!" -i face-smile
 
 echo
 prompt -s Done.

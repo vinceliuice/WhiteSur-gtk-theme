@@ -7,6 +7,7 @@ SRC_FILE="assets.svg"
 ASSETS_DIR="assets"
 INDEX="assets.txt"
 
+[[ -d $ASSETS_DIR ]] && rm -rf $ASSETS_DIR
 mkdir -p $ASSETS_DIR
 
 for i in `cat $INDEX`

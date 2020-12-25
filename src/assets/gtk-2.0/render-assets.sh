@@ -11,6 +11,8 @@ DARK_ASSETS_DIR="assets-dark"
 
 INDEX="assets.txt"
 
+[[ -d $LIGHT_ASSETS_DIR ]] && rm -rf $LIGHT_ASSETS_DIR
+[[ -d $DARK_ASSETS_DIR ]] && rm -rf $DARK_ASSETS_DIR
 mkdir -p $LIGHT_ASSETS_DIR && mkdir -p $DARK_ASSETS_DIR
 
 for i in `cat $INDEX`

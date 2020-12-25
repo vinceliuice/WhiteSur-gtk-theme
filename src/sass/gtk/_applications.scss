@@ -783,21 +783,6 @@ window.org-gnome-gedit {
   background: none;
 }
 
-workbench.csd > stack.titlebar:not(headerbar) {
-  padding: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
-
-  headerbar {
-    &,
-    &:first-child,
-    &:last-child {
-      border-radius: $wm_radius $wm_radius 0 0;
-    }
-  }
-}
-
 editortweak .linked > entry.search:focus + .gb-linked-scroller {
   border-top-color: $selected_bg_color;
 }
@@ -909,13 +894,6 @@ popover.popover-selector {
   }
 }
 
-entry.search.preferences-search {
-  border: none;
-  border-right: 1px solid $borders_color;
-  border-bottom: 1px solid $borders_color;
-  border-radius: 0;
-}
-
 preferences stacksidebar.sidebar {
   list {
     background-image: _solid($base_color);
@@ -951,6 +929,10 @@ omnibar.linked > entry:not(:only-child) {
 
 entry.search.preferences-search { // preferences-search
   box-shadow: none;
+  border: none;
+  border-right: 1px solid $borders_color;
+  border-bottom: 1px solid $borders_color;
+  border-radius: 0;
 
   &:focus {
     box-shadow: none;
@@ -960,7 +942,7 @@ entry.search.preferences-search { // preferences-search
 
 preferencesbin {
   spinbutton {
-    border-radius: $wm_radius;
+    border-radius: $bt_radius;
     border: 1px solid $borders_color;
     background-color: $bg_color;
 
@@ -979,6 +961,32 @@ preferencesbin {
   }
 
   entry.search { margin: 2px; }
+}
+
+dzlpreferencesview stacksidebar.sidebar {
+  border-bottom-left-radius: $wm_radius;
+
+  > scrolledwindow > viewport.frame > list {
+    border-bottom-left-radius: $wm_radius;
+  }
+}
+
+dzldockbin#buildui.buildui list.sidebar {
+  border-bottom-left-radius: $wm_radius;
+}
+
+dzldockbin#editor > ideeditorsidebar.left.pinned.dzldockbinedge {
+  border-bottom-left-radius: $wm_radius;
+
+  > dzldockpaned {
+    treeview.view.project-tree.i-wanna-be-list-box:not(:hover):not(:selected) {
+      background: none;
+    }
+  }
+}
+
+ideeditorutilities.bottom.pinned.dzldockbinedge {
+  border-bottom-right-radius: $wm_radius;
 }
 
 gstyleslidein {
@@ -1002,38 +1010,60 @@ configurationview {
   }
 }
 
-window.org-gnome-Builder.workspace > popover.dzlmenubutton {
-  > box.vertical > dzlmenubuttonsection.vertical {
-    > box.vertical > button.dzlmenubuttonitem {
-      color: $alt_fg_color;
+dzldockbin actionbar {
+  border-radius: 0 0 $wm_radius $wm_radius;
+}
 
-      &:active, &:checked {
-        color: $fg_color;
-        background-color: rgba($fg_color, 0.25);
+workbench.csd > stack.titlebar:not(headerbar) {
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+
+  headerbar {
+    &,
+    &:first-child,
+    &:last-child {
+      border-radius: $wm_radius $wm_radius 0 0;
+    }
+  }
+}
+
+window.org-gnome-Builder.workspace {
+  > stack#titlebar_container.titlebar {
+    > headerbar > omnibar {
+      > .linked > entry {
+        min-height: 0;
+
+        > overlay > box.horizontal > box.vertical.pan {
+          > button {
+            min-height: 0;
+          }
+        }
       }
+    }
+  }
 
-      > box.horizontal > box.horizontal {
-        > label.title {
+  > popover.dzlmenubutton {
+    > box.vertical > dzlmenubuttonsection.vertical {
+      > box.vertical > button.dzlmenubuttonitem {
+        color: $alt_fg_color;
+
+        &:active, &:checked {
           color: $fg_color;
+          background-color: rgba($fg_color, 0.25);
+        }
+
+        > box.horizontal > box.horizontal {
+          > label.title {
+            color: $fg_color;
+          }
         }
       }
     }
   }
 }
 
-window.org-gnome-Builder.workspace > stack#titlebar_container.titlebar {
-  > headerbar > omnibar {
-    > .linked > entry {
-      min-height: 0;
-
-      > overlay > box.horizontal > box.vertical.pan {
-        > button {
-          min-height: 0;
-        }
-      }
-    }
-  }
-}
 
 //
 //  Gnome-Logs

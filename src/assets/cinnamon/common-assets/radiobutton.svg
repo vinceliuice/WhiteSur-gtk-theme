@@ -1,0 +1,25 @@
+<svg width="24" height="24" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="ax" x1="51.611" x2="80.996" y1="141.02" y2="141.02" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#0860f2" offset="0"/>
+  </linearGradient>
+  <linearGradient id="bg" x1="66.31" x2="66.31" y1="155.48" y2="126.56" gradientTransform="matrix(1 0 0 .92857 0 11.106)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#000000" stop-opacity=".25" offset="0"/>
+   <stop stop-color="#000000" stop-opacity=".1" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g id="radio-checked-dark" transform="translate(-112 3.6376)">
+  <g transform="translate(19.004)">
+   <g transform="matrix(.93617 0 0 .93566 -96.783 -244.76)">
+    <rect x="206.99" y="261.98" width="17.091" height="17.1" color="#000000" fill="none"/>
+    <g transform="matrix(.50892 0 0 .5174 181.79 197.56)">
+     <rect x="49.512" y="124.5" width="33.583" height="33.05" rx="16.791" ry="16.525" color="#000000" opacity=".12"/>
+     <rect x="51.611" y="126.56" width="29.385" height="28.919" rx="14.692" ry="14.46" color="#000000" fill="url(#ax)" stroke-width="0"/>
+     <rect x="51.611" y="126.56" width="29.385" height="28.919" rx="14.692" ry="14.46" color="#000000" fill="#ffffff" opacity=".1" stroke-width="0"/>
+     <rect x="51.611" y="128.63" width="29.385" height="26.853" rx="14.692" ry="13.427" color="#000000" fill="url(#bg)" stroke-width="0"/>
+    </g>
+   </g>
+  </g>
+  <rect x="122" y="6.3622" width="4" height="4" rx="1.9989" ry="2" color="#000000" fill="#ffffff" filter="url(#bp)"/>
+ </g>
+</svg>

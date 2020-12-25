@@ -1135,12 +1135,7 @@ window.budgie-switcher-window {
   background-image: none;
 
   // draw actual backgrounds and shadows
-  .drop-shadow {
-    @extend %drop-shadow;
-
-    // label.budgie-switcher-title { // bottom label for app titles
-    // }
-  }
+  .drop-shadow { @extend %drop-shadow; }
 
   flowboxchild { // icon-tiles
     margin: 2px;
