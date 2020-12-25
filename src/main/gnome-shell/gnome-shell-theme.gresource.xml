@@ -30,6 +30,7 @@
     <file>icons/scalable/actions/pointer-primary-click-symbolic.svg</file>
     <file>icons/scalable/actions/pointer-secondary-click-symbolic.svg</file>
     <file>gnome-shell.css</file>
+    <file>pad-osd.css</file>
     <file>no-events.svg</file>
     <file>no-notifications.svg</file>
     <file>process-working.svg</file>
