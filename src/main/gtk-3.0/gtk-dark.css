@@ -1247,6 +1247,7 @@ combobox:drop(active) button.combo {
 
 combobox .linked:not(.vertical) > entry + button.combo arrow, .linked:not(.vertical) > combobox > box > button.combo arrow {
   background-color: transparent;
+  box-shadow: none;
   -gtk-icon-source: -gtk-scaled(url("assets/combobox-arrow-dark.png"), url("assets/combobox-arrow-dark@2.png"));
 }
 

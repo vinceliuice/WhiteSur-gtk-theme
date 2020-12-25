@@ -1034,6 +1034,7 @@ combobox {
   .linked:not(.vertical) > & > box > button.combo {
     arrow {
       background-color: transparent;
+      box-shadow: none;
       -gtk-icon-source: -gtk-scaled(
                          url("assets/combobox-arrow#{$asset_suffix}.png"),
                          url("assets/combobox-arrow#{$asset_suffix}@2.png"));
