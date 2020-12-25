@@ -118,9 +118,9 @@ install() {
   cp -r ${SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg                  ${THEME_DIR}/gnome-shell/assets/activities.svg
 
   cd "${THEME_DIR}/gnome-shell"
-  ln -s assets/no-events.svg no-events.svg
-  ln -s assets/process-working.svg process-working.svg
-  ln -s assets/no-notifications.svg no-notifications.svg
+  mv -f assets/no-events.svg no-events.svg
+  mv -f assets/process-working.svg process-working.svg
+  mv -f assets/no-notifications.svg no-notifications.svg
 
   if [[ ${alt} == '-alt' || ${opacity} == '-solid' ]] &&  [[ ${color} == '-light' ]]; then
     cp -r ${SRC_DIR}/assets/gnome-shell/activities-black/activities${icon}.svg          ${THEME_DIR}/gnome-shell/assets/activities.svg
