@@ -921,7 +921,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 /* Popovers/Menus */
 .candidate-popup-boxpointer, .popup-menu .popup-menu-content, .modal-dialog {
   background-color: #242424;
-  border-radius: 14px;
+  border-radius: 12px;
   border: none;
 }
 
@@ -933,7 +933,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .popup-menu .popup-sub-menu {
   background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 8px 8px;
   border: none;
   box-shadow: none;
   margin: 0 6px;
@@ -942,7 +942,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .popup-menu .popup-sub-menu .popup-menu-item {
   margin: 0;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .popup-menu .popup-sub-menu .popup-menu-item:hover {
@@ -956,7 +956,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .popup-menu .popup-sub-menu .popup-menu-item:not(:first-child):last-child {
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 8px 8px;
 }
 
 .popup-menu .popup-menu-content {
@@ -970,7 +970,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   padding: 6px;
   color: #afafaf;
   text-shadow: none;
-  border-radius: 10px;
+  border-radius: 8px;
   margin: 0 6px;
   transition-duration: 0ms;
 }
@@ -987,7 +987,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .popup-menu .popup-menu-item:checked {
   font-weight: normal;
-  border-radius: 10px 10px 0 0;
+  border-radius: 8px 8px 0 0;
   border: none;
   box-shadow: none;
   background-color: rgba(255, 255, 255, 0.15);
