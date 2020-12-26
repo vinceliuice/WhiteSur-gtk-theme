@@ -22,19 +22,19 @@ OPACITY_VARIANTS=('' '-solid')
 ALT_VARIANTS=('' '-alt')
 ICON_VARIANTS=('' '-normal' '-gnome' '-ubuntu' '-arch' '-manjaro' '-fedora' '-debian' '-void')
 
-#COLORS
+# COLORS
 CDEF=" \033[0m"                                     # default color
 CCIN=" \033[0;36m"                                  # info color
 CGSC=" \033[0;32m"                                  # success color
 CRER=" \033[0;31m"                                  # error color
-CWAR=" \033[0;33m"                                  # waring color
+CWAR=" \033[0;33m"                                  # warning color
 b_CDEF=" \033[1;37m"                                # bold default color
 b_CCIN=" \033[1;36m"                                # bold info color
 b_CGSC=" \033[1;32m"                                # bold success color
 b_CRER=" \033[1;31m"                                # bold error color
 b_CWAR=" \033[1;33m"                                # bold warning color
 
-# echo like ...  with  flag type  and display message  colors
+# Echo like ... with flag type and display message colors
 prompt () {
   case ${1} in
     "-s"|"--success")
@@ -51,7 +51,7 @@ prompt () {
   esac
 }
 
-# Check command avalibility
+# Check command availability
 function has_command() {
   command -v $1 > /dev/null
 }
@@ -70,12 +70,12 @@ usage() {
   printf "  %-25s%s\n" "-o, --opacity VARIANTS" "Specify theme opacity variant(s) [standard|solid] (Default: All variants)"
   printf "  %-25s%s\n" "-c, --color VARIANTS" "Specify theme color variant(s) [light|dark] (Default: All variants)"
   printf "  %-25s%s\n" "-t, --theme VARIANTS" "Run a dialog to change the theme color (Default: blue)"
-  printf "  %-25s%s\n" "-a, --alt VARIANTS" "Specify theme titilebutton variant(s) [standard|alt] (Default: All variants)"
+  printf "  %-25s%s\n" "-a, --alt VARIANTS" "Specify theme titlebutton variant(s) [standard|alt] (Default: All variants)"
   printf "  %-25s%s\n" "-p, --panel VARIANTS" "Run a dialog to change the panel transparency (Default: 85%)"
   printf "  %-25s%s\n" "-s, --size VARIANTS" "Run a dialog to change the nautilus sidebar width size (Default: 200px)"
   printf "  %-25s%s\n" "-i, --icon VARIANTS" "Specify activities icon variant(s) for gnome-shell [standard|normal|gnome|ubuntu|arch|manjaro|fedora|debian|void] (Default: standard variant)"
-  printf "  %-25s%s\n" "-g, --gdm" "Install GDM theme, this option need root user authority! please run this with sudo"
-  printf "  %-25s%s\n" "-r, --remove" "remove theme, remove all installed themes"
+  printf "  %-25s%s\n" "-g, --gdm" "Install GDM theme, this option needs root user authority! Please run this with sudo"
+  printf "  %-25s%s\n" "-r, --remove" "Remove theme, remove all installed themes"
   printf "  %-25s%s\n" "-h, --help" "Show this help"
 }
 
@@ -102,7 +102,7 @@ install() {
   echo "[Desktop Entry]" >>                                                             ${THEME_DIR}/index.theme
   echo "Type=X-GNOME-Metatheme" >>                                                      ${THEME_DIR}/index.theme
   echo "Name=${name}${color}${opacity}" >>                                              ${THEME_DIR}/index.theme
-  echo "Comment=An Stylish Gtk+ theme based on Elegant Design" >>                       ${THEME_DIR}/index.theme
+  echo "Comment=A Stylish Gtk+ theme based on Elegant Design" >>                        ${THEME_DIR}/index.theme
   echo "Encoding=UTF-8" >>                                                              ${THEME_DIR}/index.theme
   echo "" >>                                                                            ${THEME_DIR}/index.theme
   echo "[X-GNOME-Metatheme]" >>                                                         ${THEME_DIR}/index.theme
@@ -247,26 +247,28 @@ remove_theme() {
 
 revert_gdm() {
   if [[ -f "$GS_THEME_FILE.bak" ]]; then
-    prompt -w "reverting '$GS_THEME_FILE'..."
+    prompt -w "Reverting '$GS_THEME_FILE'..."
     rm -rf "$GS_THEME_FILE"
     mv "$GS_THEME_FILE.bak" "$GS_THEME_FILE"
   fi
 
   if [[ -f "$UBUNTU_THEME_FILE.bak" ]]; then
-    prompt -w "reverting '$UBUNTU_THEME_FILE'..."
+    prompt -w "Reverting '$UBUNTU_THEME_FILE'..."
     rm -rf "$UBUNTU_THEME_FILE"
     mv "$UBUNTU_THEME_FILE.bak" "$UBUNTU_THEME_FILE"
   fi
 
   if [[ -f "$UBUNTU_NEW_THEME_FILE.bak" ]]; then
-    prompt -w "reverting '$UBUNTU_NEW_THEME_FILE'..."
+    prompt -w "Reverting '$UBUNTU_NEW_THEME_FILE'..."
     rm -rf "$UBUNTU_NEW_THEME_FILE" "$SHELL_THEME_FOLDER"/{assets,no-events.svg,process-working.svg,no-notifications.svg}
     mv "$UBUNTU_NEW_THEME_FILE.bak" "$UBUNTU_NEW_THEME_FILE"
   fi
 
   # > Ubuntu 18.04
   if [[ -f "$ETC_THEME_FILE.bak" ]]; then
+
     prompt -w "reverting Ubuntu GDM theme..."
+
     rm -rf "$ETC_THEME_FILE"
     mv "$ETC_THEME_FILE.bak" "$ETC_THEME_FILE"
     [[ -d $SHELL_THEME_FOLDER/$THEME_NAME ]] && rm -rf $SHELL_THEME_FOLDER/$THEME_NAME
@@ -338,7 +340,7 @@ run_shell_dialog() {
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your panel transparency
-                 (default is 85%, 100% is full transparent!):" 20 50 10 \
+                 (default is 85%, 100% is fully transparent!):" 20 50 10 \
       1 "80%" on  \
       2 "75%" off \
       3 "70%" off \
@@ -498,7 +500,7 @@ restore_assets_files() {
   mv -f toggle-on.svg.bak toggle-on.svg
   mv -f corner-ripple.svg.bak corner-ripple.svg
 
-  prompt -w "restore assets files ..."
+  prompt -w "Restore assets files ..."
 }
 
 change_transparency() {
@@ -746,7 +748,7 @@ if [[ -f "${SRC_DIR}"/assets/gtk-3.0/thumbnail.svg.bak ]]; then
   restore_assets_files
 fi
 
-notify-send "Finished" "Enjoy you new WhiteSur theme!" -i face-smile
+notify-send "Finished" "Enjoy your new WhiteSur theme!" -i face-smile
 
 echo
 prompt -s Done.
