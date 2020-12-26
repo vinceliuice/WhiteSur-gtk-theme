@@ -8,51 +8,28 @@ WhiteSur is a MacOS Big Sur like theme for GTK 3, GTK 2 and Gnome-Shell which su
 ### GTK+ 3.20 or later
 
 ### GTK2 engines requirements
-- GTK2 engine Murrine 0.98.1.1 or later.
-- GTK2 pixbuf engine or the gtk(2)-engines package.
+#### GTK2 Murrine engine.
 
-Fedora/RedHat distros:
+- gtk-murrine-engine  `Fedora/RedHat`
+- gtk2-engines-murrine  `Ubuntu/Mint/Debian`
+- gtk-engine-murrine  `Arch/Manjaro`
 
-    dnf install gtk-murrine-engine gtk2-engines
+#### GTK2 pixbuf engine.
 
-Ubuntu/Mint/Debian distros:
-
-    sudo apt install gtk2-engines-murrine gtk2-engines-pixbuf
-
-ArchLinux:
-
-    pacman -S gtk-engine-murrine gtk-engines
-
+- gtk2-engines  `Fedora/RedHat`
+- gtk2-engines-pixbuf  `Ubuntu/Mint/Debian`
+- gtk-engines  `Arch/Manjaro`
 
 ### Installation Depends requirement
-- sassc.
-- optipng.
-- inkscape.
-- dialog.
-- libglib2.0-dev-bin. `ubuntu 20.04`
-- libglib2.0-dev. `ubuntu 18.04` `debian 10.03` `linux mint 19`
-- libxml2-utils. `ubuntu 18.04` `debian 10.03` `linux mint 19`
-- glib2-devel. `Fedora` `Redhat`
 
-Fedora/RedHat distros:
-
-    dnf install sassc optipng inkscape glib2-devel
-
-Ubuntu/Mint/Debian distros:
-
-    sudo apt install sassc optipng inkscape libglib2.0-dev-bin
-
-Debian 10:
-
-    sudo apt install sassc optipng inkscape libcanberra-gtk-module libglib2.0-dev libxml2-utils
-
-ArchLinux:
-
-    pacman -S sassc optipng inkscape
-
-Other:
-1. Search for the dependencies in your distribution's repository or install the dependencies from source.
-2. For CentOS 8 users: the `sassc` package doesn't exist in EPEL 8 or any other main repositories. Download the RPM manually from older EPEL repositories or build from source.
+- sassc
+- optipng
+- inkscape
+- dialog
+- libglib2.0-dev-bin  `ubuntu 20.04`
+- libglib2.0-dev  `ubuntu 18.04` `debian 10.03` `linux mint 19`
+- libxml2-utils  `ubuntu 18.04` `debian 10.03` `linux mint 19`
+- glib2-devel  `Fedora` `Redhat`
 
 ## Installation
 
@@ -83,7 +60,7 @@ Usage:  `./Install`  **[OPTIONS...]**
 
 ##### 1. Change theme accent color
 If you want to change theme accent! (Default color is blue)
-then you can run: ( `dialog` is needed! )
+then you can run: ( `dialog` is required, install it first! )
 
     ./install.sh -t
 
@@ -93,18 +70,18 @@ then you can run: ( `dialog` is needed! )
 If you want to install GDM theme!
 then you can run:
 
-    ./install.sh -g  `install default dark version`
+    ./install.sh -g      (install default dark version)
 
-    ./install.sh -g -c light `install light version`
+    ./install.sh -g -c light     (install light version)
 
-    ./install.sh -g -r  `remove installed GDM theme`
+    ./install.sh -g -r     (remove installed GDM theme)
 
 ![2](pictures/install-tip-02.png)
 
 ##### 3. Change nautilus sidebar width size
 If you want to change nautilus sidebar width size! (Default size is 180px)
 (Nautilus cannot change the structure of the sidebar, so I added a picture as a background to achieve the effect of bigsur)
-then you can run: ( `dialog` is needed! )
+then you can run: ( `dialog` is required, install it first! )
 
     ./install.sh -s
 
