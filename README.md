@@ -4,19 +4,19 @@
 WhiteSur is a MacOS Big Sur like theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Pantheon, XFCE, Mate, etc.
 
 ## Requirements
-### GTK2 Murrine engine requirement.
+### GTK2 Murrine engine requirements.
 
 - gtk-murrine-engine  `Fedora/RedHat`
 - gtk2-engines-murrine  `Ubuntu/Mint/Debian`
 - gtk-engine-murrine  `Arch/Manjaro`
 
-### GTK2 pixbuf engine requirement.
+### GTK2 pixbuf engine requirements.
 
 - gtk2-engines  `Fedora/RedHat`
 - gtk2-engines-pixbuf  `Ubuntu/Mint/Debian`
 - gtk-engines  `Arch/Manjaro`
 
-### Installation Depends requirement
+### Installed Dependency requirements.
 
 - sassc
 - optipng
@@ -31,13 +31,13 @@ WhiteSur is a MacOS Big Sur like theme for GTK 3, GTK 2 and Gnome-Shell which su
 
 ### From source
 
-After all the dependencies are installed, you can Run
-
-    ./install.sh
-
+After all dependencies are installed, you can run:
+```bash
+./install.sh
+```
 #### Install tips
 
-Usage:  `./Install`  **[OPTIONS...]**
+Usage:  `./install.sh`  **[OPTIONS...]**
 
 |  OPTIONS:           | |
 |:--------------------|:-------------|
@@ -49,46 +49,46 @@ Usage:  `./Install`  **[OPTIONS...]**
 |-t, --theme          | Run a terminal dialog to change the theme accent color (Default: blue)|
 |-p, --panel          | Run a terminal dialog to change the panel transparency (Default: 85%)|
 |-s, --size           | Run a terminal dialog to change the nautilus sidebar width size (Default: 200px)|
-|-i, --icon           | activities icon variant(s) **[standard/normal/gnome/ubuntu/arch/manjaro/fedora/debian/void]** (Default: standard variant)|
+|-i, --icon           | Activities icon variant(s) **[standard/normal/gnome/ubuntu/arch/manjaro/fedora/debian/void]** (Default: standard variant)|
 |-g, --gdm            | Install GDM theme, you should run this with sudo!|
-|-r, --remove         | remove theme, this will remove all installed themes!|
+|-r, --remove         | Remove theme, this will remove all installed themes!|
 |-h, --help           | Show this help|
 
 ### <p align="center" > 1. Change theme accent color </p>
 If you want to change theme accent! (Default color is blue)
-then you can run: ( `dialog` is required, install it first! )
-
-    ./install.sh -t
-
+then you can run: (`dialog` is required, install it first!)
+```bash
+./install.sh -t
+```
 ![1](pictures/install-tip-01.png)
 
 ### <p align="center" > 2. Install GDM theme </p>
 If you want to install GDM theme!
 then you can run:
+```bash
+sudo ./install.sh -g      (install default dark version)
 
-    sudo ./install.sh -g      (install default dark version)
+sudo ./install.sh -g -c light     (install light version)
 
-    sudo ./install.sh -g -c light     (install light version)
-
-    sudo ./install.sh -g -r     (remove installed GDM theme)
-
+sudo ./install.sh -g -r     (remove installed GDM theme)
+```
 ![2](pictures/install-tip-02.png)
 
 ### <p align="center" > 3. Change nautilus sidebar width size </p>
 If you want to change nautilus sidebar width size! (Default size is 180px)
 (Nautilus cannot change the structure of the sidebar, so I added a picture as a background to achieve the effect of bigsur)
-then you can run: ( `dialog` is required, install it first! )
-
-    ./install.sh -s
-
+then you can run: (`dialog` is required, install it first!)
+```bash
+./install.sh -s
+```
 ![3](pictures/install-tip-03.png)
 
 ### <p align="center" > 4. Change gnome-shell activities icon </p>
 If you want to change gnome-shell activities icon! (Default icon is Apple)
 then you can run: (For example: Install Manjaro icon)
-
-    ./install.sh -i manjaro
-
+```bash
+./install.sh -i manjaro
+```
 ![4](pictures/install-tip-04.png)
 
 ### On Snapcraft
@@ -97,25 +97,25 @@ then you can run: (For example: Install Manjaro icon)
 <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
 </a>
 
-You can install the theme from the Snap Store оr by running:
+You can install the theme from the Snap Store, or by running:
 
-```
+```bash
 sudo snap install whitesur-gtk-theme
 ```
-To connect the theme to an app run:
-```
+To connect the theme to an app, run:
+```bash
 sudo snap connect [other snap]:gtk-3-themes whitesur-gtk-theme:gtk-3-themes
 ```
-```
+```bash
 sudo snap connect [other snap]:icon-themes whitesur-gtk-theme:icon-themes
 ```
-To connect the theme to all apps which have available plugs to gtk-common-themes you can run:
-```
+To connect the theme to all apps which have available plugs to gtk-common-themes, you can run:
+```bash
 for i in $(snap connections | grep gtk-common-themes:gtk-3-themes | awk '{print $2}'); do sudo snap connect $i whitesur-gtk-theme:gtk-3-themes; done
 ```
 
 ### Suggested themes
-|  Suggested themes   | links | preview |
+|  Suggested themes   | Links | Preview |
 |:--------------------|:-------------|:-------------|
 | Kde theme           | [WhiteSur-kde](https://github.com/vinceliuice/WhiteSur-kde)| ![kde](pictures/whitesur-kde-theme.png) |
 | Icon theme          | [WhiteSur-icon](https://github.com/vinceliuice/WhiteSur-icon-theme)| ![icon](pictures/whitesur-icon-theme.png) |
