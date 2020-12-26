@@ -180,8 +180,10 @@ GS_THEME_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
 SHELL_THEME_FOLDER="/usr/share/gnome-shell/theme"
 ETC_THEME_FOLDER="/etc/alternatives"
 ETC_THEME_FILE="/etc/alternatives/gdm3.css"
+ETC_NEW_THEME_FILE="/etc/alternatives/gdm3-theme.gresource"
 UBUNTU_THEME_FILE="/usr/share/gnome-shell/theme/ubuntu.css"
 UBUNTU_NEW_THEME_FILE="/usr/share/gnome-shell/theme/gnome-shell.css"
+UBUNTU_YARU_THEME_FILE="/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource"
 
 install_gdm() {
   local GDM_THEME_DIR="${1}/${2}${3}"
@@ -201,8 +203,6 @@ install_gdm() {
   if [[ -f "$UBUNTU_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
     prompt -i "Installing '$UBUNTU_THEME_FILE'..."
     cp -an "$UBUNTU_THEME_FILE" "$UBUNTU_THEME_FILE.bak"
-    # rm -rf "$GS_THEME_FILE"
-    # mv "$GS_THEME_FILE.bak" "$GS_THEME_FILE"
     cp -af "$GDM_THEME_DIR/gnome-shell/gnome-shell.css" "$UBUNTU_THEME_FILE"
   fi
 
@@ -212,15 +212,26 @@ install_gdm() {
     cp -af "$GDM_THEME_DIR"/gnome-shell/* "$SHELL_THEME_FOLDER"
   fi
 
+  # > Ubuntu 18.04
   if [[ -f "$ETC_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
-    prompt -i "Installing Ubuntu gnome-shell theme..."
+    prompt -i "Installing Ubuntu GDM theme..."
     cp -an "$ETC_THEME_FILE" "$ETC_THEME_FILE.bak"
-    # rm -rf "$ETC_THEME_FILE" "$GS_THEME_FILE"
-    # mv "$GS_THEME_FILE.bak" "$GS_THEME_FILE"
-    [[ -d $SHELL_THEME_FOLDER/$THEME_NAME ]] && rm -rf $SHELL_THEME_FOLDER/$THEME_NAME
+    [[ -d "$SHELL_THEME_FOLDER/$THEME_NAME" ]] && rm -rf "$SHELL_THEME_FOLDER/$THEME_NAME"
     cp -r "$GDM_THEME_DIR/gnome-shell" "$SHELL_THEME_FOLDER/$THEME_NAME"
     cd "$ETC_THEME_FOLDER"
-    ln -s "$SHELL_THEME_FOLDER/$THEME_NAME/gnome-shell.css" gdm3.css
+    [[ -f "$ETC_THEME_FILE.bak" ]] && ln -sf "$SHELL_THEME_FOLDER/$THEME_NAME/gnome-shell.css" gdm3.css
+  fi
+
+  # > Ubuntu 20.04
+  if [[ -f "$UBUNTU_YARU_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
+    prompt -i "Installing Ubuntu GDM theme..."
+    cp -an "$UBUNTU_YARU_THEME_FILE" "$UBUNTU_YARU_THEME_FILE.bak"
+    cp -af "$GS_THEME_FILE" "$UBUNTU_YARU_THEME_FILE"
+    # cp -an "$ETC_NEW_THEME_FILE" "$ETC_NEW_THEME_FILE.bak"
+    # [[ -d "$SHELL_THEME_FOLDER/$THEME_NAME" ]] && rm -rf "$SHELL_THEME_FOLDER/$THEME_NAME" && mkdir -p "$SHELL_THEME_FOLDER/$THEME_NAME"
+    # cp -r "$GS_THEME_FILE" "$SHELL_THEME_FOLDER/$THEME_NAME"
+    # cd "$ETC_THEME_FOLDER"
+    # [[ -f "$ETC_NEW_THEME_FILE.bak" ]] && ln -sf "$SHELL_THEME_FOLDER/$THEME_NAME/gnome-shell-theme.gresource" gdm3-theme.gresource
   fi
 }
 
@@ -253,11 +264,25 @@ revert_gdm() {
     mv "$UBUNTU_NEW_THEME_FILE.bak" "$UBUNTU_NEW_THEME_FILE"
   fi
 
+  # > Ubuntu 18.04
   if [[ -f "$ETC_THEME_FILE.bak" ]]; then
-    prompt -w "reverting Ubuntu gnome-shell theme..."
+    prompt -w "reverting Ubuntu GDM theme..."
     rm -rf "$ETC_THEME_FILE"
     mv "$ETC_THEME_FILE.bak" "$ETC_THEME_FILE"
     [[ -d $SHELL_THEME_FOLDER/$THEME_NAME ]] && rm -rf $SHELL_THEME_FOLDER/$THEME_NAME
+  fi
+
+  # > Ubuntu 20.04
+  # if [[ -f "$ETC_NEW_THEME_FILE.bak" ]]; then
+  #   prompt -w "reverting Ubuntu GDM theme..."
+  #   rm -rf "$ETC_NEW_THEME_FILE"
+  #   mv "$ETC_NEW_THEME_FILE.bak" "$ETC_NEW_THEME_FILE"
+  #   [[ -d $SHELL_THEME_FOLDER/$THEME_NAME ]] && rm -rf $SHELL_THEME_FOLDER/$THEME_NAME
+  # fi
+  if [[ -f "$UBUNTU_YARU_THEME_FILE.bak" ]]; then
+    prompt -w "reverting Ubuntu GDM theme..."
+    rm -rf "$UBUNTU_YARU_THEME_FILE"
+    mv "$UBUNTU_YARU_THEME_FILE.bak" "$UBUNTU_YARU_THEME_FILE"
   fi
 }
 
@@ -664,9 +689,6 @@ while [[ $# -gt 0 ]]; do
 done
 
 install_theme() {
-  # install depends
-  install_depends
-
   for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
     for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
       for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
@@ -677,6 +699,8 @@ install_theme() {
     done
   done
 }
+
+install_depends
 
 if [[ "${size:-}" == 'true' ]]; then
   install_dialog && run_sidebar_dialog
