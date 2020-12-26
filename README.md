@@ -54,7 +54,7 @@ Usage:  `./Install`  **[OPTIONS...]**
 |-r, --remove         | remove theme, this will remove all installed themes!|
 |-h, --help           | Show this help|
 
-##### 1. Change theme accent color
+### <p align="center" > 1. Change theme accent color </p>
 If you want to change theme accent! (Default color is blue)
 then you can run: ( `dialog` is required, install it first! )
 
@@ -62,7 +62,7 @@ then you can run: ( `dialog` is required, install it first! )
 
 ![1](pictures/install-tip-01.png)
 
-##### 2. Install GDM theme
+### <p align="center" > 2. Install GDM theme </p>
 If you want to install GDM theme!
 then you can run:
 
@@ -74,7 +74,7 @@ then you can run:
 
 ![2](pictures/install-tip-02.png)
 
-##### 3. Change nautilus sidebar width size
+### <p align="center" > 3. Change nautilus sidebar width size </p>
 If you want to change nautilus sidebar width size! (Default size is 180px)
 (Nautilus cannot change the structure of the sidebar, so I added a picture as a background to achieve the effect of bigsur)
 then you can run: ( `dialog` is required, install it first! )
@@ -83,7 +83,7 @@ then you can run: ( `dialog` is required, install it first! )
 
 ![3](pictures/install-tip-03.png)
 
-##### 4. Change gnome-shell activities icon
+### <p align="center" > 4. Change gnome-shell activities icon </p>
 If you want to change gnome-shell activities icon! (Default icon is Apple)
 then you can run: (For example: Install Manjaro icon)
 

@@ -1,7 +1,7 @@
 
 ## Firefox WhiteSur theme
 
-<p align="center">A MacOS Big Sur theme for Firefox 70+</p>
+<p align="center" > A MacOS Big Sur theme for Firefox 70+ </p>
 
 #### Preview
 ![Preview](preview.png?raw=true)
