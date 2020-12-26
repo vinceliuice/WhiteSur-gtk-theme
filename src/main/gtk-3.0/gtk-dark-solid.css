@@ -201,6 +201,51 @@ spinner:checked:disabled, label:disabled selection:checked {
   opacity: 0.5;
 }
 
+.large-title {
+  font-weight: 300;
+  font-size: 24pt;
+}
+
+.title-1 {
+  font-weight: 800;
+  font-size: 20pt;
+}
+
+.title-2 {
+  font-weight: 800;
+  font-size: 15pt;
+}
+
+.title-3 {
+  font-weight: 700;
+  font-size: 15pt;
+}
+
+.title-4 {
+  font-weight: 700;
+  font-size: 13pt;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 11pt;
+}
+
+.body {
+  font-weight: 400;
+  font-size: 11pt;
+}
+
+.caption-heading {
+  font-weight: 700;
+  font-size: 9pt;
+}
+
+.caption {
+  font-weight: 400;
+  font-size: 9pt;
+}
+
 entry.contacts-postal-entry, spinbutton entry, .linked > entry:not(:only-child) {
   color: #dadada;
   background-color: rgba(255, 255, 255, 0.05);
