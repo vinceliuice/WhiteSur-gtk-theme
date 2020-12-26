@@ -3,18 +3,14 @@
 
 WhiteSur is a MacOS Big Sur like theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Pantheon, XFCE, Mate, etc.
 
-## Info
-
-### GTK+ 3.20 or later
-
-### GTK2 engines requirements
-#### GTK2 Murrine engine.
+## Requirements
+### GTK2 Murrine engine requirement.
 
 - gtk-murrine-engine  `Fedora/RedHat`
 - gtk2-engines-murrine  `Ubuntu/Mint/Debian`
 - gtk-engine-murrine  `Arch/Manjaro`
 
-#### GTK2 pixbuf engine.
+### GTK2 pixbuf engine requirement.
 
 - gtk2-engines  `Fedora/RedHat`
 - gtk2-engines-pixbuf  `Ubuntu/Mint/Debian`
