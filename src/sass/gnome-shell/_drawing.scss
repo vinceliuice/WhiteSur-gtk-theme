@@ -112,7 +112,31 @@
   }
 
   @if $t == insensitive {
+    background-color: rgba($bc, 0.05);
     color: $disabled_fg_color;
+  }
+
+  @if $t == flat-normal {
+    background-color: $bc;
+    border-radius: 100px;
+    border: none;
+    box-shadow: none;
+  }
+
+  @if $t == flat-hover {
+    background-color: $bc;
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05);
+  }
+
+  @if $t == flat-focus {
+    border: none;
+    background-color: rgba($bc, 0.2);
+  }
+
+  @if $t == flat-insensitive {
+    border: none;
+    color: $disabled_fg_color;
+    background-color: rgba($bc, 0.05);
   }
 }
 

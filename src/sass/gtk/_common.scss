@@ -2429,166 +2429,80 @@ scrollbar {
 // Switches
 //
 
-%reset_switch {
-  &, &:disabled { // specificity bump
-    padding: 0;
-    border: none;
-    color: transparent;
-    background: unset;
-    background-image: unset;
-    background-repeat: no-repeat;
-    background-position: right center;
-    box-shadow: none;
-    animation: none;
-    font-size: 0;
-    outline-color: transparent;
+$switch_image: linear-gradient(0deg, rgba($fg_color, 0.25) 0%, rgba($fg_color, 0.35) 100%);
+$switch_disabled_image: linear-gradient(0deg, rgba($fg_color, 0.1) 0%, rgba($fg_color, 0.15) 100%);
+$switch_checked_image: linear-gradient(0deg, lighten($selected_bg_color, 10%) 0%, $selected_bg_color 100%);
+$switch_checked_disabled_image: linear-gradient(0deg, lighten($selected_bg_color, 35%) 0%, lighten($selected_bg_color, 25%) 100%);
+$switch_animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
 
-    &:dir(rtl) { background-position: left center; }
+@keyframes switch_ripple_effect {
+  from {
+    background-image: $switch_image, radial-gradient(circle farthest-corner at center,
+                                      transparent 0%,
+                                      transparent 0%);
   }
-}
 
-%switch_pixmap {
-  // 'indeterminate' is the synthetic wildcard
-  &:not(:indeterminate) {
-    @extend %reset_switch;
-    min-width: 40px;
-    min-height: 24px;
-    margin: 0;
-    background-size: 40px 24px;
-    transition: all 350ms $ease-out-quad;
-
-    slider:not(:indeterminate) {
-      @extend %reset_switch;
-      margin: 0;
-      background-size: 40px 24px;
-    }
-
-    // use ugly pixmaps
-    background-image: -gtk-scaled(
-                      url("assets/switch.png"),
-                      url("assets/switch@2.png"));
-    &:hover {
-      transition: all 350ms $ease-out-quad;
-      background-image: -gtk-scaled(
-                        url("assets/switch-hover.png"),
-                        url("assets/switch-hover@2.png"));
-    }
-
-    &:checked {
-      transition: all 350ms $ease-out-quad;
-      background-image: -gtk-scaled(
-                        url("assets/switch-active.png"),
-                        url("assets/switch-active@2.png"));
-
-      &:hover {
-        background-image: -gtk-scaled(
-                          url("assets/switch-active-hover.png"),
-                          url("assets/switch-active-hover@2.png"));
-      }
-
-      &:disabled,
-      &:disabled:hover {
-        background-image: -gtk-scaled(
-                          url("assets/switch-active-insensitive.png"),
-                          url("assets/switch-active-insensitive@2.png"));
-      }
-    }
-
-    &:disabled,
-    &:disabled:hover {
-      background-image: -gtk-scaled(
-                        url("assets/switch-insensitive#{$asset_suffix}.png"),
-                        url("assets/switch-insensitive#{$asset_suffix}@2.png"));
-    }
-  }
-}
-
-%switch_mac {
-    // 'indeterminate' is the synthetic wildcard
-    &:not(:indeterminate) {
-      @extend %reset_switch;
-      min-width: 50px;
-      min-height: 20px;
-      margin: 6px 2px;
-      background-size: 50px 20px;
-      transition: all 350ms $ease-out-quad;
-
-      slider:not(:indeterminate) {
-        @extend %reset_switch;
-        margin: 0;
-        background-size: 50px 20px;
-      }
-
-      // use ugly pixmaps
-      background-image: -gtk-scaled(url("assets/toggle-off.png"),
-                                    url("assets/toggle-off@2.png"));
-
-      &:checked {
-        transition: all 350ms $ease-out-quad;
-        background-image: -gtk-scaled(url("assets/toggle-on.png"),
-                                      url("assets/toggle-on@2.png"));
-
-        &:disabled {
-          background-image: -gtk-scaled(url("assets/toggle-on-disabled.png"),
-                                        url("assets/toggle-on-disabled@2.png"));
-        }
-      }
-
-      &:disabled {
-        background-image: -gtk-scaled(url("assets/toggle-off-disabled.png"),
-                                      url("assets/toggle-off-disabled@2.png"));
-    }
+  to {
+    background-image: $switch_checked_image, radial-gradient(circle farthest-corner at center,
+                                      rgba($selected_bg_color, 0.75) 100%,
+                                      rgba($selected_bg_color, 0.0) 0%);
   }
 }
 
 switch {
   transition: $longer_transition;
-  // margin: 6px 0;
-  border-radius: 50px;
-  background-color: rgba($fg_color, 0.3);
+  border-radius: $circular_radius;
+  background-color: transparent;
   background-clip: padding-box;
-  color: rgba($fg_color, 0.3);
+  color: transparent;
+  min-widt: 40px;
+  min-height: 24px;
   font-size: 0;
+  box-shadow: inset 0 1px 2px rgba(black, 0.1);
+  background-image: $switch_image, radial-gradient(circle farthest-corner at center, transparent 0%, transparent 0%);
 
   &:disabled {
-    color: rgba($fg_color, 0.15);
-    background-color: rgba($fg_color, 0.15);
+    color: transparent;
+    background-color: transparent;
+    background-image: $switch_disabled_image;
   }
 
   &:checked {
     animation: $switch_animation;
-    background-color: $selected_bg_color;
-    color: rgba(white, 0.65);
+    background-color: transparent;
+    color: transparent;
+    box-shadow: inset 0 1px 2px rgba(black, 0.15);
+    transition: background-image 0.3s, box-shadow 0;
+    background-image: $switch_checked_image, radial-gradient(circle farthest-corner at center, rgba($selected_bg_color, 0.75) 100%, transparent 0%);
 
     &:disabled {
-      background-color: rgba($selected_bg_color, 0.45);
-      color: rgba(white, 0.35);
+      background-color: transparent;
+      background-image: $switch_checked_disabled_image;
+      color: transparent;
     }
   }
 
   slider {
     transition: $longer_transition, $shadow_transition, margin 0;
-    min-width: 18px;
-    min-height: 18px;
-    margin: 2px 0 2px 2px;
-    border-radius: 50px;
-    -gtk-outline-radius: 50px;
+    min-width: 22px;
+    min-height: 22px;
+    margin: 1px 0 1px 1px;
+    border-radius: $circular_radius;
+    -gtk-outline-radius: $circular_radius;
     background-color: white;
-    box-shadow: $shadow_5;
+    box-shadow: 0 1px 2px rgba(black, 0.15);
   }
 
-  &:hover slider { box-shadow: $shadow_4; }
+  &:hover slider { box-shadow: $shadow_5; }
 
   &:checked slider {
-    margin: 2px 2px 2px 0;
+    margin: 1px 1px 1px 0;
     background-color: $selected_fg_color;
   }
 
   &:disabled slider { @include entry(disabled); }
 
   &:checked:disabled slider { animation: none; }
-
-  // row & { @extend %switch_pixmap; }
 }
 
 //
@@ -3946,7 +3860,7 @@ decoration {
   box-shadow: 0 3px 3px 0 $wm_shadow,
               0 8px 8px 0 $wm_shadow,
               0 16px 16px 0 $wm_shadow,
-              $wm_border;
+              $wm_outline;
 
   // this is used for the resize cursor area
   margin: 6px;
@@ -3957,7 +3871,7 @@ decoration {
     box-shadow: 0 3px 3px 0 $wm_shadow,
                 0 8px 8px 0 transparent,
                 0 16px 16px 0 transparent,
-                $wm_border;
+                $wm_outline;
   }
 
   .maximized &,
@@ -3968,7 +3882,7 @@ decoration {
   .tiled-bottom &,
   .tiled-left & {
     border-radius: 0;
-    box-shadow: 0 3px 3px 0 $wm_shadow, $wm_border;
+    box-shadow: 0 3px 3px 0 $wm_shadow, $wm_outline;
   }
 
   .popup & {
@@ -3980,13 +3894,13 @@ decoration {
   .ssd & {
     margin: -5px;
     border-radius: $wm_radius $wm_radius 0 0;
-    box-shadow: 0 0 5px 0 $wm_shadow, $wm_border;
+    box-shadow: 0 0 5px 0 $wm_shadow, $wm_outline;
     &.maximized { border-radius: 0; }
   }
 
   .csd.popup & {
     border-radius: $mn_radius;
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15), 0 8px 15px rgba(0, 0, 0, 0.08), $wm_border;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15), 0 8px 15px rgba(0, 0, 0, 0.08), $wm_outline;
   }
 
   tooltip.csd & {

@@ -1,20 +1,4 @@
 // Animations
-$switch_animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
-
-@keyframes switch_ripple_effect {
-  from {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      $selected_bg_color 0%,
-                                      transparent 0%);
-  }
-
-  to {
-    background-image: radial-gradient(circle farthest-corner at center,
-                                      $selected_bg_color 100%,
-                                      transparent 0%);
-  }
-}
-
 @keyframes header_ripple_effect {
   from {
     background-image: radial-gradient(circle farthest-corner at center,

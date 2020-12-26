@@ -150,7 +150,7 @@ StScrollBar {
 $slider_color: if($variant == 'light', white, white);
 $barlevel_bg_color: if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
 $barlevel_active_bg_color: if($variant == 'light', white, rgba(white, 0.35));
-$barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
+$barlevel_boder_color: if($variant == 'light', rgba(black, 0.15), transparent);
 
 .slider {
   height: 20px;
@@ -756,12 +756,12 @@ $barlevel_boder_color: if($variant == 'light', rgba(black, 0.12), transparent);
   spacing-columns: 1em;
 }
 
-/* Popovers/Menus */
+// Popovers/Menus
 
-$dialog_bg_color: if($variant == 'light', $bg_color, $base_color);
+$dialog_bg_color: if($variant == 'light', darken($bg_color, 0%), $base_color);
 
 @if $trans=='true' {
-  $dialog_bg_color: if($variant == 'light', rgba($bg_color, 0.95), rgba($base_color, 0.95));
+  $dialog_bg_color: if($variant == 'light', rgba(darken($bg_color, 0%), 0.95), rgba($base_color, 0.95));
 }
 
 $popop_menuitem_radius: $wm_radius - 4px;
@@ -775,56 +775,30 @@ $popop_menuitem_radius: $wm_radius - 4px;
 .popup-menu {
   min-width: 12em;
   color: $alt_fg_color;
-  padding: 0 0;
+  padding: 0 0 !important;
 
   .popup-menu-arrow { } //defined globally in the TOP BAR
 
-  .popup-sub-menu {
-    background-color: if($variant == 'light', rgba(white, 0.75), rgba(white, 0.15));
-    border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
-    border: none;
-    box-shadow: none;
-    margin: 0 6px;
-    transition-duration: 0ms;
-
-    .popup-menu-item {
-      margin: 0;
-      border-radius: $popop_menuitem_radius;
-
-      &:hover {
-        color: $selected_fg_color;
-        background-color: $selected_bg_color;
-      }
-
-      &:active {
-        color: $selected_fg_color;
-        background-color: mix($fg_color, $selected_bg_color, 5%);
-      }
-
-      &:not(:first-child):last-child {
-        border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
-      }
-    }
-  }
-
   .popup-menu-content {
-    padding: 6px 0;
+    padding: 6px 0 !important;
     @extend %theme_dialogs;
     box-shadow: 0 8px 16px 0 rgba(black, 0.25);
-    margin: 4px 12px 20px;
+    border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
+    margin: 4px 8px !important;
   }
 
   .popup-menu-item {
     spacing: 12px;
-    padding: 6px;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
     color: $alt_fg_color;
     text-shadow: none;
     border-radius: $popop_menuitem_radius;
     margin: 0 6px;
     transition-duration: 0ms;
 
-    &:ltr { padding-right: 1.5em; padding-left: 0; }
-    &:rtl { padding-right: 0; padding-left: 1.5em; }
+    &:ltr { padding-right: 2em !important; padding-left: 0 !important; }
+    &:rtl { padding-right: 0 !important; padding-left: 2em !important; }
 
     &:checked {
       font-weight: normal;
@@ -859,6 +833,34 @@ $popop_menuitem_radius: $wm_radius - 4px;
     }
 
     &:insensitive { color: $disabled_fg_color; }
+  }
+
+  .popup-sub-menu {
+    background-color: if($variant == 'light', rgba(white, 0.75), rgba(white, 0.15));
+    border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
+    border: none;
+    box-shadow: none;
+    margin: 0 6px;
+    transition-duration: 0ms;
+
+    .popup-menu-item {
+      margin: 0;
+      border-radius: $popop_menuitem_radius;
+
+      &:hover {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
+      }
+
+      &:active {
+        color: $selected_fg_color;
+        background-color: mix($fg_color, $selected_bg_color, 5%);
+      }
+
+      &:not(:first-child):last-child {
+        border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
+      }
+    }
   }
 
   .popup-inactive-menu-item { //all icons and other graphical elements
@@ -909,16 +911,21 @@ $popop_menuitem_radius: $wm_radius - 4px;
 }
 
 .popup-separator-menu-item {
-  // height: 0; //not really the whole box
-  margin: 0;
+  margin: 0 0;
   padding: 0 0;
   background: none;
   border: none;
 
   .popup-separator-menu-item-separator {
-    height: 0; //not really the whole box
-    background: none;
-    padding: 0;
+    height: 1px; //not really the whole box
+    margin: 0 0;
+    background-color: $borders_color;
+    padding: 0 0;
+
+    .popup-sub-menu & { //submenu separators
+      padding: 0 0;
+      margin: 0 64px 0 0;
+    }
   }
 }
 
@@ -1023,7 +1030,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
     -barlevel-overdrive-color: $destructive_color;
     -barlevel-overdrive-separator-width: 2px;
     -barlevel-border-width: 0;
-    -barlevel-border-color: rgba(black, 0.12);
+    -barlevel-border-color: rgba(black, 0.15);
   }
 
   .level-bar {
@@ -2795,22 +2802,20 @@ StWidget.focused .app-well-app-running-dot {
   max-width: 23em;
 }
 
-$login_entry_bg: if($variant == 'dark', rgba(black, 0.1), rgba(white, 0.1));
-
 .login-dialog {
   //reset
   border: none;
   background-color: transparent;
 
   StEntry {
-    selection-background-color: $track_color;
-    selected-background-color: $track_color;
-    selected-color: $primary_color;
+    selection-background-color: $primary_color;
+    selected-background-color: $primary_color;
+    selected-color: white;
     padding: 4px 8px;
     min-height: $small_size;
-    @include entry(normal, $bc: $login_entry_bg);
-    &:focus { @include entry(focus); }
-    &:insensitive { @include entry(insensitive); }
+    @include entry(flat-normal);
+    &:focus { @include entry(flat-focus); }
+    &:insensitive { @include entry(flat-insensitive); }
     border-radius: $circular_radius;
   }
 
@@ -2838,8 +2843,8 @@ $login_entry_bg: if($variant == 'dark', rgba(black, 0.1), rgba(white, 0.1));
     border-radius: 100px;
     width: 32px;
     height: 32px;
-    border-color: transparentize($bg_color, 0.7);
-    background-color: transparentize($bg_color, 0.7);
+    border: none;
+    background-color: rgba($borders_color, 0.1);
 
     StIcon { icon-size: 16px; }
   }
@@ -2852,8 +2857,11 @@ $login_entry_bg: if($variant == 'dark', rgba(black, 0.1), rgba(white, 0.1));
 // Caps-lock warning
 .caps-lock-warning-label {
   text-align: center;
-  padding-bottom: 8px;
-  color: $warning_color;
+  margin-bottom: 8px;
+  padding: 2px 6px;
+  color: white;
+  background-color: $warning_color;
+  border-radius: $circular_radius;
 }
 
 .login-dialog-logo-bin { padding: 24px 0px; }

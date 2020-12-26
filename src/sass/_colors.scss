@@ -164,10 +164,10 @@ $button_active_image:               linear-gradient(0deg, $button_active_bottom 
 $button_active_hover_image:         linear-gradient(0deg, $button_active_hover_bottom 0%, $button_active_hover_top 100%);
 
 // WM colors
-$wm_border_light: 0 0 0 2px rgba(black, 0.03), 0 0 0 1px rgba(black, 0.12);
-$wm_border_dark: 0 0 0 2px rgba(black, 0.1), 0 0 0 1px rgba(black, 0.75);
+$wm_outline_light: 0 0 0 2px rgba(black, 0.03), 0 0 0 1px rgba(black, 0.12);
+$wm_outline_dark: 0 0 0 2px rgba(black, 0.1), 0 0 0 1px rgba(black, 0.75);
 $wm_shadow: if($variant=='light', rgba(black, 0.15), rgba(black, 0.35));
-$wm_border: if($variant=='light', $wm_border_light, $wm_border_dark);
+$wm_outline: if($variant=='light', $wm_outline_light, $wm_outline_dark);
 
 // WM Buttons
 

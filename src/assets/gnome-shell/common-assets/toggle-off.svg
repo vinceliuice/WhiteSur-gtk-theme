@@ -1,123 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="40"
-   height="24"
-   viewBox="0 0 40 24"
-   id="svg2"
-   version="1.1"
-   inkscape:version="0.92.5 (unknown)"
-   sodipodi:docname="toggle-off.svg">
-  <defs
-     id="defs4">
-    <filter
-       style="color-interpolation-filters:sRGB"
-       id="n"
-       x="-0.096000001"
-       y="-0.096000001"
-       width="1.192"
-       height="1.192">
-      <feGaussianBlur
-         stdDeviation="0.72"
-         id="feGaussianBlur72" />
-    </filter>
-    <linearGradient
-       id="selected_fg_color"
-       osb:paint="solid">
-      <stop
-         stop-color="#ffffffgit"
-         offset="0"
-         id="stop21" />
-    </linearGradient>
-  </defs>
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="8.65625"
-     inkscape:cx="-4.1022112"
-     inkscape:cy="18.267821"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="true"
-     units="px"
-     width="40px"
-     inkscape:window-width="1920"
-     inkscape:window-height="1020"
-     inkscape:window-x="0"
-     inkscape:window-y="28"
-     inkscape:window-maximized="1"
-     inkscape:snap-bbox="true"
-     inkscape:bbox-nodes="true"
-     inkscape:snap-global="true"
-     inkscape:snap-nodes="true">
-    <inkscape:grid
-       type="xygrid"
-       id="grid4136" />
-  </sodipodi:namedview>
-  <metadata
-     id="metadata7">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-1028.3622)">
-    <g
-       style="display:inline;opacity:0.5"
-       transform="translate(-53.375999,1144.0022)"
-       id="switch-insensitive">
-      <rect
-         style="opacity:0;stroke-width:0.87706"
-         id="rect579"
-         height="24"
-         width="40"
-         y="-115.64"
-         x="53.375999" />
-      <g
-         id="g587"
-         transform="translate(-125.01,5.2981)">
-        <path
-           style="fill:#b3b3b3"
-           inkscape:connector-curvature="0"
-           id="path581"
-           d="m 190.39,-119.94 h 16 c 6.094,0 11,4.46 11,10 0,5.54 -4.906,10 -11,10 h -16 c -6.094,0 -11,-4.46 -11,-10 0,-5.54 4.906,-10 11,-10 z" />
-        <circle
-           style="opacity:0.25;filter:url(#n)"
-           id="circle583"
-           r="9"
-           cy="-108.14"
-           cx="221.25999"
-           transform="matrix(0.97875,0,0,0.97875,-26.23,-3.5914)" />
-        <circle
-           style="fill:#ffffff"
-           id="circle585"
-           r="9"
-           cy="-108.14"
-           cx="221.25999"
-           transform="matrix(0.92593,0,0,0.92593,-15.153,-9.8037)" />
-      </g>
-    </g>
-  </g>
+<svg width="40" height="24" version="1.1" viewBox="0 0 40 24" xmlns="http://www.w3.org/2000/svg" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <filter id="filter1038" x="-.0216" y="-.070497" width="1.0432" height="1.141" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="0.36"/>
+  </filter>
+  <filter id="filter1034" x="-.037565" y="-.037565" width="1.0751" height="1.0751" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="0.36"/>
+  </filter>
+  <linearGradient id="linearGradient907" x1="20" x2="20" y1="23.962" gradientTransform="translate(-4.1221e-8 1028.4)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#000000" stop-opacity=".2" offset="0"/>
+   <stop stop-color="#040404" stop-opacity=".36" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g transform="translate(0 -1028.4)">
+  <rect x="-3.8809e-8" y="1028.4" width="40" height="24" rx="12" ry="12" fill="url(#linearGradient907)" stroke-linecap="round" stroke-linejoin="round" stroke-width=".495" style="paint-order:markers stroke fill"/>
+  <rect x="-3.8809e-8" y="1028.3" width="40" height="24" opacity="0" stroke-width=".87706"/>
+  <circle cx="12" cy="1040.9" r="11.5" fill="#000000" filter="url(#filter1034)" opacity=".1" stroke-width="1.2778"/>
+  <circle cx="12" cy="1040.4" r="11" fill="#ffffff" stroke-width="1.2222"/>
+  <path d="m12 1028.4c-6.648 0-12 5.352-12 12 0 0.086 0.011872 0.1699 0.013672 0.2559 0.13601-6.2563 5.4243-11.256 11.986-11.256h16c6.562 0 11.85 4.9996 11.986 11.256 0.0018-0.086 0.01367-0.1695 0.01367-0.2559 0-6.648-5.352-12-12-12z" fill="#000000" filter="url(#filter1038)" opacity=".1" stroke-linecap="round" stroke-linejoin="round" stroke-width=".495" style="paint-order:markers stroke fill"/>
+ </g>
 </svg>
