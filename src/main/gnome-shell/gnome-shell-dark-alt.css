@@ -2557,15 +2557,21 @@ StWidget.focused .app-well-app-running-dot {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
+.show-apps .show-apps-icon {
+  color: transparent;
+  background-image: url("assets/view-app-grid.svg");
+  background-size: contain;
+}
+
 .show-apps .overview-icon {
-  color: white;
+  color: transparent;
 }
 
 .show-apps:hover .show-apps-icon,
 .show-apps:active .show-apps-icon,
 .show-apps:checked .show-apps-icon,
 .show-apps:focus .show-apps-icon {
-  color: white;
+  color: transparent;
   transition-duration: 150ms;
 }
 

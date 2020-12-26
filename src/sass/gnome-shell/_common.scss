@@ -2237,21 +2237,21 @@ StWidget.focused .app-well-app-running-dot {
   background-color: $light_divider_color;
 }
 
-// .show-apps .show-apps-icon {
-//   color: transparent;
-//   background-image: url("assets/startup@2.svg");
-//   background-size: contain;
-// }
+.show-apps .show-apps-icon {
+  color: transparent;
+  background-image: url("assets/view-app-grid.svg");
+  background-size: contain;
+}
 
 .show-apps .overview-icon {
-  color: $light_fg_color;
+  color: transparent;
 }
 
 .show-apps:hover .show-apps-icon,
 .show-apps:active .show-apps-icon,
 .show-apps:checked .show-apps-icon,
 .show-apps:focus .show-apps-icon {
-  color: $light_fg_color;
+  color: transparent;
   transition-duration: $longer_duration;
 }
 
