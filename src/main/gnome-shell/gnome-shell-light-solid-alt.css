@@ -1087,7 +1087,7 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .popup-sub-menu .popup-separator-menu-item .popup-separator-menu-item-separator {
   padding: 0 0;
-  margin: 0 64px 0 0;
+  margin: 0 32px 0 0;
 }
 
 .system-switch-user-submenu-icon.user-icon {
