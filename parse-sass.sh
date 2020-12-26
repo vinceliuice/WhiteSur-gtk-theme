@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 if [ ! "$(which sassc 2> /dev/null)" ]; then
   echo sassc needs to be installed to generate the css.

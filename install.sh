@@ -1,5 +1,6 @@
-#!/bin/bash
+#! /usr/bin/env bash
 set -ueo pipefail
+set -o physical
 #set -x
 
 REPO_DIR=$(cd $(dirname $0) && pwd)
