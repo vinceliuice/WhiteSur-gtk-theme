@@ -66,11 +66,11 @@ then you can run: (`dialog` is required, install it first!)
 If you want to install GDM theme!
 then you can run:
 ```bash
-sudo ./install.sh -g      (install default dark version)
+sudo ./install.sh -g      # install default dark version
 
-sudo ./install.sh -g -c light     (install light version)
+sudo ./install.sh -g -c light     # install light version
 
-sudo ./install.sh -g -r     (remove installed GDM theme)
+sudo ./install.sh -g -r     # remove installed GDM theme
 ```
 ![2](pictures/install-tip-02.png)
 
