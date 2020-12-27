@@ -400,7 +400,7 @@ parse_sass() {
 change_size() {
   cd ${SRC_DIR}/sass/gtk
   cp -an _applications.scss _applications.scss.bak
-  sed -i "s/200px/$sidebar_size/g" _applications.scss
+  sed -i "/\$nautilus_sidebar_size/s/200px/${sidebar_size}/" _applications.scss
   prompt -w "Change nautilus sidebar size ..."
 }
 
@@ -409,7 +409,7 @@ change_theme_color() {
 
   cd ${SRC_DIR}/sass
   cp -an _colors.scss _colors.scss.bak
-  sed -i "s/#0860f2/$theme_color/g" _colors.scss
+  sed -i "/\$selected_bg_color/s/#0860f2/${theme_color}/" _colors.scss
 
   cd ${SRC_DIR}/assets/gtk-3.0
   cp -an thumbnail.svg thumbnail.svg.bak
@@ -506,7 +506,7 @@ restore_assets_files() {
 change_transparency() {
   cd ${SRC_DIR}/sass
   cp -an _colors.scss _colors.scss.bak
-  sed -i "s/0.16/$panel_trans/g" _colors.scss
+  sed -i "/\$panel_opacity/s/0.16/${panel_trans}/" _colors.scss
   prompt -w "Change panel transparency ..."
 }
 
