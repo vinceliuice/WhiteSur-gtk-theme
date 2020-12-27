@@ -46,9 +46,9 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 |-c, --color          | Specify theme color variant(s) **[light/dark]** (Default: All variants)|
 |-o, --opacity        | Specify theme opacity variant(s) **[standard/solid]** (Default: All variants)|
 |-a, --alt            | Specify titlebutton variant(s) **[standard/alt]** (Default: All variants)|
-|-t, --theme          | Run a terminal dialog to change the theme accent color (Default: blue)|
-|-p, --panel          | Run a terminal dialog to change the panel transparency (Default: 85%)|
-|-s, --size           | Run a terminal dialog to change the nautilus sidebar width size (Default: 200px)|
+|-t, --theme          | Change the theme color **[blue/purple/pink/red/orange/yellow/green/grey]** (Default: MacOS blue)|
+|-p, --panel          | Change the panel transparency **[80%/75%/70%/65%/60%/55%/50%/45%/40%/35%]** (Default: 85%)|
+|-s, --size           | Change the nautilus sidebar width size **[220px/240px/260px/280px]** (Default: 200px)|
 |-i, --icon           | Activities icon variant(s) **[standard/normal/gnome/ubuntu/arch/manjaro/fedora/debian/void]** (Default: standard variant)|
 |-g, --gdm            | Install GDM theme, you should run this with sudo!|
 |-r, --remove         | Remove theme, this will remove all installed themes!|
@@ -56,9 +56,11 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 
 ### <p align="center" > 1. Change theme accent color </p>
 If you want to change theme accent! (Default color is blue)
-then you can run: (`dialog` is required, install it first!)
+then you can run:
 ```bash
-./install.sh -t
+./install.sh -t        # With no color options will run a terminal dialog to install it
+
+./install.sh -t green  # Install green accent color version
 ```
 ![1](pictures/install-tip-01.png)
 
@@ -75,11 +77,13 @@ sudo ./install.sh -g -r     # remove installed GDM theme
 ![2](pictures/install-tip-02.png)
 
 ### <p align="center" > 3. Change nautilus sidebar width size </p>
-If you want to change nautilus sidebar width size! (Default size is 180px)
+If you want to change nautilus sidebar width size! (Default size is 200px)
 (Nautilus cannot change the structure of the sidebar, so I added a picture as a background to achieve the effect of bigsur)
-then you can run: (`dialog` is required, install it first!)
+then you can run:
 ```bash
-./install.sh -s
+./install.sh -s        # With no size options will run a terminal dialog to install it
+
+./install.sh -s 260px  # Install 260px width version
 ```
 ![3](pictures/install-tip-03.png)
 

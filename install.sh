@@ -67,15 +67,15 @@ usage() {
   printf "\n%s\n" "OPTIONS:"
   printf "  %-25s%s\n" "-d, --dest DIR" "Specify theme destination directory (Default: ${DEST_DIR})"
   printf "  %-25s%s\n" "-n, --name NAME" "Specify theme name (Default: ${THEME_NAME})"
-  printf "  %-25s%s\n" "-o, --opacity VARIANTS" "Specify theme opacity variant(s) [standard|solid] (Default: All variants)"
-  printf "  %-25s%s\n" "-c, --color VARIANTS" "Specify theme color variant(s) [light|dark] (Default: All variants)"
-  printf "  %-25s%s\n" "-t, --theme VARIANTS" "Run a dialog to change the theme color (Default: blue)"
-  printf "  %-25s%s\n" "-a, --alt VARIANTS" "Specify theme titlebutton variant(s) [standard|alt] (Default: All variants)"
-  printf "  %-25s%s\n" "-p, --panel VARIANTS" "Run a dialog to change the panel transparency (Default: 85%)"
-  printf "  %-25s%s\n" "-s, --size VARIANTS" "Run a dialog to change the nautilus sidebar width size (Default: 200px)"
-  printf "  %-25s%s\n" "-i, --icon VARIANTS" "Specify activities icon variant(s) for gnome-shell [standard|normal|gnome|ubuntu|arch|manjaro|fedora|debian|void] (Default: standard variant)"
   printf "  %-25s%s\n" "-g, --gdm" "Install GDM theme, this option needs root user authority! Please run this with sudo"
   printf "  %-25s%s\n" "-r, --remove" "Remove theme, remove all installed themes"
+  printf "  %-25s%s\n" "-o, --opacity VARIANTS" "Specify theme opacity variant(s) [standard|solid] (Default: All variants)"
+  printf "  %-25s%s\n" "-c, --color VARIANTS" "Specify theme color variant(s) [light|dark] (Default: All variants)"
+  printf "  %-25s%s\n" "-a, --alt VARIANTS" "Specify theme titlebutton variant(s) [standard|alt] (Default: All variants)"
+  printf "  %-25s%s\n" "-t, --theme VARIANTS" "Change the theme color [blue|purple|pink|red|orange|yellow|green|grey] (Default: MacOS blue)"
+  printf "  %-25s%s\n" "-p, --panel VARIANTS" "Change the panel transparency [80%|75%|70%|65%|60%|55%|50%|45%|40%|35%] (Default: 85%)"
+  printf "  %-25s%s\n" "-s, --size VARIANTS" "Change the nautilus sidebar width size [220px|240px|260px|280px] (Default: 200px)"
+  printf "  %-25s%s\n" "-i, --icon VARIANTS" "Change gnome-shell activities icon [standard|normal|gnome|ubuntu|arch|manjaro|fedora|debian|void] (Default: standard)"
   printf "  %-25s%s\n" "-h, --help" "Show this help"
 }
 
@@ -175,8 +175,30 @@ install() {
   cp -r ${SRC_DIR}/other/plank/theme${color}/*.theme                                    ${THEME_DIR}/plank
 }
 
-# Backup and install files related to GDM theme
 
+install_theme() {
+  for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
+    for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
+      for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
+        for icon in "${icons[@]-${ICON_VARIANTS[0]}}"; do
+          install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${alt}" "${icon}"
+        done
+      done
+    done
+  done
+}
+
+remove_theme() {
+  for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
+    for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
+      for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
+        [[ -d "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}" ]] && rm -rf "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}"
+      done
+    done
+  done
+}
+
+# Backup and install files related to GDM theme
 GS_THEME_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
 SHELL_THEME_FOLDER="/usr/share/gnome-shell/theme"
 ETC_THEME_FOLDER="/etc/alternatives"
@@ -234,34 +256,7 @@ install_gdm() {
     [[ -d "$UBUNTU_MODES_FOLDER" ]] && cp -an "$UBUNTU_MODES_FOLDER" "$UBUNTU_MODES_FOLDER"-bak
     [[ -f "$UBUNTU_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$UBUNTU_JSON_FILE"
     [[ -f "$YURA_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$YURA_JSON_FILE"
-    # cp -an "$ETC_NEW_THEME_FILE" "$ETC_NEW_THEME_FILE.bak"
-    # [[ -d "$SHELL_THEME_FOLDER/$THEME_NAME" ]] && rm -rf "$SHELL_THEME_FOLDER/$THEME_NAME" && mkdir -p "$SHELL_THEME_FOLDER/$THEME_NAME"
-    # cp -r "$GS_THEME_FILE" "$SHELL_THEME_FOLDER/$THEME_NAME"
-    # cd "$ETC_THEME_FOLDER"
-    # [[ -f "$ETC_NEW_THEME_FILE.bak" ]] && ln -sf "$SHELL_THEME_FOLDER/$THEME_NAME/gnome-shell-theme.gresource" gdm3-theme.gresource
   fi
-}
-
-install_theme() {
-  for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
-    for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
-      for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
-        for icon in "${icons[@]-${ICON_VARIANTS[0]}}"; do
-          install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${alt}" "${icon}"
-        done
-      done
-    done
-  done
-}
-
-remove_theme() {
-  for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
-    for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
-      for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
-        [[ -d "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}" ]] && rm -rf "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}"
-      done
-    done
-  done
 }
 
 revert_gdm() {
@@ -294,12 +289,6 @@ revert_gdm() {
   fi
 
   # > Ubuntu 20.04
-  # if [[ -f "$ETC_NEW_THEME_FILE.bak" ]]; then
-  #   prompt -w "reverting Ubuntu GDM theme..."
-  #   rm -rf "$ETC_NEW_THEME_FILE"
-  #   mv "$ETC_NEW_THEME_FILE.bak" "$ETC_NEW_THEME_FILE"
-  #   [[ -d $SHELL_THEME_FOLDER/$THEME_NAME ]] && rm -rf $SHELL_THEME_FOLDER/$THEME_NAME
-  # fi
   if [[ -f "$UBUNTU_YARU_THEME_FILE.bak" ]]; then
     prompt -w "reverting Ubuntu GDM theme..."
     rm -rf "$UBUNTU_YARU_THEME_FILE"
@@ -329,9 +318,9 @@ sidebar_dialog() {
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your nautilus sidebar size (default is 200px width):" 15 40 5 \
-      1 "220px" on \
-      2 "240px" off  \
-      3 "260px" off  \
+      1 "220px" on  \
+      2 "240px" off \
+      3 "260px" off \
       4 "280px" off --output-fd 1 )
       case "$tui" in
         1) sidebar_size="220px" ;;
@@ -386,14 +375,14 @@ theme_dialog() {
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your theme color (default is Mac Blue):" 20 50 10 \
-      1 "Blue" on  \
+      1 "Blue"   on  \
       2 "Purple" off \
-      3 "Pink" off \
-      4 "Red" off \
+      3 "Pink"   off \
+      4 "Red"    off \
       5 "Orange" off \
       6 "Yellow" off \
-      7 "Green" off \
-      8 "Grey" off --output-fd 1 )
+      7 "Green"  off \
+      8 "Grey"   off --output-fd 1 )
       case "$tui" in
         1) theme_color="#2E7CF7" ;;
         2) theme_color="#9A57A3" ;;
