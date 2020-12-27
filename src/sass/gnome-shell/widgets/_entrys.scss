@@ -1,0 +1,29 @@
+StEntry {
+  min-height: $medium_size;
+  min-width: $large_size;
+  padding: 0 8px;
+  margin: 3px;
+  border-width: 0;
+  color: $fg_color;
+  caret-color: $fg_color;
+  selection-background-color: $primary_color;
+  selected-color: $light_alt_fg_color;
+  // @include font(subheading);
+  @include entry(normal);
+  &:hover { @include entry(hover);}
+  &:focus { @include entry(focus);}
+  &:insensitive { @include entry(insensitive);}
+  StIcon.capslock-warning {
+    icon-size: 16px;
+    warning-color: $warning_color;
+    padding: 0 0;
+  }
+  StIcon.peek-password {
+    icon-size: 16px;
+    padding: 0 4px;
+  }
+  StLabel.hint-text {
+    margin-left: 2px;
+    color: transparentize($fg_color, 0.3);
+  }
+}

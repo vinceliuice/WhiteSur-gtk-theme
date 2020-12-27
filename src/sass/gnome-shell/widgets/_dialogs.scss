@@ -1,0 +1,507 @@
+%last_dialog_button {
+  color: white;
+  background-color: $primary_color;
+
+  &:hover {
+    color: white;
+    background-color: lighten($primary_color, 9%);
+  }
+
+  &:active {
+    color: white;
+    background-color: darken($primary_color, 5%);
+  }
+
+  &:insensitive {
+    background-color: rgba($primary_color, 0.05);
+    color: rgba($primary_color, 0.35);
+  }
+}
+
+// Auth Dialogs & Screen Shield
+.framed-user-icon {
+  background-size: contain;
+  border: none;
+  color: $light_alt_fg_color;
+  border-radius: $circular_radius;
+
+  &:hover {
+    border-color: $light_alt_fg_color;
+    color: $light_alt_fg_color;
+  }
+}
+
+// modal dialog
+.modal-dialog {
+  color: $fg_color;
+  padding: 0 5px 6px 5px;
+  @extend %theme_dialogs;
+
+  &-linked-button {
+    min-height: 40px;
+    padding: 0 16px;
+    margin: 3px 3px;
+    border: none !important;
+    border-radius: $bt_radius;
+    @include font(button);
+    @include button(flat-normal);
+    &:hover { @include button(flat-hover); }
+    &:active { @include button(flat-active); }
+    &:insensitive { @include button(flat-insensitive); }
+    &:focus { @include button(flat-focus); }
+  }
+
+  &-linked-button:last-child {
+    @extend %last_dialog_button;
+  }
+
+  .modal-dialog-content-box {
+    margin: 32px 40px;
+    spacing: 32px;
+    max-width: 28em;
+  }
+  .run-dialog-entry { width: 20em; margin-bottom: 6px; }
+  .run-dialog-error-box {
+    padding-top: 16px;
+    spacing: 6px;
+  }
+  .run-dialog-button-box {
+    padding-top: 1em;
+  }
+  .run-dialog-label {
+    font-size: 1em;
+    font-weight: normal;
+    color: $hint_fg_color;
+    padding-bottom: .4em;
+  }
+}
+
+  .mount-dialog-subject,
+  .end-session-dialog-subject { //this should be a generic header class
+    @include font(title);
+  }
+
+// Message Dialog
+.message-dialog-main-layout {
+  padding: 12px 20px 0;
+  spacing: 12px;
+}
+
+.message-dialog-content {
+  spacing: 18px;
+
+  .message-dialog-title {
+    text-align: center;
+    font-size: 18pt;
+    font-weight: 800;
+
+    &.leightweight {
+      font-size: 13pt;
+      font-weight: 800;
+    }
+  }
+
+  .message-dialog-description { text-align: center; }
+}
+
+.message-dialog-icon {
+  min-width: 48px;
+  icon-size: 48px;
+}
+
+.message-dialog-subtitle {
+  color: $alt_fg_color;
+  font-weight: bold;
+}
+
+// Dialog List
+.dialog-list {
+  spacing: 18px;
+
+  .dialog-list-title {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .dialog-list-scrollview { max-height: 200px; }
+  .dialog-list-box {
+    spacing: 1em;
+
+    .dialog-list-item {
+      spacing: 1em;
+
+      .dialog-list-item-title { font-weight: bold; }
+      .dialog-list-item-description {
+        color: $alt_fg_color;
+        @include font(title);
+      }
+    }
+  }
+}
+
+// Run Dialog
+.run-dialog {
+  .modal-dialog-content-box {
+    margin-top: 24px;
+    margin-bottom: 14px;
+  }
+  .run-dialog-entry { width: 20em; }
+  .run-dialog-description {
+    text-align: center;
+    color: $alt_fg_color;
+    @include font(title);
+  }
+}
+
+// End Session Dialog
+.end-session-dialog {
+  width: 30em;
+  border: none;
+
+  .end-session-dialog-battery-warning,
+  .dialog-list-title {
+    color: $warning_color;
+  }
+}
+
+.end-session-dialog-list {
+  padding-top: 20px;
+}
+
+.end-session-dialog-layout {
+  padding-left: 17px;
+  &:rtl { padding-right: 17px; }
+}
+
+.end-session-dialog-description {
+  padding-bottom: 10px;
+  &:rtl {
+    text-align: right;
+  }
+}
+
+.end-session-dialog-warning {
+  width: 28em;
+  color: $warning_color;
+  padding-top: 6px;
+  &:rtl {
+    text-align: right;
+  }
+}
+
+.end-session-dialog-logout-icon {
+  border-radius: 5px;
+  width: 48px;
+  height: 48px;
+  background-size: contain;
+}
+
+.end-session-dialog-shutdown-icon {
+  color: $hint_fg_color;
+  width: 48px;
+  height: 48px;
+}
+
+.end-session-dialog-inhibitor-layout {
+  spacing: 16px;
+  max-height: 200px;
+  padding-right: 65px;
+  padding-left: 65px;
+}
+
+.end-session-dialog-session-list,
+.end-session-dialog-app-list {
+  spacing: 1em;
+}
+
+.end-session-dialog-list-header {
+  font-weight: bold;
+  &:rtl { text-align: right; }
+}
+
+.end-session-dialog-app-list-item,
+.end-session-dialog-session-list-item {
+  spacing: 1em;
+}
+
+.end-session-dialog-app-list-item-name,
+.end-session-dialog-session-list-item-name {
+  font-weight: bold;
+}
+
+.end-session-dialog-app-list-item-description {
+  color: $hint_fg_color;
+  font-size: 1em;
+}
+
+// ShellMountOperation Dialogs
+.shell-mount-operation-icon { icon-size: 48px; }
+
+.mount-dialog {
+  spacing: 24px;
+
+  .message-dialog-title {
+    padding-top: 10px;
+    padding-left: 17px;
+    padding-bottom: 6px;
+    max-width: 34em;
+  }
+
+  .message-dialog-title:rtl {
+    padding-left: 0px;
+    padding-right: 17px;
+  }
+
+  .message-dialog-body {
+    padding-left: 17px;
+    width: 28em;
+  }
+
+  .message-dialog-body:rtl {
+    padding-left: 0px;
+    padding-right: 17px;
+  }
+}
+
+.mount-dialog-app-list {
+  max-height: 200px;
+  padding-top: 24px;
+  padding-left: 49px;
+  padding-right: 32px;
+}
+
+.mount-dialog-app-list:rtl {
+  padding-right: 49px;
+  padding-left: 32px;
+}
+
+.mount-dialog-app-list-item {
+  color: $fg_color;
+  &:hover { color: $fg_color; }
+  &:ltr { padding-right: 1em; }
+  &:rtl { padding-left: 1em; }
+}
+
+.mount-dialog-app-list-item-icon {
+  &:ltr { padding-right: 17px; }
+  &:rtl { padding-left: 17px; }
+}
+
+.mount-dialog-app-list-item-name {
+  font-size: 1em;
+}
+
+// Password or Authentication Dialog
+.prompt-dialog {
+  //this is the width of the entire modal popup
+  width: 28em;
+  border: none;
+
+  .modal-dialog-content-box {
+    margin-bottom: 24px;
+  }
+
+  .message-dialog-main-layout { spacing: 24px; padding: 10px; }
+  .message-dialog-content { spacing: 16px; }
+  .message-dialog-title { @include font(title); color: $fg_color; }
+}
+
+.prompt-dialog-password-grid {
+  spacing-rows: 8px;
+  spacing-columns: 4px;
+
+  .prompt-dialog-password-entry {
+    width: auto;
+
+    // 4px (spacing) + 16px (spinner-width)
+    &:ltr { margin-left: 20px; }
+    &:rtl { margin-right: 20px; }
+  }
+}
+
+.prompt-dialog-password-layout {
+  spacing: 8px;
+}
+
+.prompt-dialog-password-entry {
+  width: 20em;
+}
+
+.prompt-dialog-error-label,
+.prompt-dialog-info-label,
+.prompt-dialog-null-label {
+  text-align: center;
+  @include font(title);
+  margin: 6px;
+}
+
+.prompt-dialog-error-label {
+  color: $warning_color;
+}
+
+.prompt-dialog-description:rtl {
+  text-align: right;
+}
+
+.prompt-dialog-password-box {
+  spacing: 1em;
+  padding-bottom: 1em;
+}
+
+.prompt-dialog-error-label {
+  font-size: 1em;
+  color: $error_color;
+  padding-bottom: 8px;
+}
+
+.prompt-dialog-info-label {
+  font-size: 1em;
+  padding-bottom: 8px;
+  color: $hint_fg_color;
+}
+
+.hidden {
+  color: rgba(0,0,0,0);
+}
+
+.prompt-dialog-null-label {
+  font-size: 1em;
+  padding-bottom: 8px;
+  color: $hint_fg_color;
+}
+
+
+// Polkit Dialog
+.polkit-dialog-user-layout {
+  text-align: center;
+  spacing: 8px;
+  margin-bottom: 6px;
+
+  .polkit-dialog-user-root-label {
+    color: $warning_color;
+  }
+
+  .polkit-dialog-user-icon {
+    border-radius: $circular_radius;
+    background-size: contain;
+    width: 48px;
+    height: 48px;
+    margin: 6px;
+  }
+}
+
+// Audio selection dialog
+.audio-device-selection-dialog {
+  .modal-dialog-content-box { margin-bottom: 28px; }
+  .audio-selection-box { spacing: 20px; }
+}
+
+.audio-selection-content {
+  spacing: 20px;
+  padding: 24px;
+}
+
+.audio-selection-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.audio-selection-device {
+  border: 1px solid $borders_color;
+  border-radius: $bt_radius;
+  &:hover, &:focus { background-color: $visit_color; }
+  &:active {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+}
+
+.audio-selection-device-box {
+  padding: 20px;
+  spacing: 20px;
+}
+
+.audio-selection-device-icon {
+  icon-size: 64px;
+}
+
+// Access Dialog
+.access-dialog {
+  spacing: 30px;
+}
+
+// Geolocation Dialog
+.geolocation-dialog {
+  spacing: 30px;
+}
+
+// Extension Dialog
+.extension-dialog {
+  .message-dialog-main-layout { spacing: 24px; padding: 10px; }
+  .message-dialog-title { color: $alt_fg_color; }
+}
+
+// Inhibit-Shortcuts Dialog
+.inhibit-shortcuts-dialog {
+  spacing: 30px;
+}
+
+// Network Agent Dialog
+.network-dialog-secret-table {
+  spacing-rows: 15px;
+  spacing-columns: 1em;
+}
+
+.keyring-dialog-control-table {
+  spacing-rows: 15px;
+  spacing-columns: 1em;
+}
+
+// NETWORK DIALOGS
+.nm-dialog {
+  max-height: 34em;
+  min-height: 31em;
+  min-width: 32em;
+}
+
+.nm-dialog-content {
+  spacing: 20px;
+  padding: 24px;
+}
+.nm-dialog-header-hbox { spacing: 10px; }
+.nm-dialog-airplane-box { spacing: 12px; }
+
+.nm-dialog-airplane-headline {
+  font-weight: bold;
+  text-align: center;
+}
+
+.nm-dialog-airplane-text { color: $fg_color; }
+.nm-dialog-header-icon { icon-size: 32px; }
+.nm-dialog-scroll-view {
+  border: 1px solid $borders_color;
+  padding: 0;
+  background-color: if($variant == 'light', rgba(black, 0.05), rgba(black, 0.1));
+  border-radius: $bt_radius;
+}
+.nm-dialog-header { @include font(title); }
+
+.nm-dialog-item {
+  font-size: 1em;
+  border-bottom: none;
+  border-radius: $bt_radius;
+  padding: 12px;
+  spacing: 20px;
+  &:hover, &:focus { background-color: $divider_color; }
+  &:active { background-color: $track_color; }
+}
+
+.nm-dialog-item:selected {
+  background-color: $primary_color;
+  color: $light_alt_fg_color;
+}
+
+.nm-dialog-icons { spacing: .5em; }
+.nm-dialog-icon { icon-size: 16px; }
+.no-networks-label { color: $hint_fg_color; }
+.no-networks-box { spacing: 12px; }

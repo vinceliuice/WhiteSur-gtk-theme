@@ -1,6 +1,3 @@
-// When color definition differs for dark and light variant,
-// it gets @if ed depending on $variant
-
 @function gtkalpha($c,$a) {
   @return unquote("alpha(#{$c},#{$a})");
 }
@@ -111,6 +108,10 @@ $menu_bg:                           if($variant == 'light', $base_color, $bg_col
 $menu_bd:                           if($variant == 'light', rgba(black, 0.05), rgba(white, 0.08));
 
 @if $trans == 'true' { $menu_bg:    if($variant == 'light', rgba($base_color, 0.95), rgba($bg_color, 0.95)); }
+
+$dialog_bg_color:                   if($variant == 'light', $bg_color, $base_color);
+
+@if $trans=='true' { $dialog_bg_color: if($variant == 'light', rgba($bg_color, 0.95), rgba($base_color, 0.95)); }
 
 // Panel colors
 $panel_opacity: 0.16;

@@ -1,12 +1,9 @@
-
 // Simple Dock
-
 #dash:desktop {
   background-color: $dash_panel_bg;
 }
 
 //  OpenWeather Extension
-
 .openweather {
   &-button,
   &-button-action,
@@ -65,7 +62,6 @@
 }
 
 // GPaste
-
 .popup-menu {
   .search-entry {
     color: $fg_color;

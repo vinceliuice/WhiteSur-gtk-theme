@@ -1,0 +1,253 @@
+// Pointer location
+.ripple-pointer-location {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px; // radius equals the size of the box to give us the curve
+  background-color: lighten(transparentize($primary_color, 0.7), 30%);
+  box-shadow: 0 0 2px 2px lighten($primary_color, 20%);
+}
+
+// Pointer accessibility notifications
+.pie-timer {
+  width: 60px;
+  height: 60px;
+  -pie-border-width: 3px;
+  -pie-border-color: $primary_color;
+  -pie-background-color: lighten(transparentize($primary_color, 0.7), 40%);
+}
+
+// links
+.shell-link {
+  border-radius: $bt_radius;
+  color: $link_color;
+  &:hover {
+    color: $link_color;
+    background-color: rgba($link_color, $lower_opacity / 2);
+  }
+  &:active {
+    color: $link_color;
+    background-color: rgba($link_color, $lower_opacity);
+  }
+}
+
+// Caps-lock warning
+.caps-lock-warning-label {
+  text-align: center;
+  padding-bottom: 8px;
+  @include font(body-1);
+  color: $warning_color;
+}
+
+.headline { @include font(title); }
+.lightbox { background-color: black; }
+.flashspot { background-color: white; }
+
+// App Switcher
+.switcher-popup {
+  padding: 8px;
+  spacing: 24px;
+}
+
+.osd-window,
+.resize-popup,
+.switcher-list {
+  @extend %osd-panel;
+}
+
+.switcher-list-item-container { spacing: 8px; }
+
+.switcher-list .item-box {
+  padding: 8px;
+  border-radius: $bt_radius;
+}
+
+.switcher-list .item-box:outlined {
+  padding: 8px;
+  border: none;
+  background-color: $divider_color;
+  color: $fg_color; // for Ubuntu session
+}
+
+.switcher-list .item-box:selected {
+  background-color: $primary_color;
+  color: $light_alt_fg_color;
+}
+
+.switcher-list .thumbnail-box {
+  padding: 2px;
+  spacing: 4px;
+}
+
+.switcher-list .thumbnail {
+  width:  256px;
+}
+
+.switcher-list .separator {
+  width: 1px;
+  background: $borders_color;
+}
+
+.switcher-arrow {
+  border-color: rgba(0,0,0,0);
+  color: $hint_fg_color;
+  &:highlighted {
+    color: $fg_color;
+  }
+}
+
+.input-source-switcher-symbol {
+  @include font(display-2);
+  width: 96px;
+  height: 96px;
+}
+
+// Window Cycler
+.cycler-highlight { border: 4px solid $primary_color; }
+
+// Workspace Switcher
+.workspace-switcher-group { padding: 8px; }
+
+.workspace-switcher-container {
+  @extend %osd-panel;
+}
+
+.workspace-switcher {
+  background: transparent;
+  border: 0px;
+  border-radius: 0px;
+  padding: 0px;
+  spacing: 8px;
+}
+
+.ws-switcher-active-up, .ws-switcher-active-down {
+  height: 48px;
+  background-color: $primary_color;
+  color: $light_alt_fg_color;
+  background-size: 32px;
+  border-radius: $bt_radius;
+}
+
+.ws-switcher-box {
+  height: 48px;
+  border: none;
+  background: $divider_color;
+  border-radius: $bt_radius;
+}
+
+// Tiled window previews
+.tile-preview {
+  background-color: rgba($primary_color, $lower_opacity);
+  border: 1px solid $primary_color;
+}
+
+.tile-preview-left.on-primary {
+  border-radius: $panel-corner-radius 0 0 0;
+}
+
+.tile-preview-right.on-primary {
+  border-radius: 0 $panel-corner-radius 0 0;
+}
+
+.tile-preview-left.tile-preview-right.on-primary {
+  border-radius: $panel-corner-radius $panel-corner-radius 0 0;
+}
+
+// Activities Ripples
+.ripple-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 0 0 48px 0;
+  background-color: rgba($primary_color, 0.35);
+  background-image: none;
+  background-size: auto;
+}
+
+.ripple-box:rtl {
+  border-radius: 0 0 0 48px;
+  background-image: none;
+}
+
+// counter
+.summary-source-counter {
+  font-size: 1em;
+  font-weight: bold;
+  height: 1.6em; width: 1.6em;
+  -shell-counter-overlap-x: 3px;
+  -shell-counter-overlap-y: 3px;
+  background-color: $primary_color;
+  color: $light_alt_fg_color;
+  border: 2px solid $primary_color;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.5);
+  border-radius: 0.9em; // should be 0.8 but whatever; wish I could do 50%;
+}
+
+.secondary-icon { icon-size: em(16px); }
+
+//chat bubbles
+.chat-body { spacing: 5px; }
+.chat-response { margin: 5px; }
+.chat-log-message { color: $fg_color; }
+.chat-new-group { padding-top: 1em; }
+.chat-received {
+  padding-left: 4px;
+  &:rtl { padding-left: 0px; padding-right: 4px; }
+}
+
+.chat-sent {
+  padding-left: 18pt;
+  color: $alt_fg_color;
+  &:rtl { padding-left: 0; padding-right: 18pt; }
+}
+
+.chat-meta-message {
+  padding-left: 4px;
+  @include font(caption);
+  color: $hint_fg_color;
+  &:rtl { padding-left: 0; padding-right: 4px; }
+}
+
+//hotplug
+.hotplug-transient-box {
+  spacing: 6px;
+  padding: 2px 72px 2px 12px;
+}
+
+.hotplug-notification-item {
+  padding: 2px 10px;
+  @extend %bubble_button;
+  &:focus { padding: 1px 71px 1px 11px; }
+}
+
+.hotplug-notification-item-icon {
+  icon-size: 24px;
+  padding: 2px 5px;
+}
+
+.hotplug-resident-box { spacing: 8px; }
+
+.hotplug-resident-mount {
+  spacing: 8px;
+  border-radius: $bt_radius;
+  &:hover { background-color: $divider_color; }
+  &:active { background-color: $track_color; }
+}
+
+.hotplug-resident-mount-label {
+  color: inherit;
+  padding-left: 6px;
+}
+
+.hotplug-resident-mount-icon {
+  icon-size: 24px;
+  padding-left: 6px;
+}
+
+.hotplug-resident-eject-icon {
+  icon-size: 16px;
+}
+
+.hotplug-resident-eject-button {
+  padding: 7px;
+  border-radius: $bt_radius;
+  color: $fg_color;
+}

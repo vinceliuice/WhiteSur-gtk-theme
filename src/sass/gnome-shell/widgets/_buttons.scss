@@ -1,0 +1,41 @@
+.button {
+  min-height: $medium_size;
+  padding: 0 16px;
+  border-width: 0;
+  border-radius: $bt_radius;
+  @include font(button);
+  @include button(flat-normal);
+  &:hover { @include button(flat-hover); }
+  &:active { @include button(flat-active); }
+  &:insensitive { @include button(flat-insensitive); }
+  &:focus { @include button(flat-focus); }
+}
+
+//close buttons
+.window-close {
+  background-size: 26px;
+  height: 26px;
+  width: 26px;
+  -shell-close-overlap: 10px;
+  border-radius: 100px;
+  border: 0 none transparent;
+  background-color: transparent;
+  color: transparent;
+  box-shadow: none;
+  StIcon { icon-size: 26px; } // for safety
+  background-image: url("assets/window-close.svg");
+
+  &:hover {
+    background-size: 26px;
+    height: 26px;
+    width: 26px;
+    background-image: url("assets/window-close-hover.svg");
+  }
+
+  &:active {
+    background-size: 26px;
+    height: 26px;
+    width: 26px;
+    background-image: url("assets/window-close-active.svg");
+  }
+}

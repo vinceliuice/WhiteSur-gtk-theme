@@ -1,0 +1,281 @@
+$popop_menuitem_radius: $wm_radius - 4px;
+
+.popup-menu {
+  min-width: 12em;
+  color: $alt_fg_color;
+  padding: 0 0 !important;
+
+  .popup-menu-arrow { } //defined globally in the TOP BAR
+
+  .popup-menu-content {
+    padding: 6px 0 !important;
+    @extend %theme_dialogs;
+    box-shadow: 0 8px 16px 0 rgba(black, 0.25);
+    border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
+    margin: 4px 8px !important;
+  }
+
+  .popup-menu-item {
+    spacing: 12px;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    color: $alt_fg_color;
+    text-shadow: none;
+    border-radius: $popop_menuitem_radius;
+    margin: 0 6px;
+    transition-duration: 0ms;
+
+    &:ltr { padding-right: 2em !important; padding-left: 0 !important; }
+    &:rtl { padding-right: 0 !important; padding-left: 2em !important; }
+
+    &:checked {
+      font-weight: normal;
+      border-radius: $popop_menuitem_radius $popop_menuitem_radius 0 0;
+      border: none;
+      box-shadow: none;
+      color: $alt_fg_color;
+      background-color: if($variant == 'light', rgba(white, 0.75), rgba(white, 0.15));
+
+      &.hover, &.selected {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
+      }
+
+      &:active {
+        color: $selected_fg_color;
+        background-color: mix($fg_color, $selected_bg_color, 5%);
+      }
+
+      &:insensitive { color: $disabled_fg_color; }
+    }
+
+    &.selected {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+      transition: none;
+    }
+
+    &:active, &.selected:active {
+      color: $selected_fg_color;
+      background-color: mix($fg_color, $selected_bg_color, 5%);
+      transition-duration: 100ms;
+    }
+
+    &:insensitive { color: $disabled_fg_color; }
+  }
+
+  .popup-sub-menu {
+    background-color: if($variant == 'light', rgba(white, 0.75), rgba(white, 0.15));
+    border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
+    border: none;
+    box-shadow: none;
+    margin: 0 6px;
+    transition-duration: 0ms;
+
+    .popup-menu-item {
+      margin: 0;
+      border-radius: $popop_menuitem_radius;
+
+      &:hover {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
+      }
+
+      &:active {
+        color: $selected_fg_color;
+        background-color: mix($fg_color, $selected_bg_color, 5%);
+      }
+
+      &:not(:first-child):last-child {
+        border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
+      }
+    }
+  }
+
+  .popup-inactive-menu-item { //all icons and other graphical elements
+    color: $alt_fg_color;
+
+    &:insensitive { color: $disabled_fg_color; }
+  }
+
+  //.popup-status-menu-item { font-weight: normal;  color: pink; } //dunno what that is
+  &.panel-menu {
+    -boxpointer-gap: 4px;
+    margin-bottom: 1.75em;
+  }
+}
+
+.popup-menu-ornament {
+  text-align: right;
+  width: 16px;
+  height: 16px;
+}
+
+.popup-menu-boxpointer {
+  -arrow-border-radius: 2px;
+  -arrow-background-color: transparent;
+  -arrow-border-width: 0;
+  -arrow-border-color: transparent;
+  -arrow-base: 64px;
+  -arrow-rise: 0;
+  -arrow-box-shadow: none; //dreaming. bug #689995
+  background: transparent; // needs to reset?
+
+  StEntry {
+    selection-background-color: $light_alt_fg_color;
+    selected-background-color: $light_alt_fg_color;
+    selected-color: $primary_color;
+  }
+}
+
+.candidate-popup-boxpointer {
+  -arrow-border-radius: 2px;
+  -arrow-background-color: $dialog_bg_color;
+  -arrow-border-width: 0;
+  -arrow-border-color: transparent;
+  -arrow-base: 5px;
+  -arrow-rise: 5px;
+  background-color: transparent;
+  @extend %theme_dialogs;
+}
+
+.popup-separator-menu-item {
+  margin: 0 0;
+  padding: 0 0;
+  background: none;
+  border: none;
+
+  .popup-separator-menu-item-separator {
+    height: 1px; //not really the whole box
+    margin: 0 0;
+    background-color: $borders_color;
+    padding: 0 0;
+
+    .popup-sub-menu & { //submenu separators
+      padding: 0 0;
+      margin: 0 32px 0 0;
+    }
+  }
+}
+
+// a little unstructured mess:
+.system-switch-user-submenu-icon.user-icon {
+  icon-size: 20px;
+  padding: 0 2px;
+}
+
+.system-switch-user-submenu-icon.default-icon {
+  icon-size: 16px;
+  padding: 0 4px;
+}
+
+.system-switch-user-submenu-icon {
+  icon-size: 16px;
+  padding: 0 4px;
+}
+
+#appMenu {
+  spinner-image: url("process-working.svg");
+  spacing: 4px;
+
+  .label-shadow { color: transparent; }
+}
+
+// system status popover menu
+.aggregate-menu {
+  min-width: 21em;
+
+  // lock screen, shutdown, etc. buttons
+  .popup-menu-icon {
+    padding: 0;
+    margin: 0 0;
+    -st-icon-style: symbolic;
+  }
+
+  .popup-sub-menu .popup-menu-item > :first-child {
+    &:ltr { /* 12px spacing + 2*4px padding */
+            padding-left: 16px; margin-left: 1em; }
+    &:rtl { /* 12px spacing + 2*4px padding */
+            padding-right: 16px; margin-right: 1em; }
+  }
+}
+
+.system-menu-action {
+  color: $alt_fg_color;
+  border-radius: 100px; /* wish we could do 50% */
+  padding: ($large_size - 20px) / 2;
+  border: none;
+  -st-icon-style: symbolic; // >= 3.29.90
+
+  &:hover, &:focus {
+    background-color: $divider_color;
+    color: $fg_color;
+    border: none;
+    padding: ($large_size - 20px) / 2;
+  }
+
+  &:active { background-color: $track_color; color: $fg_color; }
+
+  & > StIcon { icon-size: 16px; }
+}
+
+// Background menu
+.background-menu { -boxpointer-gap: 4px; -arrow-rise: 0; }
+
+// not really top bar only
+.popup-menu-arrow,
+.popup-menu-icon { icon-size: em(16px); }
+
+// emoji
+.emoji-page {
+  .keyboard-key {
+    background-color: transparent;
+    border: none;
+    color: initial;
+  }
+}
+
+.emoji-panel {
+  .keyboard-key:latched {
+    border-color: lighten($primary_color, 5%);
+    background-color: $primary_color;
+  }
+}
+
+// IBus Candidate Popup
+.candidate-popup-content {
+  padding: 8px;
+  spacing: 0;
+}
+
+.candidate-index {
+  padding: 0 4px 0 0;
+  color: $hint_fg_color;
+  .candidate-box:selected & { color: $light_hint_fg_color; }
+}
+
+.candidate-box {
+  transition-duration: 0ms; // FIXME: needs more natural transitions
+  min-height: $menuitem_size;
+  padding: 0 8px;
+  border-radius: $bt_radius;
+  &:hover { background-color: $divider_color; color: $fg_color; }
+  &:active { background-color: $track_color; color: $fg_color; }
+  &:selected { background-color: $primary_color; color: $light_alt_fg_color; }
+}
+
+.candidate-page-button-box {
+  height: $menuitem_size;
+  .vertical & { padding-top: 0; }
+  .horizontal & { padding-left: 0; }
+}
+
+.candidate-page-button {
+  min-width: $menuitem_size;
+  min-height: $menuitem_size;
+  padding: 0;
+}
+
+.candidate-page-button-previous { border-radius: $bt_radius; border-right-width: 0; }
+.candidate-page-button-next { border-radius: $bt_radius;  }
+.candidate-page-button-icon { icon-size: em(16px); }

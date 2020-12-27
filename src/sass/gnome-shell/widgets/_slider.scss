@@ -1,0 +1,32 @@
+$slider_color: if($variant == 'light', white, white);
+$barlevel_bg_color: if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
+$barlevel_active_bg_color: if($variant == 'light', white, rgba(white, 0.35));
+$barlevel_boder_color: if($variant == 'light', rgba(black, 0.15), transparent);
+
+.slider {
+  height: 20px;
+  color: $slider_color;
+  border-radius: 16px;
+
+  -slider-height: 19px;
+  -slider-background-color: $barlevel_bg_color; //background of the trough
+  -slider-border-color: $barlevel_boder_color; //trough border color
+  -slider-active-background-color: $barlevel_active_bg_color; //active trough fill
+  -slider-active-border-color: $barlevel_boder_color; //active trough border
+  -slider-border-width: 1px;
+  -slider-handle-radius: 10px;
+  -slider-handle-border-width: 1px;
+  -slider-handle-border-color: $barlevel_boder_color;
+
+  // barlevels are for >= 3.29.90
+  -barlevel-height: 19px;
+  -barlevel-background-color: $barlevel_bg_color;
+  -barlevel-border-color: $barlevel_boder_color;
+  -barlevel-active-background-color: $barlevel_active_bg_color;
+  -barlevel-active-border-color: $barlevel_boder_color;
+  -barlevel-overdrive-color: $destructive_color;
+  -barlevel-overdrive-border-color: $barlevel_boder_color;
+  -barlevel-overdrive-separator-width: 0;
+  -barlevel-border-width: 1px;
+  -barlevel-border-color: $barlevel_boder_color;
+}

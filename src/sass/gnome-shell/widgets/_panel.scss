@@ -1,0 +1,181 @@
+#panel {
+  background-color: $panel_bg;
+  /* transition from solid to transparent */
+  transition-duration: 250ms;
+  font-weight: bold;
+  height: $menuitem_size;
+  box-shadow: 0 3px 6px rgba(black, 0.22), 0 5px 16px rgba(black, 0.35);
+
+  &:overview,
+  &.unlock-screen,
+  &.login-screen,
+  &.lock-screen {
+    background-color: transparent;
+
+    .panel-corner {
+      -panel-corner-radius: 0;
+      -panel-corner-background-color: transparent;
+      -panel-corner-border-color: transparent;
+    }
+  }
+
+  #panelLeft, #panelCenter { // spacing between activities<>app menu and such
+    spacing: 0;
+  }
+
+  .panel-corner {
+    -panel-corner-radius: $panel-corner-radius;
+    -panel-corner-background-color: $panel_bg;
+    -panel-corner-border-width: 2px;
+    -panel-corner-border-color: transparent;
+
+    &:active, &:overview, &:focus {
+      -panel-corner-border-color: $panel_fg;
+    }
+
+    &.lock-screen, &.login-screen, &.unlock-screen {
+      -panel-corner-radius: 0;
+      -panel-corner-background-color: transparent;
+      -panel-corner-border-color: transparent;
+    }
+
+    StLabel { padding: 0 4px; }
+  }
+
+  .panel-button {
+    -natural-hpadding: 8px;
+    -minimum-hpadding: 8px;
+    font-weight: bold;
+    color: $panel_fg;
+    transition-duration: $longer_duration;
+    border-radius: $bt_radius;
+    // margin-top: 2px;
+    // margin-bottom: 2px;
+
+    StLabel { padding: 0 2px; }
+
+    &, &:hover, &:active, &:overview, &:focus, &:checked {
+      text-shadow: $panel_asset_shadow;
+
+      .system-status-icon,
+      .app-menu-icon > StIcon,
+      .popup-menu-arrow {
+        icon-shadow: $panel_asset_shadow;
+      }
+    }
+
+    .app-menu-icon {
+      -st-icon-style: symbolic;
+      margin-left: 0;
+      margin-right: 0;
+      icon-size: 16px;
+      //dimensions of the icon are hardcoded
+
+      > StIcon {
+        padding-left: 4px;
+        padding-right: 6px;
+      }
+    }
+
+    .popup-menu-arrow { width: 0; height: 0; } // Remove arrow on panel button
+
+    &:hover {
+      color: $panel_fg;
+      background-color: $light_divider_color;
+    }
+
+    &:active, &:overview, &:focus, &:checked {
+      &, &:hover {
+        background-color: $light_track_color;
+        color: $panel_fg;
+        box-shadow: none;
+      }
+    }
+
+    .system-status-icon { icon-size: em(16px); padding: 0 4px; }
+    .unlock-screen &,
+    .login-screen &,
+    .lock-screen & {
+      color: $panel_fg;
+      &:focus, &:hover, &:active { color: $panel_fg; }
+    }
+  }
+
+  .panel-button.clock-display {
+    &:active, &:overview, &:focus, &:checked {
+      .clock {
+        background: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .panel-status-indicators-box,
+  .panel-status-menu-box {
+    spacing: 2px;
+  }
+
+  // spacing between power icon and (optional) percentage label
+  .power-status.panel-status-indicators-box {
+    spacing: 0;
+  }
+
+  .screencast-indicator { color: $error_color; }
+  .remote-access-indicator { color: $warning_color; } // > 3.29.4
+
+  &.solid {
+    background-color: $panel_bg;
+    /* transition from transparent to solid */
+    transition-duration: 250ms;
+    background-gradient-direction: none; // for Ubuntu session
+    text-shadow: none; // for Ubuntu session
+
+    &:overview { background-color: transparent; } // for Ubuntu session
+
+    .panel-corner {
+      -panel-corner-background-color: $panel_bg;
+    }
+
+    .panel-button {
+      color: $panel_fg;
+      text-shadow: none;
+
+      &:active, &:overview, &:focus, &:checked {
+        color: $light_alt_fg_color;
+        text-shadow: 0 1px rgba(black, 0.45);
+      }
+    }
+
+    .system-status-icon,
+    .app-menu-icon > StIcon,
+    .popup-menu-arrow {
+      icon-shadow: none;
+
+      &:active, &:overview, &:focus, &:checked {
+        icon-shadow: 0 1px rgba(black, 0.45);
+      }
+    }
+  }
+}
+
+// Activities button
+#panel #panelActivities.panel-button {
+  > * {
+    background-image: url("assets/activities.svg");
+    background-position: center top;
+    // background-size: 18px 18px;
+    width: 24px;
+    height: 24px;
+    background-color: transparent !important;
+    background-gradient-direction: none !important;
+    border: none;
+    color: transparent;
+  }
+
+  &:active, &:overview, &:focus, &:checked {
+    background-color: transparent;
+    border: none;
+
+    // > * { background-image: url("assets/activities-active.svg"); }
+  }
+}

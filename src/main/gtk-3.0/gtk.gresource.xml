@@ -53,20 +53,6 @@
     <file>assets/radio-mixed-selected@2.png</file>
     <file>assets/radio-mixed-insensitive-selected.png</file>
     <file>assets/radio-mixed-insensitive-selected@2.png</file>
-    <file>assets/switch.png</file>
-    <file>assets/switch@2.png</file>
-    <file>assets/switch-hover.png</file>
-    <file>assets/switch-hover@2.png</file>
-    <file>assets/switch-active.png</file>
-    <file>assets/switch-active@2.png</file>
-    <file>assets/switch-active-hover.png</file>
-    <file>assets/switch-active-hover@2.png</file>
-    <file>assets/switch-insensitive.png</file>
-    <file>assets/switch-insensitive@2.png</file>
-    <file>assets/switch-active-insensitive.png</file>
-    <file>assets/switch-active-insensitive@2.png</file>
-    <file>assets/switch-insensitive-dark.png</file>
-    <file>assets/switch-insensitive-dark@2.png</file>
     <file>assets/slider-horz-scale-has-marks-below.png</file>
     <file>assets/slider-horz-scale-has-marks-below@2.png</file>
     <file>assets/slider-horz-scale-has-marks-below-hover.png</file>
@@ -127,14 +113,6 @@
     <file>assets/radio-mixed-dark@2.png</file>
     <file>assets/radio-mixed-insensitive-dark.png</file>
     <file>assets/radio-mixed-insensitive-dark@2.png</file>
-    <file>assets/setting.png</file>
-    <file>assets/setting@2.png</file>
-    <file>assets/setting-dark.png</file>
-    <file>assets/setting-dark@2.png</file>
-    <file>assets/setting-icon.png</file>
-    <file>assets/setting-icon@2.png</file>
-    <file>assets/setting-icon-dark.png</file>
-    <file>assets/setting-icon-dark@2.png</file>
     <file>assets/combobox-arrow.png</file>
     <file>assets/combobox-arrow@2.png</file>
     <file>assets/combobox-arrow-dark.png</file>

@@ -1638,12 +1638,6 @@ headerbar.default-decoration button.titlebutton {
   padding: 0;
 }
 
-headerbar.default-decoration button.titlebutton.appmenu, headerbar.default-decoration button.titlebutton.appmenu:active, headerbar.default-decoration button.titlebutton.appmenu:checked {
-  background-color: transparent;
-  box-shadow: none;
-  background-image: -gtk-scaled(url("assets/setting-icon.png"), url("assets/setting-icon@2.png"));
-}
-
 headerbar.default-decoration, .csd headerbar.default-decoration, headerbar.default-decoration:backdrop, .csd headerbar.default-decoration:backdrop {
   border: none;
 }
@@ -4568,32 +4562,6 @@ messagedialog.csd decoration {
   margin: 0;
   background-color: #373737;
   box-shadow: none;
-}
-
-headerbar button.titlebutton.appmenu,
-.titlebar button.titlebutton.appmenu {
-  transition: background-color 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-image 0, background-size 0;
-  color: transparent;
-  background-image: -gtk-scaled(url("assets/setting-dark.png"), url("assets/setting-dark@2.png"));
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-headerbar button.titlebutton.appmenu image,
-.titlebar button.titlebutton.appmenu image {
-  opacity: 0;
-}
-
-headerbar button.titlebutton.appmenu:active, headerbar button.titlebutton.appmenu:checked,
-.titlebar button.titlebutton.appmenu:active,
-.titlebar button.titlebutton.appmenu:checked {
-  transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-image 0, background-size 0;
-  background-image: -gtk-scaled(url("assets/setting-icon-dark.png"), url("assets/setting-icon-dark@2.png"));
-}
-
-headerbar button.titlebutton.appmenu:backdrop,
-.titlebar button.titlebutton.appmenu:backdrop {
-  background-image: -gtk-scaled(url("assets/setting-icon.png"), url("assets/setting-icon@2.png"));
 }
 
 headerbar button.titlebutton.close, headerbar button.titlebutton.maximize, headerbar button.titlebutton.minimize,

@@ -1375,7 +1375,6 @@ headerbar {
 
   // Headerbar Switches
   switch {
-    //  @extend %switch;
     margin-top: 10px;
     margin-bottom: 10px;
 
@@ -1456,15 +1455,6 @@ headerbar {
       min-height: 16px;
       margin: 0;
       padding: 0;
-
-      &.appmenu {
-        &, &:active, &:checked {
-          background-color: transparent;
-          box-shadow: none;
-          background-image: -gtk-scaled(url("assets/setting-icon#{$con_asset_suffix}.png"),
-                                        url("assets/setting-icon#{$con_asset_suffix}@2.png"));
-        }
-      }
     }
   }
 
@@ -2582,11 +2572,6 @@ radio {
   &:only-child,
   menu menuitem & { margin: 0; }
 }
-
-//checkbutton > check,
-//radiobutton > radio {
-//  &:hover, &:active { }
-//}
 
 //
 // GtkScale
@@ -3927,35 +3912,6 @@ decoration {
 headerbar,
 .titlebar {
   button.titlebutton {
-    &.appmenu {
-      transition: background-color 0.1s $ease-out-quad,
-                  box-shadow 0.1s $ease-out-quad,
-                  background-image 0,
-                  background-size 0;
-
-      color: transparent;
-      background-image: -gtk-scaled(url("assets/setting#{$asset_suffix}.png"),
-                                    url("assets/setting#{$asset_suffix}@2.png"));
-      background-repeat: no-repeat;
-      background-position: center;
-
-      image { opacity: 0; } // Make menu button default icon invisible
-
-      &:active, &:checked {
-        transition: background-color 0.3s $ease-out-quad,
-                    box-shadow 0.3s $ease-out-quad,
-                    background-image 0,
-                    background-size 0;
-        background-image: -gtk-scaled(url("assets/setting-icon#{$asset_suffix}.png"),
-                                      url("assets/setting-icon#{$asset_suffix}@2.png"));
-      }
-
-      &:backdrop {
-        background-image: -gtk-scaled(url("assets/setting-icon#{$con_asset_suffix}.png"),
-                                      url("assets/setting-icon#{$con_asset_suffix}@2.png"));
-      }
-    }
-
     &.close, &.maximize, &.minimize {
       min-width: 16px;
       min-height: 16px;

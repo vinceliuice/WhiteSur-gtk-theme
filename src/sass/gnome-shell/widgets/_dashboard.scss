@@ -1,0 +1,361 @@
+#dash {
+  font-size: 1em;
+  color: $light_alt_fg_color;
+  background-color: $light_divider_color;
+  padding: 3px 0;
+  border: none;
+  border-left: 0px;
+  border-radius: 0px ($bd_radius * 1.5) ($bd_radius * 1.5) 0px;
+
+  &:rtl {
+    border-radius: ($bd_radius * 1.5)  0 0 ($bd_radius * 1.5);
+  }
+
+  .placeholder {
+    background-image: url("assets/dash-placeholder.svg");
+    background-size: contain;
+    height: 24px;
+  }
+
+  .empty-dash-drop-target {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.dash-item-container > StWidget {
+  padding: 3px 6px;
+}
+
+.dash-label { //osd tooltip
+  // min-height: 32px - 6px * 2;
+  border-radius: $bt_radius;
+  padding: 7px 8px;
+  color: $fg_color;
+  background-color: $base_color;
+  box-shadow: $shadow_2;
+  text-align: center;
+  border: none;
+  -x-offset: 8px;
+}
+
+// App Vault/Grid
+.icon-grid {
+  spacing: 30px;
+  -shell-grid-horizontal-item-size: 136px;
+  -shell-grid-vertical-item-size: 136px;
+
+  row-spacing: $container_padding * 6;
+  column-spacing: $container_padding * 6;
+  max-row-spacing: $container_padding * 12;
+  max-column-spacing: $container_padding * 12;
+
+  .overview-icon { icon-size: 96px; }
+}
+
+//.app-display { spacing: 20px; }
+
+.system-action-icon {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2); // FIXME: this should really have a highlight
+  background-color: $dark_bg_color;
+  color: white;
+  border-radius: 99px;
+  icon-size: 48px;
+}
+
+.app-view-controls { //favorties | all toggle container
+  width: 320px;
+  padding-bottom: 32px;
+  margin: 0 0;
+}
+.app-view-control { //favorties | all toggle button
+  padding: 0 16px;
+  margin: 0 0;
+  font-weight: bold;
+  color: $light_alt_fg_color;
+  background-color: rgba($light_alt_fg_color, 0.15);
+  &:hover {
+    color: $light_alt_fg_color;
+    background-color: rgba($light_alt_fg_color, 0.22);
+  }
+  &:active {
+    color: $light_alt_fg_color;
+    background-color: darken($primary_color, 3%);
+  }
+  &:checked {
+    color: $light_alt_fg_color;
+    background-color: $primary_color;
+    box-shadow: none;
+  }
+  &:first-child {
+    border-right-width: 0;
+    border-radius: $bt_radius 0 0 $bt_radius;
+  }
+  &:last-child {
+    border-radius: 0 $bt_radius $bt_radius 0;
+  }
+}
+
+//Icon tile
+.search-provider-icon,
+.list-search-result {
+  @extend %icon_tile;
+  &:focus, &:selected, &:hover {
+    background-color: $light_divider_color;
+    transition-duration: 0ms;
+  }
+  &:active, &:checked {
+    background-color: $light_track_color;
+    transition-duration: $longer_duration;
+  }
+}
+
+%app-well-app,
+.show-apps,
+.app-well-app,
+.grid-search-result {
+  & .overview-icon {
+    @extend %icon_tile;
+
+    &, & > StIcon {
+      icon-shadow: $panel_asset_shadow;
+    }
+  }
+
+  &:hover .overview-icon,
+  &:focus .overview-icon,
+  &:selected .overview-icon {
+    background-color: $light_divider_color;
+    transition-duration: 0ms;
+    border-image: none;
+    background-image: none;
+  }
+
+  &:active .overview-icon,
+  &:checked .overview-icon {
+    background-color: $light_track_color;
+    box-shadow: none;
+    transition-duration: $longer_duration;
+  }
+}
+
+.app-well-app-running-dot { //running apps indicator
+  width: 5px; height: 5px;
+  border-radius: 3px;
+  background-color: $light_alt_fg_color;
+  margin-bottom: 0;
+}
+
+StWidget.focused .app-well-app-running-dot {
+  background-color: $primary_color;
+}
+
+.app-well-app.app-folder > .overview-icon {
+  background-color: $light_divider_color;
+}
+
+.show-apps .show-apps-icon {
+  color: transparent;
+  background-image: url("assets/view-app-grid.svg");
+  background-size: contain;
+}
+
+.show-apps .overview-icon {
+  color: transparent;
+}
+
+.show-apps:hover .show-apps-icon,
+.show-apps:active .show-apps-icon,
+.show-apps:checked .show-apps-icon,
+.show-apps:focus .show-apps-icon {
+  color: transparent;
+  transition-duration: $longer_duration;
+}
+
+// Collections
+.app-folder-popup { //expanded collection
+  -arrow-border-radius: $bd_radius * 2;
+  -arrow-background-color: $light_divider_color;
+  -arrow-base: 0;
+  -arrow-rise: 12px;
+}
+.app-folder-popup-bin { padding: 5px; }
+.app-folder-icon {
+  padding: 5px;
+  spacing-rows: 5px;
+  spacing-columns: 5px;
+}
+
+.page-indicator {
+  padding: 15px 20px;
+
+  .page-indicator-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    margin: 0;
+    padding: 0;
+    background-image: none;
+    color: transparent;
+    border: none;
+    box-shadow: none;
+    background-color: $light_alt_disabled_fg_color;
+  }
+  &:hover .page-indicator-icon {
+    background-image: none;
+    background-color: $light_disabled_fg_color;
+  }
+  &:active .page-indicator-icon {
+    margin: 0;
+    padding: 0;
+    background-image: none;
+    color: transparent;
+    border: none;
+    box-shadow: none;
+    background-color: $light_alt_fg_color;
+  }
+  &:checked .page-indicator-icon {
+    background-image: none;
+    background-color: $light_alt_fg_color;
+    transition-duration: 0ms;
+  }
+  &:checked:active { background-image: none; }
+}
+
+.no-frequent-applications-label { @extend %status_text; }
+
+.overview-icon.overview-icon-with-label,
+.grid-search-result .overview-icon.overview-icon-with-label {
+  padding: 10px 8px 5px 8px;
+  spacing: 6px;
+
+  > StBoxLayout {
+    spacing: 6px;
+  }
+}
+
+// App Folders
+.app-folder {
+  background: none;
+  transition: $longer_transition;
+
+  .overview-icon {
+    background-color: $light_divider_color;
+    // padding: 16px;
+    border-radius: $bt_radius * 2;
+  }
+
+  &:hover .overview-icon  {
+    background-color: rgba(white, 0.2);
+  }
+}
+
+// expanded folder
+.app-folder-dialog {
+  border-radius: $bd_radius * 4;
+  border: none;
+  padding: 12px;
+  background-color: rgba(#242424, 0.95);
+
+  & .folder-name-container {
+    padding: 24px 36px 0;
+    spacing: 12px;
+
+    & .folder-name-label,
+    & .folder-name-entry {
+      font-size: 18pt;
+      font-weight: bold;
+    }
+
+    & .folder-name-entry {
+      @extend %search-entry;
+      width: 300px;
+    }
+
+    /* FIXME: this is to keep the label in sync with the entry */
+    & .folder-name-label { padding: 5px 7px; color: $light_alt_fg_color; }
+
+    & .edit-folder-button {
+      background-color: $light_divider_color;
+      color: $light_alt_fg_color;
+      border: none;
+
+      padding: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+
+      & > StIcon { icon-size: 16px }
+
+      &:hover { background-color: $light_divider_color; }
+      &:checked, &:active { background-color: $light_track_color; }
+    }
+  }
+
+  & .icon-grid {
+    row-spacing: $container_padding * 2;
+    column-spacing: $container_padding * 5;
+  }
+
+  & .page-indicators {
+    margin-bottom: 18px;
+
+    .page-indicator {
+      padding: 15px 12px;
+    }
+  }
+
+  & StButton#vhandle,
+  & StButton#vhandle:hover,
+  & StButton#vhandle:active { background-color: transparent; }
+}
+.app-folder-dialog-container {
+  padding: $container_padding;
+  width: 600px;
+  height: 600px;
+}
+
+.app-folder-icon {
+  padding: $container_padding;
+  spacing-rows: $container_padding;
+  spacing-columns: $container_padding;
+}
+
+// Rename popup for app folders
+.rename-folder-popup {
+  .rename-folder-popup-item {
+    spacing: $container_padding;
+    &:ltr, &:rtl { padding: 0 $container_padding * 2; }
+  }
+}
+
+// Workspace pager
+.workspace-thumbnails { //container ala dash
+  @extend %overview-panel;
+  visible-width: 32px; //amount visible before hover
+  spacing: 12px;
+  padding: 16px;
+  border-radius: $bt_radius;
+  margin: 6px;
+  // border-width: 0; //fixme: can't have non unoform borders :(
+  // &:rtl { border-radius: $bt_radius; }
+
+  .placeholder {
+    background-image: url("assets/dash-placeholder.svg");
+    background-size: contain;
+    height: 24px;
+  }
+}
+.workspace-thumbnail-indicator {
+  border: 2px solid $primary_color;
+  padding: 6px;
+  border-radius: 2px;
+}
+
+//Some hacks I don't even
+.all-apps,
+.search-display > StBoxLayout,
+.frequent-apps > StBoxLayout {
+  // horizontal padding to make sure scrollbars or dash don't overlap content
+  padding: 0px 88px 10px 88px;
+}

@@ -1,0 +1,36 @@
+.check-box {
+  * {
+    min-height: $medium_size - 8px * 2;
+    padding: 8px 0;
+  }
+
+  StBoxLayout { spacing: .8em; }
+  StBin {
+    width: 24px;
+    height: 24px;
+    padding: ($medium_size - 24px) / 2;
+    border-radius: 100px;
+    background-image: url("assets/checkbox-off.svg");
+  }
+  &:focus StBin {
+    background-image: url("assets/checkbox-off.svg");
+  }
+  &:hover StBin {
+    background-color: $divider_color;
+  }
+  &:active StBin {
+    background-color: $track_color;
+  }
+  &:checked StBin {
+    background-image: url("assets/checkbox.svg");
+  }
+  &:focus:checked StBin {
+    background-image: url("assets/checkbox.svg");
+  }
+  &:hover:checked StBin {
+    background-color: rgba($primary_color, $lower_opacity / 2);
+  }
+  &:active:checked StBin {
+    background-color: rgba($primary_color, $lower_opacity);
+  }
+}
