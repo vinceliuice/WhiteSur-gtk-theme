@@ -1,5 +1,10 @@
 #! /usr/bin/env bash
 
+# Check command availability
+function has_command() {
+  command -v $1 > /dev/null
+}
+
 if [ ! "$(which sassc 2> /dev/null)" ]; then
   echo sassc needs to be installed to generate the css.
   if has_command zypper; then
@@ -48,6 +53,9 @@ for color in "${_COLOR_VARIANTS[@]}"; do
       echo "==> Generating the gnome-shell${color}${trans}${alt}.css..."
     done
   done
+
+  sassc $SASSC_OPT src/main/gnome-shell/gdm3${color}.{scss,css}
+  echo "==> Generating the gdm3${color}.css..."
 done
 
 sassc $SASSC_OPT src/other/dash-to-dock/stylesheet.{scss,css}

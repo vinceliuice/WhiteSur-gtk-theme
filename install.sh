@@ -115,6 +115,7 @@ install() {
   mkdir -p                                                                              ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/assets/gnome-shell/icons                                             ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/main/gnome-shell/pad-osd.css                                         ${THEME_DIR}/gnome-shell
+  cp -r ${SRC_DIR}/main/gnome-shell/gdm3${color}.css                                    ${THEME_DIR}/gnome-shell/gdm3.css
   cp -r ${SRC_DIR}/main/gnome-shell/gnome-shell${color}${opacity}${alt}.css             ${THEME_DIR}/gnome-shell/gnome-shell.css
   cp -r ${SRC_DIR}/assets/gnome-shell/common-assets                                     ${THEME_DIR}/gnome-shell/assets
   cp -r ${SRC_DIR}/assets/gnome-shell/assets${color}/*.svg                              ${THEME_DIR}/gnome-shell/assets
@@ -184,6 +185,9 @@ ETC_NEW_THEME_FILE="/etc/alternatives/gdm3-theme.gresource"
 UBUNTU_THEME_FILE="/usr/share/gnome-shell/theme/ubuntu.css"
 UBUNTU_NEW_THEME_FILE="/usr/share/gnome-shell/theme/gnome-shell.css"
 UBUNTU_YARU_THEME_FILE="/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource"
+UBUNTU_JSON_FILE="/usr/share/gnome-shell/modes/ubuntu.json"
+YURA_JSON_FILE="/usr/share/gnome-shell/modes/yaru.json"
+UBUNTU_MODES_FOLDER="/usr/share/gnome-shell/modes"
 
 install_gdm() {
   local GDM_THEME_DIR="${1}/${2}${3}"
@@ -223,16 +227,19 @@ install_gdm() {
   fi
 
   # > Ubuntu 20.04
-  # if [[ -f "$UBUNTU_YARU_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
-  #   prompt -i "Installing Ubuntu GDM theme..."
-  #   cp -an "$UBUNTU_YARU_THEME_FILE" "$UBUNTU_YARU_THEME_FILE.bak"
-  #   cp -af "$GS_THEME_FILE" "$UBUNTU_YARU_THEME_FILE"
-  #   # cp -an "$ETC_NEW_THEME_FILE" "$ETC_NEW_THEME_FILE.bak"
-  #   # [[ -d "$SHELL_THEME_FOLDER/$THEME_NAME" ]] && rm -rf "$SHELL_THEME_FOLDER/$THEME_NAME" && mkdir -p "$SHELL_THEME_FOLDER/$THEME_NAME"
-  #   # cp -r "$GS_THEME_FILE" "$SHELL_THEME_FOLDER/$THEME_NAME"
-  #   # cd "$ETC_THEME_FOLDER"
-  #   # [[ -f "$ETC_NEW_THEME_FILE.bak" ]] && ln -sf "$SHELL_THEME_FOLDER/$THEME_NAME/gnome-shell-theme.gresource" gdm3-theme.gresource
-  # fi
+  if [[ -f "$UBUNTU_YARU_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
+    prompt -i "Installing Ubuntu GDM theme..."
+    cp -an "$UBUNTU_YARU_THEME_FILE" "$UBUNTU_YARU_THEME_FILE.bak"
+    cp -af "$GS_THEME_FILE" "$UBUNTU_YARU_THEME_FILE"
+    [[ -d "$UBUNTU_MODES_FOLDER" ]] && cp -an "$UBUNTU_MODES_FOLDER" "$UBUNTU_MODES_FOLDER"-bak
+    [[ -f "$UBUNTU_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$UBUNTU_JSON_FILE"
+    [[ -f "$YURA_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$YURA_JSON_FILE"
+    # cp -an "$ETC_NEW_THEME_FILE" "$ETC_NEW_THEME_FILE.bak"
+    # [[ -d "$SHELL_THEME_FOLDER/$THEME_NAME" ]] && rm -rf "$SHELL_THEME_FOLDER/$THEME_NAME" && mkdir -p "$SHELL_THEME_FOLDER/$THEME_NAME"
+    # cp -r "$GS_THEME_FILE" "$SHELL_THEME_FOLDER/$THEME_NAME"
+    # cd "$ETC_THEME_FOLDER"
+    # [[ -f "$ETC_NEW_THEME_FILE.bak" ]] && ln -sf "$SHELL_THEME_FOLDER/$THEME_NAME/gnome-shell-theme.gresource" gdm3-theme.gresource
+  fi
 }
 
 remove_theme() {
@@ -281,11 +288,12 @@ revert_gdm() {
   #   mv "$ETC_NEW_THEME_FILE.bak" "$ETC_NEW_THEME_FILE"
   #   [[ -d $SHELL_THEME_FOLDER/$THEME_NAME ]] && rm -rf $SHELL_THEME_FOLDER/$THEME_NAME
   # fi
-  # if [[ -f "$UBUNTU_YARU_THEME_FILE.bak" ]]; then
-  #   prompt -w "reverting Ubuntu GDM theme..."
-  #   rm -rf "$UBUNTU_YARU_THEME_FILE"
-  #   mv "$UBUNTU_YARU_THEME_FILE.bak" "$UBUNTU_YARU_THEME_FILE"
-  # fi
+  if [[ -f "$UBUNTU_YARU_THEME_FILE.bak" ]]; then
+    prompt -w "reverting Ubuntu GDM theme..."
+    rm -rf "$UBUNTU_YARU_THEME_FILE"
+    mv "$UBUNTU_YARU_THEME_FILE.bak" "$UBUNTU_YARU_THEME_FILE"
+    [[ -d "$UBUNTU_MODES_FOLDER"-bak ]] && rm -rf "$UBUNTU_MODES_FOLDER" && mv "$UBUNTU_MODES_FOLDER"-bak "$UBUNTU_MODES_FOLDER"
+  fi
 }
 
 install_dialog() {
