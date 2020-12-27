@@ -3942,6 +3942,10 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   background-color: rgba(241, 241, 241, 0.15);
 }
 
+#dashtodockContainer #dash {
+  background-color: rgba(241, 241, 241, 0.15);
+}
+
 #dashtodockContainer #dash .app-well-app-running-dot {
   background-color: rgba(0, 0, 0, 0.85);
 }

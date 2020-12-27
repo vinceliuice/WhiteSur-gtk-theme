@@ -100,6 +100,8 @@ $dash_radius: 18px;
   &.dashtodock #dash { background-color: $dash_panel_bg; }
 
   #dash { // default-mode
+    background-color: $dash_panel_bg;
+
     .app-well-app-running-dot {
       background-color: rgba($dash_panel_fg, 0.85);
     }

@@ -242,6 +242,18 @@ install_gdm() {
   fi
 }
 
+install_theme() {
+  for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
+    for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
+      for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
+        for icon in "${icons[@]-${ICON_VARIANTS[0]}}"; do
+          install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${alt}" "${icon}"
+        done
+      done
+    done
+  done
+}
+
 remove_theme() {
   for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
     for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
@@ -313,38 +325,29 @@ install_dialog() {
   fi
 }
 
-install_depends() {
-  if [ ! "$(which glib-compile-resources 2> /dev/null)" ]; then
-    prompt -w "\n 'glib2.0' needs to be installed for this shell"
-    if has_command apt; then
-      sudo apt install libglib2.0-dev-bin
-    elif has_command dnf; then
-      sudo dnf install -y glib2-devel
-    fi
-  fi
-}
-
-run_sidebar_dialog() {
+sidebar_dialog() {
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your nautilus sidebar size (default is 200px width):" 15 40 5 \
-      1 "200px" on  \
-      2 "220px" off \
-      3 "240px" off  \
-      4 "260px" off  \
-      5 "280px" off --output-fd 1 )
+      1 "220px" on \
+      2 "240px" off  \
+      3 "260px" off  \
+      4 "280px" off --output-fd 1 )
       case "$tui" in
-        1) sidebar_size="200px" ;;
-        2) sidebar_size="220px" ;;
-        3) sidebar_size="240px" ;;
-        4) sidebar_size="260px" ;;
-        5) sidebar_size="280px" ;;
+        1) sidebar_size="220px" ;;
+        2) sidebar_size="240px" ;;
+        3) sidebar_size="260px" ;;
+        4) sidebar_size="280px" ;;
         *) operation_canceled ;;
      esac
   fi
 }
 
-run_shell_dialog() {
+run_sidebar_dialog() {
+  install_dialog && sidebar_dialog && change_size && parse_sass
+}
+
+shell_dialog() {
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your panel transparency
@@ -375,7 +378,11 @@ run_shell_dialog() {
   fi
 }
 
-run_theme_dialog() {
+run_shell_dialog() {
+  install_dialog && shell_dialog && change_transparency && parse_sass
+}
+
+theme_dialog() {
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your theme color (default is Mac Blue):" 20 50 10 \
@@ -401,6 +408,10 @@ run_theme_dialog() {
   fi
 }
 
+run_theme_dialog() {
+  install_dialog && theme_dialog && change_theme_color && parse_sass
+}
+
 parse_sass() {
   cd ${REPO_DIR} && ./parse-sass.sh
 }
@@ -410,6 +421,13 @@ change_size() {
   cp -an _applications.scss _applications.scss.bak
   sed -i "/\$nautilus_sidebar_size/s/200px/${sidebar_size}/" _applications.scss
   prompt -w "Change nautilus sidebar size ..."
+}
+
+change_transparency() {
+  cd ${SRC_DIR}/sass
+  cp -an _colors.scss _colors.scss.bak
+  sed -i "/\$panel_opacity/s/0.16/${panel_trans}/" _colors.scss
+  prompt -w "Change panel transparency ..."
 }
 
 change_theme_color() {
@@ -511,13 +529,6 @@ restore_assets_files() {
   prompt -w "Restore assets files ..."
 }
 
-change_transparency() {
-  cd ${SRC_DIR}/sass
-  cp -an _colors.scss _colors.scss.bak
-  sed -i "/\$panel_opacity/s/0.16/${panel_trans}/" _colors.scss
-  prompt -w "Change panel transparency ..."
-}
-
 restore_applications_file() {
   cd ${SRC_DIR}/sass/gtk
   [[ -f _applications.scss.bak ]] && rm -rf _applications.scss
@@ -548,18 +559,6 @@ while [[ $# -gt 0 ]]; do
       ;;
     -g|--gdm)
       gdm='true'
-      shift 1
-      ;;
-    -s|--size)
-      size='true'
-      shift 1
-      ;;
-    -t|--theme)
-      theme='true'
-      shift 1
-      ;;
-    -p|--panel)
-      panel='true'
       shift 1
       ;;
     -r|--remove)
@@ -686,6 +685,169 @@ while [[ $# -gt 0 ]]; do
         esac
       done
       ;;
+    -t|--theme)
+      theme='true'
+      tdialog='true'
+      shift
+      for theme_color in "${@}"; do
+        case "${theme_color}" in
+          blue)
+            tdialog='false'
+            theme_color='#2E7CF7'
+            shift
+            ;;
+          purple)
+            tdialog='false'
+            theme_color='#9A57A3'
+            shift
+            ;;
+          pink)
+            tdialog='false'
+            theme_color='#E55E9C'
+            shift
+            ;;
+          red)
+            tdialog='false'
+            theme_color='#ED5F5D'
+            shift
+            ;;
+          orange)
+            tdialog='false'
+            theme_color='#E9873A'
+            shift
+            ;;
+          yellow)
+            tdialog='false'
+            theme_color='#F3BA4B'
+            shift
+            ;;
+          green)
+            theme_color='#79B757'
+            shift
+            ;;
+          grey)
+            tdialog='false'
+            theme_color='#8C8C8C'
+            shift
+            ;;
+          dialog)
+            run_theme_dialog
+            ;;
+          -*|--*)
+            break
+            ;;
+          *)
+            run_theme_dialog
+            ;;
+        esac
+      done
+      ;;
+    -s|--size)
+      size='true'
+      sdialog='true'
+      shift
+      for sidebar_size in "${@}"; do
+        case "${sidebar_size}" in
+          220px)
+            sdialog='false'
+            sidebar_size='220px'
+            shift
+            ;;
+          240px)
+            sdialog='false'
+            sidebar_size='240px'
+            shift
+            ;;
+          260px)
+            sdialog='false'
+            sidebar_size='260px'
+            shift
+            ;;
+          280px)
+            sdialog='false'
+            sidebar_size='280px'
+            shift
+            ;;
+          dialog)
+            run_sidebar_dialog
+            ;;
+          -*|--*)
+            break
+            ;;
+          *)
+            run_sidebar_dialog
+            ;;
+        esac
+      done
+      ;;
+    -p|--panel)
+      panel='true'
+      pdialog='true'
+      shift
+      for panel_trans in "${@}"; do
+        case "${panel_trans}" in
+          80%)
+            pdialog='false'
+            panel_trans='0.20'
+            shift
+            ;;
+          75%)
+            pdialog='false'
+            panel_trans='0.25'
+            shift
+            ;;
+          70%)
+            pdialog='false'
+            panel_trans='0.30'
+            shift
+            ;;
+          65%)
+            pdialog='false'
+            panel_trans='0.35'
+            shift
+            ;;
+          60%)
+            pdialog='false'
+            panel_trans='0.40'
+            shift
+            ;;
+          55%)
+            pdialog='false'
+            panel_trans='0.45'
+            shift
+            ;;
+          50%)
+            pdialog='false'
+            panel_trans='0.50'
+            shift
+            ;;
+          45%)
+            pdialog='false'
+            panel_trans='0.55'
+            shift
+            ;;
+          40%)
+            pdialog='false'
+            panel_trans='0.60'
+            shift
+            ;;
+          35%)
+            pdialog='false'
+            panel_trans='0.65'
+            shift
+            ;;
+          dialog)
+            run_shell_dialog
+            ;;
+          -*|--*)
+            break
+            ;;
+          *)
+            run_shell_dialog
+            ;;
+        esac
+      done
+      ;;
     -h|--help)
       usage
       exit 0
@@ -698,34 +860,40 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-install_theme() {
-  for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
-    for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
-      for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
-        for icon in "${icons[@]-${ICON_VARIANTS[0]}}"; do
-          install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${alt}" "${icon}"
-        done
-      done
-    done
-  done
-}
-
-install_depends
-
-if [[ "${size:-}" == 'true' ]]; then
-  install_dialog && run_sidebar_dialog
-
-  if [[ "$sidebar_size" != '200px' ]]; then
-    change_size && parse_sass
+if [ ! "$(which glib-compile-resources 2> /dev/null)" ]; then
+  prompt -w "\n 'glib2.0' needs to be installed for this shell"
+  if has_command apt; then
+    sudo apt install libglib2.0-dev-bin
+  elif has_command dnf; then
+    sudo dnf install -y glib2-devel
   fi
 fi
 
-if [[ "${theme:-}" == 'true' ]]; then
-  install_dialog && run_theme_dialog && change_theme_color && parse_sass
+if [[ "${panel:-}" == 'true' ]]; then
+  if [[ "${pdialog}" == 'false' ]]; then
+    change_transparency && parse_sass
+  else
+    run_shell_dialog
+  fi
+  notify-send "Finished" "Enjoy your new WhiteSur theme!" -i face-smile
 fi
 
-if [[ "${panel:-}" == 'true' ]]; then
-  install_dialog && run_shell_dialog && change_transparency && parse_sass
+if [[ "${size:-}" == 'true' ]]; then
+  if [[ "${sdialog}" == 'false' ]]; then
+    change_size && parse_sass
+  else
+    run_sidebar_dialog
+  fi
+  notify-send "Finished" "Enjoy your new WhiteSur theme!" -i face-smile
+fi
+
+if [[ "${theme:-}" == 'true' ]]; then
+  if [[ "${tdialog}" == 'false' ]]; then
+    change_theme_color && parse_sass
+  else
+    run_theme_dialog
+  fi
+  notify-send "Finished" "Enjoy your new WhiteSur theme!" -i face-smile
 fi
 
 if [[ "${gdm:-}" != 'true' && "${remove:-}" != 'true' ]]; then
@@ -755,8 +923,6 @@ fi
 if [[ -f "${SRC_DIR}"/assets/gtk-3.0/thumbnail.svg.bak ]]; then
   restore_assets_files
 fi
-
-notify-send "Finished" "Enjoy your new WhiteSur theme!" -i face-smile
 
 echo
 prompt -s Done.
