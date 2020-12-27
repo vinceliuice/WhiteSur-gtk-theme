@@ -964,10 +964,11 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
   border-radius: 8px 8px 0 0;
   border: none;
   box-shadow: none;
+  color: #424242;
   background-color: rgba(255, 255, 255, 0.75);
 }
 
-.popup-menu .popup-menu-item.selected:checked {
+.popup-menu .popup-menu-item.hover:checked, .popup-menu .popup-menu-item.selected:checked {
   color: white;
   background-color: #0860f2;
 }

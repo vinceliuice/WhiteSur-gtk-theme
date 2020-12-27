@@ -223,16 +223,16 @@ install_gdm() {
   fi
 
   # > Ubuntu 20.04
-  if [[ -f "$UBUNTU_YARU_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
-    prompt -i "Installing Ubuntu GDM theme..."
-    cp -an "$UBUNTU_YARU_THEME_FILE" "$UBUNTU_YARU_THEME_FILE.bak"
-    cp -af "$GS_THEME_FILE" "$UBUNTU_YARU_THEME_FILE"
-    # cp -an "$ETC_NEW_THEME_FILE" "$ETC_NEW_THEME_FILE.bak"
-    # [[ -d "$SHELL_THEME_FOLDER/$THEME_NAME" ]] && rm -rf "$SHELL_THEME_FOLDER/$THEME_NAME" && mkdir -p "$SHELL_THEME_FOLDER/$THEME_NAME"
-    # cp -r "$GS_THEME_FILE" "$SHELL_THEME_FOLDER/$THEME_NAME"
-    # cd "$ETC_THEME_FOLDER"
-    # [[ -f "$ETC_NEW_THEME_FILE.bak" ]] && ln -sf "$SHELL_THEME_FOLDER/$THEME_NAME/gnome-shell-theme.gresource" gdm3-theme.gresource
-  fi
+  # if [[ -f "$UBUNTU_YARU_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
+  #   prompt -i "Installing Ubuntu GDM theme..."
+  #   cp -an "$UBUNTU_YARU_THEME_FILE" "$UBUNTU_YARU_THEME_FILE.bak"
+  #   cp -af "$GS_THEME_FILE" "$UBUNTU_YARU_THEME_FILE"
+  #   # cp -an "$ETC_NEW_THEME_FILE" "$ETC_NEW_THEME_FILE.bak"
+  #   # [[ -d "$SHELL_THEME_FOLDER/$THEME_NAME" ]] && rm -rf "$SHELL_THEME_FOLDER/$THEME_NAME" && mkdir -p "$SHELL_THEME_FOLDER/$THEME_NAME"
+  #   # cp -r "$GS_THEME_FILE" "$SHELL_THEME_FOLDER/$THEME_NAME"
+  #   # cd "$ETC_THEME_FOLDER"
+  #   # [[ -f "$ETC_NEW_THEME_FILE.bak" ]] && ln -sf "$SHELL_THEME_FOLDER/$THEME_NAME/gnome-shell-theme.gresource" gdm3-theme.gresource
+  # fi
 }
 
 remove_theme() {
@@ -281,11 +281,11 @@ revert_gdm() {
   #   mv "$ETC_NEW_THEME_FILE.bak" "$ETC_NEW_THEME_FILE"
   #   [[ -d $SHELL_THEME_FOLDER/$THEME_NAME ]] && rm -rf $SHELL_THEME_FOLDER/$THEME_NAME
   # fi
-  if [[ -f "$UBUNTU_YARU_THEME_FILE.bak" ]]; then
-    prompt -w "reverting Ubuntu GDM theme..."
-    rm -rf "$UBUNTU_YARU_THEME_FILE"
-    mv "$UBUNTU_YARU_THEME_FILE.bak" "$UBUNTU_YARU_THEME_FILE"
-  fi
+  # if [[ -f "$UBUNTU_YARU_THEME_FILE.bak" ]]; then
+  #   prompt -w "reverting Ubuntu GDM theme..."
+  #   rm -rf "$UBUNTU_YARU_THEME_FILE"
+  #   mv "$UBUNTU_YARU_THEME_FILE.bak" "$UBUNTU_YARU_THEME_FILE"
+  # fi
 }
 
 install_dialog() {
