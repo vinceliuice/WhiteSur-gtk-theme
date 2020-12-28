@@ -407,15 +407,13 @@ parse_sass() {
 
 change_size() {
   cd ${SRC_DIR}/sass/gtk
-  cp -an _applications.scss _applications.scss.bak
-  sed -i "/\$nautilus_sidebar_size/s/200px/${sidebar_size}/" _applications.scss
+  sed -i.bak "/\$nautilus_sidebar_size/s/200px/${sidebar_size}/" _applications.scss
   prompt -w "Change nautilus sidebar size ..."
 }
 
 change_transparency() {
   cd ${SRC_DIR}/sass
-  cp -an _colors.scss _colors.scss.bak
-  sed -i "/\$panel_opacity/s/0.16/${panel_trans}/" _colors.scss
+  sed -i.bak "/\$panel_opacity/s/0.16/${panel_trans}/" _colors.scss
   prompt -w "Change panel transparency ..."
 }
 
@@ -423,56 +421,39 @@ change_theme_color() {
   notify-send "Notice" "It will take a few minutes to regenerate the assets files, please be patient!" -i face-wink
 
   cd ${SRC_DIR}/sass
-  cp -an _colors.scss _colors.scss.bak
-  sed -i "/\$selected_bg_color/s/#0860f2/${theme_color}/" _colors.scss
+  sed -i.bak "/\$selected_bg_color/s/#0860f2/${theme_color}/" _colors.scss
 
   cd ${SRC_DIR}/assets/gtk-3.0
-  cp -an thumbnail.svg thumbnail.svg.bak
   mv thumbnail-dark.png thumbnail-dark.png.bak
   mv thumbnail-light.png thumbnail-light.png.bak
-  sed -i "s/#0860f2/$theme_color/g" thumbnail.svg
+  sed -i.bak "s/#0860f2/$theme_color/g" thumbnail.svg
   ./render-thumbnails.sh
 
   cd ${SRC_DIR}/assets/gtk-3.0/common-assets
-  cp -an assets.svg assets.svg.bak
   mv assets assets-bak
-  sed -i "s/#0860f2/$theme_color/g" assets.svg
+  sed -i.bak "s/#0860f2/$theme_color/g" assets.svg
   ./render-assets.sh
 
   cd ${SRC_DIR}/assets/gnome-shell/common-assets
-  cp -an checkbox.svg checkbox.svg.bak
-  cp -an more-results.svg more-results.svg.bak
-  cp -an toggle-on.svg toggle-on.svg.bak
-  sed -i "s/#0860f2/$theme_color/g" {checkbox.svg,more-results.svg,toggle-on.svg}
+  sed -i.bak "s/#0860f2/$theme_color/g" {checkbox.svg,more-results.svg,toggle-on.svg}
 
   cd ${SRC_DIR}/main/gtk-2.0
-  cp -an gtkrc-dark gtkrc-dark.bak
-  cp -an gtkrc-light gtkrc-light.bak
-  sed -i "s/#0860f2/$theme_color/g" {gtkrc-dark,gtkrc-light}
+  sed -i.bak "s/#0860f2/$theme_color/g" {gtkrc-dark,gtkrc-light}
 
   cd ${SRC_DIR}/assets/gtk-2.0
-  cp -an assets-dark.svg assets-dark.svg.bak
-  cp -an assets-light.svg assets-light.svg.bak
   mv assets-dark assets-dark-bak
   mv assets-light assets-light-bak
-  sed -i "s/#0860f2/$theme_color/g" {assets-dark.svg,assets-light.svg}
+  sed -i.bak "s/#0860f2/$theme_color/g" {assets-dark.svg,assets-light.svg}
   ./render-assets.sh
 
   cd ${SRC_DIR}/assets/cinnamon
-  cp -an thumbnail.svg thumbnail.svg.bak
   mv thumbnail-dark.png thumbnail-dark.png.bak
   mv thumbnail-light.png thumbnail-light.png.bak
-  sed -i "s/#0860f2/$theme_color/g" thumbnail.svg
+  sed -i.bak "s/#0860f2/$theme_color/g" thumbnail.svg
   ./render-thumbnails.sh
 
   cd ${SRC_DIR}/assets/cinnamon/common-assets
-  cp -an checkbox.svg checkbox.svg.bak
-  cp -an radiobutton.svg radiobutton.svg.bak
-  cp -an add-workspace-active.svg add-workspace-active.svg.bak
-  cp -an menu-hover.svg menu-hover.svg.bak
-  cp -an toggle-on.svg toggle-on.svg.bak
-  cp -an corner-ripple.svg corner-ripple.svg.bak
-  sed -i "s/#0860f2/$theme_color/g" {checkbox.svg,radiobutton.svg,menu-hover.svg,add-workspace-active.svg,corner-ripple.svg,toggle-on.svg}
+  sed -i.bak "s/#0860f2/$theme_color/g" {checkbox.svg,radiobutton.svg,menu-hover.svg,add-workspace-active.svg,corner-ripple.svg,toggle-on.svg}
 
   prompt -w "Change theme color ..."
 }
