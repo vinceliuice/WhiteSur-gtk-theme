@@ -142,3 +142,36 @@
 .list-search-provider-content { spacing: 20px; }
 .search-provider-icon { padding: 15px; }
 
+
+// Window Cycler
+.cycler-highlight { border: 4px solid $primary_color; }
+
+// Workspace Switcher
+.workspace-switcher-group { padding: 8px; }
+
+.workspace-switcher-container {
+  @extend %osd-panel;
+}
+
+.workspace-switcher {
+  background: transparent;
+  border: 0px;
+  border-radius: 0px;
+  padding: 0px;
+  spacing: 8px;
+}
+
+.ws-switcher-active-up, .ws-switcher-active-down {
+  height: 48px;
+  background-color: $primary_color;
+  color: $light_alt_fg_color;
+  background-size: 32px;
+  border-radius: $bt_radius;
+}
+
+.ws-switcher-box {
+  height: 48px;
+  border: none;
+  background: $divider_color;
+  border-radius: $bt_radius;
+}

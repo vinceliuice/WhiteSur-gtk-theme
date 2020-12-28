@@ -87,7 +87,7 @@
 }
 
 
-@mixin entry($t, $fc: $primary_color, $bc: $entry_shell_bg) {
+@mixin entry($t, $fc: $primary_color, $tc: $fg_color, $bc: $entry_shell_bg) {
 //
 // entry
 //
@@ -121,22 +121,25 @@
     border-radius: 100px;
     border: none;
     box-shadow: none;
+    color: $tc;
   }
 
   @if $t == flat-hover {
     background-color: $bc;
     box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05);
+    color: $tc;
   }
 
   @if $t == flat-focus {
     border: none;
     background-color: rgba($bc, 0.2);
+    color: $tc;
   }
 
   @if $t == flat-insensitive {
     border: none;
-    color: $disabled_fg_color;
     background-color: rgba($bc, 0.05);
+    color: rgba($tc, 0.45);
   }
 }
 
@@ -238,7 +241,7 @@
 
   @if $t == flat-hover {
     color: if($tc != $light_fg_color, $fg_color, $light_fg_color);
-    background-color: if($tc != $light_fg_color, $divider_color, $light_divider_color);
+    background-color: $divider_color;
     border-color: transparent;
     box-shadow: $shadow_0;
     text-shadow: none;
@@ -247,7 +250,7 @@
 
   @if $t == flat-active {
     color: if($tc != $light_fg_color, $fg_color, $light_fg_color);
-    background-color: if($tc != $light_fg_color, $track_color, $light_track_color);
+    background-color: $track_color;
     border-color: transparent;
     box-shadow: $shadow_0;
     text-shadow: none;

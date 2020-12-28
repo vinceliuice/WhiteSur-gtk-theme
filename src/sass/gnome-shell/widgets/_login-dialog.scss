@@ -3,7 +3,8 @@
   max-width: 23em;
 }
 
-.login-dialog {
+.login-dialog,
+.unlock-dialog {
   //reset
   border: none;
   background-color: transparent;
@@ -14,26 +15,33 @@
     selected-color: white;
     padding: 4px 8px;
     min-height: $small_size;
-    @include entry(flat-normal);
-    &:focus { @include entry(flat-focus); }
-    &:insensitive { @include entry(flat-insensitive); }
     border-radius: $circular_radius;
+    caret-color: $light_fg_color;
+
+    @include entry(flat-normal, $tc: $light_fg_color);
+    &:focus { @include entry(flat-focus, $tc: $light_fg_color); }
+    &:insensitive { @include entry(flat-insensitive, $tc: $light_disabled_fg_color); }
+
+    StLabel.hint-text {
+      color: $light_disabled_fg_color;
+    }
   }
 
   .modal-dialog-button-box { spacing: 3px; }
 
   .modal-dialog-button {
     padding: 0 16px;
+    border: none;
     @include button(flat-normal, $tc: $light_fg_color);
-    &:hover,&:focus { @include button(flat-hover, $tc: $light_fg_color); }
+    &:hover, &:focus { @include button(flat-hover, $tc: $light_fg_color); }
     &:active { @include button(flat-active, $tc: $light_fg_color); }
-    &:insensitive { @include button(flat-insensitive, $tc: $light_fg_color); }
+    &:insensitive { @include button(flat-insensitive, $tc: $light_disabled_fg_color); }
 
     &:default {
-      @include button(normal, $c: $suggested_color, $tc: $light_fg_color);
-      &:hover,&:focus { @include button(hover, $c: $suggested_color, $tc: $light_fg_color); }
-      &:active { @include button(active, $c: $suggested_color, $tc: $light_fg_color); }
-      &:insensitive { @include button(insensitive, $c: $light_divider_color, $tc: $light_disabled_fg_color); }
+      @include button(normal, $tc: $light_fg_color);
+      &:hover, &:focus { @include button(hover, $tc: $light_fg_color); }
+      &:active { @include button(active, $tc: $light_fg_color); }
+      &:insensitive { @include button(insensitive, $tc: $light_disabled_fg_color); }
     }
   }
 
@@ -103,16 +111,33 @@
   border-radius: $mn_radius;
   padding: 6px;
   color: $light_alt_fg_color;
+
   &:ltr .user-widget { padding-right: 1em; }
   &:rtl .user-widget { padding-left: 1em; }
-  &:hover { background-color: $light_divider_color; color: $light_alt_fg_color; }
-  &:active { background-color: $light_track_color; color: $light_alt_fg_color; }
+
+  &:focus {
+    background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.03)) !important;
+
+    // .login-dialog-timed-login-indicator {
+    //   background-color: $track_color;
+    // }
+  }
+
+  &:hover, &:focus:hover {
+    background-color: $divider_color !important;
+    color: $light_alt_fg_color;
+  }
+
+  &:active, &:focus:active {
+    background-color: $track_color !important;
+    color: $light_alt_fg_color;
+  }
+
   .login-dialog-timed-login-indicator {
     height: 2px;
     margin: 6px 0 0 0;
-    background-color: $light_alt_fg_color;
+    background-color: $visit_color !important;
   }
-  &:focus .login-dialog-timed-login-indicator { background-color: $light_alt_fg_color; }
 }
 
 // .login-dialog-username,
@@ -125,7 +150,8 @@
   background-size: contain;
   color: $light_alt_fg_color;
   border-radius: $circular_radius;
-  border: 2px $light_alt_fg_color;
+  border: none;
+  box-shadow: 0 3px 8px rgba(black, 0.25);
 
   &:hover {
     color: $light_fg_color;

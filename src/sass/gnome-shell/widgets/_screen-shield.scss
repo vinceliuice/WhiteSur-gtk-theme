@@ -100,6 +100,7 @@
   spacing: 6px;
   width: 23em;
   background-color: transparent;
+
   .summary-notification-stack-scrollview {
     padding-top: 0;
     padding-bottom: 0;
@@ -124,8 +125,8 @@
 .unlock-dialog-notification-count-text {
   weight: bold;
   padding: 0 6px;
-  color: $dark_sidebar_bg;
-  background-color: $light_alt_fg_color;
+  color: white;
+  background-color: $primary_color;
   border-radius: 99px;
   margin-right: 12px;
 }

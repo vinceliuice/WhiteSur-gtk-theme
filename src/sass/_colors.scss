@@ -10,16 +10,16 @@ $fg_color:                          if($variant == 'light', #242424, #dedede);
 $alt_fg_color:                      if($variant == 'light', #424242, #afafaf);
 $hint_fg_color:                     if($variant == 'light', #565656, #999999);
 
-$track_color:                       if($variant == 'light', rgba(black, 0.20), rgba(white, 0.10));
-$visit_color:                       if($variant == 'light', rgba(black, 0.35), rgba(white, 0.08));
-$divider_color:                     if($variant == 'light', rgba(black, 0.12), rgba(white, 0.06));
+$track_color:                       if($variant == 'light', rgba(black, 0.20), rgba(white, 0.16));
+$visit_color:                       if($variant == 'light', rgba(black, 0.16), rgba(white, 0.12));
+$divider_color:                     if($variant == 'light', rgba(black, 0.12), rgba(white, 0.1));
 
 $light_fg_color:                    white;
 $light_alt_fg_color:                rgba(white, 0.85);
 $light_hint_fg_color:               rgba(white, 0.50);
 $light_disabled_fg_color:           rgba(white, 0.45);
 $light_alt_disabled_fg_color:       rgba(white, 0.35);
-$light_track_color:                 rgba(white, 0.30);
+$light_track_color:                 rgba(white, 0.28);
 $light_divider_color:               rgba(white, 0.15);
 
 $selected_fg_color:                 $light_fg_color;
