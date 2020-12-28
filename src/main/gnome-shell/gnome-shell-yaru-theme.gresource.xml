@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/shell/theme">
+    <file>assets/calendar-arrow-left.svg</file>
+    <file>assets/calendar-arrow-right.svg</file>
+    <file>assets/calendar-today.svg</file>
+    <file>assets/checkbox.svg</file>
+    <file>assets/checkbox-off.svg</file>
+    <file>assets/dash-placeholder.svg</file>
+    <file>assets/more-results.svg</file>
+    <file>assets/noise-texture.svg</file>
+    <file>assets/toggle-off.svg</file>
+    <file>assets/toggle-on.svg</file>
+    <file>assets/window-close.svg</file>
+    <file>assets/window-close-hover.svg</file>
+    <file>assets/window-close-active.svg</file>
+    <file>assets/activities.svg</file>
+    <file>assets/view-app-grid.svg</file>
+    <file>assets/background.jpg</file>
+    <file>icons/scalable/actions/color-pick.svg</file>
+    <file>icons/scalable/status/eye-not-looking-symbolic.svg</file>
+    <file>icons/scalable/status/eye-open-negative-filled-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-caps-lock-filled-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-enter-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-hide-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-layout-filled-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-shift-filled-symbolic.svg</file>
+    <file>icons/scalable/status/message-indicator-symbolic.svg</file>
+    <file>icons/scalable/actions/pointer-double-click-symbolic.svg</file>
+    <file>icons/scalable/actions/pointer-drag-symbolic.svg</file>
+    <file>icons/scalable/actions/pointer-primary-click-symbolic.svg</file>
+    <file>icons/scalable/actions/pointer-secondary-click-symbolic.svg</file>
+    <file>Yaru/gnome-shell.css</file>
+    <file>gdm3.css</file>
+    <file>pad-osd.css</file>
+    <file>no-events.svg</file>
+    <file>no-notifications.svg</file>
+    <file>process-working.svg</file>
+  </gresource>
+</gresources>

@@ -213,6 +213,7 @@ UBUNTU_MODES_FOLDER="/usr/share/gnome-shell/modes"
 
 install_gdm() {
   local GDM_THEME_DIR="${1}/${2}${3}"
+  local YARU_GDM_THEME_DIR="$SHELL_THEME_FOLDER/Yaru/${2}${3}"
 
   echo
   prompt -i "Installing ${2}${3} gdm theme..."
@@ -252,10 +253,32 @@ install_gdm() {
   if [[ -f "$UBUNTU_YARU_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
     prompt -i "Installing Ubuntu GDM theme..."
     cp -an "$UBUNTU_YARU_THEME_FILE" "$UBUNTU_YARU_THEME_FILE.bak"
-    cp -af "$GS_THEME_FILE" "$UBUNTU_YARU_THEME_FILE"
-    [[ -d "$UBUNTU_MODES_FOLDER" ]] && cp -an "$UBUNTU_MODES_FOLDER" "$UBUNTU_MODES_FOLDER"-bak
-    [[ -f "$UBUNTU_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$UBUNTU_JSON_FILE"
-    [[ -f "$YURA_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$YURA_JSON_FILE"
+    rm -rf "$UBUNTU_YARU_THEME_FILE"
+
+    mkdir -p                                                                              ${YARU_GDM_THEME_DIR}/gnome-shell
+    mkdir -p                                                                              ${YARU_GDM_THEME_DIR}/gnome-shell/Yaru
+    cp -r ${SRC_DIR}/assets/gnome-shell/icons                                             ${YARU_GDM_THEME_DIR}/gnome-shell
+    cp -r ${SRC_DIR}/main/gnome-shell/pad-osd.css                                         ${YARU_GDM_THEME_DIR}/gnome-shell
+    cp -r ${SRC_DIR}/main/gnome-shell/gdm3${color}.css                                    ${YARU_GDM_THEME_DIR}/gnome-shell/gdm3.css
+    cp -r ${SRC_DIR}/main/gnome-shell/gnome-shell${color}.css                             ${YARU_GDM_THEME_DIR}/gnome-shell/Yaru/gnome-shell.css
+    cp -r ${SRC_DIR}/assets/gnome-shell/common-assets                                     ${YARU_GDM_THEME_DIR}/gnome-shell/assets
+    cp -r ${SRC_DIR}/assets/gnome-shell/assets${color}/*.svg                              ${YARU_GDM_THEME_DIR}/gnome-shell/assets
+    cp -r ${SRC_DIR}/assets/gnome-shell/activities/activities.svg                         ${YARU_GDM_THEME_DIR}/gnome-shell/assets
+
+    cd "${YARU_GDM_THEME_DIR}/gnome-shell"
+    mv -f assets/no-events.svg no-events.svg
+    mv -f assets/process-working.svg process-working.svg
+    mv -f assets/no-notifications.svg no-notifications.svg
+
+    glib-compile-resources \
+      --sourcedir="$YARU_GDM_THEME_DIR/gnome-shell" \
+      --target="$UBUNTU_YARU_THEME_FILE" \
+      "${SRC_DIR}/main/gnome-shell/gnome-shell-yaru-theme.gresource.xml"
+
+    rm -rf ${YARU_GDM_THEME_DIR}
+    # [[ -d "$UBUNTU_MODES_FOLDER" ]] && cp -an "$UBUNTU_MODES_FOLDER" "$UBUNTU_MODES_FOLDER"-bak
+    # [[ -f "$UBUNTU_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$UBUNTU_JSON_FILE"
+    # [[ -f "$YURA_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$YURA_JSON_FILE"
   fi
 }
 
