@@ -2172,6 +2172,10 @@ window.background.csd {
         border-radius: $wm_radius;
       }
     }
+
+    > paned.horizontal > box.vertical > scrolledwindow {
+      > treeview.view:not(:hover):not(:selected) { background-color: transparent; }
+    }
   }
 
   evview.view.content-view {

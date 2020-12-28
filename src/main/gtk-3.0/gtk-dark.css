@@ -6589,6 +6589,10 @@ window.background.csd > box.vertical > scrolledwindow > iconview.view.content-vi
   border-radius: 12px;
 }
 
+window.background.csd > box.vertical > paned.horizontal > box.vertical > scrolledwindow > treeview.view:not(:hover):not(:selected) {
+  background-color: transparent;
+}
+
 window.background.csd evview.view.content-view {
   background-color: transparent;
   border-radius: 0 0 12px 12px;
