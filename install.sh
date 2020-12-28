@@ -115,7 +115,6 @@ install() {
   mkdir -p                                                                              ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/assets/gnome-shell/icons                                             ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/main/gnome-shell/pad-osd.css                                         ${THEME_DIR}/gnome-shell
-  cp -r ${SRC_DIR}/main/gnome-shell/gdm3${color}.css                                    ${THEME_DIR}/gnome-shell/gdm3.css
   cp -r ${SRC_DIR}/main/gnome-shell/gnome-shell${color}${opacity}${alt}.css             ${THEME_DIR}/gnome-shell/gnome-shell.css
   cp -r ${SRC_DIR}/assets/gnome-shell/common-assets                                     ${THEME_DIR}/gnome-shell/assets
   cp -r ${SRC_DIR}/assets/gnome-shell/assets${color}/*.svg                              ${THEME_DIR}/gnome-shell/assets
@@ -250,32 +249,33 @@ install_gdm() {
   fi
 
   # > Ubuntu 20.04
-  if [[ -f "$UBUNTU_YARU_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
+  if [[ -d "$SHELL_THEME_FOLDER/Yaru" && -f "$GS_THEME_FILE.bak" ]]; then
     prompt -i "Installing Ubuntu GDM theme..."
     cp -an "$UBUNTU_YARU_THEME_FILE" "$UBUNTU_YARU_THEME_FILE.bak"
     rm -rf "$UBUNTU_YARU_THEME_FILE"
+    rm -rf "$YARU_GDM_THEME_DIR" && mkdir -p "$YARU_GDM_THEME_DIR"
 
-    mkdir -p                                                                              ${YARU_GDM_THEME_DIR}/gnome-shell
-    mkdir -p                                                                              ${YARU_GDM_THEME_DIR}/gnome-shell/Yaru
-    cp -r ${SRC_DIR}/assets/gnome-shell/icons                                             ${YARU_GDM_THEME_DIR}/gnome-shell
-    cp -r ${SRC_DIR}/main/gnome-shell/pad-osd.css                                         ${YARU_GDM_THEME_DIR}/gnome-shell
-    cp -r ${SRC_DIR}/main/gnome-shell/gdm3${color}.css                                    ${YARU_GDM_THEME_DIR}/gnome-shell/gdm3.css
-    cp -r ${SRC_DIR}/main/gnome-shell/gnome-shell${color}.css                             ${YARU_GDM_THEME_DIR}/gnome-shell/Yaru/gnome-shell.css
-    cp -r ${SRC_DIR}/assets/gnome-shell/common-assets                                     ${YARU_GDM_THEME_DIR}/gnome-shell/assets
-    cp -r ${SRC_DIR}/assets/gnome-shell/assets${color}/*.svg                              ${YARU_GDM_THEME_DIR}/gnome-shell/assets
-    cp -r ${SRC_DIR}/assets/gnome-shell/activities/activities.svg                         ${YARU_GDM_THEME_DIR}/gnome-shell/assets
+    mkdir -p                                                                              "$YARU_GDM_THEME_DIR"/gnome-shell
+    mkdir -p                                                                              "$YARU_GDM_THEME_DIR"/gnome-shell/Yaru
+    cp -r "$SRC_DIR"/assets/gnome-shell/icons                                             "$YARU_GDM_THEME_DIR"/gnome-shell
+    cp -r "$SRC_DIR"/main/gnome-shell/pad-osd.css                                         "$YARU_GDM_THEME_DIR"/gnome-shell
+    cp -r "$SRC_DIR"/main/gnome-shell/gdm3${color}.css                                    "$YARU_GDM_THEME_DIR"/gnome-shell/gdm3.css
+    cp -r "$SRC_DIR"/main/gnome-shell/gnome-shell${color}.css                             "$YARU_GDM_THEME_DIR"/gnome-shell/Yaru/gnome-shell.css
+    cp -r "$SRC_DIR"/assets/gnome-shell/common-assets                                     "$YARU_GDM_THEME_DIR"/gnome-shell/assets
+    cp -r "$SRC_DIR"/assets/gnome-shell/assets${color}/*.svg                              "$YARU_GDM_THEME_DIR"/gnome-shell/assets
+    cp -r "$SRC_DIR"/assets/gnome-shell/activities/activities.svg                         "$YARU_GDM_THEME_DIR"/gnome-shell/assets
 
-    cd "${YARU_GDM_THEME_DIR}/gnome-shell"
+    cd "$YARU_GDM_THEME_DIR"/gnome-shell
     mv -f assets/no-events.svg no-events.svg
     mv -f assets/process-working.svg process-working.svg
     mv -f assets/no-notifications.svg no-notifications.svg
 
     glib-compile-resources \
-      --sourcedir="$YARU_GDM_THEME_DIR/gnome-shell" \
+      --sourcedir="$YARU_GDM_THEME_DIR"/gnome-shell \
       --target="$UBUNTU_YARU_THEME_FILE" \
-      "${SRC_DIR}/main/gnome-shell/gnome-shell-yaru-theme.gresource.xml"
+      "$SRC_DIR"/main/gnome-shell/gnome-shell-yaru-theme.gresource.xml
 
-    rm -rf ${YARU_GDM_THEME_DIR}
+    rm -rf "$YARU_GDM_THEME_DIR"
     # [[ -d "$UBUNTU_MODES_FOLDER" ]] && cp -an "$UBUNTU_MODES_FOLDER" "$UBUNTU_MODES_FOLDER"-bak
     # [[ -f "$UBUNTU_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$UBUNTU_JSON_FILE"
     # [[ -f "$YURA_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$YURA_JSON_FILE"
