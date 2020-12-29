@@ -52,14 +52,13 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 |-i, --icon           | Activities icon variant(s) **[standard/normal/gnome/ubuntu/arch/manjaro/fedora/debian/void]** (Default: standard variant)|
 |-g, --gdm            | Install GDM theme, you should run this with sudo!|
 |-r, --remove         | Remove theme, this will remove all installed themes!|
+|-dialog, --dialog    | Run terminal dialog, this will Run terminal dialog to install themes!|
 |-h, --help           | Show this help|
 
 ### <p align="center" > 1. Change theme accent color </p>
 If you want to change theme accent! (Default color is blue)
 then you can run:
 ```bash
-./install.sh -t        # With no color options will run a terminal dialog to install it
-
 ./install.sh -t green  # Install green accent color version
 ```
 ![1](pictures/install-tip-01.png)
@@ -81,8 +80,6 @@ If you want to change nautilus sidebar width size! (Default size is 200px)
 (Nautilus cannot change the structure of the sidebar, so I added a picture as a background to achieve the effect of bigsur)
 then you can run:
 ```bash
-./install.sh -s        # With no size options will run a terminal dialog to install it
-
 ./install.sh -s 260    # Install 260px width version
 ```
 ![3](pictures/install-tip-03.png)

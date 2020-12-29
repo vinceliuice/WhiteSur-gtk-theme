@@ -210,8 +210,6 @@ install_customize_theme() {
       done
     done
   done
-
-  parse_sass
 }
 
 remove_theme() {
@@ -227,29 +225,17 @@ remove_theme() {
 customize_theme() {
   # Change gnome-shell panel transparency
   if [[ "${panel:-}" == 'true' && "${panel_opacity:-}" != 'default' ]]; then
-    if [[ "${pdialog}" == 'false' ]]; then
-      change_transparency
-    else
-      run_shell_dialog
-    fi
+    change_transparency
   fi
 
   # Change nautilus sibarbar size
   if [[ "${size:-}" == 'true' && "${sidebar_size:-}" != 'default' ]]; then
-    if [[ "${sdialog}" == 'false' ]]; then
-      change_size
-    else
-      run_sidebar_dialog
-    fi
+    change_size
   fi
 
   # Change accent color
   if [[ "${theme:-}" == 'true' && "${theme_color:-}" != 'default' ]]; then
-    if [[ "${tdialog}" == 'false' ]]; then
-      change_theme_color
-    else
-      run_theme_dialog
-    fi
+    change_theme_color
   fi
 }
 
@@ -393,62 +379,12 @@ install_dialog() {
   fi
 }
 
-sidebar_dialog() {
-  if [[ -x /usr/bin/dialog ]]; then
-    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-    --radiolist "Choose your nautilus sidebar size (default is 200px width):" 15 40 5 \
-      1 "220px" on  \
-      2 "240px" off \
-      3 "260px" off \
-      4 "280px" off --output-fd 1 )
-      case "$tui" in
-        1) sidebar_size="220" ;;
-        2) sidebar_size="240" ;;
-        3) sidebar_size="260" ;;
-        4) sidebar_size="280" ;;
-        *) operation_canceled ;;
-     esac
-  fi
-}
-
-run_sidebar_dialog() {
-  install_dialog && sidebar_dialog && change_size
-}
-
-shell_dialog() {
-  if [[ -x /usr/bin/dialog ]]; then
-    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-    --radiolist "Choose your panel background opacity
-                 (default is 0.16, value more smaller panel more transparency!):" 20 50 10 \
-      1 "0.25" on  \
-      2 "0.35" off \
-      3 "0.45" off \
-      4 "0.55" off \
-      5 "0.65" off \
-      6 "0.75" off \
-      7 "0.85" off --output-fd 1 )
-      case "$tui" in
-        1) panel_opacity="25" ;;
-        2) panel_opacity="35" ;;
-        3) panel_opacity="45" ;;
-        4) panel_opacity="55" ;;
-        5) panel_opacity="65" ;;
-        6) panel_opacity="75" ;;
-        7) panel_opacity="85" ;;
-        *) operation_canceled ;;
-     esac
-  fi
-}
-
-run_shell_dialog() {
-  install_dialog && shell_dialog && change_transparency
-}
-
-theme_dialog() {
+customize_theme_dialogs() {
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your theme color (default is Mac Blue):" 20 50 10 \
-      1 "Blue"   on  \
+      0 "default" on \
+      1 "Blue"   off \
       2 "Purple" off \
       3 "Pink"   off \
       4 "Red"    off \
@@ -457,6 +393,7 @@ theme_dialog() {
       7 "Green"  off \
       8 "Grey"   off --output-fd 1 )
       case "$tui" in
+        0) theme_color="default" ;;
         1) theme_color="blue"   ;;
         2) theme_color="purple" ;;
         3) theme_color="pink"   ;;
@@ -466,12 +403,51 @@ theme_dialog() {
         7) theme_color="green"  ;;
         8) theme_color="grey"   ;;
         *) operation_canceled ;;
-     esac
+      esac
+
+    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
+    --radiolist "Choose your panel background opacity
+                (default is 0.16, value more smaller panel more transparency!):" 20 50 10 \
+      0 "default" on  \
+      1 "0.25" off  \
+      2 "0.35" off \
+      3 "0.45" off \
+      4 "0.55" off \
+      5 "0.65" off \
+      6 "0.75" off \
+      7 "0.85" off --output-fd 1 )
+      case "$tui" in
+        0) panel_opacity="default" ;;
+        1) panel_opacity="25" ;;
+        2) panel_opacity="35" ;;
+        3) panel_opacity="45" ;;
+        4) panel_opacity="55" ;;
+        5) panel_opacity="65" ;;
+        6) panel_opacity="75" ;;
+        7) panel_opacity="85" ;;
+        *) operation_canceled ;;
+      esac
+
+    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
+    --radiolist "Choose your nautilus sidebar size (default is 200px width):" 15 40 5 \
+      0 "default" on \
+      1 "220px" off \
+      2 "240px" off \
+      3 "260px" off \
+      4 "280px" off --output-fd 1 )
+      case "$tui" in
+        0) sidebar_size="default" ;;
+        1) sidebar_size="220" ;;
+        2) sidebar_size="240" ;;
+        3) sidebar_size="260" ;;
+        4) sidebar_size="280" ;;
+        *) operation_canceled ;;
+      esac
   fi
 }
 
-run_theme_dialog() {
-  install_dialog && theme_dialog && change_theme_color
+run_customize_theme_dialogs() {
+  install_dialog && customize_theme_dialogs && change_theme_color && change_transparency && change_size && parse_sass
 }
 
 parse_sass() {
@@ -479,15 +455,19 @@ parse_sass() {
 }
 
 change_size() {
-  cd ${SRC_DIR}/sass/gtk
-  sed -i.bak "/\$nautilus_sidebar_size/s/sidebar_size_default/sidebar_size_${sidebar_size}/" _applications.scss
-  prompt -w "Change nautilus sidebar size ..."
+  if [[ "${sidebar_size:-}" != 'default' ]]; then
+    cd ${SRC_DIR}/sass/gtk
+    sed -i.bak "/\$nautilus_sidebar_size/s/sidebar_size_default/sidebar_size_${sidebar_size}/" _applications.scss
+    prompt -w "Change nautilus sidebar size ..."
+  fi
 }
 
 change_transparency() {
-  cd ${SRC_DIR}/sass
-  sed -i.bak "/\$panel_opacity/s/0.16/0.${panel_opacity}/" _variables.scss
-  prompt -w "Change panel transparency ..."
+  if [[ "${panel_opacity:-}" != 'default' ]]; then
+    cd ${SRC_DIR}/sass
+    sed -i.bak "/\$panel_opacity/s/0.16/0.${panel_opacity}/" _variables.scss
+    prompt -w "Change panel transparency ..."
+  fi
 }
 
 change_theme_color() {
@@ -514,85 +494,99 @@ change_theme_color() {
     local accent="#79B757"
   elif [[ ${theme_color} == 'grey' ]]; then
     local accent="#8C8C8C"
+  elif [[ ${theme_color} == 'default' ]]; then
+    local accent="#0860F2"
   else
     prompt -i "\n Run ./install.sh -h for help or install dialog"
     prompt -i "\n Run ./install.sh again!"
     exit 0
   fi
 
-  cd ${SRC_DIR}/assets/gtk-3.0
-  mv -f thumbnail-dark.png thumbnail-dark.png.bak
-  mv -f thumbnail-light.png thumbnail-light.png.bak
-  sed -i.bak "s/#0860f2/${accent}/g" thumbnail.svg
-  ./render-thumbnails.sh
+  if [[ "${theme_color:-}" != 'default' ]]; then
+    cd ${SRC_DIR}/assets/gtk-3.0
+    mv -f thumbnail-dark.png thumbnail-dark.png.bak
+    mv -f thumbnail-light.png thumbnail-light.png.bak
+    sed -i.bak "s/#0860f2/${accent}/g" thumbnail.svg
+    ./render-thumbnails.sh
 
-  cd ${SRC_DIR}/assets/gtk-3.0/common-assets
-  mv -f assets assets-bak
-  sed -i.bak "s/#0860f2/${accent}/g" assets.svg
-  ./render-assets.sh
+    cd ${SRC_DIR}/assets/gtk-3.0/common-assets
+    cp -an assets assets-bak
+    sed -i.bak "s/#0860f2/${accent}/g" assets.svg
+    ./render-assets.sh
 
-  cd ${SRC_DIR}/assets/gnome-shell/common-assets
-  sed -i.bak "s/#0860f2/${accent}/g" {checkbox.svg,more-results.svg,toggle-on.svg}
+    cd ${SRC_DIR}/assets/gnome-shell/common-assets
+    sed -i.bak "s/#0860f2/${accent}/g" {checkbox.svg,more-results.svg,toggle-on.svg}
 
-  cd ${SRC_DIR}/main/gtk-2.0
-  sed -i.bak "s/#0860f2/${accent}/g" {gtkrc-dark,gtkrc-light}
+    cd ${SRC_DIR}/main/gtk-2.0
+    sed -i.bak "s/#0860f2/${accent}/g" {gtkrc-dark,gtkrc-light}
 
-  cd ${SRC_DIR}/assets/gtk-2.0
-  mv -f assets-dark assets-dark-bak
-  mv -f assets-light assets-light-bak
-  sed -i.bak "s/#0860f2/${accent}/g" {assets-dark.svg,assets-light.svg}
-  ./render-assets.sh
+    cd ${SRC_DIR}/assets/gtk-2.0
+    cp -an assets-dark assets-dark-bak
+    cp -an assets-light assets-light-bak
+    sed -i.bak "s/#0860f2/${accent}/g" {assets-dark.svg,assets-light.svg}
+    ./render-assets.sh
 
-  cd ${SRC_DIR}/assets/cinnamon
-  mv -f thumbnail-dark.png thumbnail-dark.png.bak
-  mv -f thumbnail-light.png thumbnail-light.png.bak
-  sed -i.bak "s/#0860f2/${accent}/g" thumbnail.svg
-  ./render-thumbnails.sh
+    cd ${SRC_DIR}/assets/cinnamon
+    mv -f thumbnail-dark.png thumbnail-dark.png.bak
+    mv -f thumbnail-light.png thumbnail-light.png.bak
+    sed -i.bak "s/#0860f2/${accent}/g" thumbnail.svg
+    ./render-thumbnails.sh
 
-  cd ${SRC_DIR}/assets/cinnamon/common-assets
-  sed -i.bak "s/#0860f2/${accent}/g" {checkbox.svg,radiobutton.svg,menu-hover.svg,add-workspace-active.svg,corner-ripple.svg,toggle-on.svg}
+    cd ${SRC_DIR}/assets/cinnamon/common-assets
+    sed -i.bak "s/#0860f2/${accent}/g" {checkbox.svg,radiobutton.svg,menu-hover.svg,add-workspace-active.svg,corner-ripple.svg,toggle-on.svg}
 
-  prompt -w "Change theme color ..."
+    prompt -w "Change theme color ..."
+  fi
 }
 
 restore_assets_files() {
   echo "  restore gtk-3.0 thumbnail files"
-  cd ${SRC_DIR}/assets/gtk-3.0
-  mv -f thumbnail.svg.bak thumbnail.svg
-  mv -f thumbnail-dark.png.bak thumbnail-dark.png
-  mv -f thumbnail-light.png.bak thumbnail-light.png
+  mv -f "$SRC_DIR/assets/gtk-3.0/thumbnail.svg.bak" "$SRC_DIR/assets/gtk-3.0/thumbnail.svg"
+  mv -f "$SRC_DIR/assets/gtk-3.0/thumbnail-dark.png.bak" "$SRC_DIR/assets/gtk-3.0/thumbnail-dark.png"
+  mv -f "$SRC_DIR/assets/gtk-3.0/thumbnail-light.png.bak" "$SRC_DIR/assets/gtk-3.0/thumbnail-light.png"
 
   echo "  restore gtk-3.0 assets files"
-  cd ${SRC_DIR}/assets/gtk-3.0/common-assets
-  mv -f assets.svg.bak assets.svg
-  [[ -d assets-bak ]] && rm -rf assets && mv -f assets-bak assets
+  mv -f "$SRC_DIR/assets/gtk-3.0/common-assets/assets.svg.bak" "$SRC_DIR/assets/gtk-3.0/common-assets/assets.svg"
 
-  echo "  restore gnome-shell assets files"
-  cd ${SRC_DIR}/assets/gnome-shell/common-assets
+  if [[ -d "$SRC_DIR/assets/gtk-3.0/common-assets/assets-bak" ]]; then
+    rm -rf "$SRC_DIR/assets/gtk-3.0/common-assets/assets"
+    mv -f "$SRC_DIR/assets/gtk-3.0/common-assets/assets-bak" "$SRC_DIR/assets/gtk-3.0/common-assets/assets"
+  fi
+
+  echo "...restore gnome-shell assets files"
+  cd "$SRC_DIR/assets/gnome-shell/common-assets"
   mv -f checkbox.svg.bak checkbox.svg
   mv -f more-results.svg.bak more-results.svg
   mv -f toggle-on.svg.bak toggle-on.svg
 
-  echo "  restore gtk-2.0 gtkrc files"
-  cd ${SRC_DIR}/main/gtk-2.0
+  echo "...restore gtk-2.0 gtkrc files"
+  cd "$SRC_DIR/main/gtk-2.0"
   mv -f gtkrc-dark.bak gtkrc-dark
   mv -f gtkrc-light.bak gtkrc-light
 
-  echo "  restore gtk-2.0 assets files"
-  cd ${SRC_DIR}/assets/gtk-2.0
+  echo "...restore gtk-2.0 assets files"
+  cd "${SRC_DIR}/assets/gtk-2.0"
   mv -f assets-dark.svg.bak assets-dark.svg
   mv -f assets-light.svg.bak assets-light.svg
-  [[ -d assets-dark-bak ]] && rm -rf assets-dark && mv -f assets-dark-bak assets-dark
-  [[ -d assets-light-bak ]] && rm -rf assets-light && mv -f assets-light-bak assets-light
 
-  echo "  restore cinnamon thumbnail files"
-  cd ${SRC_DIR}/assets/cinnamon
+  if [[ -d assets-dark-bak ]]; then
+    rm -rf assets-dark/
+    mv -f assets-dark-bak assets-dark
+  fi
+
+  if [[ -d assets-light-bak ]]; then
+    rm -rf assets-light/
+    mv -f assets-light-bak assets-light
+  fi
+
+  echo "...restore cinnamon thumbnail files"
+  cd "$SRC_DIR/assets/cinnamon"
   mv -f thumbnail.svg.bak thumbnail.svg
   mv -f thumbnail-dark.png.bak thumbnail-dark.png
   mv -f thumbnail-light.png.bak thumbnail-light.png
 
-  echo "  restore cinnamon assets files"
-  cd ${SRC_DIR}/assets/cinnamon/common-assets
+  echo "...restore cinnamon assets files"
+  cd "$SRC_DIR/assets/cinnamon/common-assets"
   mv -f checkbox.svg.bak checkbox.svg
   mv -f radiobutton.svg.bak radiobutton.svg
   mv -f add-workspace-active.svg.bak add-workspace-active.svg
@@ -600,7 +594,6 @@ restore_assets_files() {
   mv -f toggle-on.svg.bak toggle-on.svg
   mv -f corner-ripple.svg.bak corner-ripple.svg
 
-  echo
   prompt -w "Restore assets files finished!..."
 }
 
@@ -666,6 +659,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     -r|--remove)
       remove='true'
+      shift 1
+      ;;
+    -dialog|--dialog)
+      dialogs='true'
       shift 1
       ;;
     -a|--alt)
@@ -790,52 +787,42 @@ while [[ $# -gt 0 ]]; do
       ;;
     -t|--theme)
       theme='true'
-      tdialog='true'
       shift
       for theme_color in "${@}"; do
         case "${theme_color}" in
           default)
-            tdialog='false'
             theme_colors+=("${THEME_COLOR_VARIANTS[0]}")
             shift
             ;;
           blue)
-            tdialog='false'
             theme_colors+=("${THEME_COLOR_VARIANTS[1]}")
             shift
             ;;
           purple)
-            tdialog='false'
             theme_colors+=("${THEME_COLOR_VARIANTS[2]}")
             shift
             ;;
           pink)
-            tdialog='false'
             theme_colors+=("${THEME_COLOR_VARIANTS[3]}")
             shift
             ;;
           red)
-            tdialog='false'
             theme_colors+=("${THEME_COLOR_VARIANTS[4]}")
             shift
             ;;
           orange)
-            tdialog='false'
             theme_colors+=("${THEME_COLOR_VARIANTS[5]}")
             shift
             ;;
           yellow)
-            tdialog='false'
             theme_colors+=("${THEME_COLOR_VARIANTS[6]}")
             shift
             ;;
           green)
-            tdialog='false'
             theme_colors+=("${THEME_COLOR_VARIANTS[7]}")
             shift
             ;;
           grey)
-            tdialog='false'
             theme_colors+=("${THEME_COLOR_VARIANTS[8]}")
             shift
             ;;
@@ -843,39 +830,33 @@ while [[ $# -gt 0 ]]; do
             break
             ;;
           *)
-            run_theme_dialog
+            customize_theme_dialogs
             ;;
         esac
       done
       ;;
     -s|--size)
       size='true'
-      sdialog='true'
       shift
       for sidebar_size in "${@}"; do
         case "${sidebar_size}" in
           default)
-            sdialog='false'
             sidebar_sizes+=("${SIDEBAR_SIZE_VARIANTS[0]}")
             shift
             ;;
           220)
-            sdialog='false'
             sidebar_sizes+=("${SIDEBAR_SIZE_VARIANTS[1]}")
             shift
             ;;
           240)
-            sdialog='false'
             sidebar_sizes+=("${SIDEBAR_SIZE_VARIANTS[2]}")
             shift
             ;;
           260)
-            sdialog='false'
             sidebar_sizes+=("${SIDEBAR_SIZE_VARIANTS[3]}")
             shift
             ;;
           280)
-            sdialog='false'
             sidebar_sizes+=("${SIDEBAR_SIZE_VARIANTS[4]}")
             shift
             ;;
@@ -883,7 +864,7 @@ while [[ $# -gt 0 ]]; do
             break
             ;;
           *)
-            run_sidebar_dialog
+            customize_theme_dialogs
             ;;
         esac
       done
@@ -938,7 +919,7 @@ while [[ $# -gt 0 ]]; do
             break
             ;;
           *)
-            run_shell_dialog
+            customize_theme_dialogs
             ;;
         esac
       done
@@ -967,10 +948,14 @@ fi
 
 # Install themes
 if [[ "${remove:-}" != 'true' && "${gdm:-}" != 'true' ]]; then
+  if [[ "${dialogs:-}" == 'true' ]]; then
+    run_customize_theme_dialogs
+  fi
+
   if [[ "${theme:-}" != 'true' && "${size:-}" != 'true' && "${panel:-}" != 'true' ]]; then
     install_theme
   else
-    install_customize_theme && install_theme "${panel_opacity}" "${sidebar_size}" "${theme_color}"
+    install_customize_theme && parse_sass && install_theme "${panel_opacity}" "${sidebar_size}" "${theme_color}"
   fi
 fi
 
