@@ -56,7 +56,7 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 |-h, --help           | Show this help|
 
 ### <p align="center" > 1. Change theme accent color </p>
-If you want to change theme accent! (Default color is blue)
+If you want to change theme accent! (Default color is default MacOS color)
 then you can run:
 ```bash
 ./install.sh -t green  # Install green accent color version
