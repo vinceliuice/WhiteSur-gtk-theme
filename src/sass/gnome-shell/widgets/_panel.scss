@@ -1,16 +1,36 @@
+
+$shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.75));
+
 #panel {
-  background-color: $panel_bg;
+  background-color: $shell_panel_bg;
   /* transition from solid to transparent */
   transition-duration: 250ms;
   font-weight: bold;
   height: $menuitem_size;
   box-shadow: 0 3px 6px rgba(black, 0.22), 0 5px 16px rgba(black, 0.35);
+  color: $panel_fg;
 
   &:overview,
   &.unlock-screen,
   &.login-screen,
   &.lock-screen {
-    background-color: transparent;
+    background-color: if($trans == 'false' and $variant == 'light', transparent, transparent);
+
+    StLabel, StIcon { color: $light_alt_fg_color; }
+
+    .panel-button {
+      &:hover {
+        color: $light_fg_color;
+        background-color: $light_divider_color;
+      }
+
+      &:active, &:overview, &:focus, &:checked {
+        &, &:hover {
+          color: $light_fg_color;
+          background-color: $light_track_color;
+        }
+      }
+    }
 
     .panel-corner {
       -panel-corner-radius: 0;
@@ -25,7 +45,7 @@
 
   .panel-corner {
     -panel-corner-radius: $panel-corner-radius;
-    -panel-corner-background-color: $panel_bg;
+    -panel-corner-background-color: $shell_panel_bg;
     -panel-corner-border-width: 2px;
     -panel-corner-border-color: transparent;
 
@@ -81,18 +101,19 @@
 
     &:hover {
       color: $panel_fg;
-      background-color: $light_divider_color;
+      background-color: if($trans == 'false' and $variant == 'light', $divider_color, $light_divider_color);
     }
 
     &:active, &:overview, &:focus, &:checked {
       &, &:hover {
-        background-color: $light_track_color;
+        background-color: if($trans == 'false' and $variant == 'light', $track_color, $light_track_color);
         color: $panel_fg;
         box-shadow: none;
       }
     }
 
     .system-status-icon { icon-size: em(16px); padding: 0 4px; }
+
     .unlock-screen &,
     .login-screen &,
     .lock-screen & {
