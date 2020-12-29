@@ -16,6 +16,13 @@
   -pie-background-color: lighten(transparentize($primary_color, 0.7), 40%);
 }
 
+// Rubberband for select-area screenshots
+.select-area-rubberband {
+  background-color: transparentize($primary_color, 0.7);
+  border: 1px solid $primary_color;
+  border-radius: 3px;
+}
+
 // Caps-lock warning
 .caps-lock-warning-label {
   text-align: center;

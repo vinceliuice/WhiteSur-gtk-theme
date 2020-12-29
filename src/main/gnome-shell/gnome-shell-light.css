@@ -2542,6 +2542,12 @@ StEntry StLabel.hint-text {
   -pie-background-color: rgba(201, 221, 253, 0.3);
 }
 
+.select-area-rubberband {
+  background-color: rgba(8, 96, 242, 0.3);
+  border: 1px solid #0860f2;
+  border-radius: 3px;
+}
+
 .caps-lock-warning-label {
   text-align: center;
   padding-bottom: 8px;
