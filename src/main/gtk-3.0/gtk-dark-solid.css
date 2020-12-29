@@ -1,12 +1,3 @@
-@keyframes header_ripple_effect {
-  from {
-    background-image: radial-gradient(circle farthest-corner at center, #373737 0%, transparent 0%);
-  }
-  to {
-    background-image: radial-gradient(circle farthest-corner at center, #373737 100%, transparent 0%);
-  }
-}
-
 * {
   padding: 0;
   background-clip: padding-box;
