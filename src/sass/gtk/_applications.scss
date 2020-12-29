@@ -1,8 +1,9 @@
 
+@if $trans == 'true' { $panel_bg:   if($variant == 'light', rgba(white, $panel_opacity), rgba(black, $panel_opacity)); }
+
 //
 // GNOME Terminal, MATE Terminal
 //
-
 .mate-terminal {
   notebook {
     > header.top {
@@ -62,7 +63,7 @@ window.background.csd { // gnome-terminal 3.32 setting
 //
 
 $nautilus_radius: $wm_radius + 2px;
-$nautilus_sidebar_size: 200px;
+$nautilus_sidebar_size: $sidebar_size_default;
 $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                         $dark_sidebar_bg $nautilus_sidebar_size,
                                         darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,

@@ -2,6 +2,9 @@
   @return unquote("alpha(#{$c},#{$a})");
 }
 
+// colors palette
+@import 'colors-palette';
+
 // Base colors
 $base_color:                        if($variant == 'light', #ffffff, #242424);
 $text_color:                        if($variant == 'light', #363636, #dadada);
@@ -23,7 +26,7 @@ $light_track_color:                 rgba(white, 0.28);
 $light_divider_color:               rgba(white, 0.15);
 
 $selected_fg_color:                 $light_fg_color;
-$selected_bg_color:                 #0860f2;
+$selected_bg_color:                 $theme_color_default;
 $primary_color:                     $selected_bg_color;
 
 $selected_borders_color:            darken($selected_bg_color, 10%);
@@ -114,12 +117,7 @@ $dialog_bg_color:                   if($variant == 'light', $bg_color, $base_col
 @if $trans=='true' { $dialog_bg_color: if($variant == 'light', rgba($bg_color, 0.95), rgba($base_color, 0.95)); }
 
 // Panel colors
-$panel_opacity: 0.16;
-
 $panel_bg:                          if($variant == 'light', #f1f1f1, #2a2a2a);
-
-@if $trans == 'true' { $panel_bg:   if($variant == 'light', rgba(white, $panel_opacity), rgba(black, $panel_opacity)); }
-
 $panel_fg:                          if($trans == 'true', white, $text_color);
 
 @if $black == 'true' { $panel_fg:   $text_color; }

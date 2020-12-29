@@ -46,9 +46,9 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 |-c, --color          | Specify theme color variant(s) **[light/dark]** (Default: All variants)|
 |-o, --opacity        | Specify theme opacity variant(s) **[standard/solid]** (Default: All variants)|
 |-a, --alt            | Specify titlebutton variant(s) **[standard/alt]** (Default: All variants)|
-|-t, --theme          | Change the theme color **[blue/purple/pink/red/orange/yellow/green/grey]** (Default: MacOS blue)|
-|-p, --panel          | Change the panel transparency **[80%/75%/70%/65%/60%/55%/50%/45%/40%/35%]** (Default: 85%)|
-|-s, --size           | Change the nautilus sidebar width size **[220px/240px/260px/280px]** (Default: 200px)|
+|-t, --theme          | Change the theme color **[default/blue/purple/pink/red/orange/yellow/green/grey]** (Default: MacOS blue)|
+|-p, --panel          | Change the panel opacty **[default/25/35/45/55/65/75/85]** (Default: 16)|
+|-s, --size           | Change the nautilus sidebar width size **[default/220/240/260/280]** (Default: 200px)|
 |-i, --icon           | Activities icon variant(s) **[standard/normal/gnome/ubuntu/arch/manjaro/fedora/debian/void]** (Default: standard variant)|
 |-g, --gdm            | Install GDM theme, you should run this with sudo!|
 |-r, --remove         | Remove theme, this will remove all installed themes!|
@@ -83,7 +83,7 @@ then you can run:
 ```bash
 ./install.sh -s        # With no size options will run a terminal dialog to install it
 
-./install.sh -s 260px  # Install 260px width version
+./install.sh -s 260    # Install 260px width version
 ```
 ![3](pictures/install-tip-03.png)
 
