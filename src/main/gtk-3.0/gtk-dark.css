@@ -35,7 +35,7 @@
   border-radius: 0 0 12px 12px;
 }
 
-.background.maximized, .background.solid-csd {
+.background.solid-csd {
   border-radius: 0;
 }
 
@@ -1605,7 +1605,6 @@ headerbar.titlebar headerbar:not(.titlebar) {
 }
 
 .tiled headerbar, .tiled headerbar:backdrop, .maximized headerbar, .maximized headerbar:backdrop {
-  border-radius: 0;
   box-shadow: none;
 }
 
@@ -1646,16 +1645,8 @@ separator:first-child + headerbar, separator:first-child + headerbar:backdrop, h
   border-top-left-radius: 12px;
 }
 
-.maximized separator:first-child + headerbar, .tiled separator:first-child + headerbar, .maximized separator:first-child + headerbar:backdrop, .tiled separator:first-child + headerbar:backdrop, .maximized headerbar:first-child, .tiled headerbar:first-child, .maximized headerbar:first-child:backdrop, .tiled headerbar:first-child:backdrop {
-  border-radius: 0;
-}
-
 headerbar:last-child, headerbar:last-child:backdrop {
   border-top-right-radius: 12px;
-}
-
-.maximized headerbar:last-child, .tiled headerbar:last-child, .maximized headerbar:last-child:backdrop, .tiled headerbar:last-child:backdrop {
-  border-radius: 0;
 }
 
 stack headerbar:first-child, stack headerbar:last-child {
@@ -1676,7 +1667,7 @@ window stack headerbar:first-child:backdrop, window stack headerbar:first-child,
   border-top-right-radius: 12px;
 }
 
-window.tiled headerbar, window.tiled headerbar:first-child, window.tiled headerbar:last-child, window.tiled headerbar:only-child, window.tiled-top headerbar, window.tiled-top headerbar:first-child, window.tiled-top headerbar:last-child, window.tiled-top headerbar:only-child, window.tiled-right headerbar, window.tiled-right headerbar:first-child, window.tiled-right headerbar:last-child, window.tiled-right headerbar:only-child, window.tiled-bottom headerbar, window.tiled-bottom headerbar:first-child, window.tiled-bottom headerbar:last-child, window.tiled-bottom headerbar:only-child, window.tiled-left headerbar, window.tiled-left headerbar:first-child, window.tiled-left headerbar:last-child, window.tiled-left headerbar:only-child, window.maximized headerbar, window.maximized headerbar:first-child, window.maximized headerbar:last-child, window.maximized headerbar:only-child, window.fullscreen headerbar, window.fullscreen headerbar:first-child, window.fullscreen headerbar:last-child, window.fullscreen headerbar:only-child, .solid-csd headerbar, .solid-csd headerbar:first-child, .solid-csd headerbar:last-child, .solid-csd headerbar:only-child {
+window.fullscreen headerbar, window.fullscreen headerbar:first-child, window.fullscreen headerbar:last-child, window.fullscreen headerbar:only-child, .solid-csd headerbar, .solid-csd headerbar:first-child, .solid-csd headerbar:last-child, .solid-csd headerbar:only-child {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -1690,7 +1681,7 @@ window.tiled headerbar, window.tiled headerbar:first-child, window.tiled headerb
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.tiled .titlebar, .maximized .titlebar, .fullscreen .titlebar, .tiled .titlebar headerbar, .maximized .titlebar headerbar, .fullscreen .titlebar headerbar {
+.fullscreen .titlebar, .fullscreen .titlebar headerbar {
   box-shadow: none;
 }
 
@@ -4523,8 +4514,11 @@ decoration:backdrop {
 }
 
 .maximized decoration, .fullscreen decoration, .tiled decoration, .tiled-top decoration, .tiled-right decoration, .tiled-bottom decoration, .tiled-left decoration {
-  border-radius: 0;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.75);
+}
+
+.fullscreen decoration {
+  border-radius: 0;
 }
 
 .popup decoration {
@@ -4536,10 +4530,6 @@ decoration:backdrop {
   margin: -5px;
   border-radius: 12px 12px 0 0;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.75);
-}
-
-.ssd decoration.maximized {
-  border-radius: 0;
 }
 
 .csd.popup decoration {
@@ -4780,10 +4770,6 @@ terminal-window notebook button.flat.toggle.popup {
   min-height: 28px;
   min-width: 28px;
   margin: -2px;
-}
-
-terminal-window.background.csd.maximized {
-  border-radius: 0 0 0 0;
 }
 
 window.background.csd > box.vertical > box.horizontal > frame > border {
@@ -5041,14 +5027,6 @@ filechooser paned > separator:hover,
   padding: 0;
   margin-right: 6px;
   -gtk-icon-shadow: none;
-}
-
-.nautilus-window.maximized notebook, .nautilus-window.maximized notebook > stack {
-  border-radius: 0;
-}
-
-.nautilus-window.maximized headerbar, .nautilus-window.maximized placessidebar {
-  border-radius: 0;
 }
 
 .nautilus-window placesview row.activatable {

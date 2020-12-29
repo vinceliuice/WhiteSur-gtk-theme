@@ -868,7 +868,7 @@ if [[ "${panel:-}" == 'true' ]]; then
   else
     run_shell_dialog
   fi
-  notify-send "Finished" "Enjoy your new WhiteSur theme!" -i face-smile
+  # notify-send "Finished" "Enjoy your new WhiteSur theme!" -i face-smile
 fi
 
 if [[ "${size:-}" == 'true' ]]; then
@@ -877,7 +877,7 @@ if [[ "${size:-}" == 'true' ]]; then
   else
     run_sidebar_dialog
   fi
-  notify-send "Finished" "Enjoy your new WhiteSur theme!" -i face-smile
+  # notify-send "Finished" "Enjoy your new WhiteSur theme!" -i face-smile
 fi
 
 if [[ "${theme:-}" == 'true' ]]; then
@@ -886,7 +886,7 @@ if [[ "${theme:-}" == 'true' ]]; then
   else
     run_theme_dialog
   fi
-  notify-send "Finished" "Enjoy your new WhiteSur theme!" -i face-smile
+  # notify-send "Finished" "Enjoy your new WhiteSur theme!" -i face-smile
 fi
 
 if [[ "${gdm:-}" != 'true' && "${remove:-}" != 'true' ]]; then

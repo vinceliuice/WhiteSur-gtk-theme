@@ -34,7 +34,7 @@
   // > box > stack { background-color: $bg_color; }
 
   &.csd { border-radius: 0 0 $wm_radius $wm_radius; } // Set csd windows botttom border radius
-  &.maximized, &.solid-csd { border-radius: 0; } // No radius when windows maximized
+  &.solid-csd { border-radius: 0; }
 }
 
 .popup.background {
@@ -1425,7 +1425,7 @@ headerbar {
 
   .tiled &, .tiled &:backdrop,
   .maximized &, .maximized &:backdrop {
-    border-radius: 0; // squared corners when the window is max'd or tiled
+    // border-radius: 0; // squared corners when the window is max'd or tiled
     box-shadow: none;
   }
 
@@ -1474,8 +1474,8 @@ headerbar {
     &, &:backdrop {
       border-top-left-radius: $wm_radius;
 
-      .maximized &,
-      .tiled & { border-radius: 0; }
+      // .maximized &,
+      // .tiled & { border-radius: 0; }
     }
   }
 
@@ -1483,8 +1483,8 @@ headerbar {
     &, &:backdrop {
       border-top-right-radius: $wm_radius;
 
-      .maximized &,
-      .tiled & { border-radius: 0; }
+      // .maximized &,
+      // .tiled & { border-radius: 0; }
     }
   }
 
@@ -1508,12 +1508,12 @@ headerbar {
     }
   }
 
-  window.tiled &,
-  window.tiled-top &,
-  window.tiled-right &,
-  window.tiled-bottom &,
-  window.tiled-left &,
-  window.maximized &,
+  // window.tiled &,
+  // window.tiled-top &,
+  // window.tiled-right &,
+  // window.tiled-bottom &,
+  // window.tiled-left &,
+  // window.maximized &,
   window.fullscreen &,
   .solid-csd & {
     &,
@@ -1535,8 +1535,8 @@ headerbar {
   &, & headerbar {
     box-shadow: inset 0 1px $highlight_color;
 
-    .tiled &,
-    .maximized &,
+    // .tiled &,
+    // .maximized &,
     .fullscreen & { box-shadow: none; }
   }
 
@@ -3866,9 +3866,10 @@ decoration {
   .tiled-right &,
   .tiled-bottom &,
   .tiled-left & {
-    border-radius: 0;
     box-shadow: 0 3px 3px 0 $wm_shadow, $wm_outline;
   }
+
+  .fullscreen & { border-radius: 0; }
 
   .popup & {
     box-shadow: none;
@@ -3880,7 +3881,7 @@ decoration {
     margin: -5px;
     border-radius: $wm_radius $wm_radius 0 0;
     box-shadow: 0 0 5px 0 $wm_shadow, $wm_outline;
-    &.maximized { border-radius: 0; }
+    // &.maximized { border-radius: 0; }
   }
 
   .csd.popup & {
