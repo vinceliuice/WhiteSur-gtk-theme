@@ -133,6 +133,7 @@ install() {
 
   if [[ ${alt} == '-alt' || ${opacity} == '-solid' ]] &&  [[ ${color} == '-light' ]]; then
     cp -r ${SRC_DIR}/assets/gnome-shell/activities-black/activities${icon}.svg          ${THEME_DIR}/gnome-shell/assets/activities.svg
+    cp -r ${SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg                ${THEME_DIR}/gnome-shell/assets/activities-white.svg
   fi
 
   mkdir -p                                                                              ${THEME_DIR}/gtk-2.0

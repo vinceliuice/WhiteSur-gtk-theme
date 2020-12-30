@@ -174,7 +174,7 @@
   }
 }
 
-@mixin button($t, $c: $base_color, $tc: $fg_color) {
+@mixin button($t, $c: $button_bg, $tc: $fg_color) {
 //
 // button
 //
@@ -184,9 +184,14 @@
 //
 
   @if $t == normal {
-    color: if($tc == $fg_color, $fg_color, $tc);
+    color: $tc;
     background-color: $c;
     border: 1px solid $button_borders;
+
+    @if $variant=='light' { box-shadow: 0 1px 2px 0 rgba(black, 0.02); }
+    @if $variant=='dark' {
+      box-shadow: inset 0 1px $button_highlight;
+    }
 
     text-shadow: none;
     icon-shadow: none;
@@ -196,20 +201,22 @@
     color: $tc;
     text-shadow: none;
     icon-shadow: none;
+    box-shadow: none;
   }
 
   @if $t == hover {
     color: $tc;
-    border-color: $button_borders_hover;
+    border: 1px solid $button_borders_hover;
     background-color: if($variant=='light', darken($c, 3%), lighten($c, 3%));
     text-shadow: none;
     icon-shadow: none;
   }
 
   @if $t == active {
-    color: $light_fg_color;
-    background-color: $primary_color;
-    border-color: $button_borders_active;
+    color: $tc;
+    background-color: transparent;
+    background-image: if($variant=='light', darken($c, 5%), lighten($c, 5%));
+    border: 1px solid $button_borders;
     text-shadow: none;
     icon-shadow: none;
   }

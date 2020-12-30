@@ -43,12 +43,19 @@
     margin: 3px 3px;
     border: none !important;
     border-radius: $bt_radius;
+
     @include font(button);
     @include button(flat-normal);
     &:hover { @include button(flat-hover); }
     &:active { @include button(flat-active); }
     &:insensitive { @include button(flat-insensitive); }
     &:focus { @include button(flat-focus); }
+  }
+
+  &-linked-button:first-child {
+    background: $entry_bg;
+    &:hover { @include button(flat-hover); }
+    &:active { @include button(flat-active); }
   }
 
   &-linked-button:last-child {

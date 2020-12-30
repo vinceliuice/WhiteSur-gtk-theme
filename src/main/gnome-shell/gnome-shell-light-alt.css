@@ -100,8 +100,9 @@ stage {
 
 .hotplug-notification-item {
   color: #242424;
-  background-color: #ffffff;
+  background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
   text-shadow: none;
   icon-shadow: none;
   padding: 8px;
@@ -121,7 +122,7 @@ stage {
 
 .hotplug-notification-item:hover {
   color: #242424;
-  border-color: rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   background-color: #f7f7f7;
   text-shadow: none;
   icon-shadow: none;
@@ -131,12 +132,14 @@ stage {
   color: #242424;
   text-shadow: none;
   icon-shadow: none;
+  box-shadow: none;
 }
 
 .hotplug-notification-item:active {
-  color: white;
-  background-color: #0860F2;
-  border-color: #487afa;
+  color: #242424;
+  background-color: transparent;
+  background-image: #f2f2f2;
+  border: 1px solid rgba(0, 0, 0, 0.12);
   text-shadow: none;
   icon-shadow: none;
 }
@@ -157,7 +160,7 @@ stage {
 .candidate-popup-boxpointer, .popup-menu .popup-menu-content, .modal-dialog {
   background-color: rgba(245, 245, 245, 0.95);
   border-radius: 12px;
-  border: none;
+  border: 1px solid rgba(0, 0, 0, 0);
 }
 
 #screenShieldNotifications StScrollBar StBin#trough, #overview StScrollBar StBin#trough {
@@ -1288,6 +1291,28 @@ StWidget.focused .app-well-app-running-dot {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
+.modal-dialog-linked-button:first-child {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.modal-dialog-linked-button:first-child:hover {
+  color: #242424;
+  background-color: rgba(0, 0, 0, 0.12);
+  border-color: transparent;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  text-shadow: none;
+  icon-shadow: none;
+}
+
+.modal-dialog-linked-button:first-child:active {
+  color: #242424;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: transparent;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  text-shadow: none;
+  icon-shadow: none;
+}
+
 .modal-dialog .modal-dialog-content-box {
   margin: 32px 40px;
   spacing: 32px;
@@ -2072,8 +2097,9 @@ StEntry StLabel.hint-text {
 .login-dialog .modal-dialog-button:default,
 .unlock-dialog .modal-dialog-button:default {
   color: white;
-  background-color: #ffffff;
+  background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
   text-shadow: none;
   icon-shadow: none;
 }
@@ -2082,7 +2108,7 @@ StEntry StLabel.hint-text {
 .unlock-dialog .modal-dialog-button:default:hover,
 .unlock-dialog .modal-dialog-button:default:focus {
   color: white;
-  border-color: rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   background-color: #f7f7f7;
   text-shadow: none;
   icon-shadow: none;
@@ -2091,8 +2117,9 @@ StEntry StLabel.hint-text {
 .login-dialog .modal-dialog-button:default:active,
 .unlock-dialog .modal-dialog-button:default:active {
   color: white;
-  background-color: #0860F2;
-  border-color: #487afa;
+  background-color: transparent;
+  background-image: #f2f2f2;
+  border: 1px solid rgba(0, 0, 0, 0.12);
   text-shadow: none;
   icon-shadow: none;
 }
@@ -3305,6 +3332,10 @@ StEntry StLabel.hint-text {
 #panel #panelActivities.panel-button:active, #panel #panelActivities.panel-button:overview, #panel #panelActivities.panel-button:focus, #panel #panelActivities.panel-button:checked {
   background-color: transparent;
   border: none;
+}
+
+#panel #panelActivities.panel-button:overview > * {
+  background-image: url("assets/activities-white.svg");
 }
 
 .popup-menu {
