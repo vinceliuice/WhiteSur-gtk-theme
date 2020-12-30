@@ -63,7 +63,7 @@
 
 .screen-shield-background { //just the shadow, really
   background: black;
-  box-shadow: $shadow_5;
+  box-shadow: 0 2px 3px 0 rgba(black, 0.15);
 }
 
 #screenShieldNotifications {

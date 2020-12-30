@@ -50,8 +50,8 @@ stage {
 %osd-panel {
   color: $fg_color;
   background-color: $base_color;
-  border: none;
-  box-shadow: $shadow_4;
+  border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
+  box-shadow: 0 3px 8px 0 rgba(black, 0.25);
   border-radius: $bt_radius;
   padding: 12px;
 }
@@ -120,7 +120,7 @@ stage {
 %theme_dialogs {
   background-color: $dialog_bg_color;
   border-radius: $wm_radius;
-  border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
+  border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75)) !important;
 }
 
 %overview_scrollbar {

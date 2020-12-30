@@ -4,7 +4,7 @@
   padding: 0;
   border: none;
   border-radius: $bt_radius;
-  box-shadow: $shadow_4;
+  box-shadow: 0 3px 8px 0 rgba(black, 0.25);
   color: $fg_color;
 
   & > #Toolbar {
@@ -104,5 +104,5 @@
   border: none;
   border-radius: $bt_radius;
   padding: 6px;
-  box-shadow: $shadow_4;
+  box-shadow: 0 3px 8px 0 rgba(black, 0.25);
 }

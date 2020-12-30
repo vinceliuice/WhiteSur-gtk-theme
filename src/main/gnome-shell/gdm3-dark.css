@@ -65,7 +65,7 @@ stage {
 .candidate-popup-boxpointer, .popup-menu .popup-menu-content {
   background-color: rgba(36, 36, 36, 0.95);
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.75) !important;
 }
 
 #screenShieldNotifications StScrollBar StBin#trough {
@@ -94,7 +94,7 @@ stage {
   color: #afafaf;
   background-color: transparent;
   border-color: transparent;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   text-shadow: none;
   icon-shadow: none;
 }
@@ -103,7 +103,7 @@ stage {
   color: #dedede;
   background-color: rgba(255, 255, 255, 0.1);
   border-color: transparent;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   text-shadow: none;
   icon-shadow: none;
 }
@@ -112,7 +112,7 @@ stage {
   color: #dedede;
   background-color: rgba(255, 255, 255, 0.16);
   border-color: transparent;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   text-shadow: none;
   icon-shadow: none;
 }
@@ -121,7 +121,7 @@ stage {
   color: rgba(222, 222, 222, 0.35);
   background-color: transparent;
   border-color: transparent;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   text-shadow: none;
   icon-shadow: none;
 }
@@ -130,7 +130,7 @@ stage {
   color: #dedede;
   text-shadow: none;
   icon-shadow: none;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: none;
 }
 
 .window-close {
@@ -875,7 +875,7 @@ StEntry StLabel.hint-text {
   -arrow-base: 20px;
   -arrow-rise: 10px;
   -boxpointer-gap: 5px;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
 }
 
 .login-dialog-banner-view {
@@ -936,7 +936,7 @@ StEntry StLabel.hint-text {
   color: white;
   background-color: transparent;
   border-color: transparent;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   text-shadow: none;
   icon-shadow: none;
 }
@@ -947,7 +947,7 @@ StEntry StLabel.hint-text {
   color: white;
   background-color: rgba(255, 255, 255, 0.1);
   border-color: transparent;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   text-shadow: none;
   icon-shadow: none;
 }
@@ -957,7 +957,7 @@ StEntry StLabel.hint-text {
   color: white;
   background-color: rgba(255, 255, 255, 0.16);
   border-color: transparent;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   text-shadow: none;
   icon-shadow: none;
 }
@@ -967,7 +967,7 @@ StEntry StLabel.hint-text {
   color: rgba(222, 222, 222, 0.35);
   background-color: transparent;
   border-color: transparent;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   text-shadow: none;
   icon-shadow: none;
 }
@@ -1272,7 +1272,7 @@ StEntry StLabel.hint-text {
   transition-duration: 250ms;
   font-weight: bold;
   height: 28px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22), 0 5px 16px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.35);
   color: white;
 }
 
@@ -1880,7 +1880,7 @@ StEntry StLabel.hint-text {
 
 .screen-shield-background {
   background: black;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
 }
 
 .unlock-dialog-clock {

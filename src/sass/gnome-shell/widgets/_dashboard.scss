@@ -30,10 +30,10 @@
 .dash-label { //osd tooltip
   // min-height: 32px - 6px * 2;
   border-radius: $bt_radius;
-  padding: 7px 8px;
-  color: $fg_color;
-  background-color: $base_color;
-  box-shadow: $shadow_2;
+  padding: 6px 8px;
+  color: rgba(white, 0.9);
+  background-color: rgba(black, 0.75);
+  box-shadow: none;
   text-align: center;
   border: none;
   -x-offset: 8px;
@@ -253,9 +253,9 @@ StWidget.focused .app-well-app-running-dot {
 // expanded folder
 .app-folder-dialog {
   border-radius: $bd_radius * 4;
-  border: none;
+  border: 2px solid rgba(white, 0.15);
   padding: 12px;
-  background-color: rgba(#242424, 0.95);
+  background-color: rgba(#181818, 0.95);
 
   & .folder-name-container {
     padding: 24px 36px 0;

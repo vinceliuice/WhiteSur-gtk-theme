@@ -233,7 +233,7 @@
     color: if($tc != $light_fg_color, $alt_fg_color, $light_fg_color);
     background-color: transparent;
     border-color: transparent;
-    box-shadow: $shadow_0;
+    box-shadow: none;
     text-shadow: none;
     icon-shadow: none;
   }
@@ -242,7 +242,7 @@
     color: if($tc != $light_fg_color, $fg_color, $light_fg_color);
     text-shadow: none;
     icon-shadow: none;
-    box-shadow: $shadow_0;
+    box-shadow: none;
     // box-shadow: inset 0px 0px 0px 2px $divider_color;
   }
 
@@ -250,7 +250,7 @@
     color: if($tc != $light_fg_color, $fg_color, $light_fg_color);
     background-color: $divider_color;
     border-color: transparent;
-    box-shadow: $shadow_0;
+    box-shadow: none;
     text-shadow: none;
     icon-shadow: none;
   }
@@ -259,7 +259,7 @@
     color: if($tc != $light_fg_color, $fg_color, $light_fg_color);
     background-color: $track_color;
     border-color: transparent;
-    box-shadow: $shadow_0;
+    box-shadow: none;
     text-shadow: none;
     icon-shadow: none;
   }
@@ -268,7 +268,7 @@
     color: if($tc != $light_fg_color, $disabled_fg_color, $light_alt_disabled_fg_color);
     background-color: transparent;
     border-color: transparent;
-    box-shadow: $shadow_0;
+    box-shadow: none;
     text-shadow: none;
     icon-shadow: none;
   }

@@ -7,7 +7,7 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
   transition-duration: 250ms;
   font-weight: bold;
   height: $menuitem_size;
-  box-shadow: 0 3px 6px rgba(black, 0.22), 0 5px 16px rgba(black, 0.35);
+  box-shadow: 0 5px 16px rgba(black, 0.35);
   color: $panel_fg;
 
   &:overview,

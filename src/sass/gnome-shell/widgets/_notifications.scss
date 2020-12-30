@@ -12,7 +12,7 @@
   color: $fg_color;
   background-color: rgba($base_color, 0.92);
   border: none;
-  box-shadow: $shadow_2;
+  box-shadow: 0 3px 8px rgba(black, 0.25);
 
   &:hover { background-color: rgba($base_color, 0.95); }
   &:focus { background-color: $base_color; }
