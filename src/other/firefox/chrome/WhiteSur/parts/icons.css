@@ -348,6 +348,14 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	background-image: url("../icons/tracking-protection-animatable.svg") !important;
 }
 
+#library-button {
+	list-style-image: url("../icons/library-symbolic.svg") !important;
+}
+
+.popup-notification-icon[popupid="web-notifications"], .desktop-notification-icon {
+	list-style-image: url("../icons/notification-symbolic.svg") !important;
+}
+
 .bookmark-item[container] {
 	list-style-image: url("../icons/folder-symbolic.svg") !important;
 }
@@ -386,6 +394,9 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	:root[tabsintitlebar] #titlebar #titlebar-min .toolbarbutton-icon,
 	:root[tabsintitlebar][inFullscreen] #window-controls #restore-button .toolbarbutton-icon,
 
+	.popup-notification-icon[popupid="web-notifications"], .desktop-notification-icon,
+
+	#library-button .toolbarbutton-icon,
 	#privatebrowsing-button .toolbarbutton-icon,
 	#sidebar-button:-moz-locale-dir(ltr):not([positionend]) .toolbarbutton-icon,
 	#sidebar-button:-moz-locale-dir(rtl)[positionend] .toolbarbutton-icon,
