@@ -288,14 +288,6 @@ stage {
   margin: 4px 8px;
 }
 
-.datemenu-displays-section {
-  padding-bottom: 0;
-}
-
-.datemenu-displays-box {
-  spacing: 8px;
-}
-
 .datemenu-calendar-column {
   spacing: 8px;
   border: none;
@@ -310,6 +302,14 @@ stage {
 .datemenu-calendar-column:rtl {
   margin-left: 8px;
   border-right-width: 0;
+}
+
+.datemenu-calendar-column .datemenu-displays-section {
+  padding-bottom: 0;
+}
+
+.datemenu-calendar-column .datemenu-displays-box {
+  spacing: 8px;
 }
 
 .datemenu-today-button {
@@ -500,7 +500,6 @@ stage {
 .weather-button,
 .events-button,
 .events-section-title {
-  min-height: 20px;
   padding: 12px;
   margin: 2px 4px;
 }
@@ -534,28 +533,36 @@ stage {
   font-feature-settings: "tnum";
 }
 
-.world-clocks-grid,
-.weather-grid {
-  spacing-rows: 0.4em;
-  spacing-columns: 0.8em;
-}
-
-.world-clocks-city {
+.world-clocks-button .world-clocks-city {
   color: #565656;
   font-weight: bold;
   font-size: 0.9em;
 }
 
-.world-clocks-time {
+.world-clocks-button .world-clocks-time {
   color: #565656;
   font-feature-settings: "tnum";
   font-size: 1.2em;
 }
 
-.world-clocks-timezone {
+.world-clocks-button .world-clocks-time:ltr {
+  text-align: right;
+}
+
+.world-clocks-button .world-clocks-time:rtl {
+  text-align: left;
+}
+
+.world-clocks-button .world-clocks-timezone {
   color: #565656;
   font-feature-settings: "tnum";
   font-size: 0.9em;
+}
+
+.world-clocks-grid,
+.weather-grid {
+  spacing-rows: 0.4em;
+  spacing-columns: 0.8em;
 }
 
 .weather-button {
@@ -563,7 +570,7 @@ stage {
 }
 
 .weather-button .weather-box {
-  spacing: 0.5em;
+  spacing: 12px;
 }
 
 .weather-button .weather-header-box {

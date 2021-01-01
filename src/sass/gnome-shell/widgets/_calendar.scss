@@ -28,15 +28,16 @@
   margin: 4px 8px;
 }
 
-.datemenu-displays-section { padding-bottom: 0; }
-.datemenu-displays-box { spacing: 8px; }
-
 .datemenu-calendar-column {
   spacing: 8px;
   border: none;
   padding: 0 $container_padding * 2;
+
   &:ltr { margin-right: $container_padding * 2; border-left-width: 0; }
   &:rtl { margin-left: $container_padding * 2; border-right-width: 0; }
+
+  .datemenu-displays-section { padding-bottom: 0; }
+  .datemenu-displays-box { spacing: 8px; }
 }
 
 .datemenu-today-button {
@@ -88,6 +89,7 @@
   background-image: url("assets/calendar-arrow-left.svg");
   &:rtl { background-image: url("assets/calendar-arrow-right.svg"); }
 }
+
 .calendar-change-month-forward { //arrow foreward
   padding: 0 2px;
   background-image: url("assets/calendar-arrow-right.svg");
@@ -110,17 +112,21 @@
   border-radius: 1000px;
   color: $alt_fg_color;
   font-feature-settings: "tnum";
+
   &:hover, &:focus { background-color: $divider_color; }
+
   &:active {
     color: $alt_fg_color;
     background-color: $track_color;
     border-color: transparent; //avoid jumparound due to today
   }
+
   &:selected {
     color: $fg_color;
     background-color: $track_color;
     border-color: transparent; //avoid jumparound due to today
   }
+
   &.calendar-day-heading {  //day of week heading
     width: $menuitem_size;
     height: $menuitem_size - 7px;
@@ -138,6 +144,7 @@
 .calendar-day { //border collapse hack - see calendar.js
   border-width: 0;
 }
+
 .calendar-day-top { border-top-width: 0; }
 .calendar-day-left { border-left-width: 0; }
 .calendar-nonwork-day {
@@ -199,7 +206,6 @@
 .events-button,
 .events-section-title {
   @extend %popover_bubble;
-  min-height: $menuitem_size - 4px * 2;
   padding: 12px;
   margin: 2px 4px;
 }
@@ -236,28 +242,33 @@
 }
 
 // World Clock
+.world-clocks-button {
+  .world-clocks-city {
+    color: $hint_fg_color;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+
+  .world-clocks-time {
+    color: $hint_fg_color;
+    font-feature-settings: "tnum";
+    font-size: 1.2em;
+
+    &:ltr { text-align: right; }
+    &:rtl { text-align: left; }
+  }
+
+  .world-clocks-timezone {
+    color: $hint_fg_color;
+    font-feature-settings: "tnum";
+    font-size: 0.9em;
+  }
+}
+
 .world-clocks-grid,
 .weather-grid {
   spacing-rows: 0.4em;
   spacing-columns: 0.8em;
-}
-
-.world-clocks-city {
-  color: $hint_fg_color;
-  font-weight: bold;
-  font-size: 0.9em;
-}
-
-.world-clocks-time {
-  color: $hint_fg_color;
-  font-feature-settings: "tnum";
-  font-size: 1.2em;
-}
-
-.world-clocks-timezone {
-  color: $hint_fg_color;
-  font-feature-settings: "tnum";
-  font-size: 0.9em;
 }
 
 // Weather
@@ -265,7 +276,7 @@
   margin-bottom: 6px;
 
   .weather-box {
-    spacing: 0.5em;
+    spacing: 12px;
   }
 
   .weather-header-box {
