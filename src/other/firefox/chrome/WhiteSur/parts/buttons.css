@@ -25,7 +25,6 @@
 .findbar-container toolbarbutton,
 #sidebar-switcher-target,
 #viewButton,
-.close-icon:not(.tab-close-button),
 .menulist-label-box,
 .expander-down, .expander-up,
 .notification-button,
@@ -107,7 +106,6 @@
 #context-navigation menuitem:not([disabled]):hover,
 .identity-popup-preferences-button:not(#hack):hover,
 .findbar-container toolbarbutton:hover,
-.findbar-closebutton .toolbarbutton-icon:hover,
 #sidebar-switcher-target:hover,
 #viewButton:hover,
 menulist:hover .menulist-label-box,
@@ -197,13 +195,17 @@ menulist[open] .menulist-label-box,
 .close-icon:not(.tab-close-button) {
 	background: transparent !important;
 	box-shadow: none !important;
-	border: 1px solid transparent !important;
-	border-radius: 8px !important;
+	border: none !important;
+	border-radius: 100px !important;
 	padding: 0 0 !important;
-	height: 28px !important;
-	width: 28px !important;
-	min-height: 28px !important;
-	min-width: 28px !important;
+	margin: 0 0 !important;
+	min-height: 24px !important;
+	min-width: 24px !important;
+}
+
+.close-icon:not(.tab-close-button) .button-icon {
+	padding: 0 0 !important;
+	margin: 0 0 !important;
 }
 
 #TabsToolbar .toolbarbutton-1 {

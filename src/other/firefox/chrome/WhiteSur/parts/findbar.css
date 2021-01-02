@@ -31,7 +31,7 @@ hbox[anonid="findbar-textbox-wrapper"] {
 	flex: 1;
 }
 
-.findbar-closebutton {
+.findbar-closebutton.close-icon {
 	margin: 6px 6px 6px 0 !important;
 	padding: 0 0 !important;
 	border-radius: 100px !important;

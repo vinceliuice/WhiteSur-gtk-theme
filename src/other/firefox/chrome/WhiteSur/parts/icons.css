@@ -81,7 +81,7 @@ menu:not([disabled]):hover > .menu-right {
 #urlbar[pageproxystate="invalid"] > #identity-box > #identity-icon,
 .searchbar-search-icon,
 #search-box .textbox-search-sign {
-	list-style-image: url(../icons/edit-find-symbolic.svg) !important;
+	list-style-image: url("../icons/edit-find-symbolic.svg") !important;
 	opacity: 0.7 !important;
 }
 #search-box .textbox-search-sign {
@@ -229,7 +229,7 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	list-style-image: url("../icons/edit-find-symbolic.svg") !important;
 }
 /* New window button */
-#new-window-button {
+#nav-bar #new-window-button {
 	list-style-image: url("../icons/window-new-symbolic.svg") !important;
 }
 /* Bookmarks menu button */
@@ -352,12 +352,42 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	list-style-image: url("../icons/library-symbolic.svg") !important;
 }
 
+#import-button {
+	list-style-image: url("../icons/import-symbolic.svg") !important;
+}
+
+#panic-button {
+	list-style-image: url("../icons/forget-history-symbolic.svg") !important;
+}
+
+#nav-bar #sync-button {
+	list-style-image: url("../icons/tab-sync-symbolic.svg") !important;
+}
+
+#open-file-button {
+	list-style-image: url("../icons/open-folder-symbolic.svg") !important;
+}
+
+#save-page-button {
+	list-style-image: url("../icons/save-folder-symbolic.svg") !important;
+}
+
+#characterencoding-button {
+	list-style-image: url("../icons/character-symbolic.svg") !important;
+}
+
 .popup-notification-icon[popupid="web-notifications"], .desktop-notification-icon {
 	list-style-image: url("../icons/notification-symbolic.svg") !important;
 }
 
 .bookmark-item[container] {
 	list-style-image: url("../icons/folder-symbolic.svg") !important;
+}
+
+.tab-icon-image {
+	list-style-image: url("../icons/network-workgroup-symbolic.svg") !important;
+	-moz-context-properties: fill;
+	fill: currentColor;
 }
 
 /* Invert icons color in dark variant */
@@ -396,6 +426,11 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 
 	.popup-notification-icon[popupid="web-notifications"], .desktop-notification-icon,
 
+	#import-button .toolbarbutton-icon,
+	#panic-button .toolbarbutton-icon,
+	#open-file-button .toolbarbutton-icon,
+	#save-page-button .toolbarbutton-icon,
+	#characterencoding-button .toolbarbutton-icon,
 	#library-button .toolbarbutton-icon,
 	#privatebrowsing-button .toolbarbutton-icon,
 	#sidebar-button:-moz-locale-dir(ltr):not([positionend]) .toolbarbutton-icon,
@@ -423,7 +458,6 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	#print-button .toolbarbutton-icon,
 	#add-ons-button .toolbarbutton-icon,
 	#find-button .toolbarbutton-icon,
-	#new-window-button .toolbarbutton-icon,
 	#bookmarks-menu-button .toolbarbutton-icon,
 	#history-panelmenu .toolbarbutton-icon,
 	#alltabs-button .toolbarbutton-icon,
@@ -437,6 +471,8 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	#reload-button .toolbarbutton-icon,
 	#stop-button .toolbarbutton-icon,
 	#downloads-button .toolbarbutton-icon,
+	#nav-bar #sync-button .toolbarbutton-icon,
+	#nav-bar #new-window-button .toolbarbutton-icon,
 	#tracking-protection-icon,
 	#identity-icon,
 	#pageActionButton,
