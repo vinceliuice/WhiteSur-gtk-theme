@@ -31,9 +31,13 @@
   color: $warning_color;
 }
 
-.headline { @include font(title); }
 .lightbox { background-color: black; }
 .flashspot { background-color: white; }
+
+// Hidden
+.hidden {
+  color: rgba(0,0,0,0);
+}
 
 // App Switcher
 .switcher-popup {

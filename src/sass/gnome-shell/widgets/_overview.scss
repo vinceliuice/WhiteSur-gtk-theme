@@ -110,11 +110,6 @@
   @extend %status_text;
 }
 
-// Search results with icons
-.grid-search-result {
-  @extend %app-well-app;
-}
-
 // search result provider
 .search-provider-icon {
   @extend %app-well-app;

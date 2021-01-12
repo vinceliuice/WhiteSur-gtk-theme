@@ -1,6 +1,7 @@
 %last_dialog_button {
   color: white;
   background-color: $primary_color;
+  box-shadow: inset 0 1px 0 0 rgba(white,0.1);
 
   &:hover {
     color: white;
@@ -18,17 +19,8 @@
   }
 }
 
-// Auth Dialogs & Screen Shield
-.framed-user-icon {
-  background-size: contain;
-  border: none;
-  color: $light_alt_fg_color;
-  border-radius: $circular_radius;
-
-  &:hover {
-    border-color: $light_alt_fg_color;
-    color: $light_alt_fg_color;
-  }
+.headline {
+  @include font(title);
 }
 
 // modal dialog
@@ -67,33 +59,9 @@
     spacing: 32px;
     max-width: 28em;
   }
-  .run-dialog-entry { width: 20em; margin-bottom: 6px; }
-  .run-dialog-error-box {
-    padding-top: 16px;
-    spacing: 6px;
-  }
-  .run-dialog-button-box {
-    padding-top: 1em;
-  }
-  .run-dialog-label {
-    font-size: 1em;
-    font-weight: normal;
-    color: $hint_fg_color;
-    padding-bottom: .4em;
-  }
 }
-
-  .mount-dialog-subject,
-  .end-session-dialog-subject { //this should be a generic header class
-    @include font(title);
-  }
 
 // Message Dialog
-.message-dialog-main-layout {
-  padding: 12px 20px 0;
-  spacing: 12px;
-}
-
 .message-dialog-content {
   spacing: 18px;
 
@@ -109,16 +77,6 @@
   }
 
   .message-dialog-description { text-align: center; }
-}
-
-.message-dialog-icon {
-  min-width: 48px;
-  icon-size: 48px;
-}
-
-.message-dialog-subtitle {
-  color: $alt_fg_color;
-  font-weight: bold;
 }
 
 // Dialog List
@@ -152,6 +110,7 @@
     margin-top: 24px;
     margin-bottom: 14px;
   }
+
   .run-dialog-entry { width: 20em; }
   .run-dialog-description {
     text-align: center;
@@ -162,83 +121,13 @@
 
 // End Session Dialog
 .end-session-dialog {
-  width: 30em;
-  border: none;
+  // width: 30em;
+  // border: none;
 
   .end-session-dialog-battery-warning,
   .dialog-list-title {
     color: $warning_color;
   }
-}
-
-.end-session-dialog-list {
-  padding-top: 20px;
-}
-
-.end-session-dialog-layout {
-  padding-left: 17px;
-  &:rtl { padding-right: 17px; }
-}
-
-.end-session-dialog-description {
-  padding-bottom: 10px;
-  &:rtl {
-    text-align: right;
-  }
-}
-
-.end-session-dialog-warning {
-  width: 28em;
-  color: $warning_color;
-  padding-top: 6px;
-  &:rtl {
-    text-align: right;
-  }
-}
-
-.end-session-dialog-logout-icon {
-  border-radius: 5px;
-  width: 48px;
-  height: 48px;
-  background-size: contain;
-}
-
-.end-session-dialog-shutdown-icon {
-  color: $hint_fg_color;
-  width: 48px;
-  height: 48px;
-}
-
-.end-session-dialog-inhibitor-layout {
-  spacing: 16px;
-  max-height: 200px;
-  padding-right: 65px;
-  padding-left: 65px;
-}
-
-.end-session-dialog-session-list,
-.end-session-dialog-app-list {
-  spacing: 1em;
-}
-
-.end-session-dialog-list-header {
-  font-weight: bold;
-  &:rtl { text-align: right; }
-}
-
-.end-session-dialog-app-list-item,
-.end-session-dialog-session-list-item {
-  spacing: 1em;
-}
-
-.end-session-dialog-app-list-item-name,
-.end-session-dialog-session-list-item-name {
-  font-weight: bold;
-}
-
-.end-session-dialog-app-list-item-description {
-  color: $hint_fg_color;
-  font-size: 1em;
 }
 
 // ShellMountOperation Dialogs
@@ -302,15 +191,11 @@
 .prompt-dialog {
   //this is the width of the entire modal popup
   width: 28em;
-  border: none;
+  // border: none;
 
   .modal-dialog-content-box {
     margin-bottom: 24px;
   }
-
-  .message-dialog-main-layout { spacing: 24px; padding: 10px; }
-  .message-dialog-content { spacing: 16px; }
-  .message-dialog-title { @include font(title); color: $fg_color; }
 }
 
 .prompt-dialog-password-grid {
@@ -343,40 +228,13 @@
 }
 
 .prompt-dialog-error-label {
-  color: $warning_color;
-}
-
-.prompt-dialog-description:rtl {
-  text-align: right;
-}
-
-.prompt-dialog-password-box {
-  spacing: 1em;
-  padding-bottom: 1em;
-}
-
-.prompt-dialog-error-label {
-  font-size: 1em;
   color: $error_color;
-  padding-bottom: 8px;
 }
 
-.prompt-dialog-info-label {
-  font-size: 1em;
-  padding-bottom: 8px;
-  color: $hint_fg_color;
-}
-
-.hidden {
-  color: rgba(0,0,0,0);
-}
-
+.prompt-dialog-info-label,
 .prompt-dialog-null-label {
-  font-size: 1em;
-  padding-bottom: 8px;
   color: $hint_fg_color;
 }
-
 
 // Polkit Dialog
 .polkit-dialog-user-layout {
@@ -387,30 +245,12 @@
   .polkit-dialog-user-root-label {
     color: $warning_color;
   }
-
-  .polkit-dialog-user-icon {
-    border-radius: $circular_radius;
-    background-size: contain;
-    width: 48px;
-    height: 48px;
-    margin: 6px;
-  }
 }
 
 // Audio selection dialog
 .audio-device-selection-dialog {
   .modal-dialog-content-box { margin-bottom: 28px; }
   .audio-selection-box { spacing: 20px; }
-}
-
-.audio-selection-content {
-  spacing: 20px;
-  padding: 24px;
-}
-
-.audio-selection-title {
-  font-weight: bold;
-  text-align: center;
 }
 
 .audio-selection-device {
@@ -475,6 +315,7 @@
   spacing: 20px;
   padding: 24px;
 }
+
 .nm-dialog-header-hbox { spacing: 10px; }
 .nm-dialog-airplane-box { spacing: 12px; }
 
@@ -491,6 +332,7 @@
   background-color: if($variant == 'light', rgba(black, 0.05), rgba(black, 0.1));
   border-radius: $bt_radius;
 }
+
 .nm-dialog-header { @include font(title); }
 
 .nm-dialog-item {

@@ -160,7 +160,9 @@ stage {
 .candidate-popup-boxpointer, .popup-menu .popup-menu-content, .modal-dialog {
   background-color: #f5f5f5;
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0) !important;
+  box-shadow: inset 0 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: solid rgba(0, 0, 0, 0.75);
+  border-width: 0;
 }
 
 #screenShieldNotifications StScrollBar StBin#trough, #overview StScrollBar StBin#trough {
@@ -945,11 +947,13 @@ stage {
   transition-duration: 150ms;
 }
 
-.search-provider-icon .overview-icon, .grid-search-result .overview-icon, .search-provider-icon .overview-icon > StIcon, .grid-search-result .overview-icon > StIcon,
+.search-provider-icon .overview-icon, .search-provider-icon .overview-icon > StIcon,
 .show-apps .overview-icon,
 .show-apps .overview-icon > StIcon,
 .app-well-app .overview-icon,
-.app-well-app .overview-icon > StIcon {
+.app-well-app .overview-icon > StIcon,
+.grid-search-result .overview-icon,
+.grid-search-result .overview-icon > StIcon {
   icon-shadow: 0 1px 3px 3px rgba(0, 0, 0, 0.15);
 }
 
@@ -1214,6 +1218,7 @@ StWidget.focused .app-well-app-running-dot {
 .modal-dialog-linked-button:last-child {
   color: white;
   background-color: #0860F2;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
 }
 
 .modal-dialog-linked-button:hover:last-child {
@@ -1231,16 +1236,9 @@ StWidget.focused .app-well-app-running-dot {
   color: rgba(8, 96, 242, 0.35);
 }
 
-.framed-user-icon {
-  background-size: contain;
-  border: none;
-  color: rgba(255, 255, 255, 0.85);
-  border-radius: 9999px;
-}
-
-.framed-user-icon:hover {
-  border-color: rgba(255, 255, 255, 0.85);
-  color: rgba(255, 255, 255, 0.85);
+.headline {
+  font-size: 15pt;
+  font-weight: 500;
 }
 
 .modal-dialog {
@@ -1326,38 +1324,6 @@ StWidget.focused .app-well-app-running-dot {
   max-width: 28em;
 }
 
-.modal-dialog .run-dialog-entry {
-  width: 20em;
-  margin-bottom: 6px;
-}
-
-.modal-dialog .run-dialog-error-box {
-  padding-top: 16px;
-  spacing: 6px;
-}
-
-.modal-dialog .run-dialog-button-box {
-  padding-top: 1em;
-}
-
-.modal-dialog .run-dialog-label {
-  font-size: 1em;
-  font-weight: normal;
-  color: #565656;
-  padding-bottom: .4em;
-}
-
-.mount-dialog-subject,
-.end-session-dialog-subject {
-  font-size: 15pt;
-  font-weight: 500;
-}
-
-.message-dialog-main-layout {
-  padding: 12px 20px 0;
-  spacing: 12px;
-}
-
 .message-dialog-content {
   spacing: 18px;
 }
@@ -1375,16 +1341,6 @@ StWidget.focused .app-well-app-running-dot {
 
 .message-dialog-content .message-dialog-description {
   text-align: center;
-}
-
-.message-dialog-icon {
-  min-width: 48px;
-  icon-size: 48px;
-}
-
-.message-dialog-subtitle {
-  color: #424242;
-  font-weight: bold;
 }
 
 .dialog-list {
@@ -1434,92 +1390,9 @@ StWidget.focused .app-well-app-running-dot {
   font-weight: 500;
 }
 
-.end-session-dialog {
-  width: 30em;
-  border: none;
-}
-
 .end-session-dialog .end-session-dialog-battery-warning,
 .end-session-dialog .dialog-list-title {
   color: #F27835;
-}
-
-.end-session-dialog-list {
-  padding-top: 20px;
-}
-
-.end-session-dialog-layout {
-  padding-left: 17px;
-}
-
-.end-session-dialog-layout:rtl {
-  padding-right: 17px;
-}
-
-.end-session-dialog-description {
-  padding-bottom: 10px;
-}
-
-.end-session-dialog-description:rtl {
-  text-align: right;
-}
-
-.end-session-dialog-warning {
-  width: 28em;
-  color: #F27835;
-  padding-top: 6px;
-}
-
-.end-session-dialog-warning:rtl {
-  text-align: right;
-}
-
-.end-session-dialog-logout-icon {
-  border-radius: 5px;
-  width: 48px;
-  height: 48px;
-  background-size: contain;
-}
-
-.end-session-dialog-shutdown-icon {
-  color: #565656;
-  width: 48px;
-  height: 48px;
-}
-
-.end-session-dialog-inhibitor-layout {
-  spacing: 16px;
-  max-height: 200px;
-  padding-right: 65px;
-  padding-left: 65px;
-}
-
-.end-session-dialog-session-list,
-.end-session-dialog-app-list {
-  spacing: 1em;
-}
-
-.end-session-dialog-list-header {
-  font-weight: bold;
-}
-
-.end-session-dialog-list-header:rtl {
-  text-align: right;
-}
-
-.end-session-dialog-app-list-item,
-.end-session-dialog-session-list-item {
-  spacing: 1em;
-}
-
-.end-session-dialog-app-list-item-name,
-.end-session-dialog-session-list-item-name {
-  font-weight: bold;
-}
-
-.end-session-dialog-app-list-item-description {
-  color: #565656;
-  font-size: 1em;
 }
 
 .shell-mount-operation-icon {
@@ -1594,26 +1467,10 @@ StWidget.focused .app-well-app-running-dot {
 
 .prompt-dialog {
   width: 28em;
-  border: none;
 }
 
 .prompt-dialog .modal-dialog-content-box {
   margin-bottom: 24px;
-}
-
-.prompt-dialog .message-dialog-main-layout {
-  spacing: 24px;
-  padding: 10px;
-}
-
-.prompt-dialog .message-dialog-content {
-  spacing: 16px;
-}
-
-.prompt-dialog .message-dialog-title {
-  font-size: 15pt;
-  font-weight: 500;
-  color: #242424;
 }
 
 .prompt-dialog-password-grid {
@@ -1651,37 +1508,11 @@ StWidget.focused .app-well-app-running-dot {
 }
 
 .prompt-dialog-error-label {
-  color: #F27835;
-}
-
-.prompt-dialog-description:rtl {
-  text-align: right;
-}
-
-.prompt-dialog-password-box {
-  spacing: 1em;
-  padding-bottom: 1em;
-}
-
-.prompt-dialog-error-label {
-  font-size: 1em;
   color: #FC4138;
-  padding-bottom: 8px;
 }
 
-.prompt-dialog-info-label {
-  font-size: 1em;
-  padding-bottom: 8px;
-  color: #565656;
-}
-
-.hidden {
-  color: rgba(0, 0, 0, 0);
-}
-
+.prompt-dialog-info-label,
 .prompt-dialog-null-label {
-  font-size: 1em;
-  padding-bottom: 8px;
   color: #565656;
 }
 
@@ -1695,30 +1526,12 @@ StWidget.focused .app-well-app-running-dot {
   color: #F27835;
 }
 
-.polkit-dialog-user-layout .polkit-dialog-user-icon {
-  border-radius: 9999px;
-  background-size: contain;
-  width: 48px;
-  height: 48px;
-  margin: 6px;
-}
-
 .audio-device-selection-dialog .modal-dialog-content-box {
   margin-bottom: 28px;
 }
 
 .audio-device-selection-dialog .audio-selection-box {
   spacing: 20px;
-}
-
-.audio-selection-content {
-  spacing: 20px;
-  padding: 24px;
-}
-
-.audio-selection-title {
-  font-weight: bold;
-  text-align: center;
 }
 
 .audio-selection-device {
@@ -2590,17 +2403,16 @@ StEntry StLabel.hint-text {
   color: #F27835;
 }
 
-.headline {
-  font-size: 15pt;
-  font-weight: 500;
-}
-
 .lightbox {
   background-color: black;
 }
 
 .flashspot {
   background-color: white;
+}
+
+.hidden {
+  color: rgba(0, 0, 0, 0);
 }
 
 .switcher-popup {
