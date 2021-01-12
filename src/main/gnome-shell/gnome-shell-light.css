@@ -1390,6 +1390,10 @@ StWidget.focused .app-well-app-running-dot {
   font-weight: 500;
 }
 
+.end-session-dialog {
+  width: 28em;
+}
+
 .end-session-dialog .end-session-dialog-battery-warning,
 .end-session-dialog .dialog-list-title {
   color: #F27835;
