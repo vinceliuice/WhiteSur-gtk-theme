@@ -27,6 +27,39 @@ $light_divider_color:               rgba(white, 0.15);
 
 $selected_fg_color:                 $light_fg_color;
 $selected_bg_color:                 $theme_color_default;
+
+@if $theme == 'blue' {
+  $selected_bg_color:               $theme_color_blue;
+}
+
+@if $theme == 'purple' {
+  $selected_bg_color:               $theme_color_purple;
+}
+
+@if $theme == 'pink' {
+  $selected_bg_color:               $theme_color_pink;
+}
+
+@if $theme == 'red' {
+  $selected_bg_color:               $theme_color_red;
+}
+
+@if $theme == 'orange' {
+  $selected_bg_color:               $theme_color_orange;
+}
+
+@if $theme == 'yellow' {
+  $selected_bg_color:               $theme_color_yellow;
+}
+
+@if $theme == 'green' {
+  $selected_bg_color:               $theme_color_green;
+}
+
+@if $theme == 'grey' {
+  $selected_bg_color:               $theme_color_grey;
+}
+
 $primary_color:                     $selected_bg_color;
 
 $selected_borders_color:            darken($selected_bg_color, 10%);

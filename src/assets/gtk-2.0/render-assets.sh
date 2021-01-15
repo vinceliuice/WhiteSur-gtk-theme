@@ -3,42 +3,45 @@
 INKSCAPE="/usr/bin/inkscape"
 OPTIPNG="/usr/bin/optipng"
 
-LIGHT_SRC_FILE="assets-light.svg"
-LIGHT_ASSETS_DIR="assets-light"
-
-DARK_SRC_FILE="assets-dark.svg"
-DARK_ASSETS_DIR="assets-dark"
-
 INDEX="assets.txt"
+INDEX_T="theme_assets.txt"
 
-[[ -d $LIGHT_ASSETS_DIR ]] && rm -rf $LIGHT_ASSETS_DIR
-[[ -d $DARK_ASSETS_DIR ]] && rm -rf $DARK_ASSETS_DIR
-mkdir -p $LIGHT_ASSETS_DIR && mkdir -p $DARK_ASSETS_DIR
+for color in '-light' '-dark'; do
+  for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey'; do
+    ASSETS_DIR="assets${color}${theme}"
+    SRC_FILE="assets${color}${theme}.svg"
 
-for i in `cat $INDEX`
-do
+    [[ -d $ASSETS_DIR ]] && rm -rf $ASSETS_DIR
+    mkdir -p $ASSETS_DIR
 
-if [ -f $LIGHT_ASSETS_DIR/$i.png ]; then
-    echo $LIGHT_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $LIGHT_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-filename=$LIGHT_ASSETS_DIR/$i.png $LIGHT_SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $LIGHT_ASSETS_DIR/$i.png 
-fi
-
-if [ -f $DARK_ASSETS_DIR/$i.png ]; then
-    echo $DARK_ASSETS_DIR/$i.png exists.
-else
-    echo
-    echo Rendering $DARK_ASSETS_DIR/$i.png
-    $INKSCAPE --export-id=$i \
-              --export-id-only \
-              --export-filename=$DARK_ASSETS_DIR/$i.png $DARK_SRC_FILE >/dev/null \
-    && $OPTIPNG -o7 --quiet $DARK_ASSETS_DIR/$i.png 
-fi
+    if [[ ${theme} == '' ]]; then
+      for i in `cat $INDEX`; do
+        if [ -f $ASSETS_DIR/$i.png ]; then
+          echo $ASSETS_DIR/$i.png exists.
+        else
+          echo
+          echo Rendering $ASSETS_DIR/$i.png
+          $INKSCAPE --export-id=$i \
+                    --export-id-only \
+                    --export-filename=$ASSETS_DIR/$i.png $SRC_FILE >/dev/null
+          $OPTIPNG -o7 --quiet $ASSETS_DIR/$i.png 
+      fi
+      done
+    else
+      for i in `cat $INDEX_T`; do
+        if [ -f $ASSETS_DIR/$i.png ]; then
+          echo $ASSETS_DIR/$i.png exists.
+        else
+          echo
+          echo Rendering $ASSETS_DIR/$i.png
+          $INKSCAPE --export-id=$i \
+                    --export-id-only \
+                    --export-filename=$ASSETS_DIR/$i.png $SRC_FILE >/dev/null
+          $OPTIPNG -o7 --quiet $ASSETS_DIR/$i.png 
+        fi
+      done
+    fi
+  done
 done
 
 exit 0

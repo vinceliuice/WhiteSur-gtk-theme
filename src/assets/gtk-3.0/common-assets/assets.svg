@@ -64,7 +64,6 @@
    <feGaussianBlur stdDeviation="0.27000675"/>
   </filter>
  </defs>
- <rect x="248" y="-1.4648e-5" width="125.44" height="268" rx="0" ry="0" fill="#ffffff" fill-rule="evenodd" stroke-width=".99777" style="paint-order:fill markers stroke"/>
  <g transform="translate(8,279.64)">
   <rect transform="scale(1,-1)" x="113" y="10.638" width="121" height="165" rx="0" ry="0" color="#000000" fill="#f9fafb"/>
   <rect transform="scale(1,-1)" x="113" y="175.64" width="121" height="103" rx="0" ry="0" color="#000000" fill="#333333"/>

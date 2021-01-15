@@ -119,10 +119,8 @@
   <linearGradient id="linearGradient5051" x1="231" x2="231" y1="-82.638" y2="-74.638" gradientTransform="translate(7,283.64)" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
   <linearGradient id="linearGradient5053" x1="240.5" x2="240.5" y1="-154.64" y2="-129.64" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
   <linearGradient id="linearGradient5055" x1="66.303" x2="66.303" y1="126.56" y2="155.48" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
-  <linearGradient id="linearGradient5057" x1="66.294" x2="66.294" y1="126.56" y2="155.48" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
   <linearGradient id="linearGradient5059" x1="25" x2="25" y1="31.362" y2="45.362" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
   <linearGradient id="linearGradient5071" x1="67.353" x2="67.353" y1="128.63" y2="155.48" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
-  <linearGradient id="linearGradient5073" x1="25.5" x2="25.5" y1="32.362" y2="45.362" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
   <linearGradient id="linearGradient5075" x1="25.121" x2="25.121" y1="32.448" y2="45.448" gradientUnits="userSpaceOnUse" xlink:href="#entry_highlight"/>
   <linearGradient id="linearGradient5021" x1="124" x2="124" y1="6.3622" y2="10.362" gradientTransform="matrix(1.5 0 0 1.5 -62 -4.1811)" gradientUnits="userSpaceOnUse" xlink:href="#selected_fg_color"/>
   <linearGradient id="linearGradient5026" x1="44.094" x2="44.094" y1="64.781" y2="71.875" gradientUnits="userSpaceOnUse" xlink:href="#selected_fg_color"/>
@@ -254,7 +252,7 @@
  <g id="menu-checkbox-checked-insensitive" transform="translate(231,1.64)" opacity=".55">
   <g transform="translate(19)">
    <g transform="translate(0,-30)">
-    <rect x="19" y="32.362" width="13" height="13" rx="3" ry="3" color="#000000" fill="url(#linearGradient5073)" opacity="1" stroke-width="0"/>
+    <rect x="19" y="32.362" width="13" height="13" rx="3" ry="3" color="#000000" fill="#808080" opacity="1" stroke-width="0"/>
    </g>
   </g>
   <g transform="translate(36,-1036)">
@@ -272,7 +270,7 @@
   <g transform="translate(19.004)">
    <g transform="matrix(.93617 0 0 .93566 -96.783 -244.76)">
     <g transform="matrix(.50892 0 0 .5174 181.79 197.56)">
-     <rect x="51.602" y="126.56" width="29.385" height="28.919" rx="14.692" ry="14.46" color="#000000" fill="url(#linearGradient5057)" opacity="1" stroke-width="0"/>
+     <rect x="51.602" y="126.56" width="29.385" height="28.919" rx="14.692" ry="14.46" color="#000000" fill="#808080" opacity="1" stroke-width="0"/>
     </g>
    </g>
   </g>
@@ -343,7 +341,7 @@
   <g transform="translate(19)">
    <g transform="translate(0,-30)">
     <rect x="17" y="30.362" width="16" height="16" color="#000000" fill="none"/>
-    <rect x="18" y="31.362" width="14" height="14" rx="3" ry="3" color="#000000" fill="url(#linearGradient5059)" opacity="1" stroke-width="0"/>
+    <rect x="18" y="31.362" width="14" height="14" rx="3" ry="3" color="#000000" fill="#808080" opacity="1" stroke-width="0"/>
    </g>
   </g>
   <g transform="translate(36,-1036)">
@@ -371,7 +369,7 @@
    <g transform="matrix(.93617 0 0 .93566 -96.783 -244.76)">
     <rect x="206.99" y="261.98" width="17.091" height="17.1" color="#000000" fill="none"/>
     <g transform="matrix(.50892 0 0 .5174 181.79 197.56)">
-     <rect x="51.602" y="126.56" width="29.385" height="28.919" rx="14.692" ry="14.46" color="#000000" fill="url(#linearGradient5057)" opacity="1" stroke-width="0"/>
+     <rect x="51.602" y="126.56" width="29.385" height="28.919" rx="14.692" ry="14.46" color="#000000" fill="#808080" opacity="1" stroke-width="0"/>
     </g>
    </g>
   </g>

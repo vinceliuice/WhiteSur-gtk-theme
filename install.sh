@@ -20,8 +20,8 @@ THEME_NAME=WhiteSur
 COLOR_VARIANTS=('-light' '-dark')
 OPACITY_VARIANTS=('' '-solid')
 ALT_VARIANTS=('' '-alt')
+THEME_VARIANTS=('' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey')
 ICON_VARIANTS=('' '-normal' '-gnome' '-ubuntu' '-arch' '-manjaro' '-fedora' '-debian' '-void')
-THEME_COLOR_VARIANTS=('default' 'blue' 'purple' 'pink' 'red' 'orange' 'yellow' 'green' 'grey')
 SIDEBAR_SIZE_VARIANTS=('default' '220' '240' '260' '280')
 PANEL_OPACITY_VARIANTS=('default' '25' '35' '45' '55' '65' '75' '85')
 
@@ -75,7 +75,7 @@ usage() {
   printf "  %-25s%s\n" "-o, --opacity VARIANTS" "Specify theme opacity variant(s) [standard|solid] (Default: All variants)"
   printf "  %-25s%s\n" "-c, --color VARIANTS" "Specify theme color variant(s) [light|dark] (Default: All variants)"
   printf "  %-25s%s\n" "-a, --alt VARIANTS" "Specify theme titlebutton variant(s) [standard|alt] (Default: All variants)"
-  printf "  %-25s%s\n" "-t, --theme VARIANTS" "Change the theme color [blue|purple|pink|red|orange|yellow|green|grey] (Default: MacOS blue)"
+  printf "  %-25s%s\n" "-t, --theme VARIANTS" "Specify primary theme color [blue|purple|pink|red|orange|yellow|green|grey] (Default: MacOS blue)"
   printf "  %-25s%s\n" "-p, --panel VARIANTS" "Change the panel transparency [25|35|45|55|65|75|85] (Default: 85%)"
   printf "  %-25s%s\n" "-s, --size VARIANTS" "Change the nautilus sidebar width size [220|240|260|280] (Default: 200)"
   printf "  %-25s%s\n" "-i, --icon VARIANTS" "Change gnome-shell activities icon [standard|normal|gnome|ubuntu|arch|manjaro|fedora|debian|void] (Default: standard)"
@@ -88,41 +88,45 @@ install() {
   local color=${3}
   local opacity=${4}
   local alt=${5}
-  local icon=${6}
-  local panel_opacity=${7}
-  local sidebar_size=${8}
-  local theme_color=${9}
+  local theme=${6}
+  local icon=${7}
+  local panel_opacity=${8}
+  local sidebar_size=${9}
 
   [[ ${color} == '-light' ]] && local ELSE_LIGHT=${color}
   [[ ${color} == '-dark' ]] && local ELSE_DARK=${color}
 
-  local THEME_DIR=${1}/${2}${3}${4}${5}
+  local THEME_DIR=${1}/${2}${3}${4}${5}${6}
 
   [[ -d ${THEME_DIR} ]] && rm -rf ${THEME_DIR}
 
   prompt -i "Installing '${THEME_DIR}'..."
 
   mkdir -p                                                                              ${THEME_DIR}
-  cp -r ${REPO_DIR}/COPYING                                                             ${THEME_DIR}
 
   echo "[Desktop Entry]" >>                                                             ${THEME_DIR}/index.theme
   echo "Type=X-GNOME-Metatheme" >>                                                      ${THEME_DIR}/index.theme
-  echo "Name=${name}${color}${opacity}" >>                                              ${THEME_DIR}/index.theme
-  echo "Comment=A Stylish Gtk+ theme based on Elegant Design" >>                        ${THEME_DIR}/index.theme
+  echo "Name=${2}${3}${4}${5}${6}" >>                                                   ${THEME_DIR}/index.theme
+  echo "Comment=A MacOS BigSur like Gtk+ theme based on Elegant Design" >>              ${THEME_DIR}/index.theme
   echo "Encoding=UTF-8" >>                                                              ${THEME_DIR}/index.theme
   echo "" >>                                                                            ${THEME_DIR}/index.theme
   echo "[X-GNOME-Metatheme]" >>                                                         ${THEME_DIR}/index.theme
-  echo "GtkTheme=${name}${color}${opacity}" >>                                          ${THEME_DIR}/index.theme
-  echo "MetacityTheme=${name}${color}${opacity}" >>                                     ${THEME_DIR}/index.theme
-  echo "IconTheme=McMojave-circle" >>                                                   ${THEME_DIR}/index.theme
-  echo "CursorTheme=McMojave-circle" >>                                                 ${THEME_DIR}/index.theme
+  echo "GtkTheme=${2}${3}${4}${5}${6}" >>                                               ${THEME_DIR}/index.theme
+  echo "MetacityTheme=${2}${3}${4}${5}${6}" >>                                          ${THEME_DIR}/index.theme
+  echo "IconTheme=${2}${3}" >>                                                          ${THEME_DIR}/index.theme
+  echo "CursorTheme=${2}${3}" >>                                                        ${THEME_DIR}/index.theme
   echo "ButtonLayout=close,minimize,maximize:menu" >>                                   ${THEME_DIR}/index.theme
 
   mkdir -p                                                                              ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/assets/gnome-shell/icons                                             ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/main/gnome-shell/pad-osd.css                                         ${THEME_DIR}/gnome-shell
-  cp -r ${SRC_DIR}/main/gnome-shell/gnome-shell${color}${opacity}${alt}.css             ${THEME_DIR}/gnome-shell/gnome-shell.css
+  cp -r ${SRC_DIR}/main/gnome-shell/gnome-shell${color}${opacity}${alt}${theme}.css     ${THEME_DIR}/gnome-shell/gnome-shell.css
   cp -r ${SRC_DIR}/assets/gnome-shell/common-assets                                     ${THEME_DIR}/gnome-shell/assets
+
+  if [[ ${theme} != '-default' ]]; then
+    cp -r ${SRC_DIR}/assets/gnome-shell/common-assets${theme}/*.svg                     ${THEME_DIR}/gnome-shell/assets
+  fi
+
   cp -r ${SRC_DIR}/assets/gnome-shell/assets${color}/*.svg                              ${THEME_DIR}/gnome-shell/assets
   cp -r ${SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg                  ${THEME_DIR}/gnome-shell/assets/activities.svg
 
@@ -137,22 +141,31 @@ install() {
   fi
 
   mkdir -p                                                                              ${THEME_DIR}/gtk-2.0
-  cp -r ${SRC_DIR}/main/gtk-2.0/gtkrc${color}                                           ${THEME_DIR}/gtk-2.0/gtkrc
+  cp -r ${SRC_DIR}/main/gtk-2.0/gtkrc${color}${theme}                                   ${THEME_DIR}/gtk-2.0/gtkrc
   cp -r ${SRC_DIR}/main/gtk-2.0/menubar-toolbar${color}.rc                              ${THEME_DIR}/gtk-2.0/menubar-toolbar.rc
   cp -r ${SRC_DIR}/main/gtk-2.0/common/*.rc                                             ${THEME_DIR}/gtk-2.0
   cp -r ${SRC_DIR}/assets/gtk-2.0/assets${color}                                        ${THEME_DIR}/gtk-2.0/assets
 
+  if [[ ${theme} != '-default' ]]; then
+    cp -r ${SRC_DIR}/assets/gtk-2.0/assets${color}${theme}/*.png                        ${THEME_DIR}/gtk-2.0/assets
+  fi
+
   mkdir -p                                                                              ${THEME_DIR}/gtk-3.0
   cp -r ${SRC_DIR}/assets/gtk-3.0/common-assets/assets                                  ${THEME_DIR}/gtk-3.0
+
+  if [[ ${theme} != '-default' ]]; then
+    cp -r ${SRC_DIR}/assets/gtk-3.0/common-assets/assets${theme}/*.png                  ${THEME_DIR}/gtk-3.0/assets
+  fi
+
   cp -r ${SRC_DIR}/assets/gtk-3.0/common-assets/sidebar-assets/*.png                    ${THEME_DIR}/gtk-3.0/assets
   cp -r ${SRC_DIR}/assets/gtk-3.0/windows-assets/titlebutton${alt}                      ${THEME_DIR}/gtk-3.0/windows-assets
-  cp -r ${SRC_DIR}/assets/gtk-3.0/thumbnail${color}.png                                 ${THEME_DIR}/gtk-3.0/thumbnail.png
-  cp -r ${SRC_DIR}/main/gtk-3.0/gtk-dark${opacity}.css                                  ${THEME_DIR}/gtk-3.0/gtk-dark.css
+  cp -r ${SRC_DIR}/assets/gtk-3.0/thumbnails/thumbnail${color}${theme}.png              ${THEME_DIR}/gtk-3.0/thumbnail.png
+  cp -r ${SRC_DIR}/main/gtk-3.0/gtk-dark${opacity}${theme}.css                          ${THEME_DIR}/gtk-3.0/gtk-dark.css
 
   if [[ ${color} == '-light' ]]; then
-    cp -r ${SRC_DIR}/main/gtk-3.0/gtk-light${opacity}.css                               ${THEME_DIR}/gtk-3.0/gtk.css
+    cp -r ${SRC_DIR}/main/gtk-3.0/gtk-light${opacity}${theme}.css                       ${THEME_DIR}/gtk-3.0/gtk.css
   else
-    cp -r ${SRC_DIR}/main/gtk-3.0/gtk-dark${opacity}.css                                ${THEME_DIR}/gtk-3.0/gtk.css
+    cp -r ${SRC_DIR}/main/gtk-3.0/gtk-dark${opacity}${theme}.css                        ${THEME_DIR}/gtk-3.0/gtk.css
   fi
 
   glib-compile-resources --sourcedir=${THEME_DIR}/gtk-3.0 --target=${THEME_DIR}/gtk-3.0/gtk.gresource ${SRC_DIR}/main/gtk-3.0/gtk.gresource.xml
@@ -172,10 +185,15 @@ install() {
   cp -r ${SRC_DIR}/main/xfwm4/themerc${color}                                           ${THEME_DIR}/xfwm4/themerc
 
   mkdir -p                                                                              ${THEME_DIR}/cinnamon
-  cp -r ${SRC_DIR}/main/cinnamon/cinnamon${color}${opacity}.css                         ${THEME_DIR}/cinnamon/cinnamon.css
+  cp -r ${SRC_DIR}/main/cinnamon/cinnamon${color}${opacity}${theme}.css                 ${THEME_DIR}/cinnamon/cinnamon.css
   cp -r ${SRC_DIR}/assets/cinnamon/common-assets                                        ${THEME_DIR}/cinnamon/assets
+
+  if [[ ${theme} != '-default' ]]; then
+    cp -r ${SRC_DIR}/assets/cinnamon/common-assets${theme}/*.svg                        ${THEME_DIR}/cinnamon/assets
+  fi
+
   cp -r ${SRC_DIR}/assets/cinnamon/assets${color}/*.svg                                 ${THEME_DIR}/cinnamon/assets
-  cp -r ${SRC_DIR}/assets/cinnamon/thumbnail${color}.png                                ${THEME_DIR}/cinnamon/thumbnail.png
+  cp -r ${SRC_DIR}/assets/cinnamon/thumbnails/thumbnail${color}${theme}.png             ${THEME_DIR}/cinnamon/thumbnail.png
 
   mkdir -p                                                                              ${THEME_DIR}/plank
   cp -r ${SRC_DIR}/other/plank/theme${color}/*.theme                                    ${THEME_DIR}/plank
@@ -185,11 +203,11 @@ install_theme() {
   for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
     for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
       for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
-        for icon in "${icons[@]-${ICON_VARIANTS[0]}}"; do
-          for panel_opacity in "${panel_opacities[@]-${PANEL_OPACITY_VARIANTS[0]}}"; do
-            for sidebar_size in "${sidebar_sizes[@]-${SIDEBAR_SIZE_VARIANTS[0]}}"; do
-              for theme_color in "${theme_colors[@]-${THEME_COLOR_VARIANTS[0]}}"; do
-                install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${alt}" "${icon}" "${panel_opacity}" "${sidebar_size}" "${theme_color}"
+        for theme in "${themes[@]-${THEME_VARIANTS[0]}}"; do
+          for icon in "${icons[@]-${ICON_VARIANTS[0]}}"; do
+            for panel_opacity in "${panel_opacities[@]-${PANEL_OPACITY_VARIANTS[0]}}"; do
+              for sidebar_size in "${sidebar_sizes[@]-${SIDEBAR_SIZE_VARIANTS[0]}}"; do
+                install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" "${panel_opacity}" "${sidebar_size}"
               done
             done
           done
@@ -199,16 +217,14 @@ install_theme() {
   done
 
   if [[ -x /usr/bin/notify-send ]]; then
-    notify-send "Finished" "Enjoy your ${THEME_NAME} "${theme_color}" theme!" -i face-smile
+    notify-send "Finished" "Enjoy your ${THEME_NAME} "${theme}" theme!" -i face-smile
   fi
 }
 
 install_customize_theme() {
   for panel_opacity in "${panel_opacities[@]-${PANEL_OPACITY_VARIANTS[0]}}"; do
     for sidebar_size in "${sidebar_sizes[@]-${SIDEBAR_SIZE_VARIANTS[0]}}"; do
-      for theme_color in "${theme_colors[@]-${THEME_COLOR_VARIANTS[0]}}"; do
-        customize_theme "${panel_opacity}" "${sidebar_size}" "${theme_color}"
-      done
+      customize_theme "${panel_opacity}" "${sidebar_size}" "${theme_color}"
     done
   done
 }
@@ -217,7 +233,9 @@ remove_theme() {
   for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
     for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
       for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
-        [[ -d "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}" ]] && rm -rf "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}"
+        for theme in "${themes[@]-${THEME_VARIANTS[0]}}"; do
+          [[ -d "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}${theme}" ]] && rm -rf "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}${theme}"
+        done
       done
     done
   done
@@ -233,11 +251,6 @@ customize_theme() {
   if [[ "${size:-}" == 'true' && "${sidebar_size:-}" != 'default' ]]; then
     change_size
   fi
-
-  # Change accent color
-  if [[ "${theme:-}" == 'true' && "${theme_color:-}" != 'default' ]]; then
-    change_theme_color
-  fi
 }
 
 # Backup and install files related to GDM theme
@@ -249,9 +262,6 @@ ETC_NEW_THEME_FILE="/etc/alternatives/gdm3-theme.gresource"
 UBUNTU_THEME_FILE="/usr/share/gnome-shell/theme/ubuntu.css"
 UBUNTU_NEW_THEME_FILE="/usr/share/gnome-shell/theme/gnome-shell.css"
 UBUNTU_YARU_THEME_FILE="/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource"
-UBUNTU_JSON_FILE="/usr/share/gnome-shell/modes/ubuntu.json"
-YURA_JSON_FILE="/usr/share/gnome-shell/modes/yaru.json"
-UBUNTU_MODES_FOLDER="/usr/share/gnome-shell/modes"
 
 install_gdm() {
   local GDM_THEME_DIR="${1}/${2}${3}"
@@ -319,9 +329,6 @@ install_gdm() {
       "$SRC_DIR"/main/gnome-shell/gnome-shell-yaru-theme.gresource.xml
 
     rm -rf "$YARU_GDM_THEME_DIR"
-    # [[ -d "$UBUNTU_MODES_FOLDER" ]] && cp -an "$UBUNTU_MODES_FOLDER" "$UBUNTU_MODES_FOLDER"-bak
-    # [[ -f "$UBUNTU_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$UBUNTU_JSON_FILE"
-    # [[ -f "$YURA_JSON_FILE" ]] && sed -i "s|Yaru/gnome-shell.css|gnome-shell.css|" "$YURA_JSON_FILE"
   fi
 }
 
@@ -383,30 +390,6 @@ install_dialog() {
 customize_theme_dialogs() {
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-    --radiolist "Choose your theme color (default is Mac Blue):" 20 50 10 \
-      0 "default" on \
-      1 "Blue"   off \
-      2 "Purple" off \
-      3 "Pink"   off \
-      4 "Red"    off \
-      5 "Orange" off \
-      6 "Yellow" off \
-      7 "Green"  off \
-      8 "Grey"   off --output-fd 1 )
-      case "$tui" in
-        0) theme_color="default" ;;
-        1) theme_color="blue"   ;;
-        2) theme_color="purple" ;;
-        3) theme_color="pink"   ;;
-        4) theme_color="red"    ;;
-        5) theme_color="orange" ;;
-        6) theme_color="yellow" ;;
-        7) theme_color="green"  ;;
-        8) theme_color="grey"   ;;
-        *) operation_canceled ;;
-      esac
-
-    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your panel background opacity
                 (default is 0.16, value more smaller panel more transparency!):" 20 50 10 \
       0 "default" on  \
@@ -448,7 +431,7 @@ customize_theme_dialogs() {
 }
 
 run_customize_theme_dialogs() {
-  install_dialog && customize_theme_dialogs && change_theme_color && change_transparency && change_size && parse_sass
+  install_dialog && customize_theme_dialogs && change_transparency && change_size && parse_sass
 }
 
 parse_sass() {
@@ -471,160 +454,17 @@ change_transparency() {
   fi
 }
 
-change_theme_color() {
-  if [[ -x /usr/bin/notify-send ]]; then
-    notify-send "Notice" "It will take a few minutes to regenerate the assets files, please be patient!" -i face-wink
-  fi
-
-  cd ${SRC_DIR}/sass
-  sed -i.bak "/\$selected_bg_color/s/theme_color_default/theme_color_${theme_color}/" _colors.scss
-
-  if [[ ${theme_color} == 'blue' ]]; then
-    local accent="#2E7CF7"
-  elif [[ ${theme_color} == 'purple' ]]; then
-    local accent="#9A57A3"
-  elif [[ ${theme_color} == 'pink' ]]; then
-    local accent="#E55E9C"
-  elif [[ ${theme_color} == 'red' ]]; then
-    local accent="#ED5F5D"
-  elif [[ ${theme_color} == 'orange' ]]; then
-    local accent="#E9873A"
-  elif [[ ${theme_color} == 'yellow' ]]; then
-    local accent="#F3BA4B"
-  elif [[ ${theme_color} == 'green' ]]; then
-    local accent="#79B757"
-  elif [[ ${theme_color} == 'grey' ]]; then
-    local accent="#8C8C8C"
-  elif [[ ${theme_color} == 'default' ]]; then
-    local accent="#0860F2"
-  else
-    prompt -i "\n Run ./install.sh -h for help or install dialog"
-    prompt -i "\n Run ./install.sh again!"
-    exit 0
-  fi
-
-  if [[ "${theme_color:-}" != 'default' ]]; then
-    cd ${SRC_DIR}/assets/gtk-3.0
-    mv -f thumbnail-dark.png thumbnail-dark.png.bak
-    mv -f thumbnail-light.png thumbnail-light.png.bak
-    sed -i.bak "s/#0860f2/${accent}/g" thumbnail.svg
-    ./render-thumbnails.sh
-
-    cd ${SRC_DIR}/assets/gtk-3.0/common-assets
-    cp -an assets assets-bak
-    sed -i.bak "s/#0860f2/${accent}/g" assets.svg
-    ./render-assets.sh
-
-    cd ${SRC_DIR}/assets/gnome-shell/common-assets
-    sed -i.bak "s/#0860f2/${accent}/g" {checkbox.svg,more-results.svg,toggle-on.svg}
-
-    cd ${SRC_DIR}/main/gtk-2.0
-    sed -i.bak "s/#0860f2/${accent}/g" {gtkrc-dark,gtkrc-light}
-
-    cd ${SRC_DIR}/assets/gtk-2.0
-    cp -an assets-dark assets-dark-bak
-    cp -an assets-light assets-light-bak
-    sed -i.bak "s/#0860f2/${accent}/g" {assets-dark.svg,assets-light.svg}
-    ./render-assets.sh
-
-    cd ${SRC_DIR}/assets/cinnamon
-    mv -f thumbnail-dark.png thumbnail-dark.png.bak
-    mv -f thumbnail-light.png thumbnail-light.png.bak
-    sed -i.bak "s/#0860f2/${accent}/g" thumbnail.svg
-    ./render-thumbnails.sh
-
-    cd ${SRC_DIR}/assets/cinnamon/common-assets
-    sed -i.bak "s/#0860f2/${accent}/g" {checkbox.svg,radiobutton.svg,menu-hover.svg,add-workspace-active.svg,corner-ripple.svg,toggle-on.svg}
-
-    prompt -w "Change theme color ..."
-  fi
-}
-
-restore_assets_files() {
-  echo "  restore gtk-3.0 thumbnail files"
-  mv -f "$SRC_DIR/assets/gtk-3.0/thumbnail.svg.bak" "$SRC_DIR/assets/gtk-3.0/thumbnail.svg"
-  mv -f "$SRC_DIR/assets/gtk-3.0/thumbnail-dark.png.bak" "$SRC_DIR/assets/gtk-3.0/thumbnail-dark.png"
-  mv -f "$SRC_DIR/assets/gtk-3.0/thumbnail-light.png.bak" "$SRC_DIR/assets/gtk-3.0/thumbnail-light.png"
-
-  echo "  restore gtk-3.0 assets files"
-  mv -f "$SRC_DIR/assets/gtk-3.0/common-assets/assets.svg.bak" "$SRC_DIR/assets/gtk-3.0/common-assets/assets.svg"
-
-  if [[ -d "$SRC_DIR/assets/gtk-3.0/common-assets/assets-bak" ]]; then
-    rm -rf "$SRC_DIR/assets/gtk-3.0/common-assets/assets"
-    mv -f "$SRC_DIR/assets/gtk-3.0/common-assets/assets-bak" "$SRC_DIR/assets/gtk-3.0/common-assets/assets"
-  fi
-
-  echo "...restore gnome-shell assets files"
-  cd "$SRC_DIR/assets/gnome-shell/common-assets"
-  mv -f checkbox.svg.bak checkbox.svg
-  mv -f more-results.svg.bak more-results.svg
-  mv -f toggle-on.svg.bak toggle-on.svg
-
-  echo "...restore gtk-2.0 gtkrc files"
-  cd "$SRC_DIR/main/gtk-2.0"
-  mv -f gtkrc-dark.bak gtkrc-dark
-  mv -f gtkrc-light.bak gtkrc-light
-
-  echo "...restore gtk-2.0 assets files"
-  cd "${SRC_DIR}/assets/gtk-2.0"
-  mv -f assets-dark.svg.bak assets-dark.svg
-  mv -f assets-light.svg.bak assets-light.svg
-
-  if [[ -d assets-dark-bak ]]; then
-    rm -rf assets-dark/
-    mv -f assets-dark-bak assets-dark
-  fi
-
-  if [[ -d assets-light-bak ]]; then
-    rm -rf assets-light/
-    mv -f assets-light-bak assets-light
-  fi
-
-  echo "...restore cinnamon thumbnail files"
-  cd "$SRC_DIR/assets/cinnamon"
-  mv -f thumbnail.svg.bak thumbnail.svg
-  mv -f thumbnail-dark.png.bak thumbnail-dark.png
-  mv -f thumbnail-light.png.bak thumbnail-light.png
-
-  echo "...restore cinnamon assets files"
-  cd "$SRC_DIR/assets/cinnamon/common-assets"
-  mv -f checkbox.svg.bak checkbox.svg
-  mv -f radiobutton.svg.bak radiobutton.svg
-  mv -f add-workspace-active.svg.bak add-workspace-active.svg
-  mv -f menu-hover.svg.bak menu-hover.svg
-  mv -f toggle-on.svg.bak toggle-on.svg
-  mv -f corner-ripple.svg.bak corner-ripple.svg
-
-  prompt -w "Restore assets files finished!..."
-}
-
 restore_files() {
-  local restore_file='false'
-
   if [[ -f ${SRC_DIR}/sass/gtk/_applications.scss.bak ]]; then
-
     local restore_file='true'
-
     cd ${SRC_DIR}/sass/gtk
     rm -rf _applications.scss
     mv -f _applications.scss.bak _applications.scss
     prompt -w "Restore _applications.scss file ..."
   fi
 
-  if [[ -f ${SRC_DIR}/sass/_colors.scss.bak ]]; then
-
-    local restore_file='true'
-
-    cd ${SRC_DIR}/sass
-    rm -rf _colors.scss
-    mv -f _colors.scss.bak _colors.scss
-    prompt -w "Restore _colors.scss file ..."
-  fi
-
   if [[ -f ${SRC_DIR}/sass/_variables.scss.bak ]]; then
-
     local restore_file='true'
-
     cd ${SRC_DIR}/sass
     rm -rf _variables.scss
     mv -f _variables.scss.bak _variables.scss
@@ -633,10 +473,6 @@ restore_files() {
 
   if [[ "${restore_file:-}" == 'true' ]]; then
     parse_sass
-  fi
-
-  if [[ -f "${SRC_DIR}"/assets/gtk-3.0/thumbnail.svg.bak ]]; then
-    restore_assets_files
   fi
 }
 
@@ -787,51 +623,52 @@ while [[ $# -gt 0 ]]; do
       done
       ;;
     -t|--theme)
-      theme='true'
       shift
-      for theme_color in "${@}"; do
-        case "${theme_color}" in
+      for theme in "${@}"; do
+        case "${theme}" in
           default)
-            theme_colors+=("${THEME_COLOR_VARIANTS[0]}")
+            themes+=("${THEME_VARIANTS[0]}")
             shift
             ;;
           blue)
-            theme_colors+=("${THEME_COLOR_VARIANTS[1]}")
+            themes+=("${THEME_VARIANTS[1]}")
             shift
             ;;
           purple)
-            theme_colors+=("${THEME_COLOR_VARIANTS[2]}")
+            themes+=("${THEME_VARIANTS[2]}")
             shift
             ;;
           pink)
-            theme_colors+=("${THEME_COLOR_VARIANTS[3]}")
+            themes+=("${THEME_VARIANTS[3]}")
             shift
             ;;
           red)
-            theme_colors+=("${THEME_COLOR_VARIANTS[4]}")
+            themes+=("${THEME_VARIANTS[4]}")
             shift
             ;;
           orange)
-            theme_colors+=("${THEME_COLOR_VARIANTS[5]}")
+            themes+=("${THEME_VARIANTS[5]}")
             shift
             ;;
           yellow)
-            theme_colors+=("${THEME_COLOR_VARIANTS[6]}")
+            themes+=("${THEME_VARIANTS[6]}")
             shift
             ;;
           green)
-            theme_colors+=("${THEME_COLOR_VARIANTS[7]}")
+            themes+=("${THEME_VARIANTS[7]}")
             shift
             ;;
           grey)
-            theme_colors+=("${THEME_COLOR_VARIANTS[8]}")
+            themes+=("${THEME_VARIANTS[8]}")
             shift
             ;;
           -*|--*)
             break
             ;;
           *)
-            customize_theme_dialogs
+            prompt -e "ERROR: Unrecognized theme variant '$1'."
+            prompt -i "Try '$0 --help' for more information."
+            exit 1
             ;;
         esac
       done
@@ -953,16 +790,16 @@ if [[ "${remove:-}" != 'true' && "${gdm:-}" != 'true' ]]; then
     run_customize_theme_dialogs
   fi
 
-  if [[ "${theme:-}" != 'true' && "${size:-}" != 'true' && "${panel:-}" != 'true' ]]; then
+  if [[ "${size:-}" != 'true' && "${panel:-}" != 'true' ]]; then
     install_theme
   else
-    install_customize_theme && parse_sass && install_theme "${panel_opacity}" "${sidebar_size}" "${theme_color}"
+    install_customize_theme && parse_sass && install_theme "${panel_opacity}" "${sidebar_size}"
   fi
 fi
 
 # Install GDM theme
 if [[ "${gdm:-}" == 'true' && "${remove:-}" != 'true' && "$UID" -eq "$ROOT_UID" ]]; then
-  install_theme && install_gdm "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${theme_color}"
+  install_theme && install_gdm "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${theme}"
 fi
 
 # Remove themes

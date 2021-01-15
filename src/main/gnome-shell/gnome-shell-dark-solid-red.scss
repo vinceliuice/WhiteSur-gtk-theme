@@ -1,0 +1,11 @@
+$variant: 'dark';
+$laptop: 'true';
+$trans: 'false';
+$black: 'false';
+$theme: 'red';
+
+@import '../../sass/colors';
+@import '../../sass/variables';
+@import '../../sass/gnome-shell/drawing';
+@import '../../sass/gnome-shell/widgets';
+@import '../../sass/gnome-shell/extensions';

@@ -1,0 +1,10 @@
+$variant: 'light';
+$laptop: 'true';
+$trans: 'true';
+$black: 'false';
+$theme: 'orange';
+
+@import '../../sass/colors';
+@import '../../sass/variables';
+@import '../../sass/cinnamon/drawing';
+@import '../../sass/cinnamon/common';

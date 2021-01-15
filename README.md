@@ -46,7 +46,7 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 |-c, --color          | Specify theme color variant(s) **[light/dark]** (Default: All variants)|
 |-o, --opacity        | Specify theme opacity variant(s) **[standard/solid]** (Default: All variants)|
 |-a, --alt            | Specify titlebutton variant(s) **[standard/alt]** (Default: All variants)|
-|-t, --theme          | Change the theme color **[default/blue/purple/pink/red/orange/yellow/green/grey]** (Default: MacOS blue)|
+|-t, --theme          | Specify primary theme color variant(s) **[default/blue/purple/pink/red/orange/yellow/green/grey]** (Default: MacOS blue)|
 |-p, --panel          | Change the panel opacty **[default/25/35/45/55/65/75/85]** (Default: 16)|
 |-s, --size           | Change the nautilus sidebar width size **[default/220/240/260/280]** (Default: 200px)|
 |-i, --icon           | Activities icon variant(s) **[standard/normal/gnome/ubuntu/arch/manjaro/fedora/debian/void]** (Default: standard variant)|
@@ -55,9 +55,9 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 |-dialog, --dialog    | Run terminal dialog, this will Run terminal dialog to install themes!|
 |-h, --help           | Show this help|
 
-### <p align="center" > 1. Change theme accent color </p>
-If you want to change theme accent! (Default color is default MacOS color)
-then you can run:
+### <p align="center" > 1. Change primary theme color </p>
+If you want to change primary theme color! (Default color is default MacOS blue)
+then you can run: 'for example'
 ```bash
 ./install.sh -t green  # Install green accent color version
 ```
@@ -65,7 +65,7 @@ then you can run:
 
 ### <p align="center" > 2. Install GDM theme </p>
 If you want to install GDM theme!
-then you can run:
+then you can run: 'for example'
 ```bash
 sudo ./install.sh -g      # install default dark version
 
@@ -78,7 +78,7 @@ sudo ./install.sh -g -r     # remove installed GDM theme
 ### <p align="center" > 3. Change nautilus sidebar width size </p>
 If you want to change nautilus sidebar width size! (Default size is 200px)
 (Nautilus cannot change the structure of the sidebar, so I added a picture as a background to achieve the effect of bigsur)
-then you can run:
+then you can run: 'for example'
 ```bash
 ./install.sh -s 260    # Install 260px width version
 ```
@@ -86,7 +86,7 @@ then you can run:
 
 ### <p align="center" > 4. Change gnome-shell activities icon </p>
 If you want to change gnome-shell activities icon! (Default icon is Apple)
-then you can run: (For example: Install Manjaro icon)
+then you can run: 'for example: Install Manjaro icon'
 ```bash
 ./install.sh -i manjaro
 ```
