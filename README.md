@@ -61,7 +61,7 @@ then you can run: 'for example'
 ```bash
 ./install.sh -t green  # Install green accent color version
 ```
-![1](pictures/install-tip-01.png)
+![1](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/install-tip-01.png)
 
 ### <p align="center" > 2. Install GDM theme </p>
 If you want to install GDM theme!
@@ -73,7 +73,7 @@ sudo ./install.sh -g -c light     # install light version
 
 sudo ./install.sh -g -r     # remove installed GDM theme
 ```
-![2](pictures/install-tip-02.png)
+![2](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/install-tip-02.png)
 
 ### <p align="center" > 3. Change nautilus sidebar width size </p>
 If you want to change nautilus sidebar width size! (Default size is 200px)
@@ -82,7 +82,7 @@ then you can run: 'for example'
 ```bash
 ./install.sh -s 260    # Install 260px width version
 ```
-![3](pictures/install-tip-03.png)
+![3](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/install-tip-03.png)
 
 ### <p align="center" > 4. Change gnome-shell activities icon </p>
 If you want to change gnome-shell activities icon! (Default icon is Apple)
@@ -90,7 +90,7 @@ then you can run: 'for example: Install Manjaro icon'
 ```bash
 ./install.sh -i manjaro
 ```
-![4](pictures/install-tip-04.png)
+![4](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/install-tip-04.png)
 
 ### On Snapcraft
 
@@ -118,11 +118,11 @@ for i in $(snap connections | grep gtk-common-themes:gtk-3-themes | awk '{print 
 ### Suggested themes
 |  Suggested themes   | Links | Preview |
 |:--------------------|:-------------|:-------------|
-| Kde theme           | [WhiteSur-kde](https://github.com/vinceliuice/WhiteSur-kde)| ![kde](pictures/whitesur-kde-theme.png) |
-| Icon theme          | [WhiteSur-icon](https://github.com/vinceliuice/WhiteSur-icon-theme)| ![icon](pictures/whitesur-icon-theme.png) |
-| Wallpaper           | [WhiteSur wallpaper](https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper)| ![wallpaper](pictures/whitesur-wallpaper.png) |
-| Firefox theme       | [WhiteSur firefox theme](src/other/firefox)| ![firefox](pictures/firefox-theme.png) |
-| Dash to Dock theme  | [WhiteSur dash-to-dock theme](src/other/dash-to-dock)| ![firefox](pictures/dash-to-dock.png) |
+| Kde theme           | [WhiteSur-kde](https://github.com/vinceliuice/WhiteSur-kde)| ![kde](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/whitesur-kde-theme.png) |
+| Icon theme          | [WhiteSur-icon](https://github.com/vinceliuice/WhiteSur-icon-theme)| ![icon](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/whitesur-icon-theme.png) |
+| Wallpaper           | [WhiteSur wallpaper](https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper)| ![wallpaper](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/whitesur-wallpaper.png) |
+| Firefox theme       | [WhiteSur firefox theme](src/other/firefox)| ![firefox](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox-theme.png) |
+| Dash to Dock theme  | [WhiteSur dash-to-dock theme](src/other/dash-to-dock)| ![firefox](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/dash-to-dock.png) |
 
 ## Theme Preview
-![gtk](pictures/preview-gtk.png)
+![gtk](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/preview-gtk.png)
