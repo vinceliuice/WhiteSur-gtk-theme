@@ -264,11 +264,11 @@ UBUNTU_NEW_THEME_FILE="/usr/share/gnome-shell/theme/gnome-shell.css"
 UBUNTU_YARU_THEME_FILE="/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource"
 
 install_gdm() {
-  local GDM_THEME_DIR="${1}/${2}${3}"
-  local YARU_GDM_THEME_DIR="$SHELL_THEME_FOLDER/Yaru/${2}${3}"
+  local GDM_THEME_DIR="${1}/${2}${3}${4}${5}"
+  local YARU_GDM_THEME_DIR="$SHELL_THEME_FOLDER/Yaru/${2}${3}${4}${5}"
 
   echo
-  prompt -i "Installing ${2}${3} gdm theme..."
+  prompt -i "Installing ${2}${3}${4}${5} gdm theme..."
 
   if [[ -f "$GS_THEME_FILE" ]] && command -v glib-compile-resources >/dev/null ; then
     prompt -i "Installing '$GS_THEME_FILE'..."
