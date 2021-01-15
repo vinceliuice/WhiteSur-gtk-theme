@@ -57,7 +57,7 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 
 ### <p align="center" > 1. Change primary theme color </p>
 If you want to change primary theme color! (Default color is default MacOS blue)
-then you can run: 'for example'
+then you can run: `for example`
 ```bash
 ./install.sh -t green  # Install green accent color version
 ```
@@ -65,7 +65,7 @@ then you can run: 'for example'
 
 ### <p align="center" > 2. Install GDM theme </p>
 If you want to install GDM theme!
-then you can run: 'for example'
+then you can run: `for example`
 ```bash
 sudo ./install.sh -g      # install default dark version
 
@@ -86,9 +86,9 @@ then you can run: 'for example'
 
 ### <p align="center" > 4. Change gnome-shell activities icon </p>
 If you want to change gnome-shell activities icon! (Default icon is Apple)
-then you can run: 'for example: Install Manjaro icon'
+then you can run: `for example`
 ```bash
-./install.sh -i manjaro
+./install.sh -i manjaro   # Install Manjaro icon
 ```
 ![4](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/install-tip-04.png)
 
