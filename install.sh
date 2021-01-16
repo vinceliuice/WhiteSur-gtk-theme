@@ -74,7 +74,7 @@ usage() {
   printf "  %-25s%s\n" "-r, --remove" "Remove theme, remove all installed themes"
   printf "  %-25s%s\n" "-o, --opacity VARIANTS" "Specify theme opacity variant(s) [standard|solid] (Default: All variants)"
   printf "  %-25s%s\n" "-c, --color VARIANTS" "Specify theme color variant(s) [light|dark] (Default: All variants)"
-  printf "  %-25s%s\n" "-a, --alt VARIANTS" "Specify theme titlebutton variant(s) [standard|alt] (Default: All variants)"
+  printf "  %-25s%s\n" "-a, --alt VARIANTS" "Specify theme Window management (max/min/close) button variant(s) [standard|alt|all] (Default: All variants)"
   printf "  %-25s%s\n" "-t, --theme VARIANTS" "Specify primary theme color [blue|purple|pink|red|orange|yellow|green|grey|all] (Default: MacOS blue)"
   printf "  %-25s%s\n" "-p, --panel VARIANTS" "Change the panel transparency [25|35|45|55|65|75|85] (Default: 85%)"
   printf "  %-25s%s\n" "-s, --size VARIANTS" "Change the nautilus sidebar width size [220|240|260|280] (Default: 200)"
@@ -202,7 +202,7 @@ install() {
 install_theme() {
   for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
     for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
-      for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
+      for alt in "${alts[@]-${ALT_VARIANTS[0]}}"; do
         for theme in "${themes[@]-${THEME_VARIANTS[0]}}"; do
           for icon in "${icons[@]-${ICON_VARIANTS[0]}}"; do
             for panel_opacity in "${panel_opacities[@]-${PANEL_OPACITY_VARIANTS[0]}}"; do
@@ -233,7 +233,7 @@ remove_theme() {
   for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
     for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
       for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
-        for theme in "${themes[@]-${THEME_VARIANTS[0]}}"; do
+        for theme in "${themes[@]-${THEME_VARIANTS[@]}}"; do
           [[ -d "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}${theme}" ]] && rm -rf "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}${theme}"
         done
       done
@@ -514,11 +514,15 @@ while [[ $# -gt 0 ]]; do
             alts+=("${ALT_VARIANTS[1]}")
             shift
             ;;
+          all)
+            alts+=("${ALT_VARIANTS[@]}")
+            shift
+            ;;
           -*|--*)
             break
             ;;
           *)
-            prompt -e "ERROR: Unrecognized opacity variant '$1'."
+            prompt -e "ERROR: Unrecognized window button variant '$1'."
             prompt -i "Try '$0 --help' for more information."
             exit 1
             ;;

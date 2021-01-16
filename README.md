@@ -45,8 +45,8 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 |-n, --name           | Specify theme name (Default: WhiteSur)|
 |-c, --color          | Specify theme color variant(s) **[light/dark]** (Default: All variants)|
 |-o, --opacity        | Specify theme opacity variant(s) **[standard/solid]** (Default: All variants)|
-|-a, --alt            | Specify titlebutton variant(s) **[standard/alt]** (Default: All variants)|
-|-t, --theme          | Specify primary theme color variant(s) **[default/blue/purple/pink/red/orange/yellow/green/grey]** (Default: MacOS blue)|
+|-a, --alt            | Specify titlebutton variant(s) **[standard/alt/all]** (Default: All variants)|
+|-t, --theme          | Specify primary theme color variant(s) **[default/blue/purple/pink/red/orange/yellow/green/grey/all]** (Default: MacOS blue)|
 |-p, --panel          | Change the panel opacty **[default/25/35/45/55/65/75/85]** (Default: 16)|
 |-s, --size           | Change the nautilus sidebar width size **[default/220/240/260/280]** (Default: 200px)|
 |-i, --icon           | Activities icon variant(s) **[standard/normal/gnome/ubuntu/arch/manjaro/fedora/debian/void]** (Default: standard variant)|
@@ -59,9 +59,9 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 If you want to change primary theme color! (Default color is MacOS blue)
 then you can run: `for example`
 ```bash
-./install.sh -t green  # Install green accent color version
+./install.sh -t green  # Install green primary(accent) color version
 
-./install.sh -c dark -o solid -t all  # Install All accent color dark solid versions
+./install.sh -c dark -o solid -t all  # Install All primary(accent) color dark solid versions
 ```
 ![1](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/install-tip-01.png)
 
