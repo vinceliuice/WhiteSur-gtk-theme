@@ -92,6 +92,13 @@ then you can run: `for example`
 ```
 ![4](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/install-tip-04.png)
 
+### Fix For Flatpak apps
+Just run this:
+
+```bash
+sudo flatpak override --filesystem=~/.themes
+```
+
 ### On Snapcraft
 
 <a href="https://snapcraft.io/whitesur-gtk-theme">
