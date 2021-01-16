@@ -56,10 +56,12 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 |-h, --help           | Show this help|
 
 ### <p align="center" > 1. Change primary theme color </p>
-If you want to change primary theme color! (Default color is default MacOS blue)
+If you want to change primary theme color! (Default color is MacOS blue)
 then you can run: `for example`
 ```bash
 ./install.sh -t green  # Install green accent color version
+
+./install.sh -c dark -o solid -t all  # Install All accent color dark solid versions
 ```
 ![1](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/install-tip-01.png)
 
