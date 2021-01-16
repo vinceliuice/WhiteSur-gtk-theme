@@ -199,283 +199,6 @@ install() {
   cp -r ${SRC_DIR}/other/plank/theme${color}/*.theme                                    ${THEME_DIR}/plank
 }
 
-install_theme() {
-  for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
-    for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
-      for alt in "${alts[@]-${ALT_VARIANTS[0]}}"; do
-        for theme in "${themes[@]-${THEME_VARIANTS[0]}}"; do
-          for icon in "${icons[@]-${ICON_VARIANTS[0]}}"; do
-            for panel_opacity in "${panel_opacities[@]-${PANEL_OPACITY_VARIANTS[0]}}"; do
-              for sidebar_size in "${sidebar_sizes[@]-${SIDEBAR_SIZE_VARIANTS[0]}}"; do
-                install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" "${panel_opacity}" "${sidebar_size}"
-              done
-            done
-          done
-        done
-      done
-    done
-  done
-
-  if [[ -x /usr/bin/notify-send ]]; then
-    notify-send "Finished" "Enjoy your ${THEME_NAME} "${theme}" theme!" -i face-smile
-  fi
-}
-
-install_customize_theme() {
-  for panel_opacity in "${panel_opacities[@]-${PANEL_OPACITY_VARIANTS[0]}}"; do
-    for sidebar_size in "${sidebar_sizes[@]-${SIDEBAR_SIZE_VARIANTS[0]}}"; do
-      customize_theme "${panel_opacity}" "${sidebar_size}" "${theme_color}"
-    done
-  done
-}
-
-remove_theme() {
-  for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
-    for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
-      for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
-        for theme in "${themes[@]-${THEME_VARIANTS[@]}}"; do
-          [[ -d "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}${theme}" ]] && rm -rf "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}${theme}"
-        done
-      done
-    done
-  done
-}
-
-customize_theme() {
-  # Change gnome-shell panel transparency
-  if [[ "${panel:-}" == 'true' && "${panel_opacity:-}" != 'default' ]]; then
-    change_transparency
-  fi
-
-  # Change nautilus sibarbar size
-  if [[ "${size:-}" == 'true' && "${sidebar_size:-}" != 'default' ]]; then
-    change_size
-  fi
-}
-
-# Backup and install files related to GDM theme
-GS_THEME_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
-SHELL_THEME_FOLDER="/usr/share/gnome-shell/theme"
-ETC_THEME_FOLDER="/etc/alternatives"
-ETC_THEME_FILE="/etc/alternatives/gdm3.css"
-ETC_NEW_THEME_FILE="/etc/alternatives/gdm3-theme.gresource"
-UBUNTU_THEME_FILE="/usr/share/gnome-shell/theme/ubuntu.css"
-UBUNTU_NEW_THEME_FILE="/usr/share/gnome-shell/theme/gnome-shell.css"
-UBUNTU_YARU_THEME_FILE="/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource"
-
-install_gdm() {
-  local GDM_THEME_DIR="${1}/${2}${3}${4}${5}"
-  local YARU_GDM_THEME_DIR="$SHELL_THEME_FOLDER/Yaru/${2}${3}${4}${5}"
-
-  echo
-  prompt -i "Installing ${2}${3}${4}${5} gdm theme..."
-
-  if [[ -f "$GS_THEME_FILE" ]] && command -v glib-compile-resources >/dev/null ; then
-    prompt -i "Installing '$GS_THEME_FILE'..."
-    cp -an "$GS_THEME_FILE" "$GS_THEME_FILE.bak"
-    glib-compile-resources \
-      --sourcedir="$GDM_THEME_DIR/gnome-shell" \
-      --target="$GS_THEME_FILE" \
-      "${SRC_DIR}/main/gnome-shell/gnome-shell-theme.gresource.xml"
-  fi
-
-  if [[ -f "$UBUNTU_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
-    prompt -i "Installing '$UBUNTU_THEME_FILE'..."
-    cp -an "$UBUNTU_THEME_FILE" "$UBUNTU_THEME_FILE.bak"
-    cp -af "$GDM_THEME_DIR/gnome-shell/gnome-shell.css" "$UBUNTU_THEME_FILE"
-  fi
-
-  if [[ -f "$UBUNTU_NEW_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
-    prompt -i "Installing '$UBUNTU_NEW_THEME_FILE'..."
-    cp -an "$UBUNTU_NEW_THEME_FILE" "$UBUNTU_NEW_THEME_FILE.bak"
-    cp -af "$GDM_THEME_DIR"/gnome-shell/* "$SHELL_THEME_FOLDER"
-  fi
-
-  # > Ubuntu 18.04
-  if [[ -f "$ETC_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
-    prompt -i "Installing Ubuntu GDM theme..."
-    cp -an "$ETC_THEME_FILE" "$ETC_THEME_FILE.bak"
-    [[ -d "$SHELL_THEME_FOLDER/$THEME_NAME" ]] && rm -rf "$SHELL_THEME_FOLDER/$THEME_NAME"
-    cp -r "$GDM_THEME_DIR/gnome-shell" "$SHELL_THEME_FOLDER/$THEME_NAME"
-    cd "$ETC_THEME_FOLDER"
-    [[ -f "$ETC_THEME_FILE.bak" ]] && ln -sf "$SHELL_THEME_FOLDER/$THEME_NAME/gnome-shell.css" gdm3.css
-  fi
-
-  # > Ubuntu 20.04
-  if [[ -d "$SHELL_THEME_FOLDER/Yaru" && -f "$GS_THEME_FILE.bak" ]]; then
-    prompt -i "Installing Ubuntu GDM theme..."
-    cp -an "$UBUNTU_YARU_THEME_FILE" "$UBUNTU_YARU_THEME_FILE.bak"
-    rm -rf "$UBUNTU_YARU_THEME_FILE"
-    rm -rf "$YARU_GDM_THEME_DIR" && mkdir -p "$YARU_GDM_THEME_DIR"
-
-    mkdir -p                                                                              "$YARU_GDM_THEME_DIR"/gnome-shell
-    mkdir -p                                                                              "$YARU_GDM_THEME_DIR"/gnome-shell/Yaru
-    cp -r "$SRC_DIR"/assets/gnome-shell/icons                                             "$YARU_GDM_THEME_DIR"/gnome-shell
-    cp -r "$SRC_DIR"/main/gnome-shell/pad-osd.css                                         "$YARU_GDM_THEME_DIR"/gnome-shell
-    cp -r "$SRC_DIR"/main/gnome-shell/gdm3${color}.css                                    "$YARU_GDM_THEME_DIR"/gnome-shell/gdm3.css
-    cp -r "$SRC_DIR"/main/gnome-shell/gnome-shell${color}.css                             "$YARU_GDM_THEME_DIR"/gnome-shell/Yaru/gnome-shell.css
-    cp -r "$SRC_DIR"/assets/gnome-shell/common-assets                                     "$YARU_GDM_THEME_DIR"/gnome-shell/assets
-    cp -r "$SRC_DIR"/assets/gnome-shell/assets${color}/*.svg                              "$YARU_GDM_THEME_DIR"/gnome-shell/assets
-    cp -r "$SRC_DIR"/assets/gnome-shell/activities/activities.svg                         "$YARU_GDM_THEME_DIR"/gnome-shell/assets
-
-    cd "$YARU_GDM_THEME_DIR"/gnome-shell
-    mv -f assets/no-events.svg no-events.svg
-    mv -f assets/process-working.svg process-working.svg
-    mv -f assets/no-notifications.svg no-notifications.svg
-
-    glib-compile-resources \
-      --sourcedir="$YARU_GDM_THEME_DIR"/gnome-shell \
-      --target="$UBUNTU_YARU_THEME_FILE" \
-      "$SRC_DIR"/main/gnome-shell/gnome-shell-yaru-theme.gresource.xml
-
-    rm -rf "$YARU_GDM_THEME_DIR"
-  fi
-}
-
-revert_gdm() {
-  if [[ -f "$GS_THEME_FILE.bak" ]]; then
-    prompt -w "Reverting '$GS_THEME_FILE'..."
-    rm -rf "$GS_THEME_FILE"
-    mv "$GS_THEME_FILE.bak" "$GS_THEME_FILE"
-  fi
-
-  if [[ -f "$UBUNTU_THEME_FILE.bak" ]]; then
-    prompt -w "Reverting '$UBUNTU_THEME_FILE'..."
-    rm -rf "$UBUNTU_THEME_FILE"
-    mv "$UBUNTU_THEME_FILE.bak" "$UBUNTU_THEME_FILE"
-  fi
-
-  if [[ -f "$UBUNTU_NEW_THEME_FILE.bak" ]]; then
-    prompt -w "Reverting '$UBUNTU_NEW_THEME_FILE'..."
-    rm -rf "$UBUNTU_NEW_THEME_FILE" "$SHELL_THEME_FOLDER"/{assets,no-events.svg,process-working.svg,no-notifications.svg}
-    mv "$UBUNTU_NEW_THEME_FILE.bak" "$UBUNTU_NEW_THEME_FILE"
-  fi
-
-  # > Ubuntu 18.04
-  if [[ -f "$ETC_THEME_FILE.bak" ]]; then
-
-    prompt -w "reverting Ubuntu GDM theme..."
-
-    rm -rf "$ETC_THEME_FILE"
-    mv "$ETC_THEME_FILE.bak" "$ETC_THEME_FILE"
-    [[ -d $SHELL_THEME_FOLDER/$THEME_NAME ]] && rm -rf $SHELL_THEME_FOLDER/$THEME_NAME
-  fi
-
-  # > Ubuntu 20.04
-  if [[ -f "$UBUNTU_YARU_THEME_FILE.bak" ]]; then
-    prompt -w "reverting Ubuntu GDM theme..."
-    rm -rf "$UBUNTU_YARU_THEME_FILE"
-    mv "$UBUNTU_YARU_THEME_FILE.bak" "$UBUNTU_YARU_THEME_FILE"
-    [[ -d "$UBUNTU_MODES_FOLDER"-bak ]] && rm -rf "$UBUNTU_MODES_FOLDER" && mv "$UBUNTU_MODES_FOLDER"-bak "$UBUNTU_MODES_FOLDER"
-  fi
-}
-
-install_dialog() {
-  if [ ! "$(which dialog 2> /dev/null)" ]; then
-    prompt -w "\n 'dialog' needs to be installed for this shell"
-    if has_command zypper; then
-      sudo zypper in dialog
-    elif has_command apt-get; then
-      sudo apt-get install dialog
-    elif has_command dnf; then
-      sudo dnf install -y dialog
-    elif has_command yum; then
-      sudo yum install dialog
-    elif has_command pacman; then
-      sudo pacman -S --noconfirm dialog
-    fi
-  fi
-}
-
-customize_theme_dialogs() {
-  if [[ -x /usr/bin/dialog ]]; then
-    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-    --radiolist "Choose your panel background opacity
-                (default is 0.16, value more smaller panel more transparency!):" 20 50 10 \
-      0 "default" on  \
-      1 "0.25" off  \
-      2 "0.35" off \
-      3 "0.45" off \
-      4 "0.55" off \
-      5 "0.65" off \
-      6 "0.75" off \
-      7 "0.85" off --output-fd 1 )
-      case "$tui" in
-        0) panel_opacity="default" ;;
-        1) panel_opacity="25" ;;
-        2) panel_opacity="35" ;;
-        3) panel_opacity="45" ;;
-        4) panel_opacity="55" ;;
-        5) panel_opacity="65" ;;
-        6) panel_opacity="75" ;;
-        7) panel_opacity="85" ;;
-        *) operation_canceled ;;
-      esac
-
-    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-    --radiolist "Choose your nautilus sidebar size (default is 200px width):" 15 40 5 \
-      0 "default" on \
-      1 "220px" off \
-      2 "240px" off \
-      3 "260px" off \
-      4 "280px" off --output-fd 1 )
-      case "$tui" in
-        0) sidebar_size="default" ;;
-        1) sidebar_size="220" ;;
-        2) sidebar_size="240" ;;
-        3) sidebar_size="260" ;;
-        4) sidebar_size="280" ;;
-        *) operation_canceled ;;
-      esac
-  fi
-}
-
-run_customize_theme_dialogs() {
-  install_dialog && customize_theme_dialogs && change_transparency && change_size && parse_sass
-}
-
-parse_sass() {
-  cd ${REPO_DIR} && ./parse-sass.sh
-}
-
-change_size() {
-  if [[ "${sidebar_size:-}" != 'default' ]]; then
-    cd ${SRC_DIR}/sass/gtk
-    sed -i.bak "/\$nautilus_sidebar_size/s/sidebar_size_default/sidebar_size_${sidebar_size}/" _applications.scss
-    prompt -w "Change nautilus sidebar size ..."
-  fi
-}
-
-change_transparency() {
-  if [[ "${panel_opacity:-}" != 'default' ]]; then
-    cd ${SRC_DIR}/sass
-    sed -i.bak "/\$panel_opacity/s/0.16/0.${panel_opacity}/" _variables.scss
-    prompt -w "Change panel transparency ..."
-  fi
-}
-
-restore_files() {
-  if [[ -f ${SRC_DIR}/sass/gtk/_applications.scss.bak ]]; then
-    local restore_file='true'
-    cd ${SRC_DIR}/sass/gtk
-    rm -rf _applications.scss
-    mv -f _applications.scss.bak _applications.scss
-    prompt -w "Restore _applications.scss file ..."
-  fi
-
-  if [[ -f ${SRC_DIR}/sass/_variables.scss.bak ]]; then
-    local restore_file='true'
-    cd ${SRC_DIR}/sass
-    rm -rf _variables.scss
-    mv -f _variables.scss.bak _variables.scss
-    prompt -w "Restore _variables.scss file ..."
-  fi
-
-  if [[ "${restore_file:-}" == 'true' ]]; then
-    parse_sass
-  fi
-}
-
 while [[ $# -gt 0 ]]; do
   case "${1}" in
     -d|--dest)
@@ -781,6 +504,282 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+install_theme() {
+  for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
+    for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
+      for alt in "${alts[@]-${ALT_VARIANTS[0]}}"; do
+        for theme in "${themes[@]-${THEME_VARIANTS[0]}}"; do
+          for icon in "${icons[@]-${ICON_VARIANTS[0]}}"; do
+            for panel_opacity in "${panel_opacities[@]-${PANEL_OPACITY_VARIANTS[0]}}"; do
+              for sidebar_size in "${sidebar_sizes[@]-${SIDEBAR_SIZE_VARIANTS[0]}}"; do
+                install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" "${panel_opacity}" "${sidebar_size}"
+              done
+            done
+          done
+        done
+      done
+    done
+  done
+
+  if [[ -x /usr/bin/notify-send ]]; then
+    notify-send "Finished" "Enjoy your ${THEME_NAME} "${theme}" theme!" -i face-smile
+  fi
+}
+
+install_customize_theme() {
+  for panel_opacity in "${panel_opacities[@]-${PANEL_OPACITY_VARIANTS[0]}}"; do
+    for sidebar_size in "${sidebar_sizes[@]-${SIDEBAR_SIZE_VARIANTS[0]}}"; do
+      customize_theme "${panel_opacity}" "${sidebar_size}" "${theme_color}"
+    done
+  done
+}
+
+remove_theme() {
+  for color in "${colors[@]-${COLOR_VARIANTS[@]}}"; do
+    for opacity in "${opacities[@]-${OPACITY_VARIANTS[@]}}"; do
+      for alt in "${alts[@]-${ALT_VARIANTS[@]}}"; do
+        for theme in "${themes[@]-${THEME_VARIANTS[@]}}"; do
+          [[ -d "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}${theme}" ]] && rm -rf "${DEST_DIR}/${THEME_NAME}${color}${opacity}${alt}${theme}"
+        done
+      done
+    done
+  done
+}
+
+customize_theme() {
+  # Change gnome-shell panel transparency
+  if [[ "${panel:-}" == 'true' && "${panel_opacity:-}" != 'default' ]]; then
+    change_transparency
+  fi
+
+  # Change nautilus sibarbar size
+  if [[ "${size:-}" == 'true' && "${sidebar_size:-}" != 'default' ]]; then
+    change_size
+  fi
+}
+
+# Backup and install files related to GDM theme
+GS_THEME_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
+SHELL_THEME_FOLDER="/usr/share/gnome-shell/theme"
+ETC_THEME_FOLDER="/etc/alternatives"
+ETC_THEME_FILE="/etc/alternatives/gdm3.css"
+ETC_NEW_THEME_FILE="/etc/alternatives/gdm3-theme.gresource"
+UBUNTU_THEME_FILE="/usr/share/gnome-shell/theme/ubuntu.css"
+UBUNTU_NEW_THEME_FILE="/usr/share/gnome-shell/theme/gnome-shell.css"
+UBUNTU_YARU_THEME_FILE="/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource"
+
+install_gdm() {
+  local GDM_THEME_DIR="${1}/${2}${3}${4}${5}"
+  local YARU_GDM_THEME_DIR="$SHELL_THEME_FOLDER/Yaru/${2}${3}${4}${5}"
+
+  echo
+  prompt -i "Installing ${2}${3}${4}${5} gdm theme..."
+
+  if [[ -f "$GS_THEME_FILE" ]] && command -v glib-compile-resources >/dev/null ; then
+    prompt -i "Installing '$GS_THEME_FILE'..."
+    cp -an "$GS_THEME_FILE" "$GS_THEME_FILE.bak"
+    glib-compile-resources \
+      --sourcedir="$GDM_THEME_DIR/gnome-shell" \
+      --target="$GS_THEME_FILE" \
+      "${SRC_DIR}/main/gnome-shell/gnome-shell-theme.gresource.xml"
+  fi
+
+  if [[ -f "$UBUNTU_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
+    prompt -i "Installing '$UBUNTU_THEME_FILE'..."
+    cp -an "$UBUNTU_THEME_FILE" "$UBUNTU_THEME_FILE.bak"
+    cp -af "$GDM_THEME_DIR/gnome-shell/gnome-shell.css" "$UBUNTU_THEME_FILE"
+  fi
+
+  if [[ -f "$UBUNTU_NEW_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
+    prompt -i "Installing '$UBUNTU_NEW_THEME_FILE'..."
+    cp -an "$UBUNTU_NEW_THEME_FILE" "$UBUNTU_NEW_THEME_FILE.bak"
+    cp -af "$GDM_THEME_DIR"/gnome-shell/* "$SHELL_THEME_FOLDER"
+  fi
+
+  # > Ubuntu 18.04
+  if [[ -f "$ETC_THEME_FILE" && -f "$GS_THEME_FILE.bak" ]]; then
+    prompt -i "Installing Ubuntu GDM theme..."
+    cp -an "$ETC_THEME_FILE" "$ETC_THEME_FILE.bak"
+    [[ -d "$SHELL_THEME_FOLDER/$THEME_NAME" ]] && rm -rf "$SHELL_THEME_FOLDER/$THEME_NAME"
+    cp -r "$GDM_THEME_DIR/gnome-shell" "$SHELL_THEME_FOLDER/$THEME_NAME"
+    cd "$ETC_THEME_FOLDER"
+    [[ -f "$ETC_THEME_FILE.bak" ]] && ln -sf "$SHELL_THEME_FOLDER/$THEME_NAME/gnome-shell.css" gdm3.css
+  fi
+
+  # > Ubuntu 20.04
+  if [[ -d "$SHELL_THEME_FOLDER/Yaru" && -f "$GS_THEME_FILE.bak" ]]; then
+    prompt -i "Installing Ubuntu GDM theme..."
+    cp -an "$UBUNTU_YARU_THEME_FILE" "$UBUNTU_YARU_THEME_FILE.bak"
+    rm -rf "$UBUNTU_YARU_THEME_FILE"
+    rm -rf "$YARU_GDM_THEME_DIR" && mkdir -p "$YARU_GDM_THEME_DIR"
+
+    mkdir -p                                                                              "$YARU_GDM_THEME_DIR"/gnome-shell
+    mkdir -p                                                                              "$YARU_GDM_THEME_DIR"/gnome-shell/Yaru
+    cp -r "$SRC_DIR"/assets/gnome-shell/icons                                             "$YARU_GDM_THEME_DIR"/gnome-shell
+    cp -r "$SRC_DIR"/main/gnome-shell/pad-osd.css                                         "$YARU_GDM_THEME_DIR"/gnome-shell
+    cp -r "$SRC_DIR"/main/gnome-shell/gdm3${color}.css                                    "$YARU_GDM_THEME_DIR"/gnome-shell/gdm3.css
+    cp -r "$SRC_DIR"/main/gnome-shell/gnome-shell${color}.css                             "$YARU_GDM_THEME_DIR"/gnome-shell/Yaru/gnome-shell.css
+    cp -r "$SRC_DIR"/assets/gnome-shell/common-assets                                     "$YARU_GDM_THEME_DIR"/gnome-shell/assets
+    cp -r "$SRC_DIR"/assets/gnome-shell/assets${color}/*.svg                              "$YARU_GDM_THEME_DIR"/gnome-shell/assets
+    cp -r "$SRC_DIR"/assets/gnome-shell/activities/activities.svg                         "$YARU_GDM_THEME_DIR"/gnome-shell/assets
+
+    cd "$YARU_GDM_THEME_DIR"/gnome-shell
+    mv -f assets/no-events.svg no-events.svg
+    mv -f assets/process-working.svg process-working.svg
+    mv -f assets/no-notifications.svg no-notifications.svg
+
+    glib-compile-resources \
+      --sourcedir="$YARU_GDM_THEME_DIR"/gnome-shell \
+      --target="$UBUNTU_YARU_THEME_FILE" \
+      "$SRC_DIR"/main/gnome-shell/gnome-shell-yaru-theme.gresource.xml
+
+    rm -rf "$YARU_GDM_THEME_DIR"
+  fi
+}
+
+revert_gdm() {
+  if [[ -f "$GS_THEME_FILE.bak" ]]; then
+    prompt -w "Reverting '$GS_THEME_FILE'..."
+    rm -rf "$GS_THEME_FILE"
+    mv "$GS_THEME_FILE.bak" "$GS_THEME_FILE"
+  fi
+
+  if [[ -f "$UBUNTU_THEME_FILE.bak" ]]; then
+    prompt -w "Reverting '$UBUNTU_THEME_FILE'..."
+    rm -rf "$UBUNTU_THEME_FILE"
+    mv "$UBUNTU_THEME_FILE.bak" "$UBUNTU_THEME_FILE"
+  fi
+
+  if [[ -f "$UBUNTU_NEW_THEME_FILE.bak" ]]; then
+    prompt -w "Reverting '$UBUNTU_NEW_THEME_FILE'..."
+    rm -rf "$UBUNTU_NEW_THEME_FILE" "$SHELL_THEME_FOLDER"/{assets,no-events.svg,process-working.svg,no-notifications.svg}
+    mv "$UBUNTU_NEW_THEME_FILE.bak" "$UBUNTU_NEW_THEME_FILE"
+  fi
+
+  # > Ubuntu 18.04
+  if [[ -f "$ETC_THEME_FILE.bak" ]]; then
+
+    prompt -w "reverting Ubuntu GDM theme..."
+
+    rm -rf "$ETC_THEME_FILE"
+    mv "$ETC_THEME_FILE.bak" "$ETC_THEME_FILE"
+    [[ -d $SHELL_THEME_FOLDER/$THEME_NAME ]] && rm -rf $SHELL_THEME_FOLDER/$THEME_NAME
+  fi
+
+  # > Ubuntu 20.04
+  if [[ -f "$UBUNTU_YARU_THEME_FILE.bak" ]]; then
+    prompt -w "reverting Ubuntu GDM theme..."
+    rm -rf "$UBUNTU_YARU_THEME_FILE"
+    mv "$UBUNTU_YARU_THEME_FILE.bak" "$UBUNTU_YARU_THEME_FILE"
+  fi
+}
+
+install_dialog() {
+  if [ ! "$(which dialog 2> /dev/null)" ]; then
+    prompt -w "\n 'dialog' needs to be installed for this shell"
+    if has_command zypper; then
+      sudo zypper in dialog
+    elif has_command apt-get; then
+      sudo apt-get install dialog
+    elif has_command dnf; then
+      sudo dnf install -y dialog
+    elif has_command yum; then
+      sudo yum install dialog
+    elif has_command pacman; then
+      sudo pacman -S --noconfirm dialog
+    fi
+  fi
+}
+
+customize_theme_dialogs() {
+  if [[ -x /usr/bin/dialog ]]; then
+    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
+    --radiolist "Choose your panel background opacity
+                (default is 0.16, value more smaller panel more transparency!):" 20 50 10 \
+      0 "default" on  \
+      1 "0.25" off  \
+      2 "0.35" off \
+      3 "0.45" off \
+      4 "0.55" off \
+      5 "0.65" off \
+      6 "0.75" off \
+      7 "0.85" off --output-fd 1 )
+      case "$tui" in
+        0) panel_opacity="default" ;;
+        1) panel_opacity="25" ;;
+        2) panel_opacity="35" ;;
+        3) panel_opacity="45" ;;
+        4) panel_opacity="55" ;;
+        5) panel_opacity="65" ;;
+        6) panel_opacity="75" ;;
+        7) panel_opacity="85" ;;
+        *) operation_canceled ;;
+      esac
+
+    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
+    --radiolist "Choose your nautilus sidebar size (default is 200px width):" 15 40 5 \
+      0 "default" on \
+      1 "220px" off \
+      2 "240px" off \
+      3 "260px" off \
+      4 "280px" off --output-fd 1 )
+      case "$tui" in
+        0) sidebar_size="default" ;;
+        1) sidebar_size="220" ;;
+        2) sidebar_size="240" ;;
+        3) sidebar_size="260" ;;
+        4) sidebar_size="280" ;;
+        *) operation_canceled ;;
+      esac
+  fi
+}
+
+run_customize_theme_dialogs() {
+  install_dialog && customize_theme_dialogs && change_transparency && change_size && parse_sass
+}
+
+parse_sass() {
+  cd ${REPO_DIR} && ./parse-sass.sh
+}
+
+change_size() {
+  if [[ "${sidebar_size:-}" != 'default' ]]; then
+    cd ${SRC_DIR}/sass/gtk
+    sed -i.bak "/\$nautilus_sidebar_size/s/sidebar_size_default/sidebar_size_${sidebar_size}/" _applications.scss
+    prompt -w "Change nautilus sidebar size ..."
+  fi
+}
+
+change_transparency() {
+  if [[ "${panel_opacity:-}" != 'default' ]]; then
+    cd ${SRC_DIR}/sass
+    sed -i.bak "/\$panel_opacity/s/0.16/0.${panel_opacity}/" _variables.scss
+    prompt -w "Change panel transparency ..."
+  fi
+}
+
+restore_files() {
+  if [[ -f ${SRC_DIR}/sass/gtk/_applications.scss.bak ]]; then
+    local restore_file='true'
+    cd ${SRC_DIR}/sass/gtk
+    rm -rf _applications.scss
+    mv -f _applications.scss.bak _applications.scss
+    prompt -w "Restore _applications.scss file ..."
+  fi
+
+  if [[ -f ${SRC_DIR}/sass/_variables.scss.bak ]]; then
+    local restore_file='true'
+    cd ${SRC_DIR}/sass
+    rm -rf _variables.scss
+    mv -f _variables.scss.bak _variables.scss
+    prompt -w "Restore _variables.scss file ..."
+  fi
+
+  if [[ "${restore_file:-}" == 'true' ]]; then
+    parse_sass
+  fi
+}
 
 # Install dependency
 if [ ! "$(which glib-compile-resources 2> /dev/null)" ]; then
