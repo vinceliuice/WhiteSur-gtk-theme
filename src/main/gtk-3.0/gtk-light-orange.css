@@ -4074,7 +4074,7 @@ placessidebar row label.sidebar-label:dir(rtl) {
   padding-left: 6px;
 }
 
-button.sidebar-button {
+placessidebar row button.sidebar-button {
   min-width: 22px;
   min-height: 22px;
   margin-top: 2px;
@@ -4084,18 +4084,18 @@ button.sidebar-button {
   -gtk-outline-radius: 100px;
 }
 
-button.sidebar-button > image {
+placessidebar row button.sidebar-button > image {
   opacity: 0.85;
 }
 
-button.sidebar-button:active, button.sidebar-button:checked {
+placessidebar row button.sidebar-button:active, placessidebar row button.sidebar-button:checked {
   background-image: none;
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
   border-color: rgba(0, 0, 0, 0.3);
 }
 
-button.sidebar-button:not(:hover):not(:active) > image {
+placessidebar row button.sidebar-button:not(:hover):not(:active) > image {
   opacity: 0.65;
 }
 

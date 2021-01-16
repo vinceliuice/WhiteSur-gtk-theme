@@ -3385,7 +3385,7 @@ placessidebar {
       &:dir(rtl) { padding-left: 6px; }
     }
 
-    @at-root button.sidebar-button {
+    button.sidebar-button {
       min-width: 22px;
       min-height: 22px;
       margin-top: 2px;
@@ -3409,7 +3409,7 @@ placessidebar {
 
       &:active, &:checked {
         @include button(flat-active);
-        border-color: if($variant=='light', rgba(black, 0.3), rgba(white, 0.25));
+        border-color: if($variant=='light', rgba(black, 0.25), rgba(black, 0.15));
       }
     }
 
