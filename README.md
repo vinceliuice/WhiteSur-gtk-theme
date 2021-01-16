@@ -21,7 +21,6 @@ WhiteSur is a MacOS Big Sur like theme for GTK 3, GTK 2 and Gnome-Shell which su
 - sassc
 - optipng
 - inkscape
-- dialog
 - libglib2.0-dev-bin  `ubuntu 20.04`
 - libglib2.0-dev  `ubuntu 18.04` `debian 10.03` `linux mint 19`
 - libxml2-utils  `ubuntu 18.04` `debian 10.03` `linux mint 19`
