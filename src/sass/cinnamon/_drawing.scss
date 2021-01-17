@@ -102,6 +102,26 @@
     background-color: rgba($button_bg, 0.55);
   }
 
+  @else if $t==flat {
+    color: $fg_color;
+    background-color: transparent;
+  }
+
+  @else if $t==flat-hover {
+    color: $fg_color;
+    background-color: rgba($fg_color, 0.1);
+  }
+
+  @else if $t==flat-active {
+    color: $fg_color;
+    background-color: rgba($fg_color, 0.2);
+  }
+
+  @else if $t==flat-insensitive {
+    color: $disabled_fg_color;
+    background-color: transparent;
+  }
+
   @else if $t==osd {
     color: $osd_fg_color;
     background-color: $osd_button_bg;

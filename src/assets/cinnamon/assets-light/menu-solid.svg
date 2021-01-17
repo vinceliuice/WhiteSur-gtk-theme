@@ -5,8 +5,8 @@
   </filter>
  </defs>
  <g transform="translate(0 -1016.4)">
-  <rect transform="matrix(1.0181 0 0 1.0181 -.32511 -18.718)" x="5" y="1023.4" width="26" height="26" rx="9.4545" ry="9.4546" filter="url(#a)" opacity=".15"/>
-  <rect x="6.5" y="1022.9" width="23" height="23" rx="8.5" ry="8.5" fill="none" opacity=".15" stroke="#000" stroke-linecap="round"/>
-  <rect x="7" y="1023.4" width="22" height="22" rx="8" ry="8" fill="#fff"/>
+  <rect transform="matrix(1.0181 0 0 1.0181 -.32511 -18.718)" x="5" y="1023.4" width="26" height="26" rx="11.036" ry="11.036" filter="url(#a)" opacity=".15"/>
+  <rect x="6.5" y="1022.9" width="23" height="23" rx="10.5" ry="10.5" fill="none" opacity=".15" stroke="#000000" stroke-linecap="round"/>
+  <rect x="7" y="1023.4" width="22" height="22" rx="10" ry="10" fill="#f5f5f5"/>
  </g>
 </svg>

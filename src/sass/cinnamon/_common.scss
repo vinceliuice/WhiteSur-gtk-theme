@@ -35,22 +35,30 @@ stage {
   min-height: 20px;
   padding: 5px 32px;
   transition-duration: 100ms;
-  border-radius: 5px;
-
+  border-radius: $bt_radius;
   @include button(normal);
 
-  &:focus { @include button(focus); border-radius: 5px; }
-  &:hover { @include button(hover); border-radius: 5px; }
-  &:hover:focus { @include button(focus-hover); border-radius: 5px; }
-  &:active, &:active:focus { @include button(active); border-radius: 5px; }
-  &:insensitive { @include button(insensitive); border-radius: 5px; }
+  &:focus { @include button(focus); border-radius: $bt_radius; }
+  &:hover { @include button(hover); border-radius: $bt_radius; }
+  &:hover:focus { @include button(focus-hover); border-radius: $bt_radius; }
+  &:active, &:active:focus { @include button(active); border-radius: $bt_radius; }
+  &:insensitive { @include button(insensitive); border-radius: $bt_radius; }
+}
+
+%flat_button {
+  border-radius: $bt_radius;
+  @include button(flat);
+
+  &:hover { @include button(flat-hover); border-radius: $bt_radius; }
+  &:active { @include button(flat-active); border-radius: $bt_radius; }
+  &:insensitive { @include button(flat-insensitive); border-radius: $bt_radius; }
 }
 
 %osd_button {
   min-height: 20px;
   padding: 5px 32px;
   transition-duration: 100ms;
-  border-radius: 5px;
+  border-radius: $bt_radius;
 
   @include button(osd);
 
@@ -69,7 +77,7 @@ stage {
   selection-background-color: $selected_bg_color;
   selected-color: $selected_fg_color;
   transition-duration: 300ms;
-  border-radius: 5px;
+  border-radius: $bt_radius;
 
   @include entry(normal);
 
@@ -90,7 +98,7 @@ stage {
   selection-background-color: $selected_bg_color;
   selected-color: $selected_fg_color;
   transition-duration: 300ms;
-  border-radius: 5px;
+  border-radius: $bt_radius;
 
   @include entry(osd);
 
@@ -117,11 +125,11 @@ StScrollBar {
 
   StBin#trough {
     background-color: transparentize($base_color, 0.9);
-    border-radius: 8px;
+    border-radius: 100px;
   }
 
   StButton#vhandle, StButton#hhandle {
-    border-radius: 2px;
+    border-radius: 100px;
     background-color: mix($fg_color, $bg_color, 40%);
     border: 0px solid;
     margin: 0px;
@@ -169,7 +177,6 @@ StScrollBar {
 // Check Boxes
 //
 .check-box {
-
   CinnamonGenericContainer {
     spacing: .2em;
     min-height: 30px;
@@ -253,7 +260,7 @@ StScrollBar {
 // Tooltip
 //
 #Tooltip {
-  border-radius: 3px;
+  border-radius: $bt_radius;
   padding: 5px 12px;
   background-color: $osd_bg_color;
   color: $osd_fg_color;
@@ -263,7 +270,7 @@ StScrollBar {
 }
 
 //
-// Pop0vers/Menus
+// Popovers/Menus
 //
 
 $menu_bg: if($variant=='light', rgba($base_color, 0.95), rgba($bg_color, 0.95));
@@ -272,35 +279,27 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 .menu,
 .popup-menu,
 %menu {
-  padding: 4px 4px 6px 4px;
+  padding: 0 6px;
   color: $fg_color;
-  // background-color: $menu_bg;
-  // border-radius: 6px;
-  // margin: 5px;
-  // @if $variant == 'dark' { border: 1px solid $menu_border; }
-  // box-shadow: 0 3px 8px rgba(0, 0, 0, 0.56), 0 3px 15px rgba(0, 0, 0, 0.36);
 
   @if $trans == 'true' {
-    border-image: url("assets/menu.svg") 15 15 15 15;
+    border-image: url("assets/menu.svg") 17 17 17 17;
   }
 
   @else {
-    border-image: url("assets/menu-solid.svg") 15 15 15 15;
+    border-image: url("assets/menu-solid.svg") 17 17 17 17;
   }
 
   &-arrow { icon-size: 16px; }
 
   .popup-sub-menu {
+    border-radius: $bt_radius;
     background-gradient-direction: none;
     box-shadow: none;
-    border-image: url("assets/submenu.svg") 15 15 2 2;
+    background-color: if($variant == 'light', rgba(white, 0.75), rgba(white, 0.15));
 
-    // background-color: if($variant=='light', $bg_color, $base_color);
-    // border-top: 1px solid $dark_borders_color;
-    // border-bottom: 1px solid $dark_borders_color;
-
-    .popup-menu-item:ltr { padding-right: 8px; }
-    .popup-menu-item:rtl { padding-left: 8px; }
+    // .popup-menu-item:ltr { padding-right: 8px; }
+    // .popup-menu-item:rtl { padding-left: 8px; }
 
     StScrollBar {
       padding: 4px;
@@ -308,14 +307,16 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     }
   }
 
-  .popup-menu-content { padding: 1em 0em 1em 0em; }
+  .popup-menu-content { padding: 1em 6px 1em 6px; }
+
   .popup-menu-item {
     padding: .4em 1.75em;
     spacing: 1em;
+    border-radius: $bt_radius;
 
-    &:active {
+    &:active, &:checked {
       color: $selected_fg_color;
-      border-image: url("assets/menu-hover.svg") 15 15 2 2;
+      background-color: $selected_bg_color;
     }
 
     &:insensitive {
@@ -336,14 +337,14 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 }
 
 .popup-menu-boxpointer {
-  -arrow-border-radius: 3px;
+  -arrow-border-radius: $bt_radius;
   -arrow-background-color:  rgba(0,0,0,0.0);
   -arrow-border-width: 0;
   -arrow-border-color: rgba(0,0,0,0.0);
   -arrow-base: 0;
   -arrow-rise: 0;
   margin: 0.4em 0.5em 0.5em;
-  border-radius: 2px;
+  border-radius: $bt_radius;
 }
 
 .popup-combo-menu {
@@ -413,7 +414,6 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   }
 
   &Right {
-
     &:dnd {
       background-gradient-direction: vertical;
       background-gradient-start: rgba(0,0,255,0.05);
@@ -464,13 +464,6 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     }
   }
 
-  @if $variant == 'dark' {
-    &-top { border-bottom: 1px solid $panel_border_color; }
-    &-bottom { border-top: 1px solid $panel_border_color; }
-    &-left { border-right: 1px solid $panel_border_color; }
-    &-right { border-left: 1px solid $panel_border_color; }
-  }
-
   &-dummy {
     background-color: transparentize($error_color, 0.5);
 
@@ -510,7 +503,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   border: 1px solid $osd_bg_color;
   color: $osd_fg_color;
   spacing: 25px;
-  border-radius: 2px;
+  border-radius: $bt_radius;
   font-size: 9pt;
   padding: 5px 8px;
   -cinnamon-caption-spacing: 4px;
@@ -526,7 +519,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 .expo-workspaces-name-entry,
 .expo-workspaces-name-entry#selected {
   height: 15px;
-  border-radius: 2px;
+  border-radius: $bt_radius;
   font-size: 9pt;
   padding: 5px 8px;
   -cinnamon-caption-spacing: 4px;
@@ -546,12 +539,12 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 .expo-workspace-thumbnail-frame {
   border: 4px solid rgba(255,255,255,0.0);
   background-color: rgba(255,255,255,0.0);
-  border-radius: 2px;
+  border-radius: $bt_radius;
 
   &#active {
     border: 4px solid $selected_bg_color;
     background-color: black;
-    border-radius: 2px;
+    border-radius: $bt_radius;
   }
 }
 
@@ -600,6 +593,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     height: 26px;
     width: 26px;
   }
+
   &:active {
     background-image: url("#{$asset_path}/close-active.svg");
     background-size: 26px;
@@ -647,7 +641,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   }
   &-scrollBox {
     border: 1px solid $borders_color;
-    border-radius: 2px;
+    border-radius: $bt_radius;
     background-color: $base_color;
     padding: 4px;
     padding-right: 0;
@@ -668,7 +662,6 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     color: #888;
   }
 }
-
 
 //
 // Calendar
@@ -718,26 +711,25 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 
 .datemenu-date-label {
   padding: .4em 1.75em;
-  font-weight: bold;
+  font-weight: normal;
   text-align: center;
+  font-size: 14px;
   color: $fg_color;
-  border-radius: 2px;
+  border-radius: $bt_radius;
 }
 
 .calendar-day-base {
-  font-size: 80%;
   text-align: center;
-  width: 25px;
-  height: 25px;
-  padding: 0.1em;
+  width: 28px;
+  height: 28px;
+  padding: 0;
   margin: 2px;
-  border-radius: 12.5px;
+  border-radius: 100px;
 }
 
 .calendar-day-heading {
   color: transparentize($fg_color, 0.15);
   margin-top: 1em;
-  font-size: 70%;
 }
 
 .calendar-day {
@@ -775,25 +767,35 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 }
 
 .calendar-week-number {
+  width: 20px;
+  height: 20px;
+  margin: 6px 0;
   color: transparentize($fg_color, 0.3);
-  font-size: 80%;
+  font-weight: bold;
+  background-color: rgba($fg_color, 0.05);
+  border-radius: 100px;
+
+  StLabel {
+    padding: 0;
+    margin-top: 3px;
+  }
 }
 
 //
 // Notifications
 //
 #notification {
-  border-radius: 3px;
+  border-radius: $wm_radius;
   padding: 13px;
   spacing-rows: 10px;
   spacing-columns: 10px;
   margin-from-right-edge-of-screen: 20px;
   width: 34em;
   color: $text_color;
-  background-color: $bg_color;
+  background-color: $base_color;
 
   .notification-button, .notification-icon-button {
-    @extend %button;
+    @extend %flat_button;
     padding: 5px;
   }
 
@@ -801,11 +803,19 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 
   .menu &,
   .popup-menu & {
+    border: none;
+    border-radius: $bt_radius;
+    background-color: rgba($fg_color, 0.05);
+
+    &:hover {
+      background-color: rgba($fg_color, 0.1);
+      box-shadow: 0 3px 8px rgba(black, 0.15);
+    }
+
     &, &.multi-line-notification { color: $text_color; }
-    border: 1px solid $borders_color;
 
     .notification-button, .notification-icon-button {
-      @extend %button;
+      @extend %flat_button;
       padding: 5px;
     }
 
@@ -838,7 +848,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   }
 
   &-button, &-icon-button {
-    @extend %button;
+    @extend %flat_button;
     padding: 5px;
   }
 
@@ -856,11 +866,19 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 }
 
 .switcher-list {
-  color: $osd_fg_color;
-  background-color: $osd_bg_color;
-  border: 1px solid $borders_color;
-  border-radius: 3px;
+  color: $text_color;
+  background-color: $menu_bg;
+  border: none;
+  border-radius: $bt_radius;
   padding: 20px;
+
+  @if $trans == 'true' {
+    border-image: url("assets/menu.svg") 17 17 17 17;
+  }
+
+  @else {
+    border-image: url("assets/menu-solid.svg") 17 17 17 17;
+  }
 
   > StBoxLayout {
     padding: 4px;
@@ -870,7 +888,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 
   .item-box {
     padding: 8px;
-    border-radius: 2px;
+    border-radius: $bt_radius;
 
     &:outlined {
       padding: 8px;
@@ -945,7 +963,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   background-color: rgba(darken($osd_bg_color, 3%), 0.95);
   border: 1px solid rgba(black, 0.65);
   padding: 0 5px 6px 5px;
-  border-radius: 5px;
+  border-radius: $bt_radius;
   box-shadow: 0 3px 8px rgba(black, 0.75), 0 5px 18px rgba(black, 0.55);
 
   > StBoxLayout:first-child {
@@ -975,7 +993,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 .run-dialog {
   padding: 0px 15px 10px 15px;
   background-color: $bg_color;
-  border-radius: 5px;
+  border-radius: $bt_radius;
 
   > * { padding: 0; }
 
@@ -999,7 +1017,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   &-entry {
     width: 21em;
     padding: 7px;
-    border-radius: 3px;
+    border-radius: $bt_radius;
     caret-color: $osd_fg_color;
     selected-color: $selected_fg_color;
     selection-background-color: $selected_bg_color;
@@ -1106,7 +1124,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   min-width: 2em;
   font-size: 14pt;
   font-weight: bold;
-  border-radius: 3px;
+  border-radius: $bt_radius;
   box-shadow: none;
 
   @include button(osd);
@@ -1120,7 +1138,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 .keyboard-subkeys { //long press on a key popup
   color: $osd_fg_color;
   padding: 5px;
-  -arrow-border-radius: 2px;
+  -arrow-border-radius: $bt_radius;
   -arrow-background-color: $osd_bg_color;
   -arrow-border-width: 1px;
   -arrow-border-color: transparentize(black, 0.6);;
@@ -1139,23 +1157,25 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 .menu {
   &-favorites-box {
     margin: auto;
-    padding: 10px;
+    padding: 6px;
     transition-duration: 300;
-    background-color: $bg_color;
-    border: 1px solid $borders_color;
-    border-radius: 3px;
+    background-color: rgba($fg_color, 0.05);
+    border: none;
+    border-radius: $bt_radius;
   }
 
   &-favorites-button {
     padding: 10px;
-    border: 1px solid rgba(0,0,0,0);
-    border-radius: 5px;
+    border: none;
+    border-radius: $bt_radius;
 
-    &:hover { @include button(hover); border-radius: 5px; }
+    &:hover {
+      border-radius: $bt_radius;
+      background-color: rgba($fg_color, 0.1);
+    }
   }
 
   &-places {
-
     &-box {
       margin: auto;
       padding: 10px;
@@ -1172,7 +1192,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 
   &-application-button {
     padding: 6px;
-    border-radius: 2px;
+    border-radius: $bt_radius;
     border: none;
 
     // This style is used in menu application buttons for applications which were newly installed
@@ -1181,7 +1201,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     &-selected {
       @include button(active);
       padding: 6px;
-      border-radius: 2px;
+      border-radius: $bt_radius;
       border: none;
 
       &:highlighted { font-weight: bold; }
@@ -1192,14 +1212,16 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   }
 
   StScrollView.menu-application-button { // extracted submenu container
-    padding: 0;
-    border-radius: 3px;
-    border: 1px solid $borders_color;
+    padding: 3px 0;
+    border-radius: $bt_radius;
     background-color: $base_color;
 
     .popup-menu-item {
       padding: 0;
       spacing: 0;
+      margin: 0 3px;
+      border-radius: $bt_radius;
+
       &:ltr { padding-left: 7px; }
       &:rtl { padding-right: 7px; }
 
@@ -1219,21 +1241,18 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 
   &-category-button {
     padding: 6px;
-    border: 1px solid rgba(0,0,0,0);
-    border-radius: 5px;
+    border-radius: $bt_radius;
 
     &-selected {
       padding: 6px;
-      border: 1px solid $button_borders;
     }
     &-hover, &-selected {
-      @include button(hover);
-      border-radius: 5px;
+      @include button(flat-hover);
+      border-radius: $bt_radius;
     }
     &-greyed {
       padding: 6px;
       color: $disabled_fg_color;
-      border: 1px solid rgba(0,0,0,0);
     }
 
     &-label:ltr { padding-left: 5px; }
@@ -1276,7 +1295,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   color: $fg_color;
 }
 
-/* Context menu (at the moment only for favorites) */
+// Context menu (at the moment only for favorites)
 // .menu-context-menu { }
 
 //
@@ -1307,11 +1326,11 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   border: none;
 
   @if $trans == 'true' {
-    border-image: url("assets/menu.svg") 15 15 15 15;
+    border-image: url("assets/menu.svg") 17 17 17 17;
   }
 
   @else {
-    border-image: url("assets/menu-solid.svg") 15 15 15 15;
+    border-image: url("assets/menu-solid.svg") 17 17 17 17;
   }
 
   .osd-monitor-label { font-size: 3em; }
@@ -1320,12 +1339,12 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     padding: 0;
     height: 4px;
     background-color: rgba(black, 0.35);
-    border-radius: 2px;
+    border-radius: $bt_radius;
     color: $selected_bg_color;
   }
 
   .level-bar {
-    border-radius: 2px;
+    border-radius: $bt_radius;
     background-color: $selected_bg_color;
   }
 }
@@ -1335,9 +1354,8 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 //
 
 .window-list {
-
   &-box {
-    spacing: 0;
+    spacing: 2px;
 
     .panel-bottom &,
     .panel-top & {
@@ -1367,7 +1385,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     background-image: none;
     transition-duration: 100;
     color: rgba($panel_fg, 0.9);
-    border: 0 solid transparent;
+    border-radius: $bt_radius;
 
     .panel-bottom & StLabel { padding-left: 6px; }
     .panel-top & StLabel { padding-left: 6px; }
@@ -1386,51 +1404,33 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 
     &:hover {
       color: $panel_fg;
-      border: 0 solid rgba($panel_fg, 0.5);
       background-gradient-direction: none;
-
-      @each $position in (top),
-                         (bottom),
-                         (left),
-                         (right) {
-        .panel-#{$position} & {
-          border-#{$position}-width: 2px;
-        }
-      }
+      background-color: rgba($panel_fg, 0.15);
     }
 
     &:active,
     &:checked,
     &:running {
       color: $panel_fg;
-      border: 0 solid rgba($selected_bg_color, 0.35);
       background-gradient-direction: none;
-
-      @each $position in (top),
-                         (bottom),
-                         (left),
-                         (right) {
-        .panel-#{$position} & {
-          border-#{$position}-width: 2px;
-        }
-      }
+      background-color: rgba($panel_fg, 0.25);
 
       &:hover {
-        border-color: rgba($selected_bg_color, 0.5);
+        background-color: rgba($panel_fg, 0.3);
       }
     }
 
     &:focus {
       color: $panel_fg;
-      border: 0 solid $selected_bg_color;
       background-gradient-direction: none;
+      background-image: radial-gradient(5px 5px 45deg, circle cover, $panel_fg 0%, $panel_fg 100%);
 
       @each $position in (top),
                          (bottom),
                          (left),
                          (right) {
         .panel-#{$position} & {
-          border-#{$position}-width: 2px;
+          background-position: #{$position} center;
         }
       }
     }
@@ -1444,7 +1444,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
       background-gradient-direction: vertical;
       background-gradient-start: $progress_color;
       background-gradient-end: $progress_color;
-      border-radius: 2px;
+      border-radius: $bt_radius;
       box-shadow: none;
     }
   }
@@ -1456,11 +1456,11 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 
   // >= 3.6.7
   &-preview { // thumbnail popup windows = .switcher-list
-    padding: 20px - 8px; // = .switcher-list - .item-box
+    padding: 16px; // = .switcher-list - .item-box
     spacing: 8px; // = .switcher-list-item-container
     border: none;
     background-color: $base_color;
-    border-radius: 5px;
+    border-radius: $bt_radius;
     color: $fg_color;
     box-shadow: 0 3px 5px rgba(#000, 0.35), 0 3px 12px rgba(#000, 0.16);
   }
@@ -1471,7 +1471,6 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 //
 
 .grouped-window-list {
-
   &-thumbnail-label {
     padding-left: 4px;
   }
@@ -1481,19 +1480,20 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   }
 
   &-thumbnail-menu {
+    padding: 6px;
 
     .item-box {
-      padding: 6px;
-      border-radius: 2px;
-      spacing: 4px;
+      padding: 8px;
+      border-radius: $bt_radius;
+      spacing: 8px;
+      margin: 2px;
 
       &:outlined {
-        padding: 2px;
-        border: 2px solid $selected_bg_color;
+        background-color: rgba($fg_color, 0.1);
       }
 
-      &:selected {
-        background-color: rgba($selected_fg_color, 0.33);
+      &:hover {
+        background-color: rgba($fg_color, 0.15);
       }
     }
 
@@ -1503,20 +1503,19 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 
     .separator {
       width: 1px;
-      background-color: rgba($panel_fg, 0.33);
+      background-color: $borders_color;
     }
   }
 
   &-number-label {
-    z-index: 99;
+    z-index: 120;
     text-shadow: none;
-    font-size: 10px;
     color: $selected_fg_color;
     padding: 0;
   }
 
   &-button-label {
-    padding-left: 4px;
+    padding-left: 2px;
   }
 
   &-badge {
@@ -1528,73 +1527,39 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     font-weight: normal;
     background-image: none;
     transition-duration: 100;
+    border: none;
+    margin: 0;
     color: rgba($panel_fg, 0.6);
-    border: 0 solid transparent;
+    border-radius: $bt_radius;
+    spacing: 0.5em;
 
-    @each $position in (top),
-                       (bottom),
-                       (left),
-                       (right) {
-
-      &.#{$position} { // Cinnamon 4.0.3
-        border-#{$position}-width: 2px;
-        StIcon, StBin, #appMenuIcon { padding: 2px; padding-#{$position}: 0; }
-      }
+    &.top, &.bottom {
+      padding: 0 2px;
     }
-
-    // &.bottom StLabel { padding-left: 6px; }
-    // &.top StLabel { padding-left: 6px; }
-    // &.left StLabel { padding-top: 6px; }
-    // &.right StLabel { padding-top: 6px; }
 
     &:hover {
       color: $panel_fg;
-      border: 0 solid rgba($panel_fg, 0.5);
       background-gradient-direction: none;
-
-      @each $position in (top),
-                         (bottom),
-                         (left),
-                         (right) {
-        .panel-#{$position} & {
-          border-#{$position}-width: 2px;
-        }
-      }
+      background-color: rgba($panel_fg, 0.15);
     }
 
-    &:active,
-    &:checked,
-    &:running {
+    &:active {
       color: $panel_fg;
-      border: 0 solid rgba($selected_bg_color, 0.35);
       background-gradient-direction: none;
-
-      @each $position in (top),
-                         (bottom),
-                         (left),
-                         (right) {
-        .panel-#{$position} & {
-          border-#{$position}-width: 2px;
-        }
-      }
+      background-color: rgba($panel_fg, 0.08);
 
       &:hover {
-        border-color: rgba($selected_bg_color, 0.5);
+        background-color: rgba($panel_fg, 0.15);
       }
     }
 
     &:focus {
       color: $panel_fg;
-      border: 0 solid $selected_bg_color;
       background-gradient-direction: none;
+      background-color: rgba($panel_fg, 0.3);
 
-      @each $position in (top),
-                         (bottom),
-                         (left),
-                         (right) {
-        .panel-#{$position} & {
-          border-#{$position}-width: 2px;
-        }
+      &:hover {
+        background-color: rgba($panel_fg, 0.36);
       }
     }
 
@@ -1602,7 +1567,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
       background-gradient-direction: vertical;
       background-gradient-start: $progress_color;
       background-gradient-end: $progress_color;
-      border-radius: 2px;
+      border-radius: $bt_radius;
       box-shadow: none;
     }
   }
@@ -1673,7 +1638,10 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 
 // 2.8
 .sound-player {
-  padding: 0 3px;
+  padding: 0 0;
+  margin-top: 6px;
+  border-radius: $bt_radius;
+  background-color: if($variant == 'light', rgba(white, 0.75), rgba(white, 0.15));
 
   > StBoxLayout:first-child {
     padding: 5px 10px 10px 10px;
@@ -1692,32 +1660,36 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   }
 
   &-generic-coverart {
-    background: rgba(0,0,0,0.2);
+    background: rgba(black, 0.2);
   }
 
   &-overlay {
     width: 290px;
-    height: 70px;
-    padding: 15px;
+    height: 80px;
+    padding: 12px 16px 8px;
     spacing: 0.5em;
-    background: transparentize(darken($osd_bg_color, 5%), 0.1);
-    border: 0px solid darken($osd_bg_color, 8%);
-    border-bottom: 1px;
+    background-color: if($variant == 'light', rgba(#454545, 0.9), rgba(#686868, 0.9));
+    border: none;
+    border-radius: 0 0 $bt_radius $bt_radius;
     color: $osd_fg_color;
 
     StButton {
-      width: 22px;
+      width: 16px;
       height: 16px;
-      padding: 6px;
-      margin: 0 2px;
+      padding: 8px;
+      margin: 0 6px 6px;
       color: $osd_fg_color;
-      border-radius: 3px;
+      border-radius: 100px;
       border: none;
 
       StIcon { icon-size: 16px; }
 
-      &:hover { @include button(osd-hover); }
-      &:active { @include button(osd-active); }
+      &:hover { background-color: rgba($osd_fg_color, 0.1); }
+      &:active { background-color: rgba($osd_fg_color, 0.25); }
+      &:insensitive {
+        opacty: 0.35;
+        color: rgba($osd_fg_color, 0.35);
+      }
     }
 
     StLabel { padding: 0 6px; }
@@ -1813,15 +1785,15 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 .panel-launcher {
   padding: 2px;
   transition-duration: 200ms;
+  border-radius: $bt_radius;
 
   &:hover {
     background-gradient-direction: none;
-    border: 0px solid $selected_bg_color;
+    background-color: rgba($fg_color, 0.1);
+  }
 
-    .panel-bottom & { border-bottom-width: 2px; padding-bottom: 0;}
-    .panel-top & { border-top-width: 2px; padding-top: 0;}
-    .panel-left & { border-left-width: 2px; padding-left: 0; }
-    .panel-right & { border-right-width: 2px; padding-right: 0; }
+  &:active {
+    background-color: rgba($fg_color, 0.2);
   }
 }
 
@@ -1830,26 +1802,18 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   padding: 2px;
   spacing: 2px;
   transition-duration: 0.2s;
+  border-radius: $bt_radius;
+
   &:hover {
-    border: 0 solid $selected_bg_color;
     background-gradient-direction: none;
-
-    @each $position in (top),
-                       (bottom),
-                       (left),
-                       (right) {
-      .panel-#{$position} & {
-        padding-#{$position}: 0;
-        border-#{$position}-width: 2px;
-      }
-    }
+    background-color: rgba($fg_color, 0.1);
   }
 
-  .icon-box {
-    padding: 0 2px;
-
-    &.vertical { padding: 2px 0; }
+  &:active {
+    background-color: rgba($fg_color, 0.2);
   }
+
+  .icon-box { padding: 2px; }
 }
 
 //
@@ -1869,18 +1833,18 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 
   &-separator-line {
     width: 1px;
-    background: rgba(255,255,255, 0.12);
+    background: rgba($panel_fg, 0.12);
   }
 
   &-box {
-    padding-left: 3px;
-    padding-right: 3px;
+    padding: 0 8px;
     color: $panel_fg;
     text-shadow: none;
     transition-duration: 100;
+    border-radius: $bt_radius;
 
     &.vertical {
-      padding: 3px 0;
+      padding: 8px 0;
     }
 
     &:hover {
@@ -1889,8 +1853,8 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     }
 
     &:checked, &:checked:hover {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
+      color: $panel_fg;
+      background-color: rgba($panel_fg, 0.25);
     }
 
     &:highlight {
@@ -1905,17 +1869,17 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     color: $panel_fg;
 
     .applet-box:checked & {
-      color: $selected_fg_color;
+      color: $panel_fg;
       text-shadow: none;
     }
   }
 
   &-icon {
     color: $panel_fg;
-    icon-size: 22px;
+    icon-size: 16px;
 
     .applet-box:checked & {
-      color: $selected_fg_color;
+      color: $panel_fg;
       text-shadow: none;
     }
   }
@@ -1998,9 +1962,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 //
 // Workspace OSD
 //
-/*FIXME*/
 .workspace-osd {
-  /*color: red;*/
   text-shadow: black 5px 5px 5px;
   font-weight: bold;
   font-size: 48pt;
