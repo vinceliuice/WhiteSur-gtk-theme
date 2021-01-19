@@ -530,7 +530,7 @@ install_theme() {
 install_customize_theme() {
   for panel_opacity in "${panel_opacities[@]-${PANEL_OPACITY_VARIANTS[0]}}"; do
     for sidebar_size in "${sidebar_sizes[@]-${SIDEBAR_SIZE_VARIANTS[0]}}"; do
-      customize_theme "${panel_opacity}" "${sidebar_size}" "${theme_color}"
+      customize_theme "${panel_opacity}" "${sidebar_size}"
     done
   done
 }

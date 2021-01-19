@@ -816,18 +816,18 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 
 .datemenu-date-label {
   padding: .4em 1.75em;
-  font-weight: bold;
+  font-weight: normal;
   text-align: center;
+  font-size: 14px;
   color: #dedede;
   border-radius: 6px;
 }
 
 .calendar-day-base {
-  font-size: 80%;
   text-align: center;
-  width: 25px;
-  height: 25px;
-  padding: 0.1em;
+  width: 28px;
+  height: 28px;
+  padding: 0;
   margin: 2px;
   border-radius: 100px;
 }
@@ -835,7 +835,6 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 .calendar-day-heading {
   color: rgba(222, 222, 222, 0.85);
   margin-top: 1em;
-  font-size: 70%;
 }
 
 .calendar-day {
@@ -873,8 +872,18 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .calendar-week-number {
+  width: 20px;
+  height: 20px;
+  margin: 6px 0;
   color: rgba(222, 222, 222, 0.7);
-  font-size: 80%;
+  font-weight: bold;
+  background-color: rgba(222, 222, 222, 0.05);
+  border-radius: 100px;
+}
+
+.calendar-week-number StLabel {
+  padding: 0;
+  margin-top: 3px;
 }
 
 #notification {
@@ -1822,9 +1831,10 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .sound-player {
-  padding: 0 3px;
+  padding: 0 0;
+  margin-top: 6px;
   border-radius: 6px;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .sound-player > StBoxLayout:first-child {
@@ -1851,27 +1861,27 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .sound-player-generic-coverart {
-  background: rgba(34, 34, 34, 0.95);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .sound-player-overlay {
   width: 290px;
-  height: 70px;
-  padding: 15px 0;
+  height: 80px;
+  padding: 12px 16px 8px;
   spacing: 0.5em;
-  background: rgba(34, 34, 34, 0.95);
+  background-color: rgba(104, 104, 104, 0.9);
   border: none;
   border-radius: 0 0 6px 6px;
   color: #dadada;
 }
 
 .sound-player-overlay StButton {
-  width: 22px;
+  width: 16px;
   height: 16px;
-  padding: 6px;
-  margin: 0 2px;
+  padding: 8px;
+  margin: 0 6px 6px;
   color: #dadada;
-  border-radius: 6px;
+  border-radius: 100px;
   border: none;
 }
 
@@ -1880,15 +1890,16 @@ StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
 }
 
 .sound-player-overlay StButton:hover {
-  text-shadow: none;
-  color: #dadada;
-  background-color: #747474;
+  background-color: rgba(218, 218, 218, 0.1);
 }
 
 .sound-player-overlay StButton:active {
-  text-shadow: none;
-  color: white;
-  background-color: #E9873A;
+  background-color: rgba(218, 218, 218, 0.25);
+}
+
+.sound-player-overlay StButton:insensitive {
+  opacty: 0.35;
+  color: rgba(218, 218, 218, 0.35);
 }
 
 .sound-player-overlay StLabel {
