@@ -68,6 +68,54 @@
   }
 }
 
+// General Typography
+.large-title {
+  font-weight: 300;
+  font-size: 24pt;
+}
+
+.title {
+  &-1 {
+    font-weight: 800;
+    font-size: 20pt;
+  }
+
+  &-2 {
+     font-weight: 800;
+     font-size: 15pt;
+  }
+
+  &-3 {
+    font-weight: 700;
+    font-size: 15pt;
+  }
+
+  &-4 {
+    font-weight: 700;
+    font-size: 13pt;
+  }
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 11pt;
+}
+
+.body {
+  font-weight: 400;
+  font-size: 11pt;
+}
+
+.caption {
+  font-weight: 400;
+  font-size: 9pt;
+
+  &-heading {
+    font-weight: 700;
+    font-size: 9pt;
+  }
+}
+
 %view, .view {
   color: $text_color;
   background-color: $base_color;

@@ -140,8 +140,10 @@ $raven_padding: 8px;
     &:disabled { color: $disabled_fg_color; }
   }
 
+
+
   treeview.view.sidebar,
-  scrolledwindow.sidebar { //AppMenu (Elementary)
+  scrolledwindow.sidebar:not(.categories) { //AppMenu (Elementary)
     // min-height: 36px;
     background: none;
     border-right: none;
@@ -352,9 +354,9 @@ popover.background.user-menu {
 }
 
 // Raven Trigger
-// button.raven-trigger {
-//   padding: 0 4px;
-// }
+button.raven-trigger {
+  padding: 0 4px;
+}
 
 // Places Menu
 popover.background.places-menu {

@@ -568,10 +568,12 @@ ETC_NEW_THEME_FILE="/etc/alternatives/gdm3-theme.gresource"
 UBUNTU_THEME_FILE="/usr/share/gnome-shell/theme/ubuntu.css"
 UBUNTU_NEW_THEME_FILE="/usr/share/gnome-shell/theme/gnome-shell.css"
 UBUNTU_YARU_THEME_FILE="/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource"
+POP_OS_THEME_FILE="/usr/share/gnome-shell/theme/Pop/gnome-shell-theme.gresource"
 
 install_gdm() {
   local GDM_THEME_DIR="${1}/${2}${3}${4}${5}"
   local YARU_GDM_THEME_DIR="$SHELL_THEME_FOLDER/Yaru/${2}${3}${4}${5}"
+  local POP_GDM_THEME_DIR="$SHELL_THEME_FOLDER/Pop/${2}${3}${4}${5}"
 
   echo
   prompt -i "Installing ${2}${3}${4}${5} gdm theme..."
@@ -636,6 +638,35 @@ install_gdm() {
 
     rm -rf "$YARU_GDM_THEME_DIR"
   fi
+
+  # > Pop_OS 20.04
+  if [[ -d "$SHELL_THEME_FOLDER/Pop" && -f "$GS_THEME_FILE.bak" ]]; then
+    prompt -i "Installing Pop_OS GDM theme..."
+    cp -an "$POP_OS_THEME_FILE" "$POP_OS_THEME_FILE.bak"
+    rm -rf "$POP_OS_THEME_FILE"
+    rm -rf "$POP_GDM_THEME_DIR" && mkdir -p "$POP_GDM_THEME_DIR"
+
+    mkdir -p                                                                              "$POP_GDM_THEME_DIR"/gnome-shell
+    cp -r "$SRC_DIR"/assets/gnome-shell/icons                                             "$POP_GDM_THEME_DIR"/gnome-shell
+    cp -r "$SRC_DIR"/main/gnome-shell/pad-osd.css                                         "$POP_GDM_THEME_DIR"/gnome-shell
+    cp -r "$SRC_DIR"/main/gnome-shell/gdm3${color}.css                                    "$POP_GDM_THEME_DIR"/gnome-shell/gdm3.css
+    cp -r "$SRC_DIR"/main/gnome-shell/gnome-shell${color}.css                             "$POP_GDM_THEME_DIR"/gnome-shell/gnome-shell.css
+    cp -r "$SRC_DIR"/assets/gnome-shell/common-assets                                     "$POP_GDM_THEME_DIR"/gnome-shell/assets
+    cp -r "$SRC_DIR"/assets/gnome-shell/assets${color}/*.svg                              "$POP_GDM_THEME_DIR"/gnome-shell/assets
+    cp -r "$SRC_DIR"/assets/gnome-shell/activities/activities.svg                         "$POP_GDM_THEME_DIR"/gnome-shell/assets
+
+    cd "$POP_GDM_THEME_DIR"/gnome-shell
+    mv -f assets/no-events.svg no-events.svg
+    mv -f assets/process-working.svg process-working.svg
+    mv -f assets/no-notifications.svg no-notifications.svg
+
+    glib-compile-resources \
+      --sourcedir="$POP_GDM_THEME_DIR"/gnome-shell \
+      --target="$POP_OS_THEME_FILE" \
+      "$SRC_DIR"/main/gnome-shell/gnome-shell-pop-theme.gresource.xml
+
+    rm -rf "$POP_GDM_THEME_DIR"
+  fi
 }
 
 revert_gdm() {
@@ -672,6 +703,13 @@ revert_gdm() {
     prompt -w "reverting Ubuntu GDM theme..."
     rm -rf "$UBUNTU_YARU_THEME_FILE"
     mv "$UBUNTU_YARU_THEME_FILE.bak" "$UBUNTU_YARU_THEME_FILE"
+  fi
+
+  # > Pop_OS 20.04
+  if [[ -f "$POP_OS_THEME_FILE.bak" ]]; then
+    prompt -w "reverting Pop_OS GDM theme..."
+    rm -rf "$POP_OS_THEME_FILE"
+    mv "$POP_OS_THEME_FILE.bak" "$POP_OS_THEME_FILE"
   fi
 }
 

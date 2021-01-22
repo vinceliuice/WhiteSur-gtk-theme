@@ -63,6 +63,51 @@
   color: white;
 }
 
+.large-title {
+  font-weight: 300;
+  font-size: 24pt;
+}
+
+.title-1 {
+  font-weight: 800;
+  font-size: 20pt;
+}
+
+.title-2 {
+  font-weight: 800;
+  font-size: 15pt;
+}
+
+.title-3 {
+  font-weight: 700;
+  font-size: 15pt;
+}
+
+.title-4 {
+  font-weight: 700;
+  font-size: 13pt;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 11pt;
+}
+
+.body {
+  font-weight: 400;
+  font-size: 11pt;
+}
+
+.caption {
+  font-weight: 400;
+  font-size: 9pt;
+}
+
+.caption-heading {
+  font-weight: 700;
+  font-size: 9pt;
+}
+
 .csd filechooser stack.view scrolledwindow treeview.view, iconview, .view {
   color: #363636;
   background-color: #ffffff;
@@ -8915,25 +8960,25 @@ window.budgie-switcher-window .drop-shadow button, .drop-shadow button, .workspa
 }
 
 .budgie-popover treeview.view.sidebar,
-.budgie-popover scrolledwindow.sidebar {
+.budgie-popover scrolledwindow.sidebar:not(.categories) {
   background: none;
   border-right: none;
   color: #242424;
 }
 
 .budgie-popover treeview.view.sidebar label,
-.budgie-popover scrolledwindow.sidebar label {
+.budgie-popover scrolledwindow.sidebar:not(.categories) label {
   padding: 3px 8px;
 }
 
 .budgie-popover treeview.view.sidebar:hover,
-.budgie-popover scrolledwindow.sidebar:hover {
+.budgie-popover scrolledwindow.sidebar:not(.categories):hover {
   background-color: rgba(36, 36, 36, 0.05);
 }
 
 .budgie-popover treeview.view.sidebar:selected, .budgie-popover treeview.view.sidebar:selected:hover,
-.budgie-popover scrolledwindow.sidebar:selected,
-.budgie-popover scrolledwindow.sidebar:selected:hover {
+.budgie-popover scrolledwindow.sidebar:not(.categories):selected,
+.budgie-popover scrolledwindow.sidebar:not(.categories):selected:hover {
   color: white;
   background-color: #ED5F5D;
 }
@@ -9149,6 +9194,10 @@ popover.background.user-menu row {
   padding: 0;
   box-shadow: none;
   background-image: none;
+}
+
+button.raven-trigger {
+  padding: 0 4px;
 }
 
 popover.background.places-menu {
