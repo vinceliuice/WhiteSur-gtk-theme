@@ -79,6 +79,8 @@ usage() {
   printf "  %-25s%s\n" "-p, --panel VARIANTS" "Change the panel transparency [25|35|45|55|65|75|85] (Default: 85%)"
   printf "  %-25s%s\n" "-s, --size VARIANTS" "Change the nautilus sidebar width size [220|240|260|280] (Default: 200)"
   printf "  %-25s%s\n" "-i, --icon VARIANTS" "Change gnome-shell activities icon [standard|normal|gnome|ubuntu|arch|manjaro|fedora|debian|void] (Default: standard)"
+  printf "  %-25s%s\n" "--dialog" "Run this shell on dialog window mode"
+  printf "  %-25s%s\n" "--nautilus-use-colors" "Change the nautilus style to Mojave like"
   printf "  %-25s%s\n" "-h, --help" "Show this help"
 }
 
