@@ -199,8 +199,6 @@ install() {
   cp -r ${SRC_DIR}/other/plank/theme${color}/*.theme                                    ${THEME_DIR}/plank
 }
 
-nautilus_use_colors='false'
-
 while [[ $# -gt 0 ]]; do
   case "${1}" in
     -d|--dest)
@@ -223,8 +221,12 @@ while [[ $# -gt 0 ]]; do
       remove='true'
       shift 1
       ;;
-    -dialog|--dialog)
+    --dialog)
       dialogs='true'
+      shift 1
+      ;;
+    --nautilus-use-colors)
+      nautilus_use_colors='true'
       shift 1
       ;;
     -a|--alt)
@@ -499,10 +501,6 @@ while [[ $# -gt 0 ]]; do
       usage
       exit 0
       ;;
-    --nautilus-use-colors)
-      nautilus_use_colors='true'
-      break
-      ;;
     *)
       prompt -e "ERROR: Unrecognized installation option '$1'."
       prompt -i "Try '$0 --help' for more information."
@@ -565,7 +563,7 @@ customize_theme() {
   fi
 
   # Force nautilus to use colors instead of images
-  if [[ "${nautilus_use_colors}" == 'true' ]]; then
+  if [[ "${nautilus_use_colors:-}" == 'true' ]]; then
     force_nautilus_use_colors
   fi
 }
@@ -781,11 +779,21 @@ customize_theme_dialogs() {
         4) sidebar_size="280" ;;
         *) operation_canceled ;;
       esac
+
+    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
+    --radiolist "Choose your nautilus sidebar style (default is Big Sur style):" 15 40 5 \
+      1 "BigSur" on \
+      2 "Mojave" off --output-fd 1 )
+      case "$tui" in
+        1) nautilus_use_colors="false" ;;
+        2) nautilus_use_colors="true" ;;
+        *) operation_canceled ;;
+      esac
   fi
 }
 
 run_customize_theme_dialogs() {
-  install_dialog && customize_theme_dialogs && change_transparency && change_size && parse_sass
+  install_dialog && customize_theme_dialogs && change_transparency && change_size && force_nautilus_use_colors && parse_sass
 }
 
 parse_sass() {
@@ -852,7 +860,7 @@ if [[ "${remove:-}" != 'true' && "${gdm:-}" != 'true' ]]; then
     run_customize_theme_dialogs
   fi
 
-  if [[ "${size:-}" != 'true' && "${panel:-}" != 'true' ]]; then
+  if [[ "${size:-}" != 'true' && "${panel:-}" != 'true' && "${nautilus_use_colors:-}" != 'true' ]]; then
     install_theme
   else
     install_customize_theme && parse_sass && install_theme "${panel_opacity}" "${sidebar_size}"

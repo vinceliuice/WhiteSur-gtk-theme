@@ -3329,7 +3329,7 @@ filechooser {
       border: none;
       background-color: transparent;
       background-image: image($base_color);
-      background-size: 8px 8px;
+      background-size: $wm_radius $wm_radius;
       background-position: left bottom;
 
       &:dir(ltr) { margin-left: -1px; }

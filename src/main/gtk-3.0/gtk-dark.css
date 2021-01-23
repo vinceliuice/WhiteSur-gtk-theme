@@ -4008,7 +4008,7 @@ messagedialog.csd.background {
   border: none;
   background-color: transparent;
   background-image: image(#242424);
-  background-size: 8px 8px;
+  background-size: 12px 12px;
   background-position: left bottom;
 }
 
@@ -4824,33 +4824,6 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
   border-bottom-right-radius: 12px;
 }
 
-filechooser paned > separator,
-.nautilus-window paned > separator {
-  border: none;
-  background-color: transparent;
-  background-image: image(#242424);
-  background-size: 12px 12px;
-  background-position: left bottom;
-  background-repeat: no-repeat;
-}
-
-filechooser paned > separator:dir(ltr),
-.nautilus-window paned > separator:dir(ltr) {
-  margin-left: -1px;
-}
-
-filechooser paned > separator:dir(rtl),
-.nautilus-window paned > separator:dir(rtl) {
-  margin-right: -1px;
-}
-
-filechooser paned > separator:hover,
-.nautilus-window paned > separator:hover {
-  background-image: image(rgba(255, 255, 255, 0.12));
-  background-size: 2px 100px;
-  background-position: center center;
-}
-
 .nautilus-window.background.csd {
   border-radius: 0 0 12px 12px;
   background-color: transparent;
@@ -4858,8 +4831,8 @@ filechooser paned > separator:hover,
 }
 
 .nautilus-window.background.csd > headerbar.titlebar {
-  border: none;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+  border: none;
   background-color: transparent;
   background-image: linear-gradient(90deg, rgba(51, 51, 51, 0.95) 0%, rgba(51, 51, 51, 0.95) 200px, rgba(20, 20, 20, 0.95) 200px, rgba(20, 20, 20, 0.95) 201px, #242424 201px, #242424 100%);
 }
@@ -4868,7 +4841,7 @@ filechooser paned > separator:hover,
   margin-left: 120px;
 }
 
-.nautilus-window.background.csd > grid.horizontal > paned.horizontal > box.vertical > placessidebar {
+.nautilus-window.background.csd placessidebar.sidebar {
   border-bottom-left-radius: 12px;
 }
 
@@ -4890,11 +4863,35 @@ filechooser paned > separator:hover,
   background-color: transparent;
 }
 
-.nautilus-window paned > separator {
-  background-image: none;
-  background-size: 0 0;
-  min-width: 0;
-  min-height: 0;
+.nautilus-window > grid.horizontal > paned.horizontal > separator {
+  border-left: none;
+  background-color: transparent;
+  background-image: image(#242424);
+  background-size: 12px 12px;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+}
+
+.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(ltr) {
+  margin-left: -1px;
+}
+
+.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(rtl) {
+  margin-right: -1px;
+}
+
+.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(ltr) {
+  margin-left: 2px;
+}
+
+.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(rtl) {
+  margin-right: 2px;
+}
+
+.nautilus-window > grid.horizontal > paned.horizontal > separator:hover {
+  background-image: image(rgba(255, 255, 255, 0.12));
+  background-size: 2px 100px;
+  background-position: center center;
 }
 
 .nautilus-window placessidebar.sidebar {

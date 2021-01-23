@@ -83,64 +83,41 @@ $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                         $base_color ($nautilus_sidebar_size + 1px),
                                         $base_color 100%);
 
-filechooser,
-.nautilus-window {
-  paned > separator { // Use paned separator to hide stack border-bottom-left-radius
-    border: none;
-    @if $nautilus_use_colors {
-      background-color: rgba($bg_color, 0.95);
-    } @else {
-      background-color: transparent;
-      background-image: image($base_color);
-    }
-    background-size: $wm_radius $wm_radius;
-    background-position: left bottom;
-    background-repeat: no-repeat;
-
-    &:dir(ltr) { margin-left: -1px; }
-    &:dir(rtl) { margin-right: -1px; }
-
-    &:hover {
-      background-image: image($borders_color);
-      background-size: 2px 100px;
-      background-position: center center;
-    }
-  }
-}
-
 .nautilus-window {
   &.background.csd {
     border-radius: 0 0 $wm_radius $wm_radius;
+
     @if $nautilus_use_colors {
-      background-color: rgba($bg_color, 0.95);
+      background-color: $dark_sidebar_bg;
     } @else {
       background-color: transparent;
       background-image: $nautilus_background_image;
     }
 
     > headerbar.titlebar {
-      border: none;
       box-shadow: inset 0 1px rgba(white, 0.1);
-      background: none;
+
       @if $nautilus_use_colors {
-        background-color: $base_color;
+        background-color: $header_bg;
       } @else {
+        border: none;
+        background-color: transparent;
         background-image: $nautilus_header_image;
-      }
 
-      > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
+        > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
 
-      @if $trans == 'false' {
-        > box.left.horizontal {
-          background-image: linear-gradient(0deg, $dark_sidebar_bg 0%,
-                                        $dark_sidebar_bg 95%,
-                                        transparent 95%,
-                                        transparent 100%);
+        @if $trans == 'false' {
+          > box.left.horizontal {
+            background-image: linear-gradient(0deg, $dark_sidebar_bg 0%,
+                                          $dark_sidebar_bg 95%,
+                                          transparent 95%,
+                                          transparent 100%);
+          }
         }
       }
     }
 
-    > grid.horizontal > paned.horizontal > box.vertical > placessidebar {
+    placessidebar.sidebar {
       border-bottom-left-radius: $wm_radius;
     }
   }
@@ -165,19 +142,40 @@ filechooser,
     }
   }
 
-  paned > separator {
-    background-image: none;
-    background-size: 0 0;
-    min-width: 0;
-    min-height: 0;
+  > grid.horizontal > paned.horizontal > separator { // Use paned separator to hide stack border-bottom-left-radius
+    border-left: none;
+    background-color: transparent;
+    background-image: image($base_color);
+    background-size: $wm_radius $wm_radius;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+
+    &:dir(ltr) { margin-left: -1px; }
+    &:dir(rtl) { margin-right: -1px; }
+
+    @if $nautilus_use_colors {} @else {
+      &:dir(ltr) { margin-left: 2px; }
+      &:dir(rtl) { margin-right: 2px; }
+
+      &:hover {
+        background-image: image($borders_color);
+        background-size: 2px 100px;
+        background-position: center center;
+      }
+    }
   }
 
   placessidebar.sidebar {
-    margin-bottom: $wm_radius;
-    border: none;
-    min-width: $nautilus_sidebar_size;
-    background-color: transparent;
-    background-image: if($trans == 'true', none, $nautilus_sidebar_image);
+    @if $nautilus_use_colors {
+      background-color: transparent;
+      &.frame { border-right: 1px solid if($variant=='light', $solid_borders_color, $header_border); }
+    } @else {
+      margin-bottom: $wm_radius;
+      border: none;
+      min-width: $nautilus_sidebar_size;
+      background-color: transparent;
+      background-image: if($trans == 'true', none, $nautilus_sidebar_image);
+    }
 
     row.sidebar-row {
       color: $dark_sidebar_fg;
@@ -193,38 +191,62 @@ filechooser,
 
       &:backdrop { opacity: 0.85; }
 
-      &:hover {
-        transition: background-image 0;
-        background-repeat: no-repeat;
-        background-color: transparent;
-        background-position: left center;
-        background-size: $nautilus_sidebar_size 28px;
-        background-image: -gtk-scaled(url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
-                                      url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
-      }
+      @if $nautilus_use_colors {
+        border-radius: $bt_radius;
+        margin: 0 6px;
+        padding: 2px 4px;
 
-      &:active, &:active:hover {
-        transition: background-image ease-out 200ms;
-        background-repeat: no-repeat;
-        background-color: transparent;
-        background-position: left center;
-        background-size: $nautilus_sidebar_size 28px;
-        background-image: -gtk-scaled(url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
-                                      url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
-      }
+        &:hover {
+          background-color: rgba($fg_color, 0.1);
+        }
 
-      &:selected.has-open-popup,
-      &:selected, &:selected:hover {
-        color: $fg_color;
-        transition: background-image ease-out 200ms;
-        background-repeat: no-repeat;
-        background-position: left center;
-        background-size: $nautilus_sidebar_size 28px;
-        background-color: transparent;
-        background-image: -gtk-scaled(url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
-                                      url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
+        &:active, &:active:hover {
+          transition: background-color ease-out 200ms;
+          background-color: rgba($fg_color, 0.2);
+        }
 
-        &, label { color: $fg_color; }
+        &:selected.has-open-popup,
+        &:selected, &:selected:hover {
+          color: $fg_color;
+          transition: background-color ease-out 200ms;
+          background-color: rgba($fg_color, 0.15);
+
+          &, label { color: $fg_color; }
+        }
+      } @else {
+        &:hover {
+          transition: background-image 0;
+          background-repeat: no-repeat;
+          background-color: transparent;
+          background-position: left center;
+          background-size: $nautilus_sidebar_size 28px;
+          background-image: -gtk-scaled(url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                        url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
+        }
+
+        &:active, &:active:hover {
+          transition: background-image ease-out 200ms;
+          background-repeat: no-repeat;
+          background-color: transparent;
+          background-position: left center;
+          background-size: $nautilus_sidebar_size 28px;
+          background-image: -gtk-scaled(url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                        url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
+        }
+
+        &:selected.has-open-popup,
+        &:selected, &:selected:hover {
+          color: $fg_color;
+          transition: background-image ease-out 200ms;
+          background-repeat: no-repeat;
+          background-position: left center;
+          background-size: $nautilus_sidebar_size 28px;
+          background-color: transparent;
+          background-image: -gtk-scaled(url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                        url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
+
+          &, label { color: $fg_color; }
+        }
       }
 
       &.sidebar-new-bookmark-row {
