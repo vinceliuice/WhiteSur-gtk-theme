@@ -199,6 +199,8 @@ install() {
   cp -r ${SRC_DIR}/other/plank/theme${color}/*.theme                                    ${THEME_DIR}/plank
 }
 
+nautilus_use_colors='false'
+
 while [[ $# -gt 0 ]]; do
   case "${1}" in
     -d|--dest)
@@ -497,6 +499,10 @@ while [[ $# -gt 0 ]]; do
       usage
       exit 0
       ;;
+    --nautilus-use-colors)
+      nautilus_use_colors='true'
+      break
+      ;;
     *)
       prompt -e "ERROR: Unrecognized installation option '$1'."
       prompt -i "Try '$0 --help' for more information."
@@ -556,6 +562,11 @@ customize_theme() {
   # Change nautilus sibarbar size
   if [[ "${size:-}" == 'true' && "${sidebar_size:-}" != 'default' ]]; then
     change_size
+  fi
+
+  # Force nautilus to use colors instead of images
+  if [[ "${nautilus_use_colors}" == 'true' ]]; then
+    force_nautilus_use_colors
   fi
 }
 
@@ -795,6 +806,12 @@ change_transparency() {
     sed -i.bak "/\$panel_opacity/s/0.16/0.${panel_opacity}/" _variables.scss
     prompt -w "Change panel transparency ..."
   fi
+}
+
+force_nautilus_use_colors() {
+  cd ${SRC_DIR}/sass
+  sed -i.bak "/\$nautilus_use_colors/s/false/true/" _variables.scss
+  prompt -w "Forcing nautilus to use colors instead of images ..."
 }
 
 restore_files() {
