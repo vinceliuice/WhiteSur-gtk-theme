@@ -4882,7 +4882,7 @@ filechooser paned > separator:hover,
 .nautilus-window.background.csd > headerbar.titlebar {
   border: none;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
-  background: none;
+  background-color: transparent;
   background-image: linear-gradient(90deg, rgba(240, 240, 240, 0.94) 0%, rgba(240, 240, 240, 0.94) 200px, rgba(209, 209, 209, 0.94) 200px, rgba(209, 209, 209, 0.94) 201px, #ffffff 201px, #ffffff 100%);
 }
 
