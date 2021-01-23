@@ -51,7 +51,8 @@ Usage:  `./install.sh`  **[OPTIONS...]**
 |-i, --icon           | Activities icon variant(s) **[standard/normal/gnome/ubuntu/arch/manjaro/fedora/debian/void]** (Default: standard variant)|
 |-g, --gdm            | Install GDM theme, you should run this with sudo!|
 |-r, --remove         | Remove theme, this will remove all installed themes!|
-|-dialog, --dialog    | Run terminal dialog, this will Run terminal dialog to install themes!|
+|--dialog             | Run terminal dialog, this will Run terminal dialog to install themes!|
+|--nautilus-use-colors| Change the nautilus sidebar style to Mojave like |
 |-h, --help           | Show this help|
 
 ### <p align="center" > 1. Change primary theme color </p>
@@ -92,6 +93,14 @@ then you can run: `for example`
 ./install.sh -i manjaro   # Install Manjaro icon
 ```
 ![4](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/install-tip-04.png)
+
+### <p align="center" > 5. Change nautilus sidebar style </p>
+If you want to use Mojave like sidebar style! (Default is Big Sur style)
+then you can run:
+```bash
+./install.sh --nautilus-use-colors
+```
+![5](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/install-tip-05.png)
 
 ### Fix For Flatpak apps
 Just run this:
