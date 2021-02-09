@@ -31,7 +31,7 @@ terminal-window {
     }
   }
 
-  // &.background.csd.maximized { border-radius: 0 0 0 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
+  &.background.csd.maximized { border-radius: 0 0 0 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
 }
 
 window.background.csd { // gnome-terminal 3.32 setting
@@ -351,10 +351,11 @@ $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
   }
 
   // Reset maximized nautilus-window border-radius
-  // &.maximized {
-  //   notebook { &, > stack { border-radius: 0; } }
-  //   headerbar, placessidebar { border-radius: 0; }
-  // }
+  &.maximized {
+    notebook { &, > stack { border-radius: 0 0 $maximized_radius $maximized_radius; } }
+    headerbar { border-radius: $maximized_radius $maximized_radius 0 0; }
+    placessidebar { border-bottom-left-radius: $maximized_radius; }
+  }
 
   placesview {
     row.activatable {
@@ -634,9 +635,6 @@ $disk_space_free: darken($bg_color, 3%);
 window.org-gnome-gedit {
   > paned.titlebar {
     > headerbar {
-      // &:first-child { @extend %side_headerbar_left; }
-      // &:last-child { @extend %side_headerbar_right; }
-
       button.flat.toggle.popup:not(.image-button) { // left-pane header button
         @extend %headerbar_buttons;
 
@@ -676,6 +674,20 @@ window.org-gnome-gedit {
             list.gedit-document-panel {
               background: none;
             }
+          }
+        }
+      }
+    }
+  }
+
+  .tiled &,
+  .maximized &,
+  .fullscreen & {
+    > overlay > box.vertical {
+      > paned.gedit-side-panel-paned {
+        > box.vertical > stack > grid.horizontal {
+          > scrolledwindow { // raised widget
+            border-bottom-left-radius: $maximized_radius;
           }
         }
       }
@@ -1402,7 +1414,7 @@ $list_shadow: if($variant == 'light',
   -gtk-outline-radius : $wm_radius - 6px;
 }
 
-hdyleaflet, leaflet {
+hdyleaflet, leaflet, box.horizontal > stack.background {
   frame > border { border: none; }
 
   frame:not(.view) list:not(.contacts-contact-list) { // Don't set this to Gnome-Contacts
@@ -1470,7 +1482,7 @@ list {
 
 // separator of sidebar on Gnome contol center and Gnome tweaks
 window.background.csd {
-  > hdyleaflet, > leaflet {
+  > hdyleaflet, > leaflet, > box.horizontal {
     > separator.vertical {
       @extend %side_separator;
     }

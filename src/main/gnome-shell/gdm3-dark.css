@@ -560,7 +560,7 @@ stage {
 }
 
 .message {
-  margin: 2px 4px 6px;
+  margin: 0 4px;
 }
 
 .message:first-child {

@@ -355,7 +355,7 @@
 }
 
 .message {
-  margin: 2px 4px 6px;
+  margin: 0 4px;
   @extend %popover_bubble;
 
   &:first-child { margin-top: 8px; }
