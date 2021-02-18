@@ -1641,6 +1641,7 @@ headerbar.titlebar headerbar:not(.titlebar) {
 }
 
 .tiled headerbar, .tiled headerbar:backdrop, .maximized headerbar, .maximized headerbar:backdrop {
+  border-radius: 0 0 0 0;
   box-shadow: none;
 }
 
@@ -1681,8 +1682,16 @@ separator:first-child + headerbar, separator:first-child + headerbar:backdrop, h
   border-top-left-radius: 12px;
 }
 
+.maximized separator:first-child + headerbar, .tiled separator:first-child + headerbar, .maximized separator:first-child + headerbar:backdrop, .tiled separator:first-child + headerbar:backdrop, .maximized headerbar:first-child, .tiled headerbar:first-child, .maximized headerbar:first-child:backdrop, .tiled headerbar:first-child:backdrop {
+  border-top-left-radius: 0;
+}
+
 headerbar:last-child, headerbar:last-child:backdrop {
   border-top-right-radius: 12px;
+}
+
+.maximized headerbar:last-child, .tiled headerbar:last-child, .maximized headerbar:last-child:backdrop, .tiled headerbar:last-child:backdrop {
+  border-top-right-radius: 0;
 }
 
 stack headerbar:first-child, stack headerbar:last-child {
@@ -1703,6 +1712,11 @@ window stack headerbar:first-child:backdrop, window stack headerbar:first-child,
   border-top-right-radius: 12px;
 }
 
+window.tiled headerbar, window.tiled headerbar:first-child, window.tiled headerbar:last-child, window.tiled headerbar:only-child, window.tiled-top headerbar, window.tiled-top headerbar:first-child, window.tiled-top headerbar:last-child, window.tiled-top headerbar:only-child, window.tiled-right headerbar, window.tiled-right headerbar:first-child, window.tiled-right headerbar:last-child, window.tiled-right headerbar:only-child, window.tiled-bottom headerbar, window.tiled-bottom headerbar:first-child, window.tiled-bottom headerbar:last-child, window.tiled-bottom headerbar:only-child, window.tiled-left headerbar, window.tiled-left headerbar:first-child, window.tiled-left headerbar:last-child, window.tiled-left headerbar:only-child, window.maximized headerbar, window.maximized headerbar:first-child, window.maximized headerbar:last-child, window.maximized headerbar:only-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 window.fullscreen headerbar, window.fullscreen headerbar:first-child, window.fullscreen headerbar:last-child, window.fullscreen headerbar:only-child, .solid-csd headerbar, .solid-csd headerbar:first-child, .solid-csd headerbar:last-child, .solid-csd headerbar:only-child {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -1717,8 +1731,13 @@ window.fullscreen headerbar, window.fullscreen headerbar:first-child, window.ful
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.fullscreen .titlebar, .fullscreen .titlebar headerbar {
+.tiled .titlebar, .maximized .titlebar, .fullscreen .titlebar, .tiled .titlebar headerbar, .maximized .titlebar headerbar, .fullscreen .titlebar headerbar {
   box-shadow: none;
+}
+
+.tiled .titlebar, .tiled .titlebar.background, .maximized .titlebar, .maximized .titlebar.background, .fullscreen .titlebar, .fullscreen .titlebar.background, .tiled .titlebar headerbar, .tiled .titlebar headerbar.background, .maximized .titlebar headerbar, .maximized .titlebar headerbar.background, .fullscreen .titlebar headerbar, .fullscreen .titlebar headerbar.background {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .titlebar > box.left.horizontal,
@@ -4550,6 +4569,7 @@ decoration:backdrop {
 }
 
 .maximized decoration, .fullscreen decoration, .tiled decoration, .tiled-top decoration, .tiled-right decoration, .tiled-bottom decoration, .tiled-left decoration {
+  border-radius: 0;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.75);
 }
 
@@ -4566,6 +4586,10 @@ decoration:backdrop {
   margin: -5px;
   border-radius: 12px 12px 0 0;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.75);
+}
+
+.ssd decoration.maximized {
+  border-radius: 0 0 0 0;
 }
 
 .csd.popup decoration {
@@ -4806,6 +4830,10 @@ terminal-window notebook button.flat.toggle.popup {
   min-height: 28px;
   min-width: 28px;
   margin: -2px;
+}
+
+terminal-window.background.csd.maximized {
+  border-radius: 0 0 0 0;
 }
 
 window.background.csd > box.vertical > box.horizontal > frame > border {
@@ -5066,6 +5094,18 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
   -gtk-icon-shadow: none;
 }
 
+.nautilus-window.maximized notebook, .nautilus-window.maximized notebook > stack {
+  border-radius: 0 0 0 0;
+}
+
+.nautilus-window.maximized headerbar {
+  border-radius: 0 0 0 0;
+}
+
+.nautilus-window.maximized placessidebar {
+  border-bottom-left-radius: 0;
+}
+
 .nautilus-window placesview row.activatable {
   border-radius: 6px;
   margin-right: 6px;
@@ -5323,6 +5363,10 @@ window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned >
 
 window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned stack scrolledwindow viewport.frame list.gedit-document-panel {
   background: none;
+}
+
+.tiled window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > box.vertical > stack > grid.horizontal > scrolledwindow, .maximized window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > box.vertical > stack > grid.horizontal > scrolledwindow, .fullscreen window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > box.vertical > stack > grid.horizontal > scrolledwindow {
+  border-bottom-left-radius: 0;
 }
 
 .open-document-selector-treeview.view {
@@ -5927,12 +5971,12 @@ window.background.csd > headerbar.titlebar > leaflet > headerbar:last-child, win
 }
 
 .geary-main-window.background.csd > overlay > box.vertical > paned > .sidebar > searchbar,
-window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sidebar > searchbar, window.background.csd > hdyleaflet > box.vertical > searchbar, window.background.csd > leaflet > box.vertical > searchbar {
+window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sidebar > searchbar, window.background.csd > hdyleaflet > box.vertical > searchbar, window.background.csd > leaflet > box.vertical > searchbar, window.background.csd > box.horizontal > box.vertical > searchbar {
   background-color: #333333;
 }
 
 .geary-main-window.background.csd > overlay > box.vertical > paned > .sidebar > searchbar > revealer > box,
-window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sidebar > searchbar > revealer > box, window.background.csd > hdyleaflet > box.vertical > searchbar > revealer > box, window.background.csd > leaflet > box.vertical > searchbar > revealer > box {
+window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sidebar > searchbar > revealer > box, window.background.csd > hdyleaflet > box.vertical > searchbar > revealer > box, window.background.csd > leaflet > box.vertical > searchbar > revealer > box, window.background.csd > box.horizontal > box.vertical > searchbar > revealer > box {
   border-color: #0e0e0e;
 }
 
@@ -5942,60 +5986,60 @@ window.background.csd > overlay > leaflet > separator.sidebar, box.horizontal > 
 hdyleaflet > separator.sidebar,
 leaflet > separator.sidebar, window.background.csd > box.horizontal:not(.titlebar) > separator.vertical, window.background.csd > headerbar.titlebar > box.horizontal > separator.sidebar,
 window.background.csd > headerbar.titlebar > hdyleaflet > separator.sidebar,
-window.background.csd > headerbar.titlebar > leaflet > separator.sidebar, window.background.csd > hdyleaflet > separator.vertical, window.background.csd > leaflet > separator.vertical, .titlebar:not(headerbar) > separator, window.org-gnome-gedit > paned.titlebar > separator, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator, window.org-gnome-gedit > paned.titlebar > separator:backdrop, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator:backdrop {
+window.background.csd > headerbar.titlebar > leaflet > separator.sidebar, window.background.csd > hdyleaflet > separator.vertical, window.background.csd > leaflet > separator.vertical, window.background.csd > box.horizontal > separator.vertical, .titlebar:not(headerbar) > separator, window.org-gnome-gedit > paned.titlebar > separator, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator, window.org-gnome-gedit > paned.titlebar > separator:backdrop, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator:backdrop {
   background-image: image(#0e0e0e);
   background-color: transparent;
   border-right: none;
 }
 
-.tweak-group-startup, list.tweak-group list, hdyleaflet list.view, hdyleaflet list.frame, leaflet list.view, leaflet list.frame, hdyleaflet frame.view, leaflet frame.view, hdyleaflet frame:not(.view) list:not(.contacts-contact-list), leaflet frame:not(.view) list:not(.contacts-contact-list) {
+.tweak-group-startup, list.tweak-group list, hdyleaflet list.view, hdyleaflet list.frame, leaflet list.view, leaflet list.frame, box.horizontal > stack.background list.view, box.horizontal > stack.background list.frame, hdyleaflet frame.view, leaflet frame.view, box.horizontal > stack.background frame.view, hdyleaflet frame:not(.view) list:not(.contacts-contact-list), leaflet frame:not(.view) list:not(.contacts-contact-list), box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) {
   border-radius: 12px;
   box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.03), inset 0 0 3px rgba(255, 255, 255, 0.02), inset 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 1px rgba(255, 255, 255, 0.06);
   background-color: rgba(255, 255, 255, 0.05);
   border: none;
 }
 
-.tweak-group-startup > separator, list.tweak-group list > separator, hdyleaflet list.view > separator, hdyleaflet list.frame > separator, leaflet list.view > separator, leaflet list.frame > separator, hdyleaflet frame.view > separator, leaflet frame.view > separator, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) > separator, leaflet frame:not(.view) list:not(.contacts-contact-list) > separator {
+.tweak-group-startup > separator, list.tweak-group list > separator, hdyleaflet list.view > separator, hdyleaflet list.frame > separator, leaflet list.view > separator, leaflet list.frame > separator, box.horizontal > stack.background list.view > separator, box.horizontal > stack.background list.frame > separator, hdyleaflet frame.view > separator, leaflet frame.view > separator, box.horizontal > stack.background frame.view > separator, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) > separator, leaflet frame:not(.view) list:not(.contacts-contact-list) > separator, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) > separator {
   background: none;
   min-height: 0;
 }
 
-list.tweak-group list row.activatable:first-child, hdyleaflet list.view row.activatable:first-child, hdyleaflet list.frame row.activatable:first-child, leaflet list.view row.activatable:first-child, leaflet list.frame row.activatable:first-child, hdyleaflet frame.view list row.activatable:first-child, leaflet frame.view list row.activatable:first-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child {
+list.tweak-group list row.activatable:first-child, hdyleaflet list.view row.activatable:first-child, hdyleaflet list.frame row.activatable:first-child, leaflet list.view row.activatable:first-child, leaflet list.frame row.activatable:first-child, box.horizontal > stack.background list.view row.activatable:first-child, box.horizontal > stack.background list.frame row.activatable:first-child, hdyleaflet frame.view list row.activatable:first-child, leaflet frame.view list row.activatable:first-child, box.horizontal > stack.background frame.view list row.activatable:first-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
 
-list.tweak-group list row.activatable:last-child, hdyleaflet list.view row.activatable:last-child, hdyleaflet list.frame row.activatable:last-child, leaflet list.view row.activatable:last-child, leaflet list.frame row.activatable:last-child, hdyleaflet frame.view list row.activatable:last-child, leaflet frame.view list row.activatable:last-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child {
+list.tweak-group list row.activatable:last-child, hdyleaflet list.view row.activatable:last-child, hdyleaflet list.frame row.activatable:last-child, leaflet list.view row.activatable:last-child, leaflet list.frame row.activatable:last-child, box.horizontal > stack.background list.view row.activatable:last-child, box.horizontal > stack.background list.frame row.activatable:last-child, hdyleaflet frame.view list row.activatable:last-child, leaflet frame.view list row.activatable:last-child, box.horizontal > stack.background frame.view list row.activatable:last-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child {
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 
-list.tweak-group list row.activatable:only-child, hdyleaflet list.view row.activatable:only-child, hdyleaflet list.frame row.activatable:only-child, leaflet list.view row.activatable:only-child, leaflet list.frame row.activatable:only-child, hdyleaflet frame.view list row.activatable:only-child, leaflet frame.view list row.activatable:only-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child {
+list.tweak-group list row.activatable:only-child, hdyleaflet list.view row.activatable:only-child, hdyleaflet list.frame row.activatable:only-child, leaflet list.view row.activatable:only-child, leaflet list.frame row.activatable:only-child, box.horizontal > stack.background list.view row.activatable:only-child, box.horizontal > stack.background list.frame row.activatable:only-child, hdyleaflet frame.view list row.activatable:only-child, leaflet frame.view list row.activatable:only-child, box.horizontal > stack.background frame.view list row.activatable:only-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child {
   border-radius: 12px;
 }
 
-hdyleaflet list > row.activatable, leaflet list > row.activatable {
+hdyleaflet list > row.activatable, leaflet list > row.activatable, box.horizontal > stack.background list > row.activatable {
   margin: 2px 4px;
   border-radius: 8px;
   -gtk-outline-radius: 6px;
 }
 
-hdyleaflet frame > border, leaflet frame > border {
+hdyleaflet frame > border, leaflet frame > border, box.horizontal > stack.background frame > border {
   border: none;
 }
 
-hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable .row-header > button:not(.text-button), leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable .row-header > button:not(.text-button) {
+hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable .row-header > button:not(.text-button), leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable .row-header > button:not(.text-button), box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) row.activatable .row-header > button:not(.text-button) {
   min-height: 28px;
   min-width: 28px;
   padding: 0;
   margin: 4px 0;
 }
 
-hdyleaflet frame.view list, leaflet frame.view list {
+hdyleaflet frame.view list, leaflet frame.view list, box.horizontal > stack.background frame.view list {
   background: none;
 }
 
-hdyleaflet frame.view list > separator, leaflet frame.view list > separator {
+hdyleaflet frame.view list > separator, leaflet frame.view list > separator, box.horizontal > stack.background frame.view list > separator {
   background: none;
   min-height: 0;
 }

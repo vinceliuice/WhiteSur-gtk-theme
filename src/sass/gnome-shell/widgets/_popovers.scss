@@ -128,17 +128,6 @@ $popop_menuitem_radius: $wm_radius - 4px;
   }
 }
 
-.candidate-popup-boxpointer {
-  -arrow-border-radius: 2px;
-  -arrow-background-color: $dialog_bg_color;
-  -arrow-border-width: 0;
-  -arrow-border-color: transparent;
-  -arrow-base: 5px;
-  -arrow-rise: 5px;
-  background-color: transparent;
-  @extend %theme_dialogs;
-}
-
 .popup-separator-menu-item {
   margin: 0 0;
   padding: 0 0;
@@ -243,7 +232,20 @@ $popop_menuitem_radius: $wm_radius - 4px;
 }
 
 // IBus Candidate Popup
+.candidate-popup-boxpointer {
+  -arrow-border-radius: 2px;
+  -arrow-background-color: transparent;
+  -arrow-border-width: 0;
+  -arrow-border-color: transparent;
+  -arrow-base: 64px;
+  -arrow-rise: 12px;
+  background-color: transparent;
+}
+
 .candidate-popup-content {
+  @extend %theme_dialogs;
+  box-shadow: 0 8px 16px 0 rgba(black, 0.25);
+  border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
   padding: 8px;
   spacing: 0;
 }
@@ -258,6 +260,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
   transition-duration: 0ms; // FIXME: needs more natural transitions
   min-height: $menuitem_size;
   padding: 0 8px;
+  margin-right: 2px;
   border-radius: $bt_radius;
   &:hover { background-color: $divider_color; color: $fg_color; }
   &:active { background-color: $track_color; color: $fg_color; }

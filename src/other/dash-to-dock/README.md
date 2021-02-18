@@ -4,7 +4,7 @@
 
 ### Install tips
 
-Usage:  `./Install`  **[OPTIONS...]**
+Usage:  `./install.sh`  **[OPTIONS...]**
 
 |  OPTIONS:           | |
 |:--------------------|:-------------|
