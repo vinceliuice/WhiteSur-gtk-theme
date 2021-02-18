@@ -140,8 +140,6 @@ $raven_padding: 8px;
     &:disabled { color: $disabled_fg_color; }
   }
 
-
-
   treeview.view.sidebar,
   scrolledwindow.sidebar:not(.categories) { //AppMenu (Elementary)
     // min-height: 36px;
@@ -1173,12 +1171,10 @@ window.budgie-switcher-window {
 }
 
 %budgie_dialog {
-  border-radius: $wm_radius;
   background-color: $bg_color;
   @if $variant == 'dark' { border: 1px solid lighten($menu_bg, 10%); }
 
-  &.background {border-radius: $wm_radius; }
-  decoration { border-radius: $wm_radius; }
+  &, &.background, decoration { border-radius: $wm_radius; }
 }
 
 // Session Dialog

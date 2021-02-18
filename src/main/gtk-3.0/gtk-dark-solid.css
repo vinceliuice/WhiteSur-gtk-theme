@@ -10027,17 +10027,12 @@ window.budgie-switcher-window .drop-shadow, .drop-shadow {
 
 .budgie-run-dialog, .budgie-session-dialog,
 .budgie-polkit-dialog {
-  border-radius: 12px;
   background-color: #333333;
   border: 1px solid #4d4d4d;
 }
 
-.background.budgie-run-dialog, .background.budgie-session-dialog,
-.background.budgie-polkit-dialog {
-  border-radius: 12px;
-}
-
-.budgie-run-dialog decoration, .budgie-session-dialog decoration,
+.budgie-run-dialog, .budgie-session-dialog,
+.budgie-polkit-dialog, .budgie-run-dialog decoration, .budgie-session-dialog decoration,
 .budgie-polkit-dialog decoration {
   border-radius: 12px;
 }

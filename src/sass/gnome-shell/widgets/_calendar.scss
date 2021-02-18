@@ -152,7 +152,7 @@
 }
 
 .calendar-today {
-  font-weight: bold !important;
+  font-weight: bold;
   color: $light_alt_fg_color;
   background-color: $primary_color;
   border: none;
@@ -217,7 +217,7 @@
   font-weight: bold;
 }
 
-/* Events */
+// Events
 .events-button {
   .events-box {
     spacing: 6px;

@@ -5,6 +5,9 @@ style "default" {
 
   # Style Properties
 
+  GtkWindow::resize-grip-height = 4
+  GtkWindow::resize-grip-width = 4
+
   GtkWidget::focus-line-width = 1
   GtkMenuBar::window-dragging = 1
   GtkToolbar::window-dragging = 1

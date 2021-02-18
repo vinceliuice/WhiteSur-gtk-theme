@@ -449,7 +449,7 @@ stage {
 }
 
 .calendar-today {
-  font-weight: bold !important;
+  font-weight: bold;
   color: rgba(255, 255, 255, 0.85);
   background-color: #0860F2;
   border: none;
@@ -513,7 +513,6 @@ stage {
   font-weight: bold;
 }
 
-/* Events */
 .events-button .events-box {
   spacing: 6px;
 }
