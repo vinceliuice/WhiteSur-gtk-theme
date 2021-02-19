@@ -157,7 +157,7 @@ stage {
   border-radius: 0 0 6px 6px;
 }
 
-.candidate-popup-boxpointer, .popup-menu .popup-menu-content, .modal-dialog {
+.candidate-popup-content, .popup-menu .popup-menu-content, .modal-dialog {
   background-color: rgba(245, 245, 245, 0.95);
   border-radius: 12px;
   box-shadow: inset 0 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -449,7 +449,7 @@ stage {
 }
 
 .calendar-today {
-  font-weight: bold !important;
+  font-weight: bold;
   color: rgba(255, 255, 255, 0.85);
   background-color: #79B757;
   border: none;
@@ -513,7 +513,6 @@ stage {
   font-weight: bold;
 }
 
-/* Events */
 .events-button .events-box {
   spacing: 6px;
 }
@@ -655,7 +654,7 @@ stage {
 }
 
 .message {
-  margin: 2px 4px 6px;
+  margin: 0 4px;
 }
 
 .message:first-child {
@@ -3294,16 +3293,6 @@ StEntry StLabel.hint-text {
   selected-color: #79B757;
 }
 
-.candidate-popup-boxpointer {
-  -arrow-border-radius: 2px;
-  -arrow-background-color: rgba(245, 245, 245, 0.95);
-  -arrow-border-width: 0;
-  -arrow-border-color: transparent;
-  -arrow-base: 5px;
-  -arrow-rise: 5px;
-  background-color: transparent;
-}
-
 .popup-separator-menu-item {
   margin: 0 0;
   padding: 0 0;
@@ -3415,7 +3404,19 @@ StEntry StLabel.hint-text {
   background-color: #79B757;
 }
 
+.candidate-popup-boxpointer {
+  -arrow-border-radius: 2px;
+  -arrow-background-color: transparent;
+  -arrow-border-width: 0;
+  -arrow-border-color: transparent;
+  -arrow-base: 64px;
+  -arrow-rise: 12px;
+  background-color: transparent;
+}
+
 .candidate-popup-content {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0);
   padding: 8px;
   spacing: 0;
 }
@@ -3433,6 +3434,7 @@ StEntry StLabel.hint-text {
   transition-duration: 0ms;
   min-height: 28px;
   padding: 0 8px;
+  margin-right: 2px;
   border-radius: 6px;
 }
 
