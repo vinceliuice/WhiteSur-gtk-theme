@@ -3,7 +3,6 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
 
 #panel {
   background-color: $shell_panel_bg;
-  /* transition from solid to transparent */
   transition-duration: 250ms;
   font-weight: bold;
   height: $menuitem_size;
@@ -146,7 +145,6 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
 
   &.solid {
     background-color: $panel_bg;
-    /* transition from transparent to solid */
     transition-duration: 250ms;
     background-gradient-direction: none; // for Ubuntu session
     text-shadow: none; // for Ubuntu session

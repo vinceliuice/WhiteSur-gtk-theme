@@ -133,6 +133,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
   padding: 0 0;
   background: none;
   border: none;
+  height: 1px;
 
   .popup-separator-menu-item-separator {
     height: 1px; //not really the whole box
@@ -143,6 +144,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
     .popup-sub-menu & { //submenu separators
       padding: 0 0;
       margin: 0 32px 0 0;
+      height: 1px;
     }
   }
 }

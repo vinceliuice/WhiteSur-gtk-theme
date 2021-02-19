@@ -2943,7 +2943,6 @@ StEntry StLabel.hint-text {
 
 #panel {
   background-color: rgba(0, 0, 0, 0.16);
-  /* transition from solid to transparent */
   transition-duration: 250ms;
   font-weight: bold;
   height: 28px;
@@ -3098,7 +3097,6 @@ StEntry StLabel.hint-text {
 
 #panel.solid {
   background-color: rgba(0, 0, 0, 0.16);
-  /* transition from transparent to solid */
   transition-duration: 250ms;
   background-gradient-direction: none;
   text-shadow: none;
@@ -3298,6 +3296,7 @@ StEntry StLabel.hint-text {
   padding: 0 0;
   background: none;
   border: none;
+  height: 1px;
 }
 
 .popup-separator-menu-item .popup-separator-menu-item-separator {
@@ -3310,6 +3309,7 @@ StEntry StLabel.hint-text {
 .popup-sub-menu .popup-separator-menu-item .popup-separator-menu-item-separator {
   padding: 0 0;
   margin: 0 32px 0 0;
+  height: 1px;
 }
 
 .system-switch-user-submenu-icon.user-icon {
