@@ -120,9 +120,9 @@ stage {
 %theme_dialogs {
   background-color: $dialog_bg_color;
   border-radius: $wm_radius;
-  box-shadow: inset 0 0 1px 0 rgba(white, 0.2);
   border: solid rgba(black, 0.75);
   border-width: if($variant=='light', 0, 1px);
+  box-shadow: 3px 3px 8px -3px rgba(black, 0.65);
 }
 
 %overview_scrollbar {

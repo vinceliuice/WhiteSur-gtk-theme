@@ -160,9 +160,9 @@ stage {
 .candidate-popup-content, .popup-menu .popup-menu-content, .modal-dialog {
   background-color: #242424;
   border-radius: 12px;
-  box-shadow: inset 0 0 1px 0 rgba(255, 255, 255, 0.2);
   border: solid rgba(0, 0, 0, 0.75);
   border-width: 1px;
+  box-shadow: 3px 3px 8px -3px rgba(0, 0, 0, 0.65);
 }
 
 #screenShieldNotifications StScrollBar StBin#trough, #overview StScrollBar StBin#trough {
@@ -654,11 +654,7 @@ stage {
 }
 
 .message {
-  margin: 0 4px;
-}
-
-.message:first-child {
-  margin-top: 8px;
+  margin: 0 4px 6px;
 }
 
 .message .message-icon-bin {
@@ -3164,7 +3160,7 @@ StEntry StLabel.hint-text {
   padding: 6px 0 !important;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(0, 0, 0, 0.75);
-  margin: 4px 8px !important;
+  margin: 4px 8px 4px 12px !important;
 }
 
 .popup-menu .popup-menu-item {

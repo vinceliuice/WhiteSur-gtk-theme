@@ -355,10 +355,8 @@
 }
 
 .message {
-  margin: 0 4px;
+  margin: 0 4px 6px;
   @extend %popover_bubble;
-
-  &:first-child { margin-top: 8px; }
 
   // icon container
   .message-icon-bin {
