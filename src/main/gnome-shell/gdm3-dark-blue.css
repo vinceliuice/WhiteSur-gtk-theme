@@ -1047,9 +1047,7 @@ StEntry StLabel.hint-text {
   text-align: center;
   margin-bottom: 8px;
   padding: 2px 6px;
-  color: white;
-  background-color: #F27835;
-  border-radius: 9999px;
+  color: #F27835;
 }
 
 .login-dialog-logo-bin {
