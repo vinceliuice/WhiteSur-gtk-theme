@@ -152,7 +152,7 @@
 }
 
 .calendar-today {
-  font-weight: bold !important;
+  font-weight: bold;
   color: $light_alt_fg_color;
   background-color: $primary_color;
   border: none;
@@ -216,7 +216,7 @@
   font-weight: bold;
 }
 
-/* Events */
+// Events
 .events-button {
   .events-box {
     spacing: 6px;
@@ -354,10 +354,8 @@
 }
 
 .message {
-  margin: 0 4px;
+  margin: 0 4px 6px;
   @extend %popover_bubble;
-
-  &:first-child { margin-top: 8px; }
 
   // icon container
   .message-icon-bin {

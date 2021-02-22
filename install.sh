@@ -1,7 +1,5 @@
 #! /usr/bin/env bash
-set -ueo pipefail
 set -o physical
-#set -x
 
 REPO_DIR=$(cd $(dirname $0) && pwd)
 SRC_DIR=${REPO_DIR}/src
@@ -871,7 +869,7 @@ fi
 
 # Install GDM theme
 if [[ "${gdm:-}" == 'true' && "${remove:-}" != 'true' && "$UID" -eq "$ROOT_UID" ]]; then
-  install_theme && install_gdm "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${theme}"
+  install_theme && install_gdm "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${theme}" "${icon}"
 fi
 
 # Remove themes

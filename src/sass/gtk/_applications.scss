@@ -2435,6 +2435,42 @@ dialog.background.csd {
 }
 
 //
+// Extensions
+//
+window.background.csd {
+  > stack, // GameMode setting
+  > stack > scrolledwindow > viewport > box, // User Themes (Workspace) setting
+  > box > stack > scrolledwindow > viewport > box {
+    > list {
+      @extend %circular_list;
+
+      row.activatable { @extend %circular_row; }
+    }
+  }
+
+  stack stack stack frame, // ArcMenu setting
+  > stack > stack > box > frame, // Night Theme Switcher setting
+  > stack > stack > box > box > frame, // Night Theme Switcher setting bottom lists
+  > stack > box > stack > box > frame, // ArcMenu setting
+  > stack > box > stack > scrolledwindow > viewport frame, // ArcMenu setting
+  > stack > box > stack > box > scrolledwindow > viewport > frame, // ArcMenu setting
+  > stack > grid > scrolledwindow > viewport > box > frame { // GSConnect setting
+    > border { border: none; }
+
+    > list {
+      @extend %circular_list;
+
+      row.activatable { @extend %circular_row; }
+    }
+  }
+
+  > stack > box > box > list,
+  > stack > box > stack > scrolledwindow > viewport > list { // ArcMenu setting sidebar
+    border-bottom-left-radius: $wm_radius;
+  }
+}
+
+//
 // Mate OSD Window
 //
 MsdOsdWindow.background.osd {
@@ -3341,14 +3377,6 @@ window.background.csd {
 toolbar#SubToolBox {
   min-height: 36px;
 
-  // > toolitem#select-x {
-  //   spinbutton {
-  //     entry {
-  //       min-width: 0;
-  //     }
-  //   }
-  // }
-
   entry, button {
     margin-top: 6px;
     margin-bottom: 6px;
@@ -3407,6 +3435,17 @@ window > box.vertical > box.horizontal {
   }
 
   > widget { background-color: transparent; }
+}
+
+//
+// Pamac
+//
+window.background > box.vertical > overlay > stack > scrolledwindow.frame {
+  border: none;
+
+  > viewport.frame > box.vertical > stack > scrolledwindow {
+    border-top: 1px solid $borders_color;
+  }
 }
 
 //
@@ -3496,11 +3535,11 @@ menubar.-vala-panel-background {
   }
 }
 
-// * Elementary Apps *
+//
+// Elementary Apps
+//
 
-//
 // Wingpanel
-//
 .menubar.panel {
   .panel {
     &, &.color-light, &.color-dark {

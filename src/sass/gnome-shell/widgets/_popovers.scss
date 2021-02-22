@@ -12,7 +12,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
     @extend %theme_dialogs;
     box-shadow: 0 8px 16px 0 rgba(black, 0.25);
     border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
-    margin: 4px 8px !important;
+    margin: 4px 8px 4px 12px !important;
   }
 
   .popup-menu-item {
@@ -133,6 +133,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
   padding: 0 0;
   background: none;
   border: none;
+  height: 1px;
 
   .popup-separator-menu-item-separator {
     height: 1px; //not really the whole box
@@ -143,6 +144,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
     .popup-sub-menu & { //submenu separators
       padding: 0 0;
       margin: 0 32px 0 0;
+      height: 1px;
     }
   }
 }
