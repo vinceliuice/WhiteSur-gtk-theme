@@ -66,8 +66,7 @@ stage {
 
 .message, .world-clocks-button,
 .weather-button,
-.events-button,
-.events-section-title {
+.events-button {
   border-radius: 10px;
   border: none;
   box-shadow: none;
@@ -79,11 +78,9 @@ stage {
 
 .message:hover, .world-clocks-button:hover,
 .weather-button:hover,
-.events-button:hover,
-.events-section-title:hover, .message:focus, .world-clocks-button:focus,
+.events-button:hover, .message:focus, .world-clocks-button:focus,
 .weather-button:focus,
-.events-button:focus,
-.events-section-title:focus {
+.events-button:focus {
   color: #dedede;
   background-color: rgba(74, 74, 74, 0.75);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
@@ -91,8 +88,7 @@ stage {
 
 .message:active, .world-clocks-button:active,
 .weather-button:active,
-.events-button:active,
-.events-section-title:active {
+.events-button:active {
   color: #dedede;
   background-color: rgba(62, 62, 62, 0.75);
   box-shadow: none;
@@ -500,8 +496,7 @@ stage {
 
 .world-clocks-button,
 .weather-button,
-.events-button,
-.events-section-title {
+.events-button {
   padding: 12px;
   margin: 2px 4px;
 }
