@@ -203,8 +203,7 @@
 
 .world-clocks-button,
 .weather-button,
-.events-button,
-.events-section-title {
+.events-button {
   @extend %popover_bubble;
   padding: 12px;
   margin: 2px 4px;
