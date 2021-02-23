@@ -21,6 +21,9 @@
 /* Rounded title buttons (headerbar window controls) (GNOMISH) */
 /*@import "WhiteSur/rounded-title-buttons.css"; /**/
 
+/* Rounded window even when it gets maximized */
+/*@import "WhiteSur/rounded-window-maximized.css"; /**/
+
 /* Active tab high contrast */
 /*@import "WhiteSur/active-tab-contrast.css"; /**/
 
