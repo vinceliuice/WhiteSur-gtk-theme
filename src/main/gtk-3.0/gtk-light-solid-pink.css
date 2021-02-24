@@ -1777,6 +1777,10 @@ window > .titlebar:not(headerbar), window > .titlebar:not(headerbar):backdrop, w
   min-width: 1px;
 }
 
+window.background.csd.maximized {
+  border-radius: 0px;
+}
+
 headerbar button, .titlebar button {
   min-height: 26px;
   min-width: 22px;

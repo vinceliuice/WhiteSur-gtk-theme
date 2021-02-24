@@ -1647,6 +1647,11 @@ window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar
   }
 }
 
+// Fixes common window border radius problem when it get maximized
+window.background.csd.maximized {
+  border-radius: 0px;
+}
+
 headerbar, .titlebar {
   button {
     min-height: 26px;

@@ -1,5 +1,5 @@
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-:root[tabsintitlebar]:not([inFullscreen]) #nav-bar {
+:root[tabsintitlebar]:not([inFullscreen])[sizemode="maximized"] #nav-bar {
 	border-radius: 16px 16px 0 0;
 }
