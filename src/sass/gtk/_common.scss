@@ -1648,8 +1648,9 @@ window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar
 }
 
 // Fixes common window border radius problem when it get maximized
+// including GNOME Terminal window can't restore after it get maximized
 window.background.csd.maximized {
-  border-radius: 0px;
+  border-radius: 0 0 0 0;
 }
 
 headerbar, .titlebar {
@@ -3086,6 +3087,8 @@ scrolledwindow {
     &.bottom { @include undershoot(bottom); }
     &.left { @include undershoot(left); }
     &.right { @include undershoot(right); }
+
+    padding: $wm_radius/2;
   }
 
   @at-root junction { // the small square between two scrollbars

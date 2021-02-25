@@ -1770,7 +1770,7 @@ window > .titlebar:not(headerbar), window > .titlebar:not(headerbar):backdrop, w
 }
 
 window.background.csd.maximized {
-  border-radius: 0px;
+  border-radius: 0 0 0 0;
 }
 
 headerbar button, .titlebar button {
@@ -3720,6 +3720,10 @@ scrolledwindow overshoot.right {
   box-shadow: none;
 }
 
+scrolledwindow undershoot {
+  padding: 6px;
+}
+
 scrolledwindow undershoot.top {
   background-color: transparent;
   background-image: linear-gradient(to left, rgba(255, 255, 255, 0.2) 50%, rgba(0, 0, 0, 0.2) 50%);
@@ -4836,10 +4840,6 @@ terminal-window notebook button.flat.toggle.popup {
   margin: -2px;
 }
 
-terminal-window.background.csd.maximized {
-  border-radius: 0 0 0 0;
-}
-
 window.background.csd > box.vertical > box.horizontal > frame > border {
   border-width: 0 1px 0 0;
 }
@@ -4857,16 +4857,15 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
 }
 
 .nautilus-window.background.csd {
+  background-color: rgba(51, 51, 51, 0.95);
   border-radius: 0 0 12px 12px;
-  background-color: transparent;
-  background-image: linear-gradient(90deg, rgba(51, 51, 51, 0.95) 0%, rgba(51, 51, 51, 0.95) 200px, rgba(20, 20, 20, 0.95) 200px, rgba(20, 20, 20, 0.95) 201px, #242424 201px, #242424 100%);
 }
 
 .nautilus-window.background.csd > headerbar.titlebar {
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
-  border: none;
   background-color: transparent;
-  background-image: linear-gradient(90deg, rgba(51, 51, 51, 0.95) 0%, rgba(51, 51, 51, 0.95) 200px, rgba(20, 20, 20, 0.95) 200px, rgba(20, 20, 20, 0.95) 201px, #242424 201px, #242424 100%);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+  background-image: linear-gradient(90deg, rgba(51, 51, 51, 0.95) 200px, rgba(20, 20, 20, 0.95) 200px, rgba(20, 20, 20, 0.95) 201px, #242424 0%);
+  border-image: linear-gradient(90deg, rgba(51, 51, 51, 0.95) 200px, rgba(20, 20, 20, 0.95) 0%) 1/0 0 1px;
 }
 
 .nautilus-window.background.csd > headerbar.titlebar > .linked.raised > button:first-child {
@@ -4875,6 +4874,18 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
 
 .nautilus-window.background.csd placessidebar.sidebar {
   border-bottom-left-radius: 12px;
+}
+
+.nautilus-window.background.csd notebook stack {
+  background-color: #242424;
+}
+
+.nautilus-window.background.csd notebook stack:dir(ltr) {
+  border-radius: 0 0 14px 0;
+}
+
+.nautilus-window.background.csd notebook stack:dir(rtl) {
+  border-radius: 0 0 0 14px;
 }
 
 .nautilus-window headerbar .path-bar-box {
@@ -4896,48 +4907,28 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
 }
 
 .nautilus-window > grid.horizontal > paned.horizontal > separator {
-  border-left: none;
   background-color: transparent;
-  background-image: image(#242424);
-  background-size: 12px 12px;
-  background-position: bottom left;
+  background-image: image(rgba(20, 20, 20, 0.95));
+  background-size: 1px 100%;
   background-repeat: no-repeat;
-}
-
-.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(ltr) {
-  margin-left: -1px;
-}
-
-.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(rtl) {
-  margin-right: -1px;
-}
-
-.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(ltr) {
-  margin-left: 2px;
-}
-
-.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(rtl) {
-  margin-right: 2px;
-}
-
-.nautilus-window > grid.horizontal > paned.horizontal > separator:hover {
-  background-image: image(rgba(255, 255, 255, 0.12));
-  background-size: 2px 100px;
-  background-position: center center;
+  background-position: center;
 }
 
 .nautilus-window placessidebar.sidebar {
-  margin-bottom: 12px;
-  border: none;
-  min-width: 200px;
   background-color: transparent;
   background-image: none;
+  min-width: 200px;
+  margin-bottom: 12px;
+  border: none;
 }
 
 .nautilus-window placessidebar.sidebar row.sidebar-row {
   color: #dadada;
   background-color: transparent;
   transition: background-image 0;
+  border-radius: 6px;
+  margin: 0 6px;
+  padding: 2px 4px;
 }
 
 .nautilus-window placessidebar.sidebar row.sidebar-row .sidebar-icon {
@@ -4953,31 +4944,18 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
 }
 
 .nautilus-window placessidebar.sidebar row.sidebar-row:hover {
-  transition: background-image 0;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-position: left center;
-  background-size: 200px 28px;
-  background-image: -gtk-scaled(url("assets/sidebar-view-hover-200px-dark.png"), url("assets/sidebar-view-hover-200px-dark@2.png"));
+  background-color: rgba(222, 222, 222, 0.1);
 }
 
 .nautilus-window placessidebar.sidebar row.sidebar-row:active, .nautilus-window placessidebar.sidebar row.sidebar-row:active:hover {
-  transition: background-image ease-out 200ms;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-position: left center;
-  background-size: 200px 28px;
-  background-image: -gtk-scaled(url("assets/sidebar-view-active-200px-dark.png"), url("assets/sidebar-view-active-200px-dark@2.png"));
+  transition: background-color ease-out 200ms;
+  background-color: rgba(222, 222, 222, 0.2);
 }
 
 .nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup:selected, .nautilus-window placessidebar.sidebar row.sidebar-row:selected, .nautilus-window placessidebar.sidebar row.sidebar-row:selected:hover {
   color: #dedede;
-  transition: background-image ease-out 200ms;
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: 200px 28px;
-  background-color: transparent;
-  background-image: -gtk-scaled(url("assets/sidebar-view-checked-200px-dark.png"), url("assets/sidebar-view-checked-200px-dark@2.png"));
+  transition: background-color ease-out 200ms;
+  background-color: rgba(222, 222, 222, 0.15);
 }
 
 .nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup:selected, .nautilus-window placessidebar.sidebar row.sidebar-row.has-open-popup:selected label, .nautilus-window placessidebar.sidebar row.sidebar-row:selected, .nautilus-window placessidebar.sidebar row.sidebar-row:selected label, .nautilus-window placessidebar.sidebar row.sidebar-row:selected:hover, .nautilus-window placessidebar.sidebar row.sidebar-row:selected:hover label {
