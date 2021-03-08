@@ -7271,7 +7271,8 @@ window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sideba
 
 .geary-main-window.background.csd stack#conversation_viewer,
 window#GearyMainWindow.background.csd stack#conversation_viewer {
-  border-bottom-right-radius: 12px;
+  background-color: #ffffff;
+  border-bottom-right-radius: 13px;
 }
 
 .geary-main-window.background.csd stack#conversation_viewer scrolledwindow.geary-conversation-scroller viewport.frame,

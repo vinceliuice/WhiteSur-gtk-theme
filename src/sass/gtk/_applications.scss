@@ -2773,10 +2773,7 @@ window#whiskermenu-window {
   }
 }
 
-//
-//  * Thunar *
-//
-
+// Thunar
 window.background.csd.thunar {
   > grid.horizontal > paned.horizontal > scrolledwindow.frame.sidebar.shortcuts-pane {
     border-bottom-left-radius: $wm_radius;
@@ -2894,7 +2891,8 @@ window#GearyMainWindow.background.csd {
   }
 
   stack#conversation_viewer {
-    border-bottom-right-radius: $wm_radius;
+    background-color: $base_color;
+    border-bottom-right-radius: $wm_radius + 1px;
 
     scrolledwindow.geary-conversation-scroller {
       viewport.frame {
