@@ -31,6 +31,7 @@
     <file>icons/scalable/actions/pointer-primary-click-symbolic.svg</file>
     <file>icons/scalable/actions/pointer-secondary-click-symbolic.svg</file>
     <file>Yaru/gnome-shell.css</file>
+    <file>Yaru-dark/gnome-shell.css</file>
     <file>gdm3.css</file>
     <file>pad-osd.css</file>
     <file>no-events.svg</file>

@@ -1,5 +1,4 @@
 #! /usr/bin/env bash
-set -o physical
 
 REPO_DIR=$(cd $(dirname $0) && pwd)
 SRC_DIR=${REPO_DIR}/src
@@ -121,6 +120,8 @@ install() {
   cp -r ${SRC_DIR}/assets/gnome-shell/icons                                             ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/main/gnome-shell/pad-osd.css                                         ${THEME_DIR}/gnome-shell
   cp -r ${SRC_DIR}/main/gnome-shell/gnome-shell${color}${opacity}${alt}${theme}.css     ${THEME_DIR}/gnome-shell/gnome-shell.css
+  cp -r ${SRC_DIR}/main/gnome-shell/gdm3${color}${theme}.css                            ${THEME_DIR}/gnome-shell/gdm3.css
+
   cp -r ${SRC_DIR}/assets/gnome-shell/common-assets                                     ${THEME_DIR}/gnome-shell/assets
 
   if [[ ${theme} != '-default' ]]; then
@@ -626,12 +627,13 @@ install_gdm() {
     rm -rf "$YARU_GDM_THEME_DIR" && mkdir -p "$YARU_GDM_THEME_DIR"
 
     mkdir -p                                                                              "$YARU_GDM_THEME_DIR"/gnome-shell
-    mkdir -p                                                                              "$YARU_GDM_THEME_DIR"/gnome-shell/Yaru
+    mkdir -p                                                                              "$YARU_GDM_THEME_DIR"/gnome-shell/{Yaru,Yaru-dark}
     cp -r "$SRC_DIR"/assets/gnome-shell/icons                                             "$YARU_GDM_THEME_DIR"/gnome-shell
     cp -r "$SRC_DIR"/main/gnome-shell/pad-osd.css                                         "$YARU_GDM_THEME_DIR"/gnome-shell
     cp -r "$SRC_DIR"/main/gnome-shell/gdm3${color}.css                                    "$YARU_GDM_THEME_DIR"/gnome-shell/gdm3.css
-    cp -r "$SRC_DIR"/main/gnome-shell/gnome-shell${color}.css                             "$YARU_GDM_THEME_DIR"/gnome-shell/Yaru/gnome-shell.css
-    sed -i "s|assets|../assets|"                                                          "$YARU_GDM_THEME_DIR"/gnome-shell/Yaru/gnome-shell.css
+    cp -r "$SRC_DIR"/main/gnome-shell/gnome-shell-light.css                               "$YARU_GDM_THEME_DIR"/gnome-shell/Yaru/gnome-shell.css
+    cp -r "$SRC_DIR"/main/gnome-shell/gnome-shell-dark.css                                "$YARU_GDM_THEME_DIR"/gnome-shell/Yaru-dark/gnome-shell.css
+    sed -i "s|assets|../assets|"                                                          "$YARU_GDM_THEME_DIR"/gnome-shell/{Yaru,Yaru-dark}/gnome-shell.css
     cp -r "$SRC_DIR"/assets/gnome-shell/common-assets                                     "$YARU_GDM_THEME_DIR"/gnome-shell/assets
     cp -r "$SRC_DIR"/assets/gnome-shell/assets${color}/*.svg                              "$YARU_GDM_THEME_DIR"/gnome-shell/assets
     cp -r "$SRC_DIR"/assets/gnome-shell/activities/activities.svg                         "$YARU_GDM_THEME_DIR"/gnome-shell/assets
@@ -660,7 +662,9 @@ install_gdm() {
     cp -r "$SRC_DIR"/assets/gnome-shell/icons                                             "$POP_GDM_THEME_DIR"/gnome-shell
     cp -r "$SRC_DIR"/main/gnome-shell/pad-osd.css                                         "$POP_GDM_THEME_DIR"/gnome-shell
     cp -r "$SRC_DIR"/main/gnome-shell/gdm3${color}.css                                    "$POP_GDM_THEME_DIR"/gnome-shell/gdm3.css
-    cp -r "$SRC_DIR"/main/gnome-shell/gnome-shell${color}.css                             "$POP_GDM_THEME_DIR"/gnome-shell/gnome-shell.css
+    cp -r "$SRC_DIR"/main/gnome-shell/gnome-shell-light.css                               "$POP_GDM_THEME_DIR"/gnome-shell/Yaru/gnome-shell.css
+    cp -r "$SRC_DIR"/main/gnome-shell/gnome-shell-dark.css                                "$POP_GDM_THEME_DIR"/gnome-shell/Yaru-dark/gnome-shell.css
+    sed -i "s|assets|../assets|"                                                          "$POP_GDM_THEME_DIR"/gnome-shell/{Yaru,Yaru-dark}/gnome-shell.css
     cp -r "$SRC_DIR"/assets/gnome-shell/common-assets                                     "$POP_GDM_THEME_DIR"/gnome-shell/assets
     cp -r "$SRC_DIR"/assets/gnome-shell/assets${color}/*.svg                              "$POP_GDM_THEME_DIR"/gnome-shell/assets
     cp -r "$SRC_DIR"/assets/gnome-shell/activities/activities.svg                         "$POP_GDM_THEME_DIR"/gnome-shell/assets
@@ -889,4 +893,4 @@ fi
 # Restore files
 restore_files
 
-prompt -s "\n Done!".
+prompt -s "\n Done!"
