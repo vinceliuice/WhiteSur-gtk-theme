@@ -155,7 +155,7 @@
     background-color: rgba(white, 0.12);
     border-radius: $bd_radius;
     border-color: transparent;
-    box-shadow: inset 0 0 0 1px rgba(white, 0.05);
+    // box-shadow: inset 0 0 0 1px rgba(white, 0.05);
   }
 
   @if $t == focus {

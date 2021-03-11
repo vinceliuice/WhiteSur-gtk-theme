@@ -1739,12 +1739,13 @@ StEntry StLabel.hint-text {
 .candidate-popup-content {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(0, 0, 0, 0);
-  padding: 8px;
-  spacing: 0;
+  margin: 2px 8px;
+  padding: 6px;
+  spacing: 4px;
 }
 
 .candidate-index {
-  padding: 0 4px 0 0;
+  padding: 0 0.5em 0 0;
   color: #565656;
 }
 
@@ -1754,8 +1755,7 @@ StEntry StLabel.hint-text {
 
 .candidate-box {
   transition-duration: 0ms;
-  min-height: 28px;
-  padding: 0 8px;
+  padding: 0.3em 0.5em 0.3em 0.5em;
   margin-right: 2px;
   border-radius: 6px;
 }
@@ -1775,35 +1775,33 @@ StEntry StLabel.hint-text {
   color: rgba(255, 255, 255, 0.85);
 }
 
+.candidate-box:last-child {
+  margin-right: 0;
+}
+
 .candidate-page-button-box {
-  height: 28px;
+  height: 2em;
 }
 
 .vertical .candidate-page-button-box {
-  padding-top: 0;
+  padding-top: 0.5em;
 }
 
 .horizontal .candidate-page-button-box {
-  padding-left: 0;
+  padding-left: 0.5em;
 }
 
 .candidate-page-button {
-  min-width: 28px;
-  min-height: 28px;
-  padding: 0;
+  padding: 4px;
 }
 
-.candidate-page-button-previous {
-  border-radius: 6px;
-  border-right-width: 0;
-}
-
+.candidate-page-button-previous,
 .candidate-page-button-next {
   border-radius: 6px;
 }
 
 .candidate-page-button-icon {
-  icon-size: 1.2307692308em;
+  icon-size: 1em;
 }
 
 .screen-shield-arrows {
