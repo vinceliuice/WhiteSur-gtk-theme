@@ -295,7 +295,8 @@ $nautilus_sidebar_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
   }
 
   // Reset maximized nautilus-window border-radius
-  &.maximized {
+  &.maximized, &.tiled, &.fullscreen {
+    &.background.csd { border-radius: 0 0 $maximized_radius $maximized_radius; }
     notebook { &, > stack { border-radius: 0 0 $maximized_radius $maximized_radius; } }
     headerbar { border-radius: $maximized_radius $maximized_radius 0 0; }
     placessidebar { border-bottom-left-radius: $maximized_radius; }
@@ -624,9 +625,116 @@ window.org-gnome-gedit {
     }
   }
 
-  .tiled &,
-  .maximized &,
-  .fullscreen & {
+  .open-document-selector-treeview.view {
+    padding: 3px 6px 3px 6px;
+    border-color: $base_color; // disable borders, making them transparent doesn't work for some reason
+    &:hover {
+      background-color: mix($fg_color, $base_color, 7%);
+
+      &:selected {
+        color: $selected_fg_color;
+        background-color: $selected_bg_color;
+      }
+    }
+  }
+
+  .open-document-selector-name-label { color: $fg_color; }
+
+  .open-document-selector-path-label {
+    color: mix($fg_color, $base_color, 50%);
+    font-size: smaller;
+
+    &:selected {
+      color: transparentize($selected_fg_color, 0.1);
+    }
+  }
+
+  .gedit-document-panel { // 'documents' pane
+
+    row.activatable { padding: 6px 0; }
+
+    row button { // 'close' button
+      min-width: 22px;
+      min-height: 22px;
+      padding: 0;
+      margin: 0 6px;
+      border-radius: 100px;
+      -gtk-outline-radius: 100px;
+
+      image {
+        color: inherit;
+      }
+    }
+
+    row:hover:not(:selected) button {
+      color: mix($bg_color, $fg_color, 35%);
+
+      &:hover {
+        color: lighten(red, 15%);
+      }
+      &:active {
+        color: $fg_color;
+      }
+    }
+
+    row:hover:selected button:hover {
+      color: lighten(red, 20%);
+
+      &:active {
+        color: $selected_fg_color;
+      }
+    }
+  }
+
+  .gedit-document-panel-dragged-row {
+    border: 1px solid $borders_color;
+    background-color: darken($bg_color, 10%);
+    color: $fg_color;
+  }
+
+  .gedit-side-panel-paned statusbar {
+    border-top: 1px solid $borders_color;
+    background-color: $bg_color;
+    border-radius: 0 0 $wm_radius $wm_radius;
+
+    frame > border { border: none; }
+  }
+
+  .gedit-search-slider {
+    background-color: lighten($bg_color, 2%);
+    padding: 6px;
+    border-color: $borders_color;
+    border-radius: 0 0 $bt_radius $bt_radius;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+  }
+
+  .gedit-search-entry-occurrences-tag {
+    color: transparentize($fg_color, 0.4);
+    border: none;
+    margin: 2px;
+    padding: 2px;
+  }
+
+  .gedit-map-frame {
+    border {
+      @if $variant=='light' {
+        border-color: transparentize(black, 0.7);
+      }
+      border-width: 0;
+
+      &:dir(ltr) {
+        border-left-width: 1px;
+      }
+      &:dir(rtl) {
+        border-right-width: 1px;
+      }
+    }
+  }
+
+  &.tiled,
+  &.maximized,
+  &.fullscreen {
     > overlay > box.vertical {
       > paned.gedit-side-panel-paned {
         > box.vertical > stack > grid.horizontal {
@@ -636,112 +744,10 @@ window.org-gnome-gedit {
         }
       }
     }
-  }
-}
 
-.open-document-selector-treeview.view {
-  padding: 3px 6px 3px 6px;
-  border-color: $base_color; // disable borders, making them transparent doesn't work for some reason
-  &:hover {
-    background-color: mix($fg_color, $base_color, 7%);
-
-    &:selected {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-    }
-  }
-}
-
-.open-document-selector-name-label { color: $fg_color; }
-
-.open-document-selector-path-label {
-  color: mix($fg_color, $base_color, 50%);
-  font-size: smaller;
-
-  &:selected {
-    color: transparentize($selected_fg_color, 0.1);
-  }
-}
-
-.gedit-document-panel { // 'documents' pane
-
-  row.activatable { padding: 6px 0; }
-
-  row button { // 'close' button
-    min-width: 22px;
-    min-height: 22px;
-    padding: 0;
-    margin: 0 6px;
-    border-radius: 100px;
-    -gtk-outline-radius: 100px;
-
-    image {
-      color: inherit;
-    }
-  }
-
-  row:hover:not(:selected) button {
-    color: mix($bg_color, $fg_color, 35%);
-
-    &:hover {
-      color: lighten(red, 15%);
-    }
-    &:active {
-      color: $fg_color;
-    }
-  }
-
-  row:hover:selected button:hover {
-    color: lighten(red, 20%);
-
-    &:active {
-      color: $selected_fg_color;
-    }
-  }
-}
-
-.gedit-document-panel-dragged-row {
-  border: 1px solid $borders_color;
-  background-color: darken($bg_color, 10%);
-  color: $fg_color;
-}
-
-.gedit-side-panel-paned statusbar {
-  border-top: 1px solid $borders_color;
-  background-color: $bg_color;
-  border-radius: 0 0 $wm_radius $wm_radius;
-
-  frame > border { border: none; }
-}
-
-.gedit-search-slider {
-  background-color: lighten($bg_color, 2%);
-  padding: 6px;
-  border-color: $borders_color;
-  border-radius: 0 0 $bt_radius $bt_radius;
-  border-width: 0 1px 1px 1px;
-  border-style: solid;
-}
-
-.gedit-search-entry-occurrences-tag {
-  color: transparentize($fg_color, 0.4);
-  border: none;
-  margin: 2px;
-  padding: 2px;
-}
-
-.gedit-map-frame {
-  border {
-    @if $variant=='light' {
-      border-color: transparentize(black, 0.7);
-    }
-    border-width: 0;
-
-    &:dir(ltr) {
-      border-left-width: 1px;
-    }
-    &:dir(rtl) {
-      border-right-width: 1px;
+    &.background.csd,
+    .gedit-side-panel-paned statusbar {
+      border-radius: 0 0 $maximized_radius $maximized_radius;
     }
   }
 }
@@ -1424,26 +1430,6 @@ list {
   @extend %side_headerbar_right;
 }
 
-// separator of sidebar on Gnome contol center and Gnome tweaks
-window.background.csd {
-  > hdyleaflet, > leaflet, > box.horizontal {
-    > separator.vertical {
-      @extend %side_separator;
-    }
-
-    > box.vertical {
-      > searchbar {
-        @extend %side_searchbar;
-      }
-    }
-  }
-
-  > hdyleaflet > box.vertical > stack.main-container { // Right side
-    background-color: $base_color;
-    border-bottom-right-radius: $wm_radius;
-  }
-}
-
 row#AutostartTitle.tweak {
   padding: 3px;
   background-color: $base_color;
@@ -1472,6 +1458,37 @@ row#AutostartTitle.tweak {
     min-width: 0;
     min-height: 0;
     background: none;
+  }
+}
+
+// separator of sidebar on Gnome contol center and Gnome tweaks
+window.background.csd {
+  > hdyleaflet, > leaflet, > box.horizontal {
+    > separator.vertical {
+      @extend %side_separator;
+    }
+
+    > box.vertical {
+      > searchbar {
+        @extend %side_searchbar;
+      }
+    }
+  }
+
+  > hdyleaflet > box.vertical > stack.main-container { // Right side
+    background-color: $base_color;
+    border-bottom-right-radius: $wm_radius;
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > hdyleaflet > box.vertical > stack.main-container {
+      border-bottom-right-radius: $maximized_radius;
+    }
+
+    // sidebar on gnome tweak
+    .tweak-categories {
+      border-radius: 0 0 0 $maximized_radius;
+    }
   }
 }
 
@@ -1568,6 +1585,32 @@ window.background.csd {
       }
     }
   }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > stack {
+      border-radius: 0 0 $maximized_radius $maximized_radius;
+    }
+
+    > leaflet > stack.background, // > 3.38.0
+    > hdyleaflet > stack.background, // > 3.34.0
+    > box.horizontal > stack.background {
+      border-bottom-right-radius: $maximized_radius;
+
+      > widget {
+        > box.vertical > box.vertical { // Gnome 3.34 Wallpaper setting
+          > scrolledwindow > viewport.frame {
+            border-bottom-right-radius: $maximized_radius + 1px;
+          }
+        }
+      }
+    }
+
+    > leaflet > box.vertical > scrolledwindow.view, // > 3.38.0
+    > hdyleaflet > box.vertical > scrolledwindow.view, // > 3.34.0
+    > box.horizontal > box.vertical > scrolledwindow.view { // > 3.25.90
+      border-bottom-left-radius: $maximized_radius + 1px;
+    }
+  }
 }
 
 box.horizontal > separator.sidebar,
@@ -1590,6 +1633,12 @@ window#gnome-system-monitor.background.csd {
       }
     }
   }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > box.vertical > stack {
+      border-radius: 0 0 $maximized_radius $maximized_radius;
+    }
+  }
 }
 
 //
@@ -1609,6 +1658,24 @@ stack {
     }
 
     scrolledwindow.frame.emptyGrid { border: none; } // Removed ugly borders
+  }
+}
+
+window.background.csd {
+  &.maximized, &.tiled, &.fullscreen {
+    stack {
+      > grid.vertical {
+        > scrolledwindow {
+          border-radius: 0 0 $maximized_radius $maximized_radius;
+
+          > viewport.frame {
+            list {
+              border-radius: 0 0 $maximized_radius $maximized_radius;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -1661,6 +1728,19 @@ window.background.csd {
           @extend %circular_button;
           padding: 2px;
         }
+      }
+    }
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > overlay > hdyleaflet,
+    > overlay > leaflet {
+      > stack > frame > grid.vertical {
+        border-bottom-left-radius: $maximized_radius;
+      }
+
+      > overlay > scrolledwindow > viewport.frame {
+        border-bottom-right-radius: $maximized_radius;
       }
     }
   }
@@ -1717,6 +1797,12 @@ window.background.csd {
   > box.vertical > overlay > stack.background {
     border-radius: 0 0 $wm_radius $wm_radius;
   }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > box.vertical > overlay > stack.background {
+      border-radius: 0 0 $maximized_radius $maximized_radius;
+    }
+  }
 }
 
 //
@@ -1725,11 +1811,20 @@ window.background.csd {
 #weather-page,
 #weekly-forecast-frame {
   border-bottom-right-radius: $wm_radius;
+
+  .maximized &, .tiled &, .fullscreen & {
+    border-bottom-right-radius: $maximized_radius;
+  }
 }
 
 #weather-page-content-view {
   border-bottom-right-radius: $wm_radius;
   border-bottom-left-radius: $wm_radius;
+
+  .maximized &, .tiled &, .fullscreen & {
+  border-bottom-left-radius: $maximized_radius;
+    border-bottom-right-radius: $maximized_radius;
+  }
 }
 
 //
@@ -1751,6 +1846,10 @@ window.background.csd.unified {
       }
     }
   }
+
+  &.maximized, &.tiled, &.fullscreen {
+    border-radius: 0 0 $maximized_radius $maximized_radius;
+  }
 }
 
 hdyviewswitcherbar > actionbar,
@@ -1766,6 +1865,12 @@ viewswitcherbar > actionbar { // Gnome 3.38
   .sidebar {
     background-color: $dark_sidebar_bg;
     border-bottom-left-radius: $wm_radius;
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    .sidebar {
+      border-bottom-left-radius: $maximized_radius;
+    }
   }
 }
 
@@ -1786,6 +1891,10 @@ stack.view.polari-entry-area {
       box-shadow: none;
       background-image: none;
     }
+  }
+
+  .maximized &, .tiled &, .fullscreen & {
+    border-bottom-right-radius: $maximized_radius;
   }
 }
 
@@ -1985,8 +2094,8 @@ window.background {
         &:checked { @include button(flat-checked); border-color: $borders_color; }
       }
 
-      &.suggested-action {  // '=' button
-      }
+      // &.suggested-action {  // '=' button
+      // }
     }
   }
 }
@@ -2115,6 +2224,12 @@ flowboxchild.bookmark-tag-widget {
   .sidebar.rooms-sidebar {
     border-bottom-left-radius: $wm_radius;
   }
+
+  &.maximized, &.tiled, &.fullscreen {
+    .sidebar.rooms-sidebar {
+      border-bottom-left-radius: $maximized_radius;
+    }
+  }
 }
 
 //
@@ -2150,6 +2265,14 @@ window.background.csd { // Documents actionbar
       border-radius: 0 0 $wm_radius $wm_radius;
     }
   }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > box.vertical > overlay > stack > box.vertical {
+      > actionbar {
+        border-radius: 0 0 $maximized_radius $maximized_radius;
+      }
+    }
+  }
 }
 
 //
@@ -2172,6 +2295,20 @@ window.background.csd {
   evview.view.content-view {
     background-color: transparent;
     border-radius: 0 0 $wm_radius $wm_radius;
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > box.vertical {
+      > scrolledwindow {
+        > iconview.view.content-view:not(:hover):not(:selected) {
+          border-radius: $maximized_radius;
+        }
+      }
+    }
+
+    evview.view.content-view {
+      border-radius: 0 0 $maximized_radius $maximized_radius;
+    }
   }
 }
 
@@ -2196,6 +2333,20 @@ window.background.csd {
 
         treeview.view:not(:hover):not(:selected) {
           background-color: transparent;
+        }
+      }
+    }
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > grid.horizontal > paned.horizontal {
+      > scrolledwindow {
+        border-radius: 0 0 $maximized_radius $maximized_radius;
+      }
+
+      > box.vertical {
+        > scrolledwindow {
+          border-radius: 0 0 0 $maximized_radius;
         }
       }
     }
@@ -2411,6 +2562,13 @@ window.background.csd {
   > stack > box > box > list,
   > stack > box > stack > scrolledwindow > viewport > list { // ArcMenu setting sidebar
     border-bottom-left-radius: $wm_radius;
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > stack > box > box > list,
+    > stack > box > stack > scrolledwindow > viewport > list { // ArcMenu setting sidebar
+      border-bottom-left-radius: $maximized_radius;
+    }
   }
 }
 
@@ -2717,10 +2875,7 @@ window#whiskermenu-window {
   }
 }
 
-//
-//  * Thunar *
-//
-
+// Thunar
 window.background.csd.thunar {
   > grid.horizontal > paned.horizontal > scrolledwindow.frame.sidebar.shortcuts-pane {
     border-bottom-left-radius: $wm_radius;
@@ -2728,6 +2883,12 @@ window.background.csd.thunar {
 
     treeview.view:not(:hover):not(:selected) {
       background-color: transparent;
+    }
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > grid.horizontal > paned.horizontal > scrolledwindow.frame.sidebar.shortcuts-pane {
+      border-bottom-left-radius: $maximized_radius;
     }
   }
 }
@@ -2838,7 +2999,8 @@ window#GearyMainWindow.background.csd {
   }
 
   stack#conversation_viewer {
-    border-bottom-right-radius: $wm_radius;
+    background-color: $base_color;
+    border-bottom-right-radius: $wm_radius + 1px;
 
     scrolledwindow.geary-conversation-scroller {
       viewport.frame {
@@ -2912,6 +3074,32 @@ window#GearyMainWindow.background.csd {
             background: none;
           }
         }
+      }
+    }
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > overlay > box.vertical {
+      > paned {
+        > .sidebar {
+          border-bottom-left-radius: $maximized_radius;
+        }
+      }
+    }
+
+    stack#conversation_viewer {
+      border-bottom-right-radius: $maximized_radius + 1px;
+
+      scrolledwindow.geary-conversation-scroller {
+        viewport.frame {
+          border-bottom-right-radius: $maximized_radius;
+        }
+      }
+    }
+
+    paned.geary-sidebar-pane-separator {
+      statusbar {
+        border-bottom-left-radius: $maximized_radius;
       }
     }
   }
@@ -3296,6 +3484,14 @@ window.background.csd {
       border-bottom-right-radius: $wm_radius;
     }
   }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > box.horizontal > stack {
+      > box.vertical > notebook > stack {
+        border-bottom-right-radius: $maximized_radius;
+      }
+    }
+  }
 }
 
 //
@@ -3310,6 +3506,20 @@ window.background.csd {
 
       > paned.horizontal > stack {
         border-bottom-right-radius: $wm_radius;
+      }
+    }
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > grid.vertical > overlay > grid.vertical {
+      > grid.horizontal {
+        > .sidebar {
+          border-bottom-left-radius: $maximized_radius;
+        }
+
+        > paned.horizontal > stack {
+          border-bottom-right-radius: $maximized_radius;
+        }
       }
     }
   }
@@ -3707,6 +3917,18 @@ window.background.csd {
       > scrolledwindow > viewport.frame {
         list {
           border-bottom-left-radius: $wm_radius;
+        }
+      }
+    }
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > stack > stack {
+      > paned.horizontal {
+        > scrolledwindow > viewport.frame {
+          list {
+            border-bottom-left-radius: $maximized_radius;
+          }
         }
       }
     }

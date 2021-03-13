@@ -33,7 +33,14 @@
 
   // > box > stack { background-color: $bg_color; }
 
-  &.csd { border-radius: 0 0 $wm_radius $wm_radius; } // Set csd windows botttom border radius
+  &.csd {
+    border-radius: 0 0 $wm_radius $wm_radius; // Set csd windows botttom border radius
+
+    &.maximized, &.tiled, &.fullscreen {
+      border-radius: 0 0 $maximized_radius $maximized_radius; // Set csd windows botttom border radius
+    }
+  }
+
   &.solid-csd { border-radius: 0; }
 }
 
