@@ -53,6 +53,7 @@
   .day-label {
     @include font(title);
     font-weight: bold;
+    color: $calendar_high;
   }
 
   // date label

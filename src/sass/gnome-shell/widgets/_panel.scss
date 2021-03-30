@@ -66,10 +66,10 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
     -minimum-hpadding: 8px;
     font-weight: bold;
     color: $panel_fg;
-    transition-duration: $longer_duration;
-    border-radius: $bt_radius;
-    // margin-top: 2px;
-    // margin-bottom: 2px;
+    transition-duration: 190ms;
+    border-radius: $bd_radius;
+    background: transparent;
+    margin: 3px 1px;
 
     StLabel { padding: 0 2px; }
 
