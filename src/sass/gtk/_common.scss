@@ -1776,7 +1776,7 @@ headerbar, .titlebar {
     transition-duration: 300ms;
   }
 
-  // &:active:hover, &:checked { color: $header_fg; }
+  &:active:hover, &:checked { color: $header_fg; }
 
   &:checked {
     @include button(header-checked);
@@ -2207,7 +2207,10 @@ popover.background {
   > scrolledwindow > viewport > list {
     margin: $container_padding;
 
-    row { border-radius: $bt_radius; }
+    row {
+      padding: 6px 12px;
+      border-radius: $bt_radius;
+    }
   }
 
   &, .csd & {
