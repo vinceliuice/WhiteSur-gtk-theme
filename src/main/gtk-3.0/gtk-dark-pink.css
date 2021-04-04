@@ -518,37 +518,37 @@ entry progress {
   }
 }
 
-.raven .raven-header:not(.top) button, .budgie-panel button.flat.launcher, button.budgie-menu-launcher, .nemo-window .toolbar > button, button.flat {
+.raven .raven-header:not(.top) button, .budgie-panel button.flat.launcher, button.budgie-menu-launcher, tabbox > tab button, .nemo-window .toolbar > button, button.flat {
   border: none;
   background-color: transparent;
   box-shadow: none;
   background-clip: padding-box;
 }
 
-.raven .raven-header:not(.top) button:hover, .budgie-panel button.flat.launcher:hover, button.budgie-menu-launcher:hover, .nemo-window .toolbar > button:hover, button.flat:hover {
+.raven .raven-header:not(.top) button:hover, .budgie-panel button.flat.launcher:hover, button.budgie-menu-launcher:hover, tabbox > tab button:hover, .nemo-window .toolbar > button:hover, button.flat:hover {
   color: #c5c5c5;
   background-color: rgba(255, 255, 255, 0.15);
   background-image: none;
   box-shadow: none;
 }
 
-.raven .raven-header:not(.top) button:active, .budgie-panel button.flat.launcher:active, button.budgie-menu-launcher:active, .nemo-window .toolbar > button:active, button.flat:active {
+.raven .raven-header:not(.top) button:active, .budgie-panel button.flat.launcher:active, button.budgie-menu-launcher:active, tabbox > tab button:active, .nemo-window .toolbar > button:active, button.flat:active {
   background-image: none;
   color: white;
   background-color: rgba(255, 255, 255, 0.25);
 }
 
-.raven .raven-header:not(.top) button:checked, .budgie-panel button.flat.launcher:checked, button.budgie-menu-launcher:checked, .nemo-window .toolbar > button:checked, button.flat:checked {
+.raven .raven-header:not(.top) button:checked, .budgie-panel button.flat.launcher:checked, button.budgie-menu-launcher:checked, tabbox > tab button:checked, .nemo-window .toolbar > button:checked, button.flat:checked {
   background-image: none;
   color: white;
   background-color: rgba(255, 255, 255, 0.35);
 }
 
-.raven .raven-header:not(.top) button:disabled, .budgie-panel button.flat.launcher:disabled, button.budgie-menu-launcher:disabled, .nemo-window .toolbar > button:disabled, button.flat:disabled {
+.raven .raven-header:not(.top) button:disabled, .budgie-panel button.flat.launcher:disabled, button.budgie-menu-launcher:disabled, tabbox > tab button:disabled, .nemo-window .toolbar > button:disabled, button.flat:disabled {
   background-color: transparent;
 }
 
-.raven .raven-header:not(.top) button:disabled label, .budgie-panel button.flat.launcher:disabled label, button.budgie-menu-launcher:disabled label, .nemo-window .toolbar > button:disabled label, button.flat:disabled label, .raven .raven-header:not(.top) button:disabled, .budgie-panel button.flat.launcher:disabled, button.budgie-menu-launcher:disabled, .nemo-window .toolbar > button:disabled, button.flat:disabled {
+.raven .raven-header:not(.top) button:disabled label, .budgie-panel button.flat.launcher:disabled label, button.budgie-menu-launcher:disabled label, tabbox > tab button:disabled label, .nemo-window .toolbar > button:disabled label, button.flat:disabled label, .raven .raven-header:not(.top) button:disabled, .budgie-panel button.flat.launcher:disabled, button.budgie-menu-launcher:disabled, tabbox > tab button:disabled, .nemo-window .toolbar > button:disabled, button.flat:disabled {
   color: rgba(222, 222, 222, 0.35);
 }
 
@@ -1604,6 +1604,33 @@ headerbar.titlebar headerbar:not(.titlebar) {
   box-shadow: none;
 }
 
+headerbar.windowhandle viewswitcher button:not(.titlebutton):not(.suggested-action):not(.destructive-action) {
+  border-radius: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+headerbar.windowhandle > button.popup:hover {
+  color: #f8f8f8;
+  background-color: rgba(253, 253, 253, 0.1);
+  background-image: none;
+  box-shadow: none;
+}
+
+headerbar.windowhandle > button.popup:active, headerbar.windowhandle > button.popup:active:hover {
+  color: #FDFDFD;
+  background-color: rgba(253, 253, 253, 0.25);
+  background-image: none;
+  box-shadow: none;
+}
+
+headerbar.windowhandle > button.popup:checked {
+  color: #FDFDFD;
+  background-color: rgba(253, 253, 253, 0.12);
+  background-image: none;
+  box-shadow: none;
+}
+
 .selection-mode headerbar, headerbar.selection-mode {
   color: white;
   background-color: #f0a0c5;
@@ -1909,12 +1936,6 @@ window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar 
   box-shadow: none;
   transition: all 100ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition-duration: 300ms;
-}
-
-window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:active:hover,
-window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:active:hover, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:active:hover:not(.image-button), .nemo-window .primary-toolbar button:active:hover, headerbar button:active:hover, window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:checked,
-window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:checked, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:checked:not(.image-button), .nemo-window .primary-toolbar button:checked, headerbar button:checked {
-  color: #FDFDFD;
 }
 
 window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:checked,
@@ -2401,11 +2422,23 @@ popover.background entry {
 popover > list,
 popover > .view,
 popover > toolbar,
+popover > scrolledwindow > viewport > list,
 popover.background > list,
 popover.background > .view,
-popover.background > toolbar {
+popover.background > toolbar,
+popover.background > scrolledwindow > viewport > list {
   border-style: none;
   background-color: transparent;
+}
+
+popover > scrolledwindow > viewport > list,
+popover.background > scrolledwindow > viewport > list {
+  margin: 6px;
+}
+
+popover > scrolledwindow > viewport > list row,
+popover.background > scrolledwindow > viewport > list row {
+  border-radius: 6px;
 }
 
 popover.touch-selection, .csd popover.touch-selection,
@@ -2426,6 +2459,25 @@ cursor-handle.top {
 
 cursor-handle.bottom {
   -gtk-icon-source: -gtk-icontheme("selection-end-symbolic");
+}
+
+tabbox > tab, notebook > header tabs > tab {
+  color: rgba(222, 222, 222, 0.35);
+  background-color: rgba(36, 36, 36, 0);
+  border: 1px solid transparent;
+  transition: all 150ms ease-out;
+}
+
+tabbox > tab:hover:not(:checked), notebook > header tabs > tab:hover:not(:checked) {
+  color: rgba(222, 222, 222, 0.675);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: #444444;
+}
+
+tabbox > tab:checked, notebook > header tabs > tab:checked {
+  color: #dedede;
+  background-color: #373737;
+  border-color: #444444;
 }
 
 notebook {
@@ -2609,25 +2661,6 @@ notebook > header.left tabs > tab:first-child, notebook > header.right tabs > ta
 
 notebook > header.left tabs > tab:last-child, notebook > header.right tabs > tab:last-child {
   border-bottom-style: none;
-}
-
-notebook > header tabs > tab {
-  color: rgba(222, 222, 222, 0.35);
-  background-color: rgba(36, 36, 36, 0);
-  border: 1px solid transparent;
-  transition: all 150ms ease-out;
-}
-
-notebook > header tabs > tab:hover:not(:checked) {
-  color: rgba(222, 222, 222, 0.675);
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: #444444;
-}
-
-notebook > header tabs > tab:checked {
-  color: #dedede;
-  background-color: #373737;
-  border-color: #444444;
 }
 
 notebook > header tabs > tab button.flat {
@@ -4060,19 +4093,19 @@ filechooserbutton:drop(active) {
   border-color: transparent;
 }
 
-.sidebar {
-  border-style: none;
-  background-color: #333333;
-}
-
-stacksidebar.sidebar:dir(ltr) list, stacksidebar.sidebar.left list, stacksidebar.sidebar.left:dir(rtl) list, .sidebar:dir(ltr), .sidebar.left {
+stacksidebar.sidebar:dir(ltr) list, stacksidebar.sidebar.left list, stacksidebar.sidebar.left:dir(rtl) list {
   border-right: 1px solid rgba(255, 255, 255, 0.12);
   border-left-style: none;
 }
 
-stacksidebar.sidebar:dir(rtl) list, stacksidebar.sidebar.right list, .sidebar:dir(rtl), .sidebar.right {
+stacksidebar.sidebar:dir(rtl) list, stacksidebar.sidebar.right list {
   border-left: 1px solid rgba(255, 255, 255, 0.12);
   border-right-style: none;
+}
+
+.sidebar {
+  border-style: none;
+  background-color: #333333;
 }
 
 .sidebar list {
@@ -4862,14 +4895,16 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
   background-image: linear-gradient(90deg, rgba(51, 51, 51, 0.95) 0%, rgba(51, 51, 51, 0.95) 200px, rgba(20, 20, 20, 0.95) 200px, rgba(20, 20, 20, 0.95) 201px, #242424 201px, #242424 100%);
 }
 
-.nautilus-window.background.csd > headerbar.titlebar {
+.nautilus-window.background.csd > headerbar.titlebar,
+.nautilus-window.background.csd > deck > box > headerbar.titlebar {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
   border: none;
   background-color: transparent;
   background-image: linear-gradient(90deg, rgba(51, 51, 51, 0.95) 0%, rgba(51, 51, 51, 0.95) 200px, rgba(20, 20, 20, 0.95) 200px, rgba(20, 20, 20, 0.95) 201px, #242424 201px, #242424 100%);
 }
 
-.nautilus-window.background.csd > headerbar.titlebar > .linked.raised > button:first-child {
+.nautilus-window.background.csd > headerbar.titlebar > .linked.raised > button:first-child,
+.nautilus-window.background.csd > deck > box > headerbar.titlebar > .linked.raised > button:first-child {
   margin-left: 120px;
 }
 
@@ -4895,7 +4930,8 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
   background-color: transparent;
 }
 
-.nautilus-window > grid.horizontal > paned.horizontal > separator {
+.nautilus-window > grid.horizontal > paned.horizontal > separator,
+.nautilus-window > deck > box.vertical > paned.horizontal > separator {
   border-left: none;
   background-color: transparent;
   background-image: image(#242424);
@@ -4904,23 +4940,28 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
   background-repeat: no-repeat;
 }
 
-.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(ltr) {
+.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(ltr),
+.nautilus-window > deck > box.vertical > paned.horizontal > separator:dir(ltr) {
   margin-left: -1px;
 }
 
-.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(rtl) {
+.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(rtl),
+.nautilus-window > deck > box.vertical > paned.horizontal > separator:dir(rtl) {
   margin-right: -1px;
 }
 
-.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(ltr) {
+.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(ltr),
+.nautilus-window > deck > box.vertical > paned.horizontal > separator:dir(ltr) {
   margin-left: 2px;
 }
 
-.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(rtl) {
+.nautilus-window > grid.horizontal > paned.horizontal > separator:dir(rtl),
+.nautilus-window > deck > box.vertical > paned.horizontal > separator:dir(rtl) {
   margin-right: 2px;
 }
 
-.nautilus-window > grid.horizontal > paned.horizontal > separator:hover {
+.nautilus-window > grid.horizontal > paned.horizontal > separator:hover,
+.nautilus-window > deck > box.vertical > paned.horizontal > separator:hover {
   background-image: image(rgba(255, 255, 255, 0.12));
   background-size: 2px 100px;
   background-position: center center;
@@ -5991,11 +6032,13 @@ window#GearyMainWindow.background.csd > overlay > box.vertical > paned > .sideba
   border-color: #0e0e0e;
 }
 
-.geary-main-window.background.csd > overlay > box.vertical > paned > separator,
+.geary-main-window.background.csd leaflet > leaflet > sidebar.separator,
+window#GearyMainWindow.background.csd leaflet > leaflet > sidebar.separator, .geary-main-window.background.csd > overlay > box.vertical > paned > separator,
 window#GearyMainWindow.background.csd > overlay > box.vertical > paned > separator, window.background.csd > overlay > hdyleaflet > separator.sidebar,
 window.background.csd > overlay > leaflet > separator.sidebar, box.horizontal > separator.sidebar,
 hdyleaflet > separator.sidebar,
-leaflet > separator.sidebar, window.background.csd > box.horizontal:not(.titlebar) > separator.vertical, window.background.csd > headerbar.titlebar > box.horizontal > separator.sidebar,
+leaflet > separator.sidebar,
+leaflet > leaflet > separator.sidebar, window.background.csd > box.horizontal:not(.titlebar) > separator.vertical, window.background.csd > headerbar.titlebar > box.horizontal > separator.sidebar,
 window.background.csd > headerbar.titlebar > hdyleaflet > separator.sidebar,
 window.background.csd > headerbar.titlebar > leaflet > separator.sidebar, window.background.csd > hdyleaflet > separator.vertical, window.background.csd > leaflet > separator.vertical, window.background.csd > box.horizontal > separator.vertical, .titlebar:not(headerbar) > separator, window.org-gnome-gedit > paned.titlebar > separator, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator, window.org-gnome-gedit > paned.titlebar > separator:backdrop, window.org-gnome-gedit > overlay > box.vertical > paned.gedit-side-panel-paned > separator:backdrop {
   background-image: image(#0e0e0e);
@@ -6011,7 +6054,7 @@ window.background.csd > stack > box > stack > scrolledwindow > viewport frame > 
 window.background.csd > stack > box > stack > box > scrolledwindow > viewport > frame > list,
 window.background.csd > stack > grid > scrolledwindow > viewport > box > frame > list, window.background.csd > stack > list,
 window.background.csd > stack > scrolledwindow > viewport > box > list,
-window.background.csd > box > stack > scrolledwindow > viewport > box > list, .tweak-group-startup, list.tweak-group list, hdyleaflet list.view, hdyleaflet list.frame, leaflet list.view, leaflet list.frame, box.horizontal > stack.background list.view, box.horizontal > stack.background list.frame, hdyleaflet frame.view, leaflet frame.view, box.horizontal > stack.background frame.view, hdyleaflet frame:not(.view) list:not(.contacts-contact-list), leaflet frame:not(.view) list:not(.contacts-contact-list), box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) {
+window.background.csd > box > stack > scrolledwindow > viewport > box > list, .tweak-group-startup, list.tweak-group list, hdyleaflet list.view, hdyleaflet list.frame, leaflet list.view, leaflet list.frame, box.horizontal > stack.background list.view, box.horizontal > stack.background list.frame, hdyleaflet frame.view, leaflet frame.view, box.horizontal > stack.background frame.view, hdyleaflet frame:not(.view) list:not(.contacts-contact-list), leaflet frame:not(.view) list:not(.contacts-contact-list), box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list), preferencesgroup list {
   border-radius: 12px;
   box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.03), inset 0 0 3px rgba(255, 255, 255, 0.02), inset 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 1px rgba(255, 255, 255, 0.06);
   background-color: rgba(255, 255, 255, 0.05);
@@ -6022,26 +6065,32 @@ window.background.csd stack stack stack frame > list > separator,
 window.background.csd > stack > stack > box > frame > list > separator,
 window.background.csd > stack > box > stack > scrolledwindow > viewport frame > list > separator,
 window.background.csd > stack > grid > scrolledwindow > viewport > box > frame > list > separator, window.background.csd > stack > list > separator,
-window.background.csd > stack > scrolledwindow > viewport > box > list > separator, .tweak-group-startup > separator, list.tweak-group list > separator, hdyleaflet list.view > separator, hdyleaflet list.frame > separator, leaflet list.view > separator, leaflet list.frame > separator, box.horizontal > stack.background list.view > separator, box.horizontal > stack.background list.frame > separator, hdyleaflet frame.view > separator, leaflet frame.view > separator, box.horizontal > stack.background frame.view > separator, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) > separator, leaflet frame:not(.view) list:not(.contacts-contact-list) > separator, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) > separator {
+window.background.csd > stack > scrolledwindow > viewport > box > list > separator, .tweak-group-startup > separator, list.tweak-group list > separator, hdyleaflet list.view > separator, hdyleaflet list.frame > separator, leaflet list.view > separator, leaflet list.frame > separator, box.horizontal > stack.background list.view > separator, box.horizontal > stack.background list.frame > separator, hdyleaflet frame.view > separator, leaflet frame.view > separator, box.horizontal > stack.background frame.view > separator, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) > separator, leaflet frame:not(.view) list:not(.contacts-contact-list) > separator, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) > separator, preferencesgroup list > separator {
   background: none;
   min-height: 0;
 }
 
-window.background.csd stack stack stack frame > list row.activatable:first-child, window.background.csd > stack > list row.activatable:first-child, list.tweak-group list row.activatable:first-child, hdyleaflet list.view row.activatable:first-child, hdyleaflet list.frame row.activatable:first-child, leaflet list.view row.activatable:first-child, leaflet list.frame row.activatable:first-child, box.horizontal > stack.background list.view row.activatable:first-child, box.horizontal > stack.background list.frame row.activatable:first-child, hdyleaflet frame.view list row.activatable:first-child, leaflet frame.view list row.activatable:first-child, box.horizontal > stack.background frame.view list row.activatable:first-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child {
+window.background.csd stack stack stack frame > list row.activatable:first-child, window.background.csd > stack > list row.activatable:first-child, list.tweak-group list row.activatable:first-child, hdyleaflet list.view row.activatable:first-child, hdyleaflet list.frame row.activatable:first-child, leaflet list.view row.activatable:first-child, leaflet list.frame row.activatable:first-child, box.horizontal > stack.background list.view row.activatable:first-child, box.horizontal > stack.background list.frame row.activatable:first-child, hdyleaflet frame.view list row.activatable:first-child, leaflet frame.view list row.activatable:first-child, box.horizontal > stack.background frame.view list row.activatable:first-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) row.activatable:first-child, preferencesgroup list row.activatable:first-child {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
 
-window.background.csd stack stack stack frame > list row.activatable:last-child, window.background.csd > stack > list row.activatable:last-child, list.tweak-group list row.activatable:last-child, hdyleaflet list.view row.activatable:last-child, hdyleaflet list.frame row.activatable:last-child, leaflet list.view row.activatable:last-child, leaflet list.frame row.activatable:last-child, box.horizontal > stack.background list.view row.activatable:last-child, box.horizontal > stack.background list.frame row.activatable:last-child, hdyleaflet frame.view list row.activatable:last-child, leaflet frame.view list row.activatable:last-child, box.horizontal > stack.background frame.view list row.activatable:last-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child {
+window.background.csd stack stack stack frame > list row.activatable:last-child, window.background.csd > stack > list row.activatable:last-child, list.tweak-group list row.activatable:last-child, hdyleaflet list.view row.activatable:last-child, hdyleaflet list.frame row.activatable:last-child, leaflet list.view row.activatable:last-child, leaflet list.frame row.activatable:last-child, box.horizontal > stack.background list.view row.activatable:last-child, box.horizontal > stack.background list.frame row.activatable:last-child, hdyleaflet frame.view list row.activatable:last-child, leaflet frame.view list row.activatable:last-child, box.horizontal > stack.background frame.view list row.activatable:last-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) row.activatable:last-child, preferencesgroup list row.activatable:last-child {
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 
-window.background.csd stack stack stack frame > list row.activatable:only-child, window.background.csd > stack > list row.activatable:only-child, list.tweak-group list row.activatable:only-child, hdyleaflet list.view row.activatable:only-child, hdyleaflet list.frame row.activatable:only-child, leaflet list.view row.activatable:only-child, leaflet list.frame row.activatable:only-child, box.horizontal > stack.background list.view row.activatable:only-child, box.horizontal > stack.background list.frame row.activatable:only-child, hdyleaflet frame.view list row.activatable:only-child, leaflet frame.view list row.activatable:only-child, box.horizontal > stack.background frame.view list row.activatable:only-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child {
+window.background.csd stack stack stack frame > list row.activatable:only-child, window.background.csd > stack > list row.activatable:only-child, list.tweak-group list row.activatable:only-child, hdyleaflet list.view row.activatable:only-child, hdyleaflet list.frame row.activatable:only-child, leaflet list.view row.activatable:only-child, leaflet list.frame row.activatable:only-child, box.horizontal > stack.background list.view row.activatable:only-child, box.horizontal > stack.background list.frame row.activatable:only-child, hdyleaflet frame.view list row.activatable:only-child, leaflet frame.view list row.activatable:only-child, box.horizontal > stack.background frame.view list row.activatable:only-child, hdyleaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child, leaflet frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child, box.horizontal > stack.background frame:not(.view) list:not(.contacts-contact-list) row.activatable:only-child, preferencesgroup list row.activatable:only-child {
   border-radius: 12px;
 }
 
-hdyleaflet list > row.activatable, leaflet list > row.activatable, box.horizontal > stack.background list > row.activatable {
+hdyleaflet > box.vertical > scrolledwindow > viewport.frame > list > row.activatable,
+hdyleaflet > box.vertical > scrolledwindow > viewport.frame > stack > list > row.activatable,
+hdyleaflet > box.vertical > scrolledwindow > viewport.frame > stack > box.vertical > list > row.activatable, leaflet > box.vertical > scrolledwindow > viewport.frame > list > row.activatable,
+leaflet > box.vertical > scrolledwindow > viewport.frame > stack > list > row.activatable,
+leaflet > box.vertical > scrolledwindow > viewport.frame > stack > box.vertical > list > row.activatable, box.horizontal > stack.background > box.vertical > scrolledwindow > viewport.frame > list > row.activatable,
+box.horizontal > stack.background > box.vertical > scrolledwindow > viewport.frame > stack > list > row.activatable,
+box.horizontal > stack.background > box.vertical > scrolledwindow > viewport.frame > stack > box.vertical > list > row.activatable {
   margin: 2px 4px;
   border-radius: 8px;
   -gtk-outline-radius: 6px;
@@ -6097,7 +6146,8 @@ row#AutostartTitle.tweak {
   background: none;
 }
 
-window.background.csd > hdyleaflet > box.vertical > stack.main-container {
+window.background.csd > hdyleaflet > box.vertical > stack.main-container,
+window.background.csd > leaflet > box.vertical > stack.main-container {
   background-color: #242424;
   border-bottom-right-radius: 12px;
 }
@@ -6315,6 +6365,36 @@ notebook.main-notebook > header.top > tabs > tab:first-child {
 
 notebook.main-notebook webkitwebview {
   border-radius: 0 0 12px 12px;
+}
+
+tabbox {
+  background-color: #1e1e1e;
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12);
+}
+
+tabbox > tab {
+  border-top: none;
+  padding: 2px 10px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+tabbox > tab button {
+  min-height: 20px;
+  min-width: 20px;
+  border-radius: 3px;
+  border: none;
+  padding: 0;
+}
+
+tabbox > tab button:hover {
+  color: #dedede;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+tabbox > tab button:active, tabbox > tab button:active:hover {
+  color: #f8f8f8;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 window.background.csd > box.vertical > overlay > stack.background {
@@ -6848,6 +6928,10 @@ window.background.csd > paned.titlebar > separator {
 
 dialog.background.csd > headerbar.titlebar > label:not(.title):not(.subtitle) {
   font-weight: 700;
+}
+
+dialog.background.csd > box.vertical.dialog-vbox.view {
+  background: none;
 }
 
 dialog.background.csd > box.vertical.dialog-vbox > grid.horizontal > scrolledwindow.frame {

@@ -65,11 +65,18 @@ window.background.csd { // gnome-terminal 3.32 setting
 $nautilus_radius: $wm_radius + 2px;
 $nautilus_sidebar_size: $sidebar_size_default;
 $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
-                                        $dark_sidebar_bg $nautilus_sidebar_size,
-                                        darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
-                                        darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
-                                        $base_color ($nautilus_sidebar_size + 1px),
-                                        $base_color 100%);
+                                       $dark_sidebar_bg $nautilus_sidebar_size,
+                                       darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
+                                       darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
+                                       $base_color ($nautilus_sidebar_size + 1px),
+                                       $base_color 100%);
+
+$nautilus_header_image_alt: linear-gradient(90deg, transparent 0%,
+                                           transparent $nautilus_sidebar_size,
+                                           darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
+                                           darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
+                                           $base_color ($nautilus_sidebar_size + 1px),
+                                           $base_color 100%);
 
 $nautilus_sidebar_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                         $dark_sidebar_bg $nautilus_sidebar_size,
@@ -77,32 +84,33 @@ $nautilus_sidebar_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                         transparent 100%);
 
 $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
-                                        $dark_sidebar_bg $nautilus_sidebar_size,
-                                        darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
-                                        darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
-                                        $base_color ($nautilus_sidebar_size + 1px),
-                                        $base_color 100%);
+                                           $dark_sidebar_bg $nautilus_sidebar_size,
+                                           darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
+                                           darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
+                                           $base_color ($nautilus_sidebar_size + 1px),
+                                           $base_color 100%);
 
 .nautilus-window {
   &.background.csd {
     border-radius: 0 0 $wm_radius $wm_radius;
 
-    @if $nautilus_use_colors {
+    @if $nautilus_use_colors == 'true' {
       background-color: $dark_sidebar_bg;
     } @else {
       background-color: transparent;
       background-image: $nautilus_background_image;
     }
 
-    > headerbar.titlebar {
+    > headerbar.titlebar,
+    > deck > box > headerbar.titlebar {
       box-shadow: inset 0 1px rgba(white, 0.1);
 
-      @if $nautilus_use_colors {
+      @if $nautilus_use_colors == 'true' {
         background-color: $header_bg;
       } @else {
         border: none;
         background-color: transparent;
-        background-image: $nautilus_header_image;
+        background-image: if($gnome_version == 'new', $nautilus_header_image_alt, $nautilus_header_image);
 
         > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
 
@@ -142,7 +150,8 @@ $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
     }
   }
 
-  > grid.horizontal > paned.horizontal > separator { // Use paned separator to hide stack border-bottom-left-radius
+  > grid.horizontal > paned.horizontal > separator,
+  > deck > box.vertical > paned.horizontal > separator { // Use paned separator to hide stack border-bottom-left-radius
     border-left: none;
     background-color: transparent;
     background-image: image($base_color);
@@ -153,7 +162,7 @@ $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
     &:dir(ltr) { margin-left: -1px; }
     &:dir(rtl) { margin-right: -1px; }
 
-    @if $nautilus_use_colors {} @else {
+    @if $nautilus_use_colors == 'true' {} @else {
       &:dir(ltr) { margin-left: 2px; }
       &:dir(rtl) { margin-right: 2px; }
 
@@ -166,7 +175,7 @@ $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
   }
 
   placessidebar.sidebar {
-    @if $nautilus_use_colors {
+    @if $nautilus_use_colors == 'true' {
       background-color: transparent;
       &.frame { border-right: 1px solid if($variant=='light', $solid_borders_color, $header_border); }
     } @else {
@@ -191,7 +200,7 @@ $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
 
       &:backdrop { opacity: 0.85; }
 
-      @if $nautilus_use_colors {
+      @if $nautilus_use_colors == 'true' {
         border-radius: $bt_radius;
         margin: 0 6px;
         padding: 2px 4px;
@@ -371,6 +380,14 @@ $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
       box-shadow: $shadow_5, inset 0 1px $highlight_color;
       border: none;
     }
+  }
+}
+
+preferencesgroup { // gnome 40.0 preferences window
+  list {
+    @extend %circular_list;
+
+    row.activatable { @extend %circular_row; }
   }
 }
 
@@ -1459,7 +1476,13 @@ hdyleaflet, leaflet, box.horizontal > stack.background {
     row.activatable { @extend %circular_row; }
   }
 
-  list > row.activatable { @extend %sidebar_row; }
+  > box.vertical > scrolledwindow > viewport.frame {
+    &,
+    > stack,
+    > stack > box.vertical {
+      > list > row.activatable { @extend %sidebar_row; }
+    }
+  }
 }
 
 list {
@@ -1531,7 +1554,8 @@ window.background.csd {
     }
   }
 
-  > hdyleaflet > box.vertical > stack.main-container { // Right side
+  > hdyleaflet > box.vertical > stack.main-container,
+  > leaflet > box.vertical > stack.main-container { // Right side
     background-color: $base_color;
     border-bottom-right-radius: $wm_radius;
   }
@@ -1671,7 +1695,8 @@ window.background.csd {
 
 box.horizontal > separator.sidebar,
 hdyleaflet > separator.sidebar,
-leaflet > separator.sidebar { // reset
+leaflet > separator.sidebar,
+leaflet > leaflet > separator.sidebar { // reset
   @extend %side_separator;
 }
 
@@ -1843,6 +1868,39 @@ notebook.main-notebook {
 
   webkitwebview {
     border-radius: 0 0 $wm_radius $wm_radius;
+  }
+}
+
+// gnome 40.0
+tabbox {
+  background-color: darken($header_bg, 10%);
+  box-shadow: inset 0 -1px $borders_color;
+
+  > tab {
+    @extend %tabs_tab;
+    border-top: none;
+    padding: 2px 10px;
+    min-width: 24px;
+    min-height: 24px;
+
+    button {
+      min-height: 20px;
+      min-width: 20px;
+      border-radius: 3px;
+      border: none;
+      padding: 0;
+      @extend %flat_button;
+
+      &:hover {
+        color: $fg_color;
+        background-color: rgba($borders_color, 0.1);
+      }
+
+      &:active, &:active:hover {
+        color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
+        background-color: rgba($borders_color, 0.2);
+      }
+    }
   }
 }
 
@@ -2470,6 +2528,8 @@ dialog.background.csd {
   }
 
   > box.vertical.dialog-vbox {
+    &.view { background: none; }
+
     > grid.horizontal {
       > scrolledwindow.frame { //removed ugly boders for nautilus batch renaming dialog
         border: none;
@@ -3132,6 +3192,10 @@ window#GearyMainWindow.background.csd {
         }
       }
     }
+  }
+
+  leaflet > leaflet > sidebar.separator {
+    @extend %side_separator;
   }
 
   &.maximized, &.tiled, &.fullscreen {

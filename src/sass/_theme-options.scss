@@ -1,0 +1,19 @@
+//
+// THEME OPTIONS
+//
+
+// Gnome shell version
+$gnome_version: gs_version; // 3.38/old || 40.0/new
+
+// Force nautilus styles to exclusively use colors instead of linear-gradients
+$nautilus_use_colors: false;
+
+// Nautilus sidebar sizes (when nautilus_use_colors is false)
+$sidebar_size_default: 200px;
+$sidebar_size_220: 220px;
+$sidebar_size_240: 240px;
+$sidebar_size_260: 260px;
+$sidebar_size_280: 280px;
+
+// Gnome-shell panel opacity
+$panel_opacity: 0.16;

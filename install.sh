@@ -795,12 +795,31 @@ customize_theme_dialogs() {
   fi
 }
 
-run_customize_theme_dialogs() {
-  install_dialog && customize_theme_dialogs && change_transparency && change_size && force_nautilus_use_colors && parse_sass
+gnome_version() {
+  if [[ -z "${GS_VERSION:-}" ]]; then
+    # Set a proper gnome-shell theme version
+    if [[ "$(command -v gnome-shell)" ]]; then
+      SHELL_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -2)"
+      if [[ "${SHELL_VERSION:-}" == '40.0' ]]; then
+        GS_VERSION="new"
+      else
+        GS_VERSION="old"
+      fi
+    else
+      echo "'gnome-shell' not found, using styles for last gnome-shell version available."
+      GS_VERSION="new"
+    fi
+  fi
+
+  sed -i.bak "s/gs_version/$GS_VERSION/g" "$SRC_DIR/sass/_theme-options.scss"
 }
 
 parse_sass() {
   cd ${REPO_DIR} && ./parse-sass.sh
+}
+
+run_customize_theme_dialogs() {
+  install_dialog && customize_theme_dialogs && change_transparency && change_size && force_nautilus_use_colors && parse_sass
 }
 
 change_size() {
@@ -814,14 +833,14 @@ change_size() {
 change_transparency() {
   if [[ "${panel_opacity:-}" != 'default' ]]; then
     cd ${SRC_DIR}/sass
-    sed -i.bak "/\$panel_opacity/s/0.16/0.${panel_opacity}/" _variables.scss
+    sed -i.bak "/\$panel_opacity/s/0.16/0.${panel_opacity}/" _theme-options.scss
     prompt -w "Change panel transparency ..."
   fi
 }
 
 force_nautilus_use_colors() {
   cd ${SRC_DIR}/sass
-  sed -i.bak "/\$nautilus_use_colors/s/false/true/" _variables.scss
+  sed -i.bak "/\$nautilus_use_colors/s/false/true/" _theme-options.scss
   prompt -w "Forcing nautilus to use colors instead of images ..."
 }
 
@@ -834,11 +853,11 @@ restore_files() {
     prompt -w "Restore _applications.scss file ..."
   fi
 
-  if [[ -f ${SRC_DIR}/sass/_variables.scss.bak ]]; then
+  if [[ -f ${SRC_DIR}/sass/_theme-options.scss.bak ]]; then
     local restore_file='true'
     cd ${SRC_DIR}/sass
-    rm -rf _variables.scss
-    mv -f _variables.scss.bak _variables.scss
+    rm -rf _theme-options.scss
+    mv -f _theme-options.scss.bak _theme-options.scss
     prompt -w "Restore _variables.scss file ..."
   fi
 
@@ -857,6 +876,9 @@ if [ ! "$(which glib-compile-resources 2> /dev/null)" ]; then
   fi
 fi
 
+# Check gnome-shell version
+gnome_version
+
 # Install themes
 if [[ "${remove:-}" != 'true' && "${gdm:-}" != 'true' ]]; then
   if [[ "${dialogs:-}" == 'true' ]]; then
@@ -864,7 +886,7 @@ if [[ "${remove:-}" != 'true' && "${gdm:-}" != 'true' ]]; then
   fi
 
   if [[ "${size:-}" != 'true' && "${panel:-}" != 'true' && "${nautilus_use_colors:-}" != 'true' ]]; then
-    install_theme
+    parse_sass && install_theme
   else
     install_customize_theme && parse_sass && install_theme "${panel_opacity}" "${sidebar_size}"
   fi
@@ -872,7 +894,7 @@ fi
 
 # Install GDM theme
 if [[ "${gdm:-}" == 'true' && "${remove:-}" != 'true' && "$UID" -eq "$ROOT_UID" ]]; then
-  install_theme && install_gdm "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${theme}" "${icon}"
+  parse_sass && install_theme && install_gdm "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${opacity}" "${theme}" "${icon}"
 fi
 
 # Remove themes
