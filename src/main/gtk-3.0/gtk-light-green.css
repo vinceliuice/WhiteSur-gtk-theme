@@ -1946,6 +1946,12 @@ window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar 
   transition-duration: 300ms;
 }
 
+window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:active:hover,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:active:hover, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:active:hover:not(.image-button), .nemo-window .primary-toolbar button:active:hover, headerbar button:active:hover, window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:checked,
+window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:checked, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:checked:not(.image-button), .nemo-window .primary-toolbar button:checked, headerbar button:checked {
+  color: #575757;
+}
+
 window.background.csd > headerbar.titlebar.selection-mode > hdyleaflet > headerbar > button:checked,
 window.background.csd > headerbar.titlebar.selection-mode > leaflet > headerbar > button:checked, window.org-gnome-gedit > paned.titlebar > headerbar button.flat.toggle.popup:checked:not(.image-button), .nemo-window .primary-toolbar button:checked, headerbar button:checked {
   color: #575757;
@@ -2446,6 +2452,7 @@ popover.background > scrolledwindow > viewport > list {
 
 popover > scrolledwindow > viewport > list row,
 popover.background > scrolledwindow > viewport > list row {
+  padding: 6px 12px;
   border-radius: 6px;
 }
 
@@ -5186,6 +5193,14 @@ window.background.csd > box.vertical > box.horizontal > stack > widget > noteboo
   border: none;
 }
 
+preferencesgroup list list {
+  margin: 0 0;
+  padding: 0 0;
+  box-shadow: none;
+  background: none;
+  border: none;
+}
+
 .nautilus-canvas-item {
   border-radius: 5px;
 }
@@ -6390,6 +6405,10 @@ notebook.main-notebook webkitwebview {
   border-radius: 0 0 12px 12px;
 }
 
+window.background.csd > deck > deck > fullscreenbox > flap > box > windowhandle > headerbar.titlebar {
+  border-color: #ffffff;
+}
+
 tabbox {
   background-color: #e6e6e6;
   box-shadow: inset 0 -1px rgba(0, 0, 0, 0.12);
@@ -6400,6 +6419,11 @@ tabbox > tab {
   padding: 2px 10px;
   min-width: 24px;
   min-height: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+tabbox > tab:checked {
+  border-top-color: #ffffff;
 }
 
 tabbox > tab button {
