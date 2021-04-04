@@ -1441,6 +1441,28 @@ headerbar {
     box-shadow: none;
   }
 
+  &.windowhandle {
+    viewswitcher button:not(.titlebutton):not(.suggested-action):not(.destructive-action) {
+      border-radius: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    > button.popup {
+      &:hover {
+        @include button(header-hover);
+      }
+
+      &:active, &:active:hover {
+        @include button(header-active);
+      }
+
+      &:checked {
+        @include button(header-checked);
+      }
+    }
+  }
+
   // Selectionmode
   .selection-mode &,
   &.selection-mode {
@@ -1754,7 +1776,7 @@ headerbar, .titlebar {
     transition-duration: 300ms;
   }
 
-  &:active:hover, &:checked { color: $header_fg; }
+  // &:active:hover, &:checked { color: $header_fg; }
 
   &:checked {
     @include button(header-checked);
@@ -2176,9 +2198,16 @@ popover.background {
 
   > list,
   > .view,
-  > toolbar {
+  > toolbar,
+  > scrolledwindow > viewport > list {
     border-style: none;
     background-color: transparent;
+  }
+
+  > scrolledwindow > viewport > list {
+    margin: $container_padding;
+
+    row { border-radius: $bt_radius; }
   }
 
   &, .csd & {
@@ -2202,6 +2231,26 @@ cursor-handle {
 //
 // Notebooks and Tabs
 //
+
+%tabs_tab {
+  color: $disabled_fg_color;
+  background-color: transparentize($base_color, 1);
+  border: 1px solid transparent;
+  transition: all 150ms ease-out;
+
+  &:hover:not(:checked) {
+    color: mix($fg_color, $disabled_fg_color, 50%);
+    background-color: if($variant == 'light', rgba(white, 0.2), rgba(white, 0.05));
+    border-color: if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
+  }
+
+  &:checked {
+    color: $fg_color;
+    background-color: $header_bg;
+    border-color: if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
+  }
+}
+
 notebook {
   padding: 0;
   // margin-top: -1px;
@@ -2354,22 +2403,7 @@ notebook {
     }
 
     tabs > tab {
-      color: $disabled_fg_color;
-      background-color: transparentize($base_color, 1);
-      border: 1px solid transparent;
-      transition: all 150ms ease-out;
-
-      &:hover:not(:checked) {
-        color: mix($fg_color, $disabled_fg_color, 50%);
-        background-color: if($variant == 'light', rgba(white, 0.2), rgba(white, 0.05));
-        border-color: if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
-      }
-
-      &:checked {
-        color: $fg_color;
-        background-color: $header_bg;
-        border-color: if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
-      }
+      @extend %tabs_tab;
 
       // close button
       button.flat {
@@ -3382,24 +3416,33 @@ filechooserbutton:drop(active) {
 //
 // Sidebar
 //
+
+%sidebar_left {
+  border-right: 1px solid $borders_color;
+  border-left-style: none;
+}
+
+%sidebar_right {
+  border-left: 1px solid $borders_color;
+  border-right-style: none;
+}
+
 .sidebar {
   border-style: none;
   background-color: $bg_color;
 
-  @at-root %sidebar_left,
-  &:dir(ltr),
-  &.left,
-  &.left:dir(rtl) {
-    border-right: 1px solid $borders_color;
-    border-left-style: none;
-  }
-
-  @at-root %sidebar_right,
-  &:dir(rtl),
-  &.right {
-    border-left: 1px solid $borders_color;
-    border-right-style: none;
-  }
+  // &:dir(ltr),
+  // &.left,
+  // &.left:dir(rtl) {
+  //   border-right: 1px solid $borders_color;
+  //   border-left-style: none;
+  // }
+  //
+  // &:dir(rtl),
+  // &.right {
+  //   border-left: 1px solid $borders_color;
+  //   border-right-style: none;
+  // }
 
   list {
     background-color: transparent;
