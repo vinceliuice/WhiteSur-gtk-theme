@@ -2,7 +2,7 @@
 <p align="center"> <img src="docs/macbook.png"/> </p>
 
 <br>
-**<p align="center"> A macOS BigSur-like theme for your GTK apps </p>**
+<p align="center"> <b> A macOS BigSur-like theme for your GTK apps </b> </p>
 <br>
 
 # Installation is easy!
@@ -31,7 +31,7 @@ GNOME Shell (Pantheon), Cinnamon, XFWM (XFCE), Metacity, and Plank themes.
 ## There's so many customizations you can do!
 Usage:  `./install.sh [OPTIONS...]`
 
-### <p align="center" > Change theme color and accent </p>
+### <p align="center"> <b> Change theme color and accent </b> </p>
 <p align="center"> <img src="docs/colors-themes.png"/> </p>
 
 #### Install theme color
@@ -55,7 +55,7 @@ Example:
 ./install.sh -t all            # install all available theme accents
 ```
 
-### <p align="center" > Change Nautilus sidebar minimum width </p>
+### <p align="center"> <b> Change Nautilus sidebar minimum width </b> </p>
 <p align="center"> <img src="docs/sidebars.png"/> </p>
 
 Parameter: `--sidebar` `-s`
@@ -63,7 +63,7 @@ Parameter: `--sidebar` `-s`
 Example: `./install.sh -s 220`
 
 
-### <p align="center" > Change GNOME Shell 'Activities' icon </p>
+### <p align="center"> <b> Change GNOME Shell 'Activities' icon </b> </p>
 <p align="center"> <img src="docs/icons.png"/> </p>
 
 Parameter: `--icon` `-i`
@@ -71,7 +71,7 @@ Parameter: `--icon` `-i`
 Example: `./install.sh -i fedora`
 
 
-### <p align="center" > Change Nautilus style </p>
+### <p align="center"> <b> Change Nautilus style </b> </p>
 <p align="center"> <img src="docs/nautilus.png"/> </p>
 
 Parameter: `--nautilus-style` `-N`
@@ -79,7 +79,7 @@ Parameter: `--nautilus-style` `-N`
 Example: `./install.sh -N mojave`
 
 
-### <p align="center" > Explore more customization features! </p>
+### <p align="center"> <b> Explore more customization features! </b> </p>
 You can run `./install.sh -h` to explore more customization features we have
 like changing panel opacity, theme opacity (normal and solid variant), window
 control button variant, etc.
@@ -89,7 +89,7 @@ control button variant, etc.
 Usage:  `./tweaks.sh [OPTIONS...]`
 
 ## There's more themes you can try!
-### <p align="center" > Install and edit Firefox theme </p>
+### <p align="center"> <b> Install and edit Firefox theme </b> </p>
 <p align="center"> <img src="docs/firefox.png"/> </p>
 
 #### Install Firefox theme
@@ -108,7 +108,7 @@ Example:
 ./tweaks.sh -e     # edit the installed Firefox theme
 ```
 
-### <p align="center" > Install and customize Dash to Dock theme </p>
+### <p align="center"> <b> Install and customize Dash to Dock theme </b> </p>
 <p align="center"> <img src="docs/dash-to-dock.png"/> </p>
 
 #### Install Dash to Dock theme
@@ -121,7 +121,7 @@ Parameter: `--color` `-c`
 
 Example: `./tweaks.sh -d -c dark`
 
-### <p align="center" > Install and customize GDM theme </p>
+### <p align="center"> <b> Install and customize GDM theme </b> </p>
 <p align="center"> <img src="docs/gdm.png"/> </p>
 
 #### Install GDM theme
@@ -169,12 +169,12 @@ related to GDM. Run `./tweaks.sh -h` to explore!
 ## Using WhiteSur theme on app sandboxing platforms
 <p align="center"> <img src="docs/sandboxes.png"/> </p>
 
-### <p align="center" > Connect WhiteSur theme to Flatpak </p>
+### <p align="center"> <b> Connect WhiteSur theme to Flatpak </b> </p>
 Parameter: `--flatpak` `-F`
 
 Example: `./tweaks.sh -F`
 
-### <p align="center" > Connect WhiteSur theme to your Snap apps </p>
+### <p align="center"> <b> Connect WhiteSur theme to your Snap apps </b> </p>
 Parameter: `--snap` `-S`
 
 Example: `./tweaks.sh -S`
@@ -188,30 +188,33 @@ Note:
 # Other recommended stuffs
 ## Whitesur KDE Theme
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde">
-	<img src="docs/whitesur-kde-theme.png"/>
-
-	<br><br>
-
-	<img src="docs/download-button.png"/>
+  <img src="docs/whitesur-kde-theme.png"/>
 </a> </p>
+<br>
+<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde">
+  <img src="docs/download-button.png"/>
+</a> </p>
+<br>
 
 ## Whitesur Icon Theme
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-icon-theme">
-	<img src="docs/whitesur-icon-theme.png"/>
-
-	<br><br>
-
-	<img src="docs/download-button.png"/>
+  <img src="docs/whitesur-icon-theme.png"/>
 </a> </p>
+<br>
+<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-icon-theme">
+  <img src="docs/download-button.png"/>
+</a> </p>
+<br>
 
 ## Whitesur Wallpaper
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper">
-	<img src="docs/whitesur-wallpaper.png"/>
-
-	<br><br>
-
-	<img src="docs/download-button.png"/>
+  <img src="docs/whitesur-wallpaper.png"/>
 </a> </p>
 <br>
+<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper">
+  <img src="docs/download-button.png"/>
+</a> </p>
+<br><br>
+
 # Technical details and getting involved
 Please go read [CONTRIBUTING.md](CONTRIBUTING.md) for more info
