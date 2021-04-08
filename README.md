@@ -190,29 +190,31 @@ Note:
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde">
   <img src="docs/whitesur-kde-theme.png"/>
 </a> </p>
-<br><br>
+<br>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde">
   <img src="docs/download-button.png"/>
 </a> </p>
+<br>
 
 ## Whitesur Icon Theme
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-icon-theme">
   <img src="docs/whitesur-icon-theme.png"/>
 </a> </p>
-<br><br>
+<br>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-icon-theme">
   <img src="docs/download-button.png"/>
 </a> </p>
+<br>
 
 ## Whitesur Wallpaper
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper">
   <img src="docs/whitesur-wallpaper.png"/>
 </a> </p>
-<br><br>
+<br>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper">
   <img src="docs/download-button.png"/>
 </a> </p>
-<br>
+<br><br>
 
 # Technical details and getting involved
 Please go read [CONTRIBUTING.md](CONTRIBUTING.md) for more info
