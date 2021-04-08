@@ -120,15 +120,16 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   $nautilus_actionbar_borders_image: linear-gradient(90deg, rgba($header_border, 0) 0px,
                                                             $header_border 25%);
 }
+@if $nautilus_style == 'default' or $nautilus_style == 'stable' {
+  $nautilus_header_borders_image: linear-gradient(90deg, transparent $nautilus_sidebar_size,
+                                                         $header_border $nautilus_sidebar_size);
+}
 
 @if $nautilus_style == 'default' {
   $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg $nautilus_sidebar_size,
                                           $nautilus_borders_color $nautilus_sidebar_size,
                                           $nautilus_borders_color ($nautilus_sidebar_size + 1px),
                                           $base_color ($nautilus_sidebar_size + 1px));
-
-  $nautilus_header_borders_image: linear-gradient(90deg, transparent $nautilus_sidebar_size,
-                                                         $header_border $nautilus_sidebar_size);
 } @else if $nautilus_style == 'glassy' {
   $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg ($nautilus_sidebar_size/2),
                                                  $dark_header_bg 40%);
@@ -471,8 +472,7 @@ dialog.background.csd {
       box-shadow: inset 0 1px rgba(white, 0.1);
       background-image: $nautilus_header_image;
       border: none;
-
-      @if $nautilus_style != 'stable' { border-image: $nautilus_header_borders_image 0 0 1 / 0px 0px 1px stretch; }
+      border-image: $nautilus_header_borders_image 0 0 1 / 0px 0px 1px stretch;
 
       @if $nautilus_style == 'stable' and $trans == 'false' {
         > box.left.horizontal {
