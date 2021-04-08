@@ -161,10 +161,9 @@ sudo ./tweaks.sh -g -n -b "wallpapers/rocks.jpg" # don't blur the custom backgro
 ```
 
 #### Do more GDM customizations
-You can do [the similar customization features in `./install.sh`]
-(#explore-more-customization-features) like changing theme color
-(dark and light variant) and accent, GNOME Shell 'Activities' icon, etc.
-related to GDM. Run `./tweaks.sh -h` to explore!
+You can do [the similar customization features in `./install.sh`](#theres-so-many-customizations-you-can-do)
+like changing theme color (dark and light variant) and accent, GNOME Shell
+'Activities' icon, etc. related to GDM. Run `./tweaks.sh -h` to explore!
 
 ## Using WhiteSur theme on app sandboxing platforms
 <p align="center"> <img src="docs/sandboxes.png"/> </p>
