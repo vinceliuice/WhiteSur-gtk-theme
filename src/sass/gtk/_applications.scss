@@ -30,6 +30,8 @@ terminal-window {
       margin: -2px;
     }
   }
+
+  &.background.csd.maximized { border-radius: 0 0 0 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
 }
 
 window.background.csd { // gnome-terminal 3.32 setting
@@ -432,7 +434,7 @@ dialog.background.csd {
       background-image: $nautilus_actionbar_image;
       border-image: $nautilus_actionbar_borders_image 1 0 0 / 1px 0px 0px stretch;
       color: $dark_sidebar_fg;
-      border-radius: 0 0 $wm_radius 0;
+      border-radius: 0 0 $wm_radius $wm_radius;
 
       label, combobox { color: $dark_sidebar_fg; }
     }
