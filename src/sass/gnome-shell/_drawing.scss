@@ -10,6 +10,12 @@
   @return ($size / $root-font-size) + em;
 }
 
+// provide font size in rem, with px fallback
+@mixin fontsize($size: 24, $base: 16) {
+  font-size: round($size) + pt;
+  //font-size: ($size / $base) * 1rem;
+}
+
 // Typography
 // based on:
 // https://material.io/guidelines/style/typography.html#typography-styles

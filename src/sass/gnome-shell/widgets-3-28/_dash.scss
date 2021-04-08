@@ -1,0 +1,21 @@
+#dash {
+  color: $light_alt_fg_color;
+  background-color: $light_divider_color;
+  border-left: 0;
+  border-radius: 0 ($bd_radius * 1.5) ($bd_radius * 1.5) 0;
+  padding: 0 6px;
+
+  &:rtl {
+    border-radius: ($bd_radius * 1.5)  0 0 ($bd_radius * 1.5);
+  }
+
+  .placeholder {
+    background-image: url("assets/dash-placeholder.svg");
+    background-size: contain;
+    height: 24px;
+  }
+}
+
+.dash-item-container > StWidget {
+  padding: 3px 6px;
+}

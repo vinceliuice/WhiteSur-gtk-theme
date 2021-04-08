@@ -1,0 +1,36 @@
+/* Workspace Switcher */
+.workspace-switcher-group {
+  padding: $base_padding * 2;
+}
+
+.workspace-switcher-container {
+  @extend %osd_panel;
+}
+
+.workspace-switcher {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  spacing: $base_spacing * 2;
+}
+
+.ws-switcher-box {
+  background: transparent;
+  height: 50px;
+  background-size: 32px;
+  background: $divider_color;
+  border-radius: $bt_radius;
+}
+
+// active workspace in the switcher
+.ws-switcher-active-up,
+.ws-switcher-active-down,
+.ws-switcher-active-left,
+.ws-switcher-active-right {
+  height: 52px;
+  background-color: $primary_color;
+  color: $light_alt_fg_color;
+  border-radius: $base_border_radius + 3px;
+  border: none;
+}

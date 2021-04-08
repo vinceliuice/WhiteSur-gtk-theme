@@ -1,0 +1,39 @@
+$dash_background_color: #3b3b3b;
+$dash_placeholder_size: 32px;
+$dash_padding: $base_padding + 4px; // 10px
+$dash_spacing: $base_padding / 4;
+$dash_bottom_margin: $base_margin * 4;
+$dash_border_radius: $bt_radius * 2.5;
+
+#dash {
+  margin-top: $base_spacing * 2;
+  padding: 0 $dash_padding;
+
+  .placeholder {
+    background-image:none;
+    background-size: contain;
+    height: $dash_placeholder_size;
+  }
+
+  .overview-icon {
+    padding: $dash_padding / 2;
+  }
+}
+
+.dash-background {
+  background-color: $dash_background_color;
+  margin-bottom: $dash_bottom_margin;
+  padding: $dash_padding;
+  border-radius: $dash_border_radius;
+}
+
+// Dash Items
+.dash-item-container .app-well-app, .show-apps {
+  padding: $dash_padding $dash_spacing $dash_padding + $dash_bottom_margin;
+}
+
+.dash-separator {
+  width: 1px;
+  margin: 0 ($dash_spacing + ($dash_padding / 2)) $dash_bottom_margin;
+  background-color: rgba(white, 0.25);
+}

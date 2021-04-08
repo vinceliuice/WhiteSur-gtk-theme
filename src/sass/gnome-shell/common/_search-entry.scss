@@ -1,0 +1,36 @@
+// Search entry
+%search-entry, .search-entry {
+  width: 320px;
+  padding: $base_padding+1 $base_padding+3;
+  border: none;
+  color: $light_hint_fg_color;
+  caret-color: $light_alt_fg_color;
+  selection-background-color: $light_track_color;
+  selected-color: $light_alt_fg_color;
+  @include search_entry(normal, $fc:$light_track_color);
+
+  &:focus {
+    @include search_entry(focus, $fc:$light_alt_fg_color);
+    border: none;
+    color: $light_alt_fg_color;
+  }
+
+  .search-entry-icon {
+    icon-size: 16px;
+    padding: 0 0;
+    color: $light_hint_fg_color;
+  }
+
+  &:hover, &:focus {
+    .search-entry-icon { color: $light_alt_fg_color; }
+  }
+
+  &:insensitive {
+    border: none;
+    color: $light_disabled_fg_color;
+  }
+
+  StLabel.hint-text {
+    color: $light_hint_fg_color;
+  }
+}

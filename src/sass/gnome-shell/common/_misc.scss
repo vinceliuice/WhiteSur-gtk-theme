@@ -1,0 +1,57 @@
+// Rubberband for select-area screenshots
+.select-area-rubberband {
+  background-color: transparentize($primary_color, 0.7);
+  border: 1px solid $primary_color;
+  border-radius: 3px;
+}
+
+// User icon
+.user-icon {
+  background-size: contain;
+  color: $light_alt_fg_color;
+  border-radius: $circular_radius;
+  border: none;
+  box-shadow: 0 3px 8px rgba(black, 0.25);
+  icon-size: $base_icon_size * 4; // 64px
+
+  &:hover {
+    color: lighten($osd_fg_color,30%);
+  }
+
+  & StIcon {
+    background-color: transparentize($light_alt_fg_color, 0.95);
+    border-radius: $circular_radius;
+    padding: $base_padding * 2 ; // 12px
+    width: $base_icon_size * 2.5; height:  $base_icon_size * 2.5; // 40px;
+  }
+
+  &.user-avatar {
+    border: 2px $osd_fg_color;
+  }
+}
+
+.user-widget.vertical .user-icon {
+  icon-size: $base_icon_size * 6; // 128px
+
+  & StIcon {
+    padding: $base_padding * 3 + 2px; // 20px
+    padding-top: $base_padding * 3; // 18 px
+    padding-bottom: $base_padding * 3 + 4px; // 22px
+    width: $base_icon_size * 5.5; height:  $base_icon_size * 5.5; // 88px;
+  }
+}
+
+.lightbox { background-color: black; }
+.flashspot { background-color: white; }
+
+
+// Hidden
+.hidden { color: rgba(0,0,0,0);}
+
+// Caps-lock warning
+.caps-lock-warning-label {
+  text-align: center;
+  padding-bottom: 8px;
+  @include font(body-1);
+  color: $warning_color;
+}

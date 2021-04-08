@@ -1,0 +1,202 @@
+/* Top Bar */
+// a.k.a. the panel
+
+@if $trans == 'true' { $panel_bg:   if($variant == 'light', rgba(white, $panel_opacity), rgba(black, $panel_opacity)); }
+$shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
+
+#panel {
+  background-color: $shell_panel_bg;
+  transition-duration: 250ms;
+  font-weight: bold;
+  height: $menuitem_size;
+  box-shadow: 0 5px 16px rgba(black, 0.35);
+  color: $panel_fg;
+  font-feature-settings: "tnum";
+
+  // transparent panel on lock & login screens
+  &:overview,
+  &.unlock-screen,
+  &.login-screen,
+  &.lock-screen {
+    background-color: if($trans == 'false' and $variant == 'light', transparent, transparent);
+
+    StLabel, StIcon { color: $light_alt_fg_color; }
+
+    .panel-button {
+      &:hover {
+        color: $light_fg_color;
+        background-color: $light_divider_color;
+      }
+
+      &:active, &:overview, &:focus, &:checked {
+        &, &:hover {
+          color: $light_fg_color;
+          background-color: $light_track_color;
+        }
+      }
+    }
+
+    .panel-corner {
+      -panel-corner-radius: 0;
+      -panel-corner-background-color: transparent;
+      -panel-corner-border-color: transparent;
+    }
+  }
+
+  // the rounded outset corners
+  .panel-corner {
+    -panel-corner-radius: 0;
+    -panel-corner-background-color: $shell_panel_bg;
+    -panel-corner-border-width: 2px;
+    -panel-corner-border-color: transparent;
+    -panel-corner-opacity: 1;
+  }
+
+  // panel menus
+  .panel-button {
+    -natural-hpadding: 8px;
+    -minimum-hpadding: 8px;
+    font-weight: bold;
+    color: $panel_fg;
+    // transition-duration: $longer_duration;
+    border-radius: $bt_radius;
+
+    StLabel { padding: 0 2px; }
+
+    &, &:hover, &:active, &:overview, &:focus, &:checked {
+      text-shadow: $panel_asset_shadow;
+
+      .system-status-icon,
+      .app-menu-icon > StIcon,
+      .popup-menu-arrow {
+        icon-shadow: $panel_asset_shadow;
+      }
+    }
+
+    &:hover {
+      color: $panel_fg;
+      background-color: if($trans == 'false' and $variant == 'light', $divider_color, $light_divider_color);
+    }
+
+    &:active, &:overview, &:focus, &:checked {
+      &, &:hover {
+        background-color: if($trans == 'false' and $variant == 'light', $track_color, $light_track_color);
+        color: $panel_fg;
+        box-shadow: none;
+      }
+    }
+
+    .unlock-screen &,
+    .login-screen &,
+    .lock-screen & {
+      color: $panel_fg;
+      &:focus, &:hover, &:active { color: $panel_fg; }
+    }
+
+    &.clock-display {
+      .clock {
+        // transition-duration: 150ms;
+        border: none;
+        border-radius: 0;
+        background: none;
+        box-shadow: none;
+      }
+    }
+
+    &:hover, &:active, &:overview, &:focus, &:checked {
+      box-shadow: none;
+
+      // The clock display needs to have the background on .clock because
+      // we want to exclude the do-not-disturb indicator from the background
+      &.clock-display {
+        box-shadow: none;
+
+        .clock {
+          box-shadow: none;
+        }
+      }
+    }
+
+    // status area icons
+    .system-status-icon {
+      icon-size: $base_icon_size;
+      padding: $base_padding - 1px;
+      margin: 0 $base_margin;
+    }
+
+    .panel-status-indicators-box .system-status-icon,
+    .panel-status-menu-box .system-status-icon {
+      margin: 0;
+    }
+
+    // app menu icon
+    .app-menu-icon {
+      -st-icon-style: symbolic;
+      // dimensions of the icon are hardcoded
+    }
+
+    &#panelActivities {
+      -natural-hpadding: $base_padding * 3;
+    }
+  }
+
+  &.unlock-screen,
+  &.login-screen,
+  &:overview {
+    .panel-button {
+      &:hover, &:active, &:overview, &:focus, &:checked {
+        box-shadow: none;
+
+        &.clock-display {
+          box-shadow: none;
+
+          .clock {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+
+  .panel-status-indicators-box,
+  .panel-status-menu-box {
+    spacing: 2px;
+  }
+
+  // spacing between power icon and (optional) percentage label
+  .power-status.panel-status-indicators-box {
+    spacing: 0;
+  }
+
+  // indicator for active
+  .screencast-indicator,
+  .remote-access-indicator { color: $warning_color; }
+}
+
+// Activities button
+#panel #panelActivities.panel-button {
+  > * {
+    background-image: url("assets/activities.svg");
+    background-position: center top;
+    // background-size: 18px 18px;
+    width: 24px;
+    height: 24px;
+    background-color: transparent !important;
+    background-gradient-direction: none !important;
+    border: none;
+    color: transparent;
+  }
+
+  &:active, &:overview, &:focus, &:checked {
+    background-color: transparent;
+    border: none;
+
+    // > * { background-image: url("assets/activities-active.svg"); }
+  }
+
+  @if $variant == 'light' and $black == 'true' {
+    &:overview {
+      > * { background-image: url("assets/activities-white.svg"); }
+    }
+  }
+}

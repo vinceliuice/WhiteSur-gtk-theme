@@ -1,0 +1,41 @@
+.user-widget.horizontal {
+  .user-widget-label {
+    // @include font(title);
+    font-weight: bold;
+    text-align: left;
+    padding-left: 15px;
+
+    &:ltr { padding-left: 14px; }
+    &:rtl { padding-right: 14px; }
+  }
+
+  .user-icon {
+    icon-size: 64px; // 64px
+
+    & StIcon {
+      padding: 12px; // 12px
+      width: 40px;
+      height: 40px; // 40px;
+    }
+  }
+}
+
+.user-widget.vertical {
+  .user-widget-label {
+    text-align: center;
+    font-weight: normal;
+    padding-top: 16px;
+  }
+
+  .user-icon {
+    icon-size: 96px; // 128px
+
+    & StIcon {
+      padding: 20px; // 20px
+      padding-top: 18px; // 18 px
+      padding-bottom: 22px; // 22px
+      width: 88px;
+      height: 88px; // 88px;
+    }
+  }
+}

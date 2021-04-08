@@ -1,0 +1,289 @@
+
+.app-view-controls { //favorties | all toggle container
+  width: 320px;
+  padding-bottom: 32px;
+  margin: 0 0;
+}
+
+.app-view-control { //favorties | all toggle button
+  padding: 0 16px;
+  margin: 0 0;
+  font-weight: bold;
+  color: $light_alt_fg_color;
+  background-color: rgba($light_alt_fg_color, 0.15);
+  &:hover {
+    color: $light_alt_fg_color;
+    background-color: rgba($light_alt_fg_color, 0.22);
+  }
+  &:active {
+    color: $light_alt_fg_color;
+    background-color: darken($primary_color, 3%);
+  }
+  &:checked {
+    color: $light_alt_fg_color;
+    background-color: $primary_color;
+    box-shadow: none;
+  }
+  &:first-child {
+    border-right-width: 0;
+    border-radius: $bt_radius 0 0 $bt_radius;
+  }
+  &:last-child {
+    border-radius: 0 $bt_radius $bt_radius 0;
+  }
+}
+
+// Collections
+.app-folder-popup { //expanded collection
+  -arrow-border-radius: $bd_radius * 2;
+  -arrow-background-color: $light_divider_color;
+  -arrow-base: 0;
+  -arrow-rise: 12px;
+}
+
+.app-folder-popup-bin { padding: 5px; }
+
+.no-frequent-applications-label { @extend %status_text; }
+
+.overview-icon.overview-icon-with-label,
+.grid-search-result .overview-icon.overview-icon-with-label {
+  padding: 10px 8px 5px 8px;
+  spacing: 6px;
+
+  > StBoxLayout {
+    spacing: 6px;
+  }
+}
+
+//Some hacks I don't even
+.all-apps,
+.search-display > StBoxLayout,
+.frequent-apps > StBoxLayout {
+  // horizontal padding to make sure scrollbars or dash don't overlap content
+  padding: 0px 88px 10px 88px;
+}
+
+// ShellMountOperation Dialogs
+.shell-mount-operation-icon { icon-size: 48px; }
+
+.mount-dialog {
+  spacing: 24px;
+
+  .message-dialog-title {
+    padding-top: 10px;
+    padding-left: 17px;
+    padding-bottom: 6px;
+    max-width: 34em;
+  }
+
+  .message-dialog-title:rtl {
+    padding-left: 0px;
+    padding-right: 17px;
+  }
+
+  .message-dialog-body {
+    padding-left: 17px;
+    width: 28em;
+  }
+
+  .message-dialog-body:rtl {
+    padding-left: 0px;
+    padding-right: 17px;
+  }
+}
+
+.mount-dialog-app-list {
+  max-height: 200px;
+  padding-top: 24px;
+  padding-left: 49px;
+  padding-right: 32px;
+}
+
+.mount-dialog-app-list:rtl {
+  padding-right: 49px;
+  padding-left: 32px;
+}
+
+.mount-dialog-app-list-item {
+  color: $fg_color;
+  &:hover { color: $fg_color; }
+  &:ltr { padding-right: 1em; }
+  &:rtl { padding-left: 1em; }
+}
+
+.mount-dialog-app-list-item-icon {
+  &:ltr { padding-right: 17px; }
+  &:rtl { padding-left: 17px; }
+}
+
+.mount-dialog-app-list-item-name {
+  font-size: 1em;
+}
+
+// Access Dialog
+.access-dialog {
+  spacing: 30px;
+}
+
+// Geolocation Dialog
+.geolocation-dialog {
+  spacing: 30px;
+}
+
+// Extension Dialog
+.extension-dialog {
+  .message-dialog-main-layout { spacing: 24px; padding: 10px; }
+  .message-dialog-title { color: $alt_fg_color; }
+}
+
+// Inhibit-Shortcuts Dialog
+.inhibit-shortcuts-dialog {
+  spacing: 30px;
+}
+
+// Network Agent Dialog
+.network-dialog-secret-table {
+  spacing-rows: 15px;
+  spacing-columns: 1em;
+}
+
+.keyring-dialog-control-table {
+  spacing-rows: 15px;
+  spacing-columns: 1em;
+}
+
+.secondary-icon { icon-size: em(16px); }
+
+//hotplug
+.hotplug-resident-box { spacing: 8px; }
+
+.hotplug-resident-mount {
+  spacing: 8px;
+  border-radius: $bt_radius;
+  &:hover { background-color: $divider_color; }
+  &:active { background-color: $track_color; }
+}
+
+.hotplug-resident-mount-label {
+  color: inherit;
+  padding-left: 6px;
+}
+
+.hotplug-resident-mount-icon {
+  icon-size: 24px;
+  padding-left: 6px;
+}
+
+.hotplug-resident-eject-icon {
+  icon-size: 16px;
+}
+
+.hotplug-resident-eject-button {
+  padding: 7px;
+  border-radius: $bt_radius;
+  color: $fg_color;
+}
+// NOTIFICATIONS & MESSAGE TRAY
+
+.url-highlighter { link-color: $link_color; }
+
+// a little unstructured mess:
+.system-switch-user-submenu-icon.user-icon {
+  icon-size: 20px;
+  padding: 0 2px;
+}
+
+.system-switch-user-submenu-icon.default-icon {
+  icon-size: 16px;
+  padding: 0 4px;
+}
+
+.system-switch-user-submenu-icon {
+  icon-size: 16px;
+  padding: 0 4px;
+}
+
+.system-menu-action {
+  color: $alt_fg_color;
+  border-radius: 100px; /* wish we could do 50% */
+  padding: ($large_size - 20px) / 2;
+  border: none;
+  -st-icon-style: symbolic; // >= 3.29.90
+
+  &:hover, &:focus {
+    background-color: $divider_color;
+    color: $fg_color;
+    border: none;
+    padding: ($large_size - 20px) / 2;
+  }
+
+  &:active { background-color: $track_color; color: $fg_color; }
+
+  & > StIcon { icon-size: 16px; }
+}
+
+.screen-shield-arrows {
+  padding-bottom: 3em;
+}
+
+.screen-shield-arrows Gjs_Arrow {
+  color: white;
+  width: 80px;
+  height: 48px;
+  -arrow-thickness: 12px;
+  -arrow-shadow: $shadow_1;
+}
+
+.screen-shield-clock {
+  color: white;
+  text-shadow: $shadow_1;
+  font-weight: normal;
+  text-align: center;
+  padding-bottom: 1.5em;
+}
+
+.screen-shield-clock-time {
+  @include font(display-4);
+  text-shadow: $shadow_1;
+}
+
+.screen-shield-clock-date { @include font(display-2); }
+
+.screen-shield-notifications-container {
+  spacing: 6px;
+  width: 30em;
+  background-color: transparent;
+  max-height: 500px;
+  .summary-notification-stack-scrollview {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .notification,
+  .screen-shield-notification-source {
+    padding: 8px;
+    border: none;
+    background-color: $alt_dark_bg_color;
+    color: $light_alt_fg_color;
+    border-radius: $bt_radius;
+  }
+  .notification { margin-right: 16px; } //compensate for space allocated to the scrollbar
+}
+
+.screen-shield-notification-label {
+  min-height: $small_size - 2px;
+  padding: 2px 0px 0px 16px;
+  font-weight: bold;
+}
+
+.screen-shield-notification-count-text {
+  min-height: $small_size - 2px;
+  padding: 2px 0px 0px 16px;
+  color: $light_alt_fg_color;
+}
+
+#panel.lock-screen { background-color: $alt_dark_bg_color; }
+
+#screenShieldNotifications {
+  StScrollBar { @extend %overview_scrollbar; }
+}

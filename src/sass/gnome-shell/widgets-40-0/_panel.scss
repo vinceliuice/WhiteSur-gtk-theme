@@ -1,0 +1,10 @@
+// App Menu
+#appMenu {
+  spacing: $base_spacing;
+  .label-shadow { color: transparent; }
+}
+
+#appMenu .panel-status-menu-box {
+  padding: 0 $base_padding;
+  spacing: $base_spacing;
+}

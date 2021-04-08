@@ -1,0 +1,4 @@
+#overview {
+  spacing: 24px;
+  StScrollBar { @extend %overview_scrollbar !optional; }
+}

@@ -1,0 +1,50 @@
+// IBus Candidate Popup
+.candidate-popup-boxpointer {
+  -arrow-border-radius: 2px;
+  -arrow-background-color: transparent;
+  -arrow-border-width: 0;
+  -arrow-border-color: transparent;
+  -arrow-base: 64px;
+  -arrow-rise: 12px;
+  background-color: transparent;
+}
+
+.candidate-popup-content {
+  @extend %theme_dialogs;
+  box-shadow: 0 8px 16px 0 rgba(black, 0.25);
+  border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
+  margin: ($container_padding / 2) 8px;
+  padding: $container_padding + 2px;
+  spacing: $container_padding;
+}
+
+.candidate-index {
+  padding: 0 0.5em 0 0;
+  color: $hint_fg_color;
+  .candidate-box:selected & { color: $light_hint_fg_color; }
+}
+
+.candidate-box {
+  transition-duration: 0ms; // FIXME: needs more natural transitions
+  padding: 0.3em 0.5em 0.3em 0.5em;
+  margin-right: 2px;
+  border-radius: $bt_radius;
+  &:hover { background-color: $divider_color; color: $fg_color; }
+  &:active { background-color: $track_color; color: $fg_color; }
+  &:selected { background-color: $primary_color; color: $light_alt_fg_color; }
+  &:last-child { margin-right: 0; }
+}
+
+.candidate-page-button-box {
+  height: 2em;
+  .vertical & { padding-top: 0.5em; }
+  .horizontal & { padding-left: 0.5em; }
+}
+
+.candidate-page-button {
+  padding: 4px;
+}
+
+.candidate-page-button-previous,
+.candidate-page-button-next { border-radius: $bt_radius;  }
+.candidate-page-button-icon { icon-size: 1em; }

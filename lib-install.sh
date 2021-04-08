@@ -90,7 +90,13 @@ install_shelly() {
   mkdir -p                                                                                    "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/icons"                                           "${TARGET_DIR}"
   cp -r "${THEME_SRC_DIR}/main/gnome-shell/pad-osd.css"                                       "${TARGET_DIR}"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/gnome-shell${color}${opacity}${alt}${theme}.scss" "${TARGET_DIR}/gnome-shell.css"
+
+  if [[ "${GNOME_VERSION}" == 'new'  ]]; then
+    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/shell-40-0/gnome-shell${color}${opacity}${alt}${theme}.scss" "${TARGET_DIR}/gnome-shell.css"
+  else
+    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/shell-3-28/gnome-shell${color}${opacity}${alt}${theme}.scss" "${TARGET_DIR}/gnome-shell.css"
+  fi
+
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/"*".svg"                           "${TARGET_DIR}/assets"
 
   if [[ "${theme}" != '' ]]; then
@@ -217,7 +223,7 @@ install_themes() {
   start_animation
   process_ids=()
 
-  [[ "${GNOME_VERSION}" != 'new' ]] && install_beggy
+  install_beggy
 
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
@@ -228,10 +234,8 @@ install_themes() {
           install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
           process_ids+=("${!}")
 
-          if [[ "${GNOME_VERSION}" != 'new' ]]; then
-            install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
-            process_ids+=("${!}")
-          fi
+          install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
+          process_ids+=("${!}")
         done
       done
     done

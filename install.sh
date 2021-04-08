@@ -110,10 +110,6 @@ else
 
   prompt -w "Removing the old '${name}' themes..."
 
-  if [[ "${GNOME_VERSION}" == 'new' ]]; then
-    prompt -w "SORRY: WhiteSur Shell theme for GNOME 40 is in development and not yet available"
-  fi
-
   remove_themes; customize_theme; avoid_variant_duplicates; echo
 
   prompt -i "Installing '${name}' themes in '${dest}'..."
@@ -126,11 +122,11 @@ else
   prompt -i "Nautilus variant : ${nautilus_style}"
   echo; install_themes
 
-  if [[ "$(which xfce4-session 2> /dev/null)" ]]; then
-    msg="XFCE: you may need to logout after changing your theme to fix your panel opacity."
-  fi
+  # if [[ "$(which xfce4-session 2> /dev/null)" ]]; then
+  #   msg="XFCE: you may need to logout after changing your theme to fix your panel opacity."
+  # fi
 
   echo; prompt -s "Done!"; echo; prompt -w "${msg}"; echo
 
-  [[ -x /usr/bin/notify-send ]] && notify-send "'${name}' theme has been installed. Enjoy!" "${msg}" -i "weather-snow-symbolic"
+  [[ -x /usr/bin/notify-send ]] && notify-send "'${name}' theme has been installed. Enjoy!" "${msg}" -i "dialog-information-symbolic"
 fi

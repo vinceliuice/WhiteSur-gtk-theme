@@ -1,0 +1,59 @@
+/* Search */
+
+// search results sections "the boxes"
+.search-section {
+  // This should be equal to #searchResultsContent spacing
+  spacing: $base_margin * 2;
+
+  // separator
+  .search-section-separator {
+    height: 1px;
+    background-color: $light_divider_color;
+  }
+}
+
+// content
+.search-section-content {  // This is the space between the provider icon and the results container
+  spacing: 32px;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  background: none;
+  text-shadow: none;
+  color: $light_alt_fg_color;
+}
+
+// "no results" text
+.search-statustext {
+  @extend %status_text !optional;
+}
+
+//Icon tile
+.search-provider-icon,
+.list-search-result {
+  @extend %icon_tile;
+  &:focus, &:selected, &:hover {
+    background-color: $light_divider_color;
+  }
+  &:active, &:checked {
+    background-color: $light_track_color;
+  }
+}
+
+// search result provider
+.search-provider-icon {
+  @extend %app-well-app;
+
+  // content
+  .list-search-provider-content {
+    spacing: 12px;
+
+    // provider labels
+    .list-search-provider-details {
+      width: 120px;
+      margin-top: 0;
+      color: $light_hint_fg_color;
+      // font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+.window-picker { //container around window thumbnails
+  -horizontal-spacing: 16px;
+  -vertical-spacing: 16px;
+  padding: 0 16px 32px;
+  spacing: 12px;
+
+  &.external-monitor { padding: 16px; }
+}
+
+.window-caption {
+  spacing: 25px;
+  color: $light_alt_fg_color;
+  background-color: $dark_bg_color;
+  border-radius: $bt_radius;
+  padding: 4px 8px;
+  border: none;
+  font-weight: normal;
+  @include font(body);
+}
+
+.window-clone-border {
+  border: 4px solid $light_track_color;
+  border-radius: $bt_radius;
+  // For window decorations with round corners we can't match
+  // the exact shape when the window is scaled. So apply a shadow
+  // to fix that case
+  box-shadow: inset 0 0 0 1px $light_track_color;
+}
+
+//close buttons
+.window-close {
+  background-size: 26px;
+  height: 26px;
+  width: 26px;
+  -shell-close-overlap: 10px;
+  border-radius: 100px;
+  border: 0 none transparent;
+  background-color: transparent;
+  color: transparent;
+  box-shadow: none;
+  StIcon { icon-size: 26px; } // for safety
+  background-image: url("assets/window-close.svg");
+
+  &:hover {
+    background-size: 26px;
+    height: 26px;
+    width: 26px;
+    background-image: url("assets/window-close-hover.svg");
+  }
+
+  &:active {
+    background-size: 26px;
+    height: 26px;
+    width: 26px;
+    background-image: url("assets/window-close-active.svg");
+  }
+}

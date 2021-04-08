@@ -13,6 +13,7 @@ $large-font-family: Roboto, "M+ 1c", Cantarell, Sans-Serif;
 // font sizes
 $root-font-size: if($laptop == 'false', 14px, 13px);
 $subheading-size: if($laptop == 'false', 16px, 15px);
+$base_font_size: 11;
 
 // opacities
 $higher_opacity: 0.9;
@@ -31,6 +32,11 @@ $menuitem_size: if($laptop == 'false', 32px, 28px);
 $container_padding: if($laptop == 'false', 6px, 4px);
 $nautilus_headerbar_size: 42px;
 
+// padding, margin and spacing
+$base_padding: 6px;
+$base_margin: 4px;
+$base_spacing: 6px;
+
 // radiuses
 $circular_radius: 9999px;
 $bt_radius: 6px;
@@ -38,6 +44,12 @@ $bd_radius: 8px;
 $wm_radius: 12px;
 $mn_radius: 10px;
 $maximized_radius: 0;
+$base_border_radius: 8px;
+$modal_radius: $base_border_radius * 2;
+
+// icons
+$base_icon_size: 1.09em;
+// $base_icon_size: 16px;
 
 // durations
 $shorter_duration: 100ms;

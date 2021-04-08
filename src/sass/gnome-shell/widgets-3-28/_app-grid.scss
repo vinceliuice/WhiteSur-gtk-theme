@@ -1,0 +1,70 @@
+$app_icon_size: 96px;
+
+// App Vault/Grid
+.icon-grid {
+  spacing: 30px;
+  -shell-grid-horizontal-item-size: 136px;
+  -shell-grid-vertical-item-size: 136px;
+
+  row-spacing: $container_padding * 6;
+  column-spacing: $container_padding * 6;
+  max-row-spacing: $container_padding * 12;
+  max-column-spacing: $container_padding * 12;
+
+  .overview-icon { icon-size: $app_icon_size; }
+}
+
+.app-folder-icon {
+  padding: $container_padding;
+  spacing-rows: $container_padding;
+  spacing-columns: $container_padding;
+}
+
+// expanded folder
+.app-folder-dialog {
+  & .page-indicators {
+    .page-indicator {
+      padding: 15px 12px;
+    }
+  }
+
+  & StButton#vhandle,
+  & StButton#vhandle:hover,
+  & StButton#vhandle:active { background-color: transparent; }
+}
+
+.page-indicator {
+  padding: 15px 20px;
+
+  .page-indicator-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    margin: 0;
+    padding: 0;
+    background-image: none;
+    color: transparent;
+    border: none;
+    box-shadow: none;
+    background-color: $light_alt_disabled_fg_color;
+  }
+  &:hover .page-indicator-icon {
+    background-image: none;
+    background-color: $light_disabled_fg_color;
+  }
+  &:active .page-indicator-icon {
+    margin: 0;
+    padding: 0;
+    background-image: none;
+    color: transparent;
+    border: none;
+    box-shadow: none;
+    background-color: $light_alt_fg_color;
+  }
+  &:checked .page-indicator-icon {
+    background-image: none;
+    background-color: $light_alt_fg_color;
+    transition-duration: 0ms;
+  }
+  &:checked:active { background-image: none; }
+}

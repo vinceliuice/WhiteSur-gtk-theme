@@ -1,0 +1,31 @@
+// panel
+#panel {
+  #panelLeft, #panelCenter { // spacing between activities<>app menu and such
+    spacing: 0;
+  }
+
+  .panel-button {
+    .popup-menu-arrow { width: 0; height: 0; } // Remove arrow on panel button
+  }
+
+  .panel-status-indicators-box,
+  .panel-status-menu-box {
+    spacing: 2px;
+  }
+
+  // spacing between power icon and (optional) percentage label
+  .power-status.panel-status-indicators-box {
+    spacing: 0;
+  }
+
+  .screencast-indicator { color: $error_color; }
+  .remote-access-indicator { color: $warning_color; } // > 3.29.4
+}
+
+// App Menu
+#appMenu {
+  spinner-image: url("process-working.svg");
+  spacing: 4px;
+
+  .label-shadow { color: transparent; }
+}

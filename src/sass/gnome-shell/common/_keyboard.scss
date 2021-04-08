@@ -1,0 +1,112 @@
+/* On-screen Keyboard */
+
+$key_size: 1.2em;
+$key_border_radius: $base_border_radius + 3px;
+$key_bg_color:  $bg_color;
+// $default_key_bg_color: darken($key_bg_color, 4%);
+$default_key_bg_color: if($variant=='light', darken($osd_bg_color, 11%), lighten($osd_bg_color, 2%));
+
+
+// draw keys using button function
+#keyboard {
+  background-color: rgba(black, 0.25);
+  box-shadow: none;
+
+  .page-indicator {
+    padding: $base_padding;
+
+    .page-indicator-icon {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
+
+// the container for individual keys
+.key-container,
+.keyboard-layout {
+  padding: $base_margin;
+  spacing: $base_margin;
+}
+
+// the keys
+.keyboard-key {
+  font-size: round(16) + pt;
+  font-weight: bold;
+  min-height: $key_size;
+  min-width: $key_size;
+  border-radius: $mn_radius;
+  border: none;
+  color: $alt_fg_color;
+  background-color: $solid_bg_color;
+  box-shadow: 0 1px 3px rgba(black, 0.15);
+
+  &:focus, &:hover { color: $fg_color; background-color: if($variant == 'light', white, lighten($solid_bg_color, 10%)); }
+  &:checked, &:active { color: $fg_color; background-color: darken($solid_bg_color, 10%); }
+
+  &:grayed { //FIXME
+    background-color: $alt_dark_bg_color;
+    color: $light_alt_fg_color;
+    border-color: $alt_dark_bg_color;
+  }
+
+  &.default-key { // non-character keys
+    background-color: $alt_solid_bg_color;
+    box-shadow: 0 2px 3px rgba(black, 0.15);
+
+    &:focus, &:hover { color: $fg_color; background-color: lighten($alt_solid_bg_color, 10%); }
+    &:checked, &:active { color: $fg_color; background-color: darken($alt_solid_bg_color, 10%); }
+  }
+
+  &.enter-key { // enter key is suggested-action
+    color: $light_fg_color;
+    background-color: $primary_color;
+    box-shadow: 0 2px 3px rgba(black, 0.15);
+
+    &:focus, &:hover { color: $light_fg_color; background-color: lighten($primary_color, 5%); }
+    &:checked, &:active { color: $light_fg_color; background-color: darken($primary_color, 10%); }
+  }
+
+  &.shift-key-uppercase {
+    &, &:focus, &:hover, &:checked, &:active {
+      color: $primary_color;
+    }
+  }
+
+  StIcon { icon-size: 1.125em; }
+}
+
+.keyboard-subkeys { //long press on a key popup
+  color: inherit;
+  -arrow-border-radius: $bt_radius;
+  -arrow-background-color: rgba(black, 0.45);
+  -arrow-border-width: 0;
+  -arrow-border-color: transparent;
+  -arrow-base: 20px;
+  -arrow-rise: 10px;
+  -boxpointer-gap: 5px;
+  box-shadow: 0 2px 5px rgba(black, 0.25);
+}
+
+// emoji
+.emoji-page {
+  .keyboard-key {
+    background-color: transparent;
+    border: none;
+    color: initial;
+  }
+}
+
+.emoji-panel {
+  .keyboard-key:latched {
+    border-color: lighten($primary_color, 5%);
+    background-color: $primary_color;
+  }
+}
+
+// On-screen Keyboard
+.word-suggestions {
+  font-size: 14pt;
+  spacing: 12px;
+  min-height: 20pt;
+}

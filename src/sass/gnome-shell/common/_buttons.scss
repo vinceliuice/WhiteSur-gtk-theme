@@ -1,0 +1,12 @@
+/* Buttons */
+
+.button {
+  min-height: $medium_size;
+  padding: 0 16px;
+  border-radius: $bt_radius;
+
+  &, .popup-menu & {
+    @extend %flat_button;
+    border: none;
+  }
+}
