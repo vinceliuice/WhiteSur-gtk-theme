@@ -78,7 +78,6 @@
   border: none;
   border-radius: $bt_radius;
   @include font(button);
-  @extend %flat_button;
 
   &:hover { border: none; }
 }

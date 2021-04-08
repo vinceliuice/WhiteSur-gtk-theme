@@ -6,7 +6,11 @@
   border-radius: $bt_radius;
 
   &, .popup-menu & {
-    @extend %flat_button;
+    @include button(flat-normal);
+    &:hover { @include button(flat-hover); }
+    &:active { @include button(flat-active); }
+    &:insensitive { @include button(flat-insensitive); }
+    &:focus { @include button(flat-focus); }
     border: none;
   }
 }

@@ -3,6 +3,15 @@
 
 $app_grid_fg_color: #fff;
 
+%icon_tile {
+  color: $light_alt_fg_color;
+  border-radius: $bd_radius * 1.5;
+  padding: 6px;
+  border: none;
+  transition-duration: $longer_duration;
+  text-align: center;
+}
+
 %app-well-app,
 .show-apps,
 .app-well-app,

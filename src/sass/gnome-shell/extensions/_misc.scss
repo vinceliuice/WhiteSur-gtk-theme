@@ -21,6 +21,7 @@
     &:focus { @include button(flat-focus); }
     &:active { @include button(flat-active); }
     &:insensitive { @include button(flat-disabled); }
+    border: 1px solid transparent;
   }
 
   &-current {

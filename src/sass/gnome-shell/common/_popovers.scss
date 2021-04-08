@@ -2,6 +2,28 @@
 
 $popop_menuitem_radius: $wm_radius - 4px;
 
+%popover_bubble {
+  border-radius: $mn_radius;
+  border: none;
+  box-shadow: none;
+  background-color: if($variant == 'light', rgba(white, 0.75), rgba(lighten($base_color, 8%), 0.75));
+  text-shadow: none;
+  color: $alt_fg_color;
+  transition: none;
+
+  &:hover, &:focus {
+    color: $fg_color;
+    background-color: if($variant == 'light', rgba(white, 1), rgba(lighten($base_color, 15%), 0.75));
+    box-shadow: 0 3px 5px rgba(black, 0.1);
+  }
+
+  &:active {
+    color: $fg_color;
+    background-color: if($variant == 'light', rgba(white, 0.65), rgba(lighten($base_color, 10%), 0.75));
+    box-shadow: none;
+  }
+}
+
 //.the popover itself
 .popup-menu-boxpointer {
   -arrow-border-radius: 2px;
@@ -12,12 +34,6 @@ $popop_menuitem_radius: $wm_radius - 4px;
   -arrow-rise: 0;
   -arrow-box-shadow: none; //dreaming. bug #689995
   background: transparent; // needs to reset?
-
-  StEntry {
-    selection-background-color: $light_alt_fg_color;
-    selected-background-color: $light_alt_fg_color;
-    selected-color: $primary_color;
-  }
 }
 
 // container of the popover menu
@@ -117,6 +133,18 @@ $popop_menuitem_radius: $wm_radius - 4px;
   &.panel-menu {
     -boxpointer-gap: $base_margin; // distance from the panel
     margin-bottom: 1.75em;
+  }
+
+  StEntry {
+    selection-background-color: $light_alt_fg_color;
+    selected-background-color: $light_alt_fg_color;
+    selected-color: $primary_color;
+    caret-color: $fg_color;
+
+    StLabel.hint-text {
+      margin-left: 2px;
+      color: transparentize($fg_color, 0.3);
+    }
   }
 }
 // symbolic icons in popover

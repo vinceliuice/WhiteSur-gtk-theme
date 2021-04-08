@@ -8,11 +8,11 @@
   margin: 5px;
   border-radius: $bt_radius;
   color: $fg_color;
-  background-color: rgba($base_color, 0.92);
+  background-color: $base_color;
   border: none;
   box-shadow: 0 3px 8px rgba(black, 0.25);
 
-  &:hover { background-color: rgba($base_color, 0.95); }
+  &:hover, &:selected { background-color: rgba($base_color, 1); box-shadow: 0 5px 12px rgba(black, 0.35); }
   &:focus { background-color: $base_color; }
 
   .notification-icon { padding: 5px; }
