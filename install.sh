@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # WARNING: Please make this shell not working-directory dependant, for example
 # instead of using 'cd blabla', use 'cd "${REPO_DIR}/blabla"'

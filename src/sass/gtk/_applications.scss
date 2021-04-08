@@ -56,18 +56,12 @@ window.background.csd { // gnome-terminal 3.32 setting
   }
 }
 
-window.background.csd, dialog.background.csd {
-  actionbar {
-    border-radius: 0 0 $wm_radius $wm_radius;
-  }
-}
-
 //
 // Filechooser, Dialog, and Nautilus
 //
 $nautilus_radius: $wm_radius + 2px;
 $nautilus_sidebar_size: $sidebar_size;
-$nautilus_borders_color: darken(rgba($dark_sidebar_bg, 1), 12%);
+$nautilus_borders_color: if($variant=='light', darken(rgba($dark_sidebar_bg, 1), 12%), $header_border);
 
 $nautilus_header_image: image($header_bg);
 $nautilus_header_borders_image: image($header_border);
@@ -76,24 +70,55 @@ $nautilus_actionbar_borders_image: image($header_border);
 $dialog_header_image: image($dark_header_bg);
 $dialog_header_borders_image: image($header_border);
 $nautilus_bg_image: image($dark_sidebar_bg);
+$nautilus_sidebar_image: image($dark_sidebar_bg);
 
-@if $gnome_version == 'new' {
+@if $gnome_version == 'new' and $nautilus_style != 'stable' {
   $nautilus_bg_image: linear-gradient(180deg, rgba($dark_sidebar_bg, 0) ($nautilus_headerbar_size + 1),
                                       $dark_sidebar_bg ($nautilus_headerbar_size + 1));
 }
 
+@if $nautilus_style == 'stable' {
+  @if $gnome_version == 'new' {
+    $nautilus_header_image: linear-gradient(90deg, transparent 0%,
+                                                   transparent $nautilus_sidebar_size,
+                                                   darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
+                                                   darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
+                                                   $base_color ($nautilus_sidebar_size + 1px),
+                                                   $base_color 100%);
+  } @else {
+    $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
+                                                   $dark_sidebar_bg $nautilus_sidebar_size,
+                                                   darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
+                                                   darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
+                                                   $base_color ($nautilus_sidebar_size + 1px),
+                                                   $base_color 100%);
+  }
+
+  $nautilus_sidebar_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
+                                                  $dark_sidebar_bg $nautilus_sidebar_size,
+                                                  transparent $nautilus_sidebar_size,
+                                                  transparent 100%);
+
+  $nautilus_bg_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
+                                             $dark_sidebar_bg $nautilus_sidebar_size,
+                                             darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
+                                             darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
+                                             $base_color ($nautilus_sidebar_size + 1px),
+                                             $base_color 100%);
+}
+
 @if $nautilus_style == 'default' or $nautilus_style == 'glassy' {
   $dialog_header_image: linear-gradient(90deg, $dialog_bg_color 5%,
-                                        $dark_header_bg 40%);
+                                               $dark_header_bg 40%);
 
   $dialog_header_borders_image: linear-gradient(90deg, $dialog_bg_color 0px,
-                                                $header_border 25%);
+                                                       $header_border 25%);
 
   $nautilus_actionbar_image: linear-gradient(90deg, rgba($dark_header_bg, 0) 5%,
-                                             transparentize($dark_header_bg, 0.2) 40%);
+                                                    transparentize($dark_header_bg, 0.2) 40%);
 
   $nautilus_actionbar_borders_image: linear-gradient(90deg, rgba($header_border, 0) 0px,
-                                                     $header_border 25%);
+                                                            $header_border 25%);
 }
 
 @if $nautilus_style == 'default' {
@@ -102,32 +127,20 @@ $nautilus_bg_image: image($dark_sidebar_bg);
                                           $nautilus_borders_color ($nautilus_sidebar_size + 1px),
                                           $base_color ($nautilus_sidebar_size + 1px));
 
-  $nautilus_header_borders_image: linear-gradient(90deg, $dark_sidebar_bg $nautilus_sidebar_size,
-                                                  $header_border $nautilus_sidebar_size);
+  $nautilus_header_borders_image: linear-gradient(90deg, transparent $nautilus_sidebar_size,
+                                                         $header_border $nautilus_sidebar_size);
 } @else if $nautilus_style == 'glassy' {
   $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg ($nautilus_sidebar_size/2),
-                                          $dark_header_bg 40%);
+                                                 $dark_header_bg 40%);
 
-  $nautilus_header_borders_image: linear-gradient(90deg, $dark_sidebar_bg (($nautilus_sidebar_size/2) - 40px),
-                                                  $header_border 40%);
+  $nautilus_header_borders_image: linear-gradient(90deg, transparent (($nautilus_sidebar_size/2) - 40px),
+                                                         $header_border 40%);
 }
 
 @mixin color_sidebar() {
-  > grid.horizontal > paned.horizontal > separator,
-  > box.vertical > paned.horizontal > separator,
-  > deck > box.vertical > paned.horizontal > separator { // Use paned separator to hide stack border-bottom-left-radius
-    border-left: none;
-    background-color: transparent;
-    background-image: image($nautilus_borders_color);
-    background-size: 1px 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
   placessidebar.sidebar {
     background-color: transparent;
     min-width: $nautilus_sidebar_size;
-    margin-bottom: $wm_radius;
     border: none;
 
     row.sidebar-row {
@@ -145,27 +158,65 @@ $nautilus_bg_image: image($dark_sidebar_bg);
       &:backdrop { opacity: 0.85; }
 
       // row style
-      border-radius: $bt_radius;
-      margin: 0 6px;
-      padding: 2px 4px;
-
-      &:hover {
-        background-color: rgba($fg_color, 0.1);
-      }
-
-      &:active, &:active:hover {
-        transition: background-color ease-out 200ms;
-        background-color: rgba($fg_color, 0.2);
-      }
-
-      &:selected.has-open-popup,
-      &:selected, &:selected:hover {
-        color: $fg_color;
-        transition: background-color ease-out 200ms;
-        background-color: rgba($fg_color, 0.15);
-
-        &, label { color: $fg_color; }
+      @if $nautilus_style == 'stable' {
+        &:hover {
+          transition: background-image 0;
+          background-repeat: no-repeat;
+          background-color: transparent;
+          background-position: left center;
+          background-size: $nautilus_sidebar_size 28px;
+          background-image: -gtk-scaled(url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                        url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
         }
+
+        &:active, &:active:hover {
+          transition: background-image ease-out 200ms;
+          background-repeat: no-repeat;
+          background-color: transparent;
+          background-position: left center;
+          background-size: $nautilus_sidebar_size 28px;
+          background-image: -gtk-scaled(url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                        url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
+        }
+
+        &:selected.has-open-popup,
+        &:selected, &:selected:hover {
+          color: $fg_color;
+          transition: background-image ease-out 200ms;
+          background-repeat: no-repeat;
+          background-position: left center;
+          background-size: $nautilus_sidebar_size 28px;
+          background-color: transparent;
+          background-image: -gtk-scaled(url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                        url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
+
+          &, label { color: $fg_color; }
+        }
+      }
+
+      @else {
+        border-radius: $bt_radius;
+        margin: 0 6px;
+        padding: 2px 4px;
+
+        &:hover {
+          background-color: rgba($fg_color, 0.1);
+        }
+
+        &:active, &:active:hover {
+          transition: background-color ease-out 200ms;
+          background-color: rgba($fg_color, 0.2);
+        }
+
+        &:selected.has-open-popup,
+        &:selected, &:selected:hover {
+          color: $fg_color;
+          transition: background-color ease-out 200ms;
+          background-color: rgba($fg_color, 0.15);
+
+          &, label { color: $fg_color; }
+        }
+      }
 
       // other
       &.sidebar-new-bookmark-row {
@@ -236,17 +287,17 @@ dialog.background.csd {
 
   > headerbar {
     &.titlebar {
-      border-image: image($header_border) 0 0 1 / 0px 0px 1px stretch;
+      // border-image: image($header_border) 0 0 1 / 0px 0px 1px stretch;
 
       > label:not(.title):not(.subtitle) { // wallpaper set dialog
         font-weight: 700;
       }
 
-      &:not(.default-decoration) {
-        border-image: $dialog_header_borders_image 0 0 1 / 0px 0px 1px stretch;
-        background-image: $dialog_header_image;
-        background-color: transparent;
-      }
+      // &:not(.default-decoration) {
+      //   border-image: $dialog_header_borders_image 0 0 1 / 0px 0px 1px stretch;
+      //   background-image: $dialog_header_image;
+      //   background-color: transparent;
+      // }
     }
   }
 
@@ -375,6 +426,8 @@ dialog.background.csd {
       background-image: $nautilus_actionbar_image;
       border-image: $nautilus_actionbar_borders_image 1 0 0 / 1px 0px 0px stretch;
       color: $dark_sidebar_fg;
+      border-radius: 0 0 $wm_radius 0;
+
       label, combobox { color: $dark_sidebar_fg; }
     }
 
@@ -412,23 +465,37 @@ dialog.background.csd {
       background-color: transparent;
       box-shadow: inset 0 1px rgba(white, 0.1);
       background-image: $nautilus_header_image;
-      border-image: $nautilus_header_borders_image 0 0 1 / 0px 0px 1px stretch;
+      border: none;
 
-      > box.left.horizontal {
-        background-image: transparent;
+      @if $nautilus_style != 'stable' { border-image: $nautilus_header_borders_image 0 0 1 / 0px 0px 1px stretch; }
+
+      @if $nautilus_style == 'stable' and $trans == 'false' {
+        > box.left.horizontal {
+          background-image: linear-gradient(0deg, $dark_sidebar_bg 0%, $dark_sidebar_bg 95%, transparent 95%, transparent 100%);
+        }
       }
 
-      @if $nautilus_style == 'default' {
+      @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
         > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
-      } @else {
-        > .linked.raised > button:first-child { margin-left: 0px }
-        > .linked.raised > button:last-child { margin-right: 0px }
-        //> .linked.raised > button:last-child { margin-right: $nautilus_sidebar_size - 80px }
       }
+
+      // @else {
+      //   > .linked.raised > button:first-child { margin-left: 0px }
+      //   > .linked.raised > button:last-child { margin-right: 0px }
+      // }
     }
 
     placessidebar.sidebar {
       border-bottom-left-radius: $wm_radius;
+
+      @if $nautilus_style == 'stable' {
+        // margin-bottom: $wm_radius;
+        background-image: if($trans == 'true', none, $nautilus_sidebar_image);
+      }
+
+      @else {
+        &.frame { border-right: 1px solid $nautilus_borders_color; }
+      }
     }
   }
 
@@ -474,8 +541,8 @@ dialog.background.csd {
 
     > stack {
       background-color: $base_color;
-      &:dir(ltr) { border-radius: 0 0 ($wm_radius+2) 0 }
-      &:dir(rtl) { border-radius: 0 0 0 ($wm_radius+2) }
+      // &:dir(ltr) { border-radius: 0 0 ($wm_radius+2) 0 }
+      // &:dir(rtl) { border-radius: 0 0 0 ($wm_radius+2) }
     }
 
     > stack:not(:only-child) {
@@ -517,6 +584,33 @@ dialog.background.csd {
     notebook { &, > stack { border-radius: 0 0 $maximized_radius $maximized_radius; } }
     headerbar { border-radius: $maximized_radius $maximized_radius 0 0; }
     placessidebar { border-bottom-left-radius: $maximized_radius; }
+  }
+
+  > grid.horizontal > paned.horizontal > separator,
+  > deck > box.vertical > paned.horizontal > separator { // Use paned separator to hide stack border-bottom-left-radius
+    border: none;
+    min-width: 2px;
+    min-height: 2px;
+    background-color: $base_color;
+    background-image: image($base_color);
+    background-size: $wm_radius $wm_radius;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+
+    &:dir(ltr) { margin-left: -1px; }
+    &:dir(rtl) { margin-right: -1px; }
+
+    @if $nautilus_style == 'stable' {
+      &:dir(ltr) { margin-left: 2px; }
+      &:dir(rtl) { margin-right: 2px; }
+
+      &:hover {
+        background-image: image($solid_borders_color);
+        background-size: 2px 100px;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+    }
   }
 
   @include color_sidebar();

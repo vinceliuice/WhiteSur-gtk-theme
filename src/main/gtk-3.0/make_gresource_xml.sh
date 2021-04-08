@@ -1,6 +1,7 @@
 #! /bin/bash
 
 INDEX="../../assets/gtk-3.0/common-assets/assets.txt"
+SINDEX="../../assets/gtk-3.0/common-assets/sidebar-assets.txt"
 WINDEX="../../assets/gtk-3.0/windows-assets/assets.txt"
 
 if [ -f gtk.gresource.xml ]; then
@@ -12,6 +13,12 @@ echo "<gresources>" >> gtk.gresource.xml
 echo '  <gresource prefix="/org/gnome/theme">' >> gtk.gresource.xml
 
 for i in `cat $INDEX`
+do
+  echo "    <file>assets/$i.png</file>" >> gtk.gresource.xml
+  echo "    <file>assets/$i@2.png</file>" >> gtk.gresource.xml
+done
+
+for i in `cat $SINDEX`
 do
   echo "    <file>assets/$i.png</file>" >> gtk.gresource.xml
   echo "    <file>assets/$i@2.png</file>" >> gtk.gresource.xml

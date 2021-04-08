@@ -144,6 +144,7 @@ install_theemy() {
 
   mkdir -p                                                                                    "${TMP_DIR}"
   cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/common-assets/assets"                                "${TMP_DIR}"
+  cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/common-assets/sidebar-assets/"*".png"                "${TMP_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/windows-assets/titlebutton${alt}"                    "${TMP_DIR}/windows-assets"
 
   if [[ "${theme}" != '' ]]; then
@@ -486,12 +487,14 @@ show_nautilus_style_dialog() {
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your Nautilus style (default is BigSur-like style):" 15 40 5 \
       0 "${NAUTILUS_STYLE_VARIANTS[0]}" on \
-      1 "${NAUTILUS_STYLE_VARIANTS[1]}" on \
-      2 "${NAUTILUS_STYLE_VARIANTS[2]}" off --output-fd 1 )
+      1 "${NAUTILUS_STYLE_VARIANTS[1]}" off \
+      1 "${NAUTILUS_STYLE_VARIANTS[2]}" off \
+      2 "${NAUTILUS_STYLE_VARIANTS[3]}" off --output-fd 1 )
       case "$tui" in
         0) nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}" ;;
         1) nautilus_style="${NAUTILUS_STYLE_VARIANTS[1]}" ;;
         2) nautilus_style="${NAUTILUS_STYLE_VARIANTS[2]}" ;;
+        3) nautilus_style="${NAUTILUS_STYLE_VARIANTS[3]}" ;;
         *) operation_canceled ;;
       esac
   fi

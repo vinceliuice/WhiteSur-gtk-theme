@@ -1313,6 +1313,10 @@ actionbar {
   padding: 6px;
   border-top: 1px solid $borders_color;
   background-color: darken($bg_color, 3%);
+
+  .background.csd revealer > & {
+    border-radius: 0 0 $wm_radius $wm_radius;
+  }
 }
 
 //
@@ -3356,9 +3360,47 @@ messagedialog { // Message Dialog styling
 }
 
 //
+// Filechooser
+//
+filechooser {
+  .csd & {
+    background-color: $base_color;
+    border-radius: 0 0 $wm_radius $wm_radius;
+
+    placessidebar.sidebar { background-color: transparent; }
+
+    stack.view {
+      background-color: transparent;
+
+      scrolledwindow {
+        background-color: transparent;
+        border-radius: 0 0 $wm_radius $wm_radius;
+
+        list { background-color: transparent; }
+
+        treeview.view {
+          @extend %view;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  > box.vertical > paned.horizontal > separator {
+    border: none;
+    min-width: 1px;
+    background-image: image(if($variant=='light', $solid_borders_color, $header_border));
+
+    &:dir(ltr) { margin-left: -1px; }
+    &:dir(rtl) { margin-right: -1px; }
+  }
+
+  #pathbarbox { border-bottom: 1px solid transparentize($borders_color, 0.5); }
+}
+
+//
 // Sidebar
 //
-
 %sidebar_left {
   border-right: 1px solid $borders_color;
   border-left-style: none;
@@ -3396,7 +3438,7 @@ messagedialog { // Message Dialog styling
     }
   }
 
-  paned & { &.left, &.right, &.left:dir(rtl), &:dir(rtl), &:dir(ltr), & { border-style: none; }}
+  paned & { &.left, &.right, &.left:dir(rtl), &:dir(rtl), &:dir(ltr), & { border: none; }}
 }
 
 stacksidebar {
