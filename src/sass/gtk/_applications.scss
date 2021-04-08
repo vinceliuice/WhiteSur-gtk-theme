@@ -30,8 +30,6 @@ terminal-window {
       margin: -2px;
     }
   }
-
-  &.background.csd.maximized { border-radius: 0 0 0 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
 }
 
 window.background.csd { // gnome-terminal 3.32 setting
@@ -58,133 +56,79 @@ window.background.csd { // gnome-terminal 3.32 setting
   }
 }
 
-//
-// Nautilus
-//
-
-$nautilus_radius: $wm_radius + 2px;
-$nautilus_sidebar_size: $sidebar_size_default;
-$nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
-                                       $dark_sidebar_bg $nautilus_sidebar_size,
-                                       darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
-                                       darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
-                                       $base_color ($nautilus_sidebar_size + 1px),
-                                       $base_color 100%);
-
-$nautilus_header_image_alt: linear-gradient(90deg, transparent 0%,
-                                           transparent $nautilus_sidebar_size,
-                                           darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
-                                           darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
-                                           $base_color ($nautilus_sidebar_size + 1px),
-                                           $base_color 100%);
-
-$nautilus_sidebar_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
-                                        $dark_sidebar_bg $nautilus_sidebar_size,
-                                        transparent $nautilus_sidebar_size,
-                                        transparent 100%);
-
-$nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
-                                           $dark_sidebar_bg $nautilus_sidebar_size,
-                                           darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
-                                           darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
-                                           $base_color ($nautilus_sidebar_size + 1px),
-                                           $base_color 100%);
-
-.nautilus-window {
-  &.background.csd {
+window.background.csd, dialog.background.csd {
+  actionbar {
     border-radius: 0 0 $wm_radius $wm_radius;
-
-    @if $nautilus_use_colors == 'true' {
-      background-color: $dark_sidebar_bg;
-    } @else {
-      background-color: transparent;
-      background-image: $nautilus_background_image;
-    }
-
-    > headerbar.titlebar,
-    > deck > box > headerbar.titlebar {
-      box-shadow: inset 0 1px rgba(white, 0.1);
-
-      @if $nautilus_use_colors == 'true' {
-        background-color: $header_bg;
-      } @else {
-        border: none;
-        background-color: transparent;
-        background-image: if($gnome_version == 'new', $nautilus_header_image_alt, $nautilus_header_image);
-
-        > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
-
-        @if $trans == 'false' {
-          > box.left.horizontal {
-            background-image: linear-gradient(0deg, $dark_sidebar_bg 0%,
-                                          $dark_sidebar_bg 95%,
-                                          transparent 95%,
-                                          transparent 100%);
-          }
-        }
-      }
-    }
-
-    placessidebar.sidebar {
-      border-bottom-left-radius: $wm_radius;
-    }
   }
+}
 
-  headerbar {
-    .path-bar-box {
-      color: transparent;
-      background: none;
-      padding: 0 12px;
+//
+// Filechooser, Dialog, and Nautilus
+//
+$nautilus_radius: $wm_radius + 2px;
+$nautilus_sidebar_size: $sidebar_size;
+$nautilus_borders_color: darken(rgba($dark_sidebar_bg, 1), 12%);
 
-      .linked.nautilus-path-bar { // for ≥ 3.31.90
-        > button:not(:only-child):last-child {
-          @include button(header-checked);
-        }
-      }
+$nautilus_header_image: image($header_bg);
+$nautilus_header_borders_image: image($header_border);
+$nautilus_actionbar_image: image($dark_header_bg);
+$nautilus_actionbar_borders_image: image($header_border);
+$dialog_header_image: image($dark_header_bg);
+$dialog_header_borders_image: image($header_border);
+$nautilus_bg_image: image($dark_sidebar_bg);
 
-      // workaround for 3.30.1
-      &.background.frame {
-        border: none;
-        background-color: transparent;
-      }
-    }
-  }
+@if $gnome_version == 'new' {
+  $nautilus_bg_image: linear-gradient(180deg, rgba($dark_sidebar_bg, 0) ($nautilus_headerbar_size + 1),
+                                      $dark_sidebar_bg ($nautilus_headerbar_size + 1));
+}
 
+@if $nautilus_style == 'default' or $nautilus_style == 'glassy' {
+  $dialog_header_image: linear-gradient(90deg, $dialog_bg_color 5%,
+                                        $dark_header_bg 40%);
+
+  $dialog_header_borders_image: linear-gradient(90deg, $dialog_bg_color 0px,
+                                                $header_border 25%);
+
+  $nautilus_actionbar_image: linear-gradient(90deg, rgba($dark_header_bg, 0) 5%,
+                                             transparentize($dark_header_bg, 0.2) 40%);
+
+  $nautilus_actionbar_borders_image: linear-gradient(90deg, rgba($header_border, 0) 0px,
+                                                     $header_border 25%);
+}
+
+@if $nautilus_style == 'default' {
+  $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg $nautilus_sidebar_size,
+                                          $nautilus_borders_color $nautilus_sidebar_size,
+                                          $nautilus_borders_color ($nautilus_sidebar_size + 1px),
+                                          $base_color ($nautilus_sidebar_size + 1px));
+
+  $nautilus_header_borders_image: linear-gradient(90deg, $dark_sidebar_bg $nautilus_sidebar_size,
+                                                  $header_border $nautilus_sidebar_size);
+} @else if $nautilus_style == 'glassy' {
+  $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg ($nautilus_sidebar_size/2),
+                                          $dark_header_bg 40%);
+
+  $nautilus_header_borders_image: linear-gradient(90deg, $dark_sidebar_bg (($nautilus_sidebar_size/2) - 40px),
+                                                  $header_border 40%);
+}
+
+@mixin color_sidebar() {
   > grid.horizontal > paned.horizontal > separator,
+  > box.vertical > paned.horizontal > separator,
   > deck > box.vertical > paned.horizontal > separator { // Use paned separator to hide stack border-bottom-left-radius
     border-left: none;
     background-color: transparent;
-    background-image: image($base_color);
-    background-size: $wm_radius $wm_radius;
-    background-position: bottom left;
+    background-image: image($nautilus_borders_color);
+    background-size: 1px 100%;
     background-repeat: no-repeat;
-
-    &:dir(ltr) { margin-left: -1px; }
-    &:dir(rtl) { margin-right: -1px; }
-
-    @if $nautilus_use_colors == 'true' {} @else {
-      &:dir(ltr) { margin-left: 2px; }
-      &:dir(rtl) { margin-right: 2px; }
-
-      &:hover {
-        background-image: image($borders_color);
-        background-size: 2px 100px;
-        background-position: center center;
-      }
-    }
+    background-position: center;
   }
 
   placessidebar.sidebar {
-    @if $nautilus_use_colors == 'true' {
-      background-color: transparent;
-      &.frame { border-right: 1px solid if($variant=='light', $solid_borders_color, $header_border); }
-    } @else {
-      margin-bottom: $wm_radius;
-      border: none;
-      min-width: $nautilus_sidebar_size;
-      background-color: transparent;
-      background-image: if($trans == 'true', none, $nautilus_sidebar_image);
-    }
+    background-color: transparent;
+    min-width: $nautilus_sidebar_size;
+    margin-bottom: $wm_radius;
+    border: none;
 
     row.sidebar-row {
       color: $dark_sidebar_fg;
@@ -200,64 +144,30 @@ $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
 
       &:backdrop { opacity: 0.85; }
 
-      @if $nautilus_use_colors == 'true' {
-        border-radius: $bt_radius;
-        margin: 0 6px;
-        padding: 2px 4px;
+      // row style
+      border-radius: $bt_radius;
+      margin: 0 6px;
+      padding: 2px 4px;
 
-        &:hover {
-          background-color: rgba($fg_color, 0.1);
-        }
-
-        &:active, &:active:hover {
-          transition: background-color ease-out 200ms;
-          background-color: rgba($fg_color, 0.2);
-        }
-
-        &:selected.has-open-popup,
-        &:selected, &:selected:hover {
-          color: $fg_color;
-          transition: background-color ease-out 200ms;
-          background-color: rgba($fg_color, 0.15);
-
-          &, label { color: $fg_color; }
-        }
-      } @else {
-        &:hover {
-          transition: background-image 0;
-          background-repeat: no-repeat;
-          background-color: transparent;
-          background-position: left center;
-          background-size: $nautilus_sidebar_size 28px;
-          background-image: -gtk-scaled(url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
-                                        url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
-        }
-
-        &:active, &:active:hover {
-          transition: background-image ease-out 200ms;
-          background-repeat: no-repeat;
-          background-color: transparent;
-          background-position: left center;
-          background-size: $nautilus_sidebar_size 28px;
-          background-image: -gtk-scaled(url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
-                                        url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
-        }
-
-        &:selected.has-open-popup,
-        &:selected, &:selected:hover {
-          color: $fg_color;
-          transition: background-image ease-out 200ms;
-          background-repeat: no-repeat;
-          background-position: left center;
-          background-size: $nautilus_sidebar_size 28px;
-          background-color: transparent;
-          background-image: -gtk-scaled(url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
-                                        url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
-
-          &, label { color: $fg_color; }
-        }
+      &:hover {
+        background-color: rgba($fg_color, 0.1);
       }
 
+      &:active, &:active:hover {
+        transition: background-color ease-out 200ms;
+        background-color: rgba($fg_color, 0.2);
+      }
+
+      &:selected.has-open-popup,
+      &:selected, &:selected:hover {
+        color: $fg_color;
+        transition: background-color ease-out 200ms;
+        background-color: rgba($fg_color, 0.15);
+
+        &, label { color: $fg_color; }
+        }
+
+      // other
       &.sidebar-new-bookmark-row {
         color: $selected_bg_color;
 
@@ -304,6 +214,246 @@ $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
     }
   }
 
+  placesview {
+    row.activatable {
+      border-radius: $bt_radius;
+      margin-right: 6px;
+    }
+
+    actionbar.background {
+      background-color: $menu_bg;
+      margin: 6px;
+      border-radius: $wm_radius - 6px;
+      box-shadow: $shadow_5, inset 0 1px $highlight_color;
+      border: none;
+    }
+  }
+}
+
+dialog.background.csd {
+  background-image: none;
+  background-color: $dialog_bg_color;
+
+  > headerbar {
+    &.titlebar {
+      border-image: image($header_border) 0 0 1 / 0px 0px 1px stretch;
+
+      > label:not(.title):not(.subtitle) { // wallpaper set dialog
+        font-weight: 700;
+      }
+
+      &:not(.default-decoration) {
+        border-image: $dialog_header_borders_image 0 0 1 / 0px 0px 1px stretch;
+        background-image: $dialog_header_image;
+        background-color: transparent;
+      }
+    }
+  }
+
+  > box.vertical.dialog-vbox {
+    &.view { background: none; }
+
+    > grid.horizontal {
+      > scrolledwindow.frame { //removed ugly boders for nautilus batch renaming dialog
+        border: none;
+
+        > viewport.frame {
+          border: none;
+
+          list:first-child { border-radius: 0 0 0 $wm_radius; }
+          list:last-child { border-radius: 0 0 $wm_radius 0; }
+        }
+      }
+
+      > stack {
+        > scrolledwindow.frame { // reset border for totem setting dialog
+          border: 1px solid $borders_color;
+        }
+      }
+    }
+
+    > stack,
+    > stack > stack {
+      > scrolledwindow {
+        border-radius: 0 0 $wm_radius $wm_radius;
+        background-color: $base_color;
+
+        iconview.view:not(:hover):not(:selected):not(:active) { // Wallpaper setting window
+          // @extend %view;
+          background-color: transparent;
+        }
+      }
+    }
+
+    > stack {
+      > scrolledwindow > viewport.frame {
+        > list {
+          border-radius: 0 0 $wm_radius $wm_radius;
+
+          row.activatable:not(:hover):not(:selected):not(:active) {
+            background-color: transparent;
+          }
+        }
+      }
+
+      > box.vertical > stack.view {
+        > scrolledwindow > treeview.view:not(:hover):not(:selected):not(:active) {
+          background-color: transparent;
+        }
+      }
+
+      toolbar.toolbar {
+        border-radius: 0 0 $wm_radius $wm_radius;
+        border-width: 1px 0 0 0;
+      }
+
+      > notebook > stack { // Control center wifi setting 3.36 or later
+        border-radius: 0 0 $wm_radius $wm_radius;
+      }
+    }
+
+    > notebook {
+      > stack {
+        border-radius: 0 0 $wm_radius $wm_radius;
+
+        > box.horizontal > notebook > stack {  // Control center wifi setting
+          border-radius: 0 0 $wm_radius $wm_radius;
+        }
+      }
+    }
+
+    separator.vertical { background-color: $borders_color; }
+
+    // Outline for low res icons
+    .lowres-icon { // FIXME: not use
+      -gtk-icon-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    // Dropshadow for large icons
+    .icon-dropshadow { // FIXME: not use
+      -gtk-icon-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    > .dialog-action-box {
+      > .dialog-action-area {
+        padding: 3px 6px 6px;
+      }
+    }
+  }
+
+  stack scrolledwindow {
+    &.frame {
+      border-radius: $wm_radius;
+
+      textview.view {
+        border-radius: $wm_radius;
+
+        > text {
+          background: none;
+        }
+      }
+
+      treeview.view:not(:hover):not(:selected) { background: none; }
+    }
+
+    viewport.frame {
+      &.view { border-radius: $wm_radius; }
+    }
+  }
+
+  > .dialog-vbox > .dialog-action-box {
+    > .dialog-action-area {
+      margin: 0 6px 6px;
+    }
+  }
+
+  // Filechooser, we put this here to give a different style between csd and
+  // ssd on certain DE-s
+  filechooser {
+    > actionbar {
+      background-color: transparent;
+      background-image: $nautilus_actionbar_image;
+      border-image: $nautilus_actionbar_borders_image 1 0 0 / 1px 0px 0px stretch;
+      color: $dark_sidebar_fg;
+      label, combobox { color: $dark_sidebar_fg; }
+    }
+
+    treeview.view {
+      @include viewwy(transparent);
+    }
+
+    paned {
+      stack {
+        &:dir(ltr) { border-radius: 0 0 (($wm_radius/1.5) + 2) 0 }
+        &:dir(rtl) { border-radius: 0 0 0 (($wm_radius/1.5) + 2) }
+      }
+    }
+
+    @include color_sidebar();
+  }
+
+  filechooserbutton:drop(active) {
+    box-shadow: none;
+    border-color: transparent;
+  }
+}
+
+//
+// Nautilus
+//
+.nautilus-window {
+  &.background.csd {
+    background-color: transparent;
+    background-image: $nautilus_bg_image;
+    border-radius: 0 0 $wm_radius $wm_radius;
+
+    > headerbar.titlebar,
+    > deck > box > headerbar.titlebar {
+      background-color: transparent;
+      box-shadow: inset 0 1px rgba(white, 0.1);
+      background-image: $nautilus_header_image;
+      border-image: $nautilus_header_borders_image 0 0 1 / 0px 0px 1px stretch;
+
+      > box.left.horizontal {
+        background-image: transparent;
+      }
+
+      @if $nautilus_style == 'default' {
+        > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
+      } @else {
+        > .linked.raised > button:first-child { margin-left: 0px }
+        > .linked.raised > button:last-child { margin-right: 0px }
+        //> .linked.raised > button:last-child { margin-right: $nautilus_sidebar_size - 80px }
+      }
+    }
+
+    placessidebar.sidebar {
+      border-bottom-left-radius: $wm_radius;
+    }
+  }
+
+  headerbar {
+    min-height: $nautilus_headerbar_size;
+
+    .path-bar-box {
+      color: transparent;
+      background: none;
+      padding: 0 12px;
+
+      .linked.nautilus-path-bar { // for ≥ 3.31.90
+        > button:not(:only-child):last-child {
+          @include button(header-checked);
+        }
+      }
+
+      // workaround for 3.30.1
+      &.background.frame {
+        border: none;
+        background-color: transparent;
+      }
+    }
+  }
+
   notebook {
     margin-left: -1px;
     margin-right: -1px;
@@ -324,6 +474,8 @@ $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
 
     > stack {
       background-color: $base_color;
+      &:dir(ltr) { border-radius: 0 0 ($wm_radius+2) 0 }
+      &:dir(rtl) { border-radius: 0 0 0 ($wm_radius+2) }
     }
 
     > stack:not(:only-child) {
@@ -367,20 +519,7 @@ $nautilus_background_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
     placessidebar { border-bottom-left-radius: $maximized_radius; }
   }
 
-  placesview {
-    row.activatable {
-      border-radius: $bt_radius;
-      margin-right: 6px;
-    }
-
-    actionbar.background {
-      background-color: $menu_bg;
-      margin: 6px;
-      border-radius: $wm_radius - 6px;
-      box-shadow: $shadow_5, inset 0 1px $highlight_color;
-      border: none;
-    }
-  }
+  @include color_sidebar();
 }
 
 preferencesgroup { // gnome 40.0 preferences window
@@ -2534,134 +2673,6 @@ window.background.csd {
 
     > separator {
       background: none;
-    }
-  }
-}
-
-//
-// Dialogs
-//
-dialog.background.csd {
-  > headerbar.titlebar {
-    > label:not(.title):not(.subtitle) { // wallpaper set dialog
-      font-weight: 700;
-    }
-  }
-
-  > box.vertical.dialog-vbox {
-    &.view { background: none; }
-
-    > grid.horizontal {
-      > scrolledwindow.frame { //removed ugly boders for nautilus batch renaming dialog
-        border: none;
-
-        > viewport.frame {
-          border: none;
-
-          list:first-child { border-radius: 0 0 0 $wm_radius; }
-          list:last-child { border-radius: 0 0 $wm_radius 0; }
-        }
-      }
-
-      > stack {
-        > scrolledwindow.frame { // reset border for totem setting dialog
-          border: 1px solid $borders_color;
-        }
-      }
-    }
-
-    > stack,
-    > stack > stack {
-      > scrolledwindow {
-        border-radius: 0 0 $wm_radius $wm_radius;
-        background-color: $base_color;
-
-        iconview.view:not(:hover):not(:selected):not(:active) { // Wallpaper setting window
-          // @extend %view;
-          background-color: transparent;
-        }
-      }
-    }
-
-    > stack {
-      > scrolledwindow > viewport.frame {
-        > list {
-          border-radius: 0 0 $wm_radius $wm_radius;
-
-          row.activatable:not(:hover):not(:selected):not(:active) {
-            background-color: transparent;
-          }
-        }
-      }
-
-      > box.vertical > stack.view {
-        > scrolledwindow > treeview.view:not(:hover):not(:selected):not(:active) {
-          background-color: transparent;
-        }
-      }
-
-      toolbar.toolbar {
-        border-radius: 0 0 $wm_radius $wm_radius;
-        border-width: 1px 0 0 0;
-      }
-
-      > notebook > stack { // Control center wifi setting 3.36 or later
-        border-radius: 0 0 $wm_radius $wm_radius;
-      }
-    }
-
-    > notebook {
-      > stack {
-        border-radius: 0 0 $wm_radius $wm_radius;
-
-        > box.horizontal > notebook > stack {  // Control center wifi setting
-          border-radius: 0 0 $wm_radius $wm_radius;
-        }
-      }
-    }
-
-    separator.vertical { background-color: $borders_color; }
-
-    // Outline for low res icons
-    .lowres-icon { // FIXME: not use
-      -gtk-icon-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-    }
-
-    // Dropshadow for large icons
-    .icon-dropshadow { // FIXME: not use
-      -gtk-icon-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    }
-
-    > .dialog-action-box {
-      > .dialog-action-area {
-        padding: 3px 6px 6px;
-      }
-    }
-  }
-
-  stack scrolledwindow {
-    &.frame {
-      border-radius: $wm_radius;
-
-      textview.view {
-        border-radius: $wm_radius;
-
-        > text {
-          background: none;
-        }
-      }
-
-      treeview.view:not(:hover):not(:selected) { background: none; }
-    }
-
-    viewport.frame {
-      &.view { border-radius: $wm_radius; }
-    }
-  }
-
-  > .dialog-vbox > .dialog-action-box {
-    > .dialog-action-area {
-      margin: 0 6px 6px;
     }
   }
 }
