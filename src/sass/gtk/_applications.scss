@@ -83,15 +83,15 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   @if $gnome_version == 'new' {
     $nautilus_header_image: linear-gradient(90deg, transparent 0%,
                                                    transparent $nautilus_sidebar_size,
-                                                   darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
-                                                   darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
+                                                   $nautilus_borders_color $nautilus_sidebar_size,
+                                                   $nautilus_borders_color ($nautilus_sidebar_size + 1px),
                                                    $base_color ($nautilus_sidebar_size + 1px),
                                                    $base_color 100%);
   } @else {
     $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                                    $dark_sidebar_bg $nautilus_sidebar_size,
-                                                   darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
-                                                   darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
+                                                   $nautilus_borders_color $nautilus_sidebar_size,
+                                                   $nautilus_borders_color ($nautilus_sidebar_size + 1px),
                                                    $base_color ($nautilus_sidebar_size + 1px),
                                                    $base_color 100%);
   }
@@ -103,8 +103,8 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
   $nautilus_bg_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                              $dark_sidebar_bg $nautilus_sidebar_size,
-                                             darken($dark_sidebar_bg, 12%) $nautilus_sidebar_size,
-                                             darken($dark_sidebar_bg, 12%) ($nautilus_sidebar_size + 1px),
+                                             $nautilus_borders_color $nautilus_sidebar_size,
+                                             $nautilus_borders_color ($nautilus_sidebar_size + 1px),
                                              $base_color ($nautilus_sidebar_size + 1px),
                                              $base_color 100%);
 }
