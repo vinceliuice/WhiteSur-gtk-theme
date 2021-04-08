@@ -137,11 +137,16 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
                                                          $header_border 40%);
 }
 
-@mixin color_sidebar() {
+@mixin color_sidebar($s_bg_color: transparent, $sidebar_style: stable) {
   placessidebar.sidebar {
     background-color: transparent;
     min-width: $nautilus_sidebar_size;
     border: none;
+
+    list {
+      background-color: $s_bg_color;
+      border-bottom-left-radius: $wm_radius;
+    }
 
     row.sidebar-row {
       color: $dark_sidebar_fg;
@@ -158,7 +163,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
       &:backdrop { opacity: 0.85; }
 
       // row style
-      @if $nautilus_style == 'stable' {
+      @if $nautilus_style == 'stable' and $sidebar_style == 'stable' {
         &:hover {
           transition: background-image 0;
           background-repeat: no-repeat;
@@ -442,7 +447,7 @@ dialog.background.csd {
       }
     }
 
-    @include color_sidebar();
+    @include color_sidebar($s_bg_color: $bg_color, $sidebar_style: normal);
   }
 
   filechooserbutton:drop(active) {

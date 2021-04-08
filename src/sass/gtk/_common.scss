@@ -1676,12 +1676,6 @@ window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar
   }
 }
 
-// Fixes common window border radius problem when it get maximized
-// including GNOME Terminal window can't restore after it get maximized
-window.background.csd.maximized {
-  border-radius: 0 0 0 0;
-}
-
 headerbar, .titlebar {
   button {
     min-height: 26px;
@@ -2272,7 +2266,7 @@ notebook {
     background-color: $base_color;
   }
 
-  &:not(.frame), &:not(.frame) > stack {
+  .csd &:not(.frame), .csd &:not(.frame) > stack {
     border-radius: 0 0 $wm_radius $wm_radius;
   }
 
@@ -3338,7 +3332,9 @@ messagedialog { // Message Dialog styling
           @if $variant == 'light' {
             background-color: $selected_bg_color;
             color: $selected_fg_color;
-          } @else {
+          }
+
+          @else {
             @include button(active);
           }
         }
@@ -3367,8 +3363,6 @@ filechooser {
     background-color: $base_color;
     border-radius: 0 0 $wm_radius $wm_radius;
 
-    placessidebar.sidebar { background-color: transparent; }
-
     stack.view {
       background-color: transparent;
 
@@ -3391,8 +3385,8 @@ filechooser {
     min-width: 1px;
     background-image: image(if($variant=='light', $solid_borders_color, $header_border));
 
-    &:dir(ltr) { margin-left: -1px; }
-    &:dir(rtl) { margin-right: -1px; }
+    // &:dir(ltr) { margin-left: -1px; }
+    // &:dir(rtl) { margin-right: -1px; }
   }
 
   #pathbarbox { border-bottom: 1px solid transparentize($borders_color, 0.5); }
@@ -3627,37 +3621,33 @@ infobar {
   border-style: none;
 
   &.info {
-    background-color: $selected_bg_color;
-
     & > revealer > box,
     &:backdrop > revealer > box {
+      background-color: $selected_bg_color;
       selection { color: $selected_bg_color; }
     }
   }
 
   &.question {
-    background-color: $suggested_color;
-
     & > revealer > box,
     &:backdrop > revealer > box {
+      background-color: $suggested_color;
       selection { color: $suggested_color; }
     }
   }
 
   &.warning {
-    background-color: $warning_color;
-
     & > revealer > box,
     &:backdrop > revealer > box {
+      background-color: $warning_color;
       selection { color: $warning_color; }
     }
   }
 
   &.error {
-    background-color: $error_color;
-
     & > revealer > box,
     &:backdrop > revealer > box {
+      background-color: $error_color;
       selection { color: $error_color; }
     }
   }
@@ -3675,6 +3665,10 @@ infobar {
       button {
         min-height: 28px;
         @extend %selected-button;
+      }
+
+      selection {
+        background-color: $selected_fg_color;
       }
 
       *:link { @extend %link_selected; }
