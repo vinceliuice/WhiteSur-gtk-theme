@@ -1,4 +1,4 @@
-@import 'theme-options';
+@import 'theme-options-temp';
 
 $asset_suffix: if($variant == 'dark', '-dark', '');
 $con_asset_suffix: if($variant=='dark', '', '-dark');
@@ -29,6 +29,7 @@ $medium_size: if($laptop == 'false', 36px, 32px);
 $large_size: if($laptop == 'false', 48px, 44px);
 $menuitem_size: if($laptop == 'false', 32px, 28px);
 $container_padding: if($laptop == 'false', 6px, 4px);
+$nautilus_headerbar_size: 42px;
 
 // radiuses
 $circular_radius: 9999px;
