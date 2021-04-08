@@ -1313,10 +1313,6 @@ actionbar {
   padding: 6px;
   border-top: 1px solid $borders_color;
   background-color: darken($bg_color, 3%);
-
-  .background.csd revealer > & {
-    border-radius: 0 0 $wm_radius $wm_radius;
-  }
 }
 
 //
@@ -1840,7 +1836,9 @@ headerbar, .titlebar {
 //
 // Tree Views
 //
-treeview.view {
+@mixin viewwy($c) {
+  background-color: $c;
+
   @at-root * {
     -GtkTreeView-horizontal-separator: 4;
     -GtkTreeView-grid-line-width: 1;
@@ -1985,6 +1983,10 @@ treeview.view {
       border-style: none;
     }
   }
+}
+
+treeview.view {
+  @include viewwy($base_color);
 }
 
 //
@@ -3332,9 +3334,7 @@ messagedialog { // Message Dialog styling
           @if $variant == 'light' {
             background-color: $selected_bg_color;
             color: $selected_fg_color;
-          }
-
-          @else {
+          } @else {
             @include button(active);
           }
         }
@@ -3353,67 +3353,6 @@ messagedialog { // Message Dialog styling
       border: none;
     }
   }
-}
-
-//
-// Filechooser
-//
-filechooser {
-  .csd & {
-    background-color: $base_color;
-    border-radius: 0 0 $wm_radius $wm_radius;
-
-    placessidebar.sidebar { background-color: transparent; }
-
-    actionbar {
-      color: $dark_sidebar_fg;
-      background-color: transparent;
-      border-color: $borders_color;
-      border-radius: 0 0 $wm_radius 0;
-
-      label, combobox { color: $dark_sidebar_fg; }
-    }
-
-    stack.view {
-      background-color: transparent;
-
-      scrolledwindow {
-        background-color: transparent;
-        border-radius: 0 0 $wm_radius $wm_radius;
-
-        list { background-color: transparent; }
-
-        treeview.view {
-          @extend %view;
-          background-color: transparent;
-        }
-      }
-    }
-
-    box.vertical > paned > separator { // Use paned separator to hide stack border-bottom-left-radius
-      border: none;
-      background-color: transparent;
-      background-image: image($base_color);
-      background-size: $wm_radius $wm_radius;
-      background-position: left bottom;
-
-      &:dir(ltr) { margin-left: -1px; }
-      &:dir(rtl) { margin-right: -1px; }
-    }
-  }
-
-  placessidebar.sidebar {
-    border: none;
-
-    &.frame { border-right: 1px solid if($variant=='light', $solid_borders_color, $header_border); }
-  }
-
-  #pathbarbox { border-bottom: 1px solid transparentize($borders_color, 0.5); }
-}
-
-filechooserbutton:drop(active) {
-  box-shadow: none;
-  border-color: transparent;
 }
 
 //
@@ -3646,33 +3585,37 @@ infobar {
   border-style: none;
 
   &.info {
+    background-color: $selected_bg_color;
+
     & > revealer > box,
     &:backdrop > revealer > box {
-      background-color: $selected_bg_color;
       selection { color: $selected_bg_color; }
     }
   }
 
   &.question {
+    background-color: $suggested_color;
+
     & > revealer > box,
     &:backdrop > revealer > box {
-      background-color: $suggested_color;
       selection { color: $suggested_color; }
     }
   }
 
   &.warning {
+    background-color: $warning_color;
+
     & > revealer > box,
     &:backdrop > revealer > box {
-      background-color: $warning_color;
       selection { color: $warning_color; }
     }
   }
 
   &.error {
+    background-color: $error_color;
+
     & > revealer > box,
     &:backdrop > revealer > box {
-      background-color: $error_color;
       selection { color: $error_color; }
     }
   }
@@ -3690,10 +3633,6 @@ infobar {
       button {
         min-height: 28px;
         @extend %selected-button;
-      }
-
-      selection {
-        background-color: $selected_fg_color;
       }
 
       *:link { @extend %link_selected; }

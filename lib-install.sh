@@ -1,0 +1,506 @@
+# WARNING: Please make this shell not working-directory dependant, for example
+# instead of using 'cd blabla', use 'cd "${REPO_DIR}/blabla"'
+#
+# WARNING: Don't use "cd" in this shell, use it in a subshell instead,
+# for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
+#
+# WARNING: Please don't use sudo directly here since it steals our EXIT trap
+#
+# WARNING: Please set REPO_DIR variable before using this lib
+
+###############################################################################
+#                                VARIABLES                                    #
+###############################################################################
+
+if [[ "${LIB_INSTALL_IMPORTED}" == "true" ]]; then
+  echo "ERROR: lib-install.sh is already imported"; exit 1
+else LIB_INSTALL_IMPORTED="true"; fi
+
+source "${REPO_DIR}/lib-core.sh"
+
+###############################################################################
+#                              DEPENDENCIES                                   #
+###############################################################################
+
+install_theme_deps() {
+  if [[ ! "$(which glib-compile-resources 2> /dev/null)" || ! "$(which sassc 2> /dev/null)" || \
+    ! "$(which convert 2> /dev/null)" || ! -r "/usr/share/gtk-engines/murrine.xml" || \
+    ! "$(which xmllint 2> /dev/null)" || ! "$(which dialog 2> /dev/null)" ]]; then
+    echo; prompt -w "'glib2.0', 'sassc', 'imagemagick', 'xmllint', 'libmurrine', and 'dialog' are required for this shell."
+
+    if has_command zypper; then
+      rootify zypper in -y sassc glib2-devel ImageMagick gtk2-engine-murrine libxml2-tools dialog
+    elif has_command apt; then
+      rootify apt install -y sassc libglib2.0-dev-bin imagemagick gtk2-engines-murrine libxml2-utils dialog
+    elif has_command dnf; then
+      rootify dnf install -y sassc glib2-devel ImageMagick gtk-murrine-engine libxml2 dialog
+    elif has_command yum; then
+      rootify yum install -y sassc glib2-devel ImageMagick gtk-murrine-engine libxml2 dialog
+    elif has_command pacman; then
+      rootify pacman -S --noconfirm --needed sassc glib2 imagemagick gtk-engine-murrine libxml2 dialog
+    else
+      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
+      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
+      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
+      start_animation; sleep 15; stop_animation
+    fi
+  fi
+}
+
+###############################################################################
+#                              THEME MODULES                                  #
+###############################################################################
+
+install_beggy() {
+  local CONVERT_OPT=""
+
+  [[ "${no_blur}" == "false" ]] && CONVERT_OPT+=" -scale 1280x -blur 0x60 "
+  [[ "${darken}" == "true" ]] && CONVERT_OPT+=" -fill black -colorize 45% "
+
+  case "${background}" in
+    blank)
+      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blank.png"          "${WHITESUR_TMP_DIR}/beggy.png" ;;
+    default)
+      convert "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png" ${CONVERT_OPT} "${WHITESUR_TMP_DIR}/beggy.png" ;;
+    *)
+      convert "${background}" ${CONVERT_OPT}                                                  "${WHITESUR_TMP_DIR}/beggy.png" ;;
+  esac
+}
+
+install_darky() {
+  local opacity="$(destify ${1})"
+  local theme="$(destify ${2})"
+
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark${opacity}${theme}.scss"          "${WHITESUR_TMP_DIR}/darky${opacity}${theme}.css"
+}
+
+install_shelly() {
+  local color="$(destify ${1})"
+  local opacity="$(destify ${2})"
+  local alt="$(destify ${3})"
+  local theme="$(destify ${4})"
+  local icon="$(destify ${5})"
+  local TARGET_DIR=
+
+  if [[ -z "${6}" ]]; then
+    TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}/gnome-shell"
+  else TARGET_DIR="${6}"; fi
+
+  mkdir -p                                                                                    "${TARGET_DIR}"
+  mkdir -p                                                                                    "${TARGET_DIR}/assets"
+  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/icons"                                           "${TARGET_DIR}"
+  cp -r "${THEME_SRC_DIR}/main/gnome-shell/pad-osd.css"                                       "${TARGET_DIR}"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/gnome-shell${color}${opacity}${alt}${theme}.scss" "${TARGET_DIR}/gnome-shell.css"
+  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/"*".svg"                           "${TARGET_DIR}/assets"
+
+  if [[ "${theme}" != '' ]]; then
+    cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets${theme}/"*".svg"                 "${TARGET_DIR}/assets"
+  fi
+
+  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/assets${color}/"*".svg"                          "${TARGET_DIR}/assets"
+  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities.svg"
+  cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/assets/background.png"
+
+  (
+    cd "${TARGET_DIR}"
+    mv -f "assets/no-events.svg" "no-events.svg"
+    mv -f "assets/process-working.svg" "process-working.svg"
+    mv -f "assets/no-notifications.svg" "no-notifications.svg"
+  )
+
+  if [[ "${alt}" == '-alt' || "${opacity}" == '-solid' ]] &&  [[ "${color}" == '-light' ]]; then
+    cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities-black/activities${icon}.svg"        "${TARGET_DIR}/assets/activities.svg"
+    cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"              "${TARGET_DIR}/assets/activities-white.svg"
+  fi
+}
+
+install_theemy() {
+  local color="$(destify ${1})"
+  local opacity="$(destify ${2})"
+  local alt="$(destify ${3})"
+  local theme="$(destify ${4})"
+  local icon="$(destify ${5})"
+
+  local TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}"
+  local TMP_DIR="${WHITESUR_TMP_DIR}/gtk${color}${opacity}${alt}${theme}"
+
+  mkdir -p                                                                                    "${TARGET_DIR}"
+  local desktop_entry="
+  [Desktop Entry]
+  Type=X-GNOME-Metatheme
+  Name=${name}${color}${opacity}${alt}${theme}
+  Comment=A MacOS BigSur like Gtk+ theme based on Elegant Design
+  Encoding=UTF-8
+
+  [X-GNOME-Metatheme]
+  GtkTheme=${name}${color}${opacity}${alt}${theme}
+  MetacityTheme=${name}${color}${opacity}${alt}${theme}
+  IconTheme=${name}${color}
+  CursorTheme=${name}${color}
+  ButtonLayout=close,minimize,maximize:menu"
+  echo "${desktop_entry}" >                                                                   "${TARGET_DIR}/index.theme"
+
+  #----------------------GTK-----------------------#
+
+  mkdir -p                                                                                    "${TMP_DIR}"
+  cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/common-assets/assets"                                "${TMP_DIR}"
+  cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/windows-assets/titlebutton${alt}"                    "${TMP_DIR}/windows-assets"
+
+  if [[ "${theme}" != '' ]]; then
+    cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/common-assets/assets${theme}/"*".png"              "${TMP_DIR}/assets"
+  fi
+
+  if [[ "${color}" == '-light' ]]; then
+    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-light${opacity}${theme}.scss"       "${TMP_DIR}/gtk.css"
+  else
+    cp -r "${WHITESUR_TMP_DIR}/darky${opacity}${theme}.css"                                   "${TMP_DIR}/gtk.css"
+  fi
+
+  cp -r "${WHITESUR_TMP_DIR}/darky${opacity}${theme}.css"                                     "${TMP_DIR}/gtk-dark.css"
+
+  mkdir -p                                                                                    "${TARGET_DIR}/gtk-3.0"
+  cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/thumbnails/thumbnail${color}${theme}.png"            "${TARGET_DIR}/gtk-3.0/thumbnail.png"
+  echo '@import url("resource:///org/gnome/theme/gtk.css");' >                                "${TARGET_DIR}/gtk-3.0/gtk.css"
+  echo '@import url("resource:///org/gnome/theme/gtk-dark.css");' >                           "${TARGET_DIR}/gtk-3.0/gtk-dark.css"
+  glib-compile-resources --sourcedir="${TMP_DIR}" --target="${TARGET_DIR}/gtk-3.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-3.0/gtk.gresource.xml"
+
+  #----------------Cinnamon-----------------#
+
+  mkdir -p                                                                                    "${TARGET_DIR}/cinnamon"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/cinnamon/cinnamon${color}${opacity}${theme}.scss" "${TARGET_DIR}/cinnamon/cinnamon.css"
+  cp -r "${THEME_SRC_DIR}/assets/cinnamon/common-assets"                                      "${TARGET_DIR}/cinnamon/assets"
+
+  if [[ ${theme} != '' ]]; then
+    cp -r "${THEME_SRC_DIR}/assets/cinnamon/common-assets${theme}/"*".svg"                    "${TARGET_DIR}/cinnamon/assets"
+  fi
+
+  cp -r "${THEME_SRC_DIR}/assets/cinnamon/assets${color}/"*".svg"                             "${TARGET_DIR}/cinnamon/assets"
+  cp -r "${THEME_SRC_DIR}/assets/cinnamon/thumbnails/thumbnail${color}${theme}.png"           "${TARGET_DIR}/cinnamon/thumbnail.png"
+
+  #----------------Misc------------------#
+
+  mkdir -p                                                                                    "${TARGET_DIR}/gtk-2.0"
+  cp -r "${THEME_SRC_DIR}/main/gtk-2.0/gtkrc${color}${theme}"                                 "${TARGET_DIR}/gtk-2.0/gtkrc"
+  cp -r "${THEME_SRC_DIR}/main/gtk-2.0/menubar-toolbar${color}.rc"                            "${TARGET_DIR}/gtk-2.0/menubar-toolbar.rc"
+  cp -r "${THEME_SRC_DIR}/main/gtk-2.0/common/"*".rc"                                         "${TARGET_DIR}/gtk-2.0"
+  cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets${color}"                                      "${TARGET_DIR}/gtk-2.0/assets"
+
+  if [[ "${theme}" != '' ]]; then
+    cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets${color}${theme}/"*".png"                    "${TARGET_DIR}/gtk-2.0/assets"
+  fi
+
+  mkdir -p                                                                                    "${TARGET_DIR}/metacity-1"
+  cp -r "${THEME_SRC_DIR}/main/metacity-1/metacity-theme${color}.xml"                         "${TARGET_DIR}/metacity-1/metacity-theme-1.xml"
+  cp -r "${THEME_SRC_DIR}/main/metacity-1/metacity-theme-3.xml"                               "${TARGET_DIR}/metacity-1"
+  cp -r "${THEME_SRC_DIR}/assets/metacity-1/assets/"*".png"                                   "${TARGET_DIR}/metacity-1"
+  cp -r "${THEME_SRC_DIR}/assets/metacity-1/thumbnail${color}.png"                            "${TARGET_DIR}/metacity-1/thumbnail.png"
+  ( cd "${TARGET_DIR}/metacity-1" && ln -s "metacity-theme-1.xml" "metacity-theme-2.xml" )
+
+  mkdir -p                                                                                    "${TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}/"*".png"                                "${TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${TARGET_DIR}/xfwm4/themerc"
+
+  mkdir -p                                                                                    "${TARGET_DIR}/plank"
+  cp -r "${THEME_SRC_DIR}/other/plank/theme${color}/"*".theme"                                "${TARGET_DIR}/plank"
+}
+
+remove_packy() {
+  rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})"
+}
+
+###############################################################################
+#                                   THEMES                                    #
+###############################################################################
+
+install_themes() {
+  start_animation
+  process_ids=()
+
+  [[ "${GNOME_VERSION}" != 'new' ]] && install_beggy
+
+  for opacity in "${opacities[@]}"; do
+    for alt in "${alts[@]}"; do
+      for theme in "${themes[@]}"; do
+        install_darky "${opacity}" "${theme}"
+
+        for color in "${colors[@]}"; do
+          install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
+          process_ids+=("${!}")
+
+          if [[ "${GNOME_VERSION}" != 'new' ]]; then
+            install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
+            process_ids+=("${!}")
+          fi
+        done
+      done
+    done
+  done
+
+  wait "${process_ids[@]}"
+  stop_animation
+}
+
+remove_themes() {
+  process_ids=()
+
+  for color in "${COLOR_VARIANTS[@]}"; do
+    for opacity in "${OPACITY_VARIANTS[@]}"; do
+      for alt in "${ALT_VARIANTS[@]}"; do
+        for theme in "${THEME_VARIANTS[@]}"; do
+          remove_packy "${color}" "${opacity}" "${alt}" "${theme}" &
+          process_ids+=("${!}")
+        done
+      done
+    done
+  done
+
+  wait "${process_ids[@]}"
+}
+
+install_gdm_theme() {
+  start_animation
+  local TARGET=
+
+  # Let's go!
+  rm -rf "${WHITESUR_GS_DIR}"; install_beggy
+
+  if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
+    install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
+    sed ${SED_OPT} "s|assets|${WHITESUR_GS_DIR}/assets|" "${WHITESUR_GS_DIR}/gnome-shell.css"
+
+    if check_theme_file "${UBUNTU_CSS_FILE}"; then
+      TARGET="${UBUNTU_CSS_FILE}"
+    elif check_theme_file "${ZORIN_CSS_FILE}"; then
+      TARGET="${ZORIN_CSS_FILE}"
+    fi
+
+    backup_file "${COMMON_CSS_FILE}"; backup_file "${TARGET}"
+    ln -sf "${WHITESUR_GS_DIR}/gnome-shell.css" "${COMMON_CSS_FILE}"
+    ln -sf "${WHITESUR_GS_DIR}/gnome-shell.css" "${TARGET}"
+
+    # Fix previously installed WhiteSur
+    restore_file "${ETC_CSS_FILE}"
+  else # GR-based theme
+    install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_TMP_DIR}/shelly"
+    sed ${SED_OPT} "s|assets|resource:///org/gnome/shell/theme/assets|" "${WHITESUR_TMP_DIR}/shelly/gnome-shell.css"
+
+    if check_theme_file "$POP_OS_GR_FILE"; then
+      TARGET="${POP_OS_GR_FILE}"
+    elif check_theme_file "$YARU_GR_FILE"; then
+      TARGET="${YARU_GR_FILE}"
+    elif check_theme_file "$MISC_GR_FILE"; then
+      TARGET="${MISC_GR_FILE}"
+    fi
+
+    backup_file "${TARGET}"
+    glib-compile-resources --sourcedir="${WHITESUR_TMP_DIR}/shelly" --target="${TARGET}" "${GS_GR_XML_FILE}"
+
+    # Fix previously installed WhiteSur
+    restore_file "${ETC_GR_FILE}"
+  fi
+
+  stop_animation
+}
+
+revert_gdm_theme() {
+  rm -rf "${WHITESUR_GS_DIR}"
+  restore_file "${COMMON_CSS_FILE}"; restore_file "${UBUNTU_CSS_FILE}"
+  restore_file "${ZORIN_CSS_FILE}"; restore_file "${ETC_CSS_FILE}"
+  restore_file "${POP_OS_GR_FILE}"; restore_file "${YARU_GR_FILE}"
+  restore_file "${MISC_GR_FILE}"; restore_file "${ETC_GR_FILE}"
+}
+
+###############################################################################
+#                                  FIREFOX                                    #
+###############################################################################
+
+install_firefox_theme() {
+  remove_firefox_theme
+  userify cp -rf "${FIREFOX_SRC_DIR}"                                                           "${FIREFOX_DIR_HOME}/WhiteSur-chrome"
+  config_firefox
+}
+
+config_firefox() {
+  killall "firefox" &> /dev/null
+
+  for d in "${FIREFOX_DIR_HOME}/"*"default"*; do
+    rm -rf                                                                                      "${d}/chrome"
+    userify ln -sf "${FIREFOX_DIR_HOME}/WhiteSur-chrome"                                        "${d}/chrome"
+    userify echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >> "${d}/prefs.js"
+    userify echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                         "${d}/prefs.js"
+    userify echo "user_pref(\"browser.uidensity\", 0);" >>                                      "${d}/prefs.js"
+    userify echo "user_pref(\"layers.acceleration.force-enabled\", true);" >>                   "${d}/prefs.js"
+    userify echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);" >>                     "${d}/prefs.js"
+  done
+}
+
+edit_firefox_theme_prefs() {
+  [[ ! -d "${FIREFOX_DIR_HOME}/WhiteSur-chrome" ]] && install_firefox_theme ; config_firefox
+  ${EDITOR:-nano}                                                                               "${FIREFOX_DIR_HOME}/WhiteSur-chrome/userChrome.css"
+  ${EDITOR:-nano}                                                                               "${FIREFOX_DIR_HOME}/WhiteSur-chrome/customChrome.css"
+}
+
+remove_firefox_theme() {
+  rm -rf "${FIREFOX_DIR_HOME}/"*"default"*"/chrome"
+  rm -rf "${FIREFOX_DIR_HOME}/WhiteSur-chrome"
+}
+
+###############################################################################
+#                               DASH TO DOCK                                  #
+###############################################################################
+
+install_dash_to_dock_theme() {
+  if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
+    backup_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "userify"
+    userify sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss" "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
+  elif [[ -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
+    backup_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "rootify"
+    rootify sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss" "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css"
+  fi
+
+  userify dbus-launch gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
+}
+
+revert_dash_to_dock_theme() {
+  if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
+    restore_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "userify"
+  elif [[ -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
+    restore_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "rootify"
+  fi
+}
+
+###############################################################################
+#                              FLATPAK & SNAP                                 #
+###############################################################################
+
+connect_flatpak() {
+  rootify flatpak override --filesystem=~/.themes
+}
+
+disconnect_flatpak() {
+  rootify flatpak override --nofilesystem=~/.themes
+}
+
+connect_snap() {
+  rootify snap install whitesur-gtk-theme
+
+  for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
+    rootify snap connect "${i}:gtk-3-themes"    "whitesur-gtk-theme:gtk-3-themes"
+    rootify snap connect "${i}:icon-themes"     "whitesur-gtk-theme:icon-themes"
+  done
+}
+
+disconnect_snap() {
+  for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
+    rootify snap disconnect "${i}:gtk-3-themes" "whitesur-gtk-theme:gtk-3-themes"
+    rootify snap disconnect "${i}:icon-themes"  "whitesur-gtk-theme:icon-themes"
+  done
+}
+
+###############################################################################
+#                               CUSTOMIZATIONS                                #
+###############################################################################
+
+customize_theme() {
+  rm -rf "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
+
+  # Change common apps style for a specific GNOME Shell version
+  if [[ ${GNOME_VERSION} == "new" ]]; then
+    sed ${SED_OPT} "/\$gnome_version/s/old/new/"                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  elif [[ ${GNOME_VERSION} == "none" ]]; then
+    prompt -w "There's no GNOME Shell installed, using style for the older GNOME Shell instead..."
+  fi
+
+  # Change gnome-shell panel transparency
+  if [[ "${panel_opacity}" != 'default' ]]; then
+    prompt -w "Changing panel transparency ..."
+    sed ${SED_OPT} "/\$panel_opacity/s/0.15/0.${panel_opacity}/"    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
+  # Change Nautilus sidarbar size
+  if [[ "${sidebar_size}" != 'default' ]]; then
+    prompt -w "Changing Nautilus sidebar size ..."
+    sed ${SED_OPT} "/\$sidebar_size/s/200px/${sidebar_size}px/"     "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
+  # Change Nautilus style
+  if [[ "${nautilus_style}" != 'default' ]]; then
+    prompt -w "Changing Nautilus style ..."
+    sed ${SED_OPT} "/\$nautilus_style/s/default/${nautilus_style}/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+}
+
+#-----------------------------------DIALOGS------------------------------------#
+
+# The default values here should get manually set and updated. Some of default
+# values are taken from _variables.scss
+
+show_panel_opacity_dialog() {
+  if [[ -x /usr/bin/dialog ]]; then
+    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
+        --radiolist "Choose your panel background opacity
+                (Default is 0.15. The less value, the more transparency!):" 20 50 10 \
+      0 "${PANEL_OPACITY_VARIANTS[0]}" on    \
+      1 "0.${PANEL_OPACITY_VARIANTS[1]}" off \
+      2 "0.${PANEL_OPACITY_VARIANTS[2]}" off \
+      3 "0.${PANEL_OPACITY_VARIANTS[3]}" off \
+      4 "0.${PANEL_OPACITY_VARIANTS[4]}" off --output-fd 1 )
+      case "$tui" in
+        0) panel_opacity="${PANEL_OPACITY_VARIANTS[0]}" ;;
+        1) panel_opacity="${PANEL_OPACITY_VARIANTS[1]}" ;;
+        2) panel_opacity="${PANEL_OPACITY_VARIANTS[2]}" ;;
+        3) panel_opacity="${PANEL_OPACITY_VARIANTS[3]}" ;;
+        4) panel_opacity="${PANEL_OPACITY_VARIANTS[4]}" ;;
+        *) operation_canceled ;;
+      esac
+  fi
+
+  clear
+}
+
+show_sidebar_size_dialog() {
+  if [[ -x /usr/bin/dialog ]]; then
+    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
+    --radiolist "Choose your Nautilus sidebar size (default is 200px width):" 15 40 5 \
+      0 "${SIDEBAR_SIZE_VARIANTS[0]}" on  \
+      1 "${SIDEBAR_SIZE_VARIANTS[1]}px" off \
+      2 "${SIDEBAR_SIZE_VARIANTS[2]}px" off \
+      3 "${SIDEBAR_SIZE_VARIANTS[3]}px" off \
+      4 "${SIDEBAR_SIZE_VARIANTS[4]}px" off --output-fd 1 )
+      case "$tui" in
+        0) sidebar_size="${SIDEBAR_SIZE_VARIANTS[0]}" ;;
+        1) sidebar_size="${SIDEBAR_SIZE_VARIANTS[1]}" ;;
+        2) sidebar_size="${SIDEBAR_SIZE_VARIANTS[2]}" ;;
+        3) sidebar_size="${SIDEBAR_SIZE_VARIANTS[3]}" ;;
+        4) sidebar_size="${SIDEBAR_SIZE_VARIANTS[4]}" ;;
+        *) operation_canceled ;;
+      esac
+  fi
+
+  clear
+}
+
+show_nautilus_style_dialog() {
+  if [[ -x /usr/bin/dialog ]]; then
+    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
+    --radiolist "Choose your Nautilus style (default is BigSur-like style):" 15 40 5 \
+      0 "${NAUTILUS_STYLE_VARIANTS[0]}" on \
+      1 "${NAUTILUS_STYLE_VARIANTS[1]}" on \
+      2 "${NAUTILUS_STYLE_VARIANTS[2]}" off --output-fd 1 )
+      case "$tui" in
+        0) nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}" ;;
+        1) nautilus_style="${NAUTILUS_STYLE_VARIANTS[1]}" ;;
+        2) nautilus_style="${NAUTILUS_STYLE_VARIANTS[2]}" ;;
+        *) operation_canceled ;;
+      esac
+  fi
+
+  clear
+}
+
+show_needed_dialogs() {
+  [[ "${need_dialog["-p"]}" == "true" ]] && show_panel_opacity_dialog
+  [[ "${need_dialog["-s"]}" == "true" ]] && show_sidebar_size_dialog
+  [[ "${need_dialog["-N"]}" == "true" ]] && show_nautilus_style_dialog
+}
