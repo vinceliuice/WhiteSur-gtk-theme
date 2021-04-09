@@ -95,11 +95,7 @@ while [[ $# -gt 0 ]]; do
     -g|--gdm)
       gdm="true"; full_rootify "${1}"
 
-      if [[ "${GNOME_VERSION}" == 'new' ]]; then
-        prompt -e "SORRY: WhiteSur GDM theme for GNOME 40 is in development and not yet available"
-        prompt -e "SORRY: We can't do a GDM removal here either"
-        has_any_error="true"
-      elif [[ ! "$(which gdm 2> /dev/null)" && ! "$(which gdm3 2> /dev/null)" ]]; then
+      if [[ ! "$(which gdm 2> /dev/null)" && ! "$(which gdm3 2> /dev/null)" ]]; then
         prompt -e "'${1}' ERROR: There's no GDM installed in your system"
         has_any_error="true"
       fi; shift ;;

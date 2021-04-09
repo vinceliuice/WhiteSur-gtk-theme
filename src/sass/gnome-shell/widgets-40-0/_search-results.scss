@@ -4,15 +4,6 @@
   spacing: $base_margin * 2;
 }
 
-.grid-search-results {
-  spacing: $base_spacing * 6;
-}
-
-// Search results with icons
-.grid-search-result {
-  @extend %app-well-app;
-}
-
 // search results list
 .list-search-results {
   spacing: $base_spacing;
@@ -20,6 +11,7 @@
 
 // search result listitem
 .list-search-result {
+  @extend %search-section-content-item;
   // content
   .list-search-result-content {
     spacing: $base_padding;

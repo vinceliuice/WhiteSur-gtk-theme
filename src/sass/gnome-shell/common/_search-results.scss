@@ -1,5 +1,24 @@
 /* Search */
 
+%search-section-content-item {
+  border-radius: $bt_radius;
+  padding: $base_padding;
+  transition-duration: 100ms;
+  text-align: center;
+
+  &:focus,
+  &:hover,
+  &:selected {
+    background-color: $light_divider_color;
+    transition-duration: 200ms;
+  }
+
+  &:active,
+  &:checked {
+    background-color: $light_track_color;
+  }
+}
+
 // search results sections "the boxes"
 .search-section {
   // This should be equal to #searchResultsContent spacing
@@ -15,7 +34,7 @@
 // content
 .search-section-content {  // This is the space between the provider icon and the results container
   spacing: $base_margin * 2;
-  border-radius: $bt_radius;
+  border-radius: $modal_radius;
   padding: $base_padding * 3;
   border: none;
   box-shadow: none;
@@ -26,7 +45,13 @@
 
 // "no results" text
 .search-statustext {
-  @extend %status_text !optional;
+  font-size: 2em;
+  font-weight: bold;
+  color: $light_hint_fg_color;
+}
+
+.grid-search-results {
+  spacing: $base_spacing * 6;
 }
 
 //Icon tile
@@ -42,9 +67,10 @@
 
 // search result provider
 .search-provider-icon {
+  @extend %search-section-content-item;
   // content
   .list-search-provider-content {
-    spacing: 12px;
+    spacing: $base_spacing * 2;
 
     // provider labels
     .list-search-provider-details {
