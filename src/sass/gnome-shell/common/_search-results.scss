@@ -7,18 +7,19 @@
 
   // separator
   .search-section-separator {
-    height: 1px;
+    height: 0;
     background-color: $light_divider_color;
   }
 }
 
 // content
 .search-section-content {  // This is the space between the provider icon and the results container
-  spacing: 32px;
-  border-radius: 0;
+  spacing: $base_margin * 2;
+  border-radius: $bt_radius;
+  padding: $base_padding * 3;
   border: none;
   box-shadow: none;
-  background: none;
+  background: $light_divider_color;
   text-shadow: none;
   color: $light_alt_fg_color;
 }
@@ -29,11 +30,10 @@
 }
 
 //Icon tile
-.search-provider-icon,
 .list-search-result {
-  @extend %icon_tile;
   &:focus, &:selected, &:hover {
     background-color: $light_divider_color;
+    transition-duration: 200ms;
   }
   &:active, &:checked {
     background-color: $light_track_color;
@@ -42,8 +42,6 @@
 
 // search result provider
 .search-provider-icon {
-  @extend %app-well-app;
-
   // content
   .list-search-provider-content {
     spacing: 12px;

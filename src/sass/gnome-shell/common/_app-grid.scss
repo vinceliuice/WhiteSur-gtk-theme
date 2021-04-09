@@ -6,7 +6,7 @@ $app_grid_fg_color: #fff;
 %icon_tile {
   color: $light_alt_fg_color;
   border-radius: $bd_radius * 1.5;
-  padding: 6px;
+  padding: 8px;
   border: none;
   transition-duration: $longer_duration;
   text-align: center;
@@ -14,14 +14,9 @@ $app_grid_fg_color: #fff;
 
 %app-well-app,
 .show-apps,
-.app-well-app,
-.grid-search-result {
+.app-well-app {
   & .overview-icon {
     @extend %icon_tile !optional;
-
-    &, & > StIcon {
-      icon-shadow: $panel_asset_shadow;
-    }
   }
 
   &:hover .overview-icon,
