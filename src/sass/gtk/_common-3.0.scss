@@ -91,18 +91,22 @@ $list_shadow: if($variant == 'light',
 //
 // Base States
 //
+
+$background_radius_style: 0 0 $wm_radius $wm_radius;
+$maximized_radius_style: 0 0 $maximized_radius $maximized_radius;
+
 .background {
   // border-radius: 0 0 $wm_radius $wm_radius;
   color: $fg_color;
-  background-color: rgba($bg_color, 0.999);
+  background-color: rgba($bg_color, 1);
 
   // > box > stack { background-color: $bg_color; }
 
   &.csd {
-    border-radius: 0 0 $wm_radius $wm_radius; // Set csd windows botttom border radius
+    border-radius: $background_radius_style; // Set csd windows botttom border radius
 
     &.maximized, &.tiled, &.fullscreen {
-      border-radius: 0 0 $maximized_radius $maximized_radius; // Set csd windows botttom border radius
+      border-radius: $maximized_radius_style; // Set csd windows botttom border radius
     }
   }
 
@@ -1701,6 +1705,13 @@ headerbar {
   > box.left.horizontal,
   > box.right.horizontal {
     padding: 0 6px;
+  }
+}
+
+window.background.csd.maximized {
+  > deck > box > headerbar.windowhandle {
+    border-top-left-radius: $maximized_radius;
+    border-top-right-radius: $maximized_radius;
   }
 }
 

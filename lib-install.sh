@@ -434,7 +434,7 @@ customize_theme() {
 
   # Change common apps style for a specific GNOME Shell version
   if [[ ${GNOME_VERSION} == "new" ]]; then
-    sed ${SED_OPT} "/\$gnome_version/s/old/new/"                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    sed ${SED_OPT} "/\$gnome_version/s/old/new/"                    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   elif [[ ${GNOME_VERSION} == "none" ]]; then
     prompt -w "There's no GNOME Shell installed, using style for the older GNOME Shell instead..."
   fi
@@ -455,6 +455,12 @@ customize_theme() {
   if [[ "${nautilus_style}" != 'default' ]]; then
     prompt -w "Changing Nautilus style ..."
     sed ${SED_OPT} "/\$nautilus_style/s/default/${nautilus_style}/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
+  # Change maximized window radius
+  if [[ "${max_round}" == 'true' ]]; then
+    prompt -w "Changing maximized window style ..."
+    sed ${SED_OPT} "/\$max_window_style/s/square/round/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 }
 

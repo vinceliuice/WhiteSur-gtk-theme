@@ -107,6 +107,7 @@ flatpak="false"
 snap="false"
 gdm="false"
 dash_to_dock="false"
+max_round="false"
 
 # Misc
 msg="Run '${0} --help' to explore more customization features!"
@@ -375,7 +376,7 @@ check_param() {
           done
         fi ;;
       -N)
-        for i in {0..2}; do
+        for i in {0..3}; do
           if [[ "${value}" == "${NAUTILUS_STYLE_VARIANTS[i]}" ]]; then
             nautilus_style="${NAUTILUS_STYLE_VARIANTS[i]}"; variant_found="true"; break
           fi

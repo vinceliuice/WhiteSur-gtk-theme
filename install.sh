@@ -61,6 +61,8 @@ while [[ $# -gt 0 ]]; do
       uninstall='true'; shift ;;
     --dialog|--interactive)
       interactive='true'; shift ;;
+    -R|--round)
+      max_round="true"; shift ;;
     -h|--help)
       need_help="true"; shift ;;
       # Parameters that require value, single use

@@ -292,6 +292,9 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 dialog.background.csd {
   background-image: none;
   background-color: $dialog_bg_color;
+  border-radius: 0 0 $wm_radius $wm_radius;
+
+  &.maximized { border-radius: 0 0 $maximized_radius $maximized_radius; }
 
   > headerbar {
     &.titlebar {
@@ -466,7 +469,7 @@ dialog.background.csd {
   &.background.csd {
     background-color: transparent;
     background-image: $nautilus_bg_image;
-    border-radius: 0 0 $wm_radius $wm_radius;
+    border-radius: $background_radius_style;
 
     > headerbar.titlebar,
     > deck > box > headerbar.titlebar {
@@ -587,9 +590,9 @@ dialog.background.csd {
 
   // Reset maximized nautilus-window border-radius
   &.maximized, &.tiled, &.fullscreen {
-    &.background.csd { border-radius: 0 0 $maximized_radius $maximized_radius; }
+    &.background.csd { border-radius: $maximized_radius_style; }
     notebook { &, > stack { border-radius: 0 0 $maximized_radius $maximized_radius; } }
-    headerbar { border-radius: $maximized_radius $maximized_radius 0 0; }
+    headerbar.titlebar { &, &.windowhandle { border-radius: $maximized_radius $maximized_radius 0 0; } }
     placessidebar { border-bottom-left-radius: $maximized_radius; }
   }
 
@@ -1715,6 +1718,14 @@ row#AutostartTitle.tweak {
   background-color: rgba($dark_sidebar_bg, 1);
   border-radius: 0 0 0 $wm_radius;
 
+  .maximized &,
+  .fullscreen &,
+  .tiled &,
+  .tiled-top &,
+  .tiled-right &,
+  .tiled-bottom &,
+  .tiled-left & { border-radius: 0 0 0 $maximized_radius; }
+
   > separator {
     min-width: 0;
     min-height: 0;
@@ -1722,7 +1733,7 @@ row#AutostartTitle.tweak {
   }
 }
 
-// separator of sidebar on Gnome contol center and Gnome tweaks
+// separator of sidebar on Gnome control center and Gnome tweaks
 window.background.csd {
   > hdyleaflet, > leaflet, > box.horizontal {
     > separator.vertical {
@@ -1861,7 +1872,7 @@ window.background.csd {
       > widget {
         > box.vertical > box.vertical { // Gnome 3.34 Wallpaper setting
           > scrolledwindow > viewport.frame {
-            border-bottom-right-radius: $maximized_radius + 1px;
+            border-bottom-right-radius: $maximized_radius;
           }
         }
       }
@@ -1870,7 +1881,7 @@ window.background.csd {
     > leaflet > box.vertical > scrolledwindow.view, // > 3.38.0
     > hdyleaflet > box.vertical > scrolledwindow.view, // > 3.34.0
     > box.horizontal > box.vertical > scrolledwindow.view { // > 3.25.90
-      border-bottom-left-radius: $maximized_radius + 1px;
+      border-bottom-left-radius: $maximized_radius;
     }
   }
 }
