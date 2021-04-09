@@ -3558,12 +3558,14 @@ calendar {
 // Dialogs
 //
 
+$messagedialog_bg: if($trans == 'true', rgba($bg_color, 0.95), $bg_color);
+
 window.dialog.message { // Message Dialog styling
-  &.background { background-color: rgba($bg_color, 0.95); }
+  &.background { background-color: rgba($messagedialog_bg, 1); }
 
   .titlebar {
     min-height: 28px;
-    background-color: rgba($bg_color, 0.95);
+    background-color: rgba($messagedialog_bg, 1);
     border: none;
   }
 
@@ -3621,6 +3623,8 @@ window.dialog.message { // Message Dialog styling
       border-bottom-right-radius: $wm_radius;
       border: none;
     }
+
+    &.background, .titlebar { background-color: $messagedialog_bg; }
   }
 }
 
