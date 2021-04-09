@@ -10,9 +10,9 @@
   color: $fg_color;
   background-color: $base_color;
   border: none;
-  box-shadow: 0 3px 8px rgba(black, 0.25);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
 
-  &:hover { background-color: rgba($base_color, 1); box-shadow: 0 5px 12px rgba(black, 0.35); }
+  &:hover { background-color: rgba($base_color, 1); box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35); }
   &:focus { background-color: $base_color; }
 
   .notification-icon { padding: 5px; }
