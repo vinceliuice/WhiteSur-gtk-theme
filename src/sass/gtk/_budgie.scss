@@ -84,7 +84,7 @@ $raven_padding: 8px;
 
     button {
       border-radius: $bt_radius;
-      -gtk-outline-radius: $bt_radius;
+      // -gtk-outline-radius: $bt_radius;
 
       @extend %budgie_button;
     }
@@ -708,7 +708,7 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
 
         &.image-button {
           border-radius: 100px;
-          -gtk-outline-radius: 100px;
+          // -gtk-outline-radius: 100px;
         }
       }
     }
@@ -873,7 +873,8 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
 
   .expander-button {
     border-radius: 100px;
-    -gtk-outline-radius: 100px; }
+    // -gtk-outline-radius: 100px;
+  }
 
   .raven-background {
     &.middle { border-bottom-style: none; } // applet background between two headers
@@ -1140,7 +1141,7 @@ window.budgie-switcher-window {
   flowboxchild { // icon-tiles
     margin: 2px;
     border-radius: $wm_radius;
-    -gtk-outline-radius: $wm_radius;
+    // -gtk-outline-radius: $wm_radius;
     // background-color: transparent;
     background-image: none;
   }

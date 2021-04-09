@@ -3,8 +3,10 @@
 _theme-options-temp.scss
 *.css.map
 src/main/gtk-3.0/gtk*.css
+src/main/gtk-4.0/gtk*.css
 src/main/cinnamon/cinnamon*.css
 src/main/gnome-shell/gnome-shell*.css
 src/main/gnome-shell/gdm3*.css
 src/other/dash-to-dock/stylesheet.css
 src/other/dash-to-dock/stylesheet-dark.css
+parse-sass.sh

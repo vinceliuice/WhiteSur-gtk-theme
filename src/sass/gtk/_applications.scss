@@ -754,8 +754,8 @@ $disk_space_free: darken($bg_color, 3%);
     &.frame { border-width: 0; }
 
     .places-treeview {
-      -NemoPlacesTreeView-disk-full-bg-color: $dark_solid_borders_color;
-      -NemoPlacesTreeView-disk-full-fg-color: lighten($progress_color, 5%);
+      // -NemoPlacesTreeView-disk-full-bg-color: $dark_solid_borders_color;
+      // -NemoPlacesTreeView-disk-full-fg-color: lighten($progress_color, 5%);
     }
   }
 
@@ -980,7 +980,7 @@ window.org-gnome-gedit {
       padding: 0;
       margin: 0 6px;
       border-radius: 100px;
-      -gtk-outline-radius: 100px;
+      // -gtk-outline-radius: 100px;
 
       image {
         color: inherit;
@@ -1111,7 +1111,6 @@ layouttab {
 
 layout {
   border: 1px solid $borders_color;
-  -PnlDockBin-handle-size: 1;
 }
 
 eggsearchbar box.search-bar {
@@ -1159,7 +1158,6 @@ docktabstrip {
 
 dockbin {
   border: 1px solid $borders_color;
-  -PnlDockBin-handle-size: 1;
 }
 
 dockpaned {
@@ -1620,70 +1618,6 @@ button.documents-favorite:active:hover {
 //
 // Gnome Tweak Tool ( Gnome tweaks )
 //
-%side_headerbar_left {
-  background-image: none;
-  background-color: rgba($dark_sidebar_bg, 1);
-  box-shadow: inset 0 1px $highlight_color;
-  border: none;
-}
-
-%side_headerbar_right {
-  background-image: none;
-  background-color: rgba($base_color, 1);
-  box-shadow: inset 0 1px $highlight_color;
-  border: none;
-}
-
-%side_searchbar {
-  background-color: rgba($dark_sidebar_bg, 1);
-
-  > revealer > box {
-    border-color: if($variant == 'light', $solid_borders_color, $header_border);
-  }
-}
-
-%side_separator {
-  &, &:backdrop {
-    background-image: if($variant == 'light', image($solid_borders_color), image($header_border));
-    background-color: transparent;
-    border-right: none;
-  }
-}
-
-$list_shadow: if($variant == 'light',
-                (inset 0 0 8px rgba(black, 0.02), inset 0 0 3px rgba(black, 0.01), inset 0 0 0 1px rgba(black, 0.04), inset 0 1px rgba(black, 0.05)),
-                (inset 0 0 8px rgba(white, 0.03), inset 0 0 3px rgba(white, 0.02), inset 0 0 0 1px rgba(white, 0.04), inset 0 1px rgba(white, 0.06)));
-
-%circular_list {
-  border-radius: $wm_radius;
-  box-shadow: $list_shadow;
-  background-color: if($variant == 'light', rgba(black, 0.03), rgba(white, 0.05));
-  border: none;
-
-  > separator { background: none; min-height: 0; }
-}
-
-%circular_row {
-  &:first-child {
-    border-top-left-radius: $wm_radius;
-    border-top-right-radius: $wm_radius;
-  }
-
-  &:last-child { // Not use ?
-    border-bottom-left-radius: $wm_radius;
-    border-bottom-right-radius: $wm_radius;
-  }
-
-  &:only-child {
-    border-radius: $wm_radius;
-  }
-}
-
-%sidebar_row {
-  margin: 2px 4px;
-  border-radius: $wm_radius - 4px;
-  -gtk-outline-radius : $wm_radius - 6px;
-}
 
 hdyleaflet, leaflet, box.horizontal > stack.background {
   frame > border { border: none; }
@@ -2575,7 +2509,7 @@ popover.background:not(.emoji-picker) > box.vertical > stack > box.vertical {
         padding: 4px; // Same as of image.sidebar-icon
         // margin: 0 4px;
         border-radius: 100px;
-        -gtk-outline-radius: 100px;
+        // -gtk-outline-radius: 100px;
       }
     }
   }
@@ -2880,11 +2814,6 @@ panel-toplevel.background {
       background-color: $selected_bg_color;
     }
   }
-
-  na-tray-applet {
-    -NaTrayApplet-icon-padding: 0;
-    -NaTrayApplet-icon-size: 16px;
-  }
 }
 
 //
@@ -3065,7 +2994,6 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
   menu {
     font-weight: 400; // for enforcing regular weight
     text-shadow: none;
-    -gtk-icon-effect: none;
   }
 
   menubar.-vala-panel-appmenu-private { // xfce4 appmenu plugin
@@ -3706,7 +3634,7 @@ widget > box.terminal-titlebar {
       min-height: 24px;
       min-width: 24px;
       border-radius: $bt_radius;
-      -gtk-outline-radius: $bt_radius;
+      // -gtk-outline-radius: $bt_radius;
     }
   }
 }
@@ -3720,7 +3648,7 @@ list.tilix-session-sidebar {
     min-width: 20px;
     padding: 0;
     border-radius: 100px;
-    -gtk-outline-radius: 100px;
+    // -gtk-outline-radius: 100px;
     background-color: $destructive_color;
     &, &:hover, &:active, &:checked { color: white; }
 
@@ -3892,7 +3820,6 @@ button.flat.-panel-icon-button {
 .unpinned button.flat.-panel-icon-button {
   border-radius: 0;
 
-  &:hover { -gtk-icon-effect: highlight; }
   &:hover,
   &:active,
   &:checked {
@@ -3908,7 +3835,6 @@ button.flat.-panel-icon-button {
     background-position: bottom center;
   }
 
-  &:hover { -gtk-icon-effect: highlight; }
   &:hover,
   &:active,
   &:checked {

@@ -71,7 +71,8 @@ install_darky() {
   local opacity="$(destify ${1})"
   local theme="$(destify ${2})"
 
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark${opacity}${theme}.scss"          "${WHITESUR_TMP_DIR}/darky${opacity}${theme}.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark${opacity}${theme}.scss"          "${WHITESUR_TMP_DIR}/darky-3${opacity}${theme}.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark${opacity}${theme}.scss"          "${WHITESUR_TMP_DIR}/darky-4${opacity}${theme}.css"
 }
 
 install_shelly() {
@@ -128,7 +129,8 @@ install_theemy() {
   local icon="$(destify ${5})"
 
   local TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}"
-  local TMP_DIR="${WHITESUR_TMP_DIR}/gtk${color}${opacity}${alt}${theme}"
+  local TMP_DIR_T="${WHITESUR_TMP_DIR}/gtk-3.0${color}${opacity}${alt}${theme}"
+  local TMP_DIR_F="${WHITESUR_TMP_DIR}/gtk-4.0${color}${opacity}${alt}${theme}"
 
   mkdir -p                                                                                    "${TARGET_DIR}"
   local desktop_entry="
@@ -146,30 +148,50 @@ install_theemy() {
   ButtonLayout=close,minimize,maximize:menu"
   echo "${desktop_entry}" >                                                                   "${TARGET_DIR}/index.theme"
 
-  #----------------------GTK-----------------------#
+  #--------------------GTK-3.0--------------------#
 
-  mkdir -p                                                                                    "${TMP_DIR}"
-  cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/common-assets/assets"                                "${TMP_DIR}"
-  cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/common-assets/sidebar-assets/"*".png"                "${TMP_DIR}/assets"
-  cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/windows-assets/titlebutton${alt}"                    "${TMP_DIR}/windows-assets"
+  mkdir -p                                                                                    "${TMP_DIR_T}"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TMP_DIR_T}"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TMP_DIR_T}/assets"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}"                        "${TMP_DIR_T}/windows-assets"
 
   if [[ "${theme}" != '' ]]; then
-    cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/common-assets/assets${theme}/"*".png"              "${TMP_DIR}/assets"
+    cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets${theme}/"*".png"                  "${TMP_DIR_T}/assets"
   fi
 
   if [[ "${color}" == '-light' ]]; then
-    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-light${opacity}${theme}.scss"       "${TMP_DIR}/gtk.css"
+    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-light${opacity}${theme}.scss"       "${TMP_DIR_T}/gtk.css"
   else
-    cp -r "${WHITESUR_TMP_DIR}/darky${opacity}${theme}.css"                                   "${TMP_DIR}/gtk.css"
+    cp -r "${WHITESUR_TMP_DIR}/darky-3${opacity}${theme}.css"                                 "${TMP_DIR_T}/gtk.css"
   fi
 
-  cp -r "${WHITESUR_TMP_DIR}/darky${opacity}${theme}.css"                                     "${TMP_DIR}/gtk-dark.css"
+  cp -r "${WHITESUR_TMP_DIR}/darky-3${opacity}${theme}.css"                                   "${TMP_DIR_T}/gtk-dark.css"
 
   mkdir -p                                                                                    "${TARGET_DIR}/gtk-3.0"
-  cp -r "${THEME_SRC_DIR}/assets/gtk-3.0/thumbnails/thumbnail${color}${theme}.png"            "${TARGET_DIR}/gtk-3.0/thumbnail.png"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}.png"                "${TARGET_DIR}/gtk-3.0/thumbnail.png"
   echo '@import url("resource:///org/gnome/theme/gtk.css");' >                                "${TARGET_DIR}/gtk-3.0/gtk.css"
   echo '@import url("resource:///org/gnome/theme/gtk-dark.css");' >                           "${TARGET_DIR}/gtk-3.0/gtk-dark.css"
-  glib-compile-resources --sourcedir="${TMP_DIR}" --target="${TARGET_DIR}/gtk-3.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-3.0/gtk.gresource.xml"
+  glib-compile-resources --sourcedir="${TMP_DIR_T}" --target="${TARGET_DIR}/gtk-3.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-3.0/gtk.gresource.xml"
+
+  #--------------------GTK-4.0--------------------#
+
+  mkdir -p                                                                                    "${TMP_DIR_F}"
+  cp -r "${TMP_DIR_T}/assets"                                                                 "${TMP_DIR_F}"
+  cp -r "${TMP_DIR_T}/windows-assets"                                                         "${TMP_DIR_F}"
+
+  if [[ "${color}" == '-light' ]]; then
+    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-light${opacity}${theme}.scss"       "${TMP_DIR_F}/gtk.css"
+  else
+    cp -r "${WHITESUR_TMP_DIR}/darky-4${opacity}${theme}.css"                                 "${TMP_DIR_F}/gtk.css"
+  fi
+
+  cp -r "${WHITESUR_TMP_DIR}/darky-4${opacity}${theme}.css"                                   "${TMP_DIR_F}/gtk-dark.css"
+
+  mkdir -p                                                                                    "${TARGET_DIR}/gtk-4.0"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}.png"                "${TARGET_DIR}/gtk-4.0/thumbnail.png"
+  echo '@import url("resource:///org/gnome/theme/gtk.css");' >                                "${TARGET_DIR}/gtk-4.0/gtk.css"
+  echo '@import url("resource:///org/gnome/theme/gtk-dark.css");' >                           "${TARGET_DIR}/gtk-4.0/gtk-dark.css"
+  glib-compile-resources --sourcedir="${TMP_DIR_F}" --target="${TARGET_DIR}/gtk-4.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-4.0/gtk.gresource.xml"
 
   #----------------Cinnamon-----------------#
 
