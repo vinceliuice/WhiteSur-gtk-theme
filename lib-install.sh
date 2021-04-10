@@ -494,9 +494,9 @@ customize_theme() {
   fi
 
   # Change Nautilus style
-  if [[ "${nautilus_style}" != 'default' ]]; then
+  if [[ "${nautilus_style}" != 'stable' ]]; then
     prompt -w "Changing Nautilus style ..."
-    sed ${SED_OPT} "/\$nautilus_style/s/default/${nautilus_style}/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    sed ${SED_OPT} "/\$nautilus_style/s/stable/${nautilus_style}/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change maximized window radius

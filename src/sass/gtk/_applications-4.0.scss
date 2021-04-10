@@ -19,9 +19,9 @@ terminal-window {
 }
 
 //
-// Filechooser, Dialog, and Nautilus
+// Nautilus
 //
-$nautilus_radius: $wm_radius + 2px;
+$nautilus_radius: $wm_radius + 1px;
 $nautilus_sidebar_size: $sidebar_size;
 $nautilus_borders_color: if($variant=='light', darken(rgba($dark_sidebar_bg, 1), 12%), $header_border);
 
@@ -34,28 +34,8 @@ $dialog_header_borders_image: image($header_border);
 $nautilus_bg_image: image($dark_sidebar_bg);
 $nautilus_sidebar_image: image($dark_sidebar_bg);
 
-@if $gnome_version == 'new' and $nautilus_style != 'stable' {
-  $nautilus_bg_image: linear-gradient(180deg, rgba($dark_sidebar_bg, 0) ($nautilus_headerbar_size + 1),
-                                      $dark_sidebar_bg ($nautilus_headerbar_size + 1));
-}
 
 @if $nautilus_style == 'stable' {
-  @if $gnome_version == 'new' {
-    $nautilus_header_image: linear-gradient(90deg, transparent 0%,
-                                                   transparent $nautilus_sidebar_size,
-                                                   $nautilus_borders_color $nautilus_sidebar_size,
-                                                   $nautilus_borders_color ($nautilus_sidebar_size + 1px),
-                                                   $base_color ($nautilus_sidebar_size + 1px),
-                                                   $base_color 100%);
-  } @else {
-    $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
-                                                   $dark_sidebar_bg $nautilus_sidebar_size,
-                                                   $nautilus_borders_color $nautilus_sidebar_size,
-                                                   $nautilus_borders_color ($nautilus_sidebar_size + 1px),
-                                                   $base_color ($nautilus_sidebar_size + 1px),
-                                                   $base_color 100%);
-  }
-
   $nautilus_sidebar_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                                   $dark_sidebar_bg $nautilus_sidebar_size,
                                                   transparent $nautilus_sidebar_size,
@@ -82,300 +62,32 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   $nautilus_actionbar_borders_image: linear-gradient(90deg, rgba($header_border, 0) 0px,
                                                             $header_border 25%);
 }
+
 @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
   $nautilus_header_borders_image: linear-gradient(90deg, transparent $nautilus_sidebar_size,
                                                          $header_border $nautilus_sidebar_size);
 }
 
-@if $nautilus_style == 'default' {
-  $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg $nautilus_sidebar_size,
-                                          $nautilus_borders_color $nautilus_sidebar_size,
-                                          $nautilus_borders_color ($nautilus_sidebar_size + 1px),
-                                          $base_color ($nautilus_sidebar_size + 1px));
-} @else if $nautilus_style == 'glassy' {
+@if $nautilus_style == 'stable' or $nautilus_style == 'default' {
+  @if $gnome_version == 'new' {
+    $nautilus_header_image: linear-gradient(90deg, transparent $nautilus_sidebar_size,
+                                                   $nautilus_borders_color $nautilus_sidebar_size,
+                                                   $nautilus_borders_color ($nautilus_sidebar_size + 1px),
+                                                   $base_color ($nautilus_sidebar_size + 1px));
+  } @else {
+    $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg $nautilus_sidebar_size,
+                                                   $nautilus_borders_color $nautilus_sidebar_size,
+                                                   $nautilus_borders_color ($nautilus_sidebar_size + 1px),
+                                                   $base_color ($nautilus_sidebar_size + 1px));
+  }
+}
+
+@else if $nautilus_style == 'glassy' {
   $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg ($nautilus_sidebar_size/2),
                                                  $dark_header_bg 40%);
 
   $nautilus_header_borders_image: linear-gradient(90deg, transparent (($nautilus_sidebar_size/2) - 40px),
                                                          $header_border 40%);
-}
-
-@mixin color_sidebar($s_bg_color: transparent, $sidebar_style: stable) {
-  placessidebar.sidebar {
-    background-color: transparent;
-    min-width: $nautilus_sidebar_size;
-    border: none;
-
-    list {
-      background-color: $s_bg_color;
-      border-bottom-left-radius: $wm_radius;
-    }
-
-    row.sidebar-row {
-      color: $dark_sidebar_fg;
-      background-color: transparent;
-      transition: background-image 0;
-
-      .sidebar-icon { color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%)); }
-
-      &.has-open-popup,
-      &:disabled {
-        &, label, image { color: transparentize($dark_sidebar_fg, 0.6); }
-      }
-
-      &:backdrop { opacity: 0.85; }
-
-      // row style
-      @if $nautilus_style == 'stable' and $sidebar_style == 'stable' {
-        &:hover {
-          transition: background-image 0;
-          background-repeat: no-repeat;
-          background-color: transparent;
-          background-position: left center;
-          background-size: $nautilus_sidebar_size 28px;
-          background-image: -gtk-scaled(url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
-                                        url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
-        }
-
-        &:active, &:active:hover {
-          transition: background-image ease-out 200ms;
-          background-repeat: no-repeat;
-          background-color: transparent;
-          background-position: left center;
-          background-size: $nautilus_sidebar_size 28px;
-          background-image: -gtk-scaled(url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
-                                        url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
-        }
-
-        &:selected.has-open-popup,
-        &:selected, &:selected:hover {
-          color: $fg_color;
-          transition: background-image ease-out 200ms;
-          background-repeat: no-repeat;
-          background-position: left center;
-          background-size: $nautilus_sidebar_size 28px;
-          background-color: transparent;
-          background-image: -gtk-scaled(url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
-                                        url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
-
-          &, label { color: $fg_color; }
-        }
-      }
-
-      @else {
-        border-radius: $bt_radius;
-        margin: 0 6px;
-        padding: 2px 4px;
-
-        &:hover {
-          background-color: rgba($fg_color, 0.1);
-        }
-
-        &:active, &:active:hover {
-          transition: background-color ease-out 200ms;
-          background-color: rgba($fg_color, 0.2);
-        }
-
-        &:selected.has-open-popup,
-        &:selected, &:selected:hover {
-          color: $fg_color;
-          transition: background-color ease-out 200ms;
-          background-color: rgba($fg_color, 0.15);
-
-          &, label { color: $fg_color; }
-        }
-      }
-
-      // other
-      &.sidebar-new-bookmark-row {
-        color: $selected_bg_color;
-
-        .sidebar-icon { color: inherit; }
-      }
-
-      &:drop(active):not(:disabled) {
-        &, label, .sidebar-icon { color: $dark_sidebar_fg; }
-
-        &:selected {
-          &, label, .sidebar-icon { color: $dark_sidebar_fg; }
-          background-color: $drop_target_color;
-        }
-      }
-    }
-
-    separator { background-color: transparent; }
-
-    scrollbar {
-      background: none;
-      border: none;
-
-      &.overlay-indicator:not(.dragging):not(.hovering) slider {
-        background-color: rgba(lighten($dark_sidebar_fg, 15%), 0.35);
-        border: none;
-      }
-
-      slider {
-        min-width: 4px;
-        background-color: transparentize(lighten($dark_sidebar_fg, 15%), 0.3);
-
-        &:hover { background-color: lighten($dark_sidebar_fg, 20%); }
-
-        &:hover:active { background-color: $header_button_checked_bg; }
-
-        &:disabled {
-          background-color: transparent;
-        }
-      }
-
-      trough {
-        background-color: transparent;
-      }
-    }
-  }
-
-  placesview {
-    row.activatable {
-      border-radius: $bt_radius;
-      margin-right: 6px;
-    }
-
-    actionbar.background {
-      background-color: $menu_bg;
-      margin: 6px;
-      border-radius: $wm_radius - 6px;
-      box-shadow: $shadow_5, inset 0 1px $highlight_color;
-      border: none;
-    }
-  }
-}
-
-dialog.background.csd {
-  background-image: none;
-  background-color: $dialog_bg_color;
-
-  > headerbar {
-    &.titlebar {
-      > label:not(.title):not(.subtitle) { // wallpaper set dialog
-        font-weight: 700;
-      }
-    }
-  }
-
-  > box.vertical.dialog-vbox {
-    &.view { background: none; }
-
-    > grid.horizontal {
-      > scrolledwindow.frame { //removed ugly boders for nautilus batch renaming dialog
-        border: none;
-
-        > viewport.frame {
-          border: none;
-
-          list:first-child { border-radius: 0 0 0 $wm_radius; }
-          list:last-child { border-radius: 0 0 $wm_radius 0; }
-        }
-      }
-
-      > stack {
-        > scrolledwindow.frame { // reset border for totem setting dialog
-          border: 1px solid $borders_color;
-        }
-      }
-    }
-
-    > stack,
-    > stack > stack {
-      > scrolledwindow {
-        border-radius: 0 0 $wm_radius $wm_radius;
-        background-color: $base_color;
-
-        iconview.view:not(:hover):not(:selected):not(:active) { // Wallpaper setting window
-          background-color: transparent;
-        }
-      }
-    }
-
-    > stack {
-      > scrolledwindow > viewport.frame {
-        > list {
-          border-radius: 0 0 $wm_radius $wm_radius;
-
-          row.activatable:not(:hover):not(:selected):not(:active) {
-            background-color: transparent;
-          }
-        }
-      }
-
-      > box.vertical > stack.view {
-        > scrolledwindow > treeview.view:not(:hover):not(:selected):not(:active) {
-          background-color: transparent;
-        }
-      }
-
-      toolbar.toolbar {
-        border-radius: 0 0 $wm_radius $wm_radius;
-        border-width: 1px 0 0 0;
-      }
-
-      > notebook > stack { // Control center wifi setting 3.36 or later
-        border-radius: 0 0 $wm_radius $wm_radius;
-      }
-    }
-
-    > notebook {
-      > stack {
-        border-radius: 0 0 $wm_radius $wm_radius;
-
-        > box.horizontal > notebook > stack {  // Control center wifi setting
-          border-radius: 0 0 $wm_radius $wm_radius;
-        }
-      }
-    }
-
-    separator.vertical { background-color: $borders_color; }
-
-    // Outline for low res icons
-    .lowres-icon { // FIXME: not use
-      -gtk-icon-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-    }
-
-    // Dropshadow for large icons
-    .icon-dropshadow { // FIXME: not use
-      -gtk-icon-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    }
-
-    > .dialog-action-box {
-      > .dialog-action-area {
-        padding: 3px 6px 6px;
-      }
-    }
-  }
-
-  stack scrolledwindow {
-    &.frame {
-      border-radius: $wm_radius;
-
-      textview.view {
-        border-radius: $wm_radius;
-
-        > text {
-          background: none;
-        }
-      }
-
-      treeview.view:not(:hover):not(:selected) { background: none; }
-    }
-
-    viewport.frame {
-      &.view { border-radius: $wm_radius; }
-    }
-  }
-
-  > .dialog-vbox > .dialog-action-box {
-    > .dialog-action-area {
-      margin: 0 6px 6px;
-    }
-  }
 }
 
 //
@@ -393,6 +105,8 @@ dialog.background.csd {
       box-shadow: inset 0 1px rgba(white, 0.1);
       background-image: $nautilus_header_image;
       border: none;
+      background-clip: padding-box;
+      border-bottom-width: 0;
       border-image: $nautilus_header_borders_image 0 0 1 / 0px 0px 1px stretch;
 
       @if $nautilus_style == 'stable' and $trans == 'false' {
@@ -407,16 +121,155 @@ dialog.background.csd {
     }
 
     placessidebar.sidebar {
+      background-color: transparent;
+      min-width: $nautilus_sidebar_size;
+      border: none;
       border-bottom-left-radius: $wm_radius;
 
       @if $nautilus_style == 'stable' {
         background-image: if($trans == 'true', none, $nautilus_sidebar_image);
-
-        > list { margin-bottom: $wm_radius; }
       }
 
       @else {
         &.frame { border-right: 1px solid $nautilus_borders_color; }
+      }
+
+      list { margin-bottom: 6px; }
+
+      row.sidebar-row {
+        color: $dark_sidebar_fg;
+        background-color: transparent;
+        transition: background-image 0;
+
+        .sidebar-icon { color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%)); }
+
+        &.has-open-popup,
+        &:disabled {
+          &, label, image { color: transparentize($dark_sidebar_fg, 0.6); }
+        }
+
+        &:backdrop { opacity: 0.85; }
+
+        // row style
+        @if $nautilus_style == 'stable' {
+          &:hover {
+            transition: background-image 0;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            background-position: left center;
+            background-size: $nautilus_sidebar_size 28px;
+            background-image: -gtk-scaled(url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                          url("assets/sidebar-view-hover-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
+          }
+
+          &:active, &:active:hover {
+            transition: background-image ease-out 200ms;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            background-position: left center;
+            background-size: $nautilus_sidebar_size 28px;
+            background-image: -gtk-scaled(url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                          url("assets/sidebar-view-active-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
+          }
+
+          &:selected.has-open-popup,
+          &:selected, &:selected:hover {
+            color: $fg_color;
+            transition: background-image ease-out 200ms;
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: $nautilus_sidebar_size 28px;
+            background-color: transparent;
+            background-image: -gtk-scaled(url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}.png"),
+                                          url("assets/sidebar-view-checked-#{$nautilus_sidebar_size}#{$asset_suffix}@2.png"));
+
+            &, label { color: $fg_color; }
+          }
+        }
+
+        @else {
+          border-radius: $bt_radius;
+          margin: 0 6px;
+          padding: 2px 4px;
+
+          &:hover {
+            background-color: rgba($fg_color, 0.1);
+          }
+
+          &:active, &:active:hover {
+            transition: background-color ease-out 200ms;
+            background-color: rgba($fg_color, 0.2);
+          }
+
+          &:selected.has-open-popup,
+          &:selected, &:selected:hover {
+            color: $fg_color;
+            transition: background-color ease-out 200ms;
+            background-color: rgba($fg_color, 0.15);
+
+            &, label { color: $fg_color; }
+          }
+        }
+
+        // other
+        &.sidebar-new-bookmark-row {
+          color: $selected_bg_color;
+
+          .sidebar-icon { color: inherit; }
+        }
+
+        &:drop(active):not(:disabled) {
+          &, label, .sidebar-icon { color: $dark_sidebar_fg; }
+
+          &:selected {
+            &, label, .sidebar-icon { color: $dark_sidebar_fg; }
+            background-color: $drop_target_color;
+          }
+        }
+      }
+
+      separator { background-color: transparent; }
+
+      scrollbar {
+        background: none;
+        border: none;
+
+        &.overlay-indicator:not(.dragging):not(.hovering) slider {
+          background-color: rgba(lighten($dark_sidebar_fg, 15%), 0.35);
+          border: none;
+        }
+
+        slider {
+          min-width: 4px;
+          background-color: transparentize(lighten($dark_sidebar_fg, 15%), 0.3);
+
+          &:hover { background-color: lighten($dark_sidebar_fg, 20%); }
+
+          &:hover:active { background-color: $header_button_checked_bg; }
+
+          &:disabled {
+            background-color: transparent;
+          }
+        }
+
+        trough {
+          background-color: transparent;
+        }
+      }
+    }
+
+    placesview {
+      row.activatable {
+        border-radius: $bt_radius;
+        margin-right: 6px;
+      }
+
+      actionbar.background {
+        background-color: $menu_bg;
+        margin: 6px;
+        border-radius: $wm_radius - 6px;
+        box-shadow: $shadow_5, inset 0 1px $highlight_color;
+        border: none;
       }
     }
   }
@@ -475,7 +328,7 @@ dialog.background.csd {
       margin: 6px 10px 10px 6px;
       border-radius: $wm_radius;
       box-shadow: $shadow_5;
-      padding: 0 6px;
+      // padding: 0 6px;
     }
   }
 
@@ -504,7 +357,7 @@ dialog.background.csd {
   &.maximized, &.tiled, &.fullscreen {
     &.background.csd { border-radius: $maximized_radius; }
     notebook { &, > stack { border-radius: 0 0 $maximized_radius $maximized_radius; } }
-    headerbar { border-radius: $maximized_radius $maximized_radius 0 0; }
+    headerbar.titlebar { &, &.windowhandle { border-radius: $maximized_radius $maximized_radius 0 0; } }
     placessidebar { border-bottom-left-radius: $maximized_radius; }
   }
 
@@ -534,8 +387,6 @@ dialog.background.csd {
       }
     }
   }
-
-  @include color_sidebar();
 }
 
 preferencesgroup { // gnome 40.0 preferences window
