@@ -27,7 +27,7 @@ Don't worry, WhiteSur installer already provides all of those dependencies.
 ## Quick install
 
 ### Use the stable package
-You can choose the compressed file (compiled in the stable version) and unzip it to the theme folder `~/.themes` under the user folder.
+You can choose the compressed file [compiled in stable version](stable-release) and unzip it to the theme folder `~/.themes` under the user folder.
 
 ### compile from source
 You can run `./install.sh` to install the default WhiteSur GTK theme pack which includes
@@ -137,7 +137,7 @@ Example: `sudo ./tweaks.sh -g`
 #### Change the background
 Parameter: `--background` `-b`
 
-Example: 
+Example:
 
 ```bash
 sudo ./tweaks.sh -g -b "my picture.jpg" # use the custom background
@@ -148,7 +148,7 @@ sudo ./tweaks.sh -g -b blank            # make it blank
 #### Make the background darker
 Parameter: `--darken` `-D`
 
-Example: 
+Example:
 
 ```bash
 sudo ./tweaks.sh -g -D                          # darken the default background
@@ -158,7 +158,7 @@ sudo ./tweaks.sh -g -D -b "wallpapers/snow.jpg" # darken the custom background
 #### Don't blur the background
 Parameter: `--no-blur` `-n`
 
-Example: 
+Example:
 
 ```bash
 sudo ./tweaks.sh -g -n                           # don't blur the default background
