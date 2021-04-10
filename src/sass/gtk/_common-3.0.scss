@@ -3436,6 +3436,31 @@ filechooser {
     background-color: $base_color;
     border-radius: 0 0 $wm_radius $wm_radius;
 
+    placessidebar {
+      background-color: transparent;
+
+      list {
+        background-color: $dark_sidebar_bg;
+        border-bottom-left-radius: $wm_radius;
+      }
+    }
+
+    > actionbar {
+      border-top: 1px solid $header_border;
+      background-color: $dark_sidebar_bg;
+      color: $dark_sidebar_fg;
+      border-radius: 0 0 $wm_radius $wm_radius;
+
+      label, combobox { color: $dark_sidebar_fg; }
+    }
+
+    paned {
+      stack {
+        &:dir(ltr) { border-radius: 0 0 (($wm_radius/1.5) + 2) 0 }
+        &:dir(rtl) { border-radius: 0 0 0 (($wm_radius/1.5) + 2) }
+      }
+    }
+
     stack.view {
       background-color: transparent;
 
@@ -3453,7 +3478,8 @@ filechooser {
     }
   }
 
-  > box.vertical > paned.horizontal > separator {
+  > box.vertical > paned.horizontal > separator,
+  > box.vertical > box.vertical > paned.horizontal > separator {
     border: none;
     min-width: 1px;
     background-image: image(if($variant=='light', $solid_borders_color, $header_border));
@@ -3469,12 +3495,12 @@ filechooser {
 // Sidebar
 //
 %sidebar_left {
-  border-right: 1px solid $borders_color;
+  border-right: 1px solid $dark_sidebar_border;
   border-left-style: none;
 }
 
 %sidebar_right {
-  border-left: 1px solid $borders_color;
+  border-left: 1px solid $dark_sidebar_border;
   border-right-style: none;
 }
 
@@ -3482,18 +3508,12 @@ filechooser {
   border-style: none;
   background-color: $bg_color;
 
-  // &:dir(ltr),
-  // &.left,
-  // &.left:dir(rtl) {
-  //   border-right: 1px solid $borders_color;
-  //   border-left-style: none;
-  // }
-  //
-  // &:dir(rtl),
-  // &.right {
-  //   border-left: 1px solid $borders_color;
-  //   border-right-style: none;
-  // }
+  &:dir(ltr),
+  &.left,
+  &.left:dir(rtl) { @extend %sidebar_left; }
+
+  &:dir(rtl),
+  &.right { @extend %sidebar_right; }
 
   list {
     background-color: transparent;
@@ -3507,6 +3527,8 @@ filechooser {
 
   paned & { &.left, &.right, &.left:dir(rtl), &:dir(rtl), &:dir(ltr), & { border: none; }}
 }
+
+separator.sidebar { &.left, &.right, &.left:dir(rtl), &:dir(rtl), &:dir(ltr), & { border: none; }}
 
 stacksidebar {
   &.sidebar {
@@ -3539,6 +3561,8 @@ placessidebar {
     // Needs overriding of the GtkListBoxRow padding
     min-height: 24px;
     padding: 2px 10px;
+    border-radius: $bt_radius;
+    margin: 0 6px;
     // Using margins/padding directly in the SidebarRow
     // will make the animation of the new bookmark row jump
     > revealer {

@@ -376,38 +376,6 @@ dialog.background.csd {
       margin: 0 6px 6px;
     }
   }
-
-  // Filechooser, we put this here to give a different style between csd and
-  // ssd on certain DE-s
-  filechooser {
-    > actionbar {
-      background-color: transparent;
-      background-image: $nautilus_actionbar_image;
-      border-image: $nautilus_actionbar_borders_image 1 0 0 / 1px 0px 0px stretch;
-      color: $dark_sidebar_fg;
-      border-radius: 0 0 $wm_radius $wm_radius;
-
-      label, combobox { color: $dark_sidebar_fg; }
-    }
-
-    treeview.view {
-      @include viewwy(transparent);
-    }
-
-    paned {
-      stack {
-        &:dir(ltr) { border-radius: 0 0 (($wm_radius/1.5) + 2) 0 }
-        &:dir(rtl) { border-radius: 0 0 0 (($wm_radius/1.5) + 2) }
-      }
-    }
-
-    @include color_sidebar($s_bg_color: $bg_color, $sidebar_style: normal);
-  }
-
-  filechooserbutton:drop(active) {
-    box-shadow: none;
-    border-color: transparent;
-  }
 }
 
 //
@@ -443,7 +411,7 @@ dialog.background.csd {
 
       @if $nautilus_style == 'stable' {
         background-image: if($trans == 'true', none, $nautilus_sidebar_image);
-        
+
         > list { margin-bottom: $wm_radius; }
       }
 
@@ -2218,37 +2186,97 @@ window.background.csd {
 //
 // Geary
 //
-.geary-main-window.background.csd,
-window#GearyMainWindow.background.csd {
-  > overlay > box.vertical {
-    > paned {
-      > separator { @extend %side_separator; }
+.geary-main-window { // 40.0
+  > headerbar {
+    border-bottom: none;
 
-      > .sidebar {
-        border-bottom-left-radius: $wm_radius;
+    > leaflet > leaflet > headerbar {
+      border-bottom: none;
 
-        > searchbar {
-          @extend %side_searchbar;
+      &, &:backdrop {
+        border-radius: 0 0 0 0;
+      }
+
+      &:only-child {
+        border-radius: $wm_radius $wm_radius 0 0;
+      }
+
+      &:not(:first-child) {
+        background-color: $base_color;
+        box-shadow: inset 0 1px $header_highlight;
+      }
+
+      &:first-child {
+        @extend %side_headerbar_left;
+        border-radius: $wm_radius 0 0 0;
+      }
+    }
+  }
+
+  leaflet > leaflet > box.vertical {
+    searchbar {
+      background-color: $base_color;
+
+      > revealer > box {
+        border-color: if($variant == 'light', $solid_borders_color, $header_border);
+      }
+    }
+  }
+
+  frame.geary-folder-frame {
+    > border { border: none; }
+
+    scrolledwindow {
+      treeview.view.sidebar {
+        background-color: rgba($dark_sidebar_bg, 1);
+
+        &:hover {
+          color: $fg_color;
+          background-color: rgba($fg_color, 0.1);
         }
 
-        treeview.view.sidebar {
-          padding: 3px 0;
+        &:selected {
+          color: $fg_color;
+          background-color: rgba($fg_color, 0.15);
 
           &:hover {
-            color: $fg_color;
-            background-color: rgba($fg_color, 0.1);
-          }
-
-          &:selected {
-            color: $fg_color;
-            background-color: rgba($fg_color, 0.15);
+            background-color: rgba($fg_color, 0.12);
           }
         }
       }
     }
   }
 
-  stack#conversation_viewer {
+  frame.geary-conversation-frame {
+    background-color: rgba($dark_sidebar_bg, 1);
+
+    > border { border: none; }
+
+    scrolledwindow {
+      background-color: $base_color;
+
+      treeview.view {
+        border: none;
+        background-image: none;
+
+        &:hover { background-color: rgba($fg_color, 0.1); }
+
+        &:selected {
+          background-color: rgba($fg_color, 0.15);
+          color: if($variant == 'light', $fg_color, $selected_fg_color);
+        }
+
+        &:not(:hover):not(:selected) {
+          background: none;
+        }
+      }
+    }
+  }
+
+  separator.geary-sidebar-pane-separator { background-color: $dark_sidebar_border; }
+
+  geary-conversation-viewer#conversation_viewer,  // 40.0
+  stack#conversation_viewer { // 3.28
     background-color: $base_color;
     border-bottom-right-radius: $wm_radius + 1px;
 
@@ -2268,92 +2296,6 @@ window#GearyMainWindow.background.csd {
 
       > revealer > box {
         border-color: if($variant == 'light', $solid_borders_color, $header_border);
-      }
-    }
-  }
-
-  paned.geary-sidebar-pane-separator {
-    > separator {
-      margin-left: -1px;
-      background: none;
-    }
-
-    statusbar {
-      margin: -8px -12px;
-      border: none;
-      background-color: rgba($dark_sidebar_bg, 1);
-      border-bottom-left-radius: $wm_radius;
-
-      frame > border { border: none; }
-    }
-
-    frame.geary-folder-frame {
-      > border { border: none; }
-
-      scrolledwindow {
-        treeview.view.sidebar:not(:hover):not(:selected) {
-          background-color: rgba($dark_sidebar_bg, 1);
-        }
-      }
-    }
-
-    frame.geary-conversation-frame {
-      background-color: rgba($dark_sidebar_bg, 1);
-
-      > border { border: none; }
-
-      scrolledwindow {
-        background-color: $base_color;
-        margin: 6px 6px 6px 0;
-        padding: 6px 0;
-        border: 1px solid $borders_color;
-        border-radius: $bt_radius;
-
-        treeview.view {
-          border: none;
-          background-image: none;
-
-          &:hover { background-color: rgba($fg_color, 0.1); }
-
-          &:selected {
-            background-color: rgba($fg_color, 0.15);
-            color: if($variant == 'light', $fg_color, $selected_fg_color);
-          }
-
-          &:not(:hover):not(:selected) {
-            background: none;
-          }
-        }
-      }
-    }
-  }
-
-  leaflet > leaflet > sidebar.separator {
-    @extend %side_separator;
-  }
-
-  &.maximized, &.tiled, &.fullscreen {
-    > overlay > box.vertical {
-      > paned {
-        > .sidebar {
-          border-bottom-left-radius: $maximized_radius;
-        }
-      }
-    }
-
-    stack#conversation_viewer {
-      border-bottom-right-radius: $maximized_radius + 1px;
-
-      scrolledwindow.geary-conversation-scroller {
-        viewport.frame {
-          border-bottom-right-radius: $maximized_radius;
-        }
-      }
-    }
-
-    paned.geary-sidebar-pane-separator {
-      statusbar {
-        border-bottom-left-radius: $maximized_radius;
       }
     }
   }

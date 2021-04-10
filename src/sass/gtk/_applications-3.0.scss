@@ -149,6 +149,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     list {
       background-color: $s_bg_color;
       border-bottom-left-radius: $wm_radius;
+      margin-top: $wm_radius;
     }
 
     row.sidebar-row {
@@ -298,17 +299,9 @@ dialog.background.csd {
 
   > headerbar {
     &.titlebar {
-      // border-image: image($header_border) 0 0 1 / 0px 0px 1px stretch;
-
       > label:not(.title):not(.subtitle) { // wallpaper set dialog
         font-weight: 700;
       }
-
-      // &:not(.default-decoration) {
-      //   border-image: $dialog_header_borders_image 0 0 1 / 0px 0px 1px stretch;
-      //   background-image: $dialog_header_image;
-      //   background-color: transparent;
-      // }
     }
   }
 
@@ -341,7 +334,6 @@ dialog.background.csd {
         background-color: $base_color;
 
         iconview.view:not(:hover):not(:selected):not(:active) { // Wallpaper setting window
-          // @extend %view;
           background-color: transparent;
         }
       }
@@ -428,38 +420,6 @@ dialog.background.csd {
       margin: 0 6px 6px;
     }
   }
-
-  // Filechooser, we put this here to give a different style between csd and
-  // ssd on certain DE-s
-  filechooser {
-    > actionbar {
-      background-color: transparent;
-      background-image: $nautilus_actionbar_image;
-      border-image: $nautilus_actionbar_borders_image 1 0 0 / 1px 0px 0px stretch;
-      color: $dark_sidebar_fg;
-      border-radius: 0 0 $wm_radius $wm_radius;
-
-      label, combobox { color: $dark_sidebar_fg; }
-    }
-
-    treeview.view {
-      @include viewwy(transparent);
-    }
-
-    paned {
-      stack {
-        &:dir(ltr) { border-radius: 0 0 (($wm_radius/1.5) + 2) 0 }
-        &:dir(rtl) { border-radius: 0 0 0 (($wm_radius/1.5) + 2) }
-      }
-    }
-
-    @include color_sidebar($s_bg_color: $bg_color, $sidebar_style: normal);
-  }
-
-  filechooserbutton:drop(active) {
-    box-shadow: none;
-    border-color: transparent;
-  }
 }
 
 //
@@ -488,11 +448,6 @@ dialog.background.csd {
       @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
         > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
       }
-
-      // @else {
-      //   > .linked.raised > button:first-child { margin-left: 0px }
-      //   > .linked.raised > button:last-child { margin-right: 0px }
-      // }
     }
 
     placessidebar.sidebar {
@@ -563,7 +518,7 @@ dialog.background.csd {
       margin: 6px 10px 10px 6px;
       border-radius: $wm_radius;
       box-shadow: $shadow_5;
-      padding: 0 6px;
+      // padding: 0 6px;
     }
   }
 
@@ -3186,30 +3141,6 @@ window#GearyMainWindow.background.csd {
     }
   }
 
-  stack#conversation_viewer {
-    background-color: $base_color;
-    border-bottom-right-radius: $wm_radius + 1px;
-
-    scrolledwindow.geary-conversation-scroller {
-      viewport.frame {
-        background-color: $base_color;
-        border-bottom-right-radius: $wm_radius;
-
-        list.conversation-listbox {
-          background-color: transparent;
-        }
-      }
-    }
-
-    searchbar {
-      background-color: $base_color;
-
-      > revealer > box {
-        border-color: if($variant == 'light', $solid_borders_color, $header_border);
-      }
-    }
-  }
-
   paned.geary-sidebar-pane-separator {
     > separator {
       margin-left: -1px;
@@ -3223,16 +3154,6 @@ window#GearyMainWindow.background.csd {
       border-bottom-left-radius: $wm_radius;
 
       frame > border { border: none; }
-    }
-
-    frame.geary-folder-frame {
-      > border { border: none; }
-
-      scrolledwindow {
-        treeview.view.sidebar:not(:hover):not(:selected) {
-          background-color: rgba($dark_sidebar_bg, 1);
-        }
-      }
     }
 
     frame.geary-conversation-frame {
@@ -3266,10 +3187,6 @@ window#GearyMainWindow.background.csd {
     }
   }
 
-  leaflet > leaflet > sidebar.separator {
-    @extend %side_separator;
-  }
-
   &.maximized, &.tiled, &.fullscreen {
     > overlay > box.vertical {
       > paned {
@@ -3292,6 +3209,121 @@ window#GearyMainWindow.background.csd {
     paned.geary-sidebar-pane-separator {
       statusbar {
         border-bottom-left-radius: $maximized_radius;
+      }
+    }
+  }
+}
+
+.geary-main-window { // 40.0
+  > headerbar {
+    border-bottom: none;
+
+    > leaflet > leaflet > headerbar {
+      border-bottom: none;
+
+      &, &:backdrop {
+        border-radius: 0 0 0 0;
+      }
+
+      &:only-child {
+        border-radius: $wm_radius $wm_radius 0 0;
+      }
+
+      &:not(:first-child) {
+        background-color: $base_color;
+        box-shadow: inset 0 1px $header_highlight;
+      }
+
+      &:first-child {
+        @extend %side_headerbar_left;
+        border-radius: $wm_radius 0 0 0;
+      }
+    }
+  }
+
+  leaflet > leaflet > box.vertical {
+    searchbar {
+      background-color: $base_color;
+
+      > revealer > box {
+        border-color: if($variant == 'light', $solid_borders_color, $header_border);
+      }
+    }
+  }
+
+  frame.geary-folder-frame {
+    > border { border: none; }
+
+    scrolledwindow {
+      treeview.view.sidebar {
+        background-color: rgba($dark_sidebar_bg, 1);
+
+        &:hover {
+          color: $fg_color;
+          background-color: rgba($fg_color, 0.1);
+        }
+
+        &:selected {
+          color: $fg_color;
+          background-color: rgba($fg_color, 0.15);
+
+          &:hover {
+            background-color: rgba($fg_color, 0.12);
+          }
+        }
+      }
+    }
+  }
+
+  frame.geary-conversation-frame {
+    background-color: rgba($dark_sidebar_bg, 1);
+
+    > border { border: none; }
+
+    scrolledwindow {
+      background-color: $base_color;
+
+      treeview.view {
+        border: none;
+        background-image: none;
+
+        &:hover { background-color: rgba($fg_color, 0.1); }
+
+        &:selected {
+          background-color: rgba($fg_color, 0.15);
+          color: if($variant == 'light', $fg_color, $selected_fg_color);
+        }
+
+        &:not(:hover):not(:selected) {
+          background: none;
+        }
+      }
+    }
+  }
+
+  separator.geary-sidebar-pane-separator { background-color: $dark_sidebar_border; }
+
+  geary-conversation-viewer#conversation_viewer,  // 40.0
+  stack#conversation_viewer { // 3.28
+    background-color: $base_color;
+    border-bottom-right-radius: $wm_radius + 1px;
+
+    scrolledwindow.geary-conversation-scroller {
+      viewport.frame {
+        background-color: $base_color;
+        border-bottom-right-radius: $wm_radius;
+
+        list.conversation-listbox {
+          background-color: transparent;
+        }
+      }
+    }
+
+    searchbar {
+      background-color: $base_color;
+
+      > revealer > box {
+        border-color: if($variant == 'light', $solid_borders_color, $header_border);
       }
     }
   }

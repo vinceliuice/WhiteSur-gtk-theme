@@ -126,7 +126,7 @@ $dark_sidebar_bg: white;
 }
 
 $dark_sidebar_fg:                   $text_color;
-$dark_sidebar_border:               if($variant == 'light', darken(opacify($dark_sidebar_bg, 1), 5%), lighten(opacify($dark_sidebar_bg, 1), 5%));
+$dark_sidebar_border:               if($variant == 'light', $solid_borders_color, $header_border);
 $sidebar_theme_color:               if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
 
 //OSD colors

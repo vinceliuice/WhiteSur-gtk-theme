@@ -625,9 +625,6 @@ button {
     &:not(:disabled) label:disabled { color: inherit; opacity: 0.6; }
   }
 
-  &:active { color: $fg_color; }
-  &:active:hover, &:checked { color: $selected_fg_color; }
-
   &:disabled {
     @include button(insensitive);
     background-clip: if($variant=='light', border-box, padding-box);
@@ -1541,7 +1538,7 @@ headerbar {
         @include button(header-hover);
       }
 
-      &:active, &:active:hover {
+      &:active {
         @include button(header-active);
       }
 
@@ -1870,14 +1867,10 @@ headerbar {
     transition: $button_transition;
   }
 
-  &:active, &:active:hover {
+  &:active {
     @include button(header-active);
     transition: $button_transition;
     transition-duration: 300ms;
-  }
-
-  &:not(.suggested-action):not(.destructive-action) {
-    &:active:hover, &:checked { color: $header_fg; }
   }
 
   &:checked {
@@ -1942,13 +1935,10 @@ headerbar {
 //
 // Tree Views
 //
-@mixin viewwy($c) {
-  background-color: $c;
-  border-radius: 0;
-  margin: 0 0;
-
-  border-left-color: rgba($fg_color, 0.15); // this is actually the tree lines color,
-  border-top-color: $borders_color; // while this is the grid lines color, better then nothing
+columnview.view,
+treeview.view {
+  border-left-color: $solid_borders_color; // this is actually the tree lines color,
+  border-top-color: $solid_borders_color; // while this is the grid lines color, better then nothing
 
   > rubberband { @extend %rubberband; } // to avoid borders being overridden by the previously set props
 
@@ -1997,6 +1987,8 @@ headerbar {
   }
 
   &.expander {
+    min-width: 16px;
+    min-height: 16px;
     -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
 
     &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
@@ -2013,7 +2005,7 @@ headerbar {
     &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
   }
 
-  &.progressbar, &.progressbar:focus { // progress bar in treeviews
+  &.progressbar { // progress bar in treeviews
     color: $selected_fg_color;
     border-radius: $bt_radius;
     background-color: $progress_color;
@@ -2064,7 +2056,6 @@ headerbar {
       &:active { color: $fg_color; }
 
       &:active, &:hover { background-color: $base_color; }
-      &:active:hover { color: $fg_color; }
 
       &:disabled {
         border-color: $bg_color;
@@ -2089,11 +2080,6 @@ headerbar {
       border-style: none;
     }
   }
-}
-
-columnview.view,
-treeview.view {
-  @include viewwy($base_color);
 }
 
 //
@@ -2529,7 +2515,7 @@ notebook {
           background-color: rgba($borders_color, 0.1);
         }
 
-        &:active, &:active:hover {
+        &:active {
           @extend %undecorated_button;
           color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
           background-color: rgba($borders_color, 0.2);
@@ -3437,19 +3423,23 @@ columnview row:not(:selected) cell editablelabel.editing text selection {
 // App Notifications
 //
 .app-notification {
-  padding: 16px;
-  margin: 0 8px 8px 8px;
+  padding: 8px;
+  margin: 6px 16px 16px 16px;
   color: $fg_color;
   background-color: rgba($header_bg, 0.85);
   // background-image: linear-gradient(0deg, $bg_color 0%, $bg_color 85%, darken($bg_color, 5%) 95%, darken($bg_color, 15%) 100%);
-  border-radius: 0 0 $bt_radius $bt_radius;
+  border-radius: $wm_radius;
   border: none;
-  box-shadow: $shadow_5, 0 0 0 1px if($variant=='light', rgba(black, 0.12), rgba(black, 0.75));
+  box-shadow: 0 5px 15px 0 rgba(black, 0.25),
+              inset 0 0 0 1px rgba(white, 0.06),
+              0 0 0 1px if($variant=='light', rgba(black, 0.12), rgba(black, 0.75));
 
   border { border: none; }
 
   button {
     @extend %undecorated_button;
+    min-height: 22px;
+    padding: 2px 8px;
 
     &:not(.text-button).image-button {
       @extend %circular_button;
@@ -3638,6 +3628,22 @@ filechooser {
     background-color: $base_color;
     border-radius: 0 0 $wm_radius $wm_radius;
 
+    > actionbar {
+      border-top: 1px solid $header_border;
+      background-color: $dark_sidebar_bg;
+      color: $dark_sidebar_fg;
+      border-radius: 0 0 $wm_radius $wm_radius;
+
+      label, combobox { color: $dark_sidebar_fg; }
+    }
+
+    paned {
+      stack {
+        &:dir(ltr) { border-radius: 0 0 (($wm_radius/1.5) + 2) 0 }
+        &:dir(rtl) { border-radius: 0 0 0 (($wm_radius/1.5) + 2) }
+      }
+    }
+
     stack.view {
       background-color: transparent;
 
@@ -3655,7 +3661,8 @@ filechooser {
     }
   }
 
-  > box.vertical > paned.horizontal > separator {
+  > box.vertical > paned.horizontal > separator,
+  > box.vertical > box.vertical > paned.horizontal > separator {
     border: none;
     min-width: 1px;
     background-image: image(if($variant=='light', $solid_borders_color, $header_border));
@@ -3666,6 +3673,9 @@ filechooser {
 
   #pathbarbox { border-bottom: 1px solid transparentize($borders_color, 0.5); }
 }
+
+// Filechooser, we put this here to give a different style between csd and
+// ssd on certain DE-s
 
 filechooserbutton > button > box {
   border-spacing: 6px;
@@ -3680,18 +3690,25 @@ filechooserbutton:drop(active) {
 // Sidebar
 //
 %sidebar_left {
-  border-right: 1px solid $borders_color;
+  border-right: 1px solid $dark_sidebar_border;
   border-left-style: none;
 }
 
 %sidebar_right {
-  border-left: 1px solid $borders_color;
+  border-left: 1px solid $dark_sidebar_border;
   border-right-style: none;
 }
 
 .sidebar {
   border-style: none;
   background-color: $bg_color;
+
+  &:dir(ltr),
+  &.left,
+  &.left:dir(rtl) { @extend %sidebar_left; }
+
+  &:dir(rtl),
+  &.right { @extend %sidebar_right; }
 
   list {
     background-color: transparent;
@@ -3884,7 +3901,7 @@ paned {
     -gtk-icon-source: none;
     border-style: none;
     background-color: transparent;
-    background-image: _solid($borders_color);
+    background-image: _solid($solid_borders_color);
     background-size: 1px 1px;
 
     &:selected { background-image: _solid($selected_bg_color); }
@@ -4051,7 +4068,7 @@ searchbar .close {
     box-shadow: none;
   }
 
-  &:active, &:active:hover, &:checked {
+  &:active, &:checked {
     color: $selected_fg_color;
     background-color: transparentize($selected_fg_color, 0.6);
     border-color: transparentize($selected_fg_color, 0.5);
@@ -4089,6 +4106,7 @@ tooltip {
     background-color: lighten($osd_bg_color, 10%);
     background-clip: padding-box;
     border-radius: $bt_radius;
+    color: $osd_fg_color;
 
     label { padding: 4px; }
   }
