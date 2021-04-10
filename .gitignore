@@ -10,3 +10,5 @@ src/main/gnome-shell/gdm3*.css
 src/other/dash-to-dock/stylesheet.css
 src/other/dash-to-dock/stylesheet-dark.css
 parse-sass.sh
+lib-release.sh
+make-release.sh

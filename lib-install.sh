@@ -24,25 +24,64 @@ source "${REPO_DIR}/lib-core.sh"
 
 install_theme_deps() {
   if [[ ! "$(which glib-compile-resources 2> /dev/null)" || ! "$(which sassc 2> /dev/null)" || \
-    ! "$(which convert 2> /dev/null)" || ! -r "/usr/share/gtk-engines/murrine.xml" || \
-    ! "$(which xmllint 2> /dev/null)" || ! "$(which dialog 2> /dev/null)" ]]; then
-    echo; prompt -w "'glib2.0', 'sassc', 'imagemagick', 'xmllint', 'libmurrine', and 'dialog' are required for this shell."
+    ! -r "/usr/share/gtk-engines/murrine.xml" || ! "$(which xmllint 2> /dev/null)" ]]; then
+    echo; prompt -w "'glib2.0', 'sassc', 'xmllint', 'libmurrine' are required for theme installation."
 
     if has_command zypper; then
-      rootify zypper in -y sassc glib2-devel ImageMagick gtk2-engine-murrine libxml2-tools dialog
+      rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
     elif has_command apt; then
-      rootify apt install -y sassc libglib2.0-dev-bin imagemagick gtk2-engines-murrine libxml2-utils dialog
+      rootify apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
-      rootify dnf install -y sassc glib2-devel ImageMagick gtk-murrine-engine libxml2 dialog
+      rootify dnf install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command yum; then
-      rootify yum install -y sassc glib2-devel ImageMagick gtk-murrine-engine libxml2 dialog
+      rootify yum install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed sassc glib2 imagemagick gtk-engine-murrine libxml2 dialog
+      rootify pacman -S --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
       prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
       start_animation; sleep 15; stop_animation
+    fi
+  fi
+}
+
+install_beggy_deps() {
+  if [[ ! "$(which convert 2> /dev/null)" ]]; then
+    echo; prompt -w "'imagemagick' are required for this option."
+
+    if has_command zypper; then
+      rootify zypper in -y ImageMagick
+    elif has_command apt; then
+      rootify apt install -y sassc imagemagick
+    elif has_command dnf; then
+      rootify dnf install -y sassc ImageMagick
+    elif has_command yum; then
+      rootify yum install -y sassc ImageMagick
+    elif has_command pacman; then
+      rootify pacman -S --noconfirm --needed sassc imagemagick
+    else
+      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies!"
+    fi
+  fi
+}
+
+install_dialog_deps() {
+  if [[ ! "$(which dialog 2> /dev/null)" ]]; then
+    echo; prompt -w "'dialog' are required for this option."
+
+    if has_command zypper; then
+      rootify zypper in -y dialog
+    elif has_command apt; then
+      rootify apt install -y dialog
+    elif has_command dnf; then
+      rootify dnf install -y dialog
+    elif has_command yum; then
+      rootify yum install -y dialog
+    elif has_command pacman; then
+      rootify pacman -S --noconfirm --needed dialog
+    else
+      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies!"
     fi
   fi
 }
@@ -61,9 +100,9 @@ install_beggy() {
     blank)
       cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blank.png"          "${WHITESUR_TMP_DIR}/beggy.png" ;;
     default)
-      convert "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png" ${CONVERT_OPT} "${WHITESUR_TMP_DIR}/beggy.png" ;;
+      install_beggy_deps && convert "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png" ${CONVERT_OPT} "${WHITESUR_TMP_DIR}/beggy.png" ;;
     *)
-      convert "${background}" ${CONVERT_OPT}                                                  "${WHITESUR_TMP_DIR}/beggy.png" ;;
+      install_beggy_deps && convert "${background}" ${CONVERT_OPT}                            "${WHITESUR_TMP_DIR}/beggy.png" ;;
   esac
 }
 
@@ -106,7 +145,8 @@ install_shelly() {
 
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/assets${color}/"*".svg"                          "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities.svg"
-  cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/assets/background.png"
+  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png"            "${TARGET_DIR}/assets/background.png"
+  # cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/assets/background.png"
 
   (
     cd "${TARGET_DIR}"
@@ -244,8 +284,6 @@ remove_packy() {
 install_themes() {
   start_animation
   process_ids=()
-
-  install_beggy
 
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
@@ -535,7 +573,7 @@ show_nautilus_style_dialog() {
 }
 
 show_needed_dialogs() {
-  [[ "${need_dialog["-p"]}" == "true" ]] && show_panel_opacity_dialog
-  [[ "${need_dialog["-s"]}" == "true" ]] && show_sidebar_size_dialog
-  [[ "${need_dialog["-N"]}" == "true" ]] && show_nautilus_style_dialog
+  [[ "${need_dialog["-p"]}" == "true" ]] && install_dialog_deps && show_panel_opacity_dialog
+  [[ "${need_dialog["-s"]}" == "true" ]] && install_dialog_deps && show_sidebar_size_dialog
+  [[ "${need_dialog["-N"]}" == "true" ]] && install_dialog_deps && show_nautilus_style_dialog
 }

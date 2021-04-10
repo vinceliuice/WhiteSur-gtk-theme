@@ -166,7 +166,7 @@ if [[ "${uninstall}" == 'true' ]]; then
     echo; prompt -s "Done! '${name}' theme has been disconnected from your Flatpak."
   fi
 else
-  install_theme_deps; show_needed_dialogs; customize_theme
+  show_needed_dialogs; customize_theme
 
   if [[ "${gdm}" == 'true' ]]; then
     echo; prompt -i "Installing '${name}' GDM theme..."

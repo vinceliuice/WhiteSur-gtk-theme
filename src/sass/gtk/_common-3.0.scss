@@ -1846,7 +1846,9 @@ headerbar, .titlebar {
     transition-duration: 300ms;
   }
 
-  &:active:hover, &:checked { color: $header_fg; }
+  &:not(.suggested-action):not(.destructive-action) {
+    &:active:hover, &:checked { color: $header_fg; }
+  }
 
   &:checked {
     @include button(header-checked);
