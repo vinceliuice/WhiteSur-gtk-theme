@@ -623,11 +623,6 @@ button {
     &:not(:disabled) label:disabled { color: inherit; opacity: 0.6; }
   }
 
-  //Webkitgtk workaround start
-  &:active { color: $fg_color; }
-  &:active:hover, &:checked { color: $selected_fg_color; }
-  //Webkitgtk workaround end
-
   &:disabled {
     @include button(insensitive);
 
@@ -1844,10 +1839,6 @@ headerbar, .titlebar {
     @include button(header-active);
     transition: $button_transition;
     transition-duration: 300ms;
-  }
-
-  &:not(.suggested-action):not(.destructive-action) {
-    &:active:hover, &:checked { color: $header_fg; }
   }
 
   &:checked {
@@ -4099,13 +4090,14 @@ headerbar,
       min-height: 16px;
       margin: 0;
       padding: 0;
-      color: transparent;
-      background-color: transparent;
       background-position: center;
       background-repeat: no-repeat;
       background-size: 16px 16px;
-      border-width: 0;
-      box-shadow: none;
+
+      &, &:hover, &:focus, &:active, &:backdrop {
+        @include button(undecorated);
+        color: transparent;
+      }
 
       &:backdrop { opacity: 1; }
     }
