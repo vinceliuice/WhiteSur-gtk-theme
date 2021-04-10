@@ -43,7 +43,10 @@
 
 .app-folder-popup-bin { padding: 5px; }
 
-.no-frequent-applications-label { @extend %status_text; }
+.no-frequent-applications-label {
+  @include font(display-2);
+  color: $light_hint_fg_color;
+}
 
 .overview-icon.overview-icon-with-label,
 .grid-search-result .overview-icon.overview-icon-with-label {

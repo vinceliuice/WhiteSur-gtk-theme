@@ -2,28 +2,6 @@
 
 $popop_menuitem_radius: $wm_radius - 4px;
 
-%popover_bubble {
-  border-radius: $mn_radius;
-  border: none;
-  box-shadow: none;
-  background-color: if($variant == 'light', rgba(white, 0.95), rgba(lighten($base_color, 5%), 0.95));
-  text-shadow: none;
-  color: $alt_fg_color;
-  transition: none;
-
-  &:hover, &:focus {
-    color: $fg_color;
-    background-color: if($variant == 'light', rgba(white, 1), rgba(lighten($base_color, 10%), 1));
-    box-shadow: 0 3px 5px rgba(black, 0.1);
-  }
-
-  &:active {
-    color: $fg_color;
-    background-color: if($variant == 'light', rgba(#fafafa, 1), rgba(lighten($base_color, 8%), 1));
-    box-shadow: none;
-  }
-}
-
 //.the popover itself
 .popup-menu-boxpointer {
   -arrow-border-radius: 2px;

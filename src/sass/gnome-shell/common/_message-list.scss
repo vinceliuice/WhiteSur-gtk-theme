@@ -34,7 +34,10 @@
 // message bubbles
 .message {
   margin: 0 4px 6px;
-  @extend %popover_bubble;
+
+  .popup-menu & {
+    @extend %popover_bubble;
+  }
 
   // icon container
   .message-icon-bin {

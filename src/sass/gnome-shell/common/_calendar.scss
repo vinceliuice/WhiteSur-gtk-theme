@@ -1,5 +1,29 @@
 /* Date/Time Menu */
 
+$popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($base_color, 8%), 0.95));
+
+%popover_bubble {
+  color: $alt_fg_color;
+  background-color: $popover_bubble_bg;
+  border-radius: $mn_radius;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  transition: none;
+
+  &:hover, &:focus {
+    color: $fg_color;
+    background-color: if($variant == 'light', rgba($popover_bubble_bg, 1), rgba(lighten($popover_bubble_bg, 5%), 1));
+    box-shadow: 0 3px 5px rgba(black, 0.1);
+  }
+
+  &:active {
+    color: $fg_color;
+    background-color: if($variant == 'light', darken($popover_bubble_bg, 1%), lighten($popover_bubble_bg, 3%));
+    box-shadow: none;
+  }
+}
+
 .clock-display-box {
   spacing: 2px;
 
@@ -45,7 +69,6 @@
 
 /* today button (the date) */
 .datemenu-today-button {
-//  min-height: $menuitem_size * 2 - 4px * 2;
   border: none;
   box-shadow: none;
   background: none;
@@ -55,12 +78,12 @@
 
   &:hover, &:focus {
     color: $fg_color;
-    background-color: if($variant == 'light', rgba(white, 1), rgba(lighten($base_color, 15%), 0.75));
+    background-color: if($variant == 'light', rgba($popover_bubble_bg, 1), rgba(lighten($popover_bubble_bg, 5%), 1));
   }
 
   &:active {
     color: $fg_color;
-    background-color: if($variant == 'light', rgba(white, 0.65), rgba(lighten($base_color, 10%), 0.75));
+    background-color: if($variant == 'light', darken($popover_bubble_bg, 5%), lighten($popover_bubble_bg, 8%));
   }
 
   // weekday label
@@ -80,7 +103,7 @@
   margin: 2px 12px;
   border: none;
   box-shadow: none;
-  background-color: if($variant == 'light', rgba(white, 0.75), rgba(lighten($base_color, 8%), 0.75));
+  background-color: $popover_bubble_bg;
   padding: 4px 8px;
   text-shadow: none;
   border-radius: $mn_radius;
@@ -98,21 +121,13 @@
   }
 
   // prev/next month icons
-  .calendar-change-month-back StIcon,
-  .calendar-change-month-forward StIcon {
-    icon-size: $base_icon_size;
-  }
+  .calendar-change-month-back,
+  .calendar-change-month-forward {
+    padding: 0 4px;
 
-  .calendar-change-month-back { //arrow back
-    padding: 0 2px;
-    background-image: url("assets/calendar-arrow-left.svg");
-    &:rtl { background-image: url("assets/calendar-arrow-right.svg"); }
-  }
-
-  .calendar-change-month-forward { //arrow foreward
-    padding: 0 2px;
-    background-image: url("assets/calendar-arrow-right.svg");
-    &:rtl { background-image: url("assets/calendar-arrow-left.svg"); }
+    StIcon {
+      icon-size: $base_icon_size;
+    }
   }
 
   .pager-button {
@@ -238,7 +253,7 @@
 .world-clocks-button,
 .weather-button,
 .events-button {
-  @extend %popover_bubble !optional;
+  @extend %popover_bubble;
   padding: 12px;
   margin: 2px 4px;
 }

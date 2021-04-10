@@ -8,12 +8,13 @@
   margin: 5px;
   border-radius: $bt_radius;
   color: $fg_color;
-  background-color: $base_color;
+  background-color: $menu_bg;
   border: none;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+  text-shadow: none;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
 
-  &:hover { background-color: rgba($base_color, 1); box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35); }
-  &:focus { background-color: $base_color; }
+  &:hover { background-color: rgba($menu_bg, 1); box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25); }
+  &:focus { background-color: $menu_bg; }
 
   .notification-icon { padding: 5px; }
   .notification-content { padding: 5px; spacing: 5px; }
