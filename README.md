@@ -8,18 +8,23 @@
 # Installation is easy!
 <details> <summary> Required dependencies info for nerds </summary>
 
-- sassc
+### Gtk2 theme required
 - gtk-murrine-engine     `Fedora/RedHat`
 - gtk2-engines-murrine   `Ubuntu/Mint/Debian`
 - gtk-engine-murrine     `Arch/Manjaro`
-- imagemagick            (optional for Gdm theme tweaks)
-- dialog                 (optional for installation in dialog mode)
-- optipng                (optional for asset rendering)
-- inkscape               (optional for asset rendering)
+
+### Install from source required
+- sassc
 - libglib2.0-dev-bin     `ubuntu 20.04`
 - libglib2.0-dev         `ubuntu 18.04` `debian 10.03` `linux mint 19`
 - libxml2-utils          `ubuntu 18.04` `debian 10.03` `linux mint 19`
 - glib2-devel            `Fedora` `Redhat`
+
+### Theme tweaks required
+- imagemagick            `(optional for Gdm theme tweaks)`
+- dialog                 `(optional for installation in dialog mode)`
+- optipng                `(optional for asset rendering)`
+- inkscape               `(optional for asset rendering)`
 
 Don't worry, WhiteSur installer already provides all of those dependencies.
 </details>
@@ -29,7 +34,7 @@ Don't worry, WhiteSur installer already provides all of those dependencies.
 ### Use the stable package
 You can choose the compressed file [compiled in stable version](stable-release) and unzip it to the theme folder `~/.themes` under the user folder.
 
-### compile from source
+### Compile from source
 You can run `./install.sh` to install the default WhiteSur GTK theme pack which includes
 GNOME Shell (Pantheon), Cinnamon, XFWM (XFCE), Metacity, and Plank themes.
 
