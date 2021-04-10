@@ -145,8 +145,12 @@ install_shelly() {
 
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/assets${color}/"*".svg"                          "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities.svg"
-  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png"            "${TARGET_DIR}/assets/background.png"
-  # cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/assets/background.png"
+
+  if [[ "${gdm}" == 'true' && "${no_blur}" == "false" ]]; then
+    cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                     "${TARGET_DIR}/assets/background.png"
+  else
+    cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png"          "${TARGET_DIR}/assets/background.png"
+  fi
 
   (
     cd "${TARGET_DIR}"
