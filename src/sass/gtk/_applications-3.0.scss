@@ -192,6 +192,8 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
         // row style
         @if $nautilus_style == 'stable' {
+          margin: 0 0;
+
           &:hover {
             transition: background-image 0;
             background-repeat: no-repeat;
@@ -356,8 +358,6 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
     > stack {
       background-color: $base_color;
-      // &:dir(ltr) { border-radius: 0 0 ($wm_radius+2) 0 }
-      // &:dir(rtl) { border-radius: 0 0 0 ($wm_radius+2) }
     }
 
     > stack:not(:only-child) {
