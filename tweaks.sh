@@ -74,7 +74,7 @@ while [[ $# -gt 0 ]]; do
         prompt -e "'${1}' ERROR: Firefox is installed but not yet initialized."
         prompt -w "'${1}': Don't forget to close it after you run/initialize it"
         has_any_error="true"
-      elif pgrep -x "firefox" &> /dev/null || pgrep -f "firefox" &> /dev/null; then
+      elif pidof "firefox" &> /dev/null; then
         prompt -e "'${1}' ERROR: Firefox is running, please close it"
         has_any_error="true"
       fi; shift ;;
