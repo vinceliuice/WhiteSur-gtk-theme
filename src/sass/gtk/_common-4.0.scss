@@ -223,7 +223,7 @@ window.assistant {
   // min-height: 38px;
   .sidebar {
     background-color: $base_color;
-    border-top: 1px solid $borders_color;
+//    border-top: 1px solid $borders_color;
   }
 
   &.csd .sidebar { border-top-style: none; }
@@ -761,7 +761,7 @@ button {
     }
   }
 
-  .stack-switcher > & {
+  stackswitcher > & {
     // to position the needs attention dot, padding is added to the button
     // child, a label needs just lateral padding while an icon needs vertical
     // padding added too.
@@ -1214,7 +1214,6 @@ combobox {
     }
   }
 
-  decoration,
   button.combo:checked,
   .background & button.combo:checked { transition: none; } // workaround for menuitem selection
 
