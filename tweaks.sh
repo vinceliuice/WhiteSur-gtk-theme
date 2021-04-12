@@ -181,12 +181,6 @@ else
     prompt -w "DASH TO DOCK: You may need to logout to take effect."
   fi
 
-  if [[ "${firefox}" == 'true' && "${edit_firefox}" == 'true' ]]; then
-    echo; prompt -e "ERROR: Don't mix use option '-f' and '-e' ! "
-    echo; prompt -i "Please install it again just use '-f' or '-e' !"; echo
-    exit 0
-  fi
-
   if [[ "${firefox}" == 'true' || "${edit_firefox}" == 'true' ]]; then
     if [[ "${firefox}" == 'true' ]]; then
       echo; prompt -i "Installing '${name}' Firefox theme..."
