@@ -61,6 +61,7 @@
     height: 32px;
     border: none;
     background-color: rgba($borders_color, 0.1);
+    color: $light_fg_color;
 
     StIcon { icon-size: 16px; }
   }

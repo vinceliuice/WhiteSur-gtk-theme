@@ -236,7 +236,7 @@
   }
 
   @if $t == flat-normal {
-    color: if($tc != $light_fg_color, $alt_fg_color, $light_fg_color);
+    color: $tc;
     background-color: transparent;
     border-color: transparent;
     box-shadow: none;
@@ -245,7 +245,7 @@
   }
 
   @if $t == flat-focus {
-    color: if($tc != $light_fg_color, $fg_color, $light_fg_color);
+    color: $tc;
     text-shadow: none;
     icon-shadow: none;
     box-shadow: none;
@@ -253,7 +253,7 @@
   }
 
   @if $t == flat-hover {
-    color: if($tc != $light_fg_color, $fg_color, $light_fg_color);
+    color: $tc;
     background-color: $divider_color;
     border-color: transparent;
     box-shadow: none;
@@ -262,7 +262,7 @@
   }
 
   @if $t == flat-active {
-    color: if($tc != $light_fg_color, $fg_color, $light_fg_color);
+    color: $tc;
     background-color: $track_color;
     border-color: transparent;
     box-shadow: none;
@@ -271,7 +271,7 @@
   }
 
   @if $t == flat-insensitive {
-    color: if($tc != $light_fg_color, $disabled_fg_color, $light_alt_disabled_fg_color);
+    color: if($tc == $fg_color, $disabled_fg_color, $tc);
     background-color: transparent;
     border-color: transparent;
     box-shadow: none;
