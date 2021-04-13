@@ -1515,6 +1515,26 @@ viewswitcherbar > actionbar { // Gnome 3.38
 }
 
 //
+// Gnome Calendar
+//
+
+window.background.org-gnome-Calendar {
+  .week-view weekgrid {
+    event.color-light {
+      &, & > stack > grid > label {
+        color: rgba(black, 0.75);
+      }
+    }
+
+    event.color-dark {
+      &, & > stack > grid > label {
+        color: rgba(white, 1);
+      }
+    }
+  }
+}
+
+//
 // Polari
 //
 .polari-room-list {
