@@ -45,6 +45,7 @@ DASH_TO_DOCK_DIR_ROOT="/usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gma
 DASH_TO_DOCK_DIR_HOME="/home/${MY_USERNAME}/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
 FIREFOX_SRC_DIR="${REPO_DIR}/src/other/firefox"
 FIREFOX_DIR_HOME="/home/${MY_USERNAME}/.mozilla/firefox"
+FIREFOX_THEME_DIR="/home/${MY_USERNAME}/.mozilla/firefox/firefox-themes"
 export WHITESUR_TMP_DIR="/tmp/WhiteSur.lock"
 
 if [[ -w "/" ]]; then

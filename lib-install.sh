@@ -176,6 +176,9 @@ install_theemy() {
   local TMP_DIR_T="${WHITESUR_TMP_DIR}/gtk-3.0${color}${opacity}${alt}${theme}"
   local TMP_DIR_F="${WHITESUR_TMP_DIR}/gtk-4.0${color}${opacity}${alt}${theme}"
 
+  local HDPI_TARGET_DIR="${dest}/${name}${color}-hdpi"
+  local XHDPI_TARGET_DIR="${dest}/${name}${color}-xhdpi"
+
   mkdir -p                                                                                    "${TARGET_DIR}"
   local desktop_entry="
   [Desktop Entry]
@@ -273,12 +276,22 @@ install_theemy() {
   cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}/"*".png"                                "${TARGET_DIR}/xfwm4"
   cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${TARGET_DIR}/xfwm4/themerc"
 
+  mkdir -p                                                                                    "${HDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}-hdpi/"*".png"                           "${HDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${HDPI_TARGET_DIR}/xfwm4/themerc"
+
+  mkdir -p                                                                                    "${XHDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}-xhdpi/"*".png"                          "${XHDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${XHDPI_TARGET_DIR}/xfwm4/themerc"
+
   mkdir -p                                                                                    "${TARGET_DIR}/plank"
   cp -r "${THEME_SRC_DIR}/other/plank/theme${color}/"*".theme"                                "${TARGET_DIR}/plank"
 }
 
 remove_packy() {
   rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})"
+  rm -rf "${dest}/${name}$(destify ${1})-hdpi"
+  rm -rf "${dest}/${name}$(destify ${1})-xhdpi"
 }
 
 ###############################################################################
@@ -385,7 +398,7 @@ revert_gdm_theme() {
 
 install_firefox_theme() {
   remove_firefox_theme
-  userify cp -rf "${FIREFOX_SRC_DIR}"                                                           "${FIREFOX_DIR_HOME}/WhiteSur-chrome"
+  userify cp -rf "${FIREFOX_SRC_DIR}"                                                           "${FIREFOX_THEME_DIR}"
   config_firefox
 }
 
@@ -394,7 +407,7 @@ config_firefox() {
 
   for d in "${FIREFOX_DIR_HOME}/"*"default"*; do
     rm -rf                                                                                      "${d}/chrome"
-    userify ln -sf "${FIREFOX_DIR_HOME}/WhiteSur-chrome"                                        "${d}/chrome"
+    userify ln -sf "${FIREFOX_THEME_DIR}"                                                       "${d}/chrome"
     userify echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >> "${d}/prefs.js"
     userify echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                         "${d}/prefs.js"
     userify echo "user_pref(\"browser.uidensity\", 0);" >>                                      "${d}/prefs.js"
@@ -404,14 +417,14 @@ config_firefox() {
 }
 
 edit_firefox_theme_prefs() {
-  [[ ! -d "${FIREFOX_DIR_HOME}/WhiteSur-chrome" ]] && install_firefox_theme ; config_firefox
-  ${EDITOR:-nano}                                                                               "${FIREFOX_DIR_HOME}/WhiteSur-chrome/userChrome.css"
-  ${EDITOR:-nano}                                                                               "${FIREFOX_DIR_HOME}/WhiteSur-chrome/customChrome.css"
+  [[ ! -d "${FIREFOX_THEME_DIR}" ]] && install_firefox_theme ; config_firefox
+  ${EDITOR:-nano}                                                                               "${FIREFOX_THEME_DIR}/userChrome.css"
+  ${EDITOR:-nano}                                                                               "${FIREFOX_THEME_DIR}/customChrome.css"
 }
 
 remove_firefox_theme() {
   rm -rf "${FIREFOX_DIR_HOME}/"*"default"*"/chrome"
-  rm -rf "${FIREFOX_DIR_HOME}/WhiteSur-chrome"
+  rm -rf "${FIREFOX_THEME_DIR}"
 }
 
 ###############################################################################
