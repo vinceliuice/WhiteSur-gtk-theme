@@ -1,12 +1,1 @@
-#searchResultsContent {
-  max-width: 1024px;
-  spacing: 8px;
-}
 
-.list-search-results { spacing: 3px; }
-.list-search-result-content { spacing: 30px; }
-.list-search-result-title { @include font(subheading); color: $light_alt_fg_color; spacing: 12px; }
-.list-search-result-description { color: $light_alt_fg_color; }
-.list-search-provider-details { width: 150px; color: $light_alt_fg_color; margin-top: 0.24em; }
-.list-search-provider-content { spacing: 20px; }
-.search-provider-icon { padding: 15px; }

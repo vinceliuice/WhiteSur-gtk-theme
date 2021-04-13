@@ -1,23 +1,16 @@
-$app_icon_size: 96px;
 
-// App Vault/Grid
+// app icons
 .icon-grid {
-  spacing: 30px;
-  -shell-grid-horizontal-item-size: 136px;
-  -shell-grid-vertical-item-size: 136px;
-
-  row-spacing: $container_padding * 6;
-  column-spacing: $container_padding * 6;
-  max-row-spacing: $container_padding * 12;
-  max-column-spacing: $container_padding * 12;
-
-  .overview-icon { icon-size: $app_icon_size; }
+  row-spacing: $base_spacing * 6;
+  column-spacing: $base_spacing * 6;
+  max-row-spacing: $base_spacing * 12;
+  max-column-spacing: $base_spacing * 12;
 }
 
 .app-folder-icon {
-  padding: $container_padding;
-  spacing-rows: $container_padding;
-  spacing-columns: $container_padding;
+  padding: $base_padding;
+  spacing-rows: $base_spacing;
+  spacing-columns: $base_spacing;
 }
 
 // expanded folder
@@ -67,4 +60,18 @@ $app_icon_size: 96px;
     transition-duration: 0ms;
   }
   &:checked:active { background-image: none; }
+}
+
+// Some hacks I don't even know
+.all-apps {
+  // horizontal padding to make sure scrollbars or dash don't overlap content
+  padding: 0px 88px 10px 88px;
+}
+
+// shutdown and other actions in the grid
+.system-action-icon {
+  background-color: rgba(0,0,0,0.8);
+  color: #fff;
+  border-radius: 99px;
+  icon-size: 48px;
 }

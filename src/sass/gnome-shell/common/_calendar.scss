@@ -100,11 +100,11 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
 /* Calendar */
 .calendar {
-  margin: 2px 12px;
   border: none;
   box-shadow: none;
   background-color: $popover_bubble_bg;
-  padding: 4px 8px;
+  padding: $base_padding;
+  margin: 0 $base_padding * 2;
   text-shadow: none;
   border-radius: $mn_radius;
 
@@ -254,31 +254,31 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 .weather-button,
 .events-button {
   @extend %popover_bubble;
-  padding: 12px;
-  margin: 2px 4px;
+  padding: $base_padding * 2;
+  margin: 2px $base_padding;
 }
 
 // Events
 .events-button {
   .events-box {
-    spacing: 6px;
+    spacing: $base_spacing;
   }
 
   .events-list {
-    spacing: 12px;
+    spacing: 2 * $base_spacing;
     text-shadow: none;
   }
 
   .events-title {
     color: $hint_fg_color;
     font-weight: bold;
-    margin-bottom: 4px;
     text-shadow: none;
   }
 
   .event-time {
     color: $hint_fg_color;
     font-feature-settings: "tnum";
+    @include fontsize($base_font_size - 2);
   }
 }
 
@@ -287,13 +287,13 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   .world-clocks-city {
     color: $hint_fg_color;
     font-weight: bold;
-    font-size: 0.9em;
+    @include fontsize($base_font_size - 1);
   }
 
   .world-clocks-time {
     color: $hint_fg_color;
     font-feature-settings: "tnum";
-    font-size: 1.2em;
+    @include fontsize($base_font_size - 1);
 
     &:ltr { text-align: right; }
     &:rtl { text-align: left; }
@@ -302,7 +302,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   .world-clocks-timezone {
     color: $hint_fg_color;
     font-feature-settings: "tnum";
-    font-size: 0.9em;
+    @include fontsize($base_font_size - 2);
   }
 }
 
@@ -317,11 +317,11 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   margin-bottom: 6px;
 
   .weather-box {
-    spacing: 12px;
+    spacing: $base_spacing + $base_margin;
   }
 
   .weather-header-box {
-    spacing: 6px;
+    spacing: $base_spacing;
   }
 
   .weather-header {
@@ -331,6 +331,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     &.location {
       font-weight: normal;
       color: $hint_fg_color;
+      @include fontsize($base_font_size - 2);
     }
   }
 
@@ -342,7 +343,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   .weather-forecast-time {
     color: $alt_fg_color;
     font-feature-settings: "tnum";
-    font-size: 9pt;
+    @include fontsize($base_font_size - 3);
     font-weight: normal;
     padding-top: 0.2em;
     padding-bottom: 0.4em;

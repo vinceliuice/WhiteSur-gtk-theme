@@ -1,7 +1,8 @@
 // Search entry
 %search-entry, .search-entry {
   width: 320px;
-  padding: $base_padding+1 $base_padding+3;
+  min-height: $menuitem_size;
+  padding: 2px 10px;
   border: none;
   color: $light_hint_fg_color;
   caret-color: $light_alt_fg_color;

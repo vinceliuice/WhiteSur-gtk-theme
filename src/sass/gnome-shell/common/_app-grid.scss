@@ -5,7 +5,7 @@ $app_grid_fg_color: #fff;
 
 .show-apps,
 .app-well-app,
-.grid-search-result {
+%app-well-app {
   & .overview-icon {
     color: $light_alt_fg_color;
     border-radius: $bd_radius * 1.5;
