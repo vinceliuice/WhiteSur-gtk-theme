@@ -123,8 +123,6 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   // prev/next month icons
   .calendar-change-month-back,
   .calendar-change-month-forward {
-    padding: 0 4px;
-
     StIcon {
       icon-size: $base_icon_size;
     }
@@ -134,7 +132,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     width: $menuitem_size;
     height: $menuitem_size;
     margin: 2px;
-    border-radius: 100px;
+    border-radius: $circular_radius;
     background-color: transparent;
     color: $fg_color;
     &:hover, &:focus { background-color: $divider_color; }
@@ -148,7 +146,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     height: $menuitem_size;
     padding: 2px;
     margin: 2px;
-    border-radius: 1000px;
+    border-radius: $circular_radius;
     color: $alt_fg_color;
     font-feature-settings: "tnum";
 
@@ -171,7 +169,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
       height: $menuitem_size - 7px;
       margin-top: 2px;
       padding: 7px 0 0;
-      border-radius: 100px;
+      border-radius: $circular_radius;
       background-color: transparent;
       color: $hint_fg_color;
       @include font(caption);
