@@ -20,7 +20,7 @@
 
 .window-clone-border {
   border: 4px solid $light_track_color;
-  border-radius: $bt_radius;
+  border-radius: $bt_radius + 4px;
   // For window decorations with round corners we can't match
   // the exact shape when the window is scaled. So apply a shadow
   // to fix that case
