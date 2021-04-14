@@ -19,6 +19,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
   min-width: 12em;
   color: $alt_fg_color;
   padding: 0 0 !important;
+  font-weight: normal;
 
   .popup-menu-content {
     padding: 6px 0 !important;
@@ -26,6 +27,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
     box-shadow: 0 8px 16px 0 rgba(black, 0.25);
     border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
     margin: 4px 8px 4px 12px !important;
+    font-weight: normal;
   }
 
   .popup-menu-item {
@@ -36,6 +38,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
     text-shadow: none;
     border-radius: $popop_menuitem_radius;
     margin: 0 6px;
+    font-weight: normal;
 
     &:ltr { padding-right: 2em !important; padding-left: 0 !important; }
     &:rtl { padding-right: 0 !important; padding-left: 2em !important; }

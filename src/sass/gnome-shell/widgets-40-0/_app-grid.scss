@@ -13,12 +13,6 @@ $app_icon_size: 96px;
   page-padding-right: $base_padding * 2;
 }
 
-// right-click app menu
-.app-menu,
-.app-well-menu {
-  max-width: 27.25em;
-}
-
 // App Grid pagination indicators
 .page-indicator {
   padding: $base_padding $base_padding * 2 0;

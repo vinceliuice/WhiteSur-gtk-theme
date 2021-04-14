@@ -1,10 +1,22 @@
 
+$app_icon_size: 96px;
+$app_icon_padding: 24px;
+
 // app icons
 .icon-grid {
   row-spacing: $base_spacing * 6;
   column-spacing: $base_spacing * 6;
   max-row-spacing: $base_spacing * 12;
   max-column-spacing: $base_spacing * 12;
+
+  // for 3.26
+  -shell-grid-horizontal-item-size: $app_icon_size + $app_icon_padding * 2;
+  -shell-grid-vertical-item-size: $app_icon_size + $app_icon_padding * 2;
+  spacing: $base_spacing * 4;
+
+  .overview-icon {
+    icon-size: $app_icon_size;
+  }
 }
 
 .app-folder-icon {
@@ -62,16 +74,72 @@
   &:checked:active { background-image: none; }
 }
 
-// Some hacks I don't even know
-.all-apps {
+//Some hacks I don't even
+.all-apps,
+.search-display > StBoxLayout,
+.frequent-apps > StBoxLayout {
   // horizontal padding to make sure scrollbars or dash don't overlap content
   padding: 0px 88px 10px 88px;
 }
 
-// shutdown and other actions in the grid
-.system-action-icon {
-  background-color: rgba(0,0,0,0.8);
-  color: #fff;
-  border-radius: 99px;
-  icon-size: 48px;
+//
+// gnome-shell 3.36
+//
+.app-view-controls { //favorties | all toggle container
+  width: 320px;
+  padding-bottom: 32px;
+  margin: 0 0;
+}
+
+.app-view-control { //favorties | all toggle button
+  padding: 0 16px;
+  margin: 0 0;
+  font-weight: bold;
+  color: $light_alt_fg_color;
+  background-color: rgba($light_alt_fg_color, 0.15);
+  &:hover {
+    color: $light_alt_fg_color;
+    background-color: rgba($light_alt_fg_color, 0.22);
+  }
+  &:active {
+    color: $light_alt_fg_color;
+    background-color: darken($primary_color, 3%);
+  }
+  &:checked {
+    color: $light_alt_fg_color;
+    background-color: $primary_color;
+    box-shadow: none;
+  }
+  &:first-child {
+    border-right-width: 0;
+    border-radius: $bt_radius 0 0 $bt_radius;
+  }
+  &:last-child {
+    border-radius: 0 $bt_radius $bt_radius 0;
+  }
+}
+
+// Collections
+.app-folder-popup { //expanded collection
+  -arrow-border-radius: $bd_radius * 2;
+  -arrow-background-color: $light_divider_color;
+  -arrow-base: 0;
+  -arrow-rise: 12px;
+}
+
+.app-folder-popup-bin { padding: 5px; }
+
+.no-frequent-applications-label {
+  @include font(display-2);
+  color: $light_hint_fg_color;
+}
+
+.overview-icon.overview-icon-with-label,
+.grid-search-result .overview-icon.overview-icon-with-label {
+  padding: 10px 8px 5px 8px;
+  spacing: 6px;
+
+  > StBoxLayout {
+    spacing: 6px;
+  }
 }
