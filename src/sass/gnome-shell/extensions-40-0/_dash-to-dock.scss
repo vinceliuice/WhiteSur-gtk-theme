@@ -123,9 +123,9 @@ $dash_radius: 18px;
   }
 
   .dash-separator {
-    width: 0 !important;
-    margin: 0 0 !important;
-    background: none;
+    width: 1px !important;
+    // margin: 0 0 !important;
+    background-color: $light_divider_color;
   }
 
   &:overview #dash { // overview-mode #1
