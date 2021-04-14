@@ -105,17 +105,18 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   border: none;
   box-shadow: none;
   background-color: $popover_bubble_bg;
-  padding: $base_padding;
-  margin: 0 $base_padding * 2;
+  padding: $base_padding !important;
+  margin: 0 $base_padding * 2 !important;
   text-shadow: none;
   border-radius: $mn_radius;
 
   // month
   .calendar-month-label {
-    margin: 2px;
-    padding: 6px 16px;
+    margin: 0;
+    padding: $base_padding 0;
     color: $fg_color;
     font-weight: bold;
+    font-size: 1em !important;
     text-align: center;
     text-shadow: none;
 
@@ -125,8 +126,11 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   // prev/next month icons
   .calendar-change-month-back,
   .calendar-change-month-forward {
+    padding: 2px !important;
+    margin: 0 !important;
+
     StIcon {
-      icon-size: $base_icon_size;
+      icon-size: $base_icon_size !important;
     }
   }
 
@@ -201,22 +205,27 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   // Today
   .calendar-today {
     font-weight: bold;
-    color: $light_alt_fg_color;
-    background-color: $primary_color;
+    color: $alt_fg_color !important;
+    background-color: rgba($fg_color, 0.1);
     border: none;
 
     &:hover, &:focus {
-      background-color:lighten($primary_color, 3%);
-      color: $light_alt_fg_color;
+      background-color: rgba($fg_color, 0.15);
+      color: $fg_color !important;
     }
 
-    &:active, &:selected {
+    &:active {
+      background-color: darken($primary_color, 5%);
+      color: $light_fg_color !important;
+    }
+
+    &:selected {
       background-color: $primary_color;
-      color: $light_alt_fg_color;
+      color: $light_fg_color !important;
 
       &:hover, &:focus {
-        background-color:lighten($primary_color, 3%);
-        color: $light_alt_fg_color;
+        background-color: lighten($primary_color, 8%);
+        color: $light_fg_color !important;
       }
     }
   }
@@ -254,8 +263,8 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 .weather-button,
 .events-button {
   @extend %popover_bubble;
-  padding: $base_padding * 2;
-  margin: 2px $base_padding;
+  padding: $base_padding * 2 !important;
+  margin: 2px $base_margin !important;
 }
 
 // Events
@@ -314,7 +323,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
 // Weather
 .weather-button {
-  margin-bottom: 6px;
+  margin-bottom: 6px !important;
 
   .weather-box {
     spacing: $base_spacing + $base_margin;
