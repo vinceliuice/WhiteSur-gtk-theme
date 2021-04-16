@@ -440,7 +440,7 @@ install_dash_to_dock_theme() {
     rootify sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss" "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css"
   fi
 
-  userify dbus-launch gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
+  userify dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
 }
 
 revert_dash_to_dock_theme() {

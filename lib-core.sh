@@ -112,6 +112,7 @@ max_round="false"
 
 # Misc
 msg="Run '${0} --help' to explore more customization features!"
+error_msg=""
 process_ids=()
 ANIM_PID="0"
 has_any_error="false"
@@ -459,7 +460,7 @@ lockWhiteSur() {
 rootify() {
   trap true SIGINT
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
-  sudo ${@} || operation_canceled
+  error_msg="$(sudo ${@} 2>&1)" || operation_canceled
   trap sig_c SIGINT
 }
 
@@ -472,7 +473,7 @@ full_rootify() {
 
 userify() {
   trap true SIGINT
-  sudo -u "${MY_USERNAME}" ${@} || operation_canceled
+  error_msg="$(sudo -u "${MY_USERNAME}" ${@} 2>&1)" || operation_canceled
   trap sig_c SIGINT
 }
 
@@ -482,7 +483,17 @@ sig_c() {
 }
 
 operation_canceled() {
-  clear; prompt -e "\n\n  Oops! Operation has been canceled or failed...\n\n"; exit 1
+  clear
+
+  if [[ ${error_msg} != "" ]]; then
+    prompt -e "\n\n  Oops! An error is detected...\n"
+    prompt -e "ERROR LOG:\n${error_msg}\n"
+    prompt -i "TIP: you can google or report to us the error log above\n\n"
+  else
+    prompt -e "\n\n  Oops! Operation has been canceled or failed...\n\n"
+  fi
+
+  exit 1
 }
 
 usage() {
