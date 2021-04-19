@@ -18,10 +18,6 @@ $dash_radius: 18px;
 #dashtodockContainer {
   background-color: transparent;
 
-  .app-well-app-running-dot {
-    background-color: $dash_panel_fg;
-  }
-
   .number-overlay {
     color: $light_fg_color;
     background-color: rgba(black, 0.75);
@@ -39,39 +35,10 @@ $dash_radius: 18px;
     text-align: center;
   }
 
-  &.dashtodock #dash .dash-background,
-  &.dashtodock:overview #dash .dash-background,
-  &.extended #dash .dash-background,
-  &.extended:overview #dash .dash-background {
-    border: 1px solid if($variant == 'light', rgba(black, 0.08), rgba(black, 0.75));
-  }
-
   &.straight-corner #dash .dash-background,
   &.shrink.straight-corner #dash .dash-background {
     border-radius: 0;
     margin: 0;
-  }
-
-  @each $_dock, $_radius, $_shadow in (top, $dash_radius, 0 -1px),
-                            (bottom, $dash_radius, 0 1px),
-                            (left, $dash_radius, -1px 0),
-                            (right, $dash_radius, 1px 0) {
-    &.#{$_dock}.dashtodock #dash .dash-background,
-    &.#{$_dock}.dashtodock:overview #dash .dash-background {
-      border-radius: #{$_radius};
-      box-shadow: inset 0 0 0 1px rgba(white, 0.05);
-    }
-
-    &.#{$_dock}.shrink #dash .dash-background {
-      border-#{$_dock}-width: 0;
-    }
-
-    &.#{$_dock}.extended #dash .dash-background,
-    &.#{$_dock}.extended:overview #dash .dash-background {
-      margin: 0 0;
-      border-radius: 0;
-      box-shadow: inset #{$_shadow} rgba(white, 0.05);
-    }
   }
 
   &.extended.top,
@@ -109,10 +76,10 @@ $dash_radius: 18px;
   #dash { // default-mode
     background: none;
 
-    .app-well-app-running-dot {
-      background-color: rgba($dash_panel_fg, 0.85);
-    }
-
+    // .app-well-app-running-dot {
+    //   background-color: rgba($dash_panel_fg, 0.85);
+    // }
+    //
     StWidget.focused .app-well-app-running-dot {
       background-color: $primary_color;
     }
@@ -120,19 +87,23 @@ $dash_radius: 18px;
 
   .dash-background {
     background-color: $dash_panel_bg;
+    border: 1px solid if($variant == 'light', rgba(black, 0.08), rgba(black, 0.75));
+    box-shadow: inset 0 0 0 1px rgba(white, 0.05);
   }
 
-  .dash-separator {
-    width: 1px !important;
-    // margin: 0 0 !important;
-    background-color: $light_divider_color;
-  }
+  // .dash-separator {
+  //   width: 1px !important;
+  //   // margin: 0 0 !important;
+  //   background-color: $light_divider_color;
+  // }
 
   &:overview #dash { // overview-mode #1
     background: none;
 
     .dash-background {
       background-color: $light_divider_color;
+      border: 1px solid rgba(black, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(white, 0.05);
     }
 
     .app-well-app-running-dot {
@@ -163,9 +134,9 @@ $dash_radius: 18px;
       background: none;
     }
 
-    .dash-background {
-      background-color: $light_divider_color;
-    }
+    // .dash-background {
+    //   background-color: $light_divider_color;
+    // }
   }
 
   &.running-dots,

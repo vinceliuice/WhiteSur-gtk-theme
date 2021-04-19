@@ -1,4 +1,4 @@
-$dash_background_color: rgba($panel_bg, $panel_opacity + 0.2);
+$dash_background_color: if($variant == 'light', rgba($panel_bg, $panel_opacity), rgba($panel_bg, $panel_opacity + 0.1));
 $dash_placeholder_size: 32px;
 $dash_padding: $base_padding + 4px; // 10px
 $dash_spacing: $base_padding / 4;
