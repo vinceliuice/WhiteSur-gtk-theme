@@ -460,7 +460,7 @@ lockWhiteSur() {
 rootify() {
   trap true SIGINT
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
-  error_msg="$(sudo ${@} 2>&1)" || operation_canceled
+  sudo ${@} 2> "${WHITESUR_TMP_DIR}/error_log.txt" || operation_canceled
   trap sig_c SIGINT
 }
 
@@ -473,7 +473,7 @@ full_rootify() {
 
 userify() {
   trap true SIGINT
-  error_msg="$(sudo -u "${MY_USERNAME}" ${@} 2>&1)" || operation_canceled
+  sudo -u "${MY_USERNAME}" ${@} 2> "${WHITESUR_TMP_DIR}/error_log.txt" || operation_canceled
   trap sig_c SIGINT
 }
 
@@ -484,6 +484,10 @@ sig_c() {
 
 operation_canceled() {
   clear
+
+  if [[ -f "${WHITESUR_TMP_DIR}/error_log.txt" ]]; then
+    error_msg="$(cat "${WHITESUR_TMP_DIR}/error_log.txt")"
+  fi
 
   if [[ ${error_msg} != "" ]]; then
     prompt -e "\n\n  Oops! An error is detected...\n"
