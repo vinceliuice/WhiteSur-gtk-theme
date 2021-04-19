@@ -172,6 +172,8 @@ install_shelly() {
     cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png"          "${TARGET_DIR}/assets/background.png"
   fi
 
+  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"               "${TARGET_DIR}/assets"
+
   (
     cd "${TARGET_DIR}"
     mv -f "assets/no-events.svg" "no-events.svg"

@@ -127,6 +127,10 @@ $popop_menuitem_radius: $wm_radius - 4px;
       color: transparentize($fg_color, 0.3);
     }
   }
+
+  .search-entry {
+    @extend %entry;
+  }
 }
 // symbolic icons in popover
 .popup-menu-arrow,

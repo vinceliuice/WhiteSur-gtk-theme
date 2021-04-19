@@ -1,4 +1,4 @@
-$dash_background_color: #3b3b3b;
+$dash_background_color: rgba($panel_bg, $panel_opacity + 0.2);
 $dash_placeholder_size: 32px;
 $dash_padding: $base_padding + 4px; // 10px
 $dash_spacing: $base_padding / 4;
@@ -17,6 +17,11 @@ $dash_border_radius: $bt_radius * 2.5;
 
   .overview-icon {
     padding: $dash_padding / 2;
+  }
+
+  // Running app indicator (shown in dash)
+  .app-well-app-running-dot {
+    background-color: if($variant == 'light', rgba(black, 0.75), rgba(white, 0.75));
   }
 }
 

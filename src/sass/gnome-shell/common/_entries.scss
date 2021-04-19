@@ -1,8 +1,9 @@
 /* Entries */
 
-StEntry {
-  padding: 8px;
-  margin: 3px;
+StEntry, %entry {
+  min-height: $menuitem_size;
+  padding: 2px 10px;
+  margin: 2px;
   border-width: 0;
   color: $fg_color;
   caret-color: $fg_color;

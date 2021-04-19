@@ -17,7 +17,7 @@ $window_close_button_padding: 3px;
 
 // Close button
 .window-close {
-  background-color: rgba($osd_bg_color, 1);
+  background-color: rgba($error_color, 1);
   color: white;
   border-radius: $window_close_button_size * 0.5 + $window_close_button_padding * 2;
   padding: $window_close_button_padding;
@@ -33,12 +33,12 @@ $window_close_button_padding: 3px;
 
   &:hover {
     color: white;
-    background-color: lighten(rgba($osd_bg_color, 1), 15%);
+    background-color: lighten(rgba($error_color, 1), 15%);
   }
 
   &:active {
     color: white;
-    background-color: darken(rgba($osd_bg_color, 1), 5%);
+    background-color: darken(rgba($error_color, 1), 5%);
   }
 }
 
