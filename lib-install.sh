@@ -114,6 +114,26 @@ install_darky() {
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark${opacity}${theme}.scss"          "${WHITESUR_TMP_DIR}/darky-4${opacity}${theme}.css"
 }
 
+install_xfwmy() {
+  local color="$(destify ${1})"
+
+  local TARGET_DIR="${dest}/${name}${color}-mdpi"
+  local HDPI_TARGET_DIR="${dest}/${name}${color}-hdpi"
+  local XHDPI_TARGET_DIR="${dest}/${name}${color}-xhdpi"
+
+  mkdir -p                                                                                    "${TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}/"*".png"                                "${TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${TARGET_DIR}/xfwm4/themerc"
+
+  mkdir -p                                                                                    "${HDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}-hdpi/"*".png"                           "${HDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${HDPI_TARGET_DIR}/xfwm4/themerc"
+
+  mkdir -p                                                                                    "${XHDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}-xhdpi/"*".png"                          "${XHDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${XHDPI_TARGET_DIR}/xfwm4/themerc"
+}
+
 install_shelly() {
   local color="$(destify ${1})"
   local opacity="$(destify ${2})"
@@ -175,9 +195,6 @@ install_theemy() {
   local TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}"
   local TMP_DIR_T="${WHITESUR_TMP_DIR}/gtk-3.0${color}${opacity}${alt}${theme}"
   local TMP_DIR_F="${WHITESUR_TMP_DIR}/gtk-4.0${color}${opacity}${alt}${theme}"
-
-  local HDPI_TARGET_DIR="${dest}/${name}${color}-hdpi"
-  local XHDPI_TARGET_DIR="${dest}/${name}${color}-xhdpi"
 
   mkdir -p                                                                                    "${TARGET_DIR}"
   local desktop_entry="
@@ -272,24 +289,13 @@ install_theemy() {
   cp -r "${THEME_SRC_DIR}/assets/metacity-1/thumbnail${color}.png"                            "${TARGET_DIR}/metacity-1/thumbnail.png"
   ( cd "${TARGET_DIR}/metacity-1" && ln -s "metacity-theme-1.xml" "metacity-theme-2.xml" )
 
-  mkdir -p                                                                                    "${TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}/"*".png"                                "${TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${TARGET_DIR}/xfwm4/themerc"
-
-  mkdir -p                                                                                    "${HDPI_TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}-hdpi/"*".png"                           "${HDPI_TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${HDPI_TARGET_DIR}/xfwm4/themerc"
-
-  mkdir -p                                                                                    "${XHDPI_TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}-xhdpi/"*".png"                          "${XHDPI_TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${XHDPI_TARGET_DIR}/xfwm4/themerc"
-
   mkdir -p                                                                                    "${TARGET_DIR}/plank"
   cp -r "${THEME_SRC_DIR}/other/plank/theme${color}/"*".theme"                                "${TARGET_DIR}/plank"
 }
 
 remove_packy() {
   rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})"
+  rm -rf "${dest}/${name}$(destify ${1})-mdpi"
   rm -rf "${dest}/${name}$(destify ${1})-hdpi"
   rm -rf "${dest}/${name}$(destify ${1})-xhdpi"
 }
@@ -305,6 +311,9 @@ install_themes() {
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
       for theme in "${themes[@]}"; do
+        install_xfwmy "${color}" &
+
+        # Darky is required by Theemy, don't make it a background process ("&")
         install_darky "${opacity}" "${theme}"
 
         for color in "${colors[@]}"; do

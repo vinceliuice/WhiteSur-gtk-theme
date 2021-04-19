@@ -196,7 +196,7 @@ else
 
     echo
     prompt -w "FIREFOX: Please go to [Firefox menu] > [Customize...], and customize your Firefox to make it work. Move your 'new tab' button to the titlebar instead of tab-switcher."
-    prompt -w "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in '${FIREFOX_DIR_HOME}/WhiteSur-chrome'."
+    prompt -w "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in '${FIREFOX_THEME_DIR}'."
   fi
 
   if [[ "${snap}" == 'true' ]]; then
