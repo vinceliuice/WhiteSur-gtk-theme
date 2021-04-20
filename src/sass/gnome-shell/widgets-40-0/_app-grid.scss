@@ -13,6 +13,10 @@ $app_icon_size: 96px;
   page-padding-right: $base_padding * 2;
 }
 
+.app-folder-dialog {
+  background-color: rgba(black, 0.9);
+}
+
 // App Grid pagination indicators
 .page-indicator {
   padding: $base_padding $base_padding * 2 0;

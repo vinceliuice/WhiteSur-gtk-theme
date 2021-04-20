@@ -2,17 +2,14 @@
 // THEME OPTIONS
 //
 
-// Gnome shell version
-$gnome_version: 'old'; // 3.38/old || 40.0/new
-
-// Force nautilus styles to exclusively use colors instead of linear-gradients
-$nautilus_use_colors: false;
+// Nautilus version
+$nautilus_version: 'old'; // < 3.38/old || 40.0/new
 
 // Nautilus sidebar sizes (when nautilus_use_colors is false)
 $sidebar_size: 200px;
 
 // Nautilus style
-$nautilus_style: stable;
+$nautilus_style: 'stable';
 
 // Gnome-shell panel opacity
 $panel_opacity: 0.15;

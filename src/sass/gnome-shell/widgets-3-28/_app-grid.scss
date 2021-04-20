@@ -27,6 +27,8 @@ $app_icon_padding: 24px;
 
 // expanded folder
 .app-folder-dialog {
+  background-color: rgba(#333, 0.9);
+
   & .page-indicators {
     .page-indicator {
       padding: 15px 12px;
