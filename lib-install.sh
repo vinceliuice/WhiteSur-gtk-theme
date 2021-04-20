@@ -46,6 +46,26 @@ install_theme_deps() {
   fi
 }
 
+install_gdm_deps() {
+  if [[ ! "$(which glib-compile-resources 2> /dev/null)" || ! "$(which xmllint 2> /dev/null)" ]]; then
+    echo; prompt -w "'glib2.0' 'xmllint' are required for theme installation."
+
+    if has_command zypper; then
+      rootify zypper in -y glib2-devel libxml2-tools
+    elif has_command apt; then
+      rootify apt install -y libglib2.0-dev-bin libxml2-utils
+    elif has_command dnf; then
+      rootify dnf install -y glib2-devel libxml2
+    elif has_command yum; then
+      rootify yum install -y glib2-devel libxml2
+    elif has_command pacman; then
+      rootify pacman -S --noconfirm --needed glib2 libxml2
+    else
+      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies!"
+    fi
+  fi
+}
+
 install_beggy_deps() {
   if [[ ! "$(which convert 2> /dev/null)" ]]; then
     echo; prompt -w "'imagemagick' are required for this option."
@@ -59,7 +79,7 @@ install_beggy_deps() {
     elif has_command yum; then
       rootify yum install -y sassc ImageMagick
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed sassc imagemagick
+      rootify pacman -S --noconfirm --needed sassc imagemagic
     else
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies!"
     fi
