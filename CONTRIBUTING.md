@@ -76,8 +76,3 @@ Developed by **Rafael Mardojai** and [contributors](https://github.com/rafaelmar
 ## Known bugs
 ### Can't change GDM background on OpenSUSE Tumbleweed
 See upstream [bug](https://github.com/juhaku/loginized#known-limitations-and-issues).
-
-## Features under development
-### GNOME 40 support
-We currently disable the GDM and GNOME Shell theme installation while we're
-developing them for GNOME 40
