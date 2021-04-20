@@ -109,7 +109,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 }
 
 @if $nautilus_style == 'stable' or $nautilus_style == 'default' {
-  @if $gnome_version == 'new' {
+  @if $nautilus_version == 'new' {
     $nautilus_header_image: linear-gradient(90deg, transparent $nautilus_sidebar_size,
                                                    $nautilus_borders_color $nautilus_sidebar_size,
                                                    $nautilus_borders_color ($nautilus_sidebar_size + 1px),

@@ -29,6 +29,16 @@ else
   GNOME_VERSION="none"
 fi
 
+if command -v nautilus &> /dev/null; then
+  if (( $(nautilus --version | cut -d ' ' -f 3 | cut -d . -f 1) >= 40 )); then
+    NAUTILUS_VERSION="new"
+  else
+    NAUTILUS_VERSION="old"
+  fi
+else
+  NAUTILUS_VERSION="none"
+fi
+
 # Program options
 SASSC_OPT="-M -t expanded"
 

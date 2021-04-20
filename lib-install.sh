@@ -519,10 +519,10 @@ customize_theme() {
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
   # Change common apps style for a specific GNOME Shell version
-  if [[ ${GNOME_VERSION} == "new" ]]; then
-    sed ${SED_OPT} "/\$gnome_version/s/old/new/"                    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
-  elif [[ ${GNOME_VERSION} == "none" ]]; then
-    prompt -w "There's no GNOME Shell installed, using style for the older GNOME Shell instead..."
+  if [[ ${NAUTILUS_VERSION} == "new" ]]; then
+    sed ${SED_OPT} "/\$nautilus_version/s/old/new/"                    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  elif [[ ${NAUTILUS_VERSION} == "none" ]]; then
+    prompt -w "There's no Nautilus installed, using style for the older gtk theme instead..."
   fi
 
   # Change gnome-shell panel transparency
