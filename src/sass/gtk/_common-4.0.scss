@@ -2792,18 +2792,8 @@ scale {
   min-width: 15px;
   padding: 3px;
 
-  &.horizontal {
-    trough { padding: 0 4px; }
-    highlight, fill { margin: 0 -4px; }
-  }
-
-  &.vertical {
-    trough { padding: 4px 0; }
-    highlight, fill { margin: -4px 0; }
-  }
-
   // The slider is inside the trough, negative margin to make it bigger
-  slider {
+  > trough > slider {
     min-height: 15px;
     min-width: 15px;
     margin: -7px;
@@ -2812,11 +2802,11 @@ scale {
   // Click-and-hold the slider to activate
   &.fine-tune {
     // Make the trough grow in fine-tune mode
-    slider { margin: -4px; }
+    > trough > slider { margin: -4px; }
 
-    fill,
-    highlight,
-    trough {
+    > trough > fill,
+    > trough > highlight,
+    > trough {
       border-radius: 5px;
     }
   }
@@ -3689,12 +3679,12 @@ filechooserbutton:drop(active) {
 // Sidebar
 //
 %sidebar_left {
-  border-right: 1px solid $dark_sidebar_border;
+  border-right: 1px solid $borders_color;
   border-left-style: none;
 }
 
 %sidebar_right {
-  border-left: 1px solid $dark_sidebar_border;
+  border-left: 1px solid $borders_color;
   border-right-style: none;
 }
 
@@ -3725,15 +3715,6 @@ filechooserbutton:drop(active) {
 stacksidebar {
   list.separators:not(.horizontal) > row:not(.separator) {
     border-bottom: none;
-  }
-
-  &.sidebar {
-    &:dir(ltr) list,
-    &.left list,
-    &.left:dir(rtl) list { @extend %sidebar_left; }
-
-    &:dir(rtl) list,
-    &.right list { @extend %sidebar_right; }
   }
 
   row {
