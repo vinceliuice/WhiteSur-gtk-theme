@@ -79,7 +79,7 @@ install_beggy_deps() {
     elif has_command yum; then
       rootify yum install -y sassc ImageMagick
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed sassc imagemagic
+      rootify pacman -S --noconfirm --needed sassc imagemagick
     else
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies!"
     fi
