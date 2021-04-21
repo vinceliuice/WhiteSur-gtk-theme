@@ -1,13 +1,8 @@
-// based css:
-// https://github.com/budgie-desktop/budgie-desktop/tree/master/src/theme
 
 /******************
  * Budgie Desktop *
  ******************/
-// Container for both the "panel" area and the shadow. Wise to keep
-// this transparent..
 
-// Raven
 $raven_base_color: if($variant =='light', #f5f5f5, #1b1b1b);
 $raven_bg_color: if($variant =='light', #dedede, #1f1f1f);
 $raven_fg_color: $text_color;
@@ -84,7 +79,6 @@ $raven_padding: 8px;
 
     button {
       border-radius: $bt_radius;
-      // -gtk-outline-radius: $bt_radius;
 
       @extend %budgie_button;
     }
@@ -142,7 +136,6 @@ $raven_padding: 8px;
 
   treeview.view.sidebar,
   scrolledwindow.sidebar:not(.categories) { //AppMenu (Elementary)
-    // min-height: 36px;
     background: none;
     border-right: none;
     color: $fg_color;
@@ -174,6 +167,8 @@ $raven_padding: 8px;
 
   &.sound-popover {
     separator { margin: 3px 0; }
+
+    buttonbox.linked > button { border-radius: $bt_radius; }
   }
 
   &.caffeine-popover {
@@ -181,6 +176,10 @@ $raven_padding: 8px;
   }
 
   &.night-light-indicator {
+    .container { padding: 6px; }
+  }
+
+  &.icon-popover {
     .container { padding: 6px; }
   }
 
@@ -288,14 +287,12 @@ window.budgie-popover:not(.csd) {
   entry.search { background-color: transparent; }
 
   entry.search {
-    // margin: 6px 6px 0 6px;
     padding: 5px 10px;
     border: none;
     border-bottom: 1px solid $borders_color;
     border-radius: 0;
     box-shadow: none;
     font-size: 110%;
-    // &:focus { @include entry(focus); }
   }
 
   .categories {
@@ -333,7 +330,6 @@ window.budgie-popover:not(.csd) {
 
 // Menu Button
 button.budgie-menu-launcher {
-  // padding: 0 2px;
   @extend %flat_button;
 }
 
@@ -360,11 +356,6 @@ button.raven-trigger {
 popover.background.places-menu {
   padding: 8px;
 
-  // FIXME: untested
-  // .message-bar {
-  //   margin-bottom: 4px;
-  // }
-
   .name-button.text-button {
     // padding: 4px 8px;
     padding-left: 8px;
@@ -375,11 +366,6 @@ popover.background.places-menu {
       &:dir(rtl) { margin-left: 8px - 5px; }
     }
   }
-
-  // FIXME: untested
-  // .unmount-button {
-  //   padding: ($medium_size - 24px) / 2;
-  // }
 
   .places-section-header > image {
     &:dir(ltr) { margin: 0 8px - 10px 0 8px - 3px; }
@@ -406,7 +392,6 @@ popover.background.places-menu {
   background-color: $panel_bg;
   color: $panel_fg;
   font-weight: 500;
-  // box-shadow: $panel_shadow;
   border-width: 0;
 
   &.transparent {
@@ -486,9 +471,6 @@ popover.background.places-menu {
       background-image: none;
       font-weight: normal;
 
-      // > window.background.popup > decoration,
-      // > window.background.popup > menu { border-radius: 0 0 $wm_radius $wm_radius; }
-
       &:hover { background-color: $selected_bg_color; }
       &:disabled { color: transparentize($panel_fg, 0.6); }
 
@@ -506,11 +488,6 @@ popover.background.places-menu {
 
   // used to indicate unread notifications
   .alert { color: $destructive_color; }
-
-  // End Section needs to be fancy
-  // .end-region {
-  //   background-color: rgba(0,0,0,0.2);
-  // }
 
   &.vertical #tasklist-button { min-height: 32px; }
 
@@ -649,23 +626,11 @@ frame.raven-frame > border {
 $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
 @each $pos, $b_pos in $pos_list {
-  // Panel borders
-  // .#{$pos} .budgie-panel {
-  //   border-#{$b_pos}: 1px solid $panel_border_color;
-  // }
-
-  // Raven borders
-  // .#{$pos} frame.raven-frame > border {
-  //   margin-#{$b_pos}: 16px;
-  // }
-
   // Shadows
    .#{$pos} .shadow-block {
      background-image: linear-gradient(to $b_pos, rgba(black, 0.05) 0%, rgba(black, 0.03) 15%, rgba(black, 0.02) 60%, transparent);
    }
 }
-
-// .bottom .shadow-block { background-image: none; }
 
 $raven_opacity: if($variant =='light', 0.85, 0.95);
 $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px 0 rgba(black, 0.1);
@@ -675,14 +640,6 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
   background-color: if($trans == 'true', rgba($raven_bg_color, $raven_opacity), $raven_bg_color);
   color: $raven_fg_color;
   box-shadow: $shadow_4;
-
-  // for >=10.4
-  > box { margin-bottom: -10px; }
-
-  // for <10.4
-  > stack { margin-bottom: -10px; }
-
-  // > stack > box:last-child > stack { margin-top: -6px; }
 
   button {
     @extend %raven_button;
@@ -708,7 +665,6 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
 
         &.image-button {
           border-radius: 100px;
-          // -gtk-outline-radius: 100px;
         }
       }
     }
@@ -744,29 +700,12 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
           }
         }
       }
-
-      // for <10.4
-      button.image-button {
-        &:dir(ltr) { margin-right: 2px; }
-        &:dir(rtl) { margin-left: 2px; }
-      }
-
-      // for <10.4
-      > image { margin: 0 8px; }
-
-      // for <10.4
-      > label {
-        margin: 0 -8px;
-        font-weight: bold;
-      }
     }
 
     &.bottom { border-top: 1px solid $borders_color; }
   }
 
   scrolledwindow > .frame { // stacking raised-grid
-    // reserve L/R shadow region
-    // FIXME: Do not set any L/R margins and borders
     padding: 0 $raven_padding;
     transition-duration: 0s;
     border: none;
@@ -792,19 +731,10 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
     }
 
     > box.vertical > box.vertical:last-child {
-      // FIXME: we can't crop album-art images horizontally with any borders,
-      // paddings, and margins. And parent GtkBox does not sync to the size
-      // of album-art dynamically while transitioning images. so set specific
-      // depth-0 OSD materials for MPRIS.
       border-radius: $raven_radius;
       border: none;
       background-color: if($variant =='light', rgba(black, 0.65), rgba(black, 0.35));
       color: rgba(white, 0.65);
-
-      // .raven-header {
-      //   background-color: rgba(black, 0.65);
-      //   color: rgba(white, 0.75);
-      // }
 
       .raven-background {
         background-color: rgba(black, 0.25);
@@ -873,7 +803,6 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
 
   .expander-button {
     border-radius: 100px;
-    // -gtk-outline-radius: 100px;
   }
 
   .raven-background {
@@ -886,35 +815,10 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
       }
     }
 
-    // switch { }
-
     list { color: $raven_fg_color; background-color: $raven_base_color; }
-
-    // for <10.4
-    &.frame { border-style: solid none; border-width: 1px; border-color: $borders_color; }
-
-    > overlay > widget > image { color: rgba($raven_fg_color, 0.12); }
-
-    // for <10.4
-    grid > label:first-child { min-height: 26px; } // workaround to fix vertical-align
-
-    // for <10.4
-    spinbutton:not(.vertical) { @extend %flat_entry; }
-
-    // for <10.4
-    // button.combo { }
   }
 
   scrolledwindow.raven-background { border-bottom-style: none; }
-
-  // for <10.4
-  .raven-header.top + .raven-background {
-    border-style: none;
-    background-color: $selected_bg_color;
-    color: $selected_fg_color;
-
-    stackswitcher button { margin: -4px 0; }
-  }
 
   .powerstrip button.image-button {
     min-height: 28px;
@@ -974,15 +878,11 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
               min-width: 24px;
               image { padding: 0; }
             }
-
-           // box.horizontal > label:first-child { font-weight: 500; } // title labels
           }
         }
 
         &:selected {
           background-color: rgba($selected_bg_color, 0.75);
-         // &:dir(ltr) { box-shadow: inset 2px 0 $selected_bg_color; }
-         // &:dir(rtl) { box-shadow: inset -2px 0 $selected_bg_color; }
 
           > grid > *,
           > box.vertical * { color: $selected_fg_color; }
@@ -1013,12 +913,6 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
   }
 
   .audio-widget {
-    // scale.marks-after {
-    //   label { }
-    // }
-
-    // button.flat.expander-button { }
-
     list.devices-list.sound-devices {
       > row.activatable {
         &:selected, &:checked {
@@ -1064,14 +958,12 @@ window.sound-popover.background {
 
 // Calendar
 calendar.raven-calendar {
-  margin: 2px 0;
-  padding: 4px;
   border-style: none;
   background-color: transparent;
   color: $raven_fg_color;
 
   &:selected {
-    border-radius: 3px;
+    border-radius: $bt_radius;
     background-color: $selected_bg_color;
     color: $selected_fg_color;
   }
@@ -1141,8 +1033,6 @@ window.budgie-switcher-window {
   flowboxchild { // icon-tiles
     margin: 2px;
     border-radius: $wm_radius;
-    // -gtk-outline-radius: $wm_radius;
-    // background-color: transparent;
     background-image: none;
   }
 }
@@ -1150,8 +1040,6 @@ window.budgie-switcher-window {
 // Internal part of the Switcher
 .budgie-switcher {
   @extend %budgie-notification;
-  // background-color: transparent;
-  // background-image: none;
 }
 
 %drop-shadow, .drop-shadow {
@@ -1175,7 +1063,9 @@ window.budgie-switcher-window {
   background-color: $bg_color;
   @if $variant == 'dark' { border: 1px solid lighten($menu_bg, 10%); }
 
-  &, &.background, decoration { border-radius: $wm_radius; }
+  &.background.csd {
+    border-radius: $wm_radius $wm_radius $wm_radius $wm_radius;
+  }
 }
 
 // Session Dialog
@@ -1212,8 +1102,6 @@ window.budgie-switcher-window {
 
 // PolKit Dialog
 .budgie-polkit-dialog {
-  @extend %budgie_dialog;
-
   .message { color: gtkalpha(currentColor, 0.6); }
   .failure { color: $destructive_color; }
 }
