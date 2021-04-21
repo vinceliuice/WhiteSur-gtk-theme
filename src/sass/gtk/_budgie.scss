@@ -134,7 +134,11 @@ $raven_padding: 8px;
     &:disabled { color: $disabled_fg_color; }
   }
 
-  treeview.view.sidebar { //AppMenu (budgie)
+  scrolledwindow.sidebar.categories {  //AppMenu (budgie)
+    border-bottom-left-radius: $wm_radius;
+  }
+
+  treeview.view.sidebar {
     background: none;
     border-right: none;
     color: $fg_color;
