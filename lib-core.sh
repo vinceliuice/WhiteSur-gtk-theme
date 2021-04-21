@@ -18,7 +18,6 @@ else LIB_CORE_IMPORTED="true"; fi
 
 export WHITESUR_PID=$$
 MY_USERNAME="$(logname 2> /dev/null || echo ${SUDO_USER:-${USER}})"
-DISTRO_BASE="$(cat '/etc/os-release' | awk -F '=' '/ID_LIKE/{print $2}')"
 
 if command -v gnome-shell &> /dev/null; then
   if (( $(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1) >= 4 )); then
@@ -203,6 +202,10 @@ helpify() {
 # Check command availability
 has_command() {
   command -v "$1" &> /dev/null
+}
+
+is_my_distro() {
+  [[ "$(cat '/etc/os-release' | awk -F '=' '/ID/{print $2}')" =~ "${1}" ]]
 }
 
 ###############################################################################
@@ -455,7 +458,7 @@ backup_file() {
 }
 
 check_theme_file() {
-  [[ -f "${1}" || -f "${1}.bak" ]] && return 0 || return 1
+  [[ -f "${1}" || -f "${1}.bak" ]]
 }
 
 remind_relative_path() {

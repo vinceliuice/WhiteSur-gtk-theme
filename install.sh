@@ -129,7 +129,7 @@ else
 
   echo; install_themes; echo; prompt -s "Done!"
 
-  if [[ "${DISTRO_BASE}" == "arch" && "$(which xfce4-session 2> /dev/null)" ]]; then
+  if is_my_distro "arch" && has_command xfce4-session; then
     msg="XFCE: you may need to logout after changing your theme to fix your panel opacity."
     notif_msg="${msg}\n\n${final_msg}"
 
