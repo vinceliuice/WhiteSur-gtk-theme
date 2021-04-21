@@ -18,6 +18,7 @@ else LIB_CORE_IMPORTED="true"; fi
 
 export WHITESUR_PID=$$
 MY_USERNAME="$(logname 2> /dev/null || echo ${SUDO_USER:-${USER}})"
+DISTRO_BASE="$(cat '/etc/os-release' | awk -F '=' '/ID_LIKE/{print $2}')"
 
 if command -v gnome-shell &> /dev/null; then
   if (( $(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1) >= 4 )); then
@@ -121,7 +122,9 @@ dash_to_dock="false"
 max_round="false"
 
 # Misc
-msg="Run '${0} --help' to explore more customization features!"
+msg=""
+final_msg="Run '${0} --help' to explore more customization features!"
+notif_msg=""
 error_msg=""
 process_ids=()
 ANIM_PID="0"
@@ -488,8 +491,8 @@ userify() {
 }
 
 sig_c() {
-  kill -13 "${process_ids[@]}" &> /dev/null
-  stop_animation; wait "${process_ids[@]}"; operation_canceled
+  kill -13 ${process_ids[*]} &> /dev/null
+  stop_animation; wait ${process_ids[*]} &> /dev/null; operation_canceled
 }
 
 operation_canceled() {

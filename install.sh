@@ -104,7 +104,7 @@ if [[ "${uninstall}" == 'true' ]]; then
   remove_themes
   prompt -s "Done! All '${name}' themes has been removed."
 else
-  install_theme_deps
+  install_theme_deps; echo
 
   if [[ "${interactive}" == 'true' ]]; then
     show_panel_opacity_dialog; show_sidebar_size_dialog; show_nautilus_style_dialog
@@ -123,13 +123,19 @@ else
   prompt -i "Alt variants     : $( IFS=';'; echo "${alts[*]}" )"
   prompt -i "Icon variant     : ${icon}"
   prompt -i "Nautilus variant : ${nautilus_style}"
-  echo; install_themes
 
-  # if [[ "$(which xfce4-session 2> /dev/null)" ]]; then
-  #   msg="XFCE: you may need to logout after changing your theme to fix your panel opacity."
-  # fi
+  echo; install_themes; echo; prompt -s "Done!"
 
-  echo; prompt -s "Done!"; echo; prompt -w "${msg}"; echo
+  if [[ "${DISTRO_BASE}" == "arch" && "$(which xfce4-session 2> /dev/null)" ]]; then
+    msg="XFCE: you may need to logout after changing your theme to fix your panel opacity."
+    notif_msg="${msg}\n\n${final_msg}"
 
-  [[ -x /usr/bin/notify-send ]] && notify-send "'${name}' theme has been installed. Enjoy!" "${msg}" -i "dialog-information-symbolic"
+    echo; prompt -w "${msg}"
+  else
+    notif_msg="${final_msg}"
+  fi
+
+  echo; prompt -w "${final_msg}"; echo
+
+  [[ -x /usr/bin/notify-send ]] && notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
 fi
