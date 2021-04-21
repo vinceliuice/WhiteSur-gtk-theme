@@ -76,11 +76,11 @@ $wm_bg_unfocused: opacify($header_bg_backdrop, 1);
 //
 
 // unfocused window 'dot(s)'
-@define-color budgie_tasklist_indicator_color #{"" + $selected_bg_color};
+@define-color budgie_tasklist_indicator_color #{"" + $selected_fg_color};
 // focused window 'line'
 @define-color budgie_tasklist_indicator_color_active #{"" + $selected_bg_color};
 // group-ed and unfocused window 'line(s)'
-@define-color budgie_tasklist_indicator_color_active_window #{"" + mix($selected_bg_color, $panel_bg, 54%)};
+@define-color budgie_tasklist_indicator_color_active_window #{"" + mix($selected_fg_color, $panel_bg, 100%)};
 // attention 'dot'
 // FIXME: we can't fill whole widget backgrounds with our suggestion colour
 //        because of lacking specific style-class on 'needs_attention' state,

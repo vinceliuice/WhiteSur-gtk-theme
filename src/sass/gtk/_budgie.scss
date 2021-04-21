@@ -495,7 +495,6 @@ popover.background.places-menu {
   button.flat.launcher {
     padding: 0;
     @extend %flat_button;
-    @extend %underscores;
 
     // for indicator colors
     &:not(:checked) {
