@@ -3659,11 +3659,13 @@ widget > box.terminal-titlebar {
 list.tilix-session-sidebar {
   // use -image property instead
   background-image: image($dark_sidebar_bg);
+  border-bottom-left-radius: $wm_radius;
 
   button.tilix-sidebar-close-button {
-    min-height: 20px;
-    min-width: 20px;
+    min-height: 28px;
+    min-width: 28px;
     padding: 0;
+    margin: 0;
     border-radius: 100px;
     // -gtk-outline-radius: 100px;
     background-color: $destructive_color;
@@ -3693,7 +3695,7 @@ window.background.csd {
       background-color: $tilix_bg;
       border-radius: 0 0 $wm_radius $wm_radius;
 
-      > box.vertical > widget > box.vertical > box.vertical > box.horizontal > overlay > .tilix-terminal-scrolledwindow {
+      .tilix-terminal-scrolledwindow {
         padding-bottom: $wm_radius;
         background-color: $tilix_bg;
         border-radius: 0 0 $wm_radius $wm_radius;
