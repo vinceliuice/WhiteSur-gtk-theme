@@ -531,6 +531,12 @@ customize_theme() {
     sed ${SED_OPT} "/\$panel_opacity/s/0.15/0.${panel_opacity}/"    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
+  # Change gnome-shell show apps button style
+  if [[ "${showapps_normal}" == 'true' ]]; then
+    prompt -w "Changing gnome-shell show apps button style ..."
+    sed ${SED_OPT} "/\$showapps_button/s/bigsur/normal/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
   # Change Nautilus sidarbar size
   if [[ "${sidebar_size}" != 'default' ]]; then
     prompt -w "Changing Nautilus sidebar size ..."

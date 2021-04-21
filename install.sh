@@ -35,6 +35,7 @@ usage() {
   helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"           "Set 'Activities' icon"                            "Default is 'standard'"
   helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                               "Default is BigSur-like style"
   helpify "-R, --round"                   ""                                          "Set maximized window to rounded"                  "Default is square"
+  helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
   helpify "--dialog, --interactive"       ""                                          "Run this installer interactively, with dialogs"   ""
   helpify "-r, --remove, -u, --uninstall" ""                                          "Remove all installed ${THEME_NAME} themes"        ""
   helpify "-h, --help"                    ""                                          "Show this help"                                   ""
@@ -62,6 +63,8 @@ while [[ $# -gt 0 ]]; do
       uninstall='true'; shift ;;
     --dialog|--interactive)
       interactive='true'; shift ;;
+    --normal|--normalshowapps)
+      showapps_normal="true"; shift ;;
     -R|--round)
       max_round="true"; shift ;;
     -h|--help)
