@@ -3676,10 +3676,32 @@ list.tilix-session-sidebar {
   }
 }
 
+$tilix_bg: if($variant == 'light', #ffffff, #151515);
+
 window.background.csd {
   > box.horizontal > stack {
     > box.vertical > notebook > stack {
       border-bottom-right-radius: $wm_radius;
+    }
+  }
+
+  > overlay > notebook > stack > .tilix-background {
+    background-color: $tilix_bg;
+    border-radius: 0 0 $wm_radius $wm_radius;
+
+    > .tilix-background {
+      background-color: $tilix_bg;
+      border-radius: 0 0 $wm_radius $wm_radius;
+
+      > box.vertical > widget > box.vertical > box.vertical > box.horizontal > overlay > .tilix-terminal-scrolledwindow {
+        padding-bottom: $wm_radius;
+        background-color: $tilix_bg;
+        border-radius: 0 0 $wm_radius $wm_radius;
+
+        > vte-terminal {
+          border-radius: 0 0 $wm_radius $wm_radius;
+        }
+      }
     }
   }
 
