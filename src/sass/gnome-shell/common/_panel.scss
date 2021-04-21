@@ -12,6 +12,7 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
   box-shadow: 0 5px 16px rgba(black, 0.35);
   color: $panel_fg;
   font-feature-settings: "tnum";
+  transition-duration: 250ms;
 
   // transparent panel on lock & login screens
   &:overview,
@@ -50,6 +51,7 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
     -panel-corner-border-width: 2px;
     -panel-corner-border-color: transparent;
     -panel-corner-opacity: 1;
+    transition-duration: 250ms;
   }
 
   // panel menus
@@ -58,7 +60,7 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
     -minimum-hpadding: 8px;
     font-weight: bold;
     color: $panel_fg;
-    // transition-duration: $longer_duration;
+    transition-duration: 150ms;
     border-radius: $bt_radius;
 
     StLabel { padding: 0 2px; }

@@ -42,6 +42,7 @@ $_close_size: 42px;
   box-shadow: none;
   StIcon { icon-size: $_close_size; } // for safety
   background-image: url("assets/window-close.svg");
+  transition-duration: 300ms;
 
   &:hover {
     background-size: $_close_size;

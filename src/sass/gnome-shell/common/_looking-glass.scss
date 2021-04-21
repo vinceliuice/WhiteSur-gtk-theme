@@ -27,7 +27,9 @@
     padding-left: 16px;
     padding-right: 16px;
     min-height: $medium_size;
-    padding: 0 16px * 2;
+    padding: 0 32px;
+    transition-duration: 100ms;
+
     &:hover {
       box-shadow: inset 0 -2px 0px $track_color;
       color: $fg_color;
