@@ -23,8 +23,8 @@ source "${REPO_DIR}/lib-core.sh"
 ###############################################################################
 
 install_theme_deps() {
-  if [[ ! "$(which glib-compile-resources 2> /dev/null)" || ! "$(which sassc 2> /dev/null)" || \
-    ! -r "/usr/share/gtk-engines/murrine.xml" || ! "$(which xmllint 2> /dev/null)" ]]; then
+  if ! has_command glib-compile-resources || ! has_command sassc || \
+    ! has_command xmllint || [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]; then
     echo; prompt -w "'glib2.0', 'sassc', 'xmllint', 'libmurrine' are required for theme installation."
 
     if has_command zypper; then
@@ -67,7 +67,7 @@ install_gdm_deps() {
 }
 
 install_beggy_deps() {
-  if [[ ! "$(which convert 2> /dev/null)" ]]; then
+  if ! has_command convert; then
     echo; prompt -w "'imagemagick' are required for this option."
 
     if has_command zypper; then
@@ -87,7 +87,7 @@ install_beggy_deps() {
 }
 
 install_dialog_deps() {
-  if [[ ! "$(which dialog 2> /dev/null)" ]]; then
+  if ! has_command dialog; then
     echo; prompt -w "'dialog' are required for this option."
 
     if has_command zypper; then
@@ -317,9 +317,12 @@ install_theemy() {
 
 remove_packy() {
   rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})"
-  rm -rf "${dest}/${name}$(destify ${1})-mdpi"
+  rm -rf "${dest}/${name}$(destify ${1})"
   rm -rf "${dest}/${name}$(destify ${1})-hdpi"
   rm -rf "${dest}/${name}$(destify ${1})-xhdpi"
+
+  # Backward compatibility
+  rm -rf "${dest}/${name}$(destify ${1})-mdpi"
 }
 
 ###############################################################################

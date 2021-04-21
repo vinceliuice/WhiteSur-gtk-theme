@@ -67,7 +67,7 @@ while [[ $# -gt 0 ]]; do
           edit_firefox="true" ;;
       esac
 
-      if [[ ! "$(which firefox 2> /dev/null)" ]]; then
+      if ! has_command firefox; then
         prompt -e "'${1}' ERROR: There's no Firefox installed in your system"
         has_any_error="true"
       elif [[ ! -d "${FIREFOX_DIR_HOME}" ]]; then
@@ -81,21 +81,21 @@ while [[ $# -gt 0 ]]; do
     -F|--flatpak)
       flatpak="true";
 
-      if [[ ! "$(which flatpak 2> /dev/null)" ]]; then
+      if ! has_command flatpak; then
         prompt -e "'${1}' ERROR: There's no Flatpak installed in your system"
         has_any_error="true"
       fi; shift ;;
     -s|--snap)
       snap="true";
 
-      if [[ ! "$(which snap 2> /dev/null)" ]]; then
+      if ! has_command snap; then
         prompt -e "'${1}' ERROR: There's no Snap installed in your system"
         has_any_error="true"
       fi; shift ;;
     -g|--gdm)
       gdm="true"; full_rootify "${1}"
 
-      if [[ ! "$(which gdm 2> /dev/null)" && ! "$(which gdm3 2> /dev/null)" ]]; then
+      if ! has_command gdm && ! has_command gdm3; then
         prompt -e "'${1}' ERROR: There's no GDM installed in your system"
         has_any_error="true"
       fi; shift ;;
