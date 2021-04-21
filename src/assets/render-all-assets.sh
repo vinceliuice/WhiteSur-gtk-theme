@@ -8,7 +8,7 @@ has_command() {
   "$1" -v $1 > /dev/null 2>&1
 }
 
-if [ ! "$(which inkscape 2> /dev/null)" ]; then
+if ! has_command inkscape; then
   echo inkscape and optipng needs to be installed to generate the assets.
   if has_command zypper; then
     sudo zypper in inkscape optipng
