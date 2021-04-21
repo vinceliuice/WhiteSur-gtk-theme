@@ -9,7 +9,6 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   border: none;
   box-shadow: none;
   text-shadow: none;
-  transition: none;
 
   &:hover, &:focus {
     color: $fg_color;

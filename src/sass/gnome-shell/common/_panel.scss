@@ -6,7 +6,6 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
 
 #panel {
   background-color: $shell_panel_bg;
-  transition-duration: 250ms;
   font-weight: bold;
   height: $menuitem_size;
   box-shadow: 0 5px 16px rgba(black, 0.35);

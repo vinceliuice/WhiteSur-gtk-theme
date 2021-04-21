@@ -71,7 +71,6 @@ $app_icon_padding: 24px;
   &:checked .page-indicator-icon {
     background-image: none;
     background-color: $light_alt_fg_color;
-    transition-duration: 0ms;
   }
   &:checked:active { background-image: none; }
 }
