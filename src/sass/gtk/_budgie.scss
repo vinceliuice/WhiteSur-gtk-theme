@@ -134,7 +134,16 @@ $raven_padding: 8px;
     &:disabled { color: $disabled_fg_color; }
   }
 
-  treeview.view.sidebar,
+  treeview.view.sidebar { //AppMenu (budgie)
+    background: none;
+    border-right: none;
+    color: $fg_color;
+
+    label { padding: 3px 8px; }
+
+    &:hover { background-color: rgba($fg_color, 0.05); }
+  }
+
   scrolledwindow.sidebar:not(.categories) { //AppMenu (Elementary)
     background: none;
     border-right: none;
@@ -143,6 +152,8 @@ $raven_padding: 8px;
     label { padding: 3px 8px; }
 
     &:hover { background-color: rgba($fg_color, 0.05); }
+
+    &:active { background-color: rgba($fg_color, 0.1); }
 
     &:selected, &:selected:hover {
       color: $selected_fg_color;
@@ -153,6 +164,13 @@ $raven_padding: 8px;
   > frame.container > grid.horizontal > grid.horizontal {
     > widget > grid.horizontal > stack {
       border-top: 1px solid $borders_color;
+    }
+  }
+
+  &.bottom > frame.container > grid.horizontal > grid.horizontal {
+    > widget > grid.horizontal > stack {
+      border-top: none;
+      border-bottom: 1px solid $borders_color;
     }
   }
 
