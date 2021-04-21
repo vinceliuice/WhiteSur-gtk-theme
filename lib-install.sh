@@ -137,7 +137,7 @@ install_darky() {
 install_xfwmy() {
   local color="$(destify ${1})"
 
-  local TARGET_DIR="${dest}/${name}${color}-mdpi"
+  local TARGET_DIR="${dest}/${name}${color}"
   local HDPI_TARGET_DIR="${dest}/${name}${color}-hdpi"
   local XHDPI_TARGET_DIR="${dest}/${name}${color}-xhdpi"
 
@@ -349,7 +349,7 @@ install_themes() {
     done
   done
 
-  wait "${process_ids[@]}"
+  wait ${process_ids[*]} &> /dev/null
   stop_animation
 }
 
@@ -367,7 +367,7 @@ remove_themes() {
     done
   done
 
-  wait "${process_ids[@]}"
+  wait ${process_ids[*]} &> /dev/null
 }
 
 install_gdm_theme() {
