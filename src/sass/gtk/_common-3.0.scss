@@ -3289,13 +3289,13 @@ row {
 //
 .app-notification {
   padding: 8px;
-  margin: 6px 16px 16px 16px;
+  margin: 6px 20px 24px 20px;
   color: $fg_color;
   background-color: rgba($header_bg, 0.85);
   // background-image: linear-gradient(0deg, $bg_color 0%, $bg_color 85%, darken($bg_color, 5%) 95%, darken($bg_color, 15%) 100%);
   border-radius: $wm_radius;
   border: none;
-  box-shadow: 0 5px 15px 0 rgba(black, 0.25),
+  box-shadow: 0 3px 10px 0 rgba(black, 0.15),
               inset 0 0 0 1px rgba(white, 0.06),
               0 0 0 1px if($variant=='light', rgba(black, 0.12), rgba(black, 0.75));
 
