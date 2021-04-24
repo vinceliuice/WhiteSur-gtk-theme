@@ -1084,11 +1084,11 @@ spinbutton {
     > button.up:dir(rtl):hover:not(:active),
     > text + button:not(:active):hover { box-shadow: none; }
 
-    > text:focus + button { border-left-color: $entry_highlight; }
+    > text:focus-within + button { border-left-color: $entry_highlight; }
     > text:drop(active) + button { border-left-color: $drop_target_color; }
 
     .osd & {
-      &, &:focus, &:drop(active) { border-image: none; }
+      &, &:focus-within, &:drop(active) { border-image: none; }
       > button:hover:not(:active),
       > button:hover + button { box-shadow: inset 1px 0 $osd_button_border; }
 
@@ -1096,7 +1096,7 @@ spinbutton {
       > button.up:dir(rtl):hover:not(:active),
       > text + button:not(:active):hover { box-shadow: none; }
 
-      > text:focus + button { border-left-color: $entry_highlight; }
+      > text:focus-within + button { border-left-color: $entry_highlight; }
     }
   }
 
@@ -1111,7 +1111,7 @@ spinbutton {
 
     > button.up { border-radius: $bt_radius $bt_radius 0 0; }
 
-    > text:focus + button { border-top-color: $entry_highlight; }
+    > text:focus-within + button { border-top-color: $entry_highlight; }
     > text:drop(active) + button { border-top-color: $drop_target_color; }
   }
 
@@ -1966,19 +1966,10 @@ treeview.view {
     color: $borders_color;
   }
 
-  &:drop(active) {
-    border-style: solid none;
-    border-width: 1px;
-    border-color: mix($fg_color, $selected_bg_color, 50%);
-
-    &.after { border-top-style: none; }
-    &.before { border-bottom-style: none; }
-  }
-
   > dndtarget:drop(active) {
     border-style: solid none;
     border-width: 1px;
-    border-color: $selected_borders_color;
+    border-color: mix($fg_color, $selected_bg_color, 50%);
 
     &.after { border-top-style: none; }
 
@@ -2778,7 +2769,7 @@ radio {
   margin: 0 2px;
 
   &:only-child,
-  menu menuitem & { margin: 0; }
+  popover.menu > contents & { margin: 0; }
 }
 
 //
@@ -2816,7 +2807,6 @@ scale {
     $_scale_trough_bg: rgba(black, 0.2);
 
     outline-offset: 2px;
-
     border-radius: $bt_radius;
     background-color: $_scale_trough_bg;
 
@@ -2836,7 +2826,7 @@ scale {
     }
 
     // Troughs in selected list-rows and infobars
-    menuitem:hover &,
+    modelbutton:hover &,
     row:selected &,
     infobar & {
       background-color: transparentize(black, 0.8);
@@ -2898,7 +2888,7 @@ scale {
     }
 
     // Selected list-row and infobar sliders
-    menuitem:hover &,
+    modelbutton:hover &,
     row:selected &,
     infobar & {
       background-clip: border-box;
@@ -3103,8 +3093,8 @@ progressbar {
     }
   }
 
-  &.horizontal > trough > progress { margin: 0 -1px; } // the progress node is positioned after the trough border
-  &.vertical > trough > progress { margin: -1px 0; }   // this moves it over it.
+//  &.horizontal > trough > progress { margin: 0 -1px; } // the progress node is positioned after the trough border
+//  &.vertical > trough > progress { margin: -1px 0; }   // this moves it over it.
 
   &.osd {
     min-width: 3px;
@@ -3514,10 +3504,7 @@ calendar {
     }
 
     > label:focus {
-      outline-color: $borders_color;
-      outline-offset: -2px;
-      outline-width: 2px;
-      outline-style: solid;
+      outline-style: none;
     }
 
     > label.day-number {
@@ -4003,7 +3990,7 @@ infobar {
         background-color: $selected_fg_color;
       }
 
-      *:link { @extend %link_selected; }
+      link { @extend %link_selected; }
     }
   }
 }

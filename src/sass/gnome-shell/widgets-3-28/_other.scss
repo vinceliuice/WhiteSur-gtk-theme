@@ -221,15 +221,5 @@
 #panel.lock-screen { background-color: $alt_dark_bg_color; }
 
 #screenShieldNotifications {
-  StScrollBar {
-    StBin#trough {
-      background-color: $light_divider_color;
-    }
-
-    StButton#vhandle, StButton#hhandle {
-      background-color: $light_hint_fg_color;
-      &:hover { background-color: $light_alt_fg_color; }
-      &:active { background-color: $light_alt_fg_color; }
-    }
-  }
+  StScrollBar { @extend %overview_scrollbar; }
 }

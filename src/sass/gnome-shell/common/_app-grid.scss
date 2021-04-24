@@ -1,8 +1,6 @@
 
 /* App Icons */
 
-$app_grid_fg_color: #fff;
-
 .show-apps,
 .app-well-app,
 %app-well-app {
@@ -62,7 +60,7 @@ $app_grid_fg_color: #fff;
     }
 
     & .folder-name-entry {
-      @extend %search-entry !optional;
+      @extend %search-entry;
       width: 300px;
     }
 
@@ -78,7 +76,7 @@ $app_grid_fg_color: #fff;
       height: 36px;
       border-radius: 18px;
 
-      & > StIcon { icon-size: 16px }
+      & > StIcon { icon-size: 16px; }
 
       &:hover { background-color: $light_divider_color; }
       &:checked, &:active { background-color: $light_track_color; }
