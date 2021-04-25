@@ -184,9 +184,9 @@ Parameter: `--flatpak` `-F`
 Example: `./tweaks.sh -F`
 
 ### <p align="center"> <b> Connect WhiteSur theme to your Snap apps </b> </p>
-Parameter: `--snap` `-S`
+Parameter: `--snap` `-s`
 
-Example: `./tweaks.sh -S`
+Example: `./tweaks.sh -s`
 
 Note:
 
