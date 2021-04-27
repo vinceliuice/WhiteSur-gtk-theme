@@ -1,12 +1,12 @@
 %overview_scrollbar {
   StBin#trough {
-    background-color: $inverse_divider_color;
+    background-color: $light_divider_color;
   }
 
   StButton#vhandle, StButton#hhandle {
-    background-color: $inverse_hint_fg_color;
-    &:hover { background-color: $inverse_secondary_fg_color; }
-    &:active { background-color: $inverse_fg_color; }
+    background-color: $light_hint_fg_color;
+    &:hover { background-color: $light_alt_fg_color; }
+    &:active { background-color: $light_fg_color; }
   }
 }
 
