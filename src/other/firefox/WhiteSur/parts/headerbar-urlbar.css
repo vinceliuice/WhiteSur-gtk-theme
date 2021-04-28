@@ -3,8 +3,8 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 #urlbar {
-	--urlbar-height: 34.00px;
-	--urlbar-toolbar-height: 34.00px !important;
+	--urlbar-height: 32.00px;
+	--urlbar-toolbar-height: 32.00px !important;
 }
 
 /* Center the URL bar */
@@ -141,3 +141,12 @@ toolbarspring {
 	background-color: transparent !important;
 	fill-opacity: 1 !important;
 }
+
+.urlbar-icon {
+	height: 16px !important;
+	width: 16px !important;
+	margin-inline: 4px !important;
+	padding: 8px 0 !important;
+}
+
+
