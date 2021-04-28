@@ -143,10 +143,13 @@ toolbarspring {
 }
 
 .urlbar-icon {
-	height: 16px !important;
-	width: 16px !important;
-	margin-inline: 4px !important;
-	padding: 8px 0 !important;
+	width: 28px !important;
+	height: 28px !important;
+	padding: 6px !important;
+}
+
+#page-action-buttons {
+	padding: 2px 0 !important;
 }
 
 
