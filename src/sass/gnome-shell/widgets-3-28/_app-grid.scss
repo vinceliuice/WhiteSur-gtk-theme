@@ -40,41 +40,6 @@ $app_icon_padding: 24px;
   & StButton#vhandle:active { background-color: transparent; }
 }
 
-.page-indicator {
-  padding: 15px 20px;
-
-  .page-indicator-icon {
-    width: 12px;
-    height: 12px;
-    border-radius: 12px;
-    margin: 0;
-    padding: 0;
-    background-image: none;
-    color: transparent;
-    border: none;
-    box-shadow: none;
-    background-color: $light_alt_disabled_fg_color;
-  }
-  &:hover .page-indicator-icon {
-    background-image: none;
-    background-color: $light_disabled_fg_color;
-  }
-  &:active .page-indicator-icon {
-    margin: 0;
-    padding: 0;
-    background-image: none;
-    color: transparent;
-    border: none;
-    box-shadow: none;
-    background-color: $light_alt_fg_color;
-  }
-  &:checked .page-indicator-icon {
-    background-image: none;
-    background-color: $light_alt_fg_color;
-  }
-  &:checked:active { background-image: none; }
-}
-
 //Some hacks I don't even
 .all-apps,
 .search-display > StBoxLayout,

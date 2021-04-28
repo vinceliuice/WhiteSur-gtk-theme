@@ -35,51 +35,69 @@ $dash_radius: 18px;
     text-align: center;
   }
 
-  &.straight-corner #dash .dash-background,
-  &.shrink.straight-corner #dash .dash-background {
+  &.straight-corner #dash,
+  &.shrink.straight-corner #dash {
     border-radius: 0;
-    margin: 0;
+    border-left: 0;
+    border-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+
+    .dash-background {
+      border-radius: 0;
+      margin-bottom: 0;
+    }
   }
 
   &.extended.top,
-  &.extended.bottom {
-    #dash {
-      border-left: 0;
-      border-right: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      margin-top: 0;
-    }
-
-    .dash-background {
-      margin-bottom: 0;
-    }
-  }
-
+  &.extended.bottom,
   &.extended.right,
   &.extended.left {
     #dash {
-      border-top: 0;
-      border-bottom: 0;
-      padding-top: 0;
-      padding-bottom: 0;
+      margin-left: 0;
+      margin-right: 0;
       margin-top: 0;
-    }
-
-    .dash-background {
       margin-bottom: 0;
+      padding: 0 0;
+
+      .dash-background {
+        border-radius: 0;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     }
   }
 
-  &.dashtodock #dash { background: none; }
+  &.left,
+  &.right {
+    #dash {
+      margin-top: 0;
+      padding: $dash_padding 0;
+
+      .dash-background { // default-mode
+        margin-bottom: 0;
+      }
+    }
+
+    .dash-item-container .app-well-app, .show-apps {
+      padding: $dash_padding / 2;
+    }
+  }
+
+  &.left #dash {
+    margin-left: $base_padding;
+  }
+
+  &.right #dash {
+    margin-right: $base_padding;
+  }
 
   #dash { // default-mode
     background: none;
 
-    // .app-well-app-running-dot {
-    //   background-color: rgba($dash_panel_fg, 0.85);
-    // }
-    //
     StWidget.focused .app-well-app-running-dot {
       background-color: $primary_color;
     }
@@ -90,12 +108,6 @@ $dash_radius: 18px;
     border: 1px solid if($variant == 'light', rgba(black, 0.08), rgba(black, 0.75));
     box-shadow: inset 0 0 0 1px rgba(white, 0.05);
   }
-
-  // .dash-separator {
-  //   width: 1px !important;
-  //   // margin: 0 0 !important;
-  //   background-color: $light_divider_color;
-  // }
 
   &:overview #dash { // overview-mode #1
     background: none;
@@ -133,10 +145,6 @@ $dash_radius: 18px;
     #dash {
       background: none;
     }
-
-    // .dash-background {
-    //   background-color: $light_divider_color;
-    // }
   }
 
   &.running-dots,
@@ -151,14 +159,6 @@ $dash_radius: 18px;
   &.dashtodock {
     .dash-item-container > StButton {
        padding: 1px 2px;
-    }
-  }
-
-  .app-well-app,
-  .show-apps {
-    .overview-icon {
-      padding: 8px;
-      background-size: contain;
     }
   }
 

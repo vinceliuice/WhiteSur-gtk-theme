@@ -5,8 +5,6 @@
 // GNOME Terminal, MATE Terminal
 //
 terminal-window {
-//  &.background.csd { border-radius: 0 0 0 0; }
-
   notebook {
     button.flat.toggle.popup {
       min-height: 28px;
@@ -14,8 +12,6 @@ terminal-window {
       margin: -2px;
     }
   }
-
-//  &.background.csd.maximized { border-radius: 0 0 0 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
 }
 
 //

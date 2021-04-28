@@ -17,18 +17,6 @@ $app_icon_size: 96px;
   background-color: rgba(#262626, 0.9);
 }
 
-// App Grid pagination indicators
-.page-indicator {
-  padding: $base_padding $base_padding * 2 0;
-
-  .page-indicator-icon {
-    width: 10px;
-    height: 10px;
-    border-radius: 10px; // the same as height&width
-    background-color: white;
-  }
-}
-
 .apps-scroll-view {
   padding: 0;
 }
