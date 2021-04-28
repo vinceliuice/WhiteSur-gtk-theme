@@ -34,10 +34,6 @@
 	}
 }
 
-:root[privatebrowsingmode="temporary"] #nav-bar {
-	overflow: hidden;
-}
-
 #TabsToolbar .private-browsing-indicator {
 	display: none !important;
 }
