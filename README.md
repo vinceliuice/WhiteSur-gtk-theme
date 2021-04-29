@@ -29,6 +29,14 @@
 Don't worry, WhiteSur installer already provides all of those dependencies.
 </details>
 
+<details> <summary> Recommended gnome-shell extensions </summary>
+
+- [floating-dock](https://extensions.gnome.org/extension/3730/floating-dock) `Gnome-shell <= 3.38`
+- [dash-to-dock](https://extensions.gnome.org/extension/307/dash-to-dock)
+- [blur-my-shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
+
+</details>
+
 ## Quick install
 
 ### Use the stable package
