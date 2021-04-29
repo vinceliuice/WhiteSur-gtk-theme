@@ -162,6 +162,14 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
       @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
         > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
       }
+
+      > .linked > button.disclosure-button { margin-left: $container_padding / 2; }
+
+      > box.horizontal:first-child { // move the search button to right side
+        margin-right: -74px;
+
+        entry.search { margin-left: $container_padding; }
+      }
     }
 
     placessidebar.sidebar {
