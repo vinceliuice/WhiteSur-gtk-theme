@@ -121,11 +121,8 @@ tab[selected]:-moz-window-inactive {
 	margin-left: auto !important;
 }
 
-/* If tab favicon is not present, force tab label to the center */
-.tabbrowser-tab .tab-label-container {
-	margin-left: 0 !important;
-}
-.tabbrowser-tab:not([image]):not([busy]):not([progress]) .tab-label-container {
+/*/* If tab favicon is not present, force tab label to the center */*/
+.tabbrowser-tab:not([image]):not([busy]):not([progress]):not([class*="identity-color-"]) .tab-label-container {
 	margin-left: auto !important;
 }
 
