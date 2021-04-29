@@ -214,6 +214,7 @@ fi
 
 if [[ "${firefox}" == "false" && "${edit_firefox}" == "false" && "${flatpak}" == "false" && "${snap}" == "false" && "${gdm}" == "false" && "${dash_to_dock}" == "false" ]]; then
   echo; prompt -e "Oops... there's nothing to tweaks..."
+  echo; prompt -i "Run ./tweaks.sh -h for help!..."
 fi
 
 echo

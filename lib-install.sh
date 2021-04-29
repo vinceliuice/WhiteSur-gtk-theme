@@ -121,10 +121,11 @@ install_beggy() {
       cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blank.png"          "${WHITESUR_TMP_DIR}/beggy.png" ;;
     default)
       if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
-        install_beggy_deps && convert "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png" ${CONVERT_OPT} "${WHITESUR_TMP_DIR}/beggy.png" ;;
+        install_beggy_deps && convert "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png" ${CONVERT_OPT} "${WHITESUR_TMP_DIR}/beggy.png"
       else
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"         "${WHITESUR_TMP_DIR}/beggy.png" ;;
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"         "${WHITESUR_TMP_DIR}/beggy.png"
       fi
+      ;;
     *)
       install_beggy_deps && convert "${background}" ${CONVERT_OPT}                            "${WHITESUR_TMP_DIR}/beggy.png" ;;
   esac
@@ -399,6 +400,7 @@ install_gdm_theme() {
   rm -rf "${WHITESUR_GS_DIR}"; install_beggy
 
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
+    install_beggy_blur
     install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
     sed ${SED_OPT} "s|assets|${WHITESUR_GS_DIR}/assets|" "${WHITESUR_GS_DIR}/gnome-shell.css"
 
@@ -415,6 +417,7 @@ install_gdm_theme() {
     # Fix previously installed WhiteSur
     restore_file "${ETC_CSS_FILE}"
   else # GR-based theme
+    install_beggy_blur
     install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_TMP_DIR}/shelly"
     sed ${SED_OPT} "s|assets|resource:///org/gnome/shell/theme/assets|" "${WHITESUR_TMP_DIR}/shelly/gnome-shell.css"
 
