@@ -120,7 +120,11 @@ install_beggy() {
     blank)
       cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blank.png"          "${WHITESUR_TMP_DIR}/beggy.png" ;;
     default)
-      install_beggy_deps && convert "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png" ${CONVERT_OPT} "${WHITESUR_TMP_DIR}/beggy.png" ;;
+      if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
+        install_beggy_deps && convert "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png" ${CONVERT_OPT} "${WHITESUR_TMP_DIR}/beggy.png" ;;
+      else
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"         "${WHITESUR_TMP_DIR}/beggy.png" ;;
+      fi
     *)
       install_beggy_deps && convert "${background}" ${CONVERT_OPT}                            "${WHITESUR_TMP_DIR}/beggy.png" ;;
   esac
