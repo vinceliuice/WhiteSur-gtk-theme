@@ -96,14 +96,12 @@ $background_radius_style: 0 0 $wm_radius $wm_radius;
 $maximized_radius_style: 0 0 $maximized_radius $maximized_radius;
 
 .background {
-  // border-radius: 0 0 $wm_radius $wm_radius;
   color: $fg_color;
   background-color: rgba($bg_color, 1);
 
-  // > box > stack { background-color: $bg_color; }
-
   &.csd {
     border-radius: $background_radius_style; // Set csd windows botttom border radius
+    background-color: rgba($bg_color, 0.999);
 
     &.maximized, &.tiled, &.fullscreen {
       border-radius: $maximized_radius_style; // Set csd windows botttom border radius

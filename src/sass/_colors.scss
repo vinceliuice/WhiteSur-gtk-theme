@@ -98,7 +98,7 @@ $disabled_bg_color:                 if($variant == 'light', mix($bg_color, $base
 
 // Headerbar colors
 $header_bg:                         if($variant == 'light', #ffffff, #373737);
-$dark_header_bg:                    if($trans == 'true', transparentize($base_color, 0.04), $base_color);
+$dark_header_bg:                    if($trans == 'true', rgba($base_color, 0.95), $base_color);
 $header_highlight:                  if($variant == 'dark', #434343, #f5f5f5);
 
 $header_bg_backdrop:                if($variant == 'light', darken($header_bg, 0%), darken($header_bg, 0%));

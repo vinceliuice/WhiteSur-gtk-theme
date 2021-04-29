@@ -78,15 +78,15 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 @if $nautilus_style == 'stable' {
   $nautilus_sidebar_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                                   $dark_sidebar_bg $nautilus_sidebar_size,
-                                                  transparent $nautilus_sidebar_size,
-                                                  transparent 100%);
+                                                  rgba($dark_sidebar_bg, 0) $nautilus_sidebar_size,
+                                                  rgba($dark_sidebar_bg, 0) 100%);
 
   $nautilus_bg_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                              $dark_sidebar_bg $nautilus_sidebar_size,
                                              $nautilus_borders_color $nautilus_sidebar_size,
                                              $nautilus_borders_color ($nautilus_sidebar_size + 1px),
-                                             $base_color ($nautilus_sidebar_size + 1px),
-                                             $base_color 100%);
+                                             $dark_sidebar_bg ($nautilus_sidebar_size + 1px),
+                                             $dark_sidebar_bg 100%);
 }
 
 @if $nautilus_style == 'default' or $nautilus_style == 'glassy' {
@@ -104,29 +104,33 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 }
 
 @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
-  $nautilus_header_borders_image: linear-gradient(90deg, transparent $nautilus_sidebar_size,
+  $nautilus_header_borders_image: linear-gradient(90deg, rgba($header_border, 0) $nautilus_sidebar_size,
                                                          $header_border $nautilus_sidebar_size);
 }
 
 @if $nautilus_style == 'stable' or $nautilus_style == 'default' {
   @if $nautilus_version == 'new' {
-    $nautilus_header_image: linear-gradient(90deg, transparent $nautilus_sidebar_size,
+    $nautilus_header_image: linear-gradient(90deg, rgba($dark_header_bg, 0) $nautilus_sidebar_size,
                                                    $nautilus_borders_color $nautilus_sidebar_size,
                                                    $nautilus_borders_color ($nautilus_sidebar_size + 1px),
-                                                   $base_color ($nautilus_sidebar_size + 1px));
+                                                   $dark_header_bg ($nautilus_sidebar_size + 1px));
   } @else {
     $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg $nautilus_sidebar_size,
                                                    $nautilus_borders_color $nautilus_sidebar_size,
                                                    $nautilus_borders_color ($nautilus_sidebar_size + 1px),
-                                                   $base_color ($nautilus_sidebar_size + 1px));
+                                                   $dark_header_bg ($nautilus_sidebar_size + 1px));
   }
 }
 
 @else if $nautilus_style == 'glassy' {
+  @if $nautilus_version == 'new' {
+    $nautilus_bg_image: image(rgba($dark_sidebar_bg, 0));
+  }
+
   $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg ($nautilus_sidebar_size/2),
                                                  $dark_header_bg 40%);
 
-  $nautilus_header_borders_image: linear-gradient(90deg, transparent (($nautilus_sidebar_size/2) - 40px),
+  $nautilus_header_borders_image: linear-gradient(90deg, rgba($header_border, 0) (($nautilus_sidebar_size/2) - 40px),
                                                          $header_border 40%);
 }
 
@@ -172,6 +176,10 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
       @else {
         &.frame { border-right: 1px solid $nautilus_borders_color; }
+      }
+
+      @if $nautilus_style == 'glassy' {
+        background-image: $nautilus_sidebar_image;
       }
 
       list { margin-bottom: 6px; }
