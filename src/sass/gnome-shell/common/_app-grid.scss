@@ -31,15 +31,19 @@
 // App Folders
 .app-folder {
   background: none;
+  border-radius: $bt_radius * 2;
 
   .overview-icon {
     background-color: $light_divider_color;
-    // padding: 16px;
     border-radius: $bt_radius * 2;
   }
 
-  &:hover .overview-icon  {
+  &:hover .overview-icon {
     background-color: rgba(white, 0.2);
+  }
+
+  &:active .overview-icon {
+    background-color: rgba(white, 0.3);
   }
 }
 
