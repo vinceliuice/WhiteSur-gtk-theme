@@ -85,8 +85,8 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
                                              $dark_sidebar_bg $nautilus_sidebar_size,
                                              $nautilus_borders_color $nautilus_sidebar_size,
                                              $nautilus_borders_color ($nautilus_sidebar_size + 1px),
-                                             $dark_sidebar_bg ($nautilus_sidebar_size + 1px),
-                                             $dark_sidebar_bg 100%);
+                                             $base_color ($nautilus_sidebar_size + 1px),
+                                             $base_color 100%);
 }
 
 @if $nautilus_style == 'default' or $nautilus_style == 'glassy' {

@@ -126,6 +126,19 @@ install_beggy() {
   esac
 }
 
+install_beggy_blur() {
+  local CONVERT_OPT=" -scale 1280x -blur 0x60 -fill black -colorize 45% "
+
+  case "${background}" in
+    blank)
+      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blank.png"          "${WHITESUR_TMP_DIR}/beggy_blur.png" ;;
+    default)
+      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"           "${WHITESUR_TMP_DIR}/beggy_blur.png" ;;
+    *)
+      install_beggy_deps && convert "${background}" ${CONVERT_OPT}                            "${WHITESUR_TMP_DIR}/beggy_blur.png" ;;
+  esac
+}
+
 install_darky() {
   local opacity="$(destify ${1})"
   local theme="$(destify ${2})"
@@ -192,7 +205,7 @@ install_shelly() {
     cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png"          "${TARGET_DIR}/assets/background.png"
   fi
 
-  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"               "${TARGET_DIR}/assets"
+  cp -r "${WHITESUR_TMP_DIR}/beggy_blur.png"                            "${TARGET_DIR}/assets/background_blur.png"
 
   (
     cd "${TARGET_DIR}"
@@ -332,6 +345,7 @@ remove_packy() {
 install_themes() {
   start_animation
   process_ids=()
+  install_beggy_blur
 
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
