@@ -33,6 +33,7 @@ usage() {
   helpify "-p, --panel"          "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]"  "Set panel transparency"                           "Default is 15%"
   helpify "-s, --size"           "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]"   "Set Nautilus sidebar minimum width"               "Default is 200px"
   helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"           "Set 'Activities' icon"                            "Default is 'standard'"
+  helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                         "Set gnome-shell background image"                 "Default is BigSur-like wallpaper"
   helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                               "Default is BigSur-like style"
   helpify "-R, --round"                   ""                                          "Set maximized window to rounded"                  "Default is square"
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
