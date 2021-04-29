@@ -1,7 +1,8 @@
 /* Login Dialog */
 
 #lockDialogGroup {
-  background: url("assets/background.png");
+  background-color: rgba($osd_bg_color, 1);
+  background-image: url("assets/background.png");
   background-size: cover;
 }
 
