@@ -70,6 +70,8 @@ while [[ $# -gt 0 ]]; do
     -h|--help)
       need_help="true"; shift ;;
       # Parameters that require value, single use
+    -b|--background)
+      check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
     -d|--dest)
       check_param "${1}" "${1}" "${2}" "must" "must" "not-at-all" && shift 2 || shift ;;
     -n|--name)
