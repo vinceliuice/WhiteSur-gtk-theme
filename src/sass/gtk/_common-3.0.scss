@@ -1136,6 +1136,8 @@ spinbutton {
       @extend %linked_vertical;
     }
 
+    entry { border-color: $dark_borders_color; }
+
     button.up { border-radius: $bt_radius $bt_radius 0 0; }
 
     > entry:focus + button { border-top-color: $entry_highlight; }
@@ -3197,7 +3199,12 @@ scrolledwindow {
       }
     }
 
-    > box.vertical list, list.content {
+    > box.vertical list.content.view {
+      border-top-left-radius: $wm_radius;
+      border-top-right-radius: $wm_radius;
+    }
+
+    > box.vertical list {
       @extend %circular_list;
       padding: 0;
 
@@ -3265,9 +3272,16 @@ separator {
 list {
   background-color: $base_color;
   border-color: $borders_color;
-  // border-radius: $wm_radius;
 
   row { padding: 2px; }
+
+  &.content {
+    @extend %circular_list;
+
+    > row {
+      @extend %circular_row;
+    }
+  }
 }
 
 %row_activatable {
