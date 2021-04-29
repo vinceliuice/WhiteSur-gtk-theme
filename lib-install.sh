@@ -113,7 +113,7 @@ install_dialog_deps() {
 install_beggy() {
   local CONVERT_OPT=""
 
-  [[ "${no_blur}" == "false" ]] && CONVERT_OPT+=" -scale 1280x -blur 0x60 "
+  [[ "${no_blur}" == "false" ]] && CONVERT_OPT+=" -scale 1280x -blur 0x50 "
   [[ "${darken}" == "true" ]] && CONVERT_OPT+=" -fill black -colorize 45% "
 
   case "${background}" in
@@ -127,7 +127,7 @@ install_beggy() {
 }
 
 install_beggy_blur() {
-  local CONVERT_OPT=" -scale 1280x -blur 0x30 -fill black -colorize 45% "
+  local CONVERT_OPT=" -scale 1280x -blur 0x35 -fill black -colorize 25% "
 
   case "${background}" in
     blank)
