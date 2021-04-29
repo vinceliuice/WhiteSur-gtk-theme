@@ -174,9 +174,12 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
     placessidebar.sidebar {
       background-color: transparent;
-      min-width: $nautilus_sidebar_size;
       border: none;
       border-bottom-left-radius: $wm_radius;
+
+      @if $nautilus_style == 'stable' or $nautilus_style == 'default' {
+        min-width: $nautilus_sidebar_size;
+      }
 
       @if $nautilus_style == 'stable' {
         background-image: if($trans == 'true', none, $nautilus_sidebar_image);
