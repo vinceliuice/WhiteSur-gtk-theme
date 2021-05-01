@@ -1136,7 +1136,7 @@ spinbutton {
       @extend %linked_vertical;
     }
 
-    entry { border-color: $dark_borders_color; }
+    entry:not(:focus):not(:drop(active)) { border-color: $dark_borders_color; }
 
     button.up { border-radius: $bt_radius $bt_radius 0 0; }
 
