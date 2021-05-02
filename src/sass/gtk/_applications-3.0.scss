@@ -2397,6 +2397,32 @@ flowboxchild.bookmark-tag-widget {
 }
 
 //
+// Seahorse
+//
+
+window.background.csd {
+  > leaflet.unfolded {
+    > scrolledwindow > viewport.frame {
+      > list { // left side
+        background-color: $dark_sidebar_bg;
+        border-bottom-left-radius: $wm_radius;
+
+        > row {
+          @extend %sidebar_row;
+        }
+      }
+    }
+
+    > box.vertical > stack {
+      background-color: $base_color;
+      border-bottom-right-radius: $wm_radius;
+    }
+
+    > box.vertical > searchbar { background-color: $base_color; }
+  }
+}
+
+//
 // documents-scrolledwi (Totem, Documents, EvView)
 //
 .documents-scrolledwin {
@@ -3058,7 +3084,6 @@ window#GearyMainWindow.background.csd {
         border-radius: $bt_radius;
 
         treeview.view {
-          border: none;
           background-image: none;
 
           &:hover { background-color: rgba($fg_color, 0.1); }
@@ -3173,7 +3198,6 @@ window#GearyMainWindow.background.csd {
       background-color: $base_color;
 
       treeview.view {
-        border: none;
         background-image: none;
 
         &:hover { background-color: rgba($fg_color, 0.1); }

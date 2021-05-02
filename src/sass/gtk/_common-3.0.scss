@@ -1511,6 +1511,7 @@ headerbar {
       border-radius: 0;
       margin-top: 0;
       margin-bottom: 0;
+      min-height: 0;
     }
 
     > button.popup {
@@ -3204,7 +3205,7 @@ scrolledwindow {
       border-top-right-radius: $wm_radius;
     }
 
-    > box.vertical list {
+    > box.vertical list.frame {
       @extend %circular_list;
       padding: 0;
 
@@ -3275,7 +3276,7 @@ list {
 
   row { padding: 2px; }
 
-  &.content {
+  &.content:not(.conversation-listbox) {
     @extend %circular_list;
 
     > row {
