@@ -143,8 +143,12 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     background-image: $nautilus_bg_image;
     border-radius: $background_radius_style;
 
+    &.unified {
+      border-radius: $wm_radius;
+    }
+
     > headerbar.titlebar,
-    > deck > box > headerbar.titlebar {
+    > deck > box.vertical > headerbar.titlebar {
       background-color: transparent;
       box-shadow: inset 0 1px rgba(white, 0.1);
       background-image: $nautilus_header_image;
@@ -374,7 +378,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     }
 
     &, > stack {
-      border-radius: 0 0 $nautilus_radius $nautilus_radius;
+      border-radius: $background_radius_style;
     }
 
     > stack {
@@ -416,10 +420,25 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
   // Reset maximized nautilus-window border-radius
   &.maximized, &.tiled, &.fullscreen {
-    &.background.csd { border-radius: $maximized_radius_style; }
-    notebook { &, > stack { border-radius: 0 0 $maximized_radius $maximized_radius; } }
-    headerbar.titlebar { &, &.windowhandle { border-radius: $maximized_radius $maximized_radius 0 0; } }
-    placessidebar { border-bottom-left-radius: $maximized_radius; }
+    &.background.csd {
+      border-radius: $maximized_radius_style;
+
+      &.unified { border-radius: $maximized_radius; }
+
+      &, &.unified {
+        notebook { &, > stack { border-radius: 0 0 $maximized_radius $maximized_radius; } }
+
+        > headerbar.titlebar,
+        > deck > box.vertical > headerbar.titlebar {
+          &, &.windowhandle {
+            border-top-left-radius: $maximized_radius;
+            border-top-right-radius: $maximized_radius;
+          }
+        }
+
+        placessidebar { border-bottom-left-radius: $maximized_radius; }
+      }
+    }
   }
 
   > grid.horizontal > paned.horizontal > separator,
@@ -1977,6 +1996,8 @@ window.background.csd {
 window.background.csd.unified {
   border-top-left-radius: $wm_radius;
   border-top-right-radius: $wm_radius;
+  border-bottom-left-radius: $wm_radius;
+  border-bottom-right-radius: $wm_radius;
 
   > deck > deck > deck {
     > box.vertical > headerbar.titlebar.windowhandle {
@@ -1992,7 +2013,15 @@ window.background.csd.unified {
   }
 
   &.maximized, &.tiled, &.fullscreen {
-    border-radius: 0 0 $maximized_radius $maximized_radius;
+    border-top-left-radius: $maximized_radius;
+    border-top-right-radius: $maximized_radius;
+    border-bottom-left-radius: $maximized_radius;
+    border-bottom-right-radius: $maximized_radius;
+
+    > deck > box.vertical > headerbar.titlebar.windowhandle {
+      border-top-left-radius: $maximized_radius;
+      border-top-right-radius: $maximized_radius;
+    }
   }
 }
 
