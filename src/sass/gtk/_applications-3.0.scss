@@ -163,12 +163,14 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
         > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
       }
 
-      > .linked > button.disclosure-button { margin-left: $container_padding / 2; }
+     @if $nautilus_version == 'new' {
+       > .linked > button.disclosure-button { margin-left: $container_padding / 2; }
 
-      > box.horizontal:first-child { // move the search button to right side
-        margin-right: -74px;
+       > box.horizontal:first-child { // move the search button to right side
+         margin-right: -74px;
 
-        entry.search { margin-left: $container_padding; }
+         entry.search { margin-left: $container_padding; }
+       }
       }
     }
 
