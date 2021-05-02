@@ -1304,20 +1304,6 @@ combobox {
     &.left { border-width: 0 1px 0 0; }
     &.right { border-width: 0 0 0 1px; }
   }
-
-  // &:not(.inline-toolbar) {
-  //   switch,
-  //   scale,
-  //   entry,
-  //   spinbutton,
-  //   button {
-  //     margin-right: 1px;
-  //     margin-bottom: 1px;
-  //   }
-  //
-  //   .linked > button,
-  //   .linked > entry { margin-right:0; }
-  // }
 }
 
 .primary-toolbar:not(.libreoffice-toolbar) {  // LO messes up the toolbar styling, so exclude LO toolbars

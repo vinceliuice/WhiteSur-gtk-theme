@@ -9,7 +9,7 @@
   &-button-action,
   &-menu-button-container,
   &-button-box {
-    border: 1px solid transparent;
+    border: 1px solid transparent !important;
   }
 
   &-provider {
@@ -21,7 +21,7 @@
     &:focus { @include button(flat-focus); }
     &:active { @include button(flat-active); }
     &:insensitive { @include button(flat-disabled); }
-    border: 1px solid transparent;
+    border: 1px solid transparent !important;
   }
 
   &-current {
