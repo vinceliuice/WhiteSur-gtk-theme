@@ -109,24 +109,11 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 }
 
 @if $nautilus_style == 'stable' or $nautilus_style == 'default' {
-  @if $nautilus_version == 'new' {
-    $nautilus_header_image: linear-gradient(90deg, rgba($dark_header_bg, 0) $nautilus_sidebar_size,
-                                                   $nautilus_borders_color $nautilus_sidebar_size,
-                                                   $nautilus_borders_color ($nautilus_sidebar_size + 1px),
-                                                   $dark_header_bg ($nautilus_sidebar_size + 1px));
-  } @else {
     $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg $nautilus_sidebar_size,
                                                    $nautilus_borders_color $nautilus_sidebar_size,
                                                    $nautilus_borders_color ($nautilus_sidebar_size + 1px),
                                                    $dark_header_bg ($nautilus_sidebar_size + 1px));
-  }
-}
-
-@else if $nautilus_style == 'glassy' {
-  @if $nautilus_version == 'new' {
-    $nautilus_bg_image: image(rgba($dark_sidebar_bg, 0));
-  }
-
+} @else if $nautilus_style == 'glassy' {
   $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg ($nautilus_sidebar_size/2),
                                                  $dark_header_bg 40%);
 
@@ -143,8 +130,29 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     background-image: $nautilus_bg_image;
     border-radius: $background_radius_style;
 
-    &.unified {
+    &.unified { // >= 40.0
       border-radius: $wm_radius;
+
+      @if $nautilus_style == 'glassy' {
+        background-image: image(rgba($dark_sidebar_bg, 0));
+      }
+
+      > deck > box.vertical > headerbar.titlebar {
+        @if $nautilus_style == 'stable' or $nautilus_style == 'default' {
+          background-image: linear-gradient(90deg, rgba($dark_header_bg, 0) $nautilus_sidebar_size,
+                                                   $nautilus_borders_color $nautilus_sidebar_size,
+                                                   $nautilus_borders_color ($nautilus_sidebar_size + 1px),
+                                                   $dark_header_bg ($nautilus_sidebar_size + 1px));
+        }
+
+        > .linked > button.disclosure-button { margin-left: $container_padding / 2; }
+
+        > box.horizontal:first-child { // move the search button to right side
+          margin-right: -74px;
+
+          entry.search { margin-left: $container_padding; }
+        }
+      }
     }
 
     > headerbar.titlebar,
@@ -165,16 +173,6 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
       @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
         > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
-      }
-
-     @if $nautilus_version == 'new' {
-       > .linked > button.disclosure-button { margin-left: $container_padding / 2; }
-
-       > box.horizontal:first-child { // move the search button to right side
-         margin-right: -74px;
-
-         entry.search { margin-left: $container_padding; }
-       }
       }
     }
 
