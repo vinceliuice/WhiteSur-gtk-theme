@@ -62,7 +62,10 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
     transition-duration: 150ms;
     border-radius: $bt_radius;
 
-    StLabel { padding: 0 2px; }
+    StLabel {
+      padding: 0;
+      margin: 0;
+    }
 
     .popup-menu-arrow { width: 0; height: 0; } // Remove arrow on panel button
 
@@ -113,6 +116,7 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
       // we want to exclude the do-not-disturb indicator from the background
       &.clock-display {
         box-shadow: none;
+        StLabel { padding: 0 2px; }
 
         .clock {
           box-shadow: none;
@@ -128,9 +132,8 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
     }
 
     // .panel-status-indicators-box .system-status-icon,
-    .panel-status-menu-box .system-status-icon {
-      margin: 0;
-    }
+    .panel-status-menu-box .system-status-icon { margin: 0; }
+    .panel-status-menu-box StLabel { padding: 0 0 0 2px; }
 
     // app menu icon
     .app-menu-icon {
