@@ -6,7 +6,7 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
 
 #panel {
   background-color: $shell_panel_bg;
-  font-weight: bold;
+  font-weight: normal;
   height: $menuitem_size;
   box-shadow: 0 5px 16px rgba(black, 0.35);
   color: $panel_fg;
@@ -57,7 +57,7 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
   .panel-button {
     -natural-hpadding: 8px;
     -minimum-hpadding: 8px;
-    font-weight: bold;
+    font-weight: normal;
     color: $panel_fg;
     transition-duration: 150ms;
     border-radius: $bt_radius;
