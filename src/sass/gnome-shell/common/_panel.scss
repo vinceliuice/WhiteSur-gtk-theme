@@ -64,6 +64,8 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
 
     StLabel { padding: 0 2px; }
 
+    .popup-menu-arrow { width: 0; height: 0; } // Remove arrow on panel button
+
     &, &:hover, &:active, &:overview, &:focus, &:checked {
       text-shadow: $panel_asset_shadow;
 
@@ -121,11 +123,11 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
     // status area icons
     .system-status-icon {
       icon-size: $base_icon_size;
-      padding: $base_padding - 1px;
-      margin: 0 $base_margin;
+      padding: $base_padding $base_padding/2;
+      margin: 0 ($base_margin - 2px);
     }
 
-    .panel-status-indicators-box .system-status-icon,
+    // .panel-status-indicators-box .system-status-icon,
     .panel-status-menu-box .system-status-icon {
       margin: 0;
     }
