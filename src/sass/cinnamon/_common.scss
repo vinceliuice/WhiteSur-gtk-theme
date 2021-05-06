@@ -1306,8 +1306,8 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   font-weight: bold;
   spacing: 1em;
   padding: 16px;
-  color: $panel_fg;
-  background-color: $panel_bg;
+  color: $osd_fg_color;
+  background-color: $osd_bg_color;
 }
 
 .osd-window {
@@ -1318,11 +1318,9 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   //  margin: 32px;
   min-width: 64px;
   min-height: 64px;
-
-  color: $panel_fg;
-
+  color: $osd_fg_color;
   border-radius: 0;
-  background-color: $panel_bg;
+  background-color: $osd_bg_color;
   border: none;
 
   @if $trans == 'true' {
