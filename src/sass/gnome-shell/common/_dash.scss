@@ -22,6 +22,7 @@ $dash_placeholder_size: 32px;
   text-align: center;
   -y-offset: $base_margin * 3; // distance from the dash edge
   -x-offset: 8px;
+  @include font(body-1);
 }
 
 %show_apps_bigsur {
