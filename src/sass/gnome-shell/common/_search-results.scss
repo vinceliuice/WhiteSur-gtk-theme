@@ -23,6 +23,7 @@
 #searchResultsContent {
   max-width: 1024px;
   spacing: $base_margin * 2;
+  @include font(body-1);
 }
 
 // search results sections "the boxes"

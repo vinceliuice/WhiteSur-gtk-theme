@@ -29,21 +29,23 @@
     min-height: $medium_size;
     padding: 0 32px;
     transition-duration: 100ms;
+    border-bottom: 2px solid transparent;
 
     &:hover {
-      box-shadow: inset 0 -2px 0px $track_color;
       color: $fg_color;
       text-shadow: none;
+      border-color: $track_color
     }
+
     &:selected {
-      border-bottom-width: 0;
-      border-color: transparent;
       background-color: rgba($base_color, 0.01);
-      box-shadow: inset 0 -2px 0px $light_alt_fg_color;
+      border-color: $primary_color;
       color: $fg_color;
       text-shadow: none;
+      box-shadow: none;
     }
   }
+
   StBoxLayout#EvalBox { padding: 4px; spacing: 4px; }
   StBoxLayout#ResultsArea { spacing: 4px; }
 }
@@ -85,25 +87,29 @@
 }
 
 // Extensions
-#lookingGlassExtensions { padding: 4px; }
+#lookingGlassExtensions {
+  padding: 4px;
+}
 
 .lg-extensions-list {
-    padding: 4px;
-    spacing: 6px;
+  padding: 4px;
+  spacing: 6px;
 }
 
 .lg-extension {
   border: none;
   border-radius: $bt_radius;
   padding: 4px;
+  background-color: $divider_color;
+  color: $alt_fg_color;
 }
 
 .lg-extension-name {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .lg-extension-meta {
-    spacing: 6px;
+  spacing: 6px;
 }
 
 // Inspector
