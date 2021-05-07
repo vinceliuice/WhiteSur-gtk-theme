@@ -15,7 +15,7 @@
   padding: 4px 8px;
   border: none;
   font-weight: normal;
-  @include font(body);
+  @include font(body-1);
 }
 
 .window-clone-border {

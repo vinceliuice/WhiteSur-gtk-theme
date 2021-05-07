@@ -20,6 +20,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
   color: $alt_fg_color;
   padding: 0 0 !important;
   font-weight: normal;
+  @include font(body-1);
 
   .popup-menu-content {
     padding: 6px 0 !important;

@@ -4,6 +4,8 @@
 .show-apps,
 .app-well-app,
 %app-well-app {
+  @include font(body-1);
+
   & .overview-icon {
     color: $light_alt_fg_color;
     border-radius: $wm_radius;

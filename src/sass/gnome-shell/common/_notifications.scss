@@ -12,6 +12,7 @@
   border: none;
   text-shadow: none;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+  @include font(body-1);
 
   &:hover { background-color: rgba($menu_bg, 1); box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25); }
   &:focus { background-color: $menu_bg; }

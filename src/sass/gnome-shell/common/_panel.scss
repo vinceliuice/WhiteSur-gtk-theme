@@ -12,6 +12,7 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
   color: $panel_fg;
   font-feature-settings: "tnum";
   transition-duration: 250ms;
+  @include font(body-1);
 
   // transparent panel on lock & login screens
   &:overview,
@@ -100,6 +101,8 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
     }
 
     &.clock-display {
+      StLabel { padding: 0 2px; }
+
       .clock {
         // transition-duration: 150ms;
         border: none;
@@ -116,7 +119,6 @@ $shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
       // we want to exclude the do-not-disturb indicator from the background
       &.clock-display {
         box-shadow: none;
-        StLabel { padding: 0 2px; }
 
         .clock {
           box-shadow: none;
