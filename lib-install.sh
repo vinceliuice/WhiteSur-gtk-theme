@@ -351,6 +351,7 @@ remove_packy() {
 install_themes() {
   start_animation
   process_ids=()
+  install_beggy
   install_beggy_blur
 
   for opacity in "${opacities[@]}"; do

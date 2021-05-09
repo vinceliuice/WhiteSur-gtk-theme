@@ -1580,7 +1580,9 @@ row#AutostartTitle.tweak {
 
 // separator of sidebar on Gnome control center and Gnome tweaks
 window.background.csd {
-  > hdyleaflet, > leaflet, > box.horizontal {
+  > hdyleaflet,
+  > leaflet, > leaflet.unfolded,
+  > box.horizontal {
     > separator.vertical {
       @extend %side_separator;
     }
@@ -2451,7 +2453,7 @@ window.background.csd {
       border-bottom-right-radius: $wm_radius;
     }
 
-    > box.vertical > searchbar > revealer > box { background-color: $base_color; }
+    // > box.vertical > searchbar > revealer > box { background-color: $base_color; }
   }
 }
 
