@@ -292,7 +292,8 @@
   // insensitive header-bar button
   //
     label, & { color: rgba($header_fg, 0.35); }
-    background: none;
+    background-image: none;
+    background-color: transparent;
     box-shadow: none;
   }
 
@@ -301,6 +302,7 @@
   // header-bar insensitive pushed button
   //
     color: rgba($header_fg, 0.35);
+    background-image: none;
     background-color: transparent;
   }
 

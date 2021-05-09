@@ -1377,6 +1377,105 @@ actionbar {
 // Headerbars
 //
 
+%header_separator {
+  min-width: 0;
+  min-height: 0;
+  background-color: transparent;
+  border: none;
+
+  &:backdrop { opacity: 0.65; }
+}
+
+// Headerbar Entries
+%headerbar_entrys {
+  min-height: 22px;
+  @include entry(header-normal);
+
+  &:backdrop { opacity: 0.65; background-image: none; }
+
+  &:hover {
+    @include entry(header-hover);
+  }
+
+  &:focus {
+    @include entry(header-focus);
+  }
+
+  &:disabled {
+    @include entry(header-insensitive);
+  }
+
+  selection:focus {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+
+  progress {
+    border-color: $progress_color;
+    background-image: none;
+    background-color: transparent;
+  }
+
+  @each $e_type, $e_color, $e_fg_color in (warning, $warning_color, $light_fg_color),
+                                          (error, $error_color, $light_fg_color) {
+    &.#{$e_type} {
+      color: $e_fg_color;
+      border-color: if($variant=='light', $e_color, $entry_border);
+      background-color: mix($e_color, $header_bg, 60%);
+
+      &:focus {
+        color: $e_fg_color;
+        background-color: $e_color;
+      }
+
+      selection, selection:focus {
+        background-color: $e_fg_color;
+        color: $e_color;
+      }
+    }
+  }
+}
+
+// Headerbar Buttons
+%headerbar_buttons {
+  min-height: 26px;
+  min-width: 22px;
+  @include button(header-normal);
+
+  &:backdrop { opacity: 0.65; background-image: none; }
+
+  &:hover {
+    @include button(header-hover);
+    transition: $button_transition;
+  }
+
+  &:active, &:active:hover {
+    @include button(header-active);
+    transition: $button_transition;
+    transition-duration: 300ms;
+  }
+
+  &:checked {
+    @include button(header-checked);
+    transition: $button_transition;
+    transition-duration: 300ms;
+
+    &:hover { background-image: none; }
+
+    &:disabled {
+      @include button(header-insensitive-active);
+    }
+  }
+
+  &:disabled {
+    @include button(header-insensitive);
+  }
+
+  &.flat {
+    @include button(undecorated);
+  }
+}
+
 headerbar {
   min-height: 40px;
   padding: 0 16px;
@@ -1760,101 +1859,6 @@ headerbar, .titlebar {
     margin-left: 0;
     margin-right: 0;
     padding: 2px 8px;
-  }
-}
-
-%header_separator {
-  min-width: 0;
-  min-height: 0;
-  background-color: transparent;
-  border: none;
-
-  &:backdrop { opacity: 0.65; }
-}
-
-// Headerbar Entries
-%headerbar_entrys {
-  min-height: 22px;
-  @include entry(header-normal);
-
-  &:backdrop { opacity: 0.65; background-image: none; }
-
-  &:hover {
-    @include entry(header-hover);
-  }
-
-  &:focus {
-    @include entry(header-focus);
-  }
-
-  &:disabled {
-    @include entry(header-insensitive);
-  }
-
-  selection:focus {
-    background-color: $selected_bg_color;
-    color: $selected_fg_color;
-  }
-
-  progress {
-    border-color: $progress_color;
-    background-image: none;
-    background-color: transparent;
-  }
-
-  @each $e_type, $e_color, $e_fg_color in (warning, $warning_color, $light_fg_color),
-                                          (error, $error_color, $light_fg_color) {
-    &.#{$e_type} {
-      color: $e_fg_color;
-      border-color: if($variant=='light', $e_color, $entry_border);
-      background-color: mix($e_color, $header_bg, 60%);
-
-      &:focus {
-        color: $e_fg_color;
-        background-color: $e_color;
-      }
-
-      selection, selection:focus {
-        background-color: $e_fg_color;
-        color: $e_color;
-      }
-    }
-  }
-}
-
-// Headerbar Buttons
-%headerbar_buttons {
-  min-height: 26px;
-  min-width: 22px;
-  @include button(header-normal);
-
-  &:backdrop { opacity: 0.65; background-image: none; }
-
-  &:hover {
-    @include button(header-hover);
-    transition: $button_transition;
-  }
-
-  &:active, &:active:hover {
-    @include button(header-active);
-    transition: $button_transition;
-    transition-duration: 300ms;
-  }
-
-  &:checked {
-    @include button(header-checked);
-    transition: $button_transition;
-    transition-duration: 300ms;
-
-    &:hover { background-image: none; }
-  }
-
-  &:disabled {
-    &, &:checked, &:active { @include button(header-insensitive); }
-  }
-
-  &.flat {
-    @include button(undecorated);
   }
 }
 
