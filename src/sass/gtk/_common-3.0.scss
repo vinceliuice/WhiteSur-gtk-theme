@@ -3253,7 +3253,7 @@ scrolledwindow {
 }
 
 //vbox and hbox separators
-separator:not(.titlebutton) {
+separator {
   background-color: $borders_color;
   min-width: 1px;
   min-height: 1px;
