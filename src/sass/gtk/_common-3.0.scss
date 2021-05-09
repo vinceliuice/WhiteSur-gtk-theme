@@ -10,14 +10,12 @@
   background-image: none;
   background-color: rgba($base_color, 1);
   box-shadow: inset 0 1px $highlight_color;
-  border: none;
 }
 
 %side_searchbar {
-  background-color: rgba($dark_sidebar_bg, 1);
-
   > revealer > box {
-    border-color: if($variant == 'light', $solid_borders_color, $header_border);
+    background-color: rgba($dark_sidebar_bg, 1);
+    border-color: $dark_sidebar_border;
   }
 }
 
@@ -1333,7 +1331,7 @@ combobox {
 }
 
 searchbar {
-  background-color: $bg_color;
+  background-color: transparent;
   padding: 0;
   margin: 0;
   border: none;
@@ -1342,6 +1340,7 @@ searchbar {
     padding: 6px;
     margin: -6px;
     border-style: solid;
+    background-color: $bg_color;
     border-color: $solid_borders_color;
     border-width: 0 0 1px;
   }
@@ -1360,12 +1359,16 @@ searchbar {
 }
 
 actionbar {
-  padding: 6px;
-  border-top: 1px solid $borders_color;
-  background-color: darken($bg_color, 3%);
+  background-color: transparent;
 
-  .background.csd revealer > &,
-  .background.csd > box.vertical > & {
+  > revealer > box {
+    padding: 6px;
+    border-top: 1px solid $borders_color;
+    background-color: darken($bg_color, 3%);
+  }
+
+  .background.csd revealer > & > revealer > box,
+  .background.csd > box.vertical > & > revealer > box {
     border-radius: 0 0 $wm_radius $wm_radius;
   }
 }
@@ -2058,8 +2061,6 @@ menubar,
 
   &:backdrop {
     color: transparentize($header_fg, 0.2);
-    // background-image: none;
-    // background-color: opacify($header_bg_backdrop, 1);
   }
 
   > menuitem {
@@ -2068,11 +2069,7 @@ menubar,
     border: none;
     border-radius: $bt_radius;
 
-    // > window.popup.background.csd > decoration { border-radius: 0 0 $wm_radius $wm_radius; }
-
     > window.popup.background.csd > menu {
-      // border-radius: 0 0 $wm_radius $wm_radius;
-
       > menuitem { transition: none; }
     }
 
@@ -2091,7 +2088,7 @@ menubar,
 menu,
 .menu {
   // margin: 4px;
-  padding: 6px 4px;
+  padding: 6px 0;
   border-radius: $mn_radius;
   background-color: opacify($menu_bg, 1);
   border: 1px solid $solid_borders_color;
@@ -2117,7 +2114,7 @@ menu,
     min-width: 40px;
     padding: 3px 6px;
     border-radius: $mn_radius - 3px;
-    margin: 0 2px;
+    margin: 0 6px;
     text-shadow: none;
     color: $fg_color;
 
@@ -2194,7 +2191,7 @@ menu,
 
     &.top {
       margin-top: -6px;
-      border-radius: $wm_radius $wm_radius 0 0;
+      border-radius: $mn_radius $mn_radius 0 0;
       border-bottom: 1px solid $borders_color;
       -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
     }
@@ -2202,7 +2199,7 @@ menu,
     &.bottom {
       margin-top: 12px;
       margin-bottom: -16px;
-      border-radius: 0 0 $wm_radius $wm_radius;
+      border-radius: 0 0 $mn_radius $mn_radius;
       border-top: 1px solid $borders_color;
       -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
     }
@@ -3483,10 +3480,12 @@ filechooser {
     }
 
     > actionbar {
-      border-top: 1px solid $header_border;
-      background-color: $dark_sidebar_bg;
-      color: $dark_sidebar_fg;
-      border-radius: 0 0 $wm_radius $wm_radius;
+      > revealer > box {
+        border-top: 1px solid $header_border;
+        background-color: $dark_sidebar_bg;
+        color: $dark_sidebar_fg;
+        border-radius: 0 0 $wm_radius $wm_radius;
+      }
 
       label, combobox { color: $dark_sidebar_fg; }
     }
@@ -3519,13 +3518,13 @@ filechooser {
   > box.vertical > box.vertical > paned.horizontal > separator {
     border: none;
     min-width: 1px;
-    background-image: image(if($variant=='light', $solid_borders_color, $header_border));
+    background-image: image($dark_sidebar_border);
 
     // &:dir(ltr) { margin-left: -1px; }
     // &:dir(rtl) { margin-right: -1px; }
   }
 
-  #pathbarbox { border-bottom: 1px solid transparentize($borders_color, 0.5); }
+  #pathbarbox { border-bottom: 1px solid $dark_sidebar_border; }
 }
 
 //

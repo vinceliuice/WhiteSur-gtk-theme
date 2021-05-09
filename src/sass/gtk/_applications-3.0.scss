@@ -330,11 +330,15 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
       }
 
       actionbar.background {
-        background-color: $menu_bg;
-        margin: 6px;
-        border-radius: $wm_radius - 6px;
-        box-shadow: $shadow_5, inset 0 1px $highlight_color;
-        border: none;
+        background: none;
+
+        > revealer > box {
+          background-color: $bg_color;
+          margin: 6px;
+          border-radius: $wm_radius - 6px;
+          box-shadow: $shadow_5, inset 0 1px $highlight_color;
+          border: none;
+        }
       }
     }
   }
@@ -384,7 +388,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     }
 
     > stack:not(:only-child) {
-      searchbar { background-color: transparent; }
+      searchbar > revealer > box { background-color: transparent; }
     }
 
     infobar {
@@ -1170,7 +1174,7 @@ configurationview {
   }
 }
 
-dzldockbin actionbar {
+dzldockbin actionbar > revealer > box {
   border-radius: 0 0 $wm_radius $wm_radius;
 }
 
@@ -2025,8 +2029,10 @@ window.background.csd.unified {
 
 hdyviewswitcherbar > actionbar,
 viewswitcherbar > actionbar { // Gnome 3.38
-  background: none;
-  border: none;
+  > revealer > box {
+    background: none;
+    border: none;
+  }
 }
 
 //
@@ -2445,7 +2451,7 @@ window.background.csd {
       border-bottom-right-radius: $wm_radius;
     }
 
-    > box.vertical > searchbar { background-color: $base_color; }
+    > box.vertical > searchbar > revealer > box { background-color: $base_color; }
   }
 }
 
@@ -2478,14 +2484,14 @@ window.background.csd {
 
 window.background.csd { // Documents actionbar
   > box.vertical > overlay > stack > box.vertical {
-    > actionbar {
+    > actionbar > revealer > box {
       border-radius: 0 0 $wm_radius $wm_radius;
     }
   }
 
   &.maximized, &.tiled, &.fullscreen {
     > box.vertical > overlay > stack > box.vertical {
-      > actionbar {
+      > actionbar > revealer > box {
         border-radius: 0 0 $maximized_radius $maximized_radius;
       }
     }
@@ -3155,49 +3161,30 @@ window#GearyMainWindow.background.csd {
   }
 }
 
-.geary-main-window { // 40.0
-  > headerbar {
-    border-bottom: none;
+.geary-main-window {
+  &.background.csd.unified { background: none; }
 
-    > leaflet > leaflet > headerbar {
-      border-bottom: none;
+  .geary-main-layout { // >= 40.0
+    background-color: $dark_sidebar_bg;
 
-      &, &:backdrop {
-        border-radius: 0 0 0 0;
-      }
+    > leaflet > leaflet > headerbar { // left and center headerbar
+      &:first-child { @extend %side_headerbar_left; background-color: transparent; }
+      &:last-child { @extend %side_headerbar_right; }
+    }
 
-      &:only-child {
-        border-radius: $wm_radius $wm_radius 0 0;
-      }
-
-      &:not(:first-child) {
-        background-color: $base_color;
-        box-shadow: inset 0 1px $header_highlight;
-      }
-
-      &:first-child {
-        @extend %side_headerbar_left;
-        border-radius: $wm_radius 0 0 0;
-      }
+    > leaflet > headerbar { // right headerbar
+      @extend %side_headerbar_right;
     }
   }
 
-  leaflet > leaflet > box.vertical {
-    searchbar {
-      background-color: $base_color;
+  frame.geary-folder-frame { // left side
+    background-color: transparent;
 
-      > revealer > box {
-        border-color: if($variant == 'light', $solid_borders_color, $header_border);
-      }
-    }
-  }
-
-  frame.geary-folder-frame {
     > border { border: none; }
 
     scrolledwindow {
       treeview.view.sidebar {
-        background-color: rgba($dark_sidebar_bg, 1);
+        background-color: transparent;
 
         &:hover {
           color: $fg_color;
@@ -3216,16 +3203,21 @@ window#GearyMainWindow.background.csd {
     }
   }
 
-  frame.geary-conversation-frame {
-    background-color: rgba($dark_sidebar_bg, 1);
+  frame.geary-conversation-frame { // center part
+    background-color: $base_color;
 
     > border { border: none; }
 
     scrolledwindow {
+      // margin: -1px 0;
+      padding: 6px;
       background-color: $base_color;
 
       treeview.view {
         background-image: none;
+        border-color: $base_color;
+        border-radius: $mn_radius;
+        outline: none;
 
         &:hover { background-color: rgba($fg_color, 0.1); }
 
@@ -3241,9 +3233,34 @@ window#GearyMainWindow.background.csd {
     }
   }
 
+  leaflet > leaflet > box.vertical {
+    searchbar { // center part searchbar
+      > revealer > box {
+        background-color: $base_color;
+        border-color: $dark_sidebar_border;
+      }
+    }
+
+    > revealer > components-conversation-actions { // center part actionbar
+      margin-top: -1px;
+      background-color: $base_color;
+      border-color: transparent; // not use?
+      box-shadow: inset 0 1px $dark_sidebar_border;
+
+      button {
+        @extend %flat_button;
+      }
+
+      > .linked > button {
+        border-radius: $bt_radius;
+        margin: 0 1px;
+      }
+    }
+  }
+
   separator.geary-sidebar-pane-separator { background-color: $dark_sidebar_border; }
 
-  geary-conversation-viewer#conversation_viewer,  // 40.0
+  geary-conversation-viewer#conversation_viewer,  // 40.0 right side
   stack#conversation_viewer { // 3.28
     background-color: $base_color;
     border-bottom-right-radius: $wm_radius + 1px;
@@ -3260,10 +3277,9 @@ window#GearyMainWindow.background.csd {
     }
 
     searchbar {
-      background-color: $base_color;
-
       > revealer > box {
-        border-color: if($variant == 'light', $solid_borders_color, $header_border);
+        background-color: $base_color;
+        border-color: $dark_sidebar_border;
       }
     }
   }
