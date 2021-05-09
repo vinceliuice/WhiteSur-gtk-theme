@@ -150,7 +150,19 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
         > box.horizontal:first-child { // move the search button to right side
           margin-right: -74px;
 
-          entry.search { margin-left: $container_padding; }
+          @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
+            entry.search { margin-left: if($placement == 'left', $container_padding, $nautilus_sidebar_size - 74px); }
+          }
+        }
+      }
+
+      @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
+        &.maximized {
+          > deck > box.vertical > headerbar.titlebar {
+            > box.horizontal:first-child { // move the search button to right side
+              entry.search { margin-left: 0; }
+            }
+          }
         }
       }
     }
@@ -172,7 +184,25 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
       }
 
       @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
-        > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
+        @if $placement == 'left' {
+          > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
+        }
+        @else {
+          .path-bar-box { margin-left: $nautilus_sidebar_size - 80px; }
+          entry.search { margin-left: if($placement == 'left', $container_padding, $nautilus_sidebar_size - 74px); }
+        }
+      }
+    }
+
+    &.maximized {
+      > headerbar.titlebar,
+      > deck > box.vertical > headerbar.titlebar {
+        @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
+          @if $placement == 'right' {
+            .path-bar-box { margin-left: 0; }
+            entry.search { margin-left: 0; }
+          }
+        }
       }
     }
 
@@ -602,8 +632,8 @@ $disk_space_free: darken($bg_color, 3%);
     &.frame { border-width: 0; }
 
     .places-treeview {
-      // -NemoPlacesTreeView-disk-full-bg-color: $dark_solid_borders_color;
-      // -NemoPlacesTreeView-disk-full-fg-color: lighten($progress_color, 5%);
+      -NemoPlacesTreeView-disk-full-bg-color: $dark_solid_borders_color;
+      -NemoPlacesTreeView-disk-full-fg-color: lighten($progress_color, 5%);
     }
   }
 

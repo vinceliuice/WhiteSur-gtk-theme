@@ -568,6 +568,12 @@ customize_theme() {
     sed ${SED_OPT} "/\$nautilus_style/s/stable/${nautilus_style}/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
+  # Change Nautilus titlebutton placement style
+  if [[ "${right_placement}" == 'true' ]]; then
+    prompt -w "Changing Nautilus titlebutton placement style ..."
+    sed ${SED_OPT} "/\$placement/s/left/right/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
   # Change maximized window radius
   if [[ "${max_round}" == 'true' ]]; then
     prompt -w "Changing maximized window style ..."

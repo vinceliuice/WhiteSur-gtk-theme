@@ -35,7 +35,8 @@ usage() {
   helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"           "Set 'Activities' icon"                            "Default is 'standard'"
   helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                         "Set gnome-shell background image"                 "Default is BigSur-like wallpaper"
   helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                               "Default is BigSur-like style"
-  helpify "-R, --round"                   ""                                          "Set maximized window to rounded"                  "Default is square"
+  helpify "--round, --roundedmaxwindow"   ""                                          "Set maximized window to rounded"                  "Default is square"
+  helpify "--right, --rightplacement"     ""                                          "Set Nautilus titlebutton placement style to right" "Default is left"
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
   helpify "--dialog, --interactive"       ""                                          "Run this installer interactively, with dialogs"   ""
   helpify "-r, --remove, -u, --uninstall" ""                                          "Remove all installed ${THEME_NAME} themes"        ""
@@ -66,7 +67,9 @@ while [[ $# -gt 0 ]]; do
       interactive='true'; shift ;;
     --normal|--normalshowapps)
       showapps_normal="true"; shift ;;
-    -R|--round)
+    --right|--rightplacement)
+      right_placement="true"; shift ;;
+    --round|--roundedmaxwindow)
       max_round="true"; shift ;;
     -h|--help)
       need_help="true"; shift ;;

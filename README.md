@@ -49,6 +49,46 @@ GNOME Shell (Pantheon), Cinnamon, XFWM (XFCE), Metacity, and Plank themes.
 ## There's so many customizations you can do!
 Usage:  `./install.sh [OPTIONS...]`
 
+<details> <summary> Install OPTIONS </summary>
+
+```bash
+-d, --dest [DIR] # Set destination directory. Default is '/home/vince/.themes'
+
+-n, --name [NAME] # Set theme name. Default is 'WhiteSur'
+
+-o, --opacity [normal|solid] # Set theme opacity variants. Repeatable. Default is all variants
+
+-c, --color [light|dark] # Set theme color variants. Repeatable. Default is all variants
+
+-a, --alt [normal|alt|all] # Set window control buttons variant. Repeatable. Default is 'normal'
+
+-t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey|all] # Set theme accent color. Repeatable. Default is BigSur-like theme
+
+-p, --panel [default|30|45|60|75] # Set panel transparency. Default is 15%
+
+-s, --size [default|220|240|260|280] # Set Nautilus sidebar minimum width. Default is 200px
+
+-i, --icon [standard|simple|gnome|ubuntu|arch|manjaro|fedora|debian|void] # Set 'Activities' icon. Default is 'standard'
+
+-b, --background [default|blank|IMAGE_PATH] # Set gnome-shell background image. Default is BigSur-like wallpaper
+
+-N, --nautilus-style [default|stable|mojave|glassy] # Set Nautilus style. Default is stable (stabled sidebar)
+
+--round, --roundedmaxwindow # Set maximized window to rounded. Default is square
+
+--right, --rightplacement # Set Nautilus titlebutton placement style to right. Default is left
+
+--normal, --normalshowapps # Set gnome-shell show apps button style to normal. Default is bigsur
+
+--dialog, --interactive # Run this installer interactively, with dialogs.
+
+-r, --remove, -u, --uninstall # Remove all installed WhiteSur themes.
+
+-h, --help # Show this help.
+```
+
+</details>
+
 ### <p align="center"> <b> Change theme color and accent </b> </p>
 <p align="center"> <img src="docs/colors-themes.png"/> </p>
 
