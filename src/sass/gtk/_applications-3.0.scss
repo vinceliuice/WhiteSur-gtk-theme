@@ -3059,8 +3059,8 @@ window.thunar {
 //
 // Geary
 //
-.geary-main-window.background.csd,
-window#GearyMainWindow.background.csd {
+.geary-main-window.background.csd, // <= 3.38
+window#GearyMainWindow.background.csd { // <= 3.32
   > overlay > box.vertical {
     > paned {
       > separator { @extend %side_separator; }
@@ -3134,6 +3134,29 @@ window#GearyMainWindow.background.csd {
     }
   }
 
+  stack#conversation_viewer { // 3.28
+    background-color: $base_color;
+    border-bottom-right-radius: $wm_radius + 1px;
+
+    scrolledwindow.geary-conversation-scroller {
+      viewport.frame {
+        background-color: $base_color;
+        border-bottom-right-radius: $wm_radius;
+
+        list.conversation-listbox {
+          background-color: transparent;
+        }
+      }
+    }
+
+    searchbar {
+      > revealer > box {
+        background-color: $base_color;
+        border-color: $dark_sidebar_border;
+      }
+    }
+  }
+
   &.maximized, &.tiled, &.fullscreen {
     > overlay > box.vertical {
       > paned {
@@ -3161,6 +3184,7 @@ window#GearyMainWindow.background.csd {
   }
 }
 
+// >= 40.0
 .geary-main-window {
   &.background.csd.unified { background: none; }
 
@@ -3260,21 +3284,8 @@ window#GearyMainWindow.background.csd {
 
   separator.geary-sidebar-pane-separator { background-color: $dark_sidebar_border; }
 
-  geary-conversation-viewer#conversation_viewer,  // 40.0 right side
-  stack#conversation_viewer { // 3.28
+  geary-conversation-viewer#conversation_viewer { // right side
     background-color: $base_color;
-    border-bottom-right-radius: $wm_radius + 1px;
-
-    scrolledwindow.geary-conversation-scroller {
-      viewport.frame {
-        background-color: $base_color;
-        border-bottom-right-radius: $wm_radius;
-
-        list.conversation-listbox {
-          background-color: transparent;
-        }
-      }
-    }
 
     searchbar {
       > revealer > box {

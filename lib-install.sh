@@ -122,12 +122,19 @@ install_beggy() {
     default)
       if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
         install_beggy_deps && convert "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png" ${CONVERT_OPT} "${WHITESUR_TMP_DIR}/beggy.png"
+      elif [[ "${no_blur}" == "false" && "${darken}" == "true" ]]; then
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"          "${WHITESUR_TMP_DIR}/beggy.png"
       else
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"         "${WHITESUR_TMP_DIR}/beggy.png"
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png"       "${WHITESUR_TMP_DIR}/beggy.png"
       fi
       ;;
     *)
-      install_beggy_deps && convert "${background}" ${CONVERT_OPT}                            "${WHITESUR_TMP_DIR}/beggy.png" ;;
+      if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
+        install_beggy_deps && convert "${background}" ${CONVERT_OPT}                          "${WHITESUR_TMP_DIR}/beggy.png"
+      else
+        cp -r "${background}"                                                                 "${WHITESUR_TMP_DIR}/beggy.png"
+      fi
+      ;;
   esac
 }
 
@@ -203,13 +210,7 @@ install_shelly() {
 
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/assets${color}/"*".svg"                          "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities.svg"
-
-  if [[ "${gdm}" == 'true' && "${no_blur}" == "false" ]]; then
-    cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                     "${TARGET_DIR}/assets/background.png"
-  else
-    cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png"          "${TARGET_DIR}/assets/background.png"
-  fi
-
+  cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/assets/background.png"
   cp -r "${WHITESUR_TMP_DIR}/beggy-blur.png"                                                  "${TARGET_DIR}/assets/background-blur.png"
 
   (
