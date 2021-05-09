@@ -769,6 +769,16 @@ $disk_space_free: darken($bg_color, 3%);
   }
 }
 
+menu#background,
+menu#selection,
+.nemo-window menu {
+  padding: 6px;
+
+  menuitem {
+    margin: 0;
+  }
+}
+
 // Cinnamon setting
 .view.cs-category-view { border-bottom-right-radius: $wm_radius; }
 

@@ -1503,6 +1503,8 @@ headerbar {
       min-height: 0;
     }
 
+    > box > separator.titlebutton { @extend %header_separator; }
+
     > button.popup {
       &:hover {
         @include button(header-hover);
@@ -1694,10 +1696,17 @@ headerbar {
   }
 }
 
-window.background.csd.maximized {
-  > deck > box > headerbar.windowhandle {
-    border-top-left-radius: $maximized_radius;
-    border-top-right-radius: $maximized_radius;
+window.background.csd.unified {
+  > deck > box.vertical > stack > headerbar.titlebar.windowhandle {
+    > box > separator { background: none; }
+    > button:disabled { @include button(header-insensitive); }
+  }
+
+  &.maximized {
+    > deck > box > headerbar.windowhandle {
+      border-top-left-radius: $maximized_radius;
+      border-top-right-radius: $maximized_radius;
+    }
   }
 }
 
@@ -2171,8 +2180,8 @@ menu,
       check, radio {
         min-height: 16px;
         min-width: 16px;
-        &:dir(ltr) { margin-right: 6px; margin-left: 2px; }
-        &:dir(rtl) { margin-left: 6px; margin-right: 2px; }
+        &:dir(ltr) { margin-right: 6px; margin-left: 0; }
+        &:dir(rtl) { margin-left: 6px; margin-right: 0; }
       }
     }
   }
@@ -3240,7 +3249,7 @@ scrolledwindow {
 }
 
 //vbox and hbox separators
-separator {
+separator:not(.titlebutton) {
   background-color: $borders_color;
   min-width: 1px;
   min-height: 1px;

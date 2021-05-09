@@ -2,17 +2,21 @@
 %search-entry, .search-entry {
   width: 320px;
   min-height: $menuitem_size;
-  padding: 2px 10px;
-  border: none;
+  padding: 0 10px !important;
+  background-clip: padding-box;
   color: $light_hint_fg_color;
   caret-color: $light_alt_fg_color;
   selection-background-color: $light_track_color;
   selected-color: $light_alt_fg_color;
   @include search_entry(normal, $fc:$light_track_color);
 
+  &:hover {
+    @include search_entry(hover, $fc:$light_alt_fg_color);
+    color: $light_alt_fg_color;
+  }
+
   &:focus {
     @include search_entry(focus, $fc:$light_alt_fg_color);
-    border: none;
     color: $light_alt_fg_color;
   }
 
@@ -27,7 +31,6 @@
   }
 
   &:insensitive {
-    border: none;
     color: $light_disabled_fg_color;
   }
 

@@ -103,18 +103,19 @@
 
   @if $t == normal {
     background-color: $bc;
-    border-radius: 100px;
+    border-radius: $circular_radius;
     border: 2px solid transparent;
-    box-shadow: none;
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0);
   }
 
   @if $t == hover {
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05);
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.1);
+    border: 2px solid transparent;
   }
 
   @if $t == focus {
     border: 2px solid lighten($fc, 15%);
-    box-shadow: none;
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0);
   }
 
   @if $t == insensitive {
@@ -124,7 +125,7 @@
 
   @if $t == flat-normal {
     background-color: $bc;
-    border-radius: 100px;
+    border-radius: $circular_radius;
     border: none;
     box-shadow: none;
     color: $tc;
@@ -161,22 +162,25 @@
     background-color: rgba(white, 0.12);
     border-radius: $bd_radius;
     border-color: transparent;
-    // box-shadow: inset 0 0 0 1px rgba(white, 0.05);
+    box-shadow: 1px 2px 3px rgba(black, 0);
   }
 
   @if $t == focus {
     border-color: transparent;
     background-color: rgba(white, 0.18);
+    box-shadow: 1px 2px 3px rgba(black, 0);
   }
 
   @if $t == hover {
     background-color: rgba(white, 0.2);
+    border-color: transparent;
     box-shadow: 1px 2px 3px rgba(black, 0.35);
   }
 
   @if $t == insensitive {
     color: $disabled_fg_color;
-    box-shadow: none;
+    border-color: transparent;
+    box-shadow: 1px 2px 3px rgba(black, 0);
   }
 }
 
