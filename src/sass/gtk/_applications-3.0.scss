@@ -2923,11 +2923,15 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
     &, &.marching-ants { transition: none; } // unset transitions
   }
 
-  button.flat { @extend %panel_button; }
+  button.flat {
+    @extend %panel_button;
+    -gtk-icon-style: symbolic;
+  }
 
   button {
     font-weight: 700;
     @extend %panel_button;
+    -gtk-icon-style: symbolic;
 
     &#launcher-arrow { // launcher applet
       // FIXME: quite weird pseudo-classe transitions, especially :hover
@@ -2958,7 +2962,10 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
     }
   }
 
-  widget.tasklist > button.toggle { font-weight: 400; }
+  widget.tasklist > button.toggle {
+    font-weight: 400;
+    -gtk-icon-style: symbolic;
+  }
 }
 
 XfdesktopIconView.view {
@@ -3081,8 +3088,14 @@ window.thunar {
 
     // FIXME: need to unset for weird allocation height
     entry {
-      min-height: 22px;
+      min-height: if($variant == 'light', 22px, 24px);
     }
+  }
+
+  > grid > toolbar > toolitem > widget > box > entry {
+    min-height: if($variant == 'light', 22px, 24px);
+    margin-left: $container_padding / 2; // Not use!
+    -gtk-icon-style: symbolic;
   }
 
   notebook {
@@ -3095,6 +3108,12 @@ window.thunar {
     // an allocation height of label node affects to close button's
     // image height (it's quite weird).
     header.top tab.reorderable-page > box > label { min-height: 0; }
+  }
+
+  > grid > paned > grid > notebook > .standard-view {
+    > .view {
+      border-radius: $bt_radius;
+    }
   }
 }
 

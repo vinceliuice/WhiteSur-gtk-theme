@@ -2101,7 +2101,7 @@ menubar,
 menu,
 .menu {
   // margin: 4px;
-  padding: 6px 0;
+  padding: 6px;
   border-radius: $mn_radius;
   background-color: opacify($menu_bg, 1);
   border: 1px solid $solid_borders_color;
@@ -2127,9 +2127,9 @@ menu,
     min-width: 40px;
     padding: 3px 6px;
     border-radius: $mn_radius - 3px;
-    margin: 0 6px;
     text-shadow: none;
     color: $fg_color;
+    -gtk-icon-style: symbolic;
 
     &:hover {
       transition: none;
@@ -2147,6 +2147,8 @@ menu,
           text-shadow: none;
           -gtk-icon-shadow: none;
         }
+
+        menuitem { -gtk-icon-style: symbolic; }
 
         menuitem:hover {
           arrow { color: $selected_fg_color; }

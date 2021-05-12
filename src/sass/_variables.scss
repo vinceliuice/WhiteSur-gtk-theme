@@ -1,4 +1,5 @@
 @import 'theme-options-temp';
+@import 'gtk-base-temp';
 
 $asset_suffix: if($variant == 'dark', '-dark', '');
 $con_asset_suffix: if($variant=='dark', '', '-dark');
@@ -11,9 +12,9 @@ $font-family: "M+ 1c", Roboto, Cantarell, Sans-Serif;
 $large-font-family: Roboto, "M+ 1c", Cantarell, Sans-Serif;
 
 // font sizes
-$root-font-size: if($laptop == 'false', 14px, 13px);
-$subheading-size: if($laptop == 'false', 16px, 15px);
-$base_font_size: 11;
+$root-font-size: if($laptop == 'false', 15px, 13px);
+$subheading-size: if($laptop == 'false', 17px, 15px);
+$base_font_size: if($laptop == 'false', 11, 10);
 
 // opacities
 $higher_opacity: 0.9;

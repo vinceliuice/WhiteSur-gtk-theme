@@ -67,19 +67,37 @@ install_gdm_deps() {
 }
 
 install_beggy_deps() {
+  if ! has_command sassc; then
+    echo; prompt -w "'sassc' are required for this option."
+
+    if has_command zypper; then
+      rootify zypper in -y sassc
+    elif has_command apt; then
+      rootify apt install -y sassc
+    elif has_command dnf; then
+      rootify dnf install -y sassc
+    elif has_command yum; then
+      rootify yum install -y sassc
+    elif has_command pacman; then
+      rootify pacman -S --noconfirm --needed sassc
+    else
+      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies!"
+    fi
+  fi
+
   if ! has_command convert; then
     echo; prompt -w "'imagemagick' are required for this option."
 
     if has_command zypper; then
       rootify zypper in -y ImageMagick
     elif has_command apt; then
-      rootify apt install -y sassc imagemagick
+      rootify apt install -y imagemagick
     elif has_command dnf; then
-      rootify dnf install -y sassc ImageMagick
+      rootify dnf install -y ImageMagick
     elif has_command yum; then
-      rootify yum install -y sassc ImageMagick
+      rootify yum install -y ImageMagick
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed sassc imagemagick
+      rootify pacman -S --noconfirm --needed imagemagick
     else
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies!"
     fi
@@ -155,8 +173,8 @@ install_darky() {
   local opacity="$(destify ${1})"
   local theme="$(destify ${2})"
 
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark${opacity}${theme}.scss"          "${WHITESUR_TMP_DIR}/darky-3${opacity}${theme}.css"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark${opacity}${theme}.scss"          "${WHITESUR_TMP_DIR}/darky-4${opacity}${theme}.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                                "${WHITESUR_TMP_DIR}/darky-3.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                                "${WHITESUR_TMP_DIR}/darky-4.css"
 }
 
 install_xfwmy() {
@@ -197,9 +215,9 @@ install_shelly() {
   cp -r "${THEME_SRC_DIR}/main/gnome-shell/pad-osd.css"                                       "${TARGET_DIR}"
 
   if [[ "${GNOME_VERSION}" == 'new'  ]]; then
-    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/shell-40-0/gnome-shell${color}${opacity}${alt}${theme}.scss" "${TARGET_DIR}/gnome-shell.css"
+    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/shell-40-0/gnome-shell${color}.scss" "${TARGET_DIR}/gnome-shell.css"
   else
-    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/shell-3-28/gnome-shell${color}${opacity}${alt}${theme}.scss" "${TARGET_DIR}/gnome-shell.css"
+    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/shell-3-28/gnome-shell${color}.scss" "${TARGET_DIR}/gnome-shell.css"
   fi
 
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/"*".svg"                           "${TARGET_DIR}/assets"
@@ -264,13 +282,8 @@ install_theemy() {
     cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets${theme}/"*".png"                  "${TMP_DIR_T}/assets"
   fi
 
-  if [[ "${color}" == '-light' ]]; then
-    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-light${opacity}${theme}.scss"       "${TMP_DIR_T}/gtk.css"
-  else
-    cp -r "${WHITESUR_TMP_DIR}/darky-3${opacity}${theme}.css"                                 "${TMP_DIR_T}/gtk.css"
-  fi
-
-  cp -r "${WHITESUR_TMP_DIR}/darky-3${opacity}${theme}.css"                                   "${TMP_DIR_T}/gtk-dark.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk${color}.scss"                         "${TMP_DIR_T}/gtk.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                            "${TMP_DIR_T}/gtk-dark.css"
 
   mkdir -p                                                                                    "${TARGET_DIR}/gtk-3.0"
   cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}.png"                "${TARGET_DIR}/gtk-3.0/thumbnail.png"
@@ -284,13 +297,8 @@ install_theemy() {
   cp -r "${TMP_DIR_T}/assets"                                                                 "${TMP_DIR_F}"
   cp -r "${TMP_DIR_T}/windows-assets"                                                         "${TMP_DIR_F}"
 
-  if [[ "${color}" == '-light' ]]; then
-    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-light${opacity}${theme}.scss"       "${TMP_DIR_F}/gtk.css"
-  else
-    cp -r "${WHITESUR_TMP_DIR}/darky-4${opacity}${theme}.css"                                 "${TMP_DIR_F}/gtk.css"
-  fi
-
-  cp -r "${WHITESUR_TMP_DIR}/darky-4${opacity}${theme}.css"                                   "${TMP_DIR_F}/gtk-dark.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${TMP_DIR_F}/gtk.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                            "${TMP_DIR_F}/gtk-dark.css"
 
   mkdir -p                                                                                    "${TARGET_DIR}/gtk-4.0"
   cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}.png"                "${TARGET_DIR}/gtk-4.0/thumbnail.png"
@@ -301,7 +309,7 @@ install_theemy() {
   #----------------Cinnamon-----------------#
 
   mkdir -p                                                                                    "${TARGET_DIR}/cinnamon"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/cinnamon/cinnamon${color}${opacity}${theme}.scss" "${TARGET_DIR}/cinnamon/cinnamon.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/cinnamon/cinnamon${color}.scss"                   "${TARGET_DIR}/cinnamon/cinnamon.css"
   cp -r "${THEME_SRC_DIR}/assets/cinnamon/common-assets"                                      "${TARGET_DIR}/cinnamon/assets"
 
   if [[ ${theme} != '' ]]; then
@@ -357,16 +365,13 @@ install_themes() {
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
       for theme in "${themes[@]}"; do
-        install_xfwmy "${color}" &
-
-        # Darky is required by Theemy, don't make it a background process ("&")
-        install_darky "${opacity}" "${theme}"
+        install_xfwmy "${color}"
 
         for color in "${colors[@]}"; do
-          install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
+          gtk_base & install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
           process_ids+=("${!}")
 
-          install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
+          gtk_base & install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
           process_ids+=("${!}")
         done
       done
@@ -536,48 +541,71 @@ disconnect_snap() {
   done
 }
 
+#########################################################################
+#                               GTK BASE                                #
+#########################################################################
+
+gtk_base() {
+  cp -rf "${THEME_SRC_DIR}/sass/_gtk-base.scss" "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+
+  # Theme base options
+  sed ${SED_OPT} "/\$laptop/s/false/${compact}/"                                "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+
+  if [[ "${opacity}" == 'solid' ]]; then
+    sed ${SED_OPT} "/\$trans/s/true/false/"                                     "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  fi
+
+  if [[ "${color}" == 'light' && ${opacity} == 'solid' ]]; then
+    sed ${SED_OPT} "/\$black/s/false/true/"                                     "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  fi
+
+  if [[ "${theme}" != '' ]]; then
+    sed ${SED_OPT} "/\$theme/s/default/${theme}/"                               "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  fi
+}
+
 ###############################################################################
 #                               CUSTOMIZATIONS                                #
 ###############################################################################
 
 customize_theme() {
-  rm -rf "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  # rm -rf "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
   # Change gnome-shell panel transparency
   if [[ "${panel_opacity}" != 'default' ]]; then
     prompt -w "Changing panel transparency ..."
-    sed ${SED_OPT} "/\$panel_opacity/s/0.15/0.${panel_opacity}/"    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    sed ${SED_OPT} "/\$panel_opacity/s/0.15/0.${panel_opacity}/"                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change gnome-shell show apps button style
   if [[ "${showapps_normal}" == 'true' ]]; then
     prompt -w "Changing gnome-shell show apps button style ..."
-    sed ${SED_OPT} "/\$showapps_button/s/bigsur/normal/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    sed ${SED_OPT} "/\$showapps_button/s/bigsur/normal/"                        "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus sidarbar size
   if [[ "${sidebar_size}" != 'default' ]]; then
     prompt -w "Changing Nautilus sidebar size ..."
-    sed ${SED_OPT} "/\$sidebar_size/s/200px/${sidebar_size}px/"     "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    sed ${SED_OPT} "/\$sidebar_size/s/200px/${sidebar_size}px/"                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus style
   if [[ "${nautilus_style}" != 'stable' ]]; then
     prompt -w "Changing Nautilus style ..."
-    sed ${SED_OPT} "/\$nautilus_style/s/stable/${nautilus_style}/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    sed ${SED_OPT} "/\$nautilus_style/s/stable/${nautilus_style}/"              "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus titlebutton placement style
   if [[ "${right_placement}" == 'true' ]]; then
     prompt -w "Changing Nautilus titlebutton placement style ..."
-    sed ${SED_OPT} "/\$placement/s/left/right/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    sed ${SED_OPT} "/\$placement/s/left/right/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change maximized window radius
   if [[ "${max_round}" == 'true' ]]; then
     prompt -w "Changing maximized window style ..."
-    sed ${SED_OPT} "/\$max_window_style/s/square/round/" "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    sed ${SED_OPT} "/\$max_window_style/s/square/round/"                        "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 }
 

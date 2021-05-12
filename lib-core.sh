@@ -81,7 +81,7 @@ NAUTILUS_STYLE_VARIANTS=('default' 'stable' 'mojave' 'glassy')
 dest="${THEME_DIR}"
 name="${THEME_NAME}"
 colors=("${COLOR_VARIANTS}")
-opacities=("${OPACITY_VARIANTS[0]}")
+opacities=("${OPACITY_VARIANTS}")
 alts=("${ALT_VARIANTS[0]}")
 themes=("${THEME_VARIANTS[0]}")
 icon="${ICON_VARIANTS[0]}"
@@ -89,6 +89,7 @@ sidebar_size="${SIDEBAR_SIZE_VARIANTS[0]}"
 panel_opacity="${PANEL_OPACITY_VARIANTS[0]}"
 nautilus_style="${NAUTILUS_STYLE_VARIANTS[1]}"
 background="default"
+compact="true"
 
 # Ambigous arguments checking and overriding default values
 declare -A has_set=([-b]="false" [-s]="false" [-p]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")

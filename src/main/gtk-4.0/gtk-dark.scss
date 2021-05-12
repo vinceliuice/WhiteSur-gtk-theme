@@ -1,11 +1,7 @@
 $variant: 'dark';
-$laptop: 'false';
-$trans: 'true';
-$black: 'false';
-$theme: 'default';
 
-@import '../../sass/colors';
 @import '../../sass/variables';
+@import '../../sass/colors';
 @import '../../sass/gtk/drawing';
 @import '../../sass/gtk/common-4.0';
 @import '../../sass/gtk/applications-4.0';

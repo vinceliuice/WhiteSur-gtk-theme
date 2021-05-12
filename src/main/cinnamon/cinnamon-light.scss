@@ -1,10 +1,6 @@
 $variant: 'light';
-$laptop: 'true';
-$trans: 'true';
-$black: 'false';
-$theme: 'default';
 
-@import '../../sass/colors';
 @import '../../sass/variables';
+@import '../../sass/colors';
 @import '../../sass/cinnamon/drawing';
 @import '../../sass/cinnamon/common';

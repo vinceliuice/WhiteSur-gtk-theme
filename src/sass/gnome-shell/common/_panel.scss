@@ -1,9 +1,6 @@
 /* Top Bar */
 // a.k.a. the panel
 
-@if $trans == 'true' { $panel_bg:   if($variant == 'light', rgba(white, $panel_opacity), rgba(black, $panel_opacity)); }
-$shell_panel_bg: if($trans == 'true', $panel_bg, rgba($panel_bg, 0.95));
-
 #panel {
   background-color: $shell_panel_bg;
   font-weight: normal;
