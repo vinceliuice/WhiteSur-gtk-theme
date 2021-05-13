@@ -546,6 +546,7 @@ disconnect_snap() {
 #########################################################################
 
 gtk_base() {
+  # rm -rf "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   cp -rf "${THEME_SRC_DIR}/sass/_gtk-base.scss" "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
 
   # Theme base options
@@ -569,7 +570,7 @@ gtk_base() {
 ###############################################################################
 
 customize_theme() {
-  # rm -rf "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  rm -rf "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
   # Change gnome-shell panel transparency
