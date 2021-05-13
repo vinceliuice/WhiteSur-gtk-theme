@@ -361,6 +361,7 @@ install_themes() {
   process_ids=()
   install_beggy
   install_beggy_blur
+  cp -r "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
 
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
@@ -551,7 +552,7 @@ disconnect_snap() {
 
 gtk_base() {
   # rm -rf "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
-  cp -rf "${THEME_SRC_DIR}/sass/_gtk-base.scss" "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
 
   # Theme base options
   sed $SED_OPT "/\$laptop/s/false/${compact}/"                                "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
