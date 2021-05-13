@@ -2,6 +2,10 @@
   @return unquote("alpha(#{$c},#{$a})");
 }
 
+// base options
+@import 'theme-options-temp';
+@import 'gtk-base-temp';
+
 // colors palette
 @import 'colors-palette';
 
