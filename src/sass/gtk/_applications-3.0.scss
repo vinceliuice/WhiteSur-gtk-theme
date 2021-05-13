@@ -232,6 +232,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
       row.sidebar-row {
         color: $dark_sidebar_fg;
         background-color: transparent;
+        outline: none;
         transition: background-image 0;
 
         .sidebar-icon { color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%)); }
@@ -258,6 +259,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
           }
 
           &:active, &:active:hover {
+            outline: none;
             transition: background-image ease-out 200ms;
             background-repeat: no-repeat;
             background-color: transparent;
@@ -269,6 +271,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
           &:selected.has-open-popup,
           &:selected, &:selected:hover {
+            outline: none;
             color: $fg_color;
             transition: background-image ease-out 200ms;
             background-repeat: no-repeat;
@@ -2664,6 +2667,38 @@ window.background.csd {
 
     > separator {
       background: none;
+    }
+  }
+}
+
+//
+// Gnome Todo
+//
+.org-gnome-Todo {
+  stack.background, scrolledwindow.background {
+    background: none;
+  }
+
+  stack.background {
+    tasklistview {
+      .view {
+        border-radius: 0 0 $wm_radius $wm_radius;
+
+        .new-task-row {
+          // border-radius: $bt_radius; // not use!
+
+          button, entry {
+            border-radius: 3px;
+            border: none;
+          }
+
+          .linked > button,
+          .linked > entry {
+            &:not(:only-child):first-child { border-radius: 3px 0 0 3px; }
+            &:not(:only-child):not(:first-child):last-child { border-radius: 0 3px 3px 0; }
+          }
+        }
+      }
     }
   }
 }
