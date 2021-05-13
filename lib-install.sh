@@ -368,10 +368,14 @@ install_themes() {
         install_xfwmy "${color}"
 
         for color in "${colors[@]}"; do
-          gtk_base & install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
+          gtk_base "${color}" "${opacity}" "${theme}" &
+          process_ids+=("${!}") &
+          install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
           process_ids+=("${!}")
 
-          gtk_base & install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
+          gtk_base "${color}" "${opacity}" "${theme}" &
+          process_ids+=("${!}") &
+          install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
           process_ids+=("${!}")
         done
       done
