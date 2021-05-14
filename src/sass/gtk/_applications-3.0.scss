@@ -3399,6 +3399,8 @@ window#GearyMainWindow.background.csd { // <= 3.32
   geary-conversation-viewer#conversation_viewer { // right side
     background-color: $base_color;
 
+    list.background.conversation-listbox.content { background-color: $base_color; }
+
     searchbar {
       > revealer > box {
         background-color: $base_color;
