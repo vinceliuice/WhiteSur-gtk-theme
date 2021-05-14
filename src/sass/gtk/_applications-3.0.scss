@@ -364,11 +364,9 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
         background: none;
 
         > revealer > box {
-          background-color: $bg_color;
-          margin: 6px;
-          border-radius: $wm_radius - 6px;
-          box-shadow: $shadow_5, inset 0 1px $highlight_color;
-          border: none;
+          background-color: transparent;
+          padding: $container_padding * 2;
+          // border: none;
         }
       }
     }
@@ -423,10 +421,30 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     }
 
     infobar {
-      margin: 6px 10px 10px 6px;
-      border-radius: $wm_radius;
-      box-shadow: $shadow_5;
-      // padding: 0 6px;
+      & > revealer > box,
+      &:hover > revealer > box,
+      &:backdrop > revealer > box {
+        background-color: transparent;
+        padding: 0 $container_padding * 2;
+        color: $selection_mode_bg;
+
+        button {
+          color: $selection_mode_bg;
+          background-color: rgba($selection_mode_bg, 0.15);
+          border: none;
+
+          &:hover { background-color: rgba($selection_mode_bg, 0.25); }
+          &:active, &:checked { background-color: $selection_mode_bg; color: white; }
+          &:disabled {
+            background-color: rgba($selection_mode_bg, 0.05);
+            color: rgba($selection_mode_bg, 0.35);
+
+            label { color: rgba($selection_mode_bg, 0.35); }
+          }
+        }
+
+        *:link, link { color: $link_color; }
+      }
     }
   }
 

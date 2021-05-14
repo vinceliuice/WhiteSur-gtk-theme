@@ -1118,7 +1118,7 @@ modelbutton.flat arrow {
 //
 // Links
 //
-%links, *:link {
+%links, *:link, link {
   color: $link_color;
 
   &:visited {
