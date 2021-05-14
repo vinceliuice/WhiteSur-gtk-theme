@@ -1,9 +1,5 @@
 // Dash to Dock
 
-$dash_panel_bg: if($variant == 'light', rgba(#f1f1f1, 0.15), rgba(#101010, 0.25));
-$dash_panel_fg: if($variant == 'light', black, white);
-$dash_radius: 18px;
-
 // Scrollview style
 .bottom #dashtodockDashScrollview,
 .top #dashtodockDashScrollview {

@@ -162,8 +162,11 @@ $panel_fg:                          if($trans == 'true', white, $text_color);
 
 @if $black == 'true' { $panel_fg:   $text_color; }
 
-$shell_panel:    if($variant == 'light', rgba(white, $panel_opacity), rgba(black, $panel_opacity));
+$shell_panel:    if($variant == 'light', rgba(white, $panel_opacity/2 + 0.08), rgba(black, $panel_opacity));
 $shell_panel_bg: if($trans == 'true', $shell_panel, $panel_bg);
+
+$dash_panel_bg: if($variant == 'light', rgba(#f1f1f1, $panel_opacity + 0.2), rgba(#222222, $panel_opacity/2 + 0.6));
+$dash_panel_fg: if($variant == 'light', black, white);
 
 // Entry colors
 $entry_bg:                          if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05));
