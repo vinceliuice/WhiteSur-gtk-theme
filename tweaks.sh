@@ -100,8 +100,12 @@ while [[ $# -gt 0 ]]; do
         has_any_error="true"
       fi; shift ;;
     -d|--dash-to-dock)
-      dash_to_dock="true"
-
+      if [[ "${GNOME_VERSION}" == 'new'  ]]; then
+        prompt -e "'${1}' ERROR: There's no need to install on >= Gnome 40.0!"
+        has_any_error="true"
+      else
+        dash_to_dock="true"
+      fi
       if [[ ! -d "${DASH_TO_DOCK_DIR_HOME}" && ! -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
         prompt -e "'${1}' ERROR: There's no Dash to Dock installed in your system"
         has_any_error="true"

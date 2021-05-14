@@ -499,6 +499,7 @@ remove_firefox_theme() {
 ###############################################################################
 
 install_dash_to_dock_theme() {
+  cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
   if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
     backup_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "userify"
     userify sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss" "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"

@@ -135,7 +135,7 @@ else
 
   echo; install_themes; echo; prompt -s "Done!"
 
-  rm -rf "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  # rm -rf "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
 
   if is_my_distro "arch" && has_command xfce4-session; then
     msg="XFCE: you may need to logout after changing your theme to fix your panel opacity."
