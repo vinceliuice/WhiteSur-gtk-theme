@@ -1,3 +1,8 @@
+//This is the RIGHT PLACE to edit the stylesheet
+
+//let's start by telling people not to edit the generated CSS:
+$cakeisalie: "This stylesheet is generated, DO NOT EDIT";
+/* #{$cakeisalie} */
 
 %side_headerbar_left {
   background-image: none;
@@ -10,14 +15,12 @@
   background-image: none;
   background-color: rgba($base_color, 1);
   box-shadow: inset 0 1px $highlight_color;
-  border: none;
 }
 
 %side_searchbar {
-  background-color: rgba($dark_sidebar_bg, 1);
-
   > revealer > box {
-    border-color: if($variant == 'light', $solid_borders_color, $header_border);
+    background-color: rgba($dark_sidebar_bg, 1);
+    border-color: $dark_sidebar_border;
   }
 }
 
@@ -30,8 +33,8 @@
 }
 
 $list_shadow: if($variant == 'light',
-                (inset 0 0 8px rgba(black, 0.02), inset 0 0 3px rgba(black, 0.01)),
-                (inset 0 0 8px rgba(white, 0.03), inset 0 0 3px rgba(white, 0.02)));
+                (inset 0 0 8px rgba(black, 0.02), inset 0 0 3px rgba(black, 0.01), inset 0 0 0 1px rgba(black, 0.04), inset 0 1px rgba(black, 0.05)),
+                (inset 0 0 8px rgba(white, 0.03), inset 0 0 3px rgba(white, 0.02), inset 0 0 0 1px rgba(white, 0.04), inset 0 1px rgba(white, 0.06)));
 
 %circular_list {
   border-radius: $wm_radius;
@@ -61,6 +64,163 @@ $list_shadow: if($variant == 'light',
 %sidebar_row {
   margin: 2px 4px;
   border-radius: $wm_radius - 4px;
+  -gtk-outline-radius : $wm_radius - 6px;
+}
+
+// catch all extend
+%selected_items {
+  background-color: $selected_bg_color;
+  color: $selected_fg_color;
+
+  &:disabled { color: mix($selected_fg_color, $selected_bg_color, 50%); }
+}
+
+%nobg_selected_items {
+  color: $selected_fg_color;
+
+  &:disabled { color: mix($selected_fg_color, $selected_bg_color, 50%); }
+}
+
+%linked_middle {
+  border-radius: 0;
+  border-right-style: none;
+}
+
+%linked {
+  border-radius: 0;
+  border-right-style: none;
+
+  &:first-child {
+    border-top-left-radius: $bt_radius;
+    border-bottom-left-radius: $bt_radius;
+  }
+  &:last-child {
+    border-top-right-radius: $bt_radius;
+    border-bottom-right-radius: $bt_radius;
+    border-right-style: solid;
+  }
+  &:only-child {
+    border-radius: $bt_radius;
+    border-style: solid;
+  }
+}
+
+%linked-flat {
+  border-radius: 0;
+  border-right-style: none;
+
+  &:first-child {
+    border-top-left-radius: $bt_radius;
+    border-bottom-left-radius: 0;
+  }
+  &:last-child {
+    border-top-right-radius: $bt_radius;
+    border-bottom-right-radius: 0;
+    border-right-style: solid;
+  }
+  &:only-child {
+    border-radius: $bt_radius $bt_radius 0 0;
+    border-style: solid;
+  }
+}
+
+%linked_vertical_middle {
+  border-radius: 0;
+  border-bottom-style: none;
+}
+
+%linked_vertical{
+  border-radius: 0;
+  border-bottom-style: none;
+  &:first-child {
+    border-top-left-radius: $bt_radius;
+    border-top-right-radius: $bt_radius;
+  }
+  &:last-child {
+    border-bottom-left-radius: $bt_radius;
+    border-bottom-right-radius: $bt_radius;
+    border-bottom-style: solid;
+  }
+  &:only-child {
+    border-radius: $bt_radius;
+    border-style: solid;
+  }
+}
+
+%undecorated_button {
+  border-color: transparent;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+
+%circular_button {
+  border-radius: $circular_radius;
+  -gtk-outline-radius: $circular_radius;
+  padding: 0;
+  min-height: $menuitem_size;
+  min-width: $menuitem_size;
+
+  &:active, &:checked {
+    @if $variant=='light' {
+      @include button(flat-active);
+      border-color: rgba(black, 0.2);
+    }
+  }
+}
+
+// Buttons on selected backgrounds
+%selected-button {
+  color: $selected_fg_color;
+  background-color: transparentize($selected_fg_color, 1);
+  border-color: transparentize($selected_fg_color, 0.5);
+  background-image: none;
+  box-shadow: none;
+
+  &.flat {
+    @include button(undecorated);
+    color: $selected_fg_color;
+    background-color: transparentize($selected_fg_color, 1);
+    background-image: none;
+  }
+
+  &.flat:disabled {
+    &, label { color: transparentize($selected_fg_color, 0.6); }
+  }
+
+  &:hover {
+    color: $selected_fg_color;
+    background-color: transparentize($selected_fg_color, 0.8);
+    border-color: transparentize($selected_fg_color, 0.5);
+    box-shadow: none;
+  }
+
+  &:active, &:active:hover, &:checked {
+    color: $selected_fg_color;
+    background-color: transparentize($selected_fg_color, 0.6);
+    border-color: transparentize($selected_fg_color, 0.5);
+    box-shadow: none;
+  }
+
+  &:disabled {
+    &, label { color: transparentize($selected_fg_color, 0.5); }
+    background-color: transparentize($selected_fg_color, 1);
+    border-color: transparentize($selected_fg_color, 0.6);
+    box-shadow: none;
+  }
+
+  &:disabled:active, &:disabled:checked {
+    color: $selected_bg_color;
+    background-color: transparentize($selected_fg_color, 0.5);
+    border-color: transparentize($selected_fg_color, 0.6);
+  }
+}
+
+%normal_selected_button {
+  color: $selected_fg_color;
+  background-color: transparentize($selected_fg_color, 1);
+  border-color: transparentize($selected_fg_color, 0.5);
+  background-image: none;
 }
 
 //
@@ -193,6 +353,11 @@ coverflow cover {
   border: 1px solid black;
 }
 
+%dim-label, .dim-label {
+  opacity: 0.55;
+  text-shadow: none;
+}
+
 label {
   &.separator {
     @extend %dim-label;
@@ -210,13 +375,8 @@ label {
 
   &:disabled {
     color: $disabled_fg_color;
-    selection { @extend %selected_items, :disabled; }
+    selection { color: mix($selected_fg_color, $selected_bg_color, 50%); }
   }
-}
-
-%dim-label, .dim-label {
-  opacity: 0.55;
-  text-shadow: none;
 }
 
 window.assistant {
@@ -864,74 +1024,6 @@ button {
 }
 
 .linked.vertical { @include linking_rules($vert:'true'); }
-
-%linked_middle {
-  border-radius: 0;
-  border-right-style: none;
-}
-
-%linked {
-  @extend %linked_middle;
-  &:first-child {
-    border-top-left-radius: $bt_radius;
-    border-bottom-left-radius: $bt_radius;
-  }
-  &:last-child {
-    border-top-right-radius: $bt_radius;
-    border-bottom-right-radius: $bt_radius;
-    border-right-style: solid;
-  }
-  &:only-child {
-    border-radius: $bt_radius;
-    border-style: solid;
-  }
-}
-
-%linked-flat {
-  @extend %linked_middle;
-  &:first-child {
-    border-top-left-radius: $bt_radius;
-    border-bottom-left-radius: 0;
-  }
-  &:last-child {
-    border-top-right-radius: $bt_radius;
-    border-bottom-right-radius: 0;
-    border-right-style: solid;
-  }
-  &:only-child {
-    border-radius: $bt_radius $bt_radius 0 0;
-    border-style: solid;
-  }
-}
-
-%linked_vertical_middle {
-  border-radius: 0;
-  border-bottom-style: none;
-}
-
-%linked_vertical{
-  @extend %linked_vertical_middle;
-  &:first-child {
-    border-top-left-radius: $bt_radius;
-    border-top-right-radius: $bt_radius;
-  }
-  &:last-child {
-    border-bottom-left-radius: $bt_radius;
-    border-bottom-right-radius: $bt_radius;
-    border-bottom-style: solid;
-  }
-  &:only-child {
-    border-radius: $bt_radius;
-    border-style: solid;
-  }
-}
-
-%undecorated_button {
-  border-color: transparent;
-  background-color: transparent;
-  background-image: none;
-  box-shadow: none;
-}
 
 // menu buttons
 modelbutton.flat {
@@ -4007,63 +4099,6 @@ searchbar .close {
 }
 
 //
-// Buttons on selected backgrounds
-//
-
-%selected-button {
-  color: $selected_fg_color;
-  background-color: transparentize($selected_fg_color, 1);
-  border-color: transparentize($selected_fg_color, 0.5);
-  background-image: none;
-  box-shadow: none;
-
-  &.flat {
-    @include button(undecorated);
-    color: $selected_fg_color;
-    background-color: transparentize($selected_fg_color, 1);
-    background-image: none;
-  }
-
-  &.flat:disabled {
-    &, label { color: transparentize($selected_fg_color, 0.6); }
-  }
-
-  &:hover {
-    color: $selected_fg_color;
-    background-color: transparentize($selected_fg_color, 0.8);
-    border-color: transparentize($selected_fg_color, 0.5);
-    box-shadow: none;
-  }
-
-  &:active, &:checked {
-    color: $selected_fg_color;
-    background-color: transparentize($selected_fg_color, 0.6);
-    border-color: transparentize($selected_fg_color, 0.5);
-    box-shadow: none;
-  }
-
-  &:disabled {
-    &, label { color: transparentize($selected_fg_color, 0.5); }
-    background-color: transparentize($selected_fg_color, 1);
-    border-color: transparentize($selected_fg_color, 0.6);
-    box-shadow: none;
-  }
-
-  &:disabled:active, &:disabled:checked {
-    color: $selected_bg_color;
-    background-color: transparentize($selected_fg_color, 0.5);
-    border-color: transparentize($selected_fg_color, 0.6);
-  }
-}
-
-%normal_selected_button {
-  color: $selected_fg_color;
-  background-color: transparentize($selected_fg_color, 1);
-  border-color: transparentize($selected_fg_color, 0.5);
-  background-image: none;
-}
-
-//
 // Tooltips
 //
 tooltip {
@@ -4226,19 +4261,8 @@ colorchooser .popover.osd { border-radius: $bt_radius; }
 //
 // Shortcuts Help
 //
-%circular_button,
 button.circular {
-  border-radius: 100px;
-  padding: 0 0 0 0;
-  min-height: 28px;
-  min-width: 28px;
-
-  &:active, &:checked {
-    @if $variant=='light' {
-      @include button(flat-active);
-      border-color: rgba(black, 0.2);
-    }
-  }
+  @extend %circular_button;
 
   // label { padding: 0; }
 }
@@ -4395,23 +4419,9 @@ windowcontrols {
   }
 }
 
-// catch all extend
-%selected_items {
-  background-color: $selected_bg_color;
-  color: $selected_fg_color;
-
-  &:disabled { color: mix($selected_fg_color, $selected_bg_color, 50%); }
-}
-
-%nobg_selected_items {
-  color: $selected_fg_color;
-
-  &:disabled { color: mix($selected_fg_color, $selected_bg_color, 50%); }
-}
-
-/*********
- * Emoji *
- *********/
+// /*********
+//  * Emoji *
+//  *********/
 popover.emoji-picker {
   padding: 0;
   border-radius: $wm_radius;
