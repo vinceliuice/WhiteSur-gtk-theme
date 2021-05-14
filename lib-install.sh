@@ -361,7 +361,7 @@ install_themes() {
   process_ids=()
   install_beggy
   install_beggy_blur
-  cp -r "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
+  cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
 
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
