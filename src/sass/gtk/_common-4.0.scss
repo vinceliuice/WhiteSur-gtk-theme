@@ -154,21 +154,6 @@ $list_shadow: if($variant == 'light',
   box-shadow: none;
 }
 
-%circular_button {
-  border-radius: $circular_radius;
-  -gtk-outline-radius: $circular_radius;
-  padding: 0;
-  min-height: $menuitem_size;
-  min-width: $menuitem_size;
-
-  &:active, &:checked {
-    @if $variant=='light' {
-      @include button(flat-active);
-      border-color: rgba(black, 0.2);
-    }
-  }
-}
-
 // Buttons on selected backgrounds
 %selected-button {
   color: $selected_fg_color;
@@ -832,8 +817,18 @@ button {
     &.popup { padding-right: 6px; padding-left: 6px; }
   }
 
-  &.close { // The Bloody Circul Button
-    @extend %circular_button;
+  @at-root %circular_button, &.close { // The Bloody Circul Button
+    border-radius: $circular_radius;
+    padding: 0 0 0 0;
+    min-height: $menuitem_size;
+    min-width: $menuitem_size;
+
+    &:active, &:checked {
+      @if $variant=='light' {
+        @include button(flat-active);
+        border-color: rgba(black, 0.2);
+      }
+    }
   }
 
   @at-root %button_basic_drop_active,
