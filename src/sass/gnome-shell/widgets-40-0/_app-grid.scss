@@ -15,6 +15,12 @@ $app_icon_size: 96px;
 
 .app-folder-dialog {
   background-color: rgba(#262626, 0.9);
+
+  .page-navigation-hint { width: 80px; }
+
+  .page-navigation-arrow {
+    margin: $container_padding * 3;
+  }
 }
 
 .apps-scroll-view {
@@ -30,23 +36,25 @@ $app_icon_size: 96px;
 
   &.next:ltr,
   &.previous:rtl {
-    background-gradient-start: rgba(255, 255, 255, 0.05);
+    background-gradient-start: $light_divider_color;
     background-gradient-end: transparent;
     background-gradient-direction: horizontal;
-    border-radius: 15px 0px 0px 15px;
+    border-radius: $modal_radius 0px 0px $modal_radius;
   }
 
   &.previous:ltr,
   &.next:rtl {
     background-gradient-start: transparent;
-    background-gradient-end: rgba(255, 255, 255, 0.05);
+    background-gradient-end: $light_divider_color;
     background-gradient-direction: horizontal;
-    border-radius: 0px 15px 15px 0px;
+    border-radius: 0px $modal_radius $modal_radius 0px;
   }
 }
 
 .page-navigation-arrow {
-  margin: 6px;
+  margin: $container_padding;
   width: 24px;
   height: 24px;
+  color: $light_alt_fg_color;
+  icon-size: 24px;
 }

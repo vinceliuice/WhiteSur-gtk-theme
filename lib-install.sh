@@ -173,8 +173,8 @@ install_darky() {
   local opacity="$(destify ${1})"
   local theme="$(destify ${2})"
 
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                                "${WHITESUR_TMP_DIR}/darky-3.css"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                                "${WHITESUR_TMP_DIR}/darky-4.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                            "${WHITESUR_TMP_DIR}/darky-3.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                            "${WHITESUR_TMP_DIR}/darky-4.css"
 }
 
 install_xfwmy() {
@@ -551,7 +551,6 @@ disconnect_snap() {
 #########################################################################
 
 gtk_base() {
-  # rm -rf "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
 
   # Theme base options
