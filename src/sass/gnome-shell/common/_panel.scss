@@ -2,7 +2,7 @@
 // a.k.a. the panel
 
 #panel {
-  background-color: $shell_panel_bg;
+  background-color: $panel_bg;
   font-weight: normal;
   height: $menuitem_size;
   box-shadow: 0 5px 16px rgba(black, 0.35);
@@ -44,7 +44,7 @@
   // the rounded outset corners
   .panel-corner {
     -panel-corner-radius: 0;
-    -panel-corner-background-color: $shell_panel_bg;
+    -panel-corner-background-color: $panel_bg;
     -panel-corner-border-width: 2px;
     -panel-corner-border-color: transparent;
     -panel-corner-opacity: 1;

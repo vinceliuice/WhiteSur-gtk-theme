@@ -1,18 +1,7 @@
 /* OSD */
 
-$osd_levelbar_height: 8px;
-
-%osd_panel {
-  color: $fg_color;
-  background-color: $base_color;
-  border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
-  box-shadow: 0 3px 8px 0 rgba(black, 0.25);
-  border-radius: $bt_radius;
-  padding: 12px;
-}
-
 .osd-window {
-  @extend %osd_panel !optional;
+  @extend %osd_panel;
   text-align: center;
   font-weight: bold;
   spacing: 1em;

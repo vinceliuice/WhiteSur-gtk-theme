@@ -89,14 +89,14 @@
     }
   }
 
-  &.dashtodock #dash { background: $dash_panel_bg; }
+  &.dashtodock #dash { background: $dash_bg; }
 
   &.opaque #dash { // solid-mode
-    background: $dash_panel_bg;
+    background: $dash_bg;
   }
 
   &.transparent #dash { // translucent-mode
-    background: $dash_panel_bg; // does not work
+    background: $dash_bg; // does not work
   }
 
   &:overview #dash { // overview-mode #1
@@ -115,7 +115,7 @@
   &.opaque.extended:overview,
   &.transparent.extended:overview {
     #dash {
-      background-color: $dash_panel_bg;
+      background-color: $dash_bg;
     }
   }
 

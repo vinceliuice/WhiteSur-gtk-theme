@@ -15,7 +15,7 @@
   background-color: transparent;
 
   .app-well-app-running-dot {
-    background-color: $dash_panel_fg;
+    background-color: $dash_fg;
   }
 
   .number-overlay {
@@ -93,13 +93,13 @@
     }
   }
 
-  &.dashtodock #dash { background-color: $dash_panel_bg; }
+  &.dashtodock #dash { background-color: $dash_bg; }
 
   #dash { // default-mode
-    background-color: $dash_panel_bg;
+    background-color: $dash_bg;
 
     .app-well-app-running-dot {
-      background-color: rgba($dash_panel_fg, 0.85);
+      background-color: rgba($dash_fg, 0.85);
     }
 
     StWidget.focused .app-well-app-running-dot {
@@ -108,11 +108,11 @@
   }
 
   &.opaque #dash { // solid-mode
-    background-color: $dash_panel_bg;
+    background-color: $dash_bg;
   }
 
   &.transparent #dash { // translucent-mode
-    background-color: $dash_panel_bg; // does not work
+    background-color: $dash_bg; // does not work
   }
 
   &:overview #dash { // overview-mode #1
@@ -139,7 +139,7 @@
   &.opaque.extended:overview,
   &.transparent.extended:overview {
     #dash {
-      background-color: $dash_panel_bg;
+      background-color: $dash_bg;
     }
   }
 

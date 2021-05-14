@@ -1,6 +1,4 @@
 
-@if $trans == 'true' { $panel_bg:   if($variant == 'light', rgba(white, $panel_opacity), rgba(black, $panel_opacity)); }
-
 //
 // GNOME Terminal, MATE Terminal
 //

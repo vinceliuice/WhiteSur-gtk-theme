@@ -25,23 +25,6 @@ $dash_placeholder_size: 32px;
   @include font(body-1);
 }
 
-%show_apps_bigsur {
-  .show-apps-icon {
-    color: transparent;
-    background-image: url("assets/view-app-grid.svg");
-    background-size: contain;
-  }
-
-  .overview-icon { color: transparent; }
-
-  &:hover,
-  &:active,
-  &:checked,
-  &:focus {
-    .show-apps-icon { color: transparent; }
-  }
-}
-
 // Show apps button
 .show-apps {
   @if $showapps_button == "bigsur" {
