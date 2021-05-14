@@ -33,7 +33,7 @@ Don't worry, WhiteSur installer already provides all of those dependencies.
 
 - [floating-dock](https://extensions.gnome.org/extension/3730/floating-dock) `Gnome-shell <= 3.38`
 - [dash-to-dock](https://extensions.gnome.org/extension/307/dash-to-dock) `Gnome-shell <= 3.38`
-- [dash-to-dock](https://github.com/ewlsh/dash-to-dock) `Gnome-shell >= 40.0`
+- [dash-to-dock](https://github.com/ewlsh/dash-to-dock/tree/ewlsh/gnome-40) `Gnome-shell >= 40.0`
 - [blur-my-shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
 
 </details>
