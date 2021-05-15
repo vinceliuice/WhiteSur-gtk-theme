@@ -376,7 +376,9 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     .path-bar-box {
       color: transparent;
       background: none;
-      padding: 0 12px;
+      padding: 0 $container_padding * 2;
+      border: none;
+      margin: 0;
 
       .linked.nautilus-path-bar { // for ≥ 3.31.90
         > button:not(:only-child):last-child {

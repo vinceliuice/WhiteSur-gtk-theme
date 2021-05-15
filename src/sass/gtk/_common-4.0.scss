@@ -2380,15 +2380,31 @@ popover.menu {
     min-width: $large_size * 2;
     padding: $container_padding / 3 $container_padding;
     border-radius: $mn_radius - $container_padding / 2;
+    transition: none;
 
-    &:selected {
+    &:focus {
+      background-color: transparent;
+      color: $fg_color;
+      box-shadow: inset 0 0 0 2px rgba($fg_color, 0.06);
+      transition: none;
+    }
+
+    &:hover {
       color: $selected_fg_color;
       background-color: $selected_bg_color;
+      transition: background-color $shorter_duration $deceleration_curve;
+    }
+
+    &:hover:focus {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+      box-shadow: none;
     }
 
     &:selected:active {
       color: $selected_fg_color;
       background-color: darken($selected_bg_color, 5%); // matching buttons
+      transition: background-color $shorter_duration $deceleration_curve;
     }
   }
 
@@ -4432,8 +4448,8 @@ popover.emoji-picker {
 }
 
 .emoji-toolbar {
-  padding: $container_padding;
-  border-spacing: $container_padding;
+  padding: $container_padding / 3;
+  border-spacing: $container_padding / 3;
   border-top: 1px solid $borders_color;
 }
 
@@ -4464,7 +4480,7 @@ popover.emoji-picker emoji {
 }
 
 emoji-completion-row > box {
-  border-spacing: $container_padding + 4px;
+  border-spacing: $container_padding;
   padding: $container_padding / 2 $container_padding + 4px;
 }
 

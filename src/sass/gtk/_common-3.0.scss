@@ -790,7 +790,7 @@ button {
     }
   }
 
-  &.image-button {
+  &.image-button, &.popup {
     min-height: $menuitem_size - 4px;
     padding-left: $container_padding;
     padding-right: $container_padding;
@@ -1466,7 +1466,8 @@ actionbar {
 
 // Headerbar Entries
 %headerbar_entrys {
-  // min-height: $menuitem_size - 4px;
+  min-height: $menuitem_size - 4px;
+  padding: 2px $container_padding + 2px;
   @include entry(header-normal);
 
   &:backdrop { opacity: 0.65; background-image: none; }
@@ -1598,6 +1599,7 @@ headerbar {
     border-radius: $bt_radius;
     border: none;
     box-shadow: none;
+    margin-top: if($laptop == 'true', 8px, 10px);
 
     &:disabled { background: none; }
   }
@@ -1611,8 +1613,9 @@ headerbar {
   // Reset linking entrys
   .linked:not(.vertical) > entry {
     @include entry(header-normal);
-    margin: 8px ($container_padding/2 + 1px);
-    padding: 0 $container_padding * 2;
+    margin-left: $container_padding / 2;
+    margin-right: $container_padding / 2;
+    margin-top: if($laptop == 'true', 8px, 10px);
     border-radius: $bt_radius;
     border: none;
 
