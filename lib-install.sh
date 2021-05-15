@@ -413,7 +413,7 @@ install_gdm_theme() {
 
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
     install_beggy_blur
-    install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
+    gtk_base & install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
     sed $SED_OPT "s|assets|${WHITESUR_GS_DIR}/assets|" "${WHITESUR_GS_DIR}/gnome-shell.css"
 
     if check_theme_file "${UBUNTU_CSS_FILE}"; then
@@ -430,10 +430,10 @@ install_gdm_theme() {
     restore_file "${ETC_CSS_FILE}"
   else # GR-based theme
     install_beggy_blur
-    install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_TMP_DIR}/shelly"
+    gtk_base & install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_TMP_DIR}/shelly"
     sed $SED_OPT "s|assets|resource:///org/gnome/shell/theme/assets|" "${WHITESUR_TMP_DIR}/shelly/gnome-shell.css"
 
-    if check_theme_file "$POP_OS_GR_FILE"; then
+    if check_theme_file "$POP_OS_GR_F & ILE"; then
       TARGET="${POP_OS_GR_FILE}"
     elif check_theme_file "$YARU_GR_FILE"; then
       TARGET="${YARU_GR_FILE}"
