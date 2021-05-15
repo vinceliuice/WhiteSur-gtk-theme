@@ -56,22 +56,22 @@
   padding: 12px;
 
   & .folder-name-container {
-    padding: 24px 36px 0;
-    spacing: 12px;
+    padding: $container_padding * 3 $container_padding * 4 0;
+    spacing: $base_spacing * 2;
 
     & .folder-name-label,
     & .folder-name-entry {
-      font-size: 18pt;
+      font-size: if($laptop == 'true', 16pt, 18pt);
       font-weight: bold;
     }
 
     & .folder-name-entry {
       @extend %search-entry;
-      width: 300px;
+      width: if($laptop == 'true', 240px, 320px) !important;
     }
 
     /* FIXME: this is to keep the label in sync with the entry */
-    & .folder-name-label { padding: 5px 7px; color: $light_alt_fg_color; }
+    & .folder-name-label { padding: $base_padding; color: $light_alt_fg_color; }
 
     & .edit-folder-button {
       background-color: $light_divider_color;
@@ -90,8 +90,8 @@
   }
 
   & .icon-grid {
-    row-spacing: $container_padding * 2;
-    column-spacing: $container_padding * 5;
+    row-spacing: 12px;
+    column-spacing: 30px;
     page-padding-top: 0;
     page-padding-bottom: 0;
     page-padding-left: 0;
@@ -105,8 +105,8 @@
 
 .app-folder-dialog-container {
   padding: $container_padding;
-  width: 620px;
-  height: 620px;
+  width: if($laptop == 'true', 500px, 620px);
+  height: if($laptop == 'true', 500px, 620px);
 }
 
 // Running app indicator (also shown in dash)

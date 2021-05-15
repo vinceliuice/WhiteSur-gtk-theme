@@ -1,25 +1,25 @@
 
-$app_icon_size: 96px;
-
 // app icons
 .icon-grid {
-  row-spacing: $base_spacing * 2;
-  column-spacing: $base_spacing * 2;
-  max-row-spacing: $base_spacing * 12;
-  max-column-spacing: $base_spacing * 12;
-  page-padding-top: $base_padding * 4;
-  page-padding-bottom: $base_padding * 4;
-  page-padding-left: $base_padding * 2;
-  page-padding-right: $base_padding * 2;
+  row-spacing: 12px;
+  column-spacing: 12px;
+  max-row-spacing: 72px;
+  max-column-spacing: 72px;
+  page-padding-top: 24px;
+  page-padding-bottom: 24px;
+  page-padding-left: 12px;
+  page-padding-right: 12px;
 }
 
 .app-folder-dialog {
   background-color: rgba(#262626, 0.9);
 
-  .page-navigation-hint { width: 80px; }
+  .page-navigation-hint {
+    width: if($laptop == 'true', 60px, 80px);
+  }
 
   .page-navigation-arrow {
-    margin: $container_padding * 3;
+    margin: 18px;
   }
 }
 
@@ -28,7 +28,7 @@ $app_icon_size: 96px;
 }
 
 .page-navigation-hint {
-  width: 300px;
+  width: if($laptop == 'true', 220px, 300px);
 
   &.dnd {
     background: rgba(255, 255, 255, 0.1);
