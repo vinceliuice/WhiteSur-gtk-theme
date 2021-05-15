@@ -34,7 +34,8 @@ usage() {
   helpify "-s, --size"           "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]"   "Set Nautilus sidebar minimum width"               "Default is 200px"
   helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"           "Set 'Activities' icon"                            "Default is 'standard'"
   helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                         "Set gnome-shell background image"                 "Default is BigSur-like wallpaper"
-  helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                               "Default is BigSur-like style"
+  helpify "-HD, --highdefinition"         ""                                          "Set to High Definition size"                      "Default is laptop size"
+  helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
   helpify "--round, --roundedmaxwindow"   ""                                          "Set maximized window to rounded"                  "Default is square"
   helpify "--right, --rightplacement"     ""                                          "Set Nautilus titlebutton placement style to right" "Default is left"
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
@@ -71,6 +72,8 @@ while [[ $# -gt 0 ]]; do
       right_placement="true"; shift ;;
     --round|--roundedmaxwindow)
       max_round="true"; shift ;;
+    -HD|--highdefinition)
+      compact="false"; shift ;;
     -h|--help)
       need_help="true"; shift ;;
       # Parameters that require value, single use

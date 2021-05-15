@@ -555,18 +555,18 @@ gtk_base() {
   cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
 
   # Theme base options
-  sed $SED_OPT "/\$laptop/s/false/${compact}/"                                "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  sed $SED_OPT "/\$laptop/s/false/${compact}/"                                  "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
 
   if [[ "${opacity}" == 'solid' ]]; then
-    sed $SED_OPT "/\$trans/s/true/false/"                                     "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+    sed $SED_OPT "/\$trans/s/true/false/"                                       "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 
   if [[ "${color}" == 'light' && ${opacity} == 'solid' ]]; then
-    sed $SED_OPT "/\$black/s/false/true/"                                     "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+    sed $SED_OPT "/\$black/s/false/true/"                                       "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 
   if [[ "${theme}" != '' ]]; then
-    sed $SED_OPT "/\$theme/s/default/${theme}/"                               "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+    sed $SED_OPT "/\$theme/s/default/${theme}/"                                 "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 }
 
@@ -580,38 +580,42 @@ customize_theme() {
 
   # Change gnome-shell panel transparency
   if [[ "${panel_opacity}" != 'default' ]]; then
-    prompt -w "Changing panel transparency ..."
-    sed $SED_OPT "/\$panel_opacity/s/0.15/0.${panel_opacity}/"                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    prompt -s "Changing panel transparency ..."
+    sed $SED_OPT "/\$panel_opacity/s/0.15/0.${panel_opacity}/"                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change gnome-shell show apps button style
   if [[ "${showapps_normal}" == 'true' ]]; then
-    prompt -w "Changing gnome-shell show apps button style ..."
-    sed $SED_OPT "/\$showapps_button/s/bigsur/normal/"                        "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    prompt -s "Changing gnome-shell show apps button style ..."
+    sed $SED_OPT "/\$showapps_button/s/bigsur/normal/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus sidarbar size
   if [[ "${sidebar_size}" != 'default' ]]; then
-    prompt -w "Changing Nautilus sidebar size ..."
-    sed $SED_OPT "/\$sidebar_size/s/200px/${sidebar_size}px/"                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    prompt -s "Changing Nautilus sidebar size ..."
+    sed $SED_OPT "/\$sidebar_size/s/200px/${sidebar_size}px/"                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus style
   if [[ "${nautilus_style}" != 'stable' ]]; then
-    prompt -w "Changing Nautilus style ..."
-    sed $SED_OPT "/\$nautilus_style/s/stable/${nautilus_style}/"              "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    prompt -s "Changing Nautilus style ..."
+    sed $SED_OPT "/\$nautilus_style/s/stable/${nautilus_style}/"                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus titlebutton placement style
   if [[ "${right_placement}" == 'true' ]]; then
-    prompt -w "Changing Nautilus titlebutton placement style ..."
-    sed $SED_OPT "/\$placement/s/left/right/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    prompt -s "Changing Nautilus titlebutton placement style ..."
+    sed $SED_OPT "/\$placement/s/left/right/"                                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change maximized window radius
   if [[ "${max_round}" == 'true' ]]; then
-    prompt -w "Changing maximized window style ..."
-    sed $SED_OPT "/\$max_window_style/s/square/round/"                        "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    prompt -s "Changing maximized window style ..."
+    sed $SED_OPT "/\$max_window_style/s/square/round/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
+  if [[ "${compact}" == 'false' ]]; then
+    prompt -s "Changing Definition mode to HD (Bigger font, Bigger size) ..."
   fi
 }
 
