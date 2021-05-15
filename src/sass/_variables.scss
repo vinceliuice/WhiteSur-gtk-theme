@@ -30,22 +30,22 @@ $small_size: if($laptop == 'false', 24px, 20px);
 $medium_size: if($laptop == 'false', 36px, 32px);
 $large_size: if($laptop == 'false', 48px, 44px);
 $menuitem_size: if($laptop == 'false', 32px, 28px);
-$container_padding: if($laptop == 'false', 6px, 4px);
-$nautilus_headerbar_size: 42px;
+$container_padding: if($laptop == 'false', 8px, 6px);
+$headerbar_size: if($laptop == 'false', 42px, 38px);
 
 // padding, margin and spacing
-$base_padding: 6px;
-$base_margin: 4px;
-$base_spacing: 6px;
+$base_padding: if($laptop == 'false', 6px, 4px);
+$base_margin: if($laptop == 'false', 4px, 3px);
+$base_spacing: if($laptop == 'false', 6px, 4px);
 
 // radiuses
 $circular_radius: 9999px;
-$bt_radius: 6px;
-$bd_radius: 8px;
-$wm_radius: 12px;
-$mn_radius: 10px;
-$dash_radius: 18px;
-$base_border_radius: 8px;
+$bt_radius: if($laptop == 'false', 6px, 6px);
+$bd_radius: if($laptop == 'false', 8px, 8px);
+$wm_radius: if($laptop == 'false', 12px, 12px);
+$mn_radius: if($laptop == 'false', 10px, 10px);
+$dash_radius: if($laptop == 'false', 24px, 18px);
+$base_border_radius: if($laptop == 'false', 8px, 8px);
 $modal_radius: $base_border_radius * 2;
 $maximized_radius: 0;
 

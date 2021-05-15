@@ -429,7 +429,7 @@ assistant {
 
   &.csd .sidebar { border-top-style: none; }
 
-  .sidebar label { padding: 6px 12px; }
+  .sidebar label { padding: $container_padding $container_padding * 2; }
 
   .sidebar label.highlight {
     background-color: $selected_bg_color;
@@ -532,9 +532,9 @@ spinner {
 }
 
 entry {
-  min-height: 24px;
+  min-height: $menuitem_size - 4px;
   border: none;
-  padding: 2px 8px;
+  padding: 2px $container_padding + 2px;
   border-radius: $bt_radius;
   caret-color: currentColor;
 
@@ -545,8 +545,8 @@ entry {
   image { // icons inside the entry
     color: mix($fg_color, $base_color, 80%);
 
-    &.left { padding-left: 0; padding-right: 5px; }
-    &.right { padding-right: 0; padding-left: 5px; }
+    &.left { padding-left: 0; padding-right: $container_padding; }
+    &.right { padding-right: 0; padding-left: $container_padding; }
   }
 
   @at-root %flat_entry, &.flat {
@@ -650,7 +650,7 @@ entry {
 }
 
 .entry-tag {
-  $tag_height: 24px;
+  $tag_height: $menuitem_size - 4px;
   $tag_margin: 8px;
 
   margin: $tag_margin; // instead of min-height: $tag_height;
@@ -739,19 +739,19 @@ $_dot_color: $selected_bg_color;
 }
 
 button {
-  min-height: 20px;
-  min-width: 16px;
+  min-height: $menuitem_size - 4px;
+  min-width: $menuitem_size - 10px;
   transition: $button_transition;
   border: 1px solid;
   border-radius: $bt_radius;
-  padding: 0 6px;
+  padding: 0 $container_padding + 2px;
   @include button(normal);
 
   separator { margin: 4px 1px; }
 
   &.flat {
     @extend %flat_button;
-    min-height: if($variant =='light', 24px, 24px);
+    min-height: $menuitem_size - 4px;
     transition: none;
 
     &:hover {
@@ -764,7 +764,7 @@ button {
     &:checked:hover { background-image: none; }
 
     &.toggle.popup {
-      min-width: 20px;
+      min-width: $menuitem_size - 8px;
     }
   }
 
@@ -791,40 +791,40 @@ button {
   }
 
   &.image-button {
-    min-height: 24px;
-    padding-left: 5px;
-    padding-right: 5px;
+    min-height: $menuitem_size - 4px;
+    padding-left: $container_padding;
+    padding-right: $container_padding;
   }
 
   &.text-button {
-    min-height: 24px;
-    padding-left: 12px;
-    padding-right: 12px;
+    min-height: $menuitem_size - 4px;
+    padding-left: $container_padding * 2;
+    padding-right: $container_padding * 2;
   }
 
   &.text-button.image-button {
-    min-height: 24px;
-    padding-left: 5px;
-    padding-right: 5px;
+    min-height: $menuitem_size - 4px;
+    padding-left: $container_padding;
+    padding-right: $container_padding;
 
     label {
       &:first-child {
-        padding-left: 8px;
-        padding-right: 2px;
+        padding-left: $container_padding + 2;
+        padding-right: $container_padding / 2;
       }
 
       &:last-child {
-        padding-right: 8px;
-        padding-left: 2px;
+        padding-right: $container_padding + 2;
+        padding-left: $container_padding / 2;
       }
 
       &:only-child {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding-left: $container_padding + 2px;
+        padding-right: $container_padding + 2px;
       }
     }
 
-    &.popup { padding-right: 6px; padding-left: 6px; }
+    &.popup { padding-right: $container_padding; padding-left: $container_padding; }
   }
 
   @at-root %circular_button, &.close { // The Bloody Circul Button
@@ -933,16 +933,16 @@ button {
     outline-offset: -3px; // needs to be set or it gets overridden by GtkRadioButton outline-offset
 
     > label {
-      padding-left: 6px;  // label padding
-      padding-right: 6px; //
+      padding-left: $container_padding;  // label padding
+      padding-right: $container_padding; //
     }
     > image {
-      padding-left: 6px;
-      padding-right: 6px;
+      padding-left: $container_padding;
+      padding-right: $container_padding;
     }
     &.text-button {
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: $container_padding + 4px;
+      padding-right: $container_padding + 4px;
     }
     &.image-button {
       padding-left: 2px;
@@ -1075,9 +1075,9 @@ toolbar.inline-toolbar toolbutton {
 menuitem.button.flat,
 modelbutton.flat {
   transition: $shorter_transition;
-  min-height: 26px;
-  padding-left: 8px;
-  padding-right: 8px;
+  min-height: 20px + $container_padding;
+  padding-left: $container_padding + 2px;
+  padding-right: $container_padding + 2px;
   outline-offset: -3px;
   border-radius: $bt_radius;
   @extend %undecorated_button;
@@ -1089,7 +1089,8 @@ modelbutton.flat {
 
   &:active, &:selected {
     &, arrow {
-      @extend %selected_items;
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
       transition: none;
       animation: none;
     }
@@ -1175,10 +1176,10 @@ spinbutton {
     entry {
       padding-top: 2px;
       padding-bottom: 2px;
-      min-width: 28px;
+      min-width: $menuitem_size;
     }
 
-    button, entry { @extend %linked; min-height: 20px; }
+    button, entry { @extend %linked; min-height: $small_size; }
 
     &:dir(ltr) entry,
     &:dir(rtl) button.up { border-radius: $bt_radius 0 0 $bt_radius; }
@@ -1213,8 +1214,8 @@ spinbutton {
 
   &.vertical {
     button, entry {
-      padding-left: 4px;
-      padding-right: 4px;
+      padding-left: $container_padding - 2px;
+      padding-right: $container_padding - 2px;
       min-width: 0;
       @extend %linked_vertical;
     }
@@ -1232,14 +1233,14 @@ spinbutton {
 // Comboboxes
 //
 combobox {
-  min-height: 16px;
+  min-height: $menuitem_size - 4px;
 
   button.combo {
     min-width: 0;       // otherwise the arrow placement is unsymmetric
-    min-height: 16px;
+    min-height: $menuitem_size - 4px;
     // margin: 0;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: $container_padding * 2;
+    padding-right: $container_padding * 2;
   }
 
   arrow {
@@ -1254,9 +1255,9 @@ combobox {
                        url("assets/combobox-arrow-dark.png"),
                        url("assets/combobox-arrow-dark@2.png"));
     min-height: 16px;
-    min-width: 18px;
+    min-width: $menuitem_size - 10px;
     padding: 0;
-    margin: 2px -10px 2px 0;
+    margin: 2px (-$menuitem_size + 18px) 2px 0;
     border-radius: $bt_radius - 1px;
     border: none;
 
@@ -1340,7 +1341,7 @@ combobox {
 //
 %toolbar, toolbar {
   -GtkWidget-window-dragging: true;
-  padding: 4px;
+  padding: $container_padding;
   background-color: $header_bg;
   // border-radius: $wm_radius;
 
@@ -1353,7 +1354,7 @@ combobox {
   .osd & { background-color: transparent; }
 
   &.osd {
-    padding: 8px;
+    padding: $container_padding;
     border: none;
     border-radius: $bt_radius + 4px;
     background-color: $osd_bg_color;
@@ -1366,7 +1367,7 @@ combobox {
       background: none;
 
       > box.horizontal {
-        padding: 8px;
+        padding: $container_padding;
         border-radius: $bt_radius + 4px;
         background-color: $osd_bg_color;
         box-shadow: $shadow_4;
@@ -1402,7 +1403,7 @@ combobox {
   border-style: solid;
   border-color: $borders_color;
   border-width: 0 1px 1px;
-  padding: 3px;
+  padding: $container_padding / 2;
 
   .background.csd & {
     border-radius: 0 0 $bt_radius $bt_radius;
@@ -1416,12 +1417,10 @@ searchbar {
   border: none;
 
   > revealer > box {
-    padding: 6px;
-    margin: -6px;
-    border-style: solid;
+    padding: $container_padding;
+    margin: -$container_padding;
     background-color: $bg_color;
-    border-color: $solid_borders_color;
-    border-width: 0 0 1px;
+    border-bottom: 1px solid $borders_color;
   }
 
   .linked:not(.vertical) {
@@ -1441,7 +1440,7 @@ actionbar {
   background-color: transparent;
 
   > revealer > box {
-    padding: 6px;
+    padding: $container_padding;
     border-top: 1px solid $borders_color;
     background-color: darken($bg_color, 3%);
   }
@@ -1467,7 +1466,7 @@ actionbar {
 
 // Headerbar Entries
 %headerbar_entrys {
-  min-height: 22px;
+  // min-height: $menuitem_size - 4px;
   @include entry(header-normal);
 
   &:backdrop { opacity: 0.65; background-image: none; }
@@ -1517,8 +1516,8 @@ actionbar {
 
 // Headerbar Buttons
 %headerbar_buttons {
-  min-height: 26px;
-  min-width: 22px;
+  // min-height: $menuitem_size - 4px;
+  // min-width: $menuitem_size - 4px;
   @include button(header-normal);
 
   &:backdrop { opacity: 0.65; background-image: none; }
@@ -1556,8 +1555,8 @@ actionbar {
 }
 
 headerbar {
-  min-height: 40px;
-  padding: 0 16px;
+  min-height: $headerbar_size;
+  padding: 0 $container_padding + 10px;
   color: $header_fg;
   background-color: $header_bg;
   border-bottom: 1px solid $header_border;
@@ -1570,14 +1569,14 @@ headerbar {
   }
 
   .title {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: $container_padding * 2;
+    padding-right: $container_padding * 2;
   }
 
   .subtitle {
     font-size: smaller;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: $container_padding * 2;
+    padding-right: $container_padding * 2;
     margin-top: -3px;
     @extend %dim-label;
   }
@@ -1586,7 +1585,7 @@ headerbar {
 
   button { @extend %headerbar_buttons; }
 
-  button, spinbutton {
+  button, spinbutton, entry, stackswitcher {
     margin-top: 8px;
     margin-bottom: 8px;
   }
@@ -1595,7 +1594,7 @@ headerbar {
 
   // Reset linked buttons
   .linked:not(.vertical):not(.stack-switcher) > button {
-    min-width: 20px;
+    min-width: $menuitem_size - 8px;
     border-radius: $bt_radius;
     border: none;
     box-shadow: none;
@@ -1604,16 +1603,16 @@ headerbar {
   }
 
   stackswitcher.linked.stack-switcher:not(.vertical) > button {
-    min-height: 26px;
-    min-width: 20px;
+    // min-height: 26px;
+    min-width: $menuitem_size - 4px;
     border-radius: $bt_radius;
   }
 
   // Reset linking entrys
   .linked:not(.vertical) > entry {
     @include entry(header-normal);
-    margin: 8px 3px;
-    padding: 0 8px;
+    margin: 8px ($container_padding/2 + 1px);
+    padding: 0 $container_padding * 2;
     border-radius: $bt_radius;
     border: none;
 
@@ -1633,11 +1632,10 @@ headerbar {
   stackswitcher, .stack-switcher {
     box-shadow: inset 0 0 0 1px $light_borders_color;
     border-radius: $bt_radius;
-    margin: 8px 0;
     padding: 0;
 
     button {
-      min-height: 26px;
+      // min-height: 26px;
       margin: 0;
       font-weight: 500;
 
@@ -1753,8 +1751,8 @@ headerbar {
   }
 
   &.default-decoration {
-    min-height: 32px;
-    padding: 0 12px;
+    min-height: $medium_size;
+    padding: 0 $container_padding * 2;
     background-color: $header_bg;
 
     .tiled &,
@@ -1870,7 +1868,7 @@ headerbar {
 
   > box.left.horizontal,
   > box.right.horizontal {
-    padding: 0 6px;
+    padding: 0 $container_padding;
   }
 }
 
@@ -1933,11 +1931,9 @@ headerbar, .titlebar {
 
   entry { // Reset entrys
     min-height: 22px;
-    margin-top: 8px;
-    margin-bottom: 8px;
     margin-left: 0;
     margin-right: 0;
-    padding: 2px 8px;
+    padding: 2px $container_padding * 2;
   }
 }
 
@@ -1978,8 +1974,8 @@ headerbar, .titlebar {
   }
 
   image {
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: $container_padding;
+    padding-right: $container_padding;
   }
 }
 
@@ -2089,7 +2085,7 @@ headerbar, .titlebar {
 
       min-height: if($variant =='light', 24px, 26px);
       min-width: 38px;
-      padding: 0 6px;
+      padding: 0 $container_padding;
       font-weight: bold;
 
       color: $_column_header_color;
@@ -2125,7 +2121,7 @@ headerbar, .titlebar {
   button.dnd,
   header.button.dnd {
     &, &:selected, &:hover, &:active {
-      padding: 0 6px;
+      padding: 0 $container_padding;
       transition: none;
       color: $selected_fg_color;
       background-color: $selected_bg_color;
@@ -2157,7 +2153,7 @@ menubar,
 
   > menuitem {
     transition: all 0.2s cubic-bezier(0.0, 0.0, 0.2, 1);
-    padding: 4px 8px;
+    padding: ($container_padding - 2px) $container_padding;
     border: none;
     border-radius: $bt_radius;
 
@@ -2180,7 +2176,7 @@ menubar,
 menu,
 .menu {
   // margin: 4px;
-  padding: 6px;
+  padding: $container_padding;
   border-radius: $mn_radius;
   background-color: opacify($menu_bg, 1);
   border: 1px solid $solid_borders_color;
@@ -2204,7 +2200,7 @@ menu,
     transition: background-color 50ms cubic-bezier(0.0, 0.0, 0.2, 1);
     min-height: 12px;
     min-width: 40px;
-    padding: 3px 6px;
+    padding: $container_padding / 2 $container_padding;
     border-radius: $mn_radius - 3px;
     text-shadow: none;
     color: $fg_color;
@@ -2356,7 +2352,7 @@ popover.background {
     margin: $container_padding;
 
     row {
-      padding: 6px 12px;
+      padding: $container_padding $container_padding * 2;
       border-radius: $bt_radius;
     }
   }
@@ -2469,7 +2465,7 @@ notebook {
     }
 
     button.flat.toggle.popup {
-      min-width: 28px;
+      min-width: $menuitem_size;
       border-radius: 0;
       padding: 0;
       border: none;
@@ -2488,7 +2484,7 @@ notebook {
         padding: 0;
 
         tab {
-          padding: 2px 10px;
+          padding: $container_padding - 4px $container_padding + 4px;
           min-width: 24px;
           min-height: 24px;
           border-radius: 0;
@@ -2558,8 +2554,8 @@ notebook {
 
       // close button
       button.flat {
-        min-height: 20px;
-        min-width: 20px;
+        min-height: $small_size;
+        min-width: $small_size;
         border-radius: 3px;
         padding: 0;
         margin-top: 2px;
@@ -2621,11 +2617,11 @@ scrollbar {
 
   // slider
   slider {
-    min-width: 4px;
-    min-height: 4px;
+    min-width: $container_padding - 2px;
+    min-height: $container_padding - 2px;
     margin: -1px;
     border: 4px solid transparent;
-    border-radius: 8px;
+    border-radius: $container_padding * 2;
     background-clip: padding-box;
     background-color: mix($fg_color, $bg_color, 40%);
 
@@ -2636,8 +2632,8 @@ scrollbar {
 
   &.fine-tune {
     slider {
-      min-width: 4px;
-      min-height: 4px;
+      min-width: $container_padding - 2px;
+      min-height: $container_padding - 2px;
     }
 
     &.horizontal slider { border-width: 5px 4px; }
@@ -2652,19 +2648,19 @@ scrollbar {
 
       slider {
         margin: 0;
-        min-width: 4px;
-        min-height: 4px;
+        min-width: $container_padding - 2px;
+        min-height: $container_padding - 2px;
         background-color: mix($fg_color, $bg_color, 70%);
         border: 1px solid $borders_color;
       }
 
       &.horizontal slider {
-        margin: 0 3px;
+        margin: 0 $container_padding / 2;
         min-width: $_slider_min_length;
       }
 
       &.vertical slider {
-        margin: 3px 0;
+        margin: $container_padding / 2 0;
         min-height: $_slider_min_length;
       }
     }
@@ -2839,21 +2835,21 @@ radio {
 // GtkScale
 //
 scale {
-  $_marks_length: 3px;
+  $_marks_length: $container_padding / 2;
   $_marks_distance: 1px;
 
   min-height: 15px;
   min-width: 15px;
-  padding: 3px;
+  padding: $container_padding / 2;
 
   &.horizontal {
-    trough { padding: 0 4px; }
-    highlight, fill { margin: 0 -4px; }
+    trough { padding: 0 ($container_padding - 2px); }
+    highlight, fill { margin: 0 (-$container_padding + 2px); }
   }
 
   &.vertical {
-    trough { padding: 4px 0; }
-    highlight, fill { margin: -4px 0; }
+    trough { padding: ($container_padding - 2px) 0; }
+    highlight, fill { margin: (-$container_padding + 2px) 0; }
   }
 
   // The slider is inside the trough, negative margin to make it bigger
@@ -3148,8 +3144,8 @@ progressbar {
   color: transparentize($fg_color, 0.3);
 
   &.osd {
-    min-width: 3px;
-    min-height: 3px;
+    min-width: $container_padding / 2;
+    min-height: $container_padding / 2;
     background-color: transparent;
 
     trough {
@@ -3160,8 +3156,8 @@ progressbar {
   }
   // Moving bit
   progress {
-    min-height: 4px;
-    min-width: 4px;
+    min-height: $container_padding - 2px;
+    min-width: $container_padding - 2px;
     background-color: $progress_color;
     border: none;
     border-radius: $bt_radius;
@@ -3172,8 +3168,8 @@ progressbar {
   }
   // Trough
   trough {
-    min-height: 4px;
-    min-width: 4px;
+    min-height: $container_padding - 2px;
+    min-width: $container_padding - 2px;
     border: none;
     border-radius: $bt_radius;
     background-color: if($variant == 'light', $button_border, darken($bg_color, 5%));
@@ -3198,7 +3194,7 @@ levelbar {
 
   trough {
     border: none;
-    padding: 3px;
+    padding: $container_padding / 2;
     border-radius: $bt_radius;
     background-color: if($variant == 'light', $button_border, darken($bg_color, 5%));
   }
@@ -3351,7 +3347,7 @@ list {
   background-color: $base_color;
   border-color: $borders_color;
 
-  row { padding: 2px; }
+  row { padding: $container_padding / 3; }
 
   &.content:not(.conversation-listbox) {
     @extend %circular_list;
@@ -3413,7 +3409,7 @@ row {
 // App Notifications
 //
 .app-notification {
-  padding: 8px;
+  padding: $container_padding;
   margin: 6px 20px 24px 20px;
   color: $fg_color;
   background-color: rgba($header_bg, 0.85);
@@ -3462,12 +3458,12 @@ calendar {
   color: $fg_color;
   border: 1px solid $borders_color;
   border-radius: $bt_radius;
-  padding: 2px 6px;
+  padding: 2px $container_padding;
   margin: 0;
 
   &:selected {
     @extend %selected_items;
-    border-radius: 50px;
+    border-radius: $circular_radius;
   }
 
   &:disabled { color: $disabled_fg_color; }
@@ -3507,11 +3503,11 @@ messagedialog { // Message Dialog styling
   }
 
   .dialog-action-area {
-    padding: 6px;
+    padding: $container_padding;
 
     button {
       min-height: 20px;
-      padding: 4px 8px;
+      padding: ($container_padding - 2px) ($container_padding + 2px);
       box-shadow: none;
       border-radius: $bt_radius;
       margin: 0 3px 3px 3px;
@@ -3671,15 +3667,15 @@ stacksidebar {
   }
 
   row {
-    padding: 4px 4px;
+    padding: $container_padding - 2px;
 
     > label {
-      padding-left: 6px;
-      padding-right: 6px;
+      padding-left: $container_padding;
+      padding-right: $container_padding;
     }
     &.needs-attention > label {
       @extend %needs_attention;
-      background-size: 6px 6px, 0 0;
+      background-size: $container_padding $container_padding, 0 0;
     }
   }
 }
@@ -3690,33 +3686,33 @@ placessidebar {
   row {
     // Needs overriding of the GtkListBoxRow padding
     min-height: 24px;
-    padding: 2px 10px;
+    padding: ($container_padding - 4px) ($container_padding + 4px);
     border-radius: $bt_radius;
     margin: 0 6px;
     // Using margins/padding directly in the SidebarRow
     // will make the animation of the new bookmark row jump
     > revealer {
-      padding: 0 10px;
+      padding: 0 $container_padding + 4px;
     }
 
     image.sidebar-icon {
-      &:dir(ltr) { padding-right: 6px; }
-      &:dir(rtl) { padding-left: 6px; }
+      &:dir(ltr) { padding-right: $container_padding; }
+      &:dir(rtl) { padding-left: $container_padding; }
     }
 
     label.sidebar-label {
-      &:dir(ltr) { padding-right: 6px; }
-      &:dir(rtl) { padding-left: 6px; }
+      &:dir(ltr) { padding-right: $container_padding; }
+      &:dir(rtl) { padding-left: $container_padding; }
     }
 
     button.sidebar-button {
-      min-width: 22px;
-      min-height: 22px;
+      min-width: $small_size + 2px;
+      min-height: $small_size + 2px;
       margin-top: 2px;
       margin-bottom: 2px;
       padding: 0;
-      border-radius: 100px;
-      -gtk-outline-radius: 100px;
+      border-radius: $circular_radius;
+      -gtk-outline-radius: $circular_radius;
 
       > image { opacity: 0.85 };
 
@@ -3738,7 +3734,7 @@ placessidebar {
     }
 
     &.sidebar-placeholder-row {
-      padding: 0 8px;
+      padding: 0 $container_padding + 2px;
       min-height: 2px;
       background-image: _solid($drop_target_color);
       background-clip: content-box;
@@ -3909,13 +3905,13 @@ infobar {
 tooltip {
   &.background {
     &, &.csd {
-    // background-color needs to be set this way otherwise it gets drawn twice
-    // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
-    background-color: lighten($osd_bg_color, 10%);
-    background-clip: padding-box;
-    border-radius: $bt_radius;
+      // background-color needs to be set this way otherwise it gets drawn twice
+      // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
+      background-color: lighten($osd_bg_color, 10%);
+      background-clip: padding-box;
+      border-radius: $bt_radius;
 
-    label { padding: 4px; }
+      label { padding: $container_padding; }
     }
   }
 
@@ -4063,10 +4059,10 @@ button.circular {
 }
 
 .keycap {
-  min-width: 16px;
-  min-height: 20px;
+  min-width: $small_size - 4px;
+  min-height: $small_size;
 
-  padding: 3px 6px 4px 6px;
+  padding: $container_padding / 2 $container_padding;
 
   color: $fg_color;
   background-color: $base_color;
@@ -4223,7 +4219,7 @@ popover.emoji-picker {
     border-bottom-right-radius: 0;
     box-shadow: none;
     border-width: 0 0 1px 0;
-    padding: 6px 12px;
+    padding: $container_padding $container_padding * 2;
     background: none;
 
     &, &:focus, &:disabled {
@@ -4244,8 +4240,8 @@ popover.emoji-picker {
 
 // mimic tab style
 button.emoji-section {
-  margin: 3px 1px;
-  padding: 1px 12px;
+  margin: $container_padding / 2 1px;
+  padding: 1px $container_padding * 2;
   border-radius: $bt_radius;
   border: none;
   outline-offset: -2px;
@@ -4253,8 +4249,8 @@ button.emoji-section {
   transition: none;
   animation: none;
 
-  &:first-child { margin-left: 6px; }
-  &:last-child { margin-right: 6px; }
+  &:first-child { margin-left: $container_padding; }
+  &:last-child { margin-right: $container_padding; }
 }
 
 .emoji {

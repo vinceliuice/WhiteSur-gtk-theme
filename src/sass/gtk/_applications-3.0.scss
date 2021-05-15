@@ -183,11 +183,11 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
       @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
         @if $placement == 'left' {
-          > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - 80px; }
+          > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - (48px + $container_padding * 6); }
         }
         @else {
-          .path-bar-box { margin-left: $nautilus_sidebar_size - 80px; }
-          entry.search { margin-left: if($placement == 'left', $container_padding, $nautilus_sidebar_size - 74px); }
+          .path-bar-box { margin-left: $nautilus_sidebar_size - (68px + $container_padding * 2); }
+          entry.search { margin-left: if($placement == 'left', $container_padding * 1.5, $nautilus_sidebar_size - 74px); }
         }
       }
     }
@@ -373,8 +373,6 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   }
 
   headerbar {
-    min-height: $nautilus_headerbar_size;
-
     .path-bar-box {
       color: transparent;
       background: none;

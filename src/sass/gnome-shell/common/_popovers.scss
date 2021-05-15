@@ -19,7 +19,6 @@ $popop_menuitem_radius: $wm_radius - 4px;
   min-width: 12em;
   color: $alt_fg_color;
   padding: 0 0 !important;
-  // font-weight: normal;
   @include font(body-1);
 
   .popup-menu-content {
@@ -28,12 +27,11 @@ $popop_menuitem_radius: $wm_radius - 4px;
     box-shadow: 0 8px 16px 0 rgba(black, 0.25);
     border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
     margin: 4px 8px 4px 12px !important;
-    // font-weight: normal;
     @include font(body-1);
   }
 
   .popup-menu-item {
-    spacing: 12px;
+    spacing: $base_spacing * 2;
     padding-top: 6px !important;
     padding-bottom: 6px !important;
     color: $alt_fg_color;
@@ -187,8 +185,8 @@ $popop_menuitem_radius: $wm_radius - 4px;
 
   .popup-sub-menu .popup-menu-item > :first-child {
     &:ltr { /* 12px spacing + 2*4px padding */
-            padding-left: 16px; margin-left: 1em; }
+            padding-left: $base_spacing * 2 + 4px; margin-left: 1em; }
     &:rtl { /* 12px spacing + 2*4px padding */
-            padding-right: 16px; margin-right: 1em; }
+            padding-right: $base_spacing * 2 + 4px; margin-right: 1em; }
   }
 }
