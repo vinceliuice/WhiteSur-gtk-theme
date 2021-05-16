@@ -409,11 +409,11 @@ install_gdm_theme() {
   local TARGET=
 
   # Let's go!
-  rm -rf "${WHITESUR_GS_DIR}"; install_beggy
+  rm -rf "${WHITESUR_GS_DIR}"; install_beggy; install_beggy_blur
 
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
-    install_beggy_blur
-    gtk_base & install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
+    gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}" &
+    install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
     sed $SED_OPT "s|assets|${WHITESUR_GS_DIR}/assets|" "${WHITESUR_GS_DIR}/gnome-shell.css"
 
     if check_theme_file "${UBUNTU_CSS_FILE}"; then
@@ -429,8 +429,8 @@ install_gdm_theme() {
     # Fix previously installed WhiteSur
     restore_file "${ETC_CSS_FILE}"
   else # GR-based theme
-    install_beggy_blur
-    gtk_base & install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_TMP_DIR}/shelly"
+    gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}" &
+    install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_TMP_DIR}/shelly"
     sed $SED_OPT "s|assets|resource:///org/gnome/shell/theme/assets|" "${WHITESUR_TMP_DIR}/shelly/gnome-shell.css"
 
     if check_theme_file "$POP_OS_GR_F & ILE"; then
