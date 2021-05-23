@@ -18,7 +18,6 @@ source "${REPO_DIR}/lib-install.sh"
 # Customization, default values
 colors=("${COLOR_VARIANTS[@]}")
 opacities=("${OPACITY_VARIANTS[@]}")
-background="blank"
 
 usage() {
   # Please specify their default value manually, some of them are come from _variables.scss

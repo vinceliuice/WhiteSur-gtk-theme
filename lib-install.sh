@@ -150,7 +150,7 @@ install_beggy() {
     blank)
       cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blank.png"          "${WHITESUR_TMP_DIR}/beggy.png" ;;
     default)
-      if [[ "${no_blur}" == "false" || "${darken}" == "false" ]]; then
+      if [[ "${no_blur}" == "false" && "${darken}" == "false" ]]; then
         cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"         "${WHITESUR_TMP_DIR}/beggy.png"
       elif [[ "${no_blur}" == "false" && "${darken}" == "true" ]]; then
         cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur-darken.png"  "${WHITESUR_TMP_DIR}/beggy.png"
