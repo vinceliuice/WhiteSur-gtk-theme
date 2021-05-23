@@ -25,7 +25,7 @@ source "${REPO_DIR}/lib-core.sh"
 install_theme_deps() {
   if ! has_command glib-compile-resources || ! has_command sassc || \
     ! has_command xmllint || [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]; then
-    echo; prompt -w "'glib2.0', 'sassc', 'xmllint', 'libmurrine' are required for theme installation."
+    echo; prompt -w "'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation."
 
     if has_command zypper; then
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
@@ -47,19 +47,22 @@ install_theme_deps() {
 }
 
 install_gdm_deps() {
-  if ! has_command glib-compile-resources || ! has_command xmllint; then
-    echo; prompt -w "'glib2.0' 'xmllint' are required for theme installation."
+  #TODO: @vince, do we also need "sassc" here?
+
+  if ! has_command glib-compile-resources || ! has_command xmllint || \
+    ! has_command sassc; then
+    echo; prompt -w "'glib2.0', 'xmllint', and 'sassc' are required for theme installation."
 
     if has_command zypper; then
-      rootify zypper in -y glib2-devel libxml2-tools
+      rootify zypper in -y glib2-devel libxml2-tools sassc
     elif has_command apt; then
-      rootify apt install -y libglib2.0-dev-bin libxml2-utils
+      rootify apt install -y libglib2.0-dev-bin libxml2-utils sassc
     elif has_command dnf; then
-      rootify dnf install -y glib2-devel libxml2
+      rootify dnf install -y glib2-devel libxml2 sassc
     elif has_command yum; then
-      rootify yum install -y glib2-devel libxml2
+      rootify yum install -y glib2-devel libxml2 sassc
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed glib2 libxml2
+      rootify pacman -S --noconfirm --needed glib2 libxml2 sassc
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -70,29 +73,8 @@ install_gdm_deps() {
 }
 
 install_beggy_deps() {
-  if ! has_command sassc; then
-    echo; prompt -w "'sassc' are required for this option."
-
-    if has_command zypper; then
-      rootify zypper in -y sassc
-    elif has_command apt; then
-      rootify apt install -y sassc
-    elif has_command dnf; then
-      rootify dnf install -y sassc
-    elif has_command yum; then
-      rootify yum install -y sassc
-    elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed sassc
-    else
-      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
-      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
-      start_animation; sleep 15; stop_animation
-    fi
-  fi
-
   if ! has_command convert; then
-    echo; prompt -w "'imagemagick' are required for this option."
+    echo; prompt -w "'imagemagick' are required for background editing."
 
     if has_command zypper; then
       rootify zypper in -y ImageMagick
@@ -357,6 +339,9 @@ remove_packy() {
 ###############################################################################
 
 install_themes() {
+  # "install_theemy" and "install_shelly" require "gtk_base", so multithreading
+  # isn't possible
+
   start_animation; install_beggy
 
   for opacity in "${opacities[@]}"; do
@@ -564,7 +549,6 @@ gtk_base() {
 ###############################################################################
 
 customize_theme() {
-  rm -rf "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
   # Change gnome-shell panel transparency
