@@ -47,7 +47,7 @@ install_theme_deps() {
 }
 
 install_gdm_deps() {
-  if [[ ! "$(which glib-compile-resources 2> /dev/null)" || ! "$(which xmllint 2> /dev/null)" ]]; then
+  if ! has_command glib-compile-resources || ! has_command xmllint; then
     echo; prompt -w "'glib2.0' 'xmllint' are required for theme installation."
 
     if has_command zypper; then
@@ -61,7 +61,10 @@ install_gdm_deps() {
     elif has_command pacman; then
       rootify pacman -S --noconfirm --needed glib2 libxml2
     else
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies!"
+      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
+      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
+      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
+      start_animation; sleep 15; stop_animation
     fi
   fi
 }
@@ -81,7 +84,10 @@ install_beggy_deps() {
     elif has_command pacman; then
       rootify pacman -S --noconfirm --needed sassc
     else
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies!"
+      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
+      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
+      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
+      start_animation; sleep 15; stop_animation
     fi
   fi
 
@@ -99,7 +105,10 @@ install_beggy_deps() {
     elif has_command pacman; then
       rootify pacman -S --noconfirm --needed imagemagick
     else
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies!"
+      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
+      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
+      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
+      start_animation; sleep 15; stop_animation
     fi
   fi
 }
@@ -119,7 +128,10 @@ install_dialog_deps() {
     elif has_command pacman; then
       rootify pacman -S --noconfirm --needed dialog
     else
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies!"
+      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
+      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
+      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
+      start_animation; sleep 15; stop_animation
     fi
   fi
 }
@@ -138,12 +150,14 @@ install_beggy() {
     blank)
       cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blank.png"          "${WHITESUR_TMP_DIR}/beggy.png" ;;
     default)
-      if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
-        install_beggy_deps && convert "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png" ${CONVERT_OPT} "${WHITESUR_TMP_DIR}/beggy.png"
+      if [[ "${no_blur}" == "false" || "${darken}" == "false" ]]; then
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"         "${WHITESUR_TMP_DIR}/beggy.png"
       elif [[ "${no_blur}" == "false" && "${darken}" == "true" ]]; then
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"          "${WHITESUR_TMP_DIR}/beggy.png"
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur-darken.png"  "${WHITESUR_TMP_DIR}/beggy.png"
+      elif [[ "${no_blur}" == "true" && "${darken}" == "false" ]]; then
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png"      "${WHITESUR_TMP_DIR}/beggy.png"
       else
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png"       "${WHITESUR_TMP_DIR}/beggy.png"
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-darken.png"       "${WHITESUR_TMP_DIR}/beggy.png"
       fi
       ;;
     *)
@@ -153,19 +167,6 @@ install_beggy() {
         cp -r "${background}"                                                                 "${WHITESUR_TMP_DIR}/beggy.png"
       fi
       ;;
-  esac
-}
-
-install_beggy_blur() {
-  local CONVERT_OPT=" -scale 1280x -blur 0x35 -fill black -colorize 25% "
-
-  case "${background}" in
-    blank)
-      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blank.png"          "${WHITESUR_TMP_DIR}/beggy-blur.png" ;;
-    default)
-      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"           "${WHITESUR_TMP_DIR}/beggy-blur.png" ;;
-    *)
-      install_beggy_deps && convert "${background}" ${CONVERT_OPT}                            "${WHITESUR_TMP_DIR}/beggy-blur.png" ;;
   esac
 }
 
@@ -229,7 +230,6 @@ install_shelly() {
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/assets${color}/"*".svg"                          "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities.svg"
   cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/assets/background.png"
-  cp -r "${WHITESUR_TMP_DIR}/beggy-blur.png"                                                  "${TARGET_DIR}/assets/background-blur.png"
 
   (
     cd "${TARGET_DIR}"
@@ -357,11 +357,7 @@ remove_packy() {
 ###############################################################################
 
 install_themes() {
-  start_animation
-  process_ids=()
-  install_beggy
-  install_beggy_blur
-  cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
+  start_animation; install_beggy
 
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
@@ -369,21 +365,14 @@ install_themes() {
         install_xfwmy "${color}"
 
         for color in "${colors[@]}"; do
-          gtk_base "${color}" "${opacity}" "${theme}" "${compact}" &
-          process_ids+=("${!}") &
-          install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
-          process_ids+=("${!}")
-
-          gtk_base "${color}" "${opacity}" "${theme}" "${compact}" &
-          process_ids+=("${!}") &
-          install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}" &
-          process_ids+=("${!}")
+          gtk_base "${color}" "${opacity}" "${theme}" "${compact}"
+          install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${icon}"
+          install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}"
         done
       done
     done
   done
 
-  wait ${process_ids[*]} &> /dev/null
   stop_animation
 }
 
@@ -409,10 +398,10 @@ install_gdm_theme() {
   local TARGET=
 
   # Let's go!
-  rm -rf "${WHITESUR_GS_DIR}"; install_beggy; install_beggy_blur
+  rm -rf "${WHITESUR_GS_DIR}"; install_beggy
+  gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}"
 
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
-    gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}" &
     install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
     sed $SED_OPT "s|assets|${WHITESUR_GS_DIR}/assets|" "${WHITESUR_GS_DIR}/gnome-shell.css"
 
@@ -429,11 +418,10 @@ install_gdm_theme() {
     # Fix previously installed WhiteSur
     restore_file "${ETC_CSS_FILE}"
   else # GR-based theme
-    gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}" &
     install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_TMP_DIR}/shelly"
     sed $SED_OPT "s|assets|resource:///org/gnome/shell/theme/assets|" "${WHITESUR_TMP_DIR}/shelly/gnome-shell.css"
 
-    if check_theme_file "$POP_OS_GR_F & ILE"; then
+    if check_theme_file "$POP_OS_GR_FILE"; then
       TARGET="${POP_OS_GR_FILE}"
     elif check_theme_file "$YARU_GR_FILE"; then
       TARGET="${YARU_GR_FILE}"
@@ -499,7 +487,8 @@ remove_firefox_theme() {
 ###############################################################################
 
 install_dash_to_dock_theme() {
-  cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
+  gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}"
+
   if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
     backup_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "userify"
     userify sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss" "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
@@ -616,6 +605,7 @@ customize_theme() {
 
   if [[ "${compact}" == 'false' ]]; then
     prompt -s "Changing Definition mode to HD (Bigger font, Bigger size) ..."
+    #FIXME: @vince is it not implemented yet?
   fi
 }
 
