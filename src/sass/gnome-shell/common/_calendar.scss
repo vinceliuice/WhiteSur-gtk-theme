@@ -11,7 +11,7 @@
 
 // overall menu
 #calendarArea {
-  padding: 12px 0;
+  padding: $base_padding * 2 0;
 }
 
 // Calendar menu side column
@@ -82,7 +82,7 @@
   box-shadow: none;
   background-color: $popover_bubble_bg;
   padding: $base_padding !important;
-  margin: 0 $base_padding * 2 !important;
+  margin: 0 12px !important;
   text-shadow: none;
   border-radius: $mn_radius;
 
@@ -240,7 +240,7 @@
 .events-button {
   @extend %popover_bubble;
   padding: $base_padding * 2 !important;
-  margin: 2px $base_margin !important;
+  margin: 2px 4px !important;
 }
 
 // Events
@@ -321,8 +321,8 @@
   }
 
   .weather-grid {
-    spacing-rows: 6px;
-    spacing-columns: 12px;
+    spacing-rows: $base_spacing;
+    spacing-columns: $base_spacing * 2;
   }
 
   .weather-forecast-time {

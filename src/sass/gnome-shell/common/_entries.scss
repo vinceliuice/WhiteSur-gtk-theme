@@ -6,8 +6,8 @@ StEntry, %entry {
   // margin: 2px;
   color: $fg_color;
   caret-color: $fg_color;
-  selection-background-color: $primary_color;
-  selected-color: $light_alt_fg_color;
+  selection-background-color: $primary_color !important;
+  selected-color: $light_fg_color !important;
   // @include font(subheading);
   @include entry(normal);
   &:hover { @include entry(hover); }
@@ -24,6 +24,6 @@ StEntry, %entry {
   }
   StLabel.hint-text {
     margin-left: 2px;
-    color: transparentize($fg_color, 0.3);
+    color: $alt_fg_color;
   }
 }

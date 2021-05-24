@@ -22,7 +22,7 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
   outline-color: gtkalpha(currentColor, 0.15);
   outline-style: solid;
   outline-offset: -4px;
-  outline-width: 2px;
+  outline-width: 0;
   -gtk-outline-radius: $bt_radius;
   -gtk-secondary-caret-color: $selected_bg_color;
 }

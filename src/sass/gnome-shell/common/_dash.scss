@@ -13,8 +13,8 @@ $dash_placeholder_size: 32px;
 
 // OSD Tooltip
 .dash-label {
-  color: rgba(white, 0.9);
-  background-color: rgba(#222, 0.95);
+  color: $light_alt_fg_color;
+  background-color: rgba(black, 0.75);
   border-radius: $bt_radius;
   padding: $base_padding $base_padding * 2;
   box-shadow: none;

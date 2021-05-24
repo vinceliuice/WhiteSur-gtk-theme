@@ -127,10 +127,6 @@ $popop_menuitem_radius: $wm_radius - 4px;
       color: transparentize($fg_color, 0.3);
     }
   }
-
-  .search-entry {
-    @extend %entry;
-  }
 }
 // symbolic icons in popover
 .popup-menu-arrow,
@@ -185,8 +181,8 @@ $popop_menuitem_radius: $wm_radius - 4px;
 
   .popup-sub-menu .popup-menu-item > :first-child {
     &:ltr { /* 12px spacing + 2*4px padding */
-            padding-left: $base_spacing * 2 + 4px; margin-left: 1em; }
+            padding-left: $base_padding * 2 + 4px; margin-left: 1em; }
     &:rtl { /* 12px spacing + 2*4px padding */
-            padding-right: $base_spacing * 2 + 4px; margin-right: 1em; }
+            padding-right: $base_padding * 2 + 4px; margin-right: 1em; }
   }
 }

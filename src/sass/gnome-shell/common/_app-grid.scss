@@ -9,7 +9,7 @@
   & .overview-icon {
     color: $light_fg_color;
     border-radius: $wm_radius;
-    padding: 8px;
+    padding: $container_padding;
     border: none;
     transition-duration: 100ms;
     text-align: center;
@@ -54,7 +54,7 @@
 .app-folder-dialog {
   border-radius: $bd_radius * 4;
   border: 0 solid rgba(white, 0.15);
-  padding: 12px;
+  padding: $container_padding * 2;
 
   & .folder-name-container {
     padding: $container_padding * 3 $container_padding * 4 0;

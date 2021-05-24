@@ -6,9 +6,9 @@
 
 // Window titles
 .window-caption {
-  color: $osd_fg_color;
-  background-color: rgba($osd_bg_color, 1);
-  border-radius: 100px;
+  color: $light_alt_fg_color;
+  background-color: rgba(black, 0.75);
+  border-radius: $circular_radius;
   padding: $base_padding $base_padding * 2;
 }
 
@@ -25,11 +25,6 @@ $window_close_button_padding: 3px;
   width: $window_close_button_size;
   box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.5);
   transition-duration: 300ms;
-//  background-image: url("assets/window-close-symbolic.svg");
-
-//  StIcon {
-//    icon-size: 1px; // Can't set to 0
-//  }
 
   &:hover {
     color: white;
