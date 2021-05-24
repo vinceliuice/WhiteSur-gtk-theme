@@ -2,9 +2,7 @@
 
 ## Summary
 
-- Do not edit the CSS directly, edit the source SCSS files and process them with SASS (run
-  `./parse-sass.sh` when you have the required software installed, as described below)
-- To be able to use the latest/adequate version of sass, install sassc.
+To be able to use the latest/adequate version of sass, install sassc.
 
 ## How to tweak the theme
 

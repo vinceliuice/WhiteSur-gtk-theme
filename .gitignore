@@ -1,7 +1,6 @@
 .DS_store
 .sass-cache
-_theme-options-temp.scss
-_gtk-base-temp.scss
+*-temp.scss
 *.css.map
 src/main/gtk-3.0/gtk*.css
 src/main/gtk-4.0/gtk*.css

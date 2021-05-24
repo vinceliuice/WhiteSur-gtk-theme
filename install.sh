@@ -18,7 +18,6 @@ source "${REPO_DIR}/lib-install.sh"
 # Customization, default values
 colors=("${COLOR_VARIANTS[@]}")
 opacities=("${OPACITY_VARIANTS[@]}")
-background="blank"
 
 usage() {
   # Please specify their default value manually, some of them are come from _variables.scss
@@ -33,6 +32,7 @@ usage() {
   helpify "-p, --panel"          "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]"  "Set panel transparency"                           "Default is 15%"
   helpify "-s, --size"           "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]"   "Set Nautilus sidebar minimum width"               "Default is 200px"
   helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"           "Set 'Activities' icon"                            "Default is 'standard'"
+  # Not sure if "background" is even needed here
   helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                         "Set gnome-shell background image"                 "Default is BigSur-like wallpaper"
   helpify "-HD, --highdefinition"         ""                                          "Set to High Definition size"                      "Default is laptop size"
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
