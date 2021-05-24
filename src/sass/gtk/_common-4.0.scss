@@ -3743,7 +3743,8 @@ filechooser {
   > box.vertical > box.vertical > paned.horizontal > separator {
     border: none;
     min-width: 1px;
-    background-image: image(if($variant=='light', $solid_borders_color, $header_border));
+    background-image: image($dark_sidebar_border);
+    background-color: transparent;
 
     // &:dir(ltr) { margin-left: -1px; }
     // &:dir(rtl) { margin-right: -1px; }

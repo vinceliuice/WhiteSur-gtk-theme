@@ -3612,6 +3612,7 @@ filechooser {
     border: none;
     min-width: 1px;
     background-image: image($dark_sidebar_border);
+    background-color: transparent;
 
     // &:dir(ltr) { margin-left: -1px; }
     // &:dir(rtl) { margin-right: -1px; }
@@ -3805,11 +3806,13 @@ paned {
 
   &.horizontal > separator {
     background-repeat: repeat-y;
+
     &:dir(ltr) {
       margin: 0 -8px 0 0;
       padding: 0 8px 0 0;
       background-position: left;
     }
+
     &:dir(rtl) {
       margin: 0 0 0 -8px;
       padding: 0 0 0 8px;
