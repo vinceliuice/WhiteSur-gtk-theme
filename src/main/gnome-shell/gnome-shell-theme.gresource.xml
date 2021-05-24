@@ -14,7 +14,7 @@
     <file>assets/window-close.svg</file>
     <file>assets/window-close-hover.svg</file>
     <file>assets/window-close-active.svg</file>
-    <file>assets/window-close-24-symbolic.svg</file>
+    <file>assets/window-close-symbolic.svg</file>
     <file>assets/activities.svg</file>
     <file>assets/view-app-grid.svg</file>
     <file>assets/background.png</file>
@@ -27,7 +27,9 @@
     <file>icons/scalable/status/keyboard-layout-filled-symbolic.svg</file>
     <file>icons/scalable/status/keyboard-shift-filled-symbolic.svg</file>
     <file>icons/scalable/status/message-indicator-symbolic.svg</file>
-    <file>icons/scalable/status/window-close-24-symbolic.svg</file>
+    <file>icons/scalable/status/window-close-symbolic.svg</file>
+    <file>icons/scalable/status/carousel-arrow-back-symbolic.svg</file>
+    <file>icons/scalable/status/carousel-arrow-next-symbolic.svg</file>
     <file>icons/scalable/actions/pointer-double-click-symbolic.svg</file>
     <file>icons/scalable/actions/pointer-drag-symbolic.svg</file>
     <file>icons/scalable/actions/pointer-primary-click-symbolic.svg</file>
