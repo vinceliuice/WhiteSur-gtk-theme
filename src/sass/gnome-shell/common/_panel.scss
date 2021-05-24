@@ -98,7 +98,7 @@
     }
 
     &.clock-display {
-      StLabel { padding: 0 2px; }
+      StLabel { padding: 0 $base_margin; }
 
       .clock {
         // transition-duration: 150ms;
@@ -126,12 +126,12 @@
     // status area icons
     .system-status-icon {
       icon-size: $base_icon_size;
-      padding: $base_padding $base_padding/2;
-      margin: 0 ($base_margin - 2px);
+      padding: $base_padding;
+      margin: 0 $base_margin;
     }
 
     // .panel-status-indicators-box .system-status-icon,
-    .panel-status-menu-box .system-status-icon { margin: 0; }
+    .panel-status-menu-box .system-status-icon { margin: 0 0; }
     .panel-status-menu-box StLabel { padding: 0 0 0 2px; }
 
     // app menu icon
@@ -142,6 +142,13 @@
 
     &#panelActivities {
       -natural-hpadding: $base_padding * 3;
+    }
+  }
+
+  Gjs_AggregateMenu.panel-button,
+  Gjs_ui_panel_AggregateMenu.panel-button {
+    .system-status-icon {
+      margin: 0 $base_margin / 2;
     }
   }
 

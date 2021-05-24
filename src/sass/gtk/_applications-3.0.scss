@@ -730,8 +730,7 @@ $disk_space_free: darken($bg_color, 3%);
 
     button {
       @extend %headerbar_buttons;
-      padding-top: 0;
-      padding-bottom: 0;
+      padding: 0 $container_padding + 2px;
       margin: 6px 1px;
     }
 
@@ -3103,7 +3102,7 @@ window.thunar {
     }
 
     > separator {
-      background-image: if($variant == 'light', image($solid_borders_color), image($header_border));
+      background-image: image($solid_borders_color);
     }
   }
 

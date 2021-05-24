@@ -7,12 +7,13 @@
   @include font(body-1);
 
   & .overview-icon {
-    color: $light_alt_fg_color;
+    color: $light_fg_color;
     border-radius: $wm_radius;
     padding: 8px;
     border: none;
     transition-duration: 100ms;
     text-align: center;
+    text-shadow: none;
   }
 
   &:hover .overview-icon,
