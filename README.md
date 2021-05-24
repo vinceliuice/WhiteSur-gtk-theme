@@ -147,7 +147,7 @@ control button variant, etc.
 # Let's tweak!
 Usage:  `./tweaks.sh [OPTIONS...]`
 
-<details> <summary> Install OPTIONS </summary>
+<details> <summary> TWEAKS OPTIONS </summary>
 
 ```bash
 -f, --firefox
@@ -196,8 +196,10 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 # Revert to the original themes, do the opposite things of install and connect.
 
 -h, --help
-# Show this help. 
+# Show this help.
 ```
+
+</details>
 
 ## There's more themes you can try!
 ### <p align="center"> <b> Install and edit Firefox theme </b> </p>
