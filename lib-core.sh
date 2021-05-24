@@ -100,7 +100,7 @@ need_help="false"
 uninstall="false"
 interactive="false"
 
-darken="true"
+no_darken="false"
 no_blur="false"
 
 firefox="false"

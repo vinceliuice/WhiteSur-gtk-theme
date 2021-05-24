@@ -25,7 +25,7 @@ usage() {
   helpify "-s, --snap"         ""                                                  "Connect '${THEME_NAME}' theme the currently installed snap apps"             ""
   helpify "-g, --gdm"          ""                                                  "Install '${THEME_NAME}' theme for GDM"                                       "Requires to run this shell as root"
   helpify "-d, --dash-to-dock" ""                                                  "Install '${THEME_NAME}' theme for Dash to Dock and connect it to the current Dash to Dock installation(s)" ""
-  helpify "-D, --darken"       ""                                                  "Darken '${THEME_NAME}' GDM theme background image"                           ""
+  helpify "-N, --no-darken"    ""                                                  "Don't darken '${THEME_NAME}' GDM theme background image"                     ""
   helpify "-n, --no-blur"      ""                                                  "Don't blur '${THEME_NAME}' GDM theme background image"                       ""
   helpify "-b, --background"   "[default|blank|IMAGE_PATH]"                        "Set '${THEME_NAME}' GDM theme background image"                              "Default is BigSur-like wallpaper"
   helpify "-o, --opacity"      "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "Set '${THEME_NAME}' GDM theme opacity variants"                              "Default is 'normal'"
@@ -110,8 +110,8 @@ while [[ $# -gt 0 ]]; do
         prompt -e "'${1}' ERROR: There's no Dash to Dock installed in your system"
         has_any_error="true"
       fi; shift ;;
-    -D|--darken)
-      darken="true"; shift ;;
+    -N|--no-darken)
+      no_darken="true"; shift ;;
     -n|--no-blur)
       no_blur="true"; shift ;;
     # Parameters that require value, single use

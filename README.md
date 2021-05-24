@@ -147,6 +147,58 @@ control button variant, etc.
 # Let's tweak!
 Usage:  `./tweaks.sh [OPTIONS...]`
 
+<details> <summary> Install OPTIONS </summary>
+
+```bash
+-f, --firefox
+# Install 'WhiteSur' theme for Firefox and connect it to the current Firefox profiles.
+
+-e, --edit-firefox
+# Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles.
+
+-F, --flatpak
+# Connect 'WhiteSur' theme to Flatpak.
+
+-s, --snap
+# Connect 'WhiteSur' theme the currently installed snap apps.
+
+-g, --gdm
+# Install 'WhiteSur' theme for GDM. Requires to run this shell as root
+
+-d, --dash-to-dock
+# Install 'WhiteSur' theme for Dash to Dock and connect it to the current Dash to Dock installation(s).
+
+-N, --no-darken
+# Don't darken 'WhiteSur' GDM theme background image.
+
+-n, --no-blur
+# Don't blur 'WhiteSur' GDM theme background image.
+
+-b, --background [default|blank|IMAGE_PATH]
+# Set 'WhiteSur' GDM theme background image. Default is BigSur-like wallpaper
+
+-o, --opacity [normal|solid]
+# Set 'WhiteSur' GDM theme opacity variants. Default is 'normal'
+
+-c, --color [light|dark]
+# Set 'WhiteSur' GDM and Dash to Dock theme color variants. Default is 'light'
+
+-t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]
+# Set 'WhiteSur' GDM theme accent color. Default is BigSur-like theme
+
+-p, --panel [default|30|45|60|75]
+# Set 'WhiteSur' GDM (GNOME Shell) theme panel transparency. Default is 15%
+
+-i, --icon [standard|simple|gnome|ubuntu|arch|manjaro|fedora|debian|void]
+# Set 'WhiteSur' GDM (GNOME Shell) 'Activities' icon. Default is 'standard'
+
+-r, --remove, --revert
+# Revert to the original themes, do the opposite things of install and connect.
+
+-h, --help
+# Show this help. 
+```
+
 ## There's more themes you can try!
 ### <p align="center"> <b> Install and edit Firefox theme </b> </p>
 <p align="center"> <img src="docs/firefox.png"/> </p>
@@ -199,14 +251,14 @@ sudo ./tweaks.sh -g -b default          # use the default background
 sudo ./tweaks.sh -g -b blank            # make it blank
 ```
 
-#### Make the background darker
-Parameter: `--darken` `-D`
+#### Make the background not darker (normal)
+Parameter: `--no_darken` `-N`
 
 Example:
 
 ```bash
-sudo ./tweaks.sh -g -D                          # darken the default background
-sudo ./tweaks.sh -g -D -b "wallpapers/snow.jpg" # darken the custom background
+sudo ./tweaks.sh -g -N                          # darken the default background
+sudo ./tweaks.sh -g -N -b "wallpapers/snow.jpg" # darken the custom background
 ```
 
 #### Don't blur the background
