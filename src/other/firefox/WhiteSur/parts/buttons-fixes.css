@@ -92,13 +92,6 @@
 	fill: transparent !important;
 }
 
-/* Fix toolbars close icons */
-.close-icon:not(.tab-close-button) image {
-	height: 16px !important;
-	width: 16px !important;
-	margin: 6px !important;
-}
-
 /* */
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]::after {
 	display: none !important;
@@ -142,9 +135,6 @@
 }
 
 /* Menulist */
-menulist {
-	-moz-appearance: none !important;
-}
 #identity-popup-popup-menulist {
 	margin-right: 0 !important;
 }

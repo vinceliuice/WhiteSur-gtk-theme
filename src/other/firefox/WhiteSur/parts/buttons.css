@@ -203,6 +203,10 @@ menulist[open] .menulist-label-box,
 	min-width: 24px !important;
 }
 
+.findbar-closebutton.close-icon {
+	min-width: 28px !important;
+}
+
 .close-icon:not(.tab-close-button) .button-icon {
 	padding: 0 0 !important;
 	margin: 0 0 !important;
