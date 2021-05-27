@@ -8,13 +8,11 @@
 #
 # WARNING: Please set REPO_DIR variable before using this lib
 
+set -Eeo pipefail
+
 ###############################################################################
 #                                VARIABLES                                    #
 ###############################################################################
-
-if [[ "${LIB_CORE_IMPORTED}" == "true" ]]; then
-  echo "ERROR: lib-core.sh is already imported"; exit 1
-else LIB_CORE_IMPORTED="true"; fi
 
 export WHITESUR_PID=$$
 MY_USERNAME="$(logname 2> /dev/null || echo ${SUDO_USER:-${USER}})"
@@ -118,7 +116,7 @@ final_msg="Run '${0} --help' to explore more customization features!"
 notif_msg=""
 error_msg=""
 process_ids=()
-ANIM_PID="0"
+export ANIM_PID="0"
 has_any_error="false"
 
 # Colors and animation
@@ -159,11 +157,11 @@ start_animation() {
     done
   ) &
 
-  ANIM_PID="${!}"
+  export ANIM_PID="${!}"
 }
 
 stop_animation() {
-  kill -13 "${ANIM_PID}" &> /dev/null
+  kill -13 "${ANIM_PID}" &> /dev/null || true
   setterm -cursor on
 }
 
@@ -448,6 +446,12 @@ backup_file() {
   fi
 }
 
+userify_file() {
+  if [[ "$(ls -ld "${1}" | awk '{print $3}')" != "${MY_USERNAME}" ]]; then
+    rootify chown "${MY_USERNAME}:" "${1}"
+  fi
+}
+
 check_theme_file() {
   [[ -f "${1}" || -f "${1}.bak" ]]
 }
@@ -460,16 +464,11 @@ remind_relative_path() {
 #                                   SYSTEMS                                   #
 ###############################################################################
 
-lockWhiteSur() {
-  while [[ -e "/proc/${WHITESUR_PID}" ]]; do sleep 0.1; done
-  rm -rf "${WHITESUR_TMP_DIR}"
-}; export -f lockWhiteSur
-
 rootify() {
   trap true SIGINT
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
-  sudo ${@} 2> "${WHITESUR_TMP_DIR}/error_log.txt" || operation_canceled
-  trap sig_c SIGINT
+  sudo ${@} || operation_aborted
+  trap stop_animation SIGINT
 }
 
 full_rootify() {
@@ -481,31 +480,42 @@ full_rootify() {
 
 userify() {
   trap true SIGINT
-  sudo -u "${MY_USERNAME}" ${@} 2> "${WHITESUR_TMP_DIR}/error_log.txt" || operation_canceled
-  trap sig_c SIGINT
+  sudo -u "${MY_USERNAME}" ${@} || operation_aborted
+  trap stop_animation SIGINT
 }
 
-sig_c() {
-  kill -13 ${process_ids[*]} &> /dev/null
-  stop_animation; wait ${process_ids[*]} &> /dev/null; operation_canceled
+signal_exit() {
+  rm -rf "${WHITESUR_TMP_DIR}"
+  stop_animation
 }
 
-operation_canceled() {
+operation_aborted() {
+  local sources=($(basename -a "${BASH_SOURCE[@]}" | sort -u))
+
   clear
 
   if [[ -f "${WHITESUR_TMP_DIR}/error_log.txt" ]]; then
     error_msg="$(cat "${WHITESUR_TMP_DIR}/error_log.txt")"
   fi
 
-  if [[ ${error_msg} != "" ]]; then
-    prompt -e "\n\n  Oops! An error is detected...\n"
-    prompt -e "ERROR LOG:\n${error_msg}\n"
-    prompt -i "TIP: you can google or report to us the error log above\n\n"
-  else
-    prompt -e "\n\n  Oops! Operation has been canceled or failed...\n\n"
-  fi
+  prompt -e "\n\n  Oops! Operation has been aborted or failed...\n"
+  prompt -e "ERROR LOG:\n${error_msg}\n"
 
-  exit 1
+  prompt -e "ERROR INFO:"
+  prompt -e "    SOURCES : $(IFS=';'; echo "${sources[*]}")"
+  prompt -e "    LINES   : ${LINENO};${BASH_LINENO}"
+  prompt -e "    SNIPPETS:"
+
+  for i in "${sources[@]}"; do
+    prompt -e ">>> $(sed "${BASH_LINENO}q;d" "${REPO_DIR}/${i}")"
+    prompt -e ">>> $(sed "${LINENO}q;d" "${REPO_DIR}/${i}")"
+  done
+
+  prompt -e ">>> ${BASH_COMMAND}\n"
+
+  prompt -i "TIP: you can google or report to us the infos above\n\n"
+
+  rm -rf "${WHITESUR_TMP_DIR}"; exit 1
 }
 
 usage() {
@@ -519,7 +529,6 @@ finalize_argument_parsing() {
   elif [[ "${has_any_error}" == "true" ]]; then
     echo; prompt -i "Try '$0 --help' for more information."; exit 1
   else
-    trap sig_c SIGINT
     [[ "${need_dialog[@]}" =~ "true" ]] && echo
 
     if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
@@ -533,6 +542,7 @@ finalize_argument_parsing() {
 
     rm -rf "${WHITESUR_TMP_DIR}"; mkdir -p "${WHITESUR_TMP_DIR}"
     rm -rf "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
-    nohup bash -c lockWhiteSur &> /dev/null 2> /dev/null & disown ${!}
+    exec 2> "${WHITESUR_TMP_DIR}/error_log.txt"
+    trap 'operation_aborted' ERR; trap 'signal_exit' SIGINT; trap 'signal_exit' EXIT
   fi
 }

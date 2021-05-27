@@ -12,10 +12,6 @@
 #                                VARIABLES                                    #
 ###############################################################################
 
-if [[ "${LIB_INSTALL_IMPORTED}" == "true" ]]; then
-  echo "ERROR: lib-install.sh is already imported"; exit 1
-else LIB_INSTALL_IMPORTED="true"; fi
-
 source "${REPO_DIR}/lib-core.sh"
 
 ###############################################################################
@@ -448,18 +444,19 @@ config_firefox() {
   for d in "${FIREFOX_DIR_HOME}/"*"default"*; do
     rm -rf                                                                                      "${d}/chrome"
     userify ln -sf "${FIREFOX_THEME_DIR}"                                                       "${d}/chrome"
-    userify echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >> "${d}/prefs.js"
-    userify echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                         "${d}/prefs.js"
-    userify echo "user_pref(\"browser.uidensity\", 0);" >>                                      "${d}/prefs.js"
-    userify echo "user_pref(\"layers.acceleration.force-enabled\", true);" >>                   "${d}/prefs.js"
-    userify echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);" >>                     "${d}/prefs.js"
+    userify_file                                                                                "${d}/prefs.js"
+    echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>         "${d}/prefs.js"
+    echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                                 "${d}/prefs.js"
+    echo "user_pref(\"browser.uidensity\", 0);" >>                                              "${d}/prefs.js"
+    echo "user_pref(\"layers.acceleration.force-enabled\", true);" >>                           "${d}/prefs.js"
+    echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);" >>                             "${d}/prefs.js"
   done
 }
 
 edit_firefox_theme_prefs() {
   [[ ! -d "${FIREFOX_THEME_DIR}" ]] && install_firefox_theme ; config_firefox
-  ${EDITOR:-nano}                                                                               "${FIREFOX_THEME_DIR}/userChrome.css"
-  ${EDITOR:-nano}                                                                               "${FIREFOX_THEME_DIR}/customChrome.css"
+  userify ${EDITOR:-nano}                                                                       "${FIREFOX_THEME_DIR}/userChrome.css"
+  userify ${EDITOR:-nano}                                                                       "${FIREFOX_THEME_DIR}/customChrome.css"
 }
 
 remove_firefox_theme() {
@@ -476,6 +473,7 @@ install_dash_to_dock_theme() {
 
   if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
     backup_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "userify"
+    userify_file                                                                                "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
     userify sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss" "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
   elif [[ -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
     backup_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "rootify"
@@ -614,7 +612,7 @@ show_panel_opacity_dialog() {
         2) panel_opacity="${PANEL_OPACITY_VARIANTS[2]}" ;;
         3) panel_opacity="${PANEL_OPACITY_VARIANTS[3]}" ;;
         4) panel_opacity="${PANEL_OPACITY_VARIANTS[4]}" ;;
-        *) operation_canceled ;;
+        *) operation_aborted ;;
       esac
   fi
 
@@ -636,7 +634,7 @@ show_sidebar_size_dialog() {
         2) sidebar_size="${SIDEBAR_SIZE_VARIANTS[2]}" ;;
         3) sidebar_size="${SIDEBAR_SIZE_VARIANTS[3]}" ;;
         4) sidebar_size="${SIDEBAR_SIZE_VARIANTS[4]}" ;;
-        *) operation_canceled ;;
+        *) operation_aborted ;;
       esac
   fi
 
@@ -656,7 +654,7 @@ show_nautilus_style_dialog() {
         1) nautilus_style="${NAUTILUS_STYLE_VARIANTS[1]}" ;;
         2) nautilus_style="${NAUTILUS_STYLE_VARIANTS[2]}" ;;
         3) nautilus_style="${NAUTILUS_STYLE_VARIANTS[3]}" ;;
-        *) operation_canceled ;;
+        *) operation_aborted ;;
       esac
   fi
 
@@ -664,7 +662,9 @@ show_nautilus_style_dialog() {
 }
 
 show_needed_dialogs() {
-  [[ "${need_dialog["-p"]}" == "true" ]] && install_dialog_deps && show_panel_opacity_dialog
-  [[ "${need_dialog["-s"]}" == "true" ]] && install_dialog_deps && show_sidebar_size_dialog
-  [[ "${need_dialog["-N"]}" == "true" ]] && install_dialog_deps && show_nautilus_style_dialog
+  if [[ "${need_dialog[@]}" =~ "true" ]]; then install_dialog_deps; fi
+
+  if [[ "${need_dialog["-p"]}" == "true" ]]; then show_panel_opacity_dialog; fi
+  if [[ "${need_dialog["-s"]}" == "true" ]]; then show_sidebar_size_dialog; fi
+  if [[ "${need_dialog["-N"]}" == "true" ]]; then show_nautilus_style_dialog; fi
 }
