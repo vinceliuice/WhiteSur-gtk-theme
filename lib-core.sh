@@ -161,7 +161,7 @@ start_animation() {
 }
 
 stop_animation() {
-  kill -13 "${ANIM_PID}" &> /dev/null || true
+  [[ -e "/proc/${ANIM_PID}" ]] && kill -13 "${ANIM_PID}"
   setterm -cursor on
 }
 
@@ -468,7 +468,7 @@ rootify() {
   trap true SIGINT
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
   sudo ${@} || operation_aborted
-  trap stop_animation SIGINT
+  trap signal_exit SIGINT
 }
 
 full_rootify() {
@@ -481,7 +481,7 @@ full_rootify() {
 userify() {
   trap true SIGINT
   sudo -u "${MY_USERNAME}" ${@} || operation_aborted
-  trap stop_animation SIGINT
+  trap signal_exit SIGINT
 }
 
 signal_exit() {
@@ -543,6 +543,7 @@ finalize_argument_parsing() {
     rm -rf "${WHITESUR_TMP_DIR}"; mkdir -p "${WHITESUR_TMP_DIR}"
     rm -rf "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
     exec 2> "${WHITESUR_TMP_DIR}/error_log.txt"
-    trap 'operation_aborted' ERR; trap 'signal_exit' SIGINT; trap 'signal_exit' EXIT
+    trap 'operation_aborted' ERR
+    trap 'signal_exit' INT EXIT TERM
   fi
 }
