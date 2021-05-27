@@ -439,17 +439,19 @@ install_firefox_theme() {
 }
 
 config_firefox() {
-  killall "firefox" &> /dev/null
+  killall "firefox" &> /dev/null || true
 
   for d in "${FIREFOX_DIR_HOME}/"*"default"*; do
-    rm -rf                                                                                      "${d}/chrome"
-    userify ln -sf "${FIREFOX_THEME_DIR}"                                                       "${d}/chrome"
-    userify_file                                                                                "${d}/prefs.js"
-    echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>         "${d}/prefs.js"
-    echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                                 "${d}/prefs.js"
-    echo "user_pref(\"browser.uidensity\", 0);" >>                                              "${d}/prefs.js"
-    echo "user_pref(\"layers.acceleration.force-enabled\", true);" >>                           "${d}/prefs.js"
-    echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);" >>                             "${d}/prefs.js"
+    if [[ -f "${d}/prefs.js" ]]; then
+      rm -rf                                                                                    "${d}/chrome"
+      userify ln -sf "${FIREFOX_THEME_DIR}"                                                     "${d}/chrome"
+      userify_file                                                                              "${d}/prefs.js"
+      echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>       "${d}/prefs.js"
+      echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                               "${d}/prefs.js"
+      echo "user_pref(\"browser.uidensity\", 0);" >>                                            "${d}/prefs.js"
+      echo "user_pref(\"layers.acceleration.force-enabled\", true);" >>                         "${d}/prefs.js"
+      echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);" >>                           "${d}/prefs.js"
+    fi
   done
 }
 
