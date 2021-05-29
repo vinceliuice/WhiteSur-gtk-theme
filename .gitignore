@@ -9,5 +9,5 @@ src/main/gnome-shell/*/*.css
 src/other/dash-to-dock/stylesheet.css
 src/other/dash-to-dock/stylesheet-dark.css
 parse-sass.sh
-make-release.sh
+lib-release.sh
 stable-release/make-releases.sh
