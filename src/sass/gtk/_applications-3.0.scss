@@ -646,7 +646,7 @@ $disk_space_free: darken($bg_color, 3%);
   @extend %nautilus-desktop-canvas-item;
 }
 
-.nemo-window {
+.nemo-window.background {
   .nemo-places-sidebar {
     &.frame { border-width: 0; }
 

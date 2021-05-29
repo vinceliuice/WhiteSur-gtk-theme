@@ -5,11 +5,9 @@
 src/main/gtk-3.0/gtk*.css
 src/main/gtk-4.0/gtk*.css
 src/main/cinnamon/cinnamon*.css
-src/main/gnome-shell/gnome-shell*.css
-src/main/gnome-shell/gdm3*.css
+src/main/gnome-shell/*/*.css
 src/other/dash-to-dock/stylesheet.css
 src/other/dash-to-dock/stylesheet-dark.css
 parse-sass.sh
-lib-release.sh
 make-release.sh
 stable-release/make-releases.sh

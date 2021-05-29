@@ -644,9 +644,6 @@ entry {
   .linked > &:not(:only-child) {
     @extend %Linked_entrys;
   }
-
-  .linked:not(.vertical) > & + button.combo { padding-left: 0; }
-  .linked.vertical > & + button.combo { padding: 0; }
 }
 
 .entry-tag {
@@ -731,11 +728,13 @@ $_dot_color: $selected_bg_color;
 }
 
 %flat_button {
-  @include button(flat-normal);
-  &:hover { @include button(flat-hover); }
-  &:active { @include button(flat-active); }
-  &:checked { @include button(flat-checked); }
-  &:disabled { @include button(flat-insensitive); }
+  &:not(.suggested-action):not(.destructive-action):not(.titlebutton) {
+    @include button(flat-normal);
+    &:hover { @include button(flat-hover); }
+    &:active { @include button(flat-active); }
+    &:checked { @include button(flat-checked); }
+    &:disabled { @include button(flat-insensitive); }
+  }
 }
 
 button {
@@ -774,7 +773,7 @@ button {
   }
 
   &:active, &:checked {
-    @include button(active);
+    background-color: if($variant=='light', darken($button_bg, 8%), lighten($button_bg, 8%));
 
     background-clip: if($variant=='light', border-box, padding-box);
     transition-duration: 200ms;
@@ -784,9 +783,17 @@ button {
 
   &:disabled {
     @include button(insensitive);
+  }
 
+  .background &:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton) {
     &:active, &:checked {
-      @include button(insensitive-active);
+      @include button(active);
+    }
+
+    &:disabled {
+      &:active, &:checked {
+        @include button(insensitive-active);
+      }
     }
   }
 
@@ -830,7 +837,7 @@ button {
   @at-root %circular_button, &.close { // The Bloody Circul Button
     border-radius: $circular_radius;
     -gtk-outline-radius: $circular_radius;
-    padding: 0 0 0 0;
+    padding: 0 0;
     min-height: $menuitem_size;
     min-width: $menuitem_size;
 
@@ -1276,6 +1283,9 @@ combobox {
     box-shadow: none;
   }
 
+  .linked:not(.vertical) > entry + button.combo { padding-left: 0; }
+  .linked.vertical > entry + button.combo { padding: 0; }
+
   .linked:not(.vertical) > entry + button.combo,
   .linked:not(.vertical) > & > box > button.combo {
     arrow {
@@ -1466,8 +1476,6 @@ actionbar {
 
 // Headerbar Entries
 %headerbar_entrys {
-  min-height: $menuitem_size - 4px;
-  padding: 2px $container_padding + 2px;
   @include entry(header-normal);
 
   &:backdrop { opacity: 0.65; background-image: none; }
@@ -1483,79 +1491,46 @@ actionbar {
   &:disabled {
     @include entry(header-insensitive);
   }
-
-  selection:focus {
-    background-color: $selected_bg_color;
-    color: $selected_fg_color;
-  }
-
-  progress {
-    border-color: $progress_color;
-    background-image: none;
-    background-color: transparent;
-  }
-
-  @each $e_type, $e_color, $e_fg_color in (warning, $warning_color, $light_fg_color),
-                                          (error, $error_color, $light_fg_color) {
-    &.#{$e_type} {
-      color: $e_fg_color;
-      border-color: if($variant=='light', $e_color, $entry_border);
-      background-color: mix($e_color, $header_bg, 60%);
-
-      &:focus {
-        color: $e_fg_color;
-        background-color: $e_color;
-      }
-
-      selection, selection:focus {
-        background-color: $e_fg_color;
-        color: $e_color;
-      }
-    }
-  }
 }
 
 // Headerbar Buttons
 %headerbar_buttons {
-  // min-height: $menuitem_size - 4px;
-  // min-width: $menuitem_size - 4px;
-  @include button(header-normal);
+  &:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton) {
+    @include button(header-normal);
 
-  &:backdrop { opacity: 0.65; background-image: none; }
+    &:backdrop { opacity: 0.65; background-image: none; }
 
-  &:hover {
-    @include button(header-hover);
-    transition: $button_transition;
-  }
+    &:hover {
+      @include button(header-hover);
+      transition: $button_transition;
+    }
 
-  &:active, &:active:hover {
-    @include button(header-active);
-    transition: $button_transition;
-    transition-duration: 300ms;
-  }
+    &:active, &:active:hover {
+      @include button(header-active);
+      transition: $button_transition;
+      transition-duration: 300ms;
+    }
 
-  &:checked {
-    @include button(header-checked);
-    transition: $button_transition;
-    transition-duration: 300ms;
+    &:checked {
+      @include button(header-checked);
+      transition: $button_transition;
+      transition-duration: 300ms;
 
-    &:hover { background-image: none; }
+      &:hover { background-image: none; }
+
+      &:disabled {
+        @include button(header-insensitive-active);
+      }
+    }
 
     &:disabled {
-      @include button(header-insensitive-active);
+      @include button(header-insensitive);
     }
-  }
-
-  &:disabled {
-    @include button(header-insensitive);
-  }
-
-  &.flat {
-    @include button(undecorated);
   }
 }
 
-headerbar {
+headerbar,
+.background headerbar {
   min-height: $headerbar_size;
   padding: 0 $container_padding + 10px;
   color: $header_fg;
@@ -1582,16 +1557,95 @@ headerbar {
     @extend %dim-label;
   }
 
-  entry { @extend %headerbar_entrys; }
+  entry {
+    @include entry(header-normal);
 
-  button { @extend %headerbar_buttons; }
+    &:backdrop { opacity: 0.65; background-image: none; }
+
+    &:hover {
+      @include entry(header-hover);
+    }
+
+    &:focus {
+      @include entry(header-focus);
+    }
+
+    &:disabled {
+      @include entry(header-insensitive);
+    }
+
+    selection:focus {
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+    }
+
+    progress {
+      border-color: $progress_color;
+      background-image: none;
+      background-color: transparent;
+    }
+
+    @each $e_type, $e_color, $e_fg_color in (warning, $warning_color, $light_fg_color),
+                                            (error, $error_color, $light_fg_color) {
+      &.#{$e_type} {
+        color: $e_fg_color;
+        border-color: if($variant=='light', $e_color, $entry_border);
+        background-color: mix($e_color, $header_bg, 60%);
+
+        &:focus {
+          color: $e_fg_color;
+          background-color: $e_color;
+        }
+
+        selection, selection:focus {
+          background-color: $e_fg_color;
+          color: $e_color;
+        }
+      }
+    }
+  }
+
+  button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton) {
+    @include button(header-normal);
+
+    &:backdrop { opacity: 0.65; background-image: none; }
+
+    &:hover {
+      @include button(header-hover);
+      transition: $button_transition;
+    }
+
+    &:active, &:active:hover {
+      @include button(header-active);
+      transition: $button_transition;
+      transition-duration: 300ms;
+    }
+
+    &:checked {
+      @include button(header-checked);
+      transition: $button_transition;
+      transition-duration: 300ms;
+
+      &:hover { background-image: none; }
+
+      &:disabled {
+        @include button(header-insensitive-active);
+      }
+    }
+
+    &:disabled {
+      @include button(header-insensitive);
+    }
+
+    &.flat {
+      @include button(undecorated);
+    }
+  }
 
   button, spinbutton, entry, stackswitcher {
     margin-top: 8px;
     margin-bottom: 8px;
   }
-
-  // button.toggle.popup { margin-right: 3px; } // Nautilus 3.30 popup button
 
   // Reset linked buttons
   .linked:not(.vertical):not(.stack-switcher) > button {
@@ -2405,9 +2459,7 @@ notebook {
   padding: 0;
   // margin-top: -1px;
 
-  &.frame {
-    border: 1px solid $solid_borders_color;
-  }
+  .background.csd &.frame { border: 1px solid $solid_borders_color; }
 
   > stack:not(:only-child) { // the :not(:only-child) is for "hidden" notebooks
     background-color: $base_color;
@@ -2417,13 +2469,9 @@ notebook {
     border-radius: 0 0 $wm_radius $wm_radius;
   }
 
-  > header {
-    padding: 0;
-    background-color: darken($header_bg, 10%);
-
-    // Set box-shadow to make the header frame color more easy to see
-    // Set margin to hide the ugly borders around the header
+  .background.csd & > header {
     &.top {
+      margin-top: -1px;
       box-shadow: inset 0 1px $solid_borders_color, inset 0 -1px $borders_color;
       @if $variant=='light' {
           box-shadow: inset 0 1px $borders_color,
@@ -2431,7 +2479,16 @@ notebook {
                             1px 0 $borders_color,
                             -1px 0 $borders_color;
       }
-      margin-top: -1px;
+    }
+  }
+
+  > header {
+    padding: 0;
+    background-color: darken($header_bg, 10%);
+
+    // Set box-shadow to make the header frame color more easy to see
+    // Set margin to hide the ugly borders around the header
+    &.top {
     }
 
     &.bottom {
