@@ -25,6 +25,12 @@ $window_close_button_padding: 3px;
   width: $window_close_button_size;
   box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.5);
   transition-duration: 300ms;
+  background-image: url("assets/window-close-symbolic.svg");
+
+  StIcon {
+    color: white;
+    icon-size: 1px; // Can't set to 0
+  }
 
   &:hover {
     color: white;
