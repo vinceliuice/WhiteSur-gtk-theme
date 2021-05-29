@@ -917,7 +917,6 @@ button {
 
       &:active, &:checked {
         @include button(suggested_destructive, lighten($b_color, 10%), $b_fg);
-        box-shadow: none;
       }
 
       &.flat:disabled {
@@ -1601,11 +1600,21 @@ actionbar {
     }
   }
 
-  button:not(.flat) {
+  button {
     @include button(header-normal);
 
     &:backdrop { opacity: 0.65; background-image: none; }
 
+    &.flat {
+      @include button(undecorated);
+    }
+
+    &:disabled {
+      @include button(header-insensitive);
+    }
+  }
+
+  button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton) {
     &:hover {
       @include button(header-hover);
       transition: $button_transition;
@@ -1627,14 +1636,6 @@ actionbar {
       &:disabled {
         @include button(header-insensitive-active);
       }
-    }
-
-    &:disabled {
-      @include button(header-insensitive);
-    }
-
-    &.flat {
-      @include button(undecorated);
     }
   }
 
@@ -2005,7 +2006,8 @@ headerbar, .titlebar {
   &:hover { box-shadow: none; }
 
   &:active, &:checked {
-    @include button(header-checked);
+    background-color: if($variant == 'light', rgba(black, 0.5), rgba(white, 0.65));
+    color: if($variant == 'light', rgba(white, 1), rgba(black, 0.75));
     border-color: $button_borders;
   }
 
@@ -2049,8 +2051,7 @@ headerbar, .titlebar {
 
   border-radius: 0;
   margin: 0 0;
-
-  border-left-color: rgba($fg_color, 0.15); // this is actually the tree lines color,
+  border-left-color: $borders_color; // this is actually the tree lines color,
   border-top-color: $borders_color; // while this is the grid lines color, better then nothing
 
   rubberband { @extend %rubberband; } // to avoid borders being overridden by the previously set props
@@ -3749,6 +3750,7 @@ stacksidebar {
       &:dir(rtl) { padding-left: $container_padding; }
     }
 
+    @at-root %sidebar_button,
     button.sidebar-button {
       min-width: $small_size + 2px;
       min-height: $small_size + 2px;
@@ -3761,8 +3763,8 @@ stacksidebar {
       > image { opacity: 0.85 };
 
       &:active, &:checked {
-        @include button(flat-active);
-        border-color: if($variant=='light', rgba(black, 0.3), $dark_borders_color);
+        background-color: if($variant=='light', rgba(black, 0.45), rgba(white, 0.35));
+        border-color: if($variant=='light', rgba(black, 0.2), $dark_borders_color);
       }
 
       &:not(:hover):not(:active) > image { opacity: 0.65 };
@@ -3803,7 +3805,7 @@ stacksidebar {
 //
 // Placesview
 //
-placesview {
+.background placesview {
   .server-list-button > image {
     -gtk-icon-transform: rotate(0turn);
   }
@@ -3812,6 +3814,8 @@ placesview {
     transition: 200ms $ease-out-quad;
     -gtk-icon-transform: rotate(-0.5turn);
   }
+
+  button.sidebar-button { @extend %sidebar_button; }
 
   // this selects the "connect to server" label
   > actionbar.background {
@@ -4217,8 +4221,7 @@ decoration {
 //
 // Titlebuttons
 //
-headerbar,
-.titlebar {
+.background headerbar {
   button.titlebutton {
     &.close, &.maximize, &.minimize {
       min-width: 16px;

@@ -3820,9 +3820,10 @@ window.background:not(.solid-csd) {
 
 window.background:not(.solid-csd) {
     // for 'Notebookbar' toolbar
-  > notebook:not(.frame) {
-    border: 0 none transparent; // unset borders
+  > notebook {
+    border: none; // unset borders
     background-color: $base_color;
+    box-shadow: none;
 
     > stack {
       border: none;
