@@ -3668,16 +3668,8 @@ window.dialog.message { // Message Dialog styling
           transition: $button_transition;
         }
 
-        &:active, &:checked {
-
-          @if $variant == 'light' {
-            background-color: $selected_bg_color;
-            color: $selected_fg_color;
-          }
-
-          @else {
-            @include button(active);
-          }
+        &:active {
+          @include button(active);
         }
       }
 

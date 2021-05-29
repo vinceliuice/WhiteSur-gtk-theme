@@ -3345,7 +3345,7 @@ window#GearyMainWindow.background.csd { // <= 3.32
 
     scrolledwindow {
       // margin: -1px 0;
-      padding: 6px;
+      padding: 0 6px;
       background-color: $base_color;
 
       treeview.view {
@@ -3356,7 +3356,9 @@ window#GearyMainWindow.background.csd { // <= 3.32
 
         &:hover { background-color: rgba($fg_color, 0.1); }
 
-        &:selected {
+        &:selected, &:active {
+          border-color: $base_color;
+          border-radius: $mn_radius;
           background-color: rgba($fg_color, 0.15);
           color: if($variant == 'light', $fg_color, $selected_fg_color);
         }
