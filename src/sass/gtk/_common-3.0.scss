@@ -2036,7 +2036,7 @@ headerbar, .titlebar {
 // Tree Views
 //
 .background treeview.view {
-  background-color: $base_color;
+  @extend %view;
 
   @at-root * {
     -GtkTreeView-horizontal-separator: 4;
@@ -2132,8 +2132,8 @@ headerbar, .titlebar {
     }
   }
 
-  header {
-    button {
+  > header {
+    > button {
       $_column_header_color: mix($fg_color,$base_color,80%);
 
       min-height: if($variant =='light', 24px, 26px);
@@ -2145,7 +2145,7 @@ headerbar, .titlebar {
       background-image: none;
       box-shadow: none;
       border-style: none solid none none;
-      border-radius: 3px;
+      border-radius: 0;
       border-image: linear-gradient(to bottom,
                                     $base_color 20%,
                                     transparentize(if($variant == 'light', black, white), 0.89) 20%,
@@ -2453,9 +2453,8 @@ cursor-handle {
 
 notebook {
   padding: 0;
-  // margin-top: -1px;
 
-  .background.csd &.frame { border: 1px solid $solid_borders_color; }
+  &.frame { border: 1px solid $solid_borders_color; }
 
   > stack:not(:only-child) { // the :not(:only-child) is for "hidden" notebooks
     background-color: $base_color;
@@ -2465,7 +2464,12 @@ notebook {
     border-radius: 0 0 $wm_radius $wm_radius;
   }
 
-  .background.csd & > header {
+  > header {
+    padding: 0;
+    background-color: darken($header_bg, 10%);
+
+    // Set box-shadow to make the header frame color more easy to see
+    // Set margin to hide the ugly borders around the header
     &.top {
       margin-top: -1px;
       box-shadow: inset 0 1px $solid_borders_color, inset 0 -1px $borders_color;
@@ -2475,16 +2479,6 @@ notebook {
                             1px 0 $borders_color,
                             -1px 0 $borders_color;
       }
-    }
-  }
-
-  > header {
-    padding: 0;
-    background-color: darken($header_bg, 10%);
-
-    // Set box-shadow to make the header frame color more easy to see
-    // Set margin to hide the ugly borders around the header
-    &.top {
     }
 
     &.bottom {
@@ -2539,13 +2533,12 @@ notebook {
       &.#{$_pos} {
         padding: 0;
 
-        tab {
+        > tabs > tab {
           padding: $container_padding - 4px $container_padding + 4px;
           min-width: 24px;
           min-height: 24px;
           border-radius: 0;
           outline-offset: -4px;
-          // border-#{$_pos}: none;
 
           // tab overlap
           + tab {
@@ -2591,21 +2584,21 @@ notebook {
 
     &.top,
     &.bottom {
-      tabs > tab {
-        &:first-child { border-left-style: none; }
-        &:last-child { border-right-style: none; }
+      > tabs > tab {
+        &:first-child { border-left: none; }
+        &:last-child { border-right: none; }
       }
     }
 
     &.left,
     &.right {
-      tabs > tab {
-        &:first-child { border-top-style: none; }
-        &:last-child { border-bottom-style: none; }
+      > tabs > tab {
+        &:first-child { border-top: none; }
+        &:last-child { border-bottom: none; }
       }
     }
 
-    tabs > tab {
+    > tabs > tab {
       @extend %tabs_tab;
 
       // close button
