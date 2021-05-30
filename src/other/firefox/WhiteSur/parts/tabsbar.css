@@ -121,15 +121,20 @@ tab[selected]:-moz-window-inactive {
 	margin-left: auto !important;
 }
 
-/* If tab favicon is not present, force tab label to the center */
-/* .tabbrowser-tab:not([image]):not([busy]):not([progress]):not([class*="identity-color-"]) .tab-label-container {
+/* separate class for multi-tab alignment*/
+.tabbrowser-tab[class*="identity-color-"]>.tab-stack>.tab-content>.tab-icon-stack {
 	margin-left: auto !important;
-} */
+}
 
-/* Fix website with no favicon centred text */
-/* .tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) .tab-icon-stack { margin-left: 0 !important }
-.tabbrowser-tab:not([image]) .tab-icon-stack { margin-left: 0 !important } */
+/* If tab favicon is not present, force tab label to the center */
 
+.tabbrowser-tab .tab-label-container {
+	margin-left: 0 !important;
+}
+
+.tabbrowser-tab:not([image]):not([busy]):not([progress]) .tab-label-container {
+	margin-left: auto !important;
+}
 /* If tab close button is not present, don't force favicon to the center */
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber,
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber-fallback,
@@ -203,8 +208,13 @@ tab[selected]:-moz-window-inactive {
 	border-top: 3px solid var(--identity-tab-color) !important;
 }
 
-.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-bottom-line {
+/* Remove alt colours references for multi tabs*/
+.tabbrowser-tab[usercontextid]>.tab-stack>.tab-background>.tab-context-line {
 	display: none;
+}
+
+.tabbrowser-tab[class*="identity-color-"][pinned] {
+	display: flex;
 }
 
 .tab-background {
@@ -289,4 +299,74 @@ tab[selected]:-moz-window-inactive {
 	top: -8px;
 	position: relative;
 	margin-right: -10px;
+}
+
+/* fix pip on small displays */
+.tab-icon-overlay[pictureinpicture] {
+	top: 3px !important;
+	inset-inline-end: 13px !important;
+	z-index: 1 !important;
+	max-width: 10px;
+	max-height: 10px;
+}
+
+.tab-close-button {
+	margin-inline-end: -6px !important;
+}
+
+/* fix spacing on too many tabs */
+
+.tab-icon-overlay:not([pinned], [sharing]),
+[pictureinpicture] {
+	margin-inline-end: 4px !important;
+	margin-inline-start: 4px !important;
+}
+
+/* Fix too many tabs text align */
+.tab-close-button[pinned],
+#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack:not([selected="true"]) {
+	margin-left: 0 !important;
+}
+
+.tab-close-button[pinned],
+#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack[selected="true"] {
+	margin-left: auto !important;
+}
+
+/* Fix website with no favicon centred text */
+.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) .tab-icon-stack {
+	margin-left: 0 !important
+}
+
+.tabbrowser-tab:not([image]) .tab-icon-stack {
+	margin-left: 0 !important
+}
+@media (-moz-proton) {
+
+	/* Firefox v89 beta tab fix */
+	.tab-background {
+		border-radius: 0 !important;
+		margin-block: 0 !important;
+	}
+
+	/*Align personal bookmarks v89 */
+	#personal-bookmarks {
+		-moz-box-align: center !important;
+	}
+
+	/* fix misc spacing between tabs */
+	.tabbrowser-tab {
+		padding-inline: 0px !important;
+	}
+
+	.tabbrowser-tab[selected="true"]>.tab-stack>.tab-background {
+		margin-left: 0px !important;
+		margin-right: 0px !important;
+	}
+
+	/* centre text when audio is playing */
+	.tabbrowser-tab:is([soundplaying]) .tab-label-container {
+		margin-left: 0 !important;
+		margin-right: auto !important
+	}
 }
