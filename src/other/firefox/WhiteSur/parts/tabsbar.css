@@ -286,3 +286,40 @@ tab[selected]:-moz-window-inactive {
 	position: relative;
 	margin-right: -10px;
 }
+/* Fix website with no favicon centred text */
+.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) .tab-icon-stack {
+	margin-left: 0 !important
+}
+
+.tabbrowser-tab:not([image]) .tab-icon-stack {
+	margin-left: 0 !important
+}
+@media (-moz-proton) {
+
+	/* Firefox v89 beta tab fix */
+	.tab-background {
+		border-radius: 0 !important;
+		margin-block: 0 !important;
+	}
+
+	/*Align personal bookmarks v89 */
+	#personal-bookmarks {
+		-moz-box-align: center !important;
+	}
+
+	/* fix misc spacing between tabs */
+	.tabbrowser-tab {
+		padding-inline: 0px !important;
+	}
+
+	.tabbrowser-tab[selected="true"]>.tab-stack>.tab-background {
+		margin-left: 0px !important;
+		margin-right: 0px !important;
+	}
+
+	/* centre text when audio is playing */
+	.tabbrowser-tab:is([soundplaying]) .tab-label-container {
+		margin-left: 0 !important;
+		margin-right: auto !important
+	}
+}
