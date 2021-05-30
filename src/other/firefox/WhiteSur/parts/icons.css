@@ -380,6 +380,29 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	list-style-image: url("../icons/geo.svg") !important;
 }
 
+.blocked-permission-icon.popup-icon {
+	list-style-image: url("../icons/blocked-permission-symbolic.svg") !important;
+}
+
+#webrtc-sharing-icon[sharing="screen"],
+.screen-icon {
+	list-style-image: url("../icons/screen-symbolic.svg") !important;
+}
+
+.screen-icon.blocked-permission-icon {
+	list-style-image: url("../icons/screen-blocked-symbolic.svg") !important;
+}
+
+#webrtc-sharing-icon[sharing="microphone"],
+.microphone-icon {
+	list-style-image: url("../icons/microphone-symbolic.svg") !important;
+}
+
+#webrtc-sharing-icon[sharing]:not([paused]) {
+	-moz-context-properties: fill !important;
+	fill: rgb(224, 41, 29) !important;
+}
+
 .bookmark-item[container] {
 	list-style-image: url("../icons/folder-symbolic.svg") !important;
 }
@@ -481,6 +504,12 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	#reader-mode-button,
 	#star-button:not([starred]),
 	#geo-sharing-icon[sharing], .geo-icon,
+	.blocked-permission-icon.popup-icon,
+	#webrtc-sharing-icon[sharing="screen"],
+	.screen-icon,
+	.screen-icon.blocked-permission-icon,
+	#webrtc-sharing-icon[sharing="microphone"],
+	.microphone-icon,
 	.plugin-icon, .autoplay-media-icon,
 	.popup-notification-icon[popupid="drmContentPlaying"], .drm-icon,
 	.bookmark-item[container] .toolbarbutton-icon {
