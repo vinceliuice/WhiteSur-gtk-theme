@@ -67,20 +67,14 @@ while [[ $# -gt 0 ]]; do
           edit_firefox="true" ;;
       esac
 
-      if [[ -d "${FIREFOX_FLATPAK_DIR_HOME}" ]]; then
-          FIREFOX_DIR_HOME=${FIREFOX_FLATPAK_DIR_HOME}
-	  mkdir -p ${FIREFOX_FLATPAK_THEME_DIR}
-	  FIREFOX_THEME_DIR=${FIREFOX_FLATPAK_THEME_DIR}
-      fi;
-
-      if [[ ! -d "${FIREFOX_FLATPAK_DIR_HOME}" ]] && ! has_command firefox; then
+      if ! has_command firefox && [[ ! "$(flatpak list --columns=application 2> /dev/null | grep org.mozilla.firefox)" ]]; then
         prompt -e "'${1}' ERROR: There's no Firefox installed in your system"
         has_any_error="true"
-      elif [[ ! -d "${FIREFOX_DIR_HOME}" ]]; then
+      elif [[ ! -d "${FIREFOX_DIR_HOME}" ]] && (has_command flatpak && [[ ! -d "${FIREFOX_FLATPAK_DIR_HOME}" ]]); then
         prompt -e "'${1}' ERROR: Firefox is installed but not yet initialized."
         prompt -w "'${1}': Don't forget to close it after you run/initialize it"
         has_any_error="true"
-      elif pidof "firefox" &> /dev/null; then
+      elif pidof "firefox" &> /dev/null || pidof "firefox-bin" &> /dev/null; then
         prompt -e "'${1}' ERROR: Firefox is running, please close it"
         has_any_error="true"
       fi; shift ;;

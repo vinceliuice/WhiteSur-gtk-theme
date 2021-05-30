@@ -434,6 +434,7 @@ revert_gdm_theme() {
 
 install_firefox_theme() {
   remove_firefox_theme
+  userify mkdir -p                                                                              "${FIREFOX_THEME_DIR}"
   userify cp -rf "${FIREFOX_SRC_DIR}"                                                           "${FIREFOX_THEME_DIR}"
   config_firefox
 }
