@@ -3751,7 +3751,7 @@ stacksidebar {
     }
 
     @at-root %sidebar_button,
-    button.sidebar-button {
+    button.sidebar-button:not(.flat) {
       min-width: $small_size + 2px;
       min-height: $small_size + 2px;
       margin-top: 2px;
@@ -3768,15 +3768,6 @@ stacksidebar {
       }
 
       &:not(:hover):not(:active) > image { opacity: 0.65 };
-    }
-
-    &:selected button.sidebar-button {
-      @include button(normal);
-
-      &:active, &:checked {
-        @include button(flat-active);
-        border-color: if($variant=='light', rgba(black, 0.25), rgba(black, 0.15));
-      }
     }
 
     &.sidebar-placeholder-row {
