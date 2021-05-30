@@ -257,6 +257,7 @@ check_param() {
 
   local has_any_ambiguity_error="false"
   local variant_found="false"
+
   if [[ "${has_set["${global_param}"]}" == "true" ]]; then
     need_dialog["${global_param}"]="true"
 
