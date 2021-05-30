@@ -121,11 +121,19 @@ tab[selected]:-moz-window-inactive {
 	margin-left: auto !important;
 }
 
-/* If tab favicon is not present, force tab label to the center */
-/*.tabbrowser-tab:not([image]):not([busy]):not([progress]):not([class*="identity-color-"]) .tab-label-container {*/
-/*	margin-left: auto !important;*/
-/*}*/
+/* separate class for multi-tab alignment*/
+.tabbrowser-tab[class*="identity-color-"]>.tab-stack>.tab-content>.tab-icon-stack {
+	margin-left: auto !important;
+}
 
+/* If tab favicon is not present, force tab label to the center */
+.tabbrowser-tab .tab-label-container {
+	margin-left: 0 !important;
+}
+
+.tabbrowser-tab:not([image]):not([busy]):not([progress]) .tab-label-container {
+	margin-left: auto !important;
+}
 /* If tab close button is not present, don't force favicon to the center */
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber,
 #tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber-fallback,
@@ -199,8 +207,13 @@ tab[selected]:-moz-window-inactive {
 	border-top: 3px solid var(--identity-tab-color) !important;
 }
 
-.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-bottom-line {
+/* Remove alt colours references for multi tabs*/
+.tabbrowser-tab[usercontextid]>.tab-stack>.tab-background>.tab-context-line {
 	display: none;
+}
+
+.tabbrowser-tab[class*="identity-color-"][pinned] {
+	display: flex;
 }
 
 .tab-background {
@@ -286,6 +299,39 @@ tab[selected]:-moz-window-inactive {
 	position: relative;
 	margin-right: -10px;
 }
+
+/* fix pip on small displays */
+.tab-icon-overlay[pictureinpicture] {
+	top: 3px !important;
+	inset-inline-end: 13px !important;
+	z-index: 1 !important;
+	max-width: 10px;
+	max-height: 10px;
+}
+
+.tab-close-button {
+	margin-inline-end: -6px !important;
+}
+
+/* fix spacing on too many tabs */
+
+.tab-icon-overlay:not([pinned], [sharing]),
+[pictureinpicture] {
+	margin-inline-end: 4px !important;
+	margin-inline-start: 4px !important;
+}
+
+/* Fix too many tabs text align */
+.tab-close-button[pinned],
+#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack:not([selected="true"]) {
+	margin-left: 0 !important;
+}
+
+.tab-close-button[pinned],
+#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack[selected="true"] {
+	margin-left: auto !important;
+}
+
 /* Fix website with no favicon centred text */
 .tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) .tab-icon-stack {
 	margin-left: 0 !important
