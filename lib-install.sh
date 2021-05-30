@@ -485,11 +485,8 @@ edit_firefox_theme_prefs() {
 }
 
 remove_firefox_theme() {
-  # We need to remove this linked folder to avoid unwanted file overriding in
-  # the next installation
   rm -rf "${FIREFOX_DIR_HOME}/"*"default"*"/chrome"
-  rm -rf "${FIREFOX_THEME_DIR}" # Sorry, we need to remove ".../WhiteSur" to keep anything clean
-  # This too
+  rm -rf "${FIREFOX_THEME_DIR}"
   rm -rf "${FIREFOX_FLATPAK_DIR_HOME}/"*"default"*"/chrome"
   rm -rf "${FIREFOX_FLATPAK_THEME_DIR}"
 }
