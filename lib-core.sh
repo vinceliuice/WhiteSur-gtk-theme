@@ -195,6 +195,10 @@ has_command() {
   command -v "$1" &> /dev/null
 }
 
+has_flatpak_app() {
+  flatpak list --columns=application 2> /dev/null | grep "${1}" &> /dev/null || return 1
+}
+
 is_my_distro() {
   [[ "$(cat '/etc/os-release' | awk -F '=' '/ID/{print $2}')" =~ "${1}" ]]
 }
@@ -253,6 +257,7 @@ check_param() {
 
   local has_any_ambiguity_error="false"
   local variant_found="false"
+
   if [[ "${has_set["${global_param}"]}" == "true" ]]; then
     need_dialog["${global_param}"]="true"
 
