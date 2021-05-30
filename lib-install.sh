@@ -433,6 +433,8 @@ revert_gdm_theme() {
 ###############################################################################
 
 install_firefox_theme() {
+  #TODO: add support for Snap
+
   if has_flatpak_app org.mozilla.firefox; then
     local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
   else

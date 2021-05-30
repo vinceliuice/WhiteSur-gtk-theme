@@ -196,7 +196,7 @@ has_command() {
 }
 
 has_flatpak_app() {
-  flatpak list --columns=application 2> /dev/null | grep "${1}" || return 1
+  flatpak list --columns=application 2> /dev/null | grep "${1}" &> /dev/null || return 1
 }
 
 is_my_distro() {
