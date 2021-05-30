@@ -68,9 +68,9 @@ while [[ $# -gt 0 ]]; do
       esac
 
       if [[ -d "${FIREFOX_FLATPAK_DIR_HOME}" ]]; then
-          FIREFOX_DIR_HOME=${FIREFOX_FLATPAK_DIR_HOME}
-	  mkdir -p ${FIREFOX_FLATPAK_THEME_DIR}
-	  FIREFOX_THEME_DIR=${FIREFOX_FLATPAK_THEME_DIR}
+        FIREFOX_DIR_HOME=${FIREFOX_FLATPAK_DIR_HOME}
+        [[ ! -d "${FIREFOX_FLATPAK_THEME_DIR}" ]] && mkdir -p ${FIREFOX_FLATPAK_THEME_DIR}
+        FIREFOX_THEME_DIR=${FIREFOX_FLATPAK_THEME_DIR}
       fi;
 
       if [[ ! -d "${FIREFOX_FLATPAK_DIR_HOME}" ]] && ! has_command firefox; then

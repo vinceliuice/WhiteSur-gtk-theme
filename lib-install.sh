@@ -434,7 +434,8 @@ revert_gdm_theme() {
 
 install_firefox_theme() {
   remove_firefox_theme
-  userify cp -rf "${FIREFOX_SRC_DIR}"                                                           "${FIREFOX_THEME_DIR}"
+  [[ ! -d "${FIREFOX_THEME_DIR}" ]] && mkdir -p ${FIREFOX_THEME_DIR}
+  userify cp -rf "${FIREFOX_SRC_DIR}"/*                                                         "${FIREFOX_THEME_DIR}"
   config_firefox
 }
 
@@ -462,8 +463,8 @@ edit_firefox_theme_prefs() {
 }
 
 remove_firefox_theme() {
-  rm -rf "${FIREFOX_DIR_HOME}/"*"default"*"/chrome"
-  rm -rf "${FIREFOX_THEME_DIR}"
+  # rm -rf "${FIREFOX_DIR_HOME}/"*"default"*"/chrome"
+  rm -rf "${FIREFOX_THEME_DIR}/WhiteSur"
 }
 
 ###############################################################################
