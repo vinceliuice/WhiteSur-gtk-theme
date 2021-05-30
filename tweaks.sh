@@ -67,7 +67,13 @@ while [[ $# -gt 0 ]]; do
           edit_firefox="true" ;;
       esac
 
-      if ! has_command firefox; then
+      if [[ -d "${FIREFOX_FLATPAK_DIR_HOME}" ]]; then
+        FIREFOX_DIR_HOME=${FIREFOX_FLATPAK_DIR_HOME}
+        [[ ! -d "${FIREFOX_FLATPAK_THEME_DIR}" ]] && mkdir -p ${FIREFOX_FLATPAK_THEME_DIR}
+        FIREFOX_THEME_DIR=${FIREFOX_FLATPAK_THEME_DIR}
+      fi;
+
+      if [[ ! -d "${FIREFOX_FLATPAK_DIR_HOME}" ]] && ! has_command firefox; then
         prompt -e "'${1}' ERROR: There's no Firefox installed in your system"
         has_any_error="true"
       elif [[ ! -d "${FIREFOX_DIR_HOME}" ]]; then

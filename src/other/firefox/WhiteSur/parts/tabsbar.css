@@ -127,6 +127,7 @@ tab[selected]:-moz-window-inactive {
 }
 
 /* If tab favicon is not present, force tab label to the center */
+
 .tabbrowser-tab .tab-label-container {
 	margin-left: 0 !important;
 }
