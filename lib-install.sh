@@ -433,19 +433,33 @@ revert_gdm_theme() {
 ###############################################################################
 
 install_firefox_theme() {
+  if has_flatpak_app org.mozilla.firefox; then
+    local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
+  else
+    local TARGET_DIR="${FIREFOX_THEME_DIR}"
+  fi
+
   remove_firefox_theme
-  userify mkdir -p                                                                              "${FIREFOX_THEME_DIR}"
-  userify cp -rf "${FIREFOX_SRC_DIR}"                                                           "${FIREFOX_THEME_DIR}"
+  userify mkdir -p                                                                              "${TARGET_DIR}"
+  userify cp -rf "${FIREFOX_SRC_DIR}"/*                                                         "${TARGET_DIR}"
   config_firefox
 }
 
 config_firefox() {
-  killall "firefox" &> /dev/null || true
+  if has_flatpak_app org.mozilla.firefox; then
+    local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
+    local FIREFOX_DIR="${FIREFOX_FLATPAK_DIR_HOME}"
+  else
+    local TARGET_DIR="${FIREFOX_THEME_DIR}"
+    local FIREFOX_DIR="${FIREFOX_DIR_HOME}"
+  fi
 
-  for d in "${FIREFOX_DIR_HOME}/"*"default"*; do
+  killall "firefox" "firefox-bin" &> /dev/null || true
+
+  for d in "${FIREFOX_DIR}/"*"default"*; do
     if [[ -f "${d}/prefs.js" ]]; then
       rm -rf                                                                                    "${d}/chrome"
-      userify ln -sf "${FIREFOX_THEME_DIR}"                                                     "${d}/chrome"
+      userify ln -sf "${TARGET_DIR}"                                                            "${d}/chrome"
       userify_file                                                                              "${d}/prefs.js"
       echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>       "${d}/prefs.js"
       echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                               "${d}/prefs.js"
@@ -457,14 +471,25 @@ config_firefox() {
 }
 
 edit_firefox_theme_prefs() {
-  [[ ! -d "${FIREFOX_THEME_DIR}" ]] && install_firefox_theme ; config_firefox
-  userify ${EDITOR:-nano}                                                                       "${FIREFOX_THEME_DIR}/userChrome.css"
-  userify ${EDITOR:-nano}                                                                       "${FIREFOX_THEME_DIR}/customChrome.css"
+  if has_flatpak_app org.mozilla.firefox; then
+    local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
+  else
+    local TARGET_DIR="${FIREFOX_THEME_DIR}"
+  fi
+
+  [[ ! -d "${TARGET_DIR}" ]] && install_firefox_theme ; config_firefox
+  userify ${EDITOR:-nano}                                                                       "${TARGET_DIR}/userChrome.css"
+  userify ${EDITOR:-nano}                                                                       "${TARGET_DIR}/customChrome.css"
 }
 
 remove_firefox_theme() {
+  # We need to remove this linked folder to avoid unwanted file overriding in
+  # the next installation
   rm -rf "${FIREFOX_DIR_HOME}/"*"default"*"/chrome"
-  rm -rf "${FIREFOX_THEME_DIR}"
+  rm -rf "${FIREFOX_THEME_DIR}" # Sorry, we need to remove ".../WhiteSur" to keep anything clean
+  # This too
+  rm -rf "${FIREFOX_FLATPAK_DIR_HOME}/"*"default"*"/chrome"
+  rm -rf "${FIREFOX_FLATPAK_THEME_DIR}"
 }
 
 ###############################################################################
