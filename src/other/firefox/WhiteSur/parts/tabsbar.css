@@ -286,3 +286,11 @@ tab[selected]:-moz-window-inactive {
 	position: relative;
 	margin-right: -10px;
 }
+/* Fix website with no favicon centred text */
+.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) .tab-icon-stack {
+	margin-left: 0 !important
+}
+
+.tabbrowser-tab:not([image]) .tab-icon-stack {
+	margin-left: 0 !important
+}
