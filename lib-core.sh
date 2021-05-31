@@ -46,6 +46,8 @@ FIREFOX_DIR_HOME="/home/${MY_USERNAME}/.mozilla/firefox"
 FIREFOX_THEME_DIR="/home/${MY_USERNAME}/.mozilla/firefox/firefox-themes"
 FIREFOX_FLATPAK_DIR_HOME="/home/${MY_USERNAME}/.var/app/org.mozilla.firefox/.mozilla/firefox"
 FIREFOX_FLATPAK_THEME_DIR="/home/${MY_USERNAME}/.var/app/org.mozilla.firefox/.mozilla/firefox/firefox-themes"
+FIREFOX_SNAP_DIR_HOME="/home/${MY_USERNAME}/snap/firefox/common/.mozilla/firefox"
+FIREFOX_SNAP_THEME_DIR="/home/${MY_USERNAME}/snap/firefox/common/.mozilla/firefox/firefox-themes"
 export WHITESUR_TMP_DIR="/tmp/WhiteSur.lock"
 
 if [[ -w "/" ]]; then
@@ -197,6 +199,10 @@ has_command() {
 
 has_flatpak_app() {
   flatpak list --columns=application 2> /dev/null | grep "${1}" &> /dev/null || return 1
+}
+
+has_snap_app() {
+  snap list "${1}" &> /dev/null || return 1
 }
 
 is_my_distro() {
@@ -498,6 +504,7 @@ signal_exit() {
 
 operation_aborted() {
   local sources=($(basename -a "${BASH_SOURCE[@]}" | sort -u))
+  local dist_ids=($(cat '/etc/os-release' | awk -F '=' '/ID/{print $2}'))
 
   clear
 
@@ -520,7 +527,13 @@ operation_aborted() {
 
   prompt -e ">>> ${BASH_COMMAND}\n"
 
-  prompt -i "TIP: you can google or report to us the infos above\n\n"
+  prompt -e "SYSTEM INFO:"
+  prompt -e "    DISTRO  : $(IFS=';'; echo "${dist_ids[*]}")"
+  prompt -e "    SUDO    : $([[ -w "/" ]] && echo "yes" || echo "no")"
+  prompt -e "    GNOME   : ${GNOME_VERSION}\n"
+
+  prompt -i "TIP: you can google or report to us the infos above\n"
+  prompt -i "https://github.com/vinceliuice/WhiteSur-gtk-theme/issues\n\n"
 
   rm -rf "${WHITESUR_TMP_DIR}"; exit 1
 }

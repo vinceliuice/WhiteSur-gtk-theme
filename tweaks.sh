@@ -67,10 +67,10 @@ while [[ $# -gt 0 ]]; do
           edit_firefox="true" ;;
       esac
 
-      if ! has_command firefox && ! has_flatpak_app org.mozilla.firefox; then
+      if ! has_command firefox && ! has_flatpak_app org.mozilla.firefox && ! has_snap_app firefox; then
         prompt -e "'${1}' ERROR: There's no Firefox installed in your system"
         has_any_error="true"
-      elif [[ ! -d "${FIREFOX_DIR_HOME}" && ! -d "${FIREFOX_FLATPAK_DIR_HOME}" ]]; then
+      elif [[ ! -d "${FIREFOX_DIR_HOME}" && ! -d "${FIREFOX_FLATPAK_DIR_HOME}" && ! -d "${FIREFOX_SNAP_DIR_HOME}" ]]; then
         prompt -e "'${1}' ERROR: Firefox is installed but not yet initialized."
         prompt -w "'${1}': Don't forget to close it after you run/initialize it"
         has_any_error="true"
@@ -95,20 +95,19 @@ while [[ $# -gt 0 ]]; do
     -g|--gdm)
       gdm="true"; full_rootify "${1}"
 
-      if ! has_command gdm && ! has_command gdm3; then
+      if ! has_command gdm && ! has_command gdm3 && [[ ! -e /usr/sbin/gdm3 ]]; then
         prompt -e "'${1}' ERROR: There's no GDM installed in your system"
         has_any_error="true"
       fi; shift ;;
     -d|--dash-to-dock)
       if [[ "${GNOME_VERSION}" == 'new'  ]]; then
-        prompt -e "'${1}' ERROR: There's no need to install on >= Gnome 40.0!"
+        prompt -w "'${1}' WARNING: There's no need to install on GNOME >= 40.0"
+        dash_to_dock="false"
+      elif [[ ! -d "${DASH_TO_DOCK_DIR_HOME}" && ! -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
+        prompt -e "'${1}' ERROR: There's no Dash to Dock installed in your system"
         has_any_error="true"
       else
         dash_to_dock="true"
-      fi
-      if [[ ! -d "${DASH_TO_DOCK_DIR_HOME}" && ! -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
-        prompt -e "'${1}' ERROR: There's no Dash to Dock installed in your system"
-        has_any_error="true"
       fi; shift ;;
     -N|--no-darken)
       no_darken="true"; shift ;;
@@ -200,7 +199,7 @@ else
 
     echo
     prompt -w "FIREFOX: Please go to [Firefox menu] > [Customize...], and customize your Firefox to make it work. Move your 'new tab' button to the titlebar instead of tab-switcher."
-    prompt -w "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in '${FIREFOX_THEME_DIR}'."
+    prompt -w "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory."
   fi
 
   if [[ "${snap}" == 'true' ]]; then
