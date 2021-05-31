@@ -312,7 +312,7 @@ install_theemy() {
   mkdir -p                                                                                    "${TARGET_DIR}/metacity-1"
   cp -r "${THEME_SRC_DIR}/main/metacity-1/metacity-theme${color}.xml"                         "${TARGET_DIR}/metacity-1/metacity-theme-1.xml"
   cp -r "${THEME_SRC_DIR}/main/metacity-1/metacity-theme-3.xml"                               "${TARGET_DIR}/metacity-1"
-  cp -r "${THEME_SRC_DIR}/assets/metacity-1/assets/"*".png"                                   "${TARGET_DIR}/metacity-1"
+  cp -r "${THEME_SRC_DIR}/assets/metacity-1/titlebuttons${color}"                             "${TARGET_DIR}/metacity-1/titlebuttons"
   cp -r "${THEME_SRC_DIR}/assets/metacity-1/thumbnail${color}.png"                            "${TARGET_DIR}/metacity-1/thumbnail.png"
   ( cd "${TARGET_DIR}/metacity-1" && ln -s "metacity-theme-1.xml" "metacity-theme-2.xml" )
 
