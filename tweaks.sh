@@ -101,7 +101,7 @@ while [[ $# -gt 0 ]]; do
       fi; shift ;;
     -d|--dash-to-dock)
       if [[ "${GNOME_VERSION}" == 'new'  ]]; then
-        prompt -e "'${1}' WARNING: There's no need to install on >= GNOME 40.0"
+        prompt -e "'${1}' WARNING: There's no need to install on GNOME >= 40.0"
         dash_to_dock="false"
       elif [[ ! -d "${DASH_TO_DOCK_DIR_HOME}" && ! -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
         prompt -e "'${1}' ERROR: There's no Dash to Dock installed in your system"
@@ -199,7 +199,7 @@ else
 
     echo
     prompt -w "FIREFOX: Please go to [Firefox menu] > [Customize...], and customize your Firefox to make it work. Move your 'new tab' button to the titlebar instead of tab-switcher."
-    prompt -w "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in '${FIREFOX_THEME_DIR}'."
+    prompt -w "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory."
   fi
 
   if [[ "${snap}" == 'true' ]]; then
