@@ -120,6 +120,7 @@ final_msg="Run '${0} --help' to explore more customization features!"
 notif_msg=""
 error_msg=""
 process_ids=()
+errors=()
 export ANIM_PID="0"
 has_any_error="false"
 
@@ -460,7 +461,7 @@ backup_file() {
 }
 
 userify_file() {
-  if [[ "$(ls -ld "${1}" | awk '{print $3}')" != "${MY_USERNAME}" ]]; then
+  if [[ -f "${1}" && "$(ls -ld "${1}" | awk '{print $3}')" != "${MY_USERNAME}" ]]; then
     rootify chown "${MY_USERNAME}:" "${1}"
   fi
 }
@@ -480,7 +481,12 @@ remind_relative_path() {
 rootify() {
   trap true SIGINT
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
-  sudo ${@} || operation_aborted
+  
+  if ! sudo "${@}"; then
+    errors+=("${*}")
+    operation_aborted
+  fi
+  
   trap signal_exit SIGINT
 }
 
@@ -493,7 +499,12 @@ full_rootify() {
 
 userify() {
   trap true SIGINT
-  sudo -u "${MY_USERNAME}" ${@} || operation_aborted
+  
+  if ! sudo -u "${MY_USERNAME}" "${@}"; then
+    errors+=("${*}")
+    operation_aborted
+  fi
+  
   trap signal_exit SIGINT
 }
 
@@ -503,6 +514,7 @@ signal_exit() {
 }
 
 operation_aborted() {
+  IFS=$'\n'
   local sources=($(basename -a "${BASH_SOURCE[@]}" | sort -u))
   local dist_ids=($(cat '/etc/os-release' | awk -F '=' '/ID/{print $2}'))
 
@@ -521,12 +533,24 @@ operation_aborted() {
   prompt -e "    SNIPPETS:"
 
   for i in "${sources[@]}"; do
-    prompt -e ">>> $(sed "${BASH_LINENO}q;d" "${REPO_DIR}/${i}")"
-    prompt -e ">>> $(sed "${LINENO}q;d" "${REPO_DIR}/${i}")"
+    errors+=("$(sed "${BASH_LINENO}q;d" "${REPO_DIR}/${i}")")
+    errors+=("$(sed "${LINENO}q;d" "${REPO_DIR}/${i}")")
   done
 
-  prompt -e ">>> ${BASH_COMMAND}\n"
+  errors+=("${BASH_COMMAND}")
+  errors=($(printf "%s\n" "${errors[@]}" | sort -u))
+  
+  for i in "${errors[@]}"; do
+    [[ ! "${i}" =~ "errors+=" && ! "${i}" =~ "operation_aborted" ]] && prompt -e ">>> ${i}"
+  done
+  
+  prompt -e "    TRACE   :"
 
+  for i in "${FUNCNAME[@]}"; do
+    prompt -e ">>> ${i}"
+  done
+  
+  echo
   prompt -e "SYSTEM INFO:"
   prompt -e "    DISTRO  : $(IFS=';'; echo "${dist_ids[*]}")"
   prompt -e "    SUDO    : $([[ -w "/" ]] && echo "yes" || echo "no")"
