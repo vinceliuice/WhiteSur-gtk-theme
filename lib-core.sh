@@ -1,16 +1,20 @@
 # WARNING: Please make this shell not working-directory dependant, for example
-# instead of using 'cd blabla', use 'cd "${REPO_DIR}/blabla"'
+# instead of using 'ls blabla', use 'ls "${REPO_DIR}/blabla"'
 #
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
 #
 # WARNING: Please don't use sudo directly here since it steals our EXIT trap
-#
-# WARNING: Please set REPO_DIR variable before using this lib
 
 set -Eeo pipefail
-WHITESUR_SOURCE=()
-WHITESUR_SOURCE+=("lib-core.sh")
+
+if [[ ! "${REPO_DIR}" ]]; then
+  echo "Please define 'REPODIR' variable"; exit 1
+elif [[ "${WHITESUR_SOURCE[@]}" =~ "lib-core.sh" ]]; then
+  echo "'lib-core.sh' is already imported"; exit 1
+fi
+
+WHITESUR_SOURCE=("lib-core.sh")
 
 ###############################################################################
 #                                VARIABLES                                    #
@@ -121,8 +125,7 @@ msg=""
 final_msg="Run '${0} --help' to explore more customization features!"
 notif_msg=""
 process_ids=()
-whitesur_error=""
-whitesur_lines=()
+error_snippet=""
 export ANIM_PID="0"
 has_any_error="false"
 
@@ -485,8 +488,7 @@ rootify() {
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
 
   if ! sudo "${@}"; then
-    whitesur_lines+=("${BASH_LINENO}")
-    whitesur_error="${*}"
+    error_snippet="${*}"
     operation_aborted
   fi
 
@@ -504,8 +506,7 @@ userify() {
   trap true SIGINT
 
   if ! sudo -u "${MY_USERNAME}" "${@}"; then
-    whitesur_lines+=("${BASH_LINENO}")
-    whitesur_error="${*}"
+    error_snippet="${*}"
     operation_aborted
   fi
 
@@ -530,8 +531,6 @@ operation_aborted() {
     fi
   fi
 
-  #whitesur_lines=($(printf "%s\n" "${whitesur_lines[@]}" | sort -u))
-
   clear
 
   prompt -e "\n\n  Oops! Operation has been aborted or failed...\n"
@@ -545,11 +544,11 @@ operation_aborted() {
   prompt -e "FOUND  :"
 
   for i in "${sources[@]}"; do
-    lines=($(grep -Fn "${whitesur_error:-${BASH_COMMAND}}" "${REPO_DIR}/${i}" | cut -d : -f 1 || echo ""))
+    lines=($(grep -Fn "${error_snippet:-${BASH_COMMAND}}" "${REPO_DIR}/${i}" | cut -d : -f 1 || echo ""))
     prompt -e "  >>> ${i} $(IFS=';'; [[ "${lines[*]}" ]] && echo "at ${lines[*]}")"
   done
 
-  prompt -e "SNIPPET:\n    >>> ${whitesur_error:-${BASH_COMMAND}}"
+  prompt -e "SNIPPET:\n    >>> ${error_snippet:-${BASH_COMMAND}}"
   prompt -e "TRACE  :"
 
   for i in "${FUNCNAME[@]}"; do

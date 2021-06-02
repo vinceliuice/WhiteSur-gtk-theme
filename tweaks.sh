@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # WARNING: Please make this shell not working-directory dependant, for example
-# instead of using 'cd blabla', use 'cd "${REPO_DIR}/blabla"'
+# instead of using 'ls blabla', use 'ls "${REPO_DIR}/blabla"'
 #
 # WARNING: Please don't use sudo directly here since it steals our EXIT trap
 #
