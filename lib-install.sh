@@ -13,6 +13,7 @@
 ###############################################################################
 
 source "${REPO_DIR}/lib-core.sh"
+WHITESUR_SOURCE+=("lib-install.sh")
 
 ###############################################################################
 #                              DEPENDENCIES                                   #
@@ -45,8 +46,7 @@ install_theme_deps() {
 install_gdm_deps() {
   #TODO: @vince, do we also need "sassc" here?
 
-  if ! has_command glib-compile-resources || ! has_command xmllint || \
-    ! has_command sassc; then
+  if ! has_command glib-compile-resources || ! has_command xmllint || ! has_command sassc; then
     echo; prompt -w "'glib2.0', 'xmllint', and 'sassc' are required for theme installation."
 
     if has_command zypper; then
@@ -186,7 +186,9 @@ install_shelly() {
 
   if [[ -z "${6}" ]]; then
     TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}/gnome-shell"
-  else TARGET_DIR="${6}"; fi
+  else
+    TARGET_DIR="${6}"
+  fi
 
   mkdir -p                                                                                    "${TARGET_DIR}"
   mkdir -p                                                                                    "${TARGET_DIR}/assets"

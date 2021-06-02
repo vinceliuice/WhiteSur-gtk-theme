@@ -9,6 +9,8 @@
 # WARNING: Please set REPO_DIR variable before using this lib
 
 set -Eeo pipefail
+WHITESUR_SOURCE=()
+WHITESUR_SOURCE+=("lib-core.sh")
 
 ###############################################################################
 #                                VARIABLES                                    #
@@ -118,9 +120,9 @@ showapps_normal="false"
 msg=""
 final_msg="Run '${0} --help' to explore more customization features!"
 notif_msg=""
-error_msg=""
 process_ids=()
-errors=()
+whitesur_error=""
+whitesur_lines=()
 export ANIM_PID="0"
 has_any_error="false"
 
@@ -481,12 +483,13 @@ remind_relative_path() {
 rootify() {
   trap true SIGINT
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
-  
+
   if ! sudo "${@}"; then
-    errors+=("${*}")
+    whitesur_lines+=("${BASH_LINENO}")
+    whitesur_error="${*}"
     operation_aborted
   fi
-  
+
   trap signal_exit SIGINT
 }
 
@@ -499,12 +502,13 @@ full_rootify() {
 
 userify() {
   trap true SIGINT
-  
+
   if ! sudo -u "${MY_USERNAME}" "${@}"; then
-    errors+=("${*}")
+    whitesur_lines+=("${BASH_LINENO}")
+    whitesur_error="${*}"
     operation_aborted
   fi
-  
+
   trap signal_exit SIGINT
 }
 
@@ -515,46 +519,48 @@ signal_exit() {
 
 operation_aborted() {
   IFS=$'\n'
-  local sources=($(basename -a "${BASH_SOURCE[@]}" | sort -u))
-  local dist_ids=($(cat '/etc/os-release' | awk -F '=' '/ID/{print $2}'))
+  local sources=($(basename -a "${WHITESUR_SOURCE[@]}" "${BASH_SOURCE[@]}" | sort -u))
+  local dist_ids=($(awk -F '=' '/ID/{print $2}' "/etc/os-release"))
+  local repo_ver=""
+  local lines=()
+
+  if ! repo_ver="$(cd "${REPO_DIR}"; git log -1 --date=format-local:"%FT%T%z" --format="%ad")"; then
+    if ! repo_ver="$(date -r "${REPO_DIR}" +"%FT%T%z")"; then
+      repo_ver="unknown"
+    fi
+  fi
+
+  #whitesur_lines=($(printf "%s\n" "${whitesur_lines[@]}" | sort -u))
 
   clear
 
+  prompt -e "\n\n  Oops! Operation has been aborted or failed...\n"
+  prompt -e "=========== ERROR LOG ==========="
+
   if [[ -f "${WHITESUR_TMP_DIR}/error_log.txt" ]]; then
-    error_msg="$(cat "${WHITESUR_TMP_DIR}/error_log.txt")"
+    awk '{printf "\033[1;31m  >>> %s\n", $0}' "${WHITESUR_TMP_DIR}/error_log.txt"
   fi
 
-  prompt -e "\n\n  Oops! Operation has been aborted or failed...\n"
-  prompt -e "ERROR LOG:\n${error_msg}\n"
-
-  prompt -e "ERROR INFO:"
-  prompt -e "    SOURCES : $(IFS=';'; echo "${sources[*]}")"
-  prompt -e "    LINES   : ${LINENO};${BASH_LINENO}"
-  prompt -e "    SNIPPETS:"
+  prompt -e "\n  =========== ERROR INFO =========="
+  prompt -e "FOUND  :"
 
   for i in "${sources[@]}"; do
-    errors+=("$(sed "${BASH_LINENO}q;d" "${REPO_DIR}/${i}")")
-    errors+=("$(sed "${LINENO}q;d" "${REPO_DIR}/${i}")")
+    lines=($(grep -Fn "${whitesur_error:-${BASH_COMMAND}}" "${REPO_DIR}/${i}" | cut -d : -f 1 || echo ""))
+    prompt -e "  >>> ${i} $(IFS=';'; [[ "${lines[*]}" ]] && echo "at ${lines[*]}")"
   done
 
-  errors+=("${BASH_COMMAND}")
-  errors=($(printf "%s\n" "${errors[@]}" | sort -u))
-  
-  for i in "${errors[@]}"; do
-    [[ ! "${i}" =~ "errors+=" && ! "${i}" =~ "operation_aborted" ]] && prompt -e ">>> ${i}"
-  done
-  
-  prompt -e "    TRACE   :"
+  prompt -e "SNIPPET:\n    >>> ${whitesur_error:-${BASH_COMMAND}}"
+  prompt -e "TRACE  :"
 
   for i in "${FUNCNAME[@]}"; do
-    prompt -e ">>> ${i}"
+    prompt -e "  >>> ${i}"
   done
-  
-  echo
-  prompt -e "SYSTEM INFO:"
-  prompt -e "    DISTRO  : $(IFS=';'; echo "${dist_ids[*]}")"
-  prompt -e "    SUDO    : $([[ -w "/" ]] && echo "yes" || echo "no")"
-  prompt -e "    GNOME   : ${GNOME_VERSION}\n"
+
+  prompt -e "\n  =========== SYSTEM INFO ========="
+  prompt -e "DISTRO : $(IFS=';'; echo "${dist_ids[*]}")"
+  prompt -e "SUDO   : $([[ -w "/" ]] && echo "yes" || echo "no")"
+  prompt -e "GNOME  : ${GNOME_VERSION}"
+  prompt -e "REPO   : ${repo_ver}\n"
 
   prompt -i "TIP: you can google or report to us the infos above\n"
   prompt -i "https://github.com/vinceliuice/WhiteSur-gtk-theme/issues\n\n"

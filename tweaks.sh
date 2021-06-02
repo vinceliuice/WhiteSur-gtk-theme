@@ -54,7 +54,7 @@ while [[ $# -gt 0 ]]; do
   # at once
 
   case "${1}" in
-    # Parameters that don't require value
+      # Parameters that don't require value
     -r|--remove|--revert)
       uninstall='true'; shift ;;
     -h|--help)
@@ -113,7 +113,7 @@ while [[ $# -gt 0 ]]; do
       no_darken="true"; shift ;;
     -n|--no-blur)
       no_blur="true"; shift ;;
-    # Parameters that require value, single use
+      # Parameters that require value, single use
     -b|--background)
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
     -i|--icon)

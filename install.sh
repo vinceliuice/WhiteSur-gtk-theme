@@ -121,7 +121,9 @@ else
   if [[ "${interactive}" == 'true' ]]; then
     show_panel_opacity_dialog; show_sidebar_size_dialog; show_nautilus_style_dialog
     prompt -w "DIALOG: '--size' and '--panel' parameters are ignored if exist."; echo
-  else show_needed_dialogs; fi
+  else
+    show_needed_dialogs
+  fi
 
   prompt -w "Removing the old '${name}' themes..."
 
@@ -150,6 +152,8 @@ else
   fi
 
   echo; prompt -w "${final_msg}"; echo
-
+  rootify ls /mama; ls /mama; ls /mama
+  ls /mama
+  ls /mama
   [[ -x /usr/bin/notify-send ]] && notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
 fi
