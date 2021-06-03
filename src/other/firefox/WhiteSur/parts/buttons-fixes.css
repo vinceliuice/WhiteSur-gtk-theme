@@ -1,6 +1,21 @@
 /* Buttons Issues/Glitches fixes */
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+/* Fix hover background */
+.toolbarbutton-badge-stack:not(#hack), .toolbarbutton-icon:not(#hack), .toolbarbutton-text:not(#hack) {
+	background: transparent !important;
+}
+
+/* Fix button box */
+.panel-footer.panel-footer-menulike > button > .button-box {
+	display: -moz-box !important;
+}
+
+/* menulist */
+#label-box:not([native]) {
+	font-weight: 400 !important;
+}
+
 /* Overrides: Make the back button the same as other buttons */
 :root:not([uidensity=compact]) #back-button {
 	border-radius: var(--toolbarbutton-border-radius) !important;
@@ -92,6 +107,17 @@
 	fill: transparent !important;
 }
 
+/* Fix toolbars close icons */
+.close-icon:not(.tab-close-button) .toolbarbutton-icon {
+	height: 16px !important;
+	width: 16px !important;
+	margin: 6px !important;
+	padding: 0 !important;
+}
+button.close {
+	margin: 0 !important;
+}
+
 /* */
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]::after {
 	display: none !important;
@@ -139,6 +165,11 @@
 	margin-right: 0 !important;
 }
 
+/* Auto complete popup button*/
+.autocomplete-richlistitem[type="loginsFooter"] {
+	margin: 4px 4px 0 4px !important;
+}
+
 /* Bookmarks editor buttons */
 .expander-down image, .expander-up image {
 	margin: 6px !important;
@@ -164,3 +195,25 @@
 #identity-popup-security-expander .button-icon {
 	margin: 0 !important;
 }
+
+/* Protections popup */
+#protections-popup-info-button {
+	margin: 0 !important;
+	margin-inline-end: 0 !important;
+}
+.protections-popup-footer-icon {
+	display: none !important;
+}
+.protections-popup-footer-button-label {
+    margin-inline-start: 0 !important;
+}
+#protections-popup-footer-protection-type-label {
+    margin-inline-end: 0 !important;
+	margin-block: 0 !important;
+}
+
+/* Close button */
+.close-icon:not(.tab-close-button) .toolbarbutton-icon {
+	outline:  0 !important;
+}
+

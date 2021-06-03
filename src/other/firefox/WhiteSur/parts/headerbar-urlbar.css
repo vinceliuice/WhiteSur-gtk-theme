@@ -3,8 +3,8 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 #urlbar {
-	--urlbar-height: 32.00px;
-	--urlbar-toolbar-height: 32.00px !important;
+	--urlbar-height: 34.00px;
+	--urlbar-toolbar-height: 34.00px !important;
 }
 
 /* Center the URL bar */
@@ -17,6 +17,7 @@ toolbarspring {
 	box-shadow: none !important;
 	background: var(--gnome-popover-background) !important;
 	border-radius: 8px !important;
+	border: 1px solid transparent !important;
 }
 #urlbar-background {
 	box-shadow: none !important;
@@ -25,12 +26,18 @@ toolbarspring {
 	border-radius: 8px !important;
 }
 
+#urlbar:-moz-window-inactive {
+	border-color: var(--gnome-inactive-headerbar-background) !important;
+}
+
+#urlbar #urlbar-input-container {
+	padding: 0 !important;
+}
 #urlbar[breakout][breakout-extend] {
 	left: 0 !important;
 	top: 0 !important;
 	width: 100% !important;
 	z-index: 5 !important;
-	padding: 0 !important;
 }
 #urlbar[breakout][breakout-extend][open] {
 	height: auto !important;
@@ -50,7 +57,7 @@ toolbarspring {
 .urlbarView {
 	background: transparent !important;
 	color: var(--gnome-toolbar-color) !important;
-	margin: -2px 0 0 0 !important;
+	margin: 0 !important;
 	width: 100% !important;
 }
 
@@ -70,17 +77,18 @@ toolbarspring {
 	align-items: center !important;
 }
 .urlbarView-row-inner {
-	padding-block: 8px !important;
-	border-radius: 8px !important;
+	padding-block: 5px !important;
+	border-radius: 5px !important;
 }
-
+.urlbarView-action {
+	background: transparent !important;
+}
 /* Search engines buttons */
 .search-one-offs {
-	margin-top: 6px !important;
-	margin-bottom: 2px !important;
+	margin: 0 0 2px !important;
 	padding: 8px !important;
-	background: none !important;
-	border-top: 1px solid var(--gnome-entry-border-color) !important;
+	background: var(--gnome-popover-background) !important;
+	border-top: 1px solid var(--gnome-button-border-color) !important;
 	border-radius: 0 0 8px 8px !important;
 }
 
@@ -103,17 +111,17 @@ toolbarspring {
 	color: unset !important;
 }
 .searchbar-engine-one-off-item:first-child {
-	border-radius: 8px 0 0 8px;
+	border-radius: 5px 0 0 5px;
 	border-left-width: 1px !important;
 }
 .searchbar-engine-one-off-item.last-engine, .searchbar-engine-one-off-item:last-child {
-	border-radius: 0 8px 8px 0;
+	border-radius: 0 5px 5px 0;
 }
 
 #urlbar-anon-search-settings-compact {
 	border-left-width: 1px !important;
 	border-bottom: 1px solid var(--gnome-button-border-accent-color) !important;
-	border-radius: 8px;
+	border-radius: 5px;
 	margin-left: 6px !important;
 }
 
@@ -151,5 +159,22 @@ toolbarspring {
 #page-action-buttons {
 	padding: 2px 0 !important;
 }
-
+/* Search mode indicator */
+#urlbar-search-mode-indicator,
+#urlbar-label-box {
+	background: var(--gnome-popover-background) !important;
+	border: 1px solid var(--gnome-popover-border-color) !important;
+	border-radius: 9px;
+	outline: 0 !important;
+	margin: 4px 0;
+}
+#urlbar-search-mode-indicator-title {
+    color: #0060df;
+    padding-inline: 4px !important;;
+}
+#urlbar-search-mode-indicator-close {
+	background-size: contain !important;
+	border-radius: 0 9px 9px 0;
+	opacity: 0.8;
+}
 

@@ -2,6 +2,19 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+:root {
+	--space-above-tabbar: 0 !important;
+}
+
+#TabsToolbar:not([inFullscreen]) > .toolbar-items {
+	margin-bottom: -1px !important;
+}
+
+/* Fix tabs bar icon sizes */
+#TabsToolbar {
+	--toolbarbutton-inner-padding: var(--toolbarbutton-inner-padding) !important;
+}
+
 /* Tabs bar height */
 #tabbrowser-tabs,
 #tabbrowser-tabs arrowscrollbox {
@@ -154,7 +167,6 @@ tab[selected]:-moz-window-inactive {
 }
 
 @media (-moz-proton) {
-
 	/* Firefox v89 beta tab fix */
 	.tab-background {
 		border-radius: 0 !important;
@@ -168,6 +180,7 @@ tab[selected]:-moz-window-inactive {
 
 	/* fix misc spacing between tabs */
 	.tabbrowser-tab {
+		min-height: 28px !important;
 		padding-inline: 0px !important;
 	}
 
@@ -201,15 +214,17 @@ tab[selected]:-moz-window-inactive {
 
 .tab-close-button {
 	-moz-appearance: none !important;
+	margin-inline-end: 0 !important;
 	border: none !important;
 	box-sizing: content-box; /* Avoid deformation on flexbox */
-	border-radius: 2px;
+	border-radius: 3px !important;
 	list-style-image: url("../icons/window-close-symbolic.svg") !important;
 	height: 16px;
 	opacity: .3;
 	padding: 0;
 	width: 16px;
 }
+
 @media (prefers-color-scheme: dark) {
 	.tab-close-button {
 		list-style-image: url("../icons/window-close-symbolic-light.svg") !important;
@@ -347,10 +362,6 @@ tab[selected]:-moz-window-inactive {
 	z-index: 1 !important;
 	max-width: 10px;
 	max-height: 10px;
-}
-
-.tab-close-button {
-	margin-inline-end: -6px !important;
 }
 
 /* fix spacing on too many tabs */
