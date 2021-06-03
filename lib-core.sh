@@ -260,6 +260,29 @@ operation_aborted() {
   rm -rf "${WHITESUR_TMP_DIR}"; exit 1
 }
 
+rootify() {
+  trap true SIGINT
+  prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
+
+  if ! sudo "${@}"; then
+    error_snippet="${*}"
+    operation_aborted
+  fi
+
+  trap signal_exit SIGINT
+}
+
+userify() {
+  trap true SIGINT
+
+  if ! sudo -u "${MY_USERNAME}" "${@}"; then
+    error_snippet="${*}"
+    operation_aborted
+  fi
+
+  trap signal_exit SIGINT
+}
+
 trap 'operation_aborted' ERR
 trap 'signal_exit' INT EXIT TERM
 
@@ -558,37 +581,14 @@ remind_relative_path() {
 }
 
 ###############################################################################
-#                                   SYSTEMS                                   #
+#                                    MISC                                     #
 ###############################################################################
-
-rootify() {
-  trap true SIGINT
-  prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
-
-  if ! sudo "${@}"; then
-    error_snippet="${*}"
-    operation_aborted
-  fi
-
-  trap signal_exit SIGINT
-}
 
 full_rootify() {
   if [[ ! -w "/" ]]; then
     prompt -e "ERROR: '${1}' needs a root priviledge. Please run this '${0}' as root"
     has_any_error="true"
   fi
-}
-
-userify() {
-  trap true SIGINT
-
-  if ! sudo -u "${MY_USERNAME}" "${@}"; then
-    error_snippet="${*}"
-    operation_aborted
-  fi
-
-  trap signal_exit SIGINT
 }
 
 usage() {
