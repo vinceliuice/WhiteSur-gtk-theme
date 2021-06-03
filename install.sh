@@ -152,8 +152,5 @@ else
   fi
 
   echo; prompt -w "${final_msg}"; echo
-  rootify ls /mama; ls /mama; ls /mama
-  ls /mama
-  ls /mama
   [[ -x /usr/bin/notify-send ]] && notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
 fi
