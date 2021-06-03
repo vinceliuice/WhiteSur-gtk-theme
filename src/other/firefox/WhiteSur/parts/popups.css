@@ -8,7 +8,7 @@ menupopup {
 	-moz-appearance: none !important;
 	background: var(--gnome-menu-background) !important;
 	border: 1px solid var(--gnome-menu-border-color) !important;
-	border-radius: 12px !important;
+	border-radius: 8px !important;
 	padding: 8px 0 !important;
 	color: var(--gnome-toolbar-color) !important;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
@@ -37,7 +37,7 @@ menuitem[disabled="true"]:hover, menupopup menu[disabled="true"]:hover {
 
 /* Adjust popovers position */
 panel[type=arrow] {
-	margin-top: 9px !important;
+	margin-top: 8px !important;
 }
 
 /* Style popovers */
@@ -53,7 +53,7 @@ panelview {
 	background: var(--gnome-popover-background) !important;
 	border: 1px solid !important;
 	border-color: var(--gnome-popover-border-color) !important;
-	border-radius: 12px 8px 12px 12px !important;
+	border-radius: 8px!important;
 	padding: 12px !important;
 	color: var(--gnome-toolbar-color) !important;
 }
