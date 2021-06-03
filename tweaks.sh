@@ -216,8 +216,9 @@ else
 fi
 
 if [[ "${firefox}" == "false" && "${edit_firefox}" == "false" && "${flatpak}" == "false" && "${snap}" == "false" && "${gdm}" == "false" && "${dash_to_dock}" == "false" ]]; then
-  echo; prompt -e "Oops... there's nothing to tweaks..."
-  echo; prompt -i "Run ./tweaks.sh -h for help!..."
+  echo; prompt -e "Oops... there's nothing to tweak..."
+  echo; prompt -i "HINT: Don't forget to define which component to tweak, e.g. '--gdm'"
+  echo; prompt -i "HINT: Run ./tweaks.sh -h for help!..."
 fi
 
 echo

@@ -34,6 +34,7 @@ usage() {
   helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"           "Set 'Activities' icon"                            "Default is 'standard'"
   # Not sure if "background" is even needed here
   helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                         "Set gnome-shell background image"                 "Default is BigSur-like wallpaper"
+  helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                               "Default is BigSur-like style"
   helpify "-HD, --highdefinition"         ""                                          "Set to High Definition size"                      "Default is laptop size"
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
   helpify "--round, --roundedmaxwindow"   ""                                          "Set maximized window to rounded"                  "Default is square"
