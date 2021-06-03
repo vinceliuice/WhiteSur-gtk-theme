@@ -42,7 +42,6 @@ $app_icon_padding: 24px;
 
 //Some hacks I don't even
 .all-apps,
-.search-display > StBoxLayout,
 .frequent-apps > StBoxLayout {
   // horizontal padding to make sure scrollbars or dash don't overlap content
   padding: 0px 88px 10px 88px;
@@ -100,8 +99,7 @@ $app_icon_padding: 24px;
   color: $light_hint_fg_color;
 }
 
-.overview-icon.overview-icon-with-label,
-.grid-search-result .overview-icon.overview-icon-with-label {
+.overview-icon.overview-icon-with-label {
   padding: 10px 8px 5px 8px;
   spacing: 6px;
 

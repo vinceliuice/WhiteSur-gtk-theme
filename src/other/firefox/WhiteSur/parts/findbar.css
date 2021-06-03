@@ -31,6 +31,15 @@ hbox[anonid="findbar-textbox-wrapper"] {
 	flex: 1;
 }
 
+.findbar-textbox:focus + .findbar-find-previous {
+	border-left-color: var(--gnome-focused-urlbar-border-color) !important;
+}
+
+.findbar-highlight, .findbar-case-sensitive, .findbar-match-diacritics, .findbar-entire-word, .findbar-label {
+	margin: 0 3px !important;
+	font-size: 0.9em !important;
+}
+
 .findbar-closebutton.close-icon {
 	margin: 6px 6px 6px 0 !important;
 	padding: 0 0 !important;

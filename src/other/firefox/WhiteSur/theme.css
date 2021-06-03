@@ -1,6 +1,7 @@
 @import "parts/toolbox.css";
 @import "parts/buttons.css";
 @import "parts/entries.css";
+@import "parts/controls.css";
 @import "parts/headerbar.css";
 @import "parts/csd.css";
 @import "parts/titlebutton-light.css";
@@ -8,7 +9,7 @@
 @import "parts/popups.css";
 @import "parts/tabsbar.css";
 @import "parts/findbar.css";
-@import "parts/scrollbars.css";
+@import "parts/dialogs.css";
 @import "parts/remove-white-flash.css";
 @import "parts/custom-icons.css";
 @import "parts/icons.css";

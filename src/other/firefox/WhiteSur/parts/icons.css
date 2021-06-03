@@ -229,7 +229,7 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	list-style-image: url("../icons/edit-find-symbolic.svg") !important;
 }
 /* New window button */
-#nav-bar #new-window-button {
+#new-window-button {
 	list-style-image: url("../icons/window-new-symbolic.svg") !important;
 }
 /* Bookmarks menu button */
@@ -356,7 +356,7 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	list-style-image: url("../icons/forget-history-symbolic.svg") !important;
 }
 
-#nav-bar #sync-button {
+#sync-button {
 	list-style-image: url("../icons/tab-sync-symbolic.svg") !important;
 }
 
@@ -370,6 +370,10 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 
 #characterencoding-button {
 	list-style-image: url("../icons/character-symbolic.svg") !important;
+}
+
+#screenshot-button {
+	list-style-image: url("../icons/screenshot-symbolic.svg") !important;
 }
 
 .popup-notification-icon[popupid="web-notifications"], .desktop-notification-icon {
