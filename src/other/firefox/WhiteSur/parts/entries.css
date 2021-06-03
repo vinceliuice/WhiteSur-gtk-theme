@@ -26,14 +26,21 @@
 #urlbar[breakout][breakout-extend],
 #searchbar:focus-within,
 #search-box[focused], 
-.findbar-textbox[focused],
-.findbar-textbox:focus,
+/*.findbar-textbox[focused],*/
+/*.findbar-textbox:focus,*/
 #loginTextbox:focus,
 #password1Textbox:focus {
 	outline: 2px solid var(--gnome-focused-urlbar-border-color) !important;
 	outline-offset: -2px;
 	-moz-outline-radius: 8px;
 	transition: all 100ms;
+}
+
+.findbar-textbox[focused],
+.findbar-textbox:focus {
+	outline: none !important;
+	box-shadow: inset 0 0 0 1px var(--gnome-focused-urlbar-border-color) !important;
+	border: 1px solid var(--gnome-focused-urlbar-border-color) !important;
 }
 
 /* Inactive window entries */

@@ -8,8 +8,8 @@ menupopup {
 	-moz-appearance: none !important;
 	background: var(--gnome-menu-background) !important;
 	border: 1px solid var(--gnome-menu-border-color) !important;
-	border-radius: 8px !important;
-	padding: 4px 0 !important;
+	border-radius: 12px !important;
+	padding: 8px 0 !important;
 	color: var(--gnome-toolbar-color) !important;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
 }
@@ -53,7 +53,7 @@ panelview {
 	background: var(--gnome-popover-background) !important;
 	border: 1px solid !important;
 	border-color: var(--gnome-popover-border-color) !important;
-	border-radius: 8px !important;
+	border-radius: 12px 8px 12px 12px !important;
 	padding: 12px !important;
 	color: var(--gnome-toolbar-color) !important;
 }
@@ -171,4 +171,3 @@ panel[type="autocomplete-richlistbox"] {
 .autocomplete-richlistitem:not([type="loginsFooter"]):hover .ac-site-icon {
 	fill: #fff !important;
 }
-
