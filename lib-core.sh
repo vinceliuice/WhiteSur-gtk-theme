@@ -1,14 +1,20 @@
 # WARNING: Please make this shell not working-directory dependant, for example
-# instead of using 'cd blabla', use 'cd "${REPO_DIR}/blabla"'
+# instead of using 'ls blabla', use 'ls "${REPO_DIR}/blabla"'
 #
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
 #
 # WARNING: Please don't use sudo directly here since it steals our EXIT trap
-#
-# WARNING: Please set REPO_DIR variable before using this lib
 
 set -Eeo pipefail
+
+if [[ ! "${REPO_DIR}" ]]; then
+  echo "Please define 'REPODIR' variable"; exit 1
+elif [[ "${WHITESUR_SOURCE[@]}" =~ "lib-core.sh" ]]; then
+  echo "'lib-core.sh' is already imported"; exit 1
+fi
+
+WHITESUR_SOURCE=("lib-core.sh")
 
 ###############################################################################
 #                                VARIABLES                                    #
@@ -118,9 +124,8 @@ showapps_normal="false"
 msg=""
 final_msg="Run '${0} --help' to explore more customization features!"
 notif_msg=""
-error_msg=""
 process_ids=()
-errors=()
+error_snippet=""
 export ANIM_PID="0"
 has_any_error="false"
 
@@ -142,7 +147,7 @@ anim=(
 )
 
 ###############################################################################
-#                                 UTILITIES                                   #
+#                              CORE UTILITIES                                 #
 ###############################################################################
 
 start_animation() {
@@ -183,6 +188,110 @@ prompt() {
       echo -e "  ${c_cyan}${2}${c_default}" ;;     # print info message
   esac
 }
+
+###############################################################################
+#                               SELF SAFETY                                   #
+###############################################################################
+##### This is the core of error handling, make sure there's no error here #####
+
+### TODO: return "lockWhiteSur()" back for non functional syntax error handling
+###       and lock dir removal after immediate terminal window closing
+
+if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
+  start_animation; sleep 2; stop_animation; echo
+
+  if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
+    prompt -e "ERROR: Whitesur installer or tweaks is already running. Probably it's run by '$(ls -ld "${WHITESUR_TMP_DIR}" | awk '{print $3}')'"
+    exit 1
+  fi
+fi
+
+rm -rf "${WHITESUR_TMP_DIR}"
+mkdir -p "${WHITESUR_TMP_DIR}"; exec 2> "${WHITESUR_TMP_DIR}/error_log.txt"
+
+signal_exit() {
+  rm -rf "${WHITESUR_TMP_DIR}"
+  stop_animation
+}
+
+operation_aborted() {
+  IFS=$'\n'
+  local sources=($(basename -a "${WHITESUR_SOURCE[@]}" "${BASH_SOURCE[@]}" | sort -u))
+  local dist_ids=($(awk -F '=' '/ID/{print $2}' "/etc/os-release"))
+  local repo_ver=""
+  local lines=()
+
+  if ! repo_ver="$(cd "${REPO_DIR}"; git log -1 --date=format-local:"%FT%T%z" --format="%ad" 2> /dev/null)"; then
+    if ! repo_ver="$(date -r "${REPO_DIR}" +"%FT%T%z")"; then
+      repo_ver="unknown"
+    fi
+  fi
+
+  clear
+
+  prompt -e "\n\n  Oops! Operation has been aborted or failed...\n"
+  prompt -e "=========== ERROR LOG ==========="
+
+  if ! awk '{printf "\033[1;31m  >>> %s\n", $0}' "${WHITESUR_TMP_DIR}/error_log.txt"; then
+    prompt -e ">>>>>>> No error log found <<<<<<"
+  fi
+
+  prompt -e "\n  =========== ERROR INFO =========="
+  prompt -e "FOUND  :"
+
+  for i in "${sources[@]}"; do
+    lines=($(grep -Fn "${error_snippet:-${BASH_COMMAND}}" "${REPO_DIR}/${i}" | cut -d : -f 1 || echo ""))
+    prompt -e "  >>> ${i}$(IFS=';'; [[ "${lines[*]}" ]] && echo " at ${lines[*]}")"
+  done
+
+  prompt -e "SNIPPET:\n    >>> ${error_snippet:-${BASH_COMMAND}}"
+  prompt -e "TRACE  :"
+
+  for i in "${FUNCNAME[@]}"; do
+    prompt -e "  >>> ${i}"
+  done
+
+  prompt -e "\n  =========== SYSTEM INFO ========="
+  prompt -e "DISTRO : $(IFS=';'; echo "${dist_ids[*]}")"
+  prompt -e "SUDO   : $([[ -w "/" ]] && echo "yes" || echo "no")"
+  prompt -e "GNOME  : ${GNOME_VERSION}"
+  prompt -e "REPO   : ${repo_ver}\n"
+
+  prompt -i "HINT: You can google or report to us the infos above\n"
+  prompt -i "https://github.com/vinceliuice/WhiteSur-gtk-theme/issues\n\n"
+
+  rm -rf "${WHITESUR_TMP_DIR}"; exit 1
+}
+
+rootify() {
+  trap true SIGINT
+  prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
+
+  if ! sudo "${@}"; then
+    error_snippet="${*}"
+    operation_aborted
+  fi
+
+  trap signal_exit SIGINT
+}
+
+userify() {
+  trap true SIGINT
+
+  if ! sudo -u "${MY_USERNAME}" "${@}"; then
+    error_snippet="${*}"
+    operation_aborted
+  fi
+
+  trap signal_exit SIGINT
+}
+
+trap 'operation_aborted' ERR
+trap 'signal_exit' INT EXIT TERM
+
+###############################################################################
+#                              USER UTILITIES                                 #
+###############################################################################
 
 helpify_title() {
   printf "${c_cyan}%s${c_blue}%s ${c_green}%s\n\n" "Usage: " "$0" "[OPTIONS...]"
@@ -475,91 +584,14 @@ remind_relative_path() {
 }
 
 ###############################################################################
-#                                   SYSTEMS                                   #
+#                                    MISC                                     #
 ###############################################################################
-
-rootify() {
-  trap true SIGINT
-  prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
-  
-  if ! sudo "${@}"; then
-    errors+=("${*}")
-    operation_aborted
-  fi
-  
-  trap signal_exit SIGINT
-}
 
 full_rootify() {
   if [[ ! -w "/" ]]; then
     prompt -e "ERROR: '${1}' needs a root priviledge. Please run this '${0}' as root"
     has_any_error="true"
   fi
-}
-
-userify() {
-  trap true SIGINT
-  
-  if ! sudo -u "${MY_USERNAME}" "${@}"; then
-    errors+=("${*}")
-    operation_aborted
-  fi
-  
-  trap signal_exit SIGINT
-}
-
-signal_exit() {
-  rm -rf "${WHITESUR_TMP_DIR}"
-  stop_animation
-}
-
-operation_aborted() {
-  IFS=$'\n'
-  local sources=($(basename -a "${BASH_SOURCE[@]}" | sort -u))
-  local dist_ids=($(cat '/etc/os-release' | awk -F '=' '/ID/{print $2}'))
-
-  clear
-
-  if [[ -f "${WHITESUR_TMP_DIR}/error_log.txt" ]]; then
-    error_msg="$(cat "${WHITESUR_TMP_DIR}/error_log.txt")"
-  fi
-
-  prompt -e "\n\n  Oops! Operation has been aborted or failed...\n"
-  prompt -e "ERROR LOG:\n${error_msg}\n"
-
-  prompt -e "ERROR INFO:"
-  prompt -e "    SOURCES : $(IFS=';'; echo "${sources[*]}")"
-  prompt -e "    LINES   : ${LINENO};${BASH_LINENO}"
-  prompt -e "    SNIPPETS:"
-
-  for i in "${sources[@]}"; do
-    errors+=("$(sed "${BASH_LINENO}q;d" "${REPO_DIR}/${i}")")
-    errors+=("$(sed "${LINENO}q;d" "${REPO_DIR}/${i}")")
-  done
-
-  errors+=("${BASH_COMMAND}")
-  errors=($(printf "%s\n" "${errors[@]}" | sort -u))
-  
-  for i in "${errors[@]}"; do
-    [[ ! "${i}" =~ "errors+=" && ! "${i}" =~ "operation_aborted" ]] && prompt -e ">>> ${i}"
-  done
-  
-  prompt -e "    TRACE   :"
-
-  for i in "${FUNCNAME[@]}"; do
-    prompt -e ">>> ${i}"
-  done
-  
-  echo
-  prompt -e "SYSTEM INFO:"
-  prompt -e "    DISTRO  : $(IFS=';'; echo "${dist_ids[*]}")"
-  prompt -e "    SUDO    : $([[ -w "/" ]] && echo "yes" || echo "no")"
-  prompt -e "    GNOME   : ${GNOME_VERSION}\n"
-
-  prompt -i "TIP: you can google or report to us the infos above\n"
-  prompt -i "https://github.com/vinceliuice/WhiteSur-gtk-theme/issues\n\n"
-
-  rm -rf "${WHITESUR_TMP_DIR}"; exit 1
 }
 
 usage() {
@@ -572,22 +604,7 @@ finalize_argument_parsing() {
     [[ "${has_any_error}" == "true" ]] && exit 1 || exit 0
   elif [[ "${has_any_error}" == "true" ]]; then
     echo; prompt -i "Try '$0 --help' for more information."; exit 1
-  else
-    [[ "${need_dialog[@]}" =~ "true" ]] && echo
-
-    if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
-      start_animation; sleep 2; stop_animation; echo
-
-      if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
-        prompt -e "ERROR: Whitesur installer or tweaks is already running. Probably it's run by '$(ls -ld "${WHITESUR_TMP_DIR}" | awk '{print $3}')'"
-        exit 1
-      fi
-    fi
-
-    rm -rf "${WHITESUR_TMP_DIR}"; mkdir -p "${WHITESUR_TMP_DIR}"
-    rm -rf "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
-    exec 2> "${WHITESUR_TMP_DIR}/error_log.txt"
-    trap 'operation_aborted' ERR
-    trap 'signal_exit' INT EXIT TERM
+  elif [[ "${need_dialog[@]}" =~ "true" ]]; then
+    echo
   fi
 }
