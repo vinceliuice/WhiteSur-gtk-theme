@@ -22,6 +22,9 @@ install_theme_deps() {
     ! has_command xmllint || [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]; then
     echo; prompt -w "'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation."
 
+    # Be careful of some distro mechanism, some of them use rolling-release
+    # based installation, e.g., Arch Linux
+
     if has_command zypper; then
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
     elif has_command apt; then

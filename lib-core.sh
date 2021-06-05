@@ -194,6 +194,9 @@ prompt() {
 ###############################################################################
 ##### This is the core of error handling, make sure there's no error here #####
 
+### TODO: return "lockWhiteSur()" back for non functional syntax error handling
+###       and lock dir removal after immediate terminal window closing
+
 if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
   start_animation; sleep 2; stop_animation; echo
 
@@ -218,7 +221,7 @@ operation_aborted() {
   local repo_ver=""
   local lines=()
 
-  if ! repo_ver="$(cd "${REPO_DIR}"; git log -1 --date=format-local:"%FT%T%z" --format="%ad")"; then
+  if ! repo_ver="$(cd "${REPO_DIR}"; git log -1 --date=format-local:"%FT%T%z" --format="%ad" 2> /dev/null)"; then
     if ! repo_ver="$(date -r "${REPO_DIR}" +"%FT%T%z")"; then
       repo_ver="unknown"
     fi
