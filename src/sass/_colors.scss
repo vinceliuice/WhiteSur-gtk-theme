@@ -163,7 +163,7 @@ $panel_fg:                          if($trans == 'true', white, $text_color);
 @if $trans == 'true' { $panel_bg:   if($variant == 'light', rgba(white, $panel_opacity/2 + 0.08), rgba(black, $panel_opacity)); }
 @if $black == 'true' { $panel_fg:   $text_color; }
 
-$dash_bg: if($variant == 'light', rgba(#f1f1f1, $panel_opacity + 0.2), rgba(#222222, $panel_opacity/2 + 0.6));
+$dash_bg: if($variant == 'light', rgba(#d1d1d1, $panel_opacity + 0.33), rgba(#222222, $panel_opacity/2 + 0.6));
 $dash_fg: if($variant == 'light', black, white);
 
 // Entry colors

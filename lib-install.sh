@@ -1,18 +1,17 @@
 # WARNING: Please make this shell not working-directory dependant, for example
-# instead of using 'cd blabla', use 'cd "${REPO_DIR}/blabla"'
+# instead of using 'ls blabla', use 'ls "${REPO_DIR}/blabla"'
 #
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
 #
 # WARNING: Please don't use sudo directly here since it steals our EXIT trap
-#
-# WARNING: Please set REPO_DIR variable before using this lib
 
 ###############################################################################
 #                                VARIABLES                                    #
 ###############################################################################
 
 source "${REPO_DIR}/lib-core.sh"
+WHITESUR_SOURCE+=("lib-install.sh")
 
 ###############################################################################
 #                              DEPENDENCIES                                   #
@@ -23,6 +22,9 @@ install_theme_deps() {
     ! has_command xmllint || [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]; then
     echo; prompt -w "'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation."
 
+    # Be careful of some distro mechanism, some of them use rolling-release
+    # based installation, e.g., Arch Linux
+
     if has_command zypper; then
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
     elif has_command apt; then
@@ -32,7 +34,14 @@ install_theme_deps() {
     elif has_command yum; then
       rootify yum install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
+      # Explanation A:
+      # Arch-based distro doesnt have a seprate repo for each different build.
+      # This can cause a system call error since an app require the compatible
+      # version of dependencies. In other words, if you install an new app (which
+      # you definitely reinstall/upgrade the dependency for that app), but your
+      # other dependencies are old/expired, you'll end up with broken system.
+      # That's why we need a full system upgrade here
+      rootify pacman -Syu --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -45,8 +54,7 @@ install_theme_deps() {
 install_gdm_deps() {
   #TODO: @vince, do we also need "sassc" here?
 
-  if ! has_command glib-compile-resources || ! has_command xmllint || \
-    ! has_command sassc; then
+  if ! has_command glib-compile-resources || ! has_command xmllint || ! has_command sassc; then
     echo; prompt -w "'glib2.0', 'xmllint', and 'sassc' are required for theme installation."
 
     if has_command zypper; then
@@ -58,7 +66,8 @@ install_gdm_deps() {
     elif has_command yum; then
       rootify yum install -y glib2-devel libxml2 sassc
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed glib2 libxml2 sassc
+      # See Explanation A
+      rootify pacman -Syu --noconfirm --needed glib2 libxml2 sassc
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -81,7 +90,8 @@ install_beggy_deps() {
     elif has_command yum; then
       rootify yum install -y ImageMagick
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed imagemagick
+      # See Explanation A
+      rootify pacman -Syu --noconfirm --needed imagemagick
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -104,7 +114,8 @@ install_dialog_deps() {
     elif has_command yum; then
       rootify yum install -y dialog
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed dialog
+      # See Explanation A
+      rootify pacman -Syu --noconfirm --needed dialog
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -186,7 +197,9 @@ install_shelly() {
 
   if [[ -z "${6}" ]]; then
     TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}/gnome-shell"
-  else TARGET_DIR="${6}"; fi
+  else
+    TARGET_DIR="${6}"
+  fi
 
   mkdir -p                                                                                    "${TARGET_DIR}"
   mkdir -p                                                                                    "${TARGET_DIR}/assets"

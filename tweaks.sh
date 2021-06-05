@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # WARNING: Please make this shell not working-directory dependant, for example
-# instead of using 'cd blabla', use 'cd "${REPO_DIR}/blabla"'
+# instead of using 'ls blabla', use 'ls "${REPO_DIR}/blabla"'
 #
 # WARNING: Please don't use sudo directly here since it steals our EXIT trap
 #
@@ -54,7 +54,7 @@ while [[ $# -gt 0 ]]; do
   # at once
 
   case "${1}" in
-    # Parameters that don't require value
+      # Parameters that don't require value
     -r|--remove|--revert)
       uninstall='true'; shift ;;
     -h|--help)
@@ -113,7 +113,7 @@ while [[ $# -gt 0 ]]; do
       no_darken="true"; shift ;;
     -n|--no-blur)
       no_blur="true"; shift ;;
-    # Parameters that require value, single use
+      # Parameters that require value, single use
     -b|--background)
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
     -i|--icon)
@@ -216,8 +216,9 @@ else
 fi
 
 if [[ "${firefox}" == "false" && "${edit_firefox}" == "false" && "${flatpak}" == "false" && "${snap}" == "false" && "${gdm}" == "false" && "${dash_to_dock}" == "false" ]]; then
-  echo; prompt -e "Oops... there's nothing to tweaks..."
-  echo; prompt -i "Run ./tweaks.sh -h for help!..."
+  echo; prompt -e "Oops... there's nothing to tweak..."
+  echo; prompt -i "HINT: Don't forget to define which component to tweak, e.g. '--gdm'"
+  echo; prompt -i "HINT: Run ./tweaks.sh -h for help!..."
 fi
 
 echo

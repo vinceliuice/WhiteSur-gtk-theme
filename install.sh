@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # WARNING: Please make this shell not working-directory dependant, for example
-# instead of using 'cd blabla', use 'cd "${REPO_DIR}/blabla"'
+# instead of using 'ls blabla', use 'ls "${REPO_DIR}/blabla"'
 #
 # WARNING: Please don't use sudo directly here since it steals our EXIT trap
 #
@@ -34,6 +34,7 @@ usage() {
   helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"           "Set 'Activities' icon"                            "Default is 'standard'"
   # Not sure if "background" is even needed here
   helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                         "Set gnome-shell background image"                 "Default is BigSur-like wallpaper"
+  helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                               "Default is BigSur-like style"
   helpify "-HD, --highdefinition"         ""                                          "Set to High Definition size"                      "Default is laptop size"
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
   helpify "--round, --roundedmaxwindow"   ""                                          "Set maximized window to rounded"                  "Default is square"
@@ -121,7 +122,9 @@ else
   if [[ "${interactive}" == 'true' ]]; then
     show_panel_opacity_dialog; show_sidebar_size_dialog; show_nautilus_style_dialog
     prompt -w "DIALOG: '--size' and '--panel' parameters are ignored if exist."; echo
-  else show_needed_dialogs; fi
+  else
+    show_needed_dialogs
+  fi
 
   prompt -w "Removing the old '${name}' themes..."
 
@@ -150,6 +153,5 @@ else
   fi
 
   echo; prompt -w "${final_msg}"; echo
-
   [[ -x /usr/bin/notify-send ]] && notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
 fi
