@@ -2920,9 +2920,9 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
   background: none;
   border: none;
 
-  &:hover:not(:active):not(:checked) {
+  &:hover {
     color: $panel_fg;
-    background-color: rgba($panel_fg, 0.2);
+    background-color: rgba($panel_fg, 0.15);
   }
 
   &:checked {
@@ -2934,17 +2934,6 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
   &:active {
     color: $panel_fg;
     background-color: rgba($panel_fg, 0.3);
-  }
-}
-
-.xfce4-panel.panel {
-  background-color: $panel_bg;
-  text-shadow: none;
-  -gtk-icon-shadow: none;
-  border: none;
-
-  button, button.flat {
-    @extend %panel_button;
   }
 }
 
@@ -2961,10 +2950,9 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
   text-shadow: none;
   -gtk-icon-shadow: none;
   box-shadow: none;
-  border-width: 0;
 
   &, // unset borders
-  frame > border { border: none; }
+  frame > border { border-width: 0; }
 
   &#XfcePanelWindow { // main panel container >= 4.13.3?
     // FIXME: unneeded 1px borders are reserved by its code itself
@@ -2973,15 +2961,10 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
     &, &.marching-ants { transition: none; } // unset transitions
   }
 
-  button.flat {
-    @extend %panel_button;
-    -gtk-icon-style: symbolic;
-  }
-
   button {
     font-weight: 700;
     @extend %panel_button;
-    -gtk-icon-style: symbolic;
+    // -gtk-icon-style: symbolic;
 
     &#launcher-arrow { // launcher applet
       // FIXME: quite weird pseudo-classe transitions, especially :hover
@@ -3012,14 +2995,17 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
     }
   }
 
-  widget.tasklist > button.toggle {
-    font-weight: 400;
-    -gtk-icon-style: symbolic;
+  widget.tasklist {
+    > button.toggle {
+      font-weight: 400;
+      @extend %panel_button;
+      // -gtk-icon-style: symbolic;
+    }
   }
 }
 
 XfdesktopIconView.view {
-  border-radius: 2px;
+  border-radius: $bt_radius;
   background: transparent;
   color: $selected_fg_color;
   text-shadow: $text_shadow;
@@ -3036,12 +3022,16 @@ XfdesktopIconView.view {
 window#whiskermenu-window {
   background-color: $bg_color;
 
+  entry.search:focus { background-color: $base_color; }
+
   // no CSD class even if the sw compositor was enabled.
   > frame > border {
     border-radius: 0;
   }
 
   scrolledwindow {
+    border-radius: $bt_radius;
+
     > viewport button.radio {
       padding: 2px 6px;
       margin: 2px;
@@ -3062,6 +3052,8 @@ window#whiskermenu-window {
         color: $fg_color;
       }
     }
+
+    // iconview.view { border-radius: 0; }
   }
 }
 
