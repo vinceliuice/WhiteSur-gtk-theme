@@ -31,7 +31,14 @@ install_theme_deps() {
     elif has_command yum; then
       rootify yum install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
+      # Explanation A:
+      # Arch-based distro doesnt have a seprate repo for each different build.
+      # This can cause a system call error since an app require the compatible
+      # version of dependencies. In other words, if you install an new app (which
+      # you definitely reinstall/upgrade the dependency for that app), but your
+      # other dependencies are old/expired, you'll end up with broken system.
+      # That's why we need a full system upgrade here
+      rootify pacman -Syu --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -56,7 +63,8 @@ install_gdm_deps() {
     elif has_command yum; then
       rootify yum install -y glib2-devel libxml2 sassc
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed glib2 libxml2 sassc
+      # See Explanation A
+      rootify pacman -Syu --noconfirm --needed glib2 libxml2 sassc
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -79,7 +87,8 @@ install_beggy_deps() {
     elif has_command yum; then
       rootify yum install -y ImageMagick
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed imagemagick
+      # See Explanation A
+      rootify pacman -Syu --noconfirm --needed imagemagick
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -102,7 +111,8 @@ install_dialog_deps() {
     elif has_command yum; then
       rootify yum install -y dialog
     elif has_command pacman; then
-      rootify pacman -S --noconfirm --needed dialog
+      # See Explanation A
+      rootify pacman -Syu --noconfirm --needed dialog
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
