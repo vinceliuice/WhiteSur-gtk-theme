@@ -3315,7 +3315,9 @@ frame,
 .frame {
   border: 1px solid $borders_color;
 
-  > list { border: none; }
+  > list {
+    border: none;
+  }
 }
 
 frame {
@@ -3323,6 +3325,13 @@ frame {
 
   > label {
     margin: $container_padding - 2px;
+  }
+
+  > list {
+    border-radius: $wm_radius - 2px;
+    box-shadow: if($variant == 'light',
+                  (inset 0 0 8px rgba(black, 0.02), inset 0 0 3px rgba(black, 0.01)),
+                  (inset 0 0 8px rgba(white, 0.03), inset 0 0 3px rgba(white, 0.02)));
   }
 }
 

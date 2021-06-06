@@ -3572,13 +3572,28 @@ messagedialog { // Message Dialog styling
           transition: $button_transition;
         }
 
-        &:active {
+        &:active, &:checked {
           @include button(active);
         }
       }
 
-      &.suggested-action, &.destructive-action {
-        border-radius: $bt_radius;
+      // Suggested and Destructive Action buttons
+      @each $b_type, $b_color, $b_fg in (suggested-action, $suggested_color, $light_fg_color),
+                                        (destructive-action, $destructive_color, $light_fg_color) {
+        &.#{$b_type} {
+          @include button(suggested_destructive, $b_color, $b_fg);
+          border-radius: $bt_radius;
+
+          &:hover {
+            @include button(suggested_destructive, lighten($b_color, 5%), $b_fg);
+          }
+
+          &:active, &:checked {
+            @include button(suggested_destructive, lighten($b_color, 10%), $b_fg);
+          }
+
+          &:disabled { @include button(insensitive); }
+        }
       }
     }
   }
