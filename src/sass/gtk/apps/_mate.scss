@@ -1,0 +1,208 @@
+
+//
+// Mate/Gnome Flashback Panel
+//
+.mate-panel-menu-bar,
+panel-toplevel.background {
+  &, menubar {
+    background-color: $panel_bg;
+  }
+
+  menubar,
+  #PanelApplet label,
+  #PanelApplet image {
+    color: $panel_fg;
+  }
+
+  button,
+  #PanelApplet > button.toggle,
+  #tasklist-button {
+    @extend %panel_button;
+
+    label, image {
+      color: inherit;
+    }
+  }
+
+  .wnck-pager {
+    color: mix($panel_fg, black, 50%);
+    background-color: darken($panel_bg, 10%);
+
+    &:hover {
+      background-color: lighten($panel_bg, 5%);
+    }
+
+    &:selected {
+      color: lighten($selected_bg_color, 20%);
+      background-color: $selected_bg_color;
+    }
+  }
+
+  .brisk-menu {
+    entry, entry:focus {
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      border-bottom: 1px solid $borders_color;
+    }
+
+    .categories-list button.flat { border-radius: 3px; }
+
+    scrolledwindow.frame {
+      border-width: 0 0 0 1px;
+      margin-top: -2px;
+
+      .apps-list > row > button.flat {
+        &, &:hover, &:active, &:disabled {
+          background: none;
+          transition: none;
+        }
+      }
+    }
+  }
+}
+
+//
+// Mate OSD Window
+//
+MsdOsdWindow.background.osd {
+  border-radius: 2px;
+  border: 1px solid darken($osd_bg_color, 8%);
+
+  .progressbar {
+    background-color: $selected_bg_color;
+    border: none;
+    border-color: red;
+    border-radius: 5px;
+  }
+  .trough {
+    background-color: darken($osd_bg_color, 5%);
+    border: none;
+    border-radius: 5px;
+  }
+}
+
+//
+// Caja
+//
+.caja-desktop {
+  @extend %nautilus-desktop-canvas-item;
+}
+
+.caja-notebook {
+  border-top: 1px solid $borders_color;
+}
+
+.caja-side-pane {
+  &, text, treeview,
+  > notebook > stack > widget > box {
+    color: $dark_sidebar_fg;
+    caret-color: $dark_sidebar_fg;
+    background-color: opacify($dark_sidebar_bg, 1);
+  }
+
+  > box button {
+    &:not(:active):not(:checked) { color: $dark_sidebar_fg; }
+    // &:hover:not(:active) { @include button(hover); }
+  }
+
+  .frame { border-color: $borders_color; }
+
+  junction { background-color: darken($dark_sidebar_bg, 5%); }
+}
+
+.caja-navigation-window {
+  .primary-toolbar {
+    background-color: $header_bg;
+  }
+
+  .caja-side-pane {
+    background-color: transparent;
+
+    .frame {
+      border-width: 1px 0 0;
+    }
+  }
+
+  paned > separator {
+    background-image: image($solid_borders_color);
+  }
+}
+
+.caja-side-pane {
+  treeview.view, .view {
+    background: none;
+
+    &:hover {
+      background-color: rgba($fg_color, 0.1);
+    }
+
+    &:active, &:selected {
+      background-color: $selected_bg_color;
+    }
+  }
+
+  textview.view text { background: none; }
+
+  scrollbar {
+    background: none;
+  }
+
+  // notebook .view > box.vertical {
+  //   border-bottom-left-radius: $wm_radius;
+  // }
+}
+
+.caja-notebook .frame {
+  border-width: 0 0 1px;
+}
+
+.caja-search-bar {
+  entry {
+    // margin: 2px 0;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+//
+// Pluma (Mate)
+//
+.pluma-window statusbar frame > border {
+    border: none;
+}
+
+.pluma-window notebook > stack scrolledwindow {
+    border-width: 0 0 1px 0;
+}
+
+#pluma-status-combo-button {
+    min-height: 0;
+    padding: 0;
+
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0;
+}
+
+//
+// MATE Terminal
+//
+.mate-terminal {
+  notebook {
+    > header.top {
+      > tabs > tab {
+        border-top: 1px solid transparent;
+      }
+    }
+  }
+}
+
+//
+// Atril (MATE pdf viewer)
+//
+.atril-window .primary-toolbar toolbar {
+  background: none;
+}

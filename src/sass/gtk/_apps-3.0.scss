@@ -1,0 +1,33 @@
+%panel_button {
+  color: $panel_fg;
+  border-radius: $bt_radius;
+  background: none;
+  border: none;
+
+  &:hover {
+    color: $panel_fg;
+    background-color: rgba($panel_fg, 0.15);
+  }
+
+  &:checked {
+    color: $panel_fg;
+    background-color: rgba($panel_fg, 0.25);
+    label, image { color: inherit; }
+  }
+
+  &:active {
+    color: $panel_fg;
+    background-color: rgba($panel_fg, 0.3);
+  }
+}
+
+@import 'apps/gnome-3.22';
+@import 'apps/misc';
+@import 'apps/mate';
+@import 'apps/budgie';
+@import 'apps/xfce';
+@import 'apps/nemo';
+@import 'apps/elementary';
+@import 'apps/lightdm';
+@import 'apps/granite';
+@import 'apps/unity';

@@ -1,0 +1,541 @@
+//
+// Transmission
+//
+.tr-workarea undershoot,
+.tr-workarea overshoot {
+  border-color: transparent; // Remove black border on over- and undershoot
+}
+
+//
+// Firefox and Thunderbird
+//
+
+window.background:not(.csd) {
+  > widget {
+    // for the bookmark toolbar's separators
+    > separator {
+      padding-top: 1px;
+      margin-top: 1px;
+      min-height: 2px;
+      background-color: $borders_color;
+    }
+
+    // avoid black border
+    > scrollbar {
+      background: none;
+      border: none;
+      // background-clip: border-box;
+    }
+
+    // emphasize borders color
+    // > scrollbar,
+    > frame > border { border-color: $borders_color; }
+
+    > entry,
+    .entry { // Set for linked entrys
+      // min-height: 26px;
+      border-radius: $bt_radius;
+      background-image: image($base_color);
+      border: 1px solid $borders_color;
+
+      &:focus { border-color: $selection_mode_bg; box-shadow: inset 0 0 0 2px $entry_highlight; }
+    }
+
+    > spinbutton {
+      background-image: image($button_bg);
+      border: 1px solid $borders_color;
+
+      @if $variant == 'light' {
+        &:active {
+          background-image: image($bg_color);
+        }
+      }
+
+      // Fixed thunderbird linked entry spinbutton border-radius.
+      .entry { border-top-right-radius: 0;  border-bottom-right-radius: 0; }
+    }
+
+    > button {
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+
+    > button > button {
+      outline-style: none;
+      border-radius: $bt_radius;
+
+      @if $variant == 'light' {
+        &:active {
+          border-radius: $bt_radius;
+          border: none;
+          background-image: image($bg_color);
+          box-shadow: inset 0 0 0 1px $borders_color;
+        }
+      }
+
+      label { padding: 4px 6px; }
+    }
+  }
+
+  > menu,
+  > menu > menu {
+    border-radius: 0;
+    background-color: $menu_bg;
+  }
+
+  > menu > menuitem {
+    padding: 4px 6px;
+
+    > label:disabled { color: $disabled_fg_color; }
+
+    > radio,
+    > check {
+      padding: 0 2px 0 4px;
+    }
+  }
+
+  > window > menu {
+    menuitem {
+      transition: none; // Fixed plank menu background issue
+    }
+  }
+}
+
+//
+// Firefox Quantum
+//
+
+#MozillaGtkWidget {
+  // blend with weird toolbar backgrounds
+  background-color: $bg_color;
+
+  // FIXME: resetting child elements background is not fully functional yet
+  // because WidgetStyleCache keeps holding initial background-color.
+  // the stem of this incorrect colouring seems to be caused by their
+  // gdk_rgba to ns_rgba conversion. I don't think theme's fault.
+  .background,
+  frame,
+  separator,
+  scrolledwindow { background-color: $base_color; }
+
+  scrollbar {
+    background: none;
+    border: none;
+
+    slider {
+      background-color: mix($fg_color, $bg_color, 45%);
+      &:hover { background-color: mix($fg_color, $bg_color, 60%); }
+      &:hover:active { background-color: mix($fg_color, $bg_color, 75%); }
+      &:disabled { background-color: transparent; }
+    }
+  }
+
+  > window.background > menu { // context-menus
+    border: none; // hide ugly double borders
+    background-color: $menu_bg;
+    border-radius: 2px;
+
+    // revert to standard separators
+    > separator {
+      margin-top: 2px;
+      margin-bottom: 2px;
+      background-color: $borders_color;
+    }
+  }
+
+  > widget {
+    // Emphasize toolbar's border-bottom
+    > frame > border { border-color: if($variant == 'light', darken($bg_color, 15%), lighten($bg_color, 20%)); }
+
+    // For popover, entry in toolbar, etc.
+    text { background-color: $bg_color; }
+
+    // For selection, active tab indicator, etc.
+    text:selected {
+      // Use traditional selection style as workaround
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+    }
+
+    separator { background-color: $borders_color; }
+
+    // FIXME: this affected to popover widget as well,
+    // so we can not set $lighter_bg_color to search-bar...
+    > scrolledwindow > textview {
+      background-color: $menu_bg;
+
+      text {
+        background-color: transparent;
+        color: if($variant =='light', $text_color, #aaaaaa);
+
+        &:selected,
+        &:selected:focus,
+        selection { @extend %selected_items; }
+      }
+    }
+  }
+
+  // remove ugly border around the menus
+  menu { border: none; }
+}
+
+//
+// Chrome(ium)
+//
+
+$chrome_bg_color: $bg_color;
+$chrome_fg_color: $text_color;
+$chrome_menu_bg_color: $menu_bg;
+$chrome_menu_fg_color: $fg_color;
+
+window.background.chromium {
+  // checked-tab & toolbar & button widgets
+  background-color: $bg_color;
+  color: $text_color;
+
+  headerbar.titlebar {
+    button.toggle { // account-button (> 64.0.3282?)
+      border: none;
+      background-color: transparent;
+      background-image: none;
+
+      &:hover { @include button(flat-hover); }
+      &:checked, &:active { @include button(flat-active); }
+    }
+
+    // from nav_button_provider_gtk3.cc (> 62.0.3202?)
+    button.titlebutton { // title-buttons
+      // define global titlebutton class sizing
+      min-width: 16px;
+      min-height: 16px;
+      margin: 0; // unset margins
+      padding: 0 0;
+      background-size: auto;
+      color: transparent; // hide stock icons
+    }
+  }
+
+  // FIXME: not for actual button widgets but for toolbar's separators
+  // crazy: src/+/master/chrome/browser/ui/libgtkui/gtk_ui.cc#891
+  button { // for active-tab borders
+    border-width: 1px;
+    border-style: solid;
+    border-color: $solid_borders_color;
+    background-color: $chrome_bg_color;
+    color: $chrome_fg_color;
+  }
+
+  entry.chromium {
+    &, &:focus { // overrides standard borders
+      border-image: none;
+      border: 1px solid $solid_borders_color;
+      background-color: $chrome_bg_color;
+      color: $chrome_fg_color;
+    }
+  }
+
+  // internal region of toolbar's entry widget
+  > textview.view, textview {
+    background-color: $chrome_bg_color;
+    color: $chrome_fg_color;
+  }
+
+  > menubar { background-color: $header_bg; }
+}
+
+//
+// Libre-Office
+//
+window.background:not(.solid-csd) {
+  // reserved area at the most-right side of GtkMenuBar
+  > grid.horizontal > grid.horizontal {
+    background-color: $header_bg;
+    box-shadow: inset 0 -1px $borders_color;
+
+    > button.flat.small-button {
+      // 'close' button
+      color: $header_fg;
+      border: none;
+      border-radius: 50px;
+      background-image: none;
+
+      &:hover {
+        background-color: lighten($header_bg, 15%);
+        color: lighten($header_fg, 5%);
+      }
+
+      &:active,
+      &:checked {
+        background-color: rgba(red, 0.65);
+        color: white;
+      }
+
+      &:disabled {
+        color: rgba($header_fg, 0.6);
+      }
+    }
+  }
+}
+
+window.background:not(.solid-csd) {
+    // for 'Notebookbar' toolbar
+  > notebook {
+    border: none; // unset borders
+    background-color: $base_color;
+    box-shadow: none;
+
+    > stack {
+      border: none;
+      box-shadow: none;
+    }
+  }
+}
+
+//
+// Tilix
+//
+
+// in-line titlebars
+widget > box.terminal-titlebar {
+  padding: 0 6px;
+
+  > button.flat.popup.toggle {
+    border: none;
+    border-radius: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &:dir(ltr) { padding-right: 6px; }
+    &:dir(rtl) { padding-left: 6px; }
+
+    &:hover, &:checked, &:active {
+      border-radius: 0;
+    }
+
+    &:checked, &:active {
+      background-color: rgba($fg_color, 0.05);
+      color: $fg_color;
+    }
+  }
+
+  > button.image-button { // 'plus' and 'close'
+    &, &.toggle {
+      margin: 2px 0;
+      padding: 0;
+      min-height: 24px;
+      min-width: 24px;
+      border-radius: $bt_radius;
+      // -gtk-outline-radius: $bt_radius;
+    }
+  }
+}
+
+list.tilix-session-sidebar {
+  // use -image property instead
+  background-image: image($dark_sidebar_bg);
+  border-bottom-left-radius: $wm_radius;
+
+  button.tilix-sidebar-close-button {
+    min-height: 28px;
+    min-width: 28px;
+    padding: 0;
+    margin: 0;
+    border-radius: 100px;
+    // -gtk-outline-radius: 100px;
+    background-color: $destructive_color;
+    &, &:hover, &:active, &:checked { color: white; }
+
+    &:hover { background-color: lighten($destructive_color, 10%); }
+
+    &:active,
+    &:checked { background-image: image(darken($destructive_color, 10%)); }
+  }
+}
+
+$tilix_bg: if($variant == 'light', #ffffff, #151515);
+
+window.background.csd {
+  > box.horizontal > stack {
+    > box.vertical > notebook > stack {
+      border-bottom-right-radius: $wm_radius;
+    }
+  }
+
+  > overlay > notebook > stack > .tilix-background {
+    background-color: $tilix_bg;
+    border-radius: 0 0 $wm_radius $wm_radius;
+
+    > .tilix-background {
+      background-color: $tilix_bg;
+      border-radius: 0 0 $wm_radius $wm_radius;
+
+      .tilix-terminal-scrolledwindow {
+        padding-bottom: $wm_radius;
+        background-color: $tilix_bg;
+        border-radius: 0 0 $wm_radius $wm_radius;
+
+        > vte-terminal {
+          border-radius: 0 0 $wm_radius $wm_radius;
+        }
+      }
+    }
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > box.horizontal > stack {
+      > box.vertical > notebook > stack {
+        border-bottom-right-radius: $maximized_radius;
+      }
+    }
+  }
+}
+
+//
+// Lollypop
+//
+window.background.csd {
+  > grid.vertical > overlay > grid.vertical {
+    > grid.horizontal {
+      > .sidebar {
+        border-bottom-left-radius: $wm_radius;
+      }
+
+      > paned.horizontal > stack {
+        border-bottom-right-radius: $wm_radius;
+      }
+    }
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > grid.vertical > overlay > grid.vertical {
+      > grid.horizontal {
+        > .sidebar {
+          border-bottom-left-radius: $maximized_radius;
+        }
+
+        > paned.horizontal > stack {
+          border-bottom-right-radius: $maximized_radius;
+        }
+      }
+    }
+  }
+}
+
+//
+// Inkscape
+//
+toolbar#SubToolBox {
+  min-height: 36px;
+
+  entry, button {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+
+  > toolbutton > button.flat {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+}
+
+widget#ToolboxCommon {
+  button.flat {
+    &:active {
+      background-color: rgba($fg_color, 0.25);
+    }
+
+    &:checked {
+      background-color: rgba($fg_color, 0.15);
+    }
+  }
+
+  // > toolbar > toolitem > button.flat, // Left side
+  > toolbar > toolbutton > button.flat { // Right side
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+}
+
+box#DesktopStatusBar {
+  spinbutton, button.combo {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+}
+
+//
+// Synaptic
+//
+window > box.vertical > box.horizontal {
+  > toolbar {
+    background-color: transparent;
+    box-shadow: none;
+
+    toolitem > box {
+      label,
+      entry {
+        min-height: 20px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        font-size: 90%;
+      }
+
+      > label { color: $fg_color; }
+    }
+  }
+
+  > widget { background-color: transparent; }
+}
+
+//
+// Pamac
+//
+window.background > box.vertical > overlay > stack > scrolledwindow.frame {
+  border: none;
+
+  > viewport.frame > box.vertical > stack > scrolledwindow {
+    border-top: 1px solid $borders_color;
+  }
+}
+
+//
+// vala-panel
+//
+window#ValaPanel.background {
+  widget.-vala-panel-background {
+    > separator { // separator applet
+      background: none;
+    }
+  }
+
+  button.flat.-panel-button,
+  button#tasklist-button.toggle.flat,
+  button.flat.-panel-icon-button {
+    @extend %panel_button;
+  }
+}
+
+// vala-panel-appmenu
+menubar.-vala-panel-appmenu-private, // xfce4 appmenu plugin
+menubar.-vala-panel-background {
+  background: none;
+  border: none;
+  box-shadow: none;
+
+  > menuitem {
+    color: $panel_fg;
+    font-weight: normal;
+
+    &:hover {
+      color: $panel_fg;
+      background-color: rgba($panel_fg, 0.2);
+    }
+
+    &:disabled {
+      color: transparentize($panel_fg, 0.6);
+    }
+
+    // > window.background.popup > decoration,
+    // > window.background.popup > menu { border-radius: 0 0 $wm_radius $wm_radius; }
+  }
+}
