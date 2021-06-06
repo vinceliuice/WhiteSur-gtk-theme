@@ -3328,7 +3328,47 @@ frame {
 
 scrolledwindow {
   viewport.frame { // avoid double borders when viewport inside scrolled window
-    border-style: none;
+    border: none;
+
+    .frame {
+      border: none;
+
+      > textview {
+        border-radius: $bt_radius;
+        background: none;
+
+        > text {
+          border-radius: $bt_radius;
+          border: 1px solid $borders_color;
+        }
+      }
+    }
+
+    > box.vertical list.content.view {
+      border-top-left-radius: $wm_radius;
+      border-top-right-radius: $wm_radius;
+    }
+
+    > box.vertical list.frame {
+      @extend %circular_list;
+      padding: 0;
+
+      > row.activatable { @extend %circular_row; }
+
+      list {
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        background: none;
+
+        > row.activatable {
+          &, &:first-child, &:last-child {
+            border-radius: 0;
+          }
+        }
+      }
+    }
   }
 
   // This is used by GtkScrolledWindow, when content is touch-dragged past boundaries.
@@ -3387,12 +3427,13 @@ list {
     // &:last-child { border-radius: 0 0 $bt_radius $bt_radius; }
   }
 
-  // .sidebar & {
-  //   > row {
-  //     &:first-child { border-radius: $bt_radius; }
-  //     &:last-child { border-radius: $bt_radius; }
-  //   }
-  // }
+  &.content:not(.conversation-listbox) {
+    @extend %circular_list;
+
+    > row {
+      @extend %circular_row;
+    }
+  }
 
   > row.expander { padding: 0px; }
   > row.expander .row-header { padding: 2px; }
