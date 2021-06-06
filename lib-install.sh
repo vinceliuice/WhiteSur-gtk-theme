@@ -242,6 +242,12 @@ install_theemy() {
   local theme="$(destify ${4})"
   local icon="$(destify ${5})"
 
+  if [[ "${color}" == '-light' ]]; then
+    local iconcolor=''
+  elif [[ "${color}" == '-dark' ]]; then
+    local iconcolor='-dark'
+  fi
+
   local TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}"
   local TMP_DIR_T="${WHITESUR_TMP_DIR}/gtk-3.0${color}${opacity}${alt}${theme}"
   local TMP_DIR_F="${WHITESUR_TMP_DIR}/gtk-4.0${color}${opacity}${alt}${theme}"
@@ -257,8 +263,8 @@ install_theemy() {
   [X-GNOME-Metatheme]
   GtkTheme=${name}${color}${opacity}${alt}${theme}
   MetacityTheme=${name}${color}${opacity}${alt}${theme}
-  IconTheme=${name}${color}
-  CursorTheme=${name}${color}
+  IconTheme=${name}${iconcolor}
+  CursorTheme=WhiteSur-cursors
   ButtonLayout=close,minimize,maximize:menu"
   echo "${desktop_entry}" >                                                                   "${TARGET_DIR}/index.theme"
 

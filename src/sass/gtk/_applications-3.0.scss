@@ -2797,6 +2797,7 @@ panel-toplevel.background {
   }
 
   button,
+  #PanelApplet > button.toggle,
   #tasklist-button {
     @extend %panel_button;
 
@@ -2816,6 +2817,29 @@ panel-toplevel.background {
     &:selected {
       color: lighten($selected_bg_color, 20%);
       background-color: $selected_bg_color;
+    }
+  }
+
+  .brisk-menu {
+    entry, entry:focus {
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      border-bottom: 1px solid $borders_color;
+    }
+
+    .categories-list button.flat { border-radius: 3px; }
+
+    scrolledwindow.frame {
+      border-width: 0 0 0 1px;
+      margin-top: -2px;
+
+      .apps-list > row > button.flat {
+        &, &:hover, &:active, &:disabled {
+          background: none;
+          transition: none;
+        }
+      }
     }
   }
 }
