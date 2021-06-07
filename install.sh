@@ -120,6 +120,7 @@ else
   install_theme_deps; echo
 
   if [[ "${interactive}" == 'true' ]]; then
+    install_dialog_deps
     show_panel_opacity_dialog; show_sidebar_size_dialog; show_nautilus_style_dialog
     prompt -w "DIALOG: '--size' and '--panel' parameters are ignored if exist."; echo
   else

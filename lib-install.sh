@@ -20,7 +20,7 @@ WHITESUR_SOURCE+=("lib-install.sh")
 install_theme_deps() {
   if ! has_command glib-compile-resources || ! has_command sassc || \
     ! has_command xmllint || [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]; then
-    echo; prompt -w "'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation."
+    prompt -w "\n'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation.\n"
 
     # Be careful of some distro mechanism, some of them use rolling-release
     # based installation instead of point-release, e.g., Arch Linux
@@ -35,6 +35,9 @@ install_theme_deps() {
 
     if has_command zypper; then
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
+    elif has_command swupd; then
+      # Rolling release
+      rootify swupd update && rootify swupd bundle-add desktop-dev devpkg-gtk libxml2
     elif has_command apt; then
       rootify apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
@@ -62,47 +65,15 @@ install_theme_deps() {
   fi
 }
 
-install_gdm_deps() {
-  #TODO: @vince, do we also need "sassc" here?
-
-  if ! has_command glib-compile-resources || ! has_command xmllint || ! has_command sassc; then
-    echo; prompt -w "'glib2.0', 'xmllint', and 'sassc' are required for theme installation."
-
-    if has_command zypper; then
-      rootify zypper in -y glib2-devel libxml2-tools sassc
-    elif has_command apt; then
-      rootify apt install -y libglib2.0-dev-bin libxml2-utils sassc
-    elif has_command dnf; then
-      rootify dnf install -y glib2-devel libxml2 sassc
-    elif has_command yum; then
-      rootify yum install -y glib2-devel libxml2 sassc
-    elif has_command pacman; then
-      # Rolling release
-      rootify pacman -Syu --noconfirm --needed glib2 libxml2 sassc
-    elif has_command xbps-install; then
-      # Rolling release
-      # 'xbps-install' requires 'xbps' to be always up-to-date
-      # 'libxml2' is already included here, and it's gonna broke the
-      # installation if you add it
-      rootify xbps-install -Syu xbps glib-devel sassc
-      # System upgrading can't remove the old kernel files by it self. It eats the
-      # boot partition and may cause kernel panic when there is no enough space
-      rootify vkpurge rm all
-    else
-      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
-      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
-      start_animation; sleep 15; stop_animation
-    fi
-  fi
-}
-
 install_beggy_deps() {
   if ! has_command convert; then
-    echo; prompt -w "'imagemagick' are required for background editing."
+    prompt -w "\n'imagemagick' are required for background editing.\n"
 
     if has_command zypper; then
       rootify zypper in -y ImageMagick
+    elif has_command swupd; then
+      # Rolling release
+      rootify swupd update && rootify swupd bundle-add ImageMagick
     elif has_command apt; then
       rootify apt install -y imagemagick
     elif has_command dnf; then
@@ -130,10 +101,13 @@ install_beggy_deps() {
 
 install_dialog_deps() {
   if ! has_command dialog; then
-    echo; prompt -w "'dialog' are required for this option."
+    prompt -w "\n'dialog' is required for this option.\n"
 
     if has_command zypper; then
       rootify zypper in -y dialog
+    elif has_command swupd; then
+      # Rolling release
+      rootify swupd update && rootify swupd bundle-add alsa-utils
     elif has_command apt; then
       rootify apt install -y dialog
     elif has_command dnf; then
@@ -685,8 +659,6 @@ customize_theme() {
 # values are taken from _variables.scss
 
 show_panel_opacity_dialog() {
-  install_dialog_deps
-
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
         --radiolist "Choose your panel background opacity
@@ -710,8 +682,6 @@ show_panel_opacity_dialog() {
 }
 
 show_sidebar_size_dialog() {
-  install_dialog_deps
-
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your Nautilus sidebar size (default is 200px width):" 15 40 5 \
@@ -734,8 +704,6 @@ show_sidebar_size_dialog() {
 }
 
 show_nautilus_style_dialog() {
-  install_dialog_deps
-
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your Nautilus style (default is BigSur-like style):" 15 40 5 \
@@ -756,6 +724,8 @@ show_nautilus_style_dialog() {
 }
 
 show_needed_dialogs() {
+  if [[ "${need_dialog[@]}" =~ "true" ]]; then install_dialog_deps; fi
+
   if [[ "${need_dialog["-p"]}" == "true" ]]; then show_panel_opacity_dialog; fi
   if [[ "${need_dialog["-s"]}" == "true" ]]; then show_sidebar_size_dialog; fi
   if [[ "${need_dialog["-N"]}" == "true" ]]; then show_nautilus_style_dialog; fi
