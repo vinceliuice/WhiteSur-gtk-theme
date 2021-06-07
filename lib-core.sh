@@ -257,7 +257,7 @@ operation_aborted() {
   prompt -e "GNOME  : ${GNOME_VERSION}"
   prompt -e "REPO   : ${repo_ver}\n"
 
-  prompt -i "HINT: You can google or report to us the infos above\n"
+  prompt -i "HINT: You can google or report to us the info above\n"
   prompt -i "https://github.com/vinceliuice/WhiteSur-gtk-theme/issues\n\n"
 
   rm -rf "${WHITESUR_TMP_DIR}"; exit 1

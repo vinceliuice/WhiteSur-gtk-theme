@@ -23,7 +23,15 @@ install_theme_deps() {
     echo; prompt -w "'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation."
 
     # Be careful of some distro mechanism, some of them use rolling-release
-    # based installation, e.g., Arch Linux
+    # based installation instead of point-release, e.g., Arch Linux
+
+    # Rolling-release based distro doesn't have a seprate repo for each different
+    # build. This can cause a system call error since an app require the compatible
+    # version of dependencies. In other words, if you install an new app (which you
+    # definitely reinstall/upgrade the dependency for that app), but your other
+    # dependencies are old/expired, you'll end up with broken system.
+
+    # That's why we need a full system upgrade here
 
     if has_command zypper; then
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
@@ -34,14 +42,15 @@ install_theme_deps() {
     elif has_command yum; then
       rootify yum install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command pacman; then
-      # Explanation A:
-      # Arch-based distro doesnt have a seprate repo for each different build.
-      # This can cause a system call error since an app require the compatible
-      # version of dependencies. In other words, if you install an new app (which
-      # you definitely reinstall/upgrade the dependency for that app), but your
-      # other dependencies are old/expired, you'll end up with broken system.
-      # That's why we need a full system upgrade here
+      # Rolling release
       rootify pacman -Syu --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
+    elif has_command xbps-install; then
+      # Rolling release
+      # 'xbps-install' requires 'xbps' to be always up-to-date
+      rootify xbps-install -Syu xbps sassc glib-devel gtk-engine-murrine libxml2
+      # System upgrading can't remove the old kernel files by it self. It eats the
+      # boot partition and may cause kernel panic when there is no enough space
+      rootify vkpurge rm all
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -66,8 +75,15 @@ install_gdm_deps() {
     elif has_command yum; then
       rootify yum install -y glib2-devel libxml2 sassc
     elif has_command pacman; then
-      # See Explanation A
+      # Rolling release
       rootify pacman -Syu --noconfirm --needed glib2 libxml2 sassc
+    elif has_command xbps-install; then
+      # Rolling release
+      # 'xbps-install' requires 'xbps' to be always up-to-date
+      rootify xbps-install -Syu xbps glib-devel libxml2 sassc
+      # System upgrading can't remove the old kernel files by it self. It eats the
+      # boot partition and may cause kernel panic when there is no enough space
+      rootify vkpurge rm all
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -90,8 +106,15 @@ install_beggy_deps() {
     elif has_command yum; then
       rootify yum install -y ImageMagick
     elif has_command pacman; then
-      # See Explanation A
+      # Rolling release
       rootify pacman -Syu --noconfirm --needed imagemagick
+    elif has_command xbps-install; then
+      # Rolling release
+      # 'xbps-install' requires 'xbps' to be always up-to-date
+      rootify xbps-install -Syu xbps ImageMagick
+      # System upgrading can't remove the old kernel files by it self. It eats the
+      # boot partition and may cause kernel panic when there is no enough space
+      rootify vkpurge rm all
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -114,8 +137,15 @@ install_dialog_deps() {
     elif has_command yum; then
       rootify yum install -y dialog
     elif has_command pacman; then
-      # See Explanation A
+      # Rolling release
       rootify pacman -Syu --noconfirm --needed dialog
+    elif has_command xbps-install; then
+      # Rolling release
+      # 'xbps-install' requires 'xbps' to be always up-to-date
+      rootify xbps-install -Syu xbps dialog
+      # System upgrading can't remove the old kernel files by it self. It eats the
+      # boot partition and may cause kernel panic when there is no enough space
+      rootify vkpurge rm all
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
