@@ -217,7 +217,7 @@ signal_exit() {
 operation_aborted() {
   IFS=$'\n'
   local sources=($(basename -a "${WHITESUR_SOURCE[@]}" "${BASH_SOURCE[@]}" | sort -u))
-  local dist_ids=($(awk -F '=' '/ID/{print $2}' "/etc/os-release"))
+  local dist_ids=($(awk -F '=' '/ID/{print $2}' "/etc/os-release" | sort -u))
   local repo_ver=""
   local lines=()
 
