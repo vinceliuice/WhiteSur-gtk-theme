@@ -47,7 +47,9 @@ install_theme_deps() {
     elif has_command xbps-install; then
       # Rolling release
       # 'xbps-install' requires 'xbps' to be always up-to-date
-      rootify xbps-install -Syu xbps sassc glib-devel gtk-engine-murrine libxml2
+      # 'libxml2' is already included here, and it's gonna broke the
+      # installation if you add it
+      rootify xbps-install -Syu xbps sassc glib-devel gtk-engine-murrine
       # System upgrading can't remove the old kernel files by it self. It eats the
       # boot partition and may cause kernel panic when there is no enough space
       rootify vkpurge rm all
@@ -80,7 +82,9 @@ install_gdm_deps() {
     elif has_command xbps-install; then
       # Rolling release
       # 'xbps-install' requires 'xbps' to be always up-to-date
-      rootify xbps-install -Syu xbps glib-devel libxml2 sassc
+      # 'libxml2' is already included here, and it's gonna broke the
+      # installation if you add it
+      rootify xbps-install -Syu xbps glib-devel sassc
       # System upgrading can't remove the old kernel files by it self. It eats the
       # boot partition and may cause kernel panic when there is no enough space
       rootify vkpurge rm all
@@ -681,6 +685,8 @@ customize_theme() {
 # values are taken from _variables.scss
 
 show_panel_opacity_dialog() {
+  install_dialog_deps
+
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
         --radiolist "Choose your panel background opacity
@@ -704,6 +710,8 @@ show_panel_opacity_dialog() {
 }
 
 show_sidebar_size_dialog() {
+  install_dialog_deps
+
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your Nautilus sidebar size (default is 200px width):" 15 40 5 \
@@ -726,6 +734,8 @@ show_sidebar_size_dialog() {
 }
 
 show_nautilus_style_dialog() {
+  install_dialog_deps
+
   if [[ -x /usr/bin/dialog ]]; then
     tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
     --radiolist "Choose your Nautilus style (default is BigSur-like style):" 15 40 5 \
@@ -746,8 +756,6 @@ show_nautilus_style_dialog() {
 }
 
 show_needed_dialogs() {
-  if [[ "${need_dialog[@]}" =~ "true" ]]; then install_dialog_deps; fi
-
   if [[ "${need_dialog["-p"]}" == "true" ]]; then show_panel_opacity_dialog; fi
   if [[ "${need_dialog["-s"]}" == "true" ]]; then show_sidebar_size_dialog; fi
   if [[ "${need_dialog["-N"]}" == "true" ]]; then show_nautilus_style_dialog; fi

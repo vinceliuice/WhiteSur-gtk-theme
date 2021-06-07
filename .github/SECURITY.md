@@ -11,3 +11,4 @@
 ## Reporting a Vulnerability
 
 Report a security vulnerability to https://github.com/vinceliuice/WhiteSur-gtk-theme/issues
+with a blank template

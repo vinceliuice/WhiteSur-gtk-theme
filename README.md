@@ -42,10 +42,10 @@ Don't worry, WhiteSur installer already provides all of those dependencies.
 
 ## Quick install
 
-### Use the stable package
+### Using a stable package
 Choose a [stable package](stable-release) and unzip it to the user theme folder `~/.themes`.
 
-### Compile from source
+### Installing from source
 Run `./install.sh` to install the default WhiteSur GTK theme pack which includes
 GNOME Shell (Pantheon), Cinnamon, XFWM (XFCE), Metacity, and Plank themes.
 
