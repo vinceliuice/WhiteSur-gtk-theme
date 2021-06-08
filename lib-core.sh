@@ -56,7 +56,7 @@ FIREFOX_SNAP_DIR_HOME="/home/${MY_USERNAME}/snap/firefox/common/.mozilla/firefox
 FIREFOX_SNAP_THEME_DIR="/home/${MY_USERNAME}/snap/firefox/common/.mozilla/firefox/firefox-themes"
 export WHITESUR_TMP_DIR="/tmp/WhiteSur.lock"
 
-if [[ -w "/" ]]; then
+if [[ -w "/root" ]]; then
   THEME_DIR="/usr/share/themes"
 else
   THEME_DIR="$HOME/.themes"
@@ -227,7 +227,9 @@ operation_aborted() {
     fi
   fi
 
-  clear
+  # Some computer may have a bad performance. We need to avoid the error log
+  # to be cut. Sleeping for awhile may help
+  sleep 0.75; clear
 
   prompt -e "\n\n  Oops! Operation has been aborted or failed...\n"
   prompt -e "=========== ERROR LOG ==========="
@@ -253,7 +255,7 @@ operation_aborted() {
 
   prompt -e "\n  =========== SYSTEM INFO ========="
   prompt -e "DISTRO : $(IFS=';'; echo "${dist_ids[*]}")"
-  prompt -e "SUDO   : $([[ -w "/" ]] && echo "yes" || echo "no")"
+  prompt -e "SUDO   : $([[ -w "/root" ]] && echo "yes" || echo "no")"
   prompt -e "GNOME  : ${GNOME_VERSION}"
   prompt -e "REPO   : ${repo_ver}\n"
 
@@ -279,6 +281,17 @@ userify() {
   trap true SIGINT
 
   if ! sudo -u "${MY_USERNAME}" "${@}"; then
+    error_snippet="${*}"
+    operation_aborted
+  fi
+
+  trap signal_exit SIGINT
+}
+
+write_as_root() {
+  trap true SIGINT
+
+  if ! echo "${1}" | sudo tee "${2}" > /dev/null; then
     error_snippet="${*}"
     operation_aborted
   fi
@@ -588,7 +601,7 @@ remind_relative_path() {
 ###############################################################################
 
 full_rootify() {
-  if [[ ! -w "/" ]]; then
+  if [[ ! -w "/root" ]]; then
     prompt -e "ERROR: '${1}' needs a root priviledge. Please run this '${0}' as root"
     has_any_error="true"
   fi

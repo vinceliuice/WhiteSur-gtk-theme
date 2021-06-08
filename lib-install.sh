@@ -17,6 +17,35 @@ WHITESUR_SOURCE+=("lib-install.sh")
 #                              DEPENDENCIES                                   #
 ###############################################################################
 
+prepare_swupd() {
+  # 'swupd' bundles just don't make any sense. It takes about 30GB of space only
+  # for installing a util, e.g. 'sassc' (from 'desktop-dev' bundle, or
+  # 'os-utils-gui-dev' bundle, or any other 'sassc' provider bundle)
+
+  local repo="
+  [clearlinux]
+  name=clearlinux
+  baseurl=https://download.clearlinux.org/current/x86_64/os/
+  gpgcheck=0"
+
+  rootify swupd update && rootify swupd bundle-add dnf
+
+  if [[ ! -d "/etc/yum.repos.d" ]]; then
+    rootify mkdir -p                                                                          "/etc/yum.repos.d"
+    write_as_root "${repo}"                                                                   "/etc/yum.repos.d/clearlinux.repo"
+  fi
+
+  rootify dnf upgrade
+}
+
+prepare_xbps() {
+  # 'xbps-install' requires 'xbps' to be always up-to-date
+  rootify xbps-install -Syu xbps
+  # System upgrading can't remove the old kernel files by it self. It eats the
+  # boot partition and may cause kernel panic when there is no enough space
+  rootify vkpurge rm all
+}
+
 install_theme_deps() {
   if ! has_command glib-compile-resources || ! has_command sassc || \
     ! has_command xmllint || [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]; then
@@ -37,7 +66,7 @@ install_theme_deps() {
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
     elif has_command swupd; then
       # Rolling release
-      rootify swupd update && rootify swupd bundle-add desktop-dev devpkg-gtk libxml2
+      prepare_swupd && rootify dnf install -y sassc glib-dev gtk-xfce-engine libxml2
     elif has_command apt; then
       rootify apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
@@ -49,13 +78,9 @@ install_theme_deps() {
       rootify pacman -Syu --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
     elif has_command xbps-install; then
       # Rolling release
-      # 'xbps-install' requires 'xbps' to be always up-to-date
-      # 'libxml2' is already included here, and it's gonna broke the
-      # installation if you add it
-      rootify xbps-install -Syu xbps sassc glib-devel gtk-engine-murrine
-      # System upgrading can't remove the old kernel files by it self. It eats the
-      # boot partition and may cause kernel panic when there is no enough space
-      rootify vkpurge rm all
+      # 'libxml2' is already included here, and it's gonna broke the installation
+      # if you add it
+      prepare_xbps && rootify xbps-install -Sy sassc glib-devel gtk-engine-murrine
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -73,7 +98,7 @@ install_beggy_deps() {
       rootify zypper in -y ImageMagick
     elif has_command swupd; then
       # Rolling release
-      rootify swupd update && rootify swupd bundle-add ImageMagick
+      prepare_swupd && rootify dnf install -y ImageMagick
     elif has_command apt; then
       rootify apt install -y imagemagick
     elif has_command dnf; then
@@ -85,11 +110,7 @@ install_beggy_deps() {
       rootify pacman -Syu --noconfirm --needed imagemagick
     elif has_command xbps-install; then
       # Rolling release
-      # 'xbps-install' requires 'xbps' to be always up-to-date
-      rootify xbps-install -Syu xbps ImageMagick
-      # System upgrading can't remove the old kernel files by it self. It eats the
-      # boot partition and may cause kernel panic when there is no enough space
-      rootify vkpurge rm all
+      prepare_xbps && rootify xbps-install -Sy ImageMagick
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -107,7 +128,7 @@ install_dialog_deps() {
       rootify zypper in -y dialog
     elif has_command swupd; then
       # Rolling release
-      rootify swupd update && rootify swupd bundle-add alsa-utils
+      prepare_swupd && rootify dnf install -y dialog
     elif has_command apt; then
       rootify apt install -y dialog
     elif has_command dnf; then
@@ -119,11 +140,7 @@ install_dialog_deps() {
       rootify pacman -Syu --noconfirm --needed dialog
     elif has_command xbps-install; then
       # Rolling release
-      # 'xbps-install' requires 'xbps' to be always up-to-date
-      rootify xbps-install -Syu xbps dialog
-      # System upgrading can't remove the old kernel files by it self. It eats the
-      # boot partition and may cause kernel panic when there is no enough space
-      rootify vkpurge rm all
+      prepare_xbps && rootify xbps-install -Sy dialog
     else
       prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
       prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
