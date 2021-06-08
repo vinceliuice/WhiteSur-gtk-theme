@@ -17,20 +17,29 @@ WHITESUR_SOURCE+=("lib-install.sh")
 #                              DEPENDENCIES                                   #
 ###############################################################################
 
+installation_sorry() {
+  prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
+  prompt -i "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
+  prompt -i "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
+  start_animation; sleep 15; stop_animation
+}
+
 prepare_swupd() {
   # 'swupd' bundles just don't make any sense. It takes about 30GB of space only
   # for installing a util, e.g. 'sassc' (from 'desktop-dev' bundle, or
   # 'os-utils-gui-dev' bundle, or any other 'sassc' provider bundle)
 
+  rootify swupd update -y && rootify swupd bundle-add -y dnf wget
+
   local ver="$(wget -qO- "https://cdn.download.clearlinux.org/latest")"
   local conf="[clear]\nname=Clear\nbaseurl=https://cdn.download.clearlinux.org/releases/${ver}/clear/x86_64/os/\ngpgcheck=0"
-
-  rootify swupd update -y && rootify swupd bundle-add -y dnf
+  local dist="NAME=\"Clear Linux OS\"\nVERSION=1\nID=clear-linux-os\nID_LIKE=clear-linux-os\n"
+  dist+="VERSION_ID=${ver}\nANSI_COLOR=\"1;35\"\nSUPPORT_URL=\"https://clearlinux.org\"\nBUILD_ID=${ver}"
 
   rootify mkdir -p                                                                          "/etc/dnf"
   write_as_root "${conf}"                                                                   "/etc/dnf/dnf.conf"
-
   rootify rpm --initdb && rootify dnf upgrade
+  write_as_root "${dist}"                                                                   "/etc/os-release"
 }
 
 prepare_xbps() {
@@ -77,10 +86,7 @@ install_theme_deps() {
       # if you add it
       prepare_xbps && rootify xbps-install -Sy sassc glib-devel gtk-engine-murrine
     else
-      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
-      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
-      start_animation; sleep 15; stop_animation
+      installation_sorry
     fi
   fi
 }
@@ -107,10 +113,7 @@ install_beggy_deps() {
       # Rolling release
       prepare_xbps && rootify xbps-install -Sy ImageMagick
     else
-      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
-      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
-      start_animation; sleep 15; stop_animation
+      installation_sorry
     fi
   fi
 }
@@ -137,10 +140,7 @@ install_dialog_deps() {
       # Rolling release
       prepare_xbps && rootify xbps-install -Sy dialog
     else
-      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
-      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
-      start_animation; sleep 15; stop_animation
+      installation_sorry
     fi
   fi
 }
