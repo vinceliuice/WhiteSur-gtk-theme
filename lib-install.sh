@@ -24,14 +24,15 @@ prepare_swupd() {
 
   local repo="[clearlinux]\nname=Clear Linux\nbaseurl=https://download.clearlinux.org/current/x86_64/os/\ngpgcheck=0"
 
-  rootify swupd update && rootify swupd bundle-add -y dnf
+  rootify swupd update && backup_file "/etc/os-release" "rootify"
+  rootify swupd bundle-add -y dnf
 
   if [[ ! -d "/etc/yum.repos.d" ]]; then
     rootify mkdir -p                                                                          "/etc/yum.repos.d"
     write_as_root "${repo}"                                                                   "/etc/yum.repos.d/clearlinux.repo"
   fi
 
-  backup_file "/etc/os-release" "rootify"; rootify dnf upgrade
+  rootify dnf upgrade
 }
 
 finalize_swupd() {
@@ -176,7 +177,9 @@ install_beggy() {
       ;;
     *)
       if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
-        install_beggy_deps && convert "${background}" ${CONVERT_OPT}                          "${WHITESUR_TMP_DIR}/beggy.png"
+        install_beggy_deps; start_animation
+        convert "${background}" ${CONVERT_OPT}                                                "${WHITESUR_TMP_DIR}/beggy.png"
+        stop_animation
       else
         cp -r "${background}"                                                                 "${WHITESUR_TMP_DIR}/beggy.png"
       fi
@@ -420,7 +423,6 @@ remove_themes() {
 }
 
 install_gdm_theme() {
-  start_animation
   local TARGET=
 
   # Let's go!
@@ -461,8 +463,6 @@ install_gdm_theme() {
     # Fix previously installed WhiteSur
     restore_file "${ETC_GR_FILE}"
   fi
-
-  stop_animation
 }
 
 revert_gdm_theme() {
