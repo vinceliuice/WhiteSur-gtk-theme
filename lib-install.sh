@@ -47,8 +47,8 @@ prepare_xbps() {
 }
 
 install_theme_deps() {
-  if ! has_command glib-compile-resources || ! has_command sassc || \
-    ! has_command xmllint || [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]; then
+  if ! has_command glib-compile-resources || ! has_command sassc || ! has_command xmllint ||
+  (! is_my_distro "clear-linux" && [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]); then
     prompt -w "\n'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation.\n"
 
     # Be careful of some distro mechanism, some of them use rolling-release
@@ -66,7 +66,7 @@ install_theme_deps() {
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify dnf install -y sassc glib-dev gtk-xfce-engine libxml2
+      prepare_swupd && rootify dnf install -y sassc glib-bin libxml2-bin
     elif has_command apt; then
       rootify apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
