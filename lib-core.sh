@@ -291,7 +291,18 @@ userify() {
 write_as_root() {
   trap true SIGINT
 
-  if ! echo "${1}" | sudo tee "${2}" > /dev/null; then
+  if ! echo -e "${1}" | sudo tee "${2}" > /dev/null; then
+    error_snippet="${*}"
+    operation_aborted
+  fi
+
+  trap signal_exit SIGINT
+}
+
+write_as_user() {
+  trap true SIGINT
+
+  if ! echo -e "${1}" | sudo -u "${MY_USERNAME}" tee "${2}" > /dev/null; then
     error_snippet="${*}"
     operation_aborted
   fi

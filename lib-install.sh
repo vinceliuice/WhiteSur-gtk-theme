@@ -22,20 +22,20 @@ prepare_swupd() {
   # for installing a util, e.g. 'sassc' (from 'desktop-dev' bundle, or
   # 'os-utils-gui-dev' bundle, or any other 'sassc' provider bundle)
 
-  local repo="
-  [clearlinux]
-  name=clearlinux
-  baseurl=https://download.clearlinux.org/current/x86_64/os/
-  gpgcheck=0"
+  local repo="[clearlinux]\nname=Clear Linux\nbaseurl=https://download.clearlinux.org/current/x86_64/os/\ngpgcheck=0"
 
-  rootify swupd update && rootify swupd bundle-add dnf
+  rootify swupd update && rootify swupd bundle-add -y dnf
 
   if [[ ! -d "/etc/yum.repos.d" ]]; then
     rootify mkdir -p                                                                          "/etc/yum.repos.d"
     write_as_root "${repo}"                                                                   "/etc/yum.repos.d/clearlinux.repo"
   fi
 
-  rootify dnf upgrade
+  backup_file "/etc/os-release" "rootify"; rootify dnf upgrade
+}
+
+finalize_swupd() {
+  restore_file "/etc/os-release" "rootify"
 }
 
 prepare_xbps() {
@@ -66,7 +66,7 @@ install_theme_deps() {
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify dnf install -y sassc glib-bin libxml2-bin
+      prepare_swupd && rootify dnf install -y sassc glib-bin libxml2-bin && finalize_swupd
     elif has_command apt; then
       rootify apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
@@ -98,7 +98,7 @@ install_beggy_deps() {
       rootify zypper in -y ImageMagick
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify dnf install -y ImageMagick
+      prepare_swupd && rootify dnf install -y ImageMagick && finalize_swupd
     elif has_command apt; then
       rootify apt install -y imagemagick
     elif has_command dnf; then
@@ -128,7 +128,7 @@ install_dialog_deps() {
       rootify zypper in -y dialog
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify dnf install -y dialog
+      prepare_swupd && rootify dnf install -y dialog && finalize_swupd
     elif has_command apt; then
       rootify apt install -y dialog
     elif has_command dnf; then
@@ -278,19 +278,20 @@ install_theemy() {
   local TMP_DIR_F="${WHITESUR_TMP_DIR}/gtk-4.0${color}${opacity}${alt}${theme}"
 
   mkdir -p                                                                                    "${TARGET_DIR}"
-  local desktop_entry="
-  [Desktop Entry]
-  Type=X-GNOME-Metatheme
-  Name=${name}${color}${opacity}${alt}${theme}
-  Comment=A MacOS BigSur like Gtk+ theme based on Elegant Design
-  Encoding=UTF-8
 
-  [X-GNOME-Metatheme]
-  GtkTheme=${name}${color}${opacity}${alt}${theme}
-  MetacityTheme=${name}${color}${opacity}${alt}${theme}
-  IconTheme=${name}${iconcolor}
-  CursorTheme=WhiteSur-cursors
-  ButtonLayout=close,minimize,maximize:menu"
+  local desktop_entry="[Desktop Entry]\n"
+  desktop_entry+="Type=X-GNOME-Metatheme\n"
+  desktop_entry+="Name=${name}${color}${opacity}${alt}${theme}\n"
+  desktop_entry+="Comment=A MacOS BigSur like Gtk+ theme based on Elegant Design\n"
+  desktop_entry+="Encoding=UTF-8\n\n"
+
+  desktop_entry+="[X-GNOME-Metatheme]\n"
+  desktop_entry+="GtkTheme=${name}${color}${opacity}${alt}${theme}\n"
+  desktop_entry+="MetacityTheme=${name}${color}${opacity}${alt}${theme}\n"
+  desktop_entry+="IconTheme=${name}${iconcolor}\n"
+  desktop_entry+="CursorTheme=WhiteSur-cursors\n"
+  desktop_entry+="ButtonLayout=close,minimize,maximize:menu\n"
+
   echo "${desktop_entry}" >                                                                   "${TARGET_DIR}/index.theme"
 
   #--------------------GTK-3.0--------------------#
