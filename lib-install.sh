@@ -22,21 +22,15 @@ prepare_swupd() {
   # for installing a util, e.g. 'sassc' (from 'desktop-dev' bundle, or
   # 'os-utils-gui-dev' bundle, or any other 'sassc' provider bundle)
 
-  local repo="[clearlinux]\nname=Clear Linux\nbaseurl=https://download.clearlinux.org/current/x86_64/os/\ngpgcheck=0"
+  local ver="$(wget -qO- "https://cdn.download.clearlinux.org/latest")"
+  local conf="[clear]\nname=Clear\nbaseurl=https://cdn.download.clearlinux.org/releases/${ver}/clear/x86_64/os/\ngpgcheck=0"
 
-  rootify swupd update && backup_file "/etc/os-release" "rootify"
-  rootify swupd bundle-add -y dnf
+  rootify swupd update -y && rootify swupd bundle-add -y dnf
 
-  if [[ ! -d "/etc/yum.repos.d" ]]; then
-    rootify mkdir -p                                                                          "/etc/yum.repos.d"
-    write_as_root "${repo}"                                                                   "/etc/yum.repos.d/clearlinux.repo"
-  fi
+  rootify mkdir -p                                                                          "/etc/dnf"
+  write_as_root "${conf}"                                                                   "/etc/dnf/dnf.conf"
 
-  rootify dnf upgrade
-}
-
-finalize_swupd() {
-  restore_file "/etc/os-release" "rootify"
+  rootify rpm --initdb && rootify dnf upgrade
 }
 
 prepare_xbps() {
@@ -67,7 +61,7 @@ install_theme_deps() {
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify dnf install -y sassc glib-bin libxml2-bin && finalize_swupd
+      prepare_swupd && rootify dnf install -y sassc glib-bin libxml2-bin
     elif has_command apt; then
       rootify apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
@@ -99,7 +93,7 @@ install_beggy_deps() {
       rootify zypper in -y ImageMagick
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify dnf install -y ImageMagick && finalize_swupd
+      prepare_swupd && rootify dnf install -y ImageMagick
     elif has_command apt; then
       rootify apt install -y imagemagick
     elif has_command dnf; then
@@ -129,7 +123,7 @@ install_dialog_deps() {
       rootify zypper in -y dialog
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify dnf install -y dialog && finalize_swupd
+      prepare_swupd && rootify dnf install -y dialog
     elif has_command apt; then
       rootify apt install -y dialog
     elif has_command dnf; then
