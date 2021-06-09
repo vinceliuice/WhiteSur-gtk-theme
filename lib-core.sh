@@ -33,7 +33,7 @@ else
   GNOME_VERSION="none"
 fi
 
-# Program options
+#----------Program options-------------#
 SASSC_OPT="-M -t expanded"
 
 if [[ "$(uname -s)" =~ "BSD" || "$(uname -s)" == "Darwin" ]]; then
@@ -42,7 +42,7 @@ else
   SED_OPT="-i"
 fi
 
-# Directories
+#------------Directories--------------#
 THEME_SRC_DIR="${REPO_DIR}/src"
 DASH_TO_DOCK_SRC_DIR="${REPO_DIR}/src/other/dash-to-dock"
 DASH_TO_DOCK_DIR_ROOT="/usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
@@ -62,7 +62,7 @@ else
   THEME_DIR="$HOME/.themes"
 fi
 
-# GDM
+#--------------GDM----------------#
 WHITESUR_GS_DIR="/usr/share/gnome-shell/theme/WhiteSur"
 COMMON_CSS_FILE="/usr/share/gnome-shell/theme/gnome-shell.css"
 UBUNTU_CSS_FILE="/usr/share/gnome-shell/theme/ubuntu.css"
@@ -74,7 +74,7 @@ POP_OS_GR_FILE="/usr/share/gnome-shell/theme/Pop/gnome-shell-theme.gresource"
 MISC_GR_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
 GS_GR_XML_FILE="${THEME_SRC_DIR}/main/gnome-shell/gnome-shell-theme.gresource.xml"
 
-# Theme
+#-------------Theme---------------#
 THEME_NAME="WhiteSur"
 COLOR_VARIANTS=('light' 'dark')
 OPACITY_VARIANTS=('normal' 'solid')
@@ -85,7 +85,7 @@ SIDEBAR_SIZE_VARIANTS=('default' '220' '240' '260' '280')
 PANEL_OPACITY_VARIANTS=('default' '30' '45' '60' '75')
 NAUTILUS_STYLE_VARIANTS=('default' 'stable' 'mojave' 'glassy')
 
-# Customization, default values
+#--------Customization, default values----------#
 dest="${THEME_DIR}"
 name="${THEME_NAME}"
 colors=("${COLOR_VARIANTS}")
@@ -99,11 +99,11 @@ nautilus_style="${NAUTILUS_STYLE_VARIANTS[1]}"
 background="default"
 compact="true"
 
-# Ambigous arguments checking and overriding default values
+#--Ambigous arguments checking and overriding default values--#
 declare -A has_set=([-b]="false" [-s]="false" [-p]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
 declare -A need_dialog=([-b]="false" [-s]="false" [-p]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
 
-# Tweaks
+#------------Tweaks---------------#
 need_help="false"
 uninstall="false"
 interactive="false"
@@ -120,11 +120,14 @@ dash_to_dock="false"
 max_round="false"
 showapps_normal="false"
 
-# Misc
+#--------------Misc----------------#
 msg=""
 final_msg="Run '${0} --help' to explore more customization features!"
 notif_msg=""
 process_ids=()
+# This is important for 'rootify' and 'userify' because 'return "${result}"' is
+# considered the last command in 'BASH_COMMAND' variable
+error_snippet=""
 export ANIM_PID="0"
 has_any_error="false"
 swupd_packages=""
@@ -132,7 +135,7 @@ swupd_packages=""
 swupd_url="https://cdn.download.clearlinux.org/current/x86_64/os/Packages/"
 swupd_ver_url="https://cdn.download.clearlinux.org/latest"
 
-# Colors and animation
+#------Colors and animation--------#
 c_default="\033[0m"
 c_blue="\033[1;34m"
 c_magenta="\033[1;35m"
@@ -250,11 +253,11 @@ operation_aborted() {
   prompt -e "FOUND  :"
 
   for i in "${sources[@]}"; do
-    lines=($(grep -Fn "${BASH_COMMAND}" "${REPO_DIR}/${i}" | cut -d : -f 1 || echo ""))
+    lines=($(grep -Fn "${error_snippet:-${BASH_COMMAND}}" "${REPO_DIR}/${i}" | cut -d : -f 1 || echo ""))
     prompt -e "  >>> ${i}$(IFS=';'; [[ "${lines[*]}" ]] && echo " at ${lines[*]}")"
   done
 
-  prompt -e "SNIPPET:\n    >>> ${BASH_COMMAND}"
+  prompt -e "SNIPPET:\n    >>> ${error_snippet:-${BASH_COMMAND}}"
   prompt -e "TRACE  :"
 
   for i in "${FUNCNAME[@]}"; do
@@ -279,10 +282,12 @@ rootify() {
   trap true SIGINT
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
 
-  if [[ -p /dev/stdin ]] && ! sudo "${@}" < /dev/stdin; then
-    result=1
-  elif ! sudo "${@}"; then
-    result=1
+  if [[ -p /dev/stdin ]]; then
+    ! sudo "${@}" < /dev/stdin && result=1
+    error_snippet="${*}"
+  else
+    ! sudo "${@}" && result=1
+    error_snippet="${*}"
   fi
 
   trap signal_exit SIGINT
@@ -295,10 +300,12 @@ userify() {
 
   trap true SIGINT
 
-  if [[ -p /dev/stdin ]] && ! sudo -u "${MY_USERNAME}" "${@}" < /dev/stdin; then
-    result=1
-  elif ! sudo -u "${MY_USERNAME}" "${@}"; then
-    result=1
+  if [[ -p /dev/stdin ]]; then
+    ! sudo -u "${MY_USERNAME}" "${@}" < /dev/stdin && result=1
+    error_snippet="${*}"
+  else
+    ! sudo -u "${MY_USERNAME}" "${@}" && result=1
+    error_snippet="${*}"
   fi
 
   trap signal_exit SIGINT

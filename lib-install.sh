@@ -49,11 +49,11 @@ prepare_swupd() {
   local dist=""
 
   if has_command dnf; then
-    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package"
+    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package\n"
 
     while [[ "${remove}" != "y" && "${remove}" != "n" ]]; do
-      echo -e "${c_green}"
-      read -p "You wanna remove it? (y/n): " remove 2>&1
+      echo -e "\r${c_green}"
+      read -p "  You wanna remove it? (y/n): " remove 2>&1
       echo -e "${c_default}"
     done
   fi
@@ -63,9 +63,10 @@ prepare_swupd() {
     dist="NAME=\"Clear Linux OS\"\nVERSION=1\nID=clear-linux-os\nID_LIKE=clear-linux-os\n"
     dist+="VERSION_ID=${ver}\nANSI_COLOR=\"1;35\"\nSUPPORT_URL=\"https://clearlinux.org\"\nBUILD_ID=${ver}"
 
-    print -w "CLEAR LINUX: Your 'swupd' is broken\n"
-    print -i "CLEAR LINUX: Patching 'swupd' distro version detection and try again...\n"
-    echo -e "${dist}" | rootify tee                                                           "/etc/os-release" > /dev/null
+    prompt -w "\nCLEAR LINUX: Your 'swupd' is broken"
+    prompt -i "CLEAR LINUX: Patching 'swupd' distro version detection and try again...\n"
+    rootify rm -rf "/etc/os-release"; echo -e "${dist}" | rootify tee                         "/usr/lib/os-release" > /dev/null
+    rootify ln -s "/usr/lib/os-release" "/etc/os-release"
 
     rootify swupd update -y
   fi
