@@ -52,7 +52,7 @@ prepare_swupd() {
     prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package\n"
 
     while [[ "${remove}" != "y" && "${remove}" != "n" ]]; do
-      read -p "You wanna remove it? (y/n): " remove
+      read -p "${c_cyan}You wanna remove it? (y/n): ${c_green}" remove 2>&1
     done
   fi
 

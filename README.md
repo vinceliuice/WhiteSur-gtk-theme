@@ -331,4 +331,4 @@ Note:
 <br><br>
 
 # Technical details and getting involved
-Please go read [CONTRIBUTING.md](CONTRIBUTING.md) for more info
+Please go read [CONTRIBUTING.md](.github/CONTRIBUTING.md) for more info

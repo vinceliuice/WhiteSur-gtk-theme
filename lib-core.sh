@@ -226,6 +226,7 @@ operation_aborted() {
   local dist_ids=($(awk -F '=' '/ID/{print $2}' "/etc/os-release" | sort -Vru))
   local repo_ver=""
   local lines=()
+  local log="$(awk '{printf "\033[1;31m  >>> %s\n", $0}' "${WHITESUR_TMP_DIR}/error_log.txt" || echo "")"
 
   if ! repo_ver="$(cd "${REPO_DIR}"; git log -1 --date=format-local:"%FT%T%z" --format="%ad" 2> /dev/null)"; then
     if ! repo_ver="$(date -r "${REPO_DIR}" +"%FT%T%z")"; then
@@ -240,7 +241,9 @@ operation_aborted() {
   prompt -e "\n\n  Oops! Operation has been aborted or failed...\n"
   prompt -e "=========== ERROR LOG ==========="
 
-  if [[ "$(awk '{printf "\033[1;31m  >>> %s\n", $0}' "${WHITESUR_TMP_DIR}/error_log.txt" || echo "")" == "" ]] ; then
+  echo -e "${log}"
+
+  if [[ ! "${log}" ]] ; then
     prompt -e ">>>>>>> No error log found <<<<<<"
   fi
 
