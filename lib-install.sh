@@ -17,6 +17,24 @@ WHITESUR_SOURCE+=("lib-install.sh")
 #                              DEPENDENCIES                                   #
 ###############################################################################
 
+# Be careful of some distro mechanism, some of them use rolling-release
+# based installation instead of point-release, e.g., Arch Linux
+
+# Rolling-release based distro doesn't have a seprate repo for each different
+# build. This can cause a system call error since an app require the compatible
+# version of dependencies. In other words, if you install an new app (which you
+# definitely reinstall/upgrade the dependency for that app), but your other
+# dependencies are old/expired, you'll end up with broken system.
+
+# That's why we need a full system upgrade there
+
+#---------------------SWUPD--------------------#
+# 'swupd' bundles just don't make any sense. It takes about 30GB of space only
+# for installing a util, e.g. 'sassc' (from 'desktop-dev' bundle, or
+# 'os-utils-gui-dev' bundle, or any other 'sassc' provider bundle)
+
+# Manual package installation is needed for that, but don't use 'dnf'
+
 installation_sorry() {
   prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
   prompt -i "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -25,21 +43,44 @@ installation_sorry() {
 }
 
 prepare_swupd() {
-  # 'swupd' bundles just don't make any sense. It takes about 30GB of space only
-  # for installing a util, e.g. 'sassc' (from 'desktop-dev' bundle, or
-  # 'os-utils-gui-dev' bundle, or any other 'sassc' provider bundle)
+  local remove=""
+  local ver=""
+  local conf=""
+  local dist=""
 
-  rootify swupd update -y && rootify swupd bundle-add -y dnf wget
+  if has_command dnf; then
+    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package\n"
 
-  local ver="$(wget -qO- "https://cdn.download.clearlinux.org/latest")"
-  local conf="[clear]\nname=Clear\nbaseurl=https://cdn.download.clearlinux.org/releases/${ver}/clear/x86_64/os/\ngpgcheck=0"
-  local dist="NAME=\"Clear Linux OS\"\nVERSION=1\nID=clear-linux-os\nID_LIKE=clear-linux-os\n"
-  dist+="VERSION_ID=${ver}\nANSI_COLOR=\"1;35\"\nSUPPORT_URL=\"https://clearlinux.org\"\nBUILD_ID=${ver}"
+    while [[ "${remove}" != "y" && "${remove}" != "n" ]]; do
+      read -p "You wanna remove it? (y/n): " remove
+    done
+  fi
 
-  rootify mkdir -p                                                                          "/etc/dnf"
-  write_as_root "${conf}"                                                                   "/etc/dnf/dnf.conf"
-  rootify rpm --initdb && rootify dnf upgrade
-  write_as_root "${dist}"                                                                   "/etc/os-release"
+  if ! rootify swupd update -y; then
+    ver="$(curl -s "https://cdn.download.clearlinux.org/latest")"
+    dist="NAME=\"Clear Linux OS\"\nVERSION=1\nID=clear-linux-os\nID_LIKE=clear-linux-os\n"
+    dist+="VERSION_ID=${ver}\nANSI_COLOR=\"1;35\"\nSUPPORT_URL=\"https://clearlinux.org\"\nBUILD_ID=${ver}"
+
+    print -w "CLEAR LINUX: Your 'swupd' is broken\n"
+    print -i "CLEAR LINUX: Patching 'swupd' distro version detection and try again...\n"
+    echo -e "${dist}" | rootify tee                                                           "/etc/os-release" > /dev/null
+
+    rootify swupd update -y
+  fi
+
+  [[ "${remove}" == "y" ]] && rootify swupd bundle-remove -y dnf
+}
+
+install_swupd_packages() {
+  if [[ ! "${swupd_packages}" ]]; then
+    swupd_packages="$(curl -s "${swupd_url}" | awk -F '"' '/-bin-|-lib-/{print $2}')"
+  fi
+
+  for key in "${@}"; do
+    for pkg in $(echo "${swupd_packages}" | grep -F "${key}"); do
+      curl "${swupd_url}/${pkg}" -o - | rootify bsdtar -xf - -C "/"
+    done
+  done
 }
 
 prepare_xbps() {
@@ -55,22 +96,11 @@ install_theme_deps() {
   (! is_my_distro "clear-linux" && [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]); then
     prompt -w "\n'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation.\n"
 
-    # Be careful of some distro mechanism, some of them use rolling-release
-    # based installation instead of point-release, e.g., Arch Linux
-
-    # Rolling-release based distro doesn't have a seprate repo for each different
-    # build. This can cause a system call error since an app require the compatible
-    # version of dependencies. In other words, if you install an new app (which you
-    # definitely reinstall/upgrade the dependency for that app), but your other
-    # dependencies are old/expired, you'll end up with broken system.
-
-    # That's why we need a full system upgrade here
-
     if has_command zypper; then
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify dnf install -y sassc glib-bin libxml2-bin
+      prepare_swupd && rootify swupd bundle-add libglib libxml2 && install_swupd_packages sassc
     elif has_command apt; then
       rootify apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
@@ -99,7 +129,7 @@ install_beggy_deps() {
       rootify zypper in -y ImageMagick
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify dnf install -y ImageMagick
+      prepare_swupd && rootify swupd bundle-add ImageMagick
     elif has_command apt; then
       rootify apt install -y imagemagick
     elif has_command dnf; then
@@ -126,7 +156,7 @@ install_dialog_deps() {
       rootify zypper in -y dialog
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify dnf install -y dialog
+      prepare_swupd && install_swupd_packages dialog
     elif has_command apt; then
       rootify apt install -y dialog
     elif has_command dnf; then

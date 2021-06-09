@@ -128,6 +128,8 @@ process_ids=()
 error_snippet=""
 export ANIM_PID="0"
 has_any_error="false"
+swupd_packages=""
+swupd_url="https://cdn.download.clearlinux.org/current/x86_64/os/Packages"
 
 # Colors and animation
 c_default="\033[0m"
@@ -266,48 +268,34 @@ operation_aborted() {
 }
 
 rootify() {
+  local result=0
+
   trap true SIGINT
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
 
-  if ! sudo "${@}"; then
+  if [[ -p /dev/stdin ]] && ! sudo "${@}" < /dev/stdin || ! sudo "${@}"; then
     error_snippet="${*}"
-    operation_aborted
+    result=1
   fi
 
   trap signal_exit SIGINT
+
+  return "${result}"
 }
 
 userify() {
+  local result=0
+
   trap true SIGINT
 
-  if ! sudo -u "${MY_USERNAME}" "${@}"; then
+  if [[ -p /dev/stdin ]] && ! sudo -u "${MY_USERNAME}" "${@}" < /dev/stdin || ! sudo -u "${MY_USERNAME}" "${@}"; then
     error_snippet="${*}"
-    operation_aborted
+    result=1
   fi
 
   trap signal_exit SIGINT
-}
 
-write_as_root() {
-  trap true SIGINT
-
-  if ! echo -e "${1}" | sudo tee "${2}" > /dev/null; then
-    error_snippet="${*}"
-    operation_aborted
-  fi
-
-  trap signal_exit SIGINT
-}
-
-write_as_user() {
-  trap true SIGINT
-
-  if ! echo -e "${1}" | sudo -u "${MY_USERNAME}" tee "${2}" > /dev/null; then
-    error_snippet="${*}"
-    operation_aborted
-  fi
-
-  trap signal_exit SIGINT
+  return "${result}"
 }
 
 trap 'operation_aborted' ERR

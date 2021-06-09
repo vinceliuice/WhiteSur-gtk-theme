@@ -24,7 +24,7 @@
 /* Active tab high contrast */
 /*@import "WhiteSur/active-tab-contrast.css"; /**/
 
-/* Use system theme icons instead of Adwaita icons included by theme */
+/* Use system theme icons instead of Adwaita icons included by theme [BUGGED] */
 /*@import "WhiteSur/system-icons.css"; /**/
 
 /* Allow drag window from headerbar buttons (GNOMISH) [BUGGED] 
