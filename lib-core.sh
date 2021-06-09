@@ -83,7 +83,7 @@ THEME_VARIANTS=('default' 'blue' 'purple' 'pink' 'red' 'orange' 'yellow' 'green'
 ICON_VARIANTS=('standard' 'simple' 'gnome' 'ubuntu' 'arch' 'manjaro' 'fedora' 'debian' 'void')
 SIDEBAR_SIZE_VARIANTS=('default' '220' '240' '260' '280')
 PANEL_OPACITY_VARIANTS=('default' '30' '45' '60' '75')
-NAUTILUS_STYLE_VARIANTS=('default' 'stable' 'mojave' 'glassy')
+NAUTILUS_STYLE_VARIANTS=('stable' 'normal' 'mojave' 'glassy')
 
 # Customization, default values
 dest="${THEME_DIR}"
@@ -95,7 +95,7 @@ themes=("${THEME_VARIANTS[0]}")
 icon="${ICON_VARIANTS[0]}"
 sidebar_size="${SIDEBAR_SIZE_VARIANTS[0]}"
 panel_opacity="${PANEL_OPACITY_VARIANTS[0]}"
-nautilus_style="${NAUTILUS_STYLE_VARIANTS[1]}"
+nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}"
 background="default"
 compact="true"
 

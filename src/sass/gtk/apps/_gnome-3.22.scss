@@ -30,7 +30,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
                                              $base_color 100%);
 }
 
-@if $nautilus_style == 'default' or $nautilus_style == 'glassy' {
+@if $nautilus_style == 'normal' or $nautilus_style == 'glassy' {
   $dialog_header_image: linear-gradient(90deg, $dialog_bg_color 5%,
                                                $dark_header_bg 40%);
 
@@ -44,12 +44,12 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
                                                             $header_border 25%);
 }
 
-@if $nautilus_style == 'default' or $nautilus_style == 'stable' {
+@if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
   $nautilus_header_borders_image: linear-gradient(90deg, rgba($header_border, 0) $nautilus_sidebar_size,
                                                          $header_border $nautilus_sidebar_size);
 }
 
-@if $nautilus_style == 'stable' or $nautilus_style == 'default' {
+@if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
     $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg $nautilus_sidebar_size,
                                                    $nautilus_borders_color $nautilus_sidebar_size,
                                                    $nautilus_borders_color ($nautilus_sidebar_size + 1px),
@@ -79,7 +79,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
       }
 
       > deck > box.vertical > headerbar.titlebar {
-        @if $nautilus_style == 'stable' or $nautilus_style == 'default' {
+        @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
           background-image: linear-gradient(90deg, rgba($dark_header_bg, 0) $nautilus_sidebar_size,
                                                    $nautilus_borders_color $nautilus_sidebar_size,
                                                    $nautilus_borders_color ($nautilus_sidebar_size + 1px),
@@ -91,13 +91,13 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
         > box.horizontal:first-child { // move the search button to right side
           margin-right: -74px;
 
-          @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
+          @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
             entry.search { margin-left: if($placement == 'left', $container_padding, $nautilus_sidebar_size - 74px); }
           }
         }
       }
 
-      @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
+      @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
         &.maximized {
           > deck > box.vertical > headerbar.titlebar {
             > box.horizontal:first-child { // move the search button to right side
@@ -124,7 +124,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
         }
       }
 
-      @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
+      @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
         @if $placement == 'left' {
           > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - (48px + $container_padding * 6); }
         }
@@ -138,7 +138,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     &.maximized {
       > headerbar.titlebar,
       > deck > box.vertical > headerbar.titlebar {
-        @if $nautilus_style == 'default' or $nautilus_style == 'stable' {
+        @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
           @if $placement == 'right' {
             .path-bar-box { margin-left: 0; }
             entry.search { margin-left: 0; }
@@ -152,7 +152,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
       border: none;
       border-bottom-left-radius: $wm_radius;
 
-      @if $nautilus_style == 'stable' or $nautilus_style == 'default' {
+      @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
         min-width: $nautilus_sidebar_size;
       }
 
