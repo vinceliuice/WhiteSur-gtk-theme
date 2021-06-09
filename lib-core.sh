@@ -125,7 +125,6 @@ msg=""
 final_msg="Run '${0} --help' to explore more customization features!"
 notif_msg=""
 process_ids=()
-error_snippet=""
 export ANIM_PID="0"
 has_any_error="false"
 swupd_packages=""
@@ -251,11 +250,11 @@ operation_aborted() {
   prompt -e "FOUND  :"
 
   for i in "${sources[@]}"; do
-    lines=($(grep -Fn "${error_snippet:-${BASH_COMMAND}}" "${REPO_DIR}/${i}" | cut -d : -f 1 || echo ""))
+    lines=($(grep -Fn "${BASH_COMMAND}" "${REPO_DIR}/${i}" | cut -d : -f 1 || echo ""))
     prompt -e "  >>> ${i}$(IFS=';'; [[ "${lines[*]}" ]] && echo " at ${lines[*]}")"
   done
 
-  prompt -e "SNIPPET:\n    >>> ${error_snippet:-${BASH_COMMAND}}"
+  prompt -e "SNIPPET:\n    >>> ${BASH_COMMAND}"
   prompt -e "TRACE  :"
 
   for i in "${FUNCNAME[@]}"; do
@@ -280,8 +279,9 @@ rootify() {
   trap true SIGINT
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
 
-  if [[ -p /dev/stdin ]] && ! sudo "${@}" < /dev/stdin || ! sudo "${@}"; then
-    error_snippet="${*}"
+  if [[ -p /dev/stdin ]] && ! sudo "${@}" < /dev/stdin; then
+    result=1
+  elif ! sudo "${@}"; then
     result=1
   fi
 
@@ -295,8 +295,9 @@ userify() {
 
   trap true SIGINT
 
-  if [[ -p /dev/stdin ]] && ! sudo -u "${MY_USERNAME}" "${@}" < /dev/stdin || ! sudo -u "${MY_USERNAME}" "${@}"; then
-    error_snippet="${*}"
+  if [[ -p /dev/stdin ]] && ! sudo -u "${MY_USERNAME}" "${@}" < /dev/stdin; then
+    result=1
+  elif ! sudo -u "${MY_USERNAME}" "${@}"; then
     result=1
   fi
 

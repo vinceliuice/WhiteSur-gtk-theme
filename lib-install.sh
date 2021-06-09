@@ -33,7 +33,7 @@ WHITESUR_SOURCE+=("lib-install.sh")
 # for installing a util, e.g. 'sassc' (from 'desktop-dev' bundle, or
 # 'os-utils-gui-dev' bundle, or any other 'sassc' provider bundle)
 
-# Manual package installation is needed for that, but don't use 'dnf'
+# Manual package installation is needed for that, but please don't use 'dnf'
 
 installation_sorry() {
   prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
@@ -49,10 +49,12 @@ prepare_swupd() {
   local dist=""
 
   if has_command dnf; then
-    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package\n"
+    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package"
 
     while [[ "${remove}" != "y" && "${remove}" != "n" ]]; do
-      read -p "${c_cyan}You wanna remove it? (y/n): ${c_green}" remove 2>&1
+      echo -e "${c_green}"
+      read -p "You wanna remove it? (y/n): " remove 2>&1
+      echo -e "${c_default}"
     done
   fi
 
@@ -68,6 +70,7 @@ prepare_swupd() {
     rootify swupd update -y
   fi
 
+  if ! has_command bsdtar; then rootify swupd bundle-add libarchive; fi
   if [[ "${remove}" == "y" ]]; then rootify swupd bundle-remove -y dnf; fi
 }
 
@@ -94,7 +97,7 @@ prepare_xbps() {
 install_theme_deps() {
   if ! has_command glib-compile-resources || ! has_command sassc || ! has_command xmllint ||
   (! is_my_distro "clear-linux" && [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]); then
-    prompt -w "\n'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation.\n"
+    prompt -w "\n  'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation.\n"
 
     if has_command zypper; then
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
@@ -123,7 +126,7 @@ install_theme_deps() {
 
 install_beggy_deps() {
   if ! has_command convert; then
-    prompt -w "\n'imagemagick' are required for background editing.\n"
+    prompt -w "\n  'imagemagick' are required for background editing.\n"
 
     if has_command zypper; then
       rootify zypper in -y ImageMagick
@@ -150,7 +153,7 @@ install_beggy_deps() {
 
 install_dialog_deps() {
   if ! has_command dialog; then
-    prompt -w "\n'dialog' is required for this option.\n"
+    prompt -w "\n  'dialog' is required for this option.\n"
 
     if has_command zypper; then
       rootify zypper in -y dialog
@@ -319,7 +322,7 @@ install_theemy() {
   desktop_entry+="CursorTheme=WhiteSur-cursors\n"
   desktop_entry+="ButtonLayout=close,minimize,maximize:menu\n"
 
-  echo "${desktop_entry}" >                                                                   "${TARGET_DIR}/index.theme"
+  echo -e "${desktop_entry}" >                                                                "${TARGET_DIR}/index.theme"
 
   #--------------------GTK-3.0--------------------#
 
