@@ -57,7 +57,7 @@ prepare_swupd() {
   fi
 
   if ! rootify swupd update -y; then
-    ver="$(curl -s "https://cdn.download.clearlinux.org/latest")"
+    ver="$(curl -s -o - "${swupd_ver_url}")"
     dist="NAME=\"Clear Linux OS\"\nVERSION=1\nID=clear-linux-os\nID_LIKE=clear-linux-os\n"
     dist+="VERSION_ID=${ver}\nANSI_COLOR=\"1;35\"\nSUPPORT_URL=\"https://clearlinux.org\"\nBUILD_ID=${ver}"
 
@@ -68,17 +68,17 @@ prepare_swupd() {
     rootify swupd update -y
   fi
 
-  [[ "${remove}" == "y" ]] && rootify swupd bundle-remove -y dnf
+  if [[ "${remove}" == "y" ]]; then rootify swupd bundle-remove -y dnf; fi
 }
 
 install_swupd_packages() {
   if [[ ! "${swupd_packages}" ]]; then
-    swupd_packages="$(curl -s "${swupd_url}" | awk -F '"' '/-bin-|-lib-/{print $2}')"
+    swupd_packages="$(curl -s -o - "${swupd_url}" | awk -F '"' '/-bin-|-lib-/{print $2}')"
   fi
 
   for key in "${@}"; do
     for pkg in $(echo "${swupd_packages}" | grep -F "${key}"); do
-      curl "${swupd_url}/${pkg}" -o - | rootify bsdtar -xf - -C "/"
+      curl -s -o - "${swupd_url}/${pkg}" | rootify bsdtar -xf - -C "/"
     done
   done
 }
@@ -100,7 +100,7 @@ install_theme_deps() {
       rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify swupd bundle-add libglib libxml2 && install_swupd_packages sassc
+      prepare_swupd && rootify swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
     elif has_command apt; then
       rootify apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then

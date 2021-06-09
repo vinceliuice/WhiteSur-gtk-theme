@@ -129,7 +129,9 @@ error_snippet=""
 export ANIM_PID="0"
 has_any_error="false"
 swupd_packages=""
-swupd_url="https://cdn.download.clearlinux.org/current/x86_64/os/Packages"
+# '/' ending is required in 'swupd_url'
+swupd_url="https://cdn.download.clearlinux.org/current/x86_64/os/Packages/"
+swupd_ver_url="https://cdn.download.clearlinux.org/latest"
 
 # Colors and animation
 c_default="\033[0m"
@@ -217,6 +219,8 @@ signal_exit() {
 }
 
 operation_aborted() {
+  # TODO: make this more accurate
+
   IFS=$'\n'
   local sources=($(basename -a "${WHITESUR_SOURCE[@]}" "${BASH_SOURCE[@]}" | sort -u))
   local dist_ids=($(awk -F '=' '/ID/{print $2}' "/etc/os-release" | sort -Vru))
@@ -236,7 +240,7 @@ operation_aborted() {
   prompt -e "\n\n  Oops! Operation has been aborted or failed...\n"
   prompt -e "=========== ERROR LOG ==========="
 
-  if ! awk '{printf "\033[1;31m  >>> %s\n", $0}' "${WHITESUR_TMP_DIR}/error_log.txt"; then
+  if [[ "$(awk '{printf "\033[1;31m  >>> %s\n", $0}' "${WHITESUR_TMP_DIR}/error_log.txt" || echo "")" == "" ]] ; then
     prompt -e ">>>>>>> No error log found <<<<<<"
   fi
 
