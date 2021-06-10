@@ -136,6 +136,8 @@ swupd_packages=""
 # '/' ending is required in 'swupd_url'
 swupd_url="https://cdn.download.clearlinux.org/current/x86_64/os/Packages/"
 swupd_ver_url="https://cdn.download.clearlinux.org/latest"
+swupd_prepared="false"
+xbps_prepared="false"
 
 #------------Decoration-----------#
 export c_default="\033[0m"
@@ -147,11 +149,11 @@ export c_red="\033[1;31m"
 export c_yellow="\033[1;33m"
 
 anim=(
-  "${c_blue}•${c_green}•${c_red}•${c_magenta}•         "
-  " ${c_green}•${c_red}•${c_magenta}•${c_blue}•        "
-  "  ${c_red}•${c_magenta}•${c_blue}•${c_green}•       "
-  "   ${c_magenta}•${c_blue}•${c_green}•${c_red}•      "
-  "    ${c_blue}•${c_green}•${c_red}•${c_magenta}•     "
+  "${c_blue}•${c_green}•${c_red}•${c_magenta}•    "
+  " ${c_green}•${c_red}•${c_magenta}•${c_blue}•   "
+  "  ${c_red}•${c_magenta}•${c_blue}•${c_green}•  "
+  "   ${c_magenta}•${c_blue}•${c_green}•${c_red}• "
+  "    ${c_blue}•${c_green}•${c_red}•${c_magenta}•"
 )
 
 ###############################################################################
@@ -296,6 +298,12 @@ ask() {
   echo -e "${c_magenta}\r"
   read -p "  ${2}" ${1} 2>&1
   echo -e "${c_default}"
+}
+
+confirm() {
+  while [[ "${!1}" != "y" && "${!1}" != "n" ]]; do
+    ask ${1} "${2}"
+  done
 }
 
 helpify_title() {
@@ -610,8 +618,6 @@ sudo() {
   elif ! ${SUDO_BIN} "${@}"; then
     result="1"; WHITESUR_COMMAND="${*}"
   fi
-
-  echo -e "${c_default}"
 
   return "${result}"
 }

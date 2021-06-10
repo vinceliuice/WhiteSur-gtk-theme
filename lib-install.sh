@@ -44,6 +44,8 @@ installation_sorry() {
 }
 
 prepare_swupd() {
+  [[ "${swupd_prepared}" == "true" ]] && return 0
+
   local remove=""
   local ver=""
   local conf=""
@@ -51,10 +53,7 @@ prepare_swupd() {
 
   if has_command dnf; then
     prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package"
-
-    while [[ "${remove}" != "y" && "${remove}" != "n" ]]; do
-      ask remove "CLEAR LINUX: You wanna remove it? (y/n): "
-    done
+    confirm remove "CLEAR LINUX: You wanna remove it? (y/n): "
   fi
 
   if ! sudo swupd update -y; then
@@ -72,6 +71,8 @@ prepare_swupd() {
 
   if ! has_command bsdtar; then sudo swupd bundle-add libarchive; fi
   if [[ "${remove}" == "y" ]]; then sudo swupd bundle-remove -y dnf; fi
+
+  swupd_prepared="true"
 }
 
 install_swupd_packages() {
@@ -87,11 +88,15 @@ install_swupd_packages() {
 }
 
 prepare_xbps() {
+  [[ "${xbps_prepared}" == "true" ]] && return 0
+
   # 'xbps-install' requires 'xbps' to be always up-to-date
   sudo xbps-install -Syu xbps
   # System upgrading can't remove the old kernel files by it self. It eats the
   # boot partition and may cause kernel panic when there is no enough space
   sudo vkpurge rm all
+
+  xbps_prepared="true"
 }
 
 install_theme_deps() {
@@ -754,8 +759,8 @@ show_nautilus_style_dialog() {
     --radiolist "Choose your Nautilus style (default is BigSur-like style):" 15 40 5 \
       0 "${NAUTILUS_STYLE_VARIANTS[0]}" on \
       1 "${NAUTILUS_STYLE_VARIANTS[1]}" off \
-      1 "${NAUTILUS_STYLE_VARIANTS[2]}" off \
-      2 "${NAUTILUS_STYLE_VARIANTS[3]}" off --output-fd 1 )
+      2 "${NAUTILUS_STYLE_VARIANTS[2]}" off \
+      3 "${NAUTILUS_STYLE_VARIANTS[3]}" off --output-fd 1 )
       case "$tui" in
         0) nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}" ;;
         1) nautilus_style="${NAUTILUS_STYLE_VARIANTS[1]}" ;;
