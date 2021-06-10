@@ -53,9 +53,7 @@ prepare_swupd() {
     prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package"
 
     while [[ "${remove}" != "y" && "${remove}" != "n" ]]; do
-      echo -e "\r${c_green}"
-      read -p "  CLEAR LINUX: You wanna remove it? (y/n): " remove 2>&1
-      echo -e "${c_default}"
+      ask remove "CLEAR LINUX: You wanna remove it? (y/n): "
     done
   fi
 

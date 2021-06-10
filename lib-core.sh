@@ -42,6 +42,8 @@ else
   SED_OPT="-i"
 fi
 
+SUDO_BIN="$(which sudo)"
+
 #------------Directories--------------#
 THEME_SRC_DIR="${REPO_DIR}/src"
 DASH_TO_DOCK_SRC_DIR="${REPO_DIR}/src/other/dash-to-dock"
@@ -151,8 +153,6 @@ anim=(
   "   ${c_magenta}•${c_blue}•${c_green}•${c_red}•      "
   "    ${c_blue}•${c_green}•${c_red}•${c_magenta}•     "
 )
-
-export SUDO_PROMPT="${c_yellow}  SUDO: Authentication is required\n${c_green}  SUDO: Password (${MY_USERNAME}):  "
 
 ###############################################################################
 #                              CORE UTILITIES                                 #
@@ -291,6 +291,12 @@ trap 'signal_abort' INT TERM TSTP
 ###############################################################################
 #                              USER UTILITIES                                 #
 ###############################################################################
+
+ask() {
+  echo -e "${c_magenta}\r"
+  read -p "  ${2}" ${1} 2>&1
+  echo -e "${c_default}"
+}
 
 helpify_title() {
   printf "${c_cyan}%s${c_blue}%s ${c_green}%s\n\n" "Usage: " "$0" "[OPTIONS...]"
@@ -586,13 +592,41 @@ remind_relative_path() {
 #                                    MISC                                     #
 ###############################################################################
 
+sudo() {
+  local result="0"
+
+  prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
+
+  if ! ${SUDO_BIN} -n true 2> /dev/null; then
+    echo -e "${c_magenta}  Authentication is required:${c_default}"
+  fi
+
+  # Don't combine '[[ ... ]]' and '! ... < /dev/stdin' cause it's gonna
+  # break the logic/workflow
+  if [[ -p /dev/stdin ]]; then
+    if ! ${SUDO_BIN} "${@}" < /dev/stdin; then
+      result="1"; WHITESUR_COMMAND="${*}"
+    fi
+  elif ! ${SUDO_BIN} "${@}"; then
+    result="1"; WHITESUR_COMMAND="${*}"
+  fi
+
+  echo -e "${c_default}"
+
+  return "${result}"
+}
+
 udo() {
   local result="0"
 
+  # Don't combine '[[ ... ]]' and '! ... < /dev/stdin' cause it's gonna
+  # break the logic/workflow
   if [[ -p /dev/stdin ]]; then
-    ! sudo -u "${MY_USERNAME}" "${@}" < /dev/stdin && result="1"; WHITESUR_COMMAND="${*}"
-  else
-    ! sudo -u "${MY_USERNAME}" "${@}" && result="1"; WHITESUR_COMMAND="${*}"
+    if ! ${SUDO_BIN} -u "${MY_USERNAME}" "${@}" < /dev/stdin; then
+      result="1"; WHITESUR_COMMAND="${*}"
+    fi
+  elif ! ${SUDO_BIN} -u "${MY_USERNAME}" "${@}"; then
+    result="1"; WHITESUR_COMMAND="${*}"
   fi
 
   return "${result}"
