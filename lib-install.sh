@@ -33,7 +33,10 @@ WHITESUR_SOURCE+=("lib-install.sh")
 # for installing a util, e.g. 'sassc' (from 'desktop-dev' bundle, or
 # 'os-utils-gui-dev' bundle, or any other 'sassc' provider bundle)
 
-# Manual package installation is needed for that, but please don't use 'dnf'
+# Manual package installation is needed for that, but please don't use 'dnf'.
+# The known worst impact of using 'dnf' is you install 'sassc' and then you
+# remove it, and you run 'sudo dnf upgrade', and boom! Your 'sudo' and other
+# system utilities have gone!
 
 installation_sorry() {
   prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
@@ -63,7 +66,7 @@ prepare_swupd() {
     dist="NAME=\"Clear Linux OS\"\nVERSION=1\nID=clear-linux-os\nID_LIKE=clear-linux-os\n"
     dist+="VERSION_ID=${ver}\nANSI_COLOR=\"1;35\"\nSUPPORT_URL=\"https://clearlinux.org\"\nBUILD_ID=${ver}"
 
-    prompt -w "\nCLEAR LINUX: Your 'swupd' is broken"
+    prompt -w "\n  CLEAR LINUX: Your 'swupd' is broken"
     prompt -i "CLEAR LINUX: Patching 'swupd' distro version detection and try again...\n"
     rootify rm -rf "/etc/os-release"; echo -e "${dist}" | rootify tee                         "/usr/lib/os-release" > /dev/null
     rootify ln -s "/usr/lib/os-release" "/etc/os-release"
@@ -720,7 +723,7 @@ show_panel_opacity_dialog() {
         2) panel_opacity="${PANEL_OPACITY_VARIANTS[2]}" ;;
         3) panel_opacity="${PANEL_OPACITY_VARIANTS[3]}" ;;
         4) panel_opacity="${PANEL_OPACITY_VARIANTS[4]}" ;;
-        *) operation_aborted ;;
+        *) signal_abort ;;
       esac
   fi
 
@@ -742,7 +745,7 @@ show_sidebar_size_dialog() {
         2) sidebar_size="${SIDEBAR_SIZE_VARIANTS[2]}" ;;
         3) sidebar_size="${SIDEBAR_SIZE_VARIANTS[3]}" ;;
         4) sidebar_size="${SIDEBAR_SIZE_VARIANTS[4]}" ;;
-        *) operation_aborted ;;
+        *) signal_abort ;;
       esac
   fi
 
@@ -762,7 +765,7 @@ show_nautilus_style_dialog() {
         1) nautilus_style="${NAUTILUS_STYLE_VARIANTS[1]}" ;;
         2) nautilus_style="${NAUTILUS_STYLE_VARIANTS[2]}" ;;
         3) nautilus_style="${NAUTILUS_STYLE_VARIANTS[3]}" ;;
-        *) operation_aborted ;;
+        *) signal_abort ;;
       esac
   fi
 

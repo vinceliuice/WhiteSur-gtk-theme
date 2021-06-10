@@ -220,7 +220,13 @@ signal_exit() {
   stop_animation
 }
 
-operation_aborted() {
+signal_abort() {
+  signal_exit
+  prompt -e "\n\n  Oops! Operation has been aborted...\n\n"
+  exit 1
+}
+
+signal_error() {
   # TODO: make this more accurate
 
   IFS=$'\n'
@@ -240,7 +246,7 @@ operation_aborted() {
   # to be cut. Sleeping for awhile may help
   sleep 0.75; clear
 
-  prompt -e "\n\n  Oops! Operation has been aborted or failed...\n"
+  prompt -e "\n\n  Oops! Operation failed...\n"
   prompt -e "=========== ERROR LOG ==========="
 
   echo -e "${log}"
@@ -277,44 +283,34 @@ operation_aborted() {
 }
 
 rootify() {
-  local result=0
+  local result="0"
 
-  trap true SIGINT
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
 
   if [[ -p /dev/stdin ]]; then
-    ! sudo "${@}" < /dev/stdin && result=1
-    error_snippet="${*}"
+    ! sudo "${@}" < /dev/stdin && result="1"; error_snippet="${*}"
   else
-    ! sudo "${@}" && result=1
-    error_snippet="${*}"
+    ! sudo "${@}" && result="1"; error_snippet="${*}"
   fi
-
-  trap signal_exit SIGINT
 
   return "${result}"
 }
 
 userify() {
-  local result=0
-
-  trap true SIGINT
+  local result="0"
 
   if [[ -p /dev/stdin ]]; then
-    ! sudo -u "${MY_USERNAME}" "${@}" < /dev/stdin && result=1
-    error_snippet="${*}"
+    ! sudo -u "${MY_USERNAME}" "${@}" < /dev/stdin && result="1"; error_snippet="${*}"
   else
-    ! sudo -u "${MY_USERNAME}" "${@}" && result=1
-    error_snippet="${*}"
+    ! sudo -u "${MY_USERNAME}" "${@}" && result="1"; error_snippet="${*}"
   fi
-
-  trap signal_exit SIGINT
 
   return "${result}"
 }
 
-trap 'operation_aborted' ERR
-trap 'signal_exit' INT EXIT TERM
+trap 'signal_exit' EXIT
+trap 'signal_error' ERR
+trap 'signal_abort' INT TERM TSTP
 
 ###############################################################################
 #                              USER UTILITIES                                 #
