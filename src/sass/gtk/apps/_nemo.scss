@@ -41,13 +41,8 @@
 
   paned > separator { background-image: image($solid_borders_color); }
 
-  notebook {
-    background-color: $base_color;
-  }
-
-  // Rename entry
   .nemo-window-pane {
-    widget.entry {
+    widget.entry { // Rename entry
       border: 2px solid if($variant =='light', $entry_highlight, $selected_bg_color);
       background-color: $entry_bg;
       border-radius: $bt_radius;
@@ -60,7 +55,7 @@
       }
     }
 
-    treeview.view {
+    treeview.view { // Treeview rename entry
       &, &:selected {
         entry {
           color: $fg_color;
@@ -68,6 +63,14 @@
           border-radius: $bt_radius;
         }
       }
+    }
+
+    > notebook {
+      background-color: $base_color;
+
+      infobar > revealer > box { border-bottom: 1px solid $borders_color; }
+
+      box.vertical > separator { background: none; }
     }
   }
 

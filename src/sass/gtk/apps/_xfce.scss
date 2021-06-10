@@ -226,3 +226,23 @@ window.thunar {
     }
   }
 }
+
+
+//
+// mousepad
+//
+
+window.background.csd {
+  > box.vertical > notebook > stack > scrolledwindow.frame {
+    border: none;
+
+    > textview {
+      background-color: $base_color;
+
+      > text {
+        background-color: transparent;
+        border-radius: 0 0 $wm_radius $wm_radius;
+      }
+    }
+  }
+}

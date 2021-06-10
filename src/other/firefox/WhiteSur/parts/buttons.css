@@ -229,9 +229,18 @@ button.close:not(:active):hover,
 #TabsToolbar .toolbarbutton-1:not(:active):not([open]):hover,
 #protections-popup-info-button:hover,
 .permission-popup-permission-remove-button:not(:active):hover {
-	box-shadow: var(--gnome-button-box-shadow) !important;
+	box-shadow: none !important;
 	border-color: var(--gnome-button-border-color) !important;
 	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+}
+
+.subviewbutton-back:not(#hack):active,
+.close-icon:not(.tab-close-button):active,
+button.close:active,
+#TabsToolbar .toolbarbutton-1:active,
+#protections-popup-info-button:active,
+.permission-popup-permission-remove-button:active {
+	box-shadow: none !important;
 }
 
 .close-icon:not(.tab-close-button) {

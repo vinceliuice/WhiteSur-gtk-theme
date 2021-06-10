@@ -185,17 +185,6 @@ $list_shadow: if($variant == 'light',
   background-image: none;
   box-shadow: none;
 
-  &.flat {
-    @include button(undecorated);
-    color: $selected_fg_color;
-    background-color: transparentize($selected_fg_color, 1);
-    background-image: none;
-  }
-
-  &.flat:disabled {
-    &, label { color: transparentize($selected_fg_color, 0.6); }
-  }
-
   &:hover {
     color: $selected_fg_color;
     background-color: transparentize($selected_fg_color, 0.8);
@@ -203,7 +192,7 @@ $list_shadow: if($variant == 'light',
     box-shadow: none;
   }
 
-  &:active, &:active:hover, &:checked {
+  &:active, &:checked {
     color: $selected_fg_color;
     background-color: transparentize($selected_fg_color, 0.6);
     border-color: transparentize($selected_fg_color, 0.5);
@@ -1501,7 +1490,7 @@ actionbar {
       transition: $button_transition;
     }
 
-    &:active, &:active:hover {
+    &:active {
       @include button(header-active);
       transition: $button_transition;
       transition-duration: 300ms;
@@ -1620,7 +1609,7 @@ actionbar {
       transition: $button_transition;
     }
 
-    &:active, &:active:hover {
+    &:active {
       @include button(header-active);
       transition: $button_transition;
       transition-duration: 300ms;
@@ -1740,7 +1729,7 @@ actionbar {
         @include button(header-hover);
       }
 
-      &:active, &:active:hover {
+      &:active {
         @include button(header-active);
       }
 
@@ -1766,8 +1755,8 @@ actionbar {
       border-color: darken($selection_mode_bg, 4%);
     }
 
-    button {
-      @include button(undecorated);
+    button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton) {
+      // @include button(undecorated);
       @extend %selected-button;
     }
 
@@ -2618,7 +2607,7 @@ notebook {
           background-color: rgba($borders_color, 0.1);
         }
 
-        &:active, &:active:hover {
+        &:active {
           @extend %undecorated_button;
           color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
           background-color: rgba($borders_color, 0.2);
@@ -3446,8 +3435,6 @@ row {
     background-color: if($variant == 'light', rgba(black, 0.15), rgba(white, 0.15));
 
     label { color: $fg_color; }
-
-    // button { @extend %selected-button; }
   }
 
   &.activatable {
@@ -3905,7 +3892,7 @@ paned {
 //
 
 infobar {
-  border-style: none;
+  border: none;
 
   &.info {
     & > revealer > box,
@@ -3949,7 +3936,7 @@ infobar {
       color: $selected_fg_color;
       caret-color: currentColor;
 
-      button {
+      button:not(.flat) {
         min-height: 28px;
         @extend %selected-button;
       }

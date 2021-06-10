@@ -75,7 +75,7 @@ Usage:  `./install.sh [OPTIONS...]`
 
 -b, --background [default|blank|IMAGE_PATH] # Set gnome-shell background image. Default is BigSur-like wallpaper
 
--N, --nautilus-style [default|stable|mojave|glassy] # Set Nautilus style. Default is stable (stabled sidebar)
+-N, --nautilus-style [stable|normal|mojave|glassy] # Set Nautilus style. Default is stable (stabled sidebar)
 
 --round, --roundedmaxwindow # Set maximized window to rounded. Default is square
 
