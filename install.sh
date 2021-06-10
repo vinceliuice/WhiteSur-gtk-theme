@@ -3,8 +3,6 @@
 # WARNING: Please make this shell not working-directory dependant, for example
 # instead of using 'ls blabla', use 'ls "${REPO_DIR}/blabla"'
 #
-# WARNING: Please don't use sudo directly here since it steals our EXIT trap
-#
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
 

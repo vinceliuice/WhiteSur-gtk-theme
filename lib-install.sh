@@ -3,8 +3,6 @@
 #
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
-#
-# WARNING: Please don't use sudo directly here since it steals our EXIT trap
 
 ###############################################################################
 #                                VARIABLES                                    #
@@ -52,30 +50,30 @@ prepare_swupd() {
   local dist=""
 
   if has_command dnf; then
-    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package\n"
+    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package"
 
     while [[ "${remove}" != "y" && "${remove}" != "n" ]]; do
       echo -e "\r${c_green}"
-      read -p "  You wanna remove it? (y/n): " remove 2>&1
+      read -p "  CLEAR LINUX: You wanna remove it? (y/n): " remove 2>&1
       echo -e "${c_default}"
     done
   fi
 
-  if ! rootify swupd update -y; then
+  if ! sudo swupd update -y; then
     ver="$(curl -s -o - "${swupd_ver_url}")"
     dist="NAME=\"Clear Linux OS\"\nVERSION=1\nID=clear-linux-os\nID_LIKE=clear-linux-os\n"
     dist+="VERSION_ID=${ver}\nANSI_COLOR=\"1;35\"\nSUPPORT_URL=\"https://clearlinux.org\"\nBUILD_ID=${ver}"
 
     prompt -w "\n  CLEAR LINUX: Your 'swupd' is broken"
     prompt -i "CLEAR LINUX: Patching 'swupd' distro version detection and try again...\n"
-    rootify rm -rf "/etc/os-release"; echo -e "${dist}" | rootify tee                         "/usr/lib/os-release" > /dev/null
-    rootify ln -s "/usr/lib/os-release" "/etc/os-release"
+    sudo rm -rf "/etc/os-release"; echo -e "${dist}" | sudo tee                         "/usr/lib/os-release" > /dev/null
+    sudo ln -s "/usr/lib/os-release" "/etc/os-release"
 
-    rootify swupd update -y
+    sudo swupd update -y
   fi
 
-  if ! has_command bsdtar; then rootify swupd bundle-add libarchive; fi
-  if [[ "${remove}" == "y" ]]; then rootify swupd bundle-remove -y dnf; fi
+  if ! has_command bsdtar; then sudo swupd bundle-add libarchive; fi
+  if [[ "${remove}" == "y" ]]; then sudo swupd bundle-remove -y dnf; fi
 }
 
 install_swupd_packages() {
@@ -85,17 +83,17 @@ install_swupd_packages() {
 
   for key in "${@}"; do
     for pkg in $(echo "${swupd_packages}" | grep -F "${key}"); do
-      curl -s -o - "${swupd_url}/${pkg}" | rootify bsdtar -xf - -C "/"
+      curl -s -o - "${swupd_url}/${pkg}" | sudo bsdtar -xf - -C "/"
     done
   done
 }
 
 prepare_xbps() {
   # 'xbps-install' requires 'xbps' to be always up-to-date
-  rootify xbps-install -Syu xbps
+  sudo xbps-install -Syu xbps
   # System upgrading can't remove the old kernel files by it self. It eats the
   # boot partition and may cause kernel panic when there is no enough space
-  rootify vkpurge rm all
+  sudo vkpurge rm all
 }
 
 install_theme_deps() {
@@ -104,24 +102,24 @@ install_theme_deps() {
     prompt -w "\n  'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation.\n"
 
     if has_command zypper; then
-      rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
+      sudo zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
+      prepare_swupd && sudo swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
     elif has_command apt; then
-      rootify apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
+      sudo apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
-      rootify dnf install -y sassc glib2-devel gtk-murrine-engine libxml2
+      sudo dnf install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command yum; then
-      rootify yum install -y sassc glib2-devel gtk-murrine-engine libxml2
+      sudo yum install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command pacman; then
       # Rolling release
-      rootify pacman -Syu --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
+      sudo pacman -Syu --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
     elif has_command xbps-install; then
       # Rolling release
       # 'libxml2' is already included here, and it's gonna broke the installation
       # if you add it
-      prepare_xbps && rootify xbps-install -Sy sassc glib-devel gtk-engine-murrine
+      prepare_xbps && sudo xbps-install -Sy sassc glib-devel gtk-engine-murrine
     else
       installation_sorry
     fi
@@ -133,22 +131,22 @@ install_beggy_deps() {
     prompt -w "\n  'imagemagick' are required for background editing.\n"
 
     if has_command zypper; then
-      rootify zypper in -y ImageMagick
+      sudo zypper in -y ImageMagick
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && rootify swupd bundle-add ImageMagick
+      prepare_swupd && sudo swupd bundle-add ImageMagick
     elif has_command apt; then
-      rootify apt install -y imagemagick
+      sudo apt install -y imagemagick
     elif has_command dnf; then
-      rootify dnf install -y ImageMagick
+      sudo dnf install -y ImageMagick
     elif has_command yum; then
-      rootify yum install -y ImageMagick
+      sudo yum install -y ImageMagick
     elif has_command pacman; then
       # Rolling release
-      rootify pacman -Syu --noconfirm --needed imagemagick
+      sudo pacman -Syu --noconfirm --needed imagemagick
     elif has_command xbps-install; then
       # Rolling release
-      prepare_xbps && rootify xbps-install -Sy ImageMagick
+      prepare_xbps && sudo xbps-install -Sy ImageMagick
     else
       installation_sorry
     fi
@@ -160,22 +158,22 @@ install_dialog_deps() {
     prompt -w "\n  'dialog' is required for this option.\n"
 
     if has_command zypper; then
-      rootify zypper in -y dialog
+      sudo zypper in -y dialog
     elif has_command swupd; then
       # Rolling release
       prepare_swupd && install_swupd_packages dialog
     elif has_command apt; then
-      rootify apt install -y dialog
+      sudo apt install -y dialog
     elif has_command dnf; then
-      rootify dnf install -y dialog
+      sudo dnf install -y dialog
     elif has_command yum; then
-      rootify yum install -y dialog
+      sudo yum install -y dialog
     elif has_command pacman; then
       # Rolling release
-      rootify pacman -Syu --noconfirm --needed dialog
+      sudo pacman -Syu --noconfirm --needed dialog
     elif has_command xbps-install; then
       # Rolling release
-      prepare_xbps && rootify xbps-install -Sy dialog
+      prepare_xbps && sudo xbps-install -Sy dialog
     else
       installation_sorry
     fi
@@ -518,8 +516,8 @@ install_firefox_theme() {
   fi
 
   remove_firefox_theme
-  userify mkdir -p                                                                              "${TARGET_DIR}"
-  userify cp -rf "${FIREFOX_SRC_DIR}"/*                                                         "${TARGET_DIR}"
+  udo mkdir -p                                                                                "${TARGET_DIR}"
+  udo cp -rf "${FIREFOX_SRC_DIR}"/*                                                           "${TARGET_DIR}"
   config_firefox
 }
 
@@ -539,14 +537,14 @@ config_firefox() {
 
   for d in "${FIREFOX_DIR}/"*"default"*; do
     if [[ -f "${d}/prefs.js" ]]; then
-      rm -rf                                                                                    "${d}/chrome"
-      userify ln -sf "${TARGET_DIR}"                                                            "${d}/chrome"
-      userify_file                                                                              "${d}/prefs.js"
-      echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>       "${d}/prefs.js"
-      echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                               "${d}/prefs.js"
-      echo "user_pref(\"browser.uidensity\", 0);" >>                                            "${d}/prefs.js"
-      echo "user_pref(\"layers.acceleration.force-enabled\", true);" >>                         "${d}/prefs.js"
-      echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);" >>                           "${d}/prefs.js"
+      rm -rf                                                                                  "${d}/chrome"
+      udo ln -sf "${TARGET_DIR}"                                                              "${d}/chrome"
+      udoify_file                                                                             "${d}/prefs.js"
+      echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>     "${d}/prefs.js"
+      echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                             "${d}/prefs.js"
+      echo "user_pref(\"browser.uidensity\", 0);" >>                                          "${d}/prefs.js"
+      echo "user_pref(\"layers.acceleration.force-enabled\", true);" >>                       "${d}/prefs.js"
+      echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);" >>                         "${d}/prefs.js"
     fi
   done
 }
@@ -561,8 +559,8 @@ edit_firefox_theme_prefs() {
   fi
 
   [[ ! -d "${TARGET_DIR}" ]] && install_firefox_theme ; config_firefox
-  userify ${EDITOR:-nano}                                                                       "${TARGET_DIR}/userChrome.css"
-  userify ${EDITOR:-nano}                                                                       "${TARGET_DIR}/customChrome.css"
+  udo ${EDITOR:-nano}                                                                         "${TARGET_DIR}/userChrome.css"
+  udo ${EDITOR:-nano}                                                                         "${TARGET_DIR}/customChrome.css"
 }
 
 remove_firefox_theme() {
@@ -583,22 +581,22 @@ install_dash_to_dock_theme() {
   gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}"
 
   if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
-    backup_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "userify"
-    userify_file                                                                                "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
-    userify sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss" "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
+    backup_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "udo"
+    udoify_file                                                                               "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
+    udo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss"   "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
   elif [[ -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
-    backup_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "rootify"
-    rootify sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss" "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css"
+    backup_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "sudo"
+    sudo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss"  "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css"
   fi
 
-  userify dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
+  udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
 }
 
 revert_dash_to_dock_theme() {
   if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
-    restore_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "userify"
+    restore_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "udo"
   elif [[ -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
-    restore_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "rootify"
+    restore_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "sudo"
   fi
 }
 
@@ -607,26 +605,26 @@ revert_dash_to_dock_theme() {
 ###############################################################################
 
 connect_flatpak() {
-  rootify flatpak override --filesystem=~/.themes
+  sudo flatpak override --filesystem=~/.themes
 }
 
 disconnect_flatpak() {
-  rootify flatpak override --nofilesystem=~/.themes
+  sudo flatpak override --nofilesystem=~/.themes
 }
 
 connect_snap() {
-  rootify snap install whitesur-gtk-theme
+  sudo snap install whitesur-gtk-theme
 
   for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
-    rootify snap connect "${i}:gtk-3-themes"    "whitesur-gtk-theme:gtk-3-themes"
-    rootify snap connect "${i}:icon-themes"     "whitesur-gtk-theme:icon-themes"
+    sudo snap connect "${i}:gtk-3-themes"    "whitesur-gtk-theme:gtk-3-themes"
+    sudo snap connect "${i}:icon-themes"     "whitesur-gtk-theme:icon-themes"
   done
 }
 
 disconnect_snap() {
   for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
-    rootify snap disconnect "${i}:gtk-3-themes" "whitesur-gtk-theme:gtk-3-themes"
-    rootify snap disconnect "${i}:icon-themes"  "whitesur-gtk-theme:icon-themes"
+    sudo snap disconnect "${i}:gtk-3-themes" "whitesur-gtk-theme:gtk-3-themes"
+    sudo snap disconnect "${i}:icon-themes"  "whitesur-gtk-theme:icon-themes"
   done
 }
 

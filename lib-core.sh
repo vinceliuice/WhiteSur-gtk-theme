@@ -3,8 +3,6 @@
 #
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
-#
-# WARNING: Please don't use sudo directly here since it steals our EXIT trap
 
 set -Eeo pipefail
 
@@ -20,8 +18,10 @@ WHITESUR_SOURCE=("lib-core.sh")
 #                                VARIABLES                                    #
 ###############################################################################
 
+#--------------System--------------#
+
 export WHITESUR_PID=$$
-MY_USERNAME="$(logname 2> /dev/null || echo ${SUDO_USER:-${USER}})"
+export MY_USERNAME="$(logname 2> /dev/null || echo ${SUDO_USER:-${USER}})"
 
 if command -v gnome-shell &> /dev/null; then
   if (( $(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1) >= 4 )); then
@@ -125,9 +125,9 @@ msg=""
 final_msg="Run '${0} --help' to explore more customization features!"
 notif_msg=""
 process_ids=()
-# This is important for 'rootify' and 'userify' because 'return "${result}"' is
-# considered the last command in 'BASH_COMMAND' variable
-error_snippet=""
+# This is important for 'udu' because 'return "${result}"' is considered the
+# last command in 'BASH_COMMAND' variable
+WHITESUR_COMMAND=""
 export ANIM_PID="0"
 has_any_error="false"
 swupd_packages=""
@@ -135,14 +135,14 @@ swupd_packages=""
 swupd_url="https://cdn.download.clearlinux.org/current/x86_64/os/Packages/"
 swupd_ver_url="https://cdn.download.clearlinux.org/latest"
 
-#------Colors and animation--------#
-c_default="\033[0m"
-c_blue="\033[1;34m"
-c_magenta="\033[1;35m"
-c_cyan="\033[1;36m"
-c_green="\033[1;32m"
-c_red="\033[1;31m"
-c_yellow="\033[1;33m"
+#------------Decoration-----------#
+export c_default="\033[0m"
+export c_blue="\033[1;34m"
+export c_magenta="\033[1;35m"
+export c_cyan="\033[1;36m"
+export c_green="\033[1;32m"
+export c_red="\033[1;31m"
+export c_yellow="\033[1;33m"
 
 anim=(
   "${c_blue}•${c_green}•${c_red}•${c_magenta}•         "
@@ -151,6 +151,8 @@ anim=(
   "   ${c_magenta}•${c_blue}•${c_green}•${c_red}•      "
   "    ${c_blue}•${c_green}•${c_red}•${c_magenta}•     "
 )
+
+export SUDO_PROMPT="${c_yellow}  SUDO: Authentication is required\n${c_green}  SUDO: Password (${MY_USERNAME}):  "
 
 ###############################################################################
 #                              CORE UTILITIES                                 #
@@ -259,11 +261,11 @@ signal_error() {
   prompt -e "FOUND  :"
 
   for i in "${sources[@]}"; do
-    lines=($(grep -Fn "${error_snippet:-${BASH_COMMAND}}" "${REPO_DIR}/${i}" | cut -d : -f 1 || echo ""))
+    lines=($(grep -Fn "${WHITESUR_COMMAND:-${BASH_COMMAND}}" "${REPO_DIR}/${i}" | cut -d : -f 1 || echo ""))
     prompt -e "  >>> ${i}$(IFS=';'; [[ "${lines[*]}" ]] && echo " at ${lines[*]}")"
   done
 
-  prompt -e "SNIPPET:\n    >>> ${error_snippet:-${BASH_COMMAND}}"
+  prompt -e "SNIPPET:\n    >>> ${WHITESUR_COMMAND:-${BASH_COMMAND}}"
   prompt -e "TRACE  :"
 
   for i in "${FUNCNAME[@]}"; do
@@ -280,32 +282,6 @@ signal_error() {
   prompt -i "https://github.com/vinceliuice/WhiteSur-gtk-theme/issues\n\n"
 
   rm -rf "${WHITESUR_TMP_DIR}"; exit 1
-}
-
-rootify() {
-  local result="0"
-
-  prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
-
-  if [[ -p /dev/stdin ]]; then
-    ! sudo "${@}" < /dev/stdin && result="1"; error_snippet="${*}"
-  else
-    ! sudo "${@}" && result="1"; error_snippet="${*}"
-  fi
-
-  return "${result}"
-}
-
-userify() {
-  local result="0"
-
-  if [[ -p /dev/stdin ]]; then
-    ! sudo -u "${MY_USERNAME}" "${@}" < /dev/stdin && result="1"; error_snippet="${*}"
-  else
-    ! sudo -u "${MY_USERNAME}" "${@}" && result="1"; error_snippet="${*}"
-  fi
-
-  return "${result}"
 }
 
 trap 'signal_exit' EXIT
@@ -569,10 +545,10 @@ avoid_variant_duplicates() {
 restore_file() {
   if [[ -f "${1}.bak" ]]; then
     case "${2}" in
-      rootify)
-        rootify rm -rf "${1}"; rootify mv "${1}"{".bak",""} ;;
-      userify)
-        userify rm -rf "${1}"; userify mv "${1}"{".bak",""} ;;
+      sudo)
+        sudo rm -rf "${1}"; sudo mv "${1}"{".bak",""} ;;
+      udo)
+        udo rm -rf "${1}"; udo mv "${1}"{".bak",""} ;;
       *)
         rm -rf "${1}"; mv "${1}"{".bak",""} ;;
     esac
@@ -582,19 +558,19 @@ restore_file() {
 backup_file() {
   if [[ -f "${1}" ]]; then
     case "${2}" in
-      rootify)
-        rootify mv -n "${1}"{"",".bak"} ;;
-      userify)
-        userify mv -n "${1}"{"",".bak"} ;;
+      sudo)
+        sudo mv -n "${1}"{"",".bak"} ;;
+      udo)
+        udo mv -n "${1}"{"",".bak"} ;;
       *)
         mv -n "${1}"{"",".bak"} ;;
     esac
   fi
 }
 
-userify_file() {
+udoify_file() {
   if [[ -f "${1}" && "$(ls -ld "${1}" | awk '{print $3}')" != "${MY_USERNAME}" ]]; then
-    rootify chown "${MY_USERNAME}:" "${1}"
+    sudo chown "${MY_USERNAME}:" "${1}"
   fi
 }
 
@@ -610,7 +586,19 @@ remind_relative_path() {
 #                                    MISC                                     #
 ###############################################################################
 
-full_rootify() {
+udo() {
+  local result="0"
+
+  if [[ -p /dev/stdin ]]; then
+    ! sudo -u "${MY_USERNAME}" "${@}" < /dev/stdin && result="1"; WHITESUR_COMMAND="${*}"
+  else
+    ! sudo -u "${MY_USERNAME}" "${@}" && result="1"; WHITESUR_COMMAND="${*}"
+  fi
+
+  return "${result}"
+}
+
+full_sudo() {
   if [[ ! -w "/root" ]]; then
     prompt -e "ERROR: '${1}' needs a root priviledge. Please run this '${0}' as root"
     has_any_error="true"

@@ -3,8 +3,6 @@
 # WARNING: Please make this shell not working-directory dependant, for example
 # instead of using 'ls blabla', use 'ls "${REPO_DIR}/blabla"'
 #
-# WARNING: Please don't use sudo directly here since it steals our EXIT trap
-#
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
 
@@ -93,7 +91,7 @@ while [[ $# -gt 0 ]]; do
         has_any_error="true"
       fi; shift ;;
     -g|--gdm)
-      gdm="true"; full_rootify "${1}"
+      gdm="true"; full_sudo "${1}"
 
       if ! has_command gdm && ! has_command gdm3 && [[ ! -e /usr/sbin/gdm3 ]]; then
         prompt -e "'${1}' ERROR: There's no GDM installed in your system"
