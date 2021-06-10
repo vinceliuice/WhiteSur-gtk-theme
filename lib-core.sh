@@ -306,6 +306,27 @@ confirm() {
   done
 }
 
+dialogify() {
+  local lists=""
+  local i=0
+  local result=""
+  local n_result=4
+
+  for list in "${@:4}"; do
+    lists+=" ${i} ${list} off "; ((i+=1))
+  done
+
+  result="$(dialog --backtitle "${2}" --radiolist "${3}" 0 0 0 ${lists} --output-fd 1 || echo "x")"
+  clear
+
+  if [[ "${result}" != "x" ]]; then
+    ((n_result+=result))
+    printf -v "${1}" "%s" "${!n_result}"
+  else
+    signal_abort
+  fi
+}
+
 helpify_title() {
   printf "${c_cyan}%s${c_blue}%s ${c_green}%s\n\n" "Usage: " "$0" "[OPTIONS...]"
   printf "${c_cyan}%s\n" "OPTIONS:"

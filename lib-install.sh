@@ -709,68 +709,15 @@ customize_theme() {
 # values are taken from _variables.scss
 
 show_panel_opacity_dialog() {
-  if [[ -x /usr/bin/dialog ]]; then
-    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-        --radiolist "Choose your panel background opacity
-                (Default is 0.15. The less value, the more transparency!):" 20 50 10 \
-      0 "${PANEL_OPACITY_VARIANTS[0]}" on    \
-      1 "0.${PANEL_OPACITY_VARIANTS[1]}" off \
-      2 "0.${PANEL_OPACITY_VARIANTS[2]}" off \
-      3 "0.${PANEL_OPACITY_VARIANTS[3]}" off \
-      4 "0.${PANEL_OPACITY_VARIANTS[4]}" off --output-fd 1 )
-      case "$tui" in
-        0) panel_opacity="${PANEL_OPACITY_VARIANTS[0]}" ;;
-        1) panel_opacity="${PANEL_OPACITY_VARIANTS[1]}" ;;
-        2) panel_opacity="${PANEL_OPACITY_VARIANTS[2]}" ;;
-        3) panel_opacity="${PANEL_OPACITY_VARIANTS[3]}" ;;
-        4) panel_opacity="${PANEL_OPACITY_VARIANTS[4]}" ;;
-        *) signal_abort ;;
-      esac
-  fi
-
-  clear
+  dialogify panel_opacity "${THEME_NAME}" "Choose your panel opacity (Default is 15)" ${PANEL_OPACITY_VARIANTS[*]}
 }
 
 show_sidebar_size_dialog() {
-  if [[ -x /usr/bin/dialog ]]; then
-    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-    --radiolist "Choose your Nautilus sidebar size (default is 200px width):" 15 40 5 \
-      0 "${SIDEBAR_SIZE_VARIANTS[0]}" on  \
-      1 "${SIDEBAR_SIZE_VARIANTS[1]}px" off \
-      2 "${SIDEBAR_SIZE_VARIANTS[2]}px" off \
-      3 "${SIDEBAR_SIZE_VARIANTS[3]}px" off \
-      4 "${SIDEBAR_SIZE_VARIANTS[4]}px" off --output-fd 1 )
-      case "$tui" in
-        0) sidebar_size="${SIDEBAR_SIZE_VARIANTS[0]}" ;;
-        1) sidebar_size="${SIDEBAR_SIZE_VARIANTS[1]}" ;;
-        2) sidebar_size="${SIDEBAR_SIZE_VARIANTS[2]}" ;;
-        3) sidebar_size="${SIDEBAR_SIZE_VARIANTS[3]}" ;;
-        4) sidebar_size="${SIDEBAR_SIZE_VARIANTS[4]}" ;;
-        *) signal_abort ;;
-      esac
-  fi
-
-  clear
+  dialogify sidebar_size "${THEME_NAME}" "Choose your Nautilus minimum sidebar size (default is 200px)" ${SIDEBAR_SIZE_VARIANTS[*]}
 }
 
 show_nautilus_style_dialog() {
-  if [[ -x /usr/bin/dialog ]]; then
-    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-    --radiolist "Choose your Nautilus style (default is BigSur-like style):" 15 40 5 \
-      0 "${NAUTILUS_STYLE_VARIANTS[0]}" on \
-      1 "${NAUTILUS_STYLE_VARIANTS[1]}" off \
-      2 "${NAUTILUS_STYLE_VARIANTS[2]}" off \
-      3 "${NAUTILUS_STYLE_VARIANTS[3]}" off --output-fd 1 )
-      case "$tui" in
-        0) nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}" ;;
-        1) nautilus_style="${NAUTILUS_STYLE_VARIANTS[1]}" ;;
-        2) nautilus_style="${NAUTILUS_STYLE_VARIANTS[2]}" ;;
-        3) nautilus_style="${NAUTILUS_STYLE_VARIANTS[3]}" ;;
-        *) signal_abort ;;
-      esac
-  fi
-
-  clear
+  dialogify nautilus_style "${THEME_NAME}" "Choose your Nautilus style (default is BigSur-like style)" ${NAUTILUS_STYLE_VARIANTS[*]}
 }
 
 show_needed_dialogs() {
