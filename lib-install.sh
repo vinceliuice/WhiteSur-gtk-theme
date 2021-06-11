@@ -40,6 +40,9 @@ WHITESUR_SOURCE+=("lib-install.sh")
 # Some apt version doesn't update the repo list before it install some app.
 # It may cause "unable to fetch..." when you're trying to install them
 
+# Sometimes, some Ubuntu distro doesn't enable automatic time. This can cause
+# 'Release file for ... is not valid yet'
+
 installation_sorry() {
   prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
   prompt -i "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -91,6 +94,16 @@ install_swupd_packages() {
   done
 }
 
+prepare_apt() {
+  [[ "${apt_prepared}" == "true" ]] && return 0
+
+  if ! sudo apt update && [[ "${?}" == "100" ]]; then
+    prompt -w "\n  APT: Your system clock might be wrong"
+    prompt -i "APT: Updating your system clock and try again...\n"
+    sudo systemctl restart systemd-timesyncd; sudo apt update
+  fi
+}
+
 prepare_xbps() {
   [[ "${xbps_prepared}" == "true" ]] && return 0
 
@@ -115,7 +128,7 @@ install_theme_deps() {
       # Rolling release
       prepare_swupd && sudo swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
     elif has_command apt; then
-      sudo apt update && sudo apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
+      prepare_apt && sudo apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
       sudo dnf install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command yum; then
@@ -146,7 +159,7 @@ install_beggy_deps() {
       # Rolling release
       prepare_swupd && sudo swupd bundle-add ImageMagick
     elif has_command apt; then
-      sudo apt update && sudo apt install -y imagemagick
+      prepare_apt && sudo apt install -y imagemagick
     elif has_command dnf; then
       sudo dnf install -y ImageMagick
     elif has_command yum; then
@@ -173,7 +186,7 @@ install_dialog_deps() {
       # Rolling release
       prepare_swupd && install_swupd_packages dialog
     elif has_command apt; then
-      sudo apt update && sudo apt install -y dialog
+      prepare_apt && sudo apt install -y dialog
     elif has_command dnf; then
       sudo dnf install -y dialog
     elif has_command yum; then
