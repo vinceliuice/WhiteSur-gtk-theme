@@ -121,7 +121,7 @@ else
 
   if [[ "${interactive}" == 'true' ]]; then
     show_panel_opacity_dialog; show_sidebar_size_dialog; show_nautilus_style_dialog
-    prompt -w "DIALOG: '--size' and '--panel' parameters are ignored if exist."; echo
+    echo; prompt -w "DIALOG: '--size' and '--panel' parameters are ignored if exist."; echo
   else
     show_needed_dialogs
   fi
