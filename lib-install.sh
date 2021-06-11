@@ -40,14 +40,31 @@ WHITESUR_SOURCE+=("lib-install.sh")
 # Some apt version doesn't update the repo list before it install some app.
 # It may cause "unable to fetch..." when you're trying to install them
 
+#--------------------OTHERS--------------------#
 # Sometimes, some Ubuntu distro doesn't enable automatic time. This can cause
-# 'Release file for ... is not valid yet'
+# 'Release file for ... is not valid yet'. This may also happen on other distros
 
+#============================================#
+
+#-------------------Prepare------------------#
 installation_sorry() {
   prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
   prompt -i "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
   prompt -i "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
   start_animation; sleep 15; stop_animation
+}
+
+prepare_deps() {
+  local head="$(curl -Is -o - 'time.cloudflare.com' || wget -Sq -o - --max-redirect=0 'time.cloudflare.com')"
+  local remote_time="$(echo "${head}" | awk -F ': ' '/Date/{print $2}')"
+  local remote_time_int="$(date --date "${remote_time}" +"%Y%m%d")"
+  local local_time_int="$(date -u +"%Y%m%d")"
+
+  if (( remote_time_int > local_time_int )); then
+    prompt -w "\n  DEPS: Your system clock is wrong"
+    prompt -i "DEPS: Updating your system clock and try again...\n"
+    sudo date -s "${remote_time}"; sudo hwclock --systohc
+  fi
 }
 
 prepare_swupd() {
@@ -94,16 +111,6 @@ install_swupd_packages() {
   done
 }
 
-prepare_apt() {
-  [[ "${apt_prepared}" == "true" ]] && return 0
-
-  if ! sudo apt update && [[ "${?}" == "100" ]]; then
-    prompt -w "\n  APT: Your system clock might be wrong"
-    prompt -i "APT: Updating your system clock and try again...\n"
-    sudo systemctl restart systemd-timesyncd; sudo apt update
-  fi
-}
-
 prepare_xbps() {
   [[ "${xbps_prepared}" == "true" ]] && return 0
 
@@ -117,10 +124,13 @@ prepare_xbps() {
   xbps_prepared="true"
 }
 
+#-----------------Deps-----------------#
+
 install_theme_deps() {
   if ! has_command glib-compile-resources || ! has_command sassc || ! has_command xmllint ||
   (! is_my_distro "clear-linux" && [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]); then
     prompt -w "'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation."
+    prepare_deps
 
     if has_command zypper; then
       sudo zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
@@ -128,7 +138,7 @@ install_theme_deps() {
       # Rolling release
       prepare_swupd && sudo swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
     elif has_command apt; then
-      prepare_apt && sudo apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
+      sudo apt update && sudo apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
       sudo dnf install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command yum; then
@@ -152,6 +162,7 @@ install_theme_deps() {
 install_beggy_deps() {
   if ! has_command convert; then
     prompt -w "'imagemagick' are required for background editing."
+    prepare_deps
 
     if has_command zypper; then
       sudo zypper in -y ImageMagick
@@ -159,7 +170,7 @@ install_beggy_deps() {
       # Rolling release
       prepare_swupd && sudo swupd bundle-add ImageMagick
     elif has_command apt; then
-      prepare_apt && sudo apt install -y imagemagick
+      sudo apt update && sudo apt install -y imagemagick
     elif has_command dnf; then
       sudo dnf install -y ImageMagick
     elif has_command yum; then
@@ -179,6 +190,7 @@ install_beggy_deps() {
 install_dialog_deps() {
   if ! has_command dialog; then
     prompt -w "'dialog' is required for this option."
+    prepare_deps
 
     if has_command zypper; then
       sudo zypper in -y dialog
@@ -186,7 +198,7 @@ install_dialog_deps() {
       # Rolling release
       prepare_swupd && install_swupd_packages dialog
     elif has_command apt; then
-      prepare_apt && sudo apt install -y dialog
+      sudo apt update && sudo apt install -y dialog
     elif has_command dnf; then
       sudo dnf install -y dialog
     elif has_command yum; then
@@ -280,6 +292,8 @@ install_shelly() {
   else
     TARGET_DIR="${6}"
   fi
+
+  install_theme_deps
 
   mkdir -p                                                                                    "${TARGET_DIR}"
   mkdir -p                                                                                    "${TARGET_DIR}/assets"
@@ -438,7 +452,7 @@ install_themes() {
   # "install_theemy" and "install_shelly" require "gtk_base", so multithreading
   # isn't possible
 
-  start_animation; install_beggy
+  install_theme_deps; start_animation; install_beggy
 
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
@@ -729,20 +743,21 @@ customize_theme() {
 # values are taken from _variables.scss
 
 show_panel_opacity_dialog() {
+  install_dialog_deps
   dialogify panel_opacity "${THEME_NAME}" "Choose your panel opacity (Default is 15)" ${PANEL_OPACITY_VARIANTS[*]}
 }
 
 show_sidebar_size_dialog() {
+  install_dialog_deps
   dialogify sidebar_size "${THEME_NAME}" "Choose your Nautilus minimum sidebar size (default is 200px)" ${SIDEBAR_SIZE_VARIANTS[*]}
 }
 
 show_nautilus_style_dialog() {
+  install_dialog_deps
   dialogify nautilus_style "${THEME_NAME}" "Choose your Nautilus style (default is BigSur-like style)" ${NAUTILUS_STYLE_VARIANTS[*]}
 }
 
 show_needed_dialogs() {
-  if [[ "${need_dialog[@]}" =~ "true" ]]; then install_dialog_deps; fi
-
   if [[ "${need_dialog["-p"]}" == "true" ]]; then show_panel_opacity_dialog; fi
   if [[ "${need_dialog["-s"]}" == "true" ]]; then show_sidebar_size_dialog; fi
   if [[ "${need_dialog["-N"]}" == "true" ]]; then show_nautilus_style_dialog; fi

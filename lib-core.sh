@@ -137,7 +137,6 @@ swupd_packages=""
 swupd_url="https://cdn.download.clearlinux.org/current/x86_64/os/Packages/"
 swupd_ver_url="https://cdn.download.clearlinux.org/latest"
 swupd_prepared="false"
-apt_prepared="false"
 xbps_prepared="false"
 
 #------------Decoration-----------#

@@ -5,6 +5,8 @@
 #
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
+#
+# SUGGESTION: Please don't put any dependency installation here
 
 ###############################################################################
 #                             VARIABLES & HELP                                #
@@ -115,10 +117,9 @@ if [[ "${uninstall}" == 'true' ]]; then
   remove_themes
   prompt -s "Done! All '${name}' themes has been removed."
 else
-  install_theme_deps; echo
+  echo
 
   if [[ "${interactive}" == 'true' ]]; then
-    install_dialog_deps
     show_panel_opacity_dialog; show_sidebar_size_dialog; show_nautilus_style_dialog
     prompt -w "DIALOG: '--size' and '--panel' parameters are ignored if exist."; echo
   else
