@@ -21,7 +21,7 @@ WHITESUR_SOURCE=("lib-core.sh")
 #--------------System--------------#
 
 export WHITESUR_PID=$$
-export MY_USERNAME="$(logname 2> /dev/null || echo ${SUDO_USER:-${USER}})"
+MY_USERNAME="$(logname 2> /dev/null || echo ${SUDO_USER:-${USER}})"
 
 if command -v gnome-shell &> /dev/null; then
   if (( $(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1) >= 4 )); then
@@ -253,10 +253,10 @@ signal_error() {
   prompt -e "\n\n  Oops! Operation failed...\n"
   prompt -e "=========== ERROR LOG ==========="
 
-  echo -e "${log}"
-
-  if [[ ! "${log}" ]] ; then
-    prompt -e ">>>>>>> No error log found <<<<<<"
+  if [[ "${log}" ]] ; then
+    echo -e "${log}"
+  else
+    prompt -e "\n>>>>>>> No error log found <<<<<<"
   fi
 
   prompt -e "\n  =========== ERROR INFO =========="
@@ -571,7 +571,7 @@ avoid_variant_duplicates() {
   themes=($(printf "%s\n" "${themes[@]}" | sort -u))
 }
 
-# 'finalize_argument_parsing' is in the 'systems' section
+# 'finalize_argument_parsing' is in the 'MISC' section
 
 ###############################################################################
 #                                   FILES                                     #
@@ -676,7 +676,5 @@ finalize_argument_parsing() {
     [[ "${has_any_error}" == "true" ]] && exit 1 || exit 0
   elif [[ "${has_any_error}" == "true" ]]; then
     echo; prompt -i "Try '$0 --help' for more information."; exit 1
-  elif [[ "${need_dialog[@]}" =~ "true" ]]; then
-    echo
   fi
 }

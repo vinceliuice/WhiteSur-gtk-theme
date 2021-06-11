@@ -52,8 +52,8 @@ prepare_swupd() {
   local dist=""
 
   if has_command dnf; then
-    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package"
-    confirm remove "CLEAR LINUX: You wanna remove it? (y/n): "
+    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package\n"
+    confirm remove "CLEAR LINUX: You wanna remove it? (y/n): "; echo
   fi
 
   if ! sudo swupd update -y; then
@@ -90,11 +90,11 @@ install_swupd_packages() {
 prepare_xbps() {
   [[ "${xbps_prepared}" == "true" ]] && return 0
 
-  # 'xbps-install' requires 'xbps' to be always up-to-date
-  sudo xbps-install -Syu xbps
   # System upgrading can't remove the old kernel files by it self. It eats the
   # boot partition and may cause kernel panic when there is no enough space
   sudo vkpurge rm all
+  # 'xbps-install' requires 'xbps' to be always up-to-date
+  sudo xbps-install -Syu xbps
 
   xbps_prepared="true"
 }
@@ -117,7 +117,9 @@ install_theme_deps() {
       sudo yum install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command pacman; then
       # Rolling release
-      sudo pacman -Syu --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
+      # 'Syu' (with a single y) may causes "could not open ... decompression failed"
+      # and "target not found <package>". We got to force 'pacman' to update the repos
+      sudo pacman -Syyu --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
     elif has_command xbps-install; then
       # Rolling release
       # 'libxml2' is already included here, and it's gonna broke the installation
