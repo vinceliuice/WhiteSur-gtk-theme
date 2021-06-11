@@ -235,7 +235,7 @@ signal_error() {
 
   IFS=$'\n'
   local sources=($(basename -a "${WHITESUR_SOURCE[@]}" "${BASH_SOURCE[@]}" | sort -u))
-  local dist_ids=($(awk -F '=' '/ID/{print $2}' "/etc/os-release" | sort -Vru))
+  local dist_ids=($(awk -F '=' '/ID/{print $2}' "/etc/os-release" | tr -d '"' | sort -Vru))
   local repo_ver=""
   local lines=()
   local log="$(awk '{printf "\033[1;31m  >>> %s\n", $0}' "${WHITESUR_TMP_DIR}/error_log.txt" || echo "")"

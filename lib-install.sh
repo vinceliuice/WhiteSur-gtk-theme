@@ -36,6 +36,10 @@ WHITESUR_SOURCE+=("lib-install.sh")
 # remove it, and you run 'sudo dnf upgrade', and boom! Your 'sudo' and other
 # system utilities have gone!
 
+#----------------------APT---------------------#
+# Some apt version doesn't update the repo list before it install some app.
+# It may cause "unable to fetch..." when you're trying to install them
+
 installation_sorry() {
   prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
   prompt -i "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
@@ -102,7 +106,7 @@ prepare_xbps() {
 install_theme_deps() {
   if ! has_command glib-compile-resources || ! has_command sassc || ! has_command xmllint ||
   (! is_my_distro "clear-linux" && [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]); then
-    prompt -w "\n  'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation.\n"
+    prompt -w "'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation."
 
     if has_command zypper; then
       sudo zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
@@ -110,7 +114,7 @@ install_theme_deps() {
       # Rolling release
       prepare_swupd && sudo swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
     elif has_command apt; then
-      sudo apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
+      sudo apt update && sudo apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
       sudo dnf install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command yum; then
@@ -133,7 +137,7 @@ install_theme_deps() {
 
 install_beggy_deps() {
   if ! has_command convert; then
-    prompt -w "\n  'imagemagick' are required for background editing.\n"
+    prompt -w "'imagemagick' are required for background editing."
 
     if has_command zypper; then
       sudo zypper in -y ImageMagick
@@ -141,7 +145,7 @@ install_beggy_deps() {
       # Rolling release
       prepare_swupd && sudo swupd bundle-add ImageMagick
     elif has_command apt; then
-      sudo apt install -y imagemagick
+      sudo apt update && sudo apt install -y imagemagick
     elif has_command dnf; then
       sudo dnf install -y ImageMagick
     elif has_command yum; then
@@ -160,7 +164,7 @@ install_beggy_deps() {
 
 install_dialog_deps() {
   if ! has_command dialog; then
-    prompt -w "\n  'dialog' is required for this option.\n"
+    prompt -w "'dialog' is required for this option."
 
     if has_command zypper; then
       sudo zypper in -y dialog
@@ -168,7 +172,7 @@ install_dialog_deps() {
       # Rolling release
       prepare_swupd && install_swupd_packages dialog
     elif has_command apt; then
-      sudo apt install -y dialog
+      sudo apt update && sudo apt install -y dialog
     elif has_command dnf; then
       sudo dnf install -y dialog
     elif has_command yum; then
