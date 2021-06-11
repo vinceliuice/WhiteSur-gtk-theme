@@ -296,13 +296,13 @@ trap 'signal_abort' INT TERM TSTP
 
 ask() {
   echo -e "${c_magenta}\r"
-  read -p "  ${2}" ${1} 2>&1
+  read -p "  ${2}: " ${1} 2>&1
   echo -e "${c_default}"
 }
 
 confirm() {
   while [[ "${!1}" != "y" && "${!1}" != "n" ]]; do
-    ask ${1} "${2}"
+    ask ${1} "${2} (y/n)"
   done
 }
 

@@ -57,7 +57,7 @@ prepare_swupd() {
 
   if has_command dnf; then
     prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package\n"
-    confirm remove "CLEAR LINUX: You wanna remove it? (y/n): "; echo
+    confirm remove "CLEAR LINUX: You wanna remove it?"; echo
   fi
 
   if ! sudo swupd update -y; then
@@ -94,11 +94,12 @@ install_swupd_packages() {
 prepare_xbps() {
   [[ "${xbps_prepared}" == "true" ]] && return 0
 
-  # System upgrading can't remove the old kernel files by it self. It eats the
-  # boot partition and may cause kernel panic when there is no enough space
-  sudo vkpurge rm all
   # 'xbps-install' requires 'xbps' to be always up-to-date
   sudo xbps-install -Syu xbps
+
+  # System upgrading can't remove the old kernel files by it self. It eats the
+  # boot partition and may cause kernel panic when there is no enough space
+  sudo vkpurge rm all; sudo xbps-install -Syu
 
   xbps_prepared="true"
 }
