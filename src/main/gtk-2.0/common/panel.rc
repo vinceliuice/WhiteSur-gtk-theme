@@ -89,7 +89,6 @@ style "regular-label" {
 }
 
 style "theme-panel-text" {
-
   fg[NORMAL] = shade(1.0, @tooltip_fg_color)
   fg[PRELIGHT] = @tooltip_fg_color
   fg[ACTIVE] = shade(1.0, @tooltip_fg_color)
@@ -97,15 +96,9 @@ style "theme-panel-text" {
   text[NORMAL] = shade(1.0, @tooltip_fg_color)
   text[PRELIGHT] = @tooltip_fg_color
   text[ACTIVE] = shade(1.0, @tooltip_fg_color)
-
-  engine "murrine" {
-    textstyle = 0
-    text_shade = 0.2
-  }
 }
 
 style "panel-entry" {
-
   fg[NORMAL] = @text_color
   fg[PRELIGHT] = @text_color
   fg[ACTIVE] = @text_color
@@ -117,7 +110,6 @@ style "panel-entry" {
   text[ACTIVE] = @text_color
   text[SELECTED] = @text_color
   text[INSENSITIVE] = @text_color
-
 }
 
 style "theme-main-menu-text" = "theme-panel-text" {

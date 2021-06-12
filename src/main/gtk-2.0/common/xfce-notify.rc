@@ -18,13 +18,6 @@ style "notify-button" {
   fg[NORMAL] = @tooltip_fg_color
   fg[PRELIGHT] = shade(1.1, @tooltip_fg_color)
   fg[ACTIVE] = @selected_fg_color
-
-  engine "murrine" {
-    gradient_shades = { 1.0, 1.0, 1.0, 1.0 }
-    border_shades = { 1.0, 1.0 }
-    roundness = 2
-    textstyle = 0
-  }
 }
 
 style "notify-text" {
@@ -33,10 +26,6 @@ style "notify-text" {
   fg[NORMAL] = shade(1.0, @tooltip_fg_color)
   fg[PRELIGHT] = shade(1.1, @tooltip_fg_color)
   fg[ACTIVE] = shade(1.0, @tooltip_fg_color)
-
-  engine "murrine" {
-    textstyle = 0
-  }
 }
 
 style "notify-summary" {
@@ -53,16 +42,6 @@ style "notify-progressbar" {
   bg[NORMAL]   = @selected_bg_color
   bg[ACTIVE] = shade(0.8, @tooltip_bg_color)
   bg[SELECTED] = @selected_bg_color
-
-  engine "murrine" {
-    gradient_shades = { 1.0, 1.0, 1.0, 1.0 }
-    border_shades = { 1.0, 1.0 }
-    trough_shades = { 1.0, 1.0 }
-    trough_border_shades = { 1.0, 1.0 }
-    progressbarstyle = 0
-    roundness = 2
-    textstyle = 0
-  }
 }
 
 class "XfceNotifyWindow" style "notify-window"

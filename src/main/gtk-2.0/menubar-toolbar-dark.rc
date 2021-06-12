@@ -61,16 +61,6 @@ style "menubar_item" {
   }
 }
 
-# Text Style Menubar
-style "menubar-text" {
-
-  engine "murrine" {
-    text_shade = 0.0
-    textstyle = 0
-  }
-}
-
-
 style "toolbar_text" {
   fg[NORMAL] = @tooltip_fg_color
   fg[PRELIGHT] = shade(1.15, @tooltip_fg_color)

@@ -61,15 +61,6 @@ style "menubar_item" {
   }
 }
 
-# Text Style Menubar
-style "menubar-text" {
-
-  engine "murrine" {
-    text_shade = 0.0
-    textstyle = 0
-  }
-}
-
 style "toolbar_entry" {
 
   text[NORMAL] = @text_color
@@ -163,5 +154,3 @@ widget_class "*CajaNavigationWindow*<GtkToolbar>*<GtkEntry>"        style "toolb
 
 # GtkCheckButton
 widget_class "*<GtkNotebook>*<GtkCheckButton>"                      style "toolbar_button"
-widget_class "*<GtkNotebook>*<GtkCheckButton>*<GtkLabel>"           style "misc_button_label"
-
