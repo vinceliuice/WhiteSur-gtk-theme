@@ -175,6 +175,7 @@ else
 
   if [[ "${gdm}" == 'true' ]]; then
     echo; prompt -i "Installing '${name}' GDM theme..."
+    install_gdm_theme
     echo; prompt -s "Done! '${name}' GDM theme has been installed."
   fi
 
