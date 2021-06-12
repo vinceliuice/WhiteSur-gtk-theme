@@ -513,6 +513,7 @@ install_gdm_theme() {
   local TARGET=
 
   # Let's go!
+  install_theme_deps
   rm -rf "${WHITESUR_GS_DIR}"; install_beggy
   gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}"
 

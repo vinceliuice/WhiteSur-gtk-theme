@@ -672,9 +672,9 @@ usage() {
 
 finalize_argument_parsing() {
   if [[ "${need_help}" == "true" ]]; then
-    echo; usage
+    echo; usage; echo
     [[ "${has_any_error}" == "true" ]] && exit 1 || exit 0
   elif [[ "${has_any_error}" == "true" ]]; then
-    echo; prompt -i "Try '$0 --help' for more information."; exit 1
+    echo; prompt -i "Try '$0 --help' for more information."; echo; exit 1
   fi
 }
