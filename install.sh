@@ -51,6 +51,8 @@ usage() {
 
 #-----------------------------PARSE ARGUMENTS---------------------------------#
 
+echo
+
 while [[ $# -gt 0 ]]; do
   # Don't show any dialog here. Let this loop checks for errors or shows help
   # We can only show dialogs when there's no error and no -r parameter
@@ -117,8 +119,6 @@ if [[ "${uninstall}" == 'true' ]]; then
   remove_themes
   prompt -s "Done! All '${name}' themes has been removed."
 else
-  echo
-
   if [[ "${interactive}" == 'true' ]]; then
     show_panel_opacity_dialog; show_sidebar_size_dialog; show_nautilus_style_dialog
     echo; prompt -w "DIALOG: '--size' and '--panel' parameters are ignored if exist."; echo
@@ -152,6 +152,8 @@ else
     notif_msg="${final_msg}"
   fi
 
-  echo; prompt -w "${final_msg}"; echo
+  echo; prompt -w "${final_msg}"
   [[ -x /usr/bin/notify-send ]] && notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
 fi
+
+echo

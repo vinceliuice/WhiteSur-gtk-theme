@@ -43,6 +43,8 @@ usage() {
 
 #-----------------------------PARSE ARGUMENTS---------------------------------#
 
+echo
+
 while [[ $# -gt 0 ]]; do
   # Don't show any dialog here. Let this loop checks for errors or shows help
   # We can only show dialogs when there's no error and no -r parameter
@@ -137,7 +139,7 @@ finalize_argument_parsing
 #---------------------------START INSTALL THEMES-------------------------------#
 
 if [[ "${uninstall}" == 'true' ]]; then
-  echo; prompt -w "REMOVAL: Non file-related parameters will be ignored."
+  prompt -w "REMOVAL: Non file-related parameters will be ignored."
 
   if [[ "${gdm}" == 'true' ]]; then
     echo; prompt -i "Removing '${name}' GDM theme..."

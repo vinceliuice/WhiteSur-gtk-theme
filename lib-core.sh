@@ -640,7 +640,7 @@ sudo() {
 }
 
 udo() {
-  local result="1"
+  local result="0"
 
   # Just in case. We put the prompt here to make it less annoying
   if ! ${SUDO_BIN} -u "${MY_USERNAME}" -n true &> /dev/null; then

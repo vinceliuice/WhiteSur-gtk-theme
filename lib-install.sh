@@ -55,15 +55,23 @@ installation_sorry() {
 }
 
 prepare_deps() {
-  local head="$(curl -Is -o - 'time.cloudflare.com' || wget -Sq -o - --max-redirect=0 'time.cloudflare.com')"
-  local remote_time="$(echo "${head}" | awk -F ': ' '/Date/{print $2}')"
-  local remote_time_int="$(date --date "${remote_time}" +"%Y%m%d")"
-  local local_time_int="$(date -u +"%Y%m%d")"
+  local head=""
+  local remote_time=""
+  local local_time=""
 
-  if (( remote_time_int > local_time_int )); then
-    prompt -w "\n  DEPS: Your system clock is wrong"
-    prompt -i "DEPS: Updating your system clock...\n"
-    sudo date -s "${remote_time}"; sudo hwclock --systohc
+  prompt -i "DEPS: Checking your internet connection..."
+
+  if ! head="$(curl -Is -o - 'time.cloudflare.com' || wget -Sq -o - --max-redirect=0 'time.cloudflare.com')"; then
+    prompt -e "DEPS ERROR: You have an internet connection issue\n"; exit 1
+  fi
+
+  remote_time="$(echo "${head}" | awk -F ': ' '/Date/{print $2}' | date -f - "+%s")"
+  local_time="$(date -u "+%s")"
+
+  if (( remote_time-(5*60) > local_time )); then
+    prompt -w "DEPS: Your system clock is wrong"
+    prompt -i "DEPS: Updating your system clock..."
+    sudo date -s "@${remote_time}"; sudo hwclock --systohc
   fi
 }
 
@@ -142,7 +150,7 @@ prepare_xbps() {
 install_theme_deps() {
   if ! has_command glib-compile-resources || ! has_command sassc || ! has_command xmllint ||
   (! is_my_distro "clear-linux" && [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]); then
-    prompt -w "'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation."
+    prompt -w "DEPS: 'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation."
     prepare_deps
 
     if has_command zypper; then
@@ -174,7 +182,7 @@ install_theme_deps() {
 
 install_beggy_deps() {
   if ! has_command convert; then
-    prompt -w "'imagemagick' are required for background editing."
+    prompt -w "DEPS: 'imagemagick' is required for background editing."
     prepare_deps
 
     if has_command zypper; then
@@ -202,7 +210,7 @@ install_beggy_deps() {
 
 install_dialog_deps() {
   if ! has_command dialog; then
-    prompt -w "'dialog' is required for this option."
+    prompt -w "DEPS: 'dialog' is required for this option."
     prepare_deps
 
     if has_command zypper; then
