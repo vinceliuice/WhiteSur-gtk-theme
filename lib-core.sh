@@ -629,9 +629,9 @@ sudo() {
   fi
 
   if [[ -p /dev/stdin ]]; then
-    ${SUDO_BIN} "${@}" < /dev/stdin || result="${?}"
+    ${SUDO_BIN} "${@}" < /dev/stdin; result="${?}"
   else
-    ${SUDO_BIN} "${@}" || result="${?}"
+    ${SUDO_BIN} "${@}"; result="${?}"
   fi
 
   [[ "${result}" != "0" ]] && WHITESUR_COMMAND="${*}"
@@ -649,9 +649,9 @@ udo() {
   fi
 
   if [[ -p /dev/stdin ]]; then
-    ${SUDO_BIN} -u "${MY_USERNAME}" "${@}" < /dev/stdin || result="${?}"
+    ${SUDO_BIN} -u "${MY_USERNAME}" "${@}" < /dev/stdin; result="${?}"
   else
-    ${SUDO_BIN} -u "${MY_USERNAME}" "${@}" || result="${?}"
+    ${SUDO_BIN} -u "${MY_USERNAME}" "${@}"; result="${?}"
   fi
 
   [[ "${result}" != "0" ]] && WHITESUR_COMMAND="${*}"

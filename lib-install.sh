@@ -114,7 +114,7 @@ install_swupd_packages() {
 prepare_install_apt_packages() {
   local status="1"
 
-  sudo apt update -y; sudo apt install -y "${@}" || status="${?}"
+  sudo apt update -y; sudo apt install -y "${@}"; status="${?}"
 
   if [[ "${status}" == "100" ]]; then
     prompt -w "\n  APT: Your repo lists might be broken"
