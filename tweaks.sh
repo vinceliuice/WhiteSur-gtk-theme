@@ -43,8 +43,6 @@ usage() {
 
 #-----------------------------PARSE ARGUMENTS---------------------------------#
 
-echo
-
 while [[ $# -gt 0 ]]; do
   # Don't show any dialog here. Let this loop checks for errors or shows help
   # We can only show dialogs when there's no error and no -r parameter
@@ -201,7 +199,7 @@ else
 
     echo
     prompt -w "FIREFOX: Please go to [Firefox menu] > [Customize...], and customize your Firefox to make it work. Move your 'new tab' button to the titlebar instead of tab-switcher."
-    prompt -w "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory."
+    prompt -i "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory."
   fi
 
   if [[ "${snap}" == 'true' ]]; then
