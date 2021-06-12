@@ -21,7 +21,7 @@ WHITESUR_SOURCE=("lib-core.sh")
 #--------------System--------------#
 
 export WHITESUR_PID=$$
-MY_USERNAME="$(logname 2> /dev/null || echo ${SUDO_USER:-${USER}})"
+MY_USERNAME="$(logname || echo ${SUDO_USER:-${USER}})"
 
 if command -v gnome-shell &> /dev/null; then
   if (( $(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1) >= 4 )); then
@@ -137,7 +137,6 @@ swupd_packages=""
 swupd_url="https://cdn.download.clearlinux.org/current/x86_64/os/Packages/"
 swupd_ver_url="https://cdn.download.clearlinux.org/latest"
 swupd_prepared="false"
-apt_prepared="false"
 xbps_prepared="false"
 
 #------------Decoration-----------#
@@ -241,7 +240,7 @@ signal_error() {
   local lines=()
   local log="$(awk '{printf "\033[1;31m  >>> %s\n", $0}' "${WHITESUR_TMP_DIR}/error_log.txt" || echo "")"
 
-  if ! repo_ver="$(cd "${REPO_DIR}"; git log -1 --date=format-local:"%FT%T%z" --format="%ad" 2> /dev/null)"; then
+  if ! repo_ver="$(cd "${REPO_DIR}"; git log -1 --date=format-local:"%FT%T%z" --format="%ad")"; then
     if ! repo_ver="$(date -r "${REPO_DIR}" +"%FT%T%z")"; then
       repo_ver="unknown"
     fi
@@ -296,9 +295,9 @@ trap 'signal_abort' INT TERM TSTP
 ###############################################################################
 
 ask() {
-  echo -e "${c_magenta}\r"
+  echo -ne "${c_magenta}"
   read -p "  ${2}: " ${1} 2>&1
-  echo -e "${c_default}"
+  echo -ne "${c_default}"
 }
 
 confirm() {
@@ -343,7 +342,7 @@ has_command() {
 }
 
 has_flatpak_app() {
-  flatpak list --columns=application 2> /dev/null | grep "${1}" &> /dev/null || return 1
+  flatpak list --columns=application | grep "${1}" &> /dev/null || return 1
 }
 
 has_snap_app() {
@@ -492,8 +491,6 @@ check_param() {
           fi
         done ;;
       -a)
-        [[ "${alts_set}" == "false" ]] && alts=()
-
         if [[ "${value}" == "all" ]]; then
           for i in {0..2}; do
             alts+=("${ALT_VARIANTS[i]}")
@@ -623,39 +620,45 @@ remind_relative_path() {
 ###############################################################################
 
 sudo() {
-  local result="0"
+  local result="1"
 
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
 
-  if ! ${SUDO_BIN} -n true 2> /dev/null; then
+  if ! ${SUDO_BIN} -n true &> /dev/null; then
     echo -e "${c_magenta}  Authentication is required:${c_default}"
   fi
 
-  # Don't combine '[[ ... ]]' and '! ... < /dev/stdin' cause it's gonna
-  # break the logic/workflow
   if [[ -p /dev/stdin ]]; then
-    if ! ${SUDO_BIN} "${@}" < /dev/stdin; then
-      result="1"; WHITESUR_COMMAND="${*}"
-    fi
-  elif ! ${SUDO_BIN} "${@}"; then
-    result="1"; WHITESUR_COMMAND="${*}"
+    ${SUDO_BIN} "${@}" < /dev/stdin
+  else
+    ${SUDO_BIN} "${@}"
   fi
+
+  result="${?}"
+
+  [[ "${result}" != "0" ]] && WHITESUR_COMMAND="${*}"
 
   return "${result}"
 }
 
 udo() {
-  local result="0"
+  local result="1"
 
-  # Don't combine '[[ ... ]]' and '! ... < /dev/stdin' cause it's gonna
-  # break the logic/workflow
-  if [[ -p /dev/stdin ]]; then
-    if ! ${SUDO_BIN} -u "${MY_USERNAME}" "${@}" < /dev/stdin; then
-      result="1"; WHITESUR_COMMAND="${*}"
-    fi
-  elif ! ${SUDO_BIN} -u "${MY_USERNAME}" "${@}"; then
-    result="1"; WHITESUR_COMMAND="${*}"
+  # Just in case. We put the prompt here to make it less annoying
+  if ! ${SUDO_BIN} -u "${MY_USERNAME}" -n true &> /dev/null; then
+    prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as user"
+    echo -e "${c_magenta}  Authentication is required:${c_default}"
   fi
+
+  if [[ -p /dev/stdin ]]; then
+    ${SUDO_BIN} -u "${MY_USERNAME}" "${@}" < /dev/stdin
+  else
+    ${SUDO_BIN} -u "${MY_USERNAME}" "${@}"
+  fi
+
+  result="${?}"
+
+  [[ "${result}" != "0" ]] && WHITESUR_COMMAND="${*}"
 
   return "${result}"
 }

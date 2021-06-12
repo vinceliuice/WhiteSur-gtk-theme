@@ -63,7 +63,7 @@ prepare_deps() {
   if (( remote_time_int > local_time_int )); then
     prompt -w "\n  DEPS: Your system clock is wrong"
     prompt -i "DEPS: Updating your system clock...\n"
-    sudo date -s "${remote_time}" &> /dev/null; sudo hwclock --systohc
+    sudo date -s "${remote_time}"; sudo hwclock --systohc
   fi
 }
 
@@ -76,7 +76,7 @@ prepare_swupd() {
   local dist=""
 
   if has_command dnf; then
-    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package\n"
+    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package"
     confirm remove "CLEAR LINUX: You wanna remove it?"; echo
   fi
 
@@ -111,16 +111,15 @@ install_swupd_packages() {
   done
 }
 
-prepare_apt() {
-  [[ "${apt_prepared}" == "true" ]] && return 0
+prepare_install_apt_packages() {
+  sudo apt update -y; sudo apt install -y "${@}"
 
-  if ! sudo apt update; then
-    prompt -w "\n  APT: Your repo lists are broken"
+  if [[ "${?}" == "100" ]]; then
+    prompt -w "\n  APT: Your repo lists might be broken"
     prompt -i "APT: Full-cleaning your repo lists and try again...\n"
-    sudo apt clean; sudo rm -rf /var/lib/apt/lists; sudo apt update
+    sudo apt clean -y; sudo rm -rf /var/lib/apt/lists
+    sudo apt update -y; sudo apt install -y "${@}"
   fi
-
-  apt_prepared="true"
 }
 
 prepare_xbps() {
@@ -150,7 +149,7 @@ install_theme_deps() {
       # Rolling release
       prepare_swupd && sudo swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
     elif has_command apt; then
-      prepare_apt && sudo apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
+      prepare_install_apt_packages sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
     elif has_command dnf; then
       sudo dnf install -y sassc glib2-devel gtk-murrine-engine libxml2
     elif has_command yum; then
@@ -182,7 +181,7 @@ install_beggy_deps() {
       # Rolling release
       prepare_swupd && sudo swupd bundle-add ImageMagick
     elif has_command apt; then
-      prepare_apt && sudo apt install -y imagemagick
+      prepare_install_apt_packages imagemagick
     elif has_command dnf; then
       sudo dnf install -y ImageMagick
     elif has_command yum; then
@@ -210,7 +209,7 @@ install_dialog_deps() {
       # Rolling release
       prepare_swupd && install_swupd_packages dialog
     elif has_command apt; then
-      prepare_apt && sudo apt install -y dialog
+      prepare_install_apt_packages dialog
     elif has_command dnf; then
       sudo dnf install -y dialog
     elif has_command yum; then
