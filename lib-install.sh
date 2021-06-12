@@ -112,9 +112,11 @@ install_swupd_packages() {
 }
 
 prepare_install_apt_packages() {
-  sudo apt update -y; sudo apt install -y "${@}"
+  local status="1"
 
-  if [[ "${?}" == "100" ]]; then
+  sudo apt update -y; sudo apt install -y "${@}" || status="${?}"
+
+  if [[ "${status}" == "100" ]]; then
     prompt -w "\n  APT: Your repo lists might be broken"
     prompt -i "APT: Full-cleaning your repo lists and try again...\n"
     sudo apt clean -y; sudo rm -rf /var/lib/apt/lists

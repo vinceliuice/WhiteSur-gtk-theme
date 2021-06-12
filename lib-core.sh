@@ -21,7 +21,7 @@ WHITESUR_SOURCE=("lib-core.sh")
 #--------------System--------------#
 
 export WHITESUR_PID=$$
-MY_USERNAME="$(logname || echo ${SUDO_USER:-${USER}})"
+MY_USERNAME="$(logname 2> /dev/null || echo ${SUDO_USER:-${USER}})"
 
 if command -v gnome-shell &> /dev/null; then
   if (( $(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1) >= 4 )); then
@@ -629,12 +629,10 @@ sudo() {
   fi
 
   if [[ -p /dev/stdin ]]; then
-    ${SUDO_BIN} "${@}" < /dev/stdin
+    ${SUDO_BIN} "${@}" < /dev/stdin || result="${?}"
   else
-    ${SUDO_BIN} "${@}"
+    ${SUDO_BIN} "${@}" || result="${?}"
   fi
-
-  result="${?}"
 
   [[ "${result}" != "0" ]] && WHITESUR_COMMAND="${*}"
 
@@ -651,12 +649,10 @@ udo() {
   fi
 
   if [[ -p /dev/stdin ]]; then
-    ${SUDO_BIN} -u "${MY_USERNAME}" "${@}" < /dev/stdin
+    ${SUDO_BIN} -u "${MY_USERNAME}" "${@}" < /dev/stdin || result="${?}"
   else
-    ${SUDO_BIN} -u "${MY_USERNAME}" "${@}"
+    ${SUDO_BIN} -u "${MY_USERNAME}" "${@}" || result="${?}"
   fi
-
-  result="${?}"
 
   [[ "${result}" != "0" ]] && WHITESUR_COMMAND="${*}"
 
