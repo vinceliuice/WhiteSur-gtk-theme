@@ -667,18 +667,21 @@ full_sudo() {
 }
 
 get_http_response() {
-  exec 3<> "/dev/tcp/${1}/80"
-  echo -e "GET / HTTP/1.1\nHost: ${1}\n\n" >&3
+  if exec 3<> "/dev/tcp/${1}/80"; then
+    echo -e "GET / HTTP/1.1\nHost: ${1}\n\n" >&3
 
-  (
-    IFS=""
+    (
+      IFS=""
 
-    while read -r -t 1 line 0<&3; do
-      echo "${line//$"\r"}"
-    done
-  )
+      while read -r -t 1 line 0<&3; do
+        echo "${line//$"\r"}"
+      done
+    )
 
-  exec 3<&-
+    exec 3<&-; return 0
+  else
+    exec 3<&-; return 1
+  fi
 }
 
 usage() {

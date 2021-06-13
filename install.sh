@@ -143,7 +143,7 @@ else
 
   # rm -rf "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
 
-  if is_my_distro "arch" && has_command xfce4-session; then
+  if (is_my_distro "arch" || is_my_distro "void") && has_command xfce4-session; then
     msg="XFCE: you may need to logout after changing your theme to fix your panel opacity."
     notif_msg="${msg}\n\n${final_msg}"
 
