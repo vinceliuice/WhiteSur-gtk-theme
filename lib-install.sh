@@ -61,7 +61,7 @@ prepare_deps() {
 
   prompt -i "DEPS: Checking your internet connection..."
 
-  if ! head="$(curl -Is -o - 'time.cloudflare.com' || wget -Sq -o - --max-redirect=0 'time.cloudflare.com')"; then
+  if ! head="$(get_http_response 'time.cloudflare.com')"; then
     prompt -e "DEPS ERROR: You have an internet connection issue\n"; exit 1
   fi
 

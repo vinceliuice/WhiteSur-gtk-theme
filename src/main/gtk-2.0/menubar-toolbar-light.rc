@@ -144,8 +144,6 @@ widget_class "*CajaNavigationWindow*<GtkToolbar>"                   style "menub
 
 class "ChromeGtkFrame"                                              style "chrome-gtk-frame"
 
-widget_class "*<GtkMenuBar>*<GtkMenuItem>*<GtkAccelLabel>"          style "menubar-text"
-
 # Whitelist for dark toolbars
 widget_class "*ThunarWindow*<GtkMenuBar>"                           style "menubar"
 widget_class "*CajaNavigationWindow*<GtkMenuBar>"                   style "menubar"
