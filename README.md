@@ -8,11 +8,6 @@
 # Installation is easy!
 <details> <summary> Required dependencies info for nerds </summary>
 
-### GTK2 theme deps
-- gtk-murrine-engine     `Fedora/RedHat`
-- gtk2-engines-murrine   `Ubuntu/Mint/Debian`
-- gtk-engine-murrine     `Arch/Manjaro`
-
 ### "Install from source" deps
 - sassc
 - libglib2.0-dev-bin     `ubuntu 20.04`

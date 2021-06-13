@@ -666,6 +666,21 @@ full_sudo() {
   fi
 }
 
+get_http_response() {
+  exec 3<> "/dev/tcp/${1}/80"
+  echo -e "GET / HTTP/1.1\nHost: ${1}\n\n" >&3
+
+  (
+    IFS=""
+
+    while read -r -t 1 line 0<&3; do
+      echo "${line//$"\r"}"
+    done
+  )
+
+  exec 3<&-
+}
+
 usage() {
   prompt -e "Usage function is not implemented"; exit 1
 }

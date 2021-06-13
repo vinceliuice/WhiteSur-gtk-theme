@@ -61,7 +61,7 @@ prepare_deps() {
 
   prompt -i "DEPS: Checking your internet connection..."
 
-  if ! head="$(curl -Is -o - 'time.cloudflare.com' || wget -Sq -o - --max-redirect=0 'time.cloudflare.com')"; then
+  if ! head="$(get_http_response 'time.cloudflare.com')"; then
     prompt -e "DEPS ERROR: You have an internet connection issue\n"; exit 1
   fi
 
@@ -148,32 +148,31 @@ prepare_xbps() {
 #-----------------Deps-----------------#
 
 install_theme_deps() {
-  if ! has_command glib-compile-resources || ! has_command sassc || ! has_command xmllint ||
-  (! is_my_distro "clear-linux" && [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]); then
-    prompt -w "DEPS: 'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation."
+  if ! has_command glib-compile-resources || ! has_command sassc || ! has_command xmllint; then
+    prompt -w "DEPS: 'glib2.0', 'sassc', and 'xmllint' are required for theme installation."
     prepare_deps
 
     if has_command zypper; then
-      sudo zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
+      sudo zypper in -y sassc glib2-devel libxml2-tools
     elif has_command swupd; then
       # Rolling release
       prepare_swupd && sudo swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
     elif has_command apt; then
-      prepare_install_apt_packages sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
+      prepare_install_apt_packages sassc libglib2.0-dev-bin libxml2-utils
     elif has_command dnf; then
-      sudo dnf install -y sassc glib2-devel gtk-murrine-engine libxml2
+      sudo dnf install -y sassc glib2-devel libxml2
     elif has_command yum; then
-      sudo yum install -y sassc glib2-devel gtk-murrine-engine libxml2
+      sudo yum install -y sassc glib2-devel libxml2
     elif has_command pacman; then
       # Rolling release
       # 'Syu' (with a single y) may causes "could not open ... decompression failed"
       # and "target not found <package>". We got to force 'pacman' to update the repos
-      sudo pacman -Syyu --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
+      sudo pacman -Syyu --noconfirm --needed sassc glib2 libxml2
     elif has_command xbps-install; then
       # Rolling release
       # 'libxml2' is already included here, and it's gonna broke the installation
       # if you add it
-      prepare_xbps && sudo xbps-install -Sy sassc glib-devel gtk-engine-murrine
+      prepare_xbps && sudo xbps-install -Sy sassc glib-devel
     else
       installation_sorry
     fi

@@ -61,15 +61,6 @@ style "menubar_item" {
   }
 }
 
-# Text Style Menubar
-style "menubar-text" {
-
-  engine "murrine" {
-    text_shade = 0.0
-    textstyle = 0
-  }
-}
-
 style "toolbar_entry" {
 
   text[NORMAL] = @text_color
@@ -153,8 +144,6 @@ widget_class "*CajaNavigationWindow*<GtkToolbar>"                   style "menub
 
 class "ChromeGtkFrame"                                              style "chrome-gtk-frame"
 
-widget_class "*<GtkMenuBar>*<GtkMenuItem>*<GtkAccelLabel>"          style "menubar-text"
-
 # Whitelist for dark toolbars
 widget_class "*ThunarWindow*<GtkMenuBar>"                           style "menubar"
 widget_class "*CajaNavigationWindow*<GtkMenuBar>"                   style "menubar"
@@ -163,5 +152,3 @@ widget_class "*CajaNavigationWindow*<GtkToolbar>*<GtkEntry>"        style "toolb
 
 # GtkCheckButton
 widget_class "*<GtkNotebook>*<GtkCheckButton>"                      style "toolbar_button"
-widget_class "*<GtkNotebook>*<GtkCheckButton>*<GtkLabel>"           style "misc_button_label"
-

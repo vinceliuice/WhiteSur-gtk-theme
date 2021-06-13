@@ -962,11 +962,8 @@ style "menu_item" {
 }
 
 style "button" {
-
   xthickness = 4
   ythickness = 4
-
-  engine "murrine" { textstyle = 0 }
 
   engine "pixmap" {
 
@@ -1046,8 +1043,6 @@ style "button_label" {
   fg[PRELIGHT] = @fg_color
   fg[INSENSITIVE] = @insensitive_button_fg_color
   fg[ACTIVE] = @fg_color
-
-  engine "murrine" { textstyle = 0 }
 
 }
 
@@ -2341,15 +2336,6 @@ style "xfwm-tabwin" {
   bg[SELECTED] = @bg_color
 
   fg[NORMAL] = @fg_color
-
-  engine "murrine" {
-    contrast = 0.7
-    glazestyle = 0
-    glowstyle = 0
-    highlight_shade = 1.0
-    gradient_shades = {1.0,1.0,1.0,1.0}
-    border_shades = { 0.8, 0.8 }
-  }
 }
 
 style "xfwm-tabwin-button" {
@@ -2367,12 +2353,6 @@ style "chrome_menu_item" {
 # Text Style
 style "text" = "default" {
   fg[NORMAL] = @fg_color # FIXME: VMWare needs this?
-
-  engine "murrine" { textstyle = 0 }
-}
-
-style "menu_text" = "menu_item" {
-  engine "murrine" { textstyle = 0 }
 }
 
 style "null" {
@@ -2479,7 +2459,6 @@ widget "xfwm4-tabwin*GtkButton*"                                    style "xfwm-
 
 # Fixes ugly text shadows for insensitive text
 widget_class "*<GtkLabel>"                                          style "text"
-widget_class "*<GtkMenu>*<GtkLabel>"                                style "menu_text"
 widget_class "*<GtkComboBox>*<GtkCellLayout>"                       style "text"
 widget_class "*<GtkNotebook>*<GtkLabel>"                            style "text"
 widget_class "*<GtkNotebook>*<GtkCellLayout>"                       style "text"
