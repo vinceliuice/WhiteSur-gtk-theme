@@ -666,19 +666,27 @@ full_sudo() {
   fi
 }
 
-get_http_response() {
-  if exec 3<> "/dev/tcp/${1}/80"; then
-    echo -e "GET / HTTP/1.1\nHost: ${1}\n\n" >&3
+get_utc_epoch_time() {
+  local time=""
+  local epoch=""
 
-    (
-      IFS=""
+  if exec 3<> "/dev/tcp/iana.org/80"; then
+    echo -e "GET / HTTP/1.1\nHost: iana.org\n\n" >&3
 
-      while read -r -t 1 line 0<&3; do
-        echo "${line//$"\r"}"
-      done
-    )
+    while read -r -t 2 line 0<&3; do
+      if [[ "${line}" =~ "Date:" ]]; then
+        time="${line#*':'}"; exec 3<&-; break
+      fi
+    done
 
-    exec 3<&-; return 0
+    exec 3<&-
+
+    if [[ "${time}" ]]; then
+      epoch="$(date -d "${time}" "+%s")"
+      echo "$((epoch + 2))"
+    else
+      return 1
+    fi
   else
     exec 3<&-; return 1
   fi

@@ -40,6 +40,10 @@ WHITESUR_SOURCE+=("lib-install.sh")
 # Some apt version doesn't update the repo list before it install some app.
 # It may cause "unable to fetch..." when you're trying to install them
 
+#--------------------PACMAN--------------------#
+# 'Syu' (with a single y) may causes "could not open ... decompression failed"
+# and "target not found <package>". We got to force 'pacman' to update the repos
+
 #--------------------OTHERS--------------------#
 # Sometimes, some Ubuntu distro doesn't enable automatic time. This can cause
 # 'Release file for ... is not valid yet'. This may also happen on other distros
@@ -55,23 +59,24 @@ installation_sorry() {
 }
 
 prepare_deps() {
-  local head=""
   local remote_time=""
   local local_time=""
 
   prompt -i "DEPS: Checking your internet connection..."
 
-  if ! head="$(get_http_response 'time.cloudflare.com')"; then
+  local_time="$(date -u "+%s")"
+
+  if ! remote_time="$(get_utc_epoch_time)"; then
     prompt -e "DEPS ERROR: You have an internet connection issue\n"; exit 1
   fi
 
-  remote_time="$(echo "${head}" | awk -F ': ' '/Date/{print $2}' | date -f - "+%s")"
-  local_time="$(date -u "+%s")"
-
-  if (( remote_time-(5*60) > local_time )); then
+  # 5 minutes is the maximum reasonable time delay, so we choose '4' here just
+  # in case
+  if (( local_time < remote_time-(4*60) )); then
     prompt -w "DEPS: Your system clock is wrong"
     prompt -i "DEPS: Updating your system clock..."
-    sudo date -s "@${remote_time}"; sudo hwclock --systohc
+    # Add "+ 25" here to accomodate potential time delay by sudo prompt
+    sudo date -s "@$((remote_time + 25))"; sudo hwclock --systohc
   fi
 }
 
@@ -165,8 +170,6 @@ install_theme_deps() {
       sudo yum install -y sassc glib2-devel libxml2
     elif has_command pacman; then
       # Rolling release
-      # 'Syu' (with a single y) may causes "could not open ... decompression failed"
-      # and "target not found <package>". We got to force 'pacman' to update the repos
       sudo pacman -Syyu --noconfirm --needed sassc glib2 libxml2
     elif has_command xbps-install; then
       # Rolling release
@@ -197,7 +200,7 @@ install_beggy_deps() {
       sudo yum install -y ImageMagick
     elif has_command pacman; then
       # Rolling release
-      sudo pacman -Syu --noconfirm --needed imagemagick
+      sudo pacman -Syyu --noconfirm --needed imagemagick
     elif has_command xbps-install; then
       # Rolling release
       prepare_xbps && sudo xbps-install -Sy ImageMagick
@@ -225,7 +228,7 @@ install_dialog_deps() {
       sudo yum install -y dialog
     elif has_command pacman; then
       # Rolling release
-      sudo pacman -Syu --noconfirm --needed dialog
+      sudo pacman -Syyu --noconfirm --needed dialog
     elif has_command xbps-install; then
       # Rolling release
       prepare_xbps && sudo xbps-install -Sy dialog
