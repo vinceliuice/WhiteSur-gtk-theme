@@ -211,6 +211,8 @@ install_beggy_deps() {
 }
 
 install_dialog_deps() {
+  [[ "${silent_mode}" == "true" ]] && return 0
+
   if ! has_command dialog; then
     prompt -w "DEPS: 'dialog' is required for this option."
     prepare_deps

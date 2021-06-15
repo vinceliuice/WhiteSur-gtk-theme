@@ -42,6 +42,7 @@ usage() {
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
   helpify "--dialog, --interactive"       ""                                          "Run this installer interactively, with dialogs"   ""
   helpify "-r, --remove, -u, --uninstall" ""                                          "Remove all installed ${THEME_NAME} themes"        ""
+  helpify "--silent-mode"                 ""                                          "Meant for developers: ignore any confirm prompt and params become more strict" ""
   helpify "-h, --help"                    ""                                          "Show this help"                                   ""
 }
 
@@ -67,8 +68,12 @@ while [[ $# -gt 0 ]]; do
       # Parameters that don't require value
     -r|--remove|-u|-uninstall)
       uninstall='true'; shift ;;
+    --silent-mode)
+      full_sudo "${1}"; silent_mode='true'; shift ;;
     --dialog|--interactive)
       interactive='true'; shift ;;
+    -h|--help)
+      need_help="true"; shift ;;
     --normal|--normalshowapps)
       showapps_normal="true"; shift ;;
     --right|--rightplacement)
@@ -77,8 +82,6 @@ while [[ $# -gt 0 ]]; do
       max_round="true"; shift ;;
     -HD|--highdefinition)
       compact="false"; shift ;;
-    -h|--help)
-      need_help="true"; shift ;;
       # Parameters that require value, single use
     -b|--background)
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;

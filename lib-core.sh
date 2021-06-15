@@ -109,6 +109,7 @@ declare -A need_dialog=([-b]="false" [-s]="false" [-p]="false" [-d]="false" [-n]
 need_help="false"
 uninstall="false"
 interactive="false"
+silent_mode="false"
 
 no_darken="false"
 no_blur="false"
@@ -161,6 +162,8 @@ anim=(
 ###############################################################################
 
 start_animation() {
+  [[ "${silent_mode}" == "true" ]] && return 0
+
   setterm -cursor off
 
   (
@@ -181,6 +184,8 @@ start_animation() {
 }
 
 stop_animation() {
+  [[ "${silent_mode}" == "true" ]] && return 0
+
   [[ -e "/proc/${ANIM_PID}" ]] && kill -13 "${ANIM_PID}"
   setterm -cursor on
 }
@@ -295,18 +300,27 @@ trap 'signal_abort' INT TERM TSTP
 ###############################################################################
 
 ask() {
+  [[ "${silent_mode}" == "true" ]] && return 0
+
   echo -ne "${c_magenta}"
   read -p "  ${2}: " ${1} 2>&1
   echo -ne "${c_default}"
 }
 
 confirm() {
+  [[ "${silent_mode}" == "true" ]] && return 0
+
   while [[ "${!1}" != "y" && "${!1}" != "n" ]]; do
     ask ${1} "${2} (y/n)"
   done
 }
 
 dialogify() {
+  if [[ "${silent_mode}" == "true" ]]; then
+    prompt -w "Oops... silent mode has been activated so we can't show the dialog"
+    return 0
+  fi
+
   local lists=""
   local i=0
   local result=""
@@ -407,6 +421,12 @@ check_param() {
 
   local has_any_ambiguity_error="false"
   local variant_found="false"
+
+  if [[ "${silent_mode}" == "true" ]]; then
+    must_not_ambigous="must"
+    must_have_value="must"
+    value_must_found="must"
+  fi
 
   if [[ "${has_set["${global_param}"]}" == "true" ]]; then
     need_dialog["${global_param}"]="true"

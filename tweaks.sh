@@ -34,6 +34,7 @@ usage() {
   helpify "-p, --panel"        "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "Set '${THEME_NAME}' GDM (GNOME Shell) theme panel transparency"              "Default is 15%"
   helpify "-i, --icon"         "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"          "Set '${THEME_NAME}' GDM (GNOME Shell) 'Activities' icon"                     "Default is 'standard'"
   helpify "-r, --remove, --revert" ""                                              "Revert to the original themes, do the opposite things of install and connect" ""
+  helpify "--silent-mode"      ""                                                  "Meant for developers: ignore any confirm prompt and params become more strict" ""
   helpify "-h, --help"         ""                                                  "Show this help"                                                              ""
 }
 
@@ -59,6 +60,8 @@ while [[ $# -gt 0 ]]; do
       # Parameters that don't require value
     -r|--remove|--revert)
       uninstall='true'; shift ;;
+    --silent-mode)
+      full_sudo "${1}"; silent_mode='true'; shift ;;
     -h|--help)
       need_help="true"; shift ;;
     -f|--firefox|-e|--edit-firefox)
