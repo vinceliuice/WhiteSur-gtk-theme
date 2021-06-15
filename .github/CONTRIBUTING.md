@@ -30,6 +30,10 @@ You can read about SASS at http://sass-lang.com/documentation/. Once you make yo
 _common.scss file, you can either run the ./parse-sass.sh script or keep SASS watching for changes as you
 edit.
 
+## Known bugs
+
+### Theme glitches on NVIDIA driver
+See upstream [bug](https://web.archive.org/web/20210609140801/https://forums.developer.nvidia.com/t/issues-with-icons-gtk-theme-and-other-graphical-components-prior-to-installation-of-nvidia-drivers/38618).
 
 # WhiteSur Firefox theme
 A MacOS Big Sur theme for Firefox 70+
@@ -40,7 +44,10 @@ A MacOS Big Sur theme for Firefox 70+
 See upstream [bug](https://bugzilla.mozilla.org/show_bug.cgi?id=1408360).
 
 ### Icons color broken
-Icons might appear black where they should be white on some systems. I have no idea why, but you can adjust them in the `theme/colors/light.css` or `theme/colors/dark.css` files, look for `--gnome-icons-hack-filter` var and play with css filters.
+Icons might appear black where they should be white on some systems. I have no
+idea why, but you can adjust them in the `theme/colors/light.css` or
+`theme/colors/dark.css` files, look for `--gnome-icons-hack-filter` var and
+play with css filters.
 
 ## Development
 
@@ -71,6 +78,8 @@ any specific license on your code.
 Developed by **Rafael Mardojai** and [contributors](https://github.com/rafaelmardojai/firefox-gnome-theme/graphs/contributors). Based on **[Sai Kurogetsu](https://github.com/kurogetsusai/firefox-gnome-theme)** original work.
 
 # WhiteSur GDM and GNOME Shell theme
+
 ## Known bugs
+
 ### Can't change GDM background on OpenSUSE Tumbleweed
 See upstream [bug](https://github.com/juhaku/loginized#known-limitations-and-issues).

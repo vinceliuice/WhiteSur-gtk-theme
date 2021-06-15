@@ -3,8 +3,6 @@
 #
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
-#
-# WARNING: Please don't use sudo directly here since it steals our EXIT trap
 
 ###############################################################################
 #                                VARIABLES                                    #
@@ -17,110 +15,227 @@ WHITESUR_SOURCE+=("lib-install.sh")
 #                              DEPENDENCIES                                   #
 ###############################################################################
 
-install_theme_deps() {
-  if ! has_command glib-compile-resources || ! has_command sassc || \
-    ! has_command xmllint || [[ ! -r "/usr/share/gtk-engines/murrine.xml" ]]; then
-    echo; prompt -w "'glib2.0', 'sassc', 'xmllint', and 'libmurrine' are required for theme installation."
+# Be careful of some distro mechanism, some of them use rolling-release
+# based installation instead of point-release, e.g., Arch Linux
 
-    # Be careful of some distro mechanism, some of them use rolling-release
-    # based installation, e.g., Arch Linux
+# Rolling-release based distro doesn't have a seprate repo for each different
+# build. This can cause a system call error since an app require the compatible
+# version of dependencies. In other words, if you install an new app (which you
+# definitely reinstall/upgrade the dependency for that app), but your other
+# dependencies are old/expired, you'll end up with broken system.
 
-    if has_command zypper; then
-      rootify zypper in -y sassc glib2-devel gtk2-engine-murrine libxml2-tools
-    elif has_command apt; then
-      rootify apt install -y sassc libglib2.0-dev-bin gtk2-engines-murrine libxml2-utils
-    elif has_command dnf; then
-      rootify dnf install -y sassc glib2-devel gtk-murrine-engine libxml2
-    elif has_command yum; then
-      rootify yum install -y sassc glib2-devel gtk-murrine-engine libxml2
-    elif has_command pacman; then
-      # Explanation A:
-      # Arch-based distro doesnt have a seprate repo for each different build.
-      # This can cause a system call error since an app require the compatible
-      # version of dependencies. In other words, if you install an new app (which
-      # you definitely reinstall/upgrade the dependency for that app), but your
-      # other dependencies are old/expired, you'll end up with broken system.
-      # That's why we need a full system upgrade here
-      rootify pacman -Syu --noconfirm --needed sassc glib2 gtk-engine-murrine libxml2
-    else
-      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
-      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
-      start_animation; sleep 15; stop_animation
-    fi
+# That's why we need a full system upgrade there
+
+#---------------------SWUPD--------------------#
+# 'swupd' bundles just don't make any sense. It takes about 30GB of space only
+# for installing a util, e.g. 'sassc' (from 'desktop-dev' bundle, or
+# 'os-utils-gui-dev' bundle, or any other 'sassc' provider bundle)
+
+# Manual package installation is needed for that, but please don't use 'dnf'.
+# The known worst impact of using 'dnf' is you install 'sassc' and then you
+# remove it, and you run 'sudo dnf upgrade', and boom! Your 'sudo' and other
+# system utilities have gone!
+
+#----------------------APT---------------------#
+# Some apt version doesn't update the repo list before it install some app.
+# It may cause "unable to fetch..." when you're trying to install them
+
+#--------------------PACMAN--------------------#
+# 'Syu' (with a single y) may causes "could not open ... decompression failed"
+# and "target not found <package>". We got to force 'pacman' to update the repos
+
+#--------------------OTHERS--------------------#
+# Sometimes, some Ubuntu distro doesn't enable automatic time. This can cause
+# 'Release file for ... is not valid yet'. This may also happen on other distros
+
+#============================================#
+
+#-------------------Prepare------------------#
+installation_sorry() {
+  prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
+  prompt -i "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
+  prompt -i "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
+  start_animation; sleep 15; stop_animation
+}
+
+prepare_deps() {
+  local remote_time=""
+  local local_time=""
+
+  prompt -i "DEPS: Checking your internet connection..."
+
+  local_time="$(date -u "+%s")"
+
+  if ! remote_time="$(get_utc_epoch_time)"; then
+    prompt -e "DEPS ERROR: You have an internet connection issue\n"; exit 1
+  fi
+
+  # 5 minutes is the maximum reasonable time delay, so we choose '4' here just
+  # in case
+  if (( local_time < remote_time-(4*60) )); then
+    prompt -w "DEPS: Your system clock is wrong"
+    prompt -i "DEPS: Updating your system clock..."
+    # Add "+ 25" here to accomodate potential time delay by sudo prompt
+    sudo date -s "@$((remote_time + 25))"; sudo hwclock --systohc
   fi
 }
 
-install_gdm_deps() {
-  #TODO: @vince, do we also need "sassc" here?
+prepare_swupd() {
+  [[ "${swupd_prepared}" == "true" ]] && return 0
 
-  if ! has_command glib-compile-resources || ! has_command xmllint || ! has_command sassc; then
-    echo; prompt -w "'glib2.0', 'xmllint', and 'sassc' are required for theme installation."
+  local remove=""
+  local ver=""
+  local conf=""
+  local dist=""
+
+  if has_command dnf; then
+    prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package"
+    confirm remove "CLEAR LINUX: You wanna remove it?"; echo
+  fi
+
+  if ! sudo swupd update -y; then
+    ver="$(curl -s -o - "${swupd_ver_url}")"
+    dist="NAME=\"Clear Linux OS\"\nVERSION=1\nID=clear-linux-os\nID_LIKE=clear-linux-os\n"
+    dist+="VERSION_ID=${ver}\nANSI_COLOR=\"1;35\"\nSUPPORT_URL=\"https://clearlinux.org\"\nBUILD_ID=${ver}"
+
+    prompt -w "\n  CLEAR LINUX: Your 'swupd' is broken"
+    prompt -i "CLEAR LINUX: Patching 'swupd' distro version detection and try again...\n"
+    sudo rm -rf "/etc/os-release"; echo -e "${dist}" | sudo tee                         "/usr/lib/os-release" > /dev/null
+    sudo ln -s "/usr/lib/os-release" "/etc/os-release"
+
+    sudo swupd update -y
+  fi
+
+  if ! has_command bsdtar; then sudo swupd bundle-add libarchive; fi
+  if [[ "${remove}" == "y" ]]; then sudo swupd bundle-remove -y dnf; fi
+
+  swupd_prepared="true"
+}
+
+install_swupd_packages() {
+  if [[ ! "${swupd_packages}" ]]; then
+    swupd_packages="$(curl -s -o - "${swupd_url}" | awk -F '"' '/-bin-|-lib-/{print $2}')"
+  fi
+
+  for key in "${@}"; do
+    for pkg in $(echo "${swupd_packages}" | grep -F "${key}"); do
+      curl -s -o - "${swupd_url}/${pkg}" | sudo bsdtar -xf - -C "/"
+    done
+  done
+}
+
+prepare_install_apt_packages() {
+  local status="0"
+
+  sudo apt update -y; sudo apt install -y "${@}" || status="${?}"
+
+  if [[ "${status}" == "100" ]]; then
+    prompt -w "\n  APT: Your repo lists might be broken"
+    prompt -i "APT: Full-cleaning your repo lists and try again...\n"
+    sudo apt clean -y; sudo rm -rf /var/lib/apt/lists
+    sudo apt update -y; sudo apt install -y "${@}"
+  fi
+}
+
+prepare_xbps() {
+  [[ "${xbps_prepared}" == "true" ]] && return 0
+
+  # 'xbps-install' requires 'xbps' to be always up-to-date
+  sudo xbps-install -Syu xbps
+
+  # System upgrading can't remove the old kernel files by it self. It eats the
+  # boot partition and may cause kernel panic when there is no enough space
+  sudo vkpurge rm all; sudo xbps-install -Syu
+
+  xbps_prepared="true"
+}
+
+#-----------------Deps-----------------#
+
+install_theme_deps() {
+  if ! has_command glib-compile-resources || ! has_command sassc || ! has_command xmllint; then
+    prompt -w "DEPS: 'glib2.0', 'sassc', and 'xmllint' are required for theme installation."
+    prepare_deps
 
     if has_command zypper; then
-      rootify zypper in -y glib2-devel libxml2-tools sassc
+      sudo zypper in -y sassc glib2-devel libxml2-tools
+    elif has_command swupd; then
+      # Rolling release
+      prepare_swupd && sudo swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
     elif has_command apt; then
-      rootify apt install -y libglib2.0-dev-bin libxml2-utils sassc
+      prepare_install_apt_packages sassc libglib2.0-dev-bin libxml2-utils
     elif has_command dnf; then
-      rootify dnf install -y glib2-devel libxml2 sassc
+      sudo dnf install -y sassc glib2-devel libxml2
     elif has_command yum; then
-      rootify yum install -y glib2-devel libxml2 sassc
+      sudo yum install -y sassc glib2-devel libxml2
     elif has_command pacman; then
-      # See Explanation A
-      rootify pacman -Syu --noconfirm --needed glib2 libxml2 sassc
+      # Rolling release
+      sudo pacman -Syyu --noconfirm --needed sassc glib2 libxml2
+    elif has_command xbps-install; then
+      # Rolling release
+      # 'libxml2' is already included here, and it's gonna broke the installation
+      # if you add it
+      prepare_xbps && sudo xbps-install -Sy sassc glib-devel
     else
-      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
-      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
-      start_animation; sleep 15; stop_animation
+      installation_sorry
     fi
   fi
 }
 
 install_beggy_deps() {
   if ! has_command convert; then
-    echo; prompt -w "'imagemagick' are required for background editing."
+    prompt -w "DEPS: 'imagemagick' is required for background editing."
+    prepare_deps
 
     if has_command zypper; then
-      rootify zypper in -y ImageMagick
+      sudo zypper in -y ImageMagick
+    elif has_command swupd; then
+      # Rolling release
+      prepare_swupd && sudo swupd bundle-add ImageMagick
     elif has_command apt; then
-      rootify apt install -y imagemagick
+      prepare_install_apt_packages imagemagick
     elif has_command dnf; then
-      rootify dnf install -y ImageMagick
+      sudo dnf install -y ImageMagick
     elif has_command yum; then
-      rootify yum install -y ImageMagick
+      sudo yum install -y ImageMagick
     elif has_command pacman; then
-      # See Explanation A
-      rootify pacman -Syu --noconfirm --needed imagemagick
+      # Rolling release
+      sudo pacman -Syyu --noconfirm --needed imagemagick
+    elif has_command xbps-install; then
+      # Rolling release
+      prepare_xbps && sudo xbps-install -Sy ImageMagick
     else
-      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
-      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
-      start_animation; sleep 15; stop_animation
+      installation_sorry
     fi
   fi
 }
 
 install_dialog_deps() {
+  [[ "${silent_mode}" == "true" ]] && return 0
+
   if ! has_command dialog; then
-    echo; prompt -w "'dialog' are required for this option."
+    prompt -w "DEPS: 'dialog' is required for this option."
+    prepare_deps
 
     if has_command zypper; then
-      rootify zypper in -y dialog
+      sudo zypper in -y dialog
+    elif has_command swupd; then
+      # Rolling release
+      prepare_swupd && install_swupd_packages dialog
     elif has_command apt; then
-      rootify apt install -y dialog
+      prepare_install_apt_packages dialog
     elif has_command dnf; then
-      rootify dnf install -y dialog
+      sudo dnf install -y dialog
     elif has_command yum; then
-      rootify yum install -y dialog
+      sudo yum install -y dialog
     elif has_command pacman; then
-      # See Explanation A
-      rootify pacman -Syu --noconfirm --needed dialog
+      # Rolling release
+      sudo pacman -Syyu --noconfirm --needed dialog
+    elif has_command xbps-install; then
+      # Rolling release
+      prepare_xbps && sudo xbps-install -Sy dialog
     else
-      prompt -w "WARNING: We're sorry, your distro isn't officially supported yet."
-      prompt -w "INSTRUCTION: Please make sure you have installed all of the required dependencies. We'll continue the installation in 15 seconds"
-      prompt -w "INSTRUCTION: Press 'ctrl'+'c' to cancel the installation if you haven't install them yet"
-      start_animation; sleep 15; stop_animation
+      installation_sorry
     fi
   fi
 }
@@ -151,7 +266,9 @@ install_beggy() {
       ;;
     *)
       if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
-        install_beggy_deps && convert "${background}" ${CONVERT_OPT}                          "${WHITESUR_TMP_DIR}/beggy.png"
+        install_beggy_deps; start_animation
+        convert "${background}" ${CONVERT_OPT}                                                "${WHITESUR_TMP_DIR}/beggy.png"
+        stop_animation
       else
         cp -r "${background}"                                                                 "${WHITESUR_TMP_DIR}/beggy.png"
       fi
@@ -163,6 +280,7 @@ install_darky() {
   local opacity="$(destify ${1})"
   local theme="$(destify ${2})"
 
+  install_theme_deps
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                            "${WHITESUR_TMP_DIR}/darky-3.css"
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                            "${WHITESUR_TMP_DIR}/darky-4.css"
 }
@@ -200,6 +318,8 @@ install_shelly() {
   else
     TARGET_DIR="${6}"
   fi
+
+  install_theme_deps
 
   mkdir -p                                                                                    "${TARGET_DIR}"
   mkdir -p                                                                                    "${TARGET_DIR}/assets"
@@ -253,20 +373,23 @@ install_theemy() {
   local TMP_DIR_F="${WHITESUR_TMP_DIR}/gtk-4.0${color}${opacity}${alt}${theme}"
 
   mkdir -p                                                                                    "${TARGET_DIR}"
-  local desktop_entry="
-  [Desktop Entry]
-  Type=X-GNOME-Metatheme
-  Name=${name}${color}${opacity}${alt}${theme}
-  Comment=A MacOS BigSur like Gtk+ theme based on Elegant Design
-  Encoding=UTF-8
 
-  [X-GNOME-Metatheme]
-  GtkTheme=${name}${color}${opacity}${alt}${theme}
-  MetacityTheme=${name}${color}${opacity}${alt}${theme}
-  IconTheme=${name}${iconcolor}
-  CursorTheme=WhiteSur-cursors
-  ButtonLayout=close,minimize,maximize:menu"
-  echo "${desktop_entry}" >                                                                   "${TARGET_DIR}/index.theme"
+  local desktop_entry="[Desktop Entry]\n"
+  desktop_entry+="Type=X-GNOME-Metatheme\n"
+  desktop_entry+="Name=${name}${color}${opacity}${alt}${theme}\n"
+  desktop_entry+="Comment=A MacOS BigSur like Gtk+ theme based on Elegant Design\n"
+  desktop_entry+="Encoding=UTF-8\n\n"
+
+  desktop_entry+="[X-GNOME-Metatheme]\n"
+  desktop_entry+="GtkTheme=${name}${color}${opacity}${alt}${theme}\n"
+  desktop_entry+="MetacityTheme=${name}${color}${opacity}${alt}${theme}\n"
+  desktop_entry+="IconTheme=${name}${iconcolor}\n"
+  desktop_entry+="CursorTheme=WhiteSur-cursors\n"
+  desktop_entry+="ButtonLayout=close,minimize,maximize:menu\n"
+
+  echo -e "${desktop_entry}" >                                                                "${TARGET_DIR}/index.theme"
+
+  install_theme_deps
 
   #--------------------GTK-3.0--------------------#
 
@@ -357,7 +480,7 @@ install_themes() {
   # "install_theemy" and "install_shelly" require "gtk_base", so multithreading
   # isn't possible
 
-  start_animation; install_beggy
+  install_theme_deps; start_animation; install_beggy
 
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
@@ -394,10 +517,10 @@ remove_themes() {
 }
 
 install_gdm_theme() {
-  start_animation
   local TARGET=
 
   # Let's go!
+  install_theme_deps
   rm -rf "${WHITESUR_GS_DIR}"; install_beggy
   gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}"
 
@@ -435,8 +558,6 @@ install_gdm_theme() {
     # Fix previously installed WhiteSur
     restore_file "${ETC_GR_FILE}"
   fi
-
-  stop_animation
 }
 
 revert_gdm_theme() {
@@ -461,8 +582,8 @@ install_firefox_theme() {
   fi
 
   remove_firefox_theme
-  userify mkdir -p                                                                              "${TARGET_DIR}"
-  userify cp -rf "${FIREFOX_SRC_DIR}"/*                                                         "${TARGET_DIR}"
+  udo mkdir -p                                                                                "${TARGET_DIR}"
+  udo cp -rf "${FIREFOX_SRC_DIR}"/*                                                           "${TARGET_DIR}"
   config_firefox
 }
 
@@ -482,14 +603,14 @@ config_firefox() {
 
   for d in "${FIREFOX_DIR}/"*"default"*; do
     if [[ -f "${d}/prefs.js" ]]; then
-      rm -rf                                                                                    "${d}/chrome"
-      userify ln -sf "${TARGET_DIR}"                                                            "${d}/chrome"
-      userify_file                                                                              "${d}/prefs.js"
-      echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>       "${d}/prefs.js"
-      echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                               "${d}/prefs.js"
-      echo "user_pref(\"browser.uidensity\", 0);" >>                                            "${d}/prefs.js"
-      echo "user_pref(\"layers.acceleration.force-enabled\", true);" >>                         "${d}/prefs.js"
-      echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);" >>                           "${d}/prefs.js"
+      rm -rf                                                                                  "${d}/chrome"
+      udo ln -sf "${TARGET_DIR}"                                                              "${d}/chrome"
+      udoify_file                                                                             "${d}/prefs.js"
+      echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>     "${d}/prefs.js"
+      echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                             "${d}/prefs.js"
+      echo "user_pref(\"browser.uidensity\", 0);" >>                                          "${d}/prefs.js"
+      echo "user_pref(\"layers.acceleration.force-enabled\", true);" >>                       "${d}/prefs.js"
+      echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);" >>                         "${d}/prefs.js"
     fi
   done
 }
@@ -504,8 +625,8 @@ edit_firefox_theme_prefs() {
   fi
 
   [[ ! -d "${TARGET_DIR}" ]] && install_firefox_theme ; config_firefox
-  userify ${EDITOR:-nano}                                                                       "${TARGET_DIR}/userChrome.css"
-  userify ${EDITOR:-nano}                                                                       "${TARGET_DIR}/customChrome.css"
+  udo ${EDITOR:-nano}                                                                         "${TARGET_DIR}/userChrome.css"
+  udo ${EDITOR:-nano}                                                                         "${TARGET_DIR}/customChrome.css"
 }
 
 remove_firefox_theme() {
@@ -526,22 +647,22 @@ install_dash_to_dock_theme() {
   gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}"
 
   if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
-    backup_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "userify"
-    userify_file                                                                                "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
-    userify sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss" "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
+    backup_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "udo"
+    udoify_file                                                                               "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
+    udo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss"   "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
   elif [[ -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
-    backup_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "rootify"
-    rootify sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss" "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css"
+    backup_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "sudo"
+    sudo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss"  "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css"
   fi
 
-  userify dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
+  udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
 }
 
 revert_dash_to_dock_theme() {
   if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
-    restore_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "userify"
+    restore_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "udo"
   elif [[ -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
-    restore_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "rootify"
+    restore_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "sudo"
   fi
 }
 
@@ -550,26 +671,26 @@ revert_dash_to_dock_theme() {
 ###############################################################################
 
 connect_flatpak() {
-  rootify flatpak override --filesystem=~/.themes
+  sudo flatpak override --filesystem=~/.themes
 }
 
 disconnect_flatpak() {
-  rootify flatpak override --nofilesystem=~/.themes
+  sudo flatpak override --nofilesystem=~/.themes
 }
 
 connect_snap() {
-  rootify snap install whitesur-gtk-theme
+  sudo snap install whitesur-gtk-theme
 
   for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
-    rootify snap connect "${i}:gtk-3-themes"    "whitesur-gtk-theme:gtk-3-themes"
-    rootify snap connect "${i}:icon-themes"     "whitesur-gtk-theme:icon-themes"
+    sudo snap connect "${i}:gtk-3-themes"    "whitesur-gtk-theme:gtk-3-themes"
+    sudo snap connect "${i}:icon-themes"     "whitesur-gtk-theme:icon-themes"
   done
 }
 
 disconnect_snap() {
   for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
-    rootify snap disconnect "${i}:gtk-3-themes" "whitesur-gtk-theme:gtk-3-themes"
-    rootify snap disconnect "${i}:icon-themes"  "whitesur-gtk-theme:icon-themes"
+    sudo snap disconnect "${i}:gtk-3-themes" "whitesur-gtk-theme:gtk-3-themes"
+    sudo snap disconnect "${i}:icon-themes"  "whitesur-gtk-theme:icon-themes"
   done
 }
 
@@ -651,73 +772,21 @@ customize_theme() {
 # values are taken from _variables.scss
 
 show_panel_opacity_dialog() {
-  if [[ -x /usr/bin/dialog ]]; then
-    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-        --radiolist "Choose your panel background opacity
-                (Default is 0.15. The less value, the more transparency!):" 20 50 10 \
-      0 "${PANEL_OPACITY_VARIANTS[0]}" on    \
-      1 "0.${PANEL_OPACITY_VARIANTS[1]}" off \
-      2 "0.${PANEL_OPACITY_VARIANTS[2]}" off \
-      3 "0.${PANEL_OPACITY_VARIANTS[3]}" off \
-      4 "0.${PANEL_OPACITY_VARIANTS[4]}" off --output-fd 1 )
-      case "$tui" in
-        0) panel_opacity="${PANEL_OPACITY_VARIANTS[0]}" ;;
-        1) panel_opacity="${PANEL_OPACITY_VARIANTS[1]}" ;;
-        2) panel_opacity="${PANEL_OPACITY_VARIANTS[2]}" ;;
-        3) panel_opacity="${PANEL_OPACITY_VARIANTS[3]}" ;;
-        4) panel_opacity="${PANEL_OPACITY_VARIANTS[4]}" ;;
-        *) operation_aborted ;;
-      esac
-  fi
-
-  clear
+  install_dialog_deps
+  dialogify panel_opacity "${THEME_NAME}" "Choose your panel opacity (Default is 15)" ${PANEL_OPACITY_VARIANTS[*]}
 }
 
 show_sidebar_size_dialog() {
-  if [[ -x /usr/bin/dialog ]]; then
-    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-    --radiolist "Choose your Nautilus sidebar size (default is 200px width):" 15 40 5 \
-      0 "${SIDEBAR_SIZE_VARIANTS[0]}" on  \
-      1 "${SIDEBAR_SIZE_VARIANTS[1]}px" off \
-      2 "${SIDEBAR_SIZE_VARIANTS[2]}px" off \
-      3 "${SIDEBAR_SIZE_VARIANTS[3]}px" off \
-      4 "${SIDEBAR_SIZE_VARIANTS[4]}px" off --output-fd 1 )
-      case "$tui" in
-        0) sidebar_size="${SIDEBAR_SIZE_VARIANTS[0]}" ;;
-        1) sidebar_size="${SIDEBAR_SIZE_VARIANTS[1]}" ;;
-        2) sidebar_size="${SIDEBAR_SIZE_VARIANTS[2]}" ;;
-        3) sidebar_size="${SIDEBAR_SIZE_VARIANTS[3]}" ;;
-        4) sidebar_size="${SIDEBAR_SIZE_VARIANTS[4]}" ;;
-        *) operation_aborted ;;
-      esac
-  fi
-
-  clear
+  install_dialog_deps
+  dialogify sidebar_size "${THEME_NAME}" "Choose your Nautilus minimum sidebar size (default is 200px)" ${SIDEBAR_SIZE_VARIANTS[*]}
 }
 
 show_nautilus_style_dialog() {
-  if [[ -x /usr/bin/dialog ]]; then
-    tui=$(dialog --backtitle "${THEME_NAME} gtk theme installer" \
-    --radiolist "Choose your Nautilus style (default is BigSur-like style):" 15 40 5 \
-      0 "${NAUTILUS_STYLE_VARIANTS[0]}" on \
-      1 "${NAUTILUS_STYLE_VARIANTS[1]}" off \
-      1 "${NAUTILUS_STYLE_VARIANTS[2]}" off \
-      2 "${NAUTILUS_STYLE_VARIANTS[3]}" off --output-fd 1 )
-      case "$tui" in
-        0) nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}" ;;
-        1) nautilus_style="${NAUTILUS_STYLE_VARIANTS[1]}" ;;
-        2) nautilus_style="${NAUTILUS_STYLE_VARIANTS[2]}" ;;
-        3) nautilus_style="${NAUTILUS_STYLE_VARIANTS[3]}" ;;
-        *) operation_aborted ;;
-      esac
-  fi
-
-  clear
+  install_dialog_deps
+  dialogify nautilus_style "${THEME_NAME}" "Choose your Nautilus style (default is BigSur-like style)" ${NAUTILUS_STYLE_VARIANTS[*]}
 }
 
 show_needed_dialogs() {
-  if [[ "${need_dialog[@]}" =~ "true" ]]; then install_dialog_deps; fi
-
   if [[ "${need_dialog["-p"]}" == "true" ]]; then show_panel_opacity_dialog; fi
   if [[ "${need_dialog["-s"]}" == "true" ]]; then show_sidebar_size_dialog; fi
   if [[ "${need_dialog["-N"]}" == "true" ]]; then show_nautilus_style_dialog; fi

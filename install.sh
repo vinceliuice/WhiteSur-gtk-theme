@@ -3,10 +3,10 @@
 # WARNING: Please make this shell not working-directory dependant, for example
 # instead of using 'ls blabla', use 'ls "${REPO_DIR}/blabla"'
 #
-# WARNING: Please don't use sudo directly here since it steals our EXIT trap
-#
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
+#
+# SUGGESTION: Please don't put any dependency installation here
 
 ###############################################################################
 #                             VARIABLES & HELP                                #
@@ -42,6 +42,7 @@ usage() {
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
   helpify "--dialog, --interactive"       ""                                          "Run this installer interactively, with dialogs"   ""
   helpify "-r, --remove, -u, --uninstall" ""                                          "Remove all installed ${THEME_NAME} themes"        ""
+  helpify "--silent-mode"                 ""                                          "Meant for developers: ignore any confirm prompt and params become more strict" ""
   helpify "-h, --help"                    ""                                          "Show this help"                                   ""
 }
 
@@ -50,6 +51,8 @@ usage() {
 ###############################################################################
 
 #-----------------------------PARSE ARGUMENTS---------------------------------#
+
+echo
 
 while [[ $# -gt 0 ]]; do
   # Don't show any dialog here. Let this loop checks for errors or shows help
@@ -65,8 +68,12 @@ while [[ $# -gt 0 ]]; do
       # Parameters that don't require value
     -r|--remove|-u|-uninstall)
       uninstall='true'; shift ;;
+    --silent-mode)
+      full_sudo "${1}"; silent_mode='true'; shift ;;
     --dialog|--interactive)
       interactive='true'; shift ;;
+    -h|--help)
+      need_help="true"; shift ;;
     --normal|--normalshowapps)
       showapps_normal="true"; shift ;;
     --right|--rightplacement)
@@ -75,8 +82,6 @@ while [[ $# -gt 0 ]]; do
       max_round="true"; shift ;;
     -HD|--highdefinition)
       compact="false"; shift ;;
-    -h|--help)
-      need_help="true"; shift ;;
       # Parameters that require value, single use
     -b|--background)
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
@@ -117,11 +122,9 @@ if [[ "${uninstall}" == 'true' ]]; then
   remove_themes
   prompt -s "Done! All '${name}' themes has been removed."
 else
-  install_theme_deps; echo
-
   if [[ "${interactive}" == 'true' ]]; then
     show_panel_opacity_dialog; show_sidebar_size_dialog; show_nautilus_style_dialog
-    prompt -w "DIALOG: '--size' and '--panel' parameters are ignored if exist."; echo
+    echo; prompt -w "DIALOG: '--size' and '--panel' parameters are ignored if exist."; echo
   else
     show_needed_dialogs
   fi
@@ -143,7 +146,7 @@ else
 
   # rm -rf "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
 
-  if is_my_distro "arch" && has_command xfce4-session; then
+  if (is_my_distro "arch" || is_my_distro "void") && has_command xfce4-session; then
     msg="XFCE: you may need to logout after changing your theme to fix your panel opacity."
     notif_msg="${msg}\n\n${final_msg}"
 
@@ -152,6 +155,8 @@ else
     notif_msg="${final_msg}"
   fi
 
-  echo; prompt -w "${final_msg}"; echo
+  echo; prompt -w "${final_msg}"
   [[ -x /usr/bin/notify-send ]] && notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
 fi
+
+echo

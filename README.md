@@ -8,20 +8,15 @@
 # Installation is easy!
 <details> <summary> Required dependencies info for nerds </summary>
 
-### Gtk2 theme required
-- gtk-murrine-engine     `Fedora/RedHat`
-- gtk2-engines-murrine   `Ubuntu/Mint/Debian`
-- gtk-engine-murrine     `Arch/Manjaro`
-
-### Install from source required
+### "Install from source" deps
 - sassc
 - libglib2.0-dev-bin     `ubuntu 20.04`
 - libglib2.0-dev         `ubuntu 18.04` `debian 10.03` `linux mint 19`
 - libxml2-utils          `ubuntu 18.04` `debian 10.03` `linux mint 19`
 - glib2-devel            `Fedora` `Redhat`
 
-### Theme tweaks required
-- imagemagick            `(optional for Gdm theme tweaks)`
+### Misc deps
+- imagemagick            `(optional for GDM theme tweak)`
 - dialog                 `(optional for installation in dialog mode)`
 - optipng                `(optional for asset rendering)`
 - inkscape               `(optional for asset rendering)`
@@ -29,28 +24,30 @@
 Don't worry, WhiteSur installer already provides all of those dependencies.
 </details>
 
-<details> <summary> Recommended gnome-shell extensions </summary>
+<details> <summary> Recommended GNOME Shell extensions </summary>
 
-- [floating-dock](https://extensions.gnome.org/extension/3730/floating-dock) `Gnome-shell <= 3.38`
-- [dash-to-dock](https://extensions.gnome.org/extension/307/dash-to-dock) `Gnome-shell <= 3.38`
-- [dash-to-dock](https://github.com/ewlsh/dash-to-dock/tree/ewlsh/gnome-40) `Gnome-shell >= 40.0`
+- [dash-to-dock](https://extensions.gnome.org/extension/307/dash-to-dock) `gnome-shell <= 3.38`
+- [dash-to-dock](https://github.com/ewlsh/dash-to-dock/tree/ewlsh/gnome-40)
+(GNOME Shell 40 patch) `gnome-shell >= 40.0`
+- [floating-dock](https://extensions.gnome.org/extension/3730/floating-dock)
+(Dash to Dock alternative) `gnome-shell <= 3.38`
 - [blur-my-shell](https://extensions.gnome.org/extension/3193/blur-my-shell)
 
 </details>
 
 ## Quick install
 
-### Use the stable package
-You can choose the compressed file [compiled in stable version](stable-release) and unzip it to the theme folder `~/.themes` under the user folder.
+### Using a stable package
+Choose a [stable package](stable-release) and unzip it to the user theme folder `~/.themes`.
 
-### Compile from source
-You can run `./install.sh` to install the default WhiteSur GTK theme pack which includes
+### Installing from source
+Run `./install.sh` to install the default WhiteSur GTK theme pack which includes
 GNOME Shell (Pantheon), Cinnamon, XFWM (XFCE), Metacity, and Plank themes.
 
 ## There's so many customizations you can do!
 Usage:  `./install.sh [OPTIONS...]`
 
-<details> <summary> Install OPTIONS </summary>
+<details> <summary> Options </summary>
 
 ```bash
 -d, --dest [DIR] # Set destination directory. Default is '/home/vince/.themes'
@@ -147,7 +144,7 @@ control button variant, etc.
 # Let's tweak!
 Usage:  `./tweaks.sh [OPTIONS...]`
 
-<details> <summary> TWEAKS OPTIONS </summary>
+<details> <summary> Options </summary>
 
 ```bash
 -f, --firefox
@@ -238,7 +235,7 @@ Example: `./tweaks.sh -d -c dark`
 <p align="center"> <img src="docs/gdm.png"/> </p>
 
 #### Install GDM theme
-Parameter: `--gdm` `-g` (requires to be ran as root)
+Parameter: `--gdm` `-g` (requires to be run as root)
 
 Example: `sudo ./tweaks.sh -g`
 
@@ -253,8 +250,8 @@ sudo ./tweaks.sh -g -b default          # use the default background
 sudo ./tweaks.sh -g -b blank            # make it blank
 ```
 
-#### Make the background not darker (normal)
-Parameter: `--no_darken` `-N`
+#### Don't darken the background
+Parameter: `--no-darken` `-N`
 
 Example:
 
@@ -329,4 +326,4 @@ Note:
 <br><br>
 
 # Technical details and getting involved
-Please go read [CONTRIBUTING.md](CONTRIBUTING.md) for more info
+Please go read [CONTRIBUTING.md](.github/CONTRIBUTING.md) for more info
