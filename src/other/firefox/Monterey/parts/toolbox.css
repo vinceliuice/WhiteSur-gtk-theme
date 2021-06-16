@@ -13,11 +13,13 @@
 	background: var(--gnome-toolbar-background) !important;
 	border-bottom: none !important;
 }
+
 findbar {
 	border: 0 !important;
 	background: var(--gnome-findbar-background) !important;
 	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
 }
+
 #nav-bar:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive, #toolbar-menubar:-moz-window-inactive,
 #TabsToolbar:-moz-window-inactive, findbar:-moz-window-inactive {

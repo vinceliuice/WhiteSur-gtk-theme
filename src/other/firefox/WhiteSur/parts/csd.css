@@ -8,7 +8,7 @@
 
 /* Headerbar top border corners rounded */
 :root[tabsintitlebar]:not([inFullscreen]):not([sizemode="maximized"]) #nav-bar {
-	border-radius: 16px 16px 0 0 !important;
+	border-radius: 12px 12px 0 0 !important;
 }
 
 /* Window buttons: at least 1 button */
