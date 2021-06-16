@@ -136,6 +136,10 @@ $raven_padding: 8px;
 
   scrolledwindow.sidebar.categories {  //AppMenu (budgie)
     border-bottom-left-radius: $wm_radius;
+
+    button.flat.category-button {
+      @extend %flat_button;
+    }
   }
 
   treeview.view.sidebar {
@@ -493,7 +497,7 @@ popover.background.places-menu {
       background-image: none;
       font-weight: normal;
 
-      &:hover { background-color: $selected_bg_color; }
+      &:hover { background-color: if($trans == 'false' and $variant == 'light', $divider_color, $light_divider_color); }
       &:disabled { color: transparentize($panel_fg, 0.6); }
 
       &.budgie-menubar {
