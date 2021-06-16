@@ -5,6 +5,16 @@
  * - bookmark bar (toolbar#PersonalToolbar)
  * - add-ons can add their own toolbars (toolbar) */
 
+/* buttons on left headerbar */
+@import "left_header_button_3.css";
+/*@import "left_header_button_4.css";*/
+/*@import "left_header_button_5.css";*/
+
+/* buttons on right headerbar */
+@import "right_header_button_3.css";
+/*@import "right_header_button_4.css";*/
+/*@import "right_header_button_5.css";*/
+
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 #nav-bar, #PersonalToolbar, #toolbar-menubar {
@@ -41,27 +51,8 @@ findbar {
 	margin-top: -43px !important;
 	padding: 0 !important;
 	margin-bottom: 0 !important;
-	margin-left: 460px !important;
-	margin-right: 12vw !important;
 	background: none !important;
 }
-
-:root[sizemode="maximized"] #TabsToolbar {
-	margin-left: 500px !important;
-}
-
-/* Left window titlebuttons mode */
-@media (-moz-gtk-csd-reversed-placement) {
-	#TabsToolbar {
-		margin-left: 534px !important;
-		margin-right: 5vw !important;
-	}
-
-	:root[sizemode="maximized"] #TabsToolbar {
-		margin-left: 574px !important;
-	}
-}
-
 #nav-bar {
 	border: none !important;
 	box-shadow: none !important;
