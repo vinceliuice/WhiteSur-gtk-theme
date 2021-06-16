@@ -278,7 +278,8 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	animation: none !important;
 }
 
-#identity-icon {
+#identity-box[pageproxystate="valid"].verifiedDomain #identity-icon,
+#identity-box[pageproxystate="valid"].mixedActiveBlocked #identity-icon {
 	list-style-image: url("../icons/folder-locked-symbolic.svg") !important;
 }
 
@@ -502,7 +503,6 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	#new-window-button .toolbarbutton-icon,
 	#screenshot-button .toolbarbutton-icon,
 	#tracking-protection-icon,
-	#identity-icon,
 	#pageActionButton,
 	#permissions-granted-icon,
 	#tracking-protection-icon-animatable-image,
@@ -517,6 +517,8 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	.microphone-icon,
 	.plugin-icon, .autoplay-media-icon,
 	.popup-notification-icon[popupid="drmContentPlaying"], .drm-icon,
+	#identity-box[pageproxystate="valid"].verifiedDomain #identity-icon,
+	#identity-box[pageproxystate="valid"].mixedActiveBlocked #identity-icon,
 	.bookmark-item[container] .toolbarbutton-icon {
 		filter: invert(60%) brightness(150%);
 	}
