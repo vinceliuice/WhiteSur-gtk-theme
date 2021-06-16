@@ -48,6 +48,18 @@ findbar {
 	margin-left: 500px !important;
 }
 
+/* Left window titlebuttons mode */
+@media (-moz-gtk-csd-reversed-placement) {
+	#TabsToolbar {
+		margin-left: 534px !important;
+		margin-right: 5vw !important;
+	}
+
+	:root[sizemode="maximized"] #TabsToolbar {
+		margin-left: 574px !important;
+	}
+}
+
 #nav-bar {
 	border: none !important;
 	box-shadow: none !important;
