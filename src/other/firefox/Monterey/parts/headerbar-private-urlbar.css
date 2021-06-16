@@ -1,0 +1,39 @@
+/* Private window header bar's URL bar */
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+:root[privatebrowsingmode="temporary"] #nav-bar toolbarspring:first-of-type:before {
+	background: url("../icons/user-not-tracked.svg") no-repeat;
+	background-size: contain;
+	content: "";
+	display: block;
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	top: 8px;
+	opacity: 0.3;
+	transform: translate(15px, 0);
+}
+
+:root[privatebrowsingmode="temporary"] #nav-bar toolbarspring:first-of-type:-moz-lwtheme-brighttext:before {
+	background-image: url("../icons/user-not-tracked-dark.svg");
+}
+
+@media (prefers-color-scheme: dark) {
+	:root[privatebrowsingmode="temporary"] #nav-bar toolbarspring:first-of-type:before {
+		background: url("../icons/user-not-tracked-dark.svg") no-repeat;
+		background-size: contain;
+		content: "";
+		display: block;
+		position: absolute;
+		width: 32px;
+		height: 32px;
+		top: 8px;
+		opacity: 0.3;
+		transform: translate(15px, 0);
+	}
+}
+
+#TabsToolbar .private-browsing-indicator {
+	display: none !important;
+}

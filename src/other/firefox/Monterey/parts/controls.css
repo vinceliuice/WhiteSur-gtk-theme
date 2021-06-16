@@ -1,0 +1,53 @@
+/* Controls */
+/* Switchers, Checkboxes, etc. */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Switchers */
+.protections-popup-tp-switch-box {
+	padding: 0 !important;
+	-moz-box-pack: start !important;
+}
+#protections-popup-tp-switch:not([enabled])[showdotindicator]::after {
+	display: none !important;
+}
+#protections-popup-tp-switch {
+	background: var(--gnome-switch-background) !important;
+	border: 1px solid var(--gnome-switch-border-color) !important;
+	border-radius: 24px !important;
+	min-width: 50px !important;
+	width: 50px !important;
+	min-height: 26px !important;
+	padding: 0 !important;
+	position: relative !important;
+	display: block !important;
+	margin: 0 !important;
+}
+#protections-popup-tp-switch:hover {
+	border-color: var(--gnome-switch-border-color) !important;
+}
+#protections-popup-tp-switch::before {
+	position: absolute !important;
+	top: 0px;
+	left: 0px;
+	background: var(--gnome-switch-slider-background) !important;
+	border: 1px solid var(--gnome-switch-slider-border-color) !important;
+	box-shadow: var(--gnome-switch-slider-box-shadow);
+	border-radius: 24px !important;
+	height: 24px !important;
+	width: 24px !important;
+	transition: left .2s ease;
+	outline: 0 !important;
+}
+#protections-popup-tp-switch[enabled] {
+	background: var(--gnome-switch-active-background) !important;
+	border-color: var(--gnome-switch-active-border-color) !important;
+	padding-inline-start: 24px !important;
+}
+#protections-popup-tp-switch[enabled]:hover {
+	border-color: var(--gnome-switch-active-border-color) !important;
+}
+#protections-popup-tp-switch[enabled]::before {
+	border-color: var(--gnome-switch-active-slider-border-color) !important;
+	left: 24px;
+}

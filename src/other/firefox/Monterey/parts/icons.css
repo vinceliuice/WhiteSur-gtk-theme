@@ -1,0 +1,544 @@
+/* Replace icons */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Built-in firefox icons color */
+.toolbarbutton-icon,
+.protections-popup-category-icon,
+.protections-popup-footer-icon {
+	fill: var(--gnome-toolbar-color) !important;
+	fill-opacity: 1 !important;
+}
+
+/* Tabs scroll icons */
+#TabsToolbar .scrollbutton-up {
+	list-style-image: url("../icons/pan-start-symbolic.svg") !important;
+}
+#TabsToolbar .scrollbutton-down {
+	list-style-image: url("../icons/pan-start-symbolic.svg") !important;
+}
+
+/* Popovers subview menu arrow */
+.PanelUI-subView .subviewbutton-nav::after {
+	content: "" !important;
+	background: url("../icons/pan-start-symbolic.svg");
+	background-size: contain;
+	height: 16px;
+	width: 16px;
+	margin-top: -2px !important;
+}
+.protections-popup-category::after {
+	content: url("../icons/pan-start-symbolic.svg") !important;
+}
+.identity-popup-content-blocking-category::after {
+	content: url("../icons/pan-start-symbolic.svg") !important;
+}
+#identity-popup-security-expander .button-icon {
+	list-style-image: url("../icons/pan-start-symbolic.svg") !important;
+}
+
+/* Popovers subview back button */
+.subviewbutton-back {
+	list-style-image: url("../icons/pan-start-symbolic.svg") !important;
+}
+
+/* Sub menu arrow */
+.menu-right {
+	-moz-appearance: none !important;
+	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
+	width: 16px !important;
+	height: 16px !important;
+}
+menu[disabled] > .menu-right {
+	opacity: 0.3;
+}
+menu:not([disabled]):hover > .menu-right {
+	filter: invert(100%) brightness(200%);
+}
+
+/* Arrow down buttons */
+.expander-down > .button-box,
+#sidebar-switcher-arrow,
+#viewButton .button-menu-dropmarker {
+	-moz-appearance: none !important;
+	list-style-image: url("../icons/pan-down-symbolic.svg") !important;
+	width: 16px !important;
+	height: 16px !important;
+}
+.menulist-label-box:after {
+	content: url("../icons/pan-down-symbolic.svg") !important;
+}
+
+/* Arrow up buttons */
+.expander-up > .button-box {
+	-moz-appearance: none !important;
+	list-style-image: url("../icons/pan-up-symbolic.svg") !important;
+	width: 16px !important;
+	height: 16px !important;
+}
+
+/* Search entries */
+#urlbar[pageproxystate="invalid"] > #identity-box > #identity-icon,
+.searchbar-search-icon,
+#search-box .textbox-search-sign {
+	list-style-image: url("../icons/edit-find-symbolic.svg") !important;
+	opacity: 0.7 !important;
+}
+#search-box .textbox-search-sign {
+	width: 16px !important;
+	margin: 2px 0;
+}
+
+/* Tree views */
+treechildren::-moz-tree-twisty {
+	list-style-image: url("../icons/pan-down-symbolic.svg") !important;
+	width: 16px !important;
+	height: 16px !important;
+}
+treechildren::-moz-tree-twisty(open) {
+	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
+}
+treechildren::-moz-tree-twisty(selected, focus) {
+	list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
+}
+treechildren::-moz-tree-twisty(selected, focus, open) {
+	list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
+}
+
+.sidebar-panel[lwt-sidebar-brighttext] .sidebar-placesTreechildren::-moz-tree-twisty {
+	list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
+}
+.sidebar-panel[lwt-sidebar-brighttext] .sidebar-placesTreechildren::-moz-tree-twisty(open) {
+	list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
+}
+/* Sidebar: History: clock icon */
+#historyTree treechildren::-moz-tree-image {
+	list-style-image: url("../icons/preferences-system-time-symbolic.svg") !important;
+}
+
+/* Menu checkbox */
+menuitem[type="checkbox"] {
+	list-style-image: url("../icons/checkbox-symbolic.svg") !important;
+}
+menuitem[type="checkbox"][hover="true"] {
+
+}
+menuitem[type="checkbox"][checked="true"] {
+	list-style-image: url("../icons/checkbox-checked-symbolic.svg") !important;
+}
+menuitem[type="checkbox"][disabled="true"] .menu-iconic-icon {
+	opacity: 0.5;
+}
+menuitem[type="checkbox"]:not([disabled="true"]):hover .menu-iconic-icon {
+	filter: invert(100%) brightness(200%);
+}
+
+/* Menu radio */
+menuitem[type="radio"] {
+	list-style-image: url("../icons/radio-symbolic.svg") !important;
+}
+menuitem[type="radio"][checked="true"] {
+	list-style-image: url("../icons/radio-checked-symbolic.svg") !important;
+}
+menuitem[type="radio"][disabled="true"] .menu-iconic-icon {
+	opacity: 0.5;
+}
+menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
+	filter: invert(100%) brightness(200%);
+}
+
+/* Close button */
+.close-icon:not(.tab-close-button),
+.identity-popup-permission-remove-button .button-icon {
+	list-style-image: url("../icons/window-close-symbolic.svg") !important;
+}
+
+/* Private browsing button */
+#privatebrowsing-button {
+	list-style-image: url("../icons/user-not-tracked.svg") !important;
+}
+/* Sidebar button */
+#sidebar-button:-moz-locale-dir(ltr):not([positionend]) .toolbarbutton-icon, #sidebar-button:-moz-locale-dir(rtl)[positionend]  .toolbarbutton-icon {
+	list-style-image: url("../icons/toggle-sidebar-symbolic.svg") !important;
+}
+#sidebar-button .toolbarbutton-icon {
+	list-style-image: url("../icons/toggle-right-sidebar-symbolic.svg");
+}
+/* Back button */
+#nav-bar #back-button .toolbarbutton-icon,
+#context-back {
+	list-style-image: url("../icons/go-previous-symbolic.svg") !important;
+}
+/* Forward button */
+#nav-bar #forward-button .toolbarbutton-icon,
+#context-forward {
+	list-style-image: url("../icons/go-next-symbolic.svg") !important;
+}
+/* Menu button */
+#PanelUI-menu-button {
+	list-style-image: url("../icons/open-menu-symbolic.svg") !important;
+}
+/* New tab button */
+#new-tab-button,
+.tabs-newtab-button,
+#tabs-newtab-button,
+#TabsToolbar {
+	list-style-image: url("../icons/tab-new-symbolic.svg") !important;
+}
+/* Home button */
+#home-button {
+	list-style-image: url("../icons/user-home-symbolic.svg") !important;
+}
+/* Preferences button */
+#preferences-button {
+	list-style-image: url("../icons/preferences-system-symbolic.svg") !important;
+}
+/* Fullscreen button */
+#fullscreen-button,
+#appMenu-fullscreen-button {
+	list-style-image: url("../icons/view-fullscreen-symbolic.svg") !important;
+}
+/* Zoom out button */
+#zoom-out-button,
+#appMenu-zoomReduce-button {
+	list-style-image: url("../icons/zoom-out-symbolic.svg") !important;
+}
+/* Zoom in button */
+#zoom-in-button,
+#appMenu-zoomEnlarge-button {
+	list-style-image: url("../icons/zoom-in-symbolic.svg") !important;
+}
+/* Developer button */
+#developer-button {
+	list-style-image: url("../icons/applications-engineering-symbolic.svg") !important;
+}
+/* Email link button */
+#email-link-button {
+	list-style-image: url("../icons/mail-unread-symbolic.svg") !important;
+}
+/* Print button */
+#print-button {
+	list-style-image: url("../icons/printer-symbolic.svg") !important;
+}
+/* Addons button */
+#add-ons-button {
+	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
+}
+/* Find button */
+#find-button {
+	list-style-image: url("../icons/edit-find-symbolic.svg") !important;
+}
+/* New window button */
+#new-window-button {
+	list-style-image: url("../icons/window-new-symbolic.svg") !important;
+}
+/* Bookmarks menu button */
+#bookmarks-menu-button {
+	list-style-image: url("../icons/bookmarks-symbolic.svg") !important;
+}
+/* History button */
+#history-panelmenu {
+	list-style-image: url("../icons/preferences-system-time-symbolic.svg") !important;
+}
+/* All tabs button */
+#alltabs-button {
+	list-style-image: url("../icons/pan-down-symbolic.svg") !important;
+}
+/* Cut button */
+#cut-button,
+#appMenu-cut-button {
+	list-style-image: url("../icons/edit-cut-symbolic.svg") !important;
+}
+/* Copy button */
+#copy-button,
+#appMenu-copy-button {
+	list-style-image: url("../icons/edit-copy-symbolic.svg") !important;
+}
+/* Paste button */
+#paste-button,
+#appMenu-paste-button {
+	list-style-image: url("../icons/edit-paste-symbolic.svg") !important;
+}
+/* Overflow button */
+#nav-bar-overflow-button {
+	list-style-image: url("../icons/view-more-horizontal-symbolic.svg") !important;
+}
+
+/* Glitch - animations (may be possible to fix in about:config) */
+#reload-button { /* Reload button */
+	list-style-image: url("../icons/view-refresh-symbolic.svg") !important;
+	animation: none !important;
+}
+#stop-button { /* Stop button */
+	list-style-image: url("../icons/process-stop-symbolic.svg") !important;
+	animation: none !important;
+}
+#downloads-button .toolbarbutton-icon { /* Downloads button / Glitch - it swaps to the default one anyway */
+	list-style-image: url("../icons/folder-download-symbolic.svg") !important;
+	animation: none !important;
+}
+
+#identity-icon {
+	list-style-image: url("../icons/folder-locked-symbolic.svg") !important;
+}
+
+#pageActionButton, .share-more-button {
+	list-style-image: url("../icons/page-action.svg") !important;
+}
+
+#pocket-button, #pageAction-panel-pocket {
+	list-style-image: url("../icons/save-to-pocket.svg") !important;
+}
+
+#star-button {
+	list-style-image: url("../icons/star-symbolic.svg") !important;
+}
+
+#star-button[starred] {
+	list-style-image: url("../icons/starred-symbolic.svg") !important;
+}
+
+#plugins-notification-icon:not(.plugin-blocked)[extraAttr="inactive"] > .plugin-icon {
+	fill-opacity: 0.25;
+	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
+}
+
+#plugins-notification-icon:not(.plugin-blocked)[extraAttr="active"] > .plugin-icon {
+	fill-opacity: 1;
+	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
+}
+
+.plugin-icon {
+	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
+}
+
+.plugin-blocked > .plugin-icon {
+	list-style-image: url("../icons/application-x-addon-blocked-symbolic.svg") !important;
+}
+
+.autoplay-media-icon {
+	list-style-image: url("../icons/autoplay-media-symbolic.svg") !important;
+}
+
+.autoplay-media-icon.blocked-permission-icon {
+	list-style-image: url("../icons/autoplay-media-blocked-symbolic.svg") !important;
+}
+
+.popup-notification-icon[popupid="drmContentPlaying"], .drm-icon {
+	list-style-image: url("../icons/drm-symbolic.svg") !important;
+}
+
+#reader-mode-button {
+	list-style-image: url("../icons/reader-mode.svg") !important;
+}
+
+#permissions-granted-icon {
+	list-style-image: url("../icons/permissions-granted.svg") !important;
+}
+
+#tracking-protection-icon {
+	list-style-image: url("../icons/tracking-protection.svg") !important;
+}
+
+#tracking-protection-icon-animatable-image {
+	background-image: url("../icons/tracking-protection-animatable.svg") !important;
+}
+
+#library-button {
+	list-style-image: url("../icons/library-symbolic.svg") !important;
+}
+
+#import-button {
+	list-style-image: url("../icons/import-symbolic.svg") !important;
+}
+
+#panic-button {
+	list-style-image: url("../icons/forget-history-symbolic.svg") !important;
+}
+
+#sync-button {
+	list-style-image: url("../icons/tab-sync-symbolic.svg") !important;
+}
+
+#open-file-button {
+	list-style-image: url("../icons/open-folder-symbolic.svg") !important;
+}
+
+#save-page-button {
+	list-style-image: url("../icons/save-folder-symbolic.svg") !important;
+}
+
+#characterencoding-button {
+	list-style-image: url("../icons/character-symbolic.svg") !important;
+}
+
+#screenshot-button {
+	list-style-image: url("../icons/screenshot-symbolic.svg") !important;
+}
+
+.popup-notification-icon[popupid="web-notifications"], .desktop-notification-icon {
+	list-style-image: url("../icons/notification-symbolic.svg") !important;
+}
+
+#geo-sharing-icon[sharing], .geo-icon {
+	list-style-image: url("../icons/geo.svg") !important;
+}
+
+.blocked-permission-icon.popup-icon {
+	list-style-image: url("../icons/blocked-permission-symbolic.svg") !important;
+}
+
+#webrtc-sharing-icon[sharing="screen"],
+.screen-icon {
+	list-style-image: url("../icons/screen-symbolic.svg") !important;
+}
+
+.screen-icon.blocked-permission-icon {
+	list-style-image: url("../icons/screen-blocked-symbolic.svg") !important;
+}
+
+#webrtc-sharing-icon[sharing="microphone"],
+.microphone-icon {
+	list-style-image: url("../icons/microphone-symbolic.svg") !important;
+}
+
+#webrtc-sharing-icon[sharing]:not([paused]) {
+	-moz-context-properties: fill !important;
+	fill: rgb(224, 41, 29) !important;
+}
+
+.bookmark-item[container] {
+	list-style-image: url("../icons/folder-symbolic.svg") !important;
+}
+
+.tab-icon-image {
+	list-style-image: url("../icons/network-workgroup-symbolic.svg") !important;
+	-moz-context-properties: fill;
+	fill: currentColor;
+}
+
+/* Invert icons color in dark variant */
+@media (prefers-color-scheme: dark) {
+	.PanelUI-subView .subviewbutton-nav::after,
+	.protections-popup-category::after,
+	.identity-popup-content-blocking-category::after,
+	#identity-popup-security-expander .button-icon,
+	.subviewbutton-back .toolbarbutton-icon,
+
+	.menu-right,
+
+	#urlbar[pageproxystate="invalid"] > #identity-box > #identity-icon,
+	.searchbar-search-icon,
+	#search-box .textbox-search-sign,
+
+	.menulist-label-box:after,
+	.expander-down image,
+	.expander-up image,
+	#sidebar-switcher-arrow,
+	#viewButton .button-menu-dropmarker,
+
+	menuitem[type="checkbox"] .menu-iconic-icon,
+	menuitem[type="radio"] .menu-iconic-icon,
+
+	.close-icon:not(.tab-close-button) image,
+	.identity-popup-permission-remove-button .button-icon,
+
+	:root[tabsintitlebar] #titlebar .titlebar-buttonbox .titlebar-close .toolbarbutton-icon,
+	:root[tabsintitlebar] #titlebar #titlebar-close .toolbarbutton-icon,
+	:root[tabsintitlebar] #titlebar .titlebar-buttonbox .titlebar-max .toolbarbutton-icon,
+	:root[tabsintitlebar] #titlebar #titlebar-max .toolbarbutton-icon,
+	:root[tabsintitlebar] #titlebar .titlebar-buttonbox .titlebar-min .toolbarbutton-icon,
+	:root[tabsintitlebar] #titlebar #titlebar-min .toolbarbutton-icon,
+	:root[tabsintitlebar][inFullscreen] #window-controls #restore-button .toolbarbutton-icon,
+
+	.popup-notification-icon[popupid="web-notifications"], .desktop-notification-icon,
+
+	#import-button .toolbarbutton-icon,
+	#panic-button .toolbarbutton-icon,
+	#open-file-button .toolbarbutton-icon,
+	#save-page-button .toolbarbutton-icon,
+	#characterencoding-button .toolbarbutton-icon,
+	#library-button .toolbarbutton-icon,
+	#privatebrowsing-button .toolbarbutton-icon,
+	#sidebar-button:-moz-locale-dir(ltr):not([positionend]) .toolbarbutton-icon,
+	#sidebar-button:-moz-locale-dir(rtl)[positionend] .toolbarbutton-icon,
+	#sidebar-button .toolbarbutton-icon,
+	#nav-bar #back-button .toolbarbutton-icon,
+	#context-back .menu-iconic-icon,
+	#nav-bar #forward-button .toolbarbutton-icon,
+	#context-forward .menu-iconic-icon,
+	#PanelUI-menu-button .toolbarbutton-icon,
+	#new-tab-button .toolbarbutton-icon,
+	.tabs-newtab-button .toolbarbutton-icon,
+	#tabs-newtab-button .toolbarbutton-icon,
+	#TabsToolbar .toolbarbutton-icon,
+	#home-button .toolbarbutton-icon,
+	#preferences-button .toolbarbutton-icon,
+	#fullscreen-button .toolbarbutton-icon,
+	#appMenu-fullscreen-button .toolbarbutton-icon,
+	#zoom-out-button .toolbarbutton-icon,
+	#appMenu-zoomReduce-button .toolbarbutton-icon,
+	#zoom-in-button .toolbarbutton-icon,
+	#appMenu-zoomEnlarge-button .toolbarbutton-icon,
+	#developer-button .toolbarbutton-icon,
+	#email-link-button .toolbarbutton-icon,
+	#print-button .toolbarbutton-icon,
+	#add-ons-button .toolbarbutton-icon,
+	#find-button .toolbarbutton-icon,
+	#bookmarks-menu-button .toolbarbutton-icon,
+	#history-panelmenu .toolbarbutton-icon,
+	#alltabs-button .toolbarbutton-icon,
+	#cut-button .toolbarbutton-icon,
+	#appMenu-cut-button .toolbarbutton-icon,
+	#copy-button .toolbarbutton-icon,
+	#appMenu-copy-button .toolbarbutton-icon,
+	#paste-button .toolbarbutton-icon,
+	#appMenu-paste-button .toolbarbutton-icon,
+	#nav-bar-overflow-button .toolbarbutton-icon,
+	#reload-button .toolbarbutton-icon,
+	#stop-button .toolbarbutton-icon,
+	#downloads-button .toolbarbutton-icon,
+	#sync-button .toolbarbutton-icon,
+	#new-window-button .toolbarbutton-icon,
+	#screenshot-button .toolbarbutton-icon,
+	#tracking-protection-icon,
+	#identity-icon,
+	#pageActionButton,
+	#permissions-granted-icon,
+	#tracking-protection-icon-animatable-image,
+	#reader-mode-button,
+	#star-button:not([starred]),
+	#geo-sharing-icon[sharing], .geo-icon,
+	.blocked-permission-icon.popup-icon,
+	#webrtc-sharing-icon[sharing="screen"],
+	.screen-icon,
+	.screen-icon.blocked-permission-icon,
+	#webrtc-sharing-icon[sharing="microphone"],
+	.microphone-icon,
+	.plugin-icon, .autoplay-media-icon,
+	.popup-notification-icon[popupid="drmContentPlaying"], .drm-icon,
+	.bookmark-item[container] .toolbarbutton-icon {
+		filter: invert(60%) brightness(150%);
+	}
+
+	#pocket-button,
+	#pageAction-panel-pocket {
+		list-style-image: url("../icons/save-to-pocket-light.svg") !important;
+	}
+
+	/* Tree views */
+	treechildren::-moz-tree-twisty {
+		list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
+	}
+	treechildren::-moz-tree-twisty(open) {
+		list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
+	}
+	#historyTree treechildren::-moz-tree-image {
+		list-style-image: url("../icons/preferences-system-time-symbolic-light.svg") !important;
+	}
+
+	/* Fix for extensions icons */
+	.webextension-browser-action {
+		list-style-image: var(--webextension-menupanel-image-light, inherit) !important;
+	}
+}

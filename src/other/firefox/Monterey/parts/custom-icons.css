@@ -1,0 +1,34 @@
+/* Replace icons */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+/* Back button */
+#nav-bar #back-button .toolbarbutton-icon {
+	filter: var(--gnome-icons-hack-filter);
+	list-style-image: url("moz-icon://stock/go-previous-symbolic?size=dialog") !important;;
+}
+
+/* Forward button */
+#nav-bar #forward-button .toolbarbutton-icon {
+	filter: var(--gnome-icons-hack-filter);
+	list-style-image: url("moz-icon://stock/go-next-symbolic?size=dialog") !important;
+}
+
+/* Popovers subview menu arrow */
+.PanelUI-subView .subviewbutton-nav::after {
+	content: "" !important;
+	filter: var(--gnome-icons-hack-filter);
+	background: url("moz-icon://stock/pan-start-symbolic?size=dialog");
+	background-size: contain;
+	height: 16px;
+	width: 16px;
+	margin-top: -2px !important;
+}
+
+/* Popovers subview back button */
+.subviewbutton-back {
+	list-style-image: url("moz-icon://stock/pan-start-symbolic?size=dialog") !important;
+}
+.subviewbutton-back .toolbarbutton-icon {
+	filter: var(--gnome-icons-hack-filter);
+}

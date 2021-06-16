@@ -19,6 +19,6 @@
 
 /* Set theme version text in customization panel */
 #customization-footer::before {
-	content: "Firefox WhiteSur theme";
+	content: "Firefox Monterey theme";
 	padding: 10px;
 }
