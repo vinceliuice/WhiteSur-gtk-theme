@@ -6,12 +6,12 @@
  * - add-ons can add their own toolbars (toolbar) */
 
 /* buttons on left headerbar */
-@import "left_header_button_3.css";
+@import "left_header_button_5.css";
 /*@import "left_header_button_4.css";*/
 /*@import "left_header_button_5.css";*/
 
 /* buttons on right headerbar */
-@import "right_header_button_3.css";
+@import "right_header_button_5.css";
 /*@import "right_header_button_4.css";*/
 /*@import "right_header_button_5.css";*/
 
@@ -53,13 +53,13 @@ findbar {
 	margin-bottom: 0 !important;
 	background: none !important;
 }
+
 #nav-bar {
 	border: none !important;
 	box-shadow: none !important;
 	border-top-width: 0px !important;
 	border-bottom-width: 0px !important;
 	margin-bottom: 0 !important;
-	background: none !important;
 }
 
 #toolbar-menubar:not([inactive=true]) {
