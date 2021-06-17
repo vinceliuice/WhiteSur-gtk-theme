@@ -185,7 +185,7 @@ install_theme_deps() {
 install_beggy_deps() {
   if ! has_command convert; then
     prompt -w "DEPS: 'imagemagick' is required for background editing."
-    prepare_deps
+    prepare_deps; stop_animation
 
     if has_command zypper; then
       sudo zypper in -y ImageMagick
@@ -266,9 +266,8 @@ install_beggy() {
       ;;
     *)
       if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
-        install_beggy_deps; start_animation
+        install_beggy_deps
         convert "${background}" ${CONVERT_OPT}                                                "${WHITESUR_TMP_DIR}/beggy.png"
-        stop_animation
       else
         cp -r "${background}"                                                                 "${WHITESUR_TMP_DIR}/beggy.png"
       fi

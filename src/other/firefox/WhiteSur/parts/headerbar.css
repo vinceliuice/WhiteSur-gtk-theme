@@ -36,6 +36,10 @@
 	--toolbarbutton-inner-padding: 0 !important;
 }
 
+:root:-moz-window-inactive #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton) {
+	background: none !important;
+}
+
 /* Hover headerbar buttons */
 #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([open]):not([disabled]):not([checked]):hover {
 	outline: 0 !important;
@@ -90,6 +94,11 @@
 	height: 32px !important;
 	max-height: 32px !important;
 	transition: box-shadow 200ms;
+}
+
+:root:-moz-window-inactive #nav-bar #searchbar,
+:root:-moz-window-inactive #urlbar #urlbar-input-container {
+	background: var(--gnome-inactive-urlbar-background) !important;
 }
 
 #nav-bar #searchbar:hover,

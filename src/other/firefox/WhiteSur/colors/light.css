@@ -85,7 +85,7 @@
 	--gnome-urlbar-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08), 0 5px 8px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.03);
 	--gnome-urlbar-color: #020202;
 	--gnome-hover-urlbar-border-color: #e5e5e5;
-	--gnome-inactive-urlbar-background: linear-gradient(#fcfcfc, #fcfcfc);
+	--gnome-inactive-urlbar-background: #f0f0f0;
 	--gnome-inactive-urlbar-border-color: #dadada;
 	--gnome-inactive-urlbar-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
 	--gnome-inactive-urlbar-color: #323232;

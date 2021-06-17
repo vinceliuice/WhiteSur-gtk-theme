@@ -645,7 +645,7 @@ sudo() {
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
 
   if ! ${SUDO_BIN} -n true &> /dev/null; then
-    echo -e "${c_magenta}  Authentication is required:${c_default}"
+    echo -e "${c_magenta} Authentication is required${c_default} ${c_green}(Please input your password):${c_default}"
   fi
 
   if [[ -p /dev/stdin ]]; then
@@ -665,7 +665,7 @@ udo() {
   # Just in case. We put the prompt here to make it less annoying
   if ! ${SUDO_BIN} -u "${MY_USERNAME}" -n true &> /dev/null; then
     prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as user"
-    echo -e "${c_magenta}  Authentication is required:${c_default}"
+    echo -e "${c_magenta} Authentication is required${c_default} ${c_green}(Please input your password):${c_default}"
   fi
 
   if [[ -p /dev/stdin ]]; then

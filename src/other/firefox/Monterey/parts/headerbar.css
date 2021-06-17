@@ -98,6 +98,7 @@
 	transition: box-shadow 200ms;
 }
 
+:root:-moz-window-inactive #nav-bar #searchbar,
 :root:-moz-window-inactive #urlbar #urlbar-input-container {
 	background: var(--gnome-inactive-urlbar-background) !important;
 }
