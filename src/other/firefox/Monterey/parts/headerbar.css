@@ -25,9 +25,9 @@
 	background: none !important;
 	-moz-appearance: none !important;
 	border-radius: 8px !important;
-	margin: 10px 2px !important;
+	margin: 8px 2px !important;
 	padding: 0 10px !important;
-	max-height: 30px !important;
+	max-height: 32px !important;
 	min-width: 32px !important;
 	color: var(--gnome-toolbar-color) !important;
 	transition: background 200ms;

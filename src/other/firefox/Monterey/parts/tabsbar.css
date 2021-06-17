@@ -3,8 +3,6 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 .tabbrowser-tab {
-	margin-top: 0 !important;
-	margin-bottom: 11px !important;
 	margin-left: 3px !important;
 	margin-right: 3px !important;
 }
@@ -23,7 +21,7 @@
 
 .tab-background:not([selected=true]) {
 	background: var(--gnome-tabbar-tab-background) !important;
-	transition: background 200ms !important;
+
 }
 
 .tab-background:not([selected=true]):-moz-window-inactive {

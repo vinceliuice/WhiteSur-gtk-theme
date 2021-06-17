@@ -47,11 +47,17 @@ findbar {
 	fill: var(--gnome-toolbar-color);
 }
 
+#titlebar {
+	min-height: 0 !important
+	max-height: 36px !important;
+}
+
 #TabsToolbar {
-	margin-top: -43px !important;
+	margin-top: -44px !important;
 	padding: 0 !important;
-	margin-bottom: 0 !important;
+	margin-bottom: 8px !important;
 	background: none !important;
+	max-height: 36px !important;
 }
 
 #nav-bar {
@@ -59,37 +65,10 @@ findbar {
 	box-shadow: none !important;
 	border-top-width: 0px !important;
 	border-bottom-width: 0px !important;
-	margin-bottom: 0 !important;
 }
 
 #toolbar-menubar:not([inactive=true]) {
 	margin-bottom: 0 !important;
-}
-
-#PersonalToolbar {
-	padding: 2px 4px 0 4px !important;
-	height: 32px !important;
-}
-
-/* Overrides: Remove border below the menu bar / above the header bar */
-#TabsToolbar:not([collapsed="true"]) + #nav-bar {
-	border-top-width: 0 !important;
-}
-
-#navigator-toolbox::after {
-	border-bottom-width: 0 !important;
-}
-
-/* Overrides: Don't shift other toolbars on tab drag and drop */
-#TabsToolbar[movingtab] {
-	padding-bottom: 0 !important;
-}
-#TabsToolbar[movingtab] > .tabbrowser-tabs {
-	padding-bottom: 0 !important;
-	margin-bottom: 0 !important;
-}
-#TabsToolbar[movingtab] + #nav-bar {
-	margin-top: 0 !important;
 }
 
 #navigator-toolbox #nav-bar, findbar {
@@ -105,7 +84,12 @@ findbar {
 	-moz-box-ordinal-group: 3;
 }
 #navigator-toolbox #TabsToolbar {
-	-moz-box-ordinal-group: 2;
+	-moz-box-ordinal-group: 0;
+}
+
+#PersonalToolbar {
+	padding: 2px 4px 0 4px !important;
+	height: 32px !important;
 }
 
 /* bookmark-item */
