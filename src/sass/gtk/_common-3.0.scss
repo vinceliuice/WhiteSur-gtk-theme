@@ -4167,7 +4167,7 @@ decoration {
 //
 // Titlebuttons
 //
-.background headerbar {
+headerbar {
   button.titlebutton {
     &.close, &.maximize, &.minimize {
       min-width: 16px;
@@ -4186,7 +4186,7 @@ decoration {
       &:backdrop { opacity: 1; }
     }
 
-    // Load png assets for each button, Fix the Chrome window restore button bug
+    // Load png assets for each button
     @each $k in ('close', 'maximize', 'minimize') {
       @each $l, $m in ('',''), (':backdrop','-backdrop'), (':backdrop:hover','-backdrop-hover'), (':hover','-hover'), (':active','-active') {
         &.#{$k}#{$l} {
