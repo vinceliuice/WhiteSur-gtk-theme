@@ -19,9 +19,12 @@
 	background-image: none !important;
 }
 
+.tab-background {
+	transition: background 200ms !important;
+}
+
 .tab-background:not([selected=true]) {
 	background: var(--gnome-tabbar-tab-background) !important;
-
 }
 
 .tab-background:not([selected=true]):-moz-window-inactive {
