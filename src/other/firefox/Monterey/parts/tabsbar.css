@@ -13,7 +13,6 @@
 .tab-background {
 	border: none !important;
 	box-shadow: none !important;
-	transition: all 200ms !important;
 	border-radius: 8px !important;
 	height: 32px !important;
 	min-height: 32px !important;
@@ -22,11 +21,9 @@
 	background-image: none !important;
 }
 
-.tab-content {
-}
-
 .tab-background:not([selected=true]) {
 	background: var(--gnome-tabbar-tab-background) !important;
+	transition: background 200ms !important;
 }
 
 .tab-background:not([selected=true]):-moz-window-inactive {
