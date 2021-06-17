@@ -111,15 +111,6 @@ $raven_padding: 8px;
 
   list {
     background-color: transparent;
-
-    &.content-box {
-      row.activatable {
-        padding: 0;
-        background: 0;
-        border: none;
-        box-shadow: none;
-      }
-    }
   }
 
   switch { margin-left: 56px; margin-right: 6px; }
@@ -132,14 +123,6 @@ $raven_padding: 8px;
     font-weight: normal;
 
     &:disabled { color: $disabled_fg_color; }
-  }
-
-  scrolledwindow.sidebar.categories {  //AppMenu (budgie)
-    border-bottom-left-radius: $wm_radius;
-
-    button.flat.category-button {
-      @extend %flat_button;
-    }
   }
 
   treeview.view.sidebar {
@@ -184,11 +167,62 @@ $raven_padding: 8px;
 
   &.budgie-menu {
     .container { padding: 0; }
+
+    &.background {
+      padding: 0;
+      background-color: $base_color;
+    }
+
+    scrollbar,
+    entry.search { background-color: transparent; }
+
+    entry.search {
+      padding: 5px 10px;
+      border: none;
+      border-bottom: 1px solid $borders_color;
+      border-radius: 0;
+      box-shadow: none;
+      font-size: 110%;
+    }
+
+    .categories {
+      &:dir(ltr) { border-bottom-left-radius: $bt_radius; }
+      &:dir(rtl) { border-bottom-right-radius: $bt_radius; }
+    }
+
+    scrolledwindow.sidebar.categories {  //AppMenu (budgie)
+      border-bottom-left-radius: $wm_radius;
+
+      button.flat.category-button {
+        min-height: 28px;
+        border-radius: 0;
+      }
+    }
+
+    row {
+      padding: 0;
+      &:hover { box-shadow: none; }
+
+      button.flat {
+        min-height: 32px;
+        border-radius: 0;
+      }
+    }
   }
 
   &.user-menu {
     .container { padding: 8px; }
+
     separator { margin: 4px 0; }
+
+    .content-box { background-color: transparent; }
+
+    row {
+      padding: 0;
+      background: 0;
+      border: none;
+      box-shadow: none;
+    }
   }
 
   &.sound-popover {
@@ -211,6 +245,13 @@ $raven_padding: 8px;
 
   &.places-menu {
     .container { padding: 6px; }
+
+    row.activatable {
+      padding: 0;
+      background: 0;
+      border: none;
+      box-shadow: none;
+    }
 
     .places-list:not(.always-expand) {
       margin-top: 4px;
@@ -302,75 +343,9 @@ window.budgie-popover:not(.csd) {
   }
 }
 
-// Budgie Menu
-.budgie-menu {
-  &.background {
-    padding: 0;
-    background-color: $base_color;
-  }
-
-  scrollbar,
-  entry.search { background-color: transparent; }
-
-  entry.search {
-    padding: 5px 10px;
-    border: none;
-    border-bottom: 1px solid $borders_color;
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 110%;
-  }
-
-  .categories {
-    &:dir(ltr) { border-bottom-left-radius: $bt_radius; }
-    &:dir(rtl) { border-bottom-right-radius: $bt_radius; }
-  }
-
-  button {
-    @extend %row_activatable;
-    min-height: 32px;
-    padding: 0 8px;
-    border-radius: 0;
-    color: $fg_color;
-    font-weight: normal;
-    border: none;
-    box-shadow: none;
-
-    &:hover { transition: none; }
-    &:disabled { color: $disabled_fg_color; }
-    &:checked { @extend %selected_items; }
-
-    &:checked:hover {
-      background-image: none;
-      background-color: lighten($selected_bg_color, 5%);
-    }
-
-    &:checked:disabled { background-color: rgba($selected_bg_color, 0.5); } // overriding
-  }
-
-  row {
-    padding: 0;
-    &:hover { box-shadow: none; }
-  }
-}
-
 // Menu Button
 button.budgie-menu-launcher {
   @extend %flat_button;
-}
-
-// User Menu
-popover.background.user-menu {
-  padding: 8px;
-
-  .content-box { background-color: transparent; }
-  separator { margin: 4px 0; }
-
-  row {
-    padding: 0;
-    box-shadow: none;
-    background-image: none;
-  }
 }
 
 // Raven Trigger

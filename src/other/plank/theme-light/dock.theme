@@ -6,7 +6,7 @@ TopRoundness=16
 #The roundness of the bottom corners.
 BottomRoundness=16
 #The thickness (in pixels) of lines drawn.
-LineWidth=0
+LineWidth=1
 #The color (RGBA) of the outer stroke.
 OuterStrokeColor=0;;0;;0;;95
 #The starting color (RGBA) of the fill gradient.
@@ -14,7 +14,7 @@ FillStartColor=209;;209;;209;;110
 #The ending color (RGBA) of the fill gradient.
 FillEndColor=209;;209;;209;;115
 #The color (RGBA) of the inner stroke.
-InnerStrokeColor=255;;255;;255;;245
+InnerStrokeColor=210;;210;;210;;50
 
 [PlankDockTheme]
 #The padding on the left/right dock edges, in tenths of a percent of IconSize.
