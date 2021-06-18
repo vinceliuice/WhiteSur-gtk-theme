@@ -107,6 +107,7 @@
 
 #TabsToolbar #alltabs-button {
 	padding: 0 0 !important;
+	visibility: collapse !important;
 }
 
 #TabsToolbar .toolbarbutton-1, #TabsToolbar .toolbarbutton-1,

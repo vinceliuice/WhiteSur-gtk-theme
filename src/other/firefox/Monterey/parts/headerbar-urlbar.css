@@ -52,6 +52,7 @@ toolbarspring {
 	width: 360px !important;
 	min-width: 360px !important;
 	-moz-box-align: left !important;
+	margin-right: 100px !important;
 }
 
 :root[sizemode="maximized"] #urlbar,
@@ -201,6 +202,10 @@ toolbarspring {
 .identity-box-button {
 	border-radius: 5px !important;
 	background: none !important;
+}
+
+#identity-box.extensionPage #identity-icon-label {
+	visibility: collapse !important;
 }
 
 /* Search mode indicator */

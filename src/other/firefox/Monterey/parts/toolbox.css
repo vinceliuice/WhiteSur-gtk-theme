@@ -31,8 +31,9 @@ findbar {
 }
 
 #nav-bar:-moz-window-inactive,
-#PersonalToolbar:-moz-window-inactive, #toolbar-menubar:-moz-window-inactive,
-#TabsToolbar:-moz-window-inactive, findbar:-moz-window-inactive {
+#PersonalToolbar:-moz-window-inactive,
+#toolbar-menubar:-moz-window-inactive,
+findbar:-moz-window-inactive {
 	background: var(--gnome-inactive-toolbar-background) !important;
 }
 
@@ -84,7 +85,7 @@ findbar {
 	-moz-box-ordinal-group: 3;
 }
 #navigator-toolbox #TabsToolbar {
-	-moz-box-ordinal-group: 0;
+	-moz-box-ordinal-group: 2;
 }
 
 #PersonalToolbar {
