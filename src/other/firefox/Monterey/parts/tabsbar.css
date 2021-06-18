@@ -110,16 +110,28 @@
 	visibility: collapse !important;
 }
 
-#TabsToolbar .toolbarbutton-1, #TabsToolbar .toolbarbutton-1,
+#TabsToolbar .toolbarbutton-1,
 #tabs-newtab-button, #TabsToolbar #new-tab-button {
-	margin: 4px 2px !important;
+	margin: 4px 2px -4px !important;
 	padding: 0 10px !important;
 	max-height: 32px !important;
 	min-height: 32px !important;
 }
 
-#TabsToolbar .toolbarbutton-1 image, #TabsToolbar .toolbarbutton-1 image,
+#TabsToolbar .toolbarbutton-1 image,
 #tabs-newtab-button image, #TabsToolbar #new-tab-button image {
+	margin: 0 !important;
+	padding: 0 !important;
+	height: 16px !important;
+	width: 16px !important;
+}
+
+#TabsToolbar #scrollbutton-up, #TabsToolbar #scrollbutton-down {
+	max-height: 32px !important;
+	min-height: 32px !important;
+}
+
+#TabsToolbar #scrollbutton-up image, #TabsToolbar #scrollbutton-down image {
 	margin: 0 !important;
 	padding: 0 !important;
 	height: 16px !important;

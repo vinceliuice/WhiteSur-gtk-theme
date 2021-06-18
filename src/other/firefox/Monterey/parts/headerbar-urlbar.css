@@ -41,18 +41,12 @@ toolbarspring {
 	border-color: var(--gnome-inactive-headerbar-background) !important;
 }
 
+#urlbar-container,
+#wrapper-urlbar-container,
 #urlbar #urlbar-input-container {
 	padding: 0 !important;
 	width: 360px !important;
 	min-width: 360px !important;
-}
-
-#urlbar-container,
-#wrapper-urlbar-container {
-	width: 360px !important;
-	min-width: 360px !important;
-	-moz-box-align: left !important;
-	margin-right: 100px !important;
 }
 
 :root[sizemode="maximized"] #urlbar,
