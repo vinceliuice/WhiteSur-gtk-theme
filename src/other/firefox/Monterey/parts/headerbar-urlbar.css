@@ -18,6 +18,10 @@ toolbarspring {
 	max-width: 1px !important;
 }
 
+#urlbar-container + toolbarspring {
+	width: 1000px !important;
+}
+
 /* URL bar */
 #urlbar {
 	margin-top: -1px !important;
