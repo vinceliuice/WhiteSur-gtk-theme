@@ -362,32 +362,32 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     > stack:not(:only-child) {
       searchbar > revealer > box { background-color: transparent; }
     }
+  }
 
-    infobar {
-      & > revealer > box,
-      &:hover > revealer > box,
-      &:backdrop > revealer > box {
-        background-color: transparent;
-        padding: 0 $container_padding * 2;
+  &.background infobar {
+    & > revealer > box,
+    &:hover > revealer > box,
+    &:backdrop > revealer > box {
+      background-color: transparent;
+      padding: 0 $container_padding * 2;
+      color: $selection_mode_bg;
+
+      button {
         color: $selection_mode_bg;
+        background-color: rgba($selection_mode_bg, 0.15);
+        border: none;
 
-        button {
-          color: $selection_mode_bg;
-          background-color: rgba($selection_mode_bg, 0.15);
-          border: none;
+        &:hover { background-color: rgba($selection_mode_bg, 0.25); }
+        &:active, &:checked { background-color: $selection_mode_bg; color: white; }
+        &:disabled {
+          background-color: rgba($selection_mode_bg, 0.05);
+          color: rgba($selection_mode_bg, 0.35);
 
-          &:hover { background-color: rgba($selection_mode_bg, 0.25); }
-          &:active, &:checked { background-color: $selection_mode_bg; color: white; }
-          &:disabled {
-            background-color: rgba($selection_mode_bg, 0.05);
-            color: rgba($selection_mode_bg, 0.35);
-
-            label { color: rgba($selection_mode_bg, 0.35); }
-          }
+          label { color: rgba($selection_mode_bg, 0.35); }
         }
-
-        *:link, link { color: $link_color; }
       }
+
+      *:link, link { color: $link_color; }
     }
   }
 
