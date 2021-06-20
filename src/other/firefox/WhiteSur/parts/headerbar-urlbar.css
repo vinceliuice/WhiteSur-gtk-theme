@@ -192,18 +192,19 @@ toolbarspring {
 /* Search mode indicator */
 #urlbar-search-mode-indicator,
 #urlbar-label-box {
-	background: var(--gnome-popover-background) !important;
-	border: 1px solid var(--gnome-popover-border-color) !important;
-	border-radius: 9px;
+	background: var(--gnome-headerbar-button-hover-background) !important;
+	border: none !important;
+	border-radius: 5px !important;
 	outline: 0 !important;
-	margin: 4px 0;
+	margin-top: 3px !important;
+	margin-bottom: 3px !important;
 }
 #urlbar-search-mode-indicator-title {
-    color: #0060df;
-    padding-inline: 4px !important;;
+	padding-inline: 4px !important;;
 }
 #urlbar-search-mode-indicator-close {
-	background-size: contain !important;
-	border-radius: 0 9px 9px 0;
-	opacity: 0.8;
+	background-size: 12px 12px !important;
+	border-radius: 3px !important;
+	opacity: 0.8 !important;
+	fill: var(--gnome-toolbar-color) !important;
 }
