@@ -97,10 +97,6 @@ $popop_menuitem_radius: $wm_radius - 4px;
         color: $selected_fg_color;
         background-color: mix($fg_color, $selected_bg_color, 5%);
       }
-
-      &:not(:first-child):last-child {
-        border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
-      }
     }
   }
 
@@ -142,20 +138,15 @@ $popop_menuitem_radius: $wm_radius - 4px;
 
 // separator
 .popup-separator-menu-item {
-  margin: 0 0;
-  padding: 0 0;
   background: none;
   border: none;
-  height: 1px;
 
   .popup-separator-menu-item-separator {
     height: 1px; //not really the whole box
     margin: 0 0;
     background-color: $borders_color;
-    padding: 0 0;
 
     .popup-sub-menu & { //submenu separators
-      padding: 0 0;
       margin: 0 32px 0 0;
       height: 1px;
     }
