@@ -1,13 +1,10 @@
 #!/bin/bash
 
-readonly ROOT_UID=0
-readonly MAX_DELAY=20 # max delay for user to enter root password
-
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
-BACKGROUND_DIR="/usr/share/backgrounds"
-PROPERTIES_DIR="/usr/share/gnome-background-properties"
+WALLPAPER_DIR="$HOME/.local/share/backgrounds"
 
 THEME_VARIANTS=('WhiteSur' 'Monterey')
+COLOR_VARIANTS=('-light' '-dark')
 
 #COLORS
 CDEF=" \033[0m"                               # default color
@@ -40,18 +37,18 @@ prompt () {
 
 install() {
   local theme="$1"
-  prompt -i "\n * Install ${theme} in ${BACKGROUND_DIR}... "
-  [[ -d ${BACKGROUND_DIR}/${theme} ]] && rm -rf ${BACKGROUND_DIR}/${theme}
-  [[ -f ${PROPERTIES_DIR}/${theme}.xml ]] && rm -rf ${PROPERTIES_DIR}/${theme}.xml
-  cp -r ${REPO_DIR}/${theme} ${BACKGROUND_DIR}
-  cp -r ${REPO_DIR}/gnome-background-properties/${theme}.xml ${PROPERTIES_DIR}
+  local color="$2"
+  prompt -i "\n * Install ${theme}${color} in ${WALLPAPER_DIR}... "
+
+  [[ -f ${WALLPAPER_DIR}/${theme}${color}.png ]] && rm -rf ${WALLPAPER_DIR}/${theme}${color}.png
+  cp -r ${REPO_DIR}/${theme}${color}.png ${WALLPAPER_DIR}
 }
 
 uninstall() {
   local theme="$1"
-  prompt -i "\n * Uninstall ${theme}... "
-  [[ -d ${BACKGROUND_DIR}/${theme} ]] && rm -rf ${BACKGROUND_DIR}/${theme}
-  [[ -f ${PROPERTIES_DIR}/${theme}.xml ]] && rm -rf ${PROPERTIES_DIR}/${theme}.xml
+  local color="$2"
+  prompt -i "\n * Uninstall ${theme}${color}... "
+  [[ -f ${WALLPAPER_DIR}/${theme}${color}.png ]] && rm -rf ${WALLPAPER_DIR}/${theme}${color}.png
 }
 
 while [[ $# -gt 0 ]]; do
@@ -83,6 +80,29 @@ while [[ $# -gt 0 ]]; do
         esac
       done
       ;;
+    -c|--color)
+      shift
+      for color in "$@"; do
+        case "$color" in
+          light)
+            colors+=("${COLOR_VARIANTS[0]}")
+            shift 1
+            ;;
+          dark)
+            colors+=("${COLOR_VARIANTS[1]}")
+            shift 1
+            ;;
+          -*)
+            break
+            ;;
+          *)
+            echo "ERROR: Unrecognized color variant '$1'."
+            echo "Try '$0 --help' for more information."
+            exit 1
+            ;;
+        esac
+      done
+      ;;
     -h|--help)
       usage
       exit 0
@@ -99,46 +119,32 @@ if [[ "${#themes[@]}" -eq 0 ]] ; then
   themes=("${THEME_VARIANTS[@]}")
 fi
 
+if [[ "${#colors[@]}" -eq 0 ]] ; then
+  colors=("${COLOR_VARIANTS[@]}")
+fi
+
 install_wallpaper() {
   for theme in "${themes[@]}"; do
-    install "$theme"
+    for color in "${colors[@]}"; do
+      install "$theme" "$color"
+    done
   done
 }
 
 uninstall_wallpaper() {
   for theme in "${themes[@]}"; do
-    uninstall "$theme"
+    for color in "${colors[@]}"; do
+      uninstall "$theme" "$color"
+    done
   done
 }
 
-sudo_access() {
-  # Error message
-  prompt -e "\n [ Error! ] -> Run me as root ! "
-
-  # persisted execution of the script as root
-  read -p "[ Trusted ] Specify the root password : " -t${MAX_DELAY} -s
-  [[ -n "$REPLY" ]] && {
-    sudo -S <<< $REPLY $0
-  } || {
-    clear
-    prompt -i "\n Operation canceled by user, Bye!"
-    exit 1
-  }
-}
-
-if [[ "$UID" -eq "$ROOT_UID" ]] && [[ "${uninstall}" != 'true' ]]; then
-  prompt -s ""; install_wallpaper
-  prompt -s "\n * All done!"
-  prompt -s ""
+echo
+if [[ "${uninstall}" != 'true' ]]; then
+  install_wallpaper
 else
-  [[ "${uninstall}" != 'true' ]] && sudo_access
+  uninstall_wallpaper
 fi
+prompt -s "\n * All done!"
+echo
 
-if [[ "$UID" -eq "$ROOT_UID" ]] && [[ "${uninstall}" == 'true' ]]; then
-  prompt -s ""; uninstall_wallpaper
-  prompt -s "\n * All done!"
-  prompt -s ""
-else
-  prompt -i "\n Run this with sudo, try it again!"
-  exit 1
-fi
