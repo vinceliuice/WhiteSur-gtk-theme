@@ -1,0 +1,51 @@
+<background>
+  <starttime>
+    <year>2021</year>
+    <month>01</month>
+    <day>01</day>
+    <hour>8</hour>
+    <minute>00</minute>
+    <second>00</second>
+  </starttime>
+
+<!-- This animation will start at 7 AM. -->
+
+<!-- We start with sunrise at 7 AM. It will remain up for 1 hour. -->
+<static>
+<duration>3600.0</duration>
+<file>/usr/share/backgrounds/Monterey/Monterey-light.png</file>
+</static>
+
+<!-- Sunrise starts to transition to day at 8 AM. The transition lasts for 5 hours, ending at 1 PM. -->
+<transition type="overlay">
+<duration>18000.0</duration>
+<from>/usr/share/backgrounds/Monterey/Monterey-light.png</from>
+<to>/usr/share/backgrounds/Monterey/Monterey-light.png</to>
+</transition>
+
+<!-- It's 1 PM, we're showing the day image in full force now, for 5 hours ending at 6 PM. -->
+<static>
+<duration>18000.0</duration>
+<file>/usr/share/backgrounds/Monterey/Monterey-light.png</file>
+</static>
+
+<!-- It's 7 PM and it's going to start to get darker. This will transition for 6 hours up until midnight. -->
+<transition type="overlay">
+<duration>21600.0</duration>
+<from>/usr/share/backgrounds/Monterey/Monterey-light.png</from>
+<to>/usr/share/backgrounds/Monterey/Monterey-dark.png</to>
+</transition>
+
+<!-- It's midnight. It'll stay dark for 5 hours up until 5 AM. -->
+<static>
+<duration>18000.0</duration>
+<file>/usr/share/backgrounds/Monterey/Monterey-dark.png</file>
+</static>
+
+<!-- It's 5 AM. We'll start transitioning to sunrise for 2 hours up until 7 AM. -->
+<transition type="overlay">
+<duration>7200.0</duration>
+<from>/usr/share/backgrounds/Monterey/Monterey-dark.png</from>
+<to>/usr/share/backgrounds/Monterey/Monterey-light.png</to>
+</transition>
+</background>
