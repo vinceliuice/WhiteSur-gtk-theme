@@ -2771,6 +2771,23 @@ window#GearyMainWindow.background.csd { // <= 3.32
   }
 }
 
+// Accounts setting dialog
+.geary-accounts-editor-pane-content {
+  frame:not(.geary-signature) {
+    > border { border: none; }
+
+    > list {
+      @extend %circular_list;
+
+      > row.activatable {
+        @extend %circular_row;
+
+        > grid > entry { background-color: $divider_color; }
+      }
+    }
+  }
+}
+
 
 //
 // Dialogs
