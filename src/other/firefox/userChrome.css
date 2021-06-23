@@ -1,14 +1,34 @@
+/*------------------------USAGE----------------------------
+ * Remove "/*" at the begining of "@import" line to ENABLE.
+ * Add "/*" at the begining of "@import" line to DISABLE.
+ */
 
-/* Import theme */
+
+/*-------------------Choose your theme---------------------
+ * Enable one of these themes and disable the other ones.
+ */
 
 @import "WhiteSur/theme.css"; /**/
 /*@import "Monterey/theme.css"; /**/
 
-/*
- * Here you can enable other theme features not included by default.
- * To enable a specific feature, uncomment its @import line by removing "/*" at
- * the beginning of the line. To disable it, put the "/*" back.
+
+/*--------------Configure your Monterey theme--------------
+ * ONLY for Monterey theme
+ * Enable one of these options and disable the other ones.
  */
+
+/* How many buttons on left headerbar */
+@import "Monterey/left_header_button_3.css";
+/*@import "Monterey/left_header_button_4.css";*/
+/*@import "Monterey/left_header_button_5.css";*/
+
+/* How many buttons on right headerbar */
+@import "Monterey/right_header_button_3.css";
+/*@import "Monterey/right_header_button_4.css";*/
+/*@import "Monterey/right_header_button_5.css";*/
+
+
+/*--------------Configure common theme features--------------*/
 
 /* Hide the tab bar when only one tab is open (GNOMISH)
  * You should move the new tab button somewhere else for this to work, because by
@@ -38,9 +58,5 @@
 /* Hide window buttons (close/min/max) in maximized windows */
 /*@import "WhiteSur/hide-window-buttons.css"; /**/
 
-/* Import a custom stylesheet
- * Everything you add in your customChrome.css file (it doesn't exist by
- * default) will be included here and preserved between updates, so you can move
- * your configuration to that file if you don't like setting it up after every
- * update. You can also apply your own custom styles in that file. */
+/* Import your custom stylesheet */
 @import "customChrome.css"; /**/
