@@ -316,11 +316,11 @@ Note:
 
 ## Whitesur Wallpaper
 <p align="center"> <a href="wallpapers">
-  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/whitesur-wallpaper.png"/>
+  <img src="wallpapers/1080p/whitesur-light.png"/>
 </a> </p>
 <br>
-<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper">
-  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/Monterey-wallpaper.png"/>
+<p align="center"> <a href="wallpapers">
+  <img src="wallpapers/1080p/Monterey-light.png"/>
 </a> </p>
 <br>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper">
