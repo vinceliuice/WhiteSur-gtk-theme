@@ -58,6 +58,7 @@ install() {
   local color="$2"
   local screen="$3"
   prompt -i "\n * Install ${theme}${color} in ${WALLPAPER_DIR}... "
+  mkdir -p "${WALLPAPER_DIR}"
   [[ -f ${WALLPAPER_DIR}/${theme}${color}.png ]] && rm -rf ${WALLPAPER_DIR}/${theme}${color}.png
   cp -r ${REPO_DIR}/${screen}/${theme}${color}.png ${WALLPAPER_DIR}
 }
