@@ -21,7 +21,7 @@ WHITESUR_SOURCE=("lib-core.sh")
 #--------------System--------------#
 
 export WHITESUR_PID=$$
-MY_USERNAME="$(logname 2> /dev/null || echo ${SUDO_USER:-${USER}})"
+MY_USERNAME="${SUDO_USER:-$(logname 2> /dev/null || echo "${USER}")}"
 
 if command -v gnome-shell &> /dev/null; then
   if (( $(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1) >= 4 )); then
