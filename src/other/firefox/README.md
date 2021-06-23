@@ -76,11 +76,3 @@ page, go to options, check both of those:
 
 Now you can close those tools and press Ctrl+Alt+Shift+I to Inspect the browser
 UI.
-
-Also you can inspect any GTK3 application, for example type this into a terminal
-and it will run Epiphany with the GTK Inspector, so you can check the CSS styles
-of its elements too.
-
-```sh
-GTK_DEBUG=interactive epiphany
-``
