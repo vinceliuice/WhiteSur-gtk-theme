@@ -5,6 +5,7 @@ WALLPAPER_DIR="$HOME/.local/share/backgrounds"
 
 THEME_VARIANTS=('WhiteSur' 'Monterey')
 COLOR_VARIANTS=('-light' '-dark')
+SCREEN_VARIANTS=('1080p' '2k' '4k')
 
 #COLORS
 CDEF=" \033[0m"                               # default color
@@ -35,13 +36,30 @@ prompt () {
   esac
 }
 
+usage() {
+  cat << EOF
+Usage: $0 [OPTION]...
+
+OPTIONS:
+  -t, --theme VARIANT     Specify theme variant(s) [whitesur|monterey] (Default: All variants)s)
+  -c, --color VARIANT     Specify color variant(s) [light|dark] (Default: All variants)s)
+  -s, --screen VARIANT    Specify screen variant [1080p|2k|4k] (Default: 1080p)
+  -u, --uninstall         Uninstall wallpappers
+  -h, --help              Show help
+
+INSTALLATION EXAMPLES:
+Install WhiteSur dark version on 4k display:
+  $0 -t whitesur -c dark -s 4k
+EOF
+}
+
 install() {
   local theme="$1"
   local color="$2"
+  local screen="$3"
   prompt -i "\n * Install ${theme}${color} in ${WALLPAPER_DIR}... "
-
   [[ -f ${WALLPAPER_DIR}/${theme}${color}.png ]] && rm -rf ${WALLPAPER_DIR}/${theme}${color}.png
-  cp -r ${REPO_DIR}/${theme}${color}.png ${WALLPAPER_DIR}
+  cp -r ${REPO_DIR}/${screen}/${theme}${color}.png ${WALLPAPER_DIR}
 }
 
 uninstall() {
@@ -103,6 +121,33 @@ while [[ $# -gt 0 ]]; do
         esac
       done
       ;;
+    -s|--screen)
+      shift
+      for screen in "$@"; do
+        case "$screen" in
+          1080p)
+            screens+=("${SCREEN_VARIANTS[0]}")
+            shift 1
+            ;;
+          2k)
+            screens+=("${SCREEN_VARIANTS[1]}")
+            shift 1
+            ;;
+          4k)
+            screens+=("${SCREEN_VARIANTS[2]}")
+            shift 1
+            ;;
+          -*)
+            break
+            ;;
+          *)
+            echo "ERROR: Unrecognized color variant '$1'."
+            echo "Try '$0 --help' for more information."
+            exit 1
+            ;;
+        esac
+      done
+      ;;
     -h|--help)
       usage
       exit 0
@@ -123,10 +168,16 @@ if [[ "${#colors[@]}" -eq 0 ]] ; then
   colors=("${COLOR_VARIANTS[@]}")
 fi
 
+if [[ "${#screens[@]}" -eq 0 ]] ; then
+  screens=("${SCREEN_VARIANTS[0]}")
+fi
+
 install_wallpaper() {
   for theme in "${themes[@]}"; do
     for color in "${colors[@]}"; do
-      install "$theme" "$color"
+      for screen in "${screens[@]}"; do
+        install "$theme" "$color" "$screen"
+      done
     done
   done
 }

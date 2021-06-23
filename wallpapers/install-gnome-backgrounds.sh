@@ -8,6 +8,7 @@ BACKGROUND_DIR="/usr/share/backgrounds"
 PROPERTIES_DIR="/usr/share/gnome-background-properties"
 
 THEME_VARIANTS=('WhiteSur' 'Monterey')
+SCREEN_VARIANTS=('1080p' '2k' '4k')
 
 #COLORS
 CDEF=" \033[0m"                               # default color
@@ -38,13 +39,33 @@ prompt () {
   esac
 }
 
+usage() {
+  cat << EOF
+Usage: $0 [OPTION]...
+
+OPTIONS:
+  -t, --theme VARIANT     Specify theme variant(s) [whitesur|monterey] (Default: All variants)s)
+  -s, --screen VARIANT    Specify screen variant [1080p|2k|4k] (Default: 1080p)
+  -u, --uninstall         Uninstall wallpappers
+  -h, --help              Show help
+
+INSTALLATION EXAMPLES:
+Install WhiteSur version on 4k display:
+  $0 -t whitesur -s 4k
+EOF
+}
+
 install() {
   local theme="$1"
-  prompt -i "\n * Install ${theme} in ${BACKGROUND_DIR}... "
+  local screen="$2"
+
+  prompt -i "\n * Install ${theme} ${screen} version in ${BACKGROUND_DIR}... "
   [[ -d ${BACKGROUND_DIR}/${theme} ]] && rm -rf ${BACKGROUND_DIR}/${theme}
   [[ -f ${PROPERTIES_DIR}/${theme}.xml ]] && rm -rf ${PROPERTIES_DIR}/${theme}.xml
-  cp -r ${REPO_DIR}/${theme} ${BACKGROUND_DIR}
-  cp -r ${REPO_DIR}/gnome-background-properties/${theme}.xml ${PROPERTIES_DIR}
+  mkdir -p ${BACKGROUND_DIR}/${theme}
+  cp -r ${REPO_DIR}/${screen}/${theme}{-dark,-light}.png ${BACKGROUND_DIR}/${theme}
+  cp -r ${REPO_DIR}/xml-files/timed-xml-files/${theme}-timed.xml ${BACKGROUND_DIR}/${theme}
+  cp -r ${REPO_DIR}/xml-files/gnome-background-properties/${theme}.xml ${PROPERTIES_DIR}
 }
 
 uninstall() {
@@ -55,7 +76,6 @@ uninstall() {
 }
 
 while [[ $# -gt 0 ]]; do
-  PROG_ARGS+=("${1}")
   case "${1}" in
     -u|--uninstall)
       uninstall='true'
@@ -77,8 +97,35 @@ while [[ $# -gt 0 ]]; do
             break
             ;;
           *)
-            echo "ERROR: Unrecognized color variant '$1'."
-            echo "Try '$0 --help' for more information."
+            prompt -e "ERROR: Unrecognized theme variant '$1'."
+            prompt -i "Try '$0 --help' for more information."
+            exit 1
+            ;;
+        esac
+      done
+      ;;
+    -s|--screen)
+      shift
+      for screen in "$@"; do
+        case "$screen" in
+          1080p)
+            screens+=("${SCREEN_VARIANTS[0]}")
+            shift 1
+            ;;
+          2k)
+            screens+=("${SCREEN_VARIANTS[1]}")
+            shift 1
+            ;;
+          4k)
+            screens+=("${SCREEN_VARIANTS[2]}")
+            shift 1
+            ;;
+          -*)
+            break
+            ;;
+          *)
+            prompt -e "ERROR: Unrecognized screen variant '$1'."
+            prompt -i "Try '$0 --help' for more information."
             exit 1
             ;;
         esac
@@ -100,74 +147,39 @@ if [[ "${#themes[@]}" -eq 0 ]] ; then
   themes=("${THEME_VARIANTS[@]}")
 fi
 
-install_access() {
-  # Error message
-  prompt -e "\n [ Error! ] -> Run me as root ! "
-
-  # persisted execution of the script as root
-  read -p "[ Trusted ] Specify the root password : " -t${MAX_DELAY} -s
-  [[ -n "$REPLY" ]] && {
-    sudo -S <<< $REPLY $0
-  } || {
-    clear
-    prompt -i "\n Operation canceled by user, Bye!"
-    exit 1
-  }
-}
-
-uninstall_access() {
-    #Check if password is cached (if cache timestamp not expired yet)
-    sudo -n true 2> /dev/null && echo
-
-    if [[ $? == 0 ]]; then
-      #No need to ask for password
-      sudo "$0" "${PROG_ARGS[@]}"
-    else
-      #Ask for password
-      prompt -e "\n [ Error! ] -> Run me as root! "
-      read -p " [ Trusted ] Specify the root password : " -t ${MAX_DELAY} -s
-
-      sudo -S echo <<< $REPLY 2> /dev/null && echo
-
-      if [[ $? == 0 ]]; then
-        #Correct password, use with sudo's stdin
-        sudo -S "$0" "${PROG_ARGS[@]}" <<< $REPLY
-      else
-        #block for 3 seconds before allowing another attempt
-        sleep 3
-        clear
-        prompt -e "\n [ Error! ] -> Incorrect password!\n"
-        exit 1
-      fi
-    fi
-}
+if [[ "${#screens[@]}" -eq 0 ]] ; then
+  screens=("${SCREEN_VARIANTS[@]}")
+fi
 
 install_wallpaper() {
-  if [[ "$UID" == "$ROOT_UID" ]]; then
     echo
     for theme in "${themes[@]}"; do
-      install "$theme"
+      for screen in "${screens[0]}"; do
+        install "$theme" "$screen"
+      done
     done
-  else
-    install_access
     echo
-  fi
 }
 
 uninstall_wallpaper() {
-  if [[ "$UID" == "$ROOT_UID" ]]; then
     echo
     for theme in "${themes[@]}"; do
       uninstall "$theme"
     done
-  else
-    uninstall_access
     echo
-  fi
 }
+
+if [[ $UID -ne $ROOT_UID ]];  then
+  echo
+  prompt -e "ERROR: Need root access! please run this script with sudo."
+  echo
+  exit 1
+fi
 
 if [[ "${uninstall}" != 'true' ]]; then
   install_wallpaper
 else
   uninstall_wallpaper
 fi
+
+prompt -s "Finished!"
