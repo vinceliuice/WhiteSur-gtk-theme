@@ -200,7 +200,9 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
 ## There's more themes you can try!
 ### <p align="center"> <b> Install and edit Firefox theme </b> </p>
-<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox.png"/> </p>
+<p align="center"> <a href="src/other/firefox">
+<img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox.png"/>
+</a> </p>
 
 #### Install Firefox theme
 Parameter: `--firefox` `-f`
@@ -316,7 +318,7 @@ Note:
 <br>
 
 ## Whitesur Wallpaper
-<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper">
+<p align="center"> <a href="wallpapers">
   <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/whitesur-wallpaper.png"/>
 </a> </p>
 <br>
