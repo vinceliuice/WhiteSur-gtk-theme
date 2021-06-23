@@ -55,6 +55,7 @@ uninstall() {
 }
 
 while [[ $# -gt 0 ]]; do
+  PROG_ARGS+=("${1}")
   case "${1}" in
     -u|--uninstall)
       uninstall='true'
@@ -99,19 +100,7 @@ if [[ "${#themes[@]}" -eq 0 ]] ; then
   themes=("${THEME_VARIANTS[@]}")
 fi
 
-install_wallpaper() {
-  for theme in "${themes[@]}"; do
-    install "$theme"
-  done
-}
-
-uninstall_wallpaper() {
-  for theme in "${themes[@]}"; do
-    uninstall "$theme"
-  done
-}
-
-sudo_access() {
+install_access() {
   # Error message
   prompt -e "\n [ Error! ] -> Run me as root ! "
 
@@ -126,19 +115,59 @@ sudo_access() {
   }
 }
 
-if [[ "$UID" -eq "$ROOT_UID" ]] && [[ "${uninstall}" != 'true' ]]; then
-  prompt -s ""; install_wallpaper
-  prompt -s "\n * All done!"
-  prompt -s ""
-else
-  [[ "${uninstall}" != 'true' ]] && sudo_access
-fi
+uninstall_access() {
+    #Check if password is cached (if cache timestamp not expired yet)
+    sudo -n true 2> /dev/null && echo
 
-if [[ "$UID" -eq "$ROOT_UID" ]] && [[ "${uninstall}" == 'true' ]]; then
-  prompt -s ""; uninstall_wallpaper
-  prompt -s "\n * All done!"
-  prompt -s ""
+    if [[ $? == 0 ]]; then
+      #No need to ask for password
+      sudo "$0" "${PROG_ARGS[@]}"
+    else
+      #Ask for password
+      prompt -e "\n [ Error! ] -> Run me as root! "
+      read -p " [ Trusted ] Specify the root password : " -t ${MAX_DELAY} -s
+
+      sudo -S echo <<< $REPLY 2> /dev/null && echo
+
+      if [[ $? == 0 ]]; then
+        #Correct password, use with sudo's stdin
+        sudo -S "$0" "${PROG_ARGS[@]}" <<< $REPLY
+      else
+        #block for 3 seconds before allowing another attempt
+        sleep 3
+        clear
+        prompt -e "\n [ Error! ] -> Incorrect password!\n"
+        exit 1
+      fi
+    fi
+}
+
+install_wallpaper() {
+  if [[ "$UID" == "$ROOT_UID" ]]; then
+    echo
+    for theme in "${themes[@]}"; do
+      install "$theme"
+    done
+  else
+    install_access
+    echo
+  fi
+}
+
+uninstall_wallpaper() {
+  if [[ "$UID" == "$ROOT_UID" ]]; then
+    echo
+    for theme in "${themes[@]}"; do
+      uninstall "$theme"
+    done
+  else
+    uninstall_access
+    echo
+  fi
+}
+
+if [[ "${uninstall}" != 'true' ]]; then
+  install_wallpaper
 else
-  prompt -i "\n Run this with sudo, try it again!"
-  exit 1
+  uninstall_wallpaper
 fi
