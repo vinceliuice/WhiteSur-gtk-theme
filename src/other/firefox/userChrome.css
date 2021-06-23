@@ -18,14 +18,14 @@
  */
 
 /* How many buttons on left headerbar */
-@import "Monterey/left_header_button_3.css";
-/*@import "Monterey/left_header_button_4.css";*/
-/*@import "Monterey/left_header_button_5.css";*/
+@import "Monterey/left_header_button_3.css"; /**/
+/*@import "Monterey/left_header_button_4.css"; /**/
+/*@import "Monterey/left_header_button_5.css"; /**/
 
 /* How many buttons on right headerbar */
-@import "Monterey/right_header_button_3.css";
-/*@import "Monterey/right_header_button_4.css";*/
-/*@import "Monterey/right_header_button_5.css";*/
+@import "Monterey/right_header_button_3.css"; /**/
+/*@import "Monterey/right_header_button_4.css"; /**/
+/*@import "Monterey/right_header_button_5.css"; /**/
 
 
 /*--------------Configure common theme features--------------*/
