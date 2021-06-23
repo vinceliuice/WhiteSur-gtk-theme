@@ -318,18 +318,20 @@ Note:
 <p align="center"> <a href="wallpapers">
   <style type="text/css">
     .image {
-      margin: 6px 0;
       border-radius: 20px;
     }
   </style>
   <img class="image" src="wallpapers/1080p/WhiteSur-light.png"/>
+</a> </p>
+<br>
+<p align="center"> <a href="wallpapers">
   <img class="image" src="wallpapers/1080p/Monterey-light.png"/>
 </a> </p>
 <br>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper">
   <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.png"/>
 </a> </p>
-<br>
+<br><br>
 
 # Technical details and getting involved
 Please go read [CONTRIBUTING.md](.github/CONTRIBUTING.md) for more info
