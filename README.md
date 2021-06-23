@@ -294,7 +294,7 @@ Note:
 > Snap apps
 
 # Other recommended stuffs
-## Whitesur KDE Theme
+## WhiteSur KDE Theme
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde">
   <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/whitesur-kde-theme.png"/>
 </a> </p>
@@ -304,7 +304,7 @@ Note:
 </a> </p>
 <br>
 
-## Whitesur Icon Theme
+## WhiteSur Icon Theme
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-icon-theme">
   <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/whitesur-icon-theme.png"/>
 </a> </p>
@@ -314,9 +314,9 @@ Note:
 </a> </p>
 <br>
 
-## Whitesur Wallpaper
+## WhiteSur Wallpaper
 <p align="center"> <a href="wallpapers">
-  <img src="wallpapers/1080p/whitesur-light.png"/>
+  <img src="wallpapers/1080p/WhiteSur-light.png"/>
 </a> </p>
 <br>
 <p align="center"> <a href="wallpapers">
