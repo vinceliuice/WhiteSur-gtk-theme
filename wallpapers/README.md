@@ -14,7 +14,7 @@
 ### Install Gnome Backgrounds (wallpaper will change according to time)
 
 ```sh
-./install-gnome-backgrounds.sh
+sudo ./install-gnome-backgrounds.sh
 ```
 
 > Options:
