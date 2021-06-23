@@ -5,16 +5,6 @@
  * - bookmark bar (toolbar#PersonalToolbar)
  * - add-ons can add their own toolbars (toolbar) */
 
-/* buttons on left headerbar */
-@import "left_header_button_3.css";
-/*@import "left_header_button_4.css";*/
-/*@import "left_header_button_5.css";*/
-
-/* buttons on right headerbar */
-@import "right_header_button_3.css";
-/*@import "right_header_button_4.css";*/
-/*@import "right_header_button_5.css";*/
-
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 #nav-bar, #PersonalToolbar, #toolbar-menubar {

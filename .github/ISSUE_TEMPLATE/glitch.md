@@ -7,4 +7,8 @@ assignees: 'vinceliuice'
 
 ---
 
+<!------------------------------------------------------------------------------
 Please provide your system info (distro version, etc.) and of course, the screenshot
+------------------------------------------------------------------------------->
+
+
