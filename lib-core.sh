@@ -22,6 +22,7 @@ WHITESUR_SOURCE=("lib-core.sh")
 
 export WHITESUR_PID=$$
 MY_USERNAME="${SUDO_USER:-$(logname 2> /dev/null || echo "${USER}")}"
+MY_HOME=$(getent passwd "${MY_USERNAME}" | cut -d: -f6)
 
 if command -v gnome-shell &> /dev/null; then
   if (( $(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1) >= 4 )); then
@@ -48,14 +49,14 @@ SUDO_BIN="$(which sudo)"
 THEME_SRC_DIR="${REPO_DIR}/src"
 DASH_TO_DOCK_SRC_DIR="${REPO_DIR}/src/other/dash-to-dock"
 DASH_TO_DOCK_DIR_ROOT="/usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
-DASH_TO_DOCK_DIR_HOME="/home/${MY_USERNAME}/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
+DASH_TO_DOCK_DIR_HOME="${MY_HOME}/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
 FIREFOX_SRC_DIR="${REPO_DIR}/src/other/firefox"
-FIREFOX_DIR_HOME="/home/${MY_USERNAME}/.mozilla/firefox"
-FIREFOX_THEME_DIR="/home/${MY_USERNAME}/.mozilla/firefox/firefox-themes"
-FIREFOX_FLATPAK_DIR_HOME="/home/${MY_USERNAME}/.var/app/org.mozilla.firefox/.mozilla/firefox"
-FIREFOX_FLATPAK_THEME_DIR="/home/${MY_USERNAME}/.var/app/org.mozilla.firefox/.mozilla/firefox/firefox-themes"
-FIREFOX_SNAP_DIR_HOME="/home/${MY_USERNAME}/snap/firefox/common/.mozilla/firefox"
-FIREFOX_SNAP_THEME_DIR="/home/${MY_USERNAME}/snap/firefox/common/.mozilla/firefox/firefox-themes"
+FIREFOX_DIR_HOME="${MY_HOME}/.mozilla/firefox"
+FIREFOX_THEME_DIR="${MY_HOME}/.mozilla/firefox/firefox-themes"
+FIREFOX_FLATPAK_DIR_HOME="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox"
+FIREFOX_FLATPAK_THEME_DIR="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox/firefox-themes"
+FIREFOX_SNAP_DIR_HOME="${MY_HOME}/snap/firefox/common/.mozilla/firefox"
+FIREFOX_SNAP_THEME_DIR="${MY_HOME}/snap/firefox/common/.mozilla/firefox/firefox-themes"
 export WHITESUR_TMP_DIR="/tmp/WhiteSur.lock"
 
 if [[ -w "/root" ]]; then
