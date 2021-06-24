@@ -17,17 +17,7 @@ Run `./tweaks.sh -f`
 
 if you want to use `Monterey` style then:
 
-1. run `./tweaks.sh -f -e`
-2. Modify :
-```
-@import "WhiteSur/theme.css"; /**/
-/*@import "Monterey/theme.css"; /**/
-```
-To:
-```
-/*@import "WhiteSur/theme.css"; /**/
-@import "Monterey/theme.css"; /**/
-```
+Run `./tweaks.sh -f -m`
 
 ### Manual installation
 
