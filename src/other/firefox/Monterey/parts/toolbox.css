@@ -58,6 +58,11 @@ findbar:-moz-window-inactive {
 	border-bottom-width: 0px !important;
 }
 
+/* allow to drag headerbar empty space */
+:root[tabsintitlebar] #nav-bar .chromeclass-location {
+	-moz-window-dragging: drag !important;
+}
+
 #toolbar-menubar:not([inactive=true]) {
 	margin-bottom: 0 !important;
 }
