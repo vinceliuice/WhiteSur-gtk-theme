@@ -3,30 +3,7 @@
  * Add "/*" at the begining of "@import" line to DISABLE.
  */
 
-
-/*-------------------Choose your theme---------------------
- * Enable one of these themes and disable the other ones.
- */
-
 @import "WhiteSur/theme.css"; /**/
-/*@import "Monterey/theme.css"; /**/
-
-
-/*--------------Configure your Monterey theme--------------
- * ONLY for Monterey theme
- * Enable one of these options and disable the other ones.
- */
-
-/* How many buttons on left headerbar */
-@import "Monterey/left_header_button_3.css"; /**/
-/*@import "Monterey/left_header_button_4.css"; /**/
-/*@import "Monterey/left_header_button_5.css"; /**/
-
-/* How many buttons on right headerbar */
-@import "Monterey/right_header_button_3.css"; /**/
-/*@import "Monterey/right_header_button_4.css"; /**/
-/*@import "Monterey/right_header_button_5.css"; /**/
-
 
 /*--------------Configure common theme features--------------*/
 
@@ -48,8 +25,8 @@
 /* Use system theme icons instead of Adwaita icons included by theme [BUGGED] */
 /*@import "WhiteSur/system-icons.css"; /**/
 
-/* Allow drag window from headerbar buttons (GNOMISH) [BUGGED] 
- * It can activate button action, with unpleasant behavior. */
+/* Allow drag window from headerbar buttons (GNOMISH) [BUGGED] */
+/* It can activate button action, with unpleasant behavior. */
 /*@import "WhiteSur/drag-window-headerbar-buttons.css"; /**/
 
 /* Make all tab icons look kinda like symbolic icons */

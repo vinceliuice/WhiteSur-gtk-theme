@@ -1,0 +1,177 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/*
+This feature is included by default for Firefox 70+
+*/
+
+/**************************************************************************************
+*********************************** FIREFOX 68 ****************************************
+**************************************************************************************/
+/* Set popover size and position */
+panel#urlbar-results { 
+	--box-width: calc(100vw - var(--item-padding-start) - var(--item-padding-end) + 8px);
+	--fixed-widths: calc((6px + 16px + 6px) + (16px + 9px) + 11px);
+	box-sizing: border-box;
+	border-radius: 9px;
+	margin-left: 0 !important;
+	margin-top: 0 !important;
+	max-width: var(--box-width) !important;
+}
+
+/* Style as regular popover */
+panel#urlbar-results {
+	background: var(--gnome-popover-background) !important;
+	border: 1px solid !important;
+	border-color: var(--gnome-popover-border-color) !important;
+	border-radius: 9px;
+	color: var(--gnome-toolbar-color) !important;
+	padding: 8px;
+}
+
+/* Results box */
+#urlbarView-results {
+	--item-padding-start: 0 !important;
+	--item-padding-end: 0 !important;
+	max-height: 35vh !important;
+	overflow-x: auto;
+	max-width: calc(var(--box-width) - 18px) !important;
+}
+
+/* Search panel  */
+.search-one-offs {
+	width: 100%;
+	--item-padding-start: 0 !important;
+	--item-padding-end: 0 !important;
+}
+.search-panel-one-offs-header, .search-panel-one-offs {
+	background: transparent !important;
+	border: 0 !important;
+}
+panel#urlbar-results.search-panel-one-offs-header {
+	border-top: 1px solid var(--gnome-popover-separator-color) !important;
+}
+
+/* Search engines buttons */
+.searchbar-engine-one-off-item:not(.dummy) {
+	--toolbarbutton-active-background: transparent !important;
+	--toolbarbutton-hover-background: transparent !important;
+}
+
+.searchbar-engine-one-off-item:not(.dummy) {
+	-moz-appearance: none !important;
+	--toolbarbutton-active-background: transparent !important;
+	--toolbarbutton-hover-background: transparent !important;
+	-moz-appearance: none !important;
+	background: var(--gnome-button-background) !important;
+	box-shadow: var(--gnome-button-box-shadow) !important;
+	border: 1px solid var(--gnome-button-border-color) !important;
+	border-left-width: 0 !important;
+	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	padding: 0 2px !important;
+	min-height: 34px !important;
+	min-width: 34px !important;
+	margin: 0 !important;
+}
+.searchbar-engine-one-off-item:hover, .searchbar-engine-one-off-item[selected] {
+	background: var(--gnome-button-hover-background) !important;
+	color: unset !important;
+}
+.searchbar-engine-one-off-item:first-child {	
+	border-radius: 5px 0 0 5px;
+	border-left-width: 1px !important;
+}
+.searchbar-engine-one-off-item.last-engine, .searchbar-engine-one-off-item:last-child {	
+	border-radius: 0 5px 5px 0;
+}
+.searchbar-engine-one-off-item.dummy {
+	display: none !important;
+}
+.searchbar-engine-one-off-item:not(.last-row) {
+	box-sizing: border-box !important;
+}
+#urlbar-anon-search-settings-compact {
+	border-left-width: 1px !important;
+	border-bottom: 1px solid var(--gnome-button-border-accent-color) !important;
+	border-radius: 5px;	
+	margin-left: 6px !important;
+}
+
+/* Convert search engines icons to symbolic */
+#urlbar-results .searchbar-engine-one-off-item:not(.search-setting-button-compact) .button-icon {
+	filter: var(--gnome-convert-icon-to-symbolic-hack-filter);
+}
+
+/**************************************************************************************
+********************************** FIREFOX 60-67 **************************************
+**************************************************************************************/
+/* TODO: Remove when FF =< 67 is deprecated */
+#PopupAutoCompleteRichResult {
+	margin-left: 0 !important;
+	margin-top: -7px;
+}
+#PopupAutoCompleteRichResult {
+  background: var(--gnome-popover-background) !important;
+	border: 1px solid !important;
+	border-color: var(--gnome-popover-border-color) !important;
+	border-radius: 9px;
+	box-shadow: var(--gnome-popover-shadow) !important; /* BUG: Not showing any shadow at all */
+	color: var(--gnome-toolbar-color) !important;
+	padding: 8px !important;
+}
+#PopupAutoCompleteRichResult .autocomplete-richlistbox {
+	--box-width: calc(100vw - var(--item-padding-start) - var(--item-padding-end) - 42px);
+	max-width: var(--box-width);
+}
+#PopupAutoCompleteRichResult .autocomplete-richlistitem {
+	padding-left: 0 !important;
+	padding-right: 5px !important;
+	border-inline-end-width: 0 !important;
+	max-width: calc(var(--box-width) - 5px);
+	display: flex;
+	align-items: center;
+}
+/* Search panel  */
+#PopupAutoCompleteRichResult .search-panel-one-offs-header, #PopupAutoCompleteRichResult .search-panel-one-offs {
+	background: transparent !important;
+	border: 0 !important;
+}
+#PopupAutoCompleteRichResult .search-panel-one-offs-header {
+	border-top: 1px solid var(--gnome-popover-separator-color) !important;
+}
+#PopupAutoCompleteRichResult .search-panel-one-offs {
+	--item-padding-start: 0 !important;
+	--item-padding-end: 0 !important;
+}
+/* Search engines buttons */
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item:not(.dummy) {
+	-moz-appearance: none !important;
+	--toolbarbutton-active-background: transparent !important;
+	--toolbarbutton-hover-background: transparent !important;
+	background: var(--gnome-button-background) !important;
+	box-shadow: var(--gnome-button-box-shadow);
+	border-width: 1px 1px 1px 0;
+	border-style: solid;
+	border-color: var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	padding: 0 2px !important;
+	height: 34px !important;
+	color: var(--gnome-toolbar-color) !important;
+	box-sizing: border-box !important;
+}
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item:hover, #PopupAutoCompleteRichResult .searchbar-engine-one-off-item[selected] {	
+	background: var(--gnome-button-hover-background) !important;
+	color: unset !important;
+}
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item:first-child {	
+	border-radius: 5px 0 0 5px;
+	border-left-width: 1px !important;
+}
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item.last-engine {	
+	border-radius: 0 5px 5px 0;
+}
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item.dummy {
+	display: none !important;
+}
+#PopupAutoCompleteRichResult .searchbar-engine-one-off-item:not(.last-row) {
+	box-sizing: border-box !important;
+}

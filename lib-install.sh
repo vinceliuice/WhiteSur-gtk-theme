@@ -582,7 +582,17 @@ install_firefox_theme() {
 
   remove_firefox_theme
   udo mkdir -p                                                                                "${TARGET_DIR}"
-  udo cp -rf "${FIREFOX_SRC_DIR}"/*                                                           "${TARGET_DIR}"
+  udo cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                            "${TARGET_DIR}"
+
+  if [[ "${monterey}" == 'true' ]]; then
+    udo cp -rf "${FIREFOX_SRC_DIR}"/Monterey                                                  "${TARGET_DIR}"
+    udo cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur/{icons,titlebuttons}                             "${TARGET_DIR}"/Monterey
+    udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey.css                                   "${TARGET_DIR}"/userChrome.css
+  else
+    udo cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur                                                  "${TARGET_DIR}"
+    udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-WhiteSur.css                                   "${TARGET_DIR}"/userChrome.css
+  fi
+
   config_firefox
 }
 
