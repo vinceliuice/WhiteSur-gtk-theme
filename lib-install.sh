@@ -178,7 +178,7 @@ install_theme_deps() {
       prepare_xbps && sudo xbps-install -Sy sassc glib-devel
     elif has_command eopkg; then
       # Rolling release
-      sudo eopkg upgrade; sudo eopkg install sassc glib2 libxml2
+      sudo eopkg -y upgrade; sudo eopkg -y install sassc glib2 libxml2
     else
       installation_sorry
     fi
@@ -209,7 +209,7 @@ install_beggy_deps() {
       prepare_xbps && sudo xbps-install -Sy ImageMagick
     elif has_command eopkg; then
       # Rolling release
-      sudo eopkg upgrade; sudo eopkg install imagemagick
+      sudo eopkg -y upgrade; sudo eopkg -y install imagemagick
     else
       installation_sorry
     fi
@@ -242,7 +242,7 @@ install_dialog_deps() {
       prepare_xbps && sudo xbps-install -Sy dialog
     elif has_command eopkg; then
       # Rolling release
-      sudo eopkg upgrade; sudo eopkg install dialog
+      sudo eopkg -y upgrade; sudo eopkg -y install dialog
     else
       installation_sorry
     fi

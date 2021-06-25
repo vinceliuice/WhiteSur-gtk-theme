@@ -148,9 +148,15 @@ else
 
   if (is_my_distro "arch" || is_my_distro "void") && has_command xfce4-session; then
     msg="XFCE: you may need to logout after changing your theme to fix your panel opacity."
-    notif_msg="${msg}\n\n${final_msg}"
+  elif (is_my_distro "solus") && has_command gnome-shell; then
+    msg="GNOME: you may need to disable 'User Themes' extension to fix your dock."
+  elif (is_my_distro "debian") && [[ "${GNOME_VERSION}" == "old" ]]; then
+    msg="GNOME: you may need to disable 'User Themes' extension to fix your logout and authentication dialog."
+  fi
 
+  if [[ "${msg}" ]]; then
     echo; prompt -w "${msg}"
+    notif_msg="${msg}\n\n${final_msg}"
   else
     notif_msg="${final_msg}"
   fi
