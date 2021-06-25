@@ -176,6 +176,9 @@ install_theme_deps() {
       # 'libxml2' is already included here, and it's gonna broke the installation
       # if you add it
       prepare_xbps && sudo xbps-install -Sy sassc glib-devel
+    elif has_command eopkg; then
+      # Rolling release
+      sudo eopkg upgrade; sudo eopkg install sassc glib2 libxml2
     else
       installation_sorry
     fi
@@ -204,6 +207,9 @@ install_beggy_deps() {
     elif has_command xbps-install; then
       # Rolling release
       prepare_xbps && sudo xbps-install -Sy ImageMagick
+    elif has_command eopkg; then
+      # Rolling release
+      sudo eopkg upgrade; sudo eopkg install imagemagick
     else
       installation_sorry
     fi
@@ -234,6 +240,9 @@ install_dialog_deps() {
     elif has_command xbps-install; then
       # Rolling release
       prepare_xbps && sudo xbps-install -Sy dialog
+    elif has_command eopkg; then
+      # Rolling release
+      sudo eopkg upgrade; sudo eopkg install dialog
     else
       installation_sorry
     fi
