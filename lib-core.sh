@@ -129,7 +129,7 @@ msg=""
 final_msg="Run '${0} --help' to explore more customization features!"
 notif_msg=""
 process_ids=()
-# This is important for 'udu' because 'return "${result}"' is considered the
+# This is important for 'udo' because 'return "${result}"' is considered the
 # last command in 'BASH_COMMAND' variable
 WHITESUR_COMMAND=""
 export ANIM_PID="0"

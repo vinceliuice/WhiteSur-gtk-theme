@@ -643,7 +643,6 @@ remove_firefox_theme() {
   rm -rf "${FIREFOX_THEME_DIR}"
   rm -rf "${FIREFOX_FLATPAK_DIR_HOME}/"*"default"*"/chrome"
   rm -rf "${FIREFOX_FLATPAK_THEME_DIR}"
-  # Again, this too
   rm -rf "${FIREFOX_SNAP_DIR_HOME}/"*"default"*"/chrome"
   rm -rf "${FIREFOX_SNAP_THEME_DIR}"
 }
@@ -673,6 +672,8 @@ revert_dash_to_dock_theme() {
   elif [[ -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
     restore_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "sudo"
   fi
+
+  udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme false
 }
 
 ###############################################################################
@@ -771,7 +772,7 @@ customize_theme() {
 
   if [[ "${compact}" == 'false' ]]; then
     prompt -s "Changing Definition mode to HD (Bigger font, Bigger size) ..."
-    #FIXME: @vince is it not implemented yet?
+    #FIXME: @vince is it not implemented yet? (Only Gnome-shell and Gtk theme finished!)
   fi
 }
 
