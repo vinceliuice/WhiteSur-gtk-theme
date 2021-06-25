@@ -300,7 +300,7 @@ Note:
 </a> </p>
 <br>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde">
-  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.png"/>
+  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.svg"/>
 </a> </p>
 <br>
 
@@ -310,7 +310,7 @@ Note:
 </a> </p>
 <br>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-icon-theme">
-  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.png"/>
+  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.svg"/>
 </a> </p>
 <br>
 
@@ -324,7 +324,7 @@ Note:
 </a> </p>
 <br>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde/tree/master/wallpaper">
-  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.png"/>
+  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.svg"/>
 </a> </p>
 <br>
 
