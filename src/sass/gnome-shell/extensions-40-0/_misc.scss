@@ -1,3 +1,15 @@
+//
+// Dash to panel
+//
+
+#preview-menu {
+  margin: 0 6px 6px !important;
+  padding-bottom: 8px !important;
+
+  &, &:hover, &:selected {
+    border-radius: $wm_radius !important;
+  }
+}
 
 //  OpenWeather Extension
 .openweather {

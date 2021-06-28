@@ -24,18 +24,17 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
 %show_apps_bigsur {
   .show-apps-icon {
-    color: transparent;
+    color: transparent !important;
     background-image: url("assets/view-app-grid.svg");
     background-size: contain;
   }
 
-  .overview-icon { color: transparent; }
-
+  &,
   &:hover,
   &:active,
   &:checked,
   &:focus {
-    .show-apps-icon { color: transparent; }
+    .overview-icon, .show-apps-icon { color: transparent !important; }
   }
 }
 
