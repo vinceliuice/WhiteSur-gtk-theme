@@ -1334,51 +1334,54 @@ button.documents-favorite:active:hover {
 //
 // Gnome Tweak Tool ( Gnome tweaks )
 //
+window.background.csd {
+  > hdyleaflet,
+  > leaflet,
+  > box.horizontal > stack.background {
+    frame > border { border: none; }
 
-hdyleaflet, leaflet, box.horizontal > stack.background {
-  frame > border { border: none; }
+    frame:not(.view) list:not(.contacts-contact-list) { // Don't set this to Gnome-Contacts
+      @extend %circular_list;
 
-  frame:not(.view) list:not(.contacts-contact-list) { // Don't set this to Gnome-Contacts
-    @extend %circular_list;
+      row.activatable {
+        @extend %circular_row;
 
-    row.activatable {
-      @extend %circular_row;
-
-      .row-header > button:not(.text-button) {
-        min-height: 28px;
-        min-width: 28px;
-        padding: 0;
-        margin: 4px 0;
+        .row-header > button:not(.text-button) {
+          min-height: 28px;
+          min-width: 28px;
+          padding: 0;
+          margin: 4px 0;
+        }
       }
     }
-  }
 
-  frame.view {
-    @extend %circular_list;
+    frame.view {
+      @extend %circular_list;
 
-    list {
-      background: none;
-
-      > separator {
+      list {
         background: none;
-        min-height: 0;
+
+        > separator {
+          background: none;
+          min-height: 0;
+        }
+
+        row.activatable { @extend %circular_row; }
       }
+    }
+
+    list.view, list.frame {
+      @extend %circular_list;
 
       row.activatable { @extend %circular_row; }
     }
-  }
 
-  list.view, list.frame {
-    @extend %circular_list;
-
-    row.activatable { @extend %circular_row; }
-  }
-
-  > box.vertical > scrolledwindow > viewport.frame {
-    &,
-    > stack,
-    > stack > box.vertical {
-      > list > row.activatable { @extend %sidebar_row; }
+    > box.vertical > scrolledwindow > viewport.frame {
+      &,
+      > stack,
+      > stack > box.vertical {
+        > list > row.activatable { @extend %sidebar_row; }
+      }
     }
   }
 }
@@ -1639,7 +1642,7 @@ window#gnome-system-monitor.background.csd {
 // Gnome-sound-recorder
 //
 
-stack {
+window.background.csd > stack {
   > grid.vertical {
     > scrolledwindow {
       border: none;
@@ -1831,7 +1834,6 @@ popover.background:not(.emoji-picker) > box.vertical > scrolledwindow {
 
 // popover for bookmarks
 popover.background:not(.emoji-picker) > box.vertical > stack > box.vertical {
-
   scrolledwindow > viewport.frame {
     border: 1px solid $borders_color;
 
@@ -2794,6 +2796,41 @@ window#GearyMainWindow.background.csd { // <= 3.32
   }
 }
 
+
+//
+// Gnome-Box
+//
+
+window.background.csd {
+  > overlay > stack.content-bg {
+    background-color: transparent;
+    border-radius: 0 0 $wm_radius $wm_radius;
+
+    > notebook.frame {
+      border: none;
+
+      > stack {
+        border-radius: 0 0 $wm_radius $wm_radius;
+
+        > box.transparent-bg > scrolledwindow > viewport.frame > grid > stack > box {
+          > frame {
+             > border {
+              border: 1px solid $borders_color;
+              border-bottom: none;
+              border-radius: $bt_radius $bt_radius 0 0;
+            }
+
+            > stack > list {
+              border-radius: $bt_radius $bt_radius 0 0;
+            }
+          }
+
+          > toolbar.inline-toolbar { border-top: 1px solid $borders_color; }
+        }
+      }
+    }
+  }
+}
 
 //
 // Dialogs

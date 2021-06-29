@@ -1866,8 +1866,12 @@ actionbar {
   }
 }
 
-.background:not(.unified) .titlebar {
-  &, & headerbar { box-shadow: inset 0 1px $highlight_color; }
+.background:not(.unified) {
+  .titlebar {
+    &, & headerbar { box-shadow: inset 0 1px $highlight_color; }
+  }
+
+  stack.titlebar { box-shadow: none; }
 }
 
 window.background.csd.unified {
@@ -2547,7 +2551,7 @@ notebook {
       @extend %tabs_tab;
 
       // close button
-      button.flat {
+      button.flat, button.close-button {
         min-height: $small_size;
         min-width: $small_size;
         border-radius: 3px;

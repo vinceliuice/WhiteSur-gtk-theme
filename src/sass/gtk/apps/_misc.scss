@@ -438,7 +438,13 @@ toolbar#SubToolBox {
   }
 }
 
+box#SubToolbox {
+  background-color: $base_color;
+}
+
 widget#ToolboxCommon {
+  background-color: $base_color;
+
   button.flat {
     &:active {
       background-color: rgba($fg_color, 0.25);
@@ -460,6 +466,46 @@ box#DesktopStatusBar {
   spinbutton, button.combo {
     margin-top: 6px;
     margin-bottom: 6px;
+  }
+}
+
+scrolledwindow#DialogNotebook {
+  > viewport.frame > notebook.frame {
+    border: 1px solid $borders_color;
+
+    button.close-button {
+      margin-top: 4px;
+      margin-bottom: 4px;
+      border-radius: $circular_radius;
+
+      &, &:hover, &:active { background-color: transparent; }
+    }
+
+    notebook.frame { margin-top: -1px; }
+  }
+}
+
+grid#CanvasGrid {
+  .background & > button:not(.flat) {
+    @extend %flat_button;
+    border-radius: 3px;
+
+    &:active {
+      background-color: rgba($fg_color, 0.25);
+    }
+
+    &:checked {
+      background-color: rgba($fg_color, 0.15);
+    }
+  }
+}
+
+dialog.background {
+  > box.dialog-vbox > filechooser {
+    > actionbar > revealer > box > box > box > combobox {
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
   }
 }
 
