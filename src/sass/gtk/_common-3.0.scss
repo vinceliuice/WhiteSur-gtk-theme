@@ -1848,8 +1848,6 @@ actionbar {
   }
 
   &, & headerbar {
-    box-shadow: inset 0 1px $highlight_color;
-
     .tiled &,
     .maximized &,
     .fullscreen & {
@@ -1866,6 +1864,10 @@ actionbar {
   > box.right.horizontal {
     padding: 0 $container_padding;
   }
+}
+
+.background:not(.unified) .titlebar {
+  &, & headerbar { box-shadow: inset 0 1px $highlight_color; }
 }
 
 window.background.csd.unified {

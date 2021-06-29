@@ -111,7 +111,6 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     > headerbar.titlebar,
     > deck > box.vertical > headerbar.titlebar {
       background-color: transparent;
-      box-shadow: inset 0 1px rgba(white, 0.1);
       background-image: $nautilus_header_image;
       border: none;
       background-clip: padding-box;
@@ -2960,5 +2959,30 @@ window.background.csd {
     > stack > box > stack > scrolledwindow > viewport > list { // ArcMenu setting sidebar
       border-bottom-left-radius: $maximized_radius;
     }
+  }
+}
+
+//
+// Unified window (> = Gnome 40)
+//
+
+window.background.csd.unified {
+  headerbar {
+    box-shadow: none;
+
+    &.selection-mode {
+      box-shadow: none;
+    }
+  }
+
+  // ...and add it on the window itself
+  > decoration-overlay {
+    box-shadow: inset 0 0 0 1px $highlight_color;
+  }
+
+  &,
+  > decoration,
+  > decoration-overlay {
+    border-radius: $wm_radius;
   }
 }
