@@ -1988,10 +1988,7 @@ window.background.csd {
 // Gnome Clocks
 //
 window.background.csd.unified {
-  border-top-left-radius: $wm_radius;
-  border-top-right-radius: $wm_radius;
-  border-bottom-left-radius: $wm_radius;
-  border-bottom-right-radius: $wm_radius;
+  border-radius: $wm_radius;
 
   > deck > deck > deck {
     > box.vertical > headerbar.titlebar.windowhandle {
@@ -2007,10 +2004,7 @@ window.background.csd.unified {
   }
 
   &.maximized, &.tiled, &.fullscreen {
-    border-top-left-radius: $maximized_radius;
-    border-top-right-radius: $maximized_radius;
-    border-bottom-left-radius: $maximized_radius;
-    border-bottom-right-radius: $maximized_radius;
+    border-radius: $maximized_radius;
 
     > deck > box.vertical > headerbar.titlebar.windowhandle {
       border-top-left-radius: $maximized_radius;

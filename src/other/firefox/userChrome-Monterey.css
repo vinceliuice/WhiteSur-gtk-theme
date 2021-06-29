@@ -26,30 +26,30 @@
 /* Hide the tab bar when only one tab is open (GNOMISH)
  * You should move the new tab button somewhere else for this to work, because by
  * default it is on the tab bar too. */
-/*@import "Menterey/hide-single-tab.css"; /**/
+/*@import "Monterey/hide-single-tab.css"; /**/
 
-/* Limit the URL bar's autocompletion popup's width to the URL bar's width (GNOMISH) 
+/* Limit the URL bar's autocompletion popup's width to the URL bar's width (GNOMISH)
  * This feature is included by default for Firefox 70+ */
-/*@import "Menterey/matching-autocomplete-width.css"; /**/
+/*@import "Monterey/matching-autocomplete-width.css"; /**/
 
 /* Rounded window even when it gets maximized */
-/*@import "Menterey/rounded-window-maximized.css"; /**/
+/*@import "Monterey/rounded-window-maximized.css"; /**/
 
 /* Active tab high contrast */
-/*@import "Menterey/active-tab-contrast.css"; /**/
+/*@import "Monterey/active-tab-contrast.css"; /**/
 
 /* Use system theme icons instead of Adwaita icons included by theme [BUGGED] */
-/*@import "Menterey/system-icons.css"; /**/
+/*@import "Monterey/system-icons.css"; /**/
 
 /* Allow drag window from headerbar buttons (GNOMISH) [BUGGED] */
 /* It can activate button action, with unpleasant behavior. */
-/*@import "Menterey/drag-window-headerbar-buttons.css"; /**/
+/*@import "Monterey/drag-window-headerbar-buttons.css"; /**/
 
 /* Make all tab icons look kinda like symbolic icons */
-/*@import "Menterey/symbolic-tab-icons.css"; /**/
+/*@import "Monterey/symbolic-tab-icons.css"; /**/
 
 /* Hide window buttons (close/min/max) in maximized windows */
-/*@import "Menterey/hide-window-buttons.css"; /**/
+/*@import "Monterey/hide-window-buttons.css"; /**/
 
 /* Import your custom stylesheet */
 @import "customChrome.css"; /**/
