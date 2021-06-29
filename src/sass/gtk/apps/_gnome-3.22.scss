@@ -2650,7 +2650,20 @@ window#GearyMainWindow.background.csd { // <= 3.32
 
 // >= 40.0
 .geary-main-window {
-  &.background.csd.unified { background: none; }
+  &.background.csd.unified {
+    background: none;
+
+    .geary-main-layout { // >= 40.0 reset
+      > leaflet > leaflet > headerbar { // left and center headerbar
+        &:first-child { box-shadow: none; }
+        &:last-child { box-shadow: none; }
+      }
+
+      > leaflet > headerbar { // right headerbar
+        box-shadow: none;
+      }
+    }
+  }
 
   .geary-main-layout { // >= 40.0
     background-color: $dark_sidebar_bg;
