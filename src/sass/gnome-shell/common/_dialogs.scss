@@ -9,23 +9,23 @@
 }
 
 %last_dialog_button {
-  color: white;
+  color: white !important;
   background-color: $primary_color;
   box-shadow: inset 0 1px 0 0 rgba(white,0.1);
 
   &:hover {
-    color: white;
+    color: white !important;
     background-color: lighten($primary_color, 9%);
   }
 
   &:active {
-    color: white;
+    color: white !important;
     background-color: darken($primary_color, 5%);
   }
 
   &:insensitive {
     background-color: rgba($primary_color, 0.05);
-    color: rgba($primary_color, 0.35);
+    color: rgba($primary_color, 0.35) !important;
   }
 }
 
@@ -61,7 +61,7 @@
   }
 
   &-linked-button:last-child {
-    @extend %last_dialog_button !optional;
+    @extend %last_dialog_button;
   }
 
   .modal-dialog-content-box {
