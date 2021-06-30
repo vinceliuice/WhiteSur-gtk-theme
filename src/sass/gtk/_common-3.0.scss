@@ -3154,8 +3154,8 @@ progressbar {
   }
   // Moving bit
   progress {
-    min-height: $container_padding - 2px;
-    min-width: $container_padding - 2px;
+    // min-height: $container_padding - 2px;
+    // min-width: $container_padding - 2px;
     background-color: $progress_color;
     border: none;
     border-radius: $bt_radius;
