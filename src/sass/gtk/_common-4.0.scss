@@ -4362,9 +4362,7 @@ window {
                 0 8px 8px 0 $wm_shadow,
                 0 16px 16px 0 $wm_shadow,
                 $wm_outline;
-
-    // this is used for the resize cursor area
-    margin: 6px;
+    margin: 0;
 
     &:backdrop {
       // the transparent shadow here is to enforce that the shadow extents don't
