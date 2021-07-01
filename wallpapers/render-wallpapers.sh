@@ -5,7 +5,7 @@ OPTIPNG="$(command -v optipng)" || true
 
 for theme in 'Monterey' 'WhiteSur'; do
   for screen in '1080p' '2k' '4k'; do
-    for color in '-light' '-dark'; do
+    for color in '' '-light' '-dark'; do
 
 if [[ "${screen}" == '1080p' ]]; then
   DPI="96"
@@ -25,9 +25,9 @@ else
     "$INKSCAPE" --export-dpi="$DPI" \
                 --export-filename="$PNG_file" "$SRC_FILE" >/dev/null
 
-  if [[ -n "${OPTIPNG}" ]]; then
-    "$OPTIPNG" -o7 --quiet "$PNG_file"
-  fi
+#  if [[ -n "${OPTIPNG}" ]]; then
+#    "$OPTIPNG" -o7 --quiet "$PNG_file"
+#  fi
 fi
 
     done

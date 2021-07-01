@@ -4,7 +4,7 @@ REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 WALLPAPER_DIR="$HOME/.local/share/backgrounds"
 
 THEME_VARIANTS=('WhiteSur' 'Monterey')
-COLOR_VARIANTS=('-light' '-dark')
+COLOR_VARIANTS=('' '-light' '-dark')
 SCREEN_VARIANTS=('1080p' '2k' '4k')
 
 #COLORS

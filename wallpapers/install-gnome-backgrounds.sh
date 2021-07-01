@@ -63,7 +63,7 @@ install() {
   [[ -d ${BACKGROUND_DIR}/${theme} ]] && rm -rf ${BACKGROUND_DIR}/${theme}
   [[ -f ${PROPERTIES_DIR}/${theme}.xml ]] && rm -rf ${PROPERTIES_DIR}/${theme}.xml
   mkdir -p ${BACKGROUND_DIR}/${theme}
-  cp -r ${REPO_DIR}/${screen}/${theme}{-dark,-light}.png ${BACKGROUND_DIR}/${theme}
+  cp -r ${REPO_DIR}/${screen}/${theme}{'','-dark','-light'}.png ${BACKGROUND_DIR}/${theme}
   cp -r ${REPO_DIR}/xml-files/timed-xml-files/${theme}-timed.xml ${BACKGROUND_DIR}/${theme}
   cp -r ${REPO_DIR}/xml-files/gnome-background-properties/${theme}.xml ${PROPERTIES_DIR}
 }
