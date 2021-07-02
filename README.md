@@ -315,15 +315,15 @@ Note:
 <br>
 
 ## WhiteSur Wallpaper
-<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/wallpapers">
-  <img class="image" src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/wallpapers/1080p/WhiteSur-light.png"/>
+<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/wallpapers">
+  <img class="image" src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/wallpapers/1080p/WhiteSur-light.png"/>
 </a> </p>
 <br>
-<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/wallpapers">
-  <img class="image" src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/wallpapers/1080p/Monterey-light.png"/>
+<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/wallpapers">
+  <img class="image" src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/wallpapers/1080p/Monterey-light.png"/>
 </a> </p>
 <br>
-<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/wallpapers">
+<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/wallpapers">
   <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.svg"/>
 </a> </p>
 <br>
