@@ -134,9 +134,9 @@
     .panel-status-menu-box .system-status-icon { margin: 0 0; }
     .panel-status-menu-box StLabel { padding: 0 0 0 $base_padding / 2; }
 
-    .appindicator-trayicons-box { margin: 0 $base_padding * 1.5; }
+    .appindicator-trayicons-box { margin: 0 $base_padding; }
 
-    .appindicator-box { margin: 0 $base_padding; }
+    // .appindicator-box { margin: 0 0; }
 
     // app menu icon
     .app-menu-icon {
