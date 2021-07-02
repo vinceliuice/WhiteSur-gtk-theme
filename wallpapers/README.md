@@ -3,11 +3,13 @@
 
 ## WhiteSur (Big Sur) Wallpapers
 ![1](1080p/WhiteSur-light.png)
-![2](1080p/WhiteSur-dark.png)
+![2](1080p/WhiteSur.png)
+![3](1080p/WhiteSur-dark.png)
 
 ## Monterey Wallpapers
 ![1](1080p/Monterey-light.png)
-![2](1080p/Monterey-dark.png)
+![2](1080p/Monterey.png)
+![3](1080p/Monterey-dark.png)
 
 ## Installation
 
