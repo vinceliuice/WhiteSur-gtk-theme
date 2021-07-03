@@ -82,6 +82,7 @@
   box-shadow: 1px 2px 3px rgba(black, if($variant == 'light', 0.08, 0.35));
 
   .popup-menu-item {
+    height: 16px !important;
     border-radius: 0 !important;
 
     &:hover {
@@ -92,6 +93,39 @@
     > :first-child {
       &:ltr { padding-left: 0 !important; margin-left: 0 !important; }
       &:rtl { padding-right: 0 !important; margin-right: 0 !important; }
+    }
+  }
+}
+
+//
+// Pop_OS cosmic widget styling
+//
+.cosmic-dock {
+  #dock {
+    background-color: transparent;
+
+    .dash-background {
+      background-color: $dash_bg;
+      border: 1px solid if($variant == 'light', rgba(black, 0.08), rgba(black, 0.75));
+      box-shadow: inset 0 0 0 1px rgba(white, 0.05);
+    }
+  }
+
+  &.extended {
+    #dash {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 0 0;
+
+      .dash-background {
+        border-radius: 0;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     }
   }
 }

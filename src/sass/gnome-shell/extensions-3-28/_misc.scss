@@ -62,23 +62,21 @@
   &-build-icon { color: $alt_fg_color; }
 }
 
-// GPaste
-.popup-menu {
-  .search-entry {
-    color: $fg_color;
-    selection-background-color: $primary_color;
-    selected-color: $light_fg_color;
-    @include entry(normal);
+//
+// Pop_OS cosmic widget styling
+//
+.cosmic-dock {
+  #dock {
+    background-color: $dash_bg;
+    border-radius: $dash_radius;
+    border: 1px solid if($variant == 'light', rgba(black, 0.03), rgba(black, 0.35));
+    box-shadow: inset 0 0 0 1px rgba(white, 0.05);
+    padding: $container_padding;
+    margin: 6px !important;
+  }
 
-    &:focus {
-      @include entry(focus);
-      color: $fg_color;
-    }
-
-    .search-entry-icon { color: $hint_fg_color; }
-
-    &:hover, &:focus {
-      .search-entry-icon { color: $fg_color; }
-    }
+  &.extended #dock {
+    border-radius: 0 !important;
+    margin: 0 !important;
   }
 }
