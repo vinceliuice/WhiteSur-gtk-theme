@@ -3,7 +3,7 @@
 
 #panel {
   background-color: $panel_bg;
-  font-weight: if($laptop == 'true', normal, bold);
+  font-weight: bold;
   height: $menuitem_size;
   box-shadow: 0 5px 16px rgba(black, 0.35);
   color: $panel_fg;
@@ -55,7 +55,7 @@
   .panel-button {
     -natural-hpadding: 8px;
     -minimum-hpadding: 8px;
-    font-weight: if($laptop == 'true', normal, bold);
+    font-weight: bold;
     color: $panel_fg;
     transition-duration: 150ms;
     border-radius: $bt_radius;

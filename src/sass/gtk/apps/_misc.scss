@@ -210,8 +210,9 @@ window.background.chromium {
       min-height: 16px;
       margin: 0; // unset margins
       padding: 0 0;
-      background-size: auto;
+      background-size: 16px 16px;
       color: transparent; // hide stock icons
+      border: none;
     }
   }
 
@@ -228,15 +229,15 @@ window.background.chromium {
   entry.chromium {
     &, &:focus { // overrides standard borders
       border-image: none;
-      border: 1px solid $solid_borders_color;
-      background-color: $chrome_bg_color;
       color: $chrome_fg_color;
     }
+
+    background-color: rgba($chrome_fg_color, 0.06);
   }
 
   // internal region of toolbar's entry widget
   > textview.view, textview {
-    background-color: $chrome_bg_color;
+    background-color: rgba($chrome_fg_color, 0.06);
     color: $chrome_fg_color;
   }
 

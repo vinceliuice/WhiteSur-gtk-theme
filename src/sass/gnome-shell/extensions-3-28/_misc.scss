@@ -63,6 +63,32 @@
 }
 
 //
+// Gsconnect
+//
+.gsconnect-device-menu {
+  background-color: if($variant == 'light', white, rgba(white, 0.06));
+  border-radius: $bt_radius;
+  margin: $container_padding / 2;
+  padding: $bt_radius 0;
+  box-shadow: 1px 2px 3px rgba(black, if($variant == 'light', 0.08, 0.35));
+
+  .popup-menu-item {
+    height: 16px !important;
+    border-radius: 0 !important;
+
+    &:hover {
+      color: $fg_color !important;
+      background-color: rgba($fg_color, 0.1) !important;
+    }
+
+    > :first-child {
+      &:ltr { padding-left: 0 !important; margin-left: 0 !important; }
+      &:rtl { padding-right: 0 !important; margin-right: 0 !important; }
+    }
+  }
+}
+
+//
 // Pop_OS cosmic widget styling
 //
 .cosmic-dock {
