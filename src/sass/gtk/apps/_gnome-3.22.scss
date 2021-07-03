@@ -1555,6 +1555,31 @@ window.background.csd {
           }
         }
       }
+
+      scrolledwindow.frame {
+        border: none;
+
+        > viewport.frame {
+          > list {
+            @extend %circular_list;
+
+            > row.activatable { @extend %circular_row; }
+          }
+        }
+      }
+
+      > scrolledwindow > viewport > clamp.medium {
+        > box > box > box > frame > box > box.vertical {
+          > separator {
+            background: none;
+            min-height: 2px;
+          }
+          > list { border-radius: 4px; }
+          &:first-child:last-child > list { border-radius: $wm_radius; }
+          &:first-child > list { border-radius: $wm_radius $wm_radius 4px 4px; }
+          &:not(:first-child):last-child > list { border-radius: 4px 4px $wm_radius $wm_radius; }
+        }
+      }
     }
   }
 
