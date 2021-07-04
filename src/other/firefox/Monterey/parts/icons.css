@@ -541,7 +541,8 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	#identity-box[pageproxystate="valid"].notSecure #identity-icon,
 	#identity-box[pageproxystate="valid"].mixedActiveContent #identity-icon,
 	#identity-box[pageproxystate="valid"].httpsOnlyErrorPage #identity-icon,
-	.bookmark-item[container] .toolbarbutton-icon {
+	.bookmark-item[container] .toolbarbutton-icon,
+	.menu-iconic.bookmark-item[container] .menu-iconic-icon {
 		filter: invert(60%) brightness(150%);
 	}
 
