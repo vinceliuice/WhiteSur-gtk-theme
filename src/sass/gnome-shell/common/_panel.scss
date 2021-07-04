@@ -4,7 +4,7 @@
 #panel {
   background-color: $panel_bg;
   font-weight: bold;
-  height: $menuitem_size;
+  height: $menuitem_size - 4px;
   box-shadow: 0 5px 16px rgba(black, 0.35);
   color: $panel_fg;
   font-feature-settings: "tnum";
