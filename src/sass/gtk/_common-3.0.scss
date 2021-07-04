@@ -1542,7 +1542,7 @@ actionbar {
     }
   }
 
-  button {
+  button:not(.combo) {
     @include button(header-normal);
 
     &:backdrop { opacity: 0.65; background-image: none; }
@@ -1556,7 +1556,7 @@ actionbar {
     }
   }
 
-  button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton) {
+  button:not(.flat):not(.combo):not(.suggested-action):not(.destructive-action):not(.titlebutton) {
     &:hover {
       @include button(header-hover);
       transition: $button_transition;
