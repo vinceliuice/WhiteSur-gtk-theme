@@ -1739,6 +1739,7 @@ actionbar {
     background-color: $header_bg;
     border-color: opacify($header_border, 1);
     box-shadow: none;
+    padding: 0 $container_padding + 10px;
 
     &:backdrop {
       background-color: $header_bg_backdrop;
@@ -1853,7 +1854,7 @@ actionbar {
     .fullscreen & {
       box-shadow: none;
 
-      &, &.background {
+      &, &.background, &:backdrop {
         border-top-left-radius: $maximized_radius;
         border-top-right-radius: $maximized_radius;
       }
@@ -1878,13 +1879,6 @@ window.background.csd.unified {
   > deck > box.vertical > stack > headerbar.titlebar.windowhandle {
     > box > separator { background: none; }
     > button:disabled { @include button(header-insensitive); }
-  }
-
-  &.maximized {
-    > deck > box > headerbar.windowhandle {
-      border-top-left-radius: $maximized_radius;
-      border-top-right-radius: $maximized_radius;
-    }
   }
 }
 

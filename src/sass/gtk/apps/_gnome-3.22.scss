@@ -416,21 +416,17 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     &.background.csd {
       border-radius: $maximized_radius_style;
 
-      &.unified { border-radius: $maximized_radius; }
+      notebook { &, > stack { border-radius: 0 0 $maximized_radius $maximized_radius; } }
 
-      &, &.unified {
-        notebook { &, > stack { border-radius: 0 0 $maximized_radius $maximized_radius; } }
-
-        > headerbar.titlebar,
-        > deck > box.vertical > headerbar.titlebar {
-          &, &.windowhandle {
-            border-top-left-radius: $maximized_radius;
-            border-top-right-radius: $maximized_radius;
-          }
+      > headerbar.titlebar,
+      > deck > box.vertical > headerbar.titlebar {
+        &, &.windowhandle {
+          border-top-left-radius: $maximized_radius;
+          border-top-right-radius: $maximized_radius;
         }
-
-        placessidebar { border-bottom-left-radius: $maximized_radius; }
       }
+
+      placessidebar { border-bottom-left-radius: $maximized_radius; }
     }
   }
 
@@ -2014,8 +2010,6 @@ window.background.csd {
 // Gnome Clocks
 //
 window.background.csd.unified {
-  border-radius: $wm_radius;
-
   > deck > deck > deck {
     > box.vertical > headerbar.titlebar.windowhandle {
       > viewswitchertitle > squeezer {
@@ -2030,8 +2024,6 @@ window.background.csd.unified {
   }
 
   &.maximized, &.tiled, &.fullscreen {
-    border-radius: $maximized_radius;
-
     > deck > box.vertical > headerbar.titlebar.windowhandle {
       border-top-left-radius: $maximized_radius;
       border-top-right-radius: $maximized_radius;
@@ -3059,5 +3051,23 @@ window.background.csd.unified {
   > decoration,
   > decoration-overlay {
     border-radius: $wm_radius;
+  }
+
+  &.tiled,
+  &.tiled-top,
+  &.tiled-right,
+  &.tiled-bottom,
+  &.tiled-left,
+  &.maximized,
+  &.fullscreen {
+    > decoration-overlay {
+      box-shadow: none;
+    }
+
+    &,
+    > decoration,
+    > decoration-overlay {
+      border-radius: $maximized_radius;
+    }
   }
 }
