@@ -217,6 +217,17 @@ Example:
 ./tweaks.sh -e     # edit the installed Firefox theme
 ```
 
+#### Use Monterey style
+<p align="center"> <a href="src/other/firefox">
+<img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox-monterey.png"/>
+</a> </p>
+
+Run:
+
+```bash
+./tweaks.sh -f monterey  # install Monterey Firefox theme
+```
+
 ### <p align="center"> <b> Install and customize Dash to Dock theme </b> </p>
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/dash-to-dock.png"/> </p>
 
