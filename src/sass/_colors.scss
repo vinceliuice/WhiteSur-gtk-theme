@@ -72,7 +72,7 @@ $light_borders_color:               if($variant == 'light', rgba(black, 0.08), r
 $dark_borders_color:                if($variant == 'light', rgba(black, 0.08), rgba(black, 0.15));
 $solid_borders_color:               if($variant == 'light', darken($bg_color, 12%), lighten($bg_color, 8%));
 $dark_solid_borders_color:          if($variant == 'light', darken($bg_color, 12%), darken($bg_color, 5%));
-$highlight_color:                   if($variant == 'light', rgba(white, 0.65), rgba(white, 0.12));
+$highlight_color:                   if($variant == 'light', rgba(white, 0.65), rgba(white, 0.1));
 
 // Background colors
 $dark_bg_color:                     rgba(black, 0.6);
