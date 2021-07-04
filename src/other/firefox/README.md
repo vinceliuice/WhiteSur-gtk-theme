@@ -17,7 +17,7 @@ Run `./tweaks.sh -f`
 
 if you want to use `Monterey` style then:
 
-Run `./tweaks.sh -f -m`
+Run `./tweaks.sh -f monterey`
 
 ![01](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox-monterey.png?raw=true)
 

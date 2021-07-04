@@ -19,8 +19,7 @@ usage() {
   # Please specify their default value manually, some of them are come from _variables.scss
   # You also have to check and update them regurally
   helpify_title
-  helpify "-f, --firefox"      ""                                                  "Install '${THEME_NAME}' theme for Firefox and connect it to the current Firefox profiles" ""
-  helpify "-m, --monterey"     "( Run this with -f )"                              "Install 'Monterey' theme for Firefox and connect it to the current Firefox profiles" ""
+  helpify "-f, --firefox"      "[default|monterey]"                                "Install '${THEME_NAME}|Monterey' theme for Firefox and connect it to the current Firefox profiles" "Default is ${THEME_NAME}"
   helpify "-e, --edit-firefox" ""                                                  "Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
   helpify "-F, --flatpak"      ""                                                  "Connect '${THEME_NAME}' theme to Flatpak"                                    ""
   helpify "-s, --snap"         ""                                                  "Connect '${THEME_NAME}' theme the currently installed snap apps"             ""
@@ -65,16 +64,26 @@ while [[ $# -gt 0 ]]; do
       full_sudo "${1}"; silent_mode='true'; shift ;;
     -h|--help)
       need_help="true"; shift ;;
-    -f|--firefox|-e|--edit-firefox|-m|--monterey)
+    -f|--firefox|-e|--edit-firefox)
       case "${1}" in
         -f|--firefox)
           firefox="true" ;;
         -e|--edit-firefox)
           edit_firefox="true" ;;
-        -m|--monterey)
-          monterey="true"
-          name="Monterey" ;;
       esac
+
+      for variant in "${@}"; do
+        case "${variant}" in
+          default)
+            shift 1
+            ;;
+          monterey)
+            monterey="true"
+            name="Monterey"
+            shift 1
+            ;;
+        esac
+      done
 
       if ! has_command firefox && ! has_flatpak_app org.mozilla.firefox && ! has_snap_app firefox; then
         prompt -e "'${1}' ERROR: There's no Firefox installed in your system"
