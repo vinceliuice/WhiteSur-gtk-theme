@@ -1656,8 +1656,8 @@ headerbar {
 
   // Headerbar Switches
   switch {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: $container_padding;
+    margin-bottom: $container_padding;
 
     &:backdrop { opacity: 0.75; }
   }
