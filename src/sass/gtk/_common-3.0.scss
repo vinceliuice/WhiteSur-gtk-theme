@@ -676,6 +676,14 @@ $_dot_color: $selected_bg_color;
   &:disabled { @include button(flat-insensitive); }
 }
 
+%circular_button {
+  border-radius: $circular_radius;
+  -gtk-outline-radius: $circular_radius;
+  padding: 0 0;
+  min-height: $menuitem_size;
+  min-width: $menuitem_size;
+}
+
 button {
   min-height: $menuitem_size - 4px;
   min-width: $menuitem_size - 10px;
@@ -697,7 +705,7 @@ button {
       transition-duration: 350ms;
 
       &:active { transition: $button_transition; }
-     }
+    }
 
     &:checked:hover { background-image: none; }
 
@@ -712,7 +720,6 @@ button {
   }
 
   &:active, &:checked {
-    background-color: if($variant=='light', darken($button_bg, 8%), lighten($button_bg, 8%));
     background-clip: if($variant=='light', border-box, padding-box);
     transition-duration: 200ms;
 
@@ -723,7 +730,7 @@ button {
     @include button(insensitive);
   }
 
-  .background &:not(.flat) {
+  .background & {
     &:active, &:checked {
       @include button(active);
     }
@@ -735,7 +742,7 @@ button {
     }
   }
 
-  &.image-button, &.popup {
+  &.image-button:not(.circular), &.popup:not(.circular) {
     min-height: $menuitem_size - 4px;
     padding-left: $container_padding;
     padding-right: $container_padding;
@@ -772,12 +779,8 @@ button {
     &.popup { padding-right: $container_padding; padding-left: $container_padding; }
   }
 
-  @at-root %circular_button, &.close { // The Bloody Circul Button
-    border-radius: $circular_radius;
-    -gtk-outline-radius: $circular_radius;
-    padding: 0 0;
-    min-height: $menuitem_size;
-    min-width: $menuitem_size;
+  &.close, &.circular { // The Bloody Circul Button
+    @extend %circular_button;
 
     &:active, &:checked {
       @if $variant=='light' {
@@ -1102,7 +1105,7 @@ spinbutton {
 
   entry {
     @extend %Linked_entrys;
-    border: 1px solid $borders_color;
+    border: 1px solid $dark_borders_color;
 
     &:focus {
       border-color: $entry_highlight;
@@ -3381,7 +3384,7 @@ list {
 row {
   &:not(:hover) { transition: all 300ms $ease-out-quad; }
 
-  button.circular { @extend %circular_button; }
+  // button.circular { @extend %circular_button; }
 
   &:selected {
     color: $fg_color;
@@ -3844,7 +3847,7 @@ paned {
 // GtkInfoBar
 //
 
-infobar {
+.background infobar {
   border: none;
 
   &.info {
@@ -3889,9 +3892,16 @@ infobar {
       color: $selected_fg_color;
       caret-color: currentColor;
 
-      button:not(.flat) {
-        min-height: 28px;
+      button, button.flat.close, button.circular {
         @extend %selected-button;
+      }
+
+      button.flat.close {
+        @extend %circular_button;
+      }
+
+      button.circular {
+        min-width: 20px;
       }
 
       selection {
@@ -4057,11 +4067,6 @@ colorchooser .popover.osd { border-radius: $bt_radius; }
 // Shortcuts Help
 //
 
-button.circular {
-  @extend %circular_button;
-  // label { padding: 0; }
-}
-
 .keycap {
   min-width: $small_size - 4px;
   min-height: $small_size;
@@ -4077,9 +4082,7 @@ button.circular {
 
 stackswitcher {
   button.text-button { min-width: 80px; }
-  button.circular {
-    @extend %circular_button;
-  }
+  // button.circular { @extend %circular_button; }
 }
 
 //
