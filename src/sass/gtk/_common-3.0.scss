@@ -1601,7 +1601,6 @@ headerbar {
   }
 
   stackswitcher.linked.stack-switcher:not(.vertical) > button {
-    // min-height: 26px;
     min-width: $menuitem_size - 4px;
     border-radius: $bt_radius;
   }
@@ -1634,7 +1633,6 @@ headerbar {
     padding: 0;
 
     button {
-      // min-height: 26px;
       margin: 0;
       font-weight: 500;
 
@@ -1676,6 +1674,11 @@ headerbar {
       margin-top: 0;
       margin-bottom: 0;
       min-height: 0;
+      min-width: 120px;
+      padding: 0 0;
+
+      label { padding-right: $container_padding; }
+      image { padding-left: $container_padding; }
     }
 
     > box > separator.titlebutton { @extend %header_separator; }
@@ -1919,20 +1922,6 @@ window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar
   > separator {
     min-width: 1px;
     @extend %side_separator;
-  }
-}
-
-headerbar, .titlebar {
-  button {
-    min-height: 26px;
-    min-width: 22px;
-  }
-
-  entry { // Reset entrys
-    min-height: 22px;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 2px $container_padding * 2;
   }
 }
 
