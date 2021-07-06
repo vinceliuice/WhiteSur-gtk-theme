@@ -2730,19 +2730,24 @@ window#GearyMainWindow.background.csd { // <= 3.32
 
     scrolledwindow {
       // margin: -1px 0;
-      padding: 0 6px;
+      padding: 0 4px;
       background-color: $base_color;
 
       treeview.view {
         background-image: none;
-        border-color: $base_color;
+        border: 2px solid transparent;
         border-radius: $mn_radius;
         outline: none;
+        padding: 6px 0;
+        margin: 0 4px;
 
-        &:hover { background-color: rgba($fg_color, 0.1); }
+        &:hover {
+          background-color: rgba($fg_color, 0.1);
+          border-color: transparent;
+        }
 
         &:selected, &:active {
-          border-color: $base_color;
+          border-color: transparent;
           border-radius: $mn_radius;
           background-color: rgba($fg_color, 0.15);
           color: if($variant == 'light', $fg_color, $selected_fg_color);
@@ -2785,7 +2790,21 @@ window#GearyMainWindow.background.csd { // <= 3.32
   geary-conversation-viewer#conversation_viewer { // right side
     background-color: $base_color;
 
-    list.background.conversation-listbox.content { background-color: $base_color; }
+    list.background.conversation-listbox.content {
+      background-color: $base_color;
+
+      > row.activatable {
+        border: 1px solid $borders_color;
+        border-bottom-width: 0;
+
+        &:first-child {
+          border-top-left-radius: $wm_radius;
+          border-top-right-radius: $wm_radius;
+        }
+
+        &:last-child { border-bottom-width: 1px; }
+      }
+    }
 
     searchbar {
       > revealer > box {
