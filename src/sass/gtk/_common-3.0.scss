@@ -1498,6 +1498,7 @@ headerbar {
   }
 
   entry {
+    min-height: 20px;
     @include entry(header-normal);
 
     &:backdrop { opacity: 0.65; background-image: none; }
