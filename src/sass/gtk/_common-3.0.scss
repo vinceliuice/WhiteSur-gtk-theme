@@ -2122,6 +2122,15 @@ window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar
       border-style: none;
     }
   }
+
+  entry, &:selected entry {
+    background-color: $base_color;
+
+    &:focus {
+      color: $fg_color;
+      background-color: mix(white, $base_color, 8%);
+    }
+  }
 }
 
 //
