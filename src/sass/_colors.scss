@@ -72,7 +72,7 @@ $light_borders_color:               if($variant == 'light', rgba(black, 0.08), r
 $dark_borders_color:                if($variant == 'light', rgba(black, 0.08), rgba(black, 0.15));
 $solid_borders_color:               if($variant == 'light', darken($bg_color, 12%), lighten($bg_color, 8%));
 $dark_solid_borders_color:          if($variant == 'light', darken($bg_color, 12%), darken($bg_color, 5%));
-$highlight_color:                   if($variant == 'light', rgba(white, 0.65), rgba(white, 0.1));
+$highlight_color:                   if($variant == 'light', rgba(white, 0.15), rgba(white, 0.1));
 
 // Background colors
 $dark_bg_color:                     rgba(black, 0.6);
@@ -103,7 +103,7 @@ $disabled_bg_color:                 if($variant == 'light', mix($bg_color, $base
 // Headerbar colors
 $header_bg:                         if($variant == 'light', #ffffff, #373737);
 $dark_header_bg:                    if($trans == 'true', rgba($base_color, 0.95), $base_color);
-$header_highlight:                  if($variant == 'dark', #434343, #f5f5f5);
+$header_highlight:                  if($variant == 'dark', #434343, #f5f5f5); // For metacity
 
 $header_bg_backdrop:                if($variant == 'light', darken($header_bg, 0%), darken($header_bg, 0%));
 $header_border:                     if($variant == 'light', mix(black, $header_bg, 12%), mix(black, $header_bg, 75%));

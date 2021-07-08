@@ -1704,12 +1704,36 @@ window.background.csd {
 //
 
 window.background.csd {
+  > deck > box > leaflet { // >= 40.0
+    > headerbar:first-child {
+      @extend %side_headerbar_left;
+
+      &.selection-mode { color: $header_fg; }
+    }
+
+    > headerbar:last-child {
+      @extend %side_headerbar_right;
+
+      &.selection-mode {
+        color: $header_fg;
+        border-color: $header_border;
+
+        > button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton) { @extend %headerbar_buttons; }
+      }
+    }
+  }
+
+  > deck > box > overlay > leaflet > overlay > widget > stack {
+    background-color: $base_color;
+  }
+
   > headerbar.titlebar.selection-mode {
     > hdyleaflet > headerbar,
     > leaflet > headerbar {
       color: $header_fg;
+      border-color: $header_border;
 
-      > button { @extend %headerbar_buttons; }
+      > button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton) { @extend %headerbar_buttons; }
     }
   }
 
@@ -1728,12 +1752,11 @@ window.background.csd {
   }
 
   > overlay > hdyleaflet,
-  > overlay > leaflet {
-    > stack > frame > grid.vertical {
+  > overlay > leaflet,
+  > deck > box > overlay > leaflet { // >= 40.0
+    > stack {
       background-color: rgba($dark_sidebar_bg, 1);
       border-bottom-left-radius: $wm_radius;
-
-      // list.contacts-contact-list {}
     }
 
     > separator.sidebar {

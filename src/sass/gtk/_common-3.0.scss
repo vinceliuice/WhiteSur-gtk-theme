@@ -1716,7 +1716,7 @@ headerbar {
     }
 
     button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton) {
-      // @include button(undecorated);
+      @include button(undecorated);
       @extend %selected-button;
     }
 
