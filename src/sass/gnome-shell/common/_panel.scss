@@ -3,7 +3,7 @@
 
 #panel {
   background-color: $panel_bg;
-  font-weight: bold;
+  font-weight: normal;
   height: $menuitem_size - 4px;
   box-shadow: 0 5px 16px rgba(black, 0.35);
   color: $panel_fg;
@@ -55,7 +55,7 @@
   .panel-button {
     -natural-hpadding: 8px;
     -minimum-hpadding: 8px;
-    font-weight: bold;
+    font-weight: normal;
     color: $panel_fg;
     transition-duration: 150ms;
     border-radius: $bt_radius;
@@ -154,6 +154,12 @@
     .system-status-icon {
       margin: 0 0 !important;
     }
+  }
+
+  Gjs_ui_panel_AppMenuButton.panel-button,
+  .menubar-button, // For Fildem global menu
+  .desktop-name-label { // For Unite
+    font-weight: bold !important;
   }
 
   &.unlock-screen,
