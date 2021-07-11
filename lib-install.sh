@@ -288,7 +288,6 @@ install_darky() {
   local opacity="$(destify ${1})"
   local theme="$(destify ${2})"
 
-  install_theme_deps
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                            "${WHITESUR_TMP_DIR}/darky-3.css"
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                            "${WHITESUR_TMP_DIR}/darky-4.css"
 }
@@ -326,8 +325,6 @@ install_shelly() {
   else
     TARGET_DIR="${6}"
   fi
-
-  install_theme_deps
 
   mkdir -p                                                                                    "${TARGET_DIR}"
   mkdir -p                                                                                    "${TARGET_DIR}/assets"
@@ -396,8 +393,6 @@ install_theemy() {
   desktop_entry+="ButtonLayout=close,minimize,maximize:menu\n"
 
   echo -e "${desktop_entry}" >                                                                "${TARGET_DIR}/index.theme"
-
-  install_theme_deps
 
   #--------------------GTK-3.0--------------------#
 
