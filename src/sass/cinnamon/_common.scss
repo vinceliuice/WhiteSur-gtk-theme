@@ -601,8 +601,8 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 }
 
 .workspace-thumbnail-indicator {
-  outline: 2px solid red;
-  border: 1px solid green;
+  outline: 2px solid $borders_color;
+  border: 1px solid $highlight_color;
 }
 
 .window-close:rtl {
