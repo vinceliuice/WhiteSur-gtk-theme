@@ -1,3 +1,9 @@
+sidebar-view-hover-180px
+sidebar-view-active-180px
+sidebar-view-checked-180px
+sidebar-view-hover-180px-dark
+sidebar-view-active-180px-dark
+sidebar-view-checked-180px-dark
 sidebar-view-hover-200px
 sidebar-view-active-200px
 sidebar-view-checked-200px

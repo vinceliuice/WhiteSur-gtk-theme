@@ -1,8 +1,8 @@
 #! /bin/bash
 
-INDEX="../../assets/gtk-3.0/common-assets/assets.txt"
-SINDEX="../../assets/gtk-3.0/common-assets/sidebar-assets.txt"
-WINDEX="../../assets/gtk-3.0/windows-assets/assets.txt"
+INDEX="../../assets/gtk/common-assets/assets.txt"
+SINDEX="../../assets/gtk/common-assets/sidebar-assets.txt"
+WINDEX="../../assets/gtk/windows-assets/assets.txt"
 
 if [ -f gtk.gresource.xml ]; then
   rm -rf gtk.gresource.xml

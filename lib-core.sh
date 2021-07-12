@@ -84,7 +84,7 @@ OPACITY_VARIANTS=('normal' 'solid')
 ALT_VARIANTS=('normal' 'alt')
 THEME_VARIANTS=('default' 'blue' 'purple' 'pink' 'red' 'orange' 'yellow' 'green' 'grey')
 ICON_VARIANTS=('standard' 'simple' 'gnome' 'ubuntu' 'arch' 'manjaro' 'fedora' 'debian' 'void')
-SIDEBAR_SIZE_VARIANTS=('default' '220' '240' '260' '280')
+SIDEBAR_SIZE_VARIANTS=('default' '180' '220' '240' '260' '280')
 PANEL_OPACITY_VARIANTS=('default' '30' '45' '60' '75')
 NAUTILUS_STYLE_VARIANTS=('stable' 'normal' 'mojave' 'glassy')
 
@@ -500,7 +500,7 @@ check_param() {
       -n)
         name="${value}"; variant_found="skip" ;;
       -s)
-        for i in {0..4}; do
+        for i in {0..5}; do
           if [[ "${value}" == "${SIDEBAR_SIZE_VARIANTS[i]}" ]]; then
             sidebar_size="${value}"; variant_found="true"; break
           fi
