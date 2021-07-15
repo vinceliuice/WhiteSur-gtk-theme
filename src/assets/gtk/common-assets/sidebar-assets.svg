@@ -1,123 +1,826 @@
-<svg width="760" height="800" version="1.1" viewBox="0 0 201.08 211.67" xmlns="http://www.w3.org/2000/svg">
- <g id="sidebar-view-hover-220px">
-  <rect x="15.875" y="50.271" width="58.208" height="7.4083" opacity="0" stroke-width=".79507"/>
-  <rect x="18.521" y="50.271" width="52.917" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".1"/>
- </g>
- <rect x="93.927" y="7.9375" width="85.99" height="198.44" rx="0" ry="0" fill="#333333" stroke-linecap="square" stroke-width=".61172"/>
- <g id="sidebar-view-hover-200px" transform="matrix(.29398 0 0 .26458 -202.26 9.7896)">
-  <rect x="742" y="8" width="180" height="28" opacity="0" stroke-width="2.7181"/>
-  <rect x="751" y="8" width="162" height="28" ry="5" fill="#00000c" opacity=".1"/>
- </g>
- <g id="sidebar-view-active-200px" transform="matrix(.29398 0 0 .26458 -202.26 19.844)">
-  <rect x="742" y="8" width="180" height="28" opacity="0" stroke-width="2.7181"/>
-  <rect x="751" y="8" width="162" height="28" ry="5" fill="#00000c" opacity=".2"/>
- </g>
- <g id="sidebar-view-checked-200px" transform="matrix(.29398 0 0 .26458 -202.26 30.427)">
-  <rect x="742" y="8" width="180" height="28" opacity="0" stroke-width="2.7181"/>
-  <rect x="751" y="8" width="162" height="28" ry="5" fill="#00000c" opacity=".15"/>
- </g>
- <g id="sidebar-view-hover-200px-dark" transform="matrix(.29398 0 0 .26458 -120.24 9.7896)">
-  <rect x="742" y="8" width="180" height="28" opacity="0" stroke-width="2.7181"/>
-  <rect x="751" y="8" width="162" height="28" ry="5" fill="#ffffff" opacity=".1"/>
- </g>
- <g id="sidebar-view-active-200px-dark" transform="matrix(.29398 0 0 .26458 -120.24 19.844)">
-  <rect x="742" y="8" width="180" height="28" opacity="0" stroke-width="2.7181"/>
-  <rect x="751" y="8" width="162" height="28" ry="5" fill="#ffffff" opacity=".2"/>
- </g>
- <g id="sidebar-view-checked-200px-dark" transform="matrix(.29398 0 0 .26458 -120.24 30.427)">
-  <rect x="742" y="8" width="180" height="28" opacity="0" stroke-width="2.7181"/>
-  <rect x="751" y="8" width="162" height="28" ry="5" fill="#ffffff" opacity=".15"/>
- </g>
- <g id="sidebar-view-active-220px">
-  <rect x="15.875" y="60.325" width="58.208" height="7.4083" opacity="0" stroke-width=".79507"/>
-  <rect x="18.521" y="60.325" width="52.917" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".2"/>
- </g>
- <g id="sidebar-view-checked-220px">
-  <rect x="15.875" y="70.908" width="58.208" height="7.4083" opacity="0" stroke-width=".79507"/>
-  <rect x="18.521" y="70.908" width="52.917" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".15"/>
- </g>
- <g id="sidebar-view-hover-240px">
-  <rect x="15.875" y="91.81" width="63.5" height="7.4083" opacity="0" stroke-width=".83043"/>
-  <rect x="18.521" y="91.81" width="58.208" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".1"/>
- </g>
- <g id="sidebar-view-active-240px">
-  <rect x="15.875" y="101.86" width="63.5" height="7.4083" opacity="0" stroke-width=".83043"/>
-  <rect x="18.521" y="101.86" width="58.208" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".2"/>
- </g>
- <g id="sidebar-view-checked-240px">
-  <rect x="15.875" y="112.45" width="63.5" height="7.4083" opacity="0" stroke-width=".83043"/>
-  <rect x="18.521" y="112.45" width="58.208" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".15"/>
- </g>
- <g id="sidebar-view-hover-260px">
-  <rect x="15.875" y="131.23" width="68.792" height="7.4083" opacity="0" stroke-width=".86434"/>
-  <rect x="18.521" y="131.23" width="63.5" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".1"/>
- </g>
- <g id="sidebar-view-active-260px">
-  <rect x="15.875" y="141.29" width="68.792" height="7.4083" opacity="0" stroke-width=".86434"/>
-  <rect x="18.521" y="141.29" width="63.5" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".2"/>
- </g>
- <g id="sidebar-view-checked-260px">
-  <rect x="15.875" y="151.87" width="68.792" height="7.4083" opacity="0" stroke-width=".86434"/>
-  <rect x="18.521" y="151.87" width="63.5" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".15"/>
- </g>
- <g id="sidebar-view-hover-280px">
-  <rect x="15.875" y="171.98" width="74.083" height="7.4083" opacity="0" stroke-width=".89696"/>
-  <rect x="18.521" y="171.98" width="68.792" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".1"/>
- </g>
- <g id="sidebar-view-active-280px">
-  <rect x="15.875" y="182.03" width="74.083" height="7.4083" opacity="0" stroke-width=".89696"/>
-  <rect x="18.521" y="182.03" width="68.792" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".2"/>
- </g>
- <g id="sidebar-view-checked-280px">
-  <rect x="15.875" y="192.62" width="74.083" height="7.4083" opacity="0" stroke-width=".89696"/>
-  <rect x="18.521" y="192.62" width="68.792" height="7.4083" rx="1.3229" ry="1.3229" fill="#00000c" opacity=".15"/>
- </g>
- <g id="sidebar-view-hover-220px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="50.271" width="58.208" height="7.4083" opacity="0" stroke-width=".79507"/>
-  <rect x="18.521" y="50.271" width="52.917" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".1"/>
- </g>
- <g id="sidebar-view-active-220px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="60.325" width="58.208" height="7.4083" opacity="0" stroke-width=".79507"/>
-  <rect x="18.521" y="60.325" width="52.917" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".2"/>
- </g>
- <g id="sidebar-view-checked-220px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="70.908" width="58.208" height="7.4083" opacity="0" stroke-width=".79507"/>
-  <rect x="18.521" y="70.908" width="52.917" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".15"/>
- </g>
- <g id="sidebar-view-hover-240px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="91.81" width="63.5" height="7.4083" opacity="0" stroke-width=".83043"/>
-  <rect x="18.521" y="91.81" width="58.208" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".1"/>
- </g>
- <g id="sidebar-view-active-240px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="101.86" width="63.5" height="7.4083" opacity="0" stroke-width=".83043"/>
-  <rect x="18.521" y="101.86" width="58.208" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".2"/>
- </g>
- <g id="sidebar-view-checked-240px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="112.45" width="63.5" height="7.4083" opacity="0" stroke-width=".83043"/>
-  <rect x="18.521" y="112.45" width="58.208" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".15"/>
- </g>
- <g id="sidebar-view-hover-260px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="131.23" width="68.792" height="7.4083" opacity="0" stroke-width=".86434"/>
-  <rect x="18.521" y="131.23" width="63.5" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".1"/>
- </g>
- <g id="sidebar-view-active-260px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="141.29" width="68.792" height="7.4083" opacity="0" stroke-width=".86434"/>
-  <rect x="18.521" y="141.29" width="63.5" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".2"/>
- </g>
- <g id="sidebar-view-checked-260px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="151.87" width="68.792" height="7.4083" opacity="0" stroke-width=".86434"/>
-  <rect x="18.521" y="151.87" width="63.5" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".15"/>
- </g>
- <g id="sidebar-view-hover-280px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="171.98" width="74.083" height="7.4083" opacity="0" stroke-width=".89696"/>
-  <rect x="18.521" y="171.98" width="68.792" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".1"/>
- </g>
- <g id="sidebar-view-active-280px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="182.03" width="74.083" height="7.4083" opacity="0" stroke-width=".89696"/>
-  <rect x="18.521" y="182.03" width="68.792" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".2"/>
- </g>
- <g id="sidebar-view-checked-280px-dark" transform="translate(82.021)">
-  <rect x="15.875" y="192.62" width="74.083" height="7.4083" opacity="0" stroke-width=".89696"/>
-  <rect x="18.521" y="192.62" width="68.792" height="7.4083" rx="1.3229" ry="1.3229" fill="#ffffff" opacity=".15"/>
- </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="760"
+   height="800"
+   version="1.1"
+   viewBox="0 0 201.08 211.67"
+   id="svg154"
+   sodipodi:docname="sidebar-assets.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs158" />
+  <sodipodi:namedview
+     id="namedview156"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.28625"
+     inkscape:cx="-150.21834"
+     inkscape:cy="-55.895196"
+     inkscape:window-width="1536"
+     inkscape:window-height="804"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg154">
+    <inkscape:grid
+       type="xygrid"
+       id="grid178" />
+  </sodipodi:namedview>
+  <g
+     id="sidebar-view-hover-220px">
+    <rect
+       x="15.875"
+       y="50.271"
+       width="58.208"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".79507"
+       id="rect2" />
+    <rect
+       x="18.521"
+       y="50.271"
+       width="52.917"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".1"
+       id="rect4" />
+  </g>
+  <rect
+     x="93.927"
+     y="7.9375"
+     width="85.99"
+     height="198.44"
+     rx="0"
+     ry="0"
+     fill="#333333"
+     stroke-linecap="square"
+     stroke-width=".61172"
+     id="rect7" />
+  <g
+     id="sidebar-view-hover-200px"
+     transform="matrix(.29398 0 0 .26458 -202.26 9.7896)">
+    <rect
+       x="742"
+       y="8"
+       width="180"
+       height="28"
+       opacity="0"
+       stroke-width="2.7181"
+       id="rect9" />
+    <rect
+       x="751"
+       y="8"
+       width="162"
+       height="28"
+       ry="5"
+       fill="#00000c"
+       opacity=".1"
+       id="rect11" />
+  </g>
+  <g
+     id="sidebar-view-active-200px"
+     transform="matrix(.29398 0 0 .26458 -202.26 19.844)">
+    <rect
+       x="742"
+       y="8"
+       width="180"
+       height="28"
+       opacity="0"
+       stroke-width="2.7181"
+       id="rect14" />
+    <rect
+       x="751"
+       y="8"
+       width="162"
+       height="28"
+       ry="5"
+       fill="#00000c"
+       opacity=".2"
+       id="rect16" />
+  </g>
+  <g
+     id="sidebar-view-checked-200px"
+     transform="matrix(.29398 0 0 .26458 -202.26 30.427)">
+    <rect
+       x="742"
+       y="8"
+       width="180"
+       height="28"
+       opacity="0"
+       stroke-width="2.7181"
+       id="rect19" />
+    <rect
+       x="751"
+       y="8"
+       width="162"
+       height="28"
+       ry="5"
+       fill="#00000c"
+       opacity=".15"
+       id="rect21" />
+  </g>
+  <g
+     id="sidebar-view-hover-200px-dark"
+     transform="matrix(.29398 0 0 .26458 -120.24 9.7896)">
+    <rect
+       x="742"
+       y="8"
+       width="180"
+       height="28"
+       opacity="0"
+       stroke-width="2.7181"
+       id="rect24" />
+    <rect
+       x="751"
+       y="8"
+       width="162"
+       height="28"
+       ry="5"
+       fill="#ffffff"
+       opacity=".1"
+       id="rect26" />
+  </g>
+  <g
+     id="sidebar-view-active-200px-dark"
+     transform="matrix(.29398 0 0 .26458 -120.24 19.844)">
+    <rect
+       x="742"
+       y="8"
+       width="180"
+       height="28"
+       opacity="0"
+       stroke-width="2.7181"
+       id="rect29" />
+    <rect
+       x="751"
+       y="8"
+       width="162"
+       height="28"
+       ry="5"
+       fill="#ffffff"
+       opacity=".2"
+       id="rect31" />
+  </g>
+  <g
+     id="sidebar-view-checked-200px-dark"
+     transform="matrix(.29398 0 0 .26458 -120.24 30.427)">
+    <rect
+       x="742"
+       y="8"
+       width="180"
+       height="28"
+       opacity="0"
+       stroke-width="2.7181"
+       id="rect34" />
+    <rect
+       x="751"
+       y="8"
+       width="162"
+       height="28"
+       ry="5"
+       fill="#ffffff"
+       opacity=".15"
+       id="rect36" />
+  </g>
+  <g
+     id="sidebar-view-active-220px">
+    <rect
+       x="15.875"
+       y="60.325"
+       width="58.208"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".79507"
+       id="rect39" />
+    <rect
+       x="18.521"
+       y="60.325"
+       width="52.917"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".2"
+       id="rect41" />
+  </g>
+  <g
+     id="sidebar-view-checked-220px">
+    <rect
+       x="15.875"
+       y="70.908"
+       width="58.208"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".79507"
+       id="rect44" />
+    <rect
+       x="18.521"
+       y="70.908"
+       width="52.917"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".15"
+       id="rect46" />
+  </g>
+  <g
+     id="sidebar-view-hover-240px">
+    <rect
+       x="15.875"
+       y="91.81"
+       width="63.5"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".83043"
+       id="rect49" />
+    <rect
+       x="18.521"
+       y="91.81"
+       width="58.208"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".1"
+       id="rect51" />
+  </g>
+  <g
+     id="sidebar-view-active-240px">
+    <rect
+       x="15.875"
+       y="101.86"
+       width="63.5"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".83043"
+       id="rect54" />
+    <rect
+       x="18.521"
+       y="101.86"
+       width="58.208"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".2"
+       id="rect56" />
+  </g>
+  <g
+     id="sidebar-view-checked-240px">
+    <rect
+       x="15.875"
+       y="112.45"
+       width="63.5"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".83043"
+       id="rect59" />
+    <rect
+       x="18.521"
+       y="112.45"
+       width="58.208"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".15"
+       id="rect61" />
+  </g>
+  <g
+     id="sidebar-view-hover-260px">
+    <rect
+       x="15.875"
+       y="131.23"
+       width="68.792"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".86434"
+       id="rect64" />
+    <rect
+       x="18.521"
+       y="131.23"
+       width="63.5"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".1"
+       id="rect66" />
+  </g>
+  <g
+     id="sidebar-view-active-260px">
+    <rect
+       x="15.875"
+       y="141.29"
+       width="68.792"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".86434"
+       id="rect69" />
+    <rect
+       x="18.521"
+       y="141.29"
+       width="63.5"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".2"
+       id="rect71" />
+  </g>
+  <g
+     id="sidebar-view-checked-260px">
+    <rect
+       x="15.875"
+       y="151.87"
+       width="68.792"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".86434"
+       id="rect74" />
+    <rect
+       x="18.521"
+       y="151.87"
+       width="63.5"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".15"
+       id="rect76" />
+  </g>
+  <g
+     id="sidebar-view-hover-280px">
+    <rect
+       x="15.875"
+       y="171.98"
+       width="74.083"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".89696"
+       id="rect79" />
+    <rect
+       x="18.521"
+       y="171.98"
+       width="68.792"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".1"
+       id="rect81" />
+  </g>
+  <g
+     id="sidebar-view-active-280px">
+    <rect
+       x="15.875"
+       y="182.03"
+       width="74.083"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".89696"
+       id="rect84" />
+    <rect
+       x="18.521"
+       y="182.03"
+       width="68.792"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".2"
+       id="rect86" />
+  </g>
+  <g
+     id="sidebar-view-checked-280px">
+    <rect
+       x="15.875"
+       y="192.62"
+       width="74.083"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".89696"
+       id="rect89" />
+    <rect
+       x="18.521"
+       y="192.62"
+       width="68.792"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#00000c"
+       opacity=".15"
+       id="rect91" />
+  </g>
+  <g
+     id="sidebar-view-hover-220px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="50.271"
+       width="58.208"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".79507"
+       id="rect94" />
+    <rect
+       x="18.521"
+       y="50.271"
+       width="52.917"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".1"
+       id="rect96" />
+  </g>
+  <g
+     id="sidebar-view-active-220px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="60.325"
+       width="58.208"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".79507"
+       id="rect99" />
+    <rect
+       x="18.521"
+       y="60.325"
+       width="52.917"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".2"
+       id="rect101" />
+  </g>
+  <g
+     id="sidebar-view-checked-220px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="70.908"
+       width="58.208"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".79507"
+       id="rect104" />
+    <rect
+       x="18.521"
+       y="70.908"
+       width="52.917"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".15"
+       id="rect106" />
+  </g>
+  <g
+     id="sidebar-view-hover-240px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="91.81"
+       width="63.5"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".83043"
+       id="rect109" />
+    <rect
+       x="18.521"
+       y="91.81"
+       width="58.208"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".1"
+       id="rect111" />
+  </g>
+  <g
+     id="sidebar-view-active-240px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="101.86"
+       width="63.5"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".83043"
+       id="rect114" />
+    <rect
+       x="18.521"
+       y="101.86"
+       width="58.208"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".2"
+       id="rect116" />
+  </g>
+  <g
+     id="sidebar-view-checked-240px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="112.45"
+       width="63.5"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".83043"
+       id="rect119" />
+    <rect
+       x="18.521"
+       y="112.45"
+       width="58.208"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".15"
+       id="rect121" />
+  </g>
+  <g
+     id="sidebar-view-hover-260px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="131.23"
+       width="68.792"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".86434"
+       id="rect124" />
+    <rect
+       x="18.521"
+       y="131.23"
+       width="63.5"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".1"
+       id="rect126" />
+  </g>
+  <g
+     id="sidebar-view-active-260px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="141.29"
+       width="68.792"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".86434"
+       id="rect129" />
+    <rect
+       x="18.521"
+       y="141.29"
+       width="63.5"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".2"
+       id="rect131" />
+  </g>
+  <g
+     id="sidebar-view-checked-260px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="151.87"
+       width="68.792"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".86434"
+       id="rect134" />
+    <rect
+       x="18.521"
+       y="151.87"
+       width="63.5"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".15"
+       id="rect136" />
+  </g>
+  <g
+     id="sidebar-view-hover-280px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="171.98"
+       width="74.083"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".89696"
+       id="rect139" />
+    <rect
+       x="18.521"
+       y="171.98"
+       width="68.792"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".1"
+       id="rect141" />
+  </g>
+  <g
+     id="sidebar-view-active-280px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="182.03"
+       width="74.083"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".89696"
+       id="rect144" />
+    <rect
+       x="18.521"
+       y="182.03"
+       width="68.792"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".2"
+       id="rect146" />
+  </g>
+  <g
+     id="sidebar-view-checked-280px-dark"
+     transform="translate(82.021)">
+    <rect
+       x="15.875"
+       y="192.62"
+       width="74.083"
+       height="7.4083"
+       opacity="0"
+       stroke-width=".89696"
+       id="rect149" />
+    <rect
+       x="18.521"
+       y="192.62"
+       width="68.792"
+       height="7.4083"
+       rx="1.3229"
+       ry="1.3229"
+       fill="#ffffff"
+       opacity=".15"
+       id="rect151" />
+  </g>
+  <g
+     id="sidebar-view-hover-180px">
+    <rect
+       x="15.87316"
+       y="-40.746475"
+       width="47.625751"
+       height="7.4082398"
+       opacity="0"
+       stroke-width="0.719165"
+       id="rect160" />
+    <rect
+       x="18.517876"
+       y="-40.746475"
+       width="42.334"
+       height="7.4082398"
+       ry="1.3229377"
+       fill="#00000c"
+       opacity="0.1"
+       id="rect162"
+       style="stroke-width:0.262946"
+       rx="1.3229377" />
+  </g>
+  <g
+     id="sidebar-view-active-180px">
+    <rect
+       x="15.87316"
+       y="-30.692076"
+       width="47.625751"
+       height="7.4082398"
+       opacity="0"
+       stroke-width="0.719165"
+       id="rect166" />
+    <rect
+       x="18.519035"
+       y="-30.692076"
+       width="42.334"
+       height="7.4082398"
+       ry="1.3228632"
+       fill="#00000c"
+       opacity="0.2"
+       id="rect168"
+       style="stroke-width:0.262946"
+       rx="1.3228632" />
+  </g>
+  <g
+     id="sidebar-view-checked-180px">
+    <rect
+       x="15.87316"
+       y="-20.109076"
+       width="47.625751"
+       height="7.4082398"
+       opacity="0"
+       stroke-width="0.719165"
+       id="rect172" />
+    <rect
+       x="18.519035"
+       y="-20.109076"
+       width="42.334"
+       height="7.4082398"
+       ry="1.3233631"
+       fill="#00000c"
+       opacity="0.15"
+       id="rect174"
+       style="stroke-width:0.262946"
+       rx="1.3233631" />
+  </g>
+  <g
+     id="sidebar-view-hover-180px-dark"
+     transform="translate(84.66684)">
+    <rect
+       x="15.87316"
+       y="-40.746475"
+       width="47.625751"
+       height="7.4082398"
+       opacity="0"
+       stroke-width="0.719165"
+       id="rect297" />
+    <rect
+       x="18.517876"
+       y="-40.746475"
+       width="42.334"
+       height="7.4082398"
+       ry="1.3229377"
+       fill="#00000c"
+       opacity="0.1"
+       id="rect299"
+       style="stroke-width:0.262946;fill:#ffffff"
+       rx="1.3229377" />
+  </g>
+  <g
+     id="sidebar-view-active-180px-dark"
+     transform="translate(84.66684)">
+    <rect
+       x="15.87316"
+       y="-30.692076"
+       width="47.625751"
+       height="7.4082398"
+       opacity="0"
+       stroke-width="0.719165"
+       id="rect303" />
+    <rect
+       x="18.519035"
+       y="-30.692076"
+       width="42.334"
+       height="7.4082398"
+       ry="1.3228632"
+       fill="#00000c"
+       opacity="0.2"
+       id="rect305"
+       style="stroke-width:0.262946;fill:#ffffff"
+       rx="1.3228632" />
+  </g>
+  <g
+     id="sidebar-view-checked-180px-dark"
+     transform="translate(84.66684)">
+    <rect
+       x="15.87316"
+       y="-20.109076"
+       width="47.625751"
+       height="7.4082398"
+       opacity="0"
+       stroke-width="0.719165"
+       id="rect309" />
+    <rect
+       x="18.519035"
+       y="-20.109076"
+       width="42.334"
+       height="7.4082398"
+       ry="1.3233631"
+       fill="#00000c"
+       opacity="0.15"
+       id="rect311"
+       style="stroke-width:0.262946;fill:#ffffff"
+       rx="1.3233631" />
+  </g>
 </svg>
