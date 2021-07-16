@@ -19,6 +19,14 @@
 	background-image: none !important;
 }
 
+.tabbrowser-tab:not([visuallyselected="true"], [multiselected]), .tabbrowser-tab:-moz-lwtheme {
+	color: var(--gnome-tabbar-tab-color) !important;
+}
+
+.tabbrowser-tab .tab-background:not([selected=true]) {
+	color: var(--gnome-tabbar-tab-active-color) !important;
+}
+
 .tab-background {
 	transition: background 200ms !important;
 }

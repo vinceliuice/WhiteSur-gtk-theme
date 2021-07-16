@@ -4,7 +4,7 @@
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
 
-set -o pipefail
+set -Eeo pipefail
 
 if [[ ! "${REPO_DIR}" ]]; then
   echo "Please define 'REPODIR' variable"; exit 1
