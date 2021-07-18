@@ -6,6 +6,14 @@
 %app-well-app {
   @include font(body-1);
 
+  .overview-icon.overview-icon-with-label {
+    padding: 10px 8px 5px 8px;
+
+    > StBoxLayout {
+      spacing: $base_spacing;
+    }
+  }
+
   & .overview-icon {
     color: $light_fg_color;
     border-radius: $wm_radius;

@@ -9,15 +9,18 @@
   selection-background-color: $light_track_color;
   selected-color: $light_alt_fg_color;
   @include search_entry(normal, $fc:$light_track_color);
+  box-shadow: none;
 
   &:hover {
     @include search_entry(hover, $fc:$light_alt_fg_color);
     color: $light_alt_fg_color;
+    box-shadow: none;
   }
 
   &:focus {
     @include search_entry(focus, $fc:$light_alt_fg_color);
     color: $light_alt_fg_color;
+    box-shadow: none;
   }
 
   .search-entry-icon {

@@ -112,6 +112,7 @@ while [[ $# -gt 0 ]]; do
       fi; shift ;;
     -g|--gdm)
       gdm="true"; full_sudo "${1}"
+      showapps_normal="true" # use normal showapps icon
 
       if ! has_command gdm && ! has_command gdm3 && [[ ! -e /usr/sbin/gdm3 ]]; then
         prompt -e "'${1}' ERROR: There's no GDM installed in your system"
