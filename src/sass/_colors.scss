@@ -164,12 +164,8 @@ $panel_bg:                          if($variant == 'light', #f1f1f1, #2a2a2a);
 }
 
 $panel_fg:                          if($trans == 'true' and $panel_font == 'white', $light_fg_color, $text_color);
-$panel_alt_fg:                      if($trans == 'true' and $panel_font == 'white', $light_alt_fg_color, $alt_fg_color);
-$panel_hint_fg:                     if($trans == 'true' and $panel_font == 'white', $light_hint_fg_color, $hint_fg_color);
-$panel_disabled_fg:                 if($trans == 'true' and $panel_font == 'white', $light_disabled_fg_color, $disabled_fg_color);
-$panel_alt_disabled_fg:             if($trans == 'true' and $panel_font == 'white', $light_alt_disabled_fg_color, $alt_disabled_fg_color);
-$panel_track:                       if($trans == 'true' and $panel_font == 'white', $light_track_color, $track_color);
-$panel_divider:                     if($trans == 'true' and $panel_font == 'white', $light_divider_color, $divider_color);
+$panel_track:                       if($trans == 'false' or $panel_font == 'black' and $variant == 'light', rgba(black, 0.15), rgba(white, 0.28));
+$panel_divider:                     if($trans == 'false' or $panel_font == 'black' and $variant == 'light', rgba(black, 0.08), rgba(white, 0.15));
 
 $dash_bg: if($variant == 'light', rgba(#d1d1d1, $panel_opacity + 0.33), rgba(#222222, $panel_opacity/2 + 0.6));
 $dash_fg: if($variant == 'light', black, white);
