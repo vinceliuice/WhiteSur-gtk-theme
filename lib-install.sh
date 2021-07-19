@@ -345,6 +345,7 @@ install_shelly() {
 
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/assets${color}/"*".svg"                          "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities.svg"
+  cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"                "${TARGET_DIR}/assets/activities-white.svg"
   cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/assets/background.png"
 
   (
@@ -354,9 +355,8 @@ install_shelly() {
     mv -f "assets/no-notifications.svg" "no-notifications.svg"
   )
 
-  if [[ "${alt}" == '-alt' || "${opacity}" == '-solid' ]] &&  [[ "${color}" == '-light' ]]; then
+  if [[ "${black_font:-}" == 'true' || "${opacity}" == '-solid' ]] && [[ "${color}" == '-light' ]]; then
     cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities-black/activities${icon}.svg"        "${TARGET_DIR}/assets/activities.svg"
-    cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities/activities${icon}.svg"              "${TARGET_DIR}/assets/activities-white.svg"
   fi
 }
 
@@ -716,14 +716,12 @@ gtk_base() {
   cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
 
   # Theme base options
-  sed $SED_OPT "/\$laptop/s/false/${compact}/"                                  "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  if [[ "${compact}" == 'false' ]]; then
+    sed $SED_OPT "/\$laptop/s/true/false/"                                      "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  fi
 
   if [[ "${opacity}" == 'solid' ]]; then
     sed $SED_OPT "/\$trans/s/true/false/"                                       "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
-  fi
-
-  if [[ "${color}" == 'light' && ${opacity} == 'solid' ]]; then
-    sed $SED_OPT "/\$black/s/false/true/"                                       "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 
   if [[ "${theme}" != '' ]]; then
@@ -772,6 +770,20 @@ customize_theme() {
   if [[ "${max_round}" == 'true' ]]; then
     prompt -s "Changing maximized window style ..."
     sed $SED_OPT "/\$max_window_style/s/square/round/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
+  # Change panel font color
+  if [[ "${monterey}" == 'true' ]]; then
+    black_font="true"
+    prompt -s "Changing to montery style ..."
+    sed $SED_OPT "/\$monterey/s/false/true/"                                    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    sed $SED_OPT "/\$panel_opacity/s/0.15/0.5/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
+  # Change panel font color
+  if [[ "${black_font}" == 'true' ]]; then
+    prompt -s "Changing panel font color ..."
+    sed $SED_OPT "/\$panel_font/s/white/black/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   if [[ "${compact}" == 'false' ]]; then

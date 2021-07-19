@@ -47,39 +47,68 @@ Usage:  `./install.sh [OPTIONS...]`
 <details> <summary> Options </summary>
 
 ```bash
--d, --dest [DIR] # Set destination directory. Default is '/home/vince/.themes'
+  -d, --dest DIR
+ Set destination directory. Default is '/home/vince/.themes'
 
--n, --name [NAME] # Set theme name. Default is 'WhiteSur'
+  -n, --name NAME
+ Set theme name. Default is 'WhiteSur'
 
--o, --opacity [normal|solid] # Set theme opacity variants. Repeatable. Default is all variants
+  -o, --opacity [normal|solid]
+ Set theme opacity variants. Repeatable. Default is all variants
 
--c, --color [light|dark] # Set theme color variants. Repeatable. Default is all variants
+  -c, --color [light|dark]
+ Set theme color variants. Repeatable. Default is all variants
 
--a, --alt [normal|alt|all] # Set window control buttons variant. Repeatable. Default is 'normal'
+  -a, --alt [normal|alt|all]
+ Set window control buttons variant. Repeatable. Default is 'normal'
 
--t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey|all] # Set theme accent color. Repeatable. Default is BigSur-like theme
+  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey|all]
+ Set theme accent color. Repeatable. Default is BigSur-like theme
 
--p, --panel [default|30|45|60|75] # Set panel transparency. Default is 15%
+  -p, --panel [default|30|45|60|75]
+ Set panel transparency. Default is 15%
 
--s, --size [default|220|240|260|280] # Set Nautilus sidebar minimum width. Default is 200px
+  -s, --size [default|180|220|240|260|280]
+ Set Nautilus sidebar minimum width. Default is 200px
 
--i, --icon [standard|simple|gnome|ubuntu|arch|manjaro|fedora|debian|void] # Set 'Activities' icon. Default is 'standard'
+  -i, --icon [standard|simple|gnome|ubuntu|arch|manjaro|fedora|debian|void]
+ Set 'Activities' icon. Default is 'standard'
 
--b, --background [default|blank|IMAGE_PATH] # Set gnome-shell background image. Default is BigSur-like wallpaper
+  -b, --background [default|blank|IMAGE_PATH]
+ Set gnome-shell background image. Default is BigSur-like wallpaper
 
--N, --nautilus-style [stable|normal|mojave|glassy] # Set Nautilus style. Default is stable (stabled sidebar)
+  -m, --monterey
+ Set to MacOS Monterey style.
 
---round, --roundedmaxwindow # Set maximized window to rounded. Default is square
+  -N, --nautilus-style [stable|normal|mojave|glassy]
+ Set Nautilus style. Default is BigSur-like style (stabled sidebar)
 
---right, --rightplacement # Set Nautilus titlebutton placement style to right. Default is left
+  -HD, --highdefinition
+ Set to High Definition size. Default is laptop size
 
---normal, --normalshowapps # Set gnome-shell show apps button style to normal. Default is bigsur
+  --normal, --normalshowapps
+ Set gnome-shell show apps button style to normal. Default is bigsur
 
---dialog, --interactive # Run this installer interactively, with dialogs.
+  --round, --roundedmaxwindow
+ Set maximized window to rounded. Default is square
 
--r, --remove, -u, --uninstall # Remove all installed WhiteSur themes.
+  --right, --rightplacement
+ Set Nautilus titlebutton placement to right. Default is left
 
--h, --help # Show this help.
+  --black, --blackfont
+ Set panel font color to black. Default is white
+
+  --dialog, --interactive
+ Run this installer interactively, with dialogs.
+
+  --silent-mode
+ Meant for developers: ignore any confirm prompt and params become more strict.
+
+  -r, --remove, -u, --uninstall
+ Remove all installed WhiteSur themes.
+
+  -h, --help
+ Show this help.
 ```
 
 </details>
@@ -144,53 +173,56 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 <details> <summary> Options </summary>
 
 ```bash
--f, --firefox
-# Install 'WhiteSur' theme for Firefox and connect it to the current Firefox profiles.
+-f, --firefox [default|monterey]
+Install 'WhiteSur|Monterey' theme for Firefox and connect it to the current Firefox profiles. Default is WhiteSur
 
 -e, --edit-firefox
-# Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles.
+Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles.
 
 -F, --flatpak
-# Connect 'WhiteSur' theme to Flatpak.
+Connect 'WhiteSur' theme to Flatpak.
 
 -s, --snap
-# Connect 'WhiteSur' theme the currently installed snap apps.
+Connect 'WhiteSur' theme the currently installed snap apps.
 
 -g, --gdm
-# Install 'WhiteSur' theme for GDM. Requires to run this shell as root
+Install 'WhiteSur' theme for GDM. Requires to run this shell as root
 
 -d, --dash-to-dock
-# Install 'WhiteSur' theme for Dash to Dock and connect it to the current Dash to Dock installation(s).
+Install 'WhiteSur' theme for Dash to Dock and connect it to the current Dash to Dock installation(s).
 
 -N, --no-darken
-# Don't darken 'WhiteSur' GDM theme background image.
+Don't darken 'WhiteSur' GDM theme background image.
 
 -n, --no-blur
-# Don't blur 'WhiteSur' GDM theme background image.
+Don't blur 'WhiteSur' GDM theme background image.
 
 -b, --background [default|blank|IMAGE_PATH]
-# Set 'WhiteSur' GDM theme background image. Default is BigSur-like wallpaper
+Set 'WhiteSur' GDM theme background image. Default is BigSur-like wallpaper
 
 -o, --opacity [normal|solid]
-# Set 'WhiteSur' GDM theme opacity variants. Default is 'normal'
+Set 'WhiteSur' GDM theme opacity variants. Default is 'normal'
 
 -c, --color [light|dark]
-# Set 'WhiteSur' GDM and Dash to Dock theme color variants. Default is 'light'
+Set 'WhiteSur' GDM and Dash to Dock theme color variants. Default is 'light'
 
 -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]
-# Set 'WhiteSur' GDM theme accent color. Default is BigSur-like theme
+Set 'WhiteSur' GDM theme accent color. Default is BigSur-like theme
 
 -p, --panel [default|30|45|60|75]
-# Set 'WhiteSur' GDM (GNOME Shell) theme panel transparency. Default is 15%
+Set 'WhiteSur' GDM (GNOME Shell) theme panel transparency. Default is 15%
 
 -i, --icon [standard|simple|gnome|ubuntu|arch|manjaro|fedora|debian|void]
-# Set 'WhiteSur' GDM (GNOME Shell) 'Activities' icon. Default is 'standard'
+Set 'WhiteSur' GDM (GNOME Shell) 'Activities' icon. Default is 'standard'
 
 -r, --remove, --revert
-# Revert to the original themes, do the opposite things of install and connect.
+Revert to the original themes, do the opposite things of install and connect.
+
+--silent-mode
+Meant for developers: ignore any confirm prompt and params become more strict.
 
 -h, --help
-# Show this help.
+Show this help.
 ```
 
 </details>

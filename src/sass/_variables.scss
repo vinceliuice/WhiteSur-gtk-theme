@@ -77,8 +77,6 @@ $button_transition: all $shorter_duration $ease-out-quad;
 $backdrop_transition: $longer_duration ease-out;
 
 // Shadow
-$panel_shadow: 0 0 10px rgba(black, 0.35), 0 0 24px rgba(black, 0.30);
-$panel_asset_shadow: 0 1px 3px 3px rgba(black, 0.15);
 $shadow_0: 0 1px 2px 0 rgba(black, 0.1), 0 2px 2px 0 rgba(black, 0.05);     // Slider hover shadow
 $shadow_1: 0 1px 1px 0 rgba(black, 0.12), 0 1px 2px 0 rgba(black, 0.06);    // Header-button shadow
 $shadow_2: 0 1px 1px 0 rgba(black, 0.1), 0 1px 2px 0 rgba(black, 0.05);     // Slider normal shadow
@@ -86,6 +84,5 @@ $shadow_3: 0 1px 1px 0 rgba(black, 0.03), 0 1px 2px 0 rgba(black, 0.01);    // N
 $shadow_4: 0 2px 3px 0 rgba(black, 0.2), 0 3px 5px 0 rgba(black, 0.15);     // Switch-slider hover shadow
 $shadow_5: 0 1px 2px 0 rgba(black, 0.15), 0 2px 3px 0 rgba(black, 0.1);     // Switch-slider normal shadow
 $shadow_6: 0 0 8px rgba(black, 0.2), 0 0 4px rgba(black, 0.3);              // Switch-slider normal shadow
-$text_shadow: 0 -1px rgba(white, 0.04), -1px 0 rgba(black, 0.05),
-              1px 0 rgba(black, 0.05), 0 1px rgba(black, 0.3),
-              0 2px rgba(black, 0.05);                                      // text and icon shadow
+
+$panel_asset_shadow: if($monterey == 'true' or $trans == 'false', none, 0 1px 3px 3px rgba(black, 0.15));

@@ -32,17 +32,17 @@ usage() {
   helpify "-p, --panel"          "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]"  "Set panel transparency"                           "Default is 15%"
   helpify "-s, --size"           "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]"   "Set Nautilus sidebar minimum width"               "Default is 200px"
   helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"           "Set 'Activities' icon"                            "Default is 'standard'"
-  # Not sure if "background" is even needed here
   helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                         "Set gnome-shell background image"                 "Default is BigSur-like wallpaper"
+  helpify "-m, --monterey"                ""                                          "Set to MacOS Monterey style"
   helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                               "Default is BigSur-like style (stabled sidebar)"
   helpify "-HD, --highdefinition"         ""                                          "Set to High Definition size"                      "Default is laptop size"
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
   helpify "--round, --roundedmaxwindow"   ""                                          "Set maximized window to rounded"                  "Default is square"
-  helpify "--right, --rightplacement"     ""                                          "Set Nautilus titlebutton placement style to right" "Default is left"
-  helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
+  helpify "--right, --rightplacement"     ""                                          "Set Nautilus titlebutton placement to right"      "Default is left"
+  helpify "--black, --blackfont"          ""                                          "Set panel font color to black"                    "Default is white"
   helpify "--dialog, --interactive"       ""                                          "Run this installer interactively, with dialogs"   ""
-  helpify "-r, --remove, -u, --uninstall" ""                                          "Remove all installed ${THEME_NAME} themes"        ""
   helpify "--silent-mode"                 ""                                          "Meant for developers: ignore any confirm prompt and params become more strict" ""
+  helpify "-r, --remove, -u, --uninstall" ""                                          "Remove all installed ${THEME_NAME} themes"        ""
   helpify "-h, --help"                    ""                                          "Show this help"                                   ""
 }
 
@@ -72,16 +72,18 @@ while [[ $# -gt 0 ]]; do
       full_sudo "${1}"; silent_mode='true'; shift ;;
     --dialog|--interactive)
       interactive='true'; shift ;;
-    -h|--help)
-      need_help="true"; shift ;;
     --normal|--normalshowapps)
       showapps_normal="true"; shift ;;
     --right|--rightplacement)
       right_placement="true"; shift ;;
     --round|--roundedmaxwindow)
       max_round="true"; shift ;;
+    --black|--blackfont)
+      black_font="true"; shift ;;
     -HD|--highdefinition)
       compact="false"; shift ;;
+    -m|--monterey)
+      monterey="true"; shift ;;
       # Parameters that require value, single use
     -b|--background)
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
@@ -106,6 +108,8 @@ while [[ $# -gt 0 ]]; do
       check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
     -t|--theme)
       check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
+    -h|--help)
+      need_help="true"; shift ;;
     *)
       prompt -e "ERROR: Unrecognized installation option '${1}'."
       has_any_error="true"; shift ;;

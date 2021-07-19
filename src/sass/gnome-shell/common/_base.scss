@@ -12,7 +12,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   &:hover, &:focus {
     color: $fg_color;
     background-color: if($variant == 'light', rgba($popover_bubble_bg, 1), rgba(lighten($popover_bubble_bg, 5%), 1));
-    box-shadow: 0 3px 5px rgba(black, 0.1);
+    box-shadow: 0 2px 3px rgba(black, 0.1) !important;
   }
 
   &:active {
