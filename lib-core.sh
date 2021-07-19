@@ -99,7 +99,7 @@ icon="${ICON_VARIANTS[0]}"
 sidebar_size="${SIDEBAR_SIZE_VARIANTS[0]}"
 panel_opacity="${PANEL_OPACITY_VARIANTS[0]}"
 nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}"
-background="default"
+background="blank"
 compact="true"
 
 #--Ambigous arguments checking and overriding default values--#

@@ -483,8 +483,6 @@ install_themes() {
   # "install_theemy" and "install_shelly" require "gtk_base", so multithreading
   # isn't possible
 
-  background="blank"
-
   install_theme_deps; start_animation; install_beggy
 
   for opacity in "${opacities[@]}"; do
