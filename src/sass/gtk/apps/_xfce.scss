@@ -73,12 +73,10 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
 }
 
 XfdesktopIconView.view {
-  border-radius: 0;
+  border-radius: $bt_radius;
   background: transparent;
   color: $selected_fg_color;
   text-shadow: $text_shadow;
-  transition: none;
-  animation: none;
 
   &:active, &:checked {
     background-color: $selected_bg_color;
@@ -86,7 +84,10 @@ XfdesktopIconView.view {
     text-shadow: none;
   }
 
-  .rubberband { @extend %rubberband; }
+  .rubberband {
+    @extend %rubberband;
+    border-radius: 0;
+  }
 }
 
 window#whiskermenu-window {
