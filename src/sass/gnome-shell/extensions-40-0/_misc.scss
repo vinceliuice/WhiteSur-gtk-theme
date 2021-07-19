@@ -1,7 +1,6 @@
 //
 // Dash to panel
 //
-
 #preview-menu {
   margin: 0 6px 6px !important;
   padding-bottom: 8px !important;
@@ -11,7 +10,10 @@
   }
 }
 
-//  OpenWeather Extension
+
+//
+// OpenWeather Extension
+//
 .openweather {
   &-button,
   &-button-action,
@@ -70,20 +72,20 @@
   &-build-icon { color: $alt_fg_color; }
 }
 
-
 //
 // Gsconnect
 //
 .gsconnect-device-menu {
-  background-color: if($variant == 'light', white, rgba(white, 0.06));
+  background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05));
   border-radius: $bt_radius;
-  margin: $container_padding / 2;
+  margin: 0 $container_padding / 2;
   padding: $bt_radius 0;
-  box-shadow: 1px 2px 3px rgba(black, if($variant == 'light', 0.08, 0.35));
+  box-shadow: none;
 
   .popup-menu-item {
+    margin: 0 $container_padding / 2 !important;
     height: 16px !important;
-    border-radius: 0 !important;
+    border-radius: $bt_radius !important;
 
     &:hover {
       color: $fg_color !important;
