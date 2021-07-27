@@ -158,6 +158,23 @@ anim=(
   "    ${c_blue}•${c_green}•${c_red}•${c_magenta}•"
 )
 
+# Check command availability
+has_command() {
+  command -v "$1" &> /dev/null
+}
+
+has_flatpak_app() {
+  flatpak list --columns=application | grep "${1}" &> /dev/null || return 1
+}
+
+has_snap_app() {
+  snap list "${1}" &> /dev/null || return 1
+}
+
+is_my_distro() {
+  [[ "$(cat '/etc/os-release' | awk -F '=' '/ID/{print $2}')" =~ "${1}" ]]
+}
+
 ###############################################################################
 #                              CORE UTILITIES                                 #
 ###############################################################################
@@ -286,6 +303,10 @@ signal_error() {
   prompt -e "GNOME  : ${GNOME_VERSION}"
   prompt -e "REPO   : ${repo_ver}\n"
 
+  if has_command apt; then
+    prompt -i "HINT: Try install depends to fix this: sudo apt install sassc libglib2.0-dev-bin libxml2-utils\n"
+  fi
+
   prompt -i "HINT: You can google or report to us the info above\n"
   prompt -i "https://github.com/vinceliuice/WhiteSur-gtk-theme/issues\n\n"
 
@@ -349,23 +370,6 @@ helpify_title() {
 
 helpify() {
   printf "  ${c_blue}%s ${c_green}%s\n ${c_magenta}%s. ${c_cyan}%s\n\n${c_default}" "${1}" "${2}" "${3}" "${4}"
-}
-
-# Check command availability
-has_command() {
-  command -v "$1" &> /dev/null
-}
-
-has_flatpak_app() {
-  flatpak list --columns=application | grep "${1}" &> /dev/null || return 1
-}
-
-has_snap_app() {
-  snap list "${1}" &> /dev/null || return 1
-}
-
-is_my_distro() {
-  [[ "$(cat '/etc/os-release' | awk -F '=' '/ID/{print $2}')" =~ "${1}" ]]
 }
 
 ###############################################################################
