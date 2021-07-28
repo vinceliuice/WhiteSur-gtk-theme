@@ -2848,6 +2848,18 @@ window#GearyMainWindow.background.csd { // <= 3.32
           border-top-right-radius: 8px;
         }
       }
+
+      .geary-attachment-pane {
+        border-radius: 0 0 8px 8px;
+
+        actionbar.background {
+          background-color: transparent;
+
+          > revealer > box {
+            border-radius: 0 0 7px 7px;
+          }
+        }
+      }
     }
 
     searchbar {
