@@ -2382,6 +2382,8 @@ cursor-handle {
   background-color: transparentize($base_color, 1);
   border: 1px solid transparent;
   transition: all 150ms ease-out;
+  border-radius: 0;
+  padding: $container_padding - 4px $container_padding + 4px;
 
   &:hover:not(:checked) {
     color: mix($fg_color, $disabled_fg_color, 50%);
@@ -2401,7 +2403,8 @@ cursor-handle {
   background-color: transparentize($base_color, 1);
   border: none;
   transition: all 150ms ease-out;
-  padding: 0 0;
+  border-radius: $bt_radius;
+  padding: 0 $container_padding + 4px;
 
   &:hover:not(:checked) {
     color: mix($fg_color, $disabled_fg_color, 50%);
@@ -2494,10 +2497,10 @@ notebook {
       min-width: $menuitem_size;
       border: none;
       box-shadow: none;
+      padding: 0;
 
       @if $monterey == 'false' {
         border-radius: 0;
-        padding: 0;
         margin: 0;
       } @else {
         margin-left: $container_padding / 2;
@@ -2521,22 +2524,17 @@ notebook {
         }
 
         > tabs > tab {
-          padding: $container_padding - 4px $container_padding + 4px;
           outline-offset: -4px;
           min-width: 24px;
           min-height: 24px;
 
           @if $monterey == 'false' {
-            border-radius: 0;
-
             // tab overlap
             + tab {
               @if $_pos==top or $_pos==bottom { margin-left: -1px; }
               @else { margin-top: -1px; }
             }
           } @else {
-            border-radius: $bt_radius;
-
             + tab {
               @if $_pos==top or $_pos==bottom { margin-left: $container_padding / 2; }
               @else { margin-top: $container_padding / 2; }
@@ -2605,14 +2603,26 @@ notebook {
       }
 
       // close button
-      button.flat, button.close-button {
-        min-height: $small_size;
-        min-width: $small_size;
+      button.flat,
+      button.close-button,
+      button.image-button.flat {
         border-radius: 3px;
         padding: 0;
-        margin-top: 2px;
-        margin-bottom: 2px;
         color: mix($bg_color, $fg_color, 35%);
+        margin-left: $container_padding / 2;
+        margin-right: -$container_padding;
+
+        @if $monterey == 'false' {
+          min-height: $small_size;
+          min-width: $small_size;
+          margin-top: 2px;
+          margin-bottom: 2px;
+        } @else {
+          min-height: 16px;
+          min-width: 16px;
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
 
         &:hover {
           @extend %undecorated_button;
