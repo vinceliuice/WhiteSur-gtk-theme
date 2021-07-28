@@ -337,12 +337,14 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   }
 
   notebook {
-    margin-left: -1px;
-    margin-right: -1px;
-
     &.background.csd { background-color: transparent; }
 
-    tab { margin-left: -1px; }
+    @if $monterey == 'false' {
+      margin-left: -1px;
+      margin-right: -1px;
+
+      tab { margin-left: -1px; }
+    }
 
     scrolledwindow {
       .view:not(:hover):not(:active):not(:selected) {
@@ -595,8 +597,16 @@ terminal-window {
     button.flat.toggle.popup {
       min-height: 28px;
       min-width: 28px;
-      margin: -2px;
+      padding: 0;
+
+      @if $monterey == 'false' {
+        margin: -2px;
+      } @else {
+        margin: -2px 0;
+      }
     }
+
+    tab { padding: 0 0; }
   }
 
   &.background.csd.maximized { border-radius: 0 0 0 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
