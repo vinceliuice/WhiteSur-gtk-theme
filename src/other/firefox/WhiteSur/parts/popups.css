@@ -3,13 +3,31 @@
 @import "popups-contents.css";
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+menupopup {
+	--panel-background: transparent !important;
+	--panel-border-color: transparent !important;
+}
+
+panel {
+	--panel-background: var(--gnome-menu-background) !important;
+	--panel-border-color: var(--gnome-menu-border-color) !important;
+}
+
+:is(panel, menupopup)::part(content) {
+	border: none !important;
+}
+
+panelview {
+	padding: 12px !important;
+}
+
 /* Style menus */
 menupopup {
 	-moz-appearance: none !important;
 	background: var(--gnome-menu-background) !important;
 	border: 1px solid var(--gnome-menu-border-color) !important;
 	border-radius: 8px !important;
-	padding: 8px 0 !important;
+	padding: 6px 0 !important;
 	color: var(--gnome-toolbar-color) !important;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
 }
@@ -54,7 +72,7 @@ panelview {
 	border: 1px solid !important;
 	border-color: var(--gnome-popover-border-color) !important;
 	border-radius: 8px!important;
-	padding: 12px !important;
+	padding: 0 !important;
 	color: var(--gnome-toolbar-color) !important;
 }
 .panel-arrow {
