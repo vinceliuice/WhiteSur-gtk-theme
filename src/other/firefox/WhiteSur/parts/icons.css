@@ -347,7 +347,7 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	list-style-image: url("../icons/drm-symbolic.svg") !important;
 }
 
-#reader-mode-button {
+#reader-mode-button > .urlbar-icon {
 	list-style-image: url("../icons/reader-mode.svg") !important;
 }
 
@@ -524,7 +524,7 @@ menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
 	#pageActionButton,
 	#permissions-granted-icon,
 	#tracking-protection-icon-animatable-image,
-	#reader-mode-button,
+	#reader-mode-button > .urlbar-icon,
 	#star-button:not([starred]),
 	#geo-sharing-icon[sharing], .geo-icon,
 	.blocked-permission-icon.popup-icon,
