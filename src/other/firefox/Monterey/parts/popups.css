@@ -3,24 +3,6 @@
 @import "popups-contents.css";
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-menupopup {
-	--panel-background: transparent !important;
-	--panel-border-color: transparent !important;
-}
-
-panel {
-	--panel-background: var(--gnome-menu-background) !important;
-	--panel-border-color: var(--gnome-menu-border-color) !important;
-}
-
-:is(panel, menupopup)::part(content) {
-	border: none !important;
-}
-
-panelview {
-	padding: 12px !important;
-}
-
 /* Style menus */
 menupopup {
 	-moz-appearance: none !important;
@@ -29,10 +11,7 @@ menupopup {
 	border-radius: 8px !important;
 	padding: 6px 0 !important;
 	color: var(--gnome-toolbar-color) !important;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
-}
-menupopup menupopup {
-	margin: -5px 0 0 -4px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
 }
 
 menubar > menu > menupopup {
@@ -55,8 +34,30 @@ menuitem[disabled="true"]:hover, menupopup menu[disabled="true"]:hover {
 	background: transparent !important;
 }
 
+menupopup {
+	--panel-background: transparent !important;
+	--panel-border-color: transparent !important;
+}
+
+panel {
+	--panel-background: var(--gnome-menu-background) !important;
+	--panel-border-color: var(--gnome-menu-border-color) !important;
+}
+
+:is(menupopup, panel)[type="arrow"] {
+	--panel-border-radius: 12px !important;
+	--panel-padding: 8px !important;
+}
+
+:is(panel, menupopup)::part(content) {
+	border: none !important;
+}
+
 /* Adjust popovers position */
-panel[type=arrow] {
+panel[type="arrow"] {
+	appearance: none !important;
+	border: none !important;
+	background-color: transparent !important;
 	margin-top: 8px !important;
 }
 
@@ -69,18 +70,19 @@ panelview {
 	background: transparent !important;
 }
 
+panelview {
+	padding: 8px !important;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
+	border-radius: 12px !important;
+}
+
 .panel-arrowcontent {
 	background: var(--gnome-popover-background) !important;
 	border: 1px solid var(--gnome-popover-border-color) !important;
-	border-radius: 8px!important;
-	padding: 0 !important;
+	border-radius: 12px !important;
 	color: var(--gnome-toolbar-color) !important;
 }
-.panel-arrow {
-	fill: var(--gnome-popover-background) !important;
-	stroke: var(--gnome-popover-border-color) !important;
-	display: -moz-inline-box !important;
-}
+
 panel:not([remote]), #BMB_bookmarksPopup {
 	--arrowpanel-background: var(--gnome-popover-background) !important;
 }
