@@ -81,13 +81,23 @@
     &:hover {
       color: $panel_fg;
       background-color: $panel_divider;
+
+      &.clock-display {
+        .clock {
+          background-color: $panel_divider;
+        }
+      }
     }
 
     &:active, &:overview, &:focus, &:checked {
-      &, &:hover {
-        background-color: $panel_track;
-        color: $panel_fg;
-        box-shadow: none;
+      background-color: $panel_track;
+      color: $panel_fg;
+      box-shadow: none;
+
+      &.clock-display {
+        .clock {
+          background-color: $panel_track;
+        }
       }
     }
 
@@ -99,14 +109,18 @@
     }
 
     &.clock-display {
-      StLabel { padding: 0 $base_margin; }
+      background-color: transparent;
+
+      StLabel { padding: 0 $base_padding; }
 
       .clock {
         // transition-duration: 150ms;
         border: none;
-        border-radius: 0;
-        background: none;
+        border-radius: $bt_radius;
+        background-color: transparent;
         box-shadow: none;
+        padding: 0 $base_padding * 3;
+        spacing: $base_padding;
       }
     }
 
@@ -117,6 +131,7 @@
       // we want to exclude the do-not-disturb indicator from the background
       &.clock-display {
         box-shadow: none;
+        background-color: transparent;
 
         .clock {
           box-shadow: none;
