@@ -277,7 +277,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 .menu,
 .popup-menu,
 %menu {
-  padding: 0 6px;
+  padding: 0 6px 4px;
   color: $fg_color;
 
   @if $trans == 'true' {
@@ -341,7 +341,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   -arrow-border-color: rgba(0,0,0,0.0);
   -arrow-base: 0;
   -arrow-rise: 0;
-  margin: 0.4em 0.5em 0.5em;
+  margin: 0.5em;
   border-radius: $bt_radius;
 }
 

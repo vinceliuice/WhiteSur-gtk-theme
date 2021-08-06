@@ -79,7 +79,7 @@ window.background:not(.csd) {
 
   > menu,
   > menu > menu {
-    border-radius: 0;
+    // border-radius: 0;
     background-color: $menu_bg;
   }
 
@@ -242,6 +242,8 @@ window.background.chromium {
   }
 
   > menubar { background-color: $header_bg; }
+
+  menu menuitem { border-radius: 0; }
 }
 
 //
@@ -584,5 +586,50 @@ menubar.-vala-panel-background {
 
     // > window.background.popup > decoration,
     // > window.background.popup > menu { border-radius: 0 0 $wm_radius $wm_radius; }
+  }
+}
+
+//
+// xapp stutas icon menu
+//
+.xapp-status-icon-menu-window {
+  > decoration {
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15), 0 8px 15px rgba(0, 0, 0, 0.08), $wm_outline;
+    transition: none;
+    margin: 0;
+  }
+
+  > menu {
+    padding: 0;
+    separator {
+      margin: 0;
+      border-bottom: none;
+    }
+
+    > menuitem {
+      padding: 0;
+      margin: 0 3px;
+
+      &:first-child { margin-top: 3px; }
+      &:last-child { margin-bottom: 3px; }
+
+      > window > decoration {
+        box-shadow: none;
+        transition: none;
+        margin: 0;
+
+        menu {
+          padding: 0;
+
+          menuitem {
+            padding: 0;
+            margin: 0 3px;
+
+            &:first-child { margin-top: 3px; }
+            &:last-child { margin-bottom: 3px; }
+          }
+        }
+      }
+    }
   }
 }

@@ -2170,9 +2170,9 @@ menubar,
   }
 }
 
-.context-menu,
 menu,
-.menu {
+.menu,
+.context-menu {
   // margin: 4px;
   padding: $container_padding;
   border-radius: $mn_radius;
@@ -4199,7 +4199,7 @@ decoration {
 
   .popup & {
     box-shadow: none;
-    border-radius: $wm_radius;
+    border-radius: $mn_radius;
   }
 
   // server-side decorations as used by mutter

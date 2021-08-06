@@ -71,7 +71,7 @@ Usage:  `./install.sh [OPTIONS...]`
   -s, --size [default|180|220|240|260|280]
  Set Nautilus sidebar minimum width. Default is 200px
 
-  -i, --icon [standard|simple|gnome|ubuntu|arch|manjaro|fedora|debian|void]
+  -i, --icon [standard|simple|gnome|ubuntu|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin]
  Set 'Activities' icon. Default is 'standard'
 
   -b, --background [default|blank|IMAGE_PATH]
