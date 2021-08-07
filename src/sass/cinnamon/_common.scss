@@ -1313,21 +1313,21 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   font-weight: bold;
   spacing: 1em;
   padding: 20px;
-  //  margin: 32px;
   min-width: 64px;
   min-height: 64px;
   color: $osd_fg_color;
-  border-radius: 0;
+  border-radius: $wm_radius;
   background-color: $osd_bg_color;
+  box-shadow: 0 6px 16px rgba(black, 0.25);
   border: none;
 
-  @if $trans == 'true' {
-    border-image: url("assets/menu.svg") 17 17 17 17;
-  }
-
-  @else {
-    border-image: url("assets/menu-solid.svg") 17 17 17 17;
-  }
+  // @if $trans == 'true' {
+  //   border-image: url("assets/menu.svg") 17 17 17 17;
+  // }
+  //
+  // @else {
+  //   border-image: url("assets/menu-solid.svg") 17 17 17 17;
+  // }
 
   .osd-monitor-label { font-size: 3em; }
 
