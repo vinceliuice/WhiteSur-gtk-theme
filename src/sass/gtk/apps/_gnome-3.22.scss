@@ -594,13 +594,8 @@ terminal-window {
   }
 
   notebook {
-    button.flat.toggle.popup {
-      @if $monterey == 'false' {
-        margin: -2px;
-      } @else {
-        margin: -2px 0;
-      }
-    }
+    // button.flat.toggle.popup {
+    // }
   }
 
   &.background.csd.maximized { border-radius: 0 0 0 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization

@@ -2307,10 +2307,12 @@ menu,
 //
 popover,
 popover.background {
-  padding: 0;
+  padding: $container_padding;
   border-radius: $wm_radius;
   background-clip: border-box;
   background-color: $menu_bg;
+
+  &.menu { padding: 0; }
 
   box-shadow: 0 3px 6px 0 if($variant=='light', transparentize(black, 0.85), transparentize(black, 0.85)),
               0 0 0 1px if($variant=='light', rgba($borders_color, 0.03), rgba($dark_borders_color, 0.55));
@@ -2437,43 +2439,43 @@ notebook {
       // Set box-shadow to make the header frame color more easy to see
       // Set margin to hide the ugly borders around the header
       &.top {
-        box-shadow: inset 0 1px $solid_borders_color, inset 0 -1px $solid_borders_color;
-        @if $variant=='light' {
-            box-shadow: inset 0 1px $solid_borders_color,
-                        inset 0 -1px $solid_borders_color,
-                              1px 0 $solid_borders_color,
-                              -1px 0 $solid_borders_color;
-        }
+        box-shadow: inset 0 1px $borders_color, inset 0 -1px $borders_color;
+        // @if $variant=='light' {
+        //     box-shadow: inset 0 1px $borders_color,
+        //                 inset 0 -1px $borders_color,
+        //                       1px 0 $borders_color,
+        //                       -1px 0 $borders_color;
+        // }
       }
 
       &.bottom {
-        box-shadow: inset 0 1px $solid_borders_color, inset 0 -1px $solid_borders_color;
-        @if $variant=='light' {
-            box-shadow: inset 0 1px $solid_borders_color,
-                        inset 0 -1px $solid_borders_color,
-                        1px 0 $solid_borders_color,
-                        -1px 0 $solid_borders_color;
-        }
+        box-shadow: inset 0 1px $borders_color, inset 0 -1px $borders_color;
+        // @if $variant=='light' {
+        //     box-shadow: inset 0 1px $borders_color,
+        //                 inset 0 -1px $borders_color,
+        //                 1px 0 $borders_color,
+        //                 -1px 0 $borders_color;
+        // }
       }
 
       &.right {
-        box-shadow: inset 1px 0 $solid_borders_color, inset -1px 0 $solid_borders_color;
-        @if $variant=='light' {
-            box-shadow: inset 1px 0 $solid_borders_color,
-                        inset -1px 0 $solid_borders_color,
-                        0 1px $solid_borders_color,
-                        0 -1px $solid_borders_color;
-        }
+        box-shadow: inset 1px 0 $borders_color, inset -1px 0 $borders_color;
+        // @if $variant=='light' {
+        //     box-shadow: inset 1px 0 $borders_color,
+        //                 inset -1px 0 $borders_color,
+        //                 0 1px $borders_color,
+        //                 0 -1px $borders_color;
+        // }
       }
 
       &.left {
-        box-shadow: inset 1px 0 $solid_borders_color, inset -1px 0 $solid_borders_color;
-        @if $variant=='light' {
-            box-shadow: inset 1px 0 $solid_borders_color,
-                        inset -1px 0 $solid_borders_color,
-                        0 1px $solid_borders_color,
-                        0 -1px $solid_borders_color;
-        }
+        box-shadow: inset 1px 0 $borders_color, inset -1px 0 $borders_color;
+        // @if $variant=='light' {
+        //     box-shadow: inset 1px 0 $borders_color,
+        //                 inset -1px 0 $borders_color,
+        //                 0 1px $borders_color,
+        //                 0 -1px $borders_color;
+        // }
       }
     } @else {
       &.top {
@@ -2498,14 +2500,8 @@ notebook {
       border: none;
       box-shadow: none;
       padding: 0;
-
-      @if $monterey == 'false' {
-        border-radius: 0;
-        margin: 0;
-      } @else {
-        margin-left: $container_padding / 2;
-        border-radius: $bt_radius;
-      }
+      margin-left: $container_padding / 2;
+      border-radius: $bt_radius;
 
       &:active, &:checked {
         color: $fg_color;
@@ -2843,14 +2839,6 @@ switch {
       }
     }
 
-    // the borders of checks and radios are
-    // too similar in luminosity to the selected background color, hence
-    // we need special casing.
-
-    // menuitem #{$w}#{$s}:hover,
-    // .view #{$w}#{$s}:selected,
-    // treeview.#{$w}#{$s}:selected,
-    // row:selected #{$w}#{$s},
     infobar #{$w}#{$s} {
       -gtk-icon-source: -gtk-scaled(url("assets/#{$a}#{$as}-selected.png"),
                                     url("assets/#{$a}#{$as}-selected@2.png"));
@@ -3249,6 +3237,7 @@ levelbar {
     min-width: 32px;
     min-height: 1px;
   }
+
   &.vertical block {
     min-width: 1px;
     min-height: 32px;
@@ -3269,18 +3258,22 @@ levelbar {
     background-color: $selected_bg_color;
     border-radius: $bt_radius;
   }
+
   block.low {
-    border-color: $warning_color;
-    background-color: $warning_color;
-  }
-  block.high {
     border-color: $selected_bg_color;
     background-color: $selected_bg_color;
   }
-  block.full {
-    border-color: $success_color;
-    background-color: $success_color;
+
+  block.high {
+    border-color: $warning_color;
+    background-color: $warning_color;
   }
+
+  block.full {
+    border-color: $error_color;
+    background-color: $error_color;
+  }
+
   block.empty {
     background-color: if($variant=='light', transparentize($fg_color,0.8), $base_color);
     border-color: if($variant=='light', transparentize($fg_color,0.8), $base_color);
