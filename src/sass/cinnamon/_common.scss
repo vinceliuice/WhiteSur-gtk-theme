@@ -1317,17 +1317,10 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   min-width: 64px;
   min-height: 64px;
   color: $osd_fg_color;
-  border-radius: 0;
   background-color: $osd_bg_color;
   border: none;
-
-  @if $trans == 'true' {
-    border-image: url("assets/menu.svg") 17 17 17 17;
-  }
-
-  @else {
-    border-image: url("assets/menu-solid.svg") 17 17 17 17;
-  }
+  border-radius: $wm_radius;
+  box-shadow: 0 5px 10px rgba(black, 0.25);
 
   .osd-monitor-label { font-size: 3em; }
 
