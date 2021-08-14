@@ -4197,11 +4197,9 @@ decoration {
 
   // server-side decorations as used by mutter
   .ssd & {
-    margin: -5px;
-    border-radius: $wm_radius $wm_radius 0 0;
-    box-shadow: 0 0 5px 0 $wm_shadow, $wm_outline;
-
-    &.maximized { border-radius: $maximized_radius $maximized_radius 0 0; }
+    @extend .csd;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .csd.popup & {
