@@ -2170,9 +2170,9 @@ menubar,
   }
 }
 
-.context-menu,
 menu,
-.menu {
+.menu,
+.context-menu {
   // margin: 4px;
   padding: $container_padding;
   border-radius: $mn_radius;
@@ -2307,10 +2307,12 @@ menu,
 //
 popover,
 popover.background {
-  padding: 0;
+  padding: $container_padding;
   border-radius: $wm_radius;
   background-clip: border-box;
   background-color: $menu_bg;
+
+  &.menu { padding: 0; }
 
   box-shadow: 0 3px 6px 0 if($variant=='light', transparentize(black, 0.85), transparentize(black, 0.85)),
               0 0 0 1px if($variant=='light', rgba($borders_color, 0.03), rgba($dark_borders_color, 0.55));
@@ -2382,6 +2384,8 @@ cursor-handle {
   background-color: transparentize($base_color, 1);
   border: 1px solid transparent;
   transition: all 150ms ease-out;
+  border-radius: 0;
+  padding: $container_padding - 4px $container_padding + 4px;
 
   &:hover:not(:checked) {
     color: mix($fg_color, $disabled_fg_color, 50%);
@@ -2393,6 +2397,25 @@ cursor-handle {
     color: $fg_color;
     background-color: $header_bg;
     border-color: if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
+  }
+}
+
+%monterey_tab {
+  color: $disabled_fg_color;
+  background-color: transparentize($base_color, 1);
+  border: none;
+  transition: all 150ms ease-out;
+  border-radius: $bt_radius;
+  padding: 0 $container_padding + 4px;
+
+  &:hover:not(:checked) {
+    color: mix($fg_color, $disabled_fg_color, 50%);
+    background-color: rgba($fg_color, 0.06);
+  }
+
+  &:checked {
+    color: $fg_color;
+    background-color: rgba($fg_color, 0.12);
   }
 }
 
@@ -2410,62 +2433,75 @@ notebook {
   }
 
   > header {
-    padding: 0;
-    background-color: darken($header_bg, 10%);
+    @if $monterey == 'false' {
+      background-color: darken($header_bg, 10%);
 
-    // Set box-shadow to make the header frame color more easy to see
-    // Set margin to hide the ugly borders around the header
-    &.top {
-      margin-top: -1px;
-      box-shadow: inset 0 1px $solid_borders_color, inset 0 -1px $borders_color;
-      @if $variant=='light' {
-          box-shadow: inset 0 1px $borders_color,
-                      inset 0 -1px $borders_color,
-                            1px 0 $borders_color,
-                            -1px 0 $borders_color;
+      // Set box-shadow to make the header frame color more easy to see
+      // Set margin to hide the ugly borders around the header
+      &.top {
+        box-shadow: inset 0 1px $borders_color, inset 0 -1px $borders_color;
+        // @if $variant=='light' {
+        //     box-shadow: inset 0 1px $borders_color,
+        //                 inset 0 -1px $borders_color,
+        //                       1px 0 $borders_color,
+        //                       -1px 0 $borders_color;
+        // }
       }
-    }
 
-    &.bottom {
-      box-shadow: inset 0 1px $borders_color, inset 0 -1px $solid_borders_color;
-      @if $variant=='light' {
-          box-shadow: inset 0 1px $borders_color,
-                      inset 0 -1px $borders_color,
-                      1px 0 $borders_color,
-                      -1px 0 $borders_color;
+      &.bottom {
+        box-shadow: inset 0 1px $borders_color, inset 0 -1px $borders_color;
+        // @if $variant=='light' {
+        //     box-shadow: inset 0 1px $borders_color,
+        //                 inset 0 -1px $borders_color,
+        //                 1px 0 $borders_color,
+        //                 -1px 0 $borders_color;
+        // }
       }
-      margin-bottom: -1px;
-    }
 
-    &.right {
-      box-shadow: inset 1px 0 $borders_color, inset -1px 0 $solid_borders_color;
-      @if $variant=='light' {
-          box-shadow: inset 1px 0 $borders_color,
-                      inset -1px 0 $borders_color,
-                      0 1px $borders_color,
-                      0 -1px $borders_color;
+      &.right {
+        box-shadow: inset 1px 0 $borders_color, inset -1px 0 $borders_color;
+        // @if $variant=='light' {
+        //     box-shadow: inset 1px 0 $borders_color,
+        //                 inset -1px 0 $borders_color,
+        //                 0 1px $borders_color,
+        //                 0 -1px $borders_color;
+        // }
       }
-      margin-right: -1px;
-    }
 
-    &.left {
-      box-shadow: inset 1px 0 $solid_borders_color, inset -1px 0 $borders_color;
-      @if $variant=='light' {
-          box-shadow: inset 1px 0 $borders_color,
-                      inset -1px 0 $borders_color,
-                      0 1px $borders_color,
-                      0 -1px $borders_color;
+      &.left {
+        box-shadow: inset 1px 0 $borders_color, inset -1px 0 $borders_color;
+        // @if $variant=='light' {
+        //     box-shadow: inset 1px 0 $borders_color,
+        //                 inset -1px 0 $borders_color,
+        //                 0 1px $borders_color,
+        //                 0 -1px $borders_color;
+        // }
       }
-      margin-left: -1px;
+    } @else {
+      &.top {
+        border-bottom: 1px solid $borders_color;
+      }
+
+      &.bottom {
+        border-top: 1px solid $borders_color;
+      }
+
+      &.right {
+        border-left: 1px solid $borders_color;
+      }
+
+      &.left {
+        border-right: 1px solid $borders_color;
+      }
     }
 
     button.flat.toggle.popup {
       min-width: $menuitem_size;
-      border-radius: 0;
-      padding: 0;
       border: none;
       box-shadow: none;
-      margin: 0;
+      padding: 0;
+      margin-left: $container_padding / 2;
+      border-radius: $bt_radius;
 
       &:active, &:checked {
         color: $fg_color;
@@ -2476,19 +2512,29 @@ notebook {
     @each $_pos, $_bpos in (top, bottom), (bottom, top), (right, left), (left, right) {
       // sizing and borders
       &.#{$_pos} {
-        padding: 0;
+        @if $monterey == 'false' {
+          margin-#{$_pos}: -1px;
+          padding: 0;
+        } @else {
+          padding: $container_padding / 2;
+        }
 
         > tabs > tab {
-          padding: $container_padding - 4px $container_padding + 4px;
+          outline-offset: -4px;
           min-width: 24px;
           min-height: 24px;
-          border-radius: 0;
-          outline-offset: -4px;
 
-          // tab overlap
-          + tab {
-            @if $_pos==top or $_pos==bottom { margin-left: -1px; }
-            @else { margin-top: -1px; }
+          @if $monterey == 'false' {
+            // tab overlap
+            + tab {
+              @if $_pos==top or $_pos==bottom { margin-left: -1px; }
+              @else { margin-top: -1px; }
+            }
+          } @else {
+            + tab {
+              @if $_pos==top or $_pos==bottom { margin-left: $container_padding / 2; }
+              @else { margin-top: $container_padding / 2; }
+            }
           }
         }
       }
@@ -2527,34 +2573,52 @@ notebook {
       &:disabled { color: transparentize($disabled_fg_color,0.3); }
     }
 
-    &.top,
-    &.bottom {
-      > tabs > tab {
-        &:first-child { border-left: none; }
-        &:last-child { border-right: none; }
+    @if $monterey == 'false' {
+      &.top,
+      &.bottom {
+        > tabs > tab {
+          &:first-child { border-left: none; }
+          &:last-child { border-right: none; }
+        }
       }
-    }
 
-    &.left,
-    &.right {
-      > tabs > tab {
-        &:first-child { border-top: none; }
-        &:last-child { border-bottom: none; }
+      &.left,
+      &.right {
+        > tabs > tab {
+          &:first-child { border-top: none; }
+          &:last-child { border-bottom: none; }
+        }
       }
     }
 
     > tabs > tab {
-      @extend %tabs_tab;
+      @if $monterey == 'false' {
+        @extend %tabs_tab;
+      } @else {
+        @extend %monterey_tab;
+      }
 
       // close button
-      button.flat, button.close-button {
-        min-height: $small_size;
-        min-width: $small_size;
+      button.flat,
+      button.close-button,
+      button.image-button.flat {
         border-radius: 3px;
         padding: 0;
-        margin-top: 2px;
-        margin-bottom: 2px;
         color: mix($bg_color, $fg_color, 35%);
+        margin-left: $container_padding / 2;
+        margin-right: -$container_padding;
+
+        @if $monterey == 'false' {
+          min-height: $small_size;
+          min-width: $small_size;
+          margin-top: 2px;
+          margin-bottom: 2px;
+        } @else {
+          min-height: 16px;
+          min-width: 16px;
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
 
         &:hover {
           @extend %undecorated_button;
@@ -2775,14 +2839,6 @@ switch {
       }
     }
 
-    // the borders of checks and radios are
-    // too similar in luminosity to the selected background color, hence
-    // we need special casing.
-
-    // menuitem #{$w}#{$s}:hover,
-    // .view #{$w}#{$s}:selected,
-    // treeview.#{$w}#{$s}:selected,
-    // row:selected #{$w}#{$s},
     infobar #{$w}#{$s} {
       -gtk-icon-source: -gtk-scaled(url("assets/#{$a}#{$as}-selected.png"),
                                     url("assets/#{$a}#{$as}-selected@2.png"));
@@ -3181,6 +3237,7 @@ levelbar {
     min-width: 32px;
     min-height: 1px;
   }
+
   &.vertical block {
     min-width: 1px;
     min-height: 32px;
@@ -3201,18 +3258,22 @@ levelbar {
     background-color: $selected_bg_color;
     border-radius: $bt_radius;
   }
+
   block.low {
-    border-color: $warning_color;
-    background-color: $warning_color;
-  }
-  block.high {
     border-color: $selected_bg_color;
     background-color: $selected_bg_color;
   }
-  block.full {
-    border-color: $success_color;
-    background-color: $success_color;
+
+  block.high {
+    border-color: $warning_color;
+    background-color: $warning_color;
   }
+
+  block.full {
+    border-color: $error_color;
+    background-color: $error_color;
+  }
+
   block.empty {
     background-color: if($variant=='light', transparentize($fg_color,0.8), $base_color);
     border-color: if($variant=='light', transparentize($fg_color,0.8), $base_color);
@@ -4131,7 +4192,7 @@ decoration {
 
   .popup & {
     box-shadow: none;
-    border-radius: $wm_radius;
+    border-radius: $mn_radius;
   }
 
   // server-side decorations as used by mutter

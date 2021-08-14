@@ -775,7 +775,7 @@ customize_theme() {
   # Change panel font color
   if [[ "${monterey}" == 'true' ]]; then
     black_font="true"
-    prompt -s "Changing to montery style ..."
+    prompt -s "Changing to Monterey style ..."
     sed $SED_OPT "/\$monterey/s/false/true/"                                    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
     sed $SED_OPT "/\$panel_opacity/s/0.15/0.5/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi

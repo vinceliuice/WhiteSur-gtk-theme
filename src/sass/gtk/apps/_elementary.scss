@@ -165,6 +165,86 @@ MarlinViewWindow {
   &:disabled { @include entry(header-insensitive) }
 }
 
+// Checkbutton
+checkbutton.color-button {
+  border: 1px solid $borders_color;
+  border-radius: $circular_radius;
+  background-clip: border-box;
+  padding: 0;
+
+  > check {
+    -gtk-icon-source: none;
+    background: none;
+    margin-right: 0;
+  }
+
+  &.none {
+    > check {
+      background-color: transparent;
+      border-radius: $circular_radius;
+      -gtk-icon-source: -gtk-icontheme("close-symbolic");
+    }
+  }
+
+  &.blue {
+    background-color: blue;
+  }
+
+  &.mint {
+    background-color: mix(blue, green, 35%);
+  }
+
+  &.green {
+    background-color: green;
+  }
+
+  &.yellow {
+    background-color: yellow;
+  }
+
+  &.blue {
+    background-color: blue;
+  }
+
+  &.orange {
+    background-color: orange;
+  }
+
+  &.red {
+    background-color: red;
+  }
+
+  &.pink {
+    background-color: pink;
+  }
+
+  &.purple {
+    background-color: purple;
+  }
+
+  &.brown {
+    background-color: brown;
+  }
+
+  &.slate {
+    background-color: grey;
+  }
+}
+
+radiobutton.color-button {
+  > radio {
+    -gtk-icon-source: none;
+    margin-right: 0;
+    border: 1px solid rgba(black, 0.15);
+    border-radius: $circular_radius;
+    background-clip: border-box;
+  }
+
+  &:active > radio {
+    border: 1px solid rgba(black, 0.35);
+  }
+}
+
 window.background.csd {
   > paned.horizontal {
     > separator {
@@ -175,8 +255,7 @@ window.background.csd {
     > scrolledwindow {
       > viewport.frame {
         > box.vertical treeview.view {
-
-          border-right: 1px solid if($variant=='light', $solid_borders_color, $header_border);
+          border-right: 1px solid $header_border;
 
           &:not(:hover):not(:selected) {
             border-bottom-left-radius: $wm_radius;
@@ -187,7 +266,6 @@ window.background.csd {
           padding-top: 3px;
           padding-bottom: 3px;
           border-right: 1px solid $header_border;
-          // @extend %view;
 
           &:not(:selected):hover { background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05)); }
 
@@ -231,6 +309,57 @@ window.background.csd {
     }
   }
 
+  &.unified > deck > grid > paned {
+    > separator { background-image: image($header_border); }
+
+    > .sidebar {
+      button.expander { color: $disabled_fg_color; }
+
+      actionbar button { @extend %flat_button; }
+
+      list {
+        padding: $container_padding;
+
+        > row.activatable {
+          border-radius: $bt_radius;
+          padding: ($container_padding - 2px) $container_padding * 1.5;
+          margin: 1px 0;
+          -gtk-icon-style: symbolic;
+
+          button {
+            @extend %sidebar_button;
+          }
+
+          levelbar {
+            block {
+              border: none;
+
+              &.low {
+                background-color: $warning_color;
+              }
+
+              &.high {
+                background-color: $selected_bg_color;
+              }
+
+              &.full {
+                background-color: $error_color;
+              }
+
+              &.empty {
+                background-color: if($variant=='light', transparentize($fg_color,0.8), $base_color);
+              }
+            }
+
+            trough {
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
   &.maximized, &.tiled, &.fullscreen {
     > stack > stack {
       > paned.horizontal {
@@ -244,8 +373,50 @@ window.background.csd {
   }
 }
 
+// Dynamic-notebook
 .dynamic-notebook {
   > notebook {
+    > header {
+      border-color: $solid_borders_color;
+
+      @if $monterey == 'false' {
+        background-color: darken($header_bg, 10%);
+      } @else {
+        background-color: $header_bg;
+      }
+
+      > tabs > tab {
+        padding: 0 10px;
+        min-height: 0;
+
+        label {
+          @if $monterey == 'false' {
+            margin-bottom: -$container_padding / 2;
+          } @else {
+            margin-bottom: -$container_padding * 1.5;
+          }
+        }
+
+        > widget > grid > revealer > button.image-button.flat {
+          @if $monterey == 'false' {
+            margin-top: $container_padding;
+            margin-right: $container_padding;
+            margin-bottom: 0;
+            margin-left: 0;
+          } @else {
+            margin-top: $container_padding * 1.5;
+            margin-right: $container_padding;
+            margin-bottom: 0;
+            margin-left: 0;
+          }
+        }
+      }
+
+      > box > button.flat {
+        margin: 0 $container_padding;
+      }
+    }
+
     > stack {
       border-bottom-right-radius: $wm_radius;
       background-color: $base_color;
@@ -335,6 +506,10 @@ headerbar.titlebar {
       background-color: $header_bg_backdrop;
     }
   }
+
+  &.windowhandle > button {
+    -gtk-icon-style: symbolic;
+  }
 }
 
 // Gala
@@ -397,8 +572,29 @@ scale.warmth trough {
     background-color: $bg_color;
     border-bottom: 1px solid $solid_borders_color;
   }
+}
 
-  .dynamic-notebook {
-    notebook > header { border-color: $solid_borders_color; }
+// Popovers
+popover.background {
+  menuitem.toggle {
+    margin: $container_padding $container_padding * 2;
+  }
+}
+
+// actionbar
+.sidebar > actionbar.inline-toolbar > revealer > box {
+  border-top: none;
+}
+
+actionbar.bottom-toolbar {
+  button { -gtk-icon-style: symbolic; }
+}
+
+.sidebar > treeview.view.source-list {
+  -gtk-icon-style: symbolic;
+
+  &:selected {
+    background-color: rgba($fg_color, 0.15);
+    color: $fg_color;
   }
 }

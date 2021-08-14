@@ -337,12 +337,14 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   }
 
   notebook {
-    margin-left: -1px;
-    margin-right: -1px;
-
     &.background.csd { background-color: transparent; }
 
-    tab { margin-left: -1px; }
+    @if $monterey == 'false' {
+      margin-left: -1px;
+      margin-right: -1px;
+
+      tab { margin-left: -1px; }
+    }
 
     scrolledwindow {
       .view:not(:hover):not(:active):not(:selected) {
@@ -592,11 +594,8 @@ terminal-window {
   }
 
   notebook {
-    button.flat.toggle.popup {
-      min-height: 28px;
-      min-width: 28px;
-      margin: -2px;
-    }
+    // button.flat.toggle.popup {
+    // }
   }
 
   &.background.csd.maximized { border-radius: 0 0 0 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
@@ -1952,28 +1951,47 @@ window.background.csd {
 }
 
 tabbox {
-  background-color: darken($header_bg, 10%);
-  box-shadow: inset 0 -1px $borders_color;
+  @if $monterey == 'false' {
+    background-color: darken($header_bg, 10%);
+    box-shadow: inset 0 -1px $borders_color;
+  } @else {
+    background-color: $header_bg;
+    border-bottom: 1px solid $borders_color;
+    padding: 0 $container_padding / 2 $container_padding / 2;
+  }
 
   > tab {
-    @extend %tabs_tab;
-    border-top: none;
-    padding: 2px 10px;
-    min-width: 24px;
-    min-height: 24px;
-    border-top: 1px solid $borders_color;
+    @if $monterey == 'false' {
+      @extend %tabs_tab;
+      border-top: none;
+      border-top: 1px solid $borders_color;
+      &:checked { border-top-color: $header_bg; }
+    } @else {
+      @extend %monterey_tab;
 
-    &:checked {
-      border-top-color: $header_bg;
+      + tab {
+        margin-left: $container_padding / 2;
+      }
     }
 
-    button {
-      min-height: 20px;
-      min-width: 20px;
+    button.tab-close-button {
       border-radius: 3px;
       border: none;
       padding: 0;
       @extend %flat_button;
+
+      @if $monterey == 'false' {
+        min-height: $small_size;
+        min-width: $small_size;
+        margin-top: 2px;
+        margin-bottom: 2px;
+      } @else {
+        min-height: 16px;
+        min-width: 16px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        margin-right: -$container_padding;
+      }
 
       &:hover {
         color: $fg_color;
@@ -2441,7 +2459,7 @@ window.background.csd {
 //
 // Archive Manager
 //
-.background.csd {
+window.background.csd {
   > grid.horizontal > paned.horizontal {
     > scrolledwindow {
       border-radius: 0 0 $wm_radius $wm_radius;
@@ -2482,7 +2500,7 @@ window.background.csd {
 //
 // Eye of GNOME Image Viewer
 //
-.background.csd {
+window.background.csd {
   > box.vertical > box.vertical > box.vertical{
     > paned.horizontal {
       > separator {
@@ -2823,6 +2841,18 @@ window#GearyMainWindow.background.csd { // <= 3.32
         &:first-child {
           border-top-left-radius: 8px;
           border-top-right-radius: 8px;
+        }
+      }
+
+      .geary-attachment-pane {
+        border-radius: 0 0 8px 8px;
+
+        actionbar.background {
+          background-color: transparent;
+
+          > revealer > box {
+            border-radius: 0 0 7px 7px;
+          }
         }
       }
     }
