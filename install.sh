@@ -150,11 +150,11 @@ else
 
   # rm -rf "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
 
-  if (is_my_distro "arch" || is_my_distro "void") && has_command xfce4-session; then
-    msg="XFCE: you may need to logout after changing your theme to fix your panel opacity."
-  elif (is_my_distro "solus") && has_command gnome-shell; then
+  if (is_running "xfce4-session"); then
+    msg="XFCE: you may need to run 'xfce4-panel -r' after changing your theme to fix your panel opacity."
+  elif (is_my_distro "solus") && (is_running "gnome-session"); then
     msg="GNOME: you may need to disable 'User Themes' extension to fix your dock."
-  elif (is_my_distro "debian") && [[ "${GNOME_VERSION}" == "old" ]]; then
+  elif (is_running "gnome-session") && [[ "${GNOME_VERSION}" == "old" ]]; then
     msg="GNOME: you may need to disable 'User Themes' extension to fix your logout and authentication dialog."
   fi
 
