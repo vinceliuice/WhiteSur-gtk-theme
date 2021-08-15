@@ -171,6 +171,10 @@ has_snap_app() {
   snap list "${1}" &> /dev/null || return 1
 }
 
+is_my_distro() {
+  [[ "$(cat '/etc/os-release' | awk -F '=' '/ID/{print $2}')" =~ "${1}" ]]
+}
+
 is_running() {
   pgrep "$1" &> /dev/null
 }
