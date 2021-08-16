@@ -779,7 +779,8 @@ button {
     &.popup { padding-right: $container_padding; padding-left: $container_padding; }
   }
 
-  &.close, &.circular { // The Bloody Circul Button
+  &.close, &.circular,
+  &.image-button.close:not(.circular) { // The Bloody Circul Button
     @extend %circular_button;
 
     &:active, &:checked {

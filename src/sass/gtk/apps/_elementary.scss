@@ -389,7 +389,7 @@ window.background.csd {
         padding: 0 10px;
         min-height: 0;
 
-        label {
+        label, image {
           @if $monterey == 'false' {
             margin-bottom: -$container_padding / 2;
           } @else {
@@ -513,15 +513,24 @@ headerbar.titlebar {
 }
 
 // Gala
-.gala-notification {
-    border: 1px solid $dark_borders_color;
-    border-radius: $wm_radius;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    background-image: _solid($osd_bg_color);
-    background-color: transparent;
+.gala-notification,
+window.notification .draw-area {
+  border: 1px solid rgba(black, 0.75);
+  border-radius: $wm_radius;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2),
+              0 3px 8px 2px rgba(0, 0, 0, 0.1),
+              0 5px 5px -3px rgba(0, 0, 0, 0.4),
+              0 8px 5px 1px rgba(0, 0, 0, 0.1),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  background-image: _solid($osd_bg_color);
+  background-color: transparent;
 
-  .title, .label {
+  &, .title, .label, image {
     color: $osd_fg_color;
+  }
+
+  .urgent label.title {
+    color: $error_color;
   }
 }
 
