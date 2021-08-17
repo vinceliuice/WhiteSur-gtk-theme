@@ -9,7 +9,7 @@ $raven_fg_color: $text_color;
 $raven_header_bg_color: if($variant =='light', #efefef, #181818);
 $raven_header_fg_color: $text_color;
 $raven_button_bg_color: $button_bg;
-$raven_border_color: if($variant =='light', rgba(black, 0.10), rgba(black, 0.35));
+$raven_border_color: if($variant =='light', $borders_color, rgba(black, 0.75));
 
 $raven_radius: 10px;
 $raven_padding: 8px;
@@ -107,13 +107,21 @@ $raven_padding: 8px;
     border: none;
   }
 
+  separator { margin: $container_padding / 2 0; }
+
   border { border: none; }
 
   list {
     background-color: transparent;
-  }
 
-  switch { margin-left: 56px; margin-right: 6px; }
+    row {
+      button {
+        background: none;
+        border: none;
+        box-shadow: none;
+      }
+    }
+  }
 
   &:not(.budgie-menu) button.flat:not(.image-button) {
     @extend %budgie_button;
@@ -201,6 +209,7 @@ $raven_padding: 8px;
 
     row {
       padding: 0;
+
       &:hover { box-shadow: none; }
 
       button.flat {
@@ -210,10 +219,37 @@ $raven_padding: 8px;
     }
   }
 
-  &.user-menu {
-    .container { padding: 8px; }
+  // Clipboard popover
+  > frame > box.vertical {
+    > box.horizontal {
+      > entry {
+        padding: $container_padding / 2 $container_padding * 2;
+        border: none;
+        border-bottom: 1px solid $borders_color;
+        border-radius: 0;
+        box-shadow: none;
+        background: none;
+      }
+    }
 
-    separator { margin: 4px 0; }
+    > box.vertical {
+      > box.vertical {
+        margin: 0 $container_padding $container_padding * 1.5;
+      }
+
+      > box.horizontal > button.image-button.toggle {
+        @extend %flat_button;
+        margin-right: $container_padding;
+      }
+
+      > scrolledwindow > viewport.frame {
+        border-bottom: 1px solid $borders_color;
+      }
+    }
+  }
+
+  &.user-menu {
+    .container { padding: $container_padding; }
 
     .content-box { background-color: transparent; }
 
@@ -226,25 +262,25 @@ $raven_padding: 8px;
   }
 
   &.sound-popover {
-    separator { margin: 3px 0; }
-
     buttonbox.linked > button { border-radius: $bt_radius; }
   }
 
   &.caffeine-popover {
-    .container { padding: 8px; }
+    .container { padding: $container_padding; }
   }
 
   &.night-light-indicator {
-    .container { padding: 6px; }
+    .container { padding: $container_padding; }
+
+    .view-header { padding: 0 $container_padding 0 ($container_padding - 2px); }
   }
 
   &.icon-popover {
-    .container { padding: 6px; }
+    .container { padding: $container_padding; }
   }
 
   &.places-menu {
-    .container { padding: 6px; }
+    .container { padding: $container_padding; }
 
     row.activatable {
       padding: 0;
@@ -254,22 +290,21 @@ $raven_padding: 8px;
     }
 
     .places-list:not(.always-expand) {
-      margin-top: 4px;
-      padding-top: 4px;
+      margin-top: $container_padding / 2;
+      padding-top: $container_padding / 2;
       border-top: 1px solid $borders_color;
     }
 
     // I guess this really should be hard-coded as well as other dim-labels.
     .alternative-label {
-      padding: 3px;
+      padding: $container_padding / 2;
       font-size: 15px;
     }
   }
 
   &.workspace-popover {
-    .container { padding: 2px 8px 8px; }
+    .container { padding: 2px $container_padding $container_padding; }
 
-    separator { margin: 4px 0; }
     flowboxchild { padding: 0; }
   }
 }
@@ -618,17 +653,18 @@ popover.background.places-menu {
 
 box:not(.unpinned):not(.pinned) > revealer > button.flat.launcher { border-image: none; } // unset before drawing indicators
 
-// Raven borders
-frame.raven-frame > border {
-  border-style: none;
-}
-
 $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
 
 @each $pos, $b_pos in $pos_list {
   // Shadows
    .#{$pos} .shadow-block {
      background-image: linear-gradient(to $b_pos, rgba(black, 0.05) 0%, rgba(black, 0.03) 15%, rgba(black, 0.02) 60%, transparent);
+   }
+
+   // Raven borders
+   .#{$pos} frame.raven-frame > border {
+     border: none;
+     border-#{$b_pos}: 1px solid $raven_border_color;
    }
 }
 
@@ -647,6 +683,7 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
   }
 
   stackswitcher { padding: 0 8px 12px 8px; }
+
   stackswitcher.linked > button { @extend %raven_button; }
 
   .raven-header {
@@ -664,7 +701,7 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
         padding: 0;
 
         &.image-button {
-          border-radius: 100px;
+          border-radius: $circular_radius;
         }
       }
     }
@@ -673,19 +710,19 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
       padding: 2px 12px $raven_padding;
       // background-color: rgba($raven_bg_color, 0.95);
       color: $raven_fg_color;
-      border-bottom: 1px solid $borders_color;
+      border-bottom: 1px solid $raven_border_color;
 
       > stackswitcher.linked {
         padding: 2px;
-        margin: 6px 0 0 0;
+        margin: $container_padding 0 0 0;
         background-color: rgba($fg_color, 0.05);
         border-radius: $bt_radius + 2px;
 
         > button {
           border-radius: $bt_radius;
           margin: 0;
-          padding: 0 20px;
-          min-height: 20px;
+          padding: 2px $container_padding * 3;
+          min-height: $small_size;
 
           &:hover {
             background-color: rgba($button_bg, 0.35);
@@ -702,7 +739,7 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
       }
     }
 
-    &.bottom { border-top: 1px solid $borders_color; }
+    &.bottom { border-top: 1px solid $raven_border_color; }
   }
 
   scrolledwindow > .frame { // stacking raised-grid
@@ -830,12 +867,12 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
   .option-subtitle { font-size: smaller; }
 
   // notification list
-  box.vertical > stack > box.vertical {
+  .raven-notifications-view {
     > .raven-header { background-color: $raven_header_bg_color; }
     > .raven-background > viewport.frame {
       padding: 0; // reset padding for full-width list node
 
-      list { background-color: $raven_base_color; }
+      list { background-color: transparent; }
 
       > list > row.activatable {
         margin-left: -8px;
@@ -860,15 +897,19 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
         // sub-list rows grouping
         list {
           border-radius: 0;
-          border-top: 1px solid $borders_color;
-          border-bottom: 1px solid $borders_color;
+          // border-top: 1px solid $borders_color;
+          // border-bottom: 1px solid $borders_color;
+          padding: $container_padding;
+          background: none;
 
           > row.activatable {
-            border-bottom: 1px solid $borders_color;
-            &:last-child { border-bottom: none; }
+            border: none;
+            margin: $container_padding / 2;
+            border-radius: $bt_radius;
+            background-color: if($variant == 'light', rgba(white, 0.75), rgba(white, 0.06));
 
-            &:selected {
-              background-color: rgba($raven_fg_color, 0.06);
+            &:hover, &:selected {
+              background-color: if($variant == 'light', rgba(white, 1), rgba(white, 0.12));
             }
 
             label { padding: 0 16px; }
@@ -876,7 +917,10 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
             button.image-button { // 'close'
               min-height: 24px;
               min-width: 24px;
+
               image { padding: 0; }
+
+              &:active { image { color: $fg_color; }}
             }
           }
         }
@@ -961,6 +1005,7 @@ calendar.raven-calendar {
   border-style: none;
   background-color: transparent;
   color: $raven_fg_color;
+  padding: $container_padding / 2;
 
   &:selected {
     border-radius: $bt_radius;
