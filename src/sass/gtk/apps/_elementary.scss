@@ -54,7 +54,20 @@
       &:disabled { @include button(insensitive); }
     }
 
-    list { background-color: transparent; }
+    list {
+      background-color: transparent;
+
+      row.activatable {
+        margin: 0;
+        background: none;
+
+        > widget > revealer > deck > overlay > grid {
+          background-color: $base_color;
+          border-radius: $bt_radius;
+          box-shadow: 0 2px 3px rgba(black, 0.15), inset 0 1px $header_highlight, $wm_outline;
+        }
+      }
+    }
 
     separator.horizontal {
       margin: 0 -4px;
@@ -140,6 +153,8 @@ button.flat.toggle.switcher {
     background-color: $selected_bg_color;
   }
 }
+
+label.circular { border-radius: $circular_radius; }
 
 // Marlin / Pantheon Files
 MarlinViewWindow {
@@ -256,16 +271,15 @@ window.background.csd {
       > viewport.frame {
         > box.vertical treeview.view {
           border-right: 1px solid $header_border;
+          color: $dark_sidebar_fg;
+          padding-top: 3px;
+          padding-bottom: 3px;
+          border-right: 1px solid $header_border;
 
           &:not(:hover):not(:selected) {
             border-bottom-left-radius: $wm_radius;
             background: none;
           }
-
-          color: $dark_sidebar_fg;
-          padding-top: 3px;
-          padding-bottom: 3px;
-          border-right: 1px solid $header_border;
 
           &:not(:selected):hover { background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05)); }
 
@@ -371,6 +385,15 @@ window.background.csd {
       }
     }
   }
+}
+
+// keycap on menuitem
+label.keycap {
+  min-height: 16px;
+  padding: 0 $container_padding;
+  border-radius: $bt_radius - 2px;
+  color: $hint_fg_color;
+  font-size: small;
 }
 
 // Dynamic-notebook
@@ -534,25 +557,6 @@ window.notification .draw-area {
   }
 }
 
-// system setting
-actionbar.inline-toolbar {
-  border: none;
-  border-top: 1px solid $borders_color;
-
-  button { // Reset buttons
-    border-radius: $bt_radius;
-    // border: 1px solid $dark_borders_color;
-
-    &:first-child {
-      border-right-style: solid;
-    }
-
-    &:last-child {
-      border-left-style: solid;
-    }
-  }
-}
-
 // Nightlight warmth trough
 scale.warmth trough {
   min-height: 4px;
@@ -591,8 +595,26 @@ popover.background {
 }
 
 // actionbar
-.sidebar > actionbar.inline-toolbar > revealer > box {
-  border-top: none;
+actionbar.inline-toolbar {
+  border: none;
+  border-top: 1px solid $borders_color;
+
+  > revealer > box {
+    border-top: none;
+  }
+
+  button { // Reset buttons
+    border-radius: $bt_radius;
+    // border: 1px solid $dark_borders_color;
+
+    &, &:first-child {
+      border-right-style: solid;
+    }
+
+    &:last-child {
+      border-left-style: solid;
+    }
+  }
 }
 
 actionbar.bottom-toolbar {
