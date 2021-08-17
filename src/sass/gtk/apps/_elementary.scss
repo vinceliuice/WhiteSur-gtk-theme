@@ -59,10 +59,13 @@
 
       row.activatable {
         margin: 0;
-        background: none;
+
+        &:not(:selected) {
+          background: none;
+        }
 
         > widget > revealer > deck > overlay > grid {
-          background-color: $base_color;
+          background-color: $menu_bg;
           border-radius: $bt_radius;
           box-shadow: 0 2px 3px rgba(black, 0.15), inset 0 1px $header_highlight, $wm_outline;
         }

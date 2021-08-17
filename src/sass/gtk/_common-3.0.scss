@@ -709,8 +709,12 @@ button {
 
     &:checked:hover { background-image: none; }
 
-    &.toggle.popup {
+    &.toggle.popup:not(.colored) {
       min-width: $menuitem_size - 8px;
+    }
+
+    &.toggle.popup.colored {
+      min-width: $menuitem_size - 4px;
     }
   }
 
