@@ -422,6 +422,8 @@ popover.background.places-menu {
   }
 }
 
+$budgie_panel_radius: $wm_radius + $container_padding;
+
 // Panel
 .budgie-panel {
   transition: background-color 0.2s cubic-bezier(0, 0, 0.2, 1);
@@ -436,27 +438,63 @@ popover.background.places-menu {
   }
 
   .bottom & {
-    border-radius: $wm_radius $wm_radius 0 0;
-
     &.dock-mode {
-      border-radius: 0 0 0 0;
+      padding: $container_padding $container_padding - 2px;
+      margin-bottom: $container_padding;
+
+      .icon-tasklist {
+        .launcher {
+          margin: 0 2px;
+        }
+      }
     }
   }
 
   .left & {
-    border-radius: 0 $wm_radius $wm_radius 0;
-
     &.dock-mode {
-      border-radius: 0 0 0 0;
+      margin-left: $container_padding;
+      padding: $container_padding - 2px $container_padding;
+
+      .icon-tasklist {
+        .launcher {
+          margin: 2px 0;
+        }
+      }
     }
   }
 
   .right & {
-    border-radius: $wm_radius 0 0 $wm_radius;
+    &.dock-mode {
+      margin-right: $container_padding;
+      padding: $container_padding - 2px $container_padding;
+
+      .icon-tasklist {
+        .launcher {
+          margin: 2px 0;
+        }
+      }
+    }
+  }
+
+  .bottom &, .left &, .right & {
+    border-radius: 0;
 
     &.dock-mode {
-      border-radius: 0 0 0 0;
+      border-radius: $budgie_panel_radius;
+      border: 1px solid if($variant == 'light', rgba(black, 0.08), rgba(black, 0.75));
+      box-shadow: inset 0 0 0 1px rgba(white, 0.05);
+      background-color: $dash_bg;
+
+      .icon-tasklist {
+        .launcher {
+          border-radius: $wm_radius;
+        }
+      }
     }
+  }
+
+  .system-tray-applet {
+    margin: $container_padding 0;
   }
 
   button {
