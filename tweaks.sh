@@ -235,10 +235,6 @@ else
   fi
 fi
 
-if [[ "${firefox}" == "false" && "${edit_firefox}" == "false" && "${monterey}" == 'true' ]]; then
-  prompt -w "WARNING: Please run '--monterey' option with '-f' !..."; echo
-fi
-
 if [[ "${firefox}" == "false" && "${edit_firefox}" == "false" && "${flatpak}" == "false" && "${snap}" == "false" && "${gdm}" == "false" && "${dash_to_dock}" == "false" ]]; then
   prompt -e "Oops... there's nothing to tweak..."
   prompt -i "HINT: Don't forget to define which component to tweak, e.g. '--gdm'"
