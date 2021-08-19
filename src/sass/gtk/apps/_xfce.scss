@@ -91,13 +91,15 @@ XfdesktopIconView.view {
 }
 
 window#whiskermenu-window {
+  border-radius: $wm_radius;
   background-color: $bg_color;
 
   entry.search:focus { background-color: $base_color; }
 
-  // no CSD class even if the sw compositor was enabled.
+  // Need to set Whisker menu background opacity less than 100
   > frame > border {
-    border-radius: 0;
+    border-radius: $wm_radius;
+    padding: 6px;
   }
 
   scrolledwindow {
