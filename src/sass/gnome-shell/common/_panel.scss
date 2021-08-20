@@ -11,37 +11,6 @@
   transition-duration: 250ms;
   @include font(body-1);
 
-  // transparent panel on lock & login screens
-  &:overview,
-  &.unlock-screen,
-  &.login-screen,
-  &.lock-screen {
-    background-color: if($trans == 'false' and $variant == 'light', transparent, transparent);
-    box-shadow: none;
-
-    StLabel, StIcon { color: $light_alt_fg_color; }
-
-    .panel-button {
-      &:hover {
-        color: $light_fg_color;
-        background-color: $light_divider_color;
-      }
-
-      &:active, &:overview, &:focus, &:checked {
-        &, &:hover {
-          color: $light_fg_color;
-          background-color: $light_track_color;
-        }
-      }
-    }
-
-    .panel-corner {
-      -panel-corner-radius: 0;
-      -panel-corner-background-color: transparent;
-      -panel-corner-border-color: transparent;
-    }
-  }
-
   // the rounded outset corners
   .panel-corner {
     -panel-corner-radius: 0;
@@ -83,6 +52,8 @@
       background-color: $panel_divider;
 
       &.clock-display {
+        background: none;
+
         .clock {
           background-color: $panel_divider;
         }
@@ -95,6 +66,8 @@
       box-shadow: none;
 
       &.clock-display {
+        background: none;
+
         .clock {
           background-color: $panel_track;
         }
@@ -131,7 +104,7 @@
       // we want to exclude the do-not-disturb indicator from the background
       &.clock-display {
         box-shadow: none;
-        background-color: transparent;
+        background-color: transparent !important;
 
         .clock {
           box-shadow: none;
@@ -178,10 +151,41 @@
     font-weight: bold !important;
   }
 
+  // transparent panel on lock & login screens
+  &:overview,
   &.unlock-screen,
   &.login-screen,
-  &:overview {
+  &.lock-screen {
+    background-color: if($trans == 'false' and $variant == 'light', transparent, transparent);
+    box-shadow: none;
+
+    StLabel, StIcon { color: $light_alt_fg_color; }
+
     .panel-button {
+      &:hover {
+        color: $light_fg_color;
+        background-color: $light_divider_color;
+
+        &.clock-display {
+          .clock {
+            background-color: $light_divider_color;
+          }
+        }
+      }
+
+      &:active, &:overview, &:focus, &:checked {
+        &, &:hover {
+          color: $light_fg_color;
+          background-color: $light_track_color;
+        }
+
+        &.clock-display {
+          .clock {
+            background-color: $light_track_color;
+          }
+        }
+      }
+
       &:hover, &:active, &:overview, &:focus, &:checked {
         box-shadow: none;
 
@@ -193,6 +197,12 @@
           }
         }
       }
+    }
+
+    .panel-corner {
+      -panel-corner-radius: 0;
+      -panel-corner-background-color: transparent;
+      -panel-corner-border-color: transparent;
     }
   }
 
