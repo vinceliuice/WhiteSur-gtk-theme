@@ -2855,12 +2855,34 @@ window#GearyMainWindow.background.csd { // <= 3.32
           }
         }
       }
+
+      geary-composer-editor {
+        > box.background {
+          background-color: transparent;
+
+          > actionbar > revealer > box {
+            border-radius: 0 0 7px 7px;
+          }
+        }
+      }
     }
 
     searchbar {
       > revealer > box {
         background-color: $base_color;
         border-color: $dark_sidebar_border;
+      }
+    }
+  }
+}
+
+geary-composer-box.background.csd {
+  geary-composer-editor {
+    > box.background {
+      background-color: transparent;
+
+      > actionbar > revealer > box {
+        border-radius: 0 0 $wm_radius $wm_radius;
       }
     }
   }

@@ -1401,8 +1401,9 @@ actionbar {
     background-color: darken($bg_color, 3%);
   }
 
-  .background.csd revealer > & > revealer > box,
-  .background.csd > box.vertical > & > revealer > box {
+  // .background.csd revealer > & > revealer > box,
+  .background.csd > box.vertical > & > revealer > box,
+  .background.csd > box > box > box > & > revealer > box {
     border-radius: 0 0 $wm_radius $wm_radius;
   }
 }
