@@ -1,10 +1,20 @@
 /* Top Bar */
 // a.k.a. the panel
 
+$panel_height: $menuitem_size;
+
+@if $panel_size == 'smaller' {
+  $panel_height: $menuitem_size - 4px;
+}
+
+@if $panel_size == 'bigger' {
+  $panel_height: $menuitem_size + 4px;
+}
+
 #panel {
   background-color: $panel_bg;
   font-weight: normal;
-  height: $menuitem_size - 4px !important;
+  height: $panel_height !important;
   box-shadow: 0 5px 16px rgba(black, 0.05);
   color: $panel_fg;
   font-feature-settings: "tnum";

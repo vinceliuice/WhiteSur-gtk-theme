@@ -65,8 +65,11 @@ Usage:  `./install.sh [OPTIONS...]`
   -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey|all]
  Set theme accent color. Repeatable. Default is BigSur-like theme
 
-  -p, --panel [default|30|45|60|75]
+  -p, --panel-opacity [default|30|45|60|75]
  Set panel transparency. Default is 15%
+
+  -P, --panel-size [default|smaller|bigger]
+ Set Gnome shell panel height size. Default is 32px
 
   -s, --size [default|180|220|240|260|280]
  Set Nautilus sidebar minimum width. Default is 200px
@@ -209,10 +212,13 @@ Set 'WhiteSur' GDM and Dash to Dock theme color variants. Default is 'light'
 -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]
 Set 'WhiteSur' GDM theme accent color. Default is BigSur-like theme
 
--p, --panel [default|30|45|60|75]
+-p, --panel-opacity [default|30|45|60|75]
 Set 'WhiteSur' GDM (GNOME Shell) theme panel transparency. Default is 15%
 
--i, --icon [standard|simple|gnome|ubuntu|arch|manjaro|fedora|debian|void]
+-P, --panel-size [default|smaller|bigger]
+Set 'WhiteSur' Gnome shell panel height size. Default is 32px
+
+-i, --icon [standard|simple|gnome|ubuntu|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin]
 Set 'WhiteSur' GDM (GNOME Shell) 'Activities' icon. Default is 'standard'
 
 -r, --remove, --revert

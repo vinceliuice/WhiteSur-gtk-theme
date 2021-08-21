@@ -742,6 +742,12 @@ customize_theme() {
     sed $SED_OPT "/\$panel_opacity/s/0.15/0.${panel_opacity}/"                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
+  # Change gnome-shell panel height size
+  if [[ "${panel_size}" != 'default' ]]; then
+    prompt -s "Changing panel height size to '${panel_size}'..."
+    sed $SED_OPT "/\$panel_size/s/default/${panel_size}/"                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
   # Change gnome-shell show apps button style
   if [[ "${showapps_normal}" == 'true' ]]; then
     prompt -s "Changing gnome-shell show apps button style ..."

@@ -86,6 +86,7 @@ THEME_VARIANTS=('default' 'blue' 'purple' 'pink' 'red' 'orange' 'yellow' 'green'
 ICON_VARIANTS=('standard' 'simple' 'gnome' 'ubuntu' 'arch' 'manjaro' 'fedora' 'debian' 'void' 'opensuse' 'popos' 'mxlinux' 'zorin')
 SIDEBAR_SIZE_VARIANTS=('default' '180' '220' '240' '260' '280')
 PANEL_OPACITY_VARIANTS=('default' '30' '45' '60' '75')
+PANEL_SIZE_VARIANTS=('default' 'smaller' 'bigger')
 NAUTILUS_STYLE_VARIANTS=('stable' 'normal' 'mojave' 'glassy')
 
 #--------Customization, default values----------#
@@ -98,13 +99,14 @@ themes=("${THEME_VARIANTS[0]}")
 icon="${ICON_VARIANTS[0]}"
 sidebar_size="${SIDEBAR_SIZE_VARIANTS[0]}"
 panel_opacity="${PANEL_OPACITY_VARIANTS[0]}"
+panel_size="${PANEL_SIZE_VARIANTS[0]}"
 nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}"
 background="blank"
 compact="true"
 
 #--Ambigous arguments checking and overriding default values--#
-declare -A has_set=([-b]="false" [-s]="false" [-p]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
-declare -A need_dialog=([-b]="false" [-s]="false" [-p]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
+declare -A has_set=([-b]="false" [-s]="false" [-p]="false" [-P]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
+declare -A need_dialog=([-b]="false" [-s]="false" [-p]="false" [-P]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
 
 #------------Tweaks---------------#
 need_help="false"
@@ -391,15 +393,13 @@ destify() {
 
 parsimplify() {
   case "${1}" in
-    --size)
-      echo "-s" ;;
-    --panel)
-      echo "-p" ;;
     --name|-n)
       # workaround for echo
       echo "~-n" | cut -c 2- ;;
     --dest)
       echo "-d" ;;
+    --size)
+      echo "-s" ;;
     --alt)
       echo "-a" ;;
     --opacity)
@@ -410,6 +410,10 @@ parsimplify() {
       echo "-i" ;;
     --theme)
       echo "-t" ;;
+    --panel-opacity)
+      echo "-p" ;;
+    --panel-size)
+      echo "-P" ;;
     --nautilus-style)
       echo "-N" ;;
     --background)
@@ -517,6 +521,12 @@ check_param() {
         for i in {0..4}; do
           if [[ "${value}" == "${PANEL_OPACITY_VARIANTS[i]}" ]]; then
             panel_opacity="${value}"; variant_found="true"; break
+          fi
+        done ;;
+      -P)
+        for i in {0..2}; do
+          if [[ "${value}" == "${PANEL_SIZE_VARIANTS[i]}" ]]; then
+            panel_size="${value}"; variant_found="true"; break
           fi
         done ;;
       -a)
