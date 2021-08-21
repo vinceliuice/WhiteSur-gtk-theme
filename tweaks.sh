@@ -15,6 +15,10 @@
 readonly REPO_DIR="$(dirname "$(readlink -m "${0}")")"
 source "${REPO_DIR}/lib-install.sh"
 
+# Customization, default values
+colors=("${COLOR_VARIANTS[@]}")
+opacities=("${OPACITY_VARIANTS[@]}")
+
 usage() {
   # Please specify their default value manually, some of them are come from _variables.scss
   # You also have to check and update them regurally
@@ -24,7 +28,7 @@ usage() {
   helpify "-F, --flatpak"       ""                                                  "Connect '${THEME_NAME}' theme to Flatpak"                                    ""
   helpify "-s, --snap"          ""                                                  "Connect '${THEME_NAME}' theme the currently installed snap apps"             ""
   helpify "-g, --gdm"           ""                                                  "Install '${THEME_NAME}' theme for GDM"                                       "Requires to run this shell as root"
-  helpify "-d, --dash-to-dock"  ""                                                  "Install '${THEME_NAME}' theme for Dash to Dock and connect it to the current Dash to Dock installation(s)" ""
+  helpify "-d, --dash-to-dock"  ""                                                  "Install '${THEME_NAME}' theme for Dash to Dock when Gnome < 40 or install fixed version on Gnome > 40" ""
   helpify "-N, --no-darken"     ""                                                  "Don't darken '${THEME_NAME}' GDM theme background image"                     ""
   helpify "-n, --no-blur"       ""                                                  "Don't blur '${THEME_NAME}' GDM theme background image"                       ""
   helpify "-b, --background"    "[default|blank|IMAGE_PATH]"                        "Set '${THEME_NAME}' GDM theme background image"                              "Default is BigSur-like wallpaper"
@@ -98,7 +102,7 @@ while [[ $# -gt 0 ]]; do
         has_any_error="true"
       fi; shift ;;
     -F|--flatpak)
-      flatpak="true";
+      flatpak="true"; signal_exit
 
       if ! has_command flatpak; then
         prompt -e "'${1}' ERROR: There's no Flatpak installed in your system"
@@ -122,8 +126,8 @@ while [[ $# -gt 0 ]]; do
       fi; shift ;;
     -d|--dash-to-dock)
       if [[ "${GNOME_VERSION}" == 'new'  ]]; then
-        prompt -w "'${1}' WARNING: There's no need to install on GNOME >= 40.0"
-        dash_to_dock="false"
+        prompt -w "'${1}' It will install a fixed version on GNOME-SHELL >= 40.0"
+        dash_to_dock="new"
       elif [[ ! -d "${DASH_TO_DOCK_DIR_HOME}" && ! -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
         prompt -e "'${1}' ERROR: There's no Dash to Dock installed in your system"
         has_any_error="true"
@@ -163,31 +167,37 @@ if [[ "${uninstall}" == 'true' ]]; then
   prompt -w "REMOVAL: Non file-related parameters will be ignored."
 
   if [[ "${gdm}" == 'true' ]]; then
-    prompt -i "Removing '${name}' GDM theme..."
+    prompt -i "Removing '${name}' GDM theme... \n"
     revert_gdm_theme
     prompt -s "Done! '${name}' GDM theme has been removed."; echo
   fi
 
   if [[ "${dash_to_dock}" == 'true' ]]; then
-    prompt -i "Removing '${name}' Dash to Dock theme..."
+    prompt -i "Removing '${name}' Dash to Dock theme... \n"
     revert_dash_to_dock_theme
     prompt -s "Done! '${name}' Dash to Dock theme has been removed."; echo
   fi
 
+  if [[ "${dash_to_dock}" == 'new' ]]; then
+    prompt -i "Removing '${name}' Dash to Dock extension... \n"
+    revert_dash_to_dock
+    prompt -s "Done! '${name}' Dash to Dock extension has been removed."; echo
+  fi
+
   if [[ "${firefox}" == 'true' ]]; then
-    prompt -i "Removing '${name}' Firefox theme..."
+    prompt -i "Removing '${name}' Firefox theme... \n"
     remove_firefox_theme
     prompt -s "Done! '${name}' Firefox theme has been removed."; echo
   fi
 
   if [[ "${snap}" == 'true' ]]; then
-    prompt -i "Disconnecting '${name}' theme from your installed snap apps..."
+    prompt -i "Disconnecting '${name}' theme from your installed snap apps... \n"
     disconnect_snap
     prompt -s "Done! '${name}' theme has been disconnected from your snap apps."; echo
   fi
 
   if [[ "${flatpak}" == 'true' ]]; then
-    prompt -i "Disconnecting '${name}' theme from your Flatpak..."
+    prompt -i "Disconnecting '${name}' theme from your Flatpak... \n"
     disconnect_flatpak
     prompt -s "Done! '${name}' theme has been disconnected from your Flatpak."; echo
   fi
@@ -195,27 +205,34 @@ else
   show_needed_dialogs; customize_theme
 
   if [[ "${gdm}" == 'true' ]]; then
-    prompt -i "Installing '${name}' GDM theme..."
+    prompt -i "Installing '${name}' GDM theme... \n"
     install_gdm_theme
     prompt -s "Done! '${name}' GDM theme has been installed."; echo
   fi
 
   if [[ "${dash_to_dock}" == 'true' ]]; then
-    prompt -i "Installing '${name}' ${colors[0]} Dash to Dock theme..."
+    prompt -i "Installing '${name}' ${colors[0]} Dash to Dock theme... \n"
     install_dash_to_dock_theme
     prompt -s "Done! '${name}' Dash to Dock theme has been installed."
     prompt -w "DASH TO DOCK: You may need to logout to take effect."; echo
   fi
 
+  if [[ "${dash_to_dock}" == 'new' ]]; then
+    prompt -i "Installing fixed Dash to Dock... \n"
+    install_dash_to_dock
+    prompt -s "Done! '${name}' Dash to Dock extension has been installed."
+    prompt -w "DASH TO DOCK: You may need to logout to take effect."; echo
+  fi
+
   if [[ "${firefox}" == 'true' || "${edit_firefox}" == 'true' ]]; then
     if [[ "${firefox}" == 'true' ]]; then
-      prompt -i "Installing '${name}' Firefox theme..."
+      prompt -i "Installing '${name}' Firefox theme... \n"
       install_firefox_theme
       prompt -s "Done! '${name}' Firefox theme has been installed."; echo
     fi
 
     if [[ "${edit_firefox}" == 'true' ]]; then
-      prompt -i "Editing '${name}' Firefox theme preferences..."
+      prompt -i "Editing '${name}' Firefox theme preferences... \n"
       edit_firefox_theme_prefs
       prompt -s "Done! '${name}' Firefox theme preferences has been edited."; echo
     fi
@@ -226,13 +243,13 @@ else
   fi
 
   if [[ "${snap}" == 'true' ]]; then
-    prompt -i "Connecting '${name}' theme to your installed snap apps..."
+    prompt -i "Connecting '${name}' theme to your installed snap apps... \n"
     connect_snap
     prompt -s "Done! '${name}' theme has been connected to your snap apps."; echo
   fi
 
   if [[ "${flatpak}" == 'true' ]]; then
-    prompt -i "Connecting '${name}' theme to your Flatpak..."
+    prompt -i "Connecting '${name}' themes to your Flatpak... \n"
     connect_flatpak
     prompt -s "Done! '${name}' theme has been connected to your Flatpak."; echo
   fi

@@ -9,6 +9,7 @@
 ###############################################################################
 
 source "${REPO_DIR}/lib-core.sh"
+source "${REPO_DIR}/lib-flatpak.sh"
 WHITESUR_SOURCE+=("lib-install.sh")
 
 ###############################################################################
@@ -655,6 +656,16 @@ remove_firefox_theme() {
 #                               DASH TO DOCK                                  #
 ###############################################################################
 
+install_dash_to_dock() {
+  if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
+    backup_file "${DASH_TO_DOCK_DIR_HOME}" "udo"
+    rm -rf "${DASH_TO_DOCK_DIR_HOME}"
+  fi
+
+  udo cp -rf "${DASH_TO_DOCK_SRC_DIR}/dash-to-dock@micxgx.gmail.com"   "${GNOME_SHELL_EXTENSION_DIR}"
+  udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
+}
+
 install_dash_to_dock_theme() {
   gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}"
 
@@ -668,6 +679,12 @@ install_dash_to_dock_theme() {
   fi
 
   udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
+}
+
+revert_dash_to_dock() {
+  if [[ -d "${DASH_TO_DOCK_DIR_HOME}.bak" ]]; then
+    restore_file "${DASH_TO_DOCK_DIR_HOME}" "udo"
+  fi
 }
 
 revert_dash_to_dock_theme() {
@@ -684,12 +701,46 @@ revert_dash_to_dock_theme() {
 #                              FLATPAK & SNAP                                 #
 ###############################################################################
 
+flatpak_remove() {
+  local color="$(destify ${1})"
+  local opacity="$(destify ${2})"
+  local alt="$(destify ${3})"
+  local theme="$(destify ${4})"
+
+  if [[ -w "/root" ]]; then
+    flatpak remove -y --system org.gtk.Gtk3theme.${THEME_NAME}${color}${opacity}${alt}${theme}
+  else
+    flatpak remove -y --user org.gtk.Gtk3theme.${THEME_NAME}${color}${opacity}${alt}${theme}
+  fi
+}
+
 connect_flatpak() {
-  sudo flatpak override --filesystem=~/.themes
+  if [[ -w "/root" ]]; then
+    install_target=system
+  else
+    install_target=user
+  fi
+  for opacity in "${opacities[@]}"; do
+    for alt in "${alts[@]}"; do
+      for theme in "${themes[@]}"; do
+        for color in "${colors[@]}"; do
+          pakitheme "${color}" "${opacity}" "${alt}" "${theme}"
+        done
+      done
+    done
+  done
 }
 
 disconnect_flatpak() {
-  sudo flatpak override --nofilesystem=~/.themes
+  for opacity in "${opacities[@]}"; do
+    for alt in "${alts[@]}"; do
+      for theme in "${themes[@]}"; do
+        for color in "${colors[@]}"; do
+          flatpak_remove "${color}" "${opacity}" "${alt}" "${theme}"
+        done
+      done
+    done
+  done
 }
 
 connect_snap() {

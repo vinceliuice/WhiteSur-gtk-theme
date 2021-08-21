@@ -50,6 +50,7 @@ THEME_SRC_DIR="${REPO_DIR}/src"
 DASH_TO_DOCK_SRC_DIR="${REPO_DIR}/src/other/dash-to-dock"
 DASH_TO_DOCK_DIR_ROOT="/usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
 DASH_TO_DOCK_DIR_HOME="${MY_HOME}/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
+GNOME_SHELL_EXTENSION_DIR="${MY_HOME}/.local/share/gnome-shell/extensions"
 FIREFOX_SRC_DIR="${REPO_DIR}/src/other/firefox"
 FIREFOX_DIR_HOME="${MY_HOME}/.mozilla/firefox"
 FIREFOX_THEME_DIR="${MY_HOME}/.mozilla/firefox/firefox-themes"
@@ -615,7 +616,7 @@ avoid_variant_duplicates() {
 ###############################################################################
 
 restore_file() {
-  if [[ -f "${1}.bak" ]]; then
+  if [[ -f "${1}.bak" || -d "${1}.bak" ]]; then
     case "${2}" in
       sudo)
         sudo rm -rf "${1}"; sudo mv "${1}"{".bak",""} ;;
@@ -628,7 +629,7 @@ restore_file() {
 }
 
 backup_file() {
-  if [[ -f "${1}" ]]; then
+  if [[ -f "${1}" || -d "${1}" ]]; then
     case "${2}" in
       sudo)
         sudo mv -n "${1}"{"",".bak"} ;;
