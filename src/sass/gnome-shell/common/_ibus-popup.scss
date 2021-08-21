@@ -13,9 +13,9 @@
 .candidate-popup-content {
   @extend %theme_dialogs;
   color: $hint_fg_color;
-  box-shadow: 0 8px 16px 0 rgba(black, 0.25);
+  box-shadow: 0 4px 10px 0 rgba(black, 0.25);
   border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
-  margin: ($container_padding / 2) 8px;
+  margin: ($container_padding / 2) 12px 17px 12px;
   padding: $container_padding + 2px;
   spacing: $container_padding;
 }

@@ -108,16 +108,16 @@ $panel_height: $menuitem_size;
     }
 
     &:hover, &:active, &:overview, &:focus, &:checked {
-      box-shadow: none;
+      box-shadow: none !important;
 
       // The clock display needs to have the background on .clock because
       // we want to exclude the do-not-disturb indicator from the background
       &.clock-display {
-        box-shadow: none;
+        box-shadow: none !important;
         background-color: transparent !important;
 
         .clock {
-          box-shadow: none;
+          box-shadow: none !important;
         }
       }
     }
