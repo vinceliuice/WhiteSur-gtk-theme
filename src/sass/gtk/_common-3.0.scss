@@ -2183,7 +2183,7 @@ menu,
   padding: $container_padding;
   border-radius: $mn_radius;
   background-color: opacify($menu_bg, 1);
-  border: 1px solid $solid_borders_color;
+  border: none;
   color: $fg_color;
 
   .csd & {

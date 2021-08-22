@@ -633,3 +633,13 @@ menubar.-vala-panel-background {
     }
   }
 }
+
+//
+// Drawing
+//
+
+window.background.csd {
+  > box.vertical > box.horizontal > notebook.frame {
+    border: none;
+  }
+}

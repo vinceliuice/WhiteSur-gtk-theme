@@ -92,7 +92,7 @@
     padding: 0;
     height: 24px;
     width: 24px;
-    border-radius: 100px;
+    border-radius: $circular_radius;
 
     &:hover, &:active { color: $fg_color; }
     &:hover, &:focus { background-color: $divider_color; }
@@ -113,7 +113,7 @@
 .message-media-control {
   margin: 16px 4px;
   padding: 8px;
-  border-radius: 100px;
+  border-radius: $circular_radius;
   color: $alt_fg_color;
   &:hover, &:focus { color: $fg_color; background-color: $divider_color; }
   &:active { color: $fg_color; background-color: $track_color; }
@@ -126,8 +126,8 @@
 // album-art
 .media-message-cover-icon {
   icon-size: 32px !important;
-  margin: 0 0px 0 4px !important;
-  &:rtl { margin: 0 4px 0 0px !important; }
+  margin: 0 0 0 4px !important;
+  &:rtl { margin: 0 4px 0 0 !important; }
   &.fallback {
     icon-size: 16px !important;
     padding: 8px;
