@@ -822,6 +822,14 @@ button {
 
     &:active, &:checked {@include button(osd-active); }
     &:disabled { @include button(osd-insensitive); }
+
+    .linked:not(.vertical) > & {
+      border-radius: 0;
+
+      &:first-child { border-radius: $circular_radius 0 0 $circular_radius; }
+      &:last-child { border-radius: 0 $circular_radius $circular_radius 0; }
+      &:only-child { border-radius: $circular_radius; }
+    }
   }
 
   //overlay / OSD style

@@ -113,7 +113,7 @@
   //
   // insensitive osd entry
   //
-    color: $osd_fg_color;
+    color: $osd_disabled_fg_color;
     background-color: transparentize($osd_entry_bg, 0.15);
   }
 }
