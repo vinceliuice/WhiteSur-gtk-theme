@@ -24,22 +24,22 @@ $dash_border_radius: $dash_padding * 1.5 + 12px;
   .app-well-app-running-dot {
     background-color: if($variant == 'light', rgba(black, 0.75), rgba(white, 0.75));
   }
-}
 
-.dash-background {
-  background-color: $dash_background_color;
-  margin-bottom: $dash_bottom_margin;
-  padding: $dash_padding;
-  border-radius: $dash_border_radius;
-}
+  .dash-background {
+    background-color: $dash_background_color;
+    margin-bottom: $dash_bottom_margin;
+    padding: $dash_padding;
+    border-radius: $dash_border_radius;
+  }
 
-// Dash Items
-.dash-item-container .app-well-app, .show-apps {
-  padding: $dash_padding $dash_spacing $dash_padding + $dash_bottom_margin;
-}
+  // Dash Items
+  .dash-item-container .app-well-app, .show-apps {
+    padding: $dash_padding $dash_spacing $dash_padding + $dash_bottom_margin;
+  }
 
-.dash-separator {
-  width: 1px;
-  margin: 0 ($dash_spacing + ($dash_padding / 2)) $dash_bottom_margin;
-  background-color: rgba(white, 0.25);
+  .dash-separator {
+    width: 1px;
+    margin: 0 ($dash_spacing + ($dash_padding / 2)) $dash_bottom_margin;
+    background-color: rgba(white, 0.25);
+  }
 }

@@ -138,7 +138,6 @@ while [[ $# -gt 0 ]]; do
       fi; shift ;;
     -d|--dash-to-dock)
       if [[ "${GNOME_VERSION}" == 'new'  ]]; then
-        prompt -w "'${1}' It will install a fixed version on GNOME-SHELL >= 40.0"
         dash_to_dock="new"
       elif [[ ! -d "${DASH_TO_DOCK_DIR_HOME}" && ! -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
         prompt -e "'${1}' ERROR: There's no Dash to Dock installed in your system"

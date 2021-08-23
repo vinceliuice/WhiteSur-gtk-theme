@@ -13,6 +13,7 @@
 
 #dashtodockContainer {
   background-color: transparent;
+  box-shadow: none;
 
   .number-overlay {
     color: $light_fg_color;
@@ -31,38 +32,25 @@
     text-align: center;
   }
 
-  &.straight-corner #dash,
-  &.shrink.straight-corner #dash {
-    border-radius: 0;
-    border-left: 0;
-    border-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-
-    .dash-background {
-      border-radius: 0;
-      margin-bottom: 0;
-    }
-  }
-
-  &.extended.top,
-  &.extended.bottom,
-  &.extended.right,
-  &.extended.left {
-    #dash {
-      margin-left: 0;
-      margin-right: 0;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding: 0 0;
+  @each $_pos, $b_pos, $_shadow in (top, bottom, 0 -1px),
+                                   (bottom, top, 0 1px),
+                                   (left, right, -1px 0),
+                                   (right, left, 1px 0) {
+    &.#{$_pos}.shrink #dash,
+    &.#{$_pos}.shrink:overview #dash,
+    &.#{$_pos}.straight-corner #dash,
+    &.#{$_pos}.shrink.straight-corner #dash,
+    &.#{$_pos}.extended #dash,
+    &.#{$_pos}.extended:overview #dash {
+      margin: 0 !important;
+      padding: 0 !important;
 
       .dash-background {
         border-radius: 0;
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 0;
-        margin-bottom: 0;
+        border-width: 0;
+        border-#{$b_pos}-width: 1px;
+        margin: 0 !important;
+        box-shadow: inset #{$_shadow} rgba(white, 0.05);
       }
     }
   }
@@ -70,29 +58,23 @@
   &.left,
   &.right {
     #dash {
-      margin-top: 0;
-      padding: $dash_padding 0;
+      margin-top: 0 !important;
+      padding: $dash_padding !important;
 
-      .dash-background { // default-mode
-        margin-bottom: 0;
+      .dash-background {
+        margin-bottom: 0 !important;
+        padding: $dash_padding !important;
+      }
+
+      .dash-item-container .app-well-app, .show-apps {
+        padding: $dash_spacing $base_padding !important;
       }
     }
-
-    .dash-item-container .app-well-app, .show-apps {
-      padding: $base_padding;
-    }
-  }
-
-  &.left #dash {
-    margin-left: $base_padding;
-  }
-
-  &.right #dash {
-    margin-right: $base_padding;
   }
 
   #dash { // default-mode
     background: none;
+    box-shadow: none;
 
     StWidget.focused .app-well-app-running-dot {
       background-color: $primary_color;
@@ -154,12 +136,12 @@
   &.opaque:overview,
   &.transparent:overview { // overview-mode #2
     #dash {
-      background-color: transparent !important;
-      box-shadow: none !important;
+      background-color: transparent;
+      box-shadow: none;
     }
 
     .dash-background {
-      background-color: transparent !important;
+      background-color: transparent;
     }
   }
 
@@ -168,6 +150,12 @@
   &.transparent.extended:overview {
     #dash {
       background: none;
+    }
+
+    .dash-background {
+      background-color: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
     }
   }
 
