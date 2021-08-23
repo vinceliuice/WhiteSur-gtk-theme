@@ -708,18 +708,13 @@ flatpak_remove() {
   local theme="$(destify ${4})"
 
   if [[ -w "/root" ]]; then
-    flatpak remove -y --system org.gtk.Gtk3theme.${THEME_NAME}${color}${opacity}${alt}${theme}
+    sudo flatpak remove -y --system org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}
   else
-    flatpak remove -y --user org.gtk.Gtk3theme.${THEME_NAME}${color}${opacity}${alt}${theme}
+    udo flatpak remove -y --user org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}
   fi
 }
 
 connect_flatpak() {
-  if [[ -w "/root" ]]; then
-    install_target=system
-  else
-    install_target=user
-  fi
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
       for theme in "${themes[@]}"; do
@@ -789,62 +784,62 @@ customize_theme() {
 
   # Change gnome-shell panel transparency
   if [[ "${panel_opacity}" != 'default' ]]; then
-    prompt -s "Changing panel transparency ..."
+    prompt -s "Changing panel transparency ... \n"
     sed $SED_OPT "/\$panel_opacity/s/0.15/0.${panel_opacity}/"                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change gnome-shell panel height size
   if [[ "${panel_size}" != 'default' ]]; then
-    prompt -s "Changing panel height size to '${panel_size}'..."
+    prompt -s "Changing panel height size to '${panel_size}'... \n"
     sed $SED_OPT "/\$panel_size/s/default/${panel_size}/"                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change gnome-shell show apps button style
   if [[ "${showapps_normal}" == 'true' ]]; then
-    prompt -s "Changing gnome-shell show apps button style ..."
+    prompt -s "Changing gnome-shell show apps button style ... \n"
     sed $SED_OPT "/\$showapps_button/s/bigsur/normal/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus sidarbar size
   if [[ "${sidebar_size}" != 'default' ]]; then
-    prompt -s "Changing Nautilus sidebar size ..."
+    prompt -s "Changing Nautilus sidebar size ... \n"
     sed $SED_OPT "/\$sidebar_size/s/200px/${sidebar_size}px/"                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus style
   if [[ "${nautilus_style}" != 'stable' ]]; then
-    prompt -s "Changing Nautilus style ..."
+    prompt -s "Changing Nautilus style ... \n"
     sed $SED_OPT "/\$nautilus_style/s/stable/${nautilus_style}/"                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus titlebutton placement style
   if [[ "${right_placement}" == 'true' ]]; then
-    prompt -s "Changing Nautilus titlebutton placement style ..."
+    prompt -s "Changing Nautilus titlebutton placement style ... \n"
     sed $SED_OPT "/\$placement/s/left/right/"                                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change maximized window radius
   if [[ "${max_round}" == 'true' ]]; then
-    prompt -s "Changing maximized window style ..."
+    prompt -s "Changing maximized window style ... \n"
     sed $SED_OPT "/\$max_window_style/s/square/round/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change panel font color
   if [[ "${monterey}" == 'true' ]]; then
     black_font="true"
-    prompt -s "Changing to Monterey style ..."
+    prompt -s "Changing to Monterey style ... \n"
     sed $SED_OPT "/\$monterey/s/false/true/"                                    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
     sed $SED_OPT "/\$panel_opacity/s/0.15/0.5/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change panel font color
   if [[ "${black_font}" == 'true' ]]; then
-    prompt -s "Changing panel font color ..."
+    prompt -s "Changing panel font color ... \n"
     sed $SED_OPT "/\$panel_font/s/white/black/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   if [[ "${compact}" == 'false' ]]; then
-    prompt -s "Changing Definition mode to HD (Bigger font, Bigger size) ..."
+    prompt -s "Changing Definition mode to HD (Bigger font, Bigger size) ... \n"
     #FIXME: @vince is it not implemented yet? (Only Gnome-shell and Gtk theme finished!)
   fi
 }

@@ -166,6 +166,18 @@ finalize_argument_parsing
 if [[ "${uninstall}" == 'true' ]]; then
   prompt -w "REMOVAL: Non file-related parameters will be ignored."
 
+  if [[ "${snap}" == 'true' ]]; then
+    prompt -i "Disconnecting '${name}' theme from your installed snap apps... \n"
+    disconnect_snap
+    prompt -s "Done! '${name}' theme has been disconnected from your snap apps."; echo
+  fi
+
+  if [[ "${flatpak}" == 'true' ]]; then
+    prompt -i "Disconnecting '${name}' theme from your Flatpak... \n"
+    disconnect_flatpak
+    prompt -s "Done! '${name}' theme has been disconnected from your Flatpak."; echo
+  fi
+
   if [[ "${gdm}" == 'true' ]]; then
     prompt -i "Removing '${name}' GDM theme... \n"
     revert_gdm_theme
@@ -189,20 +201,25 @@ if [[ "${uninstall}" == 'true' ]]; then
     remove_firefox_theme
     prompt -s "Done! '${name}' Firefox theme has been removed."; echo
   fi
+else
+  show_needed_dialogs; customize_theme
 
   if [[ "${snap}" == 'true' ]]; then
-    prompt -i "Disconnecting '${name}' theme from your installed snap apps... \n"
-    disconnect_snap
-    prompt -s "Done! '${name}' theme has been disconnected from your snap apps."; echo
+    prompt -i "Connecting '${name}' theme to your installed snap apps... \n"
+    connect_snap
+    prompt -s "Done! '${name}' theme has been connected to your snap apps."; echo
   fi
 
   if [[ "${flatpak}" == 'true' ]]; then
-    prompt -i "Disconnecting '${name}' theme from your Flatpak... \n"
-    disconnect_flatpak
-    prompt -s "Done! '${name}' theme has been disconnected from your Flatpak."; echo
+    if [[ -d "${THEME_DIR}/${name}${color}${opacity}" ]]; then
+      prompt -i "Connecting '${name}' themes to your Flatpak... \n"
+      connect_flatpak
+      prompt -s "Done! '${name}' theme has been connected to your Flatpak."; echo
+    else
+      prompt -e "ERROR: Befaore you run '-F' you need install this theme first... \n"
+      exit 0
+    fi
   fi
-else
-  show_needed_dialogs; customize_theme
 
   if [[ "${gdm}" == 'true' ]]; then
     prompt -i "Installing '${name}' GDM theme... \n"
@@ -240,18 +257,6 @@ else
     prompt -w "FIREFOX: Please go to [Firefox menu] > [Customize...], and customize your Firefox to make it work. Move your 'new tab' button to the titlebar instead of tab-switcher."
     prompt -i "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory."
     echo
-  fi
-
-  if [[ "${snap}" == 'true' ]]; then
-    prompt -i "Connecting '${name}' theme to your installed snap apps... \n"
-    connect_snap
-    prompt -s "Done! '${name}' theme has been connected to your snap apps."; echo
-  fi
-
-  if [[ "${flatpak}" == 'true' ]]; then
-    prompt -i "Connecting '${name}' themes to your Flatpak... \n"
-    connect_flatpak
-    prompt -s "Done! '${name}' theme has been connected to your Flatpak."; echo
   fi
 fi
 
