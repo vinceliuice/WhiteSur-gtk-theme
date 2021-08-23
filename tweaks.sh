@@ -27,7 +27,7 @@ usage() {
   helpify "-e, --edit-firefox"  ""                                                  "Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
   helpify "-F, --flatpak"       ""                                                  "Connect '${THEME_NAME}' theme to Flatpak"                                    ""
   helpify "-s, --snap"          ""                                                  "Connect '${THEME_NAME}' theme the currently installed snap apps"             ""
-  helpify "-g, --gdm"           ""                                                  "Install '${THEME_NAME}' theme for GDM"                                       "Requires to run this shell as root"
+  helpify "-g, --gdm"           "[default|x2]"                                      "Install '${THEME_NAME}' theme for GDM (scaling: 100%/200%, default is 100%)" "Requires to run this shell as root"
   helpify "-d, --dash-to-dock"  ""                                                  "Install '${THEME_NAME}' theme for Dash to Dock when Gnome < 40 or install fixed version on Gnome > 40" ""
   helpify "-N, --no-darken"     ""                                                  "Don't darken '${THEME_NAME}' GDM theme background image"                     ""
   helpify "-n, --no-blur"       ""                                                  "Don't blur '${THEME_NAME}' GDM theme background image"                       ""
@@ -119,6 +119,18 @@ while [[ $# -gt 0 ]]; do
       gdm="true"; full_sudo "${1}"
       showapps_normal="true" # use normal showapps icon
       background="default"
+
+      for variant in "${@}"; do
+        case "${variant}" in
+          default)
+            shift 1
+            ;;
+          x2)
+            scale="x2"
+            shift 1
+            ;;
+        esac
+      done
 
       if ! has_command gdm && ! has_command gdm3 && [[ ! -e /usr/sbin/gdm3 ]]; then
         prompt -e "'${1}' ERROR: There's no GDM installed in your system"

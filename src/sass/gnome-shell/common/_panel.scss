@@ -11,15 +11,54 @@ $panel_height: $menuitem_size;
   $panel_height: $menuitem_size + 4px;
 }
 
+#panel.login-screen {
+  @if $scale != 'default' {
+    @include fontsize($base_font_size * 2 - 2);
+    height: $panel_height * 2 !important;
+    box-shadow: 0 10px 32px rgba(black, 0.05) !important;
+
+    .panel-button {
+      -natural-hpadding: $container_padding * 2 + 4px !important;
+      -minimum-hpadding: $container_padding * 2 + 4px !important;
+      border-radius: $bt_radius * 2 !important;
+
+      &.clock-display {
+        StLabel { padding: 0 $base_padding * 2 !important; }
+
+        .clock {
+          border-radius: $bt_radius * 2 !important;
+          padding: 0 $base_padding * 6 !important;
+          spacing: $base_padding * 2 !important;
+        }
+      }
+
+      // status area icons
+      .system-status-icon {
+        icon-size: $base_icon_size * 2 !important;
+        padding: $base_padding * 2 !important;
+        margin: 0 $base_padding * 2 !important;
+      }
+
+      .panel-status-menu-box StLabel { padding: 0 0 0 $base_padding !important; }
+
+      .appindicator-trayicons-box { margin: 0 $base_padding * 2 !important; }
+
+      StIcon {
+        icon-size: 32px !important;
+      }
+    }
+  }
+}
+
 #panel {
   background-color: $panel_bg;
   font-weight: normal;
-  height: $panel_height !important;
-  box-shadow: 0 5px 16px rgba(black, 0.05);
   color: $panel_fg;
   font-feature-settings: "tnum";
   transition-duration: 250ms;
   @include font(body-1);
+  height: $panel_height !important;
+  box-shadow: 0 5px 16px rgba(black, 0.05);
 
   // the rounded outset corners
   .panel-corner {
@@ -33,8 +72,8 @@ $panel_height: $menuitem_size;
 
   // panel menus
   .panel-button {
-    -natural-hpadding: 8px;
-    -minimum-hpadding: 8px;
+    -natural-hpadding: $container_padding + 2px;
+    -minimum-hpadding: $container_padding + 2px;
     font-weight: normal;
     color: $panel_fg;
     transition-duration: 150ms;

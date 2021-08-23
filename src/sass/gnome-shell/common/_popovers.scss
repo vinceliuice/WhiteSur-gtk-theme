@@ -14,6 +14,54 @@ $popop_menuitem_radius: $wm_radius - 4px;
   background: transparent; // needs to reset?
 }
 
+@if $scale != 'default' {
+  #lockDialogGroup .popup-menu,
+  .login-screen .popup-menu { // FIXME: not use? how to set the popovers on login-screen?
+    min-width: 24em;
+    @include fontsize($base_font_size * 2 - 2);
+
+    .popup-menu-content {
+      padding: 12px 0 !important;
+      box-shadow: 0 10px 20px 0 rgba(black, 0.18);
+      border: 2px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
+      margin: 8px 24px 34px 24px !important;
+      @include fontsize($base_font_size * 2 - 2);
+    }
+
+    .popup-menu-item {
+      spacing: $base_spacing * 4;
+      padding-top: 12px !important;
+      padding-bottom: 12px !important;
+      border-radius: $popop_menuitem_radius * 2;
+      margin: 0 12px;
+
+      &:ltr { padding-right: 4em !important; padding-left: 0 !important; }
+      &:rtl { padding-right: 0 !important; padding-left: 4em !important; }
+
+      &:checked {
+        border-radius: $popop_menuitem_radius * 2 $popop_menuitem_radius * 2 0 0;
+      }
+    }
+
+    .popup-sub-menu {
+      border-radius: 0 0 $popop_menuitem_radius * 2 $popop_menuitem_radius * 2;
+      margin: 0 6px;
+
+      .popup-menu-item {
+        border-radius: $popop_menuitem_radius * 2;
+      }
+    }
+
+    &.panel-menu {
+      -boxpointer-gap: $base_margin * 2; // distance from the panel
+      margin-bottom: 3.5em;
+    }
+  }
+  // symbolic icons in popover
+  .popup-menu-arrow,
+  .popup-menu-icon { icon-size: $base_icon_size * 2; }
+}
+
 // container of the popover menu
 .popup-menu {
   min-width: 12em;

@@ -21,12 +21,12 @@
   & StIcon {
     background-color: transparentize($light_alt_fg_color, 0.95);
     border-radius: $circular_radius;
-    padding: $base_padding * 2 ; // 12px
+    padding: $base_padding * 2; // 12px
     width: $base_icon_size * 2.5; height:  $base_icon_size * 2.5; // 40px;
   }
 
   &.user-avatar {
-    border: 2px $osd_fg_color;
+    border: 2px solid $osd_fg_color;
   }
 }
 

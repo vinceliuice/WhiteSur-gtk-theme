@@ -4,16 +4,304 @@
   background-color: rgba($osd_bg_color, 1);
   background-image: url("assets/background.png");
   background-size: cover;
+
+  @if $scale != 'default' {
+    .user-icon {
+      icon-size: $base_icon_size * 8;
+
+      & StIcon {
+        padding: $base_padding * 4;
+        width: $base_icon_size * 5;
+        height:  $base_icon_size * 5;
+      }
+
+      &.user-avatar {
+        border: 4px solid $osd_fg_color;
+      }
+    }
+  }
 }
 
 .login-dialog-banner-view {
-  padding-top: 24px;
-  max-width: 23em;
+  @if $scale == 'default' {
+    padding-top: 24px;
+    max-width: 23em;
+  } @else {
+    padding-top: 48px;
+    max-width: 46em;
+  }
+}
+
+.unlock-dialog {
+  .user-icon {
+    icon-size: $base_icon_size * 4 !important;
+
+    & StIcon {
+      padding: $base_padding * 2 !important;
+      width: $base_icon_size * 2.5 !important;
+      height:  $base_icon_size * 2.5 !important;
+    }
+
+    &.user-avatar {
+      border: 2px solid $osd_fg_color !important;
+    }
+  }
+
+  StEntry {
+    @include fontsize($base_font_size - 1);
+    padding: 0 $base_padding * 2 !important;
+
+    StIcon.peek-password {
+      padding: 0 $base_padding !important;
+    }
+
+    StLabel.hint-text {
+      margin-left: $base_padding / 2 !important;
+    }
+  }
+
+  .modal-dialog-button-box {
+    spacing: $container_padding / 2 !important;
+  }
+
+  .modal-dialog-button {
+    padding: 2px $container_padding * 2 !important;
+  }
+
+  .cancel-button,
+  .switch-user-button,
+  .login-dialog-session-list-button {
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+
+    StIcon {
+      icon-size: 16px !important;
+    }
+  }
+
+  .login-dialog-logo-bin { padding: $container_padding * 4 0; }
+  .login-dialog-button-box { spacing: $container_padding; }
+  .login-dialog-message-hint { padding-top: 0; padding-bottom: $container_padding * 3; }
+  .login-dialog-user-selection-box { padding: 100px 0px; }
+
+  .login-dialog-not-listed-label {
+    padding-left: 2px;
+  }
+
+  .login-dialog-not-listed-label {
+    font-size: 1em;
+    padding-top: 1em;
+  }
+
+  .login-dialog-user-list-view { -st-vfade-offset: 1em; }
+  .login-dialog-user-list {
+    spacing: $container_padding * 2;
+    padding: .2em;
+    width: 23em;
+
+    &:expanded .login-dialog-user-list-item:logged-in { border-right: 2px solid $selected_bg_color; }
+  }
+
+  .login-dialog-user-list-item {
+    border-radius: $mn_radius;
+    padding: $container_padding;
+
+    &:ltr .user-widget { padding-right: 1em; }
+    &:rtl .user-widget { padding-left: 1em; }
+
+    .login-dialog-timed-login-indicator {
+      height: 2px;
+      margin: $container_padding 0 0 0;
+      background-color: $visit_color !important;
+    }
+  }
+
+  .user-widget.horizontal .user-widget-label {
+    @include fontsize($base_font_size + 2);
+    padding-left: $container_padding * 2;
+
+    &:ltr { padding-left: $container_padding * 2; text-align: left; }
+    &:rtl { padding-right: $container_padding * 2; text-align: right; }
+  }
+
+  .user-widget.vertical .user-widget-label {
+    @include fontsize($base_font_size + 5);
+    padding-top: $container_padding * 3;
+  }
+
+  .login-dialog-prompt-layout {
+    padding-top: $container_padding * 4,;
+    padding-bottom: $container_padding * 2;
+    spacing: $base_spacing * 2;
+    width: 23em;
+  }
+
+  .login-dialog-prompt-entry {
+    height: 1.5em;
+  }
+
+  .login-dialog-prompt-label {
+    @include fontsize($base_font_size + 1);
+    padding-top: 1em;
+  }
+}
+
+.login-dialog {
+  StEntry {
+    @if $scale != 'default' {
+      @include fontsize($base_font_size + 3);
+      padding: 0 $base_padding * 4 !important;
+
+      StIcon.peek-password {
+        padding: 0 $base_padding * 2 !important;
+      }
+
+      StLabel.hint-text {
+        margin-left: $base_padding !important;
+      }
+    }
+
+    StIcon {
+      icon-size: if($scale == 'default', 16px, 32px);
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .modal-dialog-button-box {
+    @if $scale == 'default' {
+      spacing: $container_padding / 2;
+    } @else {
+      spacing: $container_padding;
+    }
+  }
+
+  .modal-dialog-button {
+    @if $scale == 'default' {
+      padding: 2px $container_padding * 2;
+    } @else {
+      padding: 4px $container_padding * 4;
+    }
+  }
+
+  .cancel-button,
+  .switch-user-button,
+  .login-dialog-session-list-button {
+    @if $scale == 'default' {
+      width: 32px;
+      height: 32px;
+    } @else {
+      width: 64px;
+      height: 64px;
+    }
+
+    StIcon {
+      icon-size: if($scale == 'default', 16px, 32px);
+    }
+  }
+
+  @if $scale == 'default' {
+    .login-dialog-logo-bin { padding: $container_padding * 4 0; }
+    .login-dialog-button-box { spacing: $container_padding; }
+    .login-dialog-message-hint { padding-top: 0; padding-bottom: $container_padding * 3; }
+    .login-dialog-user-selection-box { padding: 100px 0px; }
+  } @else {
+    .login-dialog-logo-bin { padding: $container_padding * 8 0; }
+    .login-dialog-button-box { spacing: $container_padding * 2; }
+    .login-dialog-message-hint { padding-top: 0; padding-bottom: $container_padding * 6; }
+    .login-dialog-user-selection-box { padding: 200px 0px; }
+  }
+
+  .login-dialog-not-listed-label {
+    padding-left: 4px;
+  }
+
+  .login-dialog-not-listed-label {
+    @if $scale == 'default' {
+      font-size: 1em;
+      padding-top: 1em;
+    } @else {
+      font-size: 2em;
+      padding-top: 2em;
+    }
+  }
+
+  .login-dialog-user-list-view { -st-vfade-offset: if($scale == 'default', 1em, 2em); }
+  .login-dialog-user-list {
+    @if $scale == 'default' {
+      spacing: $container_padding * 2;
+      padding: .2em;
+      width: 23em;
+    } @else {
+      spacing: $container_padding * 4;
+      padding: .4em;
+      width: 46em;
+    }
+    &:expanded .login-dialog-user-list-item:logged-in { border-right: if($scale == 'default', 2px, 4px) solid $selected_bg_color; }
+  }
+
+  .login-dialog-user-list-item {
+    border-radius: if($scale == 'default', $mn_radius, $mn_radius * 2);
+    padding: if($scale == 'default', $container_padding, $container_padding * 2);
+
+    &:ltr .user-widget { padding-right: if($scale == 'default', 1em, 2em); }
+    &:rtl .user-widget { padding-left: if($scale == 'default', 1em, 2em); }
+
+    .login-dialog-timed-login-indicator {
+      height: if($scale == 'default', 2px, 4px);
+      margin: if($scale == 'default', $container_padding, $container_padding * 2) 0 0 0;
+    }
+  }
+
+  .user-widget.horizontal .user-widget-label {
+    @if $scale == 'default' {
+      @include fontsize($base_font_size + 2);
+    } @else {
+      @include fontsize($base_font_size * 2 + 4);
+    }
+
+    padding-left: if($scale == 'default', $container_padding * 2, $container_padding * 4);
+
+    &:ltr { padding-left: if($scale == 'default', $container_padding * 2, $container_padding * 4); text-align: left; }
+    &:rtl { padding-right: if($scale == 'default', $container_padding * 2, $container_padding * 4); text-align: right; }
+  }
+
+  .user-widget.vertical .user-widget-label {
+    @if $scale == 'default' {
+      @include fontsize($base_font_size + 5);
+    } @else {
+      @include fontsize($base_font_size * 2 + 10);
+    }
+
+    padding-top: if($scale == 'default', $base_padding * 2.5, $base_padding * 5);
+    padding-bottom: if($scale == 'default', $base_padding * 3.5, $base_padding * 7);
+  }
+
+  .login-dialog-prompt-layout {
+    padding-top: if($scale == 'default', $container_padding * 4, $container_padding * 8);
+    padding-bottom: if($scale == 'default', $container_padding * 2, $container_padding * 4);
+    spacing: if($scale == 'default', $base_spacing * 2, $base_spacing * 4);
+    width: if($scale == 'default', 23em, 46em);
+  }
+
+  .login-dialog-prompt-entry {
+    height: if($scale == 'default', 1.5em, 3em);
+  }
+
+  .login-dialog-prompt-label {
+    @if $scale == 'default' {
+      @include fontsize($base_font_size + 1);
+    } @else {
+      @include fontsize($base_font_size * 2 + 2);
+    }
+
+    padding-top: if($scale == 'default', 1em, 2em);
+  }
 }
 
 .login-dialog,
 .unlock-dialog {
-  //reset
   border: none;
   background-color: transparent;
 
@@ -21,8 +309,6 @@
     selection-background-color: $primary_color;
     selected-background-color: $primary_color;
     selected-color: white;
-    padding: 4px 8px;
-    min-height: $small_size;
     border-radius: $circular_radius;
     caret-color: $light_fg_color;
 
@@ -35,10 +321,7 @@
     }
   }
 
-  .modal-dialog-button-box { spacing: 3px; }
-
   .modal-dialog-button {
-    padding: 0 16px;
     border: none;
     @include button(flat-normal, $tc: $light_fg_color);
     &:hover, &:focus { @include button(flat-hover, $tc: $light_fg_color); }
@@ -56,31 +339,22 @@
   .cancel-button,
   .switch-user-button,
   .login-dialog-session-list-button {
-    padding: 0;
-    border-radius: 100px;
-    width: 32px;
-    height: 32px;
+    padding: 0 !important;
+    border-radius: $circular_radius;
     border: none;
     background-color: rgba($borders_color, 0.1);
     color: $light_fg_color;
-
-    StIcon { icon-size: 16px; }
-  }
-
-  .login-dialog-message-warning {
-    color: $light_alt_fg_color;
   }
 }
 
-.login-dialog-logo-bin { padding: 24px 0px; }
+.login-dialog-message-warning {
+  color: $light_alt_fg_color;
+}
+
 .login-dialog-banner { color: $light_alt_fg_color; }
-.login-dialog-button-box { spacing: 5px; }
 .login-dialog-message { text-align: center; }
 .login-dialog-message-warning { color: $warning_color; }
-.login-dialog-message-hint { padding-top: 0; padding-bottom: 20px; }
-.login-dialog-user-selection-box { padding: 100px 0px; }
 .login-dialog-not-listed-label {
-  padding-left: 2px;
   .login-dialog-not-listed-button:focus &,
   .login-dialog-not-listed-button:hover & {
     color: $light_fg_color;
@@ -88,39 +362,23 @@
 }
 
 .login-dialog-not-listed-label {
-  font-size: 1em;
-  font-weight: bold;
+  font-weight: normal;
   color: $light_alt_fg_color;
-  padding-top: 1em;
   &:hover { color: $light_alt_fg_color; }
   &:focus { background-color: $light_divider_color; }
 }
 
-.login-dialog-user-list-view { -st-vfade-offset: 1em; }
 .login-dialog-user-list {
-  spacing: 12px;
-  padding: .2em;
-  width: 23em;
   &:expanded .login-dialog-user-list-item:selected { background-color: $light_divider_color; color: $light_alt_fg_color; }
   &:expanded .login-dialog-user-list-item:hover { background-color: $light_divider_color; color: $light_alt_fg_color; }
   &:expanded .login-dialog-user-list-item:active { background-color: $light_track_color; color: $light_alt_fg_color; }
-  &:expanded .login-dialog-user-list-item:logged-in { border-right: 2px solid $selected_bg_color; }
 }
 
 .login-dialog-user-list-item {
-  border-radius: $mn_radius;
-  padding: 6px;
   color: $light_alt_fg_color;
-
-  &:ltr .user-widget { padding-right: 1em; }
-  &:rtl .user-widget { padding-left: 1em; }
 
   &:focus {
     background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.03)) !important;
-
-    // .login-dialog-timed-login-indicator {
-    //   background-color: $track_color;
-    // }
   }
 
   &:hover, &:focus:hover {
@@ -134,8 +392,6 @@
   }
 
   .login-dialog-timed-login-indicator {
-    height: 2px;
-    margin: 6px 0 0 0;
     background-color: $visit_color !important;
   }
 }
@@ -145,34 +401,14 @@
 }
 
 .user-widget.horizontal .user-widget-label {
-  @include fontsize($base_font_size + 2);
-  font-weight: bold;
-  padding-left: 15px;
-
-  &:ltr { padding-left: 14px; text-align: left; }
-  &:rtl { padding-right: 14px; text-align: right; }
+  font-weight: normal;
 }
 
 .user-widget.vertical .user-widget-label {
-  @include fontsize($base_font_size + 5);
   text-align: center;
   font-weight: normal;
-  padding-top: 16px;
-}
-
-.login-dialog-prompt-layout {
-  padding-top: 24px;
-  padding-bottom: 12px;
-  spacing: $base_spacing * 2;
-  width: 23em;
-}
-
-.login-dialog-prompt-entry {
-  height: 1.5em;
 }
 
 .login-dialog-prompt-label {
   color: $light_hint_fg_color;
-  @include fontsize($base_font_size + 1);
-  padding-top: 1em;
 }

@@ -2,7 +2,7 @@
 
 StEntry, %entry {
   min-height: $menuitem_size;
-  padding: 2px 10px !important;
+  padding: $base_padding / 2 $base_padding * 2 !important;
   // margin: 2px;
   color: $fg_color;
   caret-color: $fg_color;
@@ -20,10 +20,10 @@ StEntry, %entry {
   }
   StIcon.peek-password {
     icon-size: 16px;
-    padding: 0 4px;
+    padding: 0 $base_padding;
   }
   StLabel.hint-text {
-    margin-left: 2px;
+    margin-left: $base_padding / 2;
     color: $alt_fg_color;
   }
 }

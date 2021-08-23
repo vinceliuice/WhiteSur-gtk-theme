@@ -842,6 +842,11 @@ customize_theme() {
     prompt -s "Changing Definition mode to HD (Bigger font, Bigger size) ... \n"
     #FIXME: @vince is it not implemented yet? (Only Gnome-shell and Gtk theme finished!)
   fi
+
+  if [[ "${scale}" == 'x2' ]]; then
+    prompt -s "Changing GDM scaling to 200% ... \n"
+    sed $SED_OPT "/\$scale/s/default/x2/"                                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
 }
 
 #-----------------------------------DIALOGS------------------------------------#
