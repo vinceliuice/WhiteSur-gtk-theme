@@ -1,0 +1,13 @@
+.DS_store
+.sass-cache
+*-temp.scss
+*.css.map
+src/main/gtk-3.0/gtk*.css
+src/main/gtk-4.0/gtk*.css
+src/main/cinnamon/cinnamon*.css
+src/main/gnome-shell/*/*.css
+src/other/dash-to-dock/stylesheet.css
+src/other/dash-to-dock/stylesheet-dark.css
+parse-sass.sh
+lib-release.sh
+stable-release/make-releases.sh
