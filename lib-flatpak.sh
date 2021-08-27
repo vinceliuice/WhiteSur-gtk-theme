@@ -107,3 +107,16 @@ EOF
     fi
   done
 }
+
+flatpak_remove() {
+  local color="$(destify ${1})"
+  local opacity="$(destify ${2})"
+  local alt="$(destify ${3})"
+  local theme="$(destify ${4})"
+
+  if [[ -w "/root" ]]; then
+    sudo flatpak remove -y --system org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}
+  else
+    udo flatpak remove -y --user org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}
+  fi
+}

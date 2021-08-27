@@ -159,27 +159,27 @@ install_theme_deps() {
     prepare_deps
 
     if has_command zypper; then
-      sudo zypper in -y sassc glib2-devel libxml2-tools
+      sudo zypper in -y libostree appstream-glib
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && sudo swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
+      prepare_swupd && sudo swupd ostree libappstream-glib
     elif has_command apt; then
-      prepare_install_apt_packages sassc libglib2.0-dev-bin libxml2-utils
+      prepare_install_apt_packages ostree appstream-util
     elif has_command dnf; then
-      sudo dnf install -y sassc glib2-devel libxml2
+      sudo dnf install -y ostree libappstream-glib
     elif has_command yum; then
-      sudo yum install -y sassc glib2-devel libxml2
+      sudo yum install -y ostree libappstream-glib
     elif has_command pacman; then
       # Rolling release
-      sudo pacman -Syyu --noconfirm --needed sassc glib2 libxml2
+      sudo pacman -Syyu --noconfirm --needed ostree appstream-glib
     elif has_command xbps-install; then
       # Rolling release
       # 'libxml2' is already included here, and it's gonna broke the installation
       # if you add it
-      prepare_xbps && sudo xbps-install -Sy sassc glib-devel
+      prepare_xbps && sudo xbps-install -Sy ostree appstream-glib
     elif has_command eopkg; then
       # Rolling release
-      sudo eopkg -y upgrade; sudo eopkg -y install sassc glib2 libxml2
+      sudo eopkg -y upgrade; sudo eopkg -y ostree appstream-glib
     else
       installation_sorry
     fi
@@ -244,6 +244,37 @@ install_dialog_deps() {
     elif has_command eopkg; then
       # Rolling release
       sudo eopkg -y upgrade; sudo eopkg -y install dialog
+    else
+      installation_sorry
+    fi
+  fi
+}
+
+install_flatpak_deps() {
+  if ! has_command ostree || ! has_command appstream-compose; then
+    prompt -w "DEPS: 'ostree' and 'appstream-util' is required for flatpak installing."
+    prepare_deps; stop_animation
+
+    if has_command zypper; then
+      sudo zypper in -y ImageMagick
+    elif has_command swupd; then
+      # Rolling release
+      prepare_swupd && sudo swupd bundle-add ImageMagick
+    elif has_command apt; then
+      prepare_install_apt_packages imagemagick
+    elif has_command dnf; then
+      sudo dnf install -y ImageMagick
+    elif has_command yum; then
+      sudo yum install -y ImageMagick
+    elif has_command pacman; then
+      # Rolling release
+      sudo pacman -Syyu --noconfirm --needed imagemagick
+    elif has_command xbps-install; then
+      # Rolling release
+      prepare_xbps && sudo xbps-install -Sy ImageMagick
+    elif has_command eopkg; then
+      # Rolling release
+      sudo eopkg -y upgrade; sudo eopkg -y install imagemagick
     else
       installation_sorry
     fi
@@ -703,20 +734,9 @@ revert_dash_to_dock_theme() {
 #                              FLATPAK & SNAP                                 #
 ###############################################################################
 
-flatpak_remove() {
-  local color="$(destify ${1})"
-  local opacity="$(destify ${2})"
-  local alt="$(destify ${3})"
-  local theme="$(destify ${4})"
-
-  if [[ -w "/root" ]]; then
-    sudo flatpak remove -y --system org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}
-  else
-    udo flatpak remove -y --user org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}
-  fi
-}
-
 connect_flatpak() {
+  install_theme_deps
+
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
       for theme in "${themes[@]}"; do
