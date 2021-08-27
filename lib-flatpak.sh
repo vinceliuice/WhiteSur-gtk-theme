@@ -27,17 +27,20 @@ pakitheme() {
   local repo_dir="$root_dir/repo"
   local build_dir="$root_dir/build"
 
-  prompt -i "Converting theme: $FLATPAK_THEME"
-
   for location in "$data_home/themes" "$HOME/.themes" /usr/share/themes; do
     if [[ -d "$location/$FLATPAK_THEME" ]]; then
-      prompt -s "Found theme located at: $location/$FLATPAK_THEME"
+      prompt -s "Found theme located at: $location/$FLATPAK_THEME \n"
       theme_path="$location/$FLATPAK_THEME"
       break
     fi
   done
 
-  [[ -n "$theme_path" ]] || die 'Could not locate theme.'
+  if [[ -n "$theme_path" ]]; then
+    prompt -i "Converting theme: $FLATPAK_THEME... \n"
+  else
+    prompt -e "Could not locate theme... install theme first! \n"
+    exit 0
+  fi
 
   rm -rf "$root_dir" "$repo_dir"
   mkdir -p "$repo_dir"

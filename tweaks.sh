@@ -137,9 +137,7 @@ while [[ $# -gt 0 ]]; do
         has_any_error="true"
       fi; shift ;;
     -d|--dash-to-dock)
-      if [[ "${GNOME_VERSION}" == 'new'  ]]; then
-        dash_to_dock="new"
-      elif [[ ! -d "${DASH_TO_DOCK_DIR_HOME}" && ! -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
+      if [[ ! -d "${DASH_TO_DOCK_DIR_HOME}" && ! -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
         prompt -e "'${1}' ERROR: There's no Dash to Dock installed in your system"
         has_any_error="true"
       else
@@ -201,12 +199,6 @@ if [[ "${uninstall}" == 'true' ]]; then
     prompt -s "Done! '${name}' Dash to Dock theme has been removed."; echo
   fi
 
-  if [[ "${dash_to_dock}" == 'new' ]]; then
-    prompt -i "Removing '${name}' Dash to Dock extension... \n"
-    revert_dash_to_dock
-    prompt -s "Done! '${name}' Dash to Dock extension has been removed."; echo
-  fi
-
   if [[ "${firefox}" == 'true' ]]; then
     prompt -i "Removing '${name}' Firefox theme... \n"
     remove_firefox_theme
@@ -222,14 +214,9 @@ else
   fi
 
   if [[ "${flatpak}" == 'true' ]]; then
-    if [[ -d "${THEME_DIR}/${name}${color}${opacity}" ]]; then
-      prompt -i "Connecting '${name}' themes to your Flatpak... \n"
-      connect_flatpak
-      prompt -s "Done! '${name}' theme has been connected to your Flatpak."; echo
-    else
-      prompt -e "ERROR: Befaore you run '-F' you need install this theme first... \n"
-      exit 0
-    fi
+    prompt -i "Connecting '${name}' themes to your Flatpak... \n"
+    connect_flatpak
+    prompt -s "Done! '${name}' theme has been connected to your Flatpak."; echo
   fi
 
   if [[ "${gdm}" == 'true' ]]; then
@@ -242,13 +229,6 @@ else
     prompt -i "Installing '${name}' ${colors[0]} Dash to Dock theme... \n"
     install_dash_to_dock_theme
     prompt -s "Done! '${name}' Dash to Dock theme has been installed."
-    prompt -w "DASH TO DOCK: You may need to logout to take effect."; echo
-  fi
-
-  if [[ "${dash_to_dock}" == 'new' ]]; then
-    prompt -i "Installing fixed Dash to Dock... \n"
-    install_dash_to_dock
-    prompt -s "Done! '${name}' Dash to Dock extension has been installed."
     prompt -w "DASH TO DOCK: You may need to logout to take effect."; echo
   fi
 

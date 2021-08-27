@@ -671,20 +671,22 @@ install_dash_to_dock_theme() {
 
   if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
     backup_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "udo"
-    udoify_file                                                                               "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
-    udo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss"   "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
+    udoify_file                                                                                "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
+    if [[ "${GNOME_VERSION}" == 'new'  ]]; then
+      udo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet-40.scss"                      "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
+    else
+      udo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss"  "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
+    fi
   elif [[ -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
     backup_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "sudo"
-    sudo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss"  "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css"
+    if [[ "${GNOME_VERSION}" == 'new'  ]]; then
+      sudo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet-40.scss"                     "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css"
+    else
+      sudo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet$(destify ${colors[0]}).scss" "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css"
+    fi
   fi
 
   udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
-}
-
-revert_dash_to_dock() {
-  if [[ -d "${DASH_TO_DOCK_DIR_HOME}.bak" ]]; then
-    restore_file "${DASH_TO_DOCK_DIR_HOME}" "udo"
-  fi
 }
 
 revert_dash_to_dock_theme() {

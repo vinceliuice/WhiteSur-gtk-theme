@@ -26,7 +26,7 @@
     background-color: $primary_color;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.25);
     border-radius: $circular_radius;
-    margin: 2px;
+    margin: 2px 3px 5px;
     padding: 0.2em 0.6em;
     font-weight: bold;
     text-align: center;
@@ -36,12 +36,9 @@
                                    (bottom, top, 0 1px),
                                    (left, right, -1px 0),
                                    (right, left, 1px 0) {
-    &.#{$_pos}.shrink #dash,
-    &.#{$_pos}.shrink:overview #dash,
     &.#{$_pos}.straight-corner #dash,
     &.#{$_pos}.shrink.straight-corner #dash,
-    &.#{$_pos}.extended #dash,
-    &.#{$_pos}.extended:overview #dash {
+    &.#{$_pos}.extended #dash {
       margin: 0 !important;
       padding: 0 !important;
 
