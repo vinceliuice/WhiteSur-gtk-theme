@@ -35,7 +35,7 @@ else
 fi
 
 #----------Program options-------------#
-SASSC_OPT="--omit-map-comment -t expanded"
+SASSC_OPT="-t expanded"
 
 if [[ "$(uname -s)" =~ "BSD" || "$(uname -s)" == "Darwin" ]]; then
   SED_OPT="-i """
