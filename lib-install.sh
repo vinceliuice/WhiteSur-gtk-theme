@@ -741,7 +741,7 @@ connect_flatpak() {
     for alt in "${alts[@]}"; do
       for theme in "${themes[@]}"; do
         for color in "${colors[@]}"; do
-          pakitheme "${color}" "${opacity}" "${alt}" "${theme}"
+          pakitheme_gtk3 "${color}" "${opacity}" "${alt}" "${theme}"
         done
       done
     done
