@@ -98,10 +98,12 @@ $popop_menuitem_radius: $wm_radius - 4px;
       box-shadow: none;
       color: $alt_fg_color;
       background-color: $submenu_bg_color;
+      background-gradient-direction: none !important;
 
-      &.hover, &.selected {
+      &:hover, &.selected {
         color: $selected_fg_color;
         background-color: $selected_bg_color;
+        background-gradient-direction: none !important;
       }
 
       &:active {

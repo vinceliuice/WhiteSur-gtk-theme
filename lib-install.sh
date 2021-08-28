@@ -583,6 +583,8 @@ install_gdm_theme() {
       TARGET="${POP_OS_GR_FILE}"
     elif check_theme_file "$YARU_GR_FILE"; then
       TARGET="${YARU_GR_FILE}"
+    elif check_theme_file "$ZORIN_GR_FILE"; then
+      TARGET="${ZORIN_GR_FILE}"
     elif check_theme_file "$MISC_GR_FILE"; then
       TARGET="${MISC_GR_FILE}"
     fi
@@ -601,6 +603,7 @@ revert_gdm_theme() {
   restore_file "${ZORIN_CSS_FILE}"; restore_file "${ETC_CSS_FILE}"
   restore_file "${POP_OS_GR_FILE}"; restore_file "${YARU_GR_FILE}"
   restore_file "${MISC_GR_FILE}"; restore_file "${ETC_GR_FILE}"
+  restore_file "${ZORIN_GR_FILE}"
 }
 
 ###############################################################################

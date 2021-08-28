@@ -184,20 +184,24 @@
     color: $alt_fg_color !important;
     background-color: rgba($fg_color, 0.1);
     border: none;
+    background-gradient-direction: none !important;
 
     &:hover, &:focus {
       background-color: rgba($fg_color, 0.15);
       color: $fg_color !important;
+      background-gradient-direction: none !important;
     }
 
     &:active {
       background-color: darken($primary_color, 5%);
       color: $light_fg_color !important;
+      background-gradient-direction: none !important;
     }
 
     &:selected {
       background-color: $primary_color;
       color: $light_fg_color !important;
+      background-gradient-direction: none !important;
 
       &:hover, &:focus {
         background-color: lighten($primary_color, 8%);

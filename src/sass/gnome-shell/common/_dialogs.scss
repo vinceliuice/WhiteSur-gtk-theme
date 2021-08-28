@@ -12,20 +12,24 @@
   color: white !important;
   background-color: $primary_color;
   box-shadow: inset 0 1px 0 0 rgba(white,0.1);
+  background-gradient-direction: none !important;
 
   &:hover {
     color: white !important;
     background-color: lighten($primary_color, 9%);
+    background-gradient-direction: none !important;
   }
 
   &:active {
     color: white !important;
     background-color: darken($primary_color, 5%);
+    background-gradient-direction: none !important;
   }
 
   &:insensitive {
     background-color: rgba($primary_color, 0.05);
     color: rgba($primary_color, 0.35) !important;
+    background-gradient-direction: none !important;
   }
 }
 

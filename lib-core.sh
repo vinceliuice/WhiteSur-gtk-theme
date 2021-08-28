@@ -75,6 +75,7 @@ ETC_CSS_FILE="/etc/alternatives/gdm3.css"
 ETC_GR_FILE="/etc/alternatives/gdm3-theme.gresource"
 YARU_GR_FILE="/usr/share/gnome-shell/theme/Yaru/gnome-shell-theme.gresource"
 POP_OS_GR_FILE="/usr/share/gnome-shell/theme/Pop/gnome-shell-theme.gresource"
+ZORIN_GR_FILE="/usr/share/gnome-shell/theme/ZorinBlue-Light/gnome-shell-theme.gresource"
 MISC_GR_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
 GS_GR_XML_FILE="${THEME_SRC_DIR}/main/gnome-shell/gnome-shell-theme.gresource.xml"
 
