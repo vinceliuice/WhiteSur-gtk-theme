@@ -159,27 +159,27 @@ install_theme_deps() {
     prepare_deps
 
     if has_command zypper; then
-      sudo zypper in -y libostree appstream-glib
+      sudo zypper in -y sassc glib2-devel libxml2-tools
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && sudo swupd ostree libappstream-glib
+      prepare_swupd && sudo swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
     elif has_command apt; then
-      prepare_install_apt_packages ostree appstream-util
+      prepare_install_apt_packages sassc libglib2.0-dev-bin libxml2-utils
     elif has_command dnf; then
-      sudo dnf install -y ostree libappstream-glib
+      sudo dnf install -y sassc glib2-devel libxml2
     elif has_command yum; then
-      sudo yum install -y ostree libappstream-glib
+      sudo yum install -y sassc glib2-devel libxml2
     elif has_command pacman; then
       # Rolling release
-      sudo pacman -Syyu --noconfirm --needed ostree appstream-glib
+      sudo pacman -Syyu --noconfirm --needed sassc glib2 libxml2
     elif has_command xbps-install; then
       # Rolling release
       # 'libxml2' is already included here, and it's gonna broke the installation
       # if you add it
-      prepare_xbps && sudo xbps-install -Sy ostree appstream-glib
+      prepare_xbps && sudo xbps-install -Sy sassc glib-devel
     elif has_command eopkg; then
       # Rolling release
-      sudo eopkg -y upgrade; sudo eopkg -y ostree appstream-glib
+      sudo eopkg -y upgrade; sudo eopkg -y install sassc glib2 libxml2
     else
       installation_sorry
     fi
@@ -256,25 +256,27 @@ install_flatpak_deps() {
     prepare_deps; stop_animation
 
     if has_command zypper; then
-      sudo zypper in -y ImageMagick
+      sudo zypper in -y libostree appstream-glib
     elif has_command swupd; then
       # Rolling release
-      prepare_swupd && sudo swupd bundle-add ImageMagick
+      prepare_swupd && sudo swupd ostree libappstream-glib
     elif has_command apt; then
-      prepare_install_apt_packages imagemagick
+      prepare_install_apt_packages ostree appstream-util
     elif has_command dnf; then
-      sudo dnf install -y ImageMagick
+      sudo dnf install -y ostree libappstream-glib
     elif has_command yum; then
-      sudo yum install -y ImageMagick
+      sudo yum install -y ostree libappstream-glib
     elif has_command pacman; then
       # Rolling release
-      sudo pacman -Syyu --noconfirm --needed imagemagick
+      sudo pacman -Syyu --noconfirm --needed ostree appstream-glib
     elif has_command xbps-install; then
       # Rolling release
-      prepare_xbps && sudo xbps-install -Sy ImageMagick
+      # 'libxml2' is already included here, and it's gonna broke the installation
+      # if you add it
+      prepare_xbps && sudo xbps-install -Sy ostree appstream-glib
     elif has_command eopkg; then
       # Rolling release
-      sudo eopkg -y upgrade; sudo eopkg -y install imagemagick
+      sudo eopkg -y upgrade; sudo eopkg -y ostree appstream-glib
     else
       installation_sorry
     fi
@@ -738,7 +740,7 @@ revert_dash_to_dock_theme() {
 ###############################################################################
 
 connect_flatpak() {
-  install_theme_deps
+  install_flatpak_deps
 
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
