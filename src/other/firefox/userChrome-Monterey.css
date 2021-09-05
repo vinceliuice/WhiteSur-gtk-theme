@@ -23,6 +23,9 @@
 
 /*--------------Configure common theme features--------------*/
 
+/* Move tab close button to left. */
+/*@import "Monterey/left-tab-close-button.css"; /**/
+
 /* Hide the tab bar when only one tab is open (GNOMISH)
  * You should move the new tab button somewhere else for this to work, because by
  * default it is on the tab bar too. */

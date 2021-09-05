@@ -1,0 +1,28 @@
+@media (-moz-gtk-csd-reversed-placement) {
+.tab-content {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding-right: 20px !important;
+}
+
+
+.tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button {
+	order: 1;
+	min-width: 16px;
+}
+
+.tabbrowser-tab > .tab-stack > .tab-content > .tab-icon-stack {
+	order: 2;
+	margin-left: auto;
+}
+.tabbrowser-tab > .tab-stack > .tab-content > .tab-label-container {
+	order: 3;
+	margin-right: auto;
+}
+
+.tabbrowser-tab > .tab-stack > .tab-content > .tab-label-container > .tab-secondary-label {
+	display: none;
+}
+}
