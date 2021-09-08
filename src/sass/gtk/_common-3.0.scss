@@ -1692,8 +1692,7 @@ headerbar {
       min-width: 120px;
       padding: 0 0;
 
-      label { padding-right: $container_padding; }
-      image { padding-left: $container_padding; }
+      > stack > box { padding: 0 $container_padding * 2; }
     }
 
     > box > separator.titlebutton { @extend %header_separator; }
