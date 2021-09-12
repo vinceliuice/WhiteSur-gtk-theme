@@ -12,11 +12,11 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:export-ydpi="90.000000"
    inkscape:export-xdpi="90.000000"
-   width="24"
-   height="24"
+   width="48"
+   height="48"
    id="svg11300"
    sodipodi:version="0.32"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="activities-arch.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0"
@@ -30,18 +30,18 @@
      borderopacity="1"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="8"
-     inkscape:cx="-21.058413"
-     inkscape:cy="5.92008"
+     inkscape:zoom="5.6568543"
+     inkscape:cx="100.91506"
+     inkscape:cy="-4.3148635"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:document-units="px"
      inkscape:showpageshadow="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="710"
+     inkscape:window-width="3840"
+     inkscape:window-height="2032"
      inkscape:window-x="0"
-     inkscape:window-y="28"
+     inkscape:window-y="56"
      width="400px"
      height="300px"
      inkscape:snap-nodes="true"
@@ -104,7 +104,7 @@
         <dc:source />
         <cc:license
            rdf:resource="" />
-        <dc:title />
+        <dc:title></dc:title>
         <dc:subject>
           <rdf:Bag />
         </dc:subject>
@@ -143,11 +143,11 @@
      inkscape:groupmode="layer"
      inkscape:label="Base"
      id="layer1"
-     transform="translate(0,-276)">
+     transform="translate(0,-252)">
     <path
        inkscape:connector-curvature="0"
-       style="fill:#383838;fill-rule:evenodd;stroke-width:3.77960205;fill-opacity:1"
-       d="m 11.998949,278.99999 c -0.801466,1.96409 -1.284045,3.25011 -2.1769246,5.15469 0.5463576,0.58031 1.2181436,1.25414 2.3087316,2.01937 -1.171373,-0.48252 -1.972839,-0.96717 -2.5702179,-1.47095 -1.1416106,2.38286 -2.9294954,5.77539 -6.5605385,12.29689 2.852963,-1.64526 5.0660288,-2.66132 7.1260294,-3.04819 a 5.2233454,5.2227208 0 0 1 -0.1339323,-1.22224 l 0.0021,-0.0914 c 0.046766,-1.82806 0.9970493,-3.23311 2.1237773,-3.13746 1.126729,0.0957 2.000476,1.65588 1.955832,3.48182 a 5.1595683,5.1589513 0 0 1 -0.114799,0.98206 c 2.038741,0.39962 4.226297,1.41143 7.040993,3.03543 -0.554861,-1.02032 -1.050196,-1.94072 -1.524273,-2.81861 -0.744066,-0.57818 -1.522147,-1.32853 -3.105945,-2.14266 1.088462,0.28271 1.870796,0.61006 2.476677,0.97567 -4.808805,-8.95323 -5.197846,-10.14359 -6.847547,-14.0144 z"
+       style="fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke-width:7.55919552"
+       d="m 23.997898,258 c -1.60293,3.92818 -2.568087,6.50021 -4.353844,10.30937 1.092714,1.16062 2.436285,2.50828 4.617458,4.03873 -2.342743,-0.96503 -3.945674,-1.93433 -5.14043,-2.94189 -2.283219,4.76571 -5.858984,11.55076 -13.1210622,24.59375 5.7059202,-3.29052 10.1320462,-5.32263 14.2520432,-6.09637 a 10.446679,10.44543 0 0 1 -0.267865,-2.44448 l 0.0042,-0.1828 c 0.09353,-3.65612 1.994097,-6.46621 4.24755,-6.27491 2.253456,0.1914 4.000948,3.31175 3.91166,6.96363 a 10.319125,10.317891 0 0 1 -0.229598,1.96412 c 4.077478,0.79924 8.452585,2.82285 14.08197,6.07085 -1.10972,-2.04064 -2.100389,-3.88144 -3.048542,-5.63721 -1.488131,-1.15636 -3.044291,-2.65706 -6.211883,-4.28532 2.176921,0.56542 3.741588,1.22012 4.953348,1.95134 -9.617599,-17.90644 -10.39568,-20.28716 -13.695079,-28.02877 z"
        id="path14" />
   </g>
 </svg>

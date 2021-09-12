@@ -87,6 +87,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
     border-radius: $popop_menuitem_radius;
     margin: 0 6px;
     font-weight: normal;
+    transition: none;
 
     &:ltr { padding-right: 2em !important; padding-left: 0 !important; }
     &:rtl { padding-right: 0 !important; padding-left: 2em !important; }
@@ -117,6 +118,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
     &.selected {
       color: $selected_fg_color;
       background-color: $selected_bg_color;
+      transition-duration: 0ms !important;
     }
 
     &:active, &.selected:active {
