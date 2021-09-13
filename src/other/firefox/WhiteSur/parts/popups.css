@@ -8,10 +8,17 @@ menupopup {
 	-moz-appearance: none !important;
 	background: var(--gnome-menu-background) !important;
 	border: 1px solid var(--gnome-menu-border-color) !important;
-	border-radius: 8px !important;
+	border-radius: 10px !important;
 	padding: 6px 0 !important;
 	color: var(--gnome-toolbar-color) !important;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
+}
+
+#PlacesToolbar menupopup {
+	background: none !important;
+	padding: 1px 0 0 0 !important;
+	margin-top: 0 !important;
+	box-shadow: none !important;
 }
 
 menubar > menu > menupopup {
