@@ -20,6 +20,7 @@ $hint_fg_color:                     if($variant == 'light', #565656, #999999);
 $track_color:                       if($variant == 'light', rgba(black, 0.20), rgba(white, 0.16));
 $visit_color:                       if($variant == 'light', rgba(black, 0.16), rgba(white, 0.12));
 $divider_color:                     if($variant == 'light', rgba(black, 0.12), rgba(white, 0.1));
+$fill_color:                        if($variant == 'light', rgba(black, 0.06), rgba(white, 0.05));
 
 $light_fg_color:                    white;
 $light_alt_fg_color:                rgba(white, 0.85);
@@ -216,10 +217,10 @@ $button_active_image:               linear-gradient(0deg, $button_active_bottom 
 $button_active_hover_image:         linear-gradient(0deg, $button_active_hover_bottom 0%, $button_active_hover_top 100%);
 
 // WM colors
-$wm_outline_light: 0 0 0 2px rgba(black, 0.03), 0 0 0 1px rgba(black, 0.12);
-$wm_outline_dark: 0 0 0 2px rgba(black, 0.1), 0 0 0 1px rgba(black, 0.75);
-$wm_shadow: if($variant=='light', rgba(black, 0.15), rgba(black, 0.35));
-$wm_outline: if($variant=='light', $wm_outline_light, $wm_outline_dark);
+$wm_outline_light:                  0 0 0 2px rgba(black, 0.03), 0 0 0 1px rgba(black, 0.12);
+$wm_outline_dark:                   0 0 0 2px rgba(black, 0.1), 0 0 0 1px rgba(black, 0.75);
+$wm_shadow:                         if($variant=='light', rgba(black, 0.15), rgba(black, 0.35));
+$wm_outline:                        if($variant=='light', $wm_outline_light, $wm_outline_dark);
 
 // WM Buttons
 

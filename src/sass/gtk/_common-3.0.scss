@@ -1691,8 +1691,17 @@ headerbar {
       min-height: 0;
       min-width: 120px;
       padding: 0 0;
+      background-color: transparent;
 
-      > stack > box { padding: 0 $container_padding * 2; }
+      > stack > box {
+        padding: 0 $container_padding * 2;
+
+        &.narrow {
+          font-size: 10px;
+
+          image { margin-top: $container_padding / 2; }
+        }
+      }
     }
 
     > box > separator.titlebutton { @extend %header_separator; }
@@ -4156,6 +4165,37 @@ colorchooser .popover.osd { border-radius: $bt_radius; }
 stackswitcher {
   button.text-button { min-width: 80px; }
   // button.circular { @extend %circular_button; }
+}
+
+.background viewswitcher {
+  button:not(.suggested-action):not(.destructive-action) {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    background-color: $fill_color;
+    background-image: none;
+    @extend %linked;
+
+    > stack > box {
+      padding: $container_padding $container_padding * 2;
+
+      &.narrow { font-size: 10px; }
+    }
+
+    &:hover {
+      background-color: $divider_color;
+      color: $fg_color
+    }
+
+    &:active, &:checked {
+      background-color: $track_color;
+      color: $fg_color;
+      border-color: if($variant=='light', $borders_color, $dark_borders_color);
+      background-clip: if($variant=='light', border-box, padding-box);
+
+      & + button { border-left-color: if($variant=='light', rgba(black, 0.3), $dark_borders_color); }
+    }
+  }
 }
 
 //
