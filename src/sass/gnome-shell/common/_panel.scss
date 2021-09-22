@@ -72,8 +72,8 @@ $panel_height: $menuitem_size;
 
   // panel menus
   .panel-button {
-    -natural-hpadding: $container_padding + 2px;
-    -minimum-hpadding: $container_padding + 2px;
+    -natural-hpadding: 12px;
+    -minimum-hpadding: 12px;
     font-weight: normal;
     color: $panel_fg;
     transition-duration: 150ms;

@@ -11,7 +11,6 @@ $popop_menuitem_radius: $wm_radius - 4px;
   -arrow-base: 64px;
   -arrow-rise: 0;
   -arrow-box-shadow: none; //dreaming. bug #689995
-  background: transparent; // needs to reset?
 }
 
 @if $scale != 'default' {
@@ -21,22 +20,22 @@ $popop_menuitem_radius: $wm_radius - 4px;
     @include fontsize($base_font_size * 2 - 2);
 
     .popup-menu-content {
-      padding: 12px 0 !important;
+      padding: 12px 0;
       box-shadow: 0 10px 20px 0 rgba(black, 0.18);
       border: 2px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
-      margin: 8px 24px 34px 24px !important;
+      margin: 8px 24px 34px 24px;
       @include fontsize($base_font_size * 2 - 2);
     }
 
     .popup-menu-item {
       spacing: $base_spacing * 4;
-      padding-top: 12px !important;
-      padding-bottom: 12px !important;
+      padding-top: 12px;
+      padding-bottom: 12px;
       border-radius: $popop_menuitem_radius * 2;
       margin: 0 12px;
 
-      &:ltr { padding-right: 4em !important; padding-left: 0 !important; }
-      &:rtl { padding-right: 0 !important; padding-left: 4em !important; }
+      &:ltr { padding-right: 4em; padding-left: 0; }
+      &:rtl { padding-right: 0; padding-left: 4em; }
 
       &:checked {
         border-radius: $popop_menuitem_radius * 2 $popop_menuitem_radius * 2 0 0;
@@ -66,97 +65,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
 .popup-menu {
   min-width: 12em;
   color: $alt_fg_color;
-  padding: 0 0 !important;
   @include font(body-1);
-
-  .popup-menu-content {
-    padding: 6px 0 !important;
-    @extend %theme_dialogs;
-    box-shadow: 0 5px 10px 0 rgba(black, 0.18);
-    border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
-    margin: 4px 12px 17px 12px !important;
-    @include font(body-1);
-  }
-
-  .popup-menu-item {
-    spacing: $base_spacing * 2;
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
-    color: $alt_fg_color;
-    text-shadow: none;
-    border-radius: $popop_menuitem_radius;
-    margin: 0 6px;
-    font-weight: normal;
-    transition: none;
-
-    &:ltr { padding-right: 2em !important; padding-left: 0 !important; }
-    &:rtl { padding-right: 0 !important; padding-left: 2em !important; }
-
-    &:checked {
-      font-weight: normal;
-      border-radius: $popop_menuitem_radius $popop_menuitem_radius 0 0;
-      border: none;
-      box-shadow: none;
-      color: $alt_fg_color;
-      background-color: $submenu_bg_color;
-      background-gradient-direction: none !important;
-
-      &:hover, &.selected {
-        color: $selected_fg_color;
-        background-color: $selected_bg_color;
-        background-gradient-direction: none !important;
-      }
-
-      &:active {
-        color: $selected_fg_color;
-        background-color: mix($fg_color, $selected_bg_color, 5%);
-      }
-
-      &:insensitive { color: $disabled_fg_color; }
-    }
-
-    &.selected {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
-      transition-duration: 0ms !important;
-    }
-
-    &:active, &.selected:active {
-      color: $selected_fg_color;
-      background-color: mix($fg_color, $selected_bg_color, 5%);
-    }
-
-    &:insensitive { color: $disabled_fg_color; }
-  }
-
-  .popup-sub-menu {
-    background-color: $submenu_bg_color;
-    border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
-    border: none;
-    box-shadow: none;
-    margin: 0 6px;
-
-    .popup-menu-item {
-      margin: 0;
-      border-radius: $popop_menuitem_radius;
-
-      &:hover {
-        color: $selected_fg_color;
-        background-color: $selected_bg_color;
-      }
-
-      &:active {
-        color: $selected_fg_color;
-        background-color: mix($fg_color, $selected_bg_color, 5%);
-      }
-    }
-  }
-
-  .popup-inactive-menu-item { //all icons and other graphical elements
-    color: $alt_fg_color;
-
-    &:insensitive { color: $disabled_fg_color; }
-  }
 
   //.popup-status-menu-item { font-weight: normal;  color: pink; } //dunno what that is
   &.panel-menu {
@@ -176,6 +85,96 @@ $popop_menuitem_radius: $wm_radius - 4px;
     }
   }
 }
+
+.popup-menu-content {
+  padding: 6px 0;
+  @extend %theme_dialogs;
+  box-shadow: 0 5px 10px 0 rgba(black, 0.18);
+  border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
+  margin: 4px 12px 17px 12px;
+  @include font(body-1);
+}
+
+.popup-menu-item {
+  spacing: $base_spacing * 2;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  color: $alt_fg_color;
+  text-shadow: none;
+  border-radius: $popop_menuitem_radius;
+  margin: 0 6px;
+  font-weight: normal;
+  transition: none;
+
+  &:ltr { padding-right: 2em; padding-left: 0; }
+  &:rtl { padding-right: 0; padding-left: 2em; }
+
+  &:checked {
+    font-weight: normal;
+    border-radius: $popop_menuitem_radius $popop_menuitem_radius 0 0;
+    border: none;
+    box-shadow: none;
+    color: $alt_fg_color;
+    background-color: $submenu_bg_color;
+    background-gradient-direction: none !important;
+
+    &:hover, &.selected {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+      background-gradient-direction: none !important;
+    }
+
+    &:active {
+      color: $selected_fg_color;
+      background-color: mix($fg_color, $selected_bg_color, 5%);
+    }
+
+    &:insensitive { color: $disabled_fg_color; }
+  }
+
+  &.selected {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+    transition-duration: 0ms !important;
+  }
+
+  &:active, &.selected:active {
+    color: $selected_fg_color;
+    background-color: mix($fg_color, $selected_bg_color, 5%);
+  }
+
+  &:insensitive { color: $disabled_fg_color; }
+}
+
+.popup-sub-menu {
+  background-color: $submenu_bg_color;
+  border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
+  border: none;
+  box-shadow: none;
+  margin: 0 6px;
+
+  .popup-menu-item {
+    margin: 0;
+    border-radius: $popop_menuitem_radius;
+
+    &:hover {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+    }
+
+    &:active {
+      color: $selected_fg_color;
+      background-color: mix($fg_color, $selected_bg_color, 5%);
+    }
+  }
+}
+
+.popup-inactive-menu-item { //all icons and other graphical elements
+  color: $alt_fg_color;
+
+  &:insensitive { color: $disabled_fg_color; }
+}
+
 // symbolic icons in popover
 .popup-menu-arrow,
 .popup-menu-icon { icon-size: $base_icon_size; }
