@@ -36,6 +36,7 @@
     <file>icons/scalable/actions/pointer-primary-click-symbolic.svg</file>
     <file>icons/scalable/actions/pointer-secondary-click-symbolic.svg</file>
     <file>gnome-shell.css</file>
+    <file alias="gdm.css">gnome-shell.css</file>
     <file alias="gdm3.css">gnome-shell.css</file>
     <file alias="Yaru/gnome-shell.css">gnome-shell.css</file>
     <file alias="Yaru-dark/gnome-shell.css">gnome-shell.css</file>
