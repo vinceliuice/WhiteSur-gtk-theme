@@ -1,4 +1,4 @@
-@import "parts/toolbox.css";
+@import "parts/toolbox-alt.css";
 @import "parts/buttons.css";
 @import "parts/entries.css";
 @import "parts/controls.css";
@@ -9,7 +9,7 @@
 @import "parts/titlebutton-light.css";
 @import "parts/titlebutton-dark.css";
 @import "parts/popups.css";
-@import "parts/tabsbar.css";
+@import "parts/tabsbar-alt.css";
 @import "parts/findbar.css";
 @import "parts/dialogs.css";
 @import "parts/remove-white-flash.css";

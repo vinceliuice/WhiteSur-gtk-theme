@@ -16,8 +16,9 @@ menupopup {
 
 #PlacesToolbar menupopup {
 	background: none !important;
-	padding: 1px 0 0 0 !important;
+	padding: 3px 6px 8px !important;
 	margin-top: 0 !important;
+	border: none !important;
 	box-shadow: none !important;
 }
 

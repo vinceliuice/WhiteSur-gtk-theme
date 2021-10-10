@@ -1,0 +1,91 @@
+/* Toolbox, a container for all toolbars (toolbox#navigator-toolbox):
+ * - menu bar (toolbar#toolbar-menubar)
+ * - tab bar (toolbar#TabsToolbar)
+ * - header bar (toolbar#nav-bar)
+ * - bookmark bar (toolbar#PersonalToolbar)
+ * - add-ons can add their own toolbars (toolbar) */
+
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+#nav-bar, #PersonalToolbar, #toolbar-menubar, #TabsToolbar {
+	border: 0 !important;
+	color: var(--gnome-toolbar-color);
+	background: var(--gnome-toolbar-background) !important;
+	border-bottom: none !important;
+}
+
+findbar {
+	border: 0 !important;
+	background: var(--gnome-findbar-background) !important;
+	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
+}
+
+#nav-bar:-moz-window-inactive,
+#PersonalToolbar:-moz-window-inactive,
+#toolbar-menubar:-moz-window-inactive,
+#TabsToolbar:-moz-window-inactive,
+findbar:-moz-window-inactive {
+	background: var(--gnome-inactive-toolbar-background) !important;
+}
+
+/* Toolbox colors */
+#navigator-toolbox {
+	border: 0 !important;
+	background: none !important;
+}
+
+.toolbarbutton-icon {
+	color: var(--gnome-toolbar-color);
+	fill: var(--gnome-toolbar-color);
+}
+
+#titlebar {
+	min-height: 0 !important
+	max-height: 36px !important;
+}
+
+#nav-bar {
+	border: none !important;
+	box-shadow: none !important;
+	border-top-width: 0px !important;
+	border-bottom-width: 0px !important;
+}
+
+/* allow to drag headerbar empty space */
+:root[tabsintitlebar] #nav-bar .chromeclass-location {
+	-moz-window-dragging: drag !important;
+}
+
+#toolbar-menubar:not([inactive=true]) {
+	margin-bottom: 0 !important;
+}
+
+/* Reorder toolbars */
+#navigator-toolbox #nav-bar, findbar {
+	-moz-box-ordinal-group: 0;
+}
+#navigator-toolbox #PersonalToolbar {
+	-moz-box-ordinal-group: 1;
+}
+#navigator-toolbox #titlebar {
+	-moz-box-ordinal-group: 2;
+}
+#navigator-toolbox toolbar {
+	-moz-box-ordinal-group: 10;
+}
+#navigator-toolbox #TabsToolbar {
+	-moz-box-ordinal-group: 100;
+}
+
+#PersonalToolbar {
+	padding: 0 4px !important;
+	height: 32px !important;
+}
+
+/* bookmark-item */
+toolbarbutton.bookmark-item {
+	padding: 0 4px; !important;
+	margin: 0 2px !important;
+	border-radius: 3px !important;
+	max-height: 20px !important;
+}
