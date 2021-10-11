@@ -170,7 +170,7 @@ toolbarspring {
 .urlbar-icon {
 	width: 16px !important;
 	height: 16px !important;
-	padding: 0 !important;
+	padding: 0 1px !important;
 	margin: 0 !important;
 }
 
