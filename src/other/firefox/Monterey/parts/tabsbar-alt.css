@@ -22,7 +22,11 @@ tab > stack {
 	height: 32px !important;
 }
 
-.titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"] {
+:root:not([sizemode="normal"]) .titlebar-spacer[type="pre-tabs"], :root[gtktiledwindow="true"] .titlebar-spacer[type="pre-tabs"] { /* reset */
+	display: flex !important;
+}
+
+#TabsToolbar .titlebar-spacer {
 	width: 8px !important;
 }
 
