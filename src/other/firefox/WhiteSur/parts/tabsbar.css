@@ -322,11 +322,6 @@ tab[selected]:-moz-window-inactive {
 	display: none !important;
 }
 
-/* Remove container bottom line indicator */
-.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-bottom-line {
-	display: none;
-}
-
 /* Create new container tab indicator */
 .tabbrowser-tab[class*="identity-color-"] .tab-content::before {
 	content: "";

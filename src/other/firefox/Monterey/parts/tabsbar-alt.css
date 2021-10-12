@@ -87,13 +87,8 @@ tab > stack {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	margin-top: -1px;
 	min-width: 100% !important;
 	padding: 0 10px !important;
-}
-
-.tabbrowser-tab[class*="identity-color-"][pinned] {
-	display: flex;
 }
 
 .tab-background {
@@ -177,17 +172,6 @@ tab > stack {
 	.tabbrowser-tab {
 		padding-inline: 0px !important;
 	}
-
-	.tabbrowser-tab[selected="true"]>.tab-stack>.tab-background {
-		margin-left: 0px !important;
-		margin-right: 0px !important;
-	}
-
-	/* centre text when audio is playing */
-	.tabbrowser-tab:is([soundplaying]) .tab-label-container {
-		margin-left: 0 !important;
-		margin-right: auto !important
-	}
 }
 
 .close-icon {
@@ -268,8 +252,14 @@ tab > stack {
 }
 
 /* Remove container bottom line indicator */
+
+/* Remove alt colours references for multi tabs*/
 .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-bottom-line {
 	display: none;
+}
+
+.tabbrowser-tab[class*="identity-color-"][pinned] {
+	display: flex;
 }
 
 #TabsToolbar #alltabs-button {
