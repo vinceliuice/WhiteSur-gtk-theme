@@ -12,7 +12,7 @@
 // Base colors
 $base_color:                        if($variant == 'light', #ffffff, #242424);
 $text_color:                        if($variant == 'light', #363636, #dadada);
-$bg_color:                          if($variant == 'light', #f5f5f5, #333333);
+$bg_color:                          if($variant == 'light', #f5f5f5, #272727);
 $fg_color:                          if($variant == 'light', #242424, #dedede);
 $alt_fg_color:                      if($variant == 'light', #424242, #afafaf);
 $hint_fg_color:                     if($variant == 'light', #565656, #999999);
@@ -102,9 +102,9 @@ $alt_disabled_fg_color:             if($variant == 'light', transparentize($alt_
 $disabled_bg_color:                 if($variant == 'light', mix($bg_color, $base_color, 40%), lighten($bg_color, 2%));
 
 // Headerbar colors
-$header_bg:                         if($variant == 'light', #ffffff, #373737);
+$header_bg:                         if($variant == 'light', #ffffff, #242424); //default #373737
 $dark_header_bg:                    if($trans == 'true', rgba($base_color, 0.95), $base_color);
-$header_highlight:                  if($variant == 'dark', #434343, #f5f5f5); // For metacity
+$header_highlight:                  if($variant == 'dark', #373737, #f5f5f5); // For metacity //default #434343
 
 $header_bg_backdrop:                if($variant == 'light', darken($header_bg, 0%), darken($header_bg, 0%));
 $header_border:                     if($variant == 'light', mix(black, $header_bg, 12%), mix(black, $header_bg, 75%));

@@ -26,7 +26,7 @@ $dash_border_radius: $dash_padding * 1.5 + 12px;
   }
 
   .dash-background {
-    background-color: $dash_background_color;
+    background-color: transparent;
     margin-bottom: $dash_bottom_margin;
     padding: $dash_padding;
     border-radius: $dash_border_radius;

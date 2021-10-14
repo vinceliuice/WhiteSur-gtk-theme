@@ -5,7 +5,7 @@ $asset_suffix: if($variant == 'dark', '-dark', '');
 $con_asset_suffix: if($variant=='dark', '', '-dark');
 $extra_background_clip: if($variant == 'light', padding-box, border-box);
 
-$panel-corner-radius: 0;
+$panel-corner-radius: 8px;
 
 // font families
 $font-family: "M+ 1c", Roboto, Cantarell, Sans-Serif;
@@ -27,11 +27,11 @@ $disabled_opacity: 0.45;
 
 // sizes
 $small_size: if($laptop == 'false', 24px, 20px);
-$medium_size: if($laptop == 'false', 36px, 32px);
-$large_size: if($laptop == 'false', 48px, 44px);
+$medium_size: if($laptop == 'false', 28px, 26px);
+$large_size: if($laptop == 'false', 48px, 28px); // 44px
 $menuitem_size: if($laptop == 'false', 32px, 28px);
 $container_padding: if($laptop == 'false', 8px, 6px);
-$headerbar_size: if($laptop == 'false', 42px, 38px);
+$headerbar_size: if($laptop == 'false', 28px, 28px);
 
 // padding, margin and spacing
 $base_padding: if($laptop == 'false', 6px, 4px);
@@ -41,13 +41,13 @@ $base_spacing: if($laptop == 'false', 6px, 4px);
 // radiuses
 $circular_radius: 9999px;
 $bt_radius: if($laptop == 'false', 6px, 6px);
-$bd_radius: if($laptop == 'false', 8px, 8px);
-$wm_radius: if($laptop == 'false', 12px, 12px);
-$mn_radius: if($laptop == 'false', 10px, 10px);
+$bd_radius: if($laptop == 'false', 6px, 6px); // 8 radius
+$wm_radius: if($laptop == 'false', 8px, 8px); // 12 radius
+$mn_radius: if($laptop == 'false', 5px, 5px); // 10 radius
 $dash_radius: if($laptop == 'false', 24px, 18px);
-$base_border_radius: if($laptop == 'false', 8px, 8px);
+$base_border_radius: if($laptop == 'false', 6px, 6px); // 8 radius
 $modal_radius: $base_border_radius * 2;
-$maximized_radius: 0;
+$maximized_radius: 8px;
 
 @if $max_window_style == 'round' {
   $maximized_radius: $wm_radius;

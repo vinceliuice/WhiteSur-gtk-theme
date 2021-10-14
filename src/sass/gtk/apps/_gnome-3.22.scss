@@ -586,11 +586,11 @@ $disk_space_free: darken($bg_color, 3%);
 
 terminal-window {
   &.background.csd {
-    border-radius: 0 0 0 0;
+    border-radius: 0;
   }
 
   decoration {
-    border-radius: $wm_radius $wm_radius 0 0;
+    border-radius: $wm_radius $wm_radius;
   }
 
   notebook {
@@ -598,7 +598,7 @@ terminal-window {
     // }
   }
 
-  &.background.csd.maximized { border-radius: 0 0 0 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
+  &.background.csd.maximized { border-radius: 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
 }
 
 window.background.csd { // gnome-terminal 3.32 setting
@@ -1050,7 +1050,7 @@ workbench.csd > stack.titlebar:not(headerbar) {
     &,
     &:first-child,
     &:last-child {
-      border-radius: $wm_radius $wm_radius 0 0;
+      border-radius: $wm_radius $wm_radius;
     }
   }
 }
@@ -2926,11 +2926,11 @@ window.background.csd {
              > border {
               border: 1px solid $borders_color;
               border-bottom: none;
-              border-radius: $bt_radius $bt_radius 0 0;
+              border-radius: $bt_radius $bt_radius;
             }
 
             > stack > list {
-              border-radius: $bt_radius $bt_radius 0 0;
+              border-radius: $bt_radius $bt_radius;
             }
           }
 

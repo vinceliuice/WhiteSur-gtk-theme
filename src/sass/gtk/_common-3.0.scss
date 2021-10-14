@@ -142,7 +142,7 @@ $list_shadow: if($variant == 'light',
     border-right-style: solid;
   }
   &:only-child {
-    border-radius: $bt_radius $bt_radius 0 0;
+    border-radius: $bt_radius $bt_radius; // 0 0
     border-style: solid;
   }
 }
@@ -826,7 +826,7 @@ button {
     .linked:not(.vertical) > & {
       border-radius: 0;
 
-      &:first-child { border-radius: $circular_radius 0 0 $circular_radius; }
+      &:first-child { border-radius: $circular_radius $circular_radius; }
       &:last-child { border-radius: 0 $circular_radius $circular_radius 0; }
       &:only-child { border-radius: $circular_radius; }
     }
@@ -1486,6 +1486,7 @@ actionbar {
 
 headerbar {
   min-height: $headerbar_size;
+  max-height: $headerbar_size;
   padding: 0 $container_padding + 10px;
   color: $header_fg;
   background-color: $header_bg;
@@ -1787,9 +1788,9 @@ headerbar {
 
     button.titlebutton {
       border: none;
-      min-width: 16px;
-      min-height: 16px;
-      margin: 0;
+      min-width: 14px;
+      min-height: 14px;
+      margin: 0 2px 0 -5px;
       padding: 0;
     }
   }
@@ -4251,7 +4252,7 @@ decoration {
   // server-side decorations as used by mutter
   .ssd & {
     margin: -6px;
-    border-radius: $wm_radius $wm_radius 0 0;
+    border-radius: $wm_radius $wm_radius;
 
     &, &.backdrop { box-shadow: $wm_outline; }
     &.maximized, &.tiled { border-radius: 0; }
@@ -4286,13 +4287,13 @@ decoration {
 headerbar {
   button.titlebutton {
     &.close, &.maximize, &.minimize {
-      min-width: 16px;
-      min-height: 16px;
+      min-width: 14px;
+      min-height: 14px;
       margin: 0;
       padding: 0;
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 16px 16px;
+      background-size: 14px 14px;
 
       &, &:hover, &:focus, &:active, &:backdrop {
         @include button(undecorated);
