@@ -156,9 +156,7 @@ toolbarspring {
 }
 
 /* URL bar and Search bar's icons */
-.urlbar-icon:hover,
 .urlbar-icon-wrapper:hover,
-.urlbar-icon[open],
 .urlbar-icon-wrapper[open],
 .urlbar-icon:hover:active,
 .urlbar-icon-wrapper:hover:active,
@@ -169,18 +167,22 @@ toolbarspring {
 	fill-opacity: 1 !important;
 }
 
-#page-action-buttons {
-	padding: 2px 0 !important;
+.urlbar-icon {
+	width: 16px !important;
+	height: 16px !important;
+	padding: 0 1px !important;
+	margin: 0 !important;
 }
 
-#tracking-protection-icon-container,
 #identity-box {
 	margin: 3px 2px !important;
 	border-radius: 5px !important;
 }
 
+.urlbar-page-action, #urlbar-go-button, .search-go-button,
 #tracking-protection-icon-container {
 	margin: 3px 0 !important;
+	border-radius: 5px !important;
 }
 
 #identity-box:hover {

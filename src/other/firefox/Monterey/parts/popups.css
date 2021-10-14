@@ -8,16 +8,17 @@ menupopup {
 	-moz-appearance: none !important;
 	background: var(--gnome-menu-background) !important;
 	border: 1px solid var(--gnome-menu-border-color) !important;
-	border-radius: 8px !important;
+	border-radius: 10px !important;
 	padding: 6px 0 !important;
 	color: var(--gnome-toolbar-color) !important;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
 }
 
 #PlacesToolbar menupopup {
 	background: none !important;
-	padding: 1px 0 0 0 !important;
+	padding: 3px 6px 8px !important;
 	margin-top: 0 !important;
+	border: none !important;
 	box-shadow: none !important;
 }
 
@@ -74,12 +75,12 @@ panel[type="arrow"] {
 .panel-subview-body, #widget-overflow-mainView, #protections-popup-footer,
 panelview {
 	border: none !important;
-	background: transparent !important;
+	background: none !important;
 }
 
 panelview {
 	padding: 8px !important;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
 	border-radius: 12px !important;
 }
 
@@ -90,9 +91,21 @@ panelview {
 	color: var(--gnome-toolbar-color) !important;
 }
 
+#BMB_bookmarksPopup {
+	margin-top: 4px !important;
+	padding: 0 !important;
+	box-shadow: none !important;
+	--panel-padding: 0 !important;
+}
+
+#BMB_bookmarksPopup menupopup {
+	padding: 6px !important;
+}
+
 panel:not([remote]), #BMB_bookmarksPopup {
 	--arrowpanel-background: var(--gnome-popover-background) !important;
 }
+
 .PanelUI-subView toolbarseparator:not([orient="vertical"]) {
 	margin: 10px 2px !important;
 }

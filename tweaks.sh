@@ -87,6 +87,12 @@ while [[ $# -gt 0 ]]; do
             name="Monterey"
             shift 1
             ;;
+          alt)
+            monterey="true"
+            alttheme="true"
+            name="Monterey"
+            shift 1
+            ;;
         esac
       done
 
