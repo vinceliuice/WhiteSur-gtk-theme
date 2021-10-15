@@ -62,7 +62,7 @@ $panel_height: $menuitem_size;
 
   // the rounded outset corners
   .panel-corner {
-    -panel-corner-radius: 0;
+    -panel-corner-radius: $panel-corner-radius;
     -panel-corner-background-color: $panel_bg;
     -panel-corner-border-width: 2px;
     -panel-corner-border-color: transparent;

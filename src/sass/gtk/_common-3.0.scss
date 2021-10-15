@@ -128,25 +128,6 @@ $list_shadow: if($variant == 'light',
   }
 }
 
-%linked-flat {
-  border-radius: 0;
-  border-right-style: none;
-
-  &:first-child {
-    border-top-left-radius: $bt_radius;
-    border-bottom-left-radius: 0;
-  }
-  &:last-child {
-    border-top-right-radius: $bt_radius;
-    border-bottom-right-radius: 0;
-    border-right-style: solid;
-  }
-  &:only-child {
-    border-radius: $bt_radius $bt_radius 0 0;
-    border-style: solid;
-  }
-}
-
 %linked_vertical_middle {
   border-radius: 0;
   border-bottom-style: none;

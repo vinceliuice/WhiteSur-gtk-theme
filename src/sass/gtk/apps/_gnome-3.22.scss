@@ -586,7 +586,7 @@ $disk_space_free: darken($bg_color, 3%);
 
 terminal-window {
   &.background.csd {
-    border-radius: 0 0 0 0;
+    border-radius: 0;
   }
 
   decoration {
@@ -598,7 +598,7 @@ terminal-window {
     // }
   }
 
-  &.background.csd.maximized { border-radius: 0 0 0 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
+  &.background.csd.maximized { border-radius: 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
 }
 
 window.background.csd { // gnome-terminal 3.32 setting
@@ -1087,6 +1087,11 @@ window.org-gnome-Builder.workspace {
         }
       }
     }
+  }
+
+  treeview.view.i-wanna-be-listbox:not(:hover):not(:selected),
+  dzlmultipaned > notebook > stack > scrolledwindow > treeview.view:not(:hover):not(:selected) {
+    border-bottom-left-radius: $wm_radius;
   }
 }
 
@@ -2069,14 +2074,6 @@ window.background.csd.unified {
       border-top-left-radius: $maximized_radius;
       border-top-right-radius: $maximized_radius;
     }
-  }
-}
-
-hdyviewswitcherbar > actionbar,
-viewswitcherbar > actionbar { // Gnome 3.38
-  > revealer > box {
-    background: none;
-    border: none;
   }
 }
 
