@@ -1,9 +1,10 @@
 $dash_background_color: if($variant == 'light', rgba($panel_bg, $panel_opacity), rgba($panel_bg, $panel_opacity + 0.1));
 $dash_placeholder_size: 32px;
 $dash_padding: $base_padding + 4px; // 10px/8px
-$dash_spacing: $base_padding / 4;
+$dash_spacing: $base_padding / 6; //  /4
 $dash_bottom_margin: $base_margin * 4;
-$dash_border_radius: $dash_padding * 1.5 + 12px;
+// $dash_border_radius: $dash_padding * 1.5 + 12px;
+$dash_border_radius: $dash_padding;
 
 #dash {
   margin-top: $base_spacing * 2;
@@ -16,8 +17,10 @@ $dash_border_radius: $dash_padding * 1.5 + 12px;
   }
 
   .overview-icon {
-    padding: $dash_padding / 2;
-    border-radius: $dash_padding / 2 + 12px;
+    // padding: $dash_padding / 2;
+    padding: $dash_padding/4;
+    // border-radius: $dash_padding / 2 + 12px;
+    border-radius: $dash_padding;
   }
 
   // Running app indicator (shown in dash)

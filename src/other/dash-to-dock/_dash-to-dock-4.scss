@@ -2,7 +2,7 @@
 $dash_background_color: if($variant == 'light', rgba($panel_bg, $panel_opacity), rgba($panel_bg, $panel_opacity + 0.1));
 $dash_placeholder_size: 32px;
 $dash_padding: $base_padding + 4px; // 10px
-$dash_spacing: round($base_padding / 4);
+$dash_spacing: round($base_padding / 6);
 $dash_bottom_margin: $base_margin * 4;
 $dash_border_radius: $dash_radius;
 
@@ -240,11 +240,13 @@ $osd_fg_color: #eeeeec;
 
 #dashtodockContainer.running-dots .app-well-app.focused .overview-icon,
 #dashtodockContainer.dashtodock .app-well-app.focused .overview-icon {
-    background-color: rgba(238, 238, 236, 0.2);
+    // background-color: rgba(238, 238, 236, 0.2);
+    background-color: transparent;
 }
 
 #dashtodockContainer.dashtodock #dash .dash-background {
-    background: #2e3436;
+    // background: #2e3436;
+    background: #525252;
 }
 
 #dashtodockContainer.dashtodock .progress-bar {

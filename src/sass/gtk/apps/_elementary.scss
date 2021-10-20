@@ -572,6 +572,7 @@ scale.warmth trough {
 .terminal-window {
   headerbar.titlebar.default-decoration {
     background-color: $header_bg;
+    height: 28px;
     border-bottom: 1px solid $header_border;
     box-shadow: inset 0 1px $highlight_color;
 

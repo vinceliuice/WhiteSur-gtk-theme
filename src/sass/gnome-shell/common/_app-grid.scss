@@ -120,7 +120,7 @@
 
 // Running app indicator (also shown in dash)
 .app-well-app-running-dot {
-  width: 5px; height: 5px;
+  width: 3px; height: 3px; // 5px  5px
   border-radius: 3px;
   background-color: $light_alt_fg_color;
   margin-bottom: 0;

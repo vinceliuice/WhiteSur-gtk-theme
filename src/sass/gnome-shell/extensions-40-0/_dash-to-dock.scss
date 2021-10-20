@@ -84,11 +84,13 @@
       &:focus .overview-icon,
       &:selected .overview-icon {
         background-color: if($variant == 'light', rgba(white, 0.25), $light_divider_color);
+        // background-color: transparent;
       }
 
       &:active .overview-icon,
       &:checked .overview-icon {
-        background-color: if($variant == 'light', rgba(white, 0.35), $light_track_color);
+        // background-color: if($variant == 'light', rgba(white, 0.35), $light_track_color);
+        background-color: transparent;
       }
     }
   }
@@ -128,7 +130,8 @@
 
       &:active .overview-icon,
       &:checked .overview-icon {
-        background-color: $light_track_color;
+        // background-color: $light_track_color;
+        background-color: transparent;
       }
     }
   }
