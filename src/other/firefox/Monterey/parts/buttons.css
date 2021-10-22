@@ -238,34 +238,9 @@ button.close:active,
 }
 
 .close-icon:not(.tab-close-button) {
-	background: transparent !important;
 	box-shadow: none !important;
 	border: none !important;
-	border-radius: 100px !important;
-	padding: 0 0 !important;
-	margin: 0 0 !important;
-	min-height: 24px !important;
-	min-width: 24px !important;
-}
-
-#sidebar-close.close-icon,
-.findbar-closebutton.close-icon {
-	min-width: 28px !important;
-}
-
-.close-icon:not(.tab-close-button) .button-icon {
-	padding: 0 0 !important;
-	margin: 0 0 !important;
-}
-
-.close-icon:not(.tab-close-button):hover {
-	outline: 0 !important;
-	background: var(--gnome-button-hover-color) !important;
-}
-
-.close-icon:not(.tab-close-button):active {
-	outline: 0 !important;
-	background: var(--gnome-button-active-color) !important;
+	border-radius: 100% !important;
 }
 
 /* Circle buttons */
