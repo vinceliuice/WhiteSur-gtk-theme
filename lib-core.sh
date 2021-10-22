@@ -558,7 +558,7 @@ check_param() {
           fi
         done ;;
       -i)
-        for i in {0..12}; do
+        for i in {0..13}; do
           if [[ "${value}" == "${ICON_VARIANTS[i]}" ]]; then
             icon="${ICON_VARIANTS[i]}"; variant_found="true"; break
           fi
