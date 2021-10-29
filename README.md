@@ -26,6 +26,7 @@ Don't worry, WhiteSur installer already provides all of those dependencies.
 
 <details> <summary> Recommended GNOME Shell extensions </summary>
 
+- [user-themes](https://extensions.gnome.org/extension/19/user-themes/) to enable gnome-shell theme (and not just the application theme)
 - [dash-to-dock](https://extensions.gnome.org/extension/307/dash-to-dock) `gnome-shell <= 3.38`
 - [dash-to-dock](https://github.com/ewlsh/dash-to-dock/tree/ewlsh/gnome-40)
 (GNOME Shell 40 patch) `gnome-shell >= 40.0`
@@ -154,6 +155,8 @@ Example: `./install.sh -s 220`
 Parameter: `--icon` `-i`
 
 Example: `./install.sh -i fedora`
+  
+Note that you will need to enable the GNOME user-themes extension to change the shell theme (not to confuse with the application theme).
 
 
 ### <p align="center"> <b> Change Nautilus style </b> </p>
