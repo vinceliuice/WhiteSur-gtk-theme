@@ -114,8 +114,21 @@
 	margin: 6px !important;
 	padding: 0 !important;
 }
-button.close {
+
+button.close:not(.ghost-button) {
 	margin: 0 !important;
+}
+
+button.close.ghost-button {
+	margin: 6px !important;
+}
+
+button.close.ghost-button:not(:active):hover {
+	background-color: var(--gnome-headerbar-button-hover-background) !important;
+}
+
+button.close.ghost-button:active {
+	background-color: var(--gnome-headerbar-button-active-background) !important;
 }
 
 /* */

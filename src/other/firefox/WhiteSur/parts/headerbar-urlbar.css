@@ -117,17 +117,18 @@ toolbarspring {
 	color: unset !important;
 }
 .searchbar-engine-one-off-item:first-child {
-	border-radius: 5px 0 0 5px;
+	border-radius: 5px 0 0 5px !important;
 	border-left-width: 1px !important;
 }
-.searchbar-engine-one-off-item.last-engine, .searchbar-engine-one-off-item:last-child {
-	border-radius: 0 5px 5px 0;
+.searchbar-engine-one-off-item.last-engine, .searchbar-engine-one-off-item:not(.search-setting-button):last-child {
+	border-radius: 0 5px 5px 0 !important;
 }
 
-#urlbar-anon-search-settings-compact {
+#urlbar-anon-search-settings-compact,
+.search-setting-button {
 	border-left-width: 1px !important;
 	border-bottom: 1px solid var(--gnome-button-border-accent-color) !important;
-	border-radius: 5px;
+	border-radius: 5px !important;
 	margin-left: 6px !important;
 }
 
