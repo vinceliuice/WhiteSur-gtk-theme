@@ -111,23 +111,25 @@ toolbarspring {
 	min-height: 34px !important;
 	min-width: 34px !important;
 	margin: 0 !important;
+	border-radius: 0 !important;
 }
 .searchbar-engine-one-off-item:hover, .searchbar-engine-one-off-item[selected] {
 	background: var(--gnome-button-hover-background) !important;
 	color: unset !important;
 }
 .searchbar-engine-one-off-item:first-child {
-	border-radius: 5px 0 0 5px;
+	border-radius: 5px 0 0 5px !important;
 	border-left-width: 1px !important;
 }
-.searchbar-engine-one-off-item.last-engine, .searchbar-engine-one-off-item:last-child {
-	border-radius: 0 5px 5px 0;
+.searchbar-engine-one-off-item:last-child:not(.search-setting-button) {
+	border-radius: 0 5px 5px 0 !important;
 }
 
-#urlbar-anon-search-settings-compact {
+#urlbar-anon-search-settings-compact,
+.search-setting-button {
 	border-left-width: 1px !important;
 	border-bottom: 1px solid var(--gnome-button-border-accent-color) !important;
-	border-radius: 5px;
+	border-radius: 5px !important;
 	margin-left: 6px !important;
 }
 
