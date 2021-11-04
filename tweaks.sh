@@ -28,7 +28,7 @@ usage() {
   helpify "-F, --flatpak"       ""                                                  "Connect '${THEME_NAME}' theme to Flatpak"                                    ""
   helpify "-s, --snap"          ""                                                  "Connect '${THEME_NAME}' theme the currently installed snap apps"             ""
   helpify "-g, --gdm"           "[default|x2]"                                      "Install '${THEME_NAME}' theme for GDM (scaling: 100%/200%, default is 100%)" "Requires to run this shell as root"
-  helpify "-d, --dash-to-dock"  ""                                                  "Install '${THEME_NAME}' theme for Dash to Dock when Gnome < 40 or install fixed version on Gnome > 40" ""
+  helpify "-d, --dash-to-dock"  ""                                                  "Fixed Dash to Dock theme issue" ""
   helpify "-N, --no-darken"     ""                                                  "Don't darken '${THEME_NAME}' GDM theme background image"                     ""
   helpify "-n, --no-blur"       ""                                                  "Don't blur '${THEME_NAME}' GDM theme background image"                       ""
   helpify "-b, --background"    "[default|blank|IMAGE_PATH]"                        "Set '${THEME_NAME}' GDM theme background image"                              "Default is BigSur-like wallpaper"
@@ -234,8 +234,8 @@ else
   if [[ "${dash_to_dock}" == 'true' ]]; then
     prompt -i "Installing '${name}' ${colors[0]} Dash to Dock theme... \n"
     install_dash_to_dock_theme
-    prompt -s "Done! '${name}' Dash to Dock theme has been installed."
-    prompt -w "DASH TO DOCK: You may need to logout to take effect."; echo
+    prompt -s "Done! '${name}' Dash to Dock theme has been installed. \n"
+    prompt -w "DASH TO DOCK: You may need to logout to take effect. \n"
   fi
 
   if [[ "${firefox}" == 'true' || "${edit_firefox}" == 'true' ]]; then

@@ -42,6 +42,16 @@ Don't worry, WhiteSur installer already provides all of those dependencies.
 Run `./install.sh` to install the default WhiteSur GTK theme pack which includes
 GNOME Shell (Pantheon), Cinnamon, XFWM (XFCE), Metacity, and Plank themes.
 
+## Quick uninstall
+
+- uninstall Gtk themes: `./install.sh -r`
+- uninstall GDM theme: `sudo ./tweaks.sh -g -r`
+- uninstall Firefox theme: `./tweaks.sh -f -r`
+
+- uninstall Dash-to-dock theme: `./tweaks.sh -d -r`
+- uninstall Flatpak Gtk themes: `./tweaks.sh -F -r`
+- uninstall Snap Gtk themes: `./tweaks.sh -s -r`
+
 ## There's so many customizations you can do!
 Usage:  `./install.sh [OPTIONS...]`
 
@@ -259,6 +269,7 @@ Example:
 ./tweaks.sh -f -e  # install and edit Firefox theme
 ./tweaks.sh -e -f  # it's reversible!
 ./tweaks.sh -e     # edit the installed Firefox theme
+./tweaks.sh -f -r  # remove installed Firefox theme
 ```
 
 #### Use Monterey style
