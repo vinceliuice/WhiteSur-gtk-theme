@@ -179,7 +179,7 @@ finalize_argument_parsing
 #---------------------------START INSTALL THEMES-------------------------------#
 
 if [[ "${uninstall}" == 'true' ]]; then
-  prompt -w "REMOVAL: Non file-related parameters will be ignored."
+  prompt -w "REMOVAL: Non file-related parameters will be ignored. \n"
 
   if [[ "${snap}" == 'true' ]]; then
     prompt -i "Disconnecting '${name}' theme from your installed snap apps... \n"

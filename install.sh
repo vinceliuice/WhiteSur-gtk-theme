@@ -124,10 +124,14 @@ finalize_argument_parsing
 #---------------------------START INSTALL THEMES-------------------------------#
 
 if [[ "${uninstall}" == 'true' ]]; then
-  prompt -i "Removing '${name}' themes in '${dest}'..."
-  prompt -w "REMOVAL: Non file-related parameters will be ignored."; echo
+  prompt -i "Removing '${name}' gtk themes in '${dest}'... \n"
+  prompt -w "REMOVAL: Non file-related parameters will be ignored. \n"
   remove_themes
-  prompt -s "Done! All '${name}' themes has been removed."
+  prompt -s "Done! All '${name}' gtk themes in has been removed. \n"
+
+  if [[ -f "${MISC_GR_FILE}.bak" ]]; then
+    prompt -e "Find installed GDM theme, you need to run: 'sudo ./tweaks.sh -g -r' to remove it!"
+  fi
 else
   if [[ "${interactive}" == 'true' ]]; then
     show_panel_opacity_dialog; show_sidebar_size_dialog; show_nautilus_style_dialog
