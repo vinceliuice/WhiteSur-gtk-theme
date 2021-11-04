@@ -41,6 +41,7 @@ usage() {
   helpify "--round, --roundedmaxwindow"   ""                                          "Set maximized window to rounded"                  "Default is square"
   helpify "--right, --rightplacement"     ""                                          "Set Nautilus titlebutton placement to right"      "Default is left"
   helpify "--black, --blackfont"          ""                                          "Set panel font color to black"                    "Default is white"
+  helpify "--darker, --darkercolor"       ""                                          "Install darker '${THEME_NAME}' dark themes"       ""
   helpify "--dialog, --interactive"       ""                                          "Run this installer interactively, with dialogs"   ""
   helpify "--silent-mode"                 ""                                          "Meant for developers: ignore any confirm prompt and params become more strict" ""
   helpify "-r, --remove, -u, --uninstall" ""                                          "Remove all installed ${THEME_NAME} themes"        ""
@@ -66,7 +67,7 @@ while [[ $# -gt 0 ]]; do
   # at once
 
   case "${1}" in
-      # Parameters that don't require value
+    # Parameters that don't require value
     -r|--remove|-u|-uninstall)
       uninstall='true'; shift ;;
     --silent-mode)
@@ -81,11 +82,13 @@ while [[ $# -gt 0 ]]; do
       max_round="true"; shift ;;
     --black|--blackfont)
       black_font="true"; shift ;;
+    --darker|--darkercolor)
+      darker="true"; shift ;;
     -HD|--highdefinition)
       compact="false"; shift ;;
     -m|--monterey)
       monterey="true"; shift ;;
-      # Parameters that require value, single use
+    # Parameters that require value, single use
     -b|--background)
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
     -d|--dest)
@@ -140,7 +143,7 @@ else
     show_needed_dialogs
   fi
 
-  prompt -w "Removing the old '${name}' themes..."
+  prompt -w "Removing the old '${name}' themes... \n"
 
   remove_themes; customize_theme; avoid_variant_duplicates; echo
 

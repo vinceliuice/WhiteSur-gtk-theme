@@ -813,22 +813,10 @@ gtk_base() {
 customize_theme() {
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
-  # Change gnome-shell panel transparency
-  if [[ "${panel_opacity}" != 'default' ]]; then
-    prompt -s "Changing panel transparency ... \n"
-    sed $SED_OPT "/\$panel_opacity/s/0.15/0.${panel_opacity}/"                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
-  fi
-
-  # Change gnome-shell panel height size
-  if [[ "${panel_size}" != 'default' ]]; then
-    prompt -s "Changing panel height size to '${panel_size}'... \n"
-    sed $SED_OPT "/\$panel_size/s/default/${panel_size}/"                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
-  fi
-
-  # Change gnome-shell show apps button style
-  if [[ "${showapps_normal}" == 'true' ]]; then
-    prompt -s "Changing gnome-shell show apps button style ... \n"
-    sed $SED_OPT "/\$showapps_button/s/bigsur/normal/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  # Darker dark colors
+  if [[ "${darker}" == 'true' ]]; then
+    prompt -s "Changing dark color style to darker one ..."
+    sed $SED_OPT "/\$darker/s/false/true/"                                      "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus sidarbar size
@@ -839,43 +827,61 @@ customize_theme() {
 
   # Change Nautilus style
   if [[ "${nautilus_style}" != 'stable' ]]; then
-    prompt -s "Changing Nautilus style ... \n"
+    prompt -s "Changing Nautilus style ..."
     sed $SED_OPT "/\$nautilus_style/s/stable/${nautilus_style}/"                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus titlebutton placement style
   if [[ "${right_placement}" == 'true' ]]; then
-    prompt -s "Changing Nautilus titlebutton placement style ... \n"
+    prompt -s "Changing Nautilus titlebutton placement style ..."
     sed $SED_OPT "/\$placement/s/left/right/"                                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change maximized window radius
   if [[ "${max_round}" == 'true' ]]; then
-    prompt -s "Changing maximized window style ... \n"
+    prompt -s "Changing maximized window style ..."
     sed $SED_OPT "/\$max_window_style/s/square/round/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
+  # Change gnome-shell panel transparency
+  if [[ "${panel_opacity}" != 'default' ]]; then
+    prompt -s "Changing panel transparency ..."
+    sed $SED_OPT "/\$panel_opacity/s/0.15/0.${panel_opacity}/"                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
+  # Change gnome-shell panel height size
+  if [[ "${panel_size}" != 'default' ]]; then
+    prompt -s "Changing panel height size to '${panel_size}'..."
+    sed $SED_OPT "/\$panel_size/s/default/${panel_size}/"                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
+  # Change gnome-shell show apps button style
+  if [[ "${showapps_normal}" == 'true' ]]; then
+    prompt -s "Changing gnome-shell show apps button style ..."
+    sed $SED_OPT "/\$showapps_button/s/bigsur/normal/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change panel font color
   if [[ "${monterey}" == 'true' ]]; then
     black_font="true"
-    prompt -s "Changing to Monterey style ... \n"
+    prompt -s "Changing to Monterey style ..."
     sed $SED_OPT "/\$monterey/s/false/true/"                                    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
     sed $SED_OPT "/\$panel_opacity/s/0.15/0.5/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change panel font color
   if [[ "${black_font}" == 'true' ]]; then
-    prompt -s "Changing panel font color ... \n"
+    prompt -s "Changing panel font color ..."
     sed $SED_OPT "/\$panel_font/s/white/black/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   if [[ "${compact}" == 'false' ]]; then
-    prompt -s "Changing Definition mode to HD (Bigger font, Bigger size) ... \n"
+    prompt -s "Changing Definition mode to HD (Bigger font, Bigger size) ..."
     #FIXME: @vince is it not implemented yet? (Only Gnome-shell and Gtk theme finished!)
   fi
 
   if [[ "${scale}" == 'x2' ]]; then
-    prompt -s "Changing GDM scaling to 200% ... \n"
+    prompt -s "Changing GDM scaling to 200% ..."
     sed $SED_OPT "/\$scale/s/default/x2/"                                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 }

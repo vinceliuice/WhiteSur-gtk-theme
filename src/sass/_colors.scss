@@ -10,9 +10,9 @@
 @import 'colors-palette';
 
 // Base colors
-$base_color:                        if($variant == 'light', #ffffff, #242424);
+$base_color:                        if($variant == 'light', #ffffff, if($darker == 'true', #1f1f1f, #242424));
 $text_color:                        if($variant == 'light', #363636, #dadada);
-$bg_color:                          if($variant == 'light', #f5f5f5, #333333);
+$bg_color:                          if($variant == 'light', #f5f5f5, if($darker == 'true', #282828, #333333));
 $fg_color:                          if($variant == 'light', #242424, #dedede);
 $alt_fg_color:                      if($variant == 'light', #424242, #afafaf);
 $hint_fg_color:                     if($variant == 'light', #565656, #999999);
@@ -102,9 +102,9 @@ $alt_disabled_fg_color:             if($variant == 'light', transparentize($alt_
 $disabled_bg_color:                 if($variant == 'light', mix($bg_color, $base_color, 40%), lighten($bg_color, 2%));
 
 // Headerbar colors
-$header_bg:                         if($variant == 'light', #ffffff, #373737);
+$header_bg:                         if($variant == 'light', #ffffff, if($darker == 'true', #1e1e1e, #373737));
 $dark_header_bg:                    if($trans == 'true', rgba($base_color, 0.95), $base_color);
-$header_highlight:                  if($variant == 'dark', #434343, #f5f5f5); // For metacity
+$header_highlight:                  if($variant == 'dark', if($darker == 'true', #242424, #434343), #f5f5f5); // For metacity
 
 $header_bg_backdrop:                if($variant == 'light', darken($header_bg, 0%), darken($header_bg, 0%));
 $header_border:                     if($variant == 'light', mix(black, $header_bg, 12%), mix(black, $header_bg, 75%));
@@ -123,11 +123,11 @@ $dark_sidebar_bg: white;
 }
 
 @if $trans=='true' and $variant=='dark' {
-  $dark_sidebar_bg:                 transparentize(#333333, 0.05);
+  $dark_sidebar_bg:                 transparentize(if($darker == 'true', #282828, #333333), 0.05);
 }
 
 @if $trans=='false' and $variant=='dark' {
-  $dark_sidebar_bg:                 #333333;
+  $dark_sidebar_bg:                 if($darker == 'true', #282828, #333333);
 }
 
 $dark_sidebar_fg:                   $text_color;
@@ -136,7 +136,7 @@ $sidebar_theme_color:               if($variant == 'light', rgba(black, 0.12), r
 
 //OSD colors
 $osd_fg_color:                      #dadada;
-$osd_bg_color:                      if($trans=='true', rgba(#2a2a2a, 0.9), #2a2a2a);
+$osd_bg_color:                      if($trans=='true', rgba(if($darker == 'true', #1a1a1a, #2a2a2a), 0.9), if($darker == 'true', #1a1a1a, #2a2a2a));
 $osd_button_bg:                     rgba(lighten($osd_bg_color, 22%), 0.96);
 $osd_button_border:                 $dark_borders_color;
 $osd_entry_bg:                      rgba(lighten($osd_bg_color, 22%), 0.96);
@@ -158,7 +158,7 @@ $submenu_bg_color:                  if($variant == 'light', rgba(white, 1), rgba
 @if $trans=='true' { $submenu_bg_color: if($variant == 'light', rgba(white, 0.75), rgba(white, 0.15)); }
 
 // Panel colors
-$panel_bg:                          if($variant == 'light', #f1f1f1, #2a2a2a);
+$panel_bg:                          if($variant == 'light', #f1f1f1, if($darker == 'true', #1f1f1f, #2a2a2a));
 
 @if $trans == 'true' {
   $panel_bg:                        if($variant == 'light', rgba(white, $panel_opacity/2 + 0.08), rgba(black, $panel_opacity));
@@ -172,10 +172,10 @@ $panel_fg:                          if($trans == 'true' and $panel_font == 'whit
 $panel_track:                       if(($trans == 'false' or $panel_font == 'black') and $variant == 'light', rgba(black, 0.15), rgba(white, 0.28));
 $panel_divider:                     if(($trans == 'false' or $panel_font == 'black') and $variant == 'light', rgba(black, 0.08), rgba(white, 0.15));
 
-$dash_bg:                           if($variant == 'light', rgba(#d1d1d1, $panel_opacity + 0.33), rgba(#222222, $panel_opacity/2 + 0.6));
+$dash_bg:                           if($variant == 'light', rgba(#d1d1d1, $panel_opacity + 0.33), rgba(if($darker == 'true', #1f1f1f, #222222), $panel_opacity/2 + 0.6));
 
 @if $trans == 'true' and $panel_font == 'black' {
-  $dash_bg:                         if($variant == 'light', rgba(#d1d1d1, $panel_opacity/2 + 0.08), rgba(#222222, $panel_opacity + 0.15));
+  $dash_bg:                         if($variant == 'light', rgba(#d1d1d1, $panel_opacity/2 + 0.08), rgba(if($darker == 'true', #1f1f1f, #222222), $panel_opacity + 0.15));
 }
 
 $dash_fg: if($variant == 'light', black, white);
