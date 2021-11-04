@@ -249,13 +249,11 @@ Show this help.
 ## There's more themes you can try!
 ### <p align="center"> <b> Install and edit Firefox theme </b> </p>
 
-[Intall Firefox theme](src/other/firefox)
-
 <p align="center"> <a href="src/other/firefox">
 <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox-whitesur.png"/>
 </a> </p>
 
-#### Install Firefox theme
+#### [Intall Firefox theme](src/other/firefox)
 Parameter: `--firefox` `-f`
 
 Example: `./tweaks.sh -f`
