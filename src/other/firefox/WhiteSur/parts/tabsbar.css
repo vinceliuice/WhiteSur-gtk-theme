@@ -148,15 +148,6 @@ tab[selected]:-moz-window-inactive {
 	margin-left: auto !important;
 }
 
-/* If tab close button is not present, don't force favicon to the center */
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber-fallback,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([busy]) .tab-icon-image,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([image]) .tab-label-container,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-icon-stack {
-	margin-left: 0 !important;
-}
-
 /* Fix website with no favicon centred text */
 .tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) .tab-icon-stack {
 	margin-left: 0 !important
@@ -367,11 +358,6 @@ tab[selected]:-moz-window-inactive {
 }
 
 /* Fix too many tabs text align */
-.tab-close-button[pinned],
-#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack:not([selected="true"]) {
-	margin-left: 0 !important;
-}
-
 .tab-close-button[pinned],
 #tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack[selected="true"] {
 	margin-left: auto !important;

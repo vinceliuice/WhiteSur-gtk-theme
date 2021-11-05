@@ -139,15 +139,6 @@ tab > stack {
 	margin-left: auto !important;
 }
 
-/* If tab close button is not present, don't force favicon to the center */
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-throbber-fallback,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([busy]) .tab-icon-image,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]):not([image]) .tab-label-container,
-#tabbrowser-tabs[closebuttons="activetab"] .tabbrowser-tab:not([selected="true"]) .tab-icon-stack {
-	margin-left: 0 !important;
-}
-
 /* Fix website with no favicon centred text */
 .tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) .tab-icon-stack {
 	margin-left: 0 !important
@@ -250,8 +241,6 @@ tab > stack {
 .tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]):not([fadein]) {
 	max-width: .1px !important;
 }
-
-/* Remove container bottom line indicator */
 
 /* Remove alt colours references for multi tabs*/
 .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-bottom-line {
