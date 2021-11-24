@@ -3573,12 +3573,16 @@ messagedialog { // Message Dialog styling
         border-radius: $bt_radius;
         background-color: transparent;
 
-        &:hover {
+        &:hover, &:focus:hover {
           @include button(flat-hover);
           transition: $button_transition;
         }
 
-        &:active, &:checked {
+        &:focus {
+          background-color: $fill_color;
+        }
+
+        &:active, &:active:hover {
           @include button(active);
         }
       }
