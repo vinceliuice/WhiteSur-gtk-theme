@@ -110,7 +110,7 @@ window#whiskermenu-window {
   }
 
   scrolledwindow {
-    border-radius: $bt_radius;
+    border-radius: 0;
 
     > viewport button.radio {
       padding: 2px 6px;
