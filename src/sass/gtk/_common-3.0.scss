@@ -4242,6 +4242,11 @@ decoration {
     &.maximized, &.tiled { border-radius: 0; }
   }
 
+  .metacity & {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
   .csd.popup & {
     border-radius: $mn_radius;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15), 0 8px 15px rgba(0, 0, 0, 0.08), $wm_outline;
