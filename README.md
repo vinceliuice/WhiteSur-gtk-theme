@@ -253,7 +253,7 @@ Show this help.
 <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox-whitesur.png"/>
 </a> </p>
 
-#### [Intall Firefox theme](src/other/firefox)
+#### [Install Firefox theme](src/other/firefox)
 Parameter: `--firefox` `-f`
 
 Example: `./tweaks.sh -f`
