@@ -19,7 +19,7 @@ $window_close_button_padding: 3px;
 .window-close {
   background-color: rgba($destructive_color, 1);
   color: white;
-  border-radius: $window_close_button_size * 0.5 + $window_close_button_padding * 2;
+  border-radius: $circular_radius;
   padding: $window_close_button_padding;
   height: $window_close_button_size;
   width: $window_close_button_size;
