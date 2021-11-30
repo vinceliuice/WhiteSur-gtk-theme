@@ -2318,6 +2318,25 @@ popover.menu {
   }
 }
 
+%monterey_tab {
+  color: $disabled_fg_color;
+  background-color: transparentize($base_color, 1);
+  border: none;
+  transition: all 150ms ease-out;
+  border-radius: $bt_radius;
+  padding: 0 $container_padding + 4px;
+
+  &:hover:not(:checked) {
+    color: mix($fg_color, $disabled_fg_color, 50%);
+    background-color: rgba($fg_color, 0.06);
+  }
+
+  &:checked {
+    color: $fg_color;
+    background-color: rgba($fg_color, 0.12);
+  }
+}
+
 notebook {
   padding: 0;
   // margin-top: -1px;
