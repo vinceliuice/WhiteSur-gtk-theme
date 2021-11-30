@@ -136,7 +136,7 @@ $sidebar_theme_color:               if($variant == 'light', rgba(black, 0.12), r
 
 //OSD colors
 $osd_fg_color:                      #dadada;
-$osd_bg_color:                      if($trans=='true', rgba(if($darker == 'true', #1a1a1a, #2a2a2a), 0.9), if($darker == 'true', #1a1a1a, #2a2a2a));
+$osd_bg_color:                      if($trans == 'true', rgba(if($darker == 'true', #1a1a1a, #2a2a2a), 0.9), if($darker == 'true', #1a1a1a, #2a2a2a));
 $osd_button_bg:                     rgba(lighten($osd_bg_color, 22%), 0.96);
 $osd_button_border:                 $dark_borders_color;
 $osd_entry_bg:                      rgba(lighten($osd_bg_color, 22%), 0.96);
