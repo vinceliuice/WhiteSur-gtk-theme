@@ -1775,12 +1775,15 @@ headerbar {
     }
   }
 
-  &.default-decoration,
-  .csd &.default-decoration,             // needed under wayland, since all gtk3 windows are csd windows
-  &.default-decoration:backdrop,
-  .csd &.default-decoration:backdrop {
+  &.default-decoration,             // needed under wayland, since all gtk3 windows are csd windows
+  &.default-decoration:backdrop {
     // box-shadow: none;
     border: none;
+  }
+
+  .csd &.default-decoration,
+  .csd &.default-decoration:backdrop {
+    border-bottom: 1px solid $header_border;
   }
 
   separator.titlebutton { @extend %header_separator; }

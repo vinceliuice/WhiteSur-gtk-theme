@@ -1712,6 +1712,16 @@ headerbar {
         }
       }
     }
+
+    box.linked > button {
+      background-color: $fill_color;
+
+      &:hover { background-color: $divider_color; }
+
+      &:active { background-color: $track_color; }
+
+      &:checked { background-color: $visit_color; }
+    }
   }
 
   // Selectionmode
@@ -1793,14 +1803,6 @@ headerbar {
         padding: $container_padding - 2px;
       }
     }
-  }
-
-  &.default-decoration,
-  .csd &.default-decoration,             // needed under wayland, since all gtk3 windows are csd windows
-  &.default-decoration:backdrop,
-  .csd &.default-decoration:backdrop {
-    // box-shadow: none;
-    border: none;
   }
 
   separator.titlebutton { @extend %header_separator; }
