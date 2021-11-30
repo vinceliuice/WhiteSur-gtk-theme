@@ -109,24 +109,30 @@ window#whiskermenu-window {
                 $wm_outline;
   }
 
-  scrolledwindow {
+  box.categories > button.radio { // sidebar categories button
+    padding: 2px 6px;
+    margin: 2px;
+
+    &:hover { background-color: if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12)); }
+
+    &:checked, &:active {
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+
+      &:hover { background-image: none; }
+    }
+  }
+
+  scrolledwindow.frame {
+    padding: $container_padding / 2;
+    background-color: $base_color;
     border-radius: $bt_radius;
 
-    > viewport button.radio {
-      padding: 2px 6px;
-      margin: 2px;
-
-      &:hover { background-color: if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12)); }
-
-      &:checked, &:active {
-        background-color: $selected_bg_color;
-        color: $selected_fg_color;
-
-        &:hover { background-image: none; }
-      }
-    }
-
     treeview.view {
+      border-radius: $bt_radius;
+
+      &:not(:hover):not(:selected) { background: none; }
+
       &:selected:hover {
         background-color: if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
         color: $fg_color;
