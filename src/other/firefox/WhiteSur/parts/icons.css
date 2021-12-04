@@ -2,6 +2,13 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+/* Cursors autoscroller fix */
+.autoscroller {
+  --panel-background: transparent !important;
+  --panel-border-color: transparent !important;
+  background-image: url("chrome://global/skin/icons/autoscroll.svg") !important;
+}
+
 /* Built-in firefox icons color */
 .toolbarbutton-icon,
 .protections-popup-category-icon,
