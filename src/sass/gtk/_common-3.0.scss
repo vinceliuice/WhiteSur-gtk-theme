@@ -181,7 +181,7 @@ $list_shadow: if($variant == 'light',
   }
 
   &:disabled {
-    &, label { color: transparentize($selected_fg_color, 0.5); }
+    color: transparentize($selected_fg_color, 0.5);
     background-color: transparentize($selected_fg_color, 1);
     border-color: transparentize($selected_fg_color, 0.6);
     box-shadow: none;
@@ -1718,7 +1718,7 @@ headerbar {
       border-color: darken($selection_mode_bg, 4%);
     }
 
-    button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton) {
+    button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton):not(.combo) {
       @include button(undecorated);
       @extend %selected-button;
     }

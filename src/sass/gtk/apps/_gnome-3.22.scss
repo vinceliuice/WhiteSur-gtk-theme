@@ -1712,7 +1712,11 @@ window.background.csd {
     > headerbar:first-child {
       @extend %side_headerbar_left;
 
-      &.selection-mode { color: $header_fg; }
+      &.selection-mode {
+        color: $header_fg;
+
+        > button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton):not(.combo) { @extend %headerbar_buttons; }
+      }
     }
 
     > headerbar:last-child {
@@ -1722,7 +1726,7 @@ window.background.csd {
         color: $header_fg;
         border-color: $header_border;
 
-        > button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton) { @extend %headerbar_buttons; }
+        > button:not(.flat):not(.suggested-action):not(.destructive-action):not(.titlebutton):not(.combo) { @extend %headerbar_buttons; }
       }
     }
   }
