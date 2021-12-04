@@ -277,15 +277,15 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 .menu,
 .popup-menu,
 %menu {
-  padding: 0 6px 4px;
+  padding: 0 $container_padding $container_padding / 2;
   color: $fg_color;
 
   @if $trans == 'true' {
-    border-image: url("assets/menu.svg") 17 17 17 17;
+    border-image: url("assets/menu.svg") 20 20 23 20;
   }
 
   @else {
-    border-image: url("assets/menu-solid.svg") 17 17 17 17;
+    border-image: url("assets/menu-solid.svg") 20 20 23 20;
   }
 
   &-arrow { icon-size: 16px; }
@@ -871,11 +871,11 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   padding: 20px;
 
   @if $trans == 'true' {
-    border-image: url("assets/menu.svg") 17 17 17 17;
+    border-image: url("assets/menu.svg") 20 20 23 20;
   }
 
   @else {
-    border-image: url("assets/menu-solid.svg") 17 17 17 17;
+    border-image: url("assets/menu-solid.svg") 20 20 23 20;
   }
 
   > StBoxLayout {
@@ -1154,7 +1154,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 //
 .menu {
   &-favorites-box {
-    margin: auto;
+    margin: 0 0 8px 1px;
     padding: 6px;
     transition-duration: 300;
     background-color: rgba($fg_color, 0.05);
