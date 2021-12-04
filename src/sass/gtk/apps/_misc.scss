@@ -458,10 +458,30 @@ widget#ToolboxCommon {
     }
   }
 
+  > toolbar#ToolToolbar { // Left side toolbar
+    background-color: $bg_color;
+    border-right: 1px solid $borders_color;
+  }
+
   // > toolbar > toolitem > button.flat, // Left side
   > toolbar > toolbutton > button.flat { // Right side
     margin-top: 2px;
     margin-bottom: 2px;
+  }
+}
+
+// Right side toolbar
+box#SnapToolbox {
+  background-color: $bg_color;
+  border-left: 1px solid $borders_color;
+
+  > toolbar {
+    background-color: transparent;
+
+    > toolbutton > button.flat { // Right side
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
   }
 }
 
@@ -477,8 +497,7 @@ scrolledwindow#DialogNotebook {
     border: 1px solid $borders_color;
 
     button.close-button {
-      margin-top: 4px;
-      margin-bottom: 4px;
+      margin: 4px 0;
       border-radius: $circular_radius;
 
       &, &:hover, &:active { background-color: transparent; }
