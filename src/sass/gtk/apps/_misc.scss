@@ -422,6 +422,18 @@ window.background.csd {
       }
     }
   }
+
+  revealer.default-banner {
+    > overlay > box > entry.search {
+      background-color: rgba(white, 0.06);
+      &, image { color: rgba(white, 0.85); }
+
+      &:focus {
+        &, image { color: white; }
+        background-color: rgba(white, 0.1);
+      }
+    }
+  }
 }
 
 //
