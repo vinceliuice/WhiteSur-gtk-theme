@@ -3516,9 +3516,10 @@ expander {
 calendar {
   color: $fg_color;
   border: 1px solid $borders_color;
-  border-radius: $bt_radius;
   padding: 2px $container_padding;
   margin: 0;
+
+  .csd & { border-radius: $bt_radius; }
 
   &:selected {
     @extend %selected_items;
