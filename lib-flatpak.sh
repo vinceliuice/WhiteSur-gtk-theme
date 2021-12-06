@@ -48,11 +48,7 @@ pakitheme_gtk3() {
   rm -rf "$build_dir"
   mkdir -p "$build_dir/files"
 
-  theme_gtk_version=$(ls -1d "$theme_path"/* 2>/dev/null | grep -Po 'gtk-3\.\K\d+$' | sort -nr | head -1)
-  [[ -n "$theme_gtk_version" ]] || \
-    die "Theme directory did not contain any recognized GTK themes."
-
-  cp -a "$theme_path/gtk-3.$theme_gtk_version/"* "$build_dir/files"
+  cp -a "$theme_path/gtk-3.0/"* "$build_dir/files"
 
   mkdir -p "$build_dir/files/share/appdata"
   cat >"$build_dir/files/share/appdata/$gtk3_app_id.appdata.xml" <<EOF
