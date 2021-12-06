@@ -168,7 +168,8 @@ $panel_bg:                          if($variant == 'light', #f1f1f1, if($darker 
   }
 }
 
-$panel_fg:                          if($trans == 'true' and $panel_font == 'white', $light_fg_color, $text_color);
+$panel_text:                        if($variant == 'light', #363636, white);
+$panel_fg:                          if($trans == 'true' and $panel_font == 'white', white, $panel_text);
 $panel_track:                       if(($trans == 'false' or $panel_font == 'black') and $variant == 'light', rgba(black, 0.15), rgba(white, 0.28));
 $panel_divider:                     if(($trans == 'false' or $panel_font == 'black') and $variant == 'light', rgba(black, 0.08), rgba(white, 0.15));
 
