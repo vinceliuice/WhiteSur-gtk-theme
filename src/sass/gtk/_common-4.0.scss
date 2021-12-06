@@ -2306,6 +2306,8 @@ popover.menu {
   background-color: transparentize($base_color, 1);
   border: 1px solid transparent;
   transition: all 150ms ease-out;
+  border-radius: 0;
+  padding: $container_padding - 4px $container_padding + 4px;
 
   &:hover:not(:checked) {
     color: mix($fg_color, $disabled_fg_color, 50%);
@@ -2326,7 +2328,7 @@ popover.menu {
   border: none;
   transition: all 150ms ease-out;
   border-radius: $bt_radius;
-  padding: 0 $container_padding + 4px;
+  padding: $container_padding - 4px $container_padding + 4px;
 
   &:hover:not(:checked) {
     color: mix($fg_color, $disabled_fg_color, 50%);
@@ -2341,11 +2343,8 @@ popover.menu {
 
 notebook {
   padding: 0;
-  // margin-top: -1px;
 
-  &.frame {
-    border: 1px solid $solid_borders_color;
-  }
+  &.frame { border: 1px solid $solid_borders_color; }
 
   > stack:not(:only-child) { // the :not(:only-child) is for "hidden" notebooks
     background-color: $base_color;
@@ -2356,62 +2355,56 @@ notebook {
   }
 
   > header {
-    padding: 0;
-    background-color: darken($header_bg, 10%);
+    @if $monterey == 'false' {
+      background-color: darken($header_bg, 10%);
 
-    // Set box-shadow to make the header frame color more easy to see
-    // Set margin to hide the ugly borders around the header
-    &.top {
-      box-shadow: inset 0 1px $solid_borders_color, inset 0 -1px $borders_color;
-      @if $variant=='light' {
-          box-shadow: inset 0 1px $borders_color,
-                      inset 0 -1px $borders_color,
-                            1px 0 $borders_color,
-                            -1px 0 $borders_color;
+      // Set box-shadow to make the header frame color more easy to see
+      // Set margin to hide the ugly borders around the header
+      &.top {
+        box-shadow: inset 0 1px $borders_color, inset 0 -1px $borders_color;
       }
-      margin-top: -1px;
-    }
 
-    &.bottom {
-      box-shadow: inset 0 1px $borders_color, inset 0 -1px $solid_borders_color;
-      @if $variant=='light' {
-          box-shadow: inset 0 1px $borders_color,
-                      inset 0 -1px $borders_color,
-                      1px 0 $borders_color,
-                      -1px 0 $borders_color;
+      &.bottom {
+        box-shadow: inset 0 1px $borders_color, inset 0 -1px $borders_color;
       }
-      margin-bottom: -1px;
-    }
 
-    &.right {
-      box-shadow: inset 1px 0 $borders_color, inset -1px 0 $solid_borders_color;
-      @if $variant=='light' {
-          box-shadow: inset 1px 0 $borders_color,
-                      inset -1px 0 $borders_color,
-                      0 1px $borders_color,
-                      0 -1px $borders_color;
+      &.right {
+        box-shadow: inset 1px 0 $borders_color, inset -1px 0 $borders_color;
       }
-      margin-right: -1px;
-    }
 
-    &.left {
-      box-shadow: inset 1px 0 $solid_borders_color, inset -1px 0 $borders_color;
-      @if $variant=='light' {
-          box-shadow: inset 1px 0 $borders_color,
-                      inset -1px 0 $borders_color,
-                      0 1px $borders_color,
-                      0 -1px $borders_color;
+      &.left {
+        box-shadow: inset 1px 0 $borders_color, inset -1px 0 $borders_color;
       }
-      margin-left: -1px;
+    } @else {
+      &.top {
+        border-bottom: 1px solid $borders_color;
+      }
+
+      &.bottom {
+        border-top: 1px solid $borders_color;
+      }
+
+      &.right {
+        border-left: 1px solid $borders_color;
+      }
+
+      &.left {
+        border-right: 1px solid $borders_color;
+      }
     }
 
     button.flat.toggle.popup {
-      min-width: $menuitem_size;
-      border-radius: 0;
-      padding: 0;
+      min-width: $medium_size;
       border: none;
       box-shadow: none;
-      margin: 0;
+      border-radius: $bt_radius;
+      padding: 0 $container_padding / 2;
+
+      @if $monterey == 'true' {
+        margin-top: -2px;
+        margin-bottom: -2px;
+        margin-left: $container_padding / 2;
+      }
 
       &:active, &:checked {
         color: $fg_color;
@@ -2422,20 +2415,29 @@ notebook {
     @each $_pos, $_bpos in (top, bottom), (bottom, top), (right, left), (left, right) {
       // sizing and borders
       &.#{$_pos} {
-        padding: 0;
+        @if $monterey == 'false' {
+          margin-#{$_pos}: -1px;
+          padding: 0;
+        } @else {
+          padding: $container_padding / 2;
+        }
 
-        tab {
-          padding: $container_padding - 4px $container_padding + 4px;
+        > tabs > tab {
+          outline-offset: -4px;
           min-width: 24px;
           min-height: 24px;
-          border-radius: 0;
-          outline-offset: -4px;
-          // border-#{$_pos}: none;
 
-          // tab overlap
-          + tab {
-            @if $_pos==top or $_pos==bottom { margin-left: -1px; }
-            @else { margin-top: -1px; }
+          @if $monterey == 'false' {
+            // tab overlap
+            + tab {
+              @if $_pos==top or $_pos==bottom { margin-left: -1px; }
+              @else { margin-top: -1px; }
+            }
+          } @else {
+            + tab {
+              @if $_pos==top or $_pos==bottom { margin-left: $container_padding / 2; }
+              @else { margin-top: $container_padding / 2; }
+            }
           }
         }
       }
@@ -2474,34 +2476,54 @@ notebook {
       &:disabled { color: transparentize($disabled_fg_color,0.3); }
     }
 
-    &.top,
-    &.bottom {
-      tabs > tab {
-        &:first-child { border-left-style: none; }
-        &:last-child { border-right-style: none; }
+    @if $monterey == 'false' {
+      &.top,
+      &.bottom {
+        > tabs > tab {
+          &:first-child { border-left: none; }
+          &:last-child { border-right: none; }
+        }
       }
-    }
 
-    &.left,
-    &.right {
-      tabs > tab {
-        &:first-child { border-top-style: none; }
-        &:last-child { border-bottom-style: none; }
+      &.left,
+      &.right {
+        > tabs > tab {
+          &:first-child { border-top: none; }
+          &:last-child { border-bottom: none; }
+        }
       }
     }
 
     > tabs > tab {
-      @extend %tabs_tab;
+      @if $monterey == 'false' {
+        @extend %tabs_tab;
+      } @else {
+        @extend %monterey_tab;
+      }
 
       // close button
-      button.flat {
-        min-height: $small_size;
-        min-width: $small_size;
+      button.flat,
+      button.close-button,
+      button.image-button.flat {
         border-radius: 3px;
         padding: 0;
-        margin-top: 2px;
-        margin-bottom: 2px;
         color: mix($bg_color, $fg_color, 35%);
+        margin-left: $container_padding / 2;
+        margin-right: -$container_padding;
+
+        @if $monterey == 'false' {
+          min-height: $small_size;
+          min-width: $small_size;
+          margin-top: 2px;
+          margin-bottom: 2px;
+        } @else {
+          min-height: 16px;
+          min-width: 16px;
+          margin-top: 4px;
+          margin-bottom: 4px;
+          margin-left: $container_padding / 2;
+          margin-right: -$container_padding / 2;
+        }
 
         &:hover {
           @extend %undecorated_button;

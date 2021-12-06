@@ -2412,7 +2412,7 @@ cursor-handle {
   border: none;
   transition: all 150ms ease-out;
   border-radius: $bt_radius;
-  padding: 0 $container_padding + 4px;
+  padding: $container_padding - 4px $container_padding + 4px;
 
   &:hover:not(:checked) {
     color: mix($fg_color, $disabled_fg_color, 50%);
@@ -2446,42 +2446,18 @@ notebook {
       // Set margin to hide the ugly borders around the header
       &.top {
         box-shadow: inset 0 1px $borders_color, inset 0 -1px $borders_color;
-        // @if $variant=='light' {
-        //     box-shadow: inset 0 1px $borders_color,
-        //                 inset 0 -1px $borders_color,
-        //                       1px 0 $borders_color,
-        //                       -1px 0 $borders_color;
-        // }
       }
 
       &.bottom {
         box-shadow: inset 0 1px $borders_color, inset 0 -1px $borders_color;
-        // @if $variant=='light' {
-        //     box-shadow: inset 0 1px $borders_color,
-        //                 inset 0 -1px $borders_color,
-        //                 1px 0 $borders_color,
-        //                 -1px 0 $borders_color;
-        // }
       }
 
       &.right {
         box-shadow: inset 1px 0 $borders_color, inset -1px 0 $borders_color;
-        // @if $variant=='light' {
-        //     box-shadow: inset 1px 0 $borders_color,
-        //                 inset -1px 0 $borders_color,
-        //                 0 1px $borders_color,
-        //                 0 -1px $borders_color;
-        // }
       }
 
       &.left {
         box-shadow: inset 1px 0 $borders_color, inset -1px 0 $borders_color;
-        // @if $variant=='light' {
-        //     box-shadow: inset 1px 0 $borders_color,
-        //                 inset -1px 0 $borders_color,
-        //                 0 1px $borders_color,
-        //                 0 -1px $borders_color;
-        // }
       }
     } @else {
       &.top {
@@ -2502,12 +2478,17 @@ notebook {
     }
 
     button.flat.toggle.popup {
-      min-width: $menuitem_size;
+      min-width: $medium_size;
       border: none;
       box-shadow: none;
-      padding: 0;
-      margin-left: $container_padding / 2;
       border-radius: $bt_radius;
+      padding: 0 $container_padding / 2;
+
+      @if $monterey == 'true' {
+        margin-top: -2px;
+        margin-bottom: -2px;
+        margin-left: $container_padding / 2;
+      }
 
       &:active, &:checked {
         color: $fg_color;
@@ -2624,6 +2605,8 @@ notebook {
           min-width: 16px;
           margin-top: 4px;
           margin-bottom: 4px;
+          margin-left: $container_padding / 2;
+          margin-right: -$container_padding / 2;
         }
 
         &:hover {
