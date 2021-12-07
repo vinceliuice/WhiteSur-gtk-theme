@@ -1285,6 +1285,11 @@ combobox {
     }
   }
 
+  .background & button.combo:disabled arrow,
+  .background & button.combo:backdrop arrow {
+    background-color: if($variant=='light', rgba(black, 0.35), rgba(white, 0.25));
+  }
+
   button.combo:checked,
   .background & button.combo:checked { transition: none; } // workaround for menuitem selection
 

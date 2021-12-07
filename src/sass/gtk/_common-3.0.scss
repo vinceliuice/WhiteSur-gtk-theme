@@ -1208,6 +1208,11 @@ combobox {
     }
   }
 
+  .background & button.combo:disabled arrow,
+  .background & button.combo:backdrop arrow {
+    background-color: if($variant=='light', rgba(black, 0.35), rgba(white, 0.25));
+  }
+
   decoration,
   button.combo:checked,
   .background & button.combo:checked { transition: none; } // workaround for menuitem selection
@@ -2208,7 +2213,7 @@ menu,
     border-radius: $mn_radius - 3px;
     text-shadow: none;
     color: $fg_color;
-    -gtk-icon-style: symbolic;
+    // -gtk-icon-style: symbolic;
 
     &:hover {
       transition: none;
@@ -2227,7 +2232,7 @@ menu,
           -gtk-icon-shadow: none;
         }
 
-        menuitem { -gtk-icon-style: symbolic; }
+        // menuitem { -gtk-icon-style: symbolic; }
 
         menuitem:hover {
           arrow { color: $selected_fg_color; }
