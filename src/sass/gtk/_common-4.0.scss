@@ -1618,7 +1618,7 @@ headerbar {
     margin-bottom: 8px;
   }
 
-  menubutton.popup, {
+  menubutton.popup {
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -1642,7 +1642,7 @@ headerbar {
   // Reset linking entrys
   .linked:not(.vertical) > entry {
     @include entry(header-normal);
-    margin: 8px ($container_padding/2 + 1px);
+    margin: 8px ($container_padding / 2 + 1px);
     padding: 0 $container_padding * 2;
     border-radius: $bt_radius;
     border: none;
@@ -3453,7 +3453,7 @@ listview.view {
   color: $fg_color;
   background-color: transparent;
 
-  popover.menu & { padding: 0; }
+  popover.menu & { padding: $container_padding / 2; }
 }
 
 %row_activatable {
