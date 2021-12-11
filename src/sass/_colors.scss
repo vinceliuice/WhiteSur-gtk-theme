@@ -115,7 +115,7 @@ $header_fg:                         if($variant == 'light', #575757, #FDFDFD);
 $dark_sidebar_bg: white;
 
 @if $trans=='true' and $variant=='light' {
-  $dark_sidebar_bg:                 transparentize(#f0f0f0, 0.06);
+  $dark_sidebar_bg:                 transparentize(#f0f0f0, 0.05);
 }
 
 @if $trans=='false' and $variant=='light' {
