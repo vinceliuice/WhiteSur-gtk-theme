@@ -137,10 +137,14 @@ $raven_padding: 8px;
     background: none;
     border-right: none;
     color: $fg_color;
-
-    label { padding: 3px 8px; }
+    padding: 3px 0;
 
     &:hover { background-color: rgba($fg_color, 0.05); }
+
+    &:selected {
+      background-color: rgba($fg_color, 0.1);
+      color: $fg_color;
+    }
   }
 
   scrolledwindow.sidebar:not(.categories) { //AppMenu (Elementary)
