@@ -390,6 +390,80 @@
 // normal, backdrop
 //
 
+  $_small_gradient_length: 5%;
+  $_big_gradient_length: 100%;
+
+  $_position: center top;
+  $_small_gradient_size: 100% $_small_gradient_length;
+  $_big_gradient_size: 100% $_big_gradient_length;
+
+  @if $p==bottom {
+    $_position: center bottom;
+    $_linear_gradient_direction: to top;
+  }
+
+  @else if $p==right {
+    $_position: right center;
+    $_small_gradient_size: $_small_gradient_length 100%;
+    $_big_gradient_size: $_big_gradient_length 100%;
+  }
+
+  @else if $p==left {
+    $_position: left center;
+    $_small_gradient_size: $_small_gradient_length 100%;
+    $_big_gradient_size: $_big_gradient_length 100%;
+  }
+
+  $_small_gradient_color: $c;
+  $_big_gradient_color: $c;
+
+  @if $c==$fg_color {
+    $_small_gradient_color: $borders_color;
+    $_big_gradient_color: $text_color;
+
+    @if $t==backdrop { $_small_gradient_color: $fill_color; }
+  }
+
+  $_small_gradient: -gtk-gradient(radial,
+                                  $_position, 0,
+                                  $_position, 0.5,
+                                  to($_small_gradient_color),
+                                  to(rgba($_small_gradient_color, 0)));
+
+  $_big_gradient: -gtk-gradient(radial,
+                                $_position, 0,
+                                $_position, 0.6,
+                                from(rgba($_big_gradient_color, 0.07)),
+                                to(rgba($_big_gradient_color, 0)));
+
+  @if $t==normal {
+    background-image: $_small_gradient, $_big_gradient;
+    background-size: $_small_gradient_size, $_big_gradient_size;
+  }
+
+  @else if $t==backdrop {
+    background-image: $_small_gradient;
+    background-size: $_small_gradient_size;
+  }
+
+  background-repeat: no-repeat;
+  background-position: $_position;
+
+  background-color: transparent; // reset some properties to be sure to not inherit them somehow
+  border: none;                  //
+  box-shadow: none;              //
+}
+
+@mixin overshoot_alt($p) {
+//
+// overshoot
+//
+// $p: position
+//
+// possible $p values:
+// top, bottom, right, left
+//
+
   $_small_gradient_length: 3%;
   $_big_gradient_length: 50%;
 
@@ -401,33 +475,16 @@
     $_big_gradient_size: $_big_gradient_length 100%;
   }
 
-  $_small_gradient_color: $c;
-  $_big_gradient_color: transparentize($c, 0.93);
-
-  @if $c==$fg_color {
-    $_small_gradient_color: darken($borders_color, 10%);
-    $_big_gradient_color: transparentize($fg_color, 0.93);
-
-    @if $t==backdrop { $_small_gradient_color: $backdrop_borders_color; }
-  }
-
   $_small_gradient: radial-gradient(farthest-side at $p,
-                                    $_small_gradient_color 85%,
-                                    transparentize($_small_gradient_color, 1));
+                                    gtkalpha(currentColor, 0.12) 85%,
+                                    gtkalpha(currentColor, 0));
 
   $_big_gradient: radial-gradient(farthest-side at $p,
-                                  $_big_gradient_color,
-                                  transparentize($_big_gradient_color, 1));
+                                  gtkalpha(currentColor, 0.05),
+                                  gtkalpha(currentColor, 0));
 
-  @if $t==normal {
-    background-image: $_small_gradient, $_big_gradient;
-    background-size: $_small_gradient_size, $_big_gradient_size;
-  }
-
-  @else if $t==backdrop {
-    background-image: $_small_gradient;
-    background-size: $_small_gradient_size;
-  }
+  background-image: $_small_gradient, $_big_gradient;
+  background-size: $_small_gradient_size, $_big_gradient_size;
 
   background-repeat: no-repeat;
   background-position: $p;

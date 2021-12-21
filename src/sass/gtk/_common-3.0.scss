@@ -3359,14 +3359,14 @@ scrolledwindow {
   }
 
   // Overflow indication, works similarly to the overshoot, the size if fixed tho.
-  undershoot {
-    &.top { @include undershoot(top); }
-    &.bottom { @include undershoot(bottom); }
-    &.left { @include undershoot(left); }
-    &.right { @include undershoot(right); }
-
-    padding: $wm_radius/2;
-  }
+  // undershoot {
+  //   &.top { @include undershoot(top); }
+  //   &.bottom { @include undershoot(bottom); }
+  //   &.left { @include undershoot(left); }
+  //   &.right { @include undershoot(right); }
+  //
+  //   padding: $wm_radius / 2;
+  // }
 
   @at-root junction { // the small square between two scrollbars
     border-style: solid none none solid;

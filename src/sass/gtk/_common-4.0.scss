@@ -3368,21 +3368,21 @@ scrolledwindow {
   // This is used by GtkScrolledWindow, when content is touch-dragged past boundaries.
   // This draws a box on top of the content, the size changes programmatically.
   > overshoot {
-    &.top { @include overshoot(top); }
-    &.bottom { @include overshoot(bottom); }
-    &.left { @include overshoot(left); }
-    &.right { @include overshoot(right); }
+    &.top { @include overshoot_alt(top); }
+    &.bottom { @include overshoot_alt(bottom); }
+    &.left { @include overshoot_alt(left); }
+    &.right { @include overshoot_alt(right); }
   }
 
   // Overflow indication, works similarly to the overshoot, the size if fixed tho.
-  > undershoot {
-    &.top { @include undershoot(top); }
-    &.bottom { @include undershoot(bottom); }
-    &.left { @include undershoot(left); }
-    &.right { @include undershoot(right); }
-
-    padding: $wm_radius/2;
-  }
+  // > undershoot {
+  //   &.top { @include undershoot(top); }
+  //   &.bottom { @include undershoot(bottom); }
+  //   &.left { @include undershoot(left); }
+  //   &.right { @include undershoot(right); }
+  //
+  //   padding: $wm_radius / 2;
+  // }
 
   > junction { // the small square between two scrollbars
     border-style: solid none none solid;
