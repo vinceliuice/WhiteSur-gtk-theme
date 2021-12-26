@@ -216,7 +216,7 @@
 
   @if $t == hover {
     color: $tc;
-    border: 1px solid $button_borders_hover;
+    border: 1px solid $button_borders;
     background-color: if($variant=='light', darken($c, 3%), lighten($c, 3%));
     text-shadow: none;
     icon-shadow: none;

@@ -1210,7 +1210,7 @@ combobox {
 
   .background & button.combo:disabled arrow,
   .background & button.combo:backdrop arrow {
-    background-color: if($variant=='light', rgba(black, 0.35), rgba(white, 0.25));
+    background-color: if($variant == 'light', rgba($text_color, 0.45), mix(white, $button_bg, 0.25));
   }
 
   decoration,
@@ -2325,8 +2325,8 @@ popover.background {
 
   &.menu { padding: 0; }
 
-  box-shadow: 0 3px 6px 0 if($variant=='light', transparentize(black, 0.85), transparentize(black, 0.85)),
-              0 0 0 1px if($variant=='light', rgba($borders_color, 0.03), rgba($dark_borders_color, 0.55));
+  box-shadow: 0 3px 6px 0 rgba(black, 0.15),
+              0 0 0 1px if($variant=='light', rgba(black, 0.03), rgba(black, 0.65));
 
   .csd &, & {
     border-radius: $wm_radius;
@@ -2445,7 +2445,7 @@ notebook {
 
   > header {
     @if $monterey == 'false' {
-      background-color: darken($header_bg, 10%);
+      background-color: mix(black, $base_color, if($variant == 'light', 6%, 6%));
 
       // Set box-shadow to make the header frame color more easy to see
       // Set margin to hide the ugly borders around the header
@@ -2808,56 +2808,23 @@ switch {
 //
 // Check and Radio items
 //
-@each $w,$a in ('check', 'checkbox'),
-               ('radio','radio') {
-
-  //standard checks and radios
-  @each $s,$as in ('','-unchecked'),
-                  (':disabled','-unchecked-insensitive'),
-                  (':indeterminate', '-mixed'),
-                  (':indeterminate:disabled', '-mixed-insensitive'),
-                  (':checked', '-checked'),
-                  (':checked:disabled','-checked-insensitive') {
-    .#{$w}#{$s},
-    #{$w}#{$s},
-    treeview.#{$w}#{$s} {
-      -gtk-icon-source: -gtk-scaled(url("assets/#{$a}#{$as}#{$asset_suffix}.png"),
-                                    url("assets/#{$a}#{$as}#{$asset_suffix}@2.png"));
-    }
-
-    .osd,
-    %osd_check_radio {
-      #{$w}#{$s} {
-        -gtk-icon-source: -gtk-scaled(url("assets/#{$a}#{$as}-dark.png"),
-                                      url("assets/#{$a}#{$as}-dark@2.png"));
-      }
-    }
-
-    infobar #{$w}#{$s} {
-      -gtk-icon-source: -gtk-scaled(url("assets/#{$a}#{$as}-selected.png"),
-                                    url("assets/#{$a}#{$as}-selected@2.png"));
-    }
-  }
-}
-
-// Selectionmode
-@each $s,$as in ('','-selectionmode'),
-                  (':checked', '-checked-selectionmode') {
-  .view.content-view.check#{$s}:not(list) {
-    -gtk-icon-source: -gtk-scaled(url("assets/checkbox#{$as}#{$asset_suffix}.png"),
-                                  url("assets/checkbox#{$as}#{$asset_suffix}@2.png"));
-    background-color: transparent;
-  }
+.view.content-view.check:not(list),
+.content-view .tile check:not(list) {
+  min-height: 40px;
+  min-width: 40px;
+  margin: 0;
+  padding: 0;
 }
 
 checkbutton, radiobutton {
-    // this is for a nice focus on check and radios text
-    &.text-button {
-      padding: 2px 0;
-      outline-offset: 0;
-      &:hover { color: darken($fg_color, 15%); }
-      &:disabled { color: $disabled_fg_color; }
-    }
+  // this is for a nice focus on check and radios text
+  &.text-button {
+    padding: 2px 0;
+    outline-offset: 0;
+
+    &:hover { color: darken($fg_color, 15%); }
+    &:disabled { color: $disabled_fg_color; }
+  }
 
   label:not(:only-child) {
     &:first-child { margin-left: 4px; }
@@ -2865,14 +2832,119 @@ checkbutton, radiobutton {
   }
 }
 
+$check_radio_border: if($variant == 'light', rgba(black, 0.2), rgba(black, 0.1));
+$check_radio_image: if($colorscheme == 'nord', linear-gradient(0deg, #59647b 0%, #475061 100%), linear-gradient(0deg, #6a6a6a 0%, #545454 100%));
+$check_radio_checked_image: linear-gradient(0deg, darken($selected_bg_color, 5%) 0%, lighten($selected_bg_color, 5%) 100%);
+
 check,
 radio {
-  min-width: 16px;
-  min-height: 16px;
-  margin: 0 2px;
+  min-width: 14px;
+  min-height: 14px;
+  margin: 3px;
+  padding: 0;
+  color: transparent;
+  background-color: $base_color;
+  transition: $button_transition;
+  background-clip: padding-box;
+  border: none;
 
-  &:only-child,
-  menu menuitem & { margin: 0; }
+  @if $variant == 'dark' {
+    background-image: $check_radio_image;
+    box-shadow: inset 0 1px $highlight_color, 0 1px 2px rgba(black, 0.25);
+
+    &:hover {
+      box-shadow: inset 0 1px $highlight_color;
+      background-image: $check_radio_image;
+    }
+
+    &:active {
+      box-shadow: inset 0 1px $highlight_color;
+    }
+  } @else {
+    box-shadow: inset 0 1px 2px rgba(black, 0.1), inset 0 0 0 1px $check_radio_border;
+
+    &:hover {
+      box-shadow: inset 0 0 0 1px $check_radio_border;
+      background-color: $base_color;
+    }
+
+    &:active {
+      box-shadow: inset 0 0 0 1px $check_radio_border;
+    }
+  }
+
+  &:disabled {
+    background-image: none;
+    background-color: if($variant == 'light', rgba(white, 0.45), rgba(white, 0.08));
+
+    @if $variant == 'light' {
+      box-shadow: inset 0 0 0 1px rgba(black, 0.08);
+    } @else { box-shadow: none; }
+  }
+
+  &:checked, &:indeterminate {
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+
+    @if $variant == 'light' {
+      background-clip: border-box;
+    } @else {
+      background-image: $check_radio_checked_image;
+    }
+
+    &:hover {
+      @if $variant == 'light' {
+        box-shadow: inset 0 0 0 1px $check_radio_border;
+        background-color: $selected_bg_color;
+      } @else {
+        box-shadow: inset 0 1px $highlight_color;
+        background-image: $check_radio_checked_image;
+      }
+    }
+
+    &:active {
+      background-color: $selected_bg_color;
+
+      @if $variant == 'light' {
+        box-shadow: inset 0 0 0 1px $check_radio_border;
+      } @else {
+        box-shadow: inset 0 1px $highlight_color;
+      }
+    }
+
+    &:disabled {
+      color: $alt_disabled_fg_color;
+      background-image: none;
+      background-color: if($variant == 'light', rgba(white, 0.45), rgba(white, 0.08));
+
+      @if $variant == 'light' {
+        box-shadow: inset 0 0 0 1px rgba(black, 0.08);
+      } @else { box-shadow: none; }
+    }
+  }
+
+  menu menuitem & {
+    margin: 0;
+    padding: 0;
+    min-width: 14px;
+    min-height: 14px;
+  }
+}
+
+%check,
+check {
+  border-radius: 3px;
+
+  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-checked-symbolic.svg")); }
+  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.svg")); }
+}
+
+%radio,
+radio {
+  border-radius: $circular_radius;
+
+  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")); }
+  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-mixed-symbolic.svg")); }
 }
 
 //

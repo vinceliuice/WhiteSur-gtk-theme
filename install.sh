@@ -84,6 +84,8 @@ while [[ $# -gt 0 ]]; do
       black_font="true"; shift ;;
     --darker|--darkercolor)
       darker="true"; shift ;;
+    --nord|--nordcolor)
+      nord="true"; shift ;;
     -HD|--highdefinition)
       compact="false"; shift ;;
     -m|--monterey)

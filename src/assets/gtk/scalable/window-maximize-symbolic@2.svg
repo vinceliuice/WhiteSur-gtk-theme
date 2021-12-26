@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="28"
+   height="28"
+   version="1.1"
+   viewBox="0 0 28 28"
+   id="svg4"
+   sodipodi:docname="window-maximize-symbolic@2.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="5.273838"
+     inkscape:cx="-9.101531"
+     inkscape:cy="-1.6117294"
+     inkscape:window-width="1494"
+     inkscape:window-height="814"
+     inkscape:window-x="112"
+     inkscape:window-y="118"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg4">
+    <inkscape:grid
+       type="xygrid"
+       id="grid825" />
+  </sodipodi:namedview>
+  <path
+     id="path1955"
+     d="M 10.828126,7.9999995 20,17.171799 V 9.9999996 c 0,-0.831 -1.168999,-2.0000001 -1.999999,-2.0000001 z M 8.0000002,10.8282 V 18 c 0,0.831001 1.1690001,2 1.9999998,2 h 7.171877 z" />
+</svg>

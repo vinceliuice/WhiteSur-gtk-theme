@@ -145,7 +145,7 @@
   // hovered button
   //
     color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
-    border-color: $button_borders_hover;
+    border-color: $button_borders;
     background-color: if($variant=='light', darken($button_bg, 3%), lighten($button_bg, 3%));
     @if $variant=='light' { box-shadow: none; }
     @if $variant=='dark' {

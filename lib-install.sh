@@ -433,10 +433,12 @@ install_theemy() {
   mkdir -p                                                                                    "${TMP_DIR_T}"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TMP_DIR_T}"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TMP_DIR_T}/assets"
-  cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}"                        "${TMP_DIR_T}/windows-assets"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TMP_DIR_T}/assets"
 
-  if [[ "${theme}" != '' ]]; then
-    cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets${theme}/"*".png"                  "${TMP_DIR_T}/assets"
+  if [[ "${nord}" == 'true' ]]; then
+    cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}-nord"                 "${TMP_DIR_T}/windows-assets"
+  else
+    cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}"                      "${TMP_DIR_T}/windows-assets"
   fi
 
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk${color}.scss"                         "${TMP_DIR_T}/gtk.css"
@@ -812,6 +814,12 @@ gtk_base() {
 
 customize_theme() {
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
+
+  # Darker dark colors
+  if [[ "${nord}" == 'true' ]]; then
+    prompt -s "Changing color scheme style to nord style ..."
+    sed $SED_OPT "/\$colorscheme/s/default/nord/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
 
   # Darker dark colors
   if [[ "${darker}" == 'true' ]]; then

@@ -32,6 +32,17 @@ do
   echo "    <file>windows-assets/$i-dark@2.png</file>" >> gtk.gresource.xml
 done
 
+echo "    <file>assets/scalable/checkbox-checked-symbolic.svg</file>" >> gtk.gresource.xml
+echo "    <file>assets/scalable/checkbox-mixed-symbolic.svg</file>" >> gtk.gresource.xml
+echo "    <file>assets/scalable/radio-checked-symbolic.svg</file>" >> gtk.gresource.xml
+echo "    <file>assets/scalable/combobox-arrow-symbolic.svg</file>" >> gtk.gresource.xml
+echo '    <file alias="assets/scalable/radio-mixed-symbolic.svg">assets/scalable/checkbox-mixed-symbolic.svg</file>' >> gtk.gresource.xml
+echo "    <file>assets/scalable/checkbox-checked-symbolic@2.svg</file>" >> gtk.gresource.xml
+echo "    <file>assets/scalable/checkbox-mixed-symbolic@2.svg</file>" >> gtk.gresource.xml
+echo "    <file>assets/scalable/radio-checked-symbolic@2.svg</file>" >> gtk.gresource.xml
+echo "    <file>assets/scalable/combobox-arrow-symbolic@2.svg</file>" >> gtk.gresource.xml
+echo '    <file alias="assets/scalable/radio-mixed-symbolic@2.svg">assets/scalable/checkbox-mixed-symbolic@2.svg</file>' >> gtk.gresource.xml
+
 echo "    <file>gtk.css</file>" >> gtk.gresource.xml
 echo "    <file>gtk-dark.css</file>" >> gtk.gresource.xml
 

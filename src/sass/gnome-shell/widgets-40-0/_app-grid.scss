@@ -12,8 +12,6 @@
 }
 
 .app-folder-dialog {
-  background-color: rgba(#262626, 0.9);
-
   .page-navigation-hint {
     width: if($laptop == 'true', 60px, 80px);
   }

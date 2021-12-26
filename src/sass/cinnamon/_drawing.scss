@@ -93,7 +93,7 @@
   @else if $t==active {
     color: $selected_fg_color;
     background-color: $selected_bg_color;
-    border: 1px solid $button_borders_active;
+    border: 1px solid $button_borders;
   }
 
   @else if $t==insensitive {

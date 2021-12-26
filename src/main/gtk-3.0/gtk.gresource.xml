@@ -1,58 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/org/gnome/theme">
-    <file>assets/checkbox-checked.png</file>
-    <file>assets/checkbox-checked@2.png</file>
-    <file>assets/checkbox-checked-insensitive.png</file>
-    <file>assets/checkbox-checked-insensitive@2.png</file>
-    <file>assets/checkbox-unchecked.png</file>
-    <file>assets/checkbox-unchecked@2.png</file>
-    <file>assets/checkbox-unchecked-insensitive.png</file>
-    <file>assets/checkbox-unchecked-insensitive@2.png</file>
-    <file>assets/checkbox-mixed.png</file>
-    <file>assets/checkbox-mixed@2.png</file>
-    <file>assets/checkbox-mixed-insensitive.png</file>
-    <file>assets/checkbox-mixed-insensitive@2.png</file>
-    <file>assets/radio-checked.png</file>
-    <file>assets/radio-checked@2.png</file>
-    <file>assets/radio-checked-insensitive.png</file>
-    <file>assets/radio-checked-insensitive@2.png</file>
-    <file>assets/radio-unchecked.png</file>
-    <file>assets/radio-unchecked@2.png</file>
-    <file>assets/radio-unchecked-insensitive.png</file>
-    <file>assets/radio-unchecked-insensitive@2.png</file>
-    <file>assets/radio-mixed.png</file>
-    <file>assets/radio-mixed@2.png</file>
-    <file>assets/radio-mixed-insensitive.png</file>
-    <file>assets/radio-mixed-insensitive@2.png</file>
-    <file>assets/checkbox-checked-selected.png</file>
-    <file>assets/checkbox-checked-selected@2.png</file>
-    <file>assets/checkbox-checked-insensitive-selected.png</file>
-    <file>assets/checkbox-checked-insensitive-selected@2.png</file>
-    <file>assets/checkbox-unchecked-selected.png</file>
-    <file>assets/checkbox-unchecked-selected@2.png</file>
-    <file>assets/checkbox-unchecked-insensitive-selected.png</file>
-    <file>assets/checkbox-unchecked-insensitive-selected@2.png</file>
-    <file>assets/checkbox-mixed-selected.png</file>
-    <file>assets/checkbox-mixed-selected@2.png</file>
-    <file>assets/checkbox-mixed-insensitive-selected.png</file>
-    <file>assets/checkbox-mixed-insensitive-selected@2.png</file>
-    <file>assets/checkbox-checked-selectionmode.png</file>
-    <file>assets/checkbox-checked-selectionmode@2.png</file>
-    <file>assets/checkbox-selectionmode.png</file>
-    <file>assets/checkbox-selectionmode@2.png</file>
-    <file>assets/radio-checked-selected.png</file>
-    <file>assets/radio-checked-selected@2.png</file>
-    <file>assets/radio-checked-insensitive-selected.png</file>
-    <file>assets/radio-checked-insensitive-selected@2.png</file>
-    <file>assets/radio-unchecked-selected.png</file>
-    <file>assets/radio-unchecked-selected@2.png</file>
-    <file>assets/radio-unchecked-insensitive-selected.png</file>
-    <file>assets/radio-unchecked-insensitive-selected@2.png</file>
-    <file>assets/radio-mixed-selected.png</file>
-    <file>assets/radio-mixed-selected@2.png</file>
-    <file>assets/radio-mixed-insensitive-selected.png</file>
-    <file>assets/radio-mixed-insensitive-selected@2.png</file>
     <file>assets/slider-horz-scale-has-marks-below.png</file>
     <file>assets/slider-horz-scale-has-marks-below@2.png</file>
     <file>assets/slider-horz-scale-has-marks-below-hover.png</file>
@@ -85,42 +33,10 @@
     <file>assets/slider-vert-scale-has-marks-above-active@2.png</file>
     <file>assets/slider-vert-scale-has-marks-above-insensitive.png</file>
     <file>assets/slider-vert-scale-has-marks-above-insensitive@2.png</file>
-    <file>assets/checkbox-checked-dark.png</file>
-    <file>assets/checkbox-checked-dark@2.png</file>
-    <file>assets/checkbox-checked-insensitive-dark.png</file>
-    <file>assets/checkbox-checked-insensitive-dark@2.png</file>
-    <file>assets/checkbox-unchecked-dark.png</file>
-    <file>assets/checkbox-unchecked-dark@2.png</file>
-    <file>assets/checkbox-unchecked-insensitive-dark.png</file>
-    <file>assets/checkbox-unchecked-insensitive-dark@2.png</file>
-    <file>assets/checkbox-mixed-dark.png</file>
-    <file>assets/checkbox-mixed-dark@2.png</file>
-    <file>assets/checkbox-mixed-insensitive-dark.png</file>
-    <file>assets/checkbox-mixed-insensitive-dark@2.png</file>
-    <file>assets/checkbox-checked-selectionmode-dark.png</file>
-    <file>assets/checkbox-checked-selectionmode-dark@2.png</file>
-    <file>assets/checkbox-selectionmode-dark.png</file>
-    <file>assets/checkbox-selectionmode-dark@2.png</file>
-    <file>assets/radio-checked-dark.png</file>
-    <file>assets/radio-checked-dark@2.png</file>
-    <file>assets/radio-checked-insensitive-dark.png</file>
-    <file>assets/radio-checked-insensitive-dark@2.png</file>
-    <file>assets/radio-unchecked-dark.png</file>
-    <file>assets/radio-unchecked-dark@2.png</file>
-    <file>assets/radio-unchecked-insensitive-dark.png</file>
-    <file>assets/radio-unchecked-insensitive-dark@2.png</file>
-    <file>assets/radio-mixed-dark.png</file>
-    <file>assets/radio-mixed-dark@2.png</file>
-    <file>assets/radio-mixed-insensitive-dark.png</file>
-    <file>assets/radio-mixed-insensitive-dark@2.png</file>
     <file>assets/combobox-arrow.png</file>
     <file>assets/combobox-arrow@2.png</file>
     <file>assets/combobox-arrow-dark.png</file>
     <file>assets/combobox-arrow-dark@2.png</file>
-    <file>assets/paned-separator.png</file>
-    <file>assets/paned-separator@2.png</file>
-    <file>assets/paned-separator-dark.png</file>
-    <file>assets/paned-separator-dark@2.png</file>
     <file>assets/sidebar-view-hover-180px.png</file>
     <file>assets/sidebar-view-hover-180px@2.png</file>
     <file>assets/sidebar-view-active-180px.png</file>
@@ -273,6 +189,16 @@
     <file>windows-assets/titlebutton-restore-active@2.png</file>
     <file>windows-assets/titlebutton-restore-active-dark.png</file>
     <file>windows-assets/titlebutton-restore-active-dark@2.png</file>
+    <file>assets/scalable/checkbox-checked-symbolic.svg</file>
+    <file>assets/scalable/checkbox-mixed-symbolic.svg</file>
+    <file>assets/scalable/radio-checked-symbolic.svg</file>
+    <file>assets/scalable/combobox-arrow-symbolic.svg</file>
+    <file alias="assets/scalable/radio-mixed-symbolic.svg">assets/scalable/checkbox-mixed-symbolic.svg</file>
+    <file>assets/scalable/checkbox-checked-symbolic@2.svg</file>
+    <file>assets/scalable/checkbox-mixed-symbolic@2.svg</file>
+    <file>assets/scalable/radio-checked-symbolic@2.svg</file>
+    <file>assets/scalable/combobox-arrow-symbolic@2.svg</file>
+    <file alias="assets/scalable/radio-mixed-symbolic@2.svg">assets/scalable/checkbox-mixed-symbolic@2.svg</file>
     <file>gtk.css</file>
     <file>gtk-dark.css</file>
   </gresource>

@@ -85,44 +85,47 @@ Usage:  `./install.sh [OPTIONS...]`
   -s, --size [default|180|220|240|260|280]
  Set Nautilus sidebar minimum width. Default is 200px
 
-  -i, --icon [standard|simple|gnome|ubuntu|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin]
+  -i, --icon [standard|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin]
  Set 'Activities' icon. Default is 'standard'
 
   -b, --background [default|blank|IMAGE_PATH]
  Set gnome-shell background image. Default is BigSur-like wallpaper
 
-  -m, --monterey
- Set to MacOS Monterey style.
+  -m, --monterey 
+ Set to MacOS Monterey style. 
 
   -N, --nautilus-style [stable|normal|mojave|glassy]
  Set Nautilus style. Default is BigSur-like style (stabled sidebar)
 
-  -HD, --highdefinition
+  -HD, --highdefinition 
  Set to High Definition size. Default is laptop size
 
-  --normal, --normalshowapps
+  --normal, --normalshowapps 
  Set gnome-shell show apps button style to normal. Default is bigsur
 
-  --round, --roundedmaxwindow
+  --round, --roundedmaxwindow 
  Set maximized window to rounded. Default is square
 
-  --right, --rightplacement
+  --right, --rightplacement 
  Set Nautilus titlebutton placement to right. Default is left
 
-  --black, --blackfont
+  --black, --blackfont 
  Set panel font color to black. Default is white
 
-  --dialog, --interactive
- Run this installer interactively, with dialogs.
+  --darker, --darkercolor 
+ Install darker 'WhiteSur' dark themes. 
 
-  --silent-mode
- Meant for developers: ignore any confirm prompt and params become more strict.
+  --dialog, --interactive 
+ Run this installer interactively, with dialogs. 
 
-  -r, --remove, -u, --uninstall
- Remove all installed WhiteSur themes.
+  --silent-mode 
+ Meant for developers: ignore any confirm prompt and params become more strict. 
 
-  -h, --help
- Show this help.
+  -r, --remove, -u, --uninstall 
+ Remove all installed WhiteSur themes. 
+
+  -h, --help 
+ Show this help. 
 ```
 
 </details>

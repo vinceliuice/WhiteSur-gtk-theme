@@ -61,15 +61,15 @@ $wm_bg_unfocused: opacify($header_bg_backdrop, 1);
 @define-color wm_icon_close_bg #{"" + $wm_icon_close_bg};
 
 // Minimize, Maximize
-@define-color wm_button_hover_bg #{"" + $wm_button_hover_bg};
-@define-color wm_button_active_bg #{"" + $wm_button_active_bg};
+@define-color wm_button_hover_bg #{"" + $bg_color};
+@define-color wm_button_active_bg #{"" + $bg_color};
 
-@define-color wm_button_hover_border #{"" + $wm_button_hover_border};
+@define-color wm_button_hover_border #{"" + $solid_borders_color};
 
-@define-color wm_icon_bg #{"" + $wm_icon_bg};
-@define-color wm_icon_unfocused_bg #{"" + $wm_icon_unfocused_bg};
-@define-color wm_icon_hover_bg #{"" + $wm_icon_hover_bg};
-@define-color wm_icon_active_bg #{"" + $wm_icon_active_bg};
+@define-color wm_icon_bg #{"" + $alt_fg_color};
+@define-color wm_icon_unfocused_bg #{"" + $alt_disabled_fg_color};
+@define-color wm_icon_hover_bg #{"" + $fg_color};
+@define-color wm_icon_active_bg #{"" + $fg_color};
 
 // Titlebar
 @define-color titlebar_gradient_a #{"" + $header_bg};
