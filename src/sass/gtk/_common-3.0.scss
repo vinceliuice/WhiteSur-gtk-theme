@@ -3380,6 +3380,8 @@ scrolledwindow {
   viewport.frame { // avoid double borders when viewport inside scrolled window
     border: none;
 
+    > list { background: none; }
+
     .frame {
       border: none;
 

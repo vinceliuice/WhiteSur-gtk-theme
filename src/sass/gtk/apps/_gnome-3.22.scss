@@ -2970,6 +2970,8 @@ dialog.background.csd {
   > box.vertical.dialog-vbox {
     &.view { background: none; }
 
+    > leaflet.unfolded > box.vertical.view { background: none; } // Formats setting dialog gnome >= 41.0
+
     > grid.horizontal {
       > scrolledwindow.frame { //removed ugly boders for nautilus batch renaming dialog
         border: none;

@@ -3,10 +3,10 @@
  * Budgie Desktop *
  ******************/
 
-$raven_base_color: if($variant =='light', #f5f5f5, #1b1b1b);
-$raven_bg_color: if($variant =='light', #dedede, #1f1f1f);
+$raven_base_color: $base_color;
+$raven_bg_color: $menu_bg;
 $raven_fg_color: $text_color;
-$raven_header_bg_color: if($variant =='light', #efefef, #181818);
+$raven_header_bg_color: darken($raven_base_color, 3%);
 $raven_header_fg_color: $text_color;
 $raven_button_bg_color: $button_bg;
 $raven_border_color: if($variant =='light', $borders_color, rgba(black, 0.75));
@@ -74,6 +74,8 @@ $raven_padding: 8px;
 .budgie-container { background-color: transparent; }
 
 .budgie-settings-window {
+  &.background { background-color: rgba($base_color, if($trans == 'true', 0.95, 1)); }
+
   buttonbox.inline-toolbar {
     border-style: none none solid;
 
@@ -85,7 +87,7 @@ $raven_padding: 8px;
   }
 
   list.sidebar {
-    background-color: $base_color;
+    background-color: transparent;
     border-radius: 0 0 0 $wm_radius;
     border-color: if($variant =='light', $solid_borders_color, $header_border);
   }
@@ -94,13 +96,12 @@ $raven_padding: 8px;
 .budgie-popover {
   margin: 0;
   padding: 0;
-  border-color: if($variant=='light', $borders_color, lighten($menu_bg, 8%));
+  border: 1px solid if($variant=='light', rgba($borders_color, 0.2), lighten($menu_bg, 6%));
   border-radius: $wm_radius;
-  background-color: if($trans == 'true', rgba($bg_color, 0.95), $bg_color);
-  box-shadow: 0 1px 2px 0 if($variant == 'light', opacify($wm_shadow, 0.15), opacify($wm_shadow, 0.1)),
-              0 2px 3px 0 if($variant == 'light', opacify($wm_shadow, 0.15), opacify($wm_shadow, 0.1)),
-              0 0 0 1px if($variant=='light', $borders_color, rgba($dark_borders_color, 0.55)),
-              inset 0 0 0 1px if($variant=='light', rgba(black, 0.0), rgba(white, 0.08));
+  background-color: $menu_bg;
+  background-clip: padding-box;
+  box-shadow: 0 0 3px 0 rgba(black, 0.15),
+              0 0 0 1px if($variant=='light', rgba(black, 0.03), rgba(black, 0.65));
 
   .container {
     padding: 0;
@@ -177,6 +178,8 @@ $raven_padding: 8px;
     }
   }
 
+  calendar { border-radius: $bt_radius; }
+
   &.budgie-menu {
     .container { padding: 0; }
 
@@ -204,6 +207,7 @@ $raven_padding: 8px;
 
     scrolledwindow.sidebar.categories {  //AppMenu (budgie)
       border-bottom-left-radius: $wm_radius;
+      margin: 0 0 1px 1px;
 
       button.flat.category-button {
         min-height: 28px;
@@ -431,13 +435,14 @@ $budgie_panel_radius: $wm_radius + $container_padding;
 // Panel
 .budgie-panel {
   transition: background-color 0.2s cubic-bezier(0, 0, 0.2, 1);
-  background-color: $panel_bg;
-  color: $panel_fg;
+  background-color: opacify($header_bg, 1);
+  color: $header_fg;
   font-weight: 500;
   border-width: 0;
 
   &.transparent {
-    background-color: rgba($panel_bg, 0.1);
+    background-color: $panel_bg;
+    color: $panel_fg;
     border-width: 0;
   }
 
@@ -510,19 +515,38 @@ $budgie_panel_radius: $wm_radius + $container_padding;
     border-bottom-width: 0;
     border: none;
     box-shadow: none;
-    color: rgba($panel_fg, 0.85);
+    color: rgba($header_fg, 0.85);
     background: none;
+
+    &:hover {
+      background-color: rgba($header_fg, 0.10);
+      color: rgba($header_fg, 0.95);
+      background-image: none;
+    }
+
+    &:active {
+      background-color: rgba($header_fg, 0.15);
+      color: $header_fg;
+      background-image: none;
+    }
+
+    &:checked {
+      background-color: rgba($header_fg, 0.12);
+      color: $header_fg;
+    }
+  }
+
+  &.transparent button {
+    color: rgba($panel_fg, 0.85);
 
     &:hover {
       background-color: rgba($panel_fg, 0.10);
       color: rgba($panel_fg, 0.95);
-      background-image: none;
     }
 
     &:active {
       background-color: rgba($panel_fg, 0.15);
       color: $panel_fg;
-      background-image: none;
     }
 
     &:checked {
@@ -540,7 +564,6 @@ $budgie_panel_radius: $wm_radius + $container_padding;
   menubar,
   .menubar {
     box-shadow: none;
-    color: $panel_fg;
     background-image: none;
     background-color: transparent;
 
@@ -548,13 +571,28 @@ $budgie_panel_radius: $wm_radius + $container_padding;
       border: none;
       background-image: none;
       font-weight: normal;
+      color: $header_fg;
 
-      &:hover { background-color: if($trans == 'false' and $variant == 'light', $divider_color, $light_divider_color); }
-      &:disabled { color: transparentize($panel_fg, 0.6); }
-
-      &.budgie-menubar {
-        &:hover { background-color: rgba($panel_fg, 0.10); }
+      &:hover {
+        color: $header_fg;
+        background-color: rgba($header_fg, 0.1);
       }
+
+      &:disabled { color: transparentize($header_fg, 0.6); }
+    }
+  }
+
+  &.transparent menubar,
+  &.transparent .menubar {
+    > menuitem {
+      color: $panel_fg;
+
+      &:hover {
+        color: $panel_fg;
+        background-color: rgba($panel_fg, 0.1);
+      }
+
+      &:disabled { color: transparentize($panel_fg, 0.6); }
     }
   }
 
@@ -710,7 +748,7 @@ $pos_list: ((top, bottom), (bottom, top), (left, right), (right, left));
    }
 }
 
-$raven_opacity: if($variant =='light', 0.85, 0.95);
+$raven_opacity: if($variant =='light', 0.95, 0.95);
 $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px 0 rgba(black, 0.1);
 
 // Raven
@@ -910,7 +948,11 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
 
   // notification list
   .raven-notifications-view {
-    > .raven-header { background-color: $raven_header_bg_color; }
+    > .raven-header {
+      background-color: transparent;
+      border-bottom: 1px solid $raven_border_color;
+    }
+
     > .raven-background > viewport.frame {
       padding: 0; // reset padding for full-width list node
 
@@ -948,10 +990,17 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
             border: none;
             margin: $container_padding / 2;
             border-radius: $bt_radius;
-            background-color: if($variant == 'light', rgba(white, 0.75), rgba(white, 0.06));
+            background-color: if($variant == 'light', lighten($raven_bg_color, 5%), darken($raven_bg_color, 5%));
+            box-shadow: 0 2px 3px rgba(black, 0.08);
 
             &:hover, &:selected {
-              background-color: if($variant == 'light', rgba(white, 1), rgba(white, 0.12));
+              background-color: if($variant == 'light', $raven_bg_color, darken($raven_bg_color, 8%));
+              box-shadow: 0 2px 4px rgba(black, 0.15);
+            }
+
+            &:active {
+              background-color: if($variant == 'light', darken($raven_bg_color, 5%), darken($raven_bg_color, 10%));
+              box-shadow: none;
             }
 
             label { padding: 0 16px; }
