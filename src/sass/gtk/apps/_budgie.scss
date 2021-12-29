@@ -430,7 +430,7 @@ popover.background.places-menu {
   }
 }
 
-$budgie_panel_radius: $wm_radius + $container_padding;
+$budgie_panel_radius: $wm_radius + $container_padding / 2;
 
 // Panel
 .budgie-panel {
@@ -448,12 +448,12 @@ $budgie_panel_radius: $wm_radius + $container_padding;
 
   .bottom & {
     &.dock-mode {
-      padding: $container_padding $container_padding - 2px;
+      padding: $container_padding / 2 $container_padding / 2 - 1px;
       margin-bottom: $container_padding;
 
       .icon-tasklist {
         .launcher {
-          margin: 0 2px;
+          margin: 0 1px;
         }
       }
     }
@@ -462,11 +462,11 @@ $budgie_panel_radius: $wm_radius + $container_padding;
   .left & {
     &.dock-mode {
       margin-left: $container_padding;
-      padding: $container_padding - 2px $container_padding;
+      padding: $container_padding / 2 - 1px $container_padding / 2;
 
       .icon-tasklist {
         .launcher {
-          margin: 2px 0;
+          margin: 1px 0;
         }
       }
     }
@@ -475,11 +475,11 @@ $budgie_panel_radius: $wm_radius + $container_padding;
   .right & {
     &.dock-mode {
       margin-right: $container_padding;
-      padding: $container_padding - 2px $container_padding;
+      padding: $container_padding / 2 - 1px $container_padding / 2;
 
       .icon-tasklist {
         .launcher {
-          margin: 2px 0;
+          margin: 1px 0;
         }
       }
     }
