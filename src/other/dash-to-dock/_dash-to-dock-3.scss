@@ -89,18 +89,18 @@
     }
   }
 
-  &.dashtodock #dash { background: $dash_bg; }
+  &.dashtodock #dash { background-color: $dash_bg; }
 
   &.opaque #dash { // solid-mode
-    background: $dash_bg;
+    background-color: $dash_bg;
   }
 
   &.transparent #dash { // translucent-mode
-    background: $dash_bg; // does not work
+    background-color: $dash_bg; // does not work
   }
 
   &:overview #dash { // overview-mode #1
-    background: $light_divider_color;
+    background-color: $light_divider_color;
   }
 
   &.opaque:overview,
