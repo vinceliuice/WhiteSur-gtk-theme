@@ -45,14 +45,14 @@
   }
 
   @each $_dock, $_radius, $_shadow in (top, $dash_radius, 0 -1px),
-                            (bottom, $dash_radius, 0 1px),
-                            (left, $dash_radius, -1px 0),
-                            (right, $dash_radius, 1px 0) {
+                                      (bottom, $dash_radius, 0 1px),
+                                      (left, $dash_radius, -1px 0),
+                                      (right, $dash_radius, 1px 0) {
     &.#{$_dock}.dashtodock #dash,
     &.#{$_dock}.dashtodock:overview #dash {
       border-radius: #{$_radius};
       margin-#{$_dock}: 6px;
-      padding: 3px;
+      padding: 6px;
       box-shadow: inset 0 0 0 1px rgba(white, 0.05);
     }
 
@@ -89,35 +89,35 @@
     }
   }
 
-  &.dashtodock #dash { background-color: $dash_bg; }
+  // &.dashtodock #dash { background-color: $dash_bg; }
+  //
+  // &.opaque #dash { // solid-mode
+  //   background-color: $dash_bg;
+  // }
+  //
+  // &.transparent #dash { // translucent-mode
+  //   background-color: $dash_bg; // does not work
+  // }
 
-  &.opaque #dash { // solid-mode
-    background-color: $dash_bg;
-  }
+  // &:overview #dash { // overview-mode #1
+  //   background-color: $light_divider_color;
+  // }
+  //
+  // &.opaque:overview,
+  // &.transparent:overview { // overview-mode #2
+  //   #dash {
+  //     background-color: transparent !important;
+  //     box-shadow: none !important;
+  //   }
+  // }
 
-  &.transparent #dash { // translucent-mode
-    background-color: $dash_bg; // does not work
-  }
-
-  &:overview #dash { // overview-mode #1
-    background-color: $light_divider_color;
-  }
-
-  &.opaque:overview,
-  &.transparent:overview { // overview-mode #2
-    #dash {
-      background-color: transparent !important;
-      box-shadow: none !important;
-    }
-  }
-
-  &.extended:overview, // overview-mode #3
-  &.opaque.extended:overview,
-  &.transparent.extended:overview {
-    #dash {
-      background-color: $dash_bg;
-    }
-  }
+  // &.extended:overview, // overview-mode #3
+  // &.opaque.extended:overview,
+  // &.transparent.extended:overview {
+  //   #dash {
+  //     background-color: $dash_bg;
+  //   }
+  // }
 
   &.running-dots,
   &.dashtodock {

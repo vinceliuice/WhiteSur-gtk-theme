@@ -56,7 +56,7 @@
     &.#{$_dock}.dashtodock:overview #dash {
       border-radius: #{$_radius};
       margin-#{$_dock}: 6px;
-      padding: 3px;
+      padding: 6px;
       box-shadow: inset 0 0 0 1px rgba(white, 0.05);
     }
 
