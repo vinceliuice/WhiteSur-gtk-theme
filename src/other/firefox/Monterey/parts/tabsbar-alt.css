@@ -8,7 +8,7 @@
 
 /* Fix tabs bar icon sizes */
 #TabsToolbar {
-	--toolbarbutton-inner-padding: var(--toolbarbutton-inner-padding) !important;
+	padding: 0 0 6px 0 !important;
 }
 
 /* Tabs bar height */
@@ -31,7 +31,7 @@ tab > stack {
 }
 
 .tabbrowser-tab {
-	margin: 0 4px !important;
+	margin: 0 3px !important;
 }
 
 .tabbrowser-tab,
@@ -44,7 +44,6 @@ tab > stack {
 	max-height: 32px !important;
 	padding: 0 !important;
 	background-image: none !important;
-	margin-bottom: 6px !important;
 }
 
 .tabbrowser-tab:not([visuallyselected="true"], [multiselected]), .tabbrowser-tab:-moz-lwtheme {
@@ -56,7 +55,9 @@ tab > stack {
 }
 
 .tab-background {
-	transition: background 200ms !important;
+	margin: 0 !important;
+	transition: all 200ms;
+	margin-block: 0 !important;
 }
 
 .tab-background:not([selected=true]) {
@@ -89,10 +90,6 @@ tab > stack {
 	align-items: center;
 	min-width: 100% !important;
 	padding: 0 10px !important;
-}
-
-.tab-background {
-	transition: all 200ms;
 }
 
 /* Prevent tab icons size breaking */
@@ -148,21 +145,14 @@ tab > stack {
 	margin-left: 0 !important
 }
 
-@media (-moz-proton) {
-	/* Firefox v89 beta tab fix */
-	.tab-background {
-		margin-block: 0 !important;
-	}
+/*Align personal bookmarks v89 */
+#personal-bookmarks {
+	-moz-box-align: center !important;
+}
 
-	/*Align personal bookmarks v89 */
-	#personal-bookmarks {
-		-moz-box-align: center !important;
-	}
-
-	/* fix misc spacing between tabs */
-	.tabbrowser-tab {
-		padding-inline: 0px !important;
-	}
+/* fix misc spacing between tabs */
+.tabbrowser-tab {
+	padding-inline: 0px !important;
 }
 
 .close-icon {

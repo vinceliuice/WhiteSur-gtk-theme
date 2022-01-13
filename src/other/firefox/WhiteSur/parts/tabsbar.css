@@ -10,11 +10,6 @@
 	margin-bottom: -1px !important;
 }
 
-/* Fix tabs bar icon sizes */
-#TabsToolbar {
-	--toolbarbutton-inner-padding: var(--toolbarbutton-inner-padding) !important;
-}
-
 /* Tabs bar height */
 #tabbrowser-tabs,
 #tabbrowser-tabs arrowscrollbox {
@@ -157,34 +152,32 @@ tab[selected]:-moz-window-inactive {
 	margin-left: 0 !important
 }
 
-@media (-moz-proton) {
-	/* Firefox v89 beta tab fix */
-	.tab-background {
-		border-radius: 0 !important;
-		margin-block: 0 !important;
-	}
 
-	/*Align personal bookmarks v89 */
-	#personal-bookmarks {
-		-moz-box-align: center !important;
-	}
+.tab-background {
+	border-radius: 0 !important;
+	margin-block: 0 !important;
+}
 
-	/* fix misc spacing between tabs */
-	.tabbrowser-tab {
-		min-height: 28px !important;
-		padding-inline: 0px !important;
-	}
+/*Align personal bookmarks v89 */
+#personal-bookmarks {
+	-moz-box-align: center !important;
+}
 
-	.tabbrowser-tab[selected="true"]>.tab-stack>.tab-background {
-		margin-left: 0px !important;
-		margin-right: 0px !important;
-	}
+/* fix misc spacing between tabs */
+.tabbrowser-tab {
+	min-height: 28px !important;
+	padding-inline: 0px !important;
+}
 
-	/* centre text when audio is playing */
-	.tabbrowser-tab:is([soundplaying]) .tab-label-container {
-		margin-left: 0 !important;
-		margin-right: auto !important
-	}
+.tabbrowser-tab[selected="true"]>.tab-stack>.tab-background {
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+
+/* centre text when audio is playing */
+.tabbrowser-tab:is([soundplaying]) .tab-label-container {
+	margin-left: 0 !important;
+	margin-right: auto !important
 }
 
 /* Remove tab icons */
@@ -275,6 +268,7 @@ tab[selected]:-moz-window-inactive {
 	border-image: none !important;
 	margin-left: -1px !important;
 	margin-right: -1px !important;
+	border-radius: 0 !important;
 	box-shadow: 1px 0 var(--gnome-toolbar-border-color), 1px 0 3px rgba(0, 0, 0, 0.08),
 	            -1px 0 var(--gnome-toolbar-border-color), -1px 0 3px rgba(0, 0, 0, 0.08),
 	            inset 0 -1px var(--gnome-toolbar-border-color) !important;
@@ -311,6 +305,11 @@ tab[selected]:-moz-window-inactive {
 /* Remove blank spaces on tabs start and end */
 #TabsToolbar .titlebar-spacer {
 	display: none !important;
+}
+
+#TabsToolbar .toolbarbutton-1 {
+	margin: 0 !important;
+	border-radius: 0 !important;
 }
 
 /* Create new container tab indicator */
