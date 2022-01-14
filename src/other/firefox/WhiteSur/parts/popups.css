@@ -10,6 +10,8 @@ menupopup {
 	--arrowpanel-border-radius: 12px !important;
 	--arrowpanel-background: var(--gnome-menu-background) !important;
 	--arrowpanel-border-color: var(--gnome-menu-border-color) !important;
+	--panel-border-radius: 8px !important;
+	--panel-padding: 8px 0 !important;
 }
 
 #PlacesToolbar menupopup[placespopup="true"]::part(content), #PlacesToolbar menupopup[placespopup="true"]::part(arrowscrollbox), #PlacesToolbar menupopup {
