@@ -382,15 +382,15 @@ Note:
 <br>
 
 ## WhiteSur Wallpaper
-<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/wallpapers">
+<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-wallpapers">
   <img class="image" src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/wallpapers/1080p/WhiteSur-light.png"/>
 </a> </p>
 <br>
-<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/wallpapers">
+<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-wallpapers">
   <img class="image" src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/wallpapers/1080p/Monterey-light.png"/>
 </a> </p>
 <br>
-<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/wallpapers">
+<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-wallpapers">
   <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.svg"/>
 </a> </p>
 <br>
