@@ -111,6 +111,7 @@ toolbarspring {
 	min-height: 34px !important;
 	min-width: 34px !important;
 	margin: 0 !important;
+	border-radius: 0 !important;
 }
 .searchbar-engine-one-off-item:hover, .searchbar-engine-one-off-item[selected] {
 	background: var(--gnome-button-hover-background) !important;

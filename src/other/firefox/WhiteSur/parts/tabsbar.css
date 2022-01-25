@@ -247,7 +247,7 @@ tab[selected]:-moz-window-inactive {
 }
 
 /* Remove alt colours references for multi tabs*/
-.tabbrowser-tab[usercontextid]>.tab-stack>.tab-background>.tab-context-line {
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
 	display: none;
 }
 
