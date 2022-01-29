@@ -42,6 +42,7 @@ usage() {
   helpify "--right, --rightplacement"     ""                                          "Set Nautilus titlebutton placement to right"      "Default is left"
   helpify "--black, --blackfont"          ""                                          "Set panel font color to black"                    "Default is white"
   helpify "--darker, --darkercolor"       ""                                          "Install darker '${THEME_NAME}' dark themes"       ""
+  helpify "--nord, --nordcolor"           ""                                          "Install '${THEME_NAME}' Nord ColorScheme themes"  ""
   helpify "--dialog, --interactive"       ""                                          "Run this installer interactively, with dialogs"   ""
   helpify "--silent-mode"                 ""                                          "Meant for developers: ignore any confirm prompt and params become more strict" ""
   helpify "-r, --remove, -u, --uninstall" ""                                          "Remove all installed ${THEME_NAME} themes"        ""

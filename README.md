@@ -192,59 +192,77 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 <details> <summary> Options </summary>
 
 ```bash
--f, --firefox [default|monterey|alt]
-Install 'WhiteSur|Monterey|Monterey-Alt' theme for Firefox and connect it to the current Firefox profiles. Default is WhiteSur
+  -d, --dest DIR
+ Set destination directory. Default is '/home/vince/.themes'
 
--e, --edit-firefox
-Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles.
+  -n, --name NAME
+ Set theme name. Default is 'WhiteSur'
 
--F, --flatpak
-Connect 'WhiteSur' theme to Flatpak.
+  -o, --opacity [normal|solid]
+ Set theme opacity variants. Repeatable. Default is all variants
 
--s, --snap
-Connect 'WhiteSur' theme the currently installed snap apps.
+  -c, --color [light|dark]
+ Set theme color variants. Repeatable. Default is all variants
 
--g, --gdm
-Install 'WhiteSur' theme for GDM. Requires to run this shell as root
+  -a, --alt [normal|alt|all]
+ Set window control buttons variant. Repeatable. Default is 'normal'
 
--d, --dash-to-dock
-Install 'WhiteSur' theme for Dash to Dock and connect it to the current Dash to Dock installation(s).
+  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey|all]
+ Set theme accent color. Repeatable. Default is BigSur-like theme
 
--N, --no-darken
-Don't darken 'WhiteSur' GDM theme background image.
+  -p, --panel-opacity [default|30|45|60|75]
+ Set panel transparency. Default is 15%
 
--n, --no-blur
-Don't blur 'WhiteSur' GDM theme background image.
+  -P, --panel-size [default|smaller|bigger]
+ Set Gnome shell panel height size. Default is 32px
 
--b, --background [default|blank|IMAGE_PATH]
-Set 'WhiteSur' GDM theme background image. Default is BigSur-like wallpaper
+  -s, --size [default|180|220|240|260|280]
+ Set Nautilus sidebar minimum width. Default is 200px
 
--o, --opacity [normal|solid]
-Set 'WhiteSur' GDM theme opacity variants. Default is 'normal'
+  -i, --icon [standard|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin]
+ Set 'Activities' icon. Default is 'standard'
 
--c, --color [light|dark]
-Set 'WhiteSur' GDM and Dash to Dock theme color variants. Default is 'light'
+  -b, --background [default|blank|IMAGE_PATH]
+ Set gnome-shell background image. Default is BigSur-like wallpaper
 
--t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]
-Set 'WhiteSur' GDM theme accent color. Default is BigSur-like theme
+  -m, --monterey
+ Set to MacOS Monterey style.
 
--p, --panel-opacity [default|30|45|60|75]
-Set 'WhiteSur' GDM (GNOME Shell) theme panel transparency. Default is 15%
+  -N, --nautilus-style [stable|normal|mojave|glassy]
+ Set Nautilus style. Default is BigSur-like style (stabled sidebar)
 
--P, --panel-size [default|smaller|bigger]
-Set 'WhiteSur' Gnome shell panel height size. Default is 32px
+  -HD, --highdefinition
+ Set to High Definition size. Default is laptop size
 
--i, --icon [standard|simple|gnome|ubuntu|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin]
-Set 'WhiteSur' GDM (GNOME Shell) 'Activities' icon. Default is 'standard'
+  --normal, --normalshowapps
+ Set gnome-shell show apps button style to normal. Default is bigsur
 
--r, --remove, --revert
-Revert to the original themes, do the opposite things of install and connect.
+  --round, --roundedmaxwindow
+ Set maximized window to rounded. Default is square
 
---silent-mode
-Meant for developers: ignore any confirm prompt and params become more strict.
+  --right, --rightplacement
+ Set Nautilus titlebutton placement to right. Default is left
 
--h, --help
-Show this help.
+  --black, --blackfont
+ Set panel font color to black. Default is white
+
+  --darker, --darkercolor
+ Install darker 'WhiteSur' dark themes.
+
+  --nord, --nordcolor 
+ Install 'WhiteSur' Nord ColorScheme themes.
+
+  --dialog, --interactive 
+ Run this installer interactively, with dialogs.
+
+  --silent-mode 
+ Meant for developers: ignore any confirm prompt and params become more strict.
+
+  -r, --remove, -u, --uninstall
+ Remove all installed WhiteSur themes.
+
+  -h, --help 
+ Show this help.
 ```
 
 </details>
