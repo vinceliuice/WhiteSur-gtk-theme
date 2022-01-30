@@ -311,12 +311,8 @@ signal_error() {
   prompt -e "GNOME  : ${GNOME_VERSION}"
   prompt -e "REPO   : ${repo_ver}\n"
 
-  if has_command apt; then
-    prompt -i "HINT: Try install depends to fix this: sudo apt install sassc libglib2.0-dev-bin libxml2-utils\n"
-  fi
-
-  prompt -i "HINT: You can google or report to us the info above\n"
-  prompt -i "https://github.com/vinceliuice/WhiteSur-gtk-theme/issues\n\n"
+  prompt -i "HINT: You can google or report to us the info above \n"
+  prompt -i "https://github.com/vinceliuice/WhiteSur-gtk-theme/issues \n"
 
   rm -rf "${WHITESUR_TMP_DIR}"; exit 1
 }
@@ -666,7 +662,7 @@ sudo() {
   prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
 
   if ! ${SUDO_BIN} -n true &> /dev/null; then
-    echo -e "${c_magenta} Authentication is required${c_default} ${c_green}(Please input your password):${c_default}"
+    echo -e "\n ${c_magenta} Authentication is required${c_default} ${c_green}(Please input your password):${c_default} \n"
   fi
 
   if [[ -p /dev/stdin ]]; then
