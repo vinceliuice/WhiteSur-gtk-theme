@@ -1897,7 +1897,7 @@ headerbar {
 
 .background:not(.unified) {
   .titlebar {
-    &, & headerbar { box-shadow: inset 0 1px $highlight_color; }
+    box-shadow: inset 0 1px $highlight_color;
   }
 
   stack.titlebar { box-shadow: none; }
