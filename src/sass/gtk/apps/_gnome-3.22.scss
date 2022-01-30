@@ -1961,7 +1961,7 @@ window.background.csd {
   }
 }
 
-tabbox {
+.background tabbox {
   @if $monterey == 'false' {
     background-color: darken($header_bg, 10%);
     box-shadow: inset 0 -1px $borders_color;
@@ -1985,24 +1985,13 @@ tabbox {
       }
     }
 
-    button.tab-close-button {
+    button {
+      @extend %flat_button;
       border-radius: 3px;
       border: none;
       padding: 0;
-      @extend %flat_button;
-
-      @if $monterey == 'false' {
-        min-height: $small_size;
-        min-width: $small_size;
-        margin-top: 2px;
-        margin-bottom: 2px;
-      } @else {
-        min-height: 16px;
-        min-width: 16px;
-        margin-top: 4px;
-        margin-bottom: 4px;
-        margin-right: -$container_padding;
-      }
+      min-height: $small_size;
+      min-width: $small_size;
 
       &:hover {
         color: $fg_color;
@@ -2012,6 +2001,21 @@ tabbox {
       &:active, &:active:hover {
         color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
         background-color: rgba($borders_color, 0.2);
+      }
+
+      &.tab-close-button {
+        @if $monterey == 'false' {
+          min-height: $small_size;
+          min-width: $small_size;
+          margin-top: 2px;
+          margin-bottom: 2px;
+        } @else {
+          min-height: 16px;
+          min-width: 16px;
+          margin-top: 4px;
+          margin-bottom: 4px;
+          margin-right: -$container_padding;
+        }
       }
     }
   }

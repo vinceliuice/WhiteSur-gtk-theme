@@ -652,8 +652,8 @@ $_dot_color: $selected_bg_color;
 %flat_button {
   @include button(flat-normal);
   &:hover { @include button(flat-hover); }
-  &:active { @include button(flat-active); }
-  &:checked { @include button(flat-checked); }
+  &:active, &:active:hover { @include button(flat-active); }
+  &:checked, &:checked:hover { @include button(flat-checked); }
   &:disabled { @include button(flat-insensitive); }
 }
 
@@ -688,8 +688,6 @@ button {
       &:active { transition: $button_transition; }
     }
 
-    &:checked:hover { background-image: none; }
-
     &.toggle.popup:not(.colored) {
       min-width: $menuitem_size - 8px;
     }
@@ -723,6 +721,18 @@ button {
     &:disabled {
       &:active, &:checked {
         @include button(insensitive-active);
+      }
+    }
+  }
+
+  .background &.flat { // reset
+    &:active, &:checked {
+      @include button(flat-active);
+    }
+
+    &:disabled {
+      &:active, &:checked {
+        @include button(flat-insensitive-active);
       }
     }
   }
