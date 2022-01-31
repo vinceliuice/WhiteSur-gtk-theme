@@ -524,12 +524,11 @@ install_themes() {
   for opacity in "${opacities[@]}"; do
     for alt in "${alts[@]}"; do
       for theme in "${themes[@]}"; do
-        install_xfwmy "${color}"
-
         for color in "${colors[@]}"; do
           gtk_base "${color}" "${opacity}" "${theme}" "${compact}"
           install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${icon}"
           install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}"
+          install_xfwmy "${color}"
         done
       done
     done
