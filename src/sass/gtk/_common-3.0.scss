@@ -1405,9 +1405,9 @@ actionbar {
     background-color: darken($bg_color, 3%);
   }
 
-  // .background.csd revealer > & > revealer > box,
   .background.csd > box.vertical > & > revealer > box,
-  .background.csd > box > box > box > & > revealer > box {
+  .background.csd > box > box > box > & > revealer > box,
+  .background.csd stack revealer > & > revealer > box {
     border-radius: 0 0 $wm_radius $wm_radius;
   }
 }
@@ -2818,13 +2818,6 @@ switch {
 //
 // Check and Radio items
 //
-.view.content-view.check:not(list),
-.content-view .tile check:not(list) {
-  min-height: 40px;
-  min-width: 40px;
-  margin: 0;
-  padding: 0;
-}
 
 checkbutton, radiobutton {
   // this is for a nice focus on check and radios text
@@ -2846,12 +2839,23 @@ $check_radio_border: if($variant == 'light', rgba(black, 0.2), rgba(black, 0.1))
 $check_radio_image: if($colorscheme == 'nord', linear-gradient(0deg, #59647b 0%, #475061 100%), linear-gradient(0deg, #6a6a6a 0%, #545454 100%));
 $check_radio_checked_image: linear-gradient(0deg, darken($selected_bg_color, 5%) 0%, lighten($selected_bg_color, 5%) 100%);
 
-check,
+%check,
+check {
+  border-radius: 3px;
+
+  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-checked-symbolic.svg")); }
+  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.svg")); }
+}
+
+%radio,
 radio {
-  min-width: 14px;
-  min-height: 14px;
-  margin: 3px;
-  padding: 0;
+  border-radius: $circular_radius;
+
+  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")); }
+  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-mixed-symbolic.svg")); }
+}
+
+%check_and_radio {
   color: transparent;
   background-color: $base_color;
   transition: $button_transition;
@@ -2932,6 +2936,27 @@ radio {
       } @else { box-shadow: none; }
     }
   }
+}
+
+.view.content-view.check:not(list),
+.content-view .tile check:not(list) {
+  min-height: 40px;
+  min-width: 40px;
+  margin: 0;
+  padding: 0;
+  border-radius: $bt_radius;
+  @extend %check_and_radio;
+
+  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-checked-big-symbolic.svg")); }
+}
+
+check,
+radio {
+  min-width: 14px;
+  min-height: 14px;
+  margin: 3px;
+  padding: 0;
+  @extend %check_and_radio;
 
   menu menuitem & {
     margin: 0;
@@ -2939,22 +2964,6 @@ radio {
     min-width: 14px;
     min-height: 14px;
   }
-}
-
-%check,
-check {
-  border-radius: 3px;
-
-  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-checked-symbolic.svg")); }
-  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.svg")); }
-}
-
-%radio,
-radio {
-  border-radius: $circular_radius;
-
-  &:checked { -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")); }
-  &:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/scalable/radio-mixed-symbolic.svg")); }
 }
 
 //

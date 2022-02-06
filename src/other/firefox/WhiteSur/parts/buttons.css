@@ -255,6 +255,7 @@ button.close,
 	min-height: 32px !important;
 	min-width: 32px !important;
 	border-radius: 100% !important;
+	outline: none !important;
 }
 
 /* Combined buttons */
