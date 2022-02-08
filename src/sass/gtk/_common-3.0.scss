@@ -65,6 +65,12 @@ $list_shadow: if($variant == 'light',
   background-color: if($variant == 'light', rgba(black, 0.03), rgba(white, 0.05));
   border: none;
 
+  @if $colorscheme == 'nord' {
+    background-color: if($variant == 'light', rgba(#2e3440, 0.06), rgba(#4c566a, 0.25));
+  } @else {
+    background-color: if($variant == 'light', rgba(black, 0.03), rgba(white, 0.05));
+  }
+
   > separator { background: none; min-height: 0; }
 }
 
@@ -1950,6 +1956,13 @@ window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar
 //
 // Pathbars
 //
+
+$pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
+
+@if $colorscheme == 'nord' {
+  $pathbar_button_checked_bg: if($variant == 'light', #6b7894, #adb4c3);
+}
+
 .background .path-bar button {
   min-width: 12px;
   min-height: if($variant == 'light', 24px, 26px);
@@ -1962,7 +1975,7 @@ window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar
   &:hover { box-shadow: none; }
 
   &:active, &:checked {
-    background-color: if($variant == 'light', rgba(black, 0.5), rgba(white, 0.65));
+    background-color: $pathbar_button_checked_bg;
     color: if($variant == 'light', rgba(white, 1), rgba(black, 0.75));
     border-color: $button_borders;
   }

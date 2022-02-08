@@ -191,7 +191,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
 .popup-separator-menu-item {
   background: none;
   border: none;
-  height: 1px !important;
+  min-height: 0;
 
   .popup-separator-menu-item-separator {
     height: 1px; //not really the whole box
