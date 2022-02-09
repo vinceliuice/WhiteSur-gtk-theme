@@ -218,6 +218,10 @@ $panel_bg:                          if($variant == 'light', #f1f1f1, if($darker 
   @if $panel_font == 'black' {
     $panel_bg:                      if($variant == 'light', rgba(white, $panel_opacity/2 + 0.08), rgba(black, $panel_opacity/2));
   }
+
+  @if $colorscheme == 'nord' {
+    $panel_bg:                      if($variant == 'light', rgba(#9da8be, $panel_opacity/2 + 0.12), rgba(#1a1d23, $panel_opacity + 0.08));
+  }
 }
 
 $panel_text:                        if($variant == 'light', #363636, white);
@@ -238,10 +242,10 @@ $dash_bg:                           if($variant == 'light', rgba(#d1d1d1, $panel
 }
 
 @if $colorscheme == 'nord' {
-  $dash_bg:                         if($variant == 'light', rgba(#cacfd8, $panel_opacity + 0.33), rgba(if($darker == 'true', #1a1d24, #1d2027), $panel_opacity/2 + 0.6));
+  $dash_bg:                         if($variant == 'light', rgba(#9da8be, $panel_opacity + 0.33), rgba(if($darker == 'true', #1a1d24, #1d2027), $panel_opacity/2 + 0.6));
 
   @if $trans == 'true' and $panel_font == 'black' {
-    $dash_bg:                       if($variant == 'light', rgba(#cacfd8, $panel_opacity/2 + 0.08), rgba(if($darker == 'true', #1a1d24, #1d2027), $panel_opacity + 0.15));
+    $dash_bg:                       if($variant == 'light', rgba(#9da8be, $panel_opacity/2 + 0.28), rgba(if($darker == 'true', #1a1d24, #1d2027), $panel_opacity + 0.15));
   }
 }
 
