@@ -9,31 +9,31 @@
 </info>
 
 <!-- ::: CONSTANTS ::: -->
-<constant name="C_titlebar_gradient_a" value="gtk:custom(titlebar_gradient_a,shade/gtk:bg[NORMAL]/1.07)" />
-<constant name="C_titlebar_gradient_b" value="gtk:custom(titlebar_gradient_b,gtk:bg[NORMAL])" />
-<constant name="C_border_focused" value="gtk:custom(wm_border_focused,shade/gtk:bg[NORMAL]/0.5)" />
-<constant name="C_border_unfocused" value="gtk:custom(wm_border_unfocused,shade/gtk:bg[NORMAL]/0.6)" />
-<constant name="C_title_focused" value="gtk:custom(wm_title_focused,blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.3)" />
-<constant name="C_title_focused_shadow" value="gtk:custom(wm_title_focused_shadow,shade/gtk:bg[NORMAL]/1.1)" />
-<constant name="C_title_unfocused" value="gtk:custom(wm_title_unfocused,blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.6)" />
-<constant name="C_title_unfocused_shadow" value="gtk:custom(wm_title_unfocused_shadow,shade/gtk:bg[NORMAL]/1.05)" />
+<constant name="C_titlebar_gradient_a" value="gtk:custom(titlebar_gradient_a,shade/gtk:bg[NORMAL]/1.07)"/>
+<constant name="C_titlebar_gradient_b" value="gtk:custom(titlebar_gradient_b,gtk:bg[NORMAL])"/>
+<constant name="C_border_focused" value="gtk:custom(wm_border_focused,shade/gtk:bg[NORMAL]/0.65)"/>
+<constant name="C_border_unfocused" value="gtk:custom(wm_border_unfocused,shade/gtk:bg[NORMAL]/0.75)"/>
+<constant name="C_title_focused" value="gtk:custom(wm_title_focused,blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.3)"/>
+<constant name="C_title_focused_shadow" value="gtk:custom(wm_title_focused_shadow,shade/gtk:bg[NORMAL]/1.1)"/>
+<constant name="C_title_unfocused" value="gtk:custom(wm_title_unfocused,blend/gtk:fg[NORMAL]/gtk:bg[NORMAL]/0.6)"/>
+<constant name="C_title_unfocused_shadow" value="gtk:custom(wm_title_unfocused_shadow,shade/gtk:bg[NORMAL]/1.05)"/>
 <constant name="C_background" value="gtk:bg[NORMAL]"/>
 <constant name="C_highlight" value="gtk:custom(wm_highlight,gtk:base[NORMAL])"/>
 
 <!-- ::: GEOMETRY ::: -->
-<frame_geometry name="normal" title_scale="medium" rounded_top_left="8" rounded_top_right="8">
+<frame_geometry name="normal" title_scale="medium" rounded_top_left="10" rounded_top_right="10">
 	<distance name="left_width" value="1" />
 	<distance name="right_width" value="1" />
 	<distance name="bottom_height" value="1" />
-	<distance name="left_titlebar_edge" value="4" />
-	<distance name="right_titlebar_edge" value="4" />
-	<distance name="title_vertical_pad" value="2" />
+	<distance name="left_titlebar_edge" value="12" />
+	<distance name="right_titlebar_edge" value="6" />
+	<distance name="title_vertical_pad" value="0" />
 	<aspect_ratio name="button" value="1.0" />
-	<border name="title_border" left="16" right="16" top="8" bottom="8" />
-	<border name="button_border" left="2" right="2" top="8" bottom="8" />
+	<border name="title_border" left="10" right="10" top="6" bottom="6" />
+	<border name="button_border" left="2" right="2" top="6" bottom="6" />
 </frame_geometry>
 
-<frame_geometry name="normal_unfocused" title_scale="medium" rounded_top_left="8" rounded_top_right="8" parent="normal" />
+<frame_geometry name="normal_unfocused" title_scale="medium" rounded_top_left="10" rounded_top_right="10" parent="normal" />
 
 <frame_geometry name="max" title_scale="medium" parent="normal" rounded_top_left="false" rounded_top_right="false">
 	<distance name="left_width" value="0" />
@@ -50,9 +50,9 @@
 </frame_geometry>
 
 <frame_geometry name="small" title_scale="small" parent="normal" rounded_top_left="false" rounded_top_right="false">
-	<distance name="title_vertical_pad" value="2" />
+	<distance name="title_vertical_pad" value="0" />
 	<border name="title_border" left="16" right="16" top="0" bottom="0" />
-	<border name="button_border" left="2" right="2" top="40" bottom="0" />
+	<border name="button_border" left="2" right="2" top="0" bottom="0" />
 </frame_geometry>
 
 <frame_geometry name="small_unfocused" parent="small">
@@ -177,27 +177,33 @@
 </draw_ops>
 
 <draw_ops name="rounded_border_focused">
-	<line color="C_border_focused" x1="8" y1="0" x2="width-8" y2="0" />
-	<line color="C_border_focused" x1="0" y1="height-1" x2="width-1" y2="height-1" />
-	<line color="C_border_focused" x1="0" y1="8" x2="0" y2="height-2" />
-	<line color="C_border_focused" x1="width-1" y1="8" x2="width-1" y2="height-2" />
-	<arc color="C_border_focused" x="0" y="0" width="8" height="8"  start_angle="270" extent_angle="90" />
-	<arc color="C_border_focused" x="width-8" y="0" width="8" height="8"  start_angle="0" extent_angle="90" />
-	<!-- double arcs for darker borders -->
-	<arc color="C_border_focused" x="0" y="0" width="8" height="8"  start_angle="270" extent_angle="90" />
-	<arc color="C_border_focused" x="width-8" y="0" width="8" height="8"  start_angle="0" extent_angle="90" />
+  <line color="C_border_focused" x1="12" y1="0" x2="width-13" y2="0" />
+  <line color="C_border_focused" x1="0" y1="height-1" x2="width-1" y2="height-1" />
+  <line color="C_border_focused" x1="0" y1="12" x2="0" y2="height-2" />
+  <line color="C_border_focused" x1="width-1" y1="12" x2="width-1" y2="height-2" />
+  <arc color="C_border_focused" x="0" y="0" width="25" height="25"  start_angle="270" extent_angle="90" />
+  <arc color="C_border_focused" x="width-26" y="0" width="25" height="25"  start_angle="0" extent_angle="90" />
+  <!-- double arcs for darker borders -->
+  <arc color="C_border_focused" x="0" y="0" width="25" height="25"  start_angle="270" extent_angle="90" />
+  <arc color="C_border_focused" x="width-26" y="0" width="25" height="25"  start_angle="0" extent_angle="90" />
+  <line color="C_highlight" x1="13" y1="1" x2="width - 14" y2="1"/>
+  <arc color="C_highlight" x="0" y="1" width="25" height="25" start_angle="270" extent_angle="90"/>
+  <arc color="C_highlight" x="width - 26" y="1" width="25" height="25" start_angle="0" extent_angle="90"/>
 </draw_ops>
 
 <draw_ops name="rounded_border_unfocused">
-	<line color="C_border_unfocused" x1="4" y1="0" x2="width-5" y2="0" />
-	<line color="C_border_unfocused" x1="0" y1="height-1" x2="width-1" y2="height-1" />
-	<line color="C_border_unfocused" x1="0" y1="4" x2="0" y2="height-2" />
-	<line color="C_border_unfocused" x1="width-1" y1="4" x2="width-1" y2="height-2" />
-	<arc color="C_border_unfocused" x="0" y="0" width="9" height="9"  start_angle="270" extent_angle="90" />
-	<arc color="C_border_unfocused" x="width-10" y="0" width="9" height="9"  start_angle="0" extent_angle="90" />
-	<!-- double arcs for darker borders -->
-	<arc color="C_border_unfocused" x="0" y="0" width="9" height="9"  start_angle="270" extent_angle="90" />
-	<arc color="C_border_unfocused" x="width-10" y="0" width="9" height="9"  start_angle="0" extent_angle="90" />
+  <line color="C_border_unfocused" x1="12" y1="0" x2="width-13" y2="0" />
+  <line color="C_border_unfocused" x1="0" y1="height-1" x2="width-1" y2="height-1" />
+  <line color="C_border_unfocused" x1="0" y1="12" x2="0" y2="height-2" />
+  <line color="C_border_unfocused" x1="width-1" y1="12" x2="width-1" y2="height-2" />
+  <arc color="C_border_unfocused" x="0" y="0" width="25" height="25"  start_angle="270" extent_angle="90" />
+  <arc color="C_border_unfocused" x="width-26" y="0" width="25" height="25"  start_angle="0" extent_angle="90" />
+  <!-- double arcs for darker borders -->
+  <arc color="C_border_unfocused" x="0" y="0" width="25" height="25"  start_angle="270" extent_angle="90" />
+  <arc color="C_border_unfocused" x="width-26" y="0" width="25" height="25"  start_angle="0" extent_angle="90" />
+  <line color="C_highlight" x1="13" y1="1" x2="width - 14" y2="1"/>
+  <arc color="C_highlight" x="0" y="1" width="25" height="25" start_angle="270" extent_angle="90"/>
+  <arc color="C_highlight" x="width - 26" y="1" width="25" height="25" start_angle="0" extent_angle="90"/>
 </draw_ops>
 
 <draw_ops name="dialog_fill_background">
@@ -543,7 +549,6 @@
 	<piece position="entire_background" draw_ops="entire_background_focused" />
 	<piece position="titlebar" draw_ops="titlebar_fill_focused" />
 	<piece position="title" draw_ops="title_focused" />
-	<piece position="overlay"><draw_ops><line x1="0" y1="height-1" x2="width" y2="height-1" color="C_border_focused" /></draw_ops></piece>
 	<button function="close" state="normal" draw_ops="close_focused" />
 	<button function="close" state="prelight" draw_ops="close_focused_prelight" />
 	<button function="close" state="pressed" draw_ops="close_focused_pressed" />
@@ -576,7 +581,6 @@
 	<piece position="entire_background" draw_ops="entire_background_unfocused" />
 	<piece position="titlebar" draw_ops="titlebar_fill_unfocused" />
 	<piece position="title" draw_ops="title_unfocused" />
-	<piece position="overlay"><draw_ops><line x1="0" y1="height-1" x2="width" y2="height-1" color="C_border_unfocused" /></draw_ops></piece>
 	<button function="close" state="normal" draw_ops="close_unfocused" />
 	<button function="close" state="prelight" draw_ops="close_unfocused_prelight" />
 	<button function="close" state="pressed" draw_ops="close_unfocused_pressed" />

@@ -36,19 +36,23 @@ $theme_text: currentColor;
 @define-color content_view_bg #{"" + $base_color};
 
 /* Very contrasty background for text views (@theme_text_color foreground) */
-@define-color text_view_bg #{"" + if($variant == 'light', $base_color, darken($base_color,6%))};
+@define-color text_view_bg #{"" + if($variant == 'light', $base_color, darken($base_color, 6%))};
 
 //WM
-$wm_highlight: lighten(opacify($header_highlight, 1), 10%);
-$wm_bg_unfocused: opacify($header_bg_backdrop, 1);
+
+$wm_borders_focused: if($variant == 'light', darken($header_bg, 15%), darken($header_bg, 20%));
+$wm_borders_unfocused: if($variant == 'light', darken($header_bg, 10%), darken($header_bg, 15%));
 
 @define-color wm_title alpha(#{"" + opacify($header_fg, 1)}, 0.8);
 @define-color wm_unfocused_title alpha(#{"" + opacify($header_fg, 1)}, 0.5);
 
 @define-color wm_bg #{"" + opacify($header_bg, 1)};
-@define-color wm_bg_unfocused #{"" + $wm_bg_unfocused};
+@define-color wm_bg_unfocused #{"" + opacify($header_bg_backdrop, 1)};
 
-@define-color wm_highlight #{"" + $wm_highlight};
+@define-color wm_border_focused #{"" + $wm_borders_focused};
+@define-color wm_border_unfocused #{"" + $wm_borders_unfocused};
+
+@define-color wm_highlight alpha(#{white}, 0.12);
 @define-color wm_shadow alpha(#{black}, 0.75);
 
 //WM Buttons
