@@ -1425,32 +1425,6 @@ row#AutostartTitle.tweak {
   }
 }
 
-// Themed left sidebar
-.tweak-category:not(:selected):not(:hover) {
-  background: none;
-}
-
-// sidebar on gnome tweak
-.tweak-categories {
-  background-image: none;
-  background-color: rgba($dark_sidebar_bg, 1);
-  border-radius: 0 0 0 $wm_radius;
-
-  .maximized &,
-  .fullscreen &,
-  .tiled &,
-  .tiled-top &,
-  .tiled-right &,
-  .tiled-bottom &,
-  .tiled-left & { border-radius: 0 0 0 $maximized_radius; }
-
-  > separator {
-    min-width: 0;
-    min-height: 0;
-    background: none;
-  }
-}
-
 // separator of sidebar on Gnome control center and Gnome tweaks
 window.background.csd {
   > hdyleaflet,
@@ -1471,6 +1445,24 @@ window.background.csd {
   > leaflet > box.vertical > stack.main-container { // Right side
     background-color: $base_color;
     border-bottom-right-radius: $wm_radius;
+  }
+
+  // sidebar on gnome tweak
+  list.tweak-categories {
+    background-image: none;
+    background-color: rgba($dark_sidebar_bg, 1);
+    border-radius: 0 0 0 $wm_radius;
+
+    // Themed left sidebar
+    .tweak-category:not(:selected):not(:hover) {
+      background: none;
+    }
+
+    > separator {
+      min-width: 0;
+      min-height: 0;
+      background: none;
+    }
   }
 
   &.maximized, &.tiled, &.fullscreen {
@@ -1576,7 +1568,9 @@ window.background.csd {
             background: none;
             min-height: 2px;
           }
+
           > list { border-radius: 4px; }
+
           &:first-child:last-child > list { border-radius: $wm_radius; }
           &:first-child > list { border-radius: $wm_radius $wm_radius 4px 4px; }
           &:not(:first-child):last-child > list { border-radius: 4px 4px $wm_radius $wm_radius; }
