@@ -399,13 +399,13 @@ Note:
 </a> </p>
 <br>
 
-## WhiteSur Wallpaper
+## WhiteSur Wallpapers
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-wallpapers">
-  <img class="image" src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/wallpapers/1080p/WhiteSur-light.png"/>
+  <img class="image" src="https://github.com/vinceliuice/WhiteSur-wallpapers/blob/main/1080p/WhiteSur-light.png"/>
 </a> </p>
 <br>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-wallpapers">
-  <img class="image" src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/wallpapers/1080p/Monterey-light.png"/>
+  <img class="image" src="https://github.com/vinceliuice/WhiteSur-wallpapers/blob/main/1080p/Monterey-light.png"/>
 </a> </p>
 <br>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-wallpapers">
