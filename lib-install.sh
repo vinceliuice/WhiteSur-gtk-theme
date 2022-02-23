@@ -329,20 +329,20 @@ install_darky() {
 install_xfwmy() {
   local color="$(destify ${1})"
 
-  local TARGET_DIR="${dest}/${name}${color}"
-  local HDPI_TARGET_DIR="${dest}/${name}${color}-hdpi"
-  local XHDPI_TARGET_DIR="${dest}/${name}${color}-xhdpi"
+  local TARGET_DIR="${dest}/${name}${color}${colorscheme}"
+  local HDPI_TARGET_DIR="${dest}/${name}${color}${colorscheme}-hdpi"
+  local XHDPI_TARGET_DIR="${dest}/${name}${color}${colorscheme}-xhdpi"
 
   mkdir -p                                                                                    "${TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}/"*".png"                                "${TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}${colorscheme}/"*".png"                  "${TARGET_DIR}/xfwm4"
   cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${TARGET_DIR}/xfwm4/themerc"
 
   mkdir -p                                                                                    "${HDPI_TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}-hdpi/"*".png"                           "${HDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}${colorscheme}-hdpi/"*".png"             "${HDPI_TARGET_DIR}/xfwm4"
   cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${HDPI_TARGET_DIR}/xfwm4/themerc"
 
   mkdir -p                                                                                    "${XHDPI_TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}-xhdpi/"*".png"                          "${XHDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}${colorscheme}-xhdpi/"*".png"            "${XHDPI_TARGET_DIR}/xfwm4"
   cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${XHDPI_TARGET_DIR}/xfwm4/themerc"
 }
 
@@ -355,7 +355,7 @@ install_shelly() {
   local TARGET_DIR=
 
   if [[ -z "${6}" ]]; then
-    TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}/gnome-shell"
+    TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}${colorscheme}/gnome-shell"
   else
     TARGET_DIR="${6}"
   fi
@@ -407,21 +407,21 @@ install_theemy() {
     local iconcolor='-dark'
   fi
 
-  local TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}"
-  local TMP_DIR_T="${WHITESUR_TMP_DIR}/gtk-3.0${color}${opacity}${alt}${theme}"
-  local TMP_DIR_F="${WHITESUR_TMP_DIR}/gtk-4.0${color}${opacity}${alt}${theme}"
+  local TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}${colorscheme}"
+  local TMP_DIR_T="${WHITESUR_TMP_DIR}/gtk-3.0${color}${opacity}${alt}${theme}${colorscheme}"
+  local TMP_DIR_F="${WHITESUR_TMP_DIR}/gtk-4.0${color}${opacity}${alt}${theme}${colorscheme}"
 
   mkdir -p                                                                                    "${TARGET_DIR}"
 
   local desktop_entry="[Desktop Entry]\n"
   desktop_entry+="Type=X-GNOME-Metatheme\n"
-  desktop_entry+="Name=${name}${color}${opacity}${alt}${theme}\n"
+  desktop_entry+="Name=${name}${color}${opacity}${alt}${theme}${colorscheme}\n"
   desktop_entry+="Comment=A MacOS BigSur like Gtk+ theme based on Elegant Design\n"
   desktop_entry+="Encoding=UTF-8\n\n"
 
   desktop_entry+="[X-GNOME-Metatheme]\n"
-  desktop_entry+="GtkTheme=${name}${color}${opacity}${alt}${theme}\n"
-  desktop_entry+="MetacityTheme=${name}${color}${opacity}${alt}${theme}\n"
+  desktop_entry+="GtkTheme=${name}${color}${opacity}${alt}${theme}${colorscheme}\n"
+  desktop_entry+="MetacityTheme=${name}${color}${opacity}${alt}${theme}${colorscheme}\n"
   desktop_entry+="IconTheme=${name}${iconcolor}\n"
   desktop_entry+="CursorTheme=WhiteSur-cursors\n"
   desktop_entry+="ButtonLayout=close,minimize,maximize:menu\n"
@@ -434,12 +434,7 @@ install_theemy() {
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TMP_DIR_T}"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TMP_DIR_T}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TMP_DIR_T}/assets"
-
-  if [[ "${nord}" == 'true' ]]; then
-    cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}-nord"                 "${TMP_DIR_T}/windows-assets"
-  else
-    cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}"                      "${TMP_DIR_T}/windows-assets"
-  fi
+  cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${colorscheme}"          "${TMP_DIR_T}/windows-assets"
 
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk${color}.scss"                         "${TMP_DIR_T}/gtk.css"
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                            "${TMP_DIR_T}/gtk-dark.css"
@@ -470,25 +465,18 @@ install_theemy() {
   mkdir -p                                                                                    "${TARGET_DIR}/cinnamon"
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/cinnamon/cinnamon${color}.scss"                   "${TARGET_DIR}/cinnamon/cinnamon.css"
   cp -r "${THEME_SRC_DIR}/assets/cinnamon/common-assets"                                      "${TARGET_DIR}/cinnamon/assets"
-
-  if [[ ${theme} != '' ]]; then
-    cp -r "${THEME_SRC_DIR}/assets/cinnamon/common-assets${theme}/"*".svg"                    "${TARGET_DIR}/cinnamon/assets"
-  fi
-
-  cp -r "${THEME_SRC_DIR}/assets/cinnamon/assets${color}/"*".svg"                             "${TARGET_DIR}/cinnamon/assets"
+  cp -r "${THEME_SRC_DIR}/assets/cinnamon/assets${color}${colorscheme}/"*".svg"               "${TARGET_DIR}/cinnamon/assets"
+  cp -r "${THEME_SRC_DIR}/assets/cinnamon/theme${theme}${colorscheme}/"*".svg"                "${TARGET_DIR}/cinnamon/assets"
   cp -r "${THEME_SRC_DIR}/assets/cinnamon/thumbnails/thumbnail${color}${theme}.png"           "${TARGET_DIR}/cinnamon/thumbnail.png"
 
   #----------------Misc------------------#
 
   mkdir -p                                                                                    "${TARGET_DIR}/gtk-2.0"
-  cp -r "${THEME_SRC_DIR}/main/gtk-2.0/gtkrc${color}${theme}"                                 "${TARGET_DIR}/gtk-2.0/gtkrc"
+  cp -r "${THEME_SRC_DIR}/main/gtk-2.0/gtkrc${color}${theme}${colorscheme}"                   "${TARGET_DIR}/gtk-2.0/gtkrc"
   cp -r "${THEME_SRC_DIR}/main/gtk-2.0/menubar-toolbar${color}.rc"                            "${TARGET_DIR}/gtk-2.0/menubar-toolbar.rc"
   cp -r "${THEME_SRC_DIR}/main/gtk-2.0/common/"*".rc"                                         "${TARGET_DIR}/gtk-2.0"
-  cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets${color}"                                      "${TARGET_DIR}/gtk-2.0/assets"
-
-  if [[ "${theme}" != '' ]]; then
-    cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets${color}${theme}/"*".png"                    "${TARGET_DIR}/gtk-2.0/assets"
-  fi
+  cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets-common${color}${colorscheme}"                 "${TARGET_DIR}/gtk-2.0/assets"
+  cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets${color}${theme}${colorscheme}/"*".png"        "${TARGET_DIR}/gtk-2.0/assets"
 
   mkdir -p                                                                                    "${TARGET_DIR}/metacity-1"
   cp -r "${THEME_SRC_DIR}/main/metacity-1/metacity-theme${color}.xml"                         "${TARGET_DIR}/metacity-1/metacity-theme-1.xml"
@@ -502,13 +490,13 @@ install_theemy() {
 }
 
 remove_packy() {
-  rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})"
-  rm -rf "${dest}/${name}$(destify ${1})"
-  rm -rf "${dest}/${name}$(destify ${1})-hdpi"
-  rm -rf "${dest}/${name}$(destify ${1})-xhdpi"
+  rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})${colorscheme}"
+  rm -rf "${dest}/${name}$(destify ${1})${colorscheme}"
+  rm -rf "${dest}/${name}$(destify ${1})${colorscheme}-hdpi"
+  rm -rf "${dest}/${name}$(destify ${1})${colorscheme}-xhdpi"
 
   # Backward compatibility
-  rm -rf "${dest}/${name}$(destify ${1})-mdpi"
+  # rm -rf "${dest}/${name}$(destify ${1})-mdpi"
 }
 
 ###############################################################################
@@ -815,7 +803,7 @@ customize_theme() {
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
   # Darker dark colors
-  if [[ "${nord}" == 'true' ]]; then
+  if [[ "${colorscheme}" == '-nord' ]]; then
     prompt -s "Changing color scheme style to nord style ..."
     sed $SED_OPT "/\$colorscheme/s/default/nord/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi

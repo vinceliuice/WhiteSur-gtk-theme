@@ -86,7 +86,7 @@ while [[ $# -gt 0 ]]; do
     --darker|--darkercolor)
       darker="true"; shift ;;
     --nord|--nordcolor)
-      nord="true"; shift ;;
+      colorscheme="-nord"; shift ;;
     -HD|--highdefinition)
       compact="false"; shift ;;
     -m|--monterey)
@@ -146,11 +146,11 @@ else
     show_needed_dialogs
   fi
 
-  prompt -w "Removing the old '${name}' themes... \n"
+  prompt -w "Removing the old '${name}${colorscheme}' themes... \n"
 
   remove_themes; customize_theme; avoid_variant_duplicates; echo
 
-  prompt -i "Installing '${name}' themes in '${dest}'..."
+  prompt -i "Installing '${name}${colorscheme}' themes in '${dest}'..."
   prompt -i "--->>> GTK | GNOME Shell | Cinnamon | Metacity | XFWM | Plank <<<---"
   prompt -i "Color variants   : $( IFS=';'; echo "${colors[*]}" )"
   prompt -i "Theme variants   : $( IFS=';'; echo "${themes[*]}" )"

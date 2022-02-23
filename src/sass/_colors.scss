@@ -20,7 +20,7 @@ $hint_fg_color:                     if($variant == 'light', #565656, #999999);
 @if $colorscheme == 'nord' {
   $base_color:                      if($variant == 'light', #fbfcfd, if($darker == 'true', #1d2025, #252932));
   $text_color:                      if($variant == 'light', #2b303b, #d3d7df);
-  $bg_color:                        if($variant == 'light', #f8f9fc, if($darker == 'true', #23272f, #2b303b));
+  $bg_color:                        if($variant == 'light', #f3f4f6, if($darker == 'true', #23272f, #2b303b));
   $fg_color:                        if($variant == 'light', #1e222a, #d9dce3);
   $alt_fg_color:                    if($variant == 'light', #383f4d, #a2abbc);
   $hint_fg_color:                   if($variant == 'light', #495265, #8994a9);

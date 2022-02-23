@@ -1,0 +1,365 @@
+<svg width="224" height="217" version="1.1" viewBox="0 0 224 217" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <use id="title-1-active" transform="matrix(.16667 0 0 1 1.8333 -415.36)" width="100%" height="100%" xlink:href="#g4206"/>
+ <g id="stick-active" transform="translate(-7 -547.36)">
+  <use id="use4210" transform="translate(135,-2.2617e-5)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(2,3)" fill="#a0a9ba">
+   <rect x="151" y="564.36" width="2" height="8"/>
+   <rect transform="rotate(90)" x="567.36" y="-156" width="2" height="8"/>
+  </g>
+ </g>
+ <g id="stick-pressed" transform="translate(12,-547.36)">
+  <use transform="translate(11,5.0652e-5)" width="100%" height="100%" xlink:href="#use4210"/>
+  <g transform="translate(25,3)" fill="#6b8eb2">
+   <rect x="139" y="564.36" width="2" height="8"/>
+   <rect transform="rotate(90)" x="567.36" y="-144" width="2" height="8"/>
+  </g>
+ </g>
+ <g id="stick-inactive" transform="translate(3,-547.36)">
+  <use transform="translate(50,5.0652e-5)" width="100%" height="100%" xlink:href="#use4210"/>
+  <g transform="translate(48,3)" fill="#6b7894">
+   <rect x="155" y="564.36" width="2" height="8"/>
+   <rect transform="rotate(90)" x="567.36" y="-160" width="2" height="8"/>
+  </g>
+ </g>
+ <g id="shade-active" transform="translate(-11,-547.36)">
+  <use transform="translate(4,33)" width="100%" height="100%" xlink:href="#use4210"/>
+  <g transform="translate(-4.68e-6,-1)" fill="#a0a9ba">
+   <rect transform="rotate(90)" x="607.36" y="-162" width="2" height="8"/>
+   <path d="m158 601.86 4 4.5h-8z"/>
+  </g>
+ </g>
+ <g id="shade-pressed" transform="translate(11,-547.36)">
+  <use transform="translate(11,33)" width="100%" height="100%" xlink:href="#use4210"/>
+  <g transform="translate(23,-1)" fill="#6b8eb2">
+   <rect transform="rotate(90)" x="607.36" y="-146" width="2" height="8"/>
+   <path d="m142 601.86 4 4.5h-8z"/>
+  </g>
+ </g>
+ <g id="shade-inactive" transform="translate(2,-547.36)">
+  <use transform="translate(50,33)" width="100%" height="100%" xlink:href="#use4210"/>
+  <g transform="translate(46,-1)" fill="#6b7894">
+   <rect transform="rotate(90)" x="607.36" y="-162" width="2" height="8"/>
+   <path d="m158 601.86 4 4.5h-8z"/>
+  </g>
+ </g>
+ <use id="title-2-active" transform="translate(7)" width="100%" height="100%" xlink:href="#title-1-active"/>
+ <use id="title-3-active" transform="translate(14)" width="100%" height="100%" xlink:href="#title-1-active"/>
+ <use id="title-4-active" transform="translate(21)" width="100%" height="100%" xlink:href="#title-1-active"/>
+ <use id="title-5-active" transform="translate(28)" width="100%" height="100%" xlink:href="#title-1-active"/>
+ <use id="title-1-inactive" transform="translate(35)" width="100%" height="100%" xlink:href="#title-1-active"/>
+ <use id="title-2-inactive" transform="translate(42)" width="100%" height="100%" xlink:href="#title-1-active"/>
+ <use id="title-3-inactive" transform="translate(49)" width="100%" height="100%" xlink:href="#title-1-active"/>
+ <use id="title-4-inactive" transform="translate(56)" width="100%" height="100%" xlink:href="#title-1-active"/>
+ <use id="title-5-inactive" transform="translate(63)" width="100%" height="100%" xlink:href="#title-1-active"/>
+ <use id="top-left-inactive" transform="translate(14)" width="100%" height="100%" xlink:href="#top-left-active"/>
+ <use id="top-right-active" transform="matrix(-1,0,0,1,46,0)" width="100%" height="100%" xlink:href="#top-left-active"/>
+ <use id="top-right-inactive" transform="matrix(-1,0,0,1,60,3e-5)" width="100%" height="100%" xlink:href="#top-left-active"/>
+ <g id="close-pressed" transform="translate(-4,-547.36)">
+  <use transform="translate(66,-2.2617e-5)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(73,559.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-close-active" transform="translate(-437,1218)">
+     <g transform="translate(-882,-432.64)">
+      <g transform="translate(1323,246.87)" fill="#ffffff">
+       <g transform="matrix(.75 0 0 .75 2 2.0547)" fill="#ffffff"></g>
+      </g>
+     </g>
+     <rect x="441" y="-185.64" width="16" height="16" fill="none"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(73,-469)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#bf616a" fill-rule="evenodd"/>
+   <path d="m9.1716 1037.5c-0.39174 0.3917-0.39174 1.0224 0 1.4142l1.4142 1.4142-1.4142 1.4142c-0.39174 0.3918-0.39174 1.0225 0 1.4142 0.39174 0.3918 1.0225 0.3918 1.4142 0l1.4142-1.4142 1.4142 1.4142c0.39174 0.3918 1.0225 0.3918 1.4142 0 0.39174-0.3917 0.39174-1.0224 0-1.4142l-1.4142-1.4142 1.4142-1.4142c0.39174-0.3918 0.39174-1.0225 0-1.4142-0.39174-0.3918-1.0225-0.3918-1.4142 0l-1.4142 1.4142-1.4142-1.4142c-0.39174-0.3918-1.0225-0.3918-1.4142 0z" enable-background="new" fill="#000000" opacity=".5"/>
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#000000" fill-rule="evenodd" opacity=".2"/>
+  </g>
+ </g>
+ <g id="maximize-pressed" transform="translate(-4,-547.36)">
+  <use transform="translate(66,33)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(73,592.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-max-active" transform="translate(-408,1218)">
+     <g transform="translate(-882,-432.64)"></g>
+     <rect x="412" y="-185.64" width="16" height="16" fill="none"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(73,-436)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#a3be8c" fill-rule="evenodd"/>
+   <path d="m10.414 1037.4 4.5859 4.5859v-3.5859c0-0.4155-0.5845-1-1-1zm-1.4141 1.4141v3.5859c0 0.4155 0.5845 1 1 1h3.5859z" fill="#000000" opacity=".5"/>
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#000000" fill-rule="evenodd" opacity=".2"/>
+  </g>
+ </g>
+ <g id="hide-pressed" transform="translate(-4,-547.36)">
+  <use transform="translate(66,66)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(73,625.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-min-active" transform="translate(-379,1218)">
+     <g transform="translate(-882,-432.64)"></g>
+     <rect x="383" y="-185.64" width="16" height="16" fill="none"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(73,-403)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#ebcb8b" fill-rule="evenodd"/>
+   <rect x="8" y="1039.4" width="8" height="2" ry="1" fill="#000000" opacity=".5"/>
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#000000" fill-rule="evenodd" opacity=".2"/>
+  </g>
+ </g>
+ <g id="close-inactive" transform="translate(-4,-547.36)">
+  <use transform="translate(99,-2.2617e-5)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(106,559.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-close-backdrop" transform="translate(-641,1218)" opacity=".45">
+     <g transform="translate(-678,-432.64)" opacity="1">
+      <g transform="translate(1323,246.87)" fill="#ffffff">
+       <g transform="matrix(.75 0 0 .75 2 2.0547)" fill="#ffffff"></g>
+      </g>
+     </g>
+     <rect x="645" y="-185.64" width="16" height="16" fill="none" opacity="1"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(106,-469)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#4d576b" fill-rule="evenodd"/>
+  </g>
+ </g>
+ <g id="maximize-inactive" transform="translate(-4,-547.36)">
+  <use transform="translate(99,33)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(106,592.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-max-backdrop" transform="translate(-612,1201)" opacity=".45">
+     <g transform="translate(-781,-415.64)" opacity="1"></g>
+     <rect x="616" y="-168.64" width="16" height="16" fill="none" opacity="1"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(106,-436)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#4d576b" fill-rule="evenodd"/>
+  </g>
+ </g>
+ <g id="hide-inactive" transform="translate(-4,-547.36)">
+  <use transform="translate(99,66)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(106,625.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-min-backdrop" transform="translate(-583,1201)" opacity=".45">
+     <g transform="translate(-781,-415.64)" opacity="1"></g>
+     <rect x="587" y="-168.64" width="16" height="16" fill="none" opacity="1"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(106,-403)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#4d576b" fill-rule="evenodd"/>
+  </g>
+ </g>
+ <g id="hide-prelight" transform="translate(-4,-547.36)">
+  <use transform="translate(33,66)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(40,625.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-min-hover" transform="translate(-480,1218)">
+     <g transform="translate(-781,-432.64)"></g>
+     <rect x="484" y="-185.64" width="16" height="16" fill="none"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(40,-403)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#ebcb8b" fill-rule="evenodd"/>
+   <rect x="8" y="1039.4" width="8" height="2" ry="1" fill="#000000" opacity=".5"/>
+  </g>
+ </g>
+ <g id="maximize-prelight" transform="translate(-4,-547.36)">
+  <use transform="translate(33,33)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(40,592.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-max-hover" transform="translate(-509,1218)">
+     <g transform="translate(-781,-432.64)"></g>
+     <rect x="513" y="-185.64" width="16" height="16" fill="none"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(40,-436)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#a3be8c" fill-rule="evenodd"/>
+   <path d="m10.414 1037.4 4.5859 4.5859v-3.5859c0-0.4155-0.5845-1-1-1zm-1.4141 1.4141v3.5859c0 0.4155 0.5845 1 1 1h3.5859z" fill="#000000" opacity=".5"/>
+  </g>
+ </g>
+ <g id="close-prelight" transform="translate(-4,-547.36)">
+  <use transform="translate(33,-2.2617e-5)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(40,559.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-close-hover" transform="translate(-538,1218)">
+     <g transform="translate(-781,-432.64)">
+      <g transform="translate(1323,246.87)" fill="#ffffff">
+       <g transform="matrix(.75 0 0 .75 2 2.0547)" fill="#ffffff"></g>
+      </g>
+     </g>
+     <rect x="542" y="-185.64" width="16" height="16" fill="none"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(40,-469)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#bf616a" fill-rule="evenodd"/>
+   <path d="m9.1716 1037.5c-0.39174 0.3917-0.39174 1.0224 0 1.4142l1.4142 1.4142-1.4142 1.4142c-0.39174 0.3918-0.39174 1.0225 0 1.4142 0.39174 0.3918 1.0225 0.3918 1.4142 0l1.4142-1.4142 1.4142 1.4142c0.39174 0.3918 1.0225 0.3918 1.4142 0 0.39174-0.3917 0.39174-1.0224 0-1.4142l-1.4142-1.4142 1.4142-1.4142c0.39174-0.3918 0.39174-1.0225 0-1.4142-0.39174-0.3918-1.0225-0.3918-1.4142 0l-1.4142 1.4142-1.4142-1.4142c-0.39174-0.3918-1.0225-0.3918-1.4142 0z" enable-background="new" fill="#000000" opacity=".5"/>
+  </g>
+ </g>
+ <g id="hide-active" transform="translate(-4,-547.36)">
+  <use transform="translate(0,66)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(7,625.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-min" transform="translate(-583,1218)" opacity=".8">
+     <g transform="translate(-781,-432.64)" opacity="1"></g>
+     <rect x="587" y="-185.64" width="16" height="16" fill="none" opacity="1"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(7,-403)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#ebcb8b" fill-rule="evenodd"/>
+  </g>
+ </g>
+ <g id="maximize-active" transform="translate(-4,-547.36)">
+  <use transform="translate(0,33)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(7,592.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-max" transform="translate(-612,1218)" opacity=".8">
+     <g transform="translate(-781,-432.64)" opacity="1"></g>
+     <rect x="616" y="-185.64" width="16" height="16" fill="none" opacity="1"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(7,-436)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#a3be8c" fill-rule="evenodd"/>
+  </g>
+ </g>
+ <g id="close-active" transform="translate(-4,-547.36)">
+  <g id="g4206">
+   <rect x="7" y="557.36" width="24" height="28" fill="#2e3440"/>
+   <rect x="7" y="558.36" width="24" height="1" fill="#f5f5f5" opacity=".1"/>
+   <rect x="7" y="557.36" width="24" height="1" fill="#1a1a1a"/>
+  </g>
+  <g transform="translate(7,559.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g id="titlebutton-close" transform="translate(-641,1218)">
+     <g transform="translate(-678,-432.64)">
+      <g transform="translate(1323,246.87)" fill="#ffffff">
+       <g transform="matrix(.75 0 0 .75 2 2.0547)" fill="#ffffff"></g>
+      </g>
+     </g>
+     <rect x="645" y="-185.64" width="16" height="16" fill="none"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(7,-469)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#bf616a" fill-rule="evenodd"/>
+  </g>
+ </g>
+ <g id="left-active" transform="translate(16,-545.36)">
+  <rect transform="scale(-1,1)" x="-48" y="734.36" width="2" height="16" fill="#2e3440"/>
+  <rect transform="scale(-1,1)" x="-47" y="734.36" width="1" height="16" fill="#1a1a1a"/>
+  <rect transform="scale(-1,1)" x="-48" y="734.36" width="1" height="16" fill="#ffffff" opacity=".1"/>
+ </g>
+ <g id="bottom-left-active" transform="translate(-7,-547.36)">
+  <path d="m98 730.36h-2v9.0001h1v1l9-1.2e-4v-2l-8 1.2e-4z" fill="#2e3440"/>
+  <path d="m98 730.36h-2v9.0001h1v1l9-1.2e-4v-2l-8 1.2e-4z" fill="#ffffff" opacity=".1"/>
+  <path d="m97 730.36-1-1.2e-4v9.0001h1v1l9-1.2e-4v-0.99988h-9z" fill="#1a1a1a"/>
+ </g>
+ <g id="bottom-active" transform="matrix(0,-1,-1,0,851.36,239)">
+  <rect transform="scale(-1,1)" x="-48" y="734.36" width="2" height="16" fill="#2e3440"/>
+  <rect transform="scale(-1,1)" x="-48" y="734.36" width="2" height="16" fill="#ffffff" opacity=".1"/>
+  <rect transform="scale(-1,1)" x="-47" y="734.36" width="1" height="16" fill="#1a1a1a"/>
+ </g>
+ <g id="maximize-toggled-inactive" transform="translate(-4,-481.36)">
+  <use transform="translate(99,33)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(106,592.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g transform="translate(-612,1201)" opacity=".45">
+     <g transform="translate(-781,-415.64)" opacity="1"></g>
+     <rect x="616" y="-168.64" width="16" height="16" fill="none" opacity="1"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(106,-436)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#4d576b" fill-rule="evenodd"/>
+  </g>
+ </g>
+ <g id="maximize-toggled-active" transform="translate(-4,-481.36)">
+  <use transform="translate(0,33)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(7,592.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g transform="translate(-612,1218)" opacity=".8">
+     <g transform="translate(-781,-432.64)" opacity="1"></g>
+     <rect x="616" y="-185.64" width="16" height="16" fill="none" opacity="1"/>
+    </g>
+   </g>
+  </g>
+  <g transform="translate(7,-436)" enable-background="new">
+   <path d="m12 1047.4c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#a3be8c" fill-rule="evenodd"/>
+  </g>
+ </g>
+ <g id="maximize-toggled-prelight" transform="translate(-4,-547.36)">
+  <use transform="translate(33,99)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(40,658.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g transform="translate(-509,1218)">
+     <g transform="translate(-781,-432.64)"></g>
+     <rect x="513" y="-185.64" width="16" height="16" fill="none"/>
+    </g>
+   </g>
+  </g>
+  <path d="m52 677.36c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#a3be8c" fill-rule="evenodd"/>
+  <g transform="translate(-132,891)" fill="#000000" fill-rule="evenodd" opacity=".5">
+   <path d="m188.21-220.64h-3.395c-0.4504 0-0.8188-0.36842-0.8188-0.81875v-3.3951l4.2138 4.2138" opacity="1"/>
+   <path d="m179.79-220.64h3.395c0.4504 0 0.8188 0.36842 0.8188 0.81875v3.3951l-4.2138-4.2138" opacity="1"/>
+  </g>
+ </g>
+ <g id="maximize-toggled-pressed" transform="translate(-4,-547.36)">
+  <use transform="translate(66,99)" width="100%" height="100%" xlink:href="#g4206"/>
+  <g transform="translate(73,658.36)" enable-background="new">
+   <g transform="translate(0,-1028.4)">
+    <g transform="translate(-408,1218)">
+     <g transform="translate(-882,-432.64)"></g>
+     <rect x="412" y="-185.64" width="16" height="16" fill="none"/>
+    </g>
+   </g>
+  </g>
+  <path d="m85 677.36c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#a3be8c" fill-rule="evenodd"/>
+  <g transform="translate(-99,891)" fill="#000000" fill-rule="evenodd" opacity=".5">
+   <path d="m188.21-220.64h-3.395c-0.4504 0-0.8188-0.36842-0.8188-0.81875v-3.3951l4.2138 4.2138" opacity="1"/>
+   <path d="m179.79-220.64h3.395c0.4504 0 0.8188 0.36842 0.8188 0.81875v3.3951l-4.2138-4.2138" opacity="1"/>
+  </g>
+  <path d="m85 677.36c3.8659 0 6.9999-3.134 6.9999-7s-3.134-7-6.9999-7c-3.866 0-7.0001 3.134-7.0001 7s3.134 7 7.0001 7" fill="#000000" fill-rule="evenodd" opacity=".2"/>
+ </g>
+ <g id="menu-active" transform="translate(-11,-547.36)">
+  <use transform="translate(4,66)" width="100%" height="100%" xlink:href="#use4210"/>
+  <path id="setting-icon" d="m163.96 636.7c-0.019-0.16869-0.21567-0.29545-0.38574-0.29545-0.54988 0-1.0378-0.32287-1.2425-0.82219-0.20907-0.51144-0.0743-1.1079 0.33555-1.4838 0.12899-0.11792 0.14467-0.31532 0.0365-0.45244-0.28144-0.35739-0.60132-0.6802-0.95059-0.95998-0.13676-0.10976-0.33742-0.0945-0.45602 0.0368-0.35765 0.3961-1.0001 0.54331-1.4965 0.33617-0.51662-0.21731-0.84239-0.74079-0.81051-1.3027 0.0105-0.1765-0.11851-0.32997-0.29448-0.35046-0.4482-0.0518-0.90035-0.0535-1.3499-4e-3 -0.17396 0.0192-0.30295 0.16904-0.2971 0.34332 0.0195 0.55639-0.31015 1.0707-0.82164 1.2802-0.49049 0.20034-1.1284 0.0544-1.4854-0.33819-0.11797-0.12931-0.31537-0.1452-0.45281-0.0381-0.35962 0.28215-0.68669 0.60523-0.97072 0.95968-0.11078 0.13778-0.0945 0.33751 0.0358 0.45606 0.41762 0.37818 0.55247 0.9798 0.33551 1.4971-0.20714 0.49321-0.71929 0.81108-1.3056 0.81108-0.19026-6e-3 -0.32577 0.12157-0.34658 0.29455-0.0528 0.45079-0.0534 0.91012-3e-3 1.3646 0.0188 0.16941 0.22152 0.29505 0.39347 0.29505 0.52251-0.0134 1.0242 0.31014 1.2346 0.82224 0.20976 0.51143 0.0749 1.1075-0.33552 1.4837-0.12837 0.11793-0.14466 0.31501-0.0365 0.45214 0.27881 0.35511 0.59873 0.67824 0.94925 0.96034 0.13747 0.11078 0.33751 0.0951 0.45669-0.0362 0.35899-0.39707 1.0014-0.54402 1.4959-0.33649 0.51791 0.21665 0.84369 0.74009 0.81181 1.3023-0.0103 0.17659 0.11922 0.33032 0.29447 0.3505 0.22929 0.0268 0.45995 0.0401 0.69125 0.0401 0.21955 0 0.43914-0.0121 0.6587-0.0365 0.174-0.0192 0.30291-0.16905 0.29706-0.34363-0.0201-0.55608 0.31015-1.0704 0.82096-1.2796 0.4938-0.20169 1.129-0.0541 1.486 0.33809 0.11864 0.12904 0.31465 0.14462 0.45285 0.0379 0.35896-0.28148 0.68535-0.6043 0.97072-0.95972 0.11073-0.13748 0.0951-0.33751-0.0359-0.45602-0.41762-0.37819-0.55314-0.97989-0.33618-1.4969 0.20397-0.48665 0.6971-0.8134 1.2275-0.8134l0.0742 1e-3c0.17204 0.014 0.33033-0.11855 0.35118-0.29416 0.0529-0.45119 0.0535-0.91011 2e-3 -1.3646zm-5.9531 2.6804c-1.1037 0-2.0014-0.89774-2.0014-2.0014 0-1.1036 0.89775-2.0014 2.0014-2.0014 1.1036 0 2.0014 0.89779 2.0014 2.0014 0 1.1037-0.89776 2.0014-2.0014 2.0014z" clip-rule="evenodd" fill="#a0a9ba" fill-rule="evenodd" stroke-width=".058824"/>
+ </g>
+ <g id="menu-pressed" transform="translate(11,-547.36)">
+  <use transform="translate(11,66)" width="100%" height="100%" xlink:href="#use4210"/>
+  <path d="m170.96 636.7c-0.019-0.16869-0.21567-0.29545-0.38574-0.29545-0.54988 0-1.0378-0.32287-1.2425-0.82219-0.20907-0.51144-0.0743-1.1079 0.33555-1.4838 0.12899-0.11792 0.14467-0.31532 0.0365-0.45244-0.28144-0.35739-0.60132-0.6802-0.95059-0.95998-0.13676-0.10976-0.33742-0.0945-0.45602 0.0368-0.35765 0.3961-1.0001 0.54331-1.4965 0.33617-0.51662-0.21731-0.84239-0.74079-0.81051-1.3027 0.0105-0.1765-0.11851-0.32997-0.29448-0.35046-0.4482-0.0518-0.90035-0.0535-1.3499-4e-3 -0.17396 0.0192-0.30295 0.16904-0.2971 0.34332 0.0195 0.55639-0.31015 1.0707-0.82164 1.2802-0.49049 0.20034-1.1284 0.0544-1.4854-0.33819-0.11797-0.12931-0.31537-0.1452-0.45281-0.0381-0.35962 0.28215-0.68669 0.60523-0.97072 0.95968-0.11078 0.13778-0.0945 0.33751 0.0358 0.45606 0.41762 0.37818 0.55247 0.9798 0.33551 1.4971-0.20714 0.49321-0.71929 0.81108-1.3056 0.81108-0.19026-6e-3 -0.32577 0.12157-0.34658 0.29455-0.0528 0.45079-0.0534 0.91012-3e-3 1.3646 0.0188 0.16941 0.22152 0.29505 0.39347 0.29505 0.52251-0.0134 1.0242 0.31014 1.2346 0.82224 0.20976 0.51143 0.0749 1.1075-0.33552 1.4837-0.12837 0.11793-0.14466 0.31501-0.0365 0.45214 0.27881 0.35511 0.59873 0.67824 0.94925 0.96034 0.13747 0.11078 0.33751 0.0951 0.45669-0.0362 0.35899-0.39707 1.0014-0.54402 1.4959-0.33649 0.51791 0.21665 0.84369 0.74009 0.81181 1.3023-0.0103 0.17659 0.11922 0.33032 0.29447 0.3505 0.22929 0.0268 0.45995 0.0401 0.69125 0.0401 0.21955 0 0.43914-0.0121 0.6587-0.0365 0.174-0.0192 0.30291-0.16905 0.29706-0.34363-0.0201-0.55608 0.31015-1.0704 0.82096-1.2796 0.4938-0.20169 1.129-0.0541 1.486 0.33809 0.11864 0.12904 0.31465 0.14462 0.45285 0.0379 0.35896-0.28148 0.68535-0.6043 0.97072-0.95972 0.11073-0.13748 0.0951-0.33751-0.0359-0.45602-0.41762-0.37819-0.55314-0.97989-0.33618-1.4969 0.20397-0.48665 0.6971-0.8134 1.2275-0.8134l0.0742 1e-3c0.17204 0.014 0.33033-0.11855 0.35118-0.29416 0.0529-0.45119 0.0535-0.91011 2e-3 -1.3646zm-5.9531 2.6804c-1.1037 0-2.0014-0.89774-2.0014-2.0014 0-1.1036 0.89775-2.0014 2.0014-2.0014 1.1036 0 2.0014 0.89779 2.0014 2.0014 0 1.1037-0.89776 2.0014-2.0014 2.0014z" clip-rule="evenodd" fill="#6b8eb2" fill-rule="evenodd" stroke-width=".058824"/>
+ </g>
+ <g id="menu-inactive" transform="translate(2,-547.36)">
+  <use transform="translate(50,66)" width="100%" height="100%" xlink:href="#use4210"/>
+  <path d="m209.96 636.7c-0.019-0.16869-0.21567-0.29545-0.38574-0.29545-0.54988 0-1.0378-0.32287-1.2425-0.82219-0.20907-0.51144-0.0743-1.1079 0.33555-1.4838 0.12899-0.11792 0.14467-0.31532 0.0365-0.45244-0.28144-0.35739-0.60132-0.6802-0.95059-0.95998-0.13676-0.10976-0.33742-0.0945-0.45602 0.0368-0.35765 0.3961-1.0001 0.54331-1.4965 0.33617-0.51662-0.21731-0.84239-0.74079-0.81051-1.3027 0.0105-0.1765-0.11851-0.32997-0.29448-0.35046-0.4482-0.0518-0.90035-0.0535-1.3499-4e-3 -0.17396 0.0192-0.30295 0.16904-0.2971 0.34332 0.0195 0.55639-0.31015 1.0707-0.82164 1.2802-0.49049 0.20034-1.1284 0.0544-1.4854-0.33819-0.11797-0.12931-0.31537-0.1452-0.45281-0.0381-0.35962 0.28215-0.68669 0.60523-0.97072 0.95968-0.11078 0.13778-0.0945 0.33751 0.0358 0.45606 0.41762 0.37818 0.55247 0.9798 0.33551 1.4971-0.20714 0.49321-0.71929 0.81108-1.3056 0.81108-0.19026-6e-3 -0.32577 0.12157-0.34658 0.29455-0.0528 0.45079-0.0534 0.91012-3e-3 1.3646 0.0188 0.16941 0.22152 0.29505 0.39347 0.29505 0.52251-0.0134 1.0242 0.31014 1.2346 0.82224 0.20976 0.51143 0.0749 1.1075-0.33552 1.4837-0.12837 0.11793-0.14466 0.31501-0.0365 0.45214 0.27881 0.35511 0.59873 0.67824 0.94925 0.96034 0.13747 0.11078 0.33751 0.0951 0.45669-0.0362 0.35899-0.39707 1.0014-0.54402 1.4959-0.33649 0.51791 0.21665 0.84369 0.74009 0.81181 1.3023-0.0103 0.17659 0.11922 0.33032 0.29447 0.3505 0.22929 0.0268 0.45995 0.0401 0.69125 0.0401 0.21955 0 0.43914-0.0121 0.6587-0.0365 0.174-0.0192 0.30291-0.16905 0.29706-0.34363-0.0201-0.55608 0.31015-1.0704 0.82096-1.2796 0.4938-0.20169 1.129-0.0541 1.486 0.33809 0.11864 0.12904 0.31465 0.14462 0.45285 0.0379 0.35896-0.28148 0.68535-0.6043 0.97072-0.95972 0.11073-0.13748 0.0951-0.33751-0.0359-0.45602-0.41762-0.37819-0.55314-0.97989-0.33618-1.4969 0.20397-0.48665 0.6971-0.8134 1.2275-0.8134l0.0742 1e-3c0.17204 0.014 0.33033-0.11855 0.35118-0.29416 0.0529-0.45119 0.0535-0.91011 2e-3 -1.3646zm-5.9531 2.6804c-1.1037 0-2.0014-0.89774-2.0014-2.0014 0-1.1036 0.89775-2.0014 2.0014-2.0014 1.1036 0 2.0014 0.89779 2.0014 2.0014 0 1.1037-0.89776 2.0014-2.0014 2.0014z" clip-rule="evenodd" fill="#6b7894" fill-rule="evenodd" stroke-width=".058824"/>
+ </g>
+ <g id="top-left-active" transform="translate(15,-547.36)">
+  <g transform="translate(-3)">
+   <path d="m-2 725.36-2 1-1 1v1h-1l-1 1-1 2v21h11v-27z" fill="#2e3440" stroke-linecap="round" stroke-linejoin="round" stroke-width="7.3694" style="paint-order:stroke fill markers"/>
+  </g>
+  <rect x="-5" y="724.36" width="5" height="1" rx="0" ry="0" fill="#1a1a1a" stroke-linecap="round" stroke-linejoin="round" stroke-width="17.888" style="paint-order:stroke fill markers"/>
+  <rect x="-7" y="725.36" width="2" height="1" rx="0" ry="0" fill="#1a1a1a" stroke-linecap="round" stroke-linejoin="round" stroke-width="11.314" style="paint-order:stroke fill markers"/>
+  <rect x="-11" y="729.36" width="1" height="2" rx="0" ry="0" fill="#1a1a1a" stroke-linecap="round" stroke-linejoin="round" stroke-width="11.314" style="paint-order:stroke fill markers"/>
+  <rect x="-12" y="731.36" width="1" height="21" rx="0" ry="0" fill="#1a1a1a" stroke-linecap="round" stroke-linejoin="round" stroke-width="36.661" style="paint-order:stroke fill markers"/>
+  <rect x="-5" y="725.36" width="5" height="1" rx="0" ry="0" fill="#ffffff" opacity=".1" stroke-linecap="round" stroke-linejoin="round" stroke-width="17.888" style="paint-order:stroke fill markers"/>
+  <rect x="-7" y="726.36" width="2" height="1" rx="0" ry="0" fill="#ffffff" opacity=".1" stroke-linecap="round" stroke-linejoin="round" stroke-width="11.314" style="paint-order:stroke fill markers"/>
+  <rect x="-8" y="727.36" width="1" height="1" rx="0" ry="0" fill="#ffffff" opacity=".1" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" style="paint-order:stroke fill markers"/>
+  <rect x="-9" y="728.36" width="1" height="1" rx="0" ry="0" fill="#ffffff" opacity=".1" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" style="paint-order:stroke fill markers"/>
+  <path transform="translate(-5,547.36)" d="m-3 179v1h-1v1h-1v1h1v-1h1v-1h1v-1z" fill="#1a1a1a" stroke-linecap="round" stroke-linejoin="round" stroke-width="11.314" style="paint-order:stroke fill markers"/>
+  <rect x="-10" y="729.36" width="1" height="2" rx="0" ry="0" fill="#ffffff" opacity=".1" stroke-linecap="round" stroke-linejoin="round" stroke-width="11.314" style="paint-order:stroke fill markers"/>
+  <rect x="-11" y="731.36" width="1" height="21" rx="0" ry="0" fill="#ffffff" opacity=".1" stroke-linecap="round" stroke-linejoin="round" stroke-width="36.661" style="paint-order:stroke fill markers"/>
+ </g>
+ <use id="left-inactive" transform="translate(4)" width="100%" height="100%" xlink:href="#left-active"/>
+ <use id="right-inactive" transform="matrix(-1,0,0,1,139,0)" width="100%" height="100%" xlink:href="#left-active"/>
+ <use id="right-active" transform="matrix(-1,0,0,1,135,0)" width="100%" height="100%" xlink:href="#left-active"/>
+ <use id="bottom-left-inactive" transform="translate(0,16)" width="100%" height="100%" xlink:href="#bottom-left-active"/>
+ <use id="bottom-inactive" transform="translate(0,16)" width="100%" height="100%" xlink:href="#bottom-active"/>
+ <use id="bottom-right-active" transform="matrix(-1,0,0,1,218,0)" width="100%" height="100%" xlink:href="#bottom-left-active"/>
+ <use id="bottom-right-inactive" transform="matrix(-1,0,0,1,218,16)" width="100%" height="100%" xlink:href="#bottom-left-active"/>
+</svg>

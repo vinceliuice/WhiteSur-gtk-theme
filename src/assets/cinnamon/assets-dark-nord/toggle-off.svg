@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="40"
+   height="24"
+   version="1.1"
+   viewBox="0 0 40 24"
+   id="svg27"
+   sodipodi:docname="toggle-off.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview29"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="5.4583333"
+     inkscape:cx="0"
+     inkscape:cy="12.641221"
+     inkscape:window-width="1440"
+     inkscape:window-height="746"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg27" />
+  <defs
+     id="defs13">
+    <filter
+       id="filter1034"
+       x="-0.037565219"
+       y="-0.037565219"
+       width="1.0751304"
+       height="1.0751304"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         stdDeviation="0.36"
+         id="feGaussianBlur5" />
+    </filter>
+    <linearGradient
+       id="linearGradient1254"
+       x1="22"
+       x2="22"
+       y1="1052.4"
+       y2="1028.4"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#ffffff"
+         stop-opacity=".25"
+         offset="0"
+         id="stop8" />
+      <stop
+         stop-color="#ffffff"
+         stop-opacity=".35"
+         offset="1"
+         id="stop10" />
+    </linearGradient>
+  </defs>
+  <g
+     transform="translate(0 -1028.4)"
+     id="g25">
+    <rect
+       x="-3.8809e-8"
+       y="1028.4"
+       width="40"
+       height="24"
+       rx="12"
+       ry="12"
+       fill="url(#linearGradient1254)"
+       id="rect15" />
+    <rect
+       x="-3.8809e-8"
+       y="1028.3"
+       width="40"
+       height="24"
+       opacity="0"
+       stroke-width=".87706"
+       id="rect17" />
+    <circle
+       cx="12"
+       cy="1040.9"
+       r="11.5"
+       fill="#000000"
+       filter="url(#filter1034)"
+       opacity=".1"
+       stroke-width="1.2778"
+       id="circle19" />
+    <circle
+       cx="12"
+       cy="1040.4"
+       r="11"
+       fill="#ffffff"
+       stroke-width="1.2222"
+       id="circle21" />
+  </g>
+</svg>
