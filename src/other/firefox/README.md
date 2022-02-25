@@ -21,6 +21,31 @@ Run `./tweaks.sh -f monterey`
 
 ![01](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox-monterey.png?raw=true)
 
+### Tips about monterey options (Fix the urlbar attached tabs issue)
+
+1. Remove all space separators on left of urlbar
+2. Make sure how many buttons you put on side of urlbar an then run `./tweaks.sh -f monterey -e`
+
+```
+/*--------------Configure your Monterey theme--------------
+ * ONLY for Monterey theme
+ * Enable one of these options and disable the other ones.
+ */
+
+/* How many buttons on left headerbar */
+@import "Monterey/left_header_button_3.css"; /**/
+/*@import "Monterey/left_header_button_4.css"; /**/
+/*@import "Monterey/left_header_button_5.css"; /**/
+
+/* How many buttons on right headerbar */
+@import "Monterey/right_header_button_3.css"; /**/
+/*@import "Monterey/right_header_button_4.css"; /**/
+/*@import "Monterey/right_header_button_5.css"; /**/
+
+```
+
+3. Choose the right buttons number config then remove '/*' to enable it and add '/*' to disbale the default one
+
 ### Manual installation
 
 1. Go to `about:support` in Firefox.
