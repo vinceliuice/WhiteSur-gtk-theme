@@ -294,6 +294,15 @@ window.background:not(.solid-csd) {
   }
 }
 
+#combobox.linked {
+  > button.combo {
+    &, &:checked {
+      border-radius: 0 $bt_radius $bt_radius 0;
+      border-right: 1px solid $borders_color;
+    }
+  }
+}
+
 //
 // Tilix
 //

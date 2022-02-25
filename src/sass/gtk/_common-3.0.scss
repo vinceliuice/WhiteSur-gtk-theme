@@ -116,18 +116,19 @@ $list_shadow: if($variant == 'light',
 }
 
 %linked {
-  border-radius: 0;
-  border-right-style: none;
+  @extend %linked_middle;
 
   &:first-child {
     border-top-left-radius: $bt_radius;
     border-bottom-left-radius: $bt_radius;
   }
+
   &:last-child {
     border-top-right-radius: $bt_radius;
     border-bottom-right-radius: $bt_radius;
     border-right-style: solid;
   }
+
   &:only-child {
     border-radius: $bt_radius;
     border-style: solid;
@@ -894,14 +895,17 @@ button {
       padding-left: $container_padding;  // label padding
       padding-right: $container_padding; //
     }
+
     > image {
       padding-left: $container_padding;
       padding-right: $container_padding;
     }
+
     &.text-button {
       padding-left: $container_padding + 4px;
       padding-right: $container_padding + 4px;
     }
+
     &.image-button {
       padding-left: 2px;
       padding-right: 2px;
@@ -997,7 +1001,6 @@ toolbar.inline-toolbar toolbutton {
 
 // special case, because path-bars are bugged
 @mixin pathbar_linking_rules ($sep_color: $button_border, $button_rules: 'true') {
-
   @if $button_rules == 'true' {
     > button + button {
       border-left-style: none;
