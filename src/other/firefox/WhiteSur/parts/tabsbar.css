@@ -16,9 +16,7 @@
 	height: initial !important;
 	min-height: initial !important;
 }
-tab > stack {
-	height: 32px !important;
-}
+
 /* Extra margin for the first and last tabs */
 .tabbrowser-tab[first-tab]:not([pinned=true]) {
 	margin-left: 8px !important;
@@ -165,7 +163,6 @@ tab[selected]:-moz-window-inactive {
 
 /* fix misc spacing between tabs */
 .tabbrowser-tab {
-	min-height: 28px !important;
 	padding-inline: 0px !important;
 }
 
