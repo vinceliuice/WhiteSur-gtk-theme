@@ -2,9 +2,8 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-.tabbrowser-tab {
-	margin-left: 3px !important;
-	margin-right: 3px !important;
+tab > stack {
+	margin: 0 3px !important;
 }
 
 .tabbrowser-tab,

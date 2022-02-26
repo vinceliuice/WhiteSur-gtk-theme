@@ -19,7 +19,7 @@
 }
 
 tab > stack {
-	height: 32px !important;
+	margin: 0 3px !important;
 }
 
 :root:not([sizemode="normal"]) .titlebar-spacer[type="pre-tabs"], :root[gtktiledwindow="true"] .titlebar-spacer[type="pre-tabs"] { /* reset */
@@ -30,18 +30,11 @@ tab > stack {
 	width: 8px !important;
 }
 
-.tabbrowser-tab {
-	margin: 0 3px !important;
-}
-
 .tabbrowser-tab,
 .tab-background {
 	border: none !important;
 	box-shadow: none !important;
 	border-radius: 8px !important;
-	height: 32px !important;
-	min-height: 32px !important;
-	max-height: 32px !important;
 	padding: 0 !important;
 	background-image: none !important;
 }
@@ -250,8 +243,6 @@ tab > stack {
 #tabs-newtab-button, #TabsToolbar #new-tab-button {
 	margin: 0 2px !important;
 	padding: 0 10px !important;
-	max-height: 32px !important;
-	min-height: 32px !important;
 }
 
 #TabsToolbar .toolbarbutton-1 image,
@@ -263,8 +254,7 @@ tab > stack {
 }
 
 #TabsToolbar #scrollbutton-up, #TabsToolbar #scrollbutton-down {
-	max-height: 32px !important;
-	min-height: 32px !important;
+	height: 36px !important;
 }
 
 #TabsToolbar #scrollbutton-up image, #TabsToolbar #scrollbutton-down image {
