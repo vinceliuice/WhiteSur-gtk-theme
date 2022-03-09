@@ -16,12 +16,27 @@ $theme_color_grey:    #8C8C8C;
 // Nord colors
 //
 
-$nord_color_default:  #5271ad;
+//$nord_color_default:  #5271ad;
+//$nord_color_blue:     #4c7bd9;
+//$nord_color_purple:   #b57daa;
+//$nord_color_pink:     #cd7092;
+//$nord_color_red:      #c35b65;
+//$nord_color_orange:   #d0846c;
+//$nord_color_yellow:   #e4b558;
+//$nord_color_green:    #82ac5d;
+//$nord_color_grey:     #8999a9;
+
+/**
+ * Use custom nord colour palette.
+ * Mostly Normal colours.
+ * Only "default" and "blue" are different.
+ */
+$nord_color_default:  #2E7CF7;
 $nord_color_blue:     #4c7bd9;
-$nord_color_purple:   #b57daa;
-$nord_color_pink:     #cd7092;
-$nord_color_red:      #c35b65;
-$nord_color_orange:   #d0846c;
-$nord_color_yellow:   #e4b558;
-$nord_color_green:    #82ac5d;
-$nord_color_grey:     #8999a9;
+$nord_color_purple:   #9A57A3;
+$nord_color_pink:     #E55E9C;
+$nord_color_red:      #ED5F5D;
+$nord_color_orange:   #E9873A;
+$nord_color_yellow:   #F3BA4B;
+$nord_color_green:    #79B757;
+$nord_color_grey:     #8C8C8C;

@@ -5,6 +5,14 @@
 <p align="center"> <b> A macOS BigSur-like theme for your GTK apps </b> </p>
 <br>
 
+## My custom notes
+Install with:  
+```
+./install.sh --nordcolor -c dark
+./tweaks.sh --flatpak --snap
+```
+
+
 # Installation is easy!
 <details> <summary> Required dependencies info for nerds </summary>
 
