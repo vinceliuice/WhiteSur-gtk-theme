@@ -2,6 +2,7 @@
 .sass-cache
 *-temp.scss
 *.css.map
+/.idea
 src/main/gtk-3.0/gtk*.css
 src/main/gtk-4.0/gtk*.css
 src/main/cinnamon/cinnamon*.css
