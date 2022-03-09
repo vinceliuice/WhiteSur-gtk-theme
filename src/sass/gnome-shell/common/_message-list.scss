@@ -48,7 +48,8 @@
     // icon size and color
     > StIcon {
       icon-size: 32px; // 32px
-      -st-icon-style: symbolic;
+      -st-icon-style: regular;
+      //-st-icon-style: symbolic;
     }
 
     // fallback

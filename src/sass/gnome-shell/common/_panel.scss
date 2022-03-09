@@ -178,7 +178,9 @@ $panel_height: $menuitem_size;
 
     // app menu icon
     .app-menu-icon {
-      -st-icon-style: symbolic;
+      //-st-icon-style: symbolic;
+      /** Custom override to the current application icon to restore colur */
+      -st-icon-style: regular;
       // dimensions of the icon are hardcoded
     }
 
