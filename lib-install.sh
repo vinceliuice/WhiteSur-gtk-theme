@@ -430,7 +430,7 @@ install_theemy() {
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TMP_DIR_T}"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TMP_DIR_T}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TMP_DIR_T}/assets"
-  cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${colorscheme}"          "${TMP_DIR_T}/windows-assets"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}"                        "${TMP_DIR_T}/windows-assets"
 
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk${color}.scss"                         "${TMP_DIR_T}/gtk.css"
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                            "${TMP_DIR_T}/gtk-dark.css"
