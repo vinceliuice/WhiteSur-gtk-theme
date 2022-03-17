@@ -779,6 +779,137 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   }
 }
 
+.calendar-events-main-box {
+  height: 300px;
+  margin: 8px 0.8em 0 0;
+  padding: 8px;
+  min-width: 350px;
+  border: none;
+  border-radius: $bt_radius;
+  background-gradient-direction: vertical;
+  background-gradient-start: $fill_color;
+  background-gradient-end: $fill_color;
+  color: $alt_fg_color;
+}
+
+.calendar-events-no-events-box {
+}
+
+.calendar-events-no-events-button {
+  margin: 6px 0;
+  padding: 6px;
+  border-radius: $bt_radius;
+
+  &:hover {
+    background-gradient-direction: vertical;
+    background-gradient-start: $fill_color;
+    background-gradient-end: $fill_color;
+    box-shadow: none;
+  }
+}
+
+.calendar-events-no-events-icon {
+  color: $disabled_fg_color;
+}
+
+.calendar-events-no-events-label {
+  font-size: 1.1em;
+  color: $disabled_fg_color;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.calendar-events-date-label {
+  padding: 3px 0 12px 3px;
+  font-size: 1.1em;
+  color: $alt_fg_color;
+  font-weight: bold;
+  text-align: center;
+}
+
+.calendar-events-event-container {
+  padding: 2px;
+}
+
+.calendar-events-scrollbox {
+}
+
+.calendar-events-main-box .separator {
+  -margin-horizontal: 1em;
+  -gradient-height: 1px;
+  -gradient-start: $borders_color;
+  -gradient-end: $borders_color;
+}
+
+.calendar-event-button {
+  margin: 6px 0 6px 0;
+  border-radius: $bt_radius;
+
+  &:hover {
+    background-gradient-direction: vertical;
+    background-gradient-start: $fill_color;;
+    background-gradient-end: $fill_color;
+    box-shadow: none;
+  }
+}
+
+.calendar-event-color-strip {
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.calendar-event-row-content {
+  margin: 6px;
+}
+
+.calendar-event-time-past {
+  color: $disabled_fg_color;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: .6em;
+}
+
+.calendar-event-time-present {
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: .6em;
+}
+
+.calendar-event-time-present:all-day {
+  color: rgba($success_color, 0.6);
+}
+
+.calendar-event-time-future {
+  text-align: left;
+  margin-bottom: .6em;
+}
+
+.calendar-event-countdown {
+  color: $disabled_fg_color;
+  font-weight: bold;
+  text-align: right;
+  margin-bottom: .6em;
+}
+
+.calendar-event-countdown:soon {
+  color: white;
+}
+
+.calendar-event-countdown:imminent {
+  color: rgba($warning_color, 0.6);
+}
+
+.calendar-event-countdown:current {
+  color: rgba($success_color, 0.6);
+}
+
+.calendar-event-summary {
+  color: $disabled_fg_color;
+  text-align: left;
+  width: 200px;
+}
+
 //
 // Notifications
 //
