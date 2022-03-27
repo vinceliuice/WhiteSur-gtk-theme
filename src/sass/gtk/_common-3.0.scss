@@ -695,7 +695,7 @@ button {
       &:active { transition: $button_transition; }
     }
 
-    &.toggle.popup:not(.colored) {
+    &.toggle.popup:not(.colored):not(.circular) {
       min-width: $menuitem_size - 8px;
     }
 
@@ -781,7 +781,7 @@ button {
     &.popup { padding-right: $container_padding; padding-left: $container_padding; }
   }
 
-  &.close, &.circular,
+  &.close, &.circular, &.circular.flat,
   &.image-button.close:not(.circular) { // The Bloody Circul Button
     @extend %circular_button;
 
