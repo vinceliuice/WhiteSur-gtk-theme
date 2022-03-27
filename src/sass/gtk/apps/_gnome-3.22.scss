@@ -341,6 +341,11 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   notebook {
     &.background.csd { background-color: transparent; }
 
+    > header {
+      background-color: $base_color;
+      border-color: $header_border;
+    }
+
     @if $monterey == 'false' {
       margin-left: -1px;
       margin-right: -1px;
@@ -437,8 +442,8 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   > grid.horizontal > paned.horizontal > separator,
   > deck > box.vertical > paned.horizontal > separator { // Use paned separator to hide stack border-bottom-left-radius
     border: none;
-    min-width: 2px;
-    min-height: 2px;
+    min-width: 1px;
+    min-height: 1px;
     background-color: $base_color;
     background-image: image($base_color);
     background-size: $wm_radius $wm_radius;
@@ -449,8 +454,8 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     &:dir(rtl) { margin-right: -1px; }
 
     @if $nautilus_style == 'stable' {
-      &:dir(ltr) { margin-left: 2px; }
-      &:dir(rtl) { margin-right: 2px; }
+      &:dir(ltr) { margin-left: 1px; }
+      &:dir(rtl) { margin-right: 1px; }
 
       &:hover {
         background-image: image($solid_borders_color);
