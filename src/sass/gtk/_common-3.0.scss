@@ -3581,7 +3581,7 @@ row {
   button {
     @extend %undecorated_button;
 
-    &:not(.text-button).image-button {
+    &:not(.text-button).image-button, &.flat {
       @extend %circular_button;
     }
 
