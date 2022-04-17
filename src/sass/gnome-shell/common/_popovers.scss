@@ -106,48 +106,50 @@ $popop_menuitem_radius: $wm_radius - 4px;
   font-weight: normal;
   transition: none;
 
-  &:ltr { padding-right: 2em; padding-left: 0; }
-  &:rtl { padding-right: 0; padding-left: 2em; }
+  &:ltr { padding-right: 1.5em; padding-left: 0; }
+  &:rtl { padding-right: 0; padding-left: 1.5em; }
+  // &:ltr { padding-right: $base_padding * 2 !important; padding-left: 0 !important; }
+  // &:rtl { padding-left: $base_padding * 2 !important; padding-right: 0 !important; }
 
   &:checked {
     font-weight: normal;
     border-radius: $popop_menuitem_radius $popop_menuitem_radius 0 0;
     border: none;
     box-shadow: none;
-    color: $alt_fg_color;
-    background-color: $submenu_bg_color;
+    color: $alt_fg_color !important;
+    background-color: $submenu_bg_color !important;
     background-gradient-direction: none !important;
 
     &:hover, &.selected {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
+      color: $selected_fg_color !important;
+      background-color: $selected_bg_color !important;
       background-gradient-direction: none !important;
     }
 
     &:active {
-      color: $selected_fg_color;
-      background-color: mix($fg_color, $selected_bg_color, 5%);
+      color: $selected_fg_color !important;
+      background-color: mix($fg_color, $selected_bg_color, 5%) !important;
     }
 
-    &:insensitive { color: $disabled_fg_color; }
+    &:insensitive { color: $disabled_fg_color !important; }
   }
 
   &.selected {
-    color: $selected_fg_color;
-    background-color: $selected_bg_color;
+    color: $selected_fg_color !important;
+    background-color: $selected_bg_color !important;
     transition-duration: 0ms !important;
   }
 
   &:active, &.selected:active {
-    color: $selected_fg_color;
-    background-color: mix($fg_color, $selected_bg_color, 5%);
+    color: $selected_fg_color !important;
+    background-color: mix($fg_color, $selected_bg_color, 5%) !important;
   }
 
-  &:insensitive { color: $disabled_fg_color; }
+  &:insensitive { color: $disabled_fg_color !important; }
 }
 
 .popup-sub-menu {
-  background-color: $submenu_bg_color;
+  background-color: $submenu_bg_color !important;
   border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
   border: none;
   box-shadow: none;
@@ -157,14 +159,14 @@ $popop_menuitem_radius: $wm_radius - 4px;
     margin: 0;
     border-radius: $popop_menuitem_radius;
 
-    &:hover {
-      color: $selected_fg_color;
-      background-color: $selected_bg_color;
+    &:focus, &:hover {
+      color: $selected_fg_color !important;
+      background-color: $selected_bg_color !important;
     }
 
     &:active {
-      color: $selected_fg_color;
-      background-color: mix($fg_color, $selected_bg_color, 5%);
+      color: $selected_fg_color !important;
+      background-color: mix($fg_color, $selected_bg_color, 5%) !important;
     }
   }
 }
@@ -183,14 +185,17 @@ $popop_menuitem_radius: $wm_radius - 4px;
 .popup-menu-ornament {
   width: 1.2em;
 
-  &:ltr { text-align: right };
-  &:rtl { text-align: left };
+  &:ltr { text-align: right; }
+  &:rtl { text-align: left; }
 }
 
 // separator
 .popup-separator-menu-item {
   background: none;
   border: none;
+  // margin: 6px 32px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 
   .popup-separator-menu-item-separator {
     height: 1px; //not really the whole box
@@ -222,6 +227,9 @@ $popop_menuitem_radius: $wm_radius - 4px;
   }
 
   .popup-sub-menu .popup-menu-item > :first-child {
+    // &:ltr { padding-left: $base_padding * 2 !important; margin-left: $base_padding / 2 !important; }
+    // &:rtl { padding-right: $base_padding * 2 !important; margin-right: $base_padding / 2 !important; }
+
     &:ltr { /* 12px spacing + 2*4px padding */
             padding-left: $base_padding * 2 + 4px; margin-left: 1em; }
     &:rtl { /* 12px spacing + 2*4px padding */

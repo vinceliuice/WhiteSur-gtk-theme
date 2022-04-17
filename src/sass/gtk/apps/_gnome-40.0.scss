@@ -1,0 +1,48 @@
+//
+// Extensions
+//
+window.background.csd {
+  > stack, // GameMode setting
+  > stack > scrolledwindow > viewport > box, // User Themes (Workspace) setting
+  > box > stack > scrolledwindow > viewport > box {
+    > list {
+      @extend %circular_list;
+
+      row.activatable { @extend %circular_row; }
+    }
+  }
+
+  stack stack stack frame, // ArcMenu setting
+  > stack > stack > box > frame, // Night Theme Switcher setting
+  > stack > stack > box > box > frame, // Night Theme Switcher setting bottom lists
+  > stack > box > stack > box > frame, // ArcMenu setting
+  > stack > box > stack > scrolledwindow > viewport frame, // ArcMenu setting
+  > stack > box > stack > box > scrolledwindow > viewport > frame, // ArcMenu setting
+  > stack > grid > scrolledwindow > viewport > box > frame { // GSConnect setting
+    > border { border: none; }
+    border: none;
+
+    > list {
+      @extend %circular_list;
+
+      row.activatable { @extend %circular_row; }
+    }
+  }
+
+  > stack > box > box > list,
+  > stack > box > stack > scrolledwindow > viewport > list { // ArcMenu setting sidebar
+    border-bottom-left-radius: $wm_radius;
+  }
+
+  &.maximized, &.tiled, &.fullscreen {
+    > stack > box > box > list,
+    > stack > box > stack > scrolledwindow > viewport > list { // ArcMenu setting sidebar
+      border-bottom-left-radius: $maximized_radius;
+    }
+  }
+}
+
+window.nightthemeswitcher headerbar {
+  background: $header_bg;
+  color: $header_fg;
+}

@@ -1967,12 +1967,12 @@ $pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
 }
 
 .background .path-bar button {
-  min-width: 12px;
+  min-width: $container_padding * 2;
   min-height: if($variant == 'light', 24px, 26px);
 
   &.text-button, &.image-button, & {
-    padding-left: 6px;
-    padding-right: 6px;
+    padding-left: $container_padding;
+    padding-right: $container_padding;
   }
 
   &:hover { box-shadow: none; }
