@@ -318,14 +318,6 @@ install_beggy() {
   esac
 }
 
-install_darky() {
-  local opacity="$(destify ${1})"
-  local theme="$(destify ${2})"
-
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                            "${WHITESUR_TMP_DIR}/darky-3.css"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                            "${WHITESUR_TMP_DIR}/darky-4.css"
-}
-
 install_xfwmy() {
   local color="$(destify ${1})"
 
@@ -455,6 +447,13 @@ install_theemy() {
   echo '@import url("resource:///org/gnome/theme/gtk.css");' >                                "${TARGET_DIR}/gtk-4.0/gtk.css"
   echo '@import url("resource:///org/gnome/theme/gtk-dark.css");' >                           "${TARGET_DIR}/gtk-4.0/gtk-dark.css"
   glib-compile-resources --sourcedir="${TMP_DIR_F}" --target="${TARGET_DIR}/gtk-4.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-4.0/gtk.gresource.xml"
+
+  # link gtk4.0 for libadwaita
+  cp -rf "${TMP_DIR_T}/assets"                                                                "${HOME}/.config/gtk-4.0"
+  cp -rf "${TMP_DIR_T}/windows-assets"                                                        "${HOME}/.config/gtk-4.0"
+
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${HOME}/.config/gtk-4.0/gtk.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                            "${HOME}/.config/gtk-4.0/gtk-dark.css"
 
   #----------------Cinnamon-----------------#
 
