@@ -449,6 +449,7 @@ install_theemy() {
   glib-compile-resources --sourcedir="${TMP_DIR_F}" --target="${TARGET_DIR}/gtk-4.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-4.0/gtk.gresource.xml"
 
   # link gtk4.0 for libadwaita
+  mkdir -p                                                                                    "${HOME}/.config/gtk-4.0"
   cp -rf "${TMP_DIR_T}/assets"                                                                "${HOME}/.config/gtk-4.0"
   cp -rf "${TMP_DIR_T}/windows-assets"                                                        "${HOME}/.config/gtk-4.0"
 
