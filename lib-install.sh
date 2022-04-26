@@ -450,6 +450,7 @@ install_theemy() {
 
   # link gtk4.0 for libadwaita
   mkdir -p                                                                                    "${HOME}/.config/gtk-4.0"
+  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-dark.css,assets,windows-assets}
   cp -rf "${TMP_DIR_T}/assets"                                                                "${HOME}/.config/gtk-4.0"
   cp -rf "${TMP_DIR_T}/windows-assets"                                                        "${HOME}/.config/gtk-4.0"
 
@@ -487,7 +488,8 @@ install_theemy() {
 
 remove_packy() {
   rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})${colorscheme}"
-  rm -rf "${dest}/${name}$(destify ${1})${colorscheme}"
+  rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})${colorscheme}"
+  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-dark.css,assets,windows-assets}
   rm -rf "${dest}/${name}$(destify ${1})${colorscheme}-hdpi"
   rm -rf "${dest}/${name}$(destify ${1})${colorscheme}-xhdpi"
 
