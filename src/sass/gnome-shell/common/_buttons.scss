@@ -14,3 +14,26 @@
     border: none;
   }
 }
+
+%osd_button {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  color: rgba(white, 0.75);
+
+  &:hover {
+    background-color: rgba(white, 0.1);
+    color: white;
+  }
+
+  &:active {
+    background-color: rgba(white, 0.25);
+    color: white;
+  }
+
+  &:insensitive {
+    background-color: transparent;
+    color: rgba(white, 0.35);
+  }
+}
