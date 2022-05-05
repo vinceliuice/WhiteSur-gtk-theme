@@ -106,11 +106,6 @@ $popop_menuitem_radius: $wm_radius - 4px;
   font-weight: normal;
   transition: none;
 
-  &:ltr { padding-right: 1.5em; padding-left: 0; }
-  &:rtl { padding-right: 0; padding-left: 1.5em; }
-  // &:ltr { padding-right: $base_padding * 2 !important; padding-left: 0 !important; }
-  // &:rtl { padding-left: $base_padding * 2 !important; padding-right: 0 !important; }
-
   &:checked {
     font-weight: normal;
     border-radius: $popop_menuitem_radius $popop_menuitem_radius 0 0;
@@ -120,7 +115,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
     background-color: $submenu_bg_color !important;
     background-gradient-direction: none !important;
 
-    &:hover, &.selected {
+    &:focus, &:hover, &:selected {
       color: $selected_fg_color !important;
       background-color: $selected_bg_color !important;
       background-gradient-direction: none !important;
@@ -134,7 +129,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
     &:insensitive { color: $disabled_fg_color !important; }
   }
 
-  &.selected {
+  &:focus, &:hover, &:selected {
     color: $selected_fg_color !important;
     background-color: $selected_bg_color !important;
     transition-duration: 0ms !important;
@@ -159,7 +154,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
     margin: 0;
     border-radius: $popop_menuitem_radius;
 
-    &:focus, &:hover {
+    &:focus, &:hover, &:selected {
       color: $selected_fg_color !important;
       background-color: $selected_bg_color !important;
     }
@@ -172,9 +167,9 @@ $popop_menuitem_radius: $wm_radius - 4px;
 }
 
 .popup-inactive-menu-item { //all icons and other graphical elements
-  color: $alt_fg_color;
+  color: $alt_fg_color !important;
 
-  &:insensitive { color: $disabled_fg_color; }
+  &:insensitive { color: $disabled_fg_color !important; }
 }
 
 // symbolic icons in popover
@@ -193,13 +188,12 @@ $popop_menuitem_radius: $wm_radius - 4px;
 .popup-separator-menu-item {
   background: none;
   border: none;
-  // margin: 6px 32px;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 
   .popup-separator-menu-item-separator {
     height: 1px; //not really the whole box
-    margin: 0 0;
+    margin: 0;
     background-color: $borders_color;
 
     .popup-sub-menu & { //submenu separators
@@ -224,15 +218,5 @@ $popop_menuitem_radius: $wm_radius - 4px;
     padding: 0;
     margin: 0 0;
     -st-icon-style: symbolic;
-  }
-
-  .popup-sub-menu .popup-menu-item > :first-child {
-    // &:ltr { padding-left: $base_padding * 2 !important; margin-left: $base_padding / 2 !important; }
-    // &:rtl { padding-right: $base_padding * 2 !important; margin-right: $base_padding / 2 !important; }
-
-    &:ltr { /* 12px spacing + 2*4px padding */
-            padding-left: $base_padding * 2 + 4px; margin-left: 1em; }
-    &:rtl { /* 12px spacing + 2*4px padding */
-            padding-right: $base_padding * 2 + 4px; margin-right: 1em; }
   }
 }

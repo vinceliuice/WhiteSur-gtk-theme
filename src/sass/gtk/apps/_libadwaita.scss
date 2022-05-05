@@ -63,6 +63,21 @@ preferencesgroup > box {
   > box.single-line {
     min-height: 34px;
   }
+
+  button.background-preview-button {
+    &, &:hover, &:active, &:checked {
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: $container_padding / 2;
+      border: 2px solid transparent;
+      border-radius: $bt_radius + $container_padding / 2;
+    }
+
+    &:checked {
+      border: 2px solid $selected_bg_color;
+    }
+  }
 }
 
 //
@@ -111,4 +126,266 @@ statuspage {
       }
     }
   }
+}
+
+
+//
+// Cards
+//
+
+.card {
+  @at-root %card, & {
+    @extend %circular_list;
+
+    .osd &, &.osd {
+      background-color: gtkalpha(currentColor, .1);
+      color: inherit;
+      box-shadow: none;
+    }
+  }
+
+  .osd &, &.osd {
+    &:focus:focus-visible {
+      outline-color: $fill_color;
+    }
+  }
+
+  &.activatable {
+    transition: $button_transition;
+
+    &:hover {
+      background-image: image(gtkalpha(currentColor, .03));
+    }
+
+    &:active {
+      background-image: image(gtkalpha(currentColor, .08));
+    }
+  }
+}
+
+//
+// Toasts
+//
+
+toast {
+  @extend %osd;
+  margin: $container_padding * 2;
+  margin-bottom: $container_padding * 3;
+  border-radius: $mn_radius;
+  border-spacing: $container_padding;
+  padding: $container_padding;
+  box-shadow: 0 3px 8px rgba(black, 0.35);
+
+  &:dir(ltr) { padding-left: $container_padding * 2; }
+  &:dir(rtl) { padding-right: $container_padding * 2; }
+
+  button { @extend %osd_button; }
+
+  > widget {
+    margin: 0 $container_padding;
+  }
+}
+
+//
+// viewswitcher
+//
+
+viewswitcher {
+  margin: 0;
+
+  &.wide {
+    border-spacing: $container_padding / 2;
+
+    button.toggle { margin: $container_padding 0; }
+  }
+
+  &.narrow button.toggle {
+    border-radius: 0;
+    margin: 0;
+    min-height: 0;
+  }
+
+  button.toggle {
+    font-weight: bold;
+    padding: 0;
+
+    > stack > box {
+      &.narrow {
+        font-size: 0.75rem;
+        padding-top: $container_padding + 1px;
+        padding-bottom: $container_padding - 1px;
+        border-spacing: $container_padding - 2px;
+
+        > stack > label {
+          padding-left: $container_padding + 2px;
+          padding-right: $container_padding + 2px;
+        }
+      }
+
+      &.wide {
+        padding: 2px $container_padding * 2;
+        border-spacing: $container_padding;
+      }
+    }
+  }
+}
+
+// AdwViewSwitcherBar
+
+viewswitcherbar actionbar > revealer > box {
+  padding: 0;
+}
+
+// AdwViewSwitcherTitle
+
+viewswitchertitle viewswitcher {
+  margin-left: $container_padding * 2;
+  margin-right: $container_padding * 2;
+}
+
+// AdwIndicatorBin
+
+indicatorbin {
+  > indicator, > mask {
+    min-width: $container_padding * 2;
+    min-height: $container_padding * 2;
+    border-radius: $circular_radius;
+  }
+
+  > indicator {
+    margin: 1px;
+    background: gtkalpha(currentColor, .4);
+
+    > label {
+      font-size: 0.6rem;
+      font-weight: bold;
+      padding: 1px 4px;
+      color: white;
+    }
+  }
+
+  > mask {
+    padding: 1px;
+    background: black;
+  }
+
+  &.needs-attention > indicator {
+    background: $selected_bg_color;
+
+    > label { color: $selected_fg_color; }
+  }
+}
+
+
+//
+// Tab View
+//
+
+tabbar {
+  .box {
+    min-height: $menuitem_size;
+  }
+
+  tabbox {
+    > separator {
+      &.hidden {
+        opacity: 0;
+      }
+    }
+
+    > revealer > indicator {
+      min-width: 2px;
+      border-radius: 2px;
+      background: gtkalpha($selected_bg_color, 0.5);
+    }
+  }
+
+  .start-action,
+  .end-action {
+    padding: $container_padding;
+  }
+
+  .start-action:dir(ltr),
+  .end-action:dir(rtl) {
+    padding-right: 0;
+  }
+
+  .start-action:dir(rtl),
+  .end-action:dir(ltr) {
+    padding-left: 0;
+  }
+
+  &:not(.inline) {
+    .box {
+      background-color: $bg_color;
+      color: $text_color;
+      margin-top: -1px;
+
+      @if $monterey == 'false' {
+        padding: 0;
+        box-shadow: inset 0 -1px $borders_color;
+        border-bottom: none;
+      } @else {
+        border-bottom: 1px solid $borders_color;
+        padding: 0 $container_padding / 2 $container_padding / 2;
+      }
+    }
+
+    &:backdrop .box {
+      > scrolledwindow,
+      > .start-action,
+      > .end-action {
+        filter: opacity(0.5);
+      }
+    }
+  }
+}
+
+dnd tab {
+  background-color: $base_color;
+  color: $text_color;
+  box-shadow: none;
+  margin: $container_padding * 4;
+}
+
+tabbar,
+dnd {
+  tab {
+    padding-right: $container_padding / 2;
+    margin: 0;
+
+    @if $monterey == 'false' {
+      @extend %tabs_tab;
+    } @else {
+      @extend %monterey_tab;
+
+      + tab {
+        margin-left: $container_padding / 2;
+      }
+    }
+
+    button.tab-close-button {
+      border-radius: 3px;
+      min-height: $small_size;
+      min-width: $small_size;
+      padding: 0;
+    }
+
+    indicator {
+      min-height: 2px;
+      border-radius: 2px;
+      background: gtkalpha($selected_bg_color, 0.5);
+    }
+  }
+}
+
+tabview:drop(active),
+tabbox:drop(active) {
+  box-shadow: none;
+}
+
+// Sidebar
+
+.unfolded stacksidebar.sidebar {
+  border: none;
 }

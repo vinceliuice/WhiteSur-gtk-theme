@@ -87,11 +87,6 @@ window.background:not(.csd) {
     padding: 4px 6px;
 
     > label:disabled { color: $disabled_fg_color; }
-
-    > radio,
-    > check {
-      padding: 0 2px 0 4px;
-    }
   }
 
   > window > menu {
@@ -681,5 +676,17 @@ menubar.-vala-panel-background {
 window.background.csd {
   > box.vertical > box.horizontal > notebook.frame {
     border: none;
+  }
+}
+
+//
+// Cinnamon setting
+//
+
+frame.view list > row {
+  button.gtkstyle-fallback {
+    padding: $container_padding;
+
+    > image { border-radius: 3px; }
   }
 }

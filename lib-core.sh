@@ -25,10 +25,13 @@ MY_USERNAME="${SUDO_USER:-$(logname 2> /dev/null || echo "${USER}")}"
 MY_HOME=$(getent passwd "${MY_USERNAME}" | cut -d: -f6)
 
 if command -v gnome-shell &> /dev/null; then
-  if (( $(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f 1) >= 4 )); then
-    GNOME_VERSION="new"
+  SHELL_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -1)"
+  if [[ "${SHELL_VERSION:-}" -ge "42" ]]; then
+    GNOME_VERSION="42-0"
+  elif [[ "${SHELL_VERSION:-}" -ge "40" ]]; then
+    GNOME_VERSION="40-0"
   else
-    GNOME_VERSION="old"
+    GNOME_VERSION="3-28"
   fi
 else
   GNOME_VERSION="none"
@@ -228,6 +231,8 @@ prompt() {
       echo -e "  ${c_yellow}${2}${c_default}" ;;   # print warning message
     "-i")
       echo -e "  ${c_cyan}${2}${c_default}" ;;     # print info message
+    "-t")
+      echo -e "  ${c_magenta}${2}${c_default}" ;;     # print title message
   esac
 }
 
@@ -311,6 +316,10 @@ signal_error() {
   prompt -e "SUDO   : $([[ -w "/root" ]] && echo "yes" || echo "no")"
   prompt -e "GNOME  : ${GNOME_VERSION}"
   prompt -e "REPO   : ${repo_ver}\n"
+
+  if [[ $(grep -ril "repository" "${WHITESUR_TMP_DIR}/error_log.txt") = "error_log.txt" ]]; then
+    prompt -i "HINT: You can run: 'sudo apt install sassc libglib2.0-dev libxml2-utils' on ubuntu 18.04 or 'sudo apt install sassc libglib2.0-dev-bin' on ubuntu >= 20.04 \n"
+  fi
 
   prompt -i "HINT: You can google or report to us the info above \n"
   prompt -i "https://github.com/vinceliuice/WhiteSur-gtk-theme/issues \n"

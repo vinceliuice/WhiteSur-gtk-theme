@@ -80,8 +80,8 @@ $selected_borders_color:            darken($selected_bg_color, 10%);
 $borders_color:                     if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
 $light_borders_color:               if($variant == 'light', rgba(black, 0.08), rgba(white, 0.10));
 $dark_borders_color:                if($variant == 'light', rgba(black, 0.08), rgba(black, 0.15));
-$solid_borders_color:               if($variant == 'light', darken($bg_color, 12%), lighten($bg_color, 8%));
-$dark_solid_borders_color:          if($variant == 'light', darken($bg_color, 12%), darken($bg_color, 5%));
+$solid_borders_color:               if($variant == 'light', mix(black, $base_color, 12%), mix(white, $base_color, 12%));
+$dark_solid_borders_color:          if($variant == 'light', mix(black, $base_color, 12%), mix(black, $base_color, 15%));
 $highlight_color:                   if($variant == 'light', rgba(white, 0.15), rgba(white, 0.1));
 
 // Gnome-shell background colors
@@ -185,7 +185,7 @@ $menu_bd:                           if($variant == 'light', rgba(black, 0.05), r
   $menu_bg:                         if($variant == 'light', rgba($base_color, 0.95), rgba($bg_color, 0.95));
 }
 
-$dialog_bg_color:                   if($variant == 'light', darken($bg_color, 5%), $base_color);
+$dialog_bg_color:                   if($variant == 'light', $bg_color, $base_color);
 
 @if $trans=='true' {
   $dialog_bg_color:                 if($variant == 'light', rgba($bg_color, 0.95), rgba($base_color, 0.95));
@@ -261,11 +261,6 @@ $button_bg:                         if($variant == 'light', white, #656565);
   $button_bg:                       if($variant == 'light', #fbfcfd, #556075);
 }
 $button_border:                     $borders_color;
-
-$header_button_bg:                  if($variant == 'dark', lighten($header_bg, 15%), $header_bg);
-$header_button_hover_bg:            if($variant == 'dark', lighten($header_bg, 25%), lighten($header_bg, 15%));
-$header_button_active_bg:           if($variant == 'dark', lighten($header_bg, 35%), lighten($header_bg, 25%));
-$header_button_checked_bg:          if($variant == 'dark', lighten($header_bg, 45%), lighten($header_bg, 20%));
 
 // Button borders and highlights colors
 $button_highlight:                  if($variant == 'light', white, rgba(white, 0.1));

@@ -34,7 +34,8 @@ usage() {
   helpify "-s, --size"           "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]"   "Set Nautilus sidebar minimum width"               "Default is 200px"
   helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"           "Set 'Activities' icon"                            "Default is 'standard'"
   helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                         "Set gnome-shell background image"                 "Default is BigSur-like wallpaper"
-  helpify "-m, --monterey"                ""                                          "Set to MacOS Monterey style"
+  helpify "-m, --monterey"                ""                                          "Set to MacOS Monterey style"                      ""
+  helpify "-l, --libadwaita"              ""                                          "Install gtk-4.0 theme into config for libadwaita" ""
   helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                               "Default is BigSur-like style (stabled sidebar)"
   helpify "-HD, --highdefinition"         ""                                          "Set to High Definition size"                      "Default is laptop size"
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
@@ -91,6 +92,8 @@ while [[ $# -gt 0 ]]; do
       compact="false"; shift ;;
     -m|--monterey)
       monterey="true"; shift ;;
+    -l|--libadwaita)
+      libadwaita="true"; shift ;;
     # Parameters that require value, single use
     -b|--background)
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
@@ -146,12 +149,13 @@ else
     show_needed_dialogs
   fi
 
-  prompt -w "Removing the old '${name}${colorscheme}' themes... \n"
+  prompt -w "Removing the old '${name}${colorscheme}' themes..."
 
   remove_themes; customize_theme; avoid_variant_duplicates; echo
 
-  prompt -i "Installing '${name}${colorscheme}' themes in '${dest}'..."
-  prompt -i "--->>> GTK | GNOME Shell | Cinnamon | Metacity | XFWM | Plank <<<---"
+  prompt -w "Installing '${name}${colorscheme}' themes in '${dest}'..."; echo
+
+  prompt -t "--->>> GTK | GNOME Shell | Cinnamon | Metacity | XFWM | Plank <<<---"
   prompt -i "Color variants   : $( IFS=';'; echo "${colors[*]}" )"
   prompt -i "Theme variants   : $( IFS=';'; echo "${themes[*]}" )"
   prompt -i "Opacity variants : $( IFS=';'; echo "${opacities[*]}" )"
@@ -161,14 +165,17 @@ else
 
   echo; install_themes; echo; prompt -s "Done!"
 
-  # rm -rf "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  if [[ "${libadwaita}" == 'true' ]]; then
+    install_libadwaita
+    echo; prompt -w "Installed gtk-4.0 into config for libadwaita!"
+  fi
 
   if (is_running "xfce4-session"); then
     msg="XFCE: you may need to run 'xfce4-panel -r' after changing your theme to fix your panel opacity."
   elif (is_my_distro "solus") && (is_running "gnome-session"); then
     msg="GNOME: you may need to disable 'User Themes' extension to fix your dock."
-#  elif (is_running "gnome-session") && [[ "${GNOME_VERSION}" == "old" ]]; then
-#    msg="GNOME: you may need to disable 'User Themes' extension to fix your logout and authentication dialog."
+  # elif (is_running "gnome-session") && [[ "${GNOME_VERSION}" == "3-28" ]]; then
+  #   msg="GNOME: you may need to disable 'User Themes' extension to fix your logout and authentication dialog."
   fi
 
   if [[ "${msg}" ]]; then

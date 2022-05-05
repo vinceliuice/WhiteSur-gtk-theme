@@ -274,24 +274,6 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
         background: none;
         border: none;
 
-        &.overlay-indicator:not(.dragging):not(.hovering) slider {
-          background-color: rgba(lighten($dark_sidebar_fg, 15%), 0.35);
-          border: none;
-        }
-
-        slider {
-          min-width: 4px;
-          background-color: transparentize(lighten($dark_sidebar_fg, 15%), 0.3);
-
-          &:hover { background-color: lighten($dark_sidebar_fg, 20%); }
-
-          &:hover:active { background-color: $header_button_checked_bg; }
-
-          &:disabled {
-            background-color: transparent;
-          }
-        }
-
         trough {
           background-color: transparent;
         }
@@ -336,13 +318,39 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
         background-color: transparent;
       }
     }
+
+    // >= 42.0
+    &.windowhandle .linked.nautilus-path-bar {
+      background-color: $fill_color;
+      border-radius: $bt_radius;
+      margin: $container_padding 0 $container_padding $container_padding;
+
+      .path-buttons-box > box > button {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        &.current-dir {
+          color: $header_fg;
+
+          &:hover, &:active {
+            background: none;
+            box-shadow: none;
+          }
+        }
+      }
+
+      > button.popup.toggle {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
   }
 
   notebook {
     &.background.csd { background-color: transparent; }
 
     > header {
-      background-color: $base_color;
+      // background-color: $base_color;
       border-color: $header_border;
     }
 
@@ -1973,8 +1981,8 @@ window.background.csd {
   > tab {
     @if $monterey == 'false' {
       @extend %tabs_tab;
-      border-top: none;
       border-top: 1px solid $borders_color;
+
       &:checked { border-top-color: $header_bg; }
     } @else {
       @extend %monterey_tab;
@@ -3139,9 +3147,7 @@ window.background.csd {
 
 window.background.csd.unified {
   headerbar {
-    box-shadow: none;
-
-    &.selection-mode {
+    &, &.selection-mode {
       box-shadow: none;
     }
   }

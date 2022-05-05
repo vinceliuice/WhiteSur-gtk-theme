@@ -4,14 +4,6 @@
   @extend %osd_panel;
   text-align: center;
   font-weight: bold;
-  spacing: 1em;
-  margin: 32px;
-  min-width: 64px;
-  min-height: 64px;
-
-  StIcon {
-    icon-size: $base_icon_size * 6;
-  }
 
   .osd-monitor-label { font-size: 3em; }
 

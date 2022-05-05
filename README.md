@@ -91,41 +91,47 @@ Usage:  `./install.sh [OPTIONS...]`
   -b, --background [default|blank|IMAGE_PATH]
  Set gnome-shell background image. Default is BigSur-like wallpaper
 
-  -m, --monterey 
- Set to MacOS Monterey style. 
+  -m, --monterey
+ Set to MacOS Monterey style.
+
+  -l, --libadwaita
+ Install gtk-4.0 theme into config for libadwaita.
 
   -N, --nautilus-style [stable|normal|mojave|glassy]
  Set Nautilus style. Default is BigSur-like style (stabled sidebar)
 
-  -HD, --highdefinition 
+  -HD, --highdefinition
  Set to High Definition size. Default is laptop size
 
-  --normal, --normalshowapps 
+  --normal, --normalshowapps
  Set gnome-shell show apps button style to normal. Default is bigsur
 
-  --round, --roundedmaxwindow 
+  --round, --roundedmaxwindow
  Set maximized window to rounded. Default is square
 
-  --right, --rightplacement 
+  --right, --rightplacement
  Set Nautilus titlebutton placement to right. Default is left
 
-  --black, --blackfont 
+  --black, --blackfont
  Set panel font color to black. Default is white
 
-  --darker, --darkercolor 
- Install darker 'WhiteSur' dark themes. 
+  --darker, --darkercolor
+ Install darker 'WhiteSur' dark themes.
 
-  --dialog, --interactive 
- Run this installer interactively, with dialogs. 
+  --nord, --nordcolor
+ Install 'WhiteSur' Nord ColorScheme themes.
 
-  --silent-mode 
- Meant for developers: ignore any confirm prompt and params become more strict. 
+  --dialog, --interactive
+ Run this installer interactively, with dialogs.
 
-  -r, --remove, -u, --uninstall 
- Remove all installed WhiteSur themes. 
+  --silent-mode
+ Meant for developers: ignore any confirm prompt and params become more strict.
 
-  -h, --help 
- Show this help. 
+  -r, --remove, -u, --uninstall
+ Remove all installed WhiteSur themes.
+
+  -h, --help
+ Show this help.
 ```
 
 </details>
@@ -168,7 +174,7 @@ Example: `./install.sh -s 220`
 Parameter: `--icon` `-i`
 
 Example: `./install.sh -i fedora`
-  
+
 Note that you will need to enable the GNOME user-themes extension to change the shell theme (not to confuse with the application theme).
 
 
@@ -249,19 +255,19 @@ Usage:  `./tweaks.sh [OPTIONS...]`
   --darker, --darkercolor
  Install darker 'WhiteSur' dark themes.
 
-  --nord, --nordcolor 
+  --nord, --nordcolor
  Install 'WhiteSur' Nord ColorScheme themes.
 
-  --dialog, --interactive 
+  --dialog, --interactive
  Run this installer interactively, with dialogs.
 
-  --silent-mode 
+  --silent-mode
  Meant for developers: ignore any confirm prompt and params become more strict.
 
   -r, --remove, -u, --uninstall
  Remove all installed WhiteSur themes.
 
-  -h, --help 
+  -h, --help
  Show this help.
 ```
 

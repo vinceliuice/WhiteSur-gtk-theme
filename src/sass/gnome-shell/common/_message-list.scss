@@ -3,10 +3,24 @@
 
 .message-list {
   width: 31.5em;
-  padding: 0 12px;
+  padding: $base_padding;
   text-shadow: none;
+  border: none;
 
-  .message-list-placeholder { spacing: 12px; }
+  // padding and margins to account for scrollbar
+  &:ltr { margin-left: 0; margin-right: 0; padding-right: 0; }
+  &:rtl { margin-right: 0; margin-left: 0; padding-left: 0; }
+
+  .message-list-placeholder {
+    spacing: 12px;
+
+    // icon size and color
+    > StIcon {
+      icon-size: $base_icon_size * 3; // 48px
+      margin-bottom: $base_margin * 3;
+      -st-icon-style: symbolic;
+    }
+  }
 }
 
 .message-list-sections {

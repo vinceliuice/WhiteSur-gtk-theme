@@ -1,0 +1,13 @@
+
+.popup-menu-item {
+  &:ltr { padding-right: 1.5em; padding-left: 0; }
+  &:rtl { padding-right: 0; padding-left: 1.5em; }
+}
+
+// system status popover menu
+.aggregate-menu {
+  .popup-sub-menu .popup-menu-item > :first-child {
+    &:ltr { padding-left: $base_padding * 2 + 4px; margin-left: 1em; }
+    &:rtl { padding-right: $base_padding * 2 + 4px; margin-right: 1em; }
+  }
+}

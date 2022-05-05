@@ -15,8 +15,9 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
   -GtkWidget-text-handle-width: 20;
   -GtkWidget-text-handle-height: 20;
 
-  -GtkDialog-button-spacing: 4;
-  -GtkDialog-action-area-border: 0;
+  -GtkDialog-button-spacing: 6;
+  -GtkDialog-action-area-border: 4; // This is necessary to align buttons and elements inside windows.
+  -GtkDialog-content-area-border: 4;
 
   // We use the outline properties to signal the focus properties
   outline-color: gtkalpha(currentColor, 0.15);
@@ -466,6 +467,8 @@ entry {
   padding: 2px $container_padding + 2px;
   border-radius: $bt_radius;
   caret-color: currentColor;
+  transition: all 300ms $ease-out-quad;
+  animation-timing-function: ease-in-out;
 
   &.search { border-radius: $bt_radius; }
 
@@ -872,7 +875,7 @@ button {
       }
 
       &:active, &:checked {
-        @include button(suggested_destructive, lighten($b_color, 10%), $b_fg);
+        @include button(suggested_destructive, darken($b_color, 5%), $b_fg);
       }
 
       &.flat:disabled {
@@ -1004,22 +1007,6 @@ toolbar.inline-toolbar toolbutton {
   @if $button_rules == 'true' {
     > button + button {
       border-left-style: none;
-    }
-  }
-
-  @if $button_rules == 'header' {
-    > button:first-child { border-left-style: if($variant == 'light', solid, none); }
-    > button + button { border-left-style: solid; }
-
-    @if $variant == 'light' {
-      > button:active + button {
-        border-left-color: mix(black, $header_button_active_bg, 15%);
-      }
-
-      > button:active + button:checked,
-      > button:checked + button {
-        border-left-color: mix(black, $header_button_checked_bg, 15%);
-      }
     }
   }
 }
@@ -1254,16 +1241,15 @@ combobox {
                          url("assets/combobox-arrow#{$asset_suffix}.png"),
                          url("assets/combobox-arrow#{$asset_suffix}@2.png"));
     }
-  }
 
-  .linked:not(.vertical) > entry + button.combo:checked,
-  .linked:not(.vertical) > & > box > button.combo:checked {
-    arrow {
-      border-radius: 0;
-      background-color: transparent;
-      -gtk-icon-source: -gtk-scaled(
-                         url("assets/combobox-arrow-dark.png"),
-                         url("assets/combobox-arrow-dark@2.png"));
+    &:checked, &:active {
+      arrow {
+        border-radius: 0;
+        background-color: transparent;
+        -gtk-icon-source: -gtk-scaled(
+                           url("assets/combobox-arrow-dark.png"),
+                           url("assets/combobox-arrow-dark@2.png"));
+      }
     }
   }
 
@@ -1276,7 +1262,7 @@ combobox {
 
   .linked:not(.vertical) > &:first-child > box > button.combo {
     border-top-left-radius: $bt_radius;
-    border-bottom-left-radius: $bt_radius
+    border-bottom-left-radius: $bt_radius;
   }
 
   .linked:not(.vertical) > &:last-child > box > button.combo {
@@ -2344,13 +2330,10 @@ menu,
 //
 popover,
 popover.background {
-  padding: $container_padding;
+  padding: 0;
   border-radius: $wm_radius;
   background-clip: border-box;
   background-color: $menu_bg;
-
-  &.menu { padding: 0; }
-
   box-shadow: 0 3px 6px 0 rgba(black, 0.15),
               0 0 0 1px if($variant=='light', rgba(black, 0.03), rgba(black, 0.65));
 
@@ -2362,8 +2345,6 @@ popover.background {
   separator,
   & separator,
   .csd & separator {
-    // margin: 4px -9px;
-    // min-height: 2px;
     border: none;
     background-color: transparent;
   }
@@ -2385,8 +2366,9 @@ popover.background {
     background-color: transparent;
   }
 
-  > scrolledwindow > viewport > list {
-    margin: $container_padding;
+  &.combo > scrolledwindow > viewport > list {
+    margin: 0;
+    padding: $container_padding;
 
     row {
       padding: $container_padding $container_padding * 2;
@@ -2704,7 +2686,7 @@ scrollbar {
     background-color: mix($fg_color, $bg_color, 40%);
 
     &:hover { background-color: mix($fg_color, $bg_color, 30%); }
-    &:hover:active { background-color: $header_button_checked_bg; }
+    &:hover:active { background-color: mix($fg_color, $bg_color, 50%); }
     &:disabled { background-color: transparent; }
   }
 
@@ -2933,6 +2915,7 @@ radio {
     }
 
     &:active {
+      color: $selected_fg_color;
       background-color: $selected_bg_color;
 
       @if $variant == 'light' {
@@ -3700,7 +3683,7 @@ messagedialog { // Message Dialog styling
           }
 
           &:active, &:checked {
-            @include button(suggested_destructive, lighten($b_color, 10%), $b_fg);
+            @include button(suggested_destructive, darken($b_color, 5%), $b_fg);
           }
 
           &:disabled { @include button(insensitive); }

@@ -356,12 +356,7 @@ install_shelly() {
   mkdir -p                                                                                    "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/icons"                                           "${TARGET_DIR}"
   cp -r "${THEME_SRC_DIR}/main/gnome-shell/pad-osd.css"                                       "${TARGET_DIR}"
-
-  if [[ "${GNOME_VERSION}" == 'new'  ]]; then
-    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/shell-40-0/gnome-shell${color}.scss" "${TARGET_DIR}/gnome-shell.css"
-  else
-    sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/shell-3-28/gnome-shell${color}.scss" "${TARGET_DIR}/gnome-shell.css"
-  fi
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/shell-${GNOME_VERSION}/gnome-shell${color}.scss" "${TARGET_DIR}/gnome-shell.css"
 
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/"*".svg"                           "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/assets${color}/"*".svg"                          "${TARGET_DIR}/assets"
@@ -387,7 +382,6 @@ install_theemy() {
   local opacity="$(destify ${2})"
   local alt="$(destify ${3})"
   local theme="$(destify ${4})"
-  local icon="$(destify ${5})"
 
   if [[ "${color}" == '-light' ]]; then
     local iconcolor=''
@@ -428,7 +422,7 @@ install_theemy() {
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                            "${TMP_DIR_T}/gtk-dark.css"
 
   mkdir -p                                                                                    "${TARGET_DIR}/gtk-3.0"
-  cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}.png"                "${TARGET_DIR}/gtk-3.0/thumbnail.png"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}${colorscheme}.png"  "${TARGET_DIR}/gtk-3.0/thumbnail.png"
   echo '@import url("resource:///org/gnome/theme/gtk.css");' >                                "${TARGET_DIR}/gtk-3.0/gtk.css"
   echo '@import url("resource:///org/gnome/theme/gtk-dark.css");' >                           "${TARGET_DIR}/gtk-3.0/gtk-dark.css"
   glib-compile-resources --sourcedir="${TMP_DIR_T}" --target="${TARGET_DIR}/gtk-3.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-3.0/gtk.gresource.xml"
@@ -443,19 +437,10 @@ install_theemy() {
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                            "${TMP_DIR_F}/gtk-dark.css"
 
   mkdir -p                                                                                    "${TARGET_DIR}/gtk-4.0"
-  cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}.png"                "${TARGET_DIR}/gtk-4.0/thumbnail.png"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}${colorscheme}.png"  "${TARGET_DIR}/gtk-4.0/thumbnail.png"
   echo '@import url("resource:///org/gnome/theme/gtk.css");' >                                "${TARGET_DIR}/gtk-4.0/gtk.css"
   echo '@import url("resource:///org/gnome/theme/gtk-dark.css");' >                           "${TARGET_DIR}/gtk-4.0/gtk-dark.css"
   glib-compile-resources --sourcedir="${TMP_DIR_F}" --target="${TARGET_DIR}/gtk-4.0/gtk.gresource" "${THEME_SRC_DIR}/main/gtk-4.0/gtk.gresource.xml"
-
-  # link gtk4.0 for libadwaita
-  mkdir -p                                                                                    "${HOME}/.config/gtk-4.0"
-  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-dark.css,assets,windows-assets}
-  cp -rf "${TMP_DIR_T}/assets"                                                                "${HOME}/.config/gtk-4.0"
-  cp -rf "${TMP_DIR_T}/windows-assets"                                                        "${HOME}/.config/gtk-4.0"
-
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${HOME}/.config/gtk-4.0/gtk.css"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                            "${HOME}/.config/gtk-4.0/gtk-dark.css"
 
   #----------------Cinnamon-----------------#
 
@@ -464,7 +449,7 @@ install_theemy() {
   cp -r "${THEME_SRC_DIR}/assets/cinnamon/common-assets"                                      "${TARGET_DIR}/cinnamon/assets"
   cp -r "${THEME_SRC_DIR}/assets/cinnamon/assets${color}${colorscheme}/"*".svg"               "${TARGET_DIR}/cinnamon/assets"
   cp -r "${THEME_SRC_DIR}/assets/cinnamon/theme${theme}${colorscheme}/"*".svg"                "${TARGET_DIR}/cinnamon/assets"
-  cp -r "${THEME_SRC_DIR}/assets/cinnamon/thumbnails/thumbnail${color}${theme}.png"           "${TARGET_DIR}/cinnamon/thumbnail.png"
+  cp -r "${THEME_SRC_DIR}/assets/cinnamon/thumbnails/thumbnail${color}${theme}${colorscheme}.png" "${TARGET_DIR}/cinnamon/thumbnail.png"
 
   #----------------Misc------------------#
 
@@ -478,8 +463,8 @@ install_theemy() {
   mkdir -p                                                                                    "${TARGET_DIR}/metacity-1"
   cp -r "${THEME_SRC_DIR}/main/metacity-1/metacity-theme${color}.xml"                         "${TARGET_DIR}/metacity-1/metacity-theme-1.xml"
   cp -r "${THEME_SRC_DIR}/main/metacity-1/metacity-theme-3.xml"                               "${TARGET_DIR}/metacity-1"
-  cp -r "${THEME_SRC_DIR}/assets/metacity-1/titlebuttons${color}"                             "${TARGET_DIR}/metacity-1/titlebuttons"
-  cp -r "${THEME_SRC_DIR}/assets/metacity-1/thumbnail${color}.png"                            "${TARGET_DIR}/metacity-1/thumbnail.png"
+  cp -r "${THEME_SRC_DIR}/assets/metacity-1/titlebuttons${color}${colorscheme}"               "${TARGET_DIR}/metacity-1/titlebuttons"
+  cp -r "${THEME_SRC_DIR}/assets/metacity-1/thumbnail${color}${colorscheme}.png"              "${TARGET_DIR}/metacity-1/thumbnail.png"
   ( cd "${TARGET_DIR}/metacity-1" && ln -s "metacity-theme-1.xml" "metacity-theme-2.xml" )
 
   mkdir -p                                                                                    "${TARGET_DIR}/plank"
@@ -497,6 +482,23 @@ remove_packy() {
   # rm -rf "${dest}/${name}$(destify ${1})-mdpi"
 }
 
+config_gtk4() {
+  local color="$(destify ${1})"
+  local alt="$(destify ${2})"
+
+  local TARGET_DIR="${HOME}/.config/gtk-4.0"
+
+  # Install gtk4.0 into config for libadwaita
+  mkdir -p                                                                                    "${TARGET_DIR}"
+  rm -rf                                                                                      "${TARGET_DIR}/"{gtk.css,gtk-dark.css,assets,windows-assets}
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${TARGET_DIR}/gtk.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                            "${TARGET_DIR}/gtk-dark.css"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TARGET_DIR}"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TARGET_DIR}/assets"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TARGET_DIR}/assets"
+  cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${colorscheme}"          "${TARGET_DIR}/windows-assets"
+}
+
 ###############################################################################
 #                                   THEMES                                    #
 ###############################################################################
@@ -512,7 +514,7 @@ install_themes() {
       for theme in "${themes[@]}"; do
         for color in "${colors[@]}"; do
           gtk_base "${color}" "${opacity}" "${theme}" "${compact}"
-          install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${icon}"
+          install_theemy "${color}" "${opacity}" "${alt}" "${theme}"
           install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}"
           install_xfwmy "${color}"
         done
@@ -521,6 +523,11 @@ install_themes() {
   done
 
   stop_animation
+}
+
+install_libadwaita() {
+  gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}" "${compact[0]}"
+  config_gtk4 "${colors[0]}" "${alt[0]}"
 }
 
 remove_themes() {
@@ -701,7 +708,7 @@ install_dash_to_dock_theme() {
     udoify_file                                                                                "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
     if [[ "${GNOME_VERSION}" == 'new'  ]]; then
       udo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet-4.scss"                       "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
-    else 
+    else
       udo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet-3.scss"                      "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
     fi
   elif [[ -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then

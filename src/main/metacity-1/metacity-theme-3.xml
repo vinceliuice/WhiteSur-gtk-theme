@@ -51,7 +51,7 @@
 
 <frame_geometry name="small" title_scale="small" parent="normal" rounded_top_left="false" rounded_top_right="false">
 	<distance name="title_vertical_pad" value="0" />
-	<border name="title_border" left="16" right="16" top="0" bottom="0" />
+	<border name="title_border" left="16" right="16" top="6" bottom="6" />
 	<border name="button_border" left="2" right="2" top="0" bottom="0" />
 </frame_geometry>
 
@@ -80,7 +80,10 @@
 	<border name="button_border" left="2" right="2" top="0" bottom="0" />
 </frame_geometry>
 
-<frame_geometry name="modal" title_scale="small" hide_buttons="true" rounded_top_left="8" rounded_top_right="8" rounded_bottom_right="false" rounded_bottom_left="false" parent="small">
+<frame_geometry name="modal" title_scale="medium" hide_buttons="false" rounded_top_left="10" rounded_top_right="10" rounded_bottom_right="false" rounded_bottom_left="false" parent="small">
+	<distance name="title_vertical_pad" value="0" />
+	<border name="title_border" left="10" right="10" top="6" bottom="6" />
+	<border name="button_border" left="2" right="2" top="6" bottom="6" />
 </frame_geometry>
 
 <frame_geometry name="attached" title_scale="small" hide_buttons="true" rounded_top_left="8" rounded_top_right="8" parent="small">

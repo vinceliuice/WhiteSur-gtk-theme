@@ -677,13 +677,42 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   padding: 2px; // label centering
 }
 
+.calendar-today-home-button,
+.calendar-today-home-button-enabled {
+  margin: $container_padding 0;
+  padding: $container_padding;
+  border-radius: $bt_radius;
+}
+
+.calendar-today-home-button-enabled:hover {
+  background-gradient-direction: vertical;
+  background-gradient-start: $fill_color;
+  background-gradient-end: $fill_color;
+  box-shadow: none;
+}
+
+.calendar-today-day-label {
+  font-size: 1.75em;
+  color: $disabled_fg_color;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: .1em;
+}
+
+.calendar-today-date-label {
+  font-size: 1.1em;
+  color: $disabled_fg_color;
+  font-weight: bold;
+  text-align: center;
+}
+
 .calendar-change-month-back,
 .calendar-change-month-forward {
   width: 24px;
   height: 24px;
   margin: 0;
   padding: 0;
-  border-radius: 100px;
+  border-radius: $circular_radius;
 
   &:focus, &:hover { background-color: rgba($fg_color, 0.1); }
   &:active { background-color: rgba($fg_color, 0.25); }
@@ -716,13 +745,38 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   border-radius: $bt_radius;
 }
 
+.calendar-day-event-dot-box {
+  margin-top: 22px;
+  max-rows: 2;
+}
+
+.calendar-day-event-dot {
+  margin: 1px;
+  border-radius: 2px;
+  width: 4px;
+  height: 4px;
+}
+
 .calendar-day-base {
   text-align: center;
   width: 28px;
   height: 28px;
   padding: 0;
   margin: 2px;
-  border-radius: 100px;
+  border-radius: $circular_radius;
+  color: $alt_fg_color;
+
+  &:hover {
+    color: $fg_color;
+    font-weight: bold;
+    background-color: $fill_color;
+  }
+
+  &:active {
+    color: $fg_color;
+    font-weight: bold;
+    background-color: $divider_color;
+  }
 }
 
 .calendar-day-heading {
@@ -732,7 +786,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 
 .calendar-day {
   border-width: 0;
-  color: transparentize($fg_color, 0.2);
+  color: $alt_fg_color;
 }
 
 .calendar-day-top {
@@ -762,6 +816,15 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
 .calendar-other-month-day {
   color: transparentize($fg_color, 0.7);
   opacity: 1;
+}
+
+.calendar-not-today {
+  color: $alt_fg_color;
+
+  &:selected {
+    color: $fg_color;
+    font-weight: bold;
+  }
 }
 
 .calendar-week-number {
@@ -921,7 +984,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   margin-from-right-edge-of-screen: 20px;
   width: 34em;
   color: $text_color;
-  background-color: $base_color;
+  background-color: $menu_bg;
 
   .notification-button, .notification-icon-button {
     @extend %flat_button;
@@ -936,7 +999,7 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
     border-radius: $bt_radius;
     background-color: rgba($fg_color, 0.05);
 
-    &:hover {
+    &:hover, &:selected {
       background-color: rgba($fg_color, 0.1);
       box-shadow: 0 3px 8px rgba(black, 0.15);
     }

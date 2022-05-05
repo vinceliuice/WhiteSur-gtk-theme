@@ -31,7 +31,7 @@ $medium_size: if($laptop == 'false', 36px, 32px);
 $large_size: if($laptop == 'false', 48px, 44px);
 $menuitem_size: if($laptop == 'false', 32px, 28px);
 $container_padding: if($laptop == 'false', 8px, 6px);
-$headerbar_size: if($laptop == 'false', 42px, 38px);
+$headerbar_size: if($laptop == 'false', 46px, 42px);
 
 // padding, margin and spacing
 $base_padding: if($laptop == 'false', 6px, 4px);

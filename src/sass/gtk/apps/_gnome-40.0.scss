@@ -46,3 +46,43 @@ window.nightthemeswitcher headerbar {
   background: $header_bg;
   color: $header_fg;
 }
+
+
+//
+// Gnome Control Center
+//
+
+window.background.csd {
+  > contents {
+    > leaflet.unfolded > box {
+      > headerbar {
+        @extend %side_headerbar_left;
+      }
+
+      > searchbar {
+        @extend %side_searchbar;
+      }
+
+      > stack > widget > box > widget > headerbar,
+      > stack > widget > overlay > leaflet.folded > box > headerbar {
+        @extend %side_headerbar_right;
+      }
+
+      > scrolledwindow > viewport > widget > stack {
+        > list.navigation-sidebar {
+          background-color: rgba($dark_sidebar_bg, 1);
+
+          > separator {
+            background-color: transparent;
+            margin: 0;
+            min-height: 0;
+          }
+        }
+
+        > box > list.navigation-sidebar { background-color: rgba($dark_sidebar_bg, 1); }
+      }
+
+      > stack.background { background-color: $base_color; }
+    }
+  }
+}

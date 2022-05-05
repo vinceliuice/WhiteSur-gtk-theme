@@ -3,19 +3,31 @@
 INKSCAPE="/usr/bin/inkscape"
 OPTIPNG="/usr/bin/optipng"
 
-SRC_FILE="thumbnail.svg"
+./make-thumbnails.sh
 
 for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey'; do
-  [[ -f thumbnail-light${theme}.png ]] && rm -rf thumbnail-light${theme}.png
-  echo Rendering thumbnail-light${theme}.png
+  for type in '' '-nord'; do
+    SRC_FILE="thumbnail${theme}${type}.svg"
+    for color in '-light' '-dark'; do
+            echo
+            echo Rendering thumbnail${color}${theme}${type}.png
+            $INKSCAPE --export-id=thumbnail${color}${theme}${type} \
+                      --export-id-only \
+                      --export-dpi=96 \
+                      --export-filename=thumbnail${color}${theme}${type}.png $SRC_FILE >/dev/null \
+            && $OPTIPNG -o7 --quiet thumbnail${color}${theme}${type}.png
+      done
+    done
+  done
 
-  $INKSCAPE --export-id=thumbnail-light${theme} --export-id-only --export-filename=thumbnail-light${theme}.png $SRC_FILE >/dev/null
-  $OPTIPNG -o7 --quiet thumbnail-light${theme}.png 
-
-  [[ -f thumbnail-dark${theme}.png ]] && rm -rf thumbnail-dark${theme}.png
-  echo Rendering thumbnail-dark${theme}.png
-  $INKSCAPE --export-id=thumbnail-dark${theme} --export-id-only --export-filename=thumbnail-dark${theme}.png $SRC_FILE >/dev/null
-  $OPTIPNG -o7 --quiet thumbnail-dark${theme}.png 
+for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey'; do
+  for type in '' '-nord'; do
+    if [[ ${theme} == '' && ${type} == '' ]]; then
+      echo "keep thumbnail.svg"
+    else
+      rm -rf "thumbnail${theme}${type}.svg"
+    fi
+  done
 done
 
 exit 0

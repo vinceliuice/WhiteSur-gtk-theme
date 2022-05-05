@@ -312,7 +312,7 @@
   //
     color: $osd_fg_color;
     border-color: $osd_button_border;
-    background-color: $osd_button_bg;
+    background-color: rgba(white, 0.08);
     box-shadow: none;
   }
 
@@ -322,7 +322,7 @@
   //
     color: $osd_fg_color;
     border-color: $osd_button_border;
-    background-color: opacify(lighten($osd_button_bg, 7%), 0.1);
+    background-color: rgba(white, 0.16);
     box-shadow: none;
   }
 
@@ -332,7 +332,7 @@
   //
     color: $selected_fg_color;
     border-color: $osd_button_border;
-    background-color: $selected_bg_color;
+    background-color: rgba(white, 0.25);
     background-image: none;
     box-shadow: none;
     background-clip: padding-box;
@@ -344,7 +344,7 @@
   //
     color: $osd_disabled_fg_color;
     border-color: $osd_button_border;
-    background-color: transparentize($osd_button_bg, 0.15);
+    background-color: rgba(white, 0.03);
     box-shadow: none;
   }
 

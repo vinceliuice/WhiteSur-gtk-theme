@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16"
+   height="16"
+   version="1.1"
+   id="svg15"
+   sodipodi:docname="titlebutton-unshade-hover.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs19" />
+  <sodipodi:namedview
+     id="namedview17"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="36.1875"
+     inkscape:cx="7.9861831"
+     inkscape:cy="8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1010"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg15" />
+  <g
+     id="shade"
+     transform="translate(-253,242.64)">
+    <rect
+       x="253"
+       y="-242.64"
+       width="16"
+       height="16"
+       ry="1.6931001e-05"
+       opacity="0"
+       stroke-width="0.47432"
+       style="paint-order:markers stroke fill"
+       id="rect2" />
+    <g
+       transform="translate(254,-241.64)"
+       enable-background="new"
+       id="g10-3">
+      <g
+         transform="translate(-5,-1033.4)"
+         fill-rule="evenodd"
+         id="g8">
+        <path
+           d="m 12,1047.4 c 3.8659,0 6.9999,-3.134 6.9999,-7 0,-3.866 -3.134,-7 -6.9999,-7 -3.866,0 -7.0001,3.134 -7.0001,7 0,3.866 3.134,7 7.0001,7"
+           fill="#0b67ef"
+           id="path4"
+           style="fill:#425a8a;fill-opacity:1" />
+        <path
+           d="m 12,1046.9 c 3.5898,0 6.4999,-2.9103 6.4999,-6.5001 0,-3.5899 -2.9102,-6.5 -6.4999,-6.5 -3.5899,0 -6.5001,2.9101 -6.5001,6.5 0,3.5898 2.9102,6.5001 6.5001,6.5001"
+           fill="#4285f4"
+           id="path6"
+           style="fill:#5271ad;fill-opacity:1" />
+      </g>
+    </g>
+  </g>
+  <g
+     transform="matrix(0.99998011,0,0,-0.99998011,-0.0040175,15.003298)"
+     fill="#c0e3ff"
+     id="g12">
+    <g
+       transform="translate(-81,-967)"
+       fill="#c0e3ff"
+       id="g10">
+      <path
+         transform="translate(-41,867)"
+         d="m 130,104 -2,3 h 1 v 4 h 2 v -4 h 1 z"
+         color="#000000"
+         fill="#000000"
+         opacity="0.5"
+         style="text-indent:0;text-decoration-line:none;text-transform:none"
+         id="path8" />
+    </g>
+  </g>
+</svg>

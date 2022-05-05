@@ -1,0 +1,9 @@
+.osd-window {
+  spacing: 1em;
+  min-width: 64px;
+  min-height: 64px;
+
+  StIcon {
+    icon-size: $base_icon_size * 6;
+  }
+}
