@@ -1381,19 +1381,27 @@ modelbutton.flat {
 
   check:first-child,
   radio:first-child { margin-right: 8px; }
-}
 
-modelbutton.flat arrow {
-  background: none;
-  min-width: 16px;
-  min-height: 16px;
-  opacity: 0.3; //dim icon
+  arrow.left, arrow.right {
+    background-color: transparent;
+    background-image: none;
+    min-width: 16px;
+    min-height: 16px;
+    transition: none;
+    color: $alt_fg_color;
+    opacity: 1;
 
-  &:hover, &:selected, &:focus { background: none; }
+    &:hover, &:selected, &:focus {
+      background-color: transparent;
+      background-image: none;
+      transition: none;
+      color: $selected_fg_color;
+    }
 
-  &.left { -gtk-icon-source: -gtk-icontheme("go-previous-symbolic"); }
+    &.left { -gtk-icon-source: -gtk-icontheme("go-previous-symbolic"); }
 
-  &.right { -gtk-icon-source: -gtk-icontheme("go-next-symbolic"); }
+    &.right { -gtk-icon-source: -gtk-icontheme("go-next-symbolic"); }
+  }
 }
 
 %list_button,

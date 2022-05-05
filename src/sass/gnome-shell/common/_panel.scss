@@ -168,8 +168,7 @@ $panel_height: $menuitem_size;
       margin: 0 $base_padding;
     }
 
-    // .panel-status-indicators-box .system-status-icon,
-    .panel-status-menu-box .system-status-icon { margin: 0 0; }
+    .panel-status-menu-box .system-status-icon { margin: 0; }
     .panel-status-menu-box StLabel { padding: 0 0 0 $base_padding / 2; }
 
     .appindicator-trayicons-box { margin: 0 $base_padding; }
@@ -190,7 +189,7 @@ $panel_height: $menuitem_size;
   Gjs_AggregateMenu.panel-button,
   Gjs_ui_panel_AggregateMenu.panel-button {
     .system-status-icon {
-      margin: 0 0 !important;
+      margin: 0 $base_padding / 2 !important;
     }
   }
 
