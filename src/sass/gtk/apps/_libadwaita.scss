@@ -196,7 +196,7 @@ viewswitcher {
   &.wide {
     border-spacing: $container_padding / 2;
 
-    button.toggle { margin: $container_padding 0; }
+    button.toggle { margin: 8px 0; }
   }
 
   &.narrow button.toggle {
@@ -206,7 +206,7 @@ viewswitcher {
   }
 
   button.toggle {
-    font-weight: bold;
+    font-weight: normal;
     padding: 0;
 
     > stack > box {
@@ -223,7 +223,7 @@ viewswitcher {
       }
 
       &.wide {
-        padding: 2px $container_padding * 2;
+        padding: 0 $container_padding * 2;
         border-spacing: $container_padding;
       }
     }
@@ -250,6 +250,7 @@ indicatorbin {
     min-width: $container_padding * 2;
     min-height: $container_padding * 2;
     border-radius: $circular_radius;
+    margin: 0;
   }
 
   > indicator {
@@ -258,14 +259,14 @@ indicatorbin {
 
     > label {
       font-size: 0.6rem;
-      font-weight: bold;
+      font-weight: normal;
       padding: 1px 4px;
       color: white;
     }
   }
 
   > mask {
-    padding: 1px;
+    padding: 0;
     background: black;
   }
 
