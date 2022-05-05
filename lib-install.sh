@@ -352,6 +352,10 @@ install_shelly() {
     TARGET_DIR="${6}"
   fi
 
+  if [[ "${GNOME_VERSION}" == 'none' ]]; then
+    local GNOME_VERSION='42-0'
+  fi
+
   mkdir -p                                                                                    "${TARGET_DIR}"
   mkdir -p                                                                                    "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/icons"                                           "${TARGET_DIR}"
