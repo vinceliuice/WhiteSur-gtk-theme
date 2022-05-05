@@ -136,7 +136,7 @@ if [[ "${uninstall}" == 'true' ]]; then
   prompt -i "Removing '${name}' gtk themes in '${dest}'... \n"
   prompt -w "REMOVAL: Non file-related parameters will be ignored. \n"
   remove_themes
-  prompt -s "Done! All '${name}' gtk themes in has been removed. \n"
+  prompt -s "Done! All '${name}' gtk themes in has been removed."
 
   if [[ -f "${MISC_GR_FILE}.bak" ]]; then
     prompt -e "Find installed GDM theme, you need to run: 'sudo ./tweaks.sh -g -r' to remove it!"
@@ -186,7 +186,10 @@ else
   fi
 
   echo; prompt -w "${final_msg}"
-  [[ -x /usr/bin/notify-send ]] && notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
+
+  if [[ -x /usr/bin/notify-send && "$UID" != '0' ]]; then
+    notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
+  fi
 fi
 
 echo
