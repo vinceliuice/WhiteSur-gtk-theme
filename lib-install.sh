@@ -376,7 +376,7 @@ install_shelly() {
     mv -f "assets/no-notifications.svg" "no-notifications.svg"
   )
 
-  if [[ "${black_font:-}" == 'true' || "${opacity}" == '-solid' ]] && [[ "${color}" == '-light' ]]; then
+  if [[ "${black_font:-}" == 'true' || "${opacity}" == '-solid' ]] && [[ "${color}" == '-Light' ]]; then
     cp -r "${THEME_SRC_DIR}/assets/gnome-shell/activities-black/activities${icon}.svg"        "${TARGET_DIR}/assets/activities.svg"
   fi
 }
@@ -387,10 +387,10 @@ install_theemy() {
   local alt="$(destify ${3})"
   local theme="$(destify ${4})"
 
-  if [[ "${color}" == '-light' ]]; then
+  if [[ "${color}" == '-Light' ]]; then
     local iconcolor=''
-  elif [[ "${color}" == '-dark' ]]; then
-    local iconcolor='-dark'
+  elif [[ "${color}" == '-Dark' ]]; then
+    local iconcolor='-Dark'
   fi
 
   local TARGET_DIR="${dest}/${name}${color}${opacity}${alt}${theme}${colorscheme}"
@@ -423,7 +423,7 @@ install_theemy() {
   cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${colorscheme}"          "${TMP_DIR_T}/windows-assets"
 
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk${color}.scss"                         "${TMP_DIR_T}/gtk.css"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-dark.scss"                            "${TMP_DIR_T}/gtk-dark.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-3.0/gtk-Dark.scss"                            "${TMP_DIR_T}/gtk-dark.css"
 
   mkdir -p                                                                                    "${TARGET_DIR}/gtk-3.0"
   cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}${colorscheme}.png"  "${TARGET_DIR}/gtk-3.0/thumbnail.png"
@@ -438,7 +438,7 @@ install_theemy() {
   cp -r "${TMP_DIR_T}/windows-assets"                                                         "${TMP_DIR_F}"
 
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${TMP_DIR_F}/gtk.css"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                            "${TMP_DIR_F}/gtk-dark.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-Dark.scss"                            "${TMP_DIR_F}/gtk-dark.css"
 
   mkdir -p                                                                                    "${TARGET_DIR}/gtk-4.0"
   cp -r "${THEME_SRC_DIR}/assets/gtk/thumbnails/thumbnail${color}${theme}${colorscheme}.png"  "${TARGET_DIR}/gtk-4.0/thumbnail.png"
@@ -477,13 +477,18 @@ install_theemy() {
 
 remove_packy() {
   rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})${colorscheme}"
-  rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})${colorscheme}"
   rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-dark.css,assets,windows-assets}
   rm -rf "${dest}/${name}$(destify ${1})${colorscheme}-hdpi"
   rm -rf "${dest}/${name}$(destify ${1})${colorscheme}-xhdpi"
 
   # Backward compatibility
   # rm -rf "${dest}/${name}$(destify ${1})-mdpi"
+}
+
+remove_old_packy() {
+  rm -rf "${dest}/${name}${1}$(destify ${2})$(destify ${3})$(destify ${4})${5}"
+  rm -rf "${dest}/${name}${1}${5}-hdpi"
+  rm -rf "${dest}/${name}${1}${5}-xhdpi"
 }
 
 config_gtk4() {
@@ -496,7 +501,7 @@ config_gtk4() {
   mkdir -p                                                                                    "${TARGET_DIR}"
   rm -rf                                                                                      "${TARGET_DIR}/"{gtk.css,gtk-dark.css,assets,windows-assets}
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${TARGET_DIR}/gtk.css"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-dark.scss"                            "${TARGET_DIR}/gtk-dark.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-Dark.scss"                            "${TARGET_DIR}/gtk-dark.css"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TARGET_DIR}"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TARGET_DIR}/assets"
@@ -543,6 +548,18 @@ remove_themes() {
         for theme in "${THEME_VARIANTS[@]}"; do
           remove_packy "${color}" "${opacity}" "${alt}" "${theme}" &
           process_ids+=("${!}")
+        done
+      done
+    done
+  done
+
+  for color in '-light' '-dark'; do
+    for opacity in "${OPACITY_VARIANTS[@]}"; do
+      for alt in "${ALT_VARIANTS[@]}"; do
+        for theme in "${THEME_VARIANTS[@]}"; do
+          for scheme in '' '-nord'; do
+            remove_old_packy "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
+          done
         done
       done
     done

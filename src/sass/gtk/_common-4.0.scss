@@ -2634,17 +2634,21 @@ popover.menu {
   transition: all 150ms ease-out;
   border-radius: 0;
   padding: $container_padding - 4px $container_padding + 4px;
+  margin: 0;
+  box-shadow: none;
 
   &:hover:not(:checked) {
     color: mix($fg_color, $disabled_fg_color, 50%);
     background-color: if($variant == 'light', rgba(white, 0.2), rgba(white, 0.05));
     border-color: if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
+    box-shadow: none;
   }
 
   &:checked {
     color: $fg_color;
     background-color: $header_bg;
     border-color: if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
+    box-shadow: none;
   }
 }
 
@@ -2655,15 +2659,19 @@ popover.menu {
   transition: all 150ms ease-out;
   border-radius: $bt_radius;
   padding: $container_padding - 4px $container_padding + 4px;
+  margin: 0;
+  box-shadow: none;
 
   &:hover:not(:checked) {
     color: mix($fg_color, $disabled_fg_color, 50%);
     background-color: rgba($fg_color, 0.06);
+    box-shadow: none;
   }
 
   &:checked {
     color: $fg_color;
     background-color: rgba($fg_color, 0.12);
+    box-shadow: none;
   }
 }
 
@@ -2679,6 +2687,7 @@ notebook {
   > header {
     @if $monterey == 'false' {
       background-color: darken($header_bg, 10%);
+      border: none;
 
       // Set box-shadow to make the header frame color more easy to see
       // Set margin to hide the ugly borders around the header
@@ -2744,21 +2753,25 @@ notebook {
           padding: $container_padding / 2;
         }
 
-        > tabs > tab {
-          outline-offset: -4px;
-          min-width: 24px;
-          min-height: 24px;
+        > tabs {
+          margin: 0;
 
-          @if $monterey == 'false' {
-            // tab overlap
-            + tab {
-              @if $_pos==top or $_pos==bottom { margin-left: -1px; }
-              @else { margin-top: -1px; }
-            }
-          } @else {
-            + tab {
-              @if $_pos==top or $_pos==bottom { margin-left: $container_padding / 2; }
-              @else { margin-top: $container_padding / 2; }
+          > tab {
+            outline-offset: -4px;
+            min-width: 24px;
+            min-height: 24px;
+
+            @if $monterey == 'false' {
+              // tab overlap
+              + tab {
+                @if $_pos==top or $_pos==bottom { margin-left: -1px; }
+                @else { margin-top: -1px; }
+              }
+            } @else {
+              + tab {
+                @if $_pos==top or $_pos==bottom { margin-left: $container_padding / 2; }
+                @else { margin-top: $container_padding / 2; }
+              }
             }
           }
         }
@@ -4309,17 +4322,17 @@ stacksidebar {
 
 // Navigation Sidebar
 .navigation-sidebar {
-  padding: $container_padding / 2 0; //only vertical padding. horizontal row size would clip
+  padding: $container_padding 0; //only vertical padding. horizontal row size would clip
 
   > separator {
-    margin: $container_padding / 2 0;
+    margin: $container_padding 0;
   }
 
   > row {
     min-height: 36px;
     padding: 0 $container_padding + 2px;
     border-radius: $bt_radius;
-    margin: 0 $container_padding / 2 2px;
+    margin: 0 $container_padding 2px;
 
     &:hover,
     &:focus-visible:focus-within {
@@ -4449,25 +4462,17 @@ placesview {
 //
 // Paned
 //
+
 paned {
   > separator {
     min-width: 1px;
     min-height: 1px;
-    -gtk-icon-source: none;
-    border-style: none;
-    background-color: transparent;
-    background-image: _solid($solid_borders_color);
+    background: none;
     background-size: 1px 1px;
-    box-shadow: none;
-
-    &:selected { background-image: _solid($selected_bg_color); }
 
     &.wide {
       min-width: 5px;
       min-height: 5px;
-      background-color: $bg_color;
-      background-image: _solid($solid_borders_color), _solid($solid_borders_color);
-      background-size: 1px 1px, 1px 1px;
     }
   }
 
@@ -4475,34 +4480,32 @@ paned {
     &:dir(ltr) {
       margin: 0 -8px 0 0;
       padding: 0 8px 0 0;
-      background-position: left;
+      box-shadow: inset 1px 0 $borders_color;
     }
-
     &:dir(rtl) {
       margin: 0 0 0 -8px;
       padding: 0 0 0 8px;
-      background-position: right;
+      box-shadow: inset -1px 0 $borders_color;
     }
 
     &.wide {
       margin: 0;
       padding: 0;
-      background-repeat: repeat-y, repeat-y;
-      background-position: left, right;
+      box-shadow: inset  1px 0 $borders_color,
+                  inset -1px 0 $borders_color;
     }
   }
 
   &.vertical > separator {
     margin: 0 0 -8px 0;
     padding: 0 0 8px 0;
-    background-repeat: repeat-x;
-    background-position: top;
+    box-shadow: inset 0 1px $borders_color;
 
     &.wide {
       margin: 0;
       padding: 0;
-      background-repeat: repeat-x, repeat-x;
-      background-position: bottom, top;
+      box-shadow: inset 0  1px $borders_color,
+                  inset 0 -1px $borders_color;
     }
   }
 }

@@ -11,8 +11,6 @@
 
 // system status popover menu
 .aggregate-menu {
-  min-width: 21em;
-
   .popup-sub-menu .popup-menu-item > :first-child {
     &:ltr { padding-left: $base_padding * 2 !important; margin-left: 0 !important; }
     &:rtl { padding-right: $base_padding * 2 !important; margin-right: 0 !important; }

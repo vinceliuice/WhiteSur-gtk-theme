@@ -5,7 +5,7 @@
   border-radius: $wm_radius;
   border: solid rgba(black, 0.75);
   border-width: if($variant=='light', 0, 1px);
-  box-shadow: 3px 3px 8px -3px rgba(black, if($variant=='light', 0.35, 0.5));
+  box-shadow: 0 3px 6px 0 rgba(black, if($variant=='light', 0.25, 0.35));
 }
 
 %last_dialog_button {
@@ -46,7 +46,7 @@
   &-linked-button {
     min-height: 40px;
     padding: 0 16px;
-    margin: 3px 3px;
+    margin: 3px 3px !important;
     border: none !important;
     border-radius: $bt_radius;
 
