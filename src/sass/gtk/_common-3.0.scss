@@ -1633,12 +1633,12 @@ headerbar {
     &:backdrop { opacity: 0.65; background-image: none; }
   }
 
-  stackswitcher, .stack-switcher {
+  stackswitcher {
     box-shadow: inset 0 0 0 1px $light_borders_color;
     border-radius: $bt_radius;
     padding: 0;
 
-    button {
+    > button {
       margin: 0;
       font-weight: 500;
 

@@ -3072,10 +3072,10 @@ dialog.background.csd {
 
   stack scrolledwindow {
     &.frame {
-      border-radius: $wm_radius;
+      border-radius: $bt_radius;
 
       textview.view {
-        border-radius: $wm_radius;
+        border-radius: $bt_radius;
 
         > text {
           background: none;
@@ -3086,7 +3086,7 @@ dialog.background.csd {
     }
 
     viewport.frame {
-      &.view { border-radius: $wm_radius; }
+      &.view { border-radius: $bt_radius; }
     }
   }
 
