@@ -87,7 +87,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
 }
 
 .popup-menu-content {
-  padding: 6px 0;
+  padding: $base_padding;
   @extend %theme_dialogs;
   box-shadow: 0 5px 10px 0 rgba(black, 0.18);
   border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
@@ -96,13 +96,11 @@ $popop_menuitem_radius: $wm_radius - 4px;
 }
 
 .popup-menu-item {
-  spacing: $base_spacing * 2;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  spacing: $base_spacing;
+  padding: $base_padding * 1.5 $base_padding * 2;
   color: $alt_fg_color;
   text-shadow: none;
   border-radius: $popop_menuitem_radius;
-  margin: 0 6px;
   font-weight: normal;
   transition: none;
 
@@ -148,7 +146,6 @@ $popop_menuitem_radius: $wm_radius - 4px;
   border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
   border: none;
   box-shadow: none;
-  margin: 0 6px;
 
   .popup-menu-item {
     margin: 0;
@@ -179,6 +176,7 @@ $popop_menuitem_radius: $wm_radius - 4px;
 // container for radio and check boxes
 .popup-menu-ornament {
   width: 1.2em;
+  text-align: center !important;
 
   &:ltr { text-align: right; }
   &:rtl { text-align: left; }
@@ -215,8 +213,10 @@ $popop_menuitem_radius: $wm_radius - 4px;
 
   // lock screen, shutdown, etc. buttons
   .popup-menu-icon {
-    padding: 0;
-    margin: 0 0;
+    padding: 0 !important;
     -st-icon-style: symbolic;
+
+    &:ltr { margin-right: $base_margin * 2 !important; }
+    &:rtl { margin-left: $base_margin * 2 !important; }
   }
 }

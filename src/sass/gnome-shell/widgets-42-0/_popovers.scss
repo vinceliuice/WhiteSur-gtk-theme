@@ -1,7 +1,7 @@
 
 .popup-menu-item {
-  &:ltr { padding-right: $base_padding * 2 !important; padding-left: 0 !important; }
-  &:rtl { padding-left: $base_padding * 2 !important; padding-right: 0 !important; }
+  &:ltr { padding-right: $base_padding * 2; padding-left: $base_padding * 2; }
+  &:rtl { padding-left: $base_padding * 2; padding-right: $base_padding * 2; }
 }
 
 // separator
@@ -11,8 +11,27 @@
 
 // system status popover menu
 .aggregate-menu {
+  // this is unneeded at the top-level in this menu, hide it
+  .popup-menu-ornament, .popup-sub-menu .popup-menu-ornament { width: 0 !important; }
+
   .popup-sub-menu .popup-menu-item > :first-child {
-    &:ltr { padding-left: $base_padding * 2 !important; margin-left: 0 !important; }
-    &:rtl { padding-right: $base_padding * 2 !important; margin-right: 0 !important; }
+    &:ltr { margin-left: 10px; }
+    &:rtl { margin-right: 10px; }
+  }
+}
+
+// right-click (and panel) app menu
+.app-menu {
+  max-width: 27.25em;
+
+  // this is unneeded at the top-level in this menu, hide it
+  .popup-menu-ornament { width: 0 !important; }
+
+  .popup-inactive-menu-item:first-child {
+    // "Open Windows" label
+    > StLabel {
+      &:ltr { margin-right: $base_margin * 2; }
+      &:rtl { margin-left: $base_margin * 2; }
+    }
   }
 }

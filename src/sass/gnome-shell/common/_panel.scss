@@ -181,8 +181,34 @@ $panel_height: $menuitem_size;
       // dimensions of the icon are hardcoded
     }
 
-    &#panelActivities {
-      -natural-hpadding: $base_padding * 3;
+    &#panelActivities { // Activities button
+      background-image: url("assets/activities.svg");
+      background-position: center center;
+      background-size: 24px 24px;
+      width: 24px;
+      height: 24px;
+      background-gradient-direction: none;
+      border: none;
+      color: transparent;
+      font-size: 0;
+
+      > * { width: $medium_size; }
+
+      &:active, &:overview, &:focus, &:checked {
+        border: none;
+        color: transparent;
+        // background-image: url("assets/activities-active.svg");
+      }
+
+      &:overview { background-color: transparent; }
+
+      @if $variant == 'light' {
+        @if $panel_font == 'black' or $trans == 'false' {
+          &:overview {
+            background-image: url("assets/activities-white.svg");
+          }
+        }
+      }
     }
   }
 
@@ -267,34 +293,4 @@ $panel_height: $menuitem_size;
   // indicator for active
   .screencast-indicator,
   .remote-access-indicator { color: $warning_color; }
-}
-
-// Activities button
-#panel #panelActivities.panel-button {
-  > * {
-    background-image: url("assets/activities.svg");
-    background-position: center center;
-    background-size: 24px 24px;
-    width: 24px;
-    height: 24px;
-    background-color: transparent !important;
-    background-gradient-direction: none !important;
-    border: none;
-    color: transparent;
-  }
-
-  &:active, &:overview, &:focus, &:checked {
-    background-color: transparent;
-    border: none;
-
-    // > * { background-image: url("assets/activities-active.svg"); }
-  }
-
-  @if $variant == 'light' {
-    @if $panel_font == 'black' or $trans == 'false' {
-      &:overview {
-        > * { background-image: url("assets/activities-white.svg"); }
-      }
-    }
-  }
 }

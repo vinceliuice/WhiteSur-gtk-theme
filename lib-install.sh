@@ -727,14 +727,14 @@ install_dash_to_dock_theme() {
   if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
     backup_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "udo"
     udoify_file                                                                                "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
-    if [[ "${GNOME_VERSION}" == 'new'  ]]; then
+    if [[ "${GNOME_VERSION}" != '3-28'  ]]; then
       udo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet-4.scss"                       "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
     else
       udo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet-3.scss"                      "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css"
     fi
   elif [[ -d "${DASH_TO_DOCK_DIR_ROOT}" ]]; then
     backup_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "sudo"
-    if [[ "${GNOME_VERSION}" == 'new'  ]]; then
+    if [[ "${GNOME_VERSION}" != '3-28'  ]]; then
       sudo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet-4.scss"                      "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css"
     else
       sudo sassc ${SASSC_OPT} "${DASH_TO_DOCK_SRC_DIR}/stylesheet-3.scss"                      "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css"

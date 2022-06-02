@@ -85,8 +85,14 @@ window.background:not(.csd) {
 
   > menu > menuitem {
     padding: 4px 6px;
+    border-radius: 0;
 
     > label:disabled { color: $disabled_fg_color; }
+
+    > radio,
+    > check {
+      padding: 0;
+    }
   }
 
   > window > menu {
@@ -276,7 +282,7 @@ window.background:not(.solid-csd) {
 }
 
 window.background:not(.solid-csd) {
-    // for 'Notebookbar' toolbar
+  // for 'Notebookbar' toolbar
   > notebook {
     border: none; // unset borders
     background-color: $base_color;
