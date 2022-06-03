@@ -67,7 +67,7 @@ Usage:  `./install.sh [OPTIONS...]`
   -o, --opacity [normal|solid]
  Set theme opacity variants. Repeatable. Default is all variants
 
-  -c, --color [light|dark]
+  -c, --color [Light|Dark]
  Set theme color variants. Repeatable. Default is all variants
 
   -a, --alt [normal|alt|all]
@@ -91,47 +91,47 @@ Usage:  `./install.sh [OPTIONS...]`
   -b, --background [default|blank|IMAGE_PATH]
  Set gnome-shell background image. Default is BigSur-like wallpaper
 
-  -m, --monterey
- Set to MacOS Monterey style.
+  -m, --monterey 
+ Set to MacOS Monterey style. 
 
-  -l, --libadwaita
- Install gtk-4.0 theme into config for libadwaita.
+  -l, --libadwaita 
+ Install gtk-4.0 theme into config for libadwaita. 
 
   -N, --nautilus-style [stable|normal|mojave|glassy]
  Set Nautilus style. Default is BigSur-like style (stabled sidebar)
 
-  -HD, --highdefinition
+  -HD, --highdefinition 
  Set to High Definition size. Default is laptop size
 
-  --normal, --normalshowapps
+  --normal, --normalshowapps 
  Set gnome-shell show apps button style to normal. Default is bigsur
 
-  --round, --roundedmaxwindow
+  --round, --roundedmaxwindow 
  Set maximized window to rounded. Default is square
 
-  --right, --rightplacement
+  --right, --rightplacement 
  Set Nautilus titlebutton placement to right. Default is left
 
-  --black, --blackfont
+  --black, --blackfont 
  Set panel font color to black. Default is white
 
-  --darker, --darkercolor
- Install darker 'WhiteSur' dark themes.
+  --darker, --darkercolor 
+ Install darker 'WhiteSur' dark themes. 
 
-  --nord, --nordcolor
- Install 'WhiteSur' Nord ColorScheme themes.
+  --nord, --nordcolor 
+ Install 'WhiteSur' Nord ColorScheme themes. 
 
-  --dialog, --interactive
- Run this installer interactively, with dialogs.
+  --dialog, --interactive 
+ Run this installer interactively, with dialogs. 
 
-  --silent-mode
- Meant for developers: ignore any confirm prompt and params become more strict.
+  --silent-mode 
+ Meant for developers: ignore any confirm prompt and params become more strict. 
 
-  -r, --remove, -u, --uninstall
- Remove all installed WhiteSur themes.
+  -r, --remove, -u, --uninstall 
+ Remove all installed WhiteSur themes. 
 
-  -h, --help
- Show this help.
+  -h, --help 
+ Show this help. 
 ```
 
 </details>
@@ -198,76 +198,58 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 <details> <summary> Options </summary>
 
 ```bash
-  -d, --dest DIR
- Set destination directory. Default is '/home/vince/.themes'
+  -f, --firefox [default|monterey]
+ Install 'WhiteSur|Monterey' theme for Firefox and connect it to the current Firefox profiles. Default is WhiteSur
 
-  -n, --name NAME
- Set theme name. Default is 'WhiteSur'
+  -e, --edit-firefox 
+ Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles. 
 
-  -o, --opacity [normal|solid]
- Set theme opacity variants. Repeatable. Default is all variants
+  -F, --flatpak 
+ Connect 'WhiteSur' theme to Flatpak. 
 
-  -c, --color [light|dark]
- Set theme color variants. Repeatable. Default is all variants
+  -s, --snap 
+ Connect 'WhiteSur' theme the currently installed snap apps. 
 
-  -a, --alt [normal|alt|all]
- Set window control buttons variant. Repeatable. Default is 'normal'
+  -g, --gdm [default|x2]
+ Install 'WhiteSur' theme for GDM (scaling: 100%/200%, default is 100%). Requires to run this shell as root
 
-  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey|all]
- Set theme accent color. Repeatable. Default is BigSur-like theme
+  -d, --dash-to-dock 
+ Fixed Dash to Dock theme issue. 
 
-  -p, --panel-opacity [default|30|45|60|75]
- Set panel transparency. Default is 15%
+  -N, --no-darken 
+ Don't darken 'WhiteSur' GDM theme background image. 
 
-  -P, --panel-size [default|smaller|bigger]
- Set Gnome shell panel height size. Default is 32px
-
-  -s, --size [default|180|220|240|260|280]
- Set Nautilus sidebar minimum width. Default is 200px
-
-  -i, --icon [standard|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin]
- Set 'Activities' icon. Default is 'standard'
+  -n, --no-blur 
+ Don't blur 'WhiteSur' GDM theme background image. 
 
   -b, --background [default|blank|IMAGE_PATH]
- Set gnome-shell background image. Default is BigSur-like wallpaper
+ Set 'WhiteSur' GDM theme background image. Default is BigSur-like wallpaper
 
-  -m, --monterey
- Set to MacOS Monterey style.
+  -o, --opacity [normal|solid]
+ Set 'WhiteSur' GDM theme opacity variants. Default is 'normal'
 
-  -N, --nautilus-style [stable|normal|mojave|glassy]
- Set Nautilus style. Default is BigSur-like style (stabled sidebar)
+  -c, --color [Light|Dark]
+ Set 'WhiteSur' GDM and Dash to Dock theme color variants. Default is 'light'
 
-  -HD, --highdefinition
- Set to High Definition size. Default is laptop size
+  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]
+ Set 'WhiteSur' GDM theme accent color. Default is BigSur-like theme
 
-  --normal, --normalshowapps
- Set gnome-shell show apps button style to normal. Default is bigsur
+  -p, --panel-opacity [default|30|45|60|75]
+ Set 'WhiteSur' GDM (GNOME Shell) theme panel transparency. Default is 15%
 
-  --round, --roundedmaxwindow
- Set maximized window to rounded. Default is square
+  -P, --panel-size [default|smaller|bigger]
+ Set 'WhiteSur' Gnome shell panel height size. Default is 32px
 
-  --right, --rightplacement
- Set Nautilus titlebutton placement to right. Default is left
+  -i, --icon [standard|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin]
+ Set 'WhiteSur' GDM (GNOME Shell) 'Activities' icon. Default is 'standard'
 
-  --black, --blackfont
- Set panel font color to black. Default is white
-
-  --darker, --darkercolor
- Install darker 'WhiteSur' dark themes.
-
-  --nord, --nordcolor
- Install 'WhiteSur' Nord ColorScheme themes.
-
-  --dialog, --interactive
- Run this installer interactively, with dialogs.
+  -r, --remove, --revert
+ Revert to the original themes, do the opposite things of install and connect. 
 
   --silent-mode
- Meant for developers: ignore any confirm prompt and params become more strict.
+ Meant for developers: ignore any confirm prompt and params become more strict. 
 
-  -r, --remove, -u, --uninstall
- Remove all installed WhiteSur themes.
-
-  -h, --help
+  -h, --help 
  Show this help.
 ```
 
