@@ -145,8 +145,8 @@ Parameter: `--color` `-c` (repeatable)
 Example:
 
 ```bash
-./install.sh -c light          # install light theme color only
-./install.sh -c dark -c light  # install dark and light theme colors
+./install.sh -c Light          # install light theme color only
+./install.sh -c Dark -c Light  # install dark and light theme colors
 ```
 
 #### Install theme accent
