@@ -244,7 +244,8 @@ $osd_fg_color: #eeeeec;
 }
 
 #dashtodockContainer.dashtodock #dash .dash-background {
-    background: #2e3436;
+    background: $dash_background_color;
+    border-width: 0;
 }
 
 #dashtodockContainer.dashtodock .progress-bar {
@@ -256,7 +257,7 @@ $osd_fg_color: #eeeeec;
 
 #dashtodockContainer.top #dash .placeholder,
 #dashtodockContainer.bottom #dash .placeholder {
-    width: 32px;
+    width: $dash_placeholder_size;
     height: 1px;
 }
 
