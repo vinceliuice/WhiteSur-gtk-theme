@@ -28,7 +28,7 @@
 /* Popovers subview menu arrow */
 .PanelUI-subView .subviewbutton-nav::after {
 	content: "" !important;
-	background: url("../icons/pan-start-symbolic.svg");
+	background: url("../icons/pan-end-symbolic.svg");
 	background-size: contain;
 	height: 16px;
 	width: 16px;

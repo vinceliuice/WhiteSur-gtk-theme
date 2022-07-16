@@ -18,6 +18,10 @@ tab > stack {
 	background-image: none !important;
 }
 
+.tabbrowser-tab {
+	margin: 2px 0 0 !important;
+}
+
 .tabbrowser-tab:not([visuallyselected="true"], [multiselected]), .tabbrowser-tab:-moz-lwtheme {
 	color: var(--gnome-tabbar-tab-color) !important;
 }
@@ -27,6 +31,8 @@ tab > stack {
 }
 
 .tab-background {
+	margin: 0 !important;
+	background-color: transparent !important;
 	transition: background 200ms !important;
 }
 
@@ -115,11 +121,6 @@ tab > stack {
 	display: flex;
 }
 
-.tab-background {
-	background-color: transparent !important;
-	transition: all 200ms;
-}
-
 #TabsToolbar #alltabs-button {
 	padding: 0 0 !important;
 	visibility: collapse !important;
@@ -127,7 +128,7 @@ tab > stack {
 
 #TabsToolbar .toolbarbutton-1,
 #tabs-newtab-button, #TabsToolbar #new-tab-button {
-	margin: 4px 2px -4px !important;
+	margin: 2px 2px 0 !important;
 	padding: 0 10px !important;
 	max-height: 32px !important;
 	min-height: 32px !important;

@@ -40,15 +40,15 @@ findbar:-moz-window-inactive {
 
 #titlebar {
 	min-height: 0 !important
-	max-height: 36px !important;
+	max-height: 48px !important;
 }
 
 #TabsToolbar {
-	margin-top: -44px !important;
+	margin-top: -42px !important;
 	padding: 0 !important;
-	margin-bottom: 8px !important;
+	margin-bottom: 6px !important;
 	background: none !important;
-	max-height: 36px !important;
+	max-height: 48px !important;
 }
 
 #nav-bar {
