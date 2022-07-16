@@ -39,8 +39,13 @@ findbar:-moz-window-inactive {
 }
 
 #titlebar {
+<<<<<<< HEAD
 	min-height: 0 !important
 	max-height: 48px !important;
+=======
+	min-height: 0 !important;
+	max-height: 36px !important;
+>>>>>>> aa1efe3563d62b390a902b9bea4af15a361886c8
 }
 
 #TabsToolbar {
@@ -90,7 +95,7 @@ findbar:-moz-window-inactive {
 
 /* bookmark-item */
 toolbarbutton.bookmark-item {
-	padding: 0 4px; !important;
+	padding: 0 4px !important;
 	margin: 0 2px !important;
 	border-radius: 3px !important;
 	max-height: 20px !important;
