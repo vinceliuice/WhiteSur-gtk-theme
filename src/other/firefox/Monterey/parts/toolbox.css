@@ -39,13 +39,8 @@ findbar:-moz-window-inactive {
 }
 
 #titlebar {
-<<<<<<< HEAD
 	min-height: 0 !important
 	max-height: 48px !important;
-=======
-	min-height: 0 !important;
-	max-height: 36px !important;
->>>>>>> aa1efe3563d62b390a902b9bea4af15a361886c8
 }
 
 #TabsToolbar {
