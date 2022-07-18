@@ -35,13 +35,13 @@
 	margin-top: -2px !important;
 }
 .protections-popup-category::after {
-	content: url("../icons/pan-start-symbolic.svg") !important;
+	content: url("../icons/pan-end-symbolic.svg") !important;
 }
 .identity-popup-content-blocking-category::after {
-	content: url("../icons/pan-start-symbolic.svg") !important;
+	content: url("../icons/pan-end-symbolic.svg") !important;
 }
 #identity-popup-security-expander .button-icon {
-	list-style-image: url("../icons/pan-start-symbolic.svg") !important;
+	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
 }
 
 /* Popovers subview back button */
