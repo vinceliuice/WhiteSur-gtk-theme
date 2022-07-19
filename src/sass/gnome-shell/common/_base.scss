@@ -41,10 +41,11 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 %osd_panel {
   color: $fg_color;
   background-color: $base_color;
-  border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
+  border-radius: $wm_radius;
+  border: solid rgba(black, 0.75);
+  border-width: if($variant=='light', 0, 1px);
   box-shadow: 0 3px 8px 0 rgba(black, 0.25);
-  border-radius: $bt_radius;
-  padding: 12px;
+  padding: $base_padding * 2;
 }
 
 %search-section-content-item {

@@ -11,4 +11,13 @@
     &:ltr { margin-right: 6px; }
     &:rtl { margin-left: 6px; }
   }
+
+  .level {
+    margin-bottom: 4px;
+    &:first-child { margin-bottom: 0px; }
+    min-width: $base_icon_size * 10;
+
+    &:ltr { margin-right: $base_padding; }
+    &:rtl { margin-left: $base_padding; }
+  }
 }

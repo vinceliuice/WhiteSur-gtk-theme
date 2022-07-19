@@ -10,19 +10,19 @@
   .level {
     height: 4px;
     border-radius: 3px;
-    background-color: rgba(black, 0.1);
+    background-color: $borders_color;
     color: $fg_color;
 
     // For >= 3.29.90
     -barlevel-height: 4px;
     // FIXME: above 'background-color' property rendered correct trough
     // colour already, so keep -background-color style-property transparent
-    -barlevel-background-color: rgba(black, 0.1);
+    -barlevel-background-color: $borders_color;
     -barlevel-active-background-color: $selected_bg_color;
     -barlevel-overdrive-color: $destructive_color;
     -barlevel-overdrive-separator-width: 2px;
     -barlevel-border-width: 0;
-    -barlevel-border-color: rgba(black, 0.15);
+    -barlevel-border-color: transparent;
   }
 
   .level-bar {
