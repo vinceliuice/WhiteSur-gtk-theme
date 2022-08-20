@@ -536,7 +536,7 @@ install_themes() {
 
 install_libadwaita() {
   gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}" "${compact[0]}"
-  config_gtk4 "${colors[0]}" "${alt[0]}"
+  config_gtk4 "${colors[1]}" "${alt[0]}"
 }
 
 remove_themes() {
