@@ -301,7 +301,7 @@ Example: `./tweaks.sh -d`
 #### Change its color
 Parameter: `--color` `-c`
 
-Example: `./tweaks.sh -d -c dark`
+Example: `./tweaks.sh -d -c Dark`
 
 ### <p align="center"> <b> Install and customize GDM theme </b> </p>
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/gdm.png"/> </p>
