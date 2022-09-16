@@ -670,7 +670,7 @@ $_dot_color: $selected_bg_color;
 %circular_button {
   border-radius: $circular_radius;
   -gtk-outline-radius: $circular_radius;
-  padding: 0 0;
+  padding: 0;
   min-height: $menuitem_size;
   min-width: $menuitem_size;
 }
@@ -3557,6 +3557,7 @@ row {
 
   button {
     @extend %undecorated_button;
+    @include button(flat-normal);
 
     &:not(.text-button).image-button, &.flat {
       @extend %circular_button;
