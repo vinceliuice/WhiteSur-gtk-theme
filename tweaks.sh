@@ -96,7 +96,7 @@ while [[ $# -gt 0 ]]; do
         esac
       done
 
-      if ! has_command firefox && ! has_command firefox-bin && ! has_flatpak_app org.mozilla.firefox && ! has_snap_app firefox; then
+      if ! has_command firefox && ! has_command firefox-bin && ! has_flatpak_app org.mozilla.firefox && ! has_snap_app firefox && ! has_command firefox-developer-edition; then
         prompt -e "'${1}' ERROR: There's no Firefox installed in your system"
         has_any_error="true"
       elif [[ ! -d "${FIREFOX_DIR_HOME}" && ! -d "${FIREFOX_FLATPAK_DIR_HOME}" && ! -d "${FIREFOX_SNAP_DIR_HOME}" ]]; then

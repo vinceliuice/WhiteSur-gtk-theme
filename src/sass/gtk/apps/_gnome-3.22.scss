@@ -2957,6 +2957,12 @@ window.background.csd {
   }
 }
 
+.app-notification.boxes-toast {
+  > button.circular.flat {
+    padding: 2px;
+  }
+}
+
 //
 // Dialogs
 //

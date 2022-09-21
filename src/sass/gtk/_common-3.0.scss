@@ -670,7 +670,7 @@ $_dot_color: $selected_bg_color;
 %circular_button {
   border-radius: $circular_radius;
   -gtk-outline-radius: $circular_radius;
-  padding: 0 0;
+  padding: 0;
   min-height: $menuitem_size;
   min-width: $menuitem_size;
 }
@@ -2196,7 +2196,6 @@ menubar,
 menu,
 .menu,
 .context-menu {
-  // margin: 4px;
   padding: $container_padding;
   border-radius: $mn_radius;
   background-color: opacify($menu_bg, 1);
@@ -2295,23 +2294,19 @@ menu,
     min-height: 16px;
     padding: 2px;
     background-color: transparent;
-    border-radius: 0;
+    border-radius: $mn_radius - 3px;
     border: none;
     background-image: none;
     color: $fg_color;
 
     &.top {
-      margin-top: -6px;
-      border-radius: $mn_radius $mn_radius 0 0;
-      border-bottom: 1px solid $borders_color;
+      margin-top: 0;
       -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
     }
 
     &.bottom {
       margin-top: 12px;
-      margin-bottom: -16px;
-      border-radius: 0 0 $mn_radius $mn_radius;
-      border-top: 1px solid $borders_color;
+      margin-bottom: -12px;
       -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
     }
 
@@ -3065,24 +3060,23 @@ scale {
   }
 
   slider {
-    $_slider_border: if($variant=='light', transparentize(darken($button_border, 0%), 0), transparentize($button_border, 0));
+    $_slider_border: $button_border;
 
     background-color: $selected_fg_color;
     border: 1px solid $_slider_border;
     border-radius: 100%;
     box-shadow: $shadow_2;
-
+    background-clip: padding-box;
     transition: $button_transition;
     transition-property: background, border;
 
     &:hover {
-        background-color: lighten($selected_fg_color, 3%);
-        border-color: $_slider_border;
-        box-shadow: $shadow_0;
-      }
+      background-color: lighten($selected_fg_color, 3%);
+      border-color: $_slider_border;
+      box-shadow: $shadow_0;
+    }
 
     &:active {
-      background-clip: border-box;
       background-color: $selected_fg_color;
       border-color: $_slider_border;
       box-shadow: $shadow_3;
@@ -3563,6 +3557,7 @@ row {
 
   button {
     @extend %undecorated_button;
+    @include button(flat-normal);
 
     &:not(.text-button).image-button, &.flat {
       @extend %circular_button;
