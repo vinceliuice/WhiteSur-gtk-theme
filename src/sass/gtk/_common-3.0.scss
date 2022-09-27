@@ -2193,9 +2193,9 @@ menubar,
   }
 }
 
-menu,
-.menu,
-.context-menu {
+// .menu,
+// .context-menu,
+menu {
   padding: $container_padding;
   border-radius: $mn_radius;
   background-color: opacify($menu_bg, 1);
@@ -2230,6 +2230,8 @@ menu,
       transition: none;
       color: $selected_fg_color;
       background-color: $selected_bg_color;
+
+      // image { -gtk-icon-style: symbolic; }
 
       arrow {
         transition: none;

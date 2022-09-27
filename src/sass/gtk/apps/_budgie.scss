@@ -74,15 +74,17 @@ $raven_padding: 8px;
 .budgie-container { background-color: transparent; }
 
 .budgie-settings-window {
-  &.background { background-color: rgba($base_color, if($trans == 'true', 0.95, 1)); }
+  &.background {
+    background-color: rgba($base_color, if($trans == 'true', 0.95, 1));
 
-  buttonbox.inline-toolbar {
-    border-style: none none solid;
+    buttonbox.inline-toolbar {
+      border-style: none none solid;
 
-    button {
-      border-radius: $bt_radius;
+      button {
+        border-radius: $bt_radius;
 
-      @extend %budgie_button;
+        @extend %budgie_button;
+      }
     }
   }
 
@@ -93,7 +95,7 @@ $raven_padding: 8px;
   }
 }
 
-.budgie-popover {
+.budgie-popover.background {
   margin: 0;
   padding: 0;
   border: 1px solid if($variant=='light', rgba($borders_color, 0.2), lighten($menu_bg, 6%));
@@ -105,6 +107,7 @@ $raven_padding: 8px;
 
   .container {
     padding: 0;
+    margin: 0;
     border: none;
   }
 
@@ -315,6 +318,9 @@ $raven_padding: 8px;
 
     flowboxchild { padding: 0; }
   }
+
+  // &.budgie-screenshot-applet {
+  // }
 }
 
 // budgie specific popover widgets
@@ -433,7 +439,7 @@ popover.background.places-menu {
 $budgie_panel_radius: $wm_radius + $container_padding / 2;
 
 // Panel
-.budgie-panel {
+.budgie-panel.background {
   transition: background-color 0.2s cubic-bezier(0, 0, 0.2, 1);
   background-color: opacify($header_bg, 1);
   color: $header_fg;
@@ -752,7 +758,7 @@ $raven_opacity: if($variant =='light', 0.95, 0.95);
 $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px 0 rgba(black, 0.1);
 
 // Raven
-.raven {
+.background .raven {
   background-color: if($trans == 'true', rgba($raven_bg_color, $raven_opacity), $raven_bg_color);
   color: $raven_fg_color;
   box-shadow: $shadow_4;
@@ -1117,25 +1123,36 @@ calendar.raven-calendar {
 }
 
 // Notifications
-%budgie-notification-window,
+%budgie-notification-window {
+  background: none;
+
+  > stack {
+    margin: 0;
+    padding: $container_padding;
+    border-radius: $wm_radius;
+    box-shadow: 0 3px 3px 0 rgba(black, 0.15),
+                0 0 0 1px rgba(black, if($variant == 'light', 0.1, 0.75)),
+                inset 0 0 0 1px $highlight_color;
+    background-color: $menu_bg;
+  }
+}
+
 .budgie-notification-window {
-  background-color: transparent;
-  background-image: none;
-  border-radius: $wm_radius;
+  @extend %budgie-notification-window;
 
   button.image-button { // 'close'
     margin: 0;
     padding: 0;
     min-height: 28px;
     min-width: 28px;
-    border-radius: 100px;
+    border-radius: $circular_radius;
   }
 }
 
-%budgie-notification,
 .budgie-notification {
-  background-color: transparent;
-  background-image: none;
+  background: none;
+  margin: 0;
+  padding: 0;
 
   .notification-title { font-size: 120%; }
   .notification-body { @extend %dim-label; }
@@ -1148,8 +1165,8 @@ calendar.raven-calendar {
 
 // Internal part of the OSD
 .budgie-osd {
-  background-color: transparent;
-  background-image: none;
+  background: none;
+
   .budgie-osd-text { font-size: 120%; }
 }
 
@@ -1163,9 +1180,6 @@ window.budgie-switcher-window {
   background-color: transparent;
   background-image: none;
 
-  // draw actual backgrounds and shadows
-  .drop-shadow { @extend %drop-shadow; }
-
   flowboxchild { // icon-tiles
     margin: 2px;
     border-radius: $wm_radius;
@@ -1175,20 +1189,22 @@ window.budgie-switcher-window {
 
 // Internal part of the Switcher
 .budgie-switcher {
-  @extend %budgie-notification;
+  @extend .budgie-notification;
 }
 
-%drop-shadow, .drop-shadow {
-  margin: 5px 9px;
-  padding: 8px;
+.drop-shadow {
+  margin: 6px 10px 16px;
+  padding: $container_padding;
   border-radius: $wm_radius;
-  box-shadow: 0 5px 5px 0 transparent, 0 8px 15px 0 transparent,
-              0 3px 3px 0 if($variant == 'light', opacify($wm_shadow, 0.15), opacify($wm_shadow, 0.1)),
-              0 0 0 1px if($variant=='light', rgba($borders_color, 0.15), rgba($dark_borders_color, 0.55)),
-              inset 0 0 0 1px rgba(white, 0.06);
+  box-shadow: 0 3px 3px 0 $wm_shadow,
+              0 3px 8px 0 $wm_shadow,
+              $wm_outline, inset 0 0 0 1px $highlight_color;
+  background-color: $menu_bg;
 
-  background-color: if($trans == 'true', rgba($base_color, 0.95), $base_color);
-  background-image: none;
+  .dim-label { opacity: 0.55; }
+
+  // used to indicate unread notifications
+  .alert { color: $fg_color; }
 
   button { @extend %budgie_button; }
 
@@ -1197,10 +1213,10 @@ window.budgie-switcher-window {
 
 %budgie_dialog {
   background-color: $bg_color;
-  @if $variant == 'dark' { border: 1px solid lighten($menu_bg, 10%); }
+  @if $variant == 'dark' { box-shadow: inset 0 0 0 1px $highlight_color; }
 
   &.background.csd {
-    border-radius: $wm_radius $wm_radius $wm_radius $wm_radius;
+    border-radius: $wm_radius;
   }
 }
 
@@ -1245,7 +1261,6 @@ window.budgie-switcher-window {
 // Run Dialog
 .budgie-run-dialog {
   @extend %budgie_dialog;
-
   background-color: $base_color;
 
   entry.search {

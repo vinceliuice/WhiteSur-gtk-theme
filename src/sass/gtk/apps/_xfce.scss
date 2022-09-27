@@ -11,7 +11,7 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
   color: $fg_color;
 }
 
-.xfce4-panel {
+.xfce4-panel.background {
   background-color: $panel_bg;
   color: $panel_fg;
   font-weight: 700;
@@ -29,7 +29,7 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
     &, &.marching-ants { transition: none; } // unset transitions
   }
 
-  button {
+  button, button.flat {
     font-weight: 700;
     @extend %panel_button;
     // -gtk-icon-style: symbolic;
@@ -50,6 +50,11 @@ $text_shadow: 0 0 1px rgba(0, 0, 0, 0.26),
     &#xfce4-notification-plugin {
       padding: 0 1px; // for 4.12.2
     }
+
+    // &#whiskermenu-button {
+    //   &:active, &:checked {
+    //   }
+    // }
   }
 
   menu {
