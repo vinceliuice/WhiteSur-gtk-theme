@@ -23,7 +23,7 @@ usage() {
   # Please specify their default value manually, some of them are come from _variables.scss
   # You also have to check and update them regurally
   helpify_title
-  helpify "-f, --firefox"       "[default|monterey]"                                "Install '${THEME_NAME}|Monterey' theme for Firefox and connect it to the current Firefox profiles" "Default is ${THEME_NAME}"
+  helpify "-f, --firefox"       "[default|monterey|alt]"                            "Install '${THEME_NAME}|Monterey|Alt' theme for Firefox and connect it to the current Firefox profiles" "Default is ${THEME_NAME}"
   helpify "-e, --edit-firefox"  ""                                                  "Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
   helpify "-F, --flatpak"       ""                                                  "Connect '${THEME_NAME}' theme to Flatpak"                                    ""
   helpify "-s, --snap"          ""                                                  "Connect '${THEME_NAME}' theme the currently installed snap apps"             ""
