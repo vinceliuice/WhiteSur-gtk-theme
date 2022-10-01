@@ -164,13 +164,6 @@
     }
   }
 
-  &.shrink,
-  &.dashtodock {
-    .dash-item-container > StButton {
-       padding: 1px 2px;
-    }
-  }
-
   &.extended,
   &.extended:overview {
     .app-well-app,
