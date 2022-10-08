@@ -1970,16 +1970,30 @@ headerbar {
     }
   }
 
-  entry { @extend %headerbar_entrys; }
+  entry {
+    @extend %headerbar_entrys;
+  }
 
-  button { @extend %headerbar_buttons; }
+  button {
+    @extend %headerbar_buttons;
+  }
 
-  button, spinbutton, entry, stackswitcher {
+  entry,
+  spinbutton,
+  button,
+  menubutton,
+  splitbutton,
+  stackswitcher,
+  separator:not(.sidebar) {
     margin-top: 8px;
     margin-bottom: 8px;
   }
 
-  menubutton.popup {
+  menubutton > button,
+  spinbutton > button,
+  splitbutton > button,
+  splitbutton > menubutton,
+  entry > menubutton {
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -3059,6 +3073,7 @@ scrollbar {
 $switch_image: linear-gradient(0deg, rgba($fg_color, 0.25) 0%, rgba($fg_color, 0.35) 100%);
 $switch_disabled_image: linear-gradient(0deg, rgba($fg_color, 0.1) 0%, rgba($fg_color, 0.15) 100%);
 $switch_checked_image: linear-gradient(0deg, lighten($selected_bg_color, 10%) 0%, $selected_bg_color 100%);
+$switch_checked_backdrop_image: linear-gradient(0deg, lighten($bg_color, 15%) 0%, lighten($bg_color, 5%)  100%);
 $switch_checked_disabled_image: linear-gradient(0deg, lighten($selected_bg_color, 35%) 0%, lighten($selected_bg_color, 25%) 100%);
 $switch_animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
 
@@ -3108,6 +3123,12 @@ switch {
       background-image: $switch_checked_disabled_image;
       color: transparent;
     }
+  }
+
+  &:backdrop {
+    background-color: transparent;
+    background-image: $switch_checked_backdrop_image;
+    color: transparent;
   }
 
   > slider {
@@ -3321,11 +3342,7 @@ scale {
 
       highlight {
         background-color: $selected_bg_color;
-
-        &:disabled {  }
       }
-
-      &:disabled {  }
     }
 
     // Troughs in selected list-rows and infobars
@@ -3428,8 +3445,6 @@ scale {
         border-color: $_slider_border;
         box-shadow: $shadow_3;
       }
-
-      &:disabled {  }
     }
   }
 

@@ -75,7 +75,7 @@ $raven_padding: 8px;
 
 .budgie-settings-window {
   &.background {
-    background-color: rgba($base_color, if($trans == 'true', 0.95, 1));
+    background-color: rgba($base_color, if($trans == 'true', 0.97, 1));
 
     buttonbox.inline-toolbar {
       border-style: none none solid;
@@ -197,7 +197,7 @@ $raven_padding: 8px;
     entry.search {
       padding: 5px 10px;
       border: none;
-      border-bottom: 1px solid $borders_color;
+      border-bottom: 1px solid $header_border;
       border-radius: 0;
       box-shadow: none;
       font-size: 110%;
@@ -215,6 +215,16 @@ $raven_padding: 8px;
       button.flat.category-button {
         min-height: 28px;
         border-radius: 0;
+
+        &:disabled {
+          color: $alt_disabled_fg_color;
+          background-color: transparent;
+        }
+
+        &:checked:disabled {
+          color: $disabled_fg_color;
+          background-color: $fill_color;
+        }
       }
     }
 

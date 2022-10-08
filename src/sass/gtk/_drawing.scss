@@ -233,16 +233,15 @@
     label, & { color: $disabled_fg_color; }
 
     background-color: transparent;
-//    border: none;
   }
 
   @else if $t==flat-insensitive-active {
   //
   // insensitive pushed button
   //
-    label, & { color: transparentize($selected_fg_color, 0.2); }
+    label, & { color: transparentize($selected_fg_color, 0.35); }
 
-    background-color: lighten($fg_color, 20%);
+    background-color: if($variant=='light', rgba(black, 0.3), rgba(white, 0.15));
     opacity: 0.6;
   }
 

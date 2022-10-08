@@ -412,17 +412,17 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
     padding: 2px;
     background-color: $selected_bg_color;
     color: $selected_fg_color;
-    border-radius: $wm_radius - 6px;
-    margin: 6px;
+    border-radius: $wm_radius - $container_padding;
+    margin: $container_padding;
     box-shadow: $shadow_5;
 
     button {
       border: none;
-      border-radius: 100px;
+      border-radius: $circular_radius;
       min-height: 0;
       min-width: 0;
       padding: 0;
-      margin-right: 6px;
+      margin-right: container_padding;
       -gtk-icon-shadow: none;
       @extend %selected-button;
     }
@@ -606,11 +606,6 @@ terminal-window {
 
   decoration {
     border-radius: $wm_radius $wm_radius 0 0;
-  }
-
-  notebook {
-    // button.flat.toggle.popup {
-    // }
   }
 
   &.background.csd.maximized { border-radius: 0; } // Fixed gnome 3.32 issue: Unable to restore window size after maximization
@@ -1838,13 +1833,6 @@ headerbar.titlebar.incognito-mode {
 // reset inverted foreground colour
 notebook > box > stack > box.vertical > paned.vertical > overlay {
   > .floating-bar { color: rgba($fg_color, 0.75); }
-}
-
-.background:not(.csd) > box.vertical > headerbar {
-  // conflicts with .primary-toolbar styling?
-  .linked > button.image-button { // = 'back/forward' button
-
-  }
 }
 
 // overrides foregrounds for 3.24's ssd-mode

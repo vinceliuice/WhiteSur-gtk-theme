@@ -1,52 +1,84 @@
-//
-// Extensions
-//
-window.background.csd {
-  > stack, // GameMode setting
-  > stack > scrolledwindow > viewport > box, // User Themes (Workspace) setting
-  > box > stack > scrolledwindow > viewport > box {
-    > list {
-      @extend %circular_list;
 
-      row.activatable { @extend %circular_row; }
-    }
-  }
+/************
+ * Nautilus *
+ ************/
 
-  stack stack stack frame, // ArcMenu setting
-  > stack > stack > box > frame, // Night Theme Switcher setting
-  > stack > stack > box > box > frame, // Night Theme Switcher setting bottom lists
-  > stack > box > stack > box > frame, // ArcMenu setting
-  > stack > box > stack > scrolledwindow > viewport frame, // ArcMenu setting
-  > stack > box > stack > box > scrolledwindow > viewport > frame, // ArcMenu setting
-  > stack > grid > scrolledwindow > viewport > box > frame { // GSConnect setting
-    > border { border: none; }
-    border: none;
+ .nautilus-window {
+  // Floating Bar
+  .floating-bar {
+    padding: 2px;
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+    border-radius: $wm_radius - $container_padding;
+    margin: $container_padding;
+    box-shadow: $shadow_5;
 
-    > list {
-      @extend %circular_list;
-
-      row.activatable { @extend %circular_row; }
-    }
-  }
-
-  > stack > box > box > list,
-  > stack > box > stack > scrolledwindow > viewport > list { // ArcMenu setting sidebar
-    border-bottom-left-radius: $wm_radius;
-  }
-
-  &.maximized, &.tiled, &.fullscreen {
-    > stack > box > box > list,
-    > stack > box > stack > scrolledwindow > viewport > list { // ArcMenu setting sidebar
-      border-bottom-left-radius: $maximized_radius;
+    button {
+      border: none;
+      border-radius: $circular_radius;
+      min-height: 0;
+      min-width: 0;
+      padding: 0;
+      margin-right: container_padding;
+      -gtk-icon-shadow: none;
+      @extend %selected-button;
     }
   }
 }
 
+#NautilusViewCell {
+  clamp box {
+    margin: 0;
+    border-spacing: 0;
+  }
+}
+
+#NautilusQueryEditor { // search entry
+  padding: 1px $container_padding;
+
+  > menubutton > button {
+    min-width: 16px;
+    min-height: 16px;
+    margin: 0;
+    -gtk-icon-size: 12px;
+    padding: 0 4px;
+  }
+
+  > text, > image { margin: 0; }
+}
+
+#NautilusPathBar {
+  background-color: $fill_color;
+  border-radius: $bt_radius;
+  margin: $container_padding 0 $container_padding $container_padding;
+
+  #NautilusPathButton {
+    margin: 0 $container_padding / 2;
+    border-radius: $bt_radius;
+
+    &.current-dir {
+      color: $header_fg;
+  
+      &:hover, &:active {
+        background: none;
+        box-shadow: none;
+      }
+    }
+
+    &:first-child { margin-left: 0; }
+  }
+
+  > menubutton {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+// Extensions
 window.nightthemeswitcher headerbar {
   background: $header_bg;
   color: $header_fg;
 }
-
 
 //
 // Gnome Control Center
