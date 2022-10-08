@@ -1606,7 +1606,7 @@ headerbar {
     &:disabled { background: none; }
   }
 
-  stackswitcher.linked.stack-switcher:not(.vertical) > button {
+  .linked.stack-switcher:not(.vertical) > button {
     min-width: $menuitem_size - 4px;
     border-radius: $bt_radius;
   }
@@ -1633,7 +1633,7 @@ headerbar {
     &:backdrop { opacity: 0.65; background-image: none; }
   }
 
-  stackswitcher {
+  .stack-switcher {
     box-shadow: inset 0 0 0 1px $light_borders_color;
     border-radius: $bt_radius;
     padding: 0;

@@ -197,7 +197,7 @@ $raven_padding: 8px;
     entry.search {
       padding: 5px 10px;
       border: none;
-      border-bottom: 1px solid $header_border;
+      border-bottom: 1px solid rgba(black, if($variant == 'light', 0.1, 0.75));
       border-radius: 0;
       box-shadow: none;
       font-size: 110%;

@@ -1390,7 +1390,11 @@ window.background.csd {
       &,
       > stack,
       > stack > box.vertical {
-        > list > row.activatable { @extend %sidebar_row; }
+        > list {
+          padding: 2px 0;
+
+          > row.activatable { @extend %sidebar_row; }
+        }
       }
     }
   }

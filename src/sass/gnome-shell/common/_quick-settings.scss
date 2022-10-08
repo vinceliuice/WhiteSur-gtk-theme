@@ -1,17 +1,9 @@
 .quick-settings {
-  padding: $base_padding * 3 !important;
-  border-radius: 10px + $base_padding * 4 !important;
+  padding: $base_padding * 3;
+  border-radius: $modal_radius * 2;
 
   .icon-button, .button {
-    min-height: 20px + $base_padding * 2 !important;
-    min-width: 20px + $base_padding * 2 !important;
-    padding: 0 !important;
-    border-radius: $circular_radius;
-  }
-
-  .popup-menu-content {
-    padding: $base_padding * 2 !important;
-    margin-top: $base_padding * 2 !important;
+    padding: $base_padding * 1.75;
   }
 }
 
@@ -22,9 +14,9 @@
 
 .quick-toggle {
   border-radius: $circular_radius;
-  min-width: 12em !important;
-  max-width: 12em !important;
-  min-height: 40px !important;
+  min-width: 12em;
+  max-width: 12em;
+  min-height: 40px;
   border: none;
   background-color: $fill_color !important;
 
@@ -55,22 +47,22 @@
 
   /* Move padding into the box; this is to allow menu arrows
      to extend to the border */
-  &.button { padding: 0 !important; }
-  & > StBoxLayout { padding: 0 $base_padding * 2 !important; }
-  &:ltr > StBoxLayout { padding-left: $base_padding * 2.5 !important; }
-  &:rtl > StBoxLayout { padding-right: $base_padding * 2.5 !important; }
+  &.button { padding: 0; }
+  & > StBoxLayout { padding: 0 $base_padding * 2; }
+  &:ltr > StBoxLayout { padding-left: $base_padding * 2.5; }
+  &:rtl > StBoxLayout { padding-right: $base_padding * 2.5; }
 
   .quick-toggle-label { font-weight: bold; }
   .quick-toggle-icon, .quick-toggle-arrow { icon-size: $base_icon_size; }
 }
 
 .quick-menu-toggle {
-  &:ltr > StBoxLayout { padding-right: 0 !important; }
-  &:rtl > StBoxLayout { padding-left: 0 !important; }
+  &:ltr > StBoxLayout { padding-right: 0; }
+  &:rtl > StBoxLayout { padding-left: 0; }
 
   .quick-toggle-arrow {
     background-color: $fill_color !important;
-    padding: $base_padding $base_padding * 1.75 !important;
+    padding: $base_padding $base_padding * 1.75;
 
     &:active {
       background-color: $divider_color !important;
@@ -114,12 +106,13 @@
 .quick-toggle-menu {
   background-color: $menu_bg !important;
   color: $text_color !important;
-  border-radius: 10px + $base_padding * 2.5 !important;
-  padding: $base_padding * 2 !important;
-  margin: $base_padding * 2 $base_padding * 6 0 !important;
+  border-radius: $base_border_radius * 3;
+  padding: $base_padding * 2;
+  margin: $base_padding * 2 $base_padding * 6 0;
 
   .popup-menu-item {
     border-radius: $circular_radius !important;
+    min-height: 20px;
 
     &:focus, &:hover, &.selected {
       color: $text_color !important;
@@ -155,6 +148,8 @@
     background-color: $fill_color;
     color: $text_color;
     border-radius: $circular_radius;
+    min-height: 24px;
+    min-width: 24px;
 
     &:hover { @include button(flat-hover); }
     &:active { @include button(flat-active); }

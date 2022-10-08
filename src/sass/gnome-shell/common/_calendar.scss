@@ -11,17 +11,17 @@
 
 // overall menu
 #calendarArea {
-  padding: $base_padding * 2 0;
+  padding: $base_padding * 1.5 0;
 }
 
 // Calendar menu side column
 .datemenu-calendar-column {
   spacing: $base_spacing;
   border: 0 solid $borders_color;
-  padding: 0 $base_padding * 2;
+  padding: 0 0 0 $base_padding * 2;
 
-  &:ltr {margin-right: $base_margin * 2; border-left-width: 0; }
-  &:rtl {margin-left: $base_margin * 2; border-right-width: 0; }
+  &:ltr { margin-right: $base_margin * 2; border-left-width: 0; }
+  &:rtl { margin-left: $base_margin * 2; border-right-width: 0; }
 
   .datemenu-displays-section { padding-bottom: 0; }
 
