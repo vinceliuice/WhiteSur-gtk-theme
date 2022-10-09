@@ -3,7 +3,7 @@
   border-radius: $modal_radius * 2;
 
   .icon-button, .button {
-    padding: $base_padding * 1.75;
+    padding: $container_padding;
   }
 }
 
@@ -148,16 +148,20 @@
     background-color: $fill_color;
     color: $text_color;
     border-radius: $circular_radius;
-    min-height: 24px;
-    min-width: 24px;
+    min-height: 24px !important;
+    min-width: 24px !important;
+    // padding: $container_padding;
 
     &:hover { @include button(flat-hover); }
     &:active { @include button(flat-active); }
 
-    > StIcon { -st-icon-style: symbolic; }
+    > StIcon {
+     -st-icon-style: symbolic;
+     icon-size: $base_icon_size;
+    }
   }
 
-  & .power-item {
+  .power-item {
     min-height: 0;
     min-width: 0;
 
