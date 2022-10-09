@@ -2,18 +2,13 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-die() {
-  echo "$@" >&2
-  exit 1
-}
-
 pakitheme_gtk3() {
   local color="$(destify ${1})"
   local opacity="$(destify ${2})"
   local alt="$(destify ${3})"
   local theme="$(destify ${4})"
 
-  local FLATPAK_THEME="${name}${color}${opacity}${alt}${theme}"
+  local FLATPAK_THEME="${name}${color}${opacity}${alt}${theme}${colorscheme}"
 
   local GTK_3_THEME_VER=3.22
   local cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
@@ -57,7 +52,7 @@ pakitheme_gtk3() {
   <id>$gtk3_app_id</id>
   <metadata_license>CC0-1.0</metadata_license>
   <name>$FLATPAK_THEME Gtk theme</name>
-  <summary>$FLATPAK_THEME Gtk theme (generated via pakitheme)</summary>
+  <summary>$FLATPAK_THEME Gtk theme for flatpak</summary>
 </component>
 EOF
 
@@ -97,7 +92,7 @@ EOF
     if [[ -w "/root" ]]; then
       sudo flatpak install -y --system "${bundle}"
     else
-      udo flatpak install -y --user "${bundle}"
+      flatpak install -y --user "${bundle}"
     fi
   done
 }
@@ -109,8 +104,8 @@ flatpak_remove() {
   local theme="$(destify ${4})"
 
   if [[ -w "/root" ]]; then
-    sudo flatpak remove -y --system org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}
+    sudo flatpak remove -y --system org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}${colorscheme}
   else
-    udo flatpak remove -y --user org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}
+    flatpak remove -y --user org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}${colorscheme}
   fi
 }
