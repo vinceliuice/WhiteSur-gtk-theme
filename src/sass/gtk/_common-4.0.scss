@@ -2697,14 +2697,14 @@ popover.menu {
   margin: 0;
   box-shadow: none;
 
-  &:hover:not(:checked) {
+  &:hover:not(:checked):not(:selected) {
     color: mix($fg_color, $disabled_fg_color, 50%);
     background-color: if($variant == 'light', rgba(white, 0.2), rgba(white, 0.05));
     border-color: if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
     box-shadow: none;
   }
 
-  &:checked {
+  &:checked, &:selected {
     color: $fg_color;
     background-color: $header_bg;
     border-color: if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
@@ -2722,13 +2722,13 @@ popover.menu {
   margin: 0;
   box-shadow: none;
 
-  &:hover:not(:checked) {
+  &:hover:not(:checked):not(:selected){
     color: mix($fg_color, $disabled_fg_color, 50%);
     background-color: rgba($fg_color, 0.06);
     box-shadow: none;
   }
 
-  &:checked {
+  &:checked, &:selected {
     color: $fg_color;
     background-color: rgba($fg_color, 0.12);
     box-shadow: none;
@@ -2946,7 +2946,13 @@ tabbox {
     padding: 0 $container_padding / 2 $container_padding / 2;
   }
 
-  > tab {
+  > tabboxchild {
+    margin: 0 -3px;
+    border-radius: 0;
+  }
+
+  > tab,
+  > tabboxchild > tab {
     @if $monterey == 'false' {
       @extend %tabs_tab;
       border-top: none;
