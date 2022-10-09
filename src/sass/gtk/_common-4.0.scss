@@ -632,41 +632,36 @@ entry {
 }
 
 .entry-tag {
-  $tag_height: $menuitem_size - 4px;
-  $tag_margin: 8px;
-
-  margin: $tag_margin; // instead of min-height: $tag_height;
-  border-radius: 50px;
+  margin: 0;
+  min-height: 16px;
+  border-radius: $circular_radius;
   box-shadow: none;
-  background-color: $destructive_color;
+  background-color: $suggested_color;
   color: $light_fg_color;
   border: none;
+  padding: 2px;
 
-  &:hover { box-shadow: 0 0 0 1px $borders_color; }
+  &:hover { box-shadow: $shadow_4; }
 
   // side margins: compensate the entry padding with a negative margin
   // then the negative margin itself
   :dir(ltr) & {
-    margin-left: 8px;
-    margin-right: $tag_margin - 8px;
-    padding-left: 8px;
-    padding-right: ($tag_height - 16px) / 2;
+    margin-left: $container_padding / 2;
+    margin-right: 0;
   }
 
   :dir(rtl) & {
-    margin-left: $tag_margin - 8px;
-    margin-right: 8px;
-    padding-left: ($tag_height - 16px) / 2;
-    padding-right: 8px;
+    margin-left: 0;
+    margin-right: $container_padding / 2;
   }
 
   // seems any sizing doesn't work
-  &.button {
-    box-shadow: none;
-    border: none;
-    background-color: transparent;
-
-    &:not(:hover):not(:active) { color: $disabled_fg_color; }
+  > button {
+    min-height: 20px;
+    min-width: 20px;
+    padding: 0;
+    border-radius: $circular_radius;
+    @extend %selected-button;
   }
 }
 
@@ -4388,10 +4383,12 @@ stacksidebar {
 
 // Navigation Sidebar
 .navigation-sidebar {
+  background-color: $dark_sidebar_bg;
   padding: $container_padding 0; //only vertical padding. horizontal row size would clip
 
   > separator {
     margin: $container_padding 0;
+    background: none;
   }
 
   > row {

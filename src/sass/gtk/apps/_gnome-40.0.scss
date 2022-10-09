@@ -4,6 +4,18 @@
  ************/
 
  .nautilus-window {
+  flap.unfolded {
+    > separator.horizontal {
+      background-color: $header_border;
+    }
+  }
+
+  flap.folded {
+    > placessidebar {
+      border-right: 1px solid $header_border;
+    }
+  }
+
   // Floating Bar
   .floating-bar {
     padding: 2px;
@@ -13,13 +25,11 @@
     margin: $container_padding;
     box-shadow: $shadow_5;
 
-    button {
-      border: none;
+    > button.circular.flat {
       border-radius: $circular_radius;
-      min-height: 0;
-      min-width: 0;
+      min-height: 24px;
+      min-width: 24px;
       padding: 0;
-      margin-right: container_padding;
       -gtk-icon-shadow: none;
       @extend %selected-button;
     }
@@ -35,6 +45,16 @@
 
 #NautilusQueryEditor { // search entry
   padding: 1px $container_padding;
+
+  > box { margin: 0; }
+
+  #NautilusQueryEditorTag {
+    @extend .entry-tag;
+
+    > button {
+      margin: 0;
+    }
+  }
 
   > menubutton > button {
     min-width: 16px;
