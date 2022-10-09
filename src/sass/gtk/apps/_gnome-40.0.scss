@@ -118,3 +118,141 @@ window.background.csd {
     }
   }
 }
+
+
+//
+// Gnome Calendar / Gnome Contacts
+//
+
+window.background {
+  > contents > toastoverlay > leaflet {
+    > box {
+      background-color: $base_color;
+  
+      > headerbar {
+        &, &:backdrop {
+          background: none;
+          border: none;
+        }
+      }
+
+      + separator {
+        @extend %side_separator;
+  
+        + box {
+          background-color: $dark_sidebar_bg;
+        }
+      }
+
+      > .view, list:not(.boxed-list) {
+        background-color: transparent;
+      }
+
+      list > row textview {
+        padding: $container_padding;
+        border-left: 1px solid $borders_color;
+ 
+        &, & > text {
+          background: none;
+        }
+      }
+    }
+  
+    .current-week {
+      background-color: $fill_color;
+    }
+  
+    button.circular.day {
+      border: none;
+      box-shadow: none;
+      @extend %flat_button;
+    }
+
+    datechooser navigator > button.flat.pill {
+      padding: 0 $container_padding * 2;
+      min-height: $menuitem_size;
+      min-width: $menuitem_size;
+    }
+  }
+
+  &.maximized, &.tiled {
+    > contents > toastoverlay > leaflet {
+      > box {
+        > headerbar {
+          &, &:backdrop {
+            background: none;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+menubutton.flat.popup.sources-button {
+  margin: 0;
+
+  > button {
+    margin: 0;
+    border-radius: 0;
+    padding: 0 $container_padding * 2;
+
+    .title {
+      font-size: small;
+      font-weight: normal;
+    }
+
+    .title, .subtitle {
+      padding: 2px 0 2px $container_padding;
+    }
+
+    image.calendar-color-image {
+      -gtk-icon-size: 8px;
+    }
+  }
+}
+
+// Contacts
+.contacts-editor-address {
+  > entry.flat {
+    &:not(:last-child) {
+      box-shadow: inset 0 -1px $borders_color;
+    }
+
+    &:first-child {
+      border-radius: $bt_radius $bt_radius 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 $bt_radius $bt_radius;
+    }
+  }
+}
+
+//
+// Calculator
+//
+
+.history-view { background-color: $base_color; }
+
+.card {
+  &.display-container {
+    border: 1px solid $borders_color;
+  }
+
+  #displayitem {
+    border-top: 1px solid $borders_color;
+  }
+
+  .small & {
+    border-radius: 0;
+  
+    &.forecast-card {
+      border-width: 1px 0;
+    }
+  
+    &.display-container {
+      border-width: 0 0 1px 0;
+    }
+  }
+}

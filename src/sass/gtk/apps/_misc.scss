@@ -449,6 +449,7 @@ window.background.csd {
 //
 // Inkscape
 //
+
 toolbar#SubToolBox {
   min-height: 36px;
 
@@ -480,6 +481,15 @@ widget#ToolboxCommon {
     }
   }
 
+  > #CommandsToolbox {
+    border-bottom: 1px solid $borders_color;
+
+    > toolbar {
+      background: none;
+      border: none;
+    }
+  }
+
   > toolbar#ToolToolbar { // Left side toolbar
     background-color: $bg_color;
     border-right: 1px solid $borders_color;
@@ -508,14 +518,14 @@ box#SnapToolbox {
 }
 
 box#DesktopStatusBar {
-  spinbutton, button.combo {
-    margin-top: 6px;
-    margin-bottom: 6px;
+  spinbutton, button.combo, button.flat {
+    margin-top: $container_padding * 1.5;
+    margin-bottom: $container_padding * 1.5;
   }
 }
 
 scrolledwindow#DialogNotebook {
-  > viewport.frame > notebook.frame {
+  > viewport.frame {
     border: 1px solid $borders_color;
 
     button.close-button {
@@ -547,8 +557,8 @@ grid#CanvasGrid {
 dialog.background {
   > box.dialog-vbox > filechooser {
     > actionbar > revealer > box > box > box > combobox {
-      margin-top: 24px;
-      margin-bottom: 24px;
+      margin-top: 28px;
+      margin-bottom: 28px;
     }
   }
 }

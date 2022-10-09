@@ -749,8 +749,9 @@ button {
 
   &.image-button:not(.circular), &.popup:not(.circular) {
     min-height: $menuitem_size - 4px;
-    padding-left: $container_padding;
-    padding-right: $container_padding;
+    min-width: $menuitem_size - 4px;
+    padding-left: $container_padding - 2px;
+    padding-right: $container_padding - 2px;
   }
 
   &.text-button {
@@ -1100,10 +1101,16 @@ button:link, button:visited {
 spinbutton {
   &:drop(active) { box-shadow: none; }
 
-  button:active { color: $selected_fg_color; }
   &:disabled { color: $disabled_fg_color; }
 
-  entry {
+  > button {
+    min-width: 24px;
+    padding: 0 $container_padding / 2;
+
+    &:active { color: $selected_fg_color; }
+  }
+
+  > entry {
     @extend %Linked_entrys;
     border: 1px solid $dark_borders_color;
 
@@ -1127,7 +1134,10 @@ spinbutton {
       min-width: $menuitem_size;
     }
 
-    button, entry { @extend %linked; min-height: $small_size; }
+    button, entry {
+      @extend %linked;
+      min-height: $small_size;
+    }
 
     &:dir(ltr) entry,
     &:dir(rtl) button.up { border-radius: $bt_radius 0 0 $bt_radius; }
@@ -1477,7 +1487,7 @@ actionbar {
 
 headerbar {
   min-height: $headerbar_size;
-  padding: 0 $container_padding + 10px;
+  padding: 0 8px;
   color: $header_fg;
   background-color: $header_bg;
   border-bottom: 1px solid $header_border;
@@ -2487,6 +2497,14 @@ notebook {
       }
     }
 
+    button.image-button {
+      @extend %flat_button;
+
+      @if $monterey == 'false' {
+        border-radius: 0;
+      }
+    }
+
     button.flat.toggle.popup {
       min-width: $medium_size;
       border: none;
@@ -2737,7 +2755,7 @@ scrollbar {
 $switch_image: linear-gradient(0deg, rgba($fg_color, 0.25) 0%, rgba($fg_color, 0.35) 100%);
 $switch_disabled_image: linear-gradient(0deg, rgba($fg_color, 0.1) 0%, rgba($fg_color, 0.15) 100%);
 $switch_checked_image: linear-gradient(0deg, lighten($selected_bg_color, 10%) 0%, $selected_bg_color 100%);
-$switch_checked_backdrop_image: linear-gradient(0deg, lighten($bg_color, 15%) 0%, lighten($bg_color, 5%)  100%);
+$switch_checked_backdrop_image: linear-gradient(0deg, rgba($fg_color, 0.45) 0%, rgba($fg_color, 0.55) 100%);
 $switch_checked_disabled_image: linear-gradient(0deg, lighten($selected_bg_color, 35%) 0%, lighten($selected_bg_color, 25%) 100%);
 $switch_animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
 
@@ -2786,12 +2804,12 @@ switch {
       background-image: $switch_checked_disabled_image;
       color: transparent;
     }
-  }
 
-  &:backdrop {
-    background-color: transparent;
-    background-image: $switch_checked_backdrop_image;
-    color: transparent;
+    &:backdrop {
+      background-color: transparent;
+      background-image: $switch_checked_backdrop_image;
+      color: transparent;
+    }
   }
 
   slider {
@@ -3409,6 +3427,10 @@ scrolledwindow {
           border: 1px solid $borders_color;
         }
       }
+    }
+
+    scrolledwindow.frame {
+      border: 1px solid $borders_color;
     }
 
     > box.vertical list.content.view {
@@ -4355,7 +4377,13 @@ decoration {
 //
 // Titlebuttons
 //
+
 headerbar {
+  > box.left,
+  > box.right { // Titlebutton space
+    padding: 0 10px;
+  }
+
   button.titlebutton {
     &.close, &.maximize, &.minimize {
       min-width: 16px;
