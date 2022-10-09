@@ -11,7 +11,7 @@
   color: $light_alt_fg_color;
   border-radius: $circular_radius;
   border: none;
-  box-shadow: 0 3px 8px rgba(black, 0.25);
+  // box-shadow: 0 3px 8px rgba(black, 0.25);
   icon-size: $base_icon_size * 4; // 64px
 
   &:hover {
@@ -19,7 +19,7 @@
   }
 
   & StIcon {
-    background-color: transparentize($light_alt_fg_color, 0.95);
+    background-color: $light_track_color;
     border-radius: $circular_radius;
     padding: $base_padding * 2; // 12px
     width: $base_icon_size * 2.5; height:  $base_icon_size * 2.5; // 40px;
