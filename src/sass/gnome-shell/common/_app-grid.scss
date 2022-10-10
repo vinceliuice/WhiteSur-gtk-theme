@@ -7,17 +7,17 @@
   @include font(body-1);
 
   .overview-icon.overview-icon-with-label {
-    padding: 10px 8px 5px 8px;
+   padding: 10px 12px 14px;
 
     > StBoxLayout {
-      spacing: $base_spacing;
+      spacing: 6px;
     }
   }
 
-  & .overview-icon {
+  .overview-icon {
     color: $light_fg_color;
-    border-radius: $wm_radius;
-    padding: $container_padding;
+    border-radius: $wm_radius * 1.5;
+    padding: 12px;
     border: none;
     transition-duration: 100ms;
     text-align: center;
@@ -42,11 +42,11 @@
 // App Folders
 .app-folder {
   background: none;
-  border-radius: $bt_radius * 2;
+  border-radius: $wm_radius * 1.5;
 
   .overview-icon {
     background-color: $light_divider_color;
-    border-radius: $bt_radius * 2;
+    border-radius: $wm_radius * 1.5;
   }
 
   &:hover .overview-icon {
@@ -62,12 +62,12 @@
 .app-folder-dialog {
   border-radius: $bd_radius * 4;
   border: 0 solid rgba(white, 0.15);
-  padding: $container_padding * 2;
+  // padding: 0;
   background-color: rgba(if($colorscheme == 'nord', #20242c, #262626), 0.9);
 
   & .folder-name-container {
-    padding: $container_padding * 3 $container_padding * 4 0;
-    spacing: $base_spacing * 2;
+    padding: 24px 36px 0;
+    spacing: 12px;
 
     & .folder-name-label,
     & .folder-name-entry {
@@ -90,7 +90,7 @@
       padding: 0;
       width: 36px;
       height: 36px;
-      border-radius: 18px;
+      border-radius: $circular_radius;
 
       & > StIcon { icon-size: 16px; }
 
@@ -101,7 +101,7 @@
 
   & .icon-grid {
     row-spacing: 12px;
-    column-spacing: 30px;
+    column-spacing: if($laptop == 'true', 12px, 18px);
     page-padding-top: 0;
     page-padding-bottom: 0;
     page-padding-left: 0;
@@ -114,17 +114,18 @@
 }
 
 .app-folder-dialog-container {
-  padding: $container_padding;
-  width: if($laptop == 'true', 500px, 620px);
-  height: if($laptop == 'true', 500px, 620px);
+  padding: 6px !important;
+
+  width: if($laptop == 'true', 580px, 680px);
+  height: if($laptop == 'true', 580px, 680px);
 }
 
 // Running app indicator (also shown in dash)
 .app-well-app-running-dot {
   width: 5px; height: 5px;
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: $light_alt_fg_color;
-  margin-bottom: 0;
+  margin-bottom: 6px;
 
   StWidget.focused & {
     background-color: $primary_color;
@@ -164,20 +165,6 @@
     background-color: $light_alt_fg_color;
   }
   &:checked:active { background-image: none; }
-}
-
-// right-click app menu
-.app-menu,
-.app-well-menu {
-  max-width: 27.25em;
-}
-
-// Rename popup for app folders
-.rename-folder-popup {
-  .rename-folder-popup-item {
-    spacing: $container_padding;
-    &:ltr, &:rtl { padding: 0 $container_padding * 2; }
-  }
 }
 
 // shutdown and other actions in the grid

@@ -73,6 +73,10 @@
     background: none;
     box-shadow: none;
 
+    .app-well-app-running-dot {
+      margin-bottom: 0 !important;
+    }
+
     StWidget.focused .app-well-app-running-dot {
       background-color: $primary_color;
     }

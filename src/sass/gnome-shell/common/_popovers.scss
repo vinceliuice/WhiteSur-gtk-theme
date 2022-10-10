@@ -220,3 +220,17 @@ $popop_menuitem_radius: $wm_radius - 4px;
     &:rtl { margin-left: $base_margin * 2 !important; }
   }
 }
+
+// right-click app menu
+.app-menu,
+.app-well-menu {
+  max-width: 27.25em;
+}
+
+// Rename popup for app folders
+.rename-folder-popup {
+  .rename-folder-popup-item {
+    spacing: $base_spacing;
+    &:ltr, &:rtl { padding: 0 $base_padding * 2; }
+  }
+}
