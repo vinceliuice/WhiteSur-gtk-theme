@@ -422,7 +422,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
       min-height: 0;
       min-width: 0;
       padding: 0;
-      margin-right: container_padding;
+      margin-right: $container_padding;
       -gtk-icon-shadow: none;
       @extend %selected-button;
     }
