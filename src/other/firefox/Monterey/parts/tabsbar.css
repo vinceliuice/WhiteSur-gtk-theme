@@ -18,8 +18,13 @@ tab > stack {
 	background-image: none !important;
 }
 
-.tabbrowser-tab {
+.tabbrowser-tab:not([pinned]) {
 	margin: 2px 0 0 !important;
+}
+
+.tabbrowser-tab[pinned] {
+	margin-top: 2px !important;
+	margin-bottom: 0 !important;
 }
 
 .tabbrowser-tab:not([visuallyselected="true"], [multiselected]), .tabbrowser-tab:-moz-lwtheme {
