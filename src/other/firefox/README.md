@@ -4,7 +4,7 @@
 <p align="center">A MacOSX Safari theme for Firefox 80+</p>
 
 #### Preview
-![01](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox-whitesur.png?raw=true)
+![01](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox.png?raw=true)
 
 ## Description
 
@@ -18,8 +18,6 @@ Run `./tweaks.sh -f`
 if you want to use `Monterey` style then:
 
 Run `./tweaks.sh -f monterey`
-
-![01](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox-monterey.png?raw=true)
 
 ### Tips about monterey options (Fix the urlbar attached tabs issue)
 
