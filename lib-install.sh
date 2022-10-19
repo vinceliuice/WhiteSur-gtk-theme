@@ -477,12 +477,8 @@ install_theemy() {
 
 remove_packy() {
   rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})${colorscheme}"
-  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-dark.css,assets,windows-assets}
   rm -rf "${dest}/${name}$(destify ${1})${colorscheme}-hdpi"
   rm -rf "${dest}/${name}$(destify ${1})${colorscheme}-xhdpi"
-
-  # Backward compatibility
-  # rm -rf "${dest}/${name}$(destify ${1})-mdpi"
 }
 
 remove_old_packy() {
@@ -493,7 +489,9 @@ remove_old_packy() {
 
 config_gtk4() {
   local color="$(destify ${1})"
-  local alt="$(destify ${2})"
+  local opacity="$(destify ${2})"
+  local alt="$(destify ${3})"
+  local theme="$(destify ${4})"
 
   local TARGET_DIR="${HOME}/.config/gtk-4.0"
 
@@ -535,8 +533,12 @@ install_themes() {
 }
 
 install_libadwaita() {
-  gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}" "${compact[0]}"
-  config_gtk4 "${colors[0]}" "${alt[0]}"
+  gtk_base "${colors[1]}" "${opacities[0]}" "${themes[0]}"
+  config_gtk4 "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}"
+}
+
+remove_libadwaita() {
+  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-dark.css,assets,windows-assets}
 }
 
 remove_themes() {
@@ -805,6 +807,7 @@ disconnect_snap() {
 #########################################################################
 
 gtk_base() {
+  rm -rf "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
 
   # Theme base options
@@ -826,6 +829,7 @@ gtk_base() {
 ###############################################################################
 
 customize_theme() {
+  rm -rf "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
   # Darker dark colors

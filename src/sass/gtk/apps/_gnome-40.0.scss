@@ -3,8 +3,20 @@
  * Nautilus *
  ************/
 
- .nautilus-window {
+.nautilus-window {
+  &.background.csd {
+    background-color: transparent;
+  }
+
   flap.unfolded {
+    > placessidebar.background {
+      background: none;
+
+      list.navigation-sidebar {
+        background-color: $dark_sidebar_bg;
+      }
+    }
+
     > separator.horizontal {
       background-color: $header_border;
     }
@@ -78,7 +90,7 @@
 
     &.current-dir {
       color: $header_fg;
-  
+
       &:hover, &:active {
         background: none;
         box-shadow: none;
@@ -148,7 +160,7 @@ window.background {
   > contents > toastoverlay > leaflet {
     > box {
       background-color: $base_color;
-  
+
       > headerbar {
         &, &:backdrop {
           background: none;
@@ -158,7 +170,7 @@ window.background {
 
       + separator {
         @extend %side_separator;
-  
+
         + box {
           background-color: $dark_sidebar_bg;
         }
@@ -171,17 +183,17 @@ window.background {
       list > row textview {
         padding: $container_padding;
         border-left: 1px solid $borders_color;
- 
+
         &, & > text {
           background: none;
         }
       }
     }
-  
+
     .current-week {
       background-color: $fill_color;
     }
-  
+
     button.circular.day {
       border: none;
       box-shadow: none;
@@ -266,11 +278,11 @@ menubutton.flat.popup.sources-button {
 
   .small & {
     border-radius: 0;
-  
+
     &.forecast-card {
       border-width: 1px 0;
     }
-  
+
     &.display-container {
       border-width: 0 0 1px 0;
     }

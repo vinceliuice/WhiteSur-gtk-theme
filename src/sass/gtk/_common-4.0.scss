@@ -4256,7 +4256,7 @@ window.dialog.message { // Message Dialog styling
       padding: ($container_padding - 2px) ($container_padding + 2px);
       box-shadow: none;
       border-radius: $bt_radius;
-      margin: 0 3px 3px 3px;
+      margin: $container_padding / 2;
       border: none;
 
       &:not(.suggested-action):not(.destructive-action) {
@@ -4287,6 +4287,39 @@ window.dialog.message { // Message Dialog styling
     }
 
     &.background, .titlebar { background-color: $messagedialog_bg; }
+  }
+}
+
+window.background.messagedialog {
+  .response-area {
+    padding: $container_padding;
+
+    button {
+      min-height: 20px;
+      padding: ($container_padding - 2px) ($container_padding + 2px);
+      box-shadow: none;
+      border-radius: $bt_radius;
+      margin: $container_padding / 2;
+      border: none;
+
+      &:not(.suggested-action):not(.destructive-action) {
+        border-radius: $bt_radius;
+        background-color: transparent;
+
+        &:hover {
+          @include button(flat-hover);
+          transition: $button_transition;
+        }
+
+        &:active {
+          @include button(active);
+        }
+      }
+
+      &.suggested-action, &.destructive-action {
+        border-radius: $bt_radius;
+      }
+    }
   }
 }
 
@@ -4439,7 +4472,7 @@ placessidebar {
     // Using margins/padding directly in the SidebarRow
     // will make the animation of the new bookmark row jump
     > revealer {
-      padding: 0 $container_padding + 4px;
+      padding: 0;
     }
 
     image.sidebar-icon {

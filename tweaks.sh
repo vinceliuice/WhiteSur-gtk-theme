@@ -38,6 +38,7 @@ usage() {
   helpify "-p, --panel-opacity" "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "Set '${THEME_NAME}' GDM (GNOME Shell) theme panel transparency"              "Default is 15%"
   helpify "-P, --panel-size"    "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"    "Set '${THEME_NAME}' Gnome shell panel height size"                           "Default is 32px"
   helpify "-i, --icon"          "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"          "Set '${THEME_NAME}' GDM (GNOME Shell) 'Activities' icon"                     "Default is 'standard'"
+  helpify "-l, --libadwaita"    ""                                                  "Install gtk-4.0 files to gtk4.0 config folder for libadwaita"                "Do not run this option with sudo !"
   helpify "-r, --remove, --revert" ""                                               "Revert to the original themes, do the opposite things of install and connect" ""
   helpify "--silent-mode"       ""                                                  "Meant for developers: ignore any confirm prompt and params become more strict" ""
   helpify "-h, --help"          ""                                                  "Show this help"                                                              ""
@@ -153,6 +154,8 @@ while [[ $# -gt 0 ]]; do
       no_darken="true"; shift ;;
     -n|--no-blur)
       no_blur="true"; shift ;;
+    -l|--libadwaita)
+      libadwaita="true"; shift ;;
       # Parameters that require value, single use
     -b|--background)
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
@@ -210,6 +213,15 @@ if [[ "${uninstall}" == 'true' ]]; then
     remove_firefox_theme
     prompt -s "Done! '${name}' Firefox theme has been removed."; echo
   fi
+
+  if [[ "${libadwaita}" == 'true' ]]; then
+    if [[ "$UID" != '0' ]]; then
+      remove_libadwaita
+      prompt -s "Removed gtk-4.0 theme files in '${HOME}/.config/gtk-4.0/' !"; echo
+    else
+      prompt -e "Do not run '--libadwaita' option with sudo!"; echo
+    fi
+  fi
 else
   show_needed_dialogs; customize_theme
 
@@ -255,9 +267,18 @@ else
     prompt -i "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory."
     echo
   fi
+
+  if [[ "${libadwaita}" == 'true' ]]; then
+    if [[ "$UID" != '0' ]]; then
+      install_libadwaita
+      prompt -w "Installed ${name} ${opacities} ${colors} gtk-4.0 into config for libadwaita!"; echo
+    else
+      prompt -e "Do not run '--libadwaita' option with sudo!"; echo
+    fi
+  fi
 fi
 
-if [[ "${firefox}" == "false" && "${edit_firefox}" == "false" && "${flatpak}" == "false" && "${snap}" == "false" && "${gdm}" == "false" && "${dash_to_dock}" == "false" ]]; then
+if [[ "${firefox}" == "false" && "${edit_firefox}" == "false" && "${flatpak}" == "false" && "${snap}" == "false" && "${gdm}" == "false" && "${dash_to_dock}" == "false" && "${libadwaita}" == "false" ]]; then
   prompt -e "Oops... there's nothing to tweak..."
   prompt -i "HINT: Don't forget to define which component to tweak, e.g. '--gdm'"
   prompt -i "HINT: Run ./tweaks.sh -h for help!..."; echo

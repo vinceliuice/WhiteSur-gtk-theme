@@ -35,7 +35,6 @@ usage() {
   helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"           "Set 'Activities' icon"                            "Default is 'standard'"
   helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                         "Set gnome-shell background image"                 "Default is BigSur-like wallpaper"
   helpify "-m, --monterey"                ""                                          "Set to MacOS Monterey style"                      ""
-  helpify "-l, --libadwaita"              ""                                          "Install gtk-4.0 files to gtk4.0 config folder for libadwaita" "Do not run this option with sudo !"
   helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                               "Default is BigSur-like style (stabled sidebar)"
   helpify "-HD, --highdefinition"         ""                                          "Set to High Definition size"                      "Default is laptop size"
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
@@ -164,15 +163,6 @@ else
   prompt -i "Nautilus variant : ${nautilus_style}"
 
   echo; install_themes; echo; prompt -s "Done!"
-
-  if [[ "${libadwaita}" == 'true' ]]; then
-    if [[ "$UID" != '0' ]]; then
-      install_libadwaita
-      echo; prompt -w "Installed gtk-4.0 into config for libadwaita!"
-    else
-      echo; prompt -e "Do not run '--libadwaita' option with sudo!"
-    fi
-  fi
 
   if (is_running "xfce4-session"); then
     msg="XFCE: you may need to run 'xfce4-panel -r' after changing your theme to fix your panel opacity."

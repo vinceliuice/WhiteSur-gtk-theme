@@ -91,47 +91,44 @@ Usage:  `./install.sh [OPTIONS...]`
   -b, --background [default|blank|IMAGE_PATH]
  Set gnome-shell background image. Default is BigSur-like wallpaper
 
-  -m, --monterey 
- Set to MacOS Monterey style. 
-
-  -l, --libadwaita 
- Install gtk-4.0 theme into config for libadwaita. 
+  -m, --monterey
+ Set to MacOS Monterey style.
 
   -N, --nautilus-style [stable|normal|mojave|glassy]
  Set Nautilus style. Default is BigSur-like style (stabled sidebar)
 
-  -HD, --highdefinition 
+  -HD, --highdefinition
  Set to High Definition size. Default is laptop size
 
-  --normal, --normalshowapps 
+  --normal, --normalshowapps
  Set gnome-shell show apps button style to normal. Default is bigsur
 
-  --round, --roundedmaxwindow 
+  --round, --roundedmaxwindow
  Set maximized window to rounded. Default is square
 
-  --right, --rightplacement 
+  --right, --rightplacement
  Set Nautilus titlebutton placement to right. Default is left
 
-  --black, --blackfont 
+  --black, --blackfont
  Set panel font color to black. Default is white
 
-  --darker, --darkercolor 
- Install darker 'WhiteSur' dark themes. 
+  --darker, --darkercolor
+ Install darker 'WhiteSur' dark themes.
 
-  --nord, --nordcolor 
- Install 'WhiteSur' Nord ColorScheme themes. 
+  --nord, --nordcolor
+ Install 'WhiteSur' Nord ColorScheme themes.
 
-  --dialog, --interactive 
- Run this installer interactively, with dialogs. 
+  --dialog, --interactive
+ Run this installer interactively, with dialogs.
 
-  --silent-mode 
- Meant for developers: ignore any confirm prompt and params become more strict. 
+  --silent-mode
+ Meant for developers: ignore any confirm prompt and params become more strict.
 
-  -r, --remove, -u, --uninstall 
- Remove all installed WhiteSur themes. 
+  -r, --remove, -u, --uninstall
+ Remove all installed WhiteSur themes.
 
-  -h, --help 
- Show this help. 
+  -h, --help
+ Show this help.
 ```
 
 </details>
@@ -201,26 +198,29 @@ Usage:  `./tweaks.sh [OPTIONS...]`
   -f, --firefox [default|monterey]
  Install 'WhiteSur|Monterey' theme for Firefox and connect it to the current Firefox profiles. Default is WhiteSur
 
-  -e, --edit-firefox 
- Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles. 
+  -e, --edit-firefox
+ Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles.
 
-  -F, --flatpak 
- Connect 'WhiteSur' theme to Flatpak. 
+  -F, --flatpak
+ Connect 'WhiteSur' theme to Flatpak.
 
-  -s, --snap 
- Connect 'WhiteSur' theme the currently installed snap apps. 
+  -s, --snap
+ Connect 'WhiteSur' theme the currently installed snap apps.
 
   -g, --gdm [default|x2]
  Install 'WhiteSur' theme for GDM (scaling: 100%/200%, default is 100%). Requires to run this shell as root
 
-  -d, --dash-to-dock 
- Fixed Dash to Dock theme issue. 
+  -d, --dash-to-dock
+ Fixed Dash to Dock theme issue.
 
-  -N, --no-darken 
- Don't darken 'WhiteSur' GDM theme background image. 
+  -N, --no-darken
+ Don't darken 'WhiteSur' GDM theme background image.
 
-  -n, --no-blur 
- Don't blur 'WhiteSur' GDM theme background image. 
+  -n, --no-blur
+ Don't blur 'WhiteSur' GDM theme background image.
+
+  -l, --libadwaita
+ Install gtk-4.0 theme into config for libadwaita. Do not run this option with sudo !
 
   -b, --background [default|blank|IMAGE_PATH]
  Set 'WhiteSur' GDM theme background image. Default is BigSur-like wallpaper
@@ -244,12 +244,12 @@ Usage:  `./tweaks.sh [OPTIONS...]`
  Set 'WhiteSur' GDM (GNOME Shell) 'Activities' icon. Default is 'standard'
 
   -r, --remove, --revert
- Revert to the original themes, do the opposite things of install and connect. 
+ Revert to the original themes, do the opposite things of install and connect.
 
   --silent-mode
- Meant for developers: ignore any confirm prompt and params become more strict. 
+ Meant for developers: ignore any confirm prompt and params become more strict.
 
-  -h, --help 
+  -h, --help
  Show this help.
 ```
 
