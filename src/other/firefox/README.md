@@ -1,8 +1,6 @@
 
 ## <p align="center"> <b> Firefox Safari theme </b> </p>
-
 ![01](https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox.png?raw=true)
-
 <p align="center">A MacOSX Safari theme for Firefox 80+</p>
 
 ## Description
