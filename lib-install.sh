@@ -487,8 +487,12 @@ remove_old_packy() {
   rm -rf "${dest}/${name}${1}${5}-xhdpi"
 }
 
+###############################################################################
+#                                 LIBADWAITA                                  #
+###############################################################################
+
 config_gtk4() {
-  local acolor="$(destify ${1})"
+  local color="$(destify ${1})"
   local alt="$(destify ${2})"
 
   local TARGET_DIR="${HOME}/.config/gtk-4.0"
@@ -496,12 +500,24 @@ config_gtk4() {
   # Install gtk4.0 into config for libadwaita
   mkdir -p                                                                                    "${TARGET_DIR}"
   rm -rf                                                                                      "${TARGET_DIR}/"{gtk.css,gtk-dark.css,assets,windows-assets}
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${acolor}.scss"                        "${TARGET_DIR}/gtk.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${TARGET_DIR}/gtk.css"
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-Dark.scss"                            "${TARGET_DIR}/gtk-dark.css"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TARGET_DIR}"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${colorscheme}"          "${TARGET_DIR}/windows-assets"
+}
+
+install_libadwaita() {
+  opacity="${opacities[0]}"
+  color="${colors[1]}"
+
+  gtk_base "${opacities[0]}" "${themes[0]}"
+  config_gtk4 "${colors}" "${alts}"
+}
+
+remove_libadwaita() {
+  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-dark.css,assets,windows-assets}
 }
 
 ###############################################################################
@@ -528,25 +544,6 @@ install_themes() {
   done
 
   stop_animation
-}
-
-install_libadwaita() {
-  gtk_base "${opacities[0]}" "${themes[0]}"
-
-  color="${colors[1]}"
-  acolor='Dark'
-
-  if [[ ${color} == '' ]]; then
-    acolor='Light'
-  else
-    acolor='Dark'
-  fi
-
-  config_gtk4 "${acolor}" "${alts}"
-}
-
-remove_libadwaita() {
-  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-dark.css,assets,windows-assets}
 }
 
 remove_themes() {

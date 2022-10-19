@@ -3,9 +3,49 @@
  * Nautilus *
  ************/
 
+$nautilus_header_image: image($header_bg);
+$nautilus_header_borders_image: image($header_border);
+$nautilus_borders_color: if($variant=='light', darken(rgba($dark_sidebar_bg, 1), 12%), $header_border);
+$flap_sidebar_size: 240px;
+
+@if $nautilus_style == 'stable' {
+  $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg $flap_sidebar_size,
+                                                 $nautilus_borders_color $flap_sidebar_size,
+                                                 $nautilus_borders_color ($flap_sidebar_size + 1px),
+                                                 $base_color ($flap_sidebar_size + 1px));
+
+  $nautilus_header_borders_image: linear-gradient(90deg, transparent $flap_sidebar_size,
+                                                         $header_border $flap_sidebar_size);
+}
+
+@if $nautilus_style == 'glassy' {
+  $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg ($flap_sidebar_size / 2),
+                                                 $dark_header_bg 40%);
+
+  $nautilus_header_borders_image: linear-gradient(90deg, rgba($header_border, 0) (($flap_sidebar_size / 2) - 40px),
+                                                         $header_border 40%);
+}
+
 .nautilus-window {
-  &.background.csd {
-    background-color: transparent;
+  @if $nautilus_style == 'stable' or $nautilus_style == 'glassy' {
+    &.background.csd {
+      background-color: transparent;
+
+      headerbar {
+        background-color: transparent;
+        border: none;
+        background-image: $nautilus_header_image;
+        border-image: $nautilus_header_borders_image 0 0 1 / 0px 0px 1px stretch;
+      }
+    }
+  }
+
+  @if $nautilus_style == 'stable' {
+    headerbar {
+      box.start > box {
+        margin-left: 144px;
+      }
+    }
   }
 
   flap.unfolded {

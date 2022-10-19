@@ -132,10 +132,19 @@ finalize_argument_parsing
 #---------------------------START INSTALL THEMES-------------------------------#
 
 if [[ "${uninstall}" == 'true' ]]; then
-  prompt -i "Removing '${name}' gtk themes in '${dest}'... \n"
-  prompt -w "REMOVAL: Non file-related parameters will be ignored. \n"
-  remove_themes
-  prompt -s "Done! All '${name}' gtk themes in has been removed."
+  if [[ "${libadwaita}" == 'true' ]]; then
+    if [[ "$UID" != '0' ]]; then
+      remove_libadwaita
+      prompt -s "Removed gtk-4.0 theme files in '${HOME}/.config/gtk-4.0/' !"; echo
+    else
+      prompt -e "Do not run '--libadwaita' option with sudo!"; echo
+    fi
+  else
+    prompt -i "Removing '${name}' gtk themes in '${dest}'... \n"
+    prompt -w "REMOVAL: Non file-related parameters will be ignored. \n"
+    remove_themes
+    prompt -s "Done! All '${name}' gtk themes in has been removed."
+  fi
 
   if [[ -f "${MISC_GR_FILE}.bak" ]]; then
     prompt -e "Find installed GDM theme, you need to run: 'sudo ./tweaks.sh -g -r' to remove it!"
@@ -163,6 +172,15 @@ else
   prompt -i "Nautilus variant : ${nautilus_style}"
 
   echo; install_themes; echo; prompt -s "Done!"
+
+  if [[ "${libadwaita}" == 'true' ]]; then
+    if [[ "$UID" != '0' ]]; then
+      install_libadwaita
+      echo; prompt -w "Installed ${name} ${opacities} ${colors} gtk-4.0 theme in '${HOME}/.config/gtk-4.0' for libadwaita!"
+    else
+      echo; prompt -e "Do not run '--libadwaita' option with sudo!"
+    fi
+  fi
 
   if (is_running "xfce4-session"); then
     msg="XFCE: you may need to run 'xfce4-panel -r' after changing your theme to fix your panel opacity."
