@@ -42,7 +42,7 @@ Don't worry, WhiteSur installer already provides all of those dependencies.
 
 Run `./install.sh` to install the default WhiteSur GTK theme pack.
 
-## Quick uninstall
+### Uninstall
 
 <details> <summary> For example: </summary>
 
@@ -313,8 +313,8 @@ Parameter: `--flatpak` `-F`
 
 Example: `./tweaks.sh -F`
 
-# Other recommended stuffs
-## WhiteSur Icon Theme
+## Other recommended stuffs
+### WhiteSur Icon Theme
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-icon-theme">
   <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/whitesur-icon-theme.png"/>
 </a> </p>
@@ -324,7 +324,7 @@ Example: `./tweaks.sh -F`
 </a> </p>
 <br>
 
-## WhiteSur Wallpapers
+### WhiteSur Wallpapers
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-wallpapers">
   <img class="image" src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/wallpaper.gif"/>
 </a> </p>
@@ -334,5 +334,5 @@ Example: `./tweaks.sh -F`
 </a> </p>
 <br>
 
-# Technical details and getting involved
+## Technical details and getting involved
 Please go read [CONTRIBUTING.md](.github/CONTRIBUTING.md) for more info
