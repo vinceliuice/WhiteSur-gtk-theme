@@ -44,6 +44,8 @@ GNOME Shell (Pantheon), Cinnamon, XFWM (XFCE), Metacity, and Plank themes.
 
 ## Quick uninstall
 
+<details> <summary> For example: </summary>
+
 - uninstall Gtk themes: `./install.sh -r`
 - uninstall GDM theme: `sudo ./tweaks.sh -g -r`
 - uninstall Firefox theme: `./tweaks.sh -f -r`
@@ -51,6 +53,8 @@ GNOME Shell (Pantheon), Cinnamon, XFWM (XFCE), Metacity, and Plank themes.
 - uninstall Dash-to-dock theme: `./tweaks.sh -d -r`
 - uninstall Flatpak Gtk themes: `./tweaks.sh -F -r`
 - uninstall Snap Gtk themes: `./tweaks.sh -s -r`
+
+</details>
 
 ## There's so many customizations you can do!
 Usage:  `./install.sh [OPTIONS...]`
