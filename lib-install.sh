@@ -488,17 +488,15 @@ remove_old_packy() {
 }
 
 config_gtk4() {
-  local color="$(destify ${1})"
-  local opacity="$(destify ${2})"
-  local alt="$(destify ${3})"
-  local theme="$(destify ${4})"
+  local acolor="$(destify ${1})"
+  local alt="$(destify ${2})"
 
   local TARGET_DIR="${HOME}/.config/gtk-4.0"
 
   # Install gtk4.0 into config for libadwaita
   mkdir -p                                                                                    "${TARGET_DIR}"
   rm -rf                                                                                      "${TARGET_DIR}/"{gtk.css,gtk-dark.css,assets,windows-assets}
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${TARGET_DIR}/gtk.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${acolor}.scss"                        "${TARGET_DIR}/gtk.css"
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-Dark.scss"                            "${TARGET_DIR}/gtk-dark.css"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TARGET_DIR}"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TARGET_DIR}/assets"
@@ -520,7 +518,7 @@ install_themes() {
     for alt in "${alts[@]}"; do
       for theme in "${themes[@]}"; do
         for color in "${colors[@]}"; do
-          gtk_base "${color}" "${opacity}" "${theme}" "${compact}"
+          gtk_base "${opacity}" "${theme}" "${compact}"
           install_theemy "${color}" "${opacity}" "${alt}" "${theme}"
           install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}"
           install_xfwmy "${color}"
@@ -533,8 +531,18 @@ install_themes() {
 }
 
 install_libadwaita() {
-  gtk_base "${colors[1]}" "${opacities[0]}" "${themes[0]}"
-  config_gtk4 "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}"
+  gtk_base "${opacities[0]}" "${themes[0]}"
+
+  color="${colors[1]}"
+  acolor='Dark'
+
+  if [[ ${color} == '' ]]; then
+    acolor='Light'
+  else
+    acolor='Dark'
+  fi
+
+  config_gtk4 "${acolor}" "${alts}"
 }
 
 remove_libadwaita() {
@@ -807,7 +815,6 @@ disconnect_snap() {
 #########################################################################
 
 gtk_base() {
-  rm -rf "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
 
   # Theme base options
@@ -829,7 +836,6 @@ gtk_base() {
 ###############################################################################
 
 customize_theme() {
-  rm -rf "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
   # Darker dark colors

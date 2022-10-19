@@ -271,7 +271,7 @@ else
   if [[ "${libadwaita}" == 'true' ]]; then
     if [[ "$UID" != '0' ]]; then
       install_libadwaita
-      prompt -w "Installed ${name} ${opacities} ${colors} gtk-4.0 into config for libadwaita!"; echo
+      prompt -w "Installed ${name} ${opacities} ${acolor} gtk-4.0 theme in '${HOME}/.config/gtk-4.0' for libadwaita!"; echo
     else
       prompt -e "Do not run '--libadwaita' option with sudo!"; echo
     fi
