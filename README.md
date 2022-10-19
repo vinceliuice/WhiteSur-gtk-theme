@@ -161,24 +161,6 @@ Example:
 ./install.sh -t all            # install all available theme accents
 ```
 
-### <p align="center"> <b> Change Nautilus sidebar minimum width </b> </p>
-<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/sidebars.png"/> </p>
-
-Parameter: `--sidebar` `-s`
-
-Example: `./install.sh -s 220`
-
-
-### <p align="center"> <b> Change GNOME Shell 'Activities' icon </b> </p>
-<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/icons.png"/> </p>
-
-Parameter: `--icon` `-i`
-
-Example: `./install.sh -i fedora`
-
-Note that you will need to enable the GNOME user-themes extension to change the shell theme (not to confuse with the application theme).
-
-
 ### <p align="center"> <b> Change Nautilus style </b> </p>
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/nautilus.png"/> </p>
 
@@ -263,7 +245,7 @@ Show this help.
 ### <p align="center"> <b> Install and edit Firefox theme </b> </p>
 
 <p align="center"> <a href="src/other/firefox">
-<img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox-whitesur.png"/>
+<img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox.png"/>
 </a> </p>
 
 #### [Install Firefox theme](src/other/firefox)
@@ -277,35 +259,10 @@ Parameter: `--edit-firefox` `-e`
 Example:
 
 ```bash
-./tweaks.sh -f -e  # install and edit Firefox theme
-./tweaks.sh -e -f  # it's reversible!
-./tweaks.sh -e     # edit the installed Firefox theme
-./tweaks.sh -f -r  # remove installed Firefox theme
-```
-
-#### Use Monterey style
-<p align="center"> <a href="src/other/firefox">
-<img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox-monterey.png"/>
-</a> </p>
-
-Run:
-
-```bash
+./tweaks.sh -e           # edit the installed Firefox theme
+./tweaks.sh -f -r        # remove installed Firefox theme
 ./tweaks.sh -f monterey  # install Monterey Firefox theme
 ```
-
-### <p align="center"> <b> Install and customize Dash to Dock theme </b> </p>
-<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/dash-to-dock.png"/> </p>
-
-#### Install Dash to Dock theme
-Parameter: `--dash-to-dock` `-d`
-
-Example: `./tweaks.sh -d`
-
-#### Change its color
-Parameter: `--color` `-c`
-
-Example: `./tweaks.sh -d -c Dark`
 
 ### <p align="center"> <b> Install and customize GDM theme </b> </p>
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/gdm.png"/> </p>
@@ -351,36 +308,12 @@ You can do [the similar customization features in `./install.sh`](#theres-so-man
 like changing theme color (dark and light variant) and accent, GNOME Shell
 'Activities' icon, etc. related to GDM. Run `./tweaks.sh -h` to explore!
 
-## Using WhiteSur theme on app sandboxing platforms
-<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/sandboxes.png"/> </p>
-
-### <p align="center"> <b> Connect WhiteSur theme to Flatpak </b> </p>
+#### <p align="center"> <b> Connect WhiteSur theme to Flatpak </b> </p>
 Parameter: `--flatpak` `-F`
 
 Example: `./tweaks.sh -F`
 
-### <p align="center"> <b> Connect WhiteSur theme to your Snap apps </b> </p>
-Parameter: `--snap` `-s`
-
-Example: `./tweaks.sh -s`
-
-Note:
-
-> This can only connect WhiteSur theme to your currently installed Snap
-> apps. You may need to run this command again to connect to your newly installed
-> Snap apps
-
 # Other recommended stuffs
-## WhiteSur KDE Theme
-<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde">
-  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/whitesur-kde-theme.png"/>
-</a> </p>
-<br>
-<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-kde">
-  <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/download-button.svg"/>
-</a> </p>
-<br>
-
 ## WhiteSur Icon Theme
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-icon-theme">
   <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/whitesur-icon-theme.png"/>
@@ -393,11 +326,7 @@ Note:
 
 ## WhiteSur Wallpapers
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-wallpapers">
-  <img class="image" src="https://github.com/vinceliuice/WhiteSur-wallpapers/blob/main/1080p/WhiteSur-light.png"/>
-</a> </p>
-<br>
-<p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-wallpapers">
-  <img class="image" src="https://github.com/vinceliuice/WhiteSur-wallpapers/blob/main/1080p/Monterey-light.png"/>
+  <img class="image" src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/wallpaper.gif"/>
 </a> </p>
 <br>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-wallpapers">
