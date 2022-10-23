@@ -1767,8 +1767,6 @@ combobox {
 %toolbar {
   padding: $container_padding / 2 $container_padding;
   border-spacing: $container_padding;
-  // background-color: $header_bg;
-  // border-bottom: 1px solid $borders_color;
 }
 
 .toolbar {
@@ -1829,14 +1827,13 @@ searchbar {
     border-spacing: $container_padding;
     @extend %toolbar;
 
-    entry { margin: 0; }
+    entry, button { margin: 0; }
 
    .close {
       min-width: 18px;
       min-height: 18px;
       padding: 4px;
       border-radius: 50%;
-      @extend %circular_button;
     }
   }
 }
@@ -3004,12 +3001,6 @@ scrollbar {
   background-color: transparent;
   transition: 300ms $ease-out-quad;
   outline: none;
-
-  // scrollbar border
-  // &.top { border-bottom: 1px solid $borders_color; }
-  // &.bottom { border-top: 1px solid $borders_color; }
-  // &.left { border-right: 1px solid $borders_color; }
-  // &.right { border-left: 1px solid $borders_color; }
 
   &, button { border: none; }
 
@@ -4388,10 +4379,16 @@ filechooserbutton:drop(active) {
 }
 
 separator.sidebar {
-  &.left, &.right, &.left:dir(rtl), &:dir(rtl), &:dir(ltr), & { border: none; }
   background-color: $header_border;
   min-height: 1px;
   min-width: 1px;
+  border: none;
+
+  &:dir(ltr),
+  &.left,
+  &.left:dir(rtl),
+  &:dir(rtl),
+  &.right { border: none; }
 }
 
 stacksidebar {
