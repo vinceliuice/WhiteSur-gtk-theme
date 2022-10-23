@@ -8,7 +8,7 @@ source "${REPO_DIR}/lib-install.sh"
 colors=("${COLOR_VARIANTS[@]}")
 opacities=("${OPACITY_VARIANTS[@]}")
 
-C_VARIANTS=('-light' '-dark')
+C_VARIANTS=('-Light' '-Dark')
 S_VARIANTS=('' '-solid')
 
 install() {
@@ -32,13 +32,13 @@ compress() {
   done
 }
 
-GNOME_VERSION="old"
+GNOME_VERSION="3-28"
 RELEASE_VERSION="-3-38"
 install && compress
 prompt -s "Compress Gnome${RELEASE_VERSION} version finished!"; echo
 
-GNOME_VERSION="new"
-RELEASE_VERSION="-40-0"
+GNOME_VERSION="42-0"
+RELEASE_VERSION="-42-0"
 install && compress
 prompt -s "Compress Gnome${RELEASE_VERSION} version finished!"; echo
 
