@@ -198,7 +198,7 @@ control button variant, etc.
 # Let's tweak!
 Usage:  `./tweaks.sh [OPTIONS...]`
 
-<details> <summary> Options </summary>
+<details> <summary> Options (click to open) </summary>
 
 ```bash
 
