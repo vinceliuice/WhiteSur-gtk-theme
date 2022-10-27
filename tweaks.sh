@@ -23,10 +23,10 @@ usage() {
   # Please specify their default value manually, some of them are come from _variables.scss
   # You also have to check and update them regurally
   helpify_title
+  helpify "-g, --gdm"           "[default|x2]"                                      "Install '${THEME_NAME}' theme for GDM (scaling: 100%/200%, default is 100%)" "Requires to run this shell as root"
   helpify "-o, --opacity"       "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "Set '${THEME_NAME}' GDM theme opacity variants"                              "Default is 'normal'"
   helpify "-c, --color"         "[$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"         "Set '${THEME_NAME}' GDM and Dash to Dock theme color variants"               "Default is 'light'"
   helpify "-t, --theme"         "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")]"         "Set '${THEME_NAME}' GDM theme accent color"                                  "Default is BigSur-like theme"
-  helpify "-g, --gdm"           "[default|x2]"                                      "Install '${THEME_NAME}' theme for GDM (scaling: 100%/200%, default is 100%)" "Requires to run this shell as root"
   helpify "-N, --no-darken"     ""                                                  "Don't darken '${THEME_NAME}' GDM theme background image"                     ""
   helpify "-n, --no-blur"       ""                                                  "Don't blur '${THEME_NAME}' GDM theme background image"                       ""
   helpify "-b, --background"    "[default|blank|IMAGE_PATH]"                        "Set '${THEME_NAME}' GDM theme background image"                              "Default is BigSur-like wallpaper"

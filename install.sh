@@ -36,6 +36,7 @@ usage() {
   helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                         "Set gnome-shell background image"                 "Default is BigSur-like wallpaper"
   helpify "-m, --monterey"                ""                                          "Set to MacOS Monterey style"                      ""
   helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                               "Default is BigSur-like style (stabled sidebar)"
+  helpify "-l, --libadwaita"              ""                                          "Install theme into gtk4.0 config for libadwaita"  "Default is dark version"
   helpify "-HD, --highdefinition"         ""                                          "Set to High Definition size"                      "Default is laptop size"
   helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
   helpify "--round, --roundedmaxwindow"   ""                                          "Set maximized window to rounded"                  "Default is square"
