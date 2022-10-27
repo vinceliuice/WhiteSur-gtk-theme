@@ -133,6 +133,21 @@ Show this help.
 
 </details>
 
+### Fix for libadwaita (not perfect)
+
+  Since the release of `Gnome 43.0`, more and more built-in apps use `libadwaita` now, and libadwaita does not support custom themes, which means we cannot change the appearance of app using libadwaita through `gnome-tweaks` or `dconf-editor`. For users who love custom themes, it’s really sucks!
+
+  Anyway if anybody who still want to custom themes we can only do this way:
+
+  that is to use the `theme file` to overwrite the `gtk-4.0 configuration file`. The result is that only Fixed making all gtk4 apps use one theme and cannot be switched (even can not switch to dark mode) If you want to change a theme, you can only re-overwrite the `gtk-4.0 configuration file` with a new theme, I know this method is not perfect, But at the moment it is only possible to continue using themes for libadwaita's apps ...
+
+  Run this command to install `WhiteSur` into `gtk-4.0 configuration folder` ($HOME/.config/gtk-4.0)
+
+```bash
+./install.sh -l                # Default is the normal dark theme
+./install.sh -l -c Light       # install light theme for libadwaita
+```
+
 ### <p align="center"> <b> Change theme color and accent </b> </p>
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/colors-themes.png"/> </p>
 
