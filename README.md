@@ -6,7 +6,7 @@
 <br>
 
 # Installation is easy!
-<details> <summary> Required dependencies info for nerds </summary>
+<details> <summary> Required dependencies info for nerds (click to open) </summary>
 
 ### "Install from source" deps
 - sassc
@@ -24,7 +24,7 @@
 Don't worry, WhiteSur installer already provides all of those dependencies.
 </details>
 
-<details> <summary> Recommended GNOME Shell extensions </summary>
+<details> <summary> Recommended GNOME Shell extensions (click to open) </summary>
 
 - [user-themes](https://extensions.gnome.org/extension/19/user-themes/) to enable gnome-shell theme (and not just the application theme)
 - [dash-to-dock](https://extensions.gnome.org/extension/307/dash-to-dock)
@@ -40,7 +40,7 @@ Run `./install.sh` to install the default WhiteSur GTK theme pack.
 
 ### Uninstall
 
-<details> <summary> For example: </summary>
+<details> <summary> For example: (click to open) </summary>
 
 - uninstall Gtk themes: `./install.sh -r`
 - uninstall GDM theme: `sudo ./tweaks.sh -g -r`
@@ -55,7 +55,7 @@ Run `./install.sh` to install the default WhiteSur GTK theme pack.
 ## There's so many customizations you can do!
 Usage:  `./install.sh [OPTIONS...]`
 
-<details> <summary> Options </summary>
+<details> <summary> Options (click to open) </summary>
 
 ```bash
 -d, --dest DIR
@@ -135,7 +135,7 @@ Show this help.
 
 ### Fix for libadwaita (not perfect)
 
-<details> <summary> Details </summary>
+<details> <summary> Details (click to open) </summary>
 
   Since the release of `Gnome 43.0`, more and more built-in apps use `libadwaita` now, and libadwaita does not support custom themes, which means we cannot change the appearance of app using libadwaita through `gnome-tweaks` or `dconf-editor`. For users who love custom themes, it’s really sucks!
 
