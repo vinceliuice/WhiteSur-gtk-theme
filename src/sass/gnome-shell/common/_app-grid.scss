@@ -84,7 +84,7 @@
     & .folder-name-label { padding: $base_padding; color: $light_alt_fg_color; }
 
     & .edit-folder-button {
-      background-color: $light_divider_color;
+      background-color: $light_fill_color;
       color: $light_alt_fg_color;
       border: none;
       padding: 0;
@@ -92,7 +92,7 @@
       height: 36px;
       border-radius: $circular_radius;
 
-      & > StIcon { icon-size: 16px; }
+      & > StIcon { icon-size: $base_icon_size; }
 
       &:hover { background-color: $light_divider_color; }
       &:checked, &:active { background-color: $light_track_color; }

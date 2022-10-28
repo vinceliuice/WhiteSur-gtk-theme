@@ -104,14 +104,16 @@
   // close button
   .message-close-button {
     color: $alt_fg_color;
-    padding: 0;
-    height: 24px;
-    width: 24px;
+    padding: 0 !important;
+    height: 24px !important;
+    width: 24px !important;
     border-radius: $circular_radius;
 
     &:hover, &:active { color: $fg_color; }
     &:hover, &:focus { background-color: $divider_color; }
     &:active { background-color: $track_color; }
+
+    StIcon { icon-size: $base_icon_size; }
   }
 
   // body

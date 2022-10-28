@@ -56,20 +56,21 @@
     width: 24px;
     height: 24px;
     border-radius: $circular_radius;
+    color: $light_fg_color !important;
   }
 
   &:insensitive > StIcon {
-    backround-color: $light_fill_color;
-    color: $light_fg_color;
+    backround-color: transparent !important;
+    color: transparent !important;
   }
 
   &:hover > StIcon {
-   backround-color: $light_divider_color;
-   color: $light_fg_color;
+   backround-color: $light_divider_color !important;
+   color: $light_fg_color !important;
   }
 
   &:active > StIcon {
-   backround-color: $light_track_color;
-   color: $light_fg_color;
+   backround-color: $light_track_color !important;
+   color: $light_fg_color !important;
   }
 }

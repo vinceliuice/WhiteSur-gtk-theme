@@ -4,6 +4,8 @@
 
   .icon-button, .button {
     padding: $container_padding;
+
+    StIcon { icon-size: $base_icon_size !important; }
   }
 }
 
@@ -53,7 +55,7 @@
   &:rtl > StBoxLayout { padding-right: $base_padding * 2.5; }
 
   .quick-toggle-label { font-weight: bold; }
-  .quick-toggle-icon, .quick-toggle-arrow { icon-size: $base_icon_size; }
+  .quick-toggle-icon, .quick-toggle-arrow { icon-size: $base_icon_size !important; }
 }
 
 .quick-menu-toggle {
@@ -86,7 +88,7 @@
   }
 
   .quick-toggle-icon {
-    icon-size: $base_icon_size;
+    icon-size: $base_icon_size !important;
   }
 
   .icon-button {

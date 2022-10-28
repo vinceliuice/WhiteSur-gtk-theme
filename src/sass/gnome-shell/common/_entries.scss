@@ -3,25 +3,29 @@
 StEntry, %entry {
   min-height: $menuitem_size;
   padding: $base_padding / 2 $base_padding * 2 !important;
-  // margin: 2px;
   color: $fg_color;
   caret-color: $fg_color;
   selection-background-color: $primary_color !important;
   selected-color: $light_fg_color !important;
-  // @include font(subheading);
+
   @include entry(normal);
   &:hover { @include entry(hover); }
   &:focus { @include entry(focus); }
   &:insensitive { @include entry(insensitive);}
+
+  StIcon { icon-size: $base_icon_size !important; }
+
   StIcon.capslock-warning {
-    icon-size: 16px;
+    icon-size: $base_icon_size !important;
     warning-color: $warning_color;
     padding: 0 0;
   }
+
   StIcon.peek-password {
-    icon-size: 16px;
+    icon-size: $base_icon_size !important;
     padding: 0 $base_padding;
   }
+
   StLabel.hint-text {
     margin-left: $base_padding / 2;
     color: $alt_fg_color;

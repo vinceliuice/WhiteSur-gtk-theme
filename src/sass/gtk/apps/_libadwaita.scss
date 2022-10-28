@@ -63,21 +63,6 @@ preferencesgroup > box {
   > box.single-line {
     min-height: 34px;
   }
-
-  button.background-preview-button {
-    &, &:hover, &:active, &:checked {
-      background: none;
-      border: none;
-      box-shadow: none;
-      padding: $container_padding / 2;
-      border: 2px solid transparent;
-      border-radius: $bt_radius + $container_padding / 2;
-    }
-
-    &:checked {
-      border: 2px solid $selected_bg_color;
-    }
-  }
 }
 
 //
@@ -194,28 +179,28 @@ viewswitcher {
   margin: 0;
 
   &.wide {
-    border-spacing: $container_padding / 2;
+    border-spacing: 0;
 
-    button.toggle {
+    > button.toggle {
       margin: 8px 0;
     }
   }
 
-  &.narrow button.toggle {
+  &.narrow > button.toggle {
     border-radius: 0;
     margin: 0;
   }
 
-  button.toggle {
+  > button.toggle {
     font-weight: normal;
     padding: 0;
 
     > stack > box {
       &.narrow {
         font-size: 0.75rem;
-        padding-top: $container_padding + 1px;
-        padding-bottom: $container_padding - 1px;
-        border-spacing: $container_padding - 2px;
+        padding-top: $container_padding;
+        padding-bottom: $container_padding;
+        border-spacing: 0;
 
         > stack > label {
           padding-left: $container_padding + 2px;
@@ -225,7 +210,12 @@ viewswitcher {
 
       &.wide {
         padding: 0 $container_padding * 2;
-        border-spacing: $container_padding;
+        border-spacing: 0;
+
+        > label, > indicatorbin > image {
+          padding-left: $container_padding / 2;
+          padding-right: $container_padding / 2;
+        }
       }
     }
   }
@@ -251,7 +241,6 @@ indicatorbin {
     min-width: $container_padding * 2;
     min-height: $container_padding * 2;
     border-radius: $circular_radius;
-    margin: 0;
   }
 
   > indicator {

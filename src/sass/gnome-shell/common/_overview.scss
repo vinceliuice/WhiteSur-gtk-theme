@@ -2,3 +2,19 @@
 .overview-controls {
   padding-bottom: 32px;
 }
+
+%overview_scrollbar {
+  StBin#trough {
+    background-color: $light_divider_color;
+  }
+
+  StButton#vhandle, StButton#hhandle {
+    background-color: $light_hint_fg_color;
+    &:hover { background-color: $light_alt_fg_color; }
+    &:active { background-color: $light_fg_color; }
+  }
+}
+
+#overview {
+  StScrollBar { @extend %overview_scrollbar; }
+}
