@@ -166,9 +166,9 @@ $sidebar_theme_color:               if($variant == 'light', rgba(black, 0.12), r
 
 //OSD colors
 $osd_fg_color:                      if($colorscheme == 'nord', #dadada, #d3d7df);
-$osd_bg_color:                      if($trans == 'true', rgba(if($darker == 'true', #1a1a1a, #2a2a2a), 0.9), if($darker == 'true', #1a1a1a, #2a2a2a));
+$osd_bg_color:                      if($trans == 'true', rgba(if($darker == 'true', #1a1a1a, #2a2a2a), 0.95), if($darker == 'true', #1a1a1a, #2a2a2a));
 @if $colorscheme == 'nord' {
-  $osd_bg_color:                    if($trans == 'true', rgba(if($darker == 'true', #16191e, #222730), 0.9), if($darker == 'true', #16191e, #222730));
+  $osd_bg_color:                    if($trans == 'true', rgba(if($darker == 'true', #16191e, #222730), 0.95), if($darker == 'true', #16191e, #222730));
 }
 $osd_button_bg:                     rgba(lighten($osd_bg_color, 22%), 0.96);
 $osd_button_border:                 $dark_borders_color;
