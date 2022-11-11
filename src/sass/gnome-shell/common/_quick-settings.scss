@@ -45,12 +45,15 @@
     }
   }
 
-  & > StBoxLayout { spacing: $base_padding; }
+  > StBoxLayout {
+    spacing: $base_padding;
+    padding: 0 $base_padding * 2;
+  }
 
   /* Move padding into the box; this is to allow menu arrows
      to extend to the border */
   &.button { padding: 0; }
-  & > StBoxLayout { padding: 0 $base_padding * 2; }
+
   &:ltr > StBoxLayout { padding-left: $base_padding * 2.5; }
   &:rtl > StBoxLayout { padding-right: $base_padding * 2.5; }
 
@@ -87,7 +90,7 @@
     border-radius: $circular_radius;
   }
 
-  .quick-toggle-icon {
+  .quick-toggle-icon, .quick-toggle-arrow {
     icon-size: $base_icon_size !important;
   }
 
