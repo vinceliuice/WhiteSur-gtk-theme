@@ -48,7 +48,7 @@
 
 // message bubbles
 .message {
-  margin: 0 4px 6px;
+  margin: 3px 4px 4px;
 
   .popup-menu & {
     @extend %popover_bubble;
@@ -138,6 +138,8 @@
 
   &:last-child:ltr { margin-right: 16px; padding-right: 8px; }
   &:last-child:rtl { margin-left: 16px; padding-left: 8px; }
+
+  StIcon { icon-size: $base_icon_size !important; }
 }
 
 // album-art

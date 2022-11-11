@@ -50,18 +50,19 @@
 }
 
 .page-navigation-arrow {
-  &  > StIcon {
+  > StIcon {
     margin: $base_padding;
     padding: $base_padding * 3;
     width: 24px;
     height: 24px;
     border-radius: $circular_radius;
     color: $light_fg_color !important;
+    background-color: $light_fill_color !important;
   }
 
   &:insensitive > StIcon {
-    backround-color: transparent !important;
-    color: transparent !important;
+    backround-color: transparent;
+    color: transparent;
   }
 
   &:hover > StIcon {

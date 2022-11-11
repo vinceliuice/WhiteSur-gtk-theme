@@ -2,28 +2,43 @@
 
 // Dialog
 #LookingGlassDialog {
-  background-color: $base_color;
-  spacing: 4px;
+  background-color: $osd_bg_color !important;
+  spacing: $base_padding;
+  margin: $base_padding;
   padding: 0;
   border: none;
   border-radius: $bt_radius;
-  box-shadow: 0 3px 8px 0 rgba(black, 0.25);
-  color: $fg_color;
+  box-shadow: 0 2px 6px 0 rgba(black, 0.15);
+  color: $osd_fg_color !important;
 
-  & > #Toolbar {
-    padding: 0 8px;
+  > #Toolbar {
+    padding: 0 $base_padding;
+    spacing: $base_padding;
     border: none;
     border-radius: 0;
     background-color: rgba($base_color, 0.01);
-    box-shadow: inset 0 -1px 0 $borders_color;
+    box-shadow: inset 0 -1px 0 $light_divider_color;
+
+    .lg-toolbar-button {
+      padding: $base_padding $base_padding * 2;
+      @extend %osd_button;
+      border-radius: $bt_radius;
+      margin: $base_padding / 2;
+
+      > StIcon { icon-size: $base_icon_size; }
+    }
   }
 
-  .labels { spacing: 0; }
+  .labels {
+    spacing: $base_padding;
+    color: $osd_fg_color !important;
+  }
+
   .notebook-tab {
-    -natural-hpadding: 12px;
-    -minimum-hpadding: 6px;
+    -natural-hpadding: $base_padding * 2;
+    -minimum-hpadding: $base_padding * 2;
     font-weight: bold;
-    color: $hint_fg_color;
+    color: $light_hint_fg_color !important;
     padding-left: 16px;
     padding-right: 16px;
     min-height: $medium_size;
@@ -32,22 +47,22 @@
     border-bottom: 2px solid transparent;
 
     &:hover {
-      color: $fg_color;
+      color: $light_fg_color !important;
       text-shadow: none;
-      border-color: $track_color
+      border-color: $light_track_color
     }
 
     &:selected {
-      background-color: rgba($base_color, 0.01);
+      background-color: rgba($base_color, 0.01) !important;
       border-color: $primary_color;
-      color: $fg_color;
+      color: $light_fg_color !important;
       text-shadow: none;
       box-shadow: none;
     }
   }
 
-  StBoxLayout#EvalBox { padding: 4px; spacing: 4px; }
-  StBoxLayout#ResultsArea { spacing: 4px; }
+  StBoxLayout#EvalBox,
+  StBoxLayout#ResultsArea { padding: $base_padding; spacing: $base_padding; }
 }
 
 .lg-dialog {
@@ -55,26 +70,33 @@
     min-height: 22px;
     selection-background-color: $primary_color;
     selected-color: $light_alt_fg_color;
+    caret-color: $light_fg_color !important;
+    color: $light_fg_color !important;
+    background-color: $light_divider_color !important;
   }
+
   .shell-link {
-    color: $link_color;
+    color: $link_color !important;
     &:hover { color: lighten($link_color, 10%); }
     &:active { color: darken($link_color, 10%); }
-   }
+  }
+
   .actor-link {
-    color: $alt_fg_color;
-    &:hover { color: lighten($alt_fg_color, 20%); }
-    &:active { color: darken($alt_fg_color, 20%); }
-   }
+    color: $light_alt_fg_color !important;
+    &:hover { color: lighten($light_alt_fg_color, 20%); }
+    &:active { color: darken($light_alt_fg_color, 20%); }
+
+    StIcon { icon-size: 12px; }
+  }
 }
 
 .lg-completions-text {
-    font-size: .9em;
-    font-style: italic;
+  font-size: .9em;
+  font-style: italic;
 }
 
 .lg-obj-inspector-title {
-    spacing: $base_spacing;
+  spacing: $base_spacing;
 }
 
 .lg-obj-inspector-button {
@@ -88,20 +110,21 @@
 
 // Extensions
 #lookingGlassExtensions {
-  padding: 4px;
+  padding: $base_padding;
 }
 
 .lg-extensions-list {
-  padding: 4px;
-  spacing: 6px;
+  padding: $base_padding;
+  spacing: $base_padding;
 }
 
 .lg-extension {
   border: none;
   border-radius: $bt_radius;
-  padding: 4px;
-  background-color: $divider_color;
-  color: $alt_fg_color;
+  padding: $base_padding * 2;
+  spacing: $base_padding;
+  background-color: $light_divider_color !important;
+  color: $light_alt_fg_color !important;
 }
 
 .lg-extension-name {
@@ -109,14 +132,32 @@
 }
 
 .lg-extension-meta {
-  spacing: 6px;
+  spacing: $base_padding;
 }
 
 // Inspector
 #LookingGlassPropertyInspector {
-  background: $base_color;
+  background: $osd_bg_color !important;
   border: none;
   border-radius: $bt_radius;
-  padding: 6px;
+  padding: $base_padding;
   box-shadow: 0 3px 8px 0 rgba(black, 0.25);
+  color: $osd_fg_color !important;
+}
+
+.lg-debug-flag-button {
+  color: $light_fg_color !important;
+  spacing: $base_padding;
+
+  StLabel {
+    padding: 2 * $base_padding;
+  }
+
+  &:hover { color: lighten($light_fg_color, 20%) !important; }
+  &:active { color: darken($light_fg_color, 20%) !important; }
+}
+
+.lg-debug-flags-header {
+  padding-top: 2 * $base_padding;
+  padding: $base_padding;
 }

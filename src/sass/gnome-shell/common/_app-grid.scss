@@ -65,25 +65,25 @@
   // padding: 0;
   background-color: rgba(if($colorscheme == 'nord', #20242c, #262626), 0.9);
 
-  & .folder-name-container {
+  .folder-name-container {
     padding: 24px 36px 0;
     spacing: 12px;
 
-    & .folder-name-label,
-    & .folder-name-entry {
+    .folder-name-label,
+    .folder-name-entry {
       font-size: if($laptop == 'true', 16pt, 18pt);
       font-weight: bold;
     }
 
-    & .folder-name-entry {
+    .folder-name-entry {
       @extend %search-entry;
       width: if($laptop == 'true', 240px, 320px) !important;
     }
 
     /* FIXME: this is to keep the label in sync with the entry */
-    & .folder-name-label { padding: $base_padding; color: $light_alt_fg_color; }
+    .folder-name-label { padding: $base_padding; color: $light_alt_fg_color; }
 
-    & .edit-folder-button {
+    .edit-folder-button {
       background-color: $light_fill_color;
       color: $light_alt_fg_color;
       border: none;
@@ -92,14 +92,14 @@
       height: 36px;
       border-radius: $circular_radius;
 
-      & > StIcon { icon-size: $base_icon_size; }
+      > StIcon { icon-size: $base_icon_size; }
 
       &:hover { background-color: $light_divider_color; }
       &:checked, &:active { background-color: $light_track_color; }
     }
   }
 
-  & .icon-grid {
+  .icon-grid {
     row-spacing: 12px;
     column-spacing: if($laptop == 'true', 12px, 18px);
     page-padding-top: 0;
@@ -147,10 +147,12 @@
     box-shadow: none;
     background-color: $light_alt_disabled_fg_color;
   }
+
   &:hover .page-indicator-icon {
     background-image: none;
     background-color: $light_disabled_fg_color;
   }
+
   &:active .page-indicator-icon {
     margin: 0;
     padding: 0;
@@ -160,10 +162,12 @@
     box-shadow: none;
     background-color: $light_alt_fg_color;
   }
+
   &:checked .page-indicator-icon {
     background-image: none;
     background-color: $light_alt_fg_color;
   }
+
   &:checked:active { background-image: none; }
 }
 

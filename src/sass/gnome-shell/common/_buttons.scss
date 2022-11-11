@@ -1,18 +1,19 @@
 /* Buttons */
 
+%button {
+  @include button(flat-normal);
+  &:hover { @include button(flat-hover); }
+  &:active { @include button(flat-active); }
+  &:insensitive { @include button(flat-insensitive); }
+  &:focus { @include button(flat-focus); }
+}
+
 .button {
   min-height: $small_size;
   padding: $container_padding $container_padding * 2;
   border-radius: $bt_radius;
-
-  &, .popup-menu & {
-    @include button(flat-normal);
-    &:hover { @include button(flat-hover); }
-    &:active { @include button(flat-active); }
-    &:insensitive { @include button(flat-insensitive); }
-    &:focus { @include button(flat-focus); }
-    border: none;
-  }
+  border: none;
+  @extend %button;
 }
 
 .icon-button {
@@ -20,12 +21,7 @@
   min-width: $small_size;
   padding: $container_padding;
   border-radius: $circular_radius;
-
-  @include button(flat-normal);
-  &:hover { @include button(flat-hover); }
-  &:active { @include button(flat-active); }
-  &:insensitive { @include button(flat-insensitive); }
-  &:focus { @include button(flat-focus); }
+  @extend %button;
 }
 
 %osd_button {
