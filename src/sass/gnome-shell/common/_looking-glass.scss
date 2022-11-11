@@ -2,14 +2,14 @@
 
 // Dialog
 #LookingGlassDialog {
-  background-color: $osd_bg_color !important;
+  background-color: $osd_bg_color;
   spacing: $base_padding;
   margin: $base_padding;
   padding: 0;
   border: none;
   border-radius: $bt_radius;
   box-shadow: 0 2px 6px 0 rgba(black, 0.15);
-  color: $osd_fg_color !important;
+  color: $osd_fg_color;
 
   > #Toolbar {
     padding: 0 $base_padding;
@@ -31,31 +31,30 @@
 
   .labels {
     spacing: $base_padding;
-    color: $osd_fg_color !important;
+    color: $osd_fg_color;
   }
 
   .notebook-tab {
     -natural-hpadding: $base_padding * 2;
     -minimum-hpadding: $base_padding * 2;
     font-weight: bold;
-    color: $light_hint_fg_color !important;
-    padding-left: 16px;
-    padding-right: 16px;
+    color: $light_hint_fg_color;
+    padding: 0 16px;
     min-height: $medium_size;
-    padding: 0 32px;
+    border-radius: 0;
     transition-duration: 100ms;
     border-bottom: 2px solid transparent;
 
     &:hover {
-      color: $light_fg_color !important;
+      color: $light_fg_color;
       text-shadow: none;
       border-color: $light_track_color
     }
 
     &:selected {
-      background-color: rgba($base_color, 0.01) !important;
+      background-color: rgba($base_color, 0.01);
       border-color: $primary_color;
-      color: $light_fg_color !important;
+      color: $light_fg_color;
       text-shadow: none;
       box-shadow: none;
     }
@@ -70,21 +69,21 @@
     min-height: 22px;
     selection-background-color: $primary_color;
     selected-color: $light_alt_fg_color;
-    caret-color: $light_fg_color !important;
-    color: $light_fg_color !important;
-    background-color: $light_divider_color !important;
+    caret-color: $light_fg_color;
+    color: $light_fg_color;
+    background-color: $light_divider_color;
   }
 
   .shell-link {
-    color: $link_color !important;
+    color: $link_color;
     &:hover { color: lighten($link_color, 10%); }
     &:active { color: darken($link_color, 10%); }
   }
 
   .actor-link {
-    color: $light_alt_fg_color !important;
-    &:hover { color: lighten($light_alt_fg_color, 20%); }
-    &:active { color: darken($light_alt_fg_color, 20%); }
+    color: $link_color;
+    &:hover { color: lighten($link_color, 20%); }
+    &:active { color: darken($link_color, 20%); }
 
     StIcon { icon-size: 12px; }
   }
@@ -123,12 +122,13 @@
   border-radius: $bt_radius;
   padding: $base_padding * 2;
   spacing: $base_padding;
-  background-color: $light_divider_color !important;
-  color: $light_alt_fg_color !important;
+  background-color: $light_divider_color;
+  color: $light_alt_fg_color;
 }
 
 .lg-extension-name {
   font-weight: bold;
+  color: $light_disabled_fg_color;
 }
 
 .lg-extension-meta {
@@ -137,27 +137,28 @@
 
 // Inspector
 #LookingGlassPropertyInspector {
-  background: $osd_bg_color !important;
+  background: $osd_bg_color;
   border: none;
   border-radius: $bt_radius;
   padding: $base_padding;
   box-shadow: 0 3px 8px 0 rgba(black, 0.25);
-  color: $osd_fg_color !important;
+  color: $osd_fg_color;
 }
 
 .lg-debug-flag-button {
-  color: $light_fg_color !important;
+  color: $light_fg_color;
   spacing: $base_padding;
 
   StLabel {
     padding: 2 * $base_padding;
   }
 
-  &:hover { color: lighten($light_fg_color, 20%) !important; }
-  &:active { color: darken($light_fg_color, 20%) !important; }
+  &:hover { color: lighten($light_fg_color, 20%); }
+  &:active { color: darken($light_fg_color, 20%); }
 }
 
 .lg-debug-flags-header {
+  color: $light_disabled_fg_color;
   padding-top: 2 * $base_padding;
   padding: $base_padding;
 }
