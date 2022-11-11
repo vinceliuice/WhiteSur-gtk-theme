@@ -158,3 +158,21 @@ tab > stack {
 	height: 16px !important;
 	width: 16px !important;
 }
+
+/* firefox-view-button */
+:root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden]) :is(#firefox-view-button, #wrapper-firefox-view-button) + #tabbrowser-tabs {
+	border-inline-start: none !important;
+	padding-inline-start: 0 !important;
+	margin-inline-start: -40px !important;
+}
+
+#firefox-view-button > .toolbarbutton-icon {
+	filter: none !important;
+	box-shadow: none !important;
+}
+
+/* Remove shadow next to tab scroll buttons */
+.arrowscrollbox-overflow-start-indicator,
+.arrowscrollbox-overflow-end-indicator {
+	display: none;
+}

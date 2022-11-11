@@ -13,8 +13,13 @@
 /* Tabs bar height */
 #tabbrowser-tabs,
 #tabbrowser-tabs arrowscrollbox {
-	height: initial !important;
-	min-height: initial !important;
+	height: 28px !important;
+	min-height: 28px !important;
+	--tab-min-height: 28px !important;
+}
+
+.tab-background, .tab-stack {
+	min-height: 28px !important;
 }
 
 /* Extra margin for the first and last tabs */
@@ -65,7 +70,7 @@
 
 /* Space between tabs */
 .tabbrowser-tab:not([pinned=true]) {
-	margin: 0 0 !important;
+	margin: 0 !important;
 }
 
 /* Tab labels */
@@ -257,6 +262,13 @@ tab[selected]:-moz-window-inactive {
 	transition: all 200ms;
 }
 
+/* Tab hover */
+#TabsToolbar .tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected=true]) {
+	background-color: var(--gnome-tabbar-tab-active-hover-background) !important;
+	border-image: none !important;
+	box-shadow: inset 0 1px var(--gnome-toolbar-border-color), inset 0 -1px var(--gnome-toolbar-border-color) !important;
+}
+
 /* Active tab */
 .tab-background[selected=true] {
 	background-color: var(--gnome-tabbar-tab-active-background) !important;
@@ -274,13 +286,6 @@ tab[selected]:-moz-window-inactive {
 .tab-background[selected=true]:-moz-window-inactive {
 	background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
 	border-image: none !important;
-}
-
-/* Tab hover */
-#TabsToolbar .tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected=true]) {
-	background-color: var(--gnome-tabbar-tab-active-hover-background) !important;
-	border-image: none !important;
-	box-shadow: inset 0 1px var(--gnome-toolbar-border-color), inset 0 -1px var(--gnome-toolbar-border-color) !important;
 }
 
 /* Tabs scroll buttons hover */
@@ -304,9 +309,26 @@ tab[selected]:-moz-window-inactive {
 	display: none !important;
 }
 
+/* TabsToolbar buttons */
 #TabsToolbar .toolbarbutton-1 {
 	margin: 0 !important;
 	border-radius: 0 !important;
+}
+
+/* firefox-view-button */
+:root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden]) :is(#firefox-view-button, #wrapper-firefox-view-button) + #tabbrowser-tabs {
+	border-inline-start: 1px solid var(--gnome-toolbar-border-color) !important;
+	padding-inline-start: 0 !important;
+	margin-inline-start: 0 !important;
+}
+
+#firefox-view-button {
+	border-radius: 0 !important;
+}
+
+#firefox-view-button > .toolbarbutton-icon {
+	filter: none !important;
+	box-shadow: none !important;
 }
 
 /* Create new container tab indicator */

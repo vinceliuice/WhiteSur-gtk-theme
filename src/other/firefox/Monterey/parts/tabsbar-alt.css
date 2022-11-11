@@ -14,8 +14,13 @@
 /* Tabs bar height */
 #tabbrowser-tabs,
 #tabbrowser-tabs arrowscrollbox {
-	height: initial !important;
-	min-height: initial !important;
+	height: 36px !important;
+	min-height: 36px !important;
+	--tab-min-height: 36px !important;
+}
+
+.tab-background, .tab-stack {
+	min-height: 36px !important;
 }
 
 tab > stack {
@@ -243,6 +248,7 @@ tab > stack {
 #tabs-newtab-button, #TabsToolbar #new-tab-button {
 	margin: 0 2px !important;
 	padding: 0 10px !important;
+	border-radius: 8px !important;
 }
 
 #TabsToolbar .toolbarbutton-1 image,
@@ -262,4 +268,29 @@ tab > stack {
 	padding: 0 !important;
 	height: 16px !important;
 	width: 16px !important;
+}
+
+/* firefox-view-button */
+:root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden]) :is(#firefox-view-button, #wrapper-firefox-view-button) + #tabbrowser-tabs {
+	border-inline-start: none !important;
+	padding-inline-start: 0 !important;
+	margin-inline-start: 0 !important;
+}
+
+#firefox-view-button {
+	border-radius: 8px !important;
+	background: var(--gnome-tabbar-tab-background) !important;
+}
+
+#firefox-view-button:hover {
+	background: var(--gnome-tabbar-tab-hover-background) !important;
+}
+
+#firefox-view-button:checked, #firefox-view-button:active {
+	background: var(--gnome-tabbar-tab-active-background) !important;
+}
+
+#firefox-view-button > .toolbarbutton-icon {
+	filter: none !important;
+	box-shadow: none !important;
 }
