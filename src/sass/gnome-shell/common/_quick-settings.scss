@@ -105,6 +105,8 @@
     &:active {
       background-color: $divider_color;
     }
+
+    StIcon { icon-size: $base_icon_size !important; }
   }
 }
 
