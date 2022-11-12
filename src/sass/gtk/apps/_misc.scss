@@ -244,7 +244,15 @@ window.background.chromium {
 
   > menubar { background-color: $header_bg; }
 
-  menu menuitem { border-radius: 0; }
+  menu {
+    background-color: $base;
+    border-radius: 0;
+    border: 1px solid $solid_borders_color;
+
+    menuitem {
+      border-radius: 0;
+    }
+  }
 }
 
 //
