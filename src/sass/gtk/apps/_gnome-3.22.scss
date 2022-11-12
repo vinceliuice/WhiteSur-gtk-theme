@@ -88,21 +88,9 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
         > .linked > button.disclosure-button { margin-left: $container_padding / 2; }
 
-        > box.horizontal:first-child { // move the search button to right side
-          margin-right: -74px;
-
-          @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
-            entry.search { margin-left: if($placement == 'left', $container_padding, $nautilus_sidebar_size - 74px); }
-          }
-        }
-      }
-
-      @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
-        &.maximized {
-          > deck > box.vertical > headerbar.titlebar {
-            > box.horizontal:first-child { // move the search button to right side
-              entry.search { margin-left: 0; }
-            }
+        @if $placement == 'left' {
+          .nautilus-path-bar {
+            margin-left: 22px;
           }
         }
       }
@@ -131,12 +119,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
       @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
         @if $placement == 'left' {
-          > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - (32px + $container_padding * 6); }
-        }
-
-        @else {
-          .path-bar-box { margin-left: $nautilus_sidebar_size - (68px + $container_padding * 2); }
-          entry.search { margin-left: if($placement == 'left', $container_padding * 1.5, $nautilus_sidebar_size - 74px); }
+          > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - (48px + $container_padding * 6); }
         }
       }
     }
@@ -164,10 +147,8 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
       @if $nautilus_style == 'stable' {
         background-image: if($trans == 'true', none, $nautilus_sidebar_image);
-      }
-
-      @else {
-        &.frame { border-right: 1px solid $nautilus_borders_color; }
+      } @else {
+        &.frame { border-right: 1px solid $header_border; }
       }
 
       list { margin-bottom: 6px; }

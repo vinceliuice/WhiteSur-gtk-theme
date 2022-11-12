@@ -884,7 +884,7 @@ customize_theme() {
 
   # Change Nautilus sidarbar size
   if [[ "${sidebar_size}" != 'default' ]]; then
-    prompt -s "Changing Nautilus sidebar size ... \n"
+    prompt -s "Changing Nautilus sidebar size ...\n"
     sed $SED_OPT "/\$sidebar_size/s/200px/${sidebar_size}px/"                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 

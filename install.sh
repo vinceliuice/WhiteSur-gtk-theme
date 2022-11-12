@@ -158,11 +158,11 @@ else
     show_needed_dialogs
   fi
 
-  prompt -w "Removing the old '${name}${colorscheme}' themes..."
+  prompt -w "Removing the old '${name}${colorscheme}' themes...\n"
 
-  remove_themes; customize_theme; avoid_variant_duplicates; echo
+  remove_themes; customize_theme; avoid_variant_duplicates;
 
-  prompt -w "Installing '${name}${colorscheme}' themes in '${dest}'..."; echo
+  prompt -w "Installing '${name}${colorscheme}' themes in '${dest}'...\n";
 
   prompt -t "--->>> GTK | GNOME Shell | Cinnamon | Metacity | XFWM | Plank <<<---"
   prompt -i "Color variants   : $( IFS=';'; echo "${colors[*]}" )"
