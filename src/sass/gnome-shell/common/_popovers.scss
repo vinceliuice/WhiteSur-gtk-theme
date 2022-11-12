@@ -4,13 +4,17 @@ $popop_menuitem_radius: $wm_radius - 4px;
 
 //.the popover itself
 .popup-menu-boxpointer {
-  -arrow-border-radius: 2px;
+  -arrow-border-radius: $wm_radius;
   -arrow-background-color: transparent;
   -arrow-border-width: 0;
   -arrow-border-color: transparent;
-  -arrow-base: 12px;
+  -arrow-base: 32px;
   -arrow-rise: 0;
   -arrow-box-shadow: none; //dreaming. bug #689995
+}
+
+.arcmenu-menu {
+  -arrow-base: 0;
 }
 
 @if $scale != 'default' {
