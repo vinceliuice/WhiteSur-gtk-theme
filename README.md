@@ -157,7 +157,7 @@ Run this command to install `WhiteSur` into `gtk-4.0 configuration folder` ($HOM
 ./install.sh -l -c Light       # install light theme for libadwaita
 ```
 
-### <p align="center"> <b> Connect WhiteSur theme to Flatpak </b> </p>
+### Connect WhiteSur theme to Flatpak
 Parameter: `--flatpak` `-F`
 
 Example: `./tweaks.sh -F`
