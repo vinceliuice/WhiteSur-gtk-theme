@@ -1,5 +1,24 @@
 /* Search */
 
+%search-section-content-item {
+  border-radius: $bt_radius;
+  padding: $base_padding;
+  transition-duration: 100ms;
+  text-align: center;
+
+  &:focus,
+  &:hover,
+  &:selected {
+    background-color: $light_divider_color;
+    transition-duration: 200ms;
+  }
+
+  &:active,
+  &:checked {
+    background-color: $light_track_color;
+  }
+}
+
 // search overview container
 #searchResultsContent {
   max-width: 1024px;

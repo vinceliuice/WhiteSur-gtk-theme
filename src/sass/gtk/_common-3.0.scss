@@ -1769,7 +1769,6 @@ headerbar {
     background-color: $header_bg;
     border-color: opacify($header_border, 1);
     box-shadow: none;
-    padding: 0 $container_padding + 10px;
 
     &:backdrop {
       background-color: $header_bg_backdrop;
@@ -2218,12 +2217,11 @@ menu {
     @if $variant == 'dark' { border: 1px solid lighten($menu_bg, 6%); }
   }
 
-  separator,
-  .csd & separator {
+  separator {
     margin: 2px 4px;
-    min-height: 0;
-    border-bottom: 2px solid $menu_bd;
-    background-color: transparent;
+    min-height: 1px;
+    background-color: $borders_color;
+    border: none;
   }
 
   > menuitem {

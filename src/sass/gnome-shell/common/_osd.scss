@@ -1,5 +1,15 @@
 /* OSD */
 
+%osd_panel {
+  color: $fg_color;
+  background-color: $base_color;
+  border-radius: $wm_radius;
+  border: solid rgba(black, 0.75);
+  border-width: if($variant=='light', 0, 1px);
+  box-shadow: 0 3px 8px 0 rgba(black, 0.25);
+  padding: $base_padding * 2;
+}
+
 .osd-window {
   @extend %osd_panel;
   text-align: center;

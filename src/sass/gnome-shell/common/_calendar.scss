@@ -1,5 +1,44 @@
 /* Date/Time Menu */
 
+$popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($base_color, 8%), 0.95));
+
+%popover_bubble {
+  color: $alt_fg_color;
+  background-color: $popover_bubble_bg;
+  border-radius: $mn_radius !important;
+  border: none;
+  box-shadow: 0 1px 2px rgba(black, 0.02) !important;
+  text-shadow: none;
+
+  &:hover, &:focus {
+    color: $fg_color;
+    background-color: if($variant == 'light', rgba($popover_bubble_bg, 1), rgba(lighten($popover_bubble_bg, 5%), 1));
+    box-shadow: 0 1px 3px rgba(black, 0.05) !important;
+  }
+
+  &:active {
+    color: $fg_color;
+    background-color: if($variant == 'light', darken($popover_bubble_bg, 1%), lighten($popover_bubble_bg, 3%));
+    box-shadow: none !important;
+  }
+}
+
+%show_apps_bigsur {
+  .show-apps-icon {
+    color: transparent !important;
+    background-image: url("assets/view-app-grid.svg");
+    background-size: contain;
+  }
+
+  &,
+  &:hover,
+  &:active,
+  &:checked,
+  &:focus {
+    .overview-icon, .show-apps-icon { color: transparent !important; }
+  }
+}
+
 .clock-display-box {
   spacing: 2px;
 

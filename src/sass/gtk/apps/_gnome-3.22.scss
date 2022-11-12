@@ -131,8 +131,9 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
       @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
         @if $placement == 'left' {
-          > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - (48px + $container_padding * 6); }
+          > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - (32px + $container_padding * 6); }
         }
+
         @else {
           .path-bar-box { margin-left: $nautilus_sidebar_size - (68px + $container_padding * 2); }
           entry.search { margin-left: if($placement == 'left', $container_padding * 1.5, $nautilus_sidebar_size - 74px); }
