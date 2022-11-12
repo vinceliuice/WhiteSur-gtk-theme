@@ -753,7 +753,10 @@ install_dash_to_dock() {
   fi
 
   udo cp -rf "${DASH_TO_DOCK_SRC_DIR}/dash-to-dock@micxgx.gmail.com"   "${GNOME_SHELL_EXTENSION_DIR}"
-  udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
+
+  if has_command dbus-launch; then
+    udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
+  fi
 }
 
 install_dash_to_dock_theme() {
@@ -776,7 +779,9 @@ install_dash_to_dock_theme() {
     fi
   fi
 
-  udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
+  if has_command dbus-launch; then
+    udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme true
+  fi
 }
 
 revert_dash_to_dock_theme() {
@@ -786,7 +791,9 @@ revert_dash_to_dock_theme() {
     restore_file "${DASH_TO_DOCK_DIR_ROOT}/stylesheet.css" "sudo"
   fi
 
-  udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme false
+  if has_command dbus-launch; then
+    udo dbus-launch dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme false
+  fi
 }
 
 ###############################################################################
