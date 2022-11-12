@@ -154,32 +154,74 @@ prepare_xbps() {
 #-----------------Deps-----------------#
 
 install_theme_deps() {
-  if ! has_command glib-compile-resources || ! has_command sassc || ! has_command xmllint; then
-    prompt -w "DEPS: 'glib2.0', 'sassc', and 'xmllint' are required for theme installation."
+  if ! has_command sassc; then
+    prompt -w "DEPS: 'sassc' are required for theme installation."
     prepare_deps
 
     if has_command zypper; then
-      sudo zypper in -y sassc glib2-devel libxml2-tools
+      sudo zypper in -y sassc
     elif has_command swupd; then
-      # Rolling release
-      prepare_swupd && sudo swupd bundle-add libglib libxml2 && install_swupd_packages sassc libsass
+      prepare_swupd && install_swupd_packages sassc libsass
     elif has_command apt; then
-      prepare_install_apt_packages sassc libglib2.0-dev-bin libxml2-utils
+      prepare_install_apt_packages sassc
     elif has_command dnf; then
-      sudo dnf install -y sassc glib2-devel libxml2
+      sudo dnf install -y sassc
     elif has_command yum; then
-      sudo yum install -y sassc glib2-devel libxml2
+      sudo yum install -y sassc
     elif has_command pacman; then
-      # Rolling release
-      sudo pacman -Syyu --noconfirm --needed sassc glib2 libxml2
+      sudo pacman -Syyu --noconfirm --needed sassc
     elif has_command xbps-install; then
-      # Rolling release
-      # 'libxml2' is already included here, and it's gonna broke the installation
-      # if you add it
-      prepare_xbps && sudo xbps-install -Sy sassc glib-devel
+      prepare_xbps && sudo xbps-install -Sy sassc
     elif has_command eopkg; then
-      # Rolling release
-      sudo eopkg -y upgrade; sudo eopkg -y install sassc glib2 libxml2
+      sudo eopkg -y upgrade; sudo eopkg -y install sassc
+    else
+      installation_sorry
+    fi
+  fi
+
+  if ! has_command glib-compile-resources; then
+    prompt -w "DEPS: 'glib2.0' are required for theme installation."
+    prepare_deps
+
+    if has_command zypper; then
+      sudo zypper in -y glib2-devel
+    elif has_command swupd; then
+      prepare_swupd && sudo swupd bundle-add libglib
+    elif has_command apt; then
+      prepare_install_apt_packages libglib2.0-dev-bin
+    elif has_command dnf; then
+      sudo dnf install -y glib2-devel
+    elif has_command yum; then
+      sudo yum install -y glib2-devel
+    elif has_command pacman; then
+      sudo pacman -Syyu --noconfirm --needed glib2
+    elif has_command xbps-install; then
+      prepare_xbps && sudo xbps-install -Sy glib-devel
+    elif has_command eopkg; then
+      sudo eopkg -y upgrade; sudo eopkg -y install glib2
+    else
+      installation_sorry
+    fi
+  fi
+
+  if ! has_command xmllint; then
+    prompt -w "DEPS: 'xmllint' are required for theme installation."
+    prepare_deps
+
+    if has_command zypper; then
+      sudo zypper in -y libxml2-tools
+    elif has_command swupd; then
+      prepare_swupd && sudo swupd bundle-add libxml2
+    elif has_command apt; then
+      prepare_install_apt_packages sassc libxml2-utils
+    elif has_command dnf; then
+      sudo dnf install -y libxml2
+    elif has_command yum; then
+      sudo yum install -y libxml2
+    elif has_command pacman; then
+      sudo pacman -Syyu --noconfirm --needed libxml2
+    elif has_command eopkg; then
+      sudo eopkg -y upgrade; sudo eopkg -y install libxml2
     else
       installation_sorry
     fi
@@ -194,7 +236,6 @@ install_beggy_deps() {
     if has_command zypper; then
       sudo zypper in -y ImageMagick
     elif has_command swupd; then
-      # Rolling release
       prepare_swupd && sudo swupd bundle-add ImageMagick
     elif has_command apt; then
       prepare_install_apt_packages imagemagick
@@ -203,13 +244,10 @@ install_beggy_deps() {
     elif has_command yum; then
       sudo yum install -y ImageMagick
     elif has_command pacman; then
-      # Rolling release
       sudo pacman -Syyu --noconfirm --needed imagemagick
     elif has_command xbps-install; then
-      # Rolling release
       prepare_xbps && sudo xbps-install -Sy ImageMagick
     elif has_command eopkg; then
-      # Rolling release
       sudo eopkg -y upgrade; sudo eopkg -y install imagemagick
     else
       installation_sorry
@@ -227,7 +265,6 @@ install_dialog_deps() {
     if has_command zypper; then
       sudo zypper in -y dialog
     elif has_command swupd; then
-      # Rolling release
       prepare_swupd && install_swupd_packages dialog
     elif has_command apt; then
       prepare_install_apt_packages dialog
@@ -236,13 +273,10 @@ install_dialog_deps() {
     elif has_command yum; then
       sudo yum install -y dialog
     elif has_command pacman; then
-      # Rolling release
       sudo pacman -Syyu --noconfirm --needed dialog
     elif has_command xbps-install; then
-      # Rolling release
       prepare_xbps && sudo xbps-install -Sy dialog
     elif has_command eopkg; then
-      # Rolling release
       sudo eopkg -y upgrade; sudo eopkg -y install dialog
     else
       installation_sorry
@@ -258,7 +292,6 @@ install_flatpak_deps() {
     if has_command zypper; then
       sudo zypper in -y libostree appstream-glib
     elif has_command swupd; then
-      # Rolling release
       prepare_swupd && sudo swupd ostree libappstream-glib
     elif has_command apt; then
       prepare_install_apt_packages ostree appstream-util
@@ -267,15 +300,10 @@ install_flatpak_deps() {
     elif has_command yum; then
       sudo yum install -y ostree libappstream-glib
     elif has_command pacman; then
-      # Rolling release
       sudo pacman -Syyu --noconfirm --needed ostree appstream-glib
     elif has_command xbps-install; then
-      # Rolling release
-      # 'libxml2' is already included here, and it's gonna broke the installation
-      # if you add it
       prepare_xbps && sudo xbps-install -Sy ostree appstream-glib
     elif has_command eopkg; then
-      # Rolling release
       sudo eopkg -y upgrade; sudo eopkg -y ostree appstream-glib
     else
       installation_sorry
