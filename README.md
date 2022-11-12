@@ -92,47 +92,47 @@ Usage:  `./install.sh [OPTIONS...]`
   -b, --background [default|blank|IMAGE_PATH]
  Set gnome-shell background image. Default is BigSur-like wallpaper
 
-  -m, --monterey 
- Set to MacOS Monterey style. 
+  -m, --monterey
+ Set to MacOS Monterey style.
 
   -N, --nautilus-style [stable|normal|mojave|glassy]
  Set Nautilus style. Default is BigSur-like style (stabled sidebar)
 
-  -l, --libadwaita 
+  -l, --libadwaita
  Install theme into gtk4.0 config for libadwaita. Default is dark version
 
-  -HD, --highdefinition 
+  -HD, --highdefinition
  Set to High Definition size. Default is laptop size
 
-  --normal, --normalshowapps 
+  --normal, --normalshowapps
  Set gnome-shell show apps button style to normal. Default is bigsur
 
-  --round, --roundedmaxwindow 
+  --round, --roundedmaxwindow
  Set maximized window to rounded. Default is square
 
-  --right, --rightplacement 
+  --right, --rightplacement
  Set Nautilus titlebutton placement to right. Default is left
 
-  --black, --blackfont 
+  --black, --blackfont
  Set panel font color to black. Default is white
 
-  --darker, --darkercolor 
- Install darker 'WhiteSur' dark themes. 
+  --darker, --darkercolor
+ Install darker 'WhiteSur' dark themes.
 
-  --nord, --nordcolor 
- Install 'WhiteSur' Nord ColorScheme themes. 
+  --nord, --nordcolor
+ Install 'WhiteSur' Nord ColorScheme themes.
 
-  --dialog, --interactive 
- Run this installer interactively, with dialogs. 
+  --dialog, --interactive
+ Run this installer interactively, with dialogs.
 
-  --silent-mode 
- Meant for developers: ignore any confirm prompt and params become more strict. 
+  --silent-mode
+ Meant for developers: ignore any confirm prompt and params become more strict.
 
-  -r, --remove, -u, --uninstall 
- Remove all installed WhiteSur themes. 
+  -r, --remove, -u, --uninstall
+ Remove all installed WhiteSur themes.
 
-  -h, --help 
- Show this help. 
+  -h, --help
+ Show this help.
 
 ```
 
@@ -155,6 +155,17 @@ Run this command to install `WhiteSur` into `gtk-4.0 configuration folder` ($HOM
 ```bash
 ./install.sh -l                # Default is the normal dark theme
 ./install.sh -l -c Light       # install light theme for libadwaita
+```
+
+### <p align="center"> <b> Connect WhiteSur theme to Flatpak </b> </p>
+Parameter: `--flatpak` `-F`
+
+Example: `./tweaks.sh -F`
+
+Fix for Flatpak gtk-4.0 app:
+
+```bash
+sudo flatpak override --filesystem=xdg-config/gtk-4.0
 ```
 
 ### <p align="center"> <b> Change theme color and accent </b> </p>
@@ -214,11 +225,11 @@ Usage:  `./tweaks.sh [OPTIONS...]`
   -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]
  Set 'WhiteSur' GDM theme accent color. Default is BigSur-like theme
 
-  -N, --no-darken 
- Don't darken 'WhiteSur' GDM theme background image. 
+  -N, --no-darken
+ Don't darken 'WhiteSur' GDM theme background image.
 
-  -n, --no-blur 
- Don't blur 'WhiteSur' GDM theme background image. 
+  -n, --no-blur
+ Don't blur 'WhiteSur' GDM theme background image.
 
   -b, --background [default|blank|IMAGE_PATH]
  Set 'WhiteSur' GDM theme background image. Default is BigSur-like wallpaper
@@ -232,32 +243,32 @@ Usage:  `./tweaks.sh [OPTIONS...]`
   -i, --icon [standard|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin]
  Set 'WhiteSur' GDM (GNOME Shell) 'Activities' icon. Default is 'standard'
 
-  --nord, --nordcolor 
- Install 'WhiteSur' Nord ColorScheme themes. 
+  --nord, --nordcolor
+ Install 'WhiteSur' Nord ColorScheme themes.
 
   -f, --firefox [default|monterey|alt]
  Install 'WhiteSur|Monterey|Alt' theme for Firefox and connect it to the current Firefox profiles. Default is WhiteSur
 
-  -e, --edit-firefox 
- Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles. 
+  -e, --edit-firefox
+ Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles.
 
-  -F, --flatpak 
- Connect 'WhiteSur' theme to Flatpak. 
+  -F, --flatpak
+ Connect 'WhiteSur' theme to Flatpak.
 
-  -s, --snap 
- Connect 'WhiteSur' theme the currently installed snap apps. 
+  -s, --snap
+ Connect 'WhiteSur' theme the currently installed snap apps.
 
-  -d, --dash-to-dock 
- Fixed Dash to Dock theme issue. 
+  -d, --dash-to-dock
+ Fixed Dash to Dock theme issue.
 
-  -r, --remove, --revert 
- Revert to the original themes, do the opposite things of install and connect. 
+  -r, --remove, --revert
+ Revert to the original themes, do the opposite things of install and connect.
 
-  --silent-mode 
- Meant for developers: ignore any confirm prompt and params become more strict. 
+  --silent-mode
+ Meant for developers: ignore any confirm prompt and params become more strict.
 
-  -h, --help 
- Show this help. 
+  -h, --help
+ Show this help.
 
 ```
 
@@ -329,11 +340,6 @@ sudo ./tweaks.sh -g -n -b "wallpapers/rocks.jpg" # don't blur the custom backgro
 You can do [the similar customization features in `./install.sh`](#theres-so-many-customizations-you-can-do)
 like changing theme color (dark and light variant) and accent, GNOME Shell
 'Activities' icon, etc. related to GDM. Run `./tweaks.sh -h` to explore!
-
-#### <p align="center"> <b> Connect WhiteSur theme to Flatpak </b> </p>
-Parameter: `--flatpak` `-F`
-
-Example: `./tweaks.sh -F`
 
 ## Other recommended stuff
 ### WhiteSur Icon Theme
