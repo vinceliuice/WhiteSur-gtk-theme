@@ -225,15 +225,26 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
         &.sidebar-new-bookmark-row {
           color: $selected_bg_color;
 
+          &:drop(active):not(:disabled) {
+            &, label, .sidebar-icon { color: $selected_fg_color; }
+            background-color: $selected_bg_color;
+          }
+
           .sidebar-icon { color: inherit; }
         }
 
         &:drop(active):not(:disabled) {
+          border: none;
+          border-radius: 0;
+          background-color: rgba($dark_sidebar_fg, 0.15);
+
           &, label, .sidebar-icon { color: $dark_sidebar_fg; }
 
-          &:selected {
-            &, label, .sidebar-icon { color: $dark_sidebar_fg; }
-            background-color: $drop_target_color;
+          &:selected.has-open-popup,
+          &:selected, &:selected:hover {
+            background-image: none;
+            background-color: rgba($selected_bg_color, 0.15);
+            &, label, .sidebar-icon { color: $selected_bg_color; }
           }
         }
       }
