@@ -1681,19 +1681,6 @@ combobox {
    margin-top: $container_padding / 2;
    padding: 0;
 
-   listview {
-     margin: $container_padding 0;
-
-     & > row {
-       padding: $container_padding;
-
-       &:selected {
-         color: $selected_fg_color;
-         background-color: $selected_bg_color;
-       }
-     }
-   }
-
     // drodowns with searchboxes on top
     .dropdown-searchbar {
       padding: $container_padding;
@@ -2514,13 +2501,18 @@ popover {
       background-color: $base_color;
     }
 
-    listview.view {
-      padding: 0;
+    listview {
+      padding: $container_padding;
       margin: 0;
 
       > row {
+        padding: $container_padding $container_padding * 2;
         margin: 0;
-        padding: $container_padding / 2 $container_padding;
+
+        &:selected {
+          color: $selected_fg_color;
+          background-color: $selected_bg_color;
+        }
       }
     }
   }

@@ -357,21 +357,25 @@ menubutton.flat.popup.sources-button {
 .card {
   &.display-container {
     border: 1px solid $borders_color;
+
+    .small & {
+      border-radius: 0;
+
+      &.display-container {
+        border-width: 0 0 1px 0;
+      }
+    }
   }
 
   #displayitem {
     border-top: 1px solid $borders_color;
   }
+}
 
-  .small & {
-    border-radius: 0;
+//
+// Weather
+//
 
-    &.forecast-card {
-      border-width: 1px 0;
-    }
-
-    &.display-container {
-      border-width: 0 0 1px 0;
-    }
-  }
+.small .forecast-card {
+  border-width: 1px 0;
 }
