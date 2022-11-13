@@ -89,7 +89,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
         > .linked > button.disclosure-button { margin-left: $container_padding / 2; }
 
         @if $placement == 'left' {
-          .nautilus-path-bar {
+          .nautilus-path-bar, entry.search {
             margin-left: 22px;
           }
         }
@@ -120,18 +120,6 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
       @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
         @if $placement == 'left' {
           > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - (48px + $container_padding * 6); }
-        }
-      }
-    }
-
-    &.maximized {
-      > headerbar.titlebar,
-      > deck > box.vertical > headerbar.titlebar {
-        @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
-          @if $placement == 'right' {
-            .path-bar-box { margin-left: 0; }
-            entry.search { margin-left: 0; }
-          }
         }
       }
     }
