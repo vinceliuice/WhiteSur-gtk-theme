@@ -4895,15 +4895,13 @@ shortcuts-section { margin: 20px; }
 //
 
 window {
-  border-width: 0;
-  outline-color: $highlight_color;
-  outline-offset: -1px;
-  outline-style: solid;
-  outline-width: 1px;
+  border: none;
 
   &.csd {
     transition: $shadow_transition;
     border-radius: $wm_radius;
+    outline: 1px solid $highlight_color;
+    outline-offset: -1px;
     box-shadow: 0 3px 3px 0 $wm_shadow,
                 0 8px 8px 0 $wm_shadow,
                 0 16px 16px 0 $wm_shadow,
@@ -4919,31 +4917,35 @@ window {
                   $wm_outline;
     }
 
-    &.popup {
-      border-radius: $mn_radius;
-      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15), 0 8px 15px rgba(0, 0, 0, 0.08), $wm_outline;
-    }
-
     &.dialog.message {
       border-radius: $wm_radius;
     }
 
-    .solid-csd & {
-      border: 1px solid $header_border;
+    &.tiled,
+    &.tiled-top,
+    &.tiled-left,
+    &.tiled-right,
+    &.tiled-bottom {
       border-radius: 0;
-      margin: 0;
-      background-color: $header_bg;
+      outline: none;
+    }
+
+    &.maximized,
+    &.fullscreen {
+      border-radius: 0;
+      outline: none;
       box-shadow: none;
+      transition: none;
     }
   }
 
-  &.maximized,
-  &.fullscreen,
-  &:backdrop {
-    outline-width: 0;
+  &.solid-csd {
+    border: 1px solid $header_border;
+    border-radius: 0;
+    margin: 0;
+    background-color: $header_bg;
+    box-shadow: none;
   }
-
-  &.popup { box-shadow: none; }
 
   // server-side decorations as used by mutter
   &.ssd { box-shadow: 0 0 0 1px $wm_shadow; } //just doing borders, wm draws actual shadows
