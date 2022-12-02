@@ -8,8 +8,8 @@
 #                                VARIABLES                                    #
 ###############################################################################
 
-source "${REPO_DIR}/lib-core.sh"
-source "${REPO_DIR}/lib-flatpak.sh"
+source "${REPO_DIR}/shell/lib-core.sh"
+source "${REPO_DIR}/shell/lib-flatpak.sh"
 WHITESUR_SOURCE+=("lib-install.sh")
 
 ###############################################################################
