@@ -8,7 +8,7 @@
    height="48"
    id="svg11300"
    sodipodi:version="0.32"
-   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14, custom)"
    sodipodi:docname="activities-manjaro.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0"
@@ -30,17 +30,17 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="8"
-     inkscape:cx="-7.25"
-     inkscape:cy="17.375"
+     inkscape:cx="38.1875"
+     inkscape:cy="12.4375"
      inkscape:current-layer="layer1"
-     showgrid="true"
+     showgrid="false"
      inkscape:grid-bbox="true"
      inkscape:document-units="px"
      inkscape:showpageshadow="true"
      inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:window-height="1012"
      inkscape:window-x="0"
-     inkscape:window-y="28"
+     inkscape:window-y="32"
      width="400px"
      height="300px"
      inkscape:snap-nodes="true"
@@ -63,7 +63,8 @@
      guideopacity="1"
      guidehicolor="#001aff"
      guidehiopacity="0.49803922"
-     inkscape:pagecheckerboard="0">
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#bebebe">
     <inkscape:grid
        type="xygrid"
        id="grid3123"
@@ -135,10 +136,8 @@
      id="layer1"
      transform="translate(0,-276)">
     <path
-       inkscape:connector-curvature="0"
-       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:5.6694"
-       d="m 6.0000001,281.99997 v 10.68478 h 0.0057 l -0.0057,3.31524 H 16.000631 v -4 H 29.99811 v -9.97026 H 6.0000001 m 25.9993719,-0.0212 v 35.9915 H 42 v -35.9915 m -24.001891,11.99146 -0.0019,24.00004 H 29.998112 L 30,293.99999 m -23.9943299,4 v 20.00004 H 16.006299 v -20.00004"
        id="path19"
-       sodipodi:nodetypes="ccccccccccccccccccccc" />
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:5.6694"
+       d="M 32 282.00781 L 32 318 L 42 318 L 42 282.00781 L 32 282.00781 z M 6 282.0293 L 6 292.68555 L 6.0058594 292.68555 L 6.0039062 293.9375 C 6.0026052 293.95847 6 293.97869 6 294 L 6 296 L 6 301 C 6 301.03462 6.0024575 301.06786 6.0058594 301.10156 L 6.0058594 318 L 16.005859 318 L 16.005859 298 L 16 298 L 16 296 L 16 294 L 16 292 L 29.998047 292 L 29.998047 282.0293 L 6 282.0293 z M 17.998047 294 L 17.996094 318 L 29.998047 318 L 30 294 L 17.998047 294 z " />
   </g>
 </svg>
