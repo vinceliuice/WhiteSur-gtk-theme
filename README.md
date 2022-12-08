@@ -157,7 +157,7 @@ Run this command to install `WhiteSur` into `gtk-4.0 configuration folder` ($HOM
 ./install.sh -l -c Light       # install light theme for libadwaita
 ```
 
-### Connect WhiteSur theme to Flatpak
+### Connect WhiteSur theme to Flatpak (Snap not support)
 Parameter: `--flatpak` `-F`
 
 Example: `./tweaks.sh -F`
@@ -254,9 +254,6 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
   -F, --flatpak
  Connect 'WhiteSur' theme to Flatpak.
-
-  -s, --snap
- Connect 'WhiteSur' theme the currently installed snap apps.
 
   -d, --dash-to-dock
  Fixed Dash to Dock theme issue.

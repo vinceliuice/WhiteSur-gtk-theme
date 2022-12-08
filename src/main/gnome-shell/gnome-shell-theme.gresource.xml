@@ -20,21 +20,39 @@
     <file>assets/view-app-grid.svg</file>
     <file>assets/background.png</file>
     <file>icons/scalable/actions/color-pick.svg</file>
-    <file>icons/scalable/status/eye-not-looking-symbolic.svg</file>
-    <file>icons/scalable/status/eye-open-negative-filled-symbolic.svg</file>
-    <file>icons/scalable/status/keyboard-caps-lock-filled-symbolic.svg</file>
-    <file>icons/scalable/status/keyboard-enter-symbolic.svg</file>
-    <file>icons/scalable/status/keyboard-hide-symbolic.svg</file>
-    <file>icons/scalable/status/keyboard-layout-filled-symbolic.svg</file>
-    <file>icons/scalable/status/keyboard-shift-filled-symbolic.svg</file>
-    <file>icons/scalable/status/message-indicator-symbolic.svg</file>
-    <file>icons/scalable/status/window-close-symbolic.svg</file>
-    <file>icons/scalable/status/carousel-arrow-back-symbolic.svg</file>
-    <file>icons/scalable/status/carousel-arrow-next-symbolic.svg</file>
+    <file>icons/scalable/actions/carousel-arrow-next-symbolic.svg</file>
+    <file>icons/scalable/actions/carousel-arrow-previous-symbolic.svg</file>
+    <file>icons/scalable/actions/carousel-arrow-back-symbolic.svg</file>
+    <file>icons/scalable/actions/dark-mode-symbolic.svg</file>
     <file>icons/scalable/actions/pointer-double-click-symbolic.svg</file>
     <file>icons/scalable/actions/pointer-drag-symbolic.svg</file>
     <file>icons/scalable/actions/pointer-primary-click-symbolic.svg</file>
     <file>icons/scalable/actions/pointer-secondary-click-symbolic.svg</file>
+    <file>icons/scalable/actions/preview-close-symbolic.svg</file>
+    <file>icons/scalable/actions/screenshot-ui-area-symbolic.svg</file>
+    <file>icons/scalable/actions/screenshot-ui-display-symbolic.svg</file>
+    <file>icons/scalable/actions/screenshot-ui-show-pointer-symbolic.svg</file>
+    <file>icons/scalable/actions/screenshot-ui-window-symbolic.svg</file>
+    <file>icons/scalable/actions/record-screen-symbolic.svg</file>
+    <file>icons/scalable/actions/screencast-recorded-symbolic.svg</file>
+    <file>icons/scalable/actions/screenshot-recorded-symbolic.svg</file>
+    <file>icons/scalable/status/eye-not-looking-symbolic.svg</file>
+    <file>icons/scalable/status/eye-open-negative-filled-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-caps-lock-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-caps-lock-filled-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-enter-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-hide-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-layout-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-layout-filled-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-shift-symbolic.svg</file>
+    <file>icons/scalable/status/keyboard-shift-filled-symbolic.svg</file>
+    <file>icons/scalable/status/message-indicator-symbolic.svg</file>
+    <file>icons/scalable/status/no-events-symbolic.svg</file>
+    <file>icons/scalable/status/no-notifications-symbolic.svg</file>
+    <file>icons/scalable/status/screen-privacy-disabled-symbolic.svg</file>
+    <file>icons/scalable/status/screen-privacy-symbolic.svg</file>
+    <file>icons/scalable/status/stop-symbolic.svg</file>
+    <file>icons/scalable/status/window-close-symbolic.svg</file>
     <file>gnome-shell.css</file>
     <file alias="gdm.css">gnome-shell.css</file>
     <file alias="gdm3.css">gnome-shell.css</file>

@@ -15,7 +15,6 @@ $panel_height: $menuitem_size;
   @if $scale != 'default' {
     @include fontsize($base_font_size * 2 - 2);
     height: $panel_height * 2 !important;
-    box-shadow: 0 10px 32px rgba(black, 0.05) !important;
 
     .panel-button {
       -natural-hpadding: $container_padding * 2 + 4px !important;
@@ -126,8 +125,12 @@ $panel_height: $menuitem_size;
     .unlock-screen &,
     .login-screen &,
     .lock-screen & {
-      color: $panel_fg;
-      &:focus, &:hover, &:active { color: $panel_fg; }
+      &, &:focus, &:hover, &:active { color: $panel_fg; }
+    }
+
+    .login-screen &,
+    .lock-screen & {
+      box-shadow: none;
     }
 
     &.clock-display {

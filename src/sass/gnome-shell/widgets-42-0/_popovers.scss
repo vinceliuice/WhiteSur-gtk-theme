@@ -6,7 +6,32 @@
 
 // separator
 .popup-separator-menu-item {
-  margin: 6px 32px;
+  border: none !important;
+
+  &:ltr { margin-right: $base_padding; }
+  &:rtl { margin-left: $base_padding; }
+
+  .popup-separator-menu-item-separator {
+    height: 1px; //not really the whole box
+    background-color: $borders_color;
+  }
+
+  .popup-menu-ornament {
+    width: 0 !important;
+  }
+
+  // separators in submenus
+  .popup-sub-menu & {
+    background-color: transparent;
+
+    // account for ornament
+    &:ltr { margin-right: 2.5em; }
+    &:rtl { margin-left: 2.5em; }
+
+    .popup-separator-menu-item-separator {
+      background-color: $borders_color;
+    }
+  }
 }
 
 // system status popover menu

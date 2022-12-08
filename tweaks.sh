@@ -13,7 +13,7 @@
 ###############################################################################
 
 readonly REPO_DIR="$(dirname "$(readlink -m "${0}")")"
-source "${REPO_DIR}/lib-install.sh"
+source "${REPO_DIR}/shell/lib-install.sh"
 
 # Customization, default values
 colors=("${COLOR_VARIANTS[@]}")
@@ -39,7 +39,7 @@ usage() {
   helpify "-e, --edit-firefox"  ""                                                  "Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
 
   helpify "-F, --flatpak"       ""                                                  "Connect '${THEME_NAME}' theme to Flatpak"                                    ""
-  helpify "-s, --snap"          ""                                                  "Connect '${THEME_NAME}' theme the currently installed snap apps"             ""
+  #helpify "-s, --snap"          ""                                                  "Connect '${THEME_NAME}' theme the currently installed snap apps"             ""
   helpify "-d, --dash-to-dock"  ""                                                  "Fixed Dash to Dock theme issue"                                              ""
 
   helpify "-r, --remove, --revert" ""                                               "Revert to the original themes, do the opposite things of install and connect" ""
@@ -118,13 +118,13 @@ while [[ $# -gt 0 ]]; do
         prompt -e "'${1}' ERROR: There's no Flatpak installed in your system"
         has_any_error="true"
       fi; shift ;;
-    -s|--snap)
-      snap="true";
+#    -s|--snap)
+#      snap="true";
 
-      if ! has_command snap; then
-        prompt -e "'${1}' ERROR: There's no Snap installed in your system"
-        has_any_error="true"
-      fi; shift ;;
+#      if ! has_command snap; then
+#        prompt -e "'${1}' ERROR: There's no Snap installed in your system"
+#        has_any_error="true"
+#      fi; shift ;;
     -g|--gdm)
       gdm="true"; full_sudo "${1}"
       showapps_normal="true" # use normal showapps icon
@@ -187,11 +187,11 @@ finalize_argument_parsing
 if [[ "${uninstall}" == 'true' ]]; then
   prompt -w "REMOVAL: Non file-related parameters will be ignored. \n"
 
-  if [[ "${snap}" == 'true' ]]; then
-    prompt -i "Disconnecting '${name}' theme from your installed snap apps... \n"
-    disconnect_snap
-    prompt -s "Done! '${name}' theme has been disconnected from your snap apps."; echo
-  fi
+#  if [[ "${snap}" == 'true' ]]; then
+#    prompt -i "Disconnecting '${name}' theme from your installed snap apps... \n"
+#    disconnect_snap
+#    prompt -s "Done! '${name}' theme has been disconnected from your snap apps."; echo
+#  fi
 
   if [[ "${flatpak}" == 'true' ]]; then
     prompt -i "Disconnecting '${name}' theme from your Flatpak... \n"
@@ -263,7 +263,7 @@ else
   fi
 fi
 
-if [[ "${firefox}" == "false" && "${edit_firefox}" == "false" && "${flatpak}" == "false" && "${snap}" == "false" && "${gdm}" == "false" && "${dash_to_dock}" == "false" && "${libadwaita}" == "false" ]]; then
+if [[ "${firefox}" == "false" && "${edit_firefox}" == "false" && "${flatpak}" == "false" && "${gdm}" == "false" && "${dash_to_dock}" == "false" && "${libadwaita}" == "false" ]]; then
   prompt -e "Oops... there's nothing to tweak..."
   prompt -i "HINT: Don't forget to define which component to tweak, e.g. '--gdm'"
   prompt -i "HINT: Run ./tweaks.sh -h for help!..."; echo

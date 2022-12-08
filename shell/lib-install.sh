@@ -8,8 +8,8 @@
 #                                VARIABLES                                    #
 ###############################################################################
 
-source "${REPO_DIR}/lib-core.sh"
-source "${REPO_DIR}/lib-flatpak.sh"
+source "${REPO_DIR}/shell/lib-core.sh"
+source "${REPO_DIR}/shell/lib-flatpak.sh"
 WHITESUR_SOURCE+=("lib-install.sh")
 
 ###############################################################################
@@ -826,21 +826,21 @@ disconnect_flatpak() {
   done
 }
 
-connect_snap() {
-  sudo snap install whitesur-gtk-theme
+#connect_snap() {
+#  sudo snap install whitesur-gtk-theme
 
-  for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
-    sudo snap connect "${i}:gtk-3-themes" "whitesur-gtk-theme:gtk-3-themes"
-    sudo snap connect "${i}:icon-themes" "whitesur-gtk-theme:icon-themes"
-  done
-}
+#  for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
+#    sudo snap connect "${i}:gtk-3-themes" "whitesur-gtk-theme:gtk-3-themes"
+#    sudo snap connect "${i}:icon-themes" "whitesur-gtk-theme:icon-themes"
+#  done
+#}
 
-disconnect_snap() {
-  for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
-    sudo snap disconnect "${i}:gtk-3-themes" "whitesur-gtk-theme:gtk-3-themes"
-    sudo snap disconnect "${i}:icon-themes" "whitesur-gtk-theme:icon-themes"
-  done
-}
+#disconnect_snap() {
+#  for i in $(snap connections | grep gtk-common-themes | awk '{print $2}' | cut -f1 -d: | sort -u); do
+#    sudo snap disconnect "${i}:gtk-3-themes" "whitesur-gtk-theme:gtk-3-themes"
+#    sudo snap disconnect "${i}:icon-themes" "whitesur-gtk-theme:icon-themes"
+#  done
+#}
 
 #########################################################################
 #                               GTK BASE                                #
