@@ -143,7 +143,7 @@ if [[ "${uninstall}" == 'true' ]]; then
   else
     prompt -i "Removing '${name}' gtk themes in '${dest}'... \n"
     prompt -w "REMOVAL: Non file-related parameters will be ignored. \n"
-    remove_themes
+    remove_themes; remove_libadwaita
     prompt -s "Done! All '${name}' gtk themes in has been removed."
   fi
 
