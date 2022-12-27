@@ -45,6 +45,10 @@ $flap_sidebar_size: 240px;
       box.start > box {
         margin-left: 144px;
       }
+
+      entry.search {
+        margin-left: $container_padding;
+      }
     }
   }
 
@@ -98,8 +102,6 @@ $flap_sidebar_size: 240px;
 #NautilusQueryEditor { // search entry
   padding: 1px $container_padding;
 
-  > box { margin: 0; }
-
   #NautilusQueryEditorTag {
     @extend .entry-tag;
 
@@ -116,7 +118,7 @@ $flap_sidebar_size: 240px;
     padding: 0 4px;
   }
 
-  > text, > image { margin: 0; }
+  > box, > text, > image { margin: 0; }
 }
 
 #NautilusPathBar {
