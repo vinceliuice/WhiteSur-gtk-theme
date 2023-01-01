@@ -49,7 +49,7 @@
 	<distance name="left_width" value="1" />
 </frame_geometry>
 
-<frame_geometry name="small" title_scale="small" parent="normal" rounded_top_left="false" rounded_top_right="false">
+<frame_geometry name="small" title_scale="small" rounded_top_left="8" rounded_top_right="8" parent="normal">
 	<distance name="title_vertical_pad" value="0" />
 	<border name="title_border" left="16" right="16" top="6" bottom="6" />
 	<border name="button_border" left="2" right="2" top="0" bottom="0" />
@@ -62,7 +62,7 @@
 
 <frame_geometry name="nobuttons" hide_buttons="false" parent="normal" />
 
-<frame_geometry name="border" has_title="false" rounded_top_left="8" rounded_top_right="8" parent="normal" >
+<frame_geometry name="border" has_title="false" rounded_top_left="8" rounded_top_right="8" parent="normal">
 	<distance name="left_width" value="1" />
 	<distance name="right_width" value="1" />
 	<distance name="bottom_height" value="1" />
