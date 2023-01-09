@@ -277,20 +277,6 @@ tabbar {
     min-height: $menuitem_size;
   }
 
-  tabbox {
-    > separator {
-      &.hidden {
-        opacity: 0;
-      }
-    }
-
-    > revealer > indicator {
-      min-width: 2px;
-      border-radius: 2px;
-      background: gtkalpha($selected_bg_color, 0.5);
-    }
-  }
-
   .start-action,
   .end-action {
     padding: $container_padding;
@@ -308,17 +294,19 @@ tabbar {
 
   &:not(.inline) {
     .box {
-      background-color: $bg_color;
       color: $text_color;
-      margin-top: -1px;
+      margin: 0;
 
       @if $monterey == 'false' {
         padding: 0;
-        box-shadow: inset 0 -1px $borders_color;
+        box-shadow: inset 0 -1px if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
         border-bottom: none;
+        background-color: darken($header_bg, 10%);
       } @else {
+        box-shadow: none;
         border-bottom: 1px solid $borders_color;
-        padding: 0 $container_padding / 2 $container_padding / 2;
+        padding: $container_padding / 2 0;
+        background-color: $header_bg;
       }
     }
 
@@ -327,6 +315,90 @@ tabbar {
       > .start-action,
       > .end-action {
         filter: opacity(0.5);
+      }
+    }
+  }
+
+  tabbox {
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    background-color: transparent;
+
+    > separator {
+      &.hidden {
+        opacity: 0;
+      }
+    }
+
+    > revealer > indicator {
+      min-width: 2px;
+      border-radius: 2px;
+      background: gtkalpha($selected_bg_color, 0.5);
+    }
+
+    > tabboxchild {
+      border-radius: 0;
+      margin: 0;
+
+      @if $monterey == 'false' {
+        &:first-child > tab {
+          border-left: none;
+        }
+
+        &:last-child > tab {
+          border-right: none;
+        }
+      }
+    }
+
+    > tab,
+    > tabboxchild > tab {
+      @if $monterey == 'false' {
+        @extend %tabs_tab;
+        border-top: none;
+      } @else {
+        @extend %monterey_tab;
+      }
+
+      button.tab-close-button {
+        border-radius: 3px;
+        border: none;
+        padding: 0;
+        margin-right: -$container_padding / 2;
+        @extend %flat_button;
+
+        @if $monterey == 'false' {
+          min-height: $small_size;
+          min-width: $small_size;
+          margin-top: 2px;
+          margin-bottom: 2px;
+        } @else {
+          min-height: 16px;
+          min-width: 16px;
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+
+        &:hover {
+          color: $fg_color;
+          background-color: rgba($borders_color, 0.1);
+        }
+
+        &:active, &:active:hover {
+          color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
+          background-color: rgba($borders_color, 0.2);
+        }
+      }
+    }
+  }
+
+  scrolledwindow:not(.pinned) {
+    tabbox > tabboxchild {
+      @if $monterey == 'false' {
+        margin: 0 -3px;
+      } @else {
+        margin: 0;
       }
     }
   }
@@ -342,17 +414,12 @@ dnd tab {
 tabbar,
 dnd {
   tab {
-    padding-right: $container_padding / 2;
     margin: 0;
 
     @if $monterey == 'false' {
       @extend %tabs_tab;
     } @else {
       @extend %monterey_tab;
-
-      + tab {
-        margin-left: $container_padding / 2;
-      }
     }
 
     button.tab-close-button {

@@ -2916,68 +2916,6 @@ notebook {
   }
 }
 
-tabbox {
-  @if $monterey == 'false' {
-    background-color: darken($header_bg, 10%);
-    box-shadow: inset 0 -1px $borders_color;
-  } @else {
-    background-color: $header_bg;
-    border-bottom: 1px solid $borders_color;
-    padding: 0 $container_padding / 2 $container_padding / 2;
-  }
-
-  > tabboxchild {
-    margin: 0 -3px;
-    border-radius: 0;
-  }
-
-  > tab,
-  > tabboxchild > tab {
-    @if $monterey == 'false' {
-      @extend %tabs_tab;
-      border-top: none;
-      border-top: 1px solid $borders_color;
-      &:checked { border-top-color: $header_bg; }
-    } @else {
-      @extend %monterey_tab;
-
-      + tab {
-        margin-left: $container_padding / 2;
-      }
-    }
-
-    button.tab-close-button {
-      border-radius: 3px;
-      border: none;
-      padding: 0;
-      @extend %flat_button;
-
-      @if $monterey == 'false' {
-        min-height: $small_size;
-        min-width: $small_size;
-        margin-top: 2px;
-        margin-bottom: 2px;
-      } @else {
-        min-height: 16px;
-        min-width: 16px;
-        margin-top: 4px;
-        margin-bottom: 4px;
-        margin-right: -$container_padding;
-      }
-
-      &:hover {
-        color: $fg_color;
-        background-color: rgba($borders_color, 0.1);
-      }
-
-      &:active, &:active:hover {
-        color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
-        background-color: rgba($borders_color, 0.2);
-      }
-    }
-  }
-}
-
 //
 // Scrollbars
 //

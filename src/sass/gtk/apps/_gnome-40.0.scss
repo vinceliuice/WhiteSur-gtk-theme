@@ -72,6 +72,16 @@ $flap_sidebar_size: 240px;
     }
   }
 
+  tabbar:not(.inline) {
+    .box {
+      @if $monterey == 'false' {
+        background-color: mix(black, $base_color, 6%);
+      } @else {
+        background-color: $base_color;
+      }
+    }
+  }
+
   // Floating Bar
   .floating-bar {
     padding: 2px;
