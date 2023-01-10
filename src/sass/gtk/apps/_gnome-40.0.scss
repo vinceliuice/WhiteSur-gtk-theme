@@ -82,6 +82,20 @@ $flap_sidebar_size: 240px;
     }
   }
 
+  .nautilus-grid-view.view {
+    child.activatable {
+      border-radius: $bt_radius;
+      @extend %row_activatable;
+    }
+  }
+
+  .nautilus-list-view.view {
+    listview.view > row.activatable {
+      border-radius: $bt_radius;
+      @extend %row_activatable;
+    }
+  }
+
   // Floating Bar
   .floating-bar {
     padding: 2px;
@@ -111,6 +125,9 @@ $flap_sidebar_size: 240px;
 
 #NautilusQueryEditor { // search entry
   padding: 1px $container_padding;
+  border-spacing: 0;
+
+  > * { margin: 0; }
 
   #NautilusQueryEditorTag {
     @extend .entry-tag;
@@ -127,8 +144,6 @@ $flap_sidebar_size: 240px;
     -gtk-icon-size: 12px;
     padding: 0 4px;
   }
-
-  > box, > text, > image { margin: 0; }
 }
 
 #NautilusPathBar {
