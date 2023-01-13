@@ -1566,10 +1566,6 @@ headerbar {
 
     &:backdrop { opacity: 0.65; background-image: none; }
 
-    &.flat {
-      @include button(undecorated);
-    }
-
     &:disabled {
       @include button(header-insensitive);
     }

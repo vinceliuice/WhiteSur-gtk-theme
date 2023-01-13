@@ -620,160 +620,51 @@ window.background.csd { // gnome-terminal 3.32 setting
 //
 // Gedit
 //
-window.org-gnome-gedit {
-  > paned.titlebar {
-    > headerbar {
-      button.flat.toggle.popup:not(.image-button) { // left-pane header button
-        @extend %headerbar_buttons;
 
-        box > .title {
-          padding: 0; // remove lateral padding
-          margin: -2px 0;
-        }
+paned.titlebar {
+  > headerbar {
+    button.flat.toggle.popup:not(.image-button) { // left-pane header button
+      box > .title {
+        padding: 0; // remove lateral padding
+        margin: -2px 0;
       }
     }
-
-    > separator { @extend %side_separator; }
   }
 
-  > overlay > box.vertical {
-    > paned.gedit-side-panel-paned {
-      > separator { @extend %side_separator; }
+  > separator { @extend %side_separator; }
+}
 
-      // 'file-browser' pane
-      > box.vertical > stack > grid.horizontal {
-        > box.horizontal {  // header-part
-          margin: 4px 0;
-        }
+paned.gedit-side-panel-paned {
+  > separator { @extend %side_separator; }
 
-        > scrolledwindow { // raised widget
-          border-bottom-left-radius: $wm_radius;
+  // 'file-browser' pane
+  > box.vertical > stack > grid.horizontal {
+    > box.horizontal {  // header-part
+      margin: 4px 0;
+    }
 
-          treeview.view:not(:hover):not(:selected) {
-            background: none;
-          }
-        }
+    > scrolledwindow { // raised widget
+      border-bottom-left-radius: $wm_radius;
+
+      treeview.view:not(:hover):not(:selected) {
+        background: none;
       }
+    }
+  }
 
-      // 'files' pane
-      stack {
-        scrolledwindow {
-          viewport.frame {
-            list.gedit-document-panel {
-              background: none;
-            }
-          }
+  // 'files' pane
+  stack {
+    scrolledwindow {
+      viewport.frame {
+        list.gedit-document-panel {
+          background: none;
         }
       }
     }
   }
+}
 
-  .open-document-selector-treeview.view {
-    padding: 3px 6px 3px 6px;
-    border-color: $base_color; // disable borders, making them transparent doesn't work for some reason
-    &:hover {
-      background-color: mix($fg_color, $base_color, 7%);
-
-      &:selected {
-        color: $selected_fg_color;
-        background-color: $selected_bg_color;
-      }
-    }
-  }
-
-  .open-document-selector-name-label { color: $fg_color; }
-
-  .open-document-selector-path-label {
-    color: mix($fg_color, $base_color, 50%);
-    font-size: smaller;
-
-    &:selected {
-      color: transparentize($selected_fg_color, 0.1);
-    }
-  }
-
-  .gedit-document-panel { // 'documents' pane
-    row.activatable { padding: 6px 0; }
-
-    row button { // 'close' button
-      min-width: 22px;
-      min-height: 22px;
-      padding: 0;
-      margin: 0 6px;
-      border-radius: 100px;
-      // -gtk-outline-radius: 100px;
-
-      image {
-        color: inherit;
-      }
-    }
-
-    row:hover:not(:selected) button {
-      color: mix($bg_color, $fg_color, 35%);
-
-      &:hover {
-        color: lighten(red, 15%);
-      }
-      &:active {
-        color: $fg_color;
-      }
-    }
-
-    row:hover:selected button:hover {
-      color: lighten(red, 20%);
-
-      &:active {
-        color: $selected_fg_color;
-      }
-    }
-  }
-
-  .gedit-document-panel-dragged-row {
-    border: 1px solid $borders_color;
-    background-color: darken($bg_color, 10%);
-    color: $fg_color;
-  }
-
-  .gedit-side-panel-paned statusbar {
-    border-top: 1px solid $borders_color;
-    background-color: $bg_color;
-    border-radius: 0 0 $wm_radius $wm_radius;
-
-    frame > border { border: none; }
-  }
-
-  .gedit-search-slider {
-    background-color: lighten($bg_color, 2%);
-    padding: 6px;
-    border-color: $borders_color;
-    border-radius: 0 0 $bt_radius $bt_radius;
-    border-width: 0 1px 1px 1px;
-    border-style: solid;
-  }
-
-  .gedit-search-entry-occurrences-tag {
-    color: transparentize($fg_color, 0.4);
-    border: none;
-    margin: 2px;
-    padding: 2px;
-  }
-
-  .gedit-map-frame {
-    border {
-      @if $variant=='light' {
-        border-color: transparentize(black, 0.7);
-      }
-      border-width: 0;
-
-      &:dir(ltr) {
-        border-left-width: 1px;
-      }
-      &:dir(rtl) {
-        border-right-width: 1px;
-      }
-    }
-  }
-
+window.background.csd {
   &.tiled,
   &.maximized,
   &.fullscreen {
@@ -790,6 +681,125 @@ window.org-gnome-gedit {
     &.background.csd,
     .gedit-side-panel-paned statusbar {
       border-radius: 0 0 $maximized_radius $maximized_radius;
+    }
+  }
+}
+
+.open-document-selector-treeview.view {
+  padding: 3px 6px 3px 6px;
+  border-color: $base_color; // disable borders, making them transparent doesn't work for some reason
+
+  &:hover {
+    background-color: mix($fg_color, $base_color, 7%);
+
+    &:selected {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+    }
+  }
+}
+
+.open-document-selector-name-label { color: $fg_color; }
+
+.open-document-selector-path-label {
+  color: mix($fg_color, $base_color, 50%);
+  font-size: smaller;
+
+  &:selected {
+    color: transparentize($selected_fg_color, 0.1);
+  }
+}
+
+.gedit-document-panel { // 'documents' pane
+  row.activatable { padding: 6px 0; }
+
+  row button { // 'close' button
+    min-width: 22px;
+    min-height: 22px;
+    padding: 0;
+    margin: 0 6px;
+    border-radius: 100px;
+    // -gtk-outline-radius: 100px;
+
+    image {
+      color: inherit;
+    }
+  }
+
+  row:hover:not(:selected) button {
+    color: mix($bg_color, $fg_color, 35%);
+
+    &:hover {
+      color: lighten(red, 15%);
+    }
+    &:active {
+      color: $fg_color;
+    }
+  }
+
+  row:hover:selected button:hover {
+    color: lighten(red, 20%);
+
+    &:active {
+      color: $selected_fg_color;
+    }
+  }
+}
+
+.gedit-document-panel-dragged-row {
+  border: 1px solid $borders_color;
+  background-color: darken($bg_color, 10%);
+  color: $fg_color;
+}
+
+.gedit-side-panel-paned statusbar {
+  border-top: 1px solid $borders_color;
+  background-color: $bg_color;
+  border-radius: 0 0 $wm_radius $wm_radius;
+
+  frame > border { border: none; }
+}
+
+.gedit-search-slider {
+  background-color: $header_bg;
+  color: $header_fg;
+  padding: $container_padding;
+  margin: 0 8px 13px;
+  border-radius: 0 0 $wm_radius $wm_radius;
+
+  @if $variant == 'light' {
+    border: none;
+  } @else {
+    border: solid mix(white, $header_bg, 10%);
+    border-width: 0 1px 1px;
+  }
+
+  box-shadow: 0 3px 3px 0 rgba(black, 0.15),
+              0 5px 8px 0 rgba(black, 0.05),
+              $wm_outline;
+}
+
+.gedit-search-entry-occurrences-tag {
+  color: transparentize($fg_color, 0.4);
+  border: none;
+  margin: 2px;
+  padding: 2px;
+}
+
+.gedit-map-frame {
+  border {
+    border-width: 0;
+
+    @if $variant=='light' {
+      border-color: transparentize(black, 0.7);
+    }
+
+    &:dir(ltr) {
+      border-left-width: 1px;
+    }
+
+    &:dir(rtl) {
+      border-right-width: 1px;
     }
   }
 }
