@@ -3,7 +3,7 @@
 
 /* Headerbar */
 #nav-bar {
-	padding: 8px 16px !important;
+	padding: 8px !important;
 }
 
 /* Headerbar CSD colors */
@@ -17,7 +17,8 @@
 }
 
 /* Headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton) {
+#nav-bar toolbarbutton:not(#urlbar-zoom-button),
+toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	border: none !important;
 	box-shadow: none !important;
 	background: none !important;
@@ -26,18 +27,23 @@
 	margin: 8px 2px !important;
 	padding: 0 10px !important;
 	max-height: 32px !important;
+	min-height: 32px !important;
 	min-width: 32px !important;
 	color: var(--gnome-toolbar-color) !important;
 	transition: background 200ms;
 	--toolbarbutton-inner-padding: 0 !important;
 }
 
-:root:-moz-window-inactive #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton) {
+:root:-moz-window-inactive #nav-bar toolbarbutton:not(#urlbar-zoom-button) {
 	background: none !important;
 }
 
+#nav-bar .toolbaritem-combined-buttons {
+	margin: 0 !important;
+}
+
 /* Hover headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([open]):not([disabled]):not([checked]):hover,
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([open]):not([disabled]):not([checked]):hover,
 #TabsToolbar .toolbarbutton-1:hover,
 #tabs-newtab-button:hover, #TabsToolbar #new-tab-button:hover {
 	outline: 0 !important;
@@ -45,24 +51,31 @@
 }
 
 /* Active headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([disabled]):not(#hack):active,
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.subviewbutton):not([disabled])[open],
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not([disabled])[checked],
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([disabled]):not(#hack):active,
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([disabled])[open],
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not([disabled])[checked],
 #TabsToolbar .toolbarbutton-1:active, #TabsToolbar .toolbarbutton-1[open],
 #tabs-newtab-button:active, #TabsToolbar #new-tab-button:active {
 	background: var(--gnome-headerbar-button-active-background) !important;
 }
 
 /* Disabled headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton)[disabled] {
+#nav-bar toolbarbutton:not(#urlbar-zoom-button)[disabled] {
+	background: transparent !important;
+	border-color: var(--gnome-button-disabled-border-color) !important;
+	box-shadow: var(--gnome-button-disabled-box-shadow) !important;
+	opacity: 1 !important;
 }
 
 /* Inactive window buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):-moz-window-inactive {
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):-moz-window-inactive {
+	background: var(--gnome-inactive-button-background) !important;
+	box-shadow: var(--gnome-inactive-button-box-shadow) !important;
+	border-color: var(--gnome-inactive-button-border-color) !important;
 }
 
 /* Buttons with margins */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton) {
+#nav-bar toolbarbutton:not(#urlbar-zoom-button) {
 	margin: 0 2px !important;
 }
 

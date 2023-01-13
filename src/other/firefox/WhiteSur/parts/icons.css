@@ -4,9 +4,9 @@
 
 /* Cursors autoscroller fix */
 .autoscroller {
-	--panel-background: transparent !important;
-	--panel-border-color: transparent !important;
-	background-image: url("chrome://global/skin/icons/autoscroll.svg") !important;
+  --panel-background: transparent !important;
+  --panel-border-color: transparent !important;
+  background-image: url("chrome://global/skin/icons/autoscroll.svg") !important;
 }
 
 /* Built-in firefox icons color */
@@ -35,32 +35,18 @@
 	margin-top: -2px !important;
 }
 .protections-popup-category::after {
-	content: url("../icons/pan-start-symbolic.svg") !important;
+	content: url("../icons/pan-end-symbolic.svg") !important;
 }
 .identity-popup-content-blocking-category::after {
-	content: url("../icons/pan-start-symbolic.svg") !important;
+	content: url("../icons/pan-end-symbolic.svg") !important;
 }
 #identity-popup-security-expander .button-icon {
-	list-style-image: url("../icons/pan-start-symbolic.svg") !important;
+	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
 }
 
 /* Popovers subview back button */
 .subviewbutton-back {
 	list-style-image: url("../icons/pan-start-symbolic.svg") !important;
-}
-
-/* Sub menu arrow */
-.menu-right {
-	-moz-appearance: none !important;
-	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
-	width: 16px !important;
-	height: 16px !important;
-}
-menu[disabled] > .menu-right {
-	opacity: 0.3;
-}
-menu:not([disabled]):hover > .menu-right {
-	filter: invert(100%) brightness(200%);
 }
 
 /* Arrow down buttons */
@@ -127,18 +113,15 @@ treechildren::-moz-tree-twisty(selected, focus, open) {
 menuitem[type="checkbox"] {
 	list-style-image: url("../icons/checkbox-symbolic.svg") !important;
 }
-menuitem[type="checkbox"][hover="true"] {
-
-}
 menuitem[type="checkbox"][checked="true"] {
 	list-style-image: url("../icons/checkbox-checked-symbolic.svg") !important;
 }
 menuitem[type="checkbox"][disabled="true"] .menu-iconic-icon {
 	opacity: 0.5;
 }
-menuitem[type="checkbox"]:not([disabled="true"]):hover .menu-iconic-icon {
-	filter: invert(100%) brightness(200%);
-}
+/*menuitem[type="checkbox"]:not([disabled="true"]):hover .menu-iconic-icon {*/
+/*	filter: invert(100%) brightness(200%);*/
+/*}*/
 
 /* Menu radio */
 menuitem[type="radio"] {
@@ -150,9 +133,23 @@ menuitem[type="radio"][checked="true"] {
 menuitem[type="radio"][disabled="true"] .menu-iconic-icon {
 	opacity: 0.5;
 }
-menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {
-	filter: invert(100%) brightness(200%);
+/*menuitem[type="radio"]:not([disabled="true"]):hover .menu-iconic-icon {*/
+/*	filter: invert(100%) brightness(200%);*/
+/*}*/
+
+/* Sub menu arrow */
+.menu-right {
+	-moz-appearance: none !important;
+	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
+	width: 16px !important;
+	height: 16px !important;
 }
+menu[disabled] > .menu-right {
+	opacity: 0.3;
+}
+/*menu:not([disabled]):hover > .menu-right {*/
+/*	filter: invert(100%) brightness(200%);*/
+/*}*/
 
 /* Close button */
 .close-icon:not(.tab-close-button),

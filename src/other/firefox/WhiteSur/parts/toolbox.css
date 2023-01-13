@@ -96,10 +96,16 @@ findbar:-moz-window-inactive label,
 	margin-top: 0 !important;
 }
 
+#PersonalToolbar {
+	padding: 0 3px 3px !important;
+	height: 32px !important;
+	max-height: 32px !important;
+}
+
 /* bookmark-item */
 toolbarbutton.bookmark-item {
-	padding: 0 4px; !important;
+	padding: 3px 6px !important;
 	margin: 0 2px !important;
 	border-radius: 3px !important;
-	max-height: 20px !important;
+	max-height: 24px !important;
 }

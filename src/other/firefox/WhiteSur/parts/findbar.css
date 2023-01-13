@@ -3,16 +3,20 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 findbar {
+	padding: 0 !important;
 	position: relative;
 }
 
 .findbar-container {
+	align-items: center;
 	padding: 6px !important;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	position: relative;
 	flex-direction: row;
+	margin: 0 !important;
 	width: calc(100% - 42px);
+	height: auto !important;
 }
 
 hbox[anonid="findbar-textbox-wrapper"] {

@@ -13,13 +13,13 @@
 /* Tabs bar height */
 #tabbrowser-tabs,
 #tabbrowser-tabs arrowscrollbox {
-	height: 28px !important;
-	min-height: 28px !important;
-	--tab-min-height: 28px !important;
+	height: 32px !important;
+	min-height: 32px !important;
+	--tab-min-height: 32px !important;
 }
 
 .tab-background, .tab-stack {
-	min-height: 28px !important;
+	min-height: 32px !important;
 }
 
 /* Extra margin for the first and last tabs */
@@ -99,7 +99,7 @@ tab[selected]:-moz-window-inactive {
 	align-items: center;
 	margin-top: -1px;
 	min-width: 100% !important;
-	padding: 0 10px !important;
+	padding: 0 8px !important;
 }
 
 /* Prevent tab icons size breaking */
@@ -313,6 +313,9 @@ tab[selected]:-moz-window-inactive {
 #TabsToolbar .toolbarbutton-1 {
 	margin: 0 !important;
 	border-radius: 0 !important;
+	min-width: 32px !important;
+	height: 32px !important;
+	padding: 0 !important;
 }
 
 /* firefox-view-button */
