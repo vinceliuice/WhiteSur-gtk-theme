@@ -92,9 +92,9 @@ panelview {
 
 #BMB_bookmarksPopup {
 	margin-top: 4px !important;
-	padding: 0 !important;
+	padding: 6px !important;
 	box-shadow: none !important;
-	--panel-padding: 0 !important;
+	--panel-padding: 6px !important;
 }
 
 #BMB_bookmarksPopup menupopup {
@@ -153,7 +153,6 @@ panel:not([remote]), #BMB_bookmarksPopup {
 /* Style popovers menu buttons */
 menuitem, menupopup menu,
 .subviewbutton:not(#appMenu-fxa-label2),
-.toolbarbutton-1,
 .protections-popup-footer-button,
 .protections-popup-category,
 .identity-popup-content-blocking-category,
