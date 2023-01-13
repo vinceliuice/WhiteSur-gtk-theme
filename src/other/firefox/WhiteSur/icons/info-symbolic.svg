@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16"
+   height="16"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="info-symbolic.svg"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs16" />
+  <sodipodi:namedview
+     id="namedview14"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="true"
+     inkscape:zoom="20.85965"
+     inkscape:cx="0.26366694"
+     inkscape:cy="6.9991587"
+     inkscape:window-width="1280"
+     inkscape:window-height="650"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg12">
+    <inkscape:grid
+       type="xygrid"
+       id="grid292" />
+  </sodipodi:namedview>
+  <path
+     d="M 8,0 A 8,8 0 0 0 0,8 8,8 0 0 0 8,16 8,8 0 0 0 16,8 8,8 0 0 0 8,0 Z M 8,1 A 7,7 0 0 1 15,8 7,7 0 0 1 8,15 7,7 0 0 1 1,8 7,7 0 0 1 8,1 Z"
+     id="path2"
+     style="color:#363636;fill:#333333;fill-opacity:1" />
+  <circle
+     cx="8"
+     cy="12"
+     r="1"
+     id="circle6"
+     style="color:#363636;fill:#333333;fill-opacity:1" />
+  <rect
+     id="rect346"
+     width="2"
+     height="7"
+     x="7"
+     y="3"
+     rx="1"
+     ry="1"
+     style="fill:#333333;fill-opacity:1" />
+</svg>

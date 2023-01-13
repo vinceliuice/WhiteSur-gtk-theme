@@ -25,7 +25,23 @@
 	list-style-image: url("../icons/pan-start-symbolic.svg") !important;
 }
 
+/* Scroll icons */
+#scrollbutton-up {
+	list-style-image: var(--scrollbutton-icon-name) !important;
+}
+#scrollbutton-down {
+	list-style-image: var(--scrollbutton-icon-name) !important;
+}
+arrowscrollbox {
+	--scrollbutton-icon-name: url("../icons/pan-down-symbolic.svg");
+}
+arrowscrollbox[orient="horizontal"] {
+	--scrollbutton-icon-name: url("../icons/pan-start-symbolic.svg");
+}
+
 /* Popovers subview menu arrow */
+#identity-popup-mainView .subviewbutton-nav::after,
+.widget-overflow-list .subviewbutton-nav::after,
 .PanelUI-subView .subviewbutton-nav::after {
 	content: "" !important;
 	background: url("../icons/pan-end-symbolic.svg");
@@ -83,10 +99,14 @@
 }
 
 /* Tree views */
-treechildren::-moz-tree-twisty {
+treechildren::-moz-tree-twisty,
+.item.client .item-twisty-container {
 	list-style-image: url("../icons/pan-down-symbolic.svg") !important;
 	width: 16px !important;
 	height: 16px !important;
+}
+.item.client .item-twisty-container {
+	background-image: url("../icons/pan-end-symbolic.svg") !important;
 }
 treechildren::-moz-tree-twisty(open) {
 	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
@@ -94,8 +114,19 @@ treechildren::-moz-tree-twisty(open) {
 treechildren::-moz-tree-twisty(selected, focus) {
 	list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
 }
+.item.client.closed .item-twisty-container {
+	background-image: url("../icons/pan-down-symbolic.svg") !important;
+}
 treechildren::-moz-tree-twisty(selected, focus, open) {
 	list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
+}
+treechildren::-moz-tree-image(title, container),
+treechildren::-moz-tree-image(title, open) {
+	list-style-image: url("../icons/folder-symbolic.svg") !important;
+}
+treechildren::-moz-tree-image(title, query, dayContainer),
+treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
+	list-style-image: url("../icons/preferences-system-time-symbolic.svg") !important;
 }
 
 .sidebar-panel[lwt-sidebar-brighttext] .sidebar-placesTreechildren::-moz-tree-twisty {
@@ -157,6 +188,20 @@ menu[disabled] > .menu-right {
 	list-style-image: url("../icons/window-close-symbolic.svg") !important;
 }
 
+.tab-icon-overlay {
+	height: 22px !important;
+	width: 22px !important;
+	padding: 3px !important;
+}
+
+/* Sound icons */
+.tab-icon-overlay[soundplaying] {
+	list-style-image: url("../icons/audio-playing-symbolic.svg") !important;
+}
+.tab-icon-overlay[muted] {
+	list-style-image: url("../icons/audio-muted-symbolic.svg") !important;
+}
+
 /* Private browsing button */
 #privatebrowsing-button {
 	list-style-image: url("../icons/user-not-tracked.svg") !important;
@@ -175,7 +220,9 @@ menu[disabled] > .menu-right {
 }
 /* Forward button */
 #nav-bar #forward-button .toolbarbutton-icon,
-#context-forward {
+#context-forward,
+#urlbar-go-button,
+.search-go-button {
 	list-style-image: url("../icons/go-next-symbolic.svg") !important;
 }
 /* Menu button */
@@ -194,7 +241,8 @@ menu[disabled] > .menu-right {
 	list-style-image: url("../icons/user-home-symbolic.svg") !important;
 }
 /* Preferences button */
-#preferences-button {
+#preferences-button,
+.search-setting-button-compact > .button-box > .button-icon {
 	list-style-image: url("../icons/preferences-system-symbolic.svg") !important;
 }
 /* Fullscreen button */
@@ -225,7 +273,9 @@ menu[disabled] > .menu-right {
 	list-style-image: url("../icons/printer-symbolic.svg") !important;
 }
 /* Addons button */
-#add-ons-button {
+#add-ons-button,
+#addons-notification-icon,
+.install-icon {
 	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
 }
 /* Find button */
@@ -240,8 +290,16 @@ menu[disabled] > .menu-right {
 #bookmarks-menu-button {
 	list-style-image: url("../icons/bookmarks-symbolic.svg") !important;
 }
+#sidebar-box[sidebarcommand="viewBookmarksSidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon,
+.urlbarView-row[source="bookmarks"] > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-favicon,
+#urlbar-engine-one-off-item-bookmarks {
+	list-style-image: url("../icons/starred-symbolic.svg") !important;
+}
 /* History button */
-#history-panelmenu {
+#history-panelmenu,
+#sidebar-box[sidebarcommand="viewHistorySidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon,
+.urlbarView-row[source="history"] > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-favicon,
+#urlbar-engine-one-off-item-history {
 	list-style-image: url("../icons/preferences-system-time-symbolic.svg") !important;
 }
 /* All tabs button */
@@ -269,17 +327,18 @@ menu[disabled] > .menu-right {
 }
 
 /* Glitch - animations (may be possible to fix in about:config) */
-#reload-button { /* Reload button */
+#reload-button,
+.downloadIconRetry > .button-box > .button-icon,
+#context-reload {
 	list-style-image: url("../icons/view-refresh-symbolic.svg") !important;
-	animation: none !important;
 }
-#stop-button { /* Stop button */
+#stop-button,
+.downloadIconCancel > .button-box > .button-icon,
+#context-stop {
 	list-style-image: url("../icons/process-stop-symbolic.svg") !important;
-	animation: none !important;
 }
 #downloads-button .toolbarbutton-icon { /* Downloads button / Glitch - it swaps to the default one anyway */
 	list-style-image: url("../icons/folder-download-symbolic.svg") !important;
-	animation: none !important;
 }
 
 #identity-box[pageproxystate="valid"].verifiedDomain #identity-icon,
@@ -313,14 +372,18 @@ menu[disabled] > .menu-right {
 	list-style-image: url("../icons/save-to-pocket.svg") !important;
 }
 
+#context-bookmarkpage,
 #star-button {
 	list-style-image: url("../icons/star-symbolic.svg") !important;
 }
 
+#context-bookmarkpage[starred="true"],
 #star-button[starred] {
 	list-style-image: url("../icons/starred-symbolic.svg") !important;
 }
-
+#star-button[starred] {
+	fill: var(--theme-primary-color) !important;
+}
 #plugins-notification-icon:not(.plugin-blocked)[extraAttr="inactive"] > .plugin-icon {
 	fill-opacity: 0.25;
 	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
@@ -379,7 +442,10 @@ menu[disabled] > .menu-right {
 	list-style-image: url("../icons/forget-history-symbolic.svg") !important;
 }
 
-#sync-button {
+#sync-button,
+#sidebar-box[sidebarcommand="viewTabsSidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon,
+.urlbarView-row[source="tabs"] > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-favicon,
+#urlbar-engine-one-off-item-tabs {
 	list-style-image: url("../icons/tab-sync-symbolic.svg") !important;
 }
 
@@ -430,6 +496,23 @@ menu[disabled] > .menu-right {
 	fill: rgb(224, 41, 29) !important;
 }
 
+/* Info */
+.panel-info-button > image {
+	list-style-image: url("../icons/info-symbolic.svg") !important;
+}
+
+.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]):not([crashed]) .tab-icon-stack::before {
+	content: "";
+	height: 16px;
+	width: 16px;
+	background-image: url("../icons/info-symbolic.svg") !important;
+}
+
+/* Password */
+#password-notification-icon {
+	list-style-image: url("../icons/key-symbolic.svg") !important;
+}
+
 .bookmark-item[container] {
 	list-style-image: url("../icons/folder-symbolic.svg") !important;
 }
@@ -438,6 +521,38 @@ menu[disabled] > .menu-right {
 	list-style-image: url("../icons/network-workgroup-symbolic.svg") !important;
 	-moz-context-properties: fill;
 	fill: currentColor;
+}
+
+/* Fix flat buttons icons aproach */
+button.close::before {
+	content: "";
+	display: block;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 100%;
+	width: 100%;
+}
+
+/* Fix icons sizes */
+.permission-popup-permission-remove-button > .button-box > .button-icon,
+.menu-iconic-icon {
+	height: 16px !important;
+	width: 16px !important;
+}
+/* Fix icon color */
+#sidebar-icon {
+	opacity: 1 !important;
+}
+treechildren::-moz-tree-twisty,
+treechildren::-moz-tree-image {
+	fill-opacity: 1 !important;
+}
+
+/* Fix main menu zoom controls icons */
+#appMenu-zoom-controls2 .toolbarbutton-icon {
+	padding: 0 !important;
+	padding-block: 0 !important;
+	padding-inline: 0 !important;
 }
 
 /* Invert icons color in dark variant */
@@ -519,7 +634,11 @@ menu[disabled] > .menu-right {
 	#appMenu-paste-button .toolbarbutton-icon,
 	#nav-bar-overflow-button .toolbarbutton-icon,
 	#reload-button .toolbarbutton-icon,
+	.downloadIconRetry > .button-box > .button-icon,
+	#context-reload,
 	#stop-button .toolbarbutton-icon,
+	.downloadIconCancel > .button-box > .button-icon,
+	#context-stop,
 	#downloads-button .toolbarbutton-icon,
 	#sync-button .toolbarbutton-icon,
 	#new-window-button .toolbarbutton-icon,
@@ -530,6 +649,7 @@ menu[disabled] > .menu-right {
 	#tracking-protection-icon-animatable-image,
 	#reader-mode-button > .urlbar-icon,
 	#star-button:not([starred]),
+	#context-bookmarkpage:not([starred]),
 	#geo-sharing-icon[sharing], .geo-icon,
 	.blocked-permission-icon.popup-icon,
 	#webrtc-sharing-icon[sharing="screen"],
@@ -551,7 +671,9 @@ menu[disabled] > .menu-right {
 	#identity-box[pageproxystate="valid"].httpsOnlyErrorPage #identity-icon,
 	#identity-box[pageproxystate="valid"].localResource #identity-icon,
 	.bookmark-item[container] .toolbarbutton-icon,
-	.menu-iconic.bookmark-item[container] .menu-iconic-icon {
+	.menu-iconic.bookmark-item[container] .menu-iconic-icon,
+	.panel-info-button > image,
+	.tab-icon-overlay {
 		filter: invert(60%) brightness(150%);
 	}
 
@@ -561,13 +683,44 @@ menu[disabled] > .menu-right {
 	}
 
 	/* Tree views */
-	treechildren::-moz-tree-twisty {
-		list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
+	treechildren::-moz-tree-twisty,
+	.item.client .item-twisty-container {
+		list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
+		width: 16px !important;
+		height: 16px !important;
+	}
+	.item.client .item-twisty-container {
+		background-image: url("../icons/pan-end-symbolic-light.svg") !important;
 	}
 	treechildren::-moz-tree-twisty(open) {
-		list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
+		list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
 	}
-	#historyTree treechildren::-moz-tree-image {
+	.item.client.closed .item-twisty-container {
+		background-image: url("../icons/pan-down-symbolic-light.svg") !important;
+	}
+
+	treechildren::-moz-tree-image(title, container),
+	treechildren::-moz-tree-image(title, open) {
+		list-style-image: url("../icons/folder-symbolic-light.svg") !important;
+	}
+	treechildren::-moz-tree-image(title, query, dayContainer),
+	treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
+		list-style-image: url("../icons/preferences-system-time-symbolic-light.svg") !important;
+	}
+
+	.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]):not([crashed]) .tab-icon-stack::before {
+		background-image: url("../icons/info-symbolic-light.svg") !important;
+	}
+
+	#sidebar-box[sidebarcommand="viewTabsSidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon,
+	.urlbarView-row[source="tabs"] > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-favicon,
+	#urlbar-engine-one-off-item-tabs {
+		list-style-image: url("../icons/tab-sync-symbolic-light.svg") !important;
+	}
+
+	#sidebar-box[sidebarcommand="viewHistorySidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon,
+	.urlbarView-row[source="history"] > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-favicon,
+	#urlbar-engine-one-off-item-history {
 		list-style-image: url("../icons/preferences-system-time-symbolic-light.svg") !important;
 	}
 
@@ -576,3 +729,4 @@ menu[disabled] > .menu-right {
 		list-style-image: var(--webextension-menupanel-image-light, inherit) !important;
 	}
 }
+
