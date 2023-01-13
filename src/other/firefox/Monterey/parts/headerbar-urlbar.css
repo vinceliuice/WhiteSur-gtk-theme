@@ -66,6 +66,7 @@ toolbarspring {
 	width: 360px !important;
 	z-index: 5 !important;
 	padding: 0 0 !important;
+	border-radius: 10px !important;
 }
 #urlbar[breakout][breakout-extend][open] {
 	height: auto !important;
