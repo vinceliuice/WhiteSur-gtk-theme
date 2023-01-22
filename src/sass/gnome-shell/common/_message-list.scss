@@ -128,16 +128,16 @@
 }
 
 .message-media-control {
-  margin: 16px 4px;
-  padding: 8px;
+  margin: 18px 4px !important;
+  padding: 8px !important;
   border-radius: $circular_radius;
   color: $alt_fg_color;
   &:hover, &:focus { color: $fg_color; background-color: $divider_color; }
   &:active { color: $fg_color; background-color: $track_color; }
   &:insensitive { color: $disabled_fg_color; }
 
-  &:last-child:ltr { margin-right: 16px; padding-right: 8px; }
-  &:last-child:rtl { margin-left: 16px; padding-left: 8px; }
+  &:last-child:ltr { margin-right: 16px !important; padding-right: 8px !important; }
+  &:last-child:rtl { margin-left: 16px !important; padding-left: 8px !important; }
 
   StIcon { icon-size: $base_icon_size !important; }
 }

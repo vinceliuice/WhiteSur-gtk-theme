@@ -163,15 +163,18 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   .calendar-day-base {
     @include font(caption);
     text-align: center;
-    width: $menuitem_size;
-    height: $menuitem_size;
-    padding: 2px;
-    margin: 2px;
+    width: $menuitem_size !important;
+    height: $menuitem_size !important;
+    padding: 2px !important;
+    margin: 2px !important;
     border-radius: $circular_radius;
     color: $alt_fg_color;
     font-feature-settings: "tnum";
 
-    &:hover, &:focus { background-color: $divider_color; }
+    &:hover, &:focus {
+      background-color: $divider_color;
+      box-shadow: none !important;
+    }
 
     &:active {
       color: $alt_fg_color;
@@ -211,7 +214,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     border-left-width: 0;
   }
 
-  .calendar-work-day {}
+  // .calendar-work-day {}
 
   .calendar-nonwork-day {
     color: $disabled_fg_color;
