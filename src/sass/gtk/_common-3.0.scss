@@ -1451,37 +1451,35 @@ actionbar {
 
 // Headerbar Buttons
 %headerbar_buttons {
-  &:not(.flat) {
-    @include button(header-normal);
+  @include button(header-normal);
 
-    &:backdrop { opacity: 0.65; background-image: none; }
+  &:backdrop { opacity: 0.65; background-image: none; }
 
-    &:hover {
-      @include button(header-hover);
-      transition: $button_transition;
-    }
+  &:hover {
+    @include button(header-hover);
+    transition: $button_transition;
+  }
 
-    &:active {
-      @include button(header-active);
-      transition: $button_transition;
-      transition-duration: 300ms;
-    }
+  &:active {
+    @include button(header-active);
+    transition: $button_transition;
+    transition-duration: 300ms;
+  }
 
-    &:checked {
-      @include button(header-checked);
-      transition: $button_transition;
-      transition-duration: 300ms;
+  &:checked {
+    @include button(header-checked);
+    transition: $button_transition;
+    transition-duration: 300ms;
 
-      &:hover { background-image: none; }
-
-      &:disabled {
-        @include button(header-insensitive-active);
-      }
-    }
+    &:hover { background-image: none; }
 
     &:disabled {
-      @include button(header-insensitive);
+      @include button(header-insensitive-active);
     }
+  }
+
+  &:disabled {
+    @include button(header-insensitive);
   }
 }
 

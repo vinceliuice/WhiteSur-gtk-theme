@@ -37,9 +37,6 @@
         &:hover { color: $dark_sidebar_fg; }
       }
     }
-
-    // .NemoSidebar {
-    // }
   }
 
   paned > separator { background-image: image($solid_borders_color); }
