@@ -1494,7 +1494,7 @@ headerbar {
     transition: $backdrop_transition;
     color: transparentize($header_fg, 0.3);
     background-color: $header_bg_backdrop;
-    border-color: if($variant=='light', lighten($header_border, 5%), darken($header_border, 3%));
+    border-bottom: 1px solid if($variant=='light', lighten($header_border, 5%), darken($header_border, 3%));
   }
 
   .title {
@@ -1757,17 +1757,6 @@ headerbar {
   .maximized &, .maximized &:backdrop {
     border-radius: $maximized_radius $maximized_radius 0 0; // squared corners when the window is max'd or tiled
     box-shadow: none;
-  }
-
-  .maximized & {
-    background-color: $header_bg;
-    border-color: opacify($header_border, 1);
-    box-shadow: none;
-
-    &:backdrop {
-      background-color: $header_bg_backdrop;
-      border-color: if($variant=='light', lighten($header_border, 15%), darken($header_border, 3%));
-    }
   }
 
   &.default-decoration {
