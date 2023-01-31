@@ -275,6 +275,7 @@ tab[selected]:-moz-window-inactive {
 	background-image: none !important;
 	border: none !important;
 	border-image: none !important;
+	transition: none !important;
 	margin-left: -1px !important;
 	margin-right: -1px !important;
 	border-radius: 0 !important;

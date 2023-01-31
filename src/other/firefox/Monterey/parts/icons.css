@@ -274,6 +274,7 @@ menu[disabled] > .menu-right {
 }
 /* Addons button */
 #add-ons-button,
+#unified-extensions-button,
 #addons-notification-icon,
 .install-icon {
 	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
@@ -622,6 +623,7 @@ treechildren::-moz-tree-image {
 	#email-link-button .toolbarbutton-icon,
 	#print-button .toolbarbutton-icon,
 	#add-ons-button .toolbarbutton-icon,
+	#unified-extensions-button .toolbarbutton-icon,
 	#find-button .toolbarbutton-icon,
 	#bookmarks-menu-button .toolbarbutton-icon,
 	#history-panelmenu .toolbarbutton-icon,
