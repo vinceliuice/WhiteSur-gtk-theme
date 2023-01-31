@@ -651,7 +651,7 @@ treechildren::-moz-tree-image {
 	#tracking-protection-icon-animatable-image,
 	#reader-mode-button > .urlbar-icon,
 	#star-button:not([starred]),
-	#context-bookmarkpage:not([starred]),
+	#context-bookmarkpage:not([starred]) .menu-iconic-icon,
 	#geo-sharing-icon[sharing], .geo-icon,
 	.blocked-permission-icon.popup-icon,
 	#webrtc-sharing-icon[sharing="screen"],
