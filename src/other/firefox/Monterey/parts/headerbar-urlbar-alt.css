@@ -60,6 +60,10 @@ toolbarspring {
 	box-shadow: var(--gnome-urlbar-box-shadow) !important;
 }
 
+#urlbar-input {
+	text-align: center !important;
+}
+
 /* URL bar results */
 .urlbarView {
 	background: transparent !important;

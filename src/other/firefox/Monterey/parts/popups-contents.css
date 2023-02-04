@@ -22,7 +22,7 @@
 
 /* Style main context menu & buttons */
 #context-navigation {
-	padding: 2px 6px 6px;
+	padding: 0;
 }
 #context-navigation > menuitem > .menu-iconic-left {
 	margin: auto !important;
@@ -65,8 +65,19 @@
 
 /* All tabs popover */
 .all-tabs-item[selected] {
-	border-left: 3px solid var(--gnome-tabbar-tab-active-border-bottom-color);
 	box-shadow: none !important;
+	border-left: 3px solid var(--gnome-tabbar-tab-active-border-bottom-color);
+	border-radius: 0 !important;
+}
+
+.all-tabs-item:hover,
+.all-tabs-item:active {
+	background: none !important;
+	padding: 0 !important;
+}
+
+.all-tabs-item > .all-tabs-secondary-button {
+	margin: 0 !important;
 }
 
 .all-tabs-item > .all-tabs-secondary-button label {

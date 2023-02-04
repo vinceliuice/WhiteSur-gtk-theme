@@ -101,6 +101,10 @@ panelview {
 	padding: 6px !important;
 }
 
+toolbarbutton menupopup[placespopup] > :is(menu, menuitem) {
+	margin: 0 !important;
+}
+
 panel:not([remote]), #BMB_bookmarksPopup {
 	--arrowpanel-background: var(--gnome-popover-background) !important;
 }
