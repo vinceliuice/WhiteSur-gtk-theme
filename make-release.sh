@@ -2,7 +2,7 @@
 
 readonly REPO_DIR="$(dirname "$(readlink -m "${0}")")"
 readonly RELEASE_DIR="${REPO_DIR}/release"
-source "${REPO_DIR}/lib-install.sh"
+source "${REPO_DIR}/shell/lib-install.sh"
 
 # Customization, default values
 colors=("${COLOR_VARIANTS[@]}")
