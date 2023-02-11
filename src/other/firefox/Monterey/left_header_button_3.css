@@ -1,9 +1,9 @@
 #TabsToolbar {
-	margin-left: 460px !important;
+	margin-left: 451px !important;
 }
 
 :root[sizemode="maximized"] #TabsToolbar {
-	margin-left: 500px !important;
+	margin-left: 491px !important;
 }
 
 /* Left window titlebuttons mode */

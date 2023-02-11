@@ -13,6 +13,7 @@ menupopup {
 	--panel-border-radius: 12px !important;
 	--panel-padding: 6px !important;
 	-moz-appearance: none !important;
+	--panel-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
 	color: var(--gnome-toolbar-color) !important;
 }
 
@@ -25,7 +26,6 @@ menupopup label {
 	padding: 3px 4px 6px !important;
 	margin: -3px 0 0 -12px !important;
 	border: none !important;
-	box-shadow: none !important;
 }
 
 menubar > menu > menupopup {
@@ -101,10 +101,6 @@ panelview {
 	padding: 6px !important;
 }
 
-toolbarbutton menupopup[placespopup] > :is(menu, menuitem) {
-	margin: 0 !important;
-}
-
 panel:not([remote]), #BMB_bookmarksPopup {
 	--arrowpanel-background: var(--gnome-popover-background) !important;
 }
@@ -170,12 +166,25 @@ menuitem, menupopup menu,
 	min-height: 28px !important;
 }
 
-.subviewbutton:not(.subviewbutton-back),
+.subviewbutton,
+.protections-popup-footer-button,
 .protections-popup-category,
-.identity-popup-content-blocking-category {
+.identity-popup-content-blocking-category,
+#PlacesToolbar menupopup[placespopup="true"] .bookmark-item,
+.openintabs-menuitem,
+.widget-overflow-list .toolbarbutton-1 {
 	padding: 5px !important;
 	margin: 0 !important;
 }
+
+.subviewbutton[shortcut]:after {
+	opacity: 0.5 !important;
+}
+
+.bookmark-item .menu-right {
+	fill-opacity: 1 !important;
+}
+
 
 /* Menu buttons disabled */
 menuitem[disabled="true"], menupopup menu[disabled="true"],
@@ -184,11 +193,10 @@ menuitem[disabled="true"], menupopup menu[disabled="true"],
 .identity-popup-content-blocking-category[disabled="true"] {
 	opacity: 0.5 !important;
 /*	color: var(--gnome-inactive-toolbar-color) !important;*/
-	background: none !important;
 }
 
-.subviewbutton[shortcut]:after {
-	opacity: 0.5 !important;
+menuitem[disabled="true"][_moz-menuactive], menupopup menu[disabled="true"][_moz-menuactive] {
+	background: none !important;
 }
 
 /* Menu buttons hover */
