@@ -7,7 +7,7 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-#nav-bar, #PersonalToolbar, #toolbar-menubar {
+#nav-bar, #PersonalToolbar, #toolbar-menubar, #titlebar {
 	color: var(--gnome-toolbar-color);
 	background: var(--gnome-toolbar-background) !important;
 	border: none !important;
@@ -26,7 +26,8 @@ findbar {
 #nav-bar:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive,
 #toolbar-menubar:-moz-window-inactive,
-findbar:-moz-window-inactive {
+findbar:-moz-window-inactive,
+#titlebar:-moz-window-inactive {
 	background: var(--gnome-inactive-toolbar-background) !important;
 }
 
@@ -43,7 +44,7 @@ findbar:-moz-window-inactive {
 
 #titlebar {
 	min-height: 0 !important
-	max-height: 48px !important;
+	max-height: 42px !important;
 }
 
 #TabsToolbar {
@@ -51,7 +52,7 @@ findbar:-moz-window-inactive {
 	padding: 0 !important;
 	margin-bottom: 6px !important;
 	background: none !important;
-	max-height: 48px !important;
+	max-height: 42px !important;
 }
 
 #nav-bar {
