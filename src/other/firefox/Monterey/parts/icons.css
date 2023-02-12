@@ -674,7 +674,9 @@ treechildren::-moz-tree-image {
 	.bookmark-item[container] .toolbarbutton-icon,
 	.menu-iconic.bookmark-item[container] .menu-iconic-icon,
 	.panel-info-button > image,
-	.tab-icon-overlay {
+	.tab-icon-overlay,
+	#scrollbutton-up .toolbarbutton-icon,
+	#scrollbutton-down .toolbarbutton-icon {
 		filter: invert(60%) brightness(150%);
 	}
 
