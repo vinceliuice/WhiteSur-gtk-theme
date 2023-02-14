@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="64"
+   height="64"
+   version="1.1"
+   viewBox="0 0 16.933 16.933"
+   id="svg11"
+   sodipodi:docname="icon.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview13"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="3.6875"
+     inkscape:cx="19.661017"
+     inkscape:cy="32.135593"
+     inkscape:window-width="1920"
+     inkscape:window-height="1004"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg11" />
+  <defs
+     id="defs7">
+    <linearGradient
+       id="linearGradient1041"
+       x1="3.2959"
+       x2="13.637"
+       y1="8.4665"
+       y2="8.4665"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#ffd137"
+         offset="0"
+         id="stop2" />
+      <stop
+         stop-color="#e50d71"
+         offset="1"
+         id="stop4" />
+    </linearGradient>
+  </defs>
+  <path
+     class="ColorScheme-Text"
+     d="m11.932 8.8634c-0.01587-1.5875 1.3121-2.3812 1.3708-2.3812-0.74611-1.1112-1.9081-1.27-2.3217-1.27-0.98904-0.15875-1.9304 0.55561-2.432 0.55561-0.50005 0-1.2747-0.55561-2.0955-0.55561-1.0778 0-2.0717 0.63499-2.6272 1.5875-1.1184 1.9843-0.28495 4.8418 0.80564 6.4292 0.53418 0.71436 1.17 1.5875 2.0049 1.5875 0.80406 0 1.1081-0.55561 2.0804-0.55561 0.97235 0 1.2462 0.55561 2.0971 0.55561 0.86517 0 1.4137-0.79374 1.9431-1.5875 0.61196-0.87311 0.86438-1.7462 0.87946-1.8256-0.0192 0-1.6874-0.63499-1.7041-2.54zm-1.5994-4.683c0.44369-0.55561 0.74293-1.3493 0.66118-2.0637-0.63816 0-1.4128 0.39687-1.8709 0.95248-0.41036 0.47624-0.76992 1.27-0.67467 1.9843 0.71356 0.07938 1.4406-0.39687 1.8844-0.87311z"
+     color="#ffffff"
+     fill="url(#linearGradient1041)"
+     stroke-width=".79374"
+     id="path9"
+     style="fill:#999999" />
+</svg>
