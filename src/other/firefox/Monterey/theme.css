@@ -21,6 +21,8 @@
 
 /* Set theme version text in customization panel */
 #customization-footer::before {
+	background: url(icons/icon.svg) no-repeat;
+	background-size: contain;
 	content: "Firefox Monterey theme";
-	padding: 10px;
+	padding: 10px 10px 10px 50px;
 }

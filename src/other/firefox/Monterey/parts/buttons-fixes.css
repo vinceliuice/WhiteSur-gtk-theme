@@ -227,6 +227,5 @@ button.close.ghost-button:active {
 
 /* Close button */
 .close-icon:not(.tab-close-button) .toolbarbutton-icon {
-	outline:  0 !important;
+	outline: 0 !important;
 }
-

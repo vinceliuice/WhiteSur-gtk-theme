@@ -41,7 +41,8 @@ button.close:not(.ghost-button),
 .permission-popup-permission-remove-button,
 .button.connect-device,
 #item-choose button,
-#editBMPanel_newFolderButton {
+#editBMPanel_newFolderButton,
+button.customizationmode-button {
 	-moz-appearance: none !important;
 	background: var(--gnome-button-background) !important;
 	box-shadow: var(--gnome-button-box-shadow) !important;
@@ -89,7 +90,8 @@ menulist,
 [overflowedItem="true"]) > #appMenu-fxa-label2:not(#hack),
 .button.connect-device,
 #item-choose button,
-#editBMPanel_newFolderButton {
+#editBMPanel_newFolderButton,
+button.customizationmode-button {
 	padding: 2px 10px !important;
 	text-align: center !important;
 }
@@ -151,7 +153,8 @@ menulist:hover .menulist-label-box,
 .autocomplete-richlistitem[type="loginsFooter"]:hover,
 .dialog-button-box button:hover,
 .searchbar-engine-one-off-item:hover,
-.permission-popup-permission-remove-button:hover {
+.permission-popup-permission-remove-button:hover,
+button.customizationmode-button:hover {
 	outline: 0 !important;
 	background: var(--gnome-button-hover-background) !important;
 }
@@ -188,7 +191,8 @@ menulist[open] .menulist-label-box,
 .dialog-button:active,
 .autocomplete-richlistitem[type="loginsFooter"]:active,
 .dialog-button-box button:active,
-.permission-popup-permission-remove-button:active {
+.permission-popup-permission-remove-button:active,
+button.customizationmode-button:active {
 	background: var(--gnome-button-active-background) !important;
 	box-shadow: var(--gnome-button-active-box-shadow) !important;
 	border-color: var(--gnome-button-active-border-color) !important;
@@ -197,7 +201,8 @@ menulist[open] .menulist-label-box,
 /* Disabled buttons */
 /*#nav-bar toolbarbutton:not(#urlbar-zoom-button)[disabled],*/
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled],
-#context-navigation menuitem[disabled] {
+#context-navigation menuitem[disabled],
+button.customizationmode-button[disabled] {
 	background: var(--gnome-button-disabled-background) !important;
 	border-color: var(--gnome-button-disabled-border-color) !important;
 	box-shadow: var(--gnome-button-disabled-box-shadow) !important;

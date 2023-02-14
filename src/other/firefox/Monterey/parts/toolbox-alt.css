@@ -7,11 +7,10 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-#nav-bar, #PersonalToolbar, #toolbar-menubar, #TabsToolbar {
-	border: 0 !important;
+#nav-bar, #PersonalToolbar, #toolbar-menubar, #TabsToolbar, #titlebar {
+	border: none !important;
 	color: var(--gnome-toolbar-color);
 	background: var(--gnome-toolbar-background) !important;
-	border-bottom: none !important;
 }
 
 #TabsToolbar {

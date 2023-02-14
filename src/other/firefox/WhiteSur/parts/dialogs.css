@@ -24,17 +24,23 @@ window {
 /* Dialog */
 .dialogBox {
 	border-radius: 12px !important;
-	margin-top: 0 !important;
+	margin: 0 !important;
 }
 
 window[role="dialog"] {
 	background: var(--gnome-toolbar-background) !important;
 	border: 0 !important;
-	box-shadow: var(--gnome-menu-shadow) !important;
 	padding: 0 !important;
 }
+
 dialog {
 	padding: 0 !important;
+}
+
+dialog[subdialog] {
+	border-radius: 12px !important;
+	border: 1px solid var(--gnome-popover-border-color) !important;
+	box-shadow: var(--gnome-popover-shadow) !important;
 }
 
 /* Content */
@@ -43,11 +49,13 @@ dialog {
 	padding: 24px;
 	padding-bottom: 0;
 }
+
 #titleContainer {
 	padding: 6px !important;
 	margin-top: 6px !important;
 	justify-content: center !important;
 }
+
 .titleIcon {
 	background-color: transparent !important;
 }
