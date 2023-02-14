@@ -1754,8 +1754,11 @@ combobox {
 
 .toolbar {
   @extend %toolbar;
+  background-color: $bg_color;
+  color: $text_color;
 
   separator { background: none; }
+
   &.horizontal separator { margin: 0 $container_padding; }
   &.vertical separator { margin: $container_padding 0; }
 
