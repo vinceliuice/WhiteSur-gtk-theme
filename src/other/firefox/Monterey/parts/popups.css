@@ -4,7 +4,9 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Style menus */
-menupopup {
+menupopup, panel,
+:is(menupopup, panel)[type="arrow"] {
+	-moz-appearance: none !important;
 	--panel-background: var(--gnome-menu-background) !important;
 	--panel-border-color: var(--gnome-menu-border-color) !important;
 	--arrowpanel-border-radius: 12px !important;
@@ -12,8 +14,8 @@ menupopup {
 	--arrowpanel-border-color: var(--gnome-menu-border-color) !important;
 	--panel-border-radius: 12px !important;
 	--panel-padding: 6px !important;
-	-moz-appearance: none !important;
-	--panel-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
+	--panel-shadow: var(--gnome-popover-shadow) !important;
+	--panel-shadow-margin: 3px 8px 13px !important;
 	color: var(--gnome-toolbar-color) !important;
 }
 
@@ -21,7 +23,9 @@ menupopup label {
 	color: var(--gnome-toolbar-color) !important;
 }
 
-#PlacesToolbar menupopup[placespopup="true"]::part(content), #PlacesToolbar menupopup[placespopup="true"]::part(arrowscrollbox), #PlacesToolbar menupopup {
+#PlacesToolbar menupopup[placespopup="true"]::part(content),
+#PlacesToolbar menupopup[placespopup="true"]::part(arrowscrollbox),
+#PlacesToolbar menupopup {
 	background: none !important;
 	padding: 3px 4px 6px !important;
 	margin: -3px 0 0 -12px !important;
@@ -46,16 +50,6 @@ menuitem[disabled="true"]:hover, menupopup menu[disabled="true"]:hover {
 	background: transparent !important;
 }
 
-panel {
-	--panel-background: var(--gnome-menu-background) !important;
-	--panel-border-color: var(--gnome-menu-border-color) !important;
-}
-
-:is(menupopup, panel)[type="arrow"] {
-	--panel-border-radius: 12px !important;
-	--panel-padding: 6px !important;
-}
-
 :is(panel, menupopup)::part(content) {
 	border: none !important;
 }
@@ -78,16 +72,19 @@ panelview {
 }
 
 panelview {
-	padding: 6px !important;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
-	border-radius: 12px !important;
+	padding: var(--panel-padding) !important;
 }
 
-.panel-arrowcontent {
-	background: var(--gnome-popover-background) !important;
-	border: 1px solid var(--gnome-popover-border-color) !important;
+#customization-panelWrapper > .panel-arrowcontent {
+	border: 1px solid var(--gnome-menu-border-color) !important;
+	box-shadow: var(--gnome-popover-shadow) !important;
 	border-radius: 12px !important;
-	color: var(--gnome-toolbar-color) !important;
+	background: var(--gnome-menu-background) !important;
+}
+
+#customization-panelWrapper > .panel-arrowbox > .panel-arrow[side="top"] {
+	fill: var(--gnome-menu-background) !important;
+	stroke: var(--gnome-menu-border-color) !important;
 }
 
 #BMB_bookmarksPopup {
