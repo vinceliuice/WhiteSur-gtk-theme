@@ -13,8 +13,7 @@
 /* Tabs bar height */
 #tabbrowser-tabs,
 #tabbrowser-tabs arrowscrollbox {
-	height: 32px !important;
-	min-height: 32px !important;
+	min-height: 0 !important;
 	--tab-min-height: 32px !important;
 }
 
@@ -315,7 +314,7 @@ tab[selected]:-moz-window-inactive {
 	margin: 0 !important;
 	border-radius: 0 !important;
 	min-width: 32px !important;
-	height: 32px !important;
+	min-height: 32px !important;
 	padding: 0 !important;
 }
 
