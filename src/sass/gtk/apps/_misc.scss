@@ -247,7 +247,7 @@ window.background.chromium {
   menu {
     background-color: $base_color;
     border-radius: 0;
-    border: 1px solid $solid_borders_color;
+    border: 1px solid if($variant == 'light', $solid_borders_color, $header_border);
 
     menuitem {
       border-radius: 0;
