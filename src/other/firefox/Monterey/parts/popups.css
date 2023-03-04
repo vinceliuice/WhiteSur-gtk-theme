@@ -22,7 +22,6 @@ menupopup, panel,
 :is(panel, menupopup)::part(content) {
 	--panel-border-color: transparent !important;
 	--arrowpanel-border-color: transparent !important;
-
 }
 
 .panel-arrowcontent {

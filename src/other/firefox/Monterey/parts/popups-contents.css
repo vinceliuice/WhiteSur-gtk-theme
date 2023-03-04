@@ -64,20 +64,32 @@
 }
 
 /* All tabs popover */
-.all-tabs-item[selected] {
-	box-shadow: none !important;
-	border-left: 3px solid var(--gnome-tabbar-tab-active-border-bottom-color);
-	border-radius: 0 !important;
+
+.all-tabs-item {
+	border-left: 3px solid transparent;
 }
 
 .all-tabs-item:hover,
-.all-tabs-item:active {
+.all-tabs-item:active,
+.all-tabs-item[selected] {
 	background: none !important;
 	padding: 0 !important;
+	border-radius: 0 !important;
 }
 
 .all-tabs-item > .all-tabs-secondary-button {
 	margin: 0 !important;
+}
+
+.all-tabs-item[selected] {
+	border-image: linear-gradient(
+		to bottom,
+		transparent 0,
+		transparent 35%,
+		var(--gnome-tabbar-tab-active-border-bottom-color) 35%,
+		var(--gnome-tabbar-tab-active-border-bottom-color) 65%,
+		transparent 65%,
+		transparent 100%) 3;
 }
 
 .all-tabs-item > .all-tabs-secondary-button label {
