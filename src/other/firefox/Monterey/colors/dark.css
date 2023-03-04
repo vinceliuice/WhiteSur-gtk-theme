@@ -29,7 +29,7 @@
 	--gnome-menu-border-color: #070707;
 	--gnome-popover-background: rgba(51, 51, 51, 0.95);
 	--gnome-popover-border-color: #070707;
-	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.75);
 	--gnome-popover-button-hover-background: rgba(255, 255, 255, 0.1);
 	--gnome-popover-button-active-background: rgba(255, 255, 255, 0.15);
 	--gnome-popover-separator-color: rgba(0, 0, 0, 0.1);
