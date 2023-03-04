@@ -4,9 +4,9 @@
 
 /* Cursors autoscroller fix */
 .autoscroller {
-  --panel-background: transparent !important;
-  --panel-border-color: transparent !important;
-  background-image: url("chrome://global/skin/icons/autoscroll.svg") !important;
+	--panel-background: transparent !important;
+	--panel-border-color: transparent !important;
+	background-image: url("chrome://global/skin/icons/autoscroll.svg") !important;
 }
 
 /* Built-in firefox icons color */

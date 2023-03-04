@@ -66,8 +66,11 @@
 /* All tabs popover */
 .all-tabs-item[selected] {
 	box-shadow: none !important;
-	border-left: 3px solid var(--gnome-tabbar-tab-active-border-bottom-color);
 	border-radius: 0 !important;
+	background: url("../icons/bullet-symbolic.svg") !important;
+	background-position: left center;
+	background-size: 14px 14px;
+	background-repeat: no-repeat;
 }
 
 .all-tabs-item:hover,
