@@ -200,9 +200,9 @@ else
 
   echo; prompt -w "${final_msg}"
 
-  if has_command notify-send && [[ "$UID" != '0' ]]; then
-    notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
-  fi
+#  if has_command notify-send && [[ "$UID" != '0' ]]; then
+#    notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
+#  fi
 fi
 
 echo
