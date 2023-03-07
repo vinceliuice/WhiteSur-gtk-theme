@@ -102,6 +102,13 @@ findbar:-moz-window-inactive label,
 	max-height: 32px !important;
 }
 
+/* Sidebar */
+#sidebar-box,
+.sidebar-panel[lwt-sidebar] {
+	color: var(--gnome-toolbar-color) !important;
+	background: var(--gnome-toolbar-background) !important;
+}
+
 /* bookmark-item */
 toolbarbutton.bookmark-item {
 	padding: 3px 6px !important;
