@@ -21,7 +21,7 @@
 
 /* Set theme version text in customization panel */
 #customization-footer::before {
-	background: url(icons/icon.svg) no-repeat;
+	background: url("icons/icon.svg") no-repeat;
 	background-size: contain;
 	content: "Firefox WhiteSur theme";
 	padding: 10px 10px 10px 50px;

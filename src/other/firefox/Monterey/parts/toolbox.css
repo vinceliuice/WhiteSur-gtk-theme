@@ -91,6 +91,25 @@ findbar:-moz-window-inactive,
 	max-height: 32px !important;
 }
 
+/* Sidebar */
+#sidebar-box,
+.sidebar-panel[lwt-sidebar] {
+	color: var(--gnome-toolbar-color) !important;
+	background: var(--gnome-toolbar-background) !important;
+}
+
+/* Customization page */
+#customization-container:-moz-lwtheme {
+	background-image: linear-gradient(var(--gnome-browser-before-load-background), var(--gnome-browser-before-load-background)) !important;
+}
+
+#customization-footer {
+	border-top: 1px solid var(--gnome-toolbar-border-color) !important;
+	color: var(--gnome-toolbar-color) !important;
+	background: var(--gnome-toolbar-background) !important;
+	border-radius: 0 0 12px 12px !important;
+}
+
 /* bookmark-item */
 toolbarbutton.bookmark-item {
 	padding: 3px 6px !important;

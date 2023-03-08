@@ -203,14 +203,16 @@ $raven_padding: 8px;
       font-size: 110%;
     }
 
-    .categories {
-      &:dir(ltr) { border-bottom-left-radius: $bt_radius; }
-      &:dir(rtl) { border-bottom-right-radius: $bt_radius; }
-    }
-
     scrolledwindow.sidebar.categories {  //AppMenu (budgie)
-      border-bottom-left-radius: $wm_radius;
-      margin: 0 0 1px 1px;
+      &:dir(ltr) {
+        margin: 0 0 1px 1px;
+        border-bottom-left-radius: $bt_radius;
+      }
+
+      &:dir(rtl) {
+        margin: 0 1px 1px 0;
+        border-bottom-right-radius: $bt_radius;
+      }
 
       button.flat.category-button {
         min-height: 28px;
@@ -228,6 +230,18 @@ $raven_padding: 8px;
       }
     }
 
+    > frame > box > overlay > box > box > scrolledwindow.sidebar.categories {
+      &:dir(ltr) {
+        margin: 0 0 0 1px;
+        border-bottom-left-radius: 0;
+      }
+
+      &:dir(rtl) {
+        margin: 0 1px 0 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
     row {
       padding: 0;
 
@@ -236,6 +250,57 @@ $raven_padding: 8px;
       button.flat {
         min-height: 32px;
         border-radius: 0;
+      }
+    }
+
+    list.left-overlay-menu {
+      box-shadow: 0 5px 8px rgba(black, 0.15), 0 8px 15px rgba(black, 0.08), $wm_outline, inset 0 0 0 1px $highlight_color;
+      background-color: $base_color;
+      padding: $container_padding;
+      margin: $container_padding;
+      border-radius: $mn_radius;
+
+      > row.activatable {
+        border-radius: $bt_radius;
+
+        &, &:hover, &:selected, &:active, &:active:hover {
+          background-color: transparent;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: $container_padding / 2;
+        }
+
+        &:active {
+          background-color: $selected_bg_color;
+
+          label, button { color: $selected_fg_color; }
+        }
+
+        button.menuitem {
+          border-radius: $bt_radius;
+
+          @extend %flat_button;
+        }
+      }
+    }
+
+    .budgie-menu-footer {
+      border-top: 1px solid $borders_color;
+      padding: $container_padding;
+
+      button {
+        min-height: 16px;
+        min-width: 16px;
+        padding: $container_padding;
+
+        &.image-button {
+          border-radius: $circular_radius;
+
+          &:not(.last-child) {
+            margin-right: $container_padding;
+          }
+        }
       }
     }
   }
@@ -783,22 +848,17 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
   stackswitcher.linked > button { @extend %raven_button; }
 
   .raven-header {
-    min-height: 36px;
+    min-height: $medium_size;
     padding: 2px;
 
     &:not(.top) {
-      margin-top: -6px; // remove extra spaces, but not perfect :(
-
-      button {
+      button.image-button {
         @extend %flat_button;
         min-height: 32px;
         min-width: 32px;
         margin: 0;
         padding: 0;
-
-        &.image-button {
-          border-radius: $circular_radius;
-        }
+        border-radius: $circular_radius;
       }
     }
 
@@ -847,95 +907,152 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
       margin: $raven_padding 0; // do not set L/R margins
       border-radius: $raven_radius;
       background-color: $raven_header_bg_color;
-      // draw side edges via opaque box-shadows
       transition-duration: 0s;
       border: 1px solid $raven_border_color;
-    }
 
-    .raven-header {
-      margin-top: -$raven_padding * 2; // unset parent margin
-      border-radius: $raven_radius $raven_radius 0 0;
-    }
-
-    .raven-background {
-      margin-bottom: -$raven_padding * 2; // unset parent margin
-      border-radius: 0 0 $raven_radius $raven_radius;
-      background-color: $raven_base_color;
-    }
-
-    > box.vertical > box.vertical:last-child {
-      border-radius: $raven_radius;
-      border: none;
-      background-color: if($variant =='light', rgba(black, 0.65), rgba(black, 0.35));
-      color: rgba(white, 0.65);
+      .raven-header {
+        margin-top: -$raven_padding * 2; // unset parent margin
+        border-radius: $raven_radius $raven_radius 0 0;
+      }
 
       .raven-background {
-        background-color: rgba(black, 0.25);
-        margin-bottom: 0; // unset parent margin
-
-        image { color: rgba(white, 0.15); }
-
-        // MPRIS Applet
-        .raven-mpris {
-          background-color: rgba(black, 0.35);
-          color: $selected_fg_color;
-          border-radius: 0 0 $raven_radius $raven_radius;
-
-          label { min-height: 24px; }
-
-          image {  //reset image color
-            color: rgba(white, 0.85);
-            &:disabled {
-              color: rgba(white, 0.35);
-            }
-          }
-
-          button.image-button {
-            padding: 8px;
-            border: none;
-            @extend %selected-button;
-          }
-        }
-      }
-
-      button.flat {
-        @extend %selected-button;
+        margin-bottom: -$raven_padding * 2; // unset parent margin
+        border-radius: 0 0 $raven_radius $raven_radius;
+        background-color: $raven_base_color;
       }
     }
 
-    // audio app/device switcher
-    box.audio-widget stackswitcher.linked {
-      padding: 0; // limit child horizontal spacing
+    > box.vertical > widget > box.vertical { // > = 10.7
+      border-radius: $raven_radius;
+      background-color: $raven_header_bg_color;
+      border: 1px solid $raven_border_color;
 
-      > button.text-button.radio {
-        padding-top: $raven_padding;
-        padding-bottom: $raven_padding;
-        border-top: 1px solid $dark_borders_color;
-        background-color: $menu_bg;
-        @extend %raven_middle_button;
+      .raven-header {
+        border-radius: $raven_radius $raven_radius 0 0;
+        background-color: transparent;
+      }
 
-        &:hover {
-          background-color: if($variant =='light', darken($menu_bg, 5%), lighten($menu_bg, 5%));
+      .raven-background {
+        border-radius: 0 0 $raven_radius $raven_radius;
+        background-color: $raven_base_color;
+        border-top: 1px solid $raven_border_color;
+      }
+
+      image.raven-mpris {
+        background-color: rgba(white, 0.1);
+        border-radius: $raven_radius;
+      }
+    }
+
+    .raven-mpris-controls {
+      margin-top: $container_padding;
+
+      > button.image-button {
+        padding: $container_padding;
+      }
+    }
+
+    @if $variant == 'light' {
+      > box.vertical > box.vertical:last-child,
+      > box.vertical > widget:last-child > box.vertical {
+        border: none;
+        background-color: rgba(black, 0.85);
+        color: rgba(white, 0.65);
+
+        button {
+          border: none;
+          color: rgba(white, 0.65);
+          background-color: transparent;
+
+          &:hover {
+            color: rgba(white, 0.85);
+            background-color: rgba(white, 0.15);
+          }
+
+          &:active {
+            color: rgba(white, 0.85);
+            background-color: rgba(white, 0.25);
+          }
+
+          &:disabled {
+            color: rgba(white, 0.3);
+            background-color: transparent;
+          }
         }
 
-        &:active, &:checked {
-          color: $selected_fg_color;
-          background-color: $selected_bg_color;
+        .raven-background {
+          background-color: rgba(white, 0.05);
+          margin-bottom: 0; // unset parent margin
+          border-top: none;
         }
+      }
 
-        &:disabled { @include button(flat-insensitive); }
+      // MPRIS Applet
+      > box.vertical > box.vertical:last-child .raven-mpris {
+        background-color: rgba(black, 0.35);
+        color: white;
 
-        &:first-child { @extend %raven_first_button; }
-        &:last-child { @extend %raven_last_button; }
-        &:only-child { @extend %raven_single_button; }
+        image {  //reset image color
+          color: rgba(white, 0.85);
+
+          &:disabled { color: rgba(white, 0.35); }
+        }
+      }
+    }
+
+    > box.vertical > box.vertical:last-child .raven-mpris {
+      border-radius: 0 0 $raven_radius $raven_radius;
+
+      label { min-height: 24px; }
+    }
+
+    .audio-widget {
+      stackswitcher.linked { // audio app/device switcher
+        padding: 0; // limit child horizontal spacing
+
+        > button.text-button.radio {
+          padding-top: $raven_padding;
+          padding-bottom: $raven_padding;
+          border-top: 1px solid $dark_borders_color;
+          background-color: $menu_bg;
+          @extend %raven_middle_button;
+
+          &:hover {
+            background-color: if($variant =='light', darken($menu_bg, 5%), lighten($menu_bg, 5%));
+          }
+
+          &:active, &:checked {
+            color: $selected_fg_color;
+            background-color: $selected_bg_color;
+          }
+
+          &:disabled { @include button(flat-insensitive); }
+
+          &:first-child { @extend %raven_first_button; }
+          &:last-child { @extend %raven_last_button; }
+          &:only-child { @extend %raven_single_button; }
+        }
+      }
+    }
+
+    list.devices-list {
+      padding: $container_padding;
+      background-color: transparent;
+
+      > row.activatable {
+        border-radius: $bt_radius;
+
+        label { padding: 0 $container_padding; }
+
+        &:not(:last-child) {
+          margin-bottom: $container_padding / 2;
+        }
       }
     }
   }
 
-  viewport.frame .raven-header { margin-top: -$raven_padding; }
-
   .expander-button {
-    border-radius: 100px;
+    border-radius: $circular_radius;
   }
 
   .raven-background {
@@ -1059,21 +1176,6 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
             }
           }
         }
-      }
-    }
-  }
-
-  .audio-widget {
-    list.devices-list.sound-devices {
-      > row.activatable {
-        &:selected, &:checked {
-          background-color: rgba($fg_color, 0.06);
-          color: $fg_color;
-
-          label { color: $fg_color; }
-        }
-
-        label { padding-left: 12px; }
       }
     }
   }

@@ -10,7 +10,7 @@
 // Firefox and Thunderbird
 //
 
-window.background:not(.csd) {
+window.background:not(.csd):not(.popup) {
   > widget {
     // for the bookmark toolbar's separators
     > separator {
@@ -247,7 +247,7 @@ window.background.chromium {
   menu {
     background-color: $base_color;
     border-radius: 0;
-    border: 1px solid $solid_borders_color;
+    border: 1px solid if($variant == 'light', $solid_borders_color, $header_border);
 
     menuitem {
       border-radius: 0;
@@ -659,35 +659,20 @@ menubar.-vala-panel-background {
   }
 
   > menu {
-    padding: 0;
+    padding: $container_padding;
+
     separator {
       margin: 0;
       border-bottom: none;
     }
 
     > menuitem {
-      padding: 0;
-      margin: 0 3px;
-
-      &:first-child { margin-top: 3px; }
-      &:last-child { margin-bottom: 3px; }
+      border-radius: $bt_radius;
 
       > window > decoration {
         box-shadow: none;
         transition: none;
         margin: 0;
-
-        menu {
-          padding: 0;
-
-          menuitem {
-            padding: 0;
-            margin: 0 3px;
-
-            &:first-child { margin-top: 3px; }
-            &:last-child { margin-bottom: 3px; }
-          }
-        }
       }
     }
   }

@@ -80,6 +80,25 @@ findbar:-moz-window-inactive {
 	-moz-box-ordinal-group: 100;
 }
 
+/* Sidebar */
+#sidebar-box,
+.sidebar-panel[lwt-sidebar] {
+	color: var(--gnome-toolbar-color) !important;
+	background: var(--gnome-toolbar-background) !important;
+}
+
+/* Customization page */
+#customization-container:-moz-lwtheme {
+	background-image: linear-gradient(var(--gnome-browser-before-load-background), var(--gnome-browser-before-load-background)) !important;
+}
+
+#customization-footer {
+	border-top: 1px solid var(--gnome-toolbar-border-color) !important;
+	color: var(--gnome-toolbar-color) !important;
+	background: var(--gnome-toolbar-background) !important;
+	border-radius: 0 0 12px 12px !important;
+}
+
 #PersonalToolbar {
 	padding: 0 3px 3px !important;
 	height: 32px !important;

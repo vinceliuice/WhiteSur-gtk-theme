@@ -19,6 +19,10 @@ window {
 
 #window-modal-dialog {
 	margin-top: auto !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
 }
 
 /* Dialog */
@@ -30,6 +34,7 @@ window {
 window[role="dialog"] {
 	background: var(--gnome-toolbar-background) !important;
 	border: 0 !important;
+	box-shadow: var(--gnome-popover-shadow) !important;
 	padding: 0 !important;
 }
 
@@ -39,7 +44,7 @@ dialog {
 
 dialog[subdialog] {
 	border-radius: 12px !important;
-	border: 1px solid var(--gnome-popover-border-color) !important;
+	border: none !important;
 	box-shadow: var(--gnome-popover-shadow) !important;
 }
 
