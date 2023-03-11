@@ -211,7 +211,7 @@
     color: $tc;
     text-shadow: none;
     icon-shadow: none;
-    box-shadow: none;
+    box-shadow: none !important;
   }
 
   @if $t == hover {

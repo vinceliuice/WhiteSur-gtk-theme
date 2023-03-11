@@ -103,7 +103,8 @@ $popop_menuitem_radius: $wm_radius - 4px;
   spacing: $base_spacing;
   padding: $base_padding * 1.5 $base_padding * 2;
   color: $alt_fg_color;
-  text-shadow: none;
+  text-shadow: none !important;
+  icon-shadow: none !important;
   border-radius: $popop_menuitem_radius;
   font-weight: normal;
   transition: none;
@@ -175,7 +176,10 @@ $popop_menuitem_radius: $wm_radius - 4px;
 
 // symbolic icons in popover
 .popup-menu-arrow,
-.popup-menu-icon { icon-size: $base_icon_size; }
+.popup-menu-icon {
+  icon-size: $base_icon_size;
+  icon-shadow: none !important;
+}
 
 // container for radio and check boxes
 .popup-menu-ornament {
