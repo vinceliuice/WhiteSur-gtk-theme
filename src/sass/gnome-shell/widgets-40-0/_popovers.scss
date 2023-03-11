@@ -14,7 +14,7 @@
   .popup-separator-menu-item-separator {
     height: 1px; //not really the whole box
     margin: 0;
-    background-color: $borders_color;
+    background-color: $menu_bd;
 
     .popup-sub-menu & { //submenu separators
       margin: 0 32px 0 0;
