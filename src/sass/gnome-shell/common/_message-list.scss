@@ -67,6 +67,7 @@
 // message bubbles
 .message {
   margin: 3px 4px;
+  padding: $base_padding;
 
   .popup-menu & {
     @extend %popover_bubble;
@@ -74,9 +75,12 @@
 
   // icon container
   .message-icon-bin {
-    margin: 8px 0;
-    padding: 8px 0px 8px 8px;
-    &:rtl { padding: 8px 8px 8px 0px; }
+    margin: 0;
+    padding: $base_padding * 4 $base_padding * 3;
+
+    &:ltr { padding-right: $base_padding; }
+
+    &:rtl { padding-left: $base_padding; }
 
     // icon size and color
     > StIcon {
@@ -86,37 +90,36 @@
 
     // fallback
     > .fallback-app-icon {
-      width: 16px;
-      height: 16px;
+      width: $base_icon_size;
+      height: $base_icon_size;
     }
   }
 
   .message-secondary-bin {
-    padding: 0 8px;
+    padding: 0 $base_margin * 2;
 
     > .event-time {
-      min-height: $small_size - 2px;
       color: $hint_fg_color;
       font-size: 1em;
-      text-align: right;
       /* HACK: the label should be baseline-aligned with a 1em label, fake this with some bottom padding */
       padding-bottom: 0.13em;
+
+      &:ltr { text-align: right; }
+      &:rtl { text-align: left; }
     }
   }
 
   .message-title {
-    min-height: $small_size - 2px;
-    padding-top: 2px;
-    color: $fg_color;
+    padding-top: 0.35em !important;
+    // color: $fg_color;
     font-weight: bold;
-    font-size: 1em;
   }
 
   .message-content {
-    min-height: $menuitem_size * 2 - 8px * 2;
-    padding: 8px;
     color: $hint_fg_color;
-    font-size: 1em;
+    spacing: $base_margin;
+    padding: $base_padding * 1.5;
+    margin-bottom: $base_margin * 2;
   }
 
   // close button

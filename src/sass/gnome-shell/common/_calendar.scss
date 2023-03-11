@@ -119,7 +119,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   border: none;
   box-shadow: 0 1px 2px rgba(black, 0.02) !important;
   background-color: $popover_bubble_bg;
-  padding: $base_padding !important;
+  padding: $base_padding * 2 !important;
   margin: 0 $base_padding + $base_margin + 4px !important;
   text-shadow: none;
   border-radius: $mn_radius;
@@ -284,7 +284,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 .weather-button,
 .events-button {
   @extend %popover_bubble;
-  padding: $base_padding * 2 !important;
+  padding: $base_padding * 3 !important;
   margin: 3px 4px !important;
 }
 
