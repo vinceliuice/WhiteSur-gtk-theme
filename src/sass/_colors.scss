@@ -180,7 +180,7 @@ $osd_borders_color:                 $dark_borders_color;
 
 // Menu colors
 $menu_bg:                           if($variant == 'light', $base_color, $bg_color);
-$menu_bd:                           if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
+$menu_bd:                           if($variant == 'light', rgba(black, 0.08), rgba(white, 0.07));
 
 @if $trans == 'true' {
   $menu_bg:                         if($variant == 'light', rgba($base_color, 0.95), rgba($bg_color, 0.95));
