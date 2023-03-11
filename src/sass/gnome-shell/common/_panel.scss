@@ -26,8 +26,6 @@ $panel_height: $menuitem_size;
 
         .clock {
           border-radius: $bt_radius * 2 !important;
-          padding: 0 $base_padding * 6 !important;
-          spacing: $base_padding * 2 !important;
         }
       }
 
@@ -168,15 +166,25 @@ $panel_height: $menuitem_size;
     .system-status-icon {
       icon-size: $base_icon_size;
       padding: $base_padding;
-      margin: 0 $base_padding;
+      margin: 0;
     }
 
-    .panel-status-menu-box .system-status-icon { margin: 0; }
+    // .panel-status-menu-box .system-status-icon { margin: 0; }
     .panel-status-menu-box StLabel { padding: 0 0 0 $base_padding / 2; }
 
-    .appindicator-trayicons-box { margin: 0 $base_padding; }
+    // .appindicator-trayicons-box { margin: 0 $base_padding; }
 
     // .appindicator-box { margin: 0 0; }
+
+    // .panel-status-indicators-box,
+    // .panel-status-menu-box {
+    //   spacing: 2px;
+    // }
+
+    // spacing between power icon and (optional) percentage label
+    // .power-status.panel-status-indicators-box {
+    //   spacing: 0;
+    // }
 
     // app menu icon
     .app-menu-icon {
@@ -216,7 +224,8 @@ $panel_height: $menuitem_size;
   }
 
   Gjs_AggregateMenu.panel-button,
-  Gjs_ui_panel_AggregateMenu.panel-button {
+  Gjs_ui_panel_AggregateMenu.panel-button,
+  Gjs_ui_panel_QuickSettings.panel-button {
     .system-status-icon {
       margin: 0 $base_padding / 2 !important;
     }
@@ -226,6 +235,13 @@ $panel_height: $menuitem_size;
   // .menubar-button, // For Fildem global menu
   .desktop-name-label { // For Unite
     font-weight: bold !important;
+  }
+
+  // Input indicators
+  Gjs_status_keyboard_InputSourceIndicator.panel-button, // Ibus
+  Gjs_appindicatorsupport_rgcjonas_gmail_com_indicatorStatusIcon_AppIndicatorsIndicatorStatusIcon.panel-button { // Fcitx
+    -natural-hpadding: 12px + $base_padding !important;
+    -minimum-hpadding: 12px + $base_padding !important;
   }
 
   // transparent panel on lock & login screens
@@ -281,16 +297,6 @@ $panel_height: $menuitem_size;
       -panel-corner-background-color: transparent;
       -panel-corner-border-color: transparent;
     }
-  }
-
-  .panel-status-indicators-box,
-  .panel-status-menu-box {
-    spacing: 2px;
-  }
-
-  // spacing between power icon and (optional) percentage label
-  .power-status.panel-status-indicators-box {
-    spacing: 0;
   }
 
   // indicator for active

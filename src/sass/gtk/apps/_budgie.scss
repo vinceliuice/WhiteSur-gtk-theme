@@ -111,7 +111,7 @@ $raven_padding: 8px;
     border: none;
   }
 
-  separator { margin: $container_padding / 2 0; }
+  widget > separator { margin: $container_padding / 2 0; }
 
   border { border: none; }
 
