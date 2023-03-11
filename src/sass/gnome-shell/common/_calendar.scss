@@ -39,30 +39,29 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   }
 }
 
-.clock-display-box {
-  spacing: 2px;
-
-  .clock {
-    padding-left: $base_padding * 2;
-    padding-right: $base_padding * 2;
-  }
-}
-
 // overall menu
 #calendarArea {
-  padding: $base_padding * 1.5 0;
+  padding: 4px 0;
 }
 
 // Calendar menu side column
 .datemenu-calendar-column {
   spacing: $base_spacing;
   border: 0 solid $borders_color;
-  padding: 0 0 0 $base_padding * 2;
 
-  &:ltr { margin-right: $base_margin * 2; border-left-width: 0; }
-  &:rtl { margin-left: $base_margin * 2; border-right-width: 0; }
+  &:ltr {
+    margin-right: 0;
+    padding-left: 0;
+    border-left-width: 0;
+  }
 
-  .datemenu-displays-section { padding-bottom: 0; }
+  &:rtl {
+    margin-left: 0;
+    padding-right: 0;
+    border-right-width: 0;
+  }
+
+  .datemenu-displays-section { padding: 0; }
 
   .datemenu-displays-box {
     spacing: $base_spacing;
@@ -121,7 +120,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   box-shadow: 0 1px 2px rgba(black, 0.02) !important;
   background-color: $popover_bubble_bg;
   padding: $base_padding !important;
-  margin: 0 12px !important;
+  margin: 0 $base_padding + $base_margin + 4px !important;
   text-shadow: none;
   border-radius: $mn_radius;
 
@@ -286,7 +285,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 .events-button {
   @extend %popover_bubble;
   padding: $base_padding * 2 !important;
-  margin: 2px 4px !important;
+  margin: 3px 4px !important;
 }
 
 // Events
@@ -345,8 +344,6 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
 // Weather
 .weather-button {
-  margin-bottom: 6px !important;
-
   .weather-box {
     spacing: $base_spacing + $base_margin;
   }

@@ -3,16 +3,29 @@
 
 .message-list {
   width: 31.5em;
-  padding: $base_padding * 1.5 0;
+  padding: 0 $base_margin;
   text-shadow: none;
   border: none;
 
   // padding and margins to account for scrollbar
-  &:ltr { margin-left: 0; margin-right: 0; padding-right: 0; }
-  &:rtl { margin-right: 0; margin-left: 0; padding-left: 0; }
+  &:ltr {
+    margin-left: 0;
+    margin-right: 0;
+    padding-right: 0;
+    border-right-width: 0;
+  }
+
+  &:rtl {
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 0;
+    border-left-width: 0;
+  }
 
   .message-list-placeholder {
-    spacing: 12px;
+    font-weight: 800;
+    @include fontsize(15);
+    color: $disabled_fg_color;
 
     // icon size and color
     > StIcon {
@@ -24,11 +37,16 @@
 }
 
 .message-list-sections {
-  margin: 0 $base_margin * 4; // to account for scrollbar
+  spacing: $base_padding;
+  margin: 0;
+  padding-bottom: $base_padding;
+
+  // to account for scrollbar
+  &:ltr { margin-right: $base_margin !important; }
+  &:rtl { margin-left: $base_margin !important; }
 }
 
 .message-list-section,
-.message-list-sections,
 .message-list-section-list {
   spacing: $base_spacing;
 }
@@ -48,7 +66,7 @@
 
 // message bubbles
 .message {
-  margin: 3px 4px 4px;
+  margin: 3px 4px;
 
   .popup-menu & {
     @extend %popover_bubble;
