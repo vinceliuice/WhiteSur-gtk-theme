@@ -39,7 +39,7 @@ Run `./tweaks.sh -f monterey`
 
 ```
 
-3. Choose the right buttons number config then remove '/*' to enable it and add '/*' to disbale the default one
+3. Choose the right buttons number config then remove `/*` to enable it and add `/*` to disbale the default one
 
 ### Manual installation
 
