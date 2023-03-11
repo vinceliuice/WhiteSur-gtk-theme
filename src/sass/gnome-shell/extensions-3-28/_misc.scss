@@ -114,11 +114,13 @@
 .place-menu-item {
   &:ltr {
     padding-left: 0 !important;
+    margin-left: 0 !important;
     padding-right: $base_padding * 5 !important;
   }
 
   &:rtl {
     padding-right: 0 !important;
+    margin-right: 0 !important;
     padding-left: $base_padding * 5 !important;
   }
 

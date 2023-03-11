@@ -1,10 +1,10 @@
 /* Popovers/Menus */
 
-$popop_menuitem_radius: $wm_radius - 4px;
+$popop_menuitem_radius: $po_radius - $base_padding;
 
 //.the popover itself
 .popup-menu-boxpointer {
-  -arrow-border-radius: $wm_radius;
+  -arrow-border-radius: $po_radius;
   -arrow-background-color: transparent;
   -arrow-border-width: 0;
   -arrow-border-color: transparent;
@@ -92,10 +92,12 @@ $popop_menuitem_radius: $wm_radius - 4px;
 
 .popup-menu-content {
   padding: $base_padding;
-  @extend %theme_dialogs;
   box-shadow: 0 5px 10px 0 rgba(black, 0.18);
-  border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
   margin: 4px 12px 17px 12px;
+  background-color: $dialog_bg_color;
+  border-radius: $po_radius;
+  border: solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
+  border-width: if($variant=='light', 0, 1px);
   @include font(body-1);
 }
 

@@ -2,7 +2,7 @@
 
 %theme_dialogs {
   background-color: $dialog_bg_color;
-  border-radius: $wm_radius;
+  border-radius: $modal_radius;
   border: solid rgba(black, 0.75);
   border-width: if($variant=='light', 0, 1px);
   box-shadow: 0 3px 6px 0 rgba(black, if($variant=='light', 0.25, 0.35));
@@ -40,15 +40,15 @@
 // modal dialog
 .modal-dialog {
   color: $fg_color;
-  padding: 0 5px 6px 5px;
+  padding: $base_padding;
   @extend %theme_dialogs !optional;
 
   &-linked-button {
     min-height: 40px;
     padding: 0 16px;
-    margin: 3px 3px !important;
+    margin: $base_padding !important;
     border: none !important;
-    border-radius: $bt_radius;
+    border-radius: $modal_radius - $base_padding * 2;
 
     @include font(button);
     @include button(flat-normal);

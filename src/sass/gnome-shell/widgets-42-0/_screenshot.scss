@@ -18,7 +18,7 @@ $screenshot_ui_button_red: $error_color;
   padding: $screenshot_ui_panel_padding;
   // Reduce the bottom padding a little to accommodate the large capture button.
   margin-bottom: 4em;
-  spacing: $base_padding * 2;
+  spacing: $container_padding * 2;
   color: $osd_fg_color;
   background-color: $osd_bg_color;
   border: 1px solid rgba(black, 0.75);
@@ -29,14 +29,14 @@ $screenshot_ui_button_red: $error_color;
   @extend .window-close; // copy window close button
   padding: $base_padding !important; // but with more padding
 
-  &.left { margin-left: $base_padding + 2px; }
-  &.right { margin-right: $base_padding + 2px; }
+  &.left { margin-left: $container_padding; }
+  &.right { margin-right: $container_padding; }
 }
 
 .screenshot-ui-type-button {
   @extend %osd_button;
   min-width: 48px;
-  padding: $base_padding * 2 $base_padding * 3 !important;
+  padding: $base_padding * 3 $base_padding * 4 !important;
   border-radius: $screenshot_ui_panel_border_radius - $screenshot_ui_panel_padding;
 }
 
@@ -45,7 +45,7 @@ $screenshot_ui_button_red: $error_color;
   height: 36px;
   border-radius: $circular_radius;
   border: 4px white;
-  padding: $base_margin;
+  padding: $base_padding;
 
   .screenshot-ui-capture-button-circle {
     background-color: white;
@@ -111,7 +111,7 @@ $screenshot_ui_button_red: $error_color;
 .screenshot-ui-show-pointer-button {
   @extend %osd_button;
   border-radius: $circular_radius;
-  padding: $base_padding * 2 !important;
+  padding: $container_padding * 2.5 !important;
 
   StIcon { icon-size: 16px; }
 }

@@ -5,7 +5,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 %popover_bubble {
   color: $alt_fg_color;
   background-color: $popover_bubble_bg;
-  border-radius: $mn_radius !important;
+  border-radius: $base_border_radius !important;
   border: none;
   box-shadow: 0 1px 2px rgba(black, 0.02) !important;
   text-shadow: none;
