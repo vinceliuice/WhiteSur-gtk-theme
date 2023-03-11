@@ -68,7 +68,7 @@
 
   .quick-toggle-arrow {
     background-color: $fill_color !important;
-    padding: $base_padding $base_padding * 1.75;
+    padding: 0 $base_padding * 2.5;
 
     &:active {
       background-color: $divider_color !important;
@@ -115,7 +115,7 @@
   background-color: $menu_bg !important;
   color: $text_color !important;
   border-radius: $base_border_radius * 3;
-  padding: $base_padding * 2;
+  padding: $base_padding * 3;
   margin: $base_padding * 2 $base_padding * 6 0;
 
   .popup-menu-item {
@@ -131,20 +131,28 @@
   }
 
   & .header {
-    spacing-rows: 0.5 * $base_padding;
-    spacing-columns: $base_padding * 2;
-    padding-bottom: 2 * $base_padding;
+    spacing-rows: 0.5 * $container_padding;
+    spacing-columns: $container_padding * 2;
+    padding-bottom: 2 * $container_padding;
 
     & .icon {
       icon-size: $base_icon_size * 1.5; // a non-standard symbolic size but ok
       border-radius: $circular_radius;
-      padding: 1.5 * $base_padding;
+      padding: 1.5 * $container_padding;
       background-color: $divider_color !important;
 
       &.active {
         background-color: $primary_color !important;
         color: $light_fg_color;
       }
+    }
+
+    & .title {
+      @include font(title);
+    }
+
+    & .subtitle {
+      @include font(body-1);
     }
   }
 }
@@ -156,8 +164,8 @@
     background-color: $fill_color;
     color: $text_color;
     border-radius: $circular_radius;
-    min-height: 24px !important;
-    min-width: 24px !important;
+    min-height: $menuitem_size !important;
+    min-width: $menuitem_size !important;
     // padding: $container_padding;
 
     &:hover { @include button(flat-hover); }
