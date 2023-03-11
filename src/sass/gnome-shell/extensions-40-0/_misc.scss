@@ -136,3 +136,35 @@
     }
   }
 }
+
+//
+// Places Menu
+//
+
+.place-menu-item {
+  &:ltr {
+    padding-left: 0 !important;
+    padding-right: $base_padding * 5 !important;
+  }
+
+  &:rtl {
+    padding-right: 0 !important;
+    padding-left: $base_padding * 5 !important;
+  }
+
+  StLabel { margin-left: $base_padding / 2; }
+
+  .button {
+    border-radius: $circular_radius;
+    padding: $base_padding / 2;
+
+    &:ltr { margin-left: 0 !important; }
+    &:rtl { margin-right: 0 !important; }
+  }
+
+  &:focus, &:hover, &:selected {
+    .button {
+      @extend %osd_button;
+    }
+  }
+}
