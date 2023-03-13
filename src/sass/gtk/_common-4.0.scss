@@ -2074,11 +2074,13 @@ headerbar {
                                       transparent 84%) 0 0 0 1 / 0 0 0 1px stretch;
       }
 
-      &:checked {
+       &:hover, &:active, &:checked {
         border-image: none;
       }
     }
 
+    button:hover + button,
+    button:active + button,
     button:checked + button { border-image: none; }
   }
 
