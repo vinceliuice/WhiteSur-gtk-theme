@@ -106,9 +106,13 @@ $raven_padding: 8px;
               0 0 0 1px if($variant=='light', rgba(black, 0.03), rgba(black, 0.65));
 
   .container {
-    padding: 0;
+    padding: $container_padding;
     margin: 0;
     border: none;
+
+    .container {
+      padding: 0;
+    }
   }
 
   widget > separator { margin: $container_padding / 2 0; }
@@ -254,7 +258,7 @@ $raven_padding: 8px;
     }
 
     list.left-overlay-menu {
-      box-shadow: 0 5px 8px rgba(black, 0.15), 0 8px 15px rgba(black, 0.08), $wm_outline, inset 0 0 0 1px $highlight_color;
+      box-shadow: 0 3px 5px rgba(black, 0.15), 0 5px 6px rgba(black, 0.08), $wm_outline, inset 0 0 0 1px $highlight_color;
       background-color: $base_color;
       padding: $container_padding;
       margin: $container_padding;
@@ -307,16 +311,16 @@ $raven_padding: 8px;
 
   // Clipboard popover
   > frame > box.vertical {
-    > box.horizontal {
-      > entry {
-        padding: $container_padding / 2 $container_padding * 2;
-        border: none;
-        border-bottom: 1px solid $borders_color;
-        border-radius: 0;
-        box-shadow: none;
-        background: none;
-      }
-    }
+    // > box.horizontal {
+    //   > entry {
+    //     padding: $container_padding / 2 $container_padding * 2;
+    //     border: none;
+    //     border-bottom: 1px solid $borders_color;
+    //     border-radius: 0;
+    //     box-shadow: none;
+    //     background: none;
+    //   }
+    // }
 
     > box.vertical {
       > box.vertical {
@@ -330,12 +334,16 @@ $raven_padding: 8px;
 
       > scrolledwindow > viewport.frame {
         border-bottom: 1px solid $borders_color;
+
+        > list > row.activatable {
+          border-radius: $bt_radius;
+        }
       }
     }
   }
 
   &.user-menu {
-    .container { padding: $container_padding; }
+    // .container { padding: $container_padding; }
 
     .content-box { background-color: transparent; }
 
@@ -352,21 +360,21 @@ $raven_padding: 8px;
   }
 
   &.caffeine-popover {
-    .container { padding: $container_padding; }
+    // .container { padding: $container_padding; }
   }
 
   &.night-light-indicator {
-    .container { padding: $container_padding; }
+    // .container { padding: $container_padding; }
 
     .view-header { padding: 0 $container_padding 0 ($container_padding - 2px); }
   }
 
   &.icon-popover {
-    .container { padding: $container_padding; }
+    // .container { padding: $container_padding; }
   }
 
   &.places-menu {
-    .container { padding: $container_padding; }
+    // .container { padding: $container_padding; }
 
     row.activatable {
       padding: 0;
@@ -386,6 +394,40 @@ $raven_padding: 8px;
       padding: $container_padding / 2;
       font-size: 15px;
     }
+
+    .name-button.text-button {
+      // padding: 4px 8px;
+      padding-left: $container_padding;
+      padding-right: $container_padding;
+
+      image {
+        &:dir(ltr) { margin-right: $container_padding / 2; }
+        &:dir(rtl) { margin-left: $container_padding / 2; }
+      }
+    }
+
+    .places-section-header > image {
+      &:dir(ltr) { margin: 0 8px - 10px 0 8px - 3px; }
+      &:dir(rtl) { margin: 0 8px - 3px 0 8px - 10px; }
+    }
+
+    .places-list {
+      margin-top: $container_padding / 2;
+      padding-top: $container_padding / 2;
+      border-top: 1px solid $borders_color;
+      background-color: transparent;
+    }
+
+    row {
+      padding: 0;
+      box-shadow: none;
+      background-image: none;
+    }
+  }
+
+  // Menu Button
+  button.budgie-menu-launcher {
+    @extend %flat_button;
   }
 
   &.workspace-popover {
@@ -464,50 +506,6 @@ window.budgie-popover:not(.csd) {
       padding: 0;
       border-radius: $bt_radius;
     }
-  }
-}
-
-// Menu Button
-button.budgie-menu-launcher {
-  @extend %flat_button;
-}
-
-// Raven Trigger
-button.raven-trigger {
-  padding: 0 4px;
-}
-
-// Places Menu
-popover.background.places-menu {
-  padding: 8px;
-
-  .name-button.text-button {
-    // padding: 4px 8px;
-    padding-left: 8px;
-    padding-right: 8px;
-
-    image {
-      &:dir(ltr) { margin-right: 8px - 5px; }
-      &:dir(rtl) { margin-left: 8px - 5px; }
-    }
-  }
-
-  .places-section-header > image {
-    &:dir(ltr) { margin: 0 8px - 10px 0 8px - 3px; }
-    &:dir(rtl) { margin: 0 8px - 3px 0 8px - 10px; }
-  }
-
-  .places-list {
-    margin-top: 4px;
-    padding-top: 4px;
-    border-top: 1px solid $borders_color;
-    background-color: transparent;
-  }
-
-  row {
-    padding: 0;
-    box-shadow: none;
-    background-image: none;
   }
 }
 
@@ -636,8 +634,8 @@ $budgie_panel_radius: $wm_radius + $container_padding / 2;
     }
   }
 
-  &.horizontal button { padding: 0 4px; }
-  &.vertical button { padding: 4px 0; }
+  &.horizontal button { padding: 0 $container_padding; }
+  &.vertical button { padding: $container_padding 0; }
 
   separator { background-color: rgba($panel_fg, 0.15); }
 
@@ -704,6 +702,44 @@ $budgie_panel_radius: $wm_radius + $container_padding / 2;
     &:active { background-color: rgba($fg_color, 0.20); }
     &:checked { background-color: rgba($fg_color, 0.15); }
   }
+
+  // Raven Trigger
+  button.raven-trigger {
+    padding: 0 $container_padding;
+  }
+
+  // Add padding for panel indicators icons
+  > box > widget > widget {
+    > image, // normal
+    > stack > image, // Screenshot
+    > box > image { // Places
+      margin-left: $base_padding;
+      margin-right: $base_padding;
+    }
+
+    > box > image + label { // Reset for mailneg
+      margin-left: $base_padding + 2px;
+    }
+
+    > box { // keyboard Layout
+      > widget > image { margin-left: $base_padding; }
+      > stack > widget > label { margin-right: $base_padding; }
+    }
+
+    > box > widget > widget > image { // Status
+      margin-left: $base_padding / 2;
+      margin-right: $base_padding / 2;
+    }
+  }
+
+  // Time label
+  .budgie-clock-applet,
+  .budgie-calendar-applet {
+    > widget > box {
+      padding-left: $base_padding / 2;
+      padding-right: $base_padding / 2;
+    }
+  }
 }
 
 %underscores {
@@ -731,7 +767,7 @@ $budgie_panel_radius: $wm_radius + $container_padding / 2;
 
 // Tasklist
 #tasklist-button {
-  padding: 0 4px;
+  padding: 0 $container_padding;
   box-shadow: none;
   background-image: none;
   color: $fg_color;
@@ -953,11 +989,12 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
     }
 
     @if $variant == 'light' {
-      > box.vertical > box.vertical:last-child,
-      > box.vertical > widget:last-child > box.vertical {
+      > box.vertical > box.vertical .mpris-widget,
+      > box.vertical > widget > box.vertical > .mpris-widget {
         border: none;
         background-color: rgba(black, 0.85);
         color: rgba(white, 0.65);
+        border-radius: $raven_radius;
 
         button {
           border: none;
@@ -1293,8 +1330,8 @@ window.budgie-switcher-window {
   background-image: none;
 
   flowboxchild { // icon-tiles
-    margin: 2px;
-    border-radius: $wm_radius;
+    margin: 0;
+    border-radius: $bt_radius;
     background-image: none;
   }
 }
@@ -1329,6 +1366,10 @@ window.budgie-switcher-window {
 
   &.background.csd {
     border-radius: $wm_radius;
+  }
+
+  > box > grid {
+    padding: $container_padding * 4;
   }
 }
 
@@ -1368,6 +1409,10 @@ window.budgie-switcher-window {
 .budgie-polkit-dialog {
   .message { color: gtkalpha(currentColor, 0.6); }
   .failure { color: $destructive_color; }
+
+  > box > grid {
+    padding-bottom: 0;
+  }
 }
 
 // Run Dialog

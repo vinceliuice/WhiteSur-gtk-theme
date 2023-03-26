@@ -3653,8 +3653,11 @@ messagedialog { // Message Dialog styling
       padding: ($container_padding - 2px) ($container_padding + 2px);
       box-shadow: none;
       border-radius: $bt_radius;
-      margin: 0 3px 3px 3px;
       border: none;
+
+      &:not(:last-child) {
+        margin-right: $container_padding / 2;
+      }
 
       &:not(.suggested-action):not(.destructive-action) {
         border-radius: $bt_radius;
