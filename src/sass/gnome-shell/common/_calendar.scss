@@ -47,17 +47,17 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 // Calendar menu side column
 .datemenu-calendar-column {
   spacing: $base_spacing;
-  border: 0 solid $borders_color;
+  border: none;
 
   &:ltr {
     margin-right: 0;
-    padding-left: 0;
+    padding-left: $base_padding;
     border-left-width: 0;
   }
 
   &:rtl {
     margin-left: 0;
-    padding-right: 0;
+    padding-right: $base_padding;
     border-right-width: 0;
   }
 
@@ -120,7 +120,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   box-shadow: none !important;
   background-color: transparent;
   padding: $base_padding !important;
-  margin: 0 4px !important;
+  // margin: 0 4px !important;
   text-shadow: none;
   // border-radius: $base_border_radius;
 
@@ -285,7 +285,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 .events-button {
   @extend %popover_bubble;
   padding: $base_padding * 3 !important;
-  margin: 3px 4px !important;
+  // margin: 3px 4px !important;
 }
 
 // Events
