@@ -1,0 +1,217 @@
+.quick-settings {
+  padding: $base_padding * 3;
+  border-radius: $modal_radius * 2.25;
+
+  .icon-button, .button {
+    padding: $base_padding * 1.75;
+
+    StIcon { icon-size: $base_icon_size !important; }
+  }
+}
+
+.quick-settings-grid {
+  spacing-rows: 12px;
+  spacing-columns: 12px;
+}
+
+.quick-toggle, .quick-menu-toggle {
+  border-radius: $circular_radius;
+  min-width: 13em;
+  max-width: 13em;
+  min-height: 42px;
+  border:none;
+}
+
+.quick-toggle {
+  background-color: $fill_color;
+
+  &:checked {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+  }
+
+  & > StBoxLayout { spacing: $base_padding * 1.5; }
+
+  /* Move padding into the box; this is to allow menu arrows
+     to extend to the border */
+  &.button { padding: 0; }
+  & > StBoxLayout { padding: 0 $base_padding * 2; }
+  &:ltr > StBoxLayout { padding-left: $base_padding * 2.5; }
+  &:rtl > StBoxLayout { padding-right: $base_padding * 2.5; }
+
+  .quick-toggle-title { font-weight: bold; }
+
+  & StBoxLayout > .quick-toggle-subtitle {
+    font-weight: normal;
+    font-size: 12px;
+  }
+
+  .quick-toggle-icon { icon-size: $base_icon_size !important; }
+}
+
+.quick-menu-toggle {
+  & .quick-toggle {
+    min-width: auto;
+    max-width: auto;
+
+    &:ltr { border-radius: $circular_radius 0 0 $circular_radius; }
+    &:ltr > StBoxLayout { padding-right: $base_padding * 1.5; }
+    &:rtl { border-radius: 0 $circular_radius $circular_radius 0; }
+    &:rtr > StBoxLayout { padding-left: $base_padding * 1.5; }
+
+    &:ltr:last-child { border-radius: $circular_radius; }
+    &:rtl:last-child { border-radius: $circular_radius; }
+  }
+
+  & .quick-toggle-arrow {
+    padding: $base_padding $base_padding * 1.75;
+    border: none;
+    background-color: $divider_color;
+
+    &:checked {
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+    }
+
+    &:ltr {
+      border-radius: 0 $circular_radius $circular_radius 0;
+      border-left-width: 0;
+    }
+
+    &:rtl {
+      border-radius: $circular_radius 0 0 $circular_radius;
+      border-right-width: 0;
+    }
+  }
+}
+
+.quick-slider {
+  & > StBoxLayout { spacing: $base_padding; }
+
+  .icon-button { padding: $base_padding; }
+
+  .slider-bin {
+    &:focus { @include button(focus); }
+    min-height: 16px; // slider size
+    padding: $base_padding;
+    border-radius: $circular_radius;
+  }
+}
+
+.quick-toggle-menu {
+  background-color: $menu_bg !important;
+  color: $text_color !important;
+  border-radius: $base_border_radius * 3;
+  padding: $base_padding * 3;
+  margin: $base_padding * 2 $base_padding * 6 0;
+
+  .popup-menu-item {
+    border-radius: $circular_radius !important;
+    min-height: 20px;
+
+    &:focus, &:hover, &.selected {
+      color: $text_color !important;
+      background-color: $divider_color !important;
+    }
+
+    > StIcon { -st-icon-style: symbolic; }
+  }
+
+  & .header {
+    spacing-rows: 0.5 * $base_padding;
+    spacing-columns: $base_padding * 2;
+    padding-bottom: 2 * $base_padding;
+
+    & .icon {
+      icon-size: $base_icon_size * 1.5; // a non-standard symbolic size but ok
+      border-radius: $circular_radius;
+      padding: 1.5 * $base_padding;
+      background-color: transparentize($fg_color, 0.8);
+
+      &.active {
+        background-color: $selected_bg_color;
+        color: $selected_fg_color;
+      }
+    }
+
+    & .title {
+      @extend %title_3;
+    }
+
+    & .subtitle {
+      @extend %caption_heading;
+    }
+  }
+}
+
+.quick-settings-system-item {
+  & > StBoxLayout { spacing: 2 * $base_padding; }
+
+  .icon-button {
+    background-color: $fill_color;
+    color: $text_color;
+    border-radius: $circular_radius;
+    min-height: $menuitem_size !important;
+    min-width: $menuitem_size !important;
+    // padding: $container_padding;
+
+    &:hover { @include button(flat-hover); }
+    &:active { @include button(flat-active); }
+
+    > StIcon {
+     -st-icon-style: symbolic;
+     icon-size: $base_icon_size;
+    }
+  }
+
+  & .power-item {
+    min-height: 0;
+    min-width: 0;
+
+    &:insensitive {
+      @include button(normal);
+      background-color: transparent;
+    }
+  }
+}
+
+.nm-network-item {
+  .wireless-secure-icon { icon-size: 0.5 * $base_icon_size; }
+}
+
+.bt-device-item {
+  .popup-menu-icon { -st-icon-style: symbolic; }
+}
+
+.bt-menu-placeholder.popup-menu-item {
+  @extend %title_4;
+  text-align: center;
+
+  padding: 2em 4em;
+}
+
+.device-subtitle { color: transparentize($fg_color, 0.5); }
+
+// background apps
+
+.background-apps-quick-toggle {
+  min-height: 40px;
+  background-color: transparent;
+
+  & StIcon { icon-size: $base_icon_size !important; }
+}
+
+.background-app-item {
+  & .title { @extend %heading; }
+  & .subtitle { @extend %caption; }
+  & .popup-menu-icon {
+    icon-size: $base_icon_size * 2 !important;
+    -st-icon-style: regular !important;
+  }
+  & .close-button {
+    @extend .icon-button;
+    padding: $base_padding;
+  }
+
+  &.popup-inactive-menu-item { color: $fg_color; }
+}

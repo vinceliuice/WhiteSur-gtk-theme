@@ -28,3 +28,53 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 //   @include font(body-1);
 //   color: $fg_color;
 // }
+
+/* General Typography */
+
+%large_title {
+  font-weight: 300;
+  @include fontsize(24);
+}
+
+%title_1 {
+  font-weight: 800;
+  @include fontsize(20);
+}
+
+%title_2 {
+  font-weight: 800;
+  @include fontsize(15);
+}
+
+%title_3 {
+  font-weight: 700;
+  @include fontsize(15);
+}
+
+%title_4 {
+  font-weight: 700;
+  @include fontsize(13);
+}
+
+%heading {
+  font-weight: 700;
+  @include fontsize(11);
+}
+
+%caption_heading {
+  font-weight: 700;
+  @include fontsize(9);
+}
+
+%caption {
+  font-weight: 400;
+  @include fontsize(9);
+}
+
+%smaller {
+  font-weight: 400;
+  @include fontsize(8);
+}
+
+%monospace {font-family: monospace;}
+%numeric { font-feature-settings: "tnum";}

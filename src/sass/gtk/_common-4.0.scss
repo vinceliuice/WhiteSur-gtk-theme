@@ -2478,7 +2478,7 @@ popover {
 
   > contents {
     padding: $container_padding;
-    border-radius: $wm_radius;
+    border-radius: $mn_radius;
 
     list,
     .view,
@@ -2632,7 +2632,7 @@ popover.menu {
     min-height: $menuitem_size - $container_padding;
     min-width: $large_size * 2;
     padding: $container_padding / 3 $container_padding;
-    border-radius: $mn_radius - $container_padding / 2;
+    border-radius: $bt_radius;
     transition: none;
     color: $text_color;
 
