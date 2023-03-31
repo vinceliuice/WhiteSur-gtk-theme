@@ -636,6 +636,17 @@ restore_file() {
 }
 
 backup_file() {
+  if [[ -f "${1}.bak" || -d "${1}.bak" ]]; then
+    case "${2}" in
+      sudo)
+        sudo rm -rf "${1}" ;;
+      udo)
+        udo rm -rf "${1}" ;;
+      *)
+        rm -rf "${1}" ;;
+    esac
+  fi
+
   if [[ -f "${1}" || -d "${1}" ]]; then
     case "${2}" in
       sudo)
@@ -669,7 +680,7 @@ remind_relative_path() {
 sudo() {
   local result="0"
 
-  prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root"
+  prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as root \n"
 
   if ! ${SUDO_BIN} -n true &> /dev/null; then
     echo -e "\n ${c_magenta} Authentication is required${c_default} ${c_green}(Please input your password):${c_default} \n"
