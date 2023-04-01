@@ -324,16 +324,16 @@ install_beggy() {
 
   case "${background}" in
     blank)
-      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blank.png"          "${WHITESUR_TMP_DIR}/beggy.png" ;;
+      cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blank.png"            "${WHITESUR_TMP_DIR}/beggy.png" ;;
     default)
       if [[ "${no_blur}" == "false" && "${no_darken}" == "true" ]]; then
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur.png"         "${WHITESUR_TMP_DIR}/beggy.png"
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blur.png"           "${WHITESUR_TMP_DIR}/beggy.png"
       elif [[ "${no_blur}" == "false" && "${no_darken}" == "false" ]]; then
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-blur-darken.png"  "${WHITESUR_TMP_DIR}/beggy.png"
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blur-darken.png"    "${WHITESUR_TMP_DIR}/beggy.png"
       elif [[ "${no_blur}" == "true" && "${no_darken}" == "true" ]]; then
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-default.png"      "${WHITESUR_TMP_DIR}/beggy.png"
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.png"        "${WHITESUR_TMP_DIR}/beggy.png"
       else
-        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/background-darken.png"       "${WHITESUR_TMP_DIR}/beggy.png"
+        cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-darken.png"         "${WHITESUR_TMP_DIR}/beggy.png"
       fi
       ;;
     *)
