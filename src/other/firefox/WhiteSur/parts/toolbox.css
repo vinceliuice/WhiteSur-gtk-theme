@@ -18,24 +18,31 @@
 	fill: var(--gnome-toolbar-color);
 }
 
-#nav-bar, #PersonalToolbar, #toolbar-menubar {
+#nav-bar, #PersonalToolbar, #toolbar-menubar, .notificationbox-stack {
 	border: 0 !important;
 	color: var(--gnome-toolbar-color);
 	background: var(--gnome-toolbar-background) !important;
 	border-bottom: none !important;
 }
+
 #TabsToolbar {
 	border: 0 !important;
 	background: var(--gnome-tabstoolbar-background) !important;
 	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
 	box-shadow: inset 0 1px var(--gnome-toolbar-border-color) !important;
 }
+
 findbar {
 	border: 0 !important;
 	background: var(--gnome-findbar-background) !important;
 	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
 }
-#nav-bar:-moz-window-inactive,
+
+.container.infobar {
+	background: var(--gnome-browser-before-load-background) !important;
+}
+
+#nav-bar:-moz-window-inactive, .notificationbox-stack:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive, #toolbar-menubar:-moz-window-inactive,
 #TabsToolbar:-moz-window-inactive, findbar:-moz-window-inactive {
 	background: var(--gnome-inactive-toolbar-background) !important;

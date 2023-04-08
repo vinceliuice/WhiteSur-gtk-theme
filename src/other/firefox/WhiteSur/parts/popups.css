@@ -74,7 +74,7 @@ menuitem[disabled="true"]:hover, menupopup menu[disabled="true"]:hover {
 panel[type="arrow"] {
 	appearance: none !important;
 	background-color: transparent !important;
-	margin-top: 8px !important;
+	margin: 12px -24px 0 !important;
 }
 
 /* Style popovers */
