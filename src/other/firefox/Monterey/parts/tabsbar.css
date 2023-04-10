@@ -112,6 +112,28 @@ tab > stack {
 	margin-top: 0 !important;
 }
 
+.tabbrowser-tab[soundplaying="true"] .tab-icon-image {
+	margin-top: 3px !important;
+	margin-left: 3px !important;
+}
+
+.tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
+	top: 0 !important;
+	inset-inline-end: 0 !important;
+}
+
+.tabbrowser-tab .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
+	background-color: var(--gnome-tabbar-tab-background) !important;
+}
+
+.tabbrowser-tab[selected=true] .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
+	background-color: var(--gnome-tabbar-tab-active-background) !important;
+}
+
+.tabbrowser-tab .tab-icon-overlay:not([crashed]):is([pinned], [sharing]):hover {
+	background-color: var(--gnome-tabbar-tab-hover-background) !important;
+}
+
 /* Remove blue line above tabs */
 .tab-line {
 	display: none;

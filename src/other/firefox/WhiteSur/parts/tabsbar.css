@@ -126,7 +126,7 @@ tab[selected]:-moz-window-inactive {
 
 /* Force tab favicon to the center */
 .tab-throbber, .tab-throbber-fallback,
-.tabbrowser-tab:not([busy]) .tab-icon-image,
+.tabbrowser-tab:not([busy]):not([soundplaying="true"]) .tab-icon-image,
 .tabbrowser-tab:not([class*="identity-color-"]) .tab-icon-stack {
 	margin-left: auto !important;
 }
@@ -171,7 +171,7 @@ tab[selected]:-moz-window-inactive {
 	padding-inline: 0px !important;
 }
 
-.tabbrowser-tab[selected="true"]>.tab-stack>.tab-background {
+.tabbrowser-tab[selected="true"] > .tab-stack > .tab-background {
 	margin-left: 0px !important;
 	margin-right: 0px !important;
 }
@@ -241,6 +241,28 @@ tab[selected]:-moz-window-inactive {
 /* Tab close button etc. positioning */
 .tab-throbber, .tab-icon-image, .tab-sharing-icon-overlay, .tab-icon-sound, .tab-close-button {
 	margin-top: 0 !important;
+}
+
+.tabbrowser-tab[soundplaying="true"] .tab-icon-image {
+	margin-top: 3px !important;
+	margin-left: 3px !important;
+}
+
+.tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
+	top: 0 !important;
+	inset-inline-end: 0 !important;
+}
+
+.tabbrowser-tab .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
+	background-color: var(--gnome-tabbar-tab-background) !important;
+}
+
+.tabbrowser-tab[selected=true] .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
+	background-color: var(--gnome-tabbar-tab-active-background) !important;
+}
+
+.tabbrowser-tab .tab-icon-overlay:not([crashed]):is([pinned], [sharing]):hover {
+	background-color: var(--gnome-tabbar-tab-hover-background) !important;
 }
 
 /* Remove blue line above tabs */
