@@ -112,9 +112,17 @@ tab > stack {
 	margin-top: 0 !important;
 }
 
-.tabbrowser-tab[soundplaying="true"] .tab-icon-image {
+.tabbrowser-tab[soundplaying="true"] .tab-icon-image,
+.tabbrowser-tab[muted="true"] .tab-icon-image {
 	margin-top: 3px !important;
-	margin-left: 3px !important;
+	margin-left: 2px !important;
+}
+
+.tab-icon-overlay {
+	height: 24px !important;
+	width: 24px !important;
+	padding: 4px !important;
+	border-radius: 100px !important;
 }
 
 .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {

@@ -74,6 +74,8 @@ tab > stack {
 /* Active tab */
 .tab-background[selected=true] {
 	background: var(--gnome-tabbar-tab-active-background) !important;
+	animation: none !important;
+	transition: none !important;
 }
 
 .tab-background[selected=true]:-moz-window-inactive {
@@ -95,9 +97,17 @@ tab > stack {
 	min-width: 16px;
 }
 
-.tabbrowser-tab[soundplaying="true"] .tab-icon-image {
+.tabbrowser-tab[soundplaying="true"] .tab-icon-image,
+.tabbrowser-tab[muted="true"] .tab-icon-image {
 	margin-top: 3px !important;
-	margin-left: 3px !important;
+	margin-left: 2px !important;
+}
+
+.tab-icon-overlay {
+	height: 24px !important;
+	width: 24px !important;
+	padding: 4px !important;
+	border-radius: 100px !important;
 }
 
 .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
@@ -136,7 +146,7 @@ tab > stack {
 
 /* Force tab favicon to the center */
 .tab-throbber, .tab-throbber-fallback,
-.tabbrowser-tab:not([busy]):not([soundplaying="true"]) .tab-icon-image,
+.tabbrowser-tab:not([busy]):not([soundplaying="true"],[muted="true"]) .tab-icon-image,
 .tabbrowser-tab:not([class*="identity-color-"]) .tab-icon-stack {
 	margin-left: auto !important;
 }

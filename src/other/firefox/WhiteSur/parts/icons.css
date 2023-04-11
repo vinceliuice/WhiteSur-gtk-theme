@@ -191,16 +191,11 @@ menu[disabled] > .menu-right {
 	list-style-image: url("../icons/window-close-symbolic.svg") !important;
 }
 
-.tab-icon-overlay {
-	height: 22px !important;
-	width: 22px !important;
-	padding: 3px !important;
-}
-
 /* Sound icons */
 .tab-icon-overlay[soundplaying] {
 	list-style-image: url("../icons/audio-playing-symbolic.svg") !important;
 }
+
 .tab-icon-overlay[muted] {
 	list-style-image: url("../icons/audio-muted-symbolic.svg") !important;
 }
@@ -547,10 +542,12 @@ button.close::before {
 	height: 16px !important;
 	width: 16px !important;
 }
+
 /* Fix icon color */
 #sidebar-icon {
 	opacity: 1 !important;
 }
+
 treechildren::-moz-tree-twisty,
 treechildren::-moz-tree-image {
 	fill-opacity: 1 !important;
@@ -682,9 +679,16 @@ treechildren::-moz-tree-image {
 	#identity-box[pageproxystate="valid"].localResource #identity-icon,
 	.bookmark-item[container] .toolbarbutton-icon,
 	.menu-iconic.bookmark-item[container] .menu-iconic-icon,
-	.panel-info-button > image,
-	.tab-icon-overlay {
+	.panel-info-button > image {
 		filter: invert(60%) brightness(150%);
+	}
+
+	.tab-icon-overlay[soundplaying] {
+		list-style-image: url("../icons/audio-playing-symbolic-light.svg") !important;
+	}
+
+	.tab-icon-overlay[muted] {
+		list-style-image: url("../icons/audio-muted-symbolic-light.svg") !important;
 	}
 
 	#save-to-pocket-button,

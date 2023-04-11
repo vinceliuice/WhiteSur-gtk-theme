@@ -74,7 +74,11 @@ menuitem[disabled="true"]:hover, menupopup menu[disabled="true"]:hover {
 panel[type="arrow"] {
 	appearance: none !important;
 	background-color: transparent !important;
-	margin: 12px -24px 0 !important;
+	margin: 10px -18px 0 !important;
+}
+
+panel[type="autocomplete-richlistbox"] {
+	margin: 0 !important;
 }
 
 /* Style popovers */
