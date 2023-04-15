@@ -55,6 +55,14 @@ dialog[subdialog] {
 	padding-bottom: 0;
 }
 
+#description-box {
+	margin: 24px 24px 0 !important;
+}
+
+#rememberContainer {
+	margin: 0 24px 16px !important;
+}
+
 #titleContainer {
 	padding: 6px !important;
 	margin-top: 6px !important;

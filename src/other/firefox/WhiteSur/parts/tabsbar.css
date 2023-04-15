@@ -360,6 +360,10 @@ tab[selected]:-moz-window-inactive {
 	height: 32px !important;
 }
 
+#alltabs-button {
+	display: none !important;
+}
+
 /* firefox-view-button */
 :root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden]) :is(#firefox-view-button, #wrapper-firefox-view-button) + #tabbrowser-tabs {
 	border-inline-start: 1px solid var(--gnome-toolbar-border-color) !important;

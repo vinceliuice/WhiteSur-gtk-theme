@@ -325,6 +325,14 @@ menu[disabled] > .menu-right {
 	list-style-image: url("../icons/view-more-horizontal-symbolic.svg") !important;
 }
 
+#mozcn-mobile-bookmarks-button {
+	list-style-image: url("../icons/phone-symbolic.svg") !important;
+}
+
+#bookmarks-toolbar-button, #bookmarks-toolbar-placeholder {
+	list-style-image: url("../icons/star-symbolic.svg") !important;
+}
+
 /* Glitch - animations (may be possible to fix in about:config) */
 #reload-button,
 .downloadIconRetry > .button-box > .button-icon,
@@ -467,6 +475,44 @@ menu[disabled] > .menu-right {
 
 #screenshot-button {
 	list-style-image: url("../icons/screenshot-symbolic.svg") !important;
+}
+
+toolbarbutton#easyscreenshot_mozillaonline_com-BAP {
+	--webextension-menupanel-image: url("../icons/screenshot-symbolic.svg") !important;
+	--webextension-menupanel-image-2x: url("../icons/screenshot-symbolic.svg") !important;
+	--webextension-menupanel-image-light: url("../icons/screenshot-symbolic-light.svg") !important;
+	--webextension-menupanel-image-2x-light: url("../icons/screenshot-symbolic-light.svg") !important;
+	--webextension-menupanel-image-dark: url("../icons/screenshot-symbolic.svg") !important;
+	--webextension-menupanel-image-2x-dark: url("../icons/screenshot-symbolic.svg") !important;
+	--webextension-toolbar-image: url("../icons/screenshot-symbolic.svg") !important;
+	--webextension-toolbar-image-2x: url("../icons/screenshot-symbolic.svg") !important;
+	--webextension-toolbar-image-light: url("../icons/screenshot-symbolic-light.svg") !important;
+	--webextension-toolbar-image-2x-light: url("../icons/screenshot-symbolic-light.svg") !important;
+	--webextension-toolbar-image-dark: url("../icons/screenshot-symbolic.svg") !important;
+	--webextension-toolbar-image-2x-dark: url("../icons/screenshot-symbolic.svg") !important;
+}
+
+toolbarbutton#cpmanager_mozillaonline_com-BAP {
+	--webextension-menupanel-image: url("../icons/tab-restore-symbolic.svg") !important;
+	--webextension-menupanel-image-2x: url("../icons/tab-restore-symbolic.svg") !important;
+	--webextension-menupanel-image-light: url("../icons/tab-restore-symbolic-light.svg") !important;
+	--webextension-menupanel-image-2x-light: url("../icons/tab-restore-symbolic-light.svg") !important;
+	--webextension-menupanel-image-dark: url("../icons/tab-restore-symbolic.svg") !important;
+	--webextension-menupanel-image-2x-dark: url("../icons/tab-restore-symbolic.svg") !important;
+	--webextension-toolbar-image: url("../icons/tab-restore-symbolic.svg") !important;
+	--webextension-toolbar-image-2x: url("../icons/tab-restore-symbolic.svg") !important;
+	--webextension-toolbar-image-light: url("../icons/tab-restore-symbolic-light.svg") !important;
+	--webextension-toolbar-image-2x-light: url("../icons/tab-restore-symbolic-light.svg") !important;
+	--webextension-toolbar-image-dark: url("../icons/tab-restore-symbolic.svg") !important;
+	--webextension-toolbar-image-2x-dark: url("../icons/tab-restore-symbolic.svg") !important;
+}
+
+toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
+	list-style-image: var(--webextension-toolbar-image-2x-dark, var(--gnome-toolbar-color)) !important;
+}
+
+#mo-url2qr-icon {
+	list-style-image: url("../icons/url2qr-icon.svg") !important;
 }
 
 .popup-notification-icon[popupid="web-notifications"], .desktop-notification-icon {
@@ -649,6 +695,9 @@ treechildren::-moz-tree-image {
 	#downloads-button .toolbarbutton-icon,
 	#sync-button .toolbarbutton-icon,
 	#new-window-button .toolbarbutton-icon,
+	#mozcn-mobile-bookmarks-button .toolbarbutton-icon,
+	#bookmarks-toolbar-button .toolbarbutton-icon,
+	#bookmarks-toolbar-placeholder .toolbarbutton-icon,
 	#screenshot-button .toolbarbutton-icon,
 	#tracking-protection-icon,
 	#pageActionButton,
@@ -698,6 +747,10 @@ treechildren::-moz-tree-image {
 
 	#save-to-pocket-button[open="true"], #save-to-pocket-button[pocketed="true"] {
 		list-style-image: url("../icons/save-to-pocket-open-light.svg") !important;
+	}
+
+	#mo-url2qr-icon {
+		list-style-image: url("../icons/url2qr-icon-light.svg") !important;
 	}
 
 	/* Tree views */
