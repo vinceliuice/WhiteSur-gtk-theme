@@ -873,10 +873,10 @@ gtk_base() {
 customize_theme() {
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
-  # Darker dark colors
+  # Nord dark colors
   if [[ "${colorscheme}" == '-nord' ]]; then
-    prompt -s "Changing color scheme style to nord style ...\n"
-    sed $SED_OPT "/\$colorscheme/s/default/nord/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    prompt -s "Changing ColorScheme style to nord version ...\n"
+    sed $SED_OPT "/\$colorscheme/s/default/nord/"                               "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Darker dark colors

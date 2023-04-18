@@ -159,6 +159,8 @@ while [[ $# -gt 0 ]]; do
       no_blur="true"; shift ;;
     -l|--libadwaita)
       libadwaita="true"; shift ;;
+    --nord|--nordcolor)
+      colorscheme="-nord"; shift ;;
       # Parameters that require value, single use
     -b|--background)
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
