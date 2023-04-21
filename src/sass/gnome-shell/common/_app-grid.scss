@@ -60,8 +60,8 @@
 // expanded folder
 .app-folder-dialog {
   border-radius: $bd_radius * 4;
-  border: 0 solid rgba(white, 0.15);
-  // padding: 0;
+  border: none;
+  box-shadow: none;
   background-color: rgba(if($colorscheme == 'nord', #20242c, #262626), 0.9);
 
   .folder-name-container {

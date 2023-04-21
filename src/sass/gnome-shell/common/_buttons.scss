@@ -41,6 +41,11 @@
     color: white;
   }
 
+  &:checked {
+    background-color: $primary_color;
+    color: white;
+  }
+
   &:insensitive {
     background-color: transparent;
     color: rgba(white, 0.35);
