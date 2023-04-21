@@ -1485,7 +1485,7 @@ actionbar {
 
 headerbar {
   min-height: $headerbar_size;
-  padding: 0 8px;
+  padding: 0 $container_padding;
   color: $header_fg;
   background-color: $header_bg;
   border-bottom: 1px solid $header_border;
@@ -1787,6 +1787,7 @@ headerbar {
 
   .csd &.default-decoration,
   .csd &.default-decoration:backdrop {
+    padding: 0 $container_padding;
     border-bottom: 1px solid $header_border;
   }
 
@@ -3656,7 +3657,7 @@ messagedialog { // Message Dialog styling
       border: none;
 
       &:not(:last-child) {
-        margin-right: $container_padding / 2;
+        margin-right: $container_padding;
       }
 
       &:not(.suggested-action):not(.destructive-action) {

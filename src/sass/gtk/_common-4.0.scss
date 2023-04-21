@@ -1979,7 +1979,7 @@ headerbar {
   }
 
   > windowhandle > box {
-    padding: 0 8px;
+    padding: 0 $container_padding;
 
     &,
     > box.start,
@@ -2164,8 +2164,12 @@ headerbar {
 
   &.default-decoration {
     min-height: $medium_size;
-    padding: 0 $container_padding * 2;
+    padding: 0;
     background-color: $header_bg;
+
+    > windowhandle > box {
+      padding: 0 $container_padding / 2;
+    }
 
     .tiled &,
     .maximized &,
@@ -4889,9 +4893,6 @@ window {
     background-color: $header_bg;
     box-shadow: none;
   }
-
-  // server-side decorations as used by mutter
-  &.ssd { box-shadow: 0 0 0 1px $wm_shadow; } //just doing borders, wm draws actual shadows
 }
 
 //
