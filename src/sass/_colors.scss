@@ -271,6 +271,7 @@ $button_borders:                    if($variant == 'light', $button_border, $dar
 $wm_outline_light:                  0 0 0 2px rgba(black, 0.03), 0 0 0 1px rgba(black, 0.12);
 $wm_outline_dark:                   0 0 0 2px rgba(black, 0.1), 0 0 0 1px rgba(black, 0.75);
 $wm_shadow:                         if($variant=='light', rgba(black, 0.15), rgba(black, 0.35));
+$wm_shadow_backdrop:                if($variant=='light', rgba(black, 0.08), rgba(black, 0.15));
 $wm_outline:                        if($variant=='light', $wm_outline_light, $wm_outline_dark);
 
 // WM Buttons
