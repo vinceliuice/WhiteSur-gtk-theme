@@ -1485,7 +1485,7 @@ actionbar {
 
 headerbar {
   min-height: $headerbar_size;
-  padding: 0 $container_padding;
+  padding: 0 8px;
   color: $header_fg;
   background-color: $header_bg;
   border-bottom: 1px solid $header_border;

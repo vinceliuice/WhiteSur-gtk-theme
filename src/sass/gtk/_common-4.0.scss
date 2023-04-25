@@ -1979,7 +1979,7 @@ headerbar {
   }
 
   > windowhandle > box {
-    padding: 0 $container_padding;
+    padding: 0 8px;
 
     &,
     > box.start,
