@@ -4850,9 +4850,8 @@ window {
     outline: 1px solid $highlight_color;
     outline-offset: -1px;
     box-shadow: 0 3px 3px 0 $wm_shadow,
-                0 8px 8px 0 $wm_shadow,
+                0 6px 8px 0 $wm_shadow,
                 0 16px 16px 0 $wm_shadow,
-                0 0 0 36px transparent,
                 $wm_outline;
     margin: 0;
 
@@ -4861,9 +4860,8 @@ window {
       // the transparent shadow here is to enforce that the shadow extents don't
       // change when we go to backdrop, to prevent jumping windows
       box-shadow: 0 3px 3px 0 $wm_shadow_backdrop,
-                  0 3px 5px 0 $wm_shadow_backdrop,
                   0 6px 8px 0 $wm_shadow_backdrop,
-                  0 0 0 36px transparent,
+                  0 16px 16px 0 transparent,
                   $wm_outline;
     }
 
