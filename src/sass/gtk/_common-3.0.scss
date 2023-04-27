@@ -4295,27 +4295,27 @@ stackswitcher {
 //
 
 decoration {
-  transition: $shadow_transition;
+  transition: none;
   border-radius: $wm_radius;
+  border-width: 0px;
   box-shadow: 0 3px 3px 0 $wm_shadow,
               0 8px 8px 0 $wm_shadow,
               0 16px 16px 0 $wm_shadow,
               $wm_outline;
 
   // this is used for the resize cursor area
-  margin: 6px;
+  margin: 10px;
 
   &:backdrop {
+    transition: $shadow_transition;
     // the transparent shadow here is to enforce that the shadow extents don't
     // change when we go to backdrop, to prevent jumping windows
-    box-shadow: 0 3px 3px 0 $wm_shadow,
-                0 8px 8px 0 transparent,
+    box-shadow: 0 3px 3px 0 $wm_shadow_backdrop,
+                0 8px 8px 0 $wm_shadow_backdrop,
                 0 16px 16px 0 transparent,
                 $wm_outline;
   }
 
-  .maximized &,
-  .fullscreen &,
   .tiled &,
   .tiled-top &,
   .tiled-right &,
@@ -4323,9 +4323,21 @@ decoration {
   .tiled-left & {
     border-radius: $maximized_radius;
     box-shadow: 0 3px 3px 0 $wm_shadow, $wm_outline;
+
+    &:backdrop {
+      box-shadow: 0 3px 3px 0 $wm_shadow_backdrop, $wm_outline;
+    }
   }
 
-  .fullscreen & { border-radius: 0; }
+  .maximized & {
+    border-radius: $maximized_radius;
+    box-shadow: none;
+  }
+
+  .fullscreen & {
+    border-radius: 0;
+    box-shadow: none;
+  }
 
   .popup & {
     box-shadow: none;
@@ -4334,11 +4346,14 @@ decoration {
 
   // server-side decorations as used by mutter
   .ssd & {
-    margin: -6px;
     border-radius: $wm_radius $wm_radius 0 0;
 
     &, &.backdrop { box-shadow: $wm_outline; }
-    &.maximized, &.tiled { border-radius: 0; }
+
+    &.maximized, &.tiled {
+      border-radius: 0;
+      box-shadow: none;
+    }
   }
 
   .metacity & {
