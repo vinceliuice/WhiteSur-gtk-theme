@@ -1,0 +1,74 @@
+
+// app icons
+.icon-grid {
+  row-spacing: 12px;
+  column-spacing: 12px;
+  max-row-spacing: 42px;
+  max-column-spacing: 42px;
+  page-padding-top: 24px;
+  page-padding-bottom: 24px;
+  page-padding-left: 18px;
+  page-padding-right: 18px;
+}
+
+.app-folder-dialog {
+  .page-navigation-hint {
+    width: if($laptop == 'true', 60px, 80px);
+  }
+
+  .page-navigation-arrow {
+    margin: 18px;
+  }
+}
+
+.apps-scroll-view {
+  padding: 0;
+}
+
+.page-navigation-hint {
+  width: if($laptop == 'true', 220px, 300px);
+
+  &.dnd {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &.next:ltr,
+  &.previous:rtl {
+    background-gradient-start: $light_divider_color;
+    background-gradient-end: transparent;
+    background-gradient-direction: horizontal;
+    border-radius: $modal_radius 0px 0px $modal_radius;
+  }
+
+  &.previous:ltr,
+  &.next:rtl {
+    background-gradient-start: transparent;
+    background-gradient-end: $light_divider_color;
+    background-gradient-direction: horizontal;
+    border-radius: 0px $modal_radius $modal_radius 0px;
+  }
+}
+
+.page-navigation-arrow {
+  margin: $base_padding;
+  padding: $base_padding * 3;
+  width: 24px;
+  height: 24px;
+  border-radius: $circular_radius;
+  color: $light_alt_fg_color;
+
+  &:insensitive {
+    background-color: $light_fill_color;
+    color: $light_alt_disabled_fg_color;
+  }
+
+  &:hover {
+   background-color: $light_divider_color;
+   color: $light_fg_color;
+  }
+
+  &:active {
+   background-color: $light_track_color;
+   color: $light_fg_color;
+  }
+}

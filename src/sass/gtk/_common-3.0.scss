@@ -2191,6 +2191,7 @@ menubar,
 // .menu,
 // .context-menu,
 menu {
+  margin: 0;
   padding: $container_padding;
   border-radius: $mn_radius;
   background-color: opacify($menu_bg, 1);
@@ -2204,7 +2205,7 @@ menu {
   }
 
   separator {
-    margin: 2px 4px;
+    margin: 3px 4px;
     min-height: 1px;
     background-color: $borders_color;
     border: none;
@@ -2218,6 +2219,7 @@ menu {
     border-radius: $bt_radius;
     text-shadow: none;
     color: $fg_color;
+    font: initial;
     // -gtk-icon-style: symbolic;
 
     &:hover {
@@ -2288,7 +2290,7 @@ menu {
   > arrow {
     min-width: 16px;
     min-height: 16px;
-    padding: 2px;
+    padding: 6px;
     background-color: transparent;
     border-radius: $mn_radius - 3px;
     border: none;
@@ -2319,7 +2321,8 @@ menu {
 //
 // Popovers
 //
-popover,
+
+// popover,
 popover.background {
   padding: 0;
   border-radius: $wm_radius;
