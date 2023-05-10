@@ -107,13 +107,13 @@ $popop_menuitem_radius: $po_radius - $base_padding;
   color: $alt_fg_color;
   text-shadow: none !important;
   icon-shadow: none !important;
-  border-radius: $popop_menuitem_radius;
+  border-radius: $popop_menuitem_radius !important;
   font-weight: normal;
   transition: none;
 
   &:checked {
     font-weight: normal;
-    border-radius: $popop_menuitem_radius $popop_menuitem_radius 0 0;
+    border-radius: $popop_menuitem_radius $popop_menuitem_radius 0 0 !important;
     border: none;
     box-shadow: none;
     color: $alt_fg_color !important;
@@ -150,13 +150,14 @@ $popop_menuitem_radius: $po_radius - $base_padding;
 
 .popup-sub-menu {
   background-color: $submenu_bg_color !important;
-  border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius;
+  border-radius: 0 0 $popop_menuitem_radius $popop_menuitem_radius !important;
   border: none;
   box-shadow: none;
 
   .popup-menu-item {
     margin: 0;
-    border-radius: $popop_menuitem_radius;
+    border-radius: $popop_menuitem_radius !important;
+    background-color: transparent !important;
 
     &:focus, &:hover, &:selected {
       color: $selected_fg_color !important;
