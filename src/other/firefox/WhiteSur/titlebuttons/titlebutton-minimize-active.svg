@@ -1,10 +1,49 @@
-<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg">
- <g transform="matrix(3.7795,0,0,3.7795,-265,-585.52)">
-  <g transform="matrix(.26465 0 0 .26465 70.643 154.92)" enable-background="new">
-   <g transform="translate(-5,-1033.4)" fill-rule="evenodd">
-    <path d="m11.003 1049.4c4.4172 0 7.998-3.5808 7.998-7.998 0-4.4173-3.5809-7.9982-7.998-7.9982-4.4172 0-7.9981 3.5808-7.9981 7.9982 0 4.4171 3.5809 7.998 7.9981 7.998" fill="#caa124" stroke-width=".88889"/>
-   </g>
-  </g>
-  <rect x="71.173" y="156.77" width="2.1167" height=".52917" ry=".26458" opacity=".5"/>
- </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16"
+   height="16"
+   version="1.1"
+   id="svg1920"
+   sodipodi:docname="titlebutton-minimize-active.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1924" />
+  <sodipodi:namedview
+     id="namedview1922"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="14.75"
+     inkscape:cx="4.0338983"
+     inkscape:cy="8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
+     inkscape:window-x="0"
+     inkscape:window-y="35"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1920" />
+  <path
+     d="M 8.0000435,15.000143 C 11.866036,15.000143 15,11.866176 15,8.0001301 15,4.1340843 11.865949,1.0000176 8.0000435,1.0000176 c -3.8659919,0 -7.0000434,3.1339667 -7.0000434,7.0001125 0,3.8659459 3.1340515,7.0000129 7.0000434,7.0000129"
+     fill="#caa124"
+     stroke-width="0.777968"
+     id="path1910"
+     style="fill-rule:evenodd" />
+  <rect
+     x="3.9983404"
+     y="6.9922314"
+     width="8.0000677"
+     height="1.999998"
+     ry="0.99998015"
+     opacity="0.5"
+     id="rect1916"
+     style="stroke-width:3.7795" />
 </svg>

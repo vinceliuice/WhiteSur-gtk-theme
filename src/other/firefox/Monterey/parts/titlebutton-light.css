@@ -22,36 +22,21 @@
 }
 :root[tabsintitlebar] #titlebar .titlebar-close:hover,
 :root[tabsintitlebar] #titlebar #titlebar-close:hover {
-	background: url("../titlebuttons/titlebutton-close-hover-inactive.svg") no-repeat;
-	background-size: contain;
-}
-:root[tabsintitlebar] #titlebar .titlebar-max:hover,
-:root[tabsintitlebar] #titlebar #titlebar-max:hover {
-	background: url("../titlebuttons/titlebutton-maximize-hover-inactive.svg") no-repeat;
-	background-size: contain;
-}
-:root[tabsintitlebar] #titlebar .titlebar-min:hover,
-:root[tabsintitlebar] #titlebar #titlebar-min:hover {
-	background: url("../titlebuttons/titlebutton-minimize-hover-inactive.svg") no-repeat;
-	background-size: contain;
-}
-:root[tabsintitlebar] #titlebar .titlebar-close:hover,
-:root[tabsintitlebar] #titlebar #titlebar-close:hover {
 	background: url("../titlebuttons/titlebutton-close-hover.svg") no-repeat;
+	background-color: transparent !important;
 	background-size: contain;
-	transition: background-size 300ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 :root[tabsintitlebar] #titlebar .titlebar-max:hover,
 :root[tabsintitlebar] #titlebar #titlebar-max:hover {
 	background: url("../titlebuttons/titlebutton-maximize-hover.svg") no-repeat;
+	background-color: transparent !important;
 	background-size: contain;
-	transition: background-size 300ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 :root[tabsintitlebar] #titlebar .titlebar-min:hover,
 :root[tabsintitlebar] #titlebar #titlebar-min:hover {
 	background: url("../titlebuttons/titlebutton-minimize-hover.svg") no-repeat;
+	background-color: transparent !important;
 	background-size: contain;
-	transition: background-size 300ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 :root[tabsintitlebar] #titlebar .titlebar-restore:hover,
 :root[tabsintitlebar] #titlebar #titlebar-restore:hover,

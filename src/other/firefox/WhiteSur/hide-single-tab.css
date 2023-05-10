@@ -5,4 +5,8 @@
 	display: none !important;
 }
 
+.tab-background, .tab-stack {
+	min-height: 0 !important;
+}
+
 /* TODO: Hidde tabbar bottom border */

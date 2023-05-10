@@ -77,18 +77,23 @@ findbar:-moz-window-inactive label,
 /* Reorder toolbars */
 #navigator-toolbox #nav-bar, findbar {
 	-moz-box-ordinal-group: 0;
+	order: 0;
 }
 #navigator-toolbox #PersonalToolbar {
 	-moz-box-ordinal-group: 1;
+	order: 1;
 }
 #navigator-toolbox #titlebar {
 	-moz-box-ordinal-group: 2;
+	order: 2;
 }
 #navigator-toolbox toolbar {
 	-moz-box-ordinal-group: 10;
+	order: 10;
 }
 #navigator-toolbox #TabsToolbar {
 	-moz-box-ordinal-group: 100;
+	order: 100;
 }
 
 /* Overrides: Don't shift other toolbars on tab drag and drop */

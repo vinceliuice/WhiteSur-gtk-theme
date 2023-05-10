@@ -15,11 +15,7 @@
 #tabbrowser-tabs arrowscrollbox {
 	min-height: 0 !important;
 	max-height: 32px !important;
-	--tab-min-height: 0 !important;
-}
-
-.tab-background, .tab-stack {
-	min-height: 0 !important;
+	--tab-min-height: 32px !important;
 }
 
 /* Extra margin for the first and last tabs */
@@ -95,11 +91,18 @@ tab[selected]:-moz-window-inactive {
 .tab-content {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	margin-top: -1px;
+	justify-content: center !important;
+	align-items: center !important;
 	min-width: 100% !important;
 	padding: 0 8px !important;
+}
+
+/* Fix custom info tab icon */
+.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([pinned]):not([busy]):not([progress]) .tab-icon-stack::before {
+	margin-inline-end: 5.5px;
+}
+.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"] .tab-icon-image {
+	display: none !important;
 }
 
 /* Prevent tab icons size breaking */
@@ -107,9 +110,33 @@ tab[selected]:-moz-window-inactive {
 	min-width: 16px;
 }
 
+/* Center tab text */
+.tab-label {
+	margin-inline: auto !important;
+	margin-left: 0 !important;
+}
+
 /* Adjust tab label width */
 .tab-label-container {
 	min-width: 0 !important;
+}
+
+.tab-throbber:not([pinned]), .tab-icon-pending:not([pinned]), .tab-icon-image:not([pinned]), .tab-sharing-icon-overlay:not([pinned]), .tab-icon-overlay:not([pinned]) {
+	margin-inline-end: 0 !important;
+}
+.tabbrowser-tab:not([soundplaying], [muted], [activemedia-blocked], [crashed]) .tab-icon-stack {
+	padding: 6px;
+}
+
+/* Hide favicon when mute icon is present */
+.tabbrowser-tab:not([pinned]):is([soundplaying], [muted], [activemedia-blocked], [crashed]) .tab-icon-image:not([sharing]),
+.tabbrowser-tab:not([pinned]):is([soundplaying], [muted], [activemedia-blocked], [crashed])[selected] .tab-icon-image {
+	display: none;
+}
+
+/* Hide secondary label about muting */
+.tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked], [crashed]) .tab-secondary-label {
+	display: none;
 }
 
 /* Put tab close button and icon sound to the right */
@@ -155,7 +182,6 @@ tab[selected]:-moz-window-inactive {
 	margin-left: 0 !important
 }
 
-
 .tab-background {
 	border-radius: 0 !important;
 	margin-block: 0 !important;
@@ -169,6 +195,7 @@ tab[selected]:-moz-window-inactive {
 /* fix misc spacing between tabs */
 .tabbrowser-tab {
 	padding-inline: 0px !important;
+	padding: 0 !important;
 }
 
 .tabbrowser-tab[selected="true"] > .tab-stack > .tab-background {

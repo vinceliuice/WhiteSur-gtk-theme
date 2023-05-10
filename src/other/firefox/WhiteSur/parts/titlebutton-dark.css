@@ -23,36 +23,18 @@
 }
 :root[tabsintitlebar] #titlebar .titlebar-close:hover,
 :root[tabsintitlebar] #titlebar #titlebar-close:hover {
-	background: url("../titlebuttons/titlebutton-close-hover-inactive-dark.svg") no-repeat;
-	background-size: contain;
-}
-:root[tabsintitlebar] #titlebar .titlebar-max:hover,
-:root[tabsintitlebar] #titlebar #titlebar-max:hover {
-	background: url("../titlebuttons/titlebutton-maximize-hover-inactive-dark.svg") no-repeat;
-	background-size: contain;
-}
-:root[tabsintitlebar] #titlebar .titlebar-min:hover,
-:root[tabsintitlebar] #titlebar #titlebar-min:hover {
-	background: url("../titlebuttons/titlebutton-minimize-hover-inactive-dark.svg") no-repeat;
-	background-size: contain;
-}
-:root[tabsintitlebar] #titlebar .titlebar-close:hover,
-:root[tabsintitlebar] #titlebar #titlebar-close:hover {
 	background: url("../titlebuttons/titlebutton-close-hover-dark.svg") no-repeat;
 	background-size: contain;
-	transition: background-size 300ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 :root[tabsintitlebar] #titlebar .titlebar-max:hover,
 :root[tabsintitlebar] #titlebar #titlebar-max:hover {
 	background: url("../titlebuttons/titlebutton-maximize-hover-dark.svg") no-repeat;
 	background-size: contain;
-	transition: background-size 300ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 :root[tabsintitlebar] #titlebar .titlebar-min:hover,
 :root[tabsintitlebar] #titlebar #titlebar-min:hover {
 	background: url("../titlebuttons/titlebutton-minimize-hover-dark.svg") no-repeat;
 	background-size: contain;
-	transition: background-size 300ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 :root[tabsintitlebar] #titlebar .titlebar-restore:hover,
 :root[tabsintitlebar] #titlebar #titlebar-restore:hover,
@@ -105,7 +87,7 @@
 	background: url("../titlebuttons/titlebutton-backdrop-dark.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #titlebar:-moz-window-inactive  .titlebar-close:hover,
+:root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-close:hover,
 :root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-close:hover {
 	background: url("../titlebuttons/titlebutton-close-backdrop-dark.svg") no-repeat;
 	background-size: contain;
