@@ -698,7 +698,7 @@ config_firefox() {
   if has_snap_app firefox; then
     local TARGET_DIR="${FIREFOX_SNAP_THEME_DIR}"
     local FIREFOX_DIR="${FIREFOX_SNAP_DIR_HOME}"
-  if has_flatpak_app org.mozilla.firefox; then
+  elif has_flatpak_app org.mozilla.firefox; then
     local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
     local FIREFOX_DIR="${FIREFOX_FLATPAK_DIR_HOME}"
   else
@@ -725,7 +725,7 @@ config_firefox() {
 edit_firefox_theme_prefs() {
   if has_snap_app firefox; then
     local TARGET_DIR="${FIREFOX_SNAP_THEME_DIR}"
-  if has_flatpak_app org.mozilla.firefox; then
+  elif has_flatpak_app org.mozilla.firefox; then
     local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
   else
     local TARGET_DIR="${FIREFOX_THEME_DIR}"
