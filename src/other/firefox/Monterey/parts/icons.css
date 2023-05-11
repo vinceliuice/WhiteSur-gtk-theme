@@ -111,17 +111,11 @@ treechildren::-moz-tree-twisty {
 	width: 16px !important;
 	height: 16px !important;
 }
-treechildren::-moz-tree-twisty(open) {
-	list-style-image: url("../icons/pan-down-symbolic.svg") !important;
-}
-treechildren::-moz-tree-twisty(selected, focus) {
-	list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
-}
 .item.client.closed .item-twisty-container {
 	background-image: url("../icons/pan-down-symbolic.svg") !important;
 }
 treechildren::-moz-tree-twisty(selected, focus, open) {
-	list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
+	list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
 }
 treechildren::-moz-tree-image(title, container),
 treechildren::-moz-tree-image(title, open) {
@@ -133,10 +127,10 @@ treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
 }
 
 .sidebar-panel[lwt-sidebar-brighttext] .sidebar-placesTreechildren::-moz-tree-twisty {
-	list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
+	list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
 }
 .sidebar-panel[lwt-sidebar-brighttext] .sidebar-placesTreechildren::-moz-tree-twisty(open) {
-	list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
+	list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
 }
 /* Sidebar: History: clock icon */
 #historyTree treechildren::-moz-tree-image {

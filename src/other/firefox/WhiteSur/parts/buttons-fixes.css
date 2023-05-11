@@ -162,6 +162,11 @@ button.close.ghost-button:active {
 	font-size: 1em !important;
 }
 
+/* Sidebar header button sizing */
+#sidebar-switcher-target {
+	flex: unset !important;
+}
+
 /* Sidebar header button arrow opacity */
 #sidebar-switcher-arrow {
 	opacity: 1 !important;
