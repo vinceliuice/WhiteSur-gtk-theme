@@ -73,7 +73,6 @@
 tab {
 	color: var(--gnome-tabbar-tab-color) !important;
 }
-
 tab:hover {
 	color: var(--gnome-tabbar-tab-hover-color) !important;
 }
@@ -112,18 +111,19 @@ tab[selected]:-moz-window-inactive {
 
 /* Center tab text */
 .tab-label {
-	margin-inline: auto !important;
-	margin-left: 0 !important;
+	margin-inline: 0 !important;
 }
 
 /* Adjust tab label width */
 .tab-label-container {
 	min-width: 0 !important;
+	max-width: min-content !important;
 }
 
 .tab-throbber:not([pinned]), .tab-icon-pending:not([pinned]), .tab-icon-image:not([pinned]), .tab-sharing-icon-overlay:not([pinned]), .tab-icon-overlay:not([pinned]) {
 	margin-inline-end: 0 !important;
 }
+
 .tabbrowser-tab:not([soundplaying], [muted], [activemedia-blocked], [crashed]) .tab-icon-stack {
 	padding: 6px;
 }
@@ -154,12 +154,7 @@ tab[selected]:-moz-window-inactive {
 /* Force tab favicon to the center */
 .tab-throbber, .tab-throbber-fallback,
 .tabbrowser-tab:not([busy]):not([soundplaying="true"],[muted="true"]) .tab-icon-image,
-.tabbrowser-tab:not([class*="identity-color-"]) .tab-icon-stack {
-	margin-left: auto !important;
-}
-
-/* separate class for multi-tab alignment*/
-.tabbrowser-tab[class*="identity-color-"]>.tab-stack>.tab-content>.tab-icon-stack {
+.tabbrowser-tab .tab-icon-stack {
 	margin-left: auto !important;
 }
 
@@ -194,7 +189,7 @@ tab[selected]:-moz-window-inactive {
 
 /* fix misc spacing between tabs */
 .tabbrowser-tab {
-	padding-inline: 0px !important;
+	padding-inline: 0 !important;
 	padding: 0 !important;
 }
 

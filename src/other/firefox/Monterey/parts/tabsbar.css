@@ -58,6 +58,24 @@ tab > stack {
 	background: var(--gnome-inactive-tabbar-tab-active-background) !important;
 }
 
+/* Tab labels */
+tab .tab-label {
+	color: var(--gnome-tabbar-tab-color) !important;
+}
+tab:hover .tab-label {
+	color: var(--gnome-tabbar-tab-hover-color) !important;
+}
+tab[selected] .tab-label {
+	color: var(--gnome-tabbar-tab-active-color) !important;
+}
+tab:-moz-window-inactive .tab-label {
+	color: var(--gnome-inactive-tabbar-tab-color) !important;
+}
+tab[selected]:-moz-window-inactive .tab-label {
+	color: var(--gnome-inactive-tabbar-tab-active-color) !important;
+}
+
+
 .close-icon {
 	height: 16px !important;
 	padding: 0 !important;

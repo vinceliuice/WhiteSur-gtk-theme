@@ -82,14 +82,35 @@ tab > stack {
 	background: var(--gnome-inactive-tabbar-tab-active-background) !important;
 }
 
+/* Tab labels */
+tab .tab-label {
+	color: var(--gnome-tabbar-tab-color) !important;
+}
+tab:hover .tab-label {
+	color: var(--gnome-tabbar-tab-hover-color) !important;
+}
+tab[selected] .tab-label {
+	color: var(--gnome-tabbar-tab-active-color) !important;
+}
+tab:-moz-window-inactive .tab-label {
+	color: var(--gnome-inactive-tabbar-tab-color) !important;
+}
+tab[selected]:-moz-window-inactive .tab-label {
+	color: var(--gnome-inactive-tabbar-tab-active-color) !important;
+}
+
 /* Center all inside tab */
 .tab-content {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+	justify-content: center !important;
+	align-items: center !important;
 	min-width: 100% !important;
 	padding: 0 10px !important;
+}
+
+.tab-label {
+	margin-inline: 0 !important;
 }
 
 /* Prevent tab icons size breaking */
@@ -130,6 +151,7 @@ tab > stack {
 /* Adjust tab label width */
 .tab-label-container {
 	min-width: 0 !important;
+	max-width: min-content !important;
 }
 
 /* Put tab close button and icon sound to the right */
