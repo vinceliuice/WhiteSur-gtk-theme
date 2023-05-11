@@ -162,6 +162,11 @@ button.close.ghost-button:active {
 	font-size: 1em !important;
 }
 
+/* Sidebar header button sizing */
+#sidebar-switcher-target {
+	flex: unset !important;
+}
+
 /* Sidebar header button arrow opacity */
 #sidebar-switcher-arrow {
 	opacity: 1 !important;
@@ -181,6 +186,10 @@ button.close.ghost-button:active {
 /* Auto complete popup button*/
 .autocomplete-richlistitem[type="loginsFooter"] {
 	margin: 4px 4px 0 4px !important;
+}
+
+#context-navigation > .menuitem-iconic > .menu-iconic-left > .menu-iconic-icon {
+	margin: 3px !important;
 }
 
 /* Bookmarks editor buttons */

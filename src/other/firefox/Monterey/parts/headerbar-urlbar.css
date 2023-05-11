@@ -14,8 +14,8 @@ toolbarspring {
 	max-width: 1000px !important;
 }
 
-#stop-reload-button + toolbarspring {
-	max-width: 1px !important;
+#nav-bar toolbarbutton + toolbarspring {
+	display: none !important;
 }
 
 #urlbar-container + toolbarspring {
