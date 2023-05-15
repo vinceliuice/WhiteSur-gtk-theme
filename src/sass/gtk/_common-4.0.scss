@@ -4849,9 +4849,9 @@ window {
     border-radius: $wm_radius;
     outline: 1px solid $highlight_color;
     outline-offset: -1px;
-    box-shadow: 0 3px 3px 0 $wm_shadow,
-                0 6px 8px 0 $wm_shadow,
-                0 16px 16px 0 $wm_shadow,
+    box-shadow: 0 3px 6px $wm_shadow,
+                0 7px 12px $wm_shadow,
+                0 12px 20px $wm_shadow,
                 $wm_outline;
     margin: 0;
 
@@ -4859,9 +4859,9 @@ window {
       transition: $shadow_transition;
       // the transparent shadow here is to enforce that the shadow extents don't
       // change when we go to backdrop, to prevent jumping windows
-      box-shadow: 0 3px 3px 0 $wm_shadow_backdrop,
-                  0 6px 8px 0 $wm_shadow_backdrop,
-                  0 16px 16px 0 transparent,
+      box-shadow: 0 3px 6px $wm_shadow_backdrop,
+                  0 7px 12px $wm_shadow_backdrop,
+                  0 12px 20px transparent,
                   $wm_outline;
     }
 
