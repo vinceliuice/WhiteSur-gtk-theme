@@ -23,11 +23,29 @@
 }
 
 .quick-toggle {
-  background-color: $fill_color;
+  background-color: $fill_color !important;
+
+  &:hover {
+    background-color: $divider_color !important;
+  }
+
+  &:active {
+    background-color: $visit_color !important;
+  }
 
   &:checked {
-    background-color: $selected_bg_color;
-    color: $selected_fg_color;
+    background-color: $primary_color !important;
+    color: $light_fg_color;
+
+    &:hover {
+      background-color: mix($text_color, $primary_color, 6%) !important;
+      color: $light_fg_color;
+    }
+
+    &:active {
+      background-color: mix($text_color, $primary_color, 15%) !important;
+      color: $light_fg_color;
+    }
   }
 
   & > StBoxLayout { spacing: $base_padding * 1.5; }
@@ -64,13 +82,31 @@
   }
 
   & .quick-toggle-arrow {
-    padding: $base_padding $base_padding * 1.75;
+    padding: $base_padding $base_padding * 2;
     border: none;
-    background-color: $divider_color;
+    background-color: $fill_color !important;
 
+    &:hover {
+      background-color: $divider_color !important;
+    }
+  
+    &:active {
+      background-color: $visit_color !important;
+    }
+  
     &:checked {
-      background-color: $selected_bg_color;
-      color: $selected_fg_color;
+      background-color: $primary_color !important;
+      color: $light_fg_color;
+  
+      &:hover {
+        background-color: mix($text_color, $primary_color, 6%) !important;
+        color: $light_fg_color;
+      }
+  
+      &:active {
+        background-color: mix($text_color, $primary_color, 15%) !important;
+        color: $light_fg_color;
+      }
     }
 
     &:ltr {
