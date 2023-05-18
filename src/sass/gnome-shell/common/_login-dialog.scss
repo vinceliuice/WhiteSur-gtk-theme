@@ -10,13 +10,9 @@
       icon-size: $base_icon_size * 8;
 
       & StIcon {
-        padding: $base_padding * 4;
+        padding: 24px;
         width: $base_icon_size * 5;
-        height:  $base_icon_size * 5;
-      }
-
-      &.user-avatar {
-        border: 4px solid $osd_fg_color;
+        height: $base_icon_size * 5;
       }
     }
   }
@@ -33,20 +29,6 @@
 }
 
 .unlock-dialog {
-  .user-icon {
-    icon-size: $base_icon_size * 4 !important;
-
-    & StIcon {
-      padding: $base_padding * 2 !important;
-      width: $base_icon_size * 2.5 !important;
-      height:  $base_icon_size * 2.5 !important;
-    }
-
-    &.user-avatar {
-      border: 2px solid $osd_fg_color !important;
-    }
-  }
-
   StEntry {
     @include fontsize($base_font_size - 1);
     padding: 0 $base_padding * 2 !important;

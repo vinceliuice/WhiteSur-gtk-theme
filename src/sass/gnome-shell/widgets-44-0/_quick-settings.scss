@@ -1,6 +1,7 @@
 .quick-settings {
   padding: $base_padding * 3;
   border-radius: $modal_radius * 2.25;
+  margin-top: $base_padding * 2 !important;
 
   .icon-button, .button {
     padding: $base_padding * 1.75;

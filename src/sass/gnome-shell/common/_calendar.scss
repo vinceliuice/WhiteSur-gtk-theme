@@ -76,8 +76,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 }
 
 .datemenu-today-button,
-.datemenu-displays-box,
-.message-list-sections {
+.datemenu-displays-box {
   margin: 4px 8px;
 }
 
@@ -120,7 +119,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   box-shadow: none !important;
   background-color: transparent;
   padding: $base_padding !important;
-  // margin: 0 4px !important;
+  margin: 0 4px !important;
   text-shadow: none;
   // border-radius: $base_border_radius;
 
@@ -285,7 +284,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 .events-button {
   @extend %popover_bubble;
   padding: $base_padding * 3 !important;
-  margin-top: $base_padding !important;
+  margin: 3px 4px !important;
 }
 
 // Events
