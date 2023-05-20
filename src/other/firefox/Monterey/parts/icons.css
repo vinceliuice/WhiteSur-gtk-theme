@@ -722,7 +722,8 @@ treechildren::-moz-tree-image {
 	#identity-box[pageproxystate="valid"].localResource #identity-icon,
 	.bookmark-item[container] .toolbarbutton-icon,
 	.menu-iconic.bookmark-item[container] .menu-iconic-icon,
-	.panel-info-button > image {
+	.panel-info-button > image,
+	#password-notification-icon {
 		filter: invert(60%) brightness(150%);
 	}
 
