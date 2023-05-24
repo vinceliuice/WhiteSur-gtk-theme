@@ -1,5 +1,0 @@
-<svg width="16" height="16" enable-background="new" version="1.1" xmlns="http://www.w3.org/2000/svg">
- <path d="m5.2426 9.7427 0.70703-0.70703-3.5356-3.5356 3.5356-3.5356-0.70703-0.70703-4.2426 4.2426 0.70703 0.70703z" fill="#363636"/>
- <rect x="2" y="5" width="7" height="1" fill="#363636" stroke-width="1.8708"/>
- <path d="m7 5v1h3c2.216 0 4 1.784 4 4 0 2.216-1.784 4-4 4h-7v1h7c2.77 0 5-2.23 5-5 0-2.77-2.23-5-5-5z" fill="#363636" stop-color="#000000" style="paint-order:fill markers stroke"/>
-</svg>

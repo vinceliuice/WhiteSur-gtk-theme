@@ -678,7 +678,9 @@ install_firefox_theme() {
 
   if [[ "${monterey}" == 'true' ]]; then
     udo cp -rf "${FIREFOX_SRC_DIR}"/Monterey                                                  "${TARGET_DIR}"
-    udo cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur/{icons,titlebuttons,pages}                       "${TARGET_DIR}"/Monterey
+    udo cp -rf "${FIREFOX_SRC_DIR}"/common/{icons,titlebuttons,pages}                         "${TARGET_DIR}"/Monterey
+    udo cp -rf "${FIREFOX_SRC_DIR}"/common/*.css                                              "${TARGET_DIR}"/Monterey
+    udo cp -rf "${FIREFOX_SRC_DIR}"/common/parts/*.css                                        "${TARGET_DIR}"/Monterey/parts
     udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-Monterey.css                                  "${TARGET_DIR}"/userContent.css
     if [[ "${alttheme}" == 'true' ]]; then
       udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt.css                             "${TARGET_DIR}"/userChrome.css
@@ -687,6 +689,9 @@ install_firefox_theme() {
     fi
   else
     udo cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur                                                  "${TARGET_DIR}"
+    udo cp -rf "${FIREFOX_SRC_DIR}"/common/{icons,titlebuttons,pages}                         "${TARGET_DIR}"/WhiteSur
+    udo cp -rf "${FIREFOX_SRC_DIR}"/common/*.css                                              "${TARGET_DIR}"/WhiteSur
+    udo cp -rf "${FIREFOX_SRC_DIR}"/common/parts/*.css                                        "${TARGET_DIR}"/WhiteSur/parts
     udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-WhiteSur.css                                   "${TARGET_DIR}"/userChrome.css
     udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-WhiteSur.css                                  "${TARGET_DIR}"/userContent.css
   fi

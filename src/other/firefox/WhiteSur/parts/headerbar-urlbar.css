@@ -16,19 +16,19 @@ toolbarspring {
 
 /* URL bar */
 #urlbar {
-	margin-top: -2px !important;
+/*	margin-top: 0 !important;*/
 	box-shadow: none !important;
 	background: var(--gnome-popover-background) !important;
 	border-radius: 8px !important;
-	border: 1px solid transparent !important;
-	padding: 0 0 !important;
+	border: none !important;
+	padding: 0 !important;
 }
 #urlbar-background {
 	box-shadow: none !important;
 	border: 0 !important;
 	background: transparent !important;
 	border-radius: 8px !important;
-	padding: 0 0 !important;
+	padding: 0 !important;
 }
 
 #urlbar:-moz-window-inactive {
@@ -43,7 +43,7 @@ toolbarspring {
 	top: 0 !important;
 	width: 100% !important;
 	z-index: 5 !important;
-	padding: 0 0 !important;
+	padding: 0 !important;
 	border-radius: 10px !important;
 }
 #urlbar[breakout][breakout-extend][open] {
