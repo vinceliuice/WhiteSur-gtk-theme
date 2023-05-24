@@ -33,7 +33,7 @@
 	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.75);
 	--gnome-popover-button-hover-background: rgba(255, 255, 255, 0.1);
 	--gnome-popover-button-active-background: rgba(255, 255, 255, 0.15);
-	--gnome-popover-separator-color: rgba(0, 0, 0, 0.1);
+	--gnome-popover-separator-color: rgba(255, 255, 255, 0.1);
 
 	/* Header bar */
 	--gnome-headerbar-background: #373737;
@@ -55,8 +55,8 @@
 	--gnome-button-active-border-color: #1b1b1b;
 	--gnome-button-active-border-accent-color: #1b1b1b;
 	--gnome-button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
-	--gnome-button-disabled-background: #505050;
-	--gnome-button-disabled-border-color: #323232;
+	--gnome-button-disabled-background: linear-gradient(to top, rgba(#636363, 0.45) 0%, rgba(#696969, 0.45) 100%);
+	--gnome-button-disabled-border-color: #282828;
 	--gnome-button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0.03);
 	--gnome-inactive-button-background: linear-gradient(#383838, #383838);
 	--gnome-inactive-button-border-color: #323232;

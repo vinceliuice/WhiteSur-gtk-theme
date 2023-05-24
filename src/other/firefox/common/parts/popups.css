@@ -22,6 +22,7 @@ menupopup, panel,
 :is(panel, menupopup)::part(content) {
 	--panel-border-color: transparent !important;
 	--arrowpanel-border-color: transparent !important;
+	--panel-separator-color: var(--gnome-popover-separator-color) !important;
 }
 
 .panel-arrowcontent {
@@ -45,14 +46,6 @@ menupopup label {
 	color: var(--gnome-toolbar-color) !important;
 }
 
-#PlacesToolbar menupopup[placespopup="true"]::part(content),
-#PlacesToolbar menupopup[placespopup="true"]::part(arrowscrollbox),
-#PlacesToolbar menupopup {
-	background: none !important;
-	padding: 3px 4px 6px !important;
-	margin: -3px 0 0 -12px !important;
-}
-
 menubar > menu > menupopup {
 	border-top-left-radius: 0 !important;
 	border-top-right-radius: 0 !important;
@@ -66,8 +59,34 @@ menuitem[type="checkbox"] image, menuitem[type="radio"] image {
 	visibility: visible !important;
 }
 
-menuitem[disabled="true"]:hover, menupopup menu[disabled="true"]:hover {
+menuitem[disabled="true"],
+menupopup menu[disabled="true"],
+menuitem[disabled="true"]:hover,
+menupopup menu[disabled="true"]:hover {
 	background: transparent !important;
+}
+
+/* Bookmarks Folder Popup */
+#PlacesToolbar menupopup[placespopup="true"]::part(content),
+#PlacesToolbar menupopup[placespopup="true"]::part(arrowscrollbox),
+#PlacesToolbar menupopup {
+	background: none !important;
+	padding: 3px 4px 6px !important;
+	margin: -3px 0 0 -12px !important;
+}
+
+/* Bookmarks Button Popup */
+#BMB_bookmarksPopup {
+	margin: 10px -18px !important;
+	box-shadow: none !important;
+}
+
+#BMB_bookmarksPopup menupopup {
+	padding: 6px !important;
+}
+
+panel:not([remote]), #BMB_bookmarksPopup {
+	--arrowpanel-background: var(--gnome-popover-background) !important;
 }
 
 /* Adjust popovers position */
@@ -102,21 +121,6 @@ panelview {
 #customization-panelWrapper > .panel-arrowbox > .panel-arrow[side="top"] {
 	fill: var(--gnome-menu-background) !important;
 	stroke: transparent !important;
-}
-
-#BMB_bookmarksPopup {
-	margin-top: 4px !important;
-	padding: 6px !important;
-	box-shadow: none !important;
-	--panel-padding: 6px !important;
-}
-
-#BMB_bookmarksPopup menupopup {
-	padding: 6px !important;
-}
-
-panel:not([remote]), #BMB_bookmarksPopup {
-	--arrowpanel-background: var(--gnome-popover-background) !important;
 }
 
 .PanelUI-subView toolbarseparator:not([orient="vertical"]) {

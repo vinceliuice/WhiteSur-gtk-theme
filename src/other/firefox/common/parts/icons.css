@@ -335,7 +335,7 @@ menu[disabled] > .menu-right {
 }
 #stop-button,
 .downloadIconCancel > .button-box > .button-icon,
-#context-stop {
+#context-stop .menu-iconic-icon {
 	list-style-image: url("../icons/process-stop-symbolic.svg") !important;
 }
 #downloads-button .toolbarbutton-icon { /* Downloads button / Glitch - it swaps to the default one anyway */
@@ -685,7 +685,7 @@ treechildren::-moz-tree-image {
 	#context-reload .menu-iconic-icon,
 	#stop-button .toolbarbutton-icon,
 	.downloadIconCancel > .button-box > .button-icon,
-	#context-stop,
+	#context-stop .menu-iconic-icon,
 	#downloads-button .toolbarbutton-icon,
 	#sync-button .toolbarbutton-icon,
 	#new-window-button .toolbarbutton-icon,
