@@ -548,7 +548,7 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 .tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]):not([crashed]) .tab-icon-stack .tab-icon-image {
 	height: 16px;
 	width: 16px;
-	background-image: url("../icons/info-symbolic.svg") !important;
+	list-style-image: url("../icons/info-symbolic.svg") !important;
 }
 
 /* Password */
