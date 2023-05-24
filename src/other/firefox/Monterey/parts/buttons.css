@@ -68,8 +68,12 @@ menulist {
 	color: var(--gnome-toolbar-color) !important;
 }
 
+xul|menulist {
+	padding: 0 10px !important;
+	min-height: 28px !important;
+}
+
 /* Text buttons */
-menulist,
 .subviewbutton.panel-subview-footer,
 .panel-footer button,
 #downloadsHistory,

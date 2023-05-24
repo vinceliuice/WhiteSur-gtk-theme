@@ -194,7 +194,7 @@ button.close.ghost-button:active {
 
 /* Bookmarks editor buttons */
 .expander-down image, .expander-up image {
-	margin: 6px !important;
+	margin-top: 8px !important;
 }
 
 /* Identity popup tracking protection button */

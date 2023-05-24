@@ -775,7 +775,7 @@ treechildren::-moz-tree-image {
 	}
 
 	.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]):not([crashed]) .tab-icon-stack::before {
-		background-image: url("../icons/info-symbolic-light.svg") !important;
+		list-style-image: url("../icons/info-symbolic-light.svg") !important;
 	}
 
 	#sidebar-box[sidebarcommand="viewTabsSidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon,

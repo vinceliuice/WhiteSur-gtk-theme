@@ -7,6 +7,11 @@
 menupopup, panel,
 :is(menupopup, panel)[type="arrow"] {
 	-moz-appearance: none !important;
+}
+
+menupopup, panel,
+:is(menupopup, panel)[type="arrow"]
+:is(panel, menupopup)::part(content) {
 	--panel-background: var(--gnome-menu-background) !important;
 	--arrowpanel-border-radius: 12px !important;
 	--arrowpanel-background: var(--gnome-menu-background) !important;
@@ -14,15 +19,10 @@ menupopup, panel,
 	--panel-padding: 6px !important;
 	--panel-shadow: var(--gnome-popover-shadow) !important;
 	--panel-shadow-margin: 3px 8px 13px !important;
-	color: var(--gnome-toolbar-color) !important;
-}
-
-menupopup, panel,
-:is(menupopup, panel)[type="arrow"]
-:is(panel, menupopup)::part(content) {
 	--panel-border-color: transparent !important;
 	--arrowpanel-border-color: transparent !important;
 	--panel-separator-color: var(--gnome-popover-separator-color) !important;
+	color: var(--gnome-toolbar-color) !important;
 }
 
 .panel-arrowcontent {

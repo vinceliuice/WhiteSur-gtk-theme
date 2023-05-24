@@ -32,7 +32,7 @@
 	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.75);
 	--gnome-popover-button-hover-background: rgba(255, 255, 255, 0.1);
 	--gnome-popover-button-active-background: rgba(255, 255, 255, 0.15);
-	--gnome-popover-separator-color: rgba(0, 0, 0, 0.1);
+	--gnome-popover-separator-color: rgba(255, 255, 255, 0.1);
 
 	/* Header bar */
 	--gnome-headerbar-background: #373737;
