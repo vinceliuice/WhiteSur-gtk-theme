@@ -9,17 +9,8 @@
 	--urlbar-inner-padding: 0 !important;
 }
 
-/* Center the URL bar */
 toolbarspring {
-	max-width: 1000px !important;
-}
-
-#nav-bar toolbarbutton + toolbarspring {
 	display: none !important;
-}
-
-#urlbar-container + toolbarspring {
-	width: 1000px !important;
 }
 
 /* URL bar */
