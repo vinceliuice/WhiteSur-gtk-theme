@@ -7,11 +7,6 @@
 menupopup, panel,
 :is(menupopup, panel)[type="arrow"] {
 	-moz-appearance: none !important;
-}
-
-menupopup, panel,
-:is(menupopup, panel)[type="arrow"]
-:is(panel, menupopup)::part(content) {
 	--panel-background: var(--gnome-menu-background) !important;
 	--arrowpanel-border-radius: 12px !important;
 	--arrowpanel-background: var(--gnome-menu-background) !important;
@@ -19,10 +14,16 @@ menupopup, panel,
 	--panel-padding: 6px !important;
 	--panel-shadow: var(--gnome-popover-shadow) !important;
 	--panel-shadow-margin: 3px 8px 13px !important;
-	--panel-border-color: transparent !important;
-	--arrowpanel-border-color: transparent !important;
 	--panel-separator-color: var(--gnome-popover-separator-color) !important;
 	color: var(--gnome-toolbar-color) !important;
+}
+
+menupopup, panel,
+:is(menupopup, panel)[type="arrow"],
+:is(panel, menupopup)::part(content) {
+	--panel-border-color: transparent !important;
+	--arrowpanel-border-color: transparent !important;
+
 }
 
 .panel-arrowcontent {
@@ -31,7 +32,7 @@ menupopup, panel,
 
 @media (prefers-color-scheme: dark) {
 menupopup, panel,
-:is(menupopup, panel)[type="arrow"]
+:is(menupopup, panel)[type="arrow"],
 :is(panel, menupopup)::part(content) {
 	--panel-border-color: rgba(255, 255, 255, 0.06) !important;
 	--arrowpanel-border-color: rgba(255, 255, 255, 0.06) !important;
@@ -199,7 +200,6 @@ menuitem, menupopup menu,
 	fill-opacity: 1 !important;
 }
 
-
 /* Menu buttons disabled */
 menuitem[disabled="true"], menupopup menu[disabled="true"],
 .subviewbutton[disabled="true"], .toolbarbutton-1[disabled="true"],
@@ -228,7 +228,8 @@ menupopup menu:not([disabled="true"]):is(:hover, [_moz-menuactive]),
 
 /* Style popover separators */
 toolbarseparator, menuseparator {
-	border-color: var(--gnome-popover-separator-color) !important;
+	appearance: none !important;
+/*	border-color: var(--gnome-popover-separator-color) !important;*/
 }
 #PlacesToolbar menupopup[placespopup="true"] menuseparator {
 	border-top: 1px solid var(--gnome-popover-separator-color) !important;
@@ -239,6 +240,7 @@ toolbarseparator, menuseparator {
 	border: 0 !important;
 }
 toolbarseparator:not([orient="vertical"]), menupopup menuseparator {
+	border-top: 1px solid var(--gnome-popover-separator-color) !important;
 	margin: 4px 0 !important;
 }
 toolbarseparator[orient="vertical"] {

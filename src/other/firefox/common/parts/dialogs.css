@@ -94,6 +94,10 @@ dialog[subdialog] {
 	flex: 1;
 }
 
+.dialog-button-box spacer.button-spacer {
+	display: none;
+}
+
 /* Buttons borders - only suppor for cancel/ok */
 /*.dialog-button-box button[dlgtype="accept"] {*/
 /*	border-right: 0 !important;*/

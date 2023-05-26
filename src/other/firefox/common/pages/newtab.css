@@ -31,6 +31,10 @@ body {
 	padding: 6px 12px !important;
 }
 
+.context-menu > ul > li.separator {
+	border-bottom: 1px solid var(--gnome-popover-separator-color) !important;
+}
+
 .home-section .section .switch {
 	width: 30px !important;
 	height: 20px !important;
