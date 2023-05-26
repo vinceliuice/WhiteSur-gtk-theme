@@ -194,6 +194,14 @@ menu[disabled] > .menu-right {
 	list-style-image: url("../icons/audio-muted-symbolic.svg") !important;
 }
 
+.tab-icon-overlay[activemedia-blocked] {
+	list-style-image: url("../icons/tab-audio-blocked-small.svg") !important;
+}
+
+.tab-icon-stack[activemedia-blocked="true"] .tab-icon-image {
+	display: none;
+}
+
 /* Private browsing button */
 #privatebrowsing-button {
 	list-style-image: url("../icons/user-not-tracked.svg") !important;

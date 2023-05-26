@@ -96,10 +96,6 @@ panel[type="arrow"] {
 	margin: 10px -18px 0 !important;
 }
 
-panel[type="autocomplete-richlistbox"] {
-	margin: 0 !important;
-}
-
 /* Style popovers */
 .panel-arrowcontent .panel-arrowcontent,
 .panel-header, .PanelUI-subView,
@@ -262,13 +258,27 @@ panelview > toolbarseparator:not([orient="vertical"]),
 
 /* Auto complete popups */
 panel[type="autocomplete-richlistbox"] {
-	background: var(--gnome-menu-background) !important;
+	background: none !important;
 	border: 0 !important;
-	padding: 4px 0 !important;
+	padding: 0 !important;
 	color: var(--gnome-toolbar-color) !important;
+	margin: 0 !important;
 }
+
 .autocomplete-richlistbox {
 	margin: 0 !important;
+}
+
+#PopupAutoComplete > richlistbox > richlistitem {
+	min-height: 20px;
+	border: 0;
+	border-radius: 3px !important;
+	padding: 0 6px !important;
+}
+
+#PopupAutoComplete > richlistbox > richlistitem:hover {
+	background: var(--theme-primary-color) !important;
+	color: #ffffff !important;
 }
 
 .autocomplete-richlistitem:not([type="loginsFooter"]) {
