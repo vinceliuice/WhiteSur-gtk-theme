@@ -4,26 +4,19 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Style menus */
-menupopup, panel,
-:is(menupopup, panel)[type="arrow"] {
+menupopup, panel {
 	-moz-appearance: none !important;
 	--panel-background: var(--gnome-menu-background) !important;
-	--arrowpanel-border-radius: 12px !important;
-	--arrowpanel-background: var(--gnome-menu-background) !important;
 	--panel-border-radius: 12px !important;
 	--panel-padding: 6px !important;
 	--panel-shadow: var(--gnome-popover-shadow) !important;
 	--panel-shadow-margin: 3px 8px 13px !important;
 	--panel-separator-color: var(--gnome-popover-separator-color) !important;
-	color: var(--gnome-toolbar-color) !important;
-}
-
-menupopup, panel,
-:is(menupopup, panel)[type="arrow"],
-:is(panel, menupopup)::part(content) {
 	--panel-border-color: transparent !important;
+	--arrowpanel-border-radius: 12px !important;
+	--arrowpanel-background: var(--gnome-menu-background) !important;
 	--arrowpanel-border-color: transparent !important;
-
+	color: var(--gnome-toolbar-color) !important;
 }
 
 .panel-arrowcontent {
@@ -31,9 +24,7 @@ menupopup, panel,
 }
 
 @media (prefers-color-scheme: dark) {
-menupopup, panel,
-:is(menupopup, panel)[type="arrow"],
-:is(panel, menupopup)::part(content) {
+menupopup, panel {
 	--panel-border-color: rgba(255, 255, 255, 0.06) !important;
 	--arrowpanel-border-color: rgba(255, 255, 255, 0.06) !important;
 }

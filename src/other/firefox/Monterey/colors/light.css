@@ -8,6 +8,7 @@
 :root {
 	/* Browser area before a page starts loading */
 	--gnome-browser-before-load-background: #f5f5f5;
+	--gnome-browser-content-box-background: #ffffff;
 	--theme-primary-color: #315bef;
 
 	/* Toolbars */
