@@ -5,7 +5,7 @@
    version="1.1"
    id="svg12"
    sodipodi:docname="info-symbolic-light.svg"
-   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,12 +23,12 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="true"
      inkscape:zoom="20.85965"
-     inkscape:cx="0.26366694"
+     inkscape:cx="-9.3242216"
      inkscape:cy="6.9991587"
-     inkscape:window-width="1280"
-     inkscape:window-height="650"
+     inkscape:window-width="1920"
+     inkscape:window-height="1000"
      inkscape:window-x="0"
-     inkscape:window-y="34"
+     inkscape:window-y="44"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg12">
     <inkscape:grid
@@ -38,20 +38,20 @@
   <path
      d="M 8,0 A 8,8 0 0 0 0,8 8,8 0 0 0 8,16 8,8 0 0 0 16,8 8,8 0 0 0 8,0 Z M 8,1 A 7,7 0 0 1 15,8 7,7 0 0 1 8,15 7,7 0 0 1 1,8 7,7 0 0 1 8,1 Z"
      id="path2"
-     style="color:#363636;fill:#cccccc;fill-opacity:1" />
+     style="color:#363636;fill:#dfdfdf;fill-opacity:1" />
   <circle
      cx="8"
-     cy="12"
-     r="1"
+     cy="4.5"
+     r="0.5"
      id="circle6"
-     style="color:#363636;fill:#cccccc;fill-opacity:1" />
+     style="color:#363636;fill:#dfdfdf;fill-opacity:1;stroke-width:0.5" />
   <rect
      id="rect346"
-     width="2"
-     height="7"
-     x="7"
-     y="3"
-     rx="1"
-     ry="1"
-     style="fill:#cccccc;fill-opacity:1" />
+     width="1"
+     height="6"
+     x="7.5"
+     y="6"
+     rx="0.5"
+     ry="0.42857143"
+     style="fill:#dfdfdf;fill-opacity:1;stroke-width:0.654654" />
 </svg>

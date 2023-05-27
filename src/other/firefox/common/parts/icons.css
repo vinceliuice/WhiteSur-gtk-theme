@@ -553,11 +553,8 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 	list-style-image: url("../icons/info-symbolic.svg") !important;
 }
 
-.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]) .tab-icon-stack::before {
-	content: "";
-	height: 16px;
-	width: 16px;
-	background-image: url("../icons/info-symbolic.svg") !important;
+.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]) .tab-icon-stack > .tab-icon-image {
+	list-style-image: url("../icons/info-symbolic.svg") !important;
 }
 
 /* Password */
@@ -783,8 +780,8 @@ treechildren::-moz-tree-image {
 		list-style-image: url("../icons/preferences-system-time-symbolic-light.svg") !important;
 	}
 
-	.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]):not([crashed]) .tab-icon-stack::before {
-		background-image: url("../icons/info-symbolic-light.svg") !important;
+	.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]):not([crashed]) .tab-icon-stack > .tab-icon-image {
+		list-style-image: url("../icons/info-symbolic-light.svg") !important;
 	}
 
 	#sidebar-box[sidebarcommand="viewTabsSidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon,

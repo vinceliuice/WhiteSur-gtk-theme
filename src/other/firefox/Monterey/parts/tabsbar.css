@@ -75,7 +75,6 @@ tab[selected]:-moz-window-inactive .tab-label {
 	color: var(--gnome-inactive-tabbar-tab-active-color) !important;
 }
 
-
 .close-icon {
 	height: 16px !important;
 	padding: 0 !important;

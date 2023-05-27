@@ -100,9 +100,6 @@ tab[selected]:-moz-window-inactive {
 .tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([pinned]):not([busy]):not([progress]) .tab-icon-stack::before {
 	margin-inline-end: 5.5px;
 }
-.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"] .tab-icon-image {
-	display: none !important;
-}
 
 /* Prevent tab icons size breaking */
 .tab-icon-image, .tab-icon-sound, .tab-throbber, .tab-throbber-fallback, .tab-close-button {
