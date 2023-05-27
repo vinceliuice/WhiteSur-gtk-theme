@@ -553,10 +553,11 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 	list-style-image: url("../icons/info-symbolic.svg") !important;
 }
 
-.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]):not([crashed]) .tab-icon-stack .tab-icon-image {
+.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]) .tab-icon-stack::before {
+	content: "";
 	height: 16px;
 	width: 16px;
-	list-style-image: url("../icons/info-symbolic.svg") !important;
+	background-image: url("../icons/info-symbolic.svg") !important;
 }
 
 /* Password */
@@ -783,7 +784,7 @@ treechildren::-moz-tree-image {
 	}
 
 	.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]):not([crashed]) .tab-icon-stack::before {
-		list-style-image: url("../icons/info-symbolic-light.svg") !important;
+		background-image: url("../icons/info-symbolic-light.svg") !important;
 	}
 
 	#sidebar-box[sidebarcommand="viewTabsSidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon,
