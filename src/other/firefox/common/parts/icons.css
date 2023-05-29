@@ -733,6 +733,10 @@ treechildren::-moz-tree-image {
 		filter: invert(60%) brightness(150%);
 	}
 
+	.tab-icon-overlay[activemedia-blocked] {
+		list-style-image: url("../icons/tab-audio-blocked-small-light.svg") !important;
+	}
+
 	.tab-icon-overlay[soundplaying] {
 		list-style-image: url("../icons/audio-playing-symbolic-light.svg") !important;
 	}

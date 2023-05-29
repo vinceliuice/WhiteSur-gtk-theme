@@ -113,8 +113,13 @@ tab[selected]:-moz-window-inactive {
 .tab-label-container {
 	min-width: 0 !important;
 }
+
 .tabbrowser-tab:not([pinned]) .tab-label-container {
 	max-width: min-content !important;
+}
+
+.tabbrowser-tab[pinned] .tab-label-container {
+	display: none !important;
 }
 
 .tab-throbber:not([pinned]), .tab-icon-pending:not([pinned]), .tab-icon-image:not([pinned]), .tab-sharing-icon-overlay:not([pinned]), .tab-icon-overlay:not([pinned]) {
