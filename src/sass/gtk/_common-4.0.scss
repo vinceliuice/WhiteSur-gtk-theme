@@ -1962,6 +1962,16 @@ headerbar {
     border: none;
     background: none;
 
+    > windowhandle > box {
+      padding: 0 8px;
+  
+      &,
+      > box.start,
+      > box.end {
+        border-spacing: $container_padding;
+      }
+    }
+
     windowcontrols {
       padding: 0 $container_padding / 2;
     }
