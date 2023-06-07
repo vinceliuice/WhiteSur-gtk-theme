@@ -316,6 +316,10 @@ tab[selected]:-moz-window-inactive {
 	transition: all 200ms;
 }
 
+.tab-background, .tab-stack {
+	min-height: 32px !important;
+}
+
 /* Tab hover */
 #TabsToolbar .tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected=true]) {
 	background-color: var(--gnome-tabbar-tab-active-hover-background) !important;

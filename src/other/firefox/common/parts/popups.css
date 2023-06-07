@@ -47,8 +47,21 @@ menuitem, menupopup menu {
 	box-shadow: none !important;
 }
 
-menuitem[type="checkbox"] image, menuitem[type="radio"] image {
+menuitem[type="checkbox"] image,
+menuitem[type="radio"] image {
 	visibility: visible !important;
+}
+
+@media (-moz-gtk-non-native-menus) or (-moz-non-native-content-theme) {
+	menuitem:is([type="checkbox"], [checked="true"]) .menu-iconic-icon {
+		appearance: none !important;
+		-moz-default-appearance: none !important;
+	}
+
+	menuitem[type="radio"] .menu-iconic-icon {
+		appearance: none !important;
+		-moz-default-appearance: none !important;
+	}
 }
 
 menuitem[disabled="true"],
