@@ -1108,18 +1108,6 @@ spinner.fade-in:checked {
   animation-delay: 0s, 0.5s, 0.5s;
 }
 
-// Leaflets
-window > contents > leaflet { // Gnome control center
-  > box > stack.background {
-    background-color: transparent;
-    background-image: linear-gradient(to bottom,
-                                      transparent,
-                                      transparent $large_size,
-                                      $bg_color $large_size,
-                                      $bg_color);
-  }
-}
-
 //
 // Misc (other)
 //
