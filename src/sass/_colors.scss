@@ -26,6 +26,11 @@ $hint_fg_color:                     if($variant == 'light', #565656, #999999);
   $hint_fg_color:                   if($variant == 'light', #495265, #8994a9);
 }
 
+//insensitive state derived colors
+$disabled_fg_color:                 if($variant == 'light', transparentize($fg_color, 0.55), transparentize($fg_color, 0.65));
+$alt_disabled_fg_color:             if($variant == 'light', transparentize($alt_fg_color, 0.55), transparentize($alt_fg_color, 0.65));
+$disabled_bg_color:                 if($variant == 'light', mix($bg_color, $base_color, 40%), lighten($bg_color, 2%));
+
 $track_color:                       if($variant == 'light', rgba(black, 0.20), rgba(white, 0.16));
 $visit_color:                       if($variant == 'light', rgba(black, 0.16), rgba(white, 0.12));
 $divider_color:                     if($variant == 'light', rgba(black, 0.12), rgba(white, 0.1));
@@ -112,11 +117,6 @@ $suggested_color:                   if($colorscheme == 'nord', $nord_color_blue,
 
 $progress_color:                    $selected_bg_color;
 $drop_target_color:                 if($colorscheme == 'nord', $nord_color_orange, $theme_color_orange);
-
-//insensitive state derived colors
-$disabled_fg_color:                 if($variant == 'light', transparentize($fg_color, 0.55), transparentize($fg_color, 0.65));
-$alt_disabled_fg_color:             if($variant == 'light', transparentize($alt_fg_color, 0.55), transparentize($alt_fg_color, 0.65));
-$disabled_bg_color:                 if($variant == 'light', mix($bg_color, $base_color, 40%), lighten($bg_color, 2%));
 
 // Headerbar colors
 $header_bg:                         if($variant == 'light', #ffffff, if($darker == 'true', #1e1e1e, #373737));

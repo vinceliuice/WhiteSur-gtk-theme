@@ -1,0 +1,159 @@
+$blue_1: #99c1f1;
+$blue_2: #62a0ea;
+$blue_3: #3584e4;
+$blue_4: #1c71d8;
+$blue_5: #1a5fb4;
+$green_1: #8ff0a4;
+$green_2: #57e389;
+$green_3: #33d17a;
+$green_4: #2ec27e;
+$green_5: #26a269;
+$yellow_1: #f9f06b;
+$yellow_2: #f8e45c;
+$yellow_3: #f6d32d;
+$yellow_4: #f5c211;
+$yellow_5: #e5a50a;
+$orange_1: #ffbe6f;
+$orange_2: #ffa348;
+$orange_3: #ff7800;
+$orange_4: #e66100;
+$orange_5: #c64600;
+$red_1: #f66151;
+$red_2: #ed333b;
+$red_3: #e01b24;
+$red_4: #c01c28;
+$red_5: #a51d2d;
+$purple_1: #dc8add;
+$purple_2: #c061cb;
+$purple_3: #9141ac;
+$purple_4: #813d9c;
+$purple_5: #613583;
+$brown_1: #cdab8f;
+$brown_2: #b5835a;
+$brown_3: #986a44;
+$brown_4: #865e3c;
+$brown_5: #63452c;
+$light_1: #ffffff;
+$light_2: #f6f5f4;
+$light_3: #deddda;
+$light_4: #c0bfbc;
+$light_5: #9a9996;
+$dark_1: #77767b;
+$dark_2: #5e5c64;
+$dark_3: #3d3846;
+$dark_4: #241f31;
+$dark_5: #000000;
+
+// Sass thinks we're using the colors in the variables as strings and may shoot
+// warning, it's innocuous and can be defeated by using #{$var}.
+
+@define-color blue_1 #{$blue_1};
+@define-color blue_2 #{$blue_2};
+@define-color blue_3 #{$blue_3};
+@define-color blue_4 #{$blue_4};
+@define-color blue_5 #{$blue_5};
+@define-color green_1 #{$green_1};
+@define-color green_2 #{$green_2};
+@define-color green_3 #{$green_3};
+@define-color green_4 #{$green_4};
+@define-color green_5 #{$green_5};
+@define-color yellow_1 #{$yellow_1};
+@define-color yellow_2 #{$yellow_2};
+@define-color yellow_3 #{$yellow_3};
+@define-color yellow_4 #{$yellow_4};
+@define-color yellow_5 #{$yellow_5};
+@define-color orange_1 #{$orange_1};
+@define-color orange_2 #{$orange_2};
+@define-color orange_3 #{$orange_3};
+@define-color orange_4 #{$orange_4};
+@define-color orange_5 #{$orange_5};
+@define-color red_1 #{$red_1};
+@define-color red_2 #{$red_2};
+@define-color red_3 #{$red_3};
+@define-color red_4 #{$red_4};
+@define-color red_5 #{$red_5};
+@define-color purple_1 #{$purple_1};
+@define-color purple_2 #{$purple_2};
+@define-color purple_3 #{$purple_3};
+@define-color purple_4 #{$purple_4};
+@define-color purple_5 #{$purple_5};
+@define-color brown_1 #{$brown_1};
+@define-color brown_2 #{$brown_2};
+@define-color brown_3 #{$brown_3};
+@define-color brown_4 #{$brown_4};
+@define-color brown_5 #{$brown_5};
+@define-color light_1 #{$light_1};
+@define-color light_2 #{$light_2};
+@define-color light_3 #{$light_3};
+@define-color light_4 #{$light_4};
+@define-color light_5 #{$light_5};
+@define-color dark_1 #{$dark_1};
+@define-color dark_2 #{$dark_2};
+@define-color dark_3 #{$dark_3};
+@define-color dark_4 #{$dark_4};
+@define-color dark_5 #{$dark_5};
+
+/* GTK NAMED COLORS
+   ----------------
+   use responsibly! */
+
+// Sass thinks we're using the colors in the variables as strings and may shoot
+// warning, it's innocuous and can be defeated by using #{$var}.
+
+// These are the colors apps are can override. We define the defaults here and
+// define variables for them in _colors.scss
+
+// The main accent color and the matching text value
+@define-color accent_bg_color #{$primary_color};
+@define-color accent_fg_color #{$light_fg_color};
+@define-color accent_color #{$primary_color};
+
+// destructive-action buttons
+@define-color destructive_bg_color #{$destructive_color};
+@define-color destructive_fg_color #{$light_fg_color};
+@define-color destructive_color #{$destructive_color};
+
+// Levelbars, entries, labels and infobars. These don't need text colors
+@define-color success_bg_color #{$success_color};
+@define-color success_fg_color #{$light_fg_color};
+@define-color success_color #{$success_color};
+
+@define-color warning_bg_color #{$warning_color};
+@define-color warning_fg_color #{$light_fg_color};
+@define-color warning_color #{$warning_color};
+
+@define-color error_bg_color #{$error_color};
+@define-color error_fg_color #{$light_fg_color};
+@define-color error_color #{$error_color};
+
+// Window
+@define-color window_bg_color #{$bg_color};
+@define-color window_fg_color #{$text_color};
+
+// Views - e.g. text view or tree view
+@define-color view_bg_color #{$base_color};
+@define-color view_fg_color #{$text_color};
+
+// Header bar, search bar, tab bar
+@define-color headerbar_bg_color #{$header_bg};
+@define-color headerbar_fg_color #{$header_fg};
+@define-color headerbar_border_color #{$borders_color};
+@define-color headerbar_backdrop_color #{$header_bg_backdrop};
+@define-color headerbar_shade_color #{$header_border};
+
+// Cards, boxed lists
+@define-color card_bg_color #{$base_color};
+@define-color card_fg_color #{$text_color};
+@define-color card_shade_color #{$borders_color};
+
+// Dialogs
+@define-color dialog_bg_color #{$dialog_bg_color};
+@define-color dialog_fg_color #{$text_color};
+
+// Popovers
+@define-color popover_bg_color #{$menu_bg};
+@define-color popover_fg_color #{$text_color};
+
+// Miscellaneous
+@define-color shade_color #{$borders_color};
+@define-color scrollbar_outline_color #{$borders_color};
