@@ -502,6 +502,8 @@ install_theemy() {
 
   mkdir -p                                                                                    "${TARGET_DIR}/plank"
   cp -r "${THEME_SRC_DIR}/other/plank/theme${color}/"*".theme"                                "${TARGET_DIR}/plank"
+
+  cp -r "${THEME_SRC_DIR}/assets/unity"                                                       "${TARGET_DIR}"
 }
 
 remove_packy() {
