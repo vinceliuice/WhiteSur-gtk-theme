@@ -744,12 +744,22 @@ edit_firefox_theme_prefs() {
 }
 
 remove_firefox_theme() {
-  rm -rf "${FIREFOX_DIR_HOME}/"*"default"*"/chrome"
-  rm -rf "${FIREFOX_THEME_DIR}"
-  rm -rf "${FIREFOX_FLATPAK_DIR_HOME}/"*"default"*"/chrome"
-  rm -rf "${FIREFOX_FLATPAK_THEME_DIR}"
-  rm -rf "${FIREFOX_SNAP_DIR_HOME}/"*"default"*"/chrome"
-  rm -rf "${FIREFOX_SNAP_THEME_DIR}"
+  if has_snap_app firefox; then
+    local TARGET_DIR="${FIREFOX_SNAP_THEME_DIR}"
+  elif has_flatpak_app org.mozilla.firefox; then
+    local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
+  else
+    local TARGET_DIR="${FIREFOX_THEME_DIR}"
+  fi
+
+  [[ -f "${TARGET_DIR}"/customChrome.css && ! -f "${TARGET_DIR}"/customChrome.css.bak ]] && cp -r "${TARGET_DIR}"/customChrome.css "${TARGET_DIR}"/customChrome.css.bak
+  [[ -f "${TARGET_DIR}"/userChrome.css && ! -f "${TARGET_DIR}"/userChrome.css.bak ]] && cp -r "${TARGET_DIR}"/userChrome.css "${TARGET_DIR}"/userChrome.css.bak
+  [[ -f "${TARGET_DIR}"/userContent.css && ! -f "${TARGET_DIR}"/userContent.css.bak ]] && cp -r "${TARGET_DIR}"/userContent.css "${TARGET_DIR}"/userContent.css.bak
+
+  rm -rf "${TARGET_DIR}/${THEME_NAME}"
+  rm -rf "${TARGET_DIR}"/customChrome.css
+  rm -rf "${TARGET_DIR}"/userChrome.css
+  rm -rf "${TARGET_DIR}"/userContent.css
 }
 
 ###############################################################################
