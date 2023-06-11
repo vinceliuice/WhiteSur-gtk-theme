@@ -13,7 +13,7 @@
 .candidate-popup-content {
   @extend %theme_dialogs;
   color: $hint_fg_color;
-  box-shadow: 0 4px 10px 0 rgba(black, 0.25);
+  box-shadow: 0 3px 6px 0 rgba(black, 0.15);
   border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
   margin: ($container_padding / 2) 12px 17px 12px;
   padding: $container_padding + 2px;
@@ -44,7 +44,7 @@
 }
 
 .candidate-page-button {
-  padding: 4px;
+  padding: 4px 6px !important;
 }
 
 .candidate-page-button-previous,
