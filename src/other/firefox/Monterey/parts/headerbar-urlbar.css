@@ -169,6 +169,11 @@ toolbarspring {
 	border-radius: 5px !important;
 }
 
+#notification-popup-box {
+	height: 26px !important;
+	border-radius: 5px !important;
+}
+
 .urlbar-page-action, #urlbar-go-button, .search-go-button,
 #tracking-protection-icon-container {
 	width: 28px !important;

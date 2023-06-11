@@ -13,7 +13,7 @@
 	box-shadow: var(--gnome-headerbar-box-shadow) !important;
 }
 :root[tabsintitlebar] #nav-bar:-moz-window-inactive {
-	box-shadow: var(--gnome-inactive-headerbar-box-shadow);
+	box-shadow: var(--gnome-inactive-headerbar-box-shadow) !important;
 }
 
 /* Headerbar buttons */

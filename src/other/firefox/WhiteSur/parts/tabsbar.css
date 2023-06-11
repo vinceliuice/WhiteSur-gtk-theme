@@ -73,7 +73,8 @@
 }
 
 .tabbrowser-tab[selected] + .tabbrowser-tab,
-.tabbrowser-tab:hover + .tabbrowser-tab {
+.tabbrowser-tab:hover + .tabbrowser-tab,
+.tabbrowser-tab[first-tab] {
 	border-color: transparent !important;
 }
 

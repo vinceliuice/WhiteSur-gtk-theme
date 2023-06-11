@@ -686,6 +686,7 @@ install_firefox_theme() {
     udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-Monterey.css                                  "${TARGET_DIR}"/userContent.css
     if [[ "${alttheme}" == 'true' ]]; then
       udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt.css                             "${TARGET_DIR}"/userChrome.css
+      udo cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur/parts/headerbar-urlbar.css                     "${TARGET_DIR}"/Monterey/parts/headerbar-urlbar-alt.css
     else
       udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey.css                                 "${TARGET_DIR}"/userChrome.css
     fi

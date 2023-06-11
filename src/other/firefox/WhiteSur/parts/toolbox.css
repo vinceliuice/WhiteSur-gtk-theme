@@ -92,6 +92,10 @@ findbar:-moz-window-inactive label,
 	order: 10;
 }
 #navigator-toolbox #TabsToolbar {
+	-moz-box-ordinal-group: 20;
+	order: 20;
+}
+.container.infobar {
 	-moz-box-ordinal-group: 100;
 	order: 100;
 }
