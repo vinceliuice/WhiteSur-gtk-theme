@@ -23,6 +23,7 @@ usage() {
   # Please specify their default value manually, some of them are come from _variables.scss
   # You also have to check and update them regurally
   helpify_title
+  helpify "[GDM theme]"         "options"                                           ".................." ""
   helpify "-g, --gdm"           "[default|x2]"                                      "Install '${THEME_NAME}' theme for GDM (scaling: 100%/200%, default is 100%)" "Requires to run this shell as root"
   helpify "-o, --opacity"       "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "Set '${THEME_NAME}' GDM theme opacity variants"                              "Default is 'normal'"
   helpify "-c, --color"         "[$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"         "Set '${THEME_NAME}' GDM and Dash to Dock theme color variants"               "Default is 'light'"
@@ -35,6 +36,7 @@ usage() {
   helpify "-i, --icon"          "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"          "Set '${THEME_NAME}' GDM (GNOME Shell) 'Activities' icon"                     "Default is 'standard'"
   helpify "--nord, --nordcolor" ""                                                  "Install '${THEME_NAME}' Nord ColorScheme themes"                             ""
 
+  helpify "[Others]"            "options"                                           ".................." ""
   helpify "-f, --firefox"       "[default|monterey|alt]"                            "Install '${THEME_NAME}|Monterey|Alt' theme for Firefox and connect it to the current Firefox profiles" "Default is ${THEME_NAME}"
   helpify "-e, --edit-firefox"  ""                                                  "Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
 
@@ -189,57 +191,65 @@ finalize_argument_parsing
 if [[ "${uninstall}" == 'true' ]]; then
   prompt -w "REMOVAL: Non file-related parameters will be ignored. \n"
 
-#  if [[ "${snap}" == 'true' ]]; then
+  if [[ "${gdm}" == 'true' ]]; then
+    if [[ "${firefox}" == 'true' || "${edit_firefox}" == 'true' || "${flatpak}" == 'true' || "${snap}" == 'true' || "${dash_to_dock}" == 'true' ]]; then
+      prompt -e "Do not run this option with '--gdm' \n"
+    else
+      prompt -i "Removing '${name}' GDM theme... \n"
+      revert_gdm_theme
+      prompt -s "Done! '${name}' GDM theme has been removed. \n"
+    fi
+  fi
+
+#  if [[ "${snap}" == 'true' && "${gdm}" != 'true' ]]; then
 #    prompt -i "Disconnecting '${name}' theme from your installed snap apps... \n"
 #    disconnect_snap
-#    prompt -s "Done! '${name}' theme has been disconnected from your snap apps."; echo
+#    prompt -s "Done! '${name}' theme has been disconnected from your snap apps.\n"
 #  fi
 
-  if [[ "${flatpak}" == 'true' ]]; then
+  if [[ "${flatpak}" == 'true' && "${gdm}" != 'true' ]]; then
     prompt -i "Disconnecting '${name}' theme from your Flatpak... \n"
     disconnect_flatpak
-    prompt -s "Done! '${name}' theme has been disconnected from your Flatpak."; echo
+    prompt -s "Done! '${name}' theme has been disconnected from your Flatpak. \n"
   fi
 
-  if [[ "${gdm}" == 'true' ]]; then
-    prompt -i "Removing '${name}' GDM theme... \n"
-    revert_gdm_theme
-    prompt -s "Done! '${name}' GDM theme has been removed."; echo
-  fi
-
-  if [[ "${dash_to_dock}" == 'true' ]]; then
+  if [[ "${dash_to_dock}" == 'true' && "${gdm}" != 'true' ]]; then
     prompt -i "Removing '${name}' Dash to Dock theme... \n"
     revert_dash_to_dock_theme
-    prompt -s "Done! '${name}' Dash to Dock theme has been removed."; echo
+    prompt -s "Done! '${name}' Dash to Dock theme has been removed. \n"
   fi
 
-  if [[ "${firefox}" == 'true' ]]; then
+  if [[ "${firefox}" == 'true' && "${gdm}" != 'true' ]]; then
     prompt -i "Removing '${name}' Firefox theme... \n"
     remove_firefox_theme
-    prompt -s "Done! '${name}' Firefox theme has been removed."; echo
+    prompt -s "Done! '${name}' Firefox theme has been removed. \n"
   fi
 else
   show_needed_dialogs; customize_theme
 
-  if [[ "${snap}" == 'true' ]]; then
-    prompt -i "Connecting '${name}' theme to your installed snap apps... \n"
-    connect_snap
-    prompt -s "Done! '${name}' theme has been connected to your snap apps."; echo
+  if [[ "${gdm}" == 'true' ]]; then
+    if [[ "${firefox}" == 'true' || "${edit_firefox}" == 'true' || "${flatpak}" == 'true' || "${snap}" == 'true' || "${dash_to_dock}" == 'true' ]]; then
+      prompt -e "Do not run this option with '--gdm' \n"
+    else
+      prompt -i "Installing '${name}' GDM theme... \n"
+      install_gdm_theme
+      prompt -s "Done! '${name}' GDM theme has been installed. \n"
+    fi
   fi
 
-  if [[ "${flatpak}" == 'true' ]]; then
+#  if [[ "${snap}" == 'true' && "${gdm}" != 'true' ]]; then
+#    prompt -i "Connecting '${name}' theme to your installed snap apps... \n"
+#    connect_snap
+#    prompt -s "Done! '${name}' theme has been connected to your snap apps. \n"
+#  fi
+
+  if [[ "${flatpak}" == 'true' && "${gdm}" != 'true' ]]; then
     prompt -i "Connecting '${name}' themes to your Flatpak... \n"
     connect_flatpak
-    prompt -s "Done! '${name}' theme has been connected to your Flatpak."; echo
+    prompt -s "Done! '${name}' theme has been connected to your Flatpak. \n"
   fi
 
-  if [[ "${gdm}" == 'true' ]]; then
-    prompt -i "Installing '${name}' GDM theme... \n"
-    install_gdm_theme
-    prompt -s "Done! '${name}' GDM theme has been installed."; echo
-  fi
-
-  if [[ "${dash_to_dock}" == 'true' ]]; then
+  if [[ "${dash_to_dock}" == 'true' && "${gdm}" != 'true' ]]; then
     prompt -i "Installing '${name}' ${colors[0]} Dash to Dock theme... \n"
     install_dash_to_dock_theme
     prompt -s "Done! '${name}' Dash to Dock theme has been installed. \n"
@@ -247,26 +257,27 @@ else
   fi
 
   if [[ "${firefox}" == 'true' || "${edit_firefox}" == 'true' ]]; then
-    if [[ "${firefox}" == 'true' ]]; then
+    if [[ "${firefox}" == 'true' && "${gdm}" != 'true' ]]; then
       prompt -i "Installing '${name}' Firefox theme... \n"
       install_firefox_theme
-      prompt -s "Done! '${name}' Firefox theme has been installed."; echo
+      prompt -s "Done! '${name}' Firefox theme has been installed. \n"
     fi
 
-    if [[ "${edit_firefox}" == 'true' ]]; then
+    if [[ "${edit_firefox}" == 'true' && "${gdm}" != 'true' ]]; then
       prompt -i "Editing '${name}' Firefox theme preferences... \n"
       edit_firefox_theme_prefs
-      prompt -s "Done! '${name}' Firefox theme preferences has been edited."; echo
+      prompt -s "Done! '${name}' Firefox theme preferences has been edited. \n"
     fi
 
-    prompt -w "FIREFOX: Please go to [Firefox menu] > [Customize...], and customize your Firefox to make it work. Move your 'new tab' button to the titlebar instead of tab-switcher."
-    prompt -i "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory."
-    echo
+    if [[ "${gdm}" != 'true' ]]; then
+      prompt -w "FIREFOX: Please go to [Firefox menu] > [Customize...], and customize your Firefox to make it work. Move your 'new tab' button to the titlebar instead of tab-switcher."
+      prompt -i "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory. \n"
+    fi
   fi
 fi
 
 if [[ "${firefox}" == "false" && "${edit_firefox}" == "false" && "${flatpak}" == "false" && "${gdm}" == "false" && "${dash_to_dock}" == "false" && "${libadwaita}" == "false" ]]; then
   prompt -e "Oops... there's nothing to tweak..."
   prompt -i "HINT: Don't forget to define which component to tweak, e.g. '--gdm'"
-  prompt -i "HINT: Run ./tweaks.sh -h for help!..."; echo
+  prompt -i "HINT: Run ./tweaks.sh -h for help!... \n"
 fi
