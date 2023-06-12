@@ -34,7 +34,7 @@
 
 /* Fullscreen headerbar padding for 1 button */
 :root[tabsintitlebar][inFullscreen] #nav-bar {
-	padding-right: 40px !important;
+	padding-right: 50px !important;
 }
 
 /* Window buttons box */
@@ -63,6 +63,13 @@
 	padding: 2px 0 !important;
 	width: 16px;
 }
+:root[tabsintitlebar][inFullscreen] #titlebar .titlebar-button,
+:root[tabsintitlebar][inFullscreen] #window-controls toolbarbutton {
+	height: 24px !important;
+	width: 24px !important;
+	margin: 12px 4px !important;
+	padding: 0 !important;
+}
 :root[tabsintitlebar] #titlebar .titlebar-button .toolbarbutton-icon,
 :root[tabsintitlebar][inFullscreen] #window-controls toolbarbutton .toolbarbutton-icon {
 	opacity: 0 !important;
@@ -75,7 +82,6 @@
 /* Remove close and minimize buttons from fullscreen buttons */
 :root[tabsintitlebar][inFullscreen] #window-controls #close-button,
 :root[tabsintitlebar][inFullscreen] #window-controls #minimize-button,
-:root[tabsintitlebar][inFullscreen] #titlebar .titlebar-buttonbox-container,
 :root[tabsintitlebar][inFullscreen] #titlebar .titlebar-buttonbox .titlebar-close,
 :root[tabsintitlebar][inFullscreen] #titlebar .titlebar-buttonbox .titlebar-min {
 	display: none !important;
@@ -92,6 +98,11 @@
 		padding: 0 3px 0 4px;
 		left: 8px;
 		right: auto;
+	}
+
+	/* Fullscreen headerbar padding for 1 button */
+	:root[tabsintitlebar][inFullscreen] #nav-bar {
+		padding-left: 50px !important;
 	}
 
 	/* Window controls: at least 1 button */

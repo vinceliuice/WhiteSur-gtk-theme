@@ -432,6 +432,10 @@ menu[disabled] > .menu-right {
 	list-style-image: url("../icons/reader-mode.svg") !important;
 }
 
+#picture-in-picture-button > .urlbar-icon {
+	list-style-image: url("../icons/picture-in-picture-open.svg") !important;
+}
+
 #permissions-granted-icon {
 	list-style-image: url("../icons/permissions-granted.svg") !important;
 }
@@ -704,6 +708,7 @@ treechildren::-moz-tree-image {
 	#permissions-granted-icon,
 	#tracking-protection-icon-animatable-image,
 	#reader-mode-button > .urlbar-icon,
+	#picture-in-picture-button > .urlbar-icon,
 	#star-button:not([starred]),
 	#context-bookmarkpage:not([starred]) .menu-iconic-icon,
 	#geo-sharing-icon[sharing], .geo-icon,

@@ -108,8 +108,9 @@
 	--gnome-inactive-tabbar-tab-color: rgb(141, 144, 145);
 	--gnome-inactive-tabbar-tab-background: #383838;
 	--gnome-inactive-tabbar-tab-active-background: #424242;
-	--gnome-inactive-tabbar-tab-active-border-bottom-color: #15539e;
-	--gnome-inactive-tabbar-tab-active-color: rgb(141, 144, 145);
+	--gnome-inactive-tabbar-tab-active-border-bottom-color: var(--gnome-tabbar-tab-active-border-bottom-color);
+	--gnome-inactive-tabbar-tab-active-color: var(--gnome-inactive-tabbar-tab-color);
+	--gnome-tab-attention-icon-color: #718be8;
 
 	/* Switch */
 	--gnome-switch-background: #282828;

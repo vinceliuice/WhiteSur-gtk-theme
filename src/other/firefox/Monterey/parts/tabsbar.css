@@ -164,6 +164,14 @@ tab[selected]:-moz-window-inactive .tab-label {
 	display: none;
 }
 
+/* Tab attention dot */
+.tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]), .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]), #firefox-view-button[attention] {
+	background-image: radial-gradient(circle, var(--gnome-tab-attention-icon-color), var(--gnome-tab-attention-icon-color) 2px, transparent 2px) !important;
+	background-position: center bottom 3px !important;
+	background-size: 4px 4px;
+	background-repeat: no-repeat;
+}
+
 .tabbrowser-tab[class*="identity-color-"][pinned] {
 	display: flex;
 }

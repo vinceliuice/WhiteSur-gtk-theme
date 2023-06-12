@@ -326,18 +326,19 @@ button.popup-notification-primary-button,
 }
 
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:hover,
-button.popup-notification-primary-button.popup-notification-button:hover,
+button.popup-notification-primary-button:hover,
 #editBookmarkPanelDoneButton:hover {
 	background: var(--gnome-button-suggested-action-hover-background) !important;
 }
 
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:active,
-button.popup-notification-primary-button.popup-notification-button:active,
+button.popup-notification-primary-button:active,
 #editBookmarkPanelDoneButton:active {
 	background: var(--gnome-button-suggested-action-active-background) !important;
 	border-color: var(--gnome-button-suggested-action-active-border-color) !important;
 	box-shadow: var(--gnome-button-suggested-action-active-box-shadow) !important;
 	text-shadow: none !important;
+	transition: none !important;
 }
 
 /* Buttons with destructive action */

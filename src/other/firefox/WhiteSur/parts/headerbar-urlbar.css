@@ -177,8 +177,12 @@ toolbarspring {
 	width: 28px !important;
 	height: 26px !important;
 	margin: 3px 0 !important;
-	padding: 4px 6px !important;
+	padding: 6px !important;
 	border-radius: 5px !important;
+}
+
+#star-button-box.urlbar-page-action {
+	padding: 5px 6px !important;
 }
 
 #identity-box:hover {

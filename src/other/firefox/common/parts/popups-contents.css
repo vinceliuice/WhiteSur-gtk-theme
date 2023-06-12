@@ -154,6 +154,14 @@
 	background: var(--gnome-button-suggested-action-background) !important;
 	border-color: var(--gnome-button-suggested-action-border-color) !important;
 }
+#confirmation-hint .panel-arrowcontent:hover {
+	background: var(--gnome-button-suggested-action-hover-background) !important;
+	border-color: var(--gnome-button-suggested-action-border-color) !important;
+}
+#confirmation-hint .panel-arrowcontent:active {
+	background: var(--gnome-button-suggested-action-active-background) !important;
+	border-color: var(--gnome-button-suggested-action-active-border-color) !important;
+}
 #confirmation-hint .panel-arrow {
 	fill: var(--gnome-button-suggested-action-border-color) !important;
 	stroke: var(--gnome-button-suggested-action-border-color) !important;
