@@ -283,7 +283,7 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 ### <p align="center"> <b> Install and edit Firefox theme </b> </p>
 
 <p align="center"> <a href="src/other/firefox">
-<img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox.png"/>
+<img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox.svg"/>
 </a> </p>
 
 #### [Install Firefox theme](src/other/firefox)
