@@ -1,0 +1,7 @@
+<svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+ <path d="m3 2c-1.662 0-3 1.338-3 3v6c0 1.662 1.338 3 3 3h10c1.662 0 3-1.338 3-3v-6c0-1.662-1.338-3-3-3h-10zm0 1h10c1.108 0 2 0.892 2 2v6c0 1.108-0.892 2-2 2h-10c-1.108 0-2-0.892-2-2v-6c0-1.108 0.892-2 2-2z" fill="#363636" fill-rule="evenodd" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
+ <path d="m3 8c-1.662 0-3 1.338-3 3 0 1.662 1.338 3 3 3h10c1.662 0 3-1.338 3-3 0-1.662-1.338-3-3-3h-10zm0 1h10c1.108 0 2 0.892 2 2 0 1.108-0.892 2-2 2h-10c-1.108 0-2-0.892-2-2 0-1.108 0.892-2 2-2z" fill="#363636" fill-rule="evenodd" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
+ <rect x="3" y="10" width="1" height="2" rx=".5" ry=".5" fill="#363636" fill-rule="evenodd" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
+ <rect x="5" y="10" width="1" height="2" rx=".5" ry=".5" fill="#363636" fill-rule="evenodd" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
+ <rect x="7" y="10" width="1" height="2" rx=".5" ry=".5" fill="#363636" fill-rule="evenodd" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
+</svg>

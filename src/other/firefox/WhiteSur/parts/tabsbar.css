@@ -64,7 +64,6 @@
 
 /* Tabs separators */
 .tabbrowser-tab {
-	border-width: 1px !important;
 	border-left: 1px solid transparent !important;
 }
 
@@ -73,9 +72,12 @@
 }
 
 .tabbrowser-tab[selected] + .tabbrowser-tab,
-.tabbrowser-tab:hover + .tabbrowser-tab,
-.tabbrowser-tab[first-tab] {
+.tabbrowser-tab:hover + .tabbrowser-tab {
 	border-color: transparent !important;
+}
+
+.tabbrowser-tab:first-of-type {
+	border-left: none !important;
 }
 
 /* Space between tabs */

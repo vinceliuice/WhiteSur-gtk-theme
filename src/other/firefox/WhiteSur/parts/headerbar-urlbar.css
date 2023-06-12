@@ -169,7 +169,13 @@ toolbarspring {
 
 #notification-popup-box {
 	height: 26px !important;
+	width: 28px !important;
+	padding: 5px !important;
 	border-radius: 5px !important;
+}
+
+.notification-anchor-icon {
+	padding: 0 !important;
 }
 
 .urlbar-page-action, #urlbar-go-button, .search-go-button,
