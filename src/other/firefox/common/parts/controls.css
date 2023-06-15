@@ -28,8 +28,8 @@
 }
 #protections-popup-tp-switch::before {
 	position: absolute !important;
-	top: 0px;
-	left: 0px;
+	top: -1px;
+	left: -1px;
 	background: var(--gnome-switch-slider-background) !important;
 	border: 1px solid var(--gnome-switch-slider-border-color) !important;
 	box-shadow: var(--gnome-switch-slider-box-shadow);

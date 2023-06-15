@@ -10,6 +10,8 @@
 	/* Browser area before a page starts loading */
 	--gnome-browser-before-load-background: #242424;
 	--theme-primary-color: #315bef;
+	--theme-primary-hover-color: #5073f1;
+	--theme-primary-active-color: #6584f3;
 
 	/* Toolbars */
 	--gnome-toolbar-background: #373737;
@@ -78,13 +80,13 @@
 	--gnome-button-destructive-action-active-border-color: #851015;
 	--gnome-button-destructive-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
 
-  --gnome-headerbar-button-hover-background: rgba(255, 255, 255, 0.1);
+	--gnome-headerbar-button-hover-background: rgba(255, 255, 255, 0.1);
 	--gnome-headerbar-button-active-background: rgba(255, 255, 255, 0.15);
 
 	/* URL bar */
 	--gnome-urlbar-background: #464646;
 	--gnome-urlbar-border-color: #282828;
-	--gnome-urlbar-box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0);
+	--gnome-urlbar-box-shadow: 0 3px 6px 1px rgba(0,0,0, .2), 0 5px 16px 3px rgba(0,0,0, .15), 0 0 0 1px rgba(0, 0, 0, 0.75);
 	--gnome-urlbar-color: #ffffff;
 	--gnome-hover-urlbar-border-color: #585858;
 	--gnome-inactive-urlbar-background: #383838;

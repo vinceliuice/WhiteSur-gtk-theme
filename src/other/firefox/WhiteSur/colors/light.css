@@ -9,6 +9,8 @@
 	/* Browser area before a page starts loading */
 	--gnome-browser-before-load-background: #f5f5f5;
 	--theme-primary-color: #315bef;
+	--theme-primary-hover-color: #5073f1;
+	--theme-primary-active-color: #6584f3;
 
 	/* Toolbars */
 	--gnome-toolbar-background: #ffffff;
@@ -82,7 +84,7 @@
 	/* URL bar */
 	--gnome-urlbar-background: #f5f5f5;
 	--gnome-urlbar-border-color: #b6b6b3;
-	--gnome-urlbar-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08), 0 5px 8px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.03);
+	--gnome-urlbar-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08), 0 5px 8px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0,0,0, 0.12);
 	--gnome-urlbar-color: #020202;
 	--gnome-hover-urlbar-border-color: #e5e5e5;
 	--gnome-inactive-urlbar-background: #f0f0f0;

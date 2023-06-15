@@ -27,3 +27,8 @@
 	content: "Firefox Monterey theme";
 	padding: 10px 10px 10px 50px;
 }
+
+#customization-container {
+	background-color: var(--gnome-browser-before-load-background) !important;
+	color: var(--gnome-toolbar-color) !important;
+}

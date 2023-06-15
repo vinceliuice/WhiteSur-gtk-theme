@@ -19,7 +19,7 @@
 	margin: 0 !important;
 	padding: 6px !important;
 	box-sizing: border-box;
-	transition: all 100ms;
+	transition: outline 100ms ease-out;
 }
 
 /* Entries focused */
@@ -30,10 +30,12 @@
 /*.findbar-textbox:focus,*/
 #loginTextbox:focus,
 #password1Textbox:focus {
+	border: none !important;
+	border-radius: 8px !important;
 	outline: 2px solid var(--gnome-focused-urlbar-border-color) !important;
 	outline-offset: -2px;
 	-moz-outline-radius: 8px;
-	transition: all 100ms;
+	transition: outline 100ms ease-out;
 }
 
 .findbar-textbox[focused],

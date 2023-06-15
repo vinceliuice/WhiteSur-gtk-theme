@@ -8,6 +8,10 @@ body {
 	--newtab-primary-element-text-color: #ffffff !important;
 }
 
+.modalOverlayOuter {
+	background: color-mix(in srgb, var(--gnome-browser-before-load-background) 80%, transparent) !important;
+}
+
 .context-menu {
 	background: var(--gnome-menu-background) !important;
 	border-radius: 12px !important;

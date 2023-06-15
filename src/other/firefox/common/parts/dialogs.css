@@ -13,6 +13,7 @@ window {
 	justify-content: center;
 	grid-auto-rows: min(90%, var(--doc-height-px));
 }
+
 .dialogOverlay[topmost="true"]:not(.dialogOverlay-window-modal-dialog-subdialog), #window-modal-dialog::backdrop {
 	background-color: rgba(0, 0, 0, .5) !important;
 }
@@ -98,19 +99,151 @@ dialog[subdialog] {
 	display: none;
 }
 
-/* Buttons borders - only suppor for cancel/ok */
-/*.dialog-button-box button[dlgtype="accept"] {*/
-/*	border-right: 0 !important;*/
-/*	border-left: 0 !important;*/
-/*}*/
-/*.dialog-button-box button[dlgtype="cancel"]:not(#hack) {*/
-/*	border-left: 0 !important;*/
-/*}*/
-
 /* Hadler dialog */
 #os-default-handler image {
 	display: none !important;
 }
 #os-default-handler .name {
 	font-weight: normal !important;
+}
+
+/* Print dialog */
+:root[dialogroot], :host(dialog) {
+	--in-content-page-background: var(--gnome-toolbar-background) !important;
+}
+
+#editBookmarkPanelContent > input,
+#editBookmarkPanelContent > hbox > input {
+	padding: 0 12px !important;
+	min-height: 26px !important;
+	border: 1px solid var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	background-color: #ffffff !important;
+	border-radius: 8px !important;
+}
+
+#editBookmarkPanelContent > input:focus-visible,
+#editBookmarkPanelContent > hbox > input:focus-visible {
+	outline: 2px solid var(--gnome-focused-urlbar-border-color) !important;
+	outline-offset: -2px;
+	-moz-outline-radius: 8px;
+}
+
+:root[dialogroot] select,
+:host(dialog) select {
+  background-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
+	background-color: #ffffff !important;
+  background-position: right 12px center !important;
+  background-repeat: no-repeat !important;
+  background-size: auto 12px !important;
+	border: 1px solid var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	border-radius: 8px !important;
+	padding: 2px 12px !important;
+	min-height: 28px !important;
+	min-width: 28px !important;
+	color: var(--gnome-toolbar-color) !important;
+	box-shadow: var(--gnome-button-box-shadow) !important;
+}
+
+#cancel-button,
+#print-button.primary {
+	min-width: 7em !important;
+	min-height: 28px !important;
+	border-radius: 8px !important;
+	border: 1px solid var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	color: var(--gnome-toolbar-color) !important;
+}
+
+#print-button.primary {
+	background-color: var(--theme-primary-color) !important;
+	color: #ffffff !important;
+	border-color: var(--theme-primary-color) !important;
+}
+
+:root[dialogroot] select:not([disabled]):hover,
+:host(dialog) select:not([disabled]):hover {
+	background-color: #f5f5f5 !important;
+}
+
+#print-button.primary:hover {
+	background-color: var(--theme-primary-hover-color) !important;
+}
+
+:root[dialogroot] select:not([disabled]):active,
+:host(dialog) select:not([disabled]):active {
+	background-color: #efefef !important;
+}
+
+#print-button.primary:active {
+	background-color: var(--theme-primary-active-color) !important;
+}
+
+.toggle-group-label {
+	border: 1px solid var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+}
+
+.toggle-group-label:first-of-type {
+	border-start-start-radius: 8px !important;
+	border-end-start-radius: 8px !important;
+}
+
+.toggle-group-label:last-of-type {
+	border-end-end-radius: 8px !important;
+	border-start-end-radius: 8px !important;
+	border-left: none !important;
+}
+
+.toggle-group-input:enabled:checked + .toggle-group-label {
+	background-color: var(--theme-primary-color) !important;
+	color: #ffffff !important;
+	border-color: var(--theme-primary-color) !important;
+}
+
+.toggle-group-input:enabled:checked + .toggle-group-label:hover {
+	background-color: var(--theme-primary-hover-color) !important;
+	color: #ffffff !important;
+}
+
+@media (prefers-color-scheme: dark) {
+#editBookmarkPanelContent > input,
+#editBookmarkPanelContent > hbox > input {
+	background-color: #666666 !important;
+}
+	
+#cancel-button,
+#print-button.primary {
+	box-shadow: var(--gnome-button-box-shadow) !important;
+}
+
+#print-button.primary {
+	border-color: var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+}
+
+.toggle-group-label {
+	box-shadow: var(--gnome-button-box-shadow) !important;
+}
+
+.toggle-group-input:enabled:checked + .toggle-group-label {
+	border-color: var(--gnome-button-border-color) !important;
+	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+}
+
+:root[dialogroot] select,
+:host(dialog) select {
+	background-color: #666666 !important;
+}
+
+:root[dialogroot] select:not([disabled]):hover,
+:host(dialog) select:not([disabled]):hover {
+	background-color: #777777 !important;
+}
+
+:root[dialogroot] select:not([disabled]):active,
+:host(dialog) select:not([disabled]):active {
+	background-color: #888888 !important;
+}
 }

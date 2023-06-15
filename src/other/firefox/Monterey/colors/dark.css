@@ -11,6 +11,8 @@
 	--gnome-browser-before-load-background: #242424;
 	--gnome-browser-content-box-background: #323232;
 	--theme-primary-color: #315bef;
+	--theme-primary-hover-color: #5073f1;
+	--theme-primary-active-color: #6584f3;
 
 	/* Toolbars */
 	--gnome-toolbar-background: #373737;
@@ -84,7 +86,7 @@
 	/* URL bar */
 	--gnome-urlbar-background: #505050;
 	--gnome-urlbar-border-color: #282828;
-	--gnome-urlbar-box-shadow: inset 0 0 0 1px rgba(21, 83, 158, 0);
+	--gnome-urlbar-box-shadow: 0 3px 6px 1px rgba(0,0,0, .2), 0 5px 16px 3px rgba(0,0,0, .15), 0 0 0 1px rgba(0, 0, 0, 0.75);
 	--gnome-urlbar-color: #ffffff;
 	--gnome-hover-urlbar-border-color: #585858;
 	--gnome-inactive-urlbar-background: #424242;
