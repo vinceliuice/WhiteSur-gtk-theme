@@ -477,9 +477,3 @@ tab[selected]:-moz-window-inactive {
 	margin-inline-end: 4px !important;
 	margin-inline-start: 4px !important;
 }
-
-/* Fix too many tabs text align */
-.tab-close-button[pinned],
-#tabbrowser-tabs[closebuttons="activetab"]>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-content>.tab-icon-stack[selected="true"] {
-	margin-left: auto !important;
-}

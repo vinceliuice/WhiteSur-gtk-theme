@@ -58,6 +58,10 @@ button.customizationmode-button {
 	transition: all 200ms;
 }
 
+.permission-popup-permission-remove-button {
+	padding: 2px 4px !important;
+}
+
 menulist {
 	-moz-appearance: none !important;
 	background: var(--gnome-button-background) !important;
