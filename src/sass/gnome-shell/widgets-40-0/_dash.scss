@@ -7,17 +7,12 @@ $dash_border_radius: $dash_padding * 1.5 + 12px;
 
 #dash {
   margin-top: $base_spacing * 2;
-  padding: 0 $dash_padding;
+  padding: 0;
 
   .placeholder {
     background-image:none;
     background-size: contain;
     height: $dash_placeholder_size;
-  }
-
-  .overview-icon {
-    padding: $dash_padding / 2;
-    border-radius: $dash_padding / 2 + 12px;
   }
 
   // Running app indicator (shown in dash)
@@ -28,13 +23,24 @@ $dash_border_radius: $dash_padding * 1.5 + 12px;
   .dash-background {
     background-color: $dash_background_color;
     margin-bottom: $dash_bottom_margin;
-    padding: $dash_padding;
+    padding: $dash_padding $dash_padding - $dash_spacing * 2;
     border-radius: $dash_border_radius;
   }
 
   // Dash Items
-  .dash-item-container .app-well-app, .show-apps {
-    padding: $dash_padding $dash_spacing $dash_padding + $dash_bottom_margin;
+  .dash-item-container {
+    margin: 0 $dash_spacing;
+
+    > * { margin: 0; }
+
+    .app-well-app, .show-apps {
+      padding: $dash_padding $dash_spacing $dash_padding + $dash_bottom_margin;
+    }
+
+    .overview-icon {
+      padding: $dash_padding / 2;
+      border-radius: $dash_padding / 2 + 12px;
+    }
   }
 
   .dash-separator {

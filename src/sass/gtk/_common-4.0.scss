@@ -1959,8 +1959,10 @@ headerbar {
   }
 
   &.flat {
-    border: none;
-    background: none;
+    &, &:backdrop {
+      border: none;
+      background: none;
+    }
 
     > windowhandle > box {
       padding: 0 8px;
