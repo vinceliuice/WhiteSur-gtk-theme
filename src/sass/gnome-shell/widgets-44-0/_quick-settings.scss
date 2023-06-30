@@ -49,14 +49,14 @@
     }
   }
 
-  & > StBoxLayout { spacing: $base_padding * 1.5; }
+  & > StBoxLayout { spacing: $base_padding * 2; }
 
   /* Move padding into the box; this is to allow menu arrows
      to extend to the border */
   &.button { padding: 0; }
-  & > StBoxLayout { padding: 0 $base_padding * 2; }
-  &:ltr > StBoxLayout { padding-left: $base_padding * 2.5; }
-  &:rtl > StBoxLayout { padding-right: $base_padding * 2.5; }
+  & > StBoxLayout { padding: 0 $base_padding * 2.5; }
+  &:ltr > StBoxLayout { padding-left: $base_padding * 3; }
+  &:rtl > StBoxLayout { padding-right: $base_padding * 3; }
 
   .quick-toggle-title { font-weight: bold; }
 
@@ -74,16 +74,16 @@
     max-width: auto;
 
     &:ltr { border-radius: $circular_radius 0 0 $circular_radius; }
-    &:ltr > StBoxLayout { padding-right: $base_padding * 1.5; }
+    &:ltr > StBoxLayout { padding-right: $base_padding * 2; }
     &:rtl { border-radius: 0 $circular_radius $circular_radius 0; }
-    &:rtr > StBoxLayout { padding-left: $base_padding * 1.5; }
+    &:rtr > StBoxLayout { padding-left: $base_padding * 2; }
 
     &:ltr:last-child { border-radius: $circular_radius; }
     &:rtl:last-child { border-radius: $circular_radius; }
   }
 
   & .quick-toggle-arrow {
-    padding: $base_padding $base_padding * 2;
+    padding: $base_padding $base_padding * 2.5;
     border: none;
     background-color: $fill_color !important;
 

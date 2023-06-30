@@ -226,11 +226,15 @@ $raven_padding: 8px;
         &:disabled {
           color: $alt_disabled_fg_color;
           background-color: transparent;
+
+          label { color: $alt_disabled_fg_color; }
         }
 
         &:checked:disabled {
           color: $disabled_fg_color;
           background-color: $fill_color;
+
+          label { color: $disabled_fg_color; }
         }
       }
     }
