@@ -52,6 +52,12 @@ $flap_sidebar_size: 240px;
     }
   }
 
+  placessidebar.background {
+    row.sidebar-row {
+      .sidebar-icon { color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%)); }
+    }
+  }
+
   flap.unfolded {
     > placessidebar.background {
       background: none;
