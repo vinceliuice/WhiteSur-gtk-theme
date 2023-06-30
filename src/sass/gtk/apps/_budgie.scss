@@ -313,17 +313,6 @@ $raven_padding: 8px;
 
   // Clipboard popover
   > frame > box.vertical {
-    // > box.horizontal {
-    //   > entry {
-    //     padding: $container_padding / 2 $container_padding * 2;
-    //     border: none;
-    //     border-bottom: 1px solid $borders_color;
-    //     border-radius: 0;
-    //     box-shadow: none;
-    //     background: none;
-    //   }
-    // }
-
     > box.vertical {
       > box.vertical {
         margin: 0 $container_padding $container_padding * 1.5;
@@ -381,9 +370,15 @@ $raven_padding: 8px;
     .view-header { padding: 0 $container_padding 0 ($container_padding - 2px); }
   }
 
-  // &.icon-popover {
-  //   .container { padding: $container_padding; }
-  // }
+  &.icon-popover {
+    // .container { padding: $container_padding; }
+
+    .icon-popover-stack {
+      separator {
+        margin: $container_padding / 2 $container_padding;
+      }
+    }
+  }
 
   &.places-menu {
     // .container { padding: $container_padding; }
