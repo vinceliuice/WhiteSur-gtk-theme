@@ -721,7 +721,7 @@ udo() {
 
 full_sudo() {
   if [[ ! -w "/root" ]]; then
-    prompt -e "ERROR: '${1}' needs a root priviledge. Please run this '${0}' as root"
+    prompt -e "ERROR: '${1}' needs a root privilege. Please run this '${0}' as root"
     has_any_error="true"
   fi
 }
