@@ -136,7 +136,7 @@ if [[ "${uninstall}" == 'true' ]]; then
   if [[ "${libadwaita}" == 'true' ]]; then
     if [[ "$UID" != '0' ]]; then
       remove_libadwaita
-      prompt -s "Removed gtk-4.0 theme files in '${HOME}/.config/gtk-4.0/' !"; echo
+      prompt -s "Removed gtk-4.0 theme files in '${HOME}/.config/gtk-4.0/' !";
     else
       prompt -e "Do not run '--libadwaita' option with sudo!"; echo
     fi

@@ -11,9 +11,12 @@
 }
 
 /* Tabs bar height */
-#tabbrowser-tabs,
-#tabbrowser-tabs arrowscrollbox {
+#tabbrowser-tabs {
 	--tab-min-height: 32px !important;
+}
+
+#tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
+	max-height: 32px !important;
 }
 
 /* Extra margin for the first and last tabs */
