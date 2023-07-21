@@ -165,6 +165,11 @@ menuitem[type="radio"][disabled="true"] .menu-iconic-icon {
 /*	filter: invert(100%) brightness(200%);*/
 /*}*/
 
+menuitem[type="radio"] .menu-iconic-icon,
+menuitem[type="checkbox"] .menu-iconic-icon {
+	-moz-appearance: none !important;
+}
+
 /* Sub menu arrow */
 .menu-right {
 	-moz-appearance: none !important;
