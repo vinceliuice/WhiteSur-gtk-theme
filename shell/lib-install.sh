@@ -556,6 +556,16 @@ remove_libadwaita() {
 #                                   THEMES                                    #
 ###############################################################################
 
+fix_whiskermenu() {
+  if command -v xfce4-popup-whiskermenu &> /dev/null; then
+    sed -i "s|.*menu-opacity=.*|menu-opacity=95|" "$HOME/.config/xfce4/panel/whiskermenu"*".rc"
+  fi
+
+  if (pgrep xfce4-session &> /dev/null); then
+    xfce4-panel -r
+  fi
+}
+
 install_themes() {
   # "install_theemy" and "install_shelly" require "gtk_base", so multithreading
   # isn't possible
@@ -575,7 +585,7 @@ install_themes() {
     done
   done
 
-  stop_animation
+  stop_animation; fix_whiskermenu
 }
 
 remove_themes() {
