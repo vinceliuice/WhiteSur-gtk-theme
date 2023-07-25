@@ -557,7 +557,7 @@ remove_libadwaita() {
 ###############################################################################
 
 fix_whiskermenu() {
-  if command -v xfce4-popup-whiskermenu &> /dev/null; then
+  if (command -v xfce4-popup-whiskermenu &> /dev/null) && $(sed -i "s|.*menu-opacity=.*|menu-opacity=95|" "$HOME/.config/xfce4/panel/whiskermenu"*".rc" &> /dev/null); then
     sed -i "s|.*menu-opacity=.*|menu-opacity=95|" "$HOME/.config/xfce4/panel/whiskermenu"*".rc"
   fi
 
