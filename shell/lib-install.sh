@@ -549,7 +549,7 @@ install_libadwaita() {
 
 remove_libadwaita() {
   restore_file "${TARGET_DIR}/gtk.css"
-  rm -rf "${HOME}/.config/gtk-4.0/"{gtk-dark.css,assets,windows-assets}
+  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-dark.css,assets,windows-assets}
 }
 
 ###############################################################################
