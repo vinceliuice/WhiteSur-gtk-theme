@@ -1,6 +1,6 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
-# WARNING: Please make this shell not working-directory dependant, for example
+# WARNING: Please make this shell not working-directory dependent, for example
 # instead of using 'ls blabla', use 'ls "${REPO_DIR}/blabla"'
 #
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
@@ -20,34 +20,34 @@ colors=("${COLOR_VARIANTS[@]}")
 opacities=("${OPACITY_VARIANTS[@]}")
 
 usage() {
-  # Please specify their default value manually, some of them are come from _variables.scss
-  # You also have to check and update them regurally
+  # Please specify their default value manually, some of them come from _variables.scss
+  # You also have to check and update them regularly
   helpify_title
-  helpify "-d, --dest"           "DIR"                                                "Set destination directory"                        "Default is '${THEME_DIR}'"
-  helpify "-n, --name"           "NAME"                                               "Set theme name"                                   "Default is '${THEME_NAME}'"
-  helpify "-o, --opacity"        "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"        "Set theme opacity variants"                       "Repeatable. Default is all variants"
-  helpify "-c, --color"          "[$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"          "Set theme color variants"                         "Repeatable. Default is all variants"
-  helpify "-a, --alt"            "[$(IFS='|'; echo "${ALT_VARIANTS[*]}")|all]"        "Set window control buttons variant"               "Repeatable. Default is 'normal'"
-  helpify "-t, --theme"          "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")|all]"      "Set theme accent color"                           "Repeatable. Default is BigSur-like theme"
-  helpify "-p, --panel-opacity"  "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]"  "Set panel transparency"                           "Default is 15%"
-  helpify "-P, --panel-size"     "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"     "Set Gnome shell panel height size"                "Default is 32px"
-  helpify "-s, --size"           "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]"   "Set Nautilus sidebar minimum width"               "Default is 200px"
-  helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"           "Set 'Activities' icon"                            "Default is 'standard'"
-  helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                         "Set gnome-shell background image"                 "Default is BigSur-like wallpaper"
-  helpify "-m, --monterey"                ""                                          "Set to MacOS Monterey style"                      ""
-  helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                               "Default is BigSur-like style (stabled sidebar)"
-  helpify "-l, --libadwaita"              ""                                          "Install theme into gtk4.0 config for libadwaita"  "Default is dark version"
-  helpify "-HD, --highdefinition"         ""                                          "Set to High Definition size"                      "Default is laptop size"
-  helpify "--normal, --normalshowapps"    ""                                          "Set gnome-shell show apps button style to normal" "Default is bigsur"
-  helpify "--round, --roundedmaxwindow"   ""                                          "Set maximized window to rounded"                  "Default is square"
-  helpify "--right, --rightplacement"     ""                                          "Set Nautilus titlebutton placement to right"      "Default is left"
-  helpify "--black, --blackfont"          ""                                          "Set panel font color to black"                    "Default is white"
-  helpify "--darker, --darkercolor"       ""                                          "Install darker '${THEME_NAME}' dark themes"       ""
-  helpify "--nord, --nordcolor"           ""                                          "Install '${THEME_NAME}' Nord ColorScheme themes"  ""
-  helpify "--dialog, --interactive"       ""                                          "Run this installer interactively, with dialogs"   ""
-  helpify "--silent-mode"                 ""                                          "Meant for developers: ignore any confirm prompt and params become more strict" ""
-  helpify "-r, --remove, -u, --uninstall" ""                                          "Remove all installed ${THEME_NAME} themes"        ""
-  helpify "-h, --help"                    ""                                          "Show this help"                                   ""
+  helpify "-d, --dest"           "DIR"                                        "Set destination directory"                "Default is '${THEME_DIR}'"
+  helpify "-n, --name"           "NAME"                                       "Set theme name"                           "Default is '${THEME_NAME}'"
+  helpify "-o, --opacity"        "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]" "Set theme opacity variants"               "Repeatable. Default is all variants"
+  helpify "-c, --color"          "[$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"   "Set theme color variants"                 "Repeatable. Default is all variants"
+  helpify "-a, --alt"            "[$(IFS='|'; echo "${ALT_VARIANTS[*]}")|all]" "Set window control buttons variant"       "Repeatable. Default is 'normal'"
+  helpify "-t, --theme"          "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")|all]" "Set theme accent color"                  "Repeatable. Default is BigSur-like theme"
+  helpify "-p, --panel-opacity"  "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "Set panel transparency"                "Default is 15%"
+  helpify "-P, --panel-size"     "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]" "Set Gnome shell panel height size"      "Default is 32px"
+  helpify "-s, --size"           "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]" "Set Nautilus sidebar minimum width"    "Default is 200px"
+  helpify "-i, --icon"           "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"       "Set 'Activities' icon"                  "Default is 'standard'"
+  helpify "-b, --background"     "[default|blank|IMAGE_PATH]"                   "Set gnome-shell background image"       "Default is BigSur-like wallpaper"
+  helpify "-m, --monterey"                ""                                     "Set to MacOS Monterey style"            ""
+  helpify "-N, --nautilus-style" "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "Set Nautilus style"                 "Default is BigSur-like style (stabled sidebar)"
+  helpify "-l, --libadwaita"              ""                                     "Install theme into gtk4.0 config for libadwaita" "Default is dark version"
+  helpify "-HD, --highdefinition"         ""                                     "Set to High Definition size"            "Default is laptop size"
+  helpify "--normal, --normalshowapps"    ""                                     "Set gnome-shell show apps button style to normal" "Default is BigSur"
+  helpify "--round, --roundedmaxwindow"   ""                                     "Set maximized window to rounded"        "Default is square"
+  helpify "--right, --rightplacement"     ""                                     "Set Nautilus title button placement to right" "Default is left"
+  helpify "--black, --blackfont"          ""                                     "Set panel font color to black"          "Default is white"
+  helpify "--darker, --darkercolor"       ""                                     "Install darker '${THEME_NAME}' dark themes" ""
+  helpify "--nord, --nordcolor"           ""                                     "Install '${THEME_NAME}' Nord ColorScheme themes" ""
+  helpify "--dialog, --interactive"       ""                                     "Run this installer interactively, with dialogs" ""
+  helpify "--silent-mode"                 ""                                     "Meant for developers: ignore any confirm prompt and params become more strict" ""
+  helpify "-r, --remove, -u, --uninstall" ""                                     "Remove all installed ${THEME_NAME} themes" ""
+  helpify "-h, --help"                    ""                                     "Show this help"                          ""
 }
 
 ###############################################################################
@@ -63,13 +63,13 @@ while [[ $# -gt 0 ]]; do
   # We can only show dialogs when there's no error and no -r parameter
   #
   # * shift for parameters that have no value
-  # * shift 2 for parameter that have a value
+  # * shift 2 for parameter that has a value
   #
   # Please don't exit any error here if possible. Let it show all error warnings
   # at once
 
   case "${1}" in
-    # Parameters that don't require value
+    # Parameters that don't require a value
     -r|--remove|-u|-uninstall)
       uninstall='true'; shift ;;
     --silent-mode)
@@ -94,7 +94,7 @@ while [[ $# -gt 0 ]]; do
       monterey="true"; shift ;;
     -l|--libadwaita)
       libadwaita="true"; shift ;;
-    # Parameters that require value, single use
+    # Parameters that require a value, single use
     -b|--background)
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
     -d|--dest)
@@ -111,7 +111,7 @@ while [[ $# -gt 0 ]]; do
       check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
     -N|--nautilus-style)
       check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
-      # Parameters that require value, multiple use
+    # Parameters that require a value, multiple use
     -a|--alt)
       check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
     -o|--opacity)
@@ -136,15 +136,15 @@ if [[ "${uninstall}" == 'true' ]]; then
   if [[ "${libadwaita}" == 'true' ]]; then
     if [[ "$UID" != '0' ]]; then
       remove_libadwaita
-      prompt -s "Removed gtk-4.0 theme files in '${HOME}/.config/gtk-4.0/' !";
+      prompt -s "Removed gtk-4.0 theme files in '${HOME}/.config/gtk-4.0/'!"
     else
       prompt -e "Do not run '--libadwaita' option with sudo!"; echo
     fi
   else
     prompt -i "Removing '${name}' gtk themes in '${dest}'... \n"
-    prompt -w "REMOVAL: Non file-related parameters will be ignored. \n"
+    prompt -w "REMOVAL: Non-file-related parameters will be ignored. \n"
     remove_themes; remove_libadwaita
-    prompt -s "Done! All '${name}' gtk themes in has been removed."
+    prompt -s "Done! All '${name}' gtk themes have been removed."
   fi
 
   if [[ -f "${MISC_GR_FILE}.bak" ]]; then
@@ -183,12 +183,12 @@ else
     fi
   fi
 
-#  if (is_running "xfce4-session"); then
-#    msg="XFCE: you may need to run 'xfce4-panel -r' after changing your theme to fix your panel opacity."
+  #  if (is_running "xfce4-session"); then
+  #    msg="XFCE: you may need to run 'xfce4-panel -r' after changing your theme to fix your panel opacity."
   if (is_my_distro "solus") && (is_running "gnome-session"); then
     msg="GNOME: you may need to disable 'User Themes' extension to fix your dock."
-  # elif (is_running "gnome-session") && [[ "${GNOME_VERSION}" == "3-28" ]]; then
-  # msg="GNOME: you may need to disable 'User Themes' extension to fix your logout and authentication dialog."
+    # elif (is_running "gnome-session") && [[ "${GNOME_VERSION}" == "3-28" ]]; then
+    # msg="GNOME: you may need to disable 'User Themes' extension to fix your logout and authentication dialog."
   fi
 
   if [[ "${msg}" ]]; then
@@ -200,9 +200,9 @@ else
 
   echo; prompt -w "${final_msg}"
 
-#  if has_command notify-send && [[ "$UID" != '0' ]]; then
-#    notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
-#  fi
+  #  if has_command notify-send && [[ "$UID" != '0' ]]; then
+  #    notify-send "'${name}' theme has been installed. Enjoy!" "${notif_msg}" -i "dialog-information-symbolic"
+  #  fi
 fi
 
 echo
