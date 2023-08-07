@@ -236,15 +236,14 @@ toolbarseparator, menuseparator {
 /*	border-color: var(--gnome-popover-separator-color) !important;*/
 }
 #PlacesToolbar menupopup[placespopup="true"] menuseparator {
-	border-top: 1px solid var(--gnome-popover-separator-color) !important;
+	border: none !important;
 	padding: 0 !important;
-	margin: 4px 0 !important;
 }
-#PlacesToolbar menupopup[placespopup="true"] menuseparator::before {
-	border: 0 !important;
-}
-toolbarseparator:not([orient="vertical"]), menupopup menuseparator {
+toolbarseparator, menuseparator::before {
 	border-top: 1px solid var(--gnome-popover-separator-color) !important;
+}
+menupopup menuseparator {
+	border: none !important;
 	margin: 4px 0 !important;
 }
 toolbarseparator[orient="vertical"] {
