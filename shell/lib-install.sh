@@ -530,9 +530,11 @@ config_gtk4() {
 
   # Install gtk4.0 into config for libadwaita
   mkdir -p                                                                                    "${TARGET_DIR}"
-  backup_file "${TARGET_DIR}/gtk.css" "udo"
-  rm -rf                                                                                      "${TARGET_DIR}/"{gtk.css,assets,windows-assets}
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk${color}.scss"                         "${TARGET_DIR}/gtk.css"
+  # backup_file "${TARGET_DIR}/gtk.css" "udo"
+  rm -rf                                                                                      "${TARGET_DIR}/"{gtk.css,gtk-Light.css,gtk-Dark.css,assets,windows-assets}
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-Light.scss"                           "${TARGET_DIR}/gtk-Light.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-Dark.scss"                            "${TARGET_DIR}/gtk-Dark.css"
+  ln -sf "${TARGET_DIR}/gtk-${colors}.css"                                                    "${TARGET_DIR}/gtk.css"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TARGET_DIR}"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TARGET_DIR}/assets"
@@ -548,8 +550,8 @@ install_libadwaita() {
 }
 
 remove_libadwaita() {
-  restore_file "${TARGET_DIR}/gtk.css"
-  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-dark.css,assets,windows-assets}
+  # restore_file "${TARGET_DIR}/gtk.css"
+  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-Light.css,gtk-Dark.css,assets,windows-assets}
 }
 
 ###############################################################################
