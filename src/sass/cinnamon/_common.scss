@@ -271,9 +271,6 @@ StScrollBar {
 // Popovers/Menus
 //
 
-$menu_bg: if($variant=='light', rgba($base_color, 0.95), rgba($bg_color, 0.95));
-$menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%));
-
 .menu,
 .popup-menu,
 %menu {
@@ -1662,12 +1659,21 @@ $menu_border: if($variant=='light', darken($menu_bg, 18%), darken($menu_bg, 12%)
   }
 
   &-thumbnail-menu {
-    padding: 6px;
+    padding: $container_padding + 6px $container_padding + 6px $container_padding + 10px;
+    margin: 2px;
+
+    @if $trans == 'true' {
+      border-image: url("assets/menu.svg") 20 20 23 20;
+    }
+  
+    @else {
+      border-image: url("assets/menu-solid.svg") 20 20 23 20;
+    }
 
     .item-box {
-      padding: 8px;
+      padding: $container_padding;
       border-radius: $bt_radius;
-      spacing: 8px;
+      spacing: $container_padding;
       margin: 2px;
 
       &:outlined {
