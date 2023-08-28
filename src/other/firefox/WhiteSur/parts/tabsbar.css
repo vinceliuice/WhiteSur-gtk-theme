@@ -343,7 +343,7 @@ tab[selected]:-moz-window-inactive {
 
 .tab-background {
 	background-color: transparent !important;
-	transition: all 200ms;
+	transition: background-color 200ms;
 }
 
 .tab-background, .tab-stack {
