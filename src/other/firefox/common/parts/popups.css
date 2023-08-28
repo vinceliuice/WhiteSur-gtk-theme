@@ -10,13 +10,14 @@ menupopup, panel {
 	--panel-border-radius: 12px !important;
 	--panel-padding: 6px !important;
 	--panel-shadow: var(--gnome-popover-shadow) !important;
-	--panel-shadow-margin: 3px 8px 13px !important;
+	/* --panel-shadow-margin: 3px 8px 13px !important; */
 	--panel-separator-color: var(--gnome-popover-separator-color) !important;
 	--panel-border-color: transparent !important;
 	--arrowpanel-border-radius: 12px !important;
 	--arrowpanel-background: var(--gnome-menu-background) !important;
 	--arrowpanel-border-color: transparent !important;
 	color: var(--gnome-toolbar-color) !important;
+	padding: 0 4px 9px !important;
 }
 
 .panel-arrowcontent {
