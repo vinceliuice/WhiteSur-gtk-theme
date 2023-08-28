@@ -112,7 +112,8 @@ tab[selected]:-moz-window-inactive {
 	justify-content: center !important;
 	align-items: center !important;
 	min-width: 44px !important;
-	padding: 2px 8px !important;
+	min-height: 32px !important;
+	padding: 0 8px !important;
 }
 
 /* Fix custom info tab icon */
