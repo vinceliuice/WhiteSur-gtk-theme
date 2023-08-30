@@ -17,7 +17,7 @@ menupopup, panel {
 	--arrowpanel-background: var(--gnome-menu-background) !important;
 	--arrowpanel-border-color: transparent !important;
 	color: var(--gnome-toolbar-color) !important;
-	padding: 0 4px 9px !important;
+	padding: 2px 4px 9px !important;
 }
 
 .panel-arrowcontent {
