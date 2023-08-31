@@ -74,6 +74,7 @@
     box-shadow: none;
 
     .app-well-app-running-dot {
+      background-color: if($variant == 'light', rgba(black, 0.75), rgba(white, 0.75));
       margin-bottom: 0 !important;
     }
 
