@@ -2732,7 +2732,32 @@ window#GearyMainWindow.background.csd { // <= 3.32
       &:last-child { @extend %side_headerbar_right; }
     }
 
-    > leaflet > headerbar { // right headerbar
+    > leaflet > leaflet > box { // >= 44.0
+      & > headerbar { @extend %side_headerbar_right; box-shadow: none; }
+
+      &:first-child > headerbar { @extend %side_headerbar_left; box-shadow: none; }
+
+      treeview.view.sidebar {
+        background-color: transparent;
+
+        &:hover {
+          color: $fg_color;
+          background-color: rgba($fg_color, 0.1);
+        }
+
+        &:selected {
+          color: $fg_color;
+          background-color: rgba($fg_color, 0.15);
+
+          &:hover {
+            background-color: rgba($fg_color, 0.12);
+          }
+        }
+      }
+    }
+
+    > leaflet > headerbar,
+    > leaflet > box > widget > headerbar { // right headerbar
       @extend %side_headerbar_right;
     }
   }
@@ -2826,6 +2851,27 @@ window#GearyMainWindow.background.csd { // <= 3.32
   }
 
   separator.geary-sidebar-pane-separator { background-color: $dark_sidebar_border; }
+
+  conversation-list { // center part >= 44.0
+    list#conversation-list {
+      padding: 6px;
+
+      > row.activatable.conversation-list {
+        border: none;
+        border-radius: $mn_radius;
+
+        &:not(:first-child) {
+          margin-top: 6px;
+        }
+      }
+
+      > separator {
+        background: none;
+        border: none;
+        min-height: 0;
+      }
+    }
+  }
 
   geary-conversation-viewer#conversation_viewer { // right side
     background-color: $base_color;
