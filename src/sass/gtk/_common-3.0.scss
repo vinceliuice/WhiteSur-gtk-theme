@@ -1669,8 +1669,8 @@ headerbar {
 
   // Headerbar Switches
   switch {
-    margin-top: $container_padding;
-    margin-bottom: $container_padding;
+    margin-top: ($headerbar_size - 24px) / 2;
+    margin-bottom: ($headerbar_size - 24px) / 2;
 
     &:backdrop { opacity: 0.75; }
   }

@@ -2098,8 +2098,8 @@ headerbar {
 
   // Headerbar Switches
   switch {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-top: ($headerbar_size - 24px) / 2;
+    margin-bottom: ($headerbar_size - 24px) / 2;
 
     &:backdrop { opacity: 0.75; }
   }
