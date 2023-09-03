@@ -2172,6 +2172,13 @@ headerbar {
       background-color: $header_bg_backdrop;
       border-color: if($variant=='light', lighten($header_border, 15%), darken($header_border, 3%));
     }
+
+    &.flat {
+      &, &:backdrop {
+        border: none;
+        background: none;
+      }
+    }
   }
 
   &.default-decoration {
