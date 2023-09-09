@@ -8,7 +8,7 @@ OPTIPNG="/usr/bin/optipng"
 for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey'; do
   for type in '' '-nord'; do
     SRC_FILE="thumbnail${theme}${type}.svg"
-    for color in '-light' '-dark'; do
+    for color in '-Light' '-Dark'; do
             echo
             echo Rendering thumbnail${color}${theme}${type}.png
             $INKSCAPE --export-id=thumbnail${color}${theme}${type} \

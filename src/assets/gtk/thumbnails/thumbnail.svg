@@ -6,7 +6,7 @@
    viewBox="0 0 39.688 39.688"
    id="svg1125"
    sodipodi:docname="thumbnail.svg"
-   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -21,17 +21,25 @@
      inkscape:pagecheckerboard="0"
      showgrid="false"
      inkscape:zoom="2.7294322"
-     inkscape:cx="54.223732"
-     inkscape:cy="44.514753"
+     inkscape:cx="54.40692"
+     inkscape:cy="44.881129"
      inkscape:window-width="1920"
-     inkscape:window-height="1010"
+     inkscape:window-height="1012"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg1125">
+     inkscape:current-layer="svg1125"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1">
     <inkscape:grid
        type="xygrid"
-       id="grid2024" />
+       id="grid2024"
+       originx="0"
+       originy="0"
+       spacingy="1"
+       spacingx="1"
+       units="px"
+       visible="false" />
   </sodipodi:namedview>
   <defs
      id="defs26">
@@ -259,7 +267,7 @@
        id="path81" />
   </g>
   <g
-     id="thumbnail-light"
+     id="thumbnail-Light"
      transform="translate(-.0918 -257.39)">
     <rect
        x="4.0605998"

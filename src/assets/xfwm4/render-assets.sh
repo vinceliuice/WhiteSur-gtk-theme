@@ -6,7 +6,7 @@ OPTIPNG="/usr/bin/optipng"
 INDEX="assets.txt"
 
 for i in `cat $INDEX`; do
-  for color in '-dark' '-light'; do
+  for color in '-Dark' '-Light'; do
     for theme in '' '-nord'; do
       for screen in '' '-hdpi' '-xhdpi'; do
         ASSETS_DIR="assets${color}${theme}${screen}"

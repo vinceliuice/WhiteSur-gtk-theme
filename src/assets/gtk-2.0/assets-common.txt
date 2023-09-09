@@ -22,6 +22,8 @@ menu-separator
 border
 button
 button-hover
+button-active
+button-active-hover
 toolbar-button-active
 toolbar-button-active-hover
 button-insensitive
@@ -58,8 +60,10 @@ combo-entry-insensitive-rtl
 combo-entry-notebook-rtl
 combo-entry-insensitive-notebook-rtl
 combo-entry-button
+combo-entry-button-active
 combo-entry-button-insensitive
 combo-entry-button-rtl
+combo-entry-button-active-rtl
 combo-entry-button-insensitive-rtl
 down-background
 up-background

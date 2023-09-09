@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-for color in '-light' '-dark'; do
+for color in '-Light' '-Dark'; do
 for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey'; do
   for type in '' '-nord'; do
     case "$theme" in
@@ -34,7 +34,7 @@ for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-
     esac
 
     if [[ "$type" == '-nord' ]]; then
-      if [[ "$color" == '-dark' ]]; then
+      if [[ "$color" == '-Dark' ]]; then
         bg_color='#2b303b'
         base_color='#1e222a'
       else
@@ -76,7 +76,7 @@ for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-
       rm -rf "assets${color}${theme}${type}.svg"
       cp -rf "assets${color}.svg" "assets${color}${theme}${type}.svg"
       sed -i "s/#0860F2/${theme_color}/g" "assets${color}${theme}${type}.svg"
-      if [[ "$color" == '-dark' ]]; then
+      if [[ "$color" == '-Dark' ]]; then
         sed -i "s/#333333/${bg_color}/g" "assets${color}${theme}${type}.svg"
         sed -i "s/#242424/${base_color}/g" "assets${color}${theme}${type}.svg"
       else

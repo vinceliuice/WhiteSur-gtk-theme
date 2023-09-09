@@ -82,8 +82,8 @@ for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-
       rm -rf "thumbnail${theme}.svg"
       cp -rf "thumbnail.svg" "thumbnail${theme}.svg"
       sed -i "s/#0860f2/${theme_color}/g" "thumbnail${theme}.svg"
-      sed -i "s/thumbnail-light/thumbnail-light${theme}/g" "thumbnail${theme}.svg"
-      sed -i "s/thumbnail-dark/thumbnail-dark${theme}/g" "thumbnail${theme}.svg"
+      sed -i "s/thumbnail-light/thumbnail-Light${theme}/g" "thumbnail${theme}.svg"
+      sed -i "s/thumbnail-dark/thumbnail-Dark${theme}/g" "thumbnail${theme}.svg"
     fi
   done
 done

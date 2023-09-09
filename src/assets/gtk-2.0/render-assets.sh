@@ -9,7 +9,7 @@ INDEX_THEME="assets-theme.txt"
 
 ./make-assets.sh
 
-for color in '-light' '-dark'; do
+for color in '-Light' '-Dark'; do
   for type in '' '-nord'; do
     ASSETS_DIR="assets-common${color}${type}"
     SRC_FILE="assets-common${color}${type}.svg"
@@ -38,7 +38,7 @@ for color in '-light' '-dark'; do
   done
 done
 
-for color in '-light' '-dark'; do
+for color in '-Light' '-Dark'; do
   for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey'; do
     for type in '' '-nord'; do
       ASSETS_DIR="assets${color}${theme}${type}"
@@ -69,7 +69,7 @@ for color in '-light' '-dark'; do
   done
 done
 
-for color in '-light' '-dark'; do
+for color in '-Light' '-Dark'; do
   for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey'; do
     for type in '' '-nord'; do
       if [[ "${theme}" == '' && "${type}" == '' ]]; then
