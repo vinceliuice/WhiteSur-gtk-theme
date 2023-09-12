@@ -52,6 +52,8 @@ $flap_sidebar_size: 240px;
     }
   }
 
+  headerbar > windowhandle > box { padding: 0 10px; }
+
   placessidebar.background {
     row.sidebar-row {
       .sidebar-icon { color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%)); }
@@ -142,10 +144,13 @@ $flap_sidebar_size: 240px;
 }
 
 #NautilusQueryEditor { // search entry
-  padding: 1px $container_padding;
+  padding: 0 $container_padding;
   border-spacing: 0;
+  margin: 9px 0 8px 0;
 
-  > * { margin: 0; }
+  > image, > box, > text {
+    margin: 0;
+  }
 
   #NautilusQueryEditorTag {
     @extend .entry-tag;
@@ -167,7 +172,7 @@ $flap_sidebar_size: 240px;
 #NautilusPathBar {
   background-color: $fill_color;
   border-radius: $bt_radius;
-  margin: $container_padding 0 $container_padding $container_padding;
+  margin: 8px 0 8px $container_padding;
 
   #NautilusPathButton {
     margin: 0 $container_padding / 2;

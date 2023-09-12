@@ -4946,7 +4946,7 @@ windowcontrols {
     &.close, &.maximize, &.minimize {
       min-width: 16px;
       min-height: 16px;
-      margin: 0;
+      margin: 8px 0;
       padding: ($menuitem_size - 20px) / 2 0;
       background-position: center;
       background-repeat: no-repeat;
