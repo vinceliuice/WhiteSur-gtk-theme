@@ -4916,7 +4916,7 @@ window {
 //
 
 windowcontrols {
-  border-spacing: 2px;
+  border-spacing: 6px;
   padding: 0 10px;
 
   &:not(.empty) {
@@ -4936,11 +4936,18 @@ windowcontrols {
   }
 
   button {
+    > image {
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      background-image: none;
+    }
+
     &.close, &.maximize, &.minimize {
       min-width: 16px;
       min-height: 16px;
       margin: 0;
-      padding: 0;
+      padding: ($menuitem_size - 20px) / 2 0;
       background-position: center;
       background-repeat: no-repeat;
       background-size: 16px 16px;

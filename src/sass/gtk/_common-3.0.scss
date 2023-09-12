@@ -1878,11 +1878,6 @@ headerbar {
       }
     }
   }
-
-  > box.left.horizontal,
-  > box.right.horizontal {
-    padding: 0 $container_padding;
-  }
 }
 
 .background:not(.unified) {
