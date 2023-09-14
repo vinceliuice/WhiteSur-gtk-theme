@@ -1998,7 +1998,7 @@ $pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
   }
 
   border-radius: 0;
-  margin: 0 0;
+  margin: 0;
   border-left-color: $borders_color; // this is actually the tree lines color,
   border-top-color: $borders_color; // while this is the grid lines color, better then nothing
 
