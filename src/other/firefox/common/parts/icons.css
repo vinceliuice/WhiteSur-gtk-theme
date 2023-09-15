@@ -6,7 +6,15 @@
 .autoscroller {
 	--panel-background: transparent !important;
 	--panel-border-color: transparent !important;
-	background-image: url("chrome://global/skin/icons/autoscroll.svg") !important;
+	background: #fff url('chrome://global/skin/icons/autoscroll.svg') no-repeat center !important;
+	border-radius: 50% !important;
+	padding: 0 !important;
+}
+.autoscroller[scrolldir='NS'] {
+	background-image: url('chrome://global/skin/icons/autoscroll-vertical.svg') !important;
+}
+.autoscroller[scrolldir='EW'] {
+	background-image: url('chrome://global/skin/icons/autoscroll-horizontal.svg') !important;
 }
 
 /* Built-in firefox icons color */
