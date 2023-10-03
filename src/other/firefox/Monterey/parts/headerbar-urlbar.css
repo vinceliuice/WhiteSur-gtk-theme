@@ -219,3 +219,37 @@ toolbarspring {
 	opacity: 0.8 !important;
 	fill: var(--gnome-toolbar-color) !important;
 }
+
+/*translations-button*/
+#translations-button[translationsactive] > #translations-button-icon {
+  fill: var(--theme-primary-active-color) !important;
+  fill-opacity: 1;
+}
+
+#translations-button-circle-arrows {
+  height: 16px;
+  width: 16px;
+  list-style-image: url("chrome://browser/skin/sync.svg");
+  fill: var(--theme-primary-active-color) !important;
+  fill-opacity: 1;
+  margin-inline: 1px;
+}
+
+#translations-button-locale {
+  background-color: var(--theme-primary-active-color) !important;
+  color: white !important;
+  border-radius: 4px;
+  font-size: 0.8em;
+  height: 20px;
+  min-width: 20px;
+  text-align: center;
+  padding-top: 3px;
+  padding-inline: 1px;
+  box-sizing: border-box;
+  margin-inline: 2px -2px;
+  margin-block: -2px;
+}
+
+#translations-button[translationsactive="true"] {
+  width: auto !important;
+}

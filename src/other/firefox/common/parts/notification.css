@@ -1,0 +1,202 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html "http://www.w3.org/1999/xhtml";
+
+.notificationbox-stack {
+  /* Prevent the animation from overlapping the navigation toolbar */
+  overflow: clip;
+}
+
+.notificationbox-stack[notificationside="top"] {
+  /* Create a stacking context for the box-shadow */
+  position: relative;
+  z-index: 1;
+}
+
+notification {
+  min-height: 32px;
+  padding-inline-start: 16px;
+  color: var(--gnome-toolbar-color);
+  background: var(--gnome-toolbar-background) !important;
+  border-color: var(--gnome-toolbar-border-color) !important;
+  border-style: solid;
+  border-width: 1px 0;
+  text-shadow: none;
+  font-size: 1.15em;
+  align-items: center !important;
+  vertical-align: middle !important;
+
+  --notification-background: var(--gnome-toolbar-background);
+  --notification-text: var(--gnome-toolbar-color);
+  --notification-border: var(--gnome-toolbar-border-color);
+  --notification-button-background: var(--gnome-button-background);
+  --notification-button-background-hover: var(--gnome-button-hover-background);
+  --notification-button-background-active: var(--gnome-button-active-background);
+  --notification-button-text: inherit;
+  --notification-primary-button-background: #0060df;
+  --notification-primary-button-background-hover: #003eaa;
+  --notification-primary-button-background-active: #002275;
+  --notification-primary-button-text: var(--gnome-toolbar-color);
+}
+
+notification:-moz-window-inactive {
+	background: var(--gnome-inactive-toolbar-background) !important;
+}
+
+notification description {
+	margin-bottom: 0 !important;
+}
+
+notification element {
+	vertical-align: middle !important;
+	margin-top: 0 !important;
+	margin-right: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  notification[type="info"]:-moz-lwtheme {
+    --notification-background: var(--gnome-toolbar-background);
+    --notification-text: var(--gnome-toolbar-color);
+  }
+
+  notification[type="info"] {
+    --notification-button-background: var(--gnome-button-background);
+    --notification-button-background-hover: var(--gnome-button-hover-background);
+    --notification-button-background-active: var(--gnome-button-active-background);
+  }
+}
+
+.notificationbox-stack[notificationside="top"] > notification {
+  border-top-style: none;
+}
+
+.notificationbox-stack[notificationside="bottom"] > notification {
+  border-bottom-style: none;
+}
+
+notification[type="warning"] {
+  --notification-background: #ffe900;
+  --notification-text: #0c0c0d;
+}
+
+notification[type="critical"] {
+  --notification-background: #d70022;
+  --notification-text: #fff;
+}
+
+notification[type="critical"] > .close-icon:hover {
+  background-color: color-mix(in srgb, currentColor 20%, transparent);
+}
+
+notification[type="critical"] > .close-icon:hover:active {
+  background-color: color-mix(in srgb, currentColor 30%, transparent);
+}
+
+.messageText {
+  margin-inline-start: 12px !important;
+  margin-block: 0;
+}
+
+.messageText > .text-link {
+  text-decoration: underline;
+  margin-block: 0;
+}
+
+.messageText > .text-link:not(.notification-link) {
+  color: inherit !important;
+  margin-inline: 0;
+}
+
+.messageImage {
+  width: 24px;
+  margin: 0;
+  -moz-context-properties: fill;
+  fill: currentColor;
+  vertical-align: middle !important;
+}
+
+notification[type="info"] > hbox > .messageImage {
+  list-style-image: url("chrome://global/skin/icons/help.svg");
+}
+
+notification[type="warning"] > hbox > .messageImage {
+  list-style-image: url("chrome://global/skin/icons/warning.svg");
+}
+
+notification[type="critical"] > hbox > .messageImage {
+  list-style-image: url("chrome://global/skin/icons/error.svg");
+}
+
+.messageCloseButton {
+  margin: 0 6px !important;
+  padding: 0;
+}
+
+.messageCloseButton > .toolbarbutton-icon {
+  padding: 6px;
+  width: 32px;
+  /* Close button needs to be clickable from the edge of the window */
+  margin-inline-end: 8px;
+}
+
+.messageCloseButton:focus-visible {
+  /* Override the dotted outline from button.css */
+  outline: none;
+}
+
+.messageCloseButton:focus-visible > .toolbarbutton-icon {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-inset);
+  border-radius: var(--toolbarbutton-border-radius, 4px);
+}
+
+.notification-button {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: var(--notification-button-background);
+  color: var(--notification-button-text);
+  padding: 0 6px;
+  margin: 4px 6px;
+  height: 24px;
+  vertical-align: middle !important;
+}
+
+.notification-button[disabled] {
+  opacity: 0.5;
+}
+
+.notification-button:not([disabled]):hover {
+  background-color: var(--notification-button-background-hover);
+}
+
+.notification-button:not([disabled]):hover:active {
+  background-color: var(--notification-button-background-active);
+}
+
+.notification-button:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.notification-button.primary {
+  background-color: var(--notification-primary-button-background);
+  color: var(--notification-primary-button-text);
+}
+
+.notification-button.primary:not([disabled]):hover {
+  background-color: var(--notification-primary-button-background-hover);
+}
+
+.notification-button.primary:not([disabled]):hover:active {
+  background-color: var(--notification-primary-button-background-active);
+}
+
+.notificationbox-stack {
+  background-color: var(--toolbar-bgcolor);
+  width: 100%;
+}
+

@@ -115,12 +115,16 @@
 	--gnome-tab-attention-icon-color: #718be8;
 
 	/* Switch */
-	--gnome-switch-background: #282828;
-	--gnome-switch-border-color: #1b1b1b;
+	--gnome-switch-background: #464646;
+	--gnome-switch-hover-background: #525252;
+	--gnome-switch-active-background: #606060;
+	--gnome-switch-border-color: transparent;
 	--gnome-switch-slider-background: linear-gradient(to bottom, #3c3c3c 20%, #353535 90%);
 	--gnome-switch-slider-border-color: #111111;
 	--gnome-switch-slider-box-shadow: inset 0 1px rgba(255, 255, 255, 0.02), 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
-	--gnome-switch-active-background: #15539e;
+	--gnome-switch-pressed-background: #315bef;
+	--gnome-switch-pressed-hover-background: #5073f1;
+	--gnome-switch-pressed-active-background: #6584f3;
 	--gnome-switch-active-border-color: #030c17;
 	--gnome-switch-active-slider-border-color: #030c17;
 

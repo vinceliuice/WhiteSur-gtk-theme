@@ -60,6 +60,7 @@ button.customizationmode-button {
 
 .permission-popup-permission-remove-button {
 	padding: 2px 4px !important;
+	align-items: center !important;
 }
 
 menulist {

@@ -114,14 +114,18 @@
 	--gnome-tab-attention-icon-color: #718be8;
 
 	/* Switch */
-	--gnome-switch-background: #e1dedb;
-	--gnome-switch-border-color: #cdc7c2;
+	--gnome-switch-background: #b2b2b2;
+	--gnome-switch-hover-background: #a0a0a0;
+	--gnome-switch-active-background: #929292;
+	--gnome-switch-border-color: transparent;
 	--gnome-switch-slider-background: linear-gradient(to bottom, white 10%, white 90%);
-	--gnome-switch-slider-border-color: #bfb8b1;
+	--gnome-switch-slider-border-color: #b8b8b8;
 	--gnome-switch-slider-box-shadow: inset 0 1px white, 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
-	--gnome-switch-active-background: #3584e4;
 	--gnome-switch-active-border-color: #185fb4;
 	--gnome-switch-active-slider-border-color: #185fb4;
+	--gnome-switch-pressed-background: #315bef;
+	--gnome-switch-pressed-hover-background: #5073f1;
+	--gnome-switch-pressed-active-background: #6584f3;
 
 	/* Dirty hacks for replaced symbolic icons, they load from
 	 * /usr/share/icons/<theme>/ and on some systems they need to be

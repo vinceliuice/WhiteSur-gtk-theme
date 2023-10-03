@@ -12,11 +12,11 @@
 @import "parts/tabsbar.css";
 @import "parts/findbar.css";
 @import "parts/dialogs.css";
+@import "parts/notification.css";
 @import "parts/video-player.css";
 @import "parts/remove-white-flash.css";
 @import "parts/custom-icons.css";
 @import "parts/icons.css";
-@import "parts/video-player.css";
 @import "colors/light.css";
 @import "colors/dark.css";
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";

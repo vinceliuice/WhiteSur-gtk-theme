@@ -108,6 +108,12 @@ arrowscrollbox[orient="horizontal"] {
 	margin: 2px 0;
 }
 
+/*translations-button*/
+#translations-button-icon {
+	list-style-image: url("../icons/translations.svg") !important;
+	margin-right: 0 !important;
+}
+
 /* Tree views */
 treechildren::-moz-tree-twisty {
 	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
