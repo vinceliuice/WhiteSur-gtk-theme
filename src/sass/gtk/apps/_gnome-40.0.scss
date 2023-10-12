@@ -262,52 +262,52 @@ window.background.csd {
 
       > stack.background { background-color: $base_color; }
     }
+  }
+}
 
-    preferencesgroup > box {
-      button.background-preview-button {
-        padding: $container_padding / 2;
-        outline: 2px solid transparent;
-        outline-offset: 0;
-        border-radius: $bt_radius + $container_padding / 2;
+preferencesgroup > box {
+  button.background-preview-button {
+    padding: $container_padding / 2;
+    outline: 2px solid transparent;
+    outline-offset: 0;
+    border-radius: $bt_radius + $container_padding / 2;
 
-        &, &:hover, &:active, &:checked {
-          background: none;
-          border: none;
-          box-shadow: none;
-        }
+    &, &:hover, &:active, &:checked {
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
 
-        &:hover {
-          outline-color: $alt_disabled_fg_color;
-        }
+    &:hover {
+      outline-color: $alt_disabled_fg_color;
+    }
 
-        &:active {
-          outline-color: $alt_fg_color;
-        }
+    &:active {
+      outline-color: $alt_fg_color;
+    }
 
-        &:checked {
-          outline-color: $selected_bg_color;
-        }
-      }
+    &:checked {
+      outline-color: $selected_bg_color;
+    }
+  }
 
-      flowbox.background-flowbox > flowboxchild {
-        outline: 2px solid transparent;
-        outline-offset: 0;
-        border-radius: $bt_radius + 3px;
-        padding: 3px;
+  flowbox.background-flowbox > flowboxchild {
+    outline: 2px solid transparent;
+    outline-offset: 0;
+    border-radius: $bt_radius + 3px;
+    padding: 3px;
 
-        &:hover {
-          outline-color: $alt_disabled_fg_color;
-        }
+    &:hover {
+      outline-color: $alt_disabled_fg_color;
+    }
 
-        &:active {
-          outline-color: $alt_fg_color;
-        }
+    &:active {
+      outline-color: $alt_fg_color;
+    }
 
-        &:selected {
-          outline-color: $selected_bg_color;
-          background-color: transparent;
-        }
-      }
+    &:selected {
+      outline-color: $selected_bg_color;
+      background-color: transparent;
     }
   }
 }
@@ -350,22 +350,6 @@ window.background {
         }
       }
     }
-
-    .current-week {
-      background-color: $fill_color;
-    }
-
-    button.circular.day {
-      border: none;
-      box-shadow: none;
-      @extend %flat_button;
-    }
-
-    datechooser navigator > button.flat.pill {
-      padding: 0 $container_padding * 2;
-      min-height: $menuitem_size;
-      min-width: $menuitem_size;
-    }
   }
 
   &.maximized, &.tiled {
@@ -380,6 +364,33 @@ window.background {
       }
     }
   }
+}
+
+datechooser {
+  .current-week {
+    background-color: $fill_color;
+  }
+  
+  button.circular.day {
+    border: none;
+    box-shadow: none;
+    @extend %flat_button;
+
+    &:selected {
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+    }
+  }
+
+  navigator > button.flat {
+    padding: 0;
+    min-height: $menuitem_size;
+    min-width: $menuitem_size;
+  }
+}
+
+agenda-view list.background {
+  background-color: transparent;
 }
 
 menubutton.flat.popup.sources-button {

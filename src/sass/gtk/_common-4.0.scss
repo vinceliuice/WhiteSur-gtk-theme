@@ -46,9 +46,8 @@ $list_shadow: if($variant == 'light',
   color: $text_color;
 
   > separator {
-    min-height: 1px;
-    background-color: $borders_color;
-    margin: $container_padding / 2 $container_padding * 2;
+    min-height: 0;
+    background-color: transparent;
   }
 }
 
@@ -114,11 +113,13 @@ $list_shadow: if($variant == 'light',
     border-top-left-radius: $bt_radius;
     border-bottom-left-radius: $bt_radius;
   }
+
   &:last-child {
     border-top-right-radius: $bt_radius;
     border-bottom-right-radius: $bt_radius;
     border-right-style: solid;
   }
+
   &:only-child {
     border-radius: $bt_radius;
     border-style: solid;
@@ -133,15 +134,18 @@ $list_shadow: if($variant == 'light',
 %linked_vertical{
   border-radius: 0;
   border-bottom-style: none;
+
   &:first-child {
     border-top-left-radius: $bt_radius;
     border-top-right-radius: $bt_radius;
   }
+
   &:last-child {
     border-bottom-left-radius: $bt_radius;
     border-bottom-right-radius: $bt_radius;
     border-bottom-style: solid;
   }
+
   &:only-child {
     border-radius: $bt_radius;
     border-style: solid;
