@@ -197,6 +197,7 @@ $panel_height: $menuitem_size;
     }
 
     &#panelActivities { // Activities button
+      -natural-hpadding: $base_padding * 2;
       background-image: url("assets/activities.svg");
       background-position: center center;
       background-size: 24px 24px;
@@ -208,6 +209,14 @@ $panel_height: $menuitem_size;
       font-size: 0;
 
       > * { width: $medium_size; }
+
+      StBoxLayout {
+        spacing: 0;
+      }
+
+      .workspace-dot {
+        background-color: transparent;
+      }
 
       &:active, &:overview, &:focus, &:checked {
         border: none;

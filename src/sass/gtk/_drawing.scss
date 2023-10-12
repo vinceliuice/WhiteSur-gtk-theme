@@ -494,41 +494,73 @@
   box-shadow: none;              //
 }
 
+@mixin undershoot($p, $c: $wm_shadow, $neighbor: false) {
 //
-// Undershoot
+// undershoot
 //
-@mixin undershoot($p) {
 // $p: position
+// $c: shade color
+// $neighbor: use ~ instead of >
 //
 // possible $p values:
 // top, bottom, right, left
 //
 
-  $_undershoot_color_dark: transparentize(black, 0.8);
-  $_undershoot_color_light: transparentize(white, 0.8);
+  $_border_pos: '';
+  $_direction: '';
+  $_selector: if($neighbor, '~', '>');
 
-  $_gradient_dir: left;
-  $_dash_bg_size: 10px 1px;
-  $_gradient_repeat: repeat-x;
-  $_bg_pos: center $p;
-
-  background-color: transparent; // shouldn't be needed, but better to be sure;
-
-  @if ($p == left) or ($p == right) {
-    $_gradient_dir: top;
-    $_dash_bg_size: 1px 10px;
-    $_gradient_repeat: repeat-y;
-    $_bg_pos: $p center;
+  @if $p==top {
+    $_direction: bottom;
+    $_border_pos: 0 1px;
+  } @else if $p==bottom {
+    $_direction: top;
+    $_border_pos: 0 -1px;
+  } @else if $p==left {
+    $_direction: right;
+    $_border_pos: 1px 0;
+  } @else if $p==right {
+    $_direction: left;
+    $_border_pos: -1px 0;
+  } @else {
+    @error "Unknown position #{$p}"
   }
-
-  background-image: linear-gradient(to $_gradient_dir, // this is the dashed line
-                                    $_undershoot_color_light 50%,
-                                    $_undershoot_color_dark 50%);
-
-  padding-#{$p}: 1px;
-  background-size: $_dash_bg_size;
-  background-repeat: $_gradient_repeat;
-  background-origin: content-box;
-  background-position: $_bg_pos;
-  border: none;
+  
+  #{$_selector} undershoot.#{$p} {
+    box-shadow: inset $_border_pos $borders_color;
+    background: linear-gradient(to $_direction, gtkalpha($c, .25), transparent 6px);
+  }
 }
+
+@mixin background-shadow($direction, $color) {
+  background-image:
+  linear-gradient($direction,
+                  gtkalpha($color, 0.7),
+                  gtkalpha($color, 0.14) 40px,
+                  gtkalpha($color, 0) 56px),
+  linear-gradient($direction,
+                  gtkalpha($color, 0.4),
+                  gtkalpha($color, 0.14) 7px,
+                  gtkalpha($color, 0) 24px);
+}
+
+@mixin transition-shadows($color) {
+  > dimming {
+    background: $color;
+  }
+  
+  > border {
+    background: none;
+  }
+  
+  > shadow {
+    min-width: 56px;
+    min-height: 56px;
+  
+    &.left  { @include background-shadow(to right,  $color); }
+    &.right { @include background-shadow(to left,   $color); }
+    &.up    { @include background-shadow(to bottom, $color); }
+    &.down  { @include background-shadow(to top,    $color); }
+  }
+}
+

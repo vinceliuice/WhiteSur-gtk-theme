@@ -1431,9 +1431,9 @@ row#AutostartTitle.tweak {
 // separator of sidebar on Gnome control center and Gnome tweaks
 window.background.csd {
   > hdyleaflet,
-  > leaflet, > leaflet.unfolded,
+  > leaflet,
   > box.horizontal {
-    > separator.vertical {
+    > separator {
       @extend %side_separator;
     }
 
@@ -1445,19 +1445,20 @@ window.background.csd {
   }
 
   > hdyleaflet > box.vertical > stack.main-container,
-  > leaflet > box.vertical > stack.main-container { // Right side
+  > leaflet > box.vertical > stack.main-container,
+  > leaflet > box.vertical:last-child > scrolledwindow { // Right side
     background-color: $base_color;
     border-bottom-right-radius: $wm_radius;
   }
 
   // sidebar on gnome tweak
-  list.tweak-categories {
-    background-image: none;
-    background-color: rgba($dark_sidebar_bg, 1);
+  list.tweak-categories,
+  > leaflet > box > scrolledwindow > viewport > list.navigation-sidebar {
+    @extend %side_style_left;
     border-radius: 0 0 0 $wm_radius;
 
     // Themed left sidebar
-    .tweak-category:not(:selected):not(:hover) {
+    > row:not(:selected):not(:hover) {
       background: none;
     }
 
@@ -1469,12 +1470,15 @@ window.background.csd {
   }
 
   &.maximized, &.tiled, &.fullscreen {
-    > hdyleaflet > box.vertical > stack.main-container {
+    > hdyleaflet > box.vertical > stack.main-container,
+    > leaflet > box.vertical > stack.main-container,
+    > leaflet > box.vertical:last-child > scrolledwindow {
       border-bottom-right-radius: $maximized_radius;
     }
 
     // sidebar on gnome tweak
-    .tweak-categories {
+    list.tweak-categories,
+    leaflet > box > scrolledwindow > viewport > list.navigation-sidebar {
       border-radius: 0 0 0 $maximized_radius;
     }
   }
@@ -1585,7 +1589,7 @@ window.background.csd {
   > leaflet > box.vertical > scrolledwindow.view, // > 3.38.0
   > hdyleaflet > box.vertical > scrolledwindow.view, // > 3.34.0
   > box.horizontal > box.vertical > scrolledwindow.view { // > 3.25.90
-    background-color: rgba($dark_sidebar_bg, 1);
+    @extend %side_style_left;
     border-bottom-left-radius: $wm_radius + 1px;
 
     > viewport.frame > stack {
@@ -1762,7 +1766,7 @@ window.background.csd {
   > overlay > leaflet,
   > deck > box > overlay > leaflet { // >= 40.0
     > stack {
-      background-color: rgba($dark_sidebar_bg, 1);
+      @extend %side_style_left;
       border-bottom-left-radius: $wm_radius;
     }
 
@@ -2725,7 +2729,7 @@ window#GearyMainWindow.background.csd { // <= 3.32
   }
 
   .geary-main-layout { // >= 40.0
-    background-color: $dark_sidebar_bg;
+    @extend %side_style_left;
 
     > leaflet > leaflet > headerbar { // left and center headerbar
       &:first-child { @extend %side_headerbar_left; background-color: transparent; }

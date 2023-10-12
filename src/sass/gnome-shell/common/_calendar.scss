@@ -158,6 +158,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     &:active { background-color: $track_color; }
   }
 
+  .calendar-day,
   .calendar-day-base {
     @include font(caption);
     text-align: center;
@@ -184,6 +185,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
       color: $fg_color;
       background-color: $track_color;
       border-color: transparent; //avoid jumparound due to today
+      box-shadow: none !important;
     }
 
     &.calendar-day-heading {  //day of week heading
@@ -260,9 +262,10 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     }
   }
 
+  .calendar-other-month,
   .calendar-other-month-day {
-    color: $disabled_fg_color;
-    opacity: 0.5;
+    color: $disabled_fg_color !important;
+    opacity: 1;
   }
 
   .calendar-week-number {
@@ -290,10 +293,12 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 // Events
 .events-button {
   .events-box {
+    color: $hint_fg_color;
     spacing: $base_spacing;
   }
 
   .events-list {
+    color: $hint_fg_color;
     spacing: 2 * $base_spacing;
     text-shadow: none;
   }

@@ -43,12 +43,15 @@
     min-height: $medium_size;
     border-radius: 0;
     transition-duration: 100ms;
+    border:L none;
+    box-shadow: none;
     border-bottom: 2px solid transparent;
+    background-color: transparent;
 
     &:hover {
       color: $light_fg_color;
       text-shadow: none;
-      border-color: $light_track_color
+      border-color: $light_track_color;
     }
 
     &:selected {

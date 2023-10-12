@@ -228,14 +228,42 @@ viewswitcherbar actionbar > revealer > box {
 }
 
 // AdwViewSwitcherTitle
+viewswitchertitle {
+  margin-top: 0;
+  margin-bottom: 0;
 
-viewswitchertitle viewswitcher {
-  margin-left: $container_padding * 2;
-  margin-right: $container_padding * 2;
+  viewswitcher {
+    margin-left: $container_padding * 2;
+    margin-right: $container_padding * 2;
+
+    &.narrow {
+      margin-top: 0;
+      margin-bottom: 0;
+
+      button.toggle {
+        > stack > box {
+          &.narrow {
+            padding-top: 0;
+            padding-bottom: 0;
+            border-spacing: 0;
+          }
+        }
+      }
+    }
+
+    &.wide {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  windowtitle {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 // AdwIndicatorBin
-
 indicatorbin {
   > indicator, > mask {
     min-width: $container_padding * 2;
@@ -326,6 +354,9 @@ tabbar {
     background-color: transparent;
 
     > separator {
+      margin: 0;
+      background-color: $borders_color;
+
       &.hidden {
         opacity: 0;
       }
@@ -442,8 +473,221 @@ tabbox:drop(active) {
   box-shadow: none;
 }
 
-// Sidebar
+// Transition shadows
+flap,
+leaflet,
+navigation-view,
+overlay-split-view {
+  @include transition-shadows($wm_shadow);
+}
 
-.unfolded stacksidebar.sidebar {
-  border: none;
+toolbarview.undershoot-top scrolledwindow {
+  @include undershoot(top);
+}
+
+toolbarview.undershoot-bottom scrolledwindow {
+  @include undershoot(bottom);
+}
+
+// Sidebar
+.unfolded stacksidebar.sidebar { border: none; }
+
+.sidebar-pane {
+  background-color: $dark_sidebar_bg;
+  color: $dark_sidebar_fg;
+
+  &:backdrop {
+    background-color: $dark_sidebar_bg;
+    // transition: background-color $longer_duration $deceleration_curve;
+  }
+
+  .sidebar,
+  .toolbar,
+  headerbar,
+  .navigation-sidebar,
+  searchbar > revealer > box {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  .toolbar {
+    padding: $container_padding $container_padding * 2;
+  }
+
+  .navigation-sidebar {
+    padding: $container_padding * 2;
+
+    > row {
+      &:selected {
+        background-color: $selected_bg_color;
+        color: $selected_fg_color;
+      }
+    }
+  }
+
+  toolbarview.undershoot-top scrolledwindow {
+    @include undershoot(top);
+  }
+
+  toolbarview.undershoot-bottom scrolledwindow {
+    @include undershoot(bottom);
+  }
+
+  scrolledwindow {
+    &.undershoot-top {
+      @include undershoot(top);
+    }
+
+    &.undershoot-bottom {
+      @include undershoot(bottom)
+    }
+
+    &.undershoot-start {
+      &:dir(ltr) { @include undershoot(left); }
+      &:dir(rtl) { @include undershoot(right); }
+    }
+
+    &.undershoot-end {
+      &:dir(ltr) { @include undershoot(right); }
+      &:dir(rtl) { @include undershoot(left); }
+    }
+  }
+
+  flap,
+  leaflet,
+  navigation-view,
+  overlay-split-view {
+    @include transition-shadows($wm_shadow);
+  }
+
+  banner > revealer > widget {
+    background-color: gtkmix($selected_bg_color, $dark_sidebar_bg, 30%);
+    color: $text_color;
+
+    &:backdrop {
+      background-color: gtkmix($selected_bg_color, $dark_sidebar_bg, 30%);
+    }
+  }
+
+  &:dir(ltr), &.end:dir(rtl) {
+    &, banner > revealer > widget {
+      box-shadow: inset -1px 0 6px rgba(black, if($variant == 'light', 0.04, 0.08));
+      border-right: 1px solid $dark_sidebar_border;
+    }
+  }
+
+  &:dir(rtl), &.end:dir(ltr) {
+    &, banner > revealer > widget {
+      box-shadow: inset 1px 0 6px rgba(black, if($variant == 'light', 0.04, 0.08));
+      border-left: 1px solid $dark_sidebar_border;
+    }
+  }
+}
+
+/* Middle pane in three-pane setups */
+.content-pane .sidebar-pane,
+.sidebar-pane .content-pane {
+  background-color: $base_color;
+  color: $text_color;
+
+  &:backdrop {
+    background-color: $base_color;
+    // transition: background-color $longer_duration $deceleration_curve;
+  }
+
+  toolbarview.undershoot-top scrolledwindow {
+    @include undershoot(top);
+  }
+
+  toolbarview.undershoot-bottom scrolledwindow {
+    @include undershoot(bottom);
+  }
+
+  scrolledwindow {
+    &.undershoot-top {
+      @include undershoot(top);
+    }
+
+    &.undershoot-bottom {
+      @include undershoot(bottom)
+    }
+
+    &.undershoot-start {
+      &:dir(ltr) { @include undershoot(left); }
+      &:dir(rtl) { @include undershoot(right); }
+    }
+
+    &.undershoot-end {
+      &:dir(ltr) { @include undershoot(right); }
+      &:dir(rtl) { @include undershoot(left); }
+    }
+  }
+
+  flap,
+  leaflet,
+  navigation-view,
+  overlay-split-view {
+    @include transition-shadows($wm_shadow);
+  }
+
+  banner > revealer > widget {
+    background-color: gtkmix($selected_bg_color, $base_color, 30%);
+    color: $text_color;
+
+    &:backdrop {
+      background-color: gtkmix($selected_bg_color, $base_color, 30%);
+    }
+  }
+
+  &:dir(ltr), &.end:dir(rtl) {
+    &, banner > revealer > widget {
+      box-shadow: inset -1px 0 6px rgba(black, if($variant == 'light', 0.04, 0.08));
+      border-right: 1px solid $dark_sidebar_border;
+    }
+  }
+
+  &:dir(rtl), &.end:dir(ltr) {
+    &, banner > revealer > widget {
+      box-shadow: inset 1px 0 6px rgba(black, if($variant == 'light', 0.04, 0.08));
+      border-left: 1px solid $dark_sidebar_border;
+    }
+  }
+}
+
+.sidebar-pane .sidebar-pane {
+  background-color: transparent;
+  color: inherit;
+}
+
+.content-pane {
+  background-color: $base_color;
+
+  toolbarview {
+    &, &.view {
+      background-color: transparent;
+    }
+
+    > stack, > box > stack.view {
+      background-color: transparent;
+    }
+  }
+}
+
+// Gnome >= 45.0
+.sidebar-pane,
+.content-pane {
+  headerbar {
+    &, &:backdrop {
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
+    }
+  }
+}
+
+.top-bar {
+  .collapse-spacing {
+    padding: 0;
+  }
 }

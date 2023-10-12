@@ -9,7 +9,7 @@ $nautilus_borders_color: if($variant=='light', darken(rgba($dark_sidebar_bg, 1),
 $flap_sidebar_size: 240px;
 
 @if $nautilus_style == 'stable' {
-  $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg $flap_sidebar_size,
+  $nautilus_header_image: linear-gradient(90deg, transparent $flap_sidebar_size,
                                                  $nautilus_borders_color $flap_sidebar_size,
                                                  $nautilus_borders_color ($flap_sidebar_size + 1px),
                                                  $base_color ($flap_sidebar_size + 1px));
@@ -19,7 +19,7 @@ $flap_sidebar_size: 240px;
 }
 
 @if $nautilus_style == 'glassy' {
-  $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg ($flap_sidebar_size / 2),
+  $nautilus_header_image: linear-gradient(90deg, transparent ($flap_sidebar_size / 2),
                                                  $dark_header_bg 40%);
 
   $nautilus_header_borders_image: linear-gradient(90deg, rgba($header_border, 0) (($flap_sidebar_size / 2) - 40px),
@@ -29,19 +29,23 @@ $flap_sidebar_size: 240px;
 .nautilus-window {
   @if $nautilus_style == 'stable' or $nautilus_style == 'glassy' {
     &.background.csd {
-      background-color: transparent;
+      &, &:backdrop {
+        background-color: $dark_sidebar_bg;
+      }
 
-      headerbar {
-        background-color: transparent;
-        border: none;
-        background-image: $nautilus_header_image;
-        border-image: $nautilus_header_borders_image 0 0 1 / 0px 0px 1px stretch;
+      &:not(.view) headerbar {
+        &, &:backdrop {
+          background-color: transparent;
+          border: none;
+          background-image: $nautilus_header_image;
+          border-image: $nautilus_header_borders_image 0 0 1 / 0px 0px 1px stretch;
+        }
       }
     }
   }
 
   @if $nautilus_style == 'stable' {
-    headerbar {
+    &:not(.view) headerbar {
       box.start > box {
         margin-left: 144px;
       }
@@ -54,19 +58,27 @@ $flap_sidebar_size: 240px;
 
   headerbar > windowhandle > box { padding: 0 10px; }
 
-  placessidebar.background {
-    row.sidebar-row {
-      .sidebar-icon { color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%)); }
+  placessidebar {
+    .navigation-sidebar > row {
+      &:selected {
+        background-color: if($variant == 'light', rgba(black, 0.15), rgba(white, 0.15));
+        color: $fg_color;
+      }
+
+      &.sidebar-row {
+        .sidebar-icon { color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%)); }
+      }
     }
   }
 
-  flap.unfolded {
-    > placessidebar.background {
-      background: none;
+  flap.unfolded,
+  .sidebar-pane {
+    &, &:backdrop {
+      background-color: transparent;
+    }
 
-      list.navigation-sidebar {
-        background-color: $dark_sidebar_bg;
-      }
+    placessidebar {
+      background: none;
     }
 
     > separator.horizontal {
@@ -74,8 +86,14 @@ $flap_sidebar_size: 240px;
     }
   }
 
+  flap.unfolded {
+    list.navigation-sidebar {
+      background-color: transparent;
+    }
+  }
+
   flap.folded {
-    > placessidebar {
+    placessidebar {
       border-right: 1px solid $header_border;
     }
   }
@@ -84,23 +102,29 @@ $flap_sidebar_size: 240px;
     .box {
       @if $monterey == 'false' {
         background-color: mix(black, $base_color, 6%);
+        border-top: 1px solid $borders_color;
       } @else {
         background-color: $base_color;
       }
+
+      tabbox { margin: 0 -3px; }
     }
   }
 
-  .nautilus-grid-view.view {
+  .nautilus-grid-view {
+    background-color: $base_color;
+
     child.activatable {
       border-radius: $bt_radius;
       @extend %row_activatable;
     }
   }
 
-  .nautilus-list-view.view {
+  .nautilus-list-view {
     padding: 0;
     margin: 0;
     border-spacing: 0;
+    background-color: $base_color;
 
     listview.view {
       padding: 0;
@@ -610,14 +634,14 @@ screenshot-carousel button,
   padding: $container_padding / 2 $container_padding * 1.5;
 }
 
-flowboxchild.card {
+.card flowboxchild.card {
   padding: 0;
   border: none;
   box-shadow: none;
   background: none;
 }
 
-button.card.category-tile {
+.category-tile.card {
   padding: $container_padding * 3.5;
   border: none;
   border-radius: $bt_radius;
@@ -630,6 +654,7 @@ button.card.category-tile {
     min-width: 130px;
     font-size: 105%;
     font-weight: normal;
+    box-shadow: none;
   }
 
   // Styling for specific category buttons.
@@ -740,10 +765,8 @@ clamp.large .category-tile:not(.category-tile-iconless) {
 
 // The rest of the featured-tile CSS is loaded at runtime in gs-feature-tile.c
 .featured-tile {
-  all: unset;
   padding: 0;
   box-shadow: none;
-  color: $fg_color;
 
   label.title-1 {
     margin-top: $container_padding;

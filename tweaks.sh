@@ -214,9 +214,9 @@ if [[ "${uninstall}" == 'true' ]]; then
   fi
 
   if [[ "${dash_to_dock}" == 'true' && "${gdm}" != 'true' ]]; then
-    prompt -i "Removing '${name}' Dash to Dock theme... \n"
+    prompt -i "Revert Dash to Dock theme... \n"
     revert_dash_to_dock_theme
-    prompt -s "Done! '${name}' Dash to Dock theme has been removed. \n"
+    prompt -s "Done! Dash to Dock theme has reverted to default. \n"
   fi
 
   if [[ "${firefox}" == 'true' && "${gdm}" != 'true' ]]; then
@@ -250,9 +250,9 @@ else
   fi
 
   if [[ "${dash_to_dock}" == 'true' && "${gdm}" != 'true' ]]; then
-    prompt -i "Installing '${name}' ${colors[0]} Dash to Dock theme... \n"
-    install_dash_to_dock_theme
-    prompt -s "Done! '${name}' Dash to Dock theme has been installed. \n"
+    prompt -i "Fix Dash to Dock theme issue... \n"
+    fix_dash_to_dock
+    prompt -s "Done! '${name}' Dash to Dock theme has been fixed. \n"
     prompt -w "DASH TO DOCK: You may need to logout to take effect. \n"
   fi
 
