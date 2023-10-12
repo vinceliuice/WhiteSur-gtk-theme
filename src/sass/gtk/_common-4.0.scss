@@ -35,8 +35,8 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 }
 
 $list_shadow: if($variant == 'light',
-                (inset 0 0 8px rgba(black, 0.02), inset 0 0 3px rgba(black, 0.01), inset 0 0 0 1px rgba(black, 0.04), inset 0 1px rgba(black, 0.05)),
-                (inset 0 0 8px rgba(white, 0.03), inset 0 0 3px rgba(white, 0.02), inset 0 0 0 1px rgba(white, 0.04), inset 0 1px rgba(white, 0.06)));
+                (inset 0 0 8px rgba(black, 0.01), inset 0 0 3px rgba(black, 0.01), inset 0 0 0 1px rgba(black, 0.04), inset 0 1px rgba(black, 0.05)),
+                (inset 0 0 8px rgba(white, 0.01), inset 0 0 3px rgba(white, 0.02), inset 0 0 0 1px rgba(white, 0.04), inset 0 1px rgba(white, 0.06)));
 
 %circular_list {
   border-radius: $bd_radius;
@@ -68,7 +68,7 @@ $list_shadow: if($variant == 'light',
     border-radius: $bd_radius;
   }
 
-  + row {
+  & + row {
     border-top: 1px solid transparent;
     border-image: linear-gradient(to right,
                                   transparent 0%,
@@ -77,6 +77,12 @@ $list_shadow: if($variant == 'light',
                                   $menu_bd 98%,
                                   transparent 98%,
                                   transparent 100%) 1 0 0 0 / 1px 0 0 0 stretch;
+  }
+
+  &:hover, &:active, &:selected {
+    &, & + row {
+      border-image: none;
+    }
   }
 }
 
@@ -920,7 +926,7 @@ button {
 
   @at-root %pill_button,
   &.pill {
-    padding: $container_padding * 1.5 $container_padding * 5;
+    padding: $container_padding $container_padding * 3;
     border-radius: $circular_radius;
   }
 
