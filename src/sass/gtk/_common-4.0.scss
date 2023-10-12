@@ -2703,7 +2703,7 @@ popover.menu {
     &:hover {
       color: $selected_fg_color;
       background-color: $selected_bg_color;
-      transition: background-color $shorter_duration $deceleration_curve;
+      transition: background-color 50ms $deceleration_curve;
 
       arrow { color: $selected_fg_color; }
     }
