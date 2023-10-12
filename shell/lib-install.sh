@@ -563,7 +563,7 @@ fix_whiskermenu() {
     sed -i "s|.*menu-opacity=.*|menu-opacity=95|" "$HOME/.config/xfce4/panel/whiskermenu"*".rc"
   fi
 
-  if (pgrep xfce4-session &> /dev/null); then
+  if pgrep xfce4-session &> /dev/null && [ "$(id -u)" -ne 0 ]; then
     xfce4-panel -r
   fi
 }
