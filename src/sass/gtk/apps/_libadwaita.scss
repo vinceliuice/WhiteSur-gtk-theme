@@ -527,30 +527,30 @@ toolbarview.undershoot-bottom scrolledwindow {
   }
 
   toolbarview.undershoot-top scrolledwindow {
-    @include undershoot(top);
+    @include undershoot(top, $style: 'compact');
   }
 
   toolbarview.undershoot-bottom scrolledwindow {
-    @include undershoot(bottom);
+    @include undershoot(bottom, $style: 'compact');
   }
 
   scrolledwindow {
     &.undershoot-top {
-      @include undershoot(top);
+      @include undershoot(top, $style: 'compact');
     }
 
     &.undershoot-bottom {
-      @include undershoot(bottom)
+      @include undershoot(bottom, $style: 'compact');
     }
 
     &.undershoot-start {
-      &:dir(ltr) { @include undershoot(left); }
-      &:dir(rtl) { @include undershoot(right); }
+      &:dir(ltr) { @include undershoot(left, $style: 'compact'); }
+      &:dir(rtl) { @include undershoot(right, $style: 'compact'); }
     }
 
     &.undershoot-end {
-      &:dir(ltr) { @include undershoot(right); }
-      &:dir(rtl) { @include undershoot(left); }
+      &:dir(ltr) { @include undershoot(right, $style: 'compact'); }
+      &:dir(rtl) { @include undershoot(left, $style: 'compact'); }
     }
   }
 
@@ -597,30 +597,30 @@ toolbarview.undershoot-bottom scrolledwindow {
   }
 
   toolbarview.undershoot-top scrolledwindow {
-    @include undershoot(top);
+    @include undershoot(top, $style: 'compact');
   }
 
   toolbarview.undershoot-bottom scrolledwindow {
-    @include undershoot(bottom);
+    @include undershoot(bottom, $style: 'compact');
   }
 
   scrolledwindow {
     &.undershoot-top {
-      @include undershoot(top);
+      @include undershoot(top, $style: 'compact');
     }
 
     &.undershoot-bottom {
-      @include undershoot(bottom)
+      @include undershoot(bottom, $style: 'compact');
     }
 
     &.undershoot-start {
-      &:dir(ltr) { @include undershoot(left); }
-      &:dir(rtl) { @include undershoot(right); }
+      &:dir(ltr) { @include undershoot(left, $style: 'compact'); }
+      &:dir(rtl) { @include undershoot(right, $style: 'compact'); }
     }
 
     &.undershoot-end {
-      &:dir(ltr) { @include undershoot(right); }
-      &:dir(rtl) { @include undershoot(left); }
+      &:dir(ltr) { @include undershoot(right, $style: 'compact'); }
+      &:dir(rtl) { @include undershoot(left, $style: 'compact'); }
     }
   }
 

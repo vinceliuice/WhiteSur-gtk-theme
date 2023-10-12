@@ -494,7 +494,7 @@
   box-shadow: none;              //
 }
 
-@mixin undershoot($p, $c: $wm_shadow, $neighbor: false) {
+@mixin undershoot($p, $c: $wm_shadow, $neighbor: false, $style: default) {
 //
 // undershoot
 //
@@ -525,9 +525,9 @@
   } @else {
     @error "Unknown position #{$p}"
   }
-  
+
   #{$_selector} undershoot.#{$p} {
-    box-shadow: inset $_border_pos $borders_color;
+    box-shadow: if($style == 'default', none, inset $_border_pos $borders_color);
     background: linear-gradient(to $_direction, gtkalpha($c, .25), transparent 6px);
   }
 }
