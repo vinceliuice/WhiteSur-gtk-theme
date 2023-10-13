@@ -109,7 +109,7 @@
   }
 
   .message-title {
-    padding-top: 0.35em !important;
+    padding-top: 0.57em;
     // color: $fg_color;
     font-weight: bold;
   }
@@ -148,7 +148,7 @@
 }
 
 .message-media-control {
-  margin: 18px 4px !important;
+  margin: 20px 4px !important;
   padding: 8px !important;
   border-radius: $circular_radius;
   color: $alt_fg_color;
@@ -164,14 +164,14 @@
 
 // album-art
 .media-message-cover-icon {
-  icon-size: 32px !important;
-  margin: 0 0 0 4px !important;
+  icon-size: $base_icon_size * 2 !important;
+  margin-left: $base_padding !important;
 
-  &:rtl { margin: 0 4px 0 0 !important; }
+  &:rtl { margin-right: $base_padding !important; }
 
   &.fallback {
-    icon-size: 16px !important;
-    padding: 8px;
+    icon-size: $base_icon_size * 2 !important;
+    padding: 4px;
     border: none;
     border-radius: $bt_radius;
     background-color: $divider_color;
