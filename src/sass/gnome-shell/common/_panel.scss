@@ -49,7 +49,7 @@ $panel_height: $menuitem_size;
 
 #panel {
   background-color: $panel_bg;
-  font-weight: normal;
+  font-weight: 500;
   color: $panel_fg;
   font-feature-settings: "tnum";
   transition-duration: 250ms;
@@ -71,7 +71,6 @@ $panel_height: $menuitem_size;
   .panel-button {
     -natural-hpadding: 12px;
     -minimum-hpadding: 12px;
-    font-weight: normal;
     color: $panel_fg;
     transition-duration: 150ms;
     border-radius: $bt_radius;
