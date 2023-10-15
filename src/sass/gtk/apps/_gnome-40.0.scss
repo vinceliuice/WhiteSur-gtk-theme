@@ -231,7 +231,8 @@ window.nightthemeswitcher headerbar {
 //
 
 window.background.csd {
-  > contents {
+  > contents,
+  > widget { // 44.0
     > leaflet.unfolded > box {
       > headerbar {
         @extend %side_headerbar_left;
