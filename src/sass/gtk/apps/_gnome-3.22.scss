@@ -2737,9 +2737,13 @@ window#GearyMainWindow.background.csd { // <= 3.32
     }
 
     > leaflet > leaflet > box { // >= 44.0
-      & > headerbar { @extend %side_headerbar_right; box-shadow: none; }
+      > headerbar { @extend %side_headerbar_right; box-shadow: none; }
 
       &:first-child > headerbar { @extend %side_headerbar_left; box-shadow: none; }
+
+      > scrolledwindow {
+        background-image: $side_style_shadow;
+      }
 
       treeview.view.sidebar {
         background-color: transparent;
@@ -2799,16 +2803,16 @@ window#GearyMainWindow.background.csd { // <= 3.32
 
     scrolledwindow {
       // margin: -1px 0;
-      padding: 0 4px;
+      padding: 0 $container_padding / 2;
       background-color: $base_color;
 
       treeview.view {
         background-image: none;
         border: 2px solid transparent;
-        border-radius: $mn_radius;
+        border-radius: $bt_radius;
         outline: none;
-        padding: 6px 0;
-        margin: 0 4px;
+        padding: $container_padding $container_padding * 1.5;
+        margin: 0 $container_padding / 2;
 
         &:hover {
           background-color: rgba($fg_color, 0.1);
@@ -2858,21 +2862,27 @@ window#GearyMainWindow.background.csd { // <= 3.32
 
   conversation-list { // center part >= 44.0
     list#conversation-list {
-      padding: 6px;
+      padding: $container_padding;
 
       > row.activatable.conversation-list {
         border: none;
-        border-radius: $mn_radius;
+        border-radius: $bt_radius;
+        padding: $container_padding;
 
-        &:not(:first-child) {
-          margin-top: 6px;
+        > widget > box > box {
+          padding: $container_padding / 2;
+        }
+
+        button.flat {
+          padding: 4px 0;
+          border-radius: $circular_radius;
         }
       }
 
       > separator {
-        background: none;
+        background-color: $menu_bd;
         border: none;
-        min-height: 0;
+        margin: $container_padding / 2 $container_padding * 2;
       }
     }
   }
