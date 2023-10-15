@@ -688,8 +688,8 @@ $_dot_color: $selected_bg_color;
 %flat_button {
   @include button(flat-normal);
   &:hover { @include button(flat-hover); }
-  &:active, &:active:hover { @include button(flat-active); }
-  &:checked, &:checked:hover { @include button(flat-checked); }
+  &:active { @include button(flat-active); }
+  &:checked { @include button(flat-checked); }
   &:disabled { @include button(flat-insensitive); }
 }
 
@@ -739,6 +739,7 @@ button {
   }
 
   &:active, &:checked {
+    @include button(active);
     background-clip: if($variant=='light', border-box, padding-box);
     transition-duration: 200ms;
 
@@ -747,33 +748,13 @@ button {
 
   &:disabled {
     @include button(insensitive);
-  }
 
-  .background & {
     &:active, &:checked {
-      @include button(active);
-    }
-
-    &:disabled {
-      &:active, &:checked {
-        @include button(insensitive-active);
-      }
+      @include button(insensitive-active);
     }
   }
 
-  .background &.flat { // reset
-    &:active, &:checked {
-      @include button(flat-active);
-    }
-
-    &:disabled {
-      &:active, &:checked {
-        @include button(flat-insensitive-active);
-      }
-    }
-  }
-
-  &.image-button:not(.circular), &.popup:not(.circular) {
+  &.image-button, &.popup {
     min-height: $menuitem_size - 4px;
     min-width: $menuitem_size - 4px;
     padding-left: $container_padding - 2px;
@@ -811,8 +792,11 @@ button {
     &.popup { padding-right: $container_padding; padding-left: $container_padding; }
   }
 
-  &.close, &.circular, &.circular.flat,
-  &.image-button.close:not(.circular) { // The Bloody Circul Button
+  &.close,
+  &.circular,
+  &.circular.image-button,
+  &.circular.flat,
+  &.image-button.close { // The Bloody Circul Button
     @extend %circular_button;
 
     &:active, &:checked {
@@ -2514,16 +2498,19 @@ notebook {
     }
 
     button.flat.toggle.popup {
-      min-width: $medium_size;
       border: none;
       box-shadow: none;
-      border-radius: $bt_radius;
-      padding: 0 $container_padding / 2;
 
       @if $monterey == 'true' {
+        min-width: $medium_size;
         margin-top: -2px;
         margin-bottom: -2px;
         margin-left: $container_padding / 2;
+        border-radius: $bt_radius;
+        padding: 0 $container_padding / 2;
+      } @else {
+        border-radius: 0;
+        padding: 0;
       }
 
       &:active, &:checked {
@@ -2625,36 +2612,26 @@ notebook {
       button.flat,
       button.close-button,
       button.image-button.flat {
+        border: none;
+        box-shadow: none;
         border-radius: 3px;
         padding: 0;
-        color: mix($bg_color, $fg_color, 35%);
+        color: $alt_fg_color;
+        min-height: 16px;
+        min-width: 16px;
+        margin-top: 4px;
+        margin-bottom: 4px;
         margin-left: $container_padding / 2;
-        margin-right: -$container_padding;
-
-        @if $monterey == 'false' {
-          min-height: $small_size;
-          min-width: $small_size;
-          margin-top: 2px;
-          margin-bottom: 2px;
-        } @else {
-          min-height: 16px;
-          min-width: 16px;
-          margin-top: 4px;
-          margin-bottom: 4px;
-          margin-left: $container_padding / 2;
-          margin-right: -$container_padding / 2;
-        }
+        margin-right: -$container_padding / 2;
 
         &:hover {
-          @extend %undecorated_button;
           color: $fg_color;
-          background-color: rgba($borders_color, 0.1);
+          background-color: rgba($fg_color, 0.1);
         }
 
         &:active {
-          @extend %undecorated_button;
           color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
-          background-color: rgba($borders_color, 0.2);
+          background-color: rgba($fg_color, 0.2);
         }
       }
     }

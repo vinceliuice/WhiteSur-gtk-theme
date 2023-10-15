@@ -546,7 +546,7 @@
 
 @mixin transition-shadows($color) {
   > dimming {
-    background: $color;
+    background: none;
   }
   
   > border {

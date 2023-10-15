@@ -413,6 +413,18 @@ window.background.csd {
   }
 }
 
+notebook.tilix-background {
+  > header {
+    > tabs > tab {
+      button.tilix-small-button {
+        padding: 0; // not use ?
+        min-height: 16px;
+        min-width: 16px;
+      }
+    }
+  }
+}
+
 //
 // Lollypop
 //

@@ -478,7 +478,7 @@ flap,
 leaflet,
 navigation-view,
 overlay-split-view {
-  @include transition-shadows($wm_shadow);
+  @include transition-shadows($dark_borders_color);
 }
 
 toolbarview.undershoot-top scrolledwindow {
@@ -558,7 +558,7 @@ toolbarview.undershoot-bottom scrolledwindow {
   leaflet,
   navigation-view,
   overlay-split-view {
-    @include transition-shadows($wm_shadow);
+    @include transition-shadows($dark_borders_color);
   }
 
   banner > revealer > widget {
@@ -628,7 +628,7 @@ toolbarview.undershoot-bottom scrolledwindow {
   leaflet,
   navigation-view,
   overlay-split-view {
-    @include transition-shadows($wm_shadow);
+    @include transition-shadows($dark_borders_color);
   }
 
   banner > revealer > widget {

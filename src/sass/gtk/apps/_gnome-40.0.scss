@@ -319,7 +319,8 @@ preferencesgroup > box {
 //
 
 window.background {
-  > contents > toastoverlay > leaflet {
+  > contents > toastoverlay > leaflet,
+  > widget > toastoverlay > leaflet { // 44.0
     > box {
       background-color: $base_color;
 
@@ -354,7 +355,8 @@ window.background {
   }
 
   &.maximized, &.tiled {
-    > contents > toastoverlay > leaflet {
+    > contents > toastoverlay > leaflet,
+    > widget > toastoverlay > leaflet {
       > box {
         > headerbar {
           &, &:backdrop {
@@ -646,7 +648,7 @@ screenshot-carousel button,
   padding: $container_padding / 2 $container_padding * 1.5;
 }
 
-.card flowboxchild.card {
+flowboxchild.card:not(.category-tile) {
   padding: 0;
   border: none;
   box-shadow: none;

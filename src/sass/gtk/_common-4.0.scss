@@ -2954,36 +2954,26 @@ notebook {
       button.flat,
       button.close-button,
       button.image-button.flat {
+        border: none;
+        box-shadow: none;
         border-radius: 3px;
         padding: 0;
-        color: mix($bg_color, $fg_color, 35%);
+        color: $alt_fg_color;
+        min-height: 16px;
+        min-width: 16px;
+        margin-top: 4px;
+        margin-bottom: 4px;
         margin-left: $container_padding / 2;
-        margin-right: -$container_padding;
-
-        @if $monterey == 'false' {
-          min-height: $small_size;
-          min-width: $small_size;
-          margin-top: 2px;
-          margin-bottom: 2px;
-        } @else {
-          min-height: 16px;
-          min-width: 16px;
-          margin-top: 4px;
-          margin-bottom: 4px;
-          margin-left: $container_padding / 2;
-          margin-right: -$container_padding / 2;
-        }
+        margin-right: -$container_padding / 2;
 
         &:hover {
-          @extend %undecorated_button;
           color: $fg_color;
-          background-color: rgba($borders_color, 0.1);
+          background-color: rgba($fg_color, 0.1);
         }
 
         &:active {
-          @extend %undecorated_button;
           color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
-          background-color: rgba($borders_color, 0.2);
+          background-color: rgba($fg_color, 0.2);
         }
       }
     }
