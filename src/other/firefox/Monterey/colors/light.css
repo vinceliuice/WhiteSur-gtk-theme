@@ -134,4 +134,32 @@
 	--gnome-convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%) invert(100%);
 	--gnome-icons-hack-filter: none;
 	--gnome-window-icons-hack-filter: invert(30%);
+
+	/* Private window colors */
+	--gnome-private-accent: #1c71d8;
+
+	/* Toolbars */
+	--gnome-private-toolbar-background: var(--gnome-headerbar-background);
+	--gnome-private-inactive-toolbar-background: var(--gnome-inactive-headerbar-background);
+	/* Menus */
+	--gnome-private-menu-background: #ffffff;
+	/* Header bar */
+	--gnome-private-headerbar-background: #D7E3F0;
+	--gnome-private-inactive-headerbar-background: var(--gnome-private-toolbar-background);
+	/* Tabs */
+	--gnome-private-tabbar-tab-hover-background: #cbd7e3; /* Hardcoded color */
+	--gnome-private-tabbar-tab-active-background: #c6d1dd; /* Hardcoded color */
+	--gnome-private-tabbar-tab-active-background-contrast: #a9b6c4; /* Hardcoded color */
+	--gnome-private-tabbar-tab-active-hover-background: #c0cbd7; /* Hardcoded color */
+	--gnome-private-inactive-tabbar-tab-hover-background: #e4e9f0; /* Hardcoded color */
+	--gnome-private-inactive-tabbar-tab-active-background: #e1e7ed; /* Hardcoded color */
+
+	/* Text color for Firefox Logo in new private tab */
+	--gnome-private-wordmark: #20123A;
+
+	/* New private tab background */
+	--gnome-private-in-content-page-background: #FAFAFA;
+
+	/* Private browsing info box */
+	--gnome-private-text-primary-color: #15141A;
 }

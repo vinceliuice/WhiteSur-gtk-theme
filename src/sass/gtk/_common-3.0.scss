@@ -28,7 +28,7 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
   -gtk-secondary-caret-color: $selected_bg_color;
 }
 
-$side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light', 0.04, 0.12)), transparent 6px);
+$side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light', 0.02, 0.1)), transparent 6px);
 
 %side_style_left {
   background-image: $side_style_shadow;

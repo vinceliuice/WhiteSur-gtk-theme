@@ -2,6 +2,11 @@
 
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+/* Hide tabsbar default private browsing indicator */
+#private-browsing-indicator-with-label {
+	display: none !important;
+}
+
 :root[privatebrowsingmode="temporary"] #nav-bar toolbarspring:first-of-type:before {
 	background: url("../icons/user-not-tracked.svg") no-repeat;
 	background-size: contain;
