@@ -957,6 +957,12 @@ customize_theme() {
     sed $SED_OPT "/\$showapps_button/s/bigsur/normal/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
+  # Change gnome-shell panel activities button style
+  if [[ "${default_activities}" == 'true' ]]; then
+    prompt -s "Changing gnome-shell panel activities button style ...\n"
+    sed $SED_OPT "/\$activities/s/apple/normal/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
   # Change panel font color
   if [[ "${monterey}" == 'true' ]]; then
     black_font="true"

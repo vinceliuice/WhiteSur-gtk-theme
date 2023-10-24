@@ -47,6 +47,61 @@ $panel_height: $menuitem_size;
   }
 }
 
+%normal_activites {
+  -natural-hpadding: $base_padding * 3;
+  color: $panel_fg;
+
+  StBoxLayout {
+    spacing: $container_padding;
+  }
+
+  .workspace-dot {
+    background-color: $panel_fg;
+  }
+
+  &:overview {
+    .workspace-dot {
+      background-color: $light_fg_color;
+    }
+  }
+}
+
+%apple_activites {
+  -natural-hpadding: $base_padding * 2;
+  background-image: url("assets/activities.svg");
+  background-position: center center;
+  background-size: 24px 24px;
+  width: 24px;
+  height: 24px;
+  color: transparent;
+  font-size: 0;
+
+  > * { width: $medium_size; }
+
+  StBoxLayout {
+    spacing: 0;
+  }
+
+  .workspace-dot {
+    background-color: transparent;
+  }
+
+  &:active, &:overview, &:focus, &:checked {
+    border: none;
+    color: transparent;
+  }
+
+  &:overview { background-color: transparent; }
+
+  @if $variant == 'light' {
+    @if $panel_font == 'black' or $trans == 'false' {
+      &:overview {
+        background-image: url("assets/activities-white.svg");
+      }
+    }
+  }
+}
+
 #panel {
   background-color: $panel_bg;
   font-weight: 500;
@@ -196,41 +251,13 @@ $panel_height: $menuitem_size;
     }
 
     &#panelActivities { // Activities button
-      -natural-hpadding: $base_padding * 2;
-      background-image: url("assets/activities.svg");
-      background-position: center center;
-      background-size: 24px 24px;
-      width: 24px;
-      height: 24px;
       background-gradient-direction: none;
       border: none;
-      color: transparent;
-      font-size: 0;
 
-      > * { width: $medium_size; }
-
-      StBoxLayout {
-        spacing: 0;
-      }
-
-      .workspace-dot {
-        background-color: transparent;
-      }
-
-      &:active, &:overview, &:focus, &:checked {
-        border: none;
-        color: transparent;
-        // background-image: url("assets/activities-active.svg");
-      }
-
-      &:overview { background-color: transparent; }
-
-      @if $variant == 'light' {
-        @if $panel_font == 'black' or $trans == 'false' {
-          &:overview {
-            background-image: url("assets/activities-white.svg");
-          }
-        }
+      @if $activities == 'apple' {
+        @extend %apple_activites;
+      } @else {
+        @extend %normal_activites;
       }
     }
   }

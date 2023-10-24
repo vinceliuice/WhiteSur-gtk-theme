@@ -74,7 +74,7 @@ UnityPanelWidget,
   background-color: lighten($header_bg, 8);
   border-radius: 0px;
   padding: 0px;
-  color: white;
+  color: $header_fg;
 }
 
 .lightdm.menu .menuitem *,
