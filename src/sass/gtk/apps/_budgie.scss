@@ -445,6 +445,10 @@ $raven_padding: 8px;
     .container { padding: 2px $container_padding $container_padding; }
 
     flowboxchild { padding: 0; }
+
+    separator {
+      margin: $container_padding / 2 $container_padding;
+    }
   }
 
   // &.budgie-screenshot-applet {
@@ -466,7 +470,7 @@ window.budgie-popover:not(.csd) {
 }
 
 // FIXME: workspace has unnecessary/unknown margin
-.workspace-switcher {
+.budgie-panel.background .workspace-switcher {
   .workspace-layout {
     border: 0 solid $borders_color;
 
@@ -480,8 +484,7 @@ window.budgie-popover:not(.csd) {
     .right & { border-top-width: 1px; }
   }
 
-  .workspace-item,
-  .workspace-add-button {
+  .workspace-item {
     border: 0 solid $borders_color;
 
     .top &,
@@ -501,22 +504,16 @@ window.budgie-popover:not(.csd) {
   }
 
   .workspace-add-button {
-    background-color: transparent;
-    background-image: none;
     @extend %budgie_button;
-
-    &:hover { box-shadow: none; }
-    &:active { background-image: none; }
-    &:active image { margin: 1px 0 -1px; }
+    padding: $container_padding;
+    border-radius: $bt_radius;
   }
 
   .workspace-icon-button {
-    .budgie-panel.background & { // to overwrite the .budgie-panel button style below
-      min-height: 24px;
-      min-width: 24px;
-      padding: 0;
-      border-radius: $bt_radius;
-    }
+    min-height: 24px;
+    min-width: 24px;
+    padding: 0;
+    border-radius: $bt_radius;
   }
 }
 
