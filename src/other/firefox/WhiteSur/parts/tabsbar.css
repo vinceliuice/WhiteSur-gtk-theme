@@ -351,14 +351,14 @@ tab[selected]:-moz-window-inactive {
 }
 
 /* Tab hover */
-#TabsToolbar .tabbrowser-tab:not([selected=true]):hover > .tab-stack > .tab-background {
+#TabsToolbar .tabbrowser-tab:not([selected=true]):hover .tab-background {
 	background-color: var(--gnome-tabbar-tab-active-hover-background) !important;
 	border-image: none !important;
 	box-shadow: inset 0 1px var(--gnome-toolbar-border-color), inset 0 -1px var(--gnome-toolbar-border-color) !important;
 }
 
 /* Active tab */
-#TabsToolbar .tabbrowser-tab[selected=true] > .tab-stack > .tab-background {
+.tab-background:is([selected]) {
 	background-color: var(--gnome-tabbar-tab-active-background) !important;
 	background-image: none !important;
 	border: none !important;
@@ -372,13 +372,14 @@ tab[selected]:-moz-window-inactive {
 	            inset 0 -1px var(--gnome-toolbar-border-color) !important;
 }
 
-#TabsToolbar .tabbrowser-tab[selected=true] > .tab-stack > .tab-background:-moz-window-inactive {
+.tab-background:is([selected]):-moz-window-inactive {
 	background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
 	border-image: none !important;
 }
 
 /* Tabs scroll buttons hover */
-#TabsToolbar .scrollbutton-up:not([disabled]):hover, #TabsToolbar .scrollbutton-down:not([disabled]):hover {
+#TabsToolbar .scrollbutton-up:not([disabled]):hover,
+#TabsToolbar .scrollbutton-down:not([disabled]):hover {
 	background-color: var(--gnome-tabbar-tab-active-hover-background) !important;
 }
 
@@ -404,11 +405,15 @@ tab[selected]:-moz-window-inactive {
 	border-radius: 0 !important;
 	min-width: 32px !important;
 	min-height: 32px !important;
-	padding: 0 4px !important;
+	padding: 0 !important;
 	border: none !important;
 }
 
-#TabsToolbar .toolbarbutton-1[open] {
+#TabsToolbar #firefox-view-button {
+	padding: 0 4px !important;
+}
+
+#TabsToolbar #firefox-view-button[open] {
 	background-color: var(--gnome-tabbar-tab-active-background) !important;
 	box-shadow: inset 0 -1px var(--gnome-toolbar-border-color) !important;
 }
@@ -426,10 +431,6 @@ tab[selected]:-moz-window-inactive {
 
 #TabsToolbar #alltabs-button {
 	display: none !important;
-}
-
-#TabsToolbar #tabs-newtab-button {
-	padding: 0 !important;
 }
 
 /* firefox-view-button */
