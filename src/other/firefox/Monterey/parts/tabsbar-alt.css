@@ -58,27 +58,27 @@ tab > stack {
 	margin-block: 0 !important;
 }
 
-.tab-background:not([selected=true]) {
+#TabsToolbar .tabbrowser-tab:not([selected=true]) .tab-background {
 	background: var(--gnome-tabbar-tab-background) !important;
 }
 
-.tab-background:not([selected=true]):-moz-window-inactive {
+#TabsToolbar .tabbrowser-tab:not([selected=true]) .tab-background:-moz-window-inactive {
 	background: var(--gnome-inactive-tabbar-tab-background) !important;
 }
 
 /* Tab hover */
-#TabsToolbar .tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected=true]) {
+#TabsToolbar .tabbrowser-tab:not([selected=true]):hover > .tab-stack > .tab-background {
 	background: var(--gnome-tabbar-tab-hover-background) !important;
 }
 
 /* Active tab */
-.tab-background[selected=true] {
+.tab-background:is([selected]) {
 	background: var(--gnome-tabbar-tab-active-background) !important;
 	animation: none !important;
 	transition: none !important;
 }
 
-.tab-background[selected=true]:-moz-window-inactive {
+.tab-background:is([selected]):-moz-window-inactive {
 	background: var(--gnome-inactive-tabbar-tab-active-background) !important;
 }
 

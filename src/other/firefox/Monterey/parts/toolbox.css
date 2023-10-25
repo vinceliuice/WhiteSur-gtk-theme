@@ -97,10 +97,16 @@ findbar:-moz-window-inactive,
 }
 
 /* Sidebar */
-#sidebar-box,
+#sidebar-box, #sidebar,
 .sidebar-panel[lwt-sidebar] {
 	color: var(--gnome-toolbar-color) !important;
 	background: var(--gnome-toolbar-background) !important;
+}
+
+.sidebar-splitter {
+	width: 1px !important;
+	background-color: var(--gnome-toolbar-border-color) !important;
+	border: none !important;
 }
 
 /* Customization page */
