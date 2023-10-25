@@ -186,6 +186,10 @@ menuitem, menupopup menu,
 	min-height: 28px !important;
 }
 
+.toolbar-menupopup :is(menu, menuitem) {
+	margin: 0 !important;
+}
+
 .subviewbutton,
 .protections-popup-footer-button,
 .protections-popup-category,
