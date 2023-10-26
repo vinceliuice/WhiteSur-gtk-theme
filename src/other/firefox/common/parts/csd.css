@@ -2,13 +2,9 @@
 
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-#main-window {
-	-moz-appearance: -moz-window-titlebar !important;
-}
-
 /* Headerbar top border corners rounded */
 :root[tabsintitlebar]:not([inFullscreen]):not([sizemode="maximized"]) #nav-bar {
-	border-radius: 12px 12px 0 0 !important;
+	border-radius: env(-moz-gtk-csd-titlebar-radius) env(-moz-gtk-csd-titlebar-radius) 0 0 !important;
 }
 
 /* Window buttons: at least 1 button */
@@ -90,7 +86,7 @@
 /* Left window buttons */
 @media (-moz-gtk-csd-reversed-placement) {
 	:root[tabsintitlebar]:not([inFullscreen]) #nav-bar {
-		padding-right: 3px !important;
+		padding-right: 6px !important;
 	}
 
 	/* Window buttons box */
