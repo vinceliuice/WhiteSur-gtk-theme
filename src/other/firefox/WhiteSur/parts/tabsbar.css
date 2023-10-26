@@ -19,14 +19,6 @@
 	max-height: 32px !important;
 }
 
-/* Extra margin for the first and last tabs */
-.tabbrowser-tab[first-tab]:not([pinned=true]) {
-	margin-left: 8px !important;
-}
-.tabbrowser-tab[last-tab]:not([pinned=true]) {
-	margin-right: 8px !important;
-}
-
 #TabsToolbar .toolbar-items {
 	margin-bottom: -1px !important;
 }
@@ -84,7 +76,7 @@
 }
 
 /* Space between tabs */
-.tabbrowser-tab:not([pinned=true]) {
+.tabbrowser-tab:not([pinned]) {
 	margin: 0 !important;
 }
 
@@ -227,11 +219,6 @@ tab[selected]:-moz-window-inactive {
 	margin-left: 0 !important;
 	margin-right: auto !important
 }
-
-/* Remove tab icons */
-/* tab:not([pinned=true]) .tab-icon-image {
-	display: none;
-} */
 
 /* Close tab button */
 .close-icon {
@@ -377,10 +364,10 @@ tab[selected]:-moz-window-inactive {
 	border-image: none !important;
 }
 
-/* Tabs scroll buttons hover */
-#TabsToolbar .scrollbutton-up:not([disabled]):hover,
-#TabsToolbar .scrollbutton-down:not([disabled]):hover {
-	background-color: var(--gnome-tabbar-tab-active-hover-background) !important;
+/* Tabs scroll buttons */
+#TabsToolbar #scrollbutton-up:not([disabled]):hover,
+#TabsToolbar #scrollbutton-down:not([disabled]):hover {
+	background: var(--gnome-tabbar-tab-active-hover-background) !important;
 }
 
 /* Full width tabs */
@@ -407,15 +394,6 @@ tab[selected]:-moz-window-inactive {
 	min-height: 32px !important;
 	padding: 0 !important;
 	border: none !important;
-}
-
-#TabsToolbar #firefox-view-button {
-	padding: 0 4px !important;
-}
-
-#TabsToolbar #firefox-view-button[open] {
-	background-color: var(--gnome-tabbar-tab-active-background) !important;
-	box-shadow: inset 0 -1px var(--gnome-toolbar-border-color) !important;
 }
 
 #TabsToolbar .toolbarbutton-1 > .toolbarbutton-icon,
@@ -447,6 +425,15 @@ tab[selected]:-moz-window-inactive {
 #firefox-view-button > .toolbarbutton-icon {
 	filter: none !important;
 	box-shadow: none !important;
+}
+
+#TabsToolbar #firefox-view-button {
+	padding: 0 4px !important;
+}
+
+#TabsToolbar #firefox-view-button[open] {
+	background-color: var(--gnome-tabbar-tab-active-background) !important;
+	box-shadow: inset 0 -1px var(--gnome-toolbar-border-color) !important;
 }
 
 /* Create new container tab indicator */
