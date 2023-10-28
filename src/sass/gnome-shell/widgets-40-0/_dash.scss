@@ -23,7 +23,7 @@ $dash_border_radius: $dash_padding * 1.5 + 12px;
   .dash-background {
     background-color: $dash_background_color;
     margin-bottom: $dash_bottom_margin;
-    padding: $dash_padding $dash_padding - $dash_spacing * 2;
+    padding: $dash_padding $dash_padding - $dash_spacing * 2 !important;
     border-radius: $dash_border_radius;
   }
 
@@ -34,12 +34,12 @@ $dash_border_radius: $dash_padding * 1.5 + 12px;
     > * { margin: 0; }
 
     .app-well-app, .show-apps {
-      padding: $dash_padding $dash_spacing $dash_padding + $dash_bottom_margin;
+      padding: $dash_padding $dash_spacing $dash_padding + $dash_bottom_margin !important;
     }
 
     .overview-icon {
       padding: $dash_padding / 2;
-      border-radius: $dash_padding / 2 + 12px;
+      border-radius: $dash_border_radius - $dash_padding;
     }
   }
 
