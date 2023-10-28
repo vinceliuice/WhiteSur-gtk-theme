@@ -1,0 +1,17 @@
+body.dark {
+  --main-background: var(--gnome-browser-before-load-background) !important;
+  --main-foreground: var(--gnome-toolbar-color) !important;
+  --primary-color: var(--theme-primary-color) !important;
+  --toolbar-border: rgba(250, 250, 250, 0.2) !important;
+  --toolbar-button-background-hover: rgb(82, 82, 82) !important;
+  --toolbar-button-background-active: rgb(92, 92, 92) !important;
+  --popup-background: rgb(66, 66, 66) !important;
+  --opaque-popup-border: #424242 !important;
+  --popup-line: rgba(250, 250, 250, 0.1) !important;
+  --popup-button-background: rgb(43, 43, 43)!important;
+  --selected-background: rgba(var(--theme-primary-color), 0.3) !important;
+  --font-value-background: rgba(var(--theme-primary-color), 0.15) !important;
+  --font-value-border: #656565 !important;
+  --icon-fill: rgb(251, 251, 251) !important;
+  --icon-disabled-fill: rgba(251, 251, 251, 0.4) !important;
+}
