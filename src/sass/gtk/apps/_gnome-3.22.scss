@@ -90,7 +90,11 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
         @if $placement == 'left' {
           > box > stack > box {
-            margin-left: 22px;
+            margin-left: 18px;
+          }
+
+          entry {
+            margin-left: 6px;
           }
         }
       }
