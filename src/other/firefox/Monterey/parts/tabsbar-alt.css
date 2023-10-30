@@ -7,19 +7,19 @@
 }
 
 /* Fix tabs bar icon sizes */
-#TabsToolbar {
-	padding: 0 0 6px 0 !important;
+#TabsToolbar tab {
+	margin-bottom: 6px !important;
 }
 
 /* Tabs bar height */
 #tabbrowser-tabs,
 #tabbrowser-tabs arrowscrollbox {
-	height: 36px !important;
 	min-height: 36px !important;
 	--tab-min-height: 36px !important;
 }
 
 .tab-background, .tab-stack {
+	height: 36px !important;
 	min-height: 36px !important;
 }
 
