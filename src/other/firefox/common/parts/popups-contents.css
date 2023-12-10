@@ -324,3 +324,15 @@
 	background-color: #fff !important;
 }
 
+#downloads-indicator-progress-inner {
+  background: conic-gradient(AccentColor var(--download-progress-pcent), transparent var(--download-progress-pcent));
+}
+
+.downloadProgress::-moz-progress-bar {
+  background-color: var(--download-progress-fill-color);
+}
+
+.downloadProgress[paused]::-moz-progress-bar {
+  background-color: var(--download-progress-paused-color);
+}
+

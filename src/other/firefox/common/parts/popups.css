@@ -312,7 +312,3 @@ panel[type="autocomplete-richlistbox"] {
 arrowscrollbox.menupopup-arrowscrollbox {
 	height: 100%;
 }
-
-box.scrollbox-clip > scrollbox {
-	padding-right: 10px;
-}
