@@ -271,7 +271,7 @@ else
 
     if [[ "${gdm}" != 'true' ]]; then
       prompt -w "FIREFOX: Please go to [Firefox menu] > [Customize...], and customize your Firefox to make it work. Move your 'new tab' button to the titlebar instead of tab-switcher."
-      prompt -i "FIREFOX: Anyways, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory. \n"
+      prompt -i "FIREFOX: Anyway, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory. \n"
     fi
   fi
 fi
