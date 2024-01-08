@@ -20,7 +20,7 @@
 findbar {
 	border: 0 !important;
 	background: var(--gnome-findbar-background) !important;
-	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
+	border-top: 1px solid var(--gnome-toolbar-border-color) !important;
 }
 
 #nav-bar:-moz-window-inactive,
