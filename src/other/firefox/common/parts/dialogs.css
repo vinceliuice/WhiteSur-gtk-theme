@@ -82,6 +82,7 @@ dialog[subdialog] {
 /* Buttons */
 .dialog-button-box {
 	display: flex !important;
+	background: none !important;
 	border-top: 1px solid var(--gnome-menu-border-color) !important;
 	padding: 3px !important;
 }
@@ -131,11 +132,11 @@ dialog[subdialog] {
 
 :root[dialogroot] select,
 :host(dialog) select {
-  background-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
+	background-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
 	background-color: #ffffff !important;
-  background-position: right 12px center !important;
-  background-repeat: no-repeat !important;
-  background-size: auto 12px !important;
+	background-position: right 12px center !important;
+	background-repeat: no-repeat !important;
+	background-size: auto 12px !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
 	border-bottom-color: var(--gnome-button-border-accent-color) !important;
 	border-radius: 8px !important;
@@ -212,7 +213,7 @@ dialog[subdialog] {
 #editBookmarkPanelContent > hbox > input {
 	background-color: #666666 !important;
 }
-	
+
 #cancel-button,
 #print-button.primary {
 	box-shadow: var(--gnome-button-box-shadow) !important;

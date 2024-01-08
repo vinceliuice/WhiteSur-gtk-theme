@@ -3,8 +3,30 @@
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 /* Headerbar top border corners rounded */
-:root[tabsintitlebar]:not([inFullscreen]):not([sizemode="maximized"]) #nav-bar {
-	border-radius: env(-moz-gtk-csd-titlebar-radius) env(-moz-gtk-csd-titlebar-radius) 0 0 !important;
+:root[tabsintitlebar][sizemode="normal"]:not([gtktiledwindow="true"]) {
+  #nav-bar {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+  }
+
+  /* stylelint-disable-next-line media-query-no-invalid */
+  @media (-moz-bool-pref: "widget.gtk.rounded-bottom-corners.enabled") {
+    #nav-bar {
+      /* The body clip below covers this. */
+      border-radius: 0 !important;
+    }
+
+    body, dialog,
+    dialog::backdrop {
+      /* Use an uniform clip to allow WebRender to optimize it better */
+      border-radius: 12px !important;
+    }
+
+    window[role="dialog"] {
+      border-bottom-left-radius: 12px !important;
+      border-bottom-right-radius: 12px !important;
+    }
+  }
 }
 
 /* Window buttons: at least 1 button */
