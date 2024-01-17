@@ -979,15 +979,13 @@ button {
     box-shadow: none;
 
     &.image-button {
-      padding: 0;
-      min-height: 42px;
-      min-width: 42px;
-    }
-
-    &.image-button {
-      padding: 0;
+      padding: 3px;
       min-height: 28px;
       min-width: 28px;
+
+      &.remove-button {
+        padding: 0;
+      }
     }
 
     &:hover {
