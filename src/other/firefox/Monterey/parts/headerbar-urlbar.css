@@ -15,14 +15,9 @@ toolbarspring {
 
 /* URL bar */
 #urlbar {
-/*	margin-top: -1px !important;*/
 	box-shadow: none !important;
-	background: var(--gnome-popover-background) !important;
-	border-radius: 8px !important;
-	border: none !important;
-	padding: 0 !important;
-	max-width: 360px !important;
 }
+
 #urlbar-background {
 	box-shadow: none !important;
 	border: 0 !important;
@@ -32,8 +27,11 @@ toolbarspring {
 }
 
 #urlbar:-moz-window-inactive {
-	background: var(--gnome-inactive-urlbar-background) !important;
 	border-color: var(--gnome-inactive-headerbar-background) !important;
+}
+
+#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background {
+	outline-color: transparent !important;
 }
 
 #urlbar-container,
@@ -57,7 +55,7 @@ toolbarspring {
 	width: 360px !important;
 	z-index: 5 !important;
 	padding: 0 !important;
-	border-radius: 10px !important;
+	border-radius: 8px !important;
 }
 #urlbar[breakout][breakout-extend][open] {
 	height: auto !important;
@@ -69,10 +67,6 @@ toolbarspring {
 	padding: 0 !important;
 }
 
-#urlbar[breakout][breakout-extend][open] #urlbar-background {
-	box-shadow: var(--gnome-urlbar-box-shadow) !important;
-}
-
 #urlbar-input {
 	text-align: center !important;
 	padding: 0 28px 0 0 !important;
@@ -80,10 +74,20 @@ toolbarspring {
 
 /* URL bar results */
 .urlbarView {
-	background: transparent !important;
+	background: var(--gnome-popover-background) !important;
 	color: var(--gnome-toolbar-color) !important;
-	margin: 0 !important;
+	margin: 6px 0 0 0 !important;
 	width: 100% !important;
+	position: absolute !important;
+	box-shadow: var(--gnome-urlbar-box-shadow) !important;
+	border-radius: 12px !important;
+	border: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+	.urlbarView {
+		border: 1px solid rgba(255, 255, 255, 0.1) !important;
+	}
 }
 
 .urlbarView-body-outer {
@@ -91,7 +95,7 @@ toolbarspring {
 	--item-padding-end: 0 !important;
 	max-height: 40vh !important;
 	overflow-x: auto;
-	padding: 0 8px !important;
+	padding: 0 6px !important;
 }
 
 .urlbarView-body-inner {
@@ -124,7 +128,7 @@ toolbarspring {
 	background: transparent !important;
 	box-shadow: none !important;
 	border: none !important;
-	padding: 0 0 !important;
+	padding: 0 !important;
 	min-height: 32px !important;
 	min-width: 32px !important;
 	margin: 0 !important;

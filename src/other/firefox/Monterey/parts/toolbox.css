@@ -48,9 +48,9 @@ findbar:-moz-window-inactive,
 }
 
 #TabsToolbar {
-	margin-top: -41px !important;
+	margin-top: -40px !important;
+	margin-bottom: 8px !important;
 	padding: 0 !important;
-	margin-bottom: 6px !important;
 	background: none !important;
 	max-height: 42px !important;
 }

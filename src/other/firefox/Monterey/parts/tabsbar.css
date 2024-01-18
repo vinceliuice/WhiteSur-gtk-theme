@@ -18,10 +18,6 @@ tab > stack {
 	background-image: none !important;
 }
 
-.tabbrowser-tab {
-	margin: 1px 0 0 0 !important;
-}
-
 .tabbrowser-tab:not([visuallyselected="true"], [multiselected]), .tabbrowser-tab:-moz-lwtheme {
 	color: var(--gnome-tabbar-tab-color) !important;
 }
@@ -184,7 +180,7 @@ tab[selected]:-moz-window-inactive .tab-label {
 #TabsToolbar .toolbarbutton-1,
 #TabsToolbar #tabs-newtab-button,
 #TabsToolbar #new-tab-button {
-	margin: 1px 2px 0 !important;
+	margin: 0 2px !important;
 	padding: 0 10px !important;
 	max-height: 32px !important;
 	min-height: 32px !important;
@@ -215,10 +211,12 @@ tab[selected]:-moz-window-inactive .tab-label {
 }
 
 /* firefox-view-button */
-:root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden]) :is(#firefox-view-button, #wrapper-firefox-view-button) + #tabbrowser-tabs {
+:root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden]) :is(#firefox-view-button, #wrapper-firefox-view-button) {
+	display: none !important;
+}
+
+:root:not([privatebrowsingmode], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs, :root[privatebrowsingmode]:not([firefoxviewhidden]) :is(toolbarbutton:not(#firefox-view-button), toolbarpaletteitem:not(#wrapper-firefox-view-button)) + #tabbrowser-tabs {
 	border-inline-start: none !important;
-	padding-inline-start: 0 !important;
-	margin-inline-start: -40px !important;
 }
 
 #firefox-view-button > .toolbarbutton-icon {

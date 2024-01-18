@@ -296,8 +296,7 @@ button.close,
 #appMenu-popup .toolbaritem-combined-buttons:not(.unified-extensions-item) toolbarbutton:not(:last-of-type):not(#appMenu-zoomEnlarge-button),
 #context-navigation menuitem:not(:last-of-type),
 .findbar-container toolbarbutton.findbar-find-previous,
-.findbar-button:not(:last-of-type),
-.search-panel-one-offs .searchbar-engine-one-off-item:not(:last-child) {
+.findbar-button:not(:last-of-type) {
 	border-top-right-radius: 0 !important;
 	border-bottom-right-radius: 0 !important;
 	border-right-width: 1px !important;
@@ -309,8 +308,7 @@ button.close,
 #context-navigation menuitem:not(:first-of-type),
 .findbar-container toolbarbutton.findbar-find-previous,
 .findbar-container toolbarbutton.findbar-find-next,
-.findbar-button:not(:first-of-type),
-.search-panel-one-offs .searchbar-engine-one-off-item:not(:first-child) {
+.findbar-button:not(:first-of-type) {
 	border-top-left-radius: 0 !important;
 	border-bottom-left-radius: 0 !important;
 	border-left-width: 0 !important;
