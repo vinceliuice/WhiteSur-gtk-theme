@@ -7,16 +7,18 @@
   #nav-bar {
     border-top-left-radius: 12px !important;
     border-top-right-radius: 12px !important;
+    box-shadow: var(--gnome-headerbar-box-shadow) !important;
+  }
+
+  #nav-bar:-moz-window-inactive {
+    box-shadow: var(--gnome-inactive-headerbar-box-shadow) !important;
   }
 
   /* stylelint-disable-next-line media-query-no-invalid */
   @media (-moz-bool-pref: "widget.gtk.rounded-bottom-corners.enabled") {
-    #nav-bar {
-      /* The body clip below covers this. */
-      border-radius: 0 !important;
-    }
-
-    body, dialog,
+    body,
+		dialog,
+		body::backdrop,
     dialog::backdrop {
       /* Use an uniform clip to allow WebRender to optimize it better */
       border-radius: 12px !important;
