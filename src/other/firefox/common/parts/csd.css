@@ -2,6 +2,10 @@
 
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+#main-window {
+	-moz-appearance: -moz-window-titlebar !important;
+}
+
 /* Headerbar top border corners rounded */
 :root[tabsintitlebar][sizemode="normal"]:not([gtktiledwindow="true"]) {
   #nav-bar {
