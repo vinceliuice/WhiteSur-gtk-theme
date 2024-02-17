@@ -2,7 +2,7 @@
 
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-#main-window {
+#navigator-toolbox {
 	-moz-appearance: -moz-window-titlebar !important;
 }
 
@@ -21,8 +21,8 @@
   /* stylelint-disable-next-line media-query-no-invalid */
   @media (-moz-bool-pref: "widget.gtk.rounded-bottom-corners.enabled") {
     body,
-		dialog,
-		body::backdrop,
+    dialog,
+    body::backdrop,
     dialog::backdrop {
       /* Use an uniform clip to allow WebRender to optimize it better */
       border-radius: 12px !important;
