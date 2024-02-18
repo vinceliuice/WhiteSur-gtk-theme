@@ -423,7 +423,6 @@ tab[selected]:-moz-window-inactive {
 }
 
 #firefox-view-button > .toolbarbutton-icon {
-	filter: none !important;
 	box-shadow: none !important;
 }
 

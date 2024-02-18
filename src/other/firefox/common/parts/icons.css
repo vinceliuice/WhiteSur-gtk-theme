@@ -575,6 +575,10 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 	fill: rgb(224, 41, 29) !important;
 }
 
+#firefox-view-button {
+	list-style-image: url("../icons/firefox-view.svg") !important;
+}
+
 /* Info */
 .panel-info-button > image {
 	list-style-image: url("../icons/info-symbolic.svg") !important;
@@ -761,7 +765,8 @@ treechildren::-moz-tree-image {
 	.bookmark-item[container] .toolbarbutton-icon,
 	.menu-iconic.bookmark-item[container] .menu-iconic-icon,
 	.panel-info-button > image,
-	#password-notification-icon {
+	#password-notification-icon,
+	#firefox-view-button .toolbarbutton-icon {
 		filter: invert(60%) brightness(150%);
 	}
 
