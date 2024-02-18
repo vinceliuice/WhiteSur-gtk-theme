@@ -32,6 +32,10 @@
 	box-shadow: inset 0 1px var(--gnome-toolbar-border-color) !important;
 }
 
+#navigator-toolbox {
+	background: var(--gnome-tabstoolbar-background) !important;
+}
+
 findbar {
 	border: 0 !important;
 	background: var(--gnome-findbar-background) !important;
@@ -42,6 +46,7 @@ findbar {
 	background: var(--gnome-browser-before-load-background) !important;
 }
 
+#navigator-toolbox:-moz-window-inactive,
 #nav-bar:-moz-window-inactive, .notificationbox-stack:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive, #toolbar-menubar:-moz-window-inactive,
 #TabsToolbar:-moz-window-inactive, findbar:-moz-window-inactive {
