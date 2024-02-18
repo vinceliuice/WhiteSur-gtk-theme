@@ -436,6 +436,10 @@ tab[selected]:-moz-window-inactive {
 	box-shadow: inset 0 -1px var(--gnome-toolbar-border-color) !important;
 }
 
+#TabsToolbar #firefox-view-button[open]:-moz-window-inactive {
+	background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
+}
+
 /* Create new container tab indicator */
 .tabbrowser-tab[class*="identity-color-"] .tab-content::before {
 	content: "";
