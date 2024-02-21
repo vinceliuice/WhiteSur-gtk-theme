@@ -6,6 +6,8 @@ body {
 	--newtab-background-color-secondary: var(--gnome-menu-background) !important;
 	--newtab-primary-action-background: var(--theme-primary-color) !important;
 	--newtab-primary-element-text-color: #ffffff !important;
+	--newtab-overlay-color: var(--gnome-tabstoolbar-background) !important;
+	--newtab-border-color: var(--gnome-toolbar-border-color) !important;
 }
 
 .modalOverlayOuter {
