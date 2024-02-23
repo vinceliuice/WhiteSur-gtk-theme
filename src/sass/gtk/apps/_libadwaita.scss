@@ -156,10 +156,12 @@ toast {
   @extend %osd;
   margin: $container_padding * 2;
   margin-bottom: $container_padding * 3;
-  border-radius: $mn_radius;
+  border-radius: $circular_radius;
   border-spacing: $container_padding;
   padding: $container_padding;
-  box-shadow: 0 3px 8px rgba(black, 0.35);
+  box-shadow: 0 3px 8px rgba(black, 0.35), $wm_outline;
+  outline: 1px solid $highlight_color;
+  outline-offset: -1px;
 
   &:dir(ltr) { padding-left: $container_padding * 2; }
   &:dir(rtl) { padding-right: $container_padding * 2; }

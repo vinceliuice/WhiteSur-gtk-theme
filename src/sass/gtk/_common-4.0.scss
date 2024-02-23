@@ -4311,6 +4311,8 @@ window.background.messagedialog {
         border-radius: $bt_radius;
       }
     }
+
+    separator { background-color: transparent; }
   }
 }
 
