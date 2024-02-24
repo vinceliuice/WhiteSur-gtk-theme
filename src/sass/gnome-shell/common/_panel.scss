@@ -47,60 +47,7 @@ $panel_height: $menuitem_size;
   }
 }
 
-%normal_activites {
-  -natural-hpadding: $base_padding * 3;
-  color: $panel_fg;
 
-  StBoxLayout {
-    spacing: $container_padding;
-  }
-
-  .workspace-dot {
-    background-color: $panel_fg;
-  }
-
-  &:overview {
-    .workspace-dot {
-      background-color: $light_fg_color;
-    }
-  }
-}
-
-%apple_activites {
-  -natural-hpadding: $base_padding * 2;
-  background-image: url("assets/activities.svg");
-  background-position: center center;
-  background-size: 24px 24px;
-  width: 24px;
-  height: 24px;
-  color: transparent;
-  font-size: 0;
-
-  > * { width: $medium_size; }
-
-  StBoxLayout {
-    spacing: 0;
-  }
-
-  .workspace-dot {
-    background-color: transparent;
-  }
-
-  &:active, &:overview, &:focus, &:checked {
-    border: none;
-    color: transparent;
-  }
-
-  &:overview { background-color: transparent; }
-
-  @if $variant == 'light' {
-    @if $panel_font == 'black' or $trans == 'false' {
-      &:overview {
-        background-image: url("assets/activities-white.svg");
-      }
-    }
-  }
-}
 
 #panel {
   background-color: $panel_bg;
@@ -128,7 +75,7 @@ $panel_height: $menuitem_size;
     -minimum-hpadding: 12px;
     color: $panel_fg;
     transition-duration: 150ms;
-    border-radius: $bt_radius;
+    //border-radius: $bt_radius;
 
     StLabel {
       padding: 0;
@@ -250,16 +197,7 @@ $panel_height: $menuitem_size;
       // dimensions of the icon are hardcoded
     }
 
-    &#panelActivities { // Activities button
-      background-gradient-direction: none;
-      border: none;
-
-      @if $activities == 'apple' {
-        @extend %apple_activites;
-      } @else {
-        @extend %normal_activites;
-      }
-    }
+    
   }
 
   Gjs_AggregateMenu.panel-button,

@@ -1,33 +1,33 @@
 /* Dash */
 
-$dash_placeholder_size: 32px;
+// $dash_placeholder_size: 32px;
 
-#dash {
-  @include fontsize($base_font_size - 2);
+// #dash {
+//   @include fontsize($base_font_size - 2);
 
-  .empty-dash-drop-target {
-    width: $dash_placeholder_size;
-    height: $dash_placeholder_size;
-  }
-}
+//   .empty-dash-drop-target {
+//     width: $dash_placeholder_size;
+//     height: $dash_placeholder_size;
+//   }
+// }
 
-// OSD Tooltip
-.dash-label {
-  color: $light_alt_fg_color;
-  background-color: rgba(black, 0.75);
-  border-radius: $bt_radius;
-  padding: $base_padding $base_padding * 2;
-  box-shadow: none;
-  border: none;
-  text-align: center;
-  -y-offset: $base_margin * 3; // distance from the dash edge
-  -x-offset: 8px;
-  @include font(body-1);
-}
+// // OSD Tooltip
+// .dash-label {
+//   color: $light_alt_fg_color;
+//   background-color: rgba(black, 0.75);
+//   border-radius: $bt_radius;
+//   padding: $base_padding $base_padding * 2;
+//   box-shadow: none;
+//   border: none;
+//   text-align: center;
+//   -y-offset: $base_margin * 3; // distance from the dash edge
+//   -x-offset: 8px;
+//   @include font(body-1);
+// }
 
-// Show apps button
-.show-apps {
-  @if $showapps_button == "bigsur" {
-    @extend %show_apps_bigsur;
-  }
-}
+// // Show apps button
+// .show-apps {
+//   @if $showapps_button == "bigsur" {
+//     @extend %show_apps_bigsur;
+//   }
+// }

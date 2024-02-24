@@ -1,278 +1,278 @@
-// Dash to Dock
+// // Dash to Dock
 
-// Scrollview style
-.bottom #dashtodockDashScrollview,
-.top #dashtodockDashScrollview {
-  -st-hfade-offset: 24px;
-}
+// // Scrollview style
+// .bottom #dashtodockDashScrollview,
+// .top #dashtodockDashScrollview {
+//   -st-hfade-offset: 24px;
+// }
 
-.left #dashtodockDashScrollview,
-.right #dashtodockDashScrollview {
-  -st-vfade-offset: 24px;
-}
+// .left #dashtodockDashScrollview,
+// .right #dashtodockDashScrollview {
+//   -st-vfade-offset: 24px;
+// }
 
-#dashtodockContainer {
-  background-color: transparent;
-  box-shadow: none;
+// #dashtodockContainer {
+//   background-color: transparent;
+//   box-shadow: none;
 
-  .number-overlay {
-    color: $light_fg_color;
-    background-color: rgba(black, 0.75);
-    text-align: center;
-  }
+//   .number-overlay {
+//     color: $light_fg_color;
+//     background-color: rgba(black, 0.75);
+//     text-align: center;
+//   }
 
-  .notification-badge {
-    color: $light_fg_color;
-    background-color: $primary_color;
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.25);
-    border-radius: $circular_radius;
-    margin: 2px 3px 5px;
-    padding: 0.2em 0.6em;
-    font-weight: bold;
-    text-align: center;
-  }
+//   .notification-badge {
+//     color: $light_fg_color;
+//     background-color: $primary_color;
+//     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.25);
+//     border-radius: $circular_radius;
+//     margin: 2px 3px 5px;
+//     padding: 0.2em 0.6em;
+//     font-weight: bold;
+//     text-align: center;
+//   }
 
-  @each $_pos, $b_pos, $_shadow in (top, bottom, 0 -1px),
-                                   (bottom, top, 0 1px),
-                                   (left, right, -1px 0),
-                                   (right, left, 1px 0) {
-    &.#{$_pos}.straight-corner #dash,
-    &.#{$_pos}.shrink.straight-corner #dash,
-    &.#{$_pos}.extended #dash {
-      margin: 0 !important;
-      padding: 0 !important;
+//   @each $_pos, $b_pos, $_shadow in (top, bottom, 0 -1px),
+//                                    (bottom, top, 0 1px),
+//                                    (left, right, -1px 0),
+//                                    (right, left, 1px 0) {
+//     &.#{$_pos}.straight-corner #dash,
+//     &.#{$_pos}.shrink.straight-corner #dash,
+//     &.#{$_pos}.extended #dash {
+//       margin: 0 !important;
+//       padding: 0 !important;
 
-      .dash-background {
-        border-radius: 0;
-        border-width: 0;
-        border-#{$b_pos}-width: 1px;
-        margin: 0 !important;
-        box-shadow: inset #{$_shadow} rgba(white, 0.05);
-      }
-    }
-  }
+//       .dash-background {
+//         border-radius: 0;
+//         border-width: 0;
+//         border-#{$b_pos}-width: 1px;
+//         margin: 0 !important;
+//         box-shadow: inset #{$_shadow} rgba(white, 0.05);
+//       }
+//     }
+//   }
 
-  &.left,
-  &.right {
-    #dash {
-      margin-top: 0 !important;
-      padding: $dash_padding !important;
+//   &.left,
+//   &.right {
+//     #dash {
+//       margin-top: 0 !important;
+//       padding: $dash_padding !important;
 
-      #dashtodockDashContainer {
-        padding: $dash_padding 0 !important;
-      }
+//       #dashtodockDashContainer {
+//         padding: $dash_padding 0 !important;
+//       }
 
-      .dash-background {
-        margin-bottom: 0 !important;
-        padding: $dash_padding !important;
-      }
+//       .dash-background {
+//         margin-bottom: 0 !important;
+//         padding: $dash_padding !important;
+//       }
 
-      .dash-item-container .app-well-app, .show-apps {
-        padding: $dash_spacing $base_padding !important;
-      }
-    }
+//       .dash-item-container .app-well-app, .show-apps {
+//         padding: $dash_spacing $base_padding !important;
+//       }
+//     }
 
-    &.extended {
-      #dash {
-        #dashtodockDashContainer {
-          padding: 0 !important;
+//     &.extended {
+//       #dash {
+//         #dashtodockDashContainer {
+//           padding: 0 !important;
 
-          #dashtodockDashScrollview:first-child {
-            padding-top: 0 !important;
-          }
+//           #dashtodockDashScrollview:first-child {
+//             padding-top: 0 !important;
+//           }
 
-          #dashtodockDashScrollview:last-child {
-            padding-bottom: 0 !important;
-          }
+//           #dashtodockDashScrollview:last-child {
+//             padding-bottom: 0 !important;
+//           }
 
-          & > :first-child {
-            .show-apps {
-              padding-bottom: $container_padding !important;
-            }
-          }
+//           & > :first-child {
+//             .show-apps {
+//               padding-bottom: $container_padding !important;
+//             }
+//           }
 
-          & > :last-child {
-            .show-apps {
-              padding-bottom: $dash_padding + $container_padding !important;
-            }
-          }
-        }
-      }
-    }
-  }
+//           & > :last-child {
+//             .show-apps {
+//               padding-bottom: $dash_padding + $container_padding !important;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
 
-  &.top,
-  &.bottom {
-    #dash {
-      margin-top: 0 !important;
-      padding: $dash_padding !important;
+//   &.top,
+//   &.bottom {
+//     #dash {
+//       margin-top: 0 !important;
+//       padding: $dash_padding !important;
 
-      #dashtodockDashContainer {
-        padding: $dash_padding 0 !important;
-      }
+//       #dashtodockDashContainer {
+//         padding: $dash_padding 0 !important;
+//       }
 
-      .dash-background {
-        margin-bottom: 0 !important;
-        padding: $dash_padding !important;
-        border-left: none !important;
-      }
+//       .dash-background {
+//         margin-bottom: 0 !important;
+//         padding: $dash_padding !important;
+//         border-left: none !important;
+//       }
 
-      .dash-item-container .app-well-app, .show-apps {
-        padding: $base_padding $dash_spacing !important;
-      }
-    }
+//       .dash-item-container .app-well-app, .show-apps {
+//         padding: $base_padding $dash_spacing !important;
+//       }
+//     }
 
-    &.extended {
-      #dash {
-        #dashtodockDashContainer {
-          padding: 0 !important;
+//     &.extended {
+//       #dash {
+//         #dashtodockDashContainer {
+//           padding: 0 !important;
 
-          #dashtodockDashScrollview:first-child {
-            padding-left: 0 !important;
-          }
+//           #dashtodockDashScrollview:first-child {
+//             padding-left: 0 !important;
+//           }
 
-          #dashtodockDashScrollview:last-child {
-            padding-right: 0 !important;
-          }
+//           #dashtodockDashScrollview:last-child {
+//             padding-right: 0 !important;
+//           }
 
-          & > :first-child {
-            .show-apps {
-              padding-left: $container_padding !important;
-            }
-          }
+//           & > :first-child {
+//             .show-apps {
+//               padding-left: $container_padding !important;
+//             }
+//           }
 
-          & > :last-child {
-            .show-apps {
-              padding-right: $dash_padding + $container_padding !important;
-            }
-          }
-        }
-      }
-    }
-  }
+//           & > :last-child {
+//             .show-apps {
+//               padding-right: $dash_padding + $container_padding !important;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
 
-  #dash { // default-mode
-    background: none;
-    box-shadow: none;
+//   #dash { // default-mode
+//     background: none;
+//     box-shadow: none;
 
-    .app-well-app-running-dot {
-      background-color: if($variant == 'light', rgba(black, 0.75), rgba(white, 0.75));
-      margin-bottom: 0 !important;
-    }
+//     .app-well-app-running-dot {
+//       background-color: if($variant == 'light', rgba(black, 0.75), rgba(white, 0.75));
+//       margin-bottom: 0 !important;
+//     }
 
-    StWidget.focused .app-well-app-running-dot {
-      background-color: $primary_color;
-    }
+//     StWidget.focused .app-well-app-running-dot {
+//       background-color: $primary_color;
+//     }
 
-    .show-apps,
-    .app-well-app {
-      &:hover .overview-icon,
-      &:focus .overview-icon,
-      &:selected .overview-icon {
-        background-color: if($variant == 'light', rgba(white, 0.25), $light_divider_color);
-      }
+//     .show-apps,
+//     .app-well-app {
+//       &:hover .overview-icon,
+//       &:focus .overview-icon,
+//       &:selected .overview-icon {
+//         background-color: if($variant == 'light', rgba(white, 0.25), $light_divider_color);
+//       }
 
-      &:active .overview-icon,
-      &:checked .overview-icon {
-        background-color: if($variant == 'light', rgba(white, 0.35), $light_track_color);
-      }
-    }
+//       &:active .overview-icon,
+//       &:checked .overview-icon {
+//         background-color: if($variant == 'light', rgba(white, 0.35), $light_track_color);
+//       }
+//     }
 
-    .dash-background {
-      background-color: $dash_bg;
-      border: 1px solid if($variant == 'light', rgba(black, 0.08), rgba(black, 0.75));
-      box-shadow: inset 0 0 0 1px rgba(white, 0.05);
-    }
-  }
+//     .dash-background {
+//       background-color: $dash_bg;
+//       border: 1px solid if($variant == 'light', rgba(black, 0.08), rgba(black, 0.75));
+//       box-shadow: inset 0 0 0 1px rgba(white, 0.05);
+//     }
+//   }
 
-  &:overview #dash { // overview-mode #1
-    background: none;
+//   &:overview #dash { // overview-mode #1
+//     background: none;
 
-    .dash-background {
-      background-color: $light_divider_color;
-      border: 1px solid rgba(black, 0.08);
-      box-shadow: inset 0 0 0 1px rgba(white, 0.05);
-    }
+//     .dash-background {
+//       background-color: $light_divider_color;
+//       border: 1px solid rgba(black, 0.08);
+//       box-shadow: inset 0 0 0 1px rgba(white, 0.05);
+//     }
 
-    .app-well-app-running-dot {
-      background-color: $light_alt_fg_color;
-    }
+//     .app-well-app-running-dot {
+//       background-color: $light_alt_fg_color;
+//     }
 
-    StWidget.focused .app-well-app-running-dot {
-      background-color: $primary_color;
-    }
+//     StWidget.focused .app-well-app-running-dot {
+//       background-color: $primary_color;
+//     }
 
-    .show-apps,
-    .app-well-app {
-      &:hover .overview-icon,
-      &:focus .overview-icon,
-      &:selected .overview-icon {
-        background-color: $light_divider_color;
-      }
+//     .show-apps,
+//     .app-well-app {
+//       &:hover .overview-icon,
+//       &:focus .overview-icon,
+//       &:selected .overview-icon {
+//         background-color: $light_divider_color;
+//       }
 
-      &:active .overview-icon,
-      &:checked .overview-icon {
-        background-color: $light_track_color;
-      }
-    }
-  }
+//       &:active .overview-icon,
+//       &:checked .overview-icon {
+//         background-color: $light_track_color;
+//       }
+//     }
+//   }
 
-  &.opaque:overview,
-  &.transparent:overview { // overview-mode #2
-    #dash {
-      background-color: transparent;
-      box-shadow: none;
-    }
+//   &.opaque:overview,
+//   &.transparent:overview { // overview-mode #2
+//     #dash {
+//       background-color: transparent;
+//       box-shadow: none;
+//     }
 
-    .dash-background {
-      background-color: transparent;
-    }
-  }
+//     .dash-background {
+//       background-color: transparent;
+//     }
+//   }
 
-  &.extended:overview, // overview-mode #3
-  &.opaque.extended:overview,
-  &.transparent.extended:overview {
-    #dash {
-      background: none;
-    }
+//   &.extended:overview, // overview-mode #3
+//   &.opaque.extended:overview,
+//   &.transparent.extended:overview {
+//     #dash {
+//       background: none;
+//     }
 
-    .dash-background {
-      background-color: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-  }
+//     .dash-background {
+//       background-color: transparent !important;
+//       border: none !important;
+//       box-shadow: none !important;
+//     }
+//   }
 
-  &.running-dots,
-  &.dashtodock {
-    .dash-item-container > StButton {
-      transition-duration: 250ms;
-      background-size: contain;
-    }
-  }
+//   &.running-dots,
+//   &.dashtodock {
+//     .dash-item-container > StButton {
+//       transition-duration: 250ms;
+//       background-size: contain;
+//     }
+//   }
 
-  &.extended,
-  &.extended:overview {
-    .app-well-app,
-    .show-apps {
-      .overview-icon {
-        border-radius: $bt_radius;
-      }
-    }
-  }
+//   &.extended,
+//   &.extended:overview {
+//     .app-well-app,
+//     .show-apps {
+//       .overview-icon {
+//         border-radius: $bt_radius;
+//       }
+//     }
+//   }
 
-  .metro .overview-icon {
-    border-radius: 0;
-  }
-}
+//   .metro .overview-icon {
+//     border-radius: 0;
+//   }
+// }
 
-.dashtodock-app-well-preview-menu-item {
-  padding: 1em 1em 0.5em 1em;
-}
+// .dashtodock-app-well-preview-menu-item {
+//   padding: 1em 1em 0.5em 1em;
+// }
 
-#dashtodockPreviewSeparator.popup-separator-menu-item-horizontal {
-  width: 1px;
-  height: auto;
-  border-right-width: 1px;
-  margin: 32px 0;
-}
+// #dashtodockPreviewSeparator.popup-separator-menu-item-horizontal {
+//   width: 1px;
+//   height: auto;
+//   border-right-width: 1px;
+//   margin: 32px 0;
+// }

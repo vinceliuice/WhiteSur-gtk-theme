@@ -1,51 +1,51 @@
-$dash_background_color: rgba(white, 0.15);
-$dash_placeholder_size: 32px;
-$dash_padding: $base_padding + 4px; // 10px/8px
-$dash_spacing: $base_padding / 4;
-$dash_bottom_margin: $base_margin * 4;
-$dash_border_radius: $dash_padding * 1.5 + 12px;
+// $dash_background_color: rgba(white, 0.15);
+// $dash_placeholder_size: 32px;
+// $dash_padding: $base_padding + 4px; // 10px/8px
+// $dash_spacing: $base_padding / 4;
+// $dash_bottom_margin: $base_margin * 4;
+// $dash_border_radius: $dash_padding * 1.5 + 12px;
 
-#dash {
-  margin-top: $base_spacing * 2;
-  padding: 0;
+// #dash {
+//   margin-top: $base_spacing * 2;
+//   padding: 0;
 
-  .placeholder {
-    background-image:none;
-    background-size: contain;
-    height: $dash_placeholder_size;
-  }
+//   .placeholder {
+//     background-image:none;
+//     background-size: contain;
+//     height: $dash_placeholder_size;
+//   }
 
-  // Running app indicator (shown in dash)
-  .app-well-app-running-dot {
-    margin-bottom: 0;
-  }
+//   // Running app indicator (shown in dash)
+//   .app-well-app-running-dot {
+//     margin-bottom: 0;
+//   }
 
-  .dash-background {
-    background-color: $dash_background_color;
-    margin-bottom: $dash_bottom_margin;
-    padding: $dash_padding $dash_padding - $dash_spacing * 2 !important;
-    border-radius: $dash_border_radius;
-  }
+//   .dash-background {
+//     background-color: $dash_background_color;
+//     margin-bottom: $dash_bottom_margin;
+//     padding: $dash_padding $dash_padding - $dash_spacing * 2 !important;
+//     border-radius: $dash_border_radius;
+//   }
 
-  // Dash Items
-  .dash-item-container {
-    margin: 0 $dash_spacing;
+//   // Dash Items
+//   .dash-item-container {
+//     margin: 0 $dash_spacing;
 
-    > * { margin: 0; }
+//     > * { margin: 0; }
 
-    .app-well-app, .show-apps {
-      padding: $dash_padding $dash_spacing $dash_padding + $dash_bottom_margin !important;
-    }
+//     .app-well-app, .show-apps {
+//       padding: $dash_padding $dash_spacing $dash_padding + $dash_bottom_margin !important;
+//     }
 
-    .overview-icon {
-      padding: $dash_padding / 2;
-      border-radius: $dash_border_radius - $dash_padding;
-    }
-  }
+//     .overview-icon {
+//       padding: $dash_padding / 2;
+//       border-radius: $dash_border_radius - $dash_padding;
+//     }
+//   }
 
-  .dash-separator {
-    width: 1px;
-    margin: 0 ($dash_spacing + ($dash_padding / 2)) $dash_bottom_margin;
-    background-color: rgba(white, 0.25);
-  }
-}
+//   .dash-separator {
+//     width: 1px;
+//     margin: 0 ($dash_spacing + ($dash_padding / 2)) $dash_bottom_margin;
+//     background-color: rgba(white, 0.25);
+//   }
+// }
