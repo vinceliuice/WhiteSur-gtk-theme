@@ -154,7 +154,6 @@ $flap_sidebar_size: 240px;
       min-height: 24px;
       min-width: 24px;
       padding: 0;
-      -gtk-icon-shadow: none;
       @extend %selected-button;
     }
   }
@@ -1108,14 +1107,6 @@ scrolledwindow.fake-adw-status-page > viewport > box { margin: $container_paddin
 scrolledwindow.fake-adw-status-page > viewport > box > clamp:not(:last-child) > box { margin-bottom: $container_padding * 6; }
 scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .icon:not(:last-child) { margin-bottom: $container_padding * 6; }
 scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .title:not(:last-child) { margin-bottom: $container_padding * 2; }
-
-statuspage.icon-dropshadow image.icon {
-	-gtk-icon-shadow: 0 1px 12px rgba(0,0,0,0.05),
-	                  0 -1px rgba(0,0,0,0.05),
-	                  1px 0 rgba(0,0,0,0.1),
-	                  0 1px rgba(0,0,0,0.3),
-	                  -1px 0 rgba(0,0,0,0.1);
-}
 
 window.info scrollbar.vertical {
   margin-top: 48px;
