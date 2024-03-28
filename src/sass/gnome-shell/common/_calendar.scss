@@ -169,6 +169,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     border-radius: $circular_radius;
     color: $alt_fg_color;
     font-feature-settings: "tnum";
+    background-color: transparent;
 
     &:hover, &:focus {
       background-color: $divider_color;

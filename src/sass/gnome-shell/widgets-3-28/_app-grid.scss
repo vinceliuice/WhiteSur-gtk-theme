@@ -19,6 +19,66 @@ $app_icon_padding: 24px;
   }
 }
 
+/* App Icons */
+.show-apps,
+.app-well-app {
+  @include font(body-1);
+
+  .overview-icon.overview-icon-with-label {
+   padding: 10px 12px 14px;
+
+    > StBoxLayout {
+      spacing: 6px;
+    }
+  }
+
+  .overview-icon {
+    color: $light_fg_color;
+    border-radius: $wm_radius * 1.5;
+    padding: 12px;
+    border: none;
+    transition-duration: 100ms;
+    text-align: center;
+    text-shadow: none;
+    background-color: transparent;
+  }
+
+  &:hover .overview-icon,
+  &:focus .overview-icon,
+  &:selected .overview-icon {
+    background-color: $light_divider_color;
+    border-image: none;
+    background-image: none;
+  }
+
+  &:active .overview-icon,
+  &:checked .overview-icon {
+    background-color: $light_track_color;
+    box-shadow: none;
+  }
+}
+
+// App Folders
+.app-folder {
+  background: none;
+  border-radius: $wm_radius * 1.5;
+  padding: 0;
+  margin: 0;
+
+  .overview-icon {
+    background-color: $light_divider_color;
+    border-radius: $wm_radius * 1.5;
+  }
+
+  &:hover .overview-icon {
+    background-color: rgba(white, 0.2);
+  }
+
+  &:active .overview-icon {
+    background-color: rgba(white, 0.3);
+  }
+}
+
 .app-folder-icon {
   padding: $base_padding;
   spacing-rows: $base_spacing;

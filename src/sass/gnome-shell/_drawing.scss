@@ -104,18 +104,19 @@
   @if $t == normal {
     background-color: $bc;
     border-radius: $circular_radius;
-    border: 2px solid transparent;
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0);
+    border: 2px solid transparent !important;
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0) !important;
+    outline: none;
   }
 
   @if $t == hover {
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.1);
-    border: 2px solid transparent;
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.1) !important;
+    border: 2px solid transparent !important;
   }
 
   @if $t == focus {
-    border: 2px solid lighten($fc, 15%);
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0);
+    border: 2px solid lighten($fc, 15%) !important;
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0) !important;
   }
 
   @if $t == insensitive {
@@ -126,25 +127,25 @@
   @if $t == flat-normal {
     background-color: $bc;
     border-radius: $circular_radius;
-    border: none;
-    box-shadow: none;
+    border: none !important;
+    box-shadow: none !important;
     color: $tc;
   }
 
   @if $t == flat-hover {
     background-color: $bc;
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05);
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05) !important;
     color: $tc;
   }
 
   @if $t == flat-focus {
-    border: none;
+    border: none !important;
     background-color: rgba($bc, 0.2);
     color: $tc;
   }
 
   @if $t == flat-insensitive {
-    border: none;
+    border: none !important;
     background-color: rgba($bc, 0.05);
     color: rgba($tc, 0.45);
   }
@@ -161,26 +162,26 @@
   @if $t == normal {
     background-color: rgba(white, 0.12);
     border-radius: $bd_radius;
-    border-color: transparent;
-    box-shadow: 1px 2px 3px rgba(black, 0);
+    border-color: transparent !important;
+    box-shadow: none !important;
   }
 
   @if $t == focus {
-    border-color: transparent;
+    border-color: transparent !important;
     background-color: rgba(white, 0.18);
-    box-shadow: 1px 2px 3px rgba(black, 0);
+    box-shadow: none !important;
   }
 
   @if $t == hover {
     background-color: rgba(white, 0.2);
-    border-color: transparent;
-    box-shadow: 1px 2px 3px rgba(black, 0.35);
+    border-color: transparent !important;
+    box-shadow: none !important;
   }
 
   @if $t == insensitive {
     color: $disabled_fg_color;
-    border-color: transparent;
-    box-shadow: 1px 2px 3px rgba(black, 0);
+    border-color: transparent !important;
+    box-shadow: none !important;
   }
 }
 

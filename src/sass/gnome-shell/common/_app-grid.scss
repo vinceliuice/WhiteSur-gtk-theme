@@ -1,18 +1,6 @@
 
 /* App Icons */
-.show-apps,
-.app-well-app,
 %app-well-app {
-  @include font(body-1);
-
-  .overview-icon.overview-icon-with-label {
-   padding: 10px 12px 14px;
-
-    > StBoxLayout {
-      spacing: 6px;
-    }
-  }
-
   .overview-icon {
     color: $light_fg_color;
     border-radius: $wm_radius * 1.5;
@@ -21,6 +9,7 @@
     transition-duration: 100ms;
     text-align: center;
     text-shadow: none;
+    background-color: transparent;
   }
 
   &:hover .overview-icon,
@@ -38,31 +27,13 @@
   }
 }
 
-// App Folders
-.app-folder {
-  background: none;
-  border-radius: $wm_radius * 1.5;
-
-  .overview-icon {
-    background-color: $light_divider_color;
-    border-radius: $wm_radius * 1.5;
-  }
-
-  &:hover .overview-icon {
-    background-color: rgba(white, 0.2);
-  }
-
-  &:active .overview-icon {
-    background-color: rgba(white, 0.3);
-  }
-}
-
 // expanded folder
 .app-folder-dialog {
   border-radius: $bd_radius * 4;
   border: none;
   box-shadow: none;
   background-color: rgba(if($colorscheme == 'nord', #20242c, #262626), 0.9);
+  color: $light_alt_fg_color;
 
   .folder-name-container {
     padding: 24px 36px 0;
