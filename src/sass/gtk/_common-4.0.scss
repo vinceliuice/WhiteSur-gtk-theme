@@ -35,8 +35,8 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 }
 
 $list_shadow: if($variant == 'light',
-                (inset 0 0 8px rgba(black, 0.01), inset 0 0 3px rgba(black, 0.01), inset 0 0 0 1px rgba(black, 0.04), inset 0 1px rgba(black, 0.05)),
-                (inset 0 0 8px rgba(white, 0.01), inset 0 0 3px rgba(white, 0.02), inset 0 0 0 1px rgba(white, 0.04), inset 0 1px rgba(white, 0.06)));
+                (inset 0 0 0 1px rgba(black, 0.04), inset 0 1px rgba(black, 0.05)),
+                (inset 0 0 0 1px rgba(white, 0.04), inset 0 1px rgba(white, 0.06)));
 
 %circular_list {
   border-radius: $bd_radius;
