@@ -19,18 +19,22 @@ $app_folder_size: 720px;
 
 // items in the app grid and dash
 .overview-tile {
+  color: $light_alt_fg_color;
   background-color: transparent;
 
-  &:focus { background-color: $light_divider_color; }
-  &:hover { background-color: $light_divider_color; }
-  &:active { background-color: $light_track_color; }
+  &:focus { color: $light_fg_color; background-color: $light_divider_color; }
+  &:hover { color: $light_fg_color; background-color: $light_divider_color; }
+  &:active { color: $light_fg_color; background-color: $light_track_color; }
   &:highlighted,&:selected,
-  &:checked { background-color: $light_track_color; }
-  &:insensitive { background-color: transparent; }
+  &:checked { color: $light_fg_color; background-color: $light_track_color; }
+  &:insensitive { color: $light_alt_disabled_fg_color; background-color: transparent; }
 
   // override the %tile style
   border-radius: $wm_radius * 1.5;
   padding: 12px;
+  spacing: $base_padding;
+  text-align: center;
+  transition-duration: 100ms;
 
   // the icon itself
   .overview-icon {

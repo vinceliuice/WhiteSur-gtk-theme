@@ -4,7 +4,7 @@ $dash_background_color: rgba(white, 0.15);
 $dash_placeholder_size: 32px;
 $dash_padding: $base_padding * 2;
 $dash_edge_offset: $base_margin * 3;
-$dash_border_radius: 16px + $dash_padding;
+$dash_border_radius: 20px + $dash_padding;
 $dash_spacing: $base_margin * 0.5;
 
 // container for the dash
@@ -41,29 +41,29 @@ $dash_spacing: $base_margin * 0.5;
     .show-apps,
     .overview-tile {
       // remove styles
-  background: none;
-  box-shadow: none;
-  border: none;
-  border-radius: 0;
-  padding: 0;
+      background: none;
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
+      padding: 0;
       margin: 0 $dash_spacing;
       padding-bottom: $dash_edge_offset; // align with other items
 
       .overview-icon {
-  border-radius: 16px;
-  padding: $base_padding;
-  spacing: $base_padding;
-  text-align: center;
-  transition-duration: 100ms;
-  background: none;
+        border-radius: 20px;
+        padding: $base_padding;
+        spacing: $base_padding;
+        text-align: center;
+        transition-duration: 100ms;
+        background: none;
       }
 
-  &:focus .overview-icon { background-color: $light_divider_color; }
-  &:hover .overview-icon { background-color: $light_divider_color; }
-  &:active .overview-icon { background-color: $light_track_color; }
-  &:highlighted .overview-icon,&:selected .overview-icon,
-  &:checked .overview-icon { background-color: $light_track_color; }
-  &:insensitive .overview-icon { background-color: transparent; }
+      &:focus .overview-icon { background-color: $light_divider_color; }
+      &:hover .overview-icon { background-color: $light_divider_color; }
+      &:active .overview-icon { background-color: $light_track_color; }
+      &:highlighted .overview-icon,&:selected .overview-icon,
+      &:checked .overview-icon { background-color: $light_track_color; }
+      &:insensitive .overview-icon { background-color: transparent; }
     }
 
     // running app dot

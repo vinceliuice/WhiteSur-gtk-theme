@@ -127,7 +127,8 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   .calendar-month-label {
     margin: 0;
     padding: $base_padding 0;
-    color: $fg_color;
+    color: $fg_color !important;
+    background-color: transparent !important;
     font-weight: bold;
     font-size: 1em !important;
     text-align: center;
@@ -187,19 +188,6 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
       background-color: $track_color;
       border-color: transparent; //avoid jumparound due to today
       box-shadow: none !important;
-    }
-
-    &.calendar-day-heading {  //day of week heading
-      width: $menuitem_size !important;
-      height: $menuitem_size - 6px !important;
-      margin-top: 6px !important;
-      padding: 0 !important;
-      // border-radius: $circular_radius;
-      background-color: transparent;
-      color: $hint_fg_color;
-      @include font(caption);
-      font-weight: bold;
-      text-align: center;
     }
   }
 
@@ -267,17 +255,34 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   .calendar-other-month-day {
     color: $disabled_fg_color !important;
     opacity: 1;
+
+    &.calendar-weekend {
+      color: $alt_disabled_fg_color !important;
+    }
   }
 
   .calendar-week-number {
     width: 22px;
     height: 16px;
     margin: 6px 6px 6px 4px;
-    padding: 0 0;
+    padding: 0;
     border-radius: $bt_radius;
     background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05));
     color: $hint_fg_color;
     font-size: inherit;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .calendar-day-heading {  //day of week heading
+    width: $menuitem_size !important;
+    height: $menuitem_size - 6px !important;
+    margin: $base_margin;
+    padding: 0 !important;
+    // border-radius: $circular_radius;
+    background-color: transparent !important;
+    color: $hint_fg_color !important;
+    @include font(caption);
     font-weight: bold;
     text-align: center;
   }
