@@ -1898,6 +1898,10 @@ headerbar {
   stack.titlebar { box-shadow: none; }
 }
 
+label.titlebar {
+  background-color: $header_bg;
+}
+
 window.background.csd.unified {
   > deck > box.vertical > stack > headerbar.titlebar.windowhandle {
     > box > separator { background: none; }

@@ -10,6 +10,13 @@
   @return ($size / $root-font-size) + em;
 }
 
+// Function to convert px values to em
+@function to_em($input, $base: 16px) {
+  // multiplied and divided by 1000 to make up for round() shortcoming
+  $em_value: ($input / $base) * 1.091 * 1000;
+  @return round($em_value) / 1000 * 1em;
+}
+
 // provide font size in rem, with px fallback
 @mixin fontsize($size: 24, $base: 16) {
   font-size: round($size) + pt;
@@ -225,9 +232,16 @@
 
   @if $t == active {
     color: $tc;
-    background-color: transparent;
-    background-image: if($variant=='light', darken($c, 5%), lighten($c, 5%));
+    background-color: if($variant=='light', darken($c, 5%), lighten($c, 5%));
     border: 1px solid $button_borders;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+
+  @if $t == checked {
+    color: $tc;
+    background-color: $selected_bg_color;
+    border: 1px solid $selected_bg_color;
     text-shadow: none;
     icon-shadow: none;
   }
@@ -271,6 +285,15 @@
   @if $t == flat-active {
     color: $tc;
     background-color: $track_color;
+    border-color: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    icon-shadow: none;
+  }
+
+  @if $t == flat-checked {
+    color: $tc;
+    background-color: $divider_color;
     border-color: transparent;
     box-shadow: none;
     text-shadow: none;

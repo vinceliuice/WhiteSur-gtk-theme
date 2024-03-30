@@ -1,6 +1,13 @@
 @import 'theme-options-temp';
 @import 'gtk-base-temp';
 
+// Function to convert px values to em
+@function to_em($input, $base: 16px) {
+  // multiplied and divided by 1000 to make up for round() shortcoming
+  $em_value: ($input / $base) * 1.091 * 1000;
+  @return round($em_value) / 1000 * 1em;
+}
+
 $asset_suffix: if($variant == 'dark', '-dark', '');
 $con_asset_suffix: if($variant=='dark', '', '-dark');
 $extra_background_clip: if($variant == 'light', padding-box, border-box);
@@ -57,6 +64,17 @@ $maximized_radius: 0;
 // icons
 // $base_icon_size: 1.09em;
 $base_icon_size: 16px;
+$medium_icon_size: $base_icon_size * 1.5; // 24px
+$large_icon_size: $base_icon_size * 2; // 32px
+
+// Scaled values
+// Used in elements that follow text scaling factors
+$scaled_padding: to_em(6px); // same as $base_padding
+
+// Used for symbolic icons that scale
+$scalable_icon_size: to_em(16px);
+$medium_scalable_icon_size: $scalable_icon_size * 1.5;
+$large_scalable_icon_size: $scalable_icon_size * 2;
 
 // durations
 $shorter_duration: 100ms;

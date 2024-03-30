@@ -8,11 +8,14 @@
 // switcher onscreen panel
 .switcher-list {
   @extend %osd_panel;
+  border-radius: $bt_radius * 2 + $base_padding * 2;
 
   .item-box {
     padding: 8px;
-    border-radius: $bt_radius;
+    border-radius: $bt_radius * 2;
     border: 1px solid transparent;
+    background-color: transparent;
+    color: $fg_color;
 
     &:outlined {
       background-color: $divider_color;
