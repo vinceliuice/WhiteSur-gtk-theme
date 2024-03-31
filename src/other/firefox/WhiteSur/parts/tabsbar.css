@@ -412,22 +412,23 @@ tab[selected]:-moz-window-inactive {
 }
 
 /* firefox-view-button */
-:root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden]) :is(#firefox-view-button, #wrapper-firefox-view-button) + #tabbrowser-tabs {
-	border-inline-start: 1px solid var(--gnome-toolbar-border-color) !important;
-	padding-inline-start: 0 !important;
-	margin-inline-start: 0 !important;
+:root:not([privatebrowsingmode], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs,
+:root[privatebrowsingmode]:not([firefoxviewhidden]) :is(
+  toolbarbutton:not(#firefox-view-button),
+  toolbarpaletteitem:not(#wrapper-firefox-view-button)
+) + #tabbrowser-tabs {
+  border-inline-start: 1px solid var(--gnome-toolbar-border-color) !important;
+  padding-inline-start: calc(var(--tab-overflow-pinned-tabs-width)) !important;
+  margin-inline-start: 0 !important;
 }
 
-#firefox-view-button {
+#TabsToolbar #firefox-view-button {
 	border-radius: 0 !important;
+	padding: 0 4px !important;
 }
 
 #firefox-view-button > .toolbarbutton-icon {
 	box-shadow: none !important;
-}
-
-#TabsToolbar #firefox-view-button {
-	padding: 0 4px !important;
 }
 
 #TabsToolbar #firefox-view-button[open] {
