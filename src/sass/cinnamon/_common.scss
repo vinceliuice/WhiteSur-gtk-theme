@@ -70,7 +70,7 @@ stage {
 // Entries
 //
 %entry {
-  padding: 7px;
+  padding: 6px;
   caret-size: 1px;
   selection-background-color: $selected_bg_color;
   selected-color: $selected_fg_color;
@@ -903,14 +903,20 @@ StScrollBar {
 }
 
 .calendar-event-button {
-  margin: 6px 0 6px 0;
+  margin: 6px 0;
   border-radius: $bt_radius;
+  background-color: $fill_color;
 
   &:hover {
-    background-gradient-direction: vertical;
-    background-gradient-start: $fill_color;;
-    background-gradient-end: $fill_color;
+    background-gradient-direction: none;
     box-shadow: none;
+    background-color: $divider_color;
+  }
+
+  &:active {
+    background-gradient-direction: none;
+    box-shadow: none;
+    background-color: $track_color;
   }
 }
 
@@ -1471,8 +1477,8 @@ StScrollBar {
 }
 
 #menu-search-entry {
-  width: 250px;
-  height: 15px;
+  min-width: 250px;
+  min-height: 16px;
   font-weight: normal;
   caret-color: $fg_color;
 
