@@ -75,6 +75,7 @@ $app_folder_size: 720px;
   & .icon-button, & .page-navigation-arrow {
     color: $light_alt_fg_color;
     background-color: transparent;
+    border: none;
 
     &:hover {
       background-color: $light_divider_color;
