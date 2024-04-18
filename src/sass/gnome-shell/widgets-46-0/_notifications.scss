@@ -11,37 +11,40 @@ $notification_banner_width: 34em;
   border-radius: $wm_radius;
   margin: $base_padding;
   padding: $scaled_padding;
+  border-left: 0;
+  border-bottom: 0;
 }
 
 .notification-buttons-bin {
   spacing: 0;
+  padding: 0;
 }
 
 .notification-button {
-    min-height: 40px;
-    padding: 0 16px;
+  min-height: 40px;
+  padding: 0 16px;
+  background-color: $fill_color;
+  color: $alt_fg_color;
+  font-weight: 500;
+  border: none;
+  margin-right: $scaled_padding !important;
+
+  &:focus {
     background-color: $base_color;
-    color: $alt_fg_color;
-    font-weight: 500;
-    border-width: 0;
-    margin-right: $scaled_padding !important;
+    color: $fg_color;
+    box-shadow: inset 0 0 0 2px $divider_color !important;
+  }
 
-    &:focus {
-      background-color: $base_color;
-      color: $fg_color;
-      box-shadow: inset 0 0 0 2px $divider_color !important;
-    }
+  &:hover {
+    background-color: $divider_color;
+    color: $fg_color;
+    box-shadow: none;
+  }
 
-    &:hover {
-      background-color: $divider_color;
-      color: $fg_color;
-      box-shadow: none;
-    }
-
-    &:active, &:checked {
-      background-color: $track_color;
-      color: $fg_color;
-    }
+  &:active, &:checked {
+    background-color: $track_color;
+    color: $fg_color;
+  }
 
   &:insensitive {
     background-color: transparent;

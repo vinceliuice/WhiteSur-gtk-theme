@@ -80,7 +80,6 @@ $card_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($base_color, 8
   background-color: $card_bg;
   box-shadow: 0 1px 2px 0 rgba(black, 0.02);
   // bit of a hack here with border since we can't have double box-shadow
-  border: 1px solid transparent;
   color: $alt_fg_color;
 
   &:hover, &:focus {
@@ -105,6 +104,8 @@ $card_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($base_color, 8
 // message bubbles
 .message {
   @extend %card;
+  border: 1px solid transparent;
+  border-left: none;
 
   // subtract side padding to accommodate the close button's border
   &:ltr { padding-right:-2px; }
@@ -162,7 +163,7 @@ $card_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($base_color, 8
     }
 
     .message-expand-button {
-      padding: 6px;
+      padding: 4px;
       &:ltr { margin-right: $base_padding; }
       &:rtl { margin-left: $base_padding; }
     }
