@@ -203,6 +203,10 @@ $panel_height: $menuitem_size;
         padding: 0 $base_padding + 12px !important;
         margin: 0 !important;
       }
+
+      .messages-indicator {
+        icon-size: $scalable_icon_size;
+      }
     }
 
     &:hover, &:active, &:overview, &:focus, &:checked {
@@ -258,6 +262,18 @@ $panel_height: $menuitem_size;
         @extend %apple_activites;
       } @else {
         @extend %normal_activites;
+      }
+    }
+
+    // screen activity indicators
+    &.screen-recording-indicator,
+    &.screen-sharing-indicator {
+      StBoxLayout {
+        spacing: $scaled_padding;
+      }
+
+      StIcon {
+        icon-size: $scalable_icon_size;
       }
     }
   }
@@ -342,4 +358,7 @@ $panel_height: $menuitem_size;
   // indicator for active
   .screencast-indicator,
   .remote-access-indicator { color: $warning_color; }
+
+  // important privacy related indicators
+  .privacy-indicator { color: $warning_color; }
 }
