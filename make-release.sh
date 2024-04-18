@@ -37,7 +37,7 @@ compress() {
 #install && compress
 #prompt -s "Compress Gnome${RELEASE_VERSION} version finished!"; echo
 
-GNOME_VERSION="44-0"
+GNOME_VERSION="46-0"
 RELEASE_VERSION="-last"
 install && compress
 prompt -s "Compress Gnome${RELEASE_VERSION} version finished!"; echo

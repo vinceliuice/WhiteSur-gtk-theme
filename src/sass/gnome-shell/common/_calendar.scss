@@ -45,7 +45,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 }
 
 .datemenu-popover {
-  border-radius: $base_border_radius + $base_margin * 3;
+  border-radius: $base_border_radius + $base_margin * 3 !important;
 }
 
 // Calendar menu side column
@@ -85,7 +85,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   box-shadow: none;
   background: none;
   padding: $base_padding $base_padding * 2;
-  margin: $base_margin $base_padding + $base_margin;
+  margin: $base_margin $base_margin * 2;
   text-shadow: none;
   color: $alt_fg_color;
   border-radius: $base_border_radius;
