@@ -47,6 +47,19 @@ $app_folder_size: 720px;
   }
 }
 
+// Running app indicator (also shown in dash)
+.app-grid-running-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: $light_alt_fg_color;
+  margin-bottom: 6px;
+
+  StWidget.focused & {
+    background-color: $primary_color;
+  }
+}
+
 .app-folder {
   background-color: $light_divider_color;
 
@@ -75,7 +88,7 @@ $app_folder_size: 720px;
   & .icon-button, & .page-navigation-arrow {
     color: $light_alt_fg_color;
     background-color: transparent;
-    border: none;
+    border: none !important;
 
     &:hover {
       background-color: $light_divider_color;
@@ -87,6 +100,18 @@ $app_folder_size: 720px;
       color: $light_fg_color;
     }
   }
+}
+
+.apps-scroll-view {
+  padding: 0;
+}
+
+// shutdown and other actions in the grid
+.system-action-icon {
+  background-color: $light_fill_color;
+  color: $light_fg_color;
+  border-radius: $circular_radius;
+  icon-size: $app_icon_size * 0.5;
 }
 
 .page-navigation-hint {

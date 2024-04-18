@@ -146,6 +146,12 @@ $popop_menuitem_radius: $po_radius - $base_padding;
   }
 
   &:insensitive { color: $disabled_fg_color !important; }
+
+  // add margin to switches in menu items
+  .toggle-switch {
+    &:ltr { margin-left: $base_margin; }
+    &:rtl { margin-right: $base_margin; }
+  }
 }
 
 .popup-sub-menu {
@@ -171,6 +177,11 @@ $popop_menuitem_radius: $po_radius - $base_padding;
   }
 }
 
+.popup-ornamented-menu-item {
+  &:ltr { padding-left: $base_padding; }
+  &:rtl { padding-right: $base_padding; }
+}
+
 .popup-inactive-menu-item { //all icons and other graphical elements
   color: $alt_fg_color !important;
 
@@ -186,11 +197,8 @@ $popop_menuitem_radius: $po_radius - $base_padding;
 
 // container for radio and check boxes
 .popup-menu-ornament {
-  width: 1.2em;
-  text-align: center !important;
-
-  &:ltr { text-align: right; }
-  &:rtl { text-align: left; }
+  icon-size: $scalable_icon_size !important;
+  width: $scalable_icon_size;
 }
 
 // desktop background menu
