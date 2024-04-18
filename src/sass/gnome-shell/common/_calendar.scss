@@ -41,7 +41,11 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
 // overall menu
 #calendarArea {
-  padding: 4px 0;
+  padding: $base_margin 0;
+}
+
+.datemenu-popover {
+  border-radius: $base_border_radius + $base_margin * 2;
 }
 
 // Calendar menu side column
@@ -75,21 +79,16 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   font-weight: bold;
 }
 
-.datemenu-today-button,
-.datemenu-displays-box {
-  margin: 4px 8px;
-}
-
 /* today button (the date) */
 .datemenu-today-button {
   border: none;
   box-shadow: none;
   background: none;
-  padding: $base_padding;
-  margin: 0 12px;
+  padding: $base_padding $base_padding * 2;
+  margin: $base_margin $base_padding + $base_margin;
   text-shadow: none;
   color: $alt_fg_color;
-  border-radius: $mn_radius;
+  border-radius: $base_border_radius;
 
   &:hover, &:focus {
     color: $fg_color;
@@ -119,7 +118,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   box-shadow: none !important;
   background-color: transparent;
   padding: $base_padding !important;
-  margin: 0 4px !important;
+  margin: 0 !important;
   text-shadow: none;
   // border-radius: $base_border_radius;
 
@@ -293,7 +292,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 .events-button {
   @extend %popover_bubble;
   padding: $base_padding * 3 !important;
-  margin: 4px !important;
+  margin: $base_margin $base_padding + $base_margin !important;
 }
 
 // Events
