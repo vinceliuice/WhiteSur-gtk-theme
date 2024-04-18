@@ -46,8 +46,10 @@
 
 .icon-button {
   min-height: $scalable_icon_size;
+  min-width: $scalable_icon_size;
   padding: $scaled_padding * 2;
   border-radius: $circular_radius;
+  border: none;
   @extend %button;
 
   StIcon {
