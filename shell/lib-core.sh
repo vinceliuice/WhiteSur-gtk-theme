@@ -26,6 +26,7 @@ MY_HOME=$(getent passwd "${MY_USERNAME}" | cut -d: -f6)
 
 if command -v gnome-shell &> /dev/null; then
   SHELL_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -1)"
+  LAST_VERSION="46-0"
   if [[ "${SHELL_VERSION:-}" -ge "46" ]]; then
     GNOME_VERSION="46-0"
   elif [[ "${SHELL_VERSION:-}" -ge "44" ]]; then

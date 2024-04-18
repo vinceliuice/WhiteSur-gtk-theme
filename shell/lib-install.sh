@@ -382,7 +382,7 @@ install_shelly() {
   fi
 
   if [[ "${GNOME_VERSION}" == 'none' ]]; then
-    local GNOME_VERSION='44-0'
+    local GNOME_VERSION="${LAST_VERSION}"
   fi
 
   mkdir -p                                                                                    "${TARGET_DIR}"
