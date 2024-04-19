@@ -316,10 +316,14 @@ signal_error() {
   done
 
   prompt -e "\n  =========== SYSTEM INFO ========="
-  prompt -e "DISTRO : $(IFS=';'; echo "${dist_ids[*]}")"
-  prompt -e "SUDO   : $([[ -w "/root" ]] && echo "yes" || echo "no")"
-  prompt -e "GNOME  : ${GNOME_VERSION}"
-  prompt -e "REPO   : ${repo_ver}\n"
+  prompt -e "DISTRO  : $(IFS=';'; echo "${dist_ids[*]}")"
+  prompt -e "SUDO    : $([[ -w "/root" ]] && echo "yes" || echo "no")"
+  if command -v gnome-shell &> /dev/null; then
+    prompt -e "DESKTOP : $(gnome-shell --version)"
+  else
+    prompt -e "DESKTOP : ${DESKTOP_SESSION}"
+  fi
+  prompt -e "REPO    : ${repo_ver}\n"
 
   if [[ "$(grep -ril "Release" "${WHITESUR_TMP_DIR}/error_log.txt")" == "${WHITESUR_TMP_DIR}/error_log.txt" ]]; then
     prompt -w "HINT: You can run: 'sudo apt install sassc libglib2.0-dev libxml2-utils' on ubuntu 18.04 or 'sudo apt install sassc libglib2.0-dev-bin' on ubuntu >= 20.04 \n"
