@@ -1780,13 +1780,9 @@ combobox {
 // Toolbars
 //
 
-%toolbar {
-  padding: $container_padding / 2 $container_padding;
-  border-spacing: $container_padding;
-}
-
 .toolbar {
-  @extend %toolbar;
+  padding: $container_padding;
+  border-spacing: $container_padding;
   background-color: $bg_color;
   color: $text_color;
 
@@ -1796,8 +1792,7 @@ combobox {
   &.vertical separator { margin: $container_padding 0; }
 
   // oldstyle toolbar buttons
-  button {
-    margin: 1px;
+  > button {
     @extend %flat_button;
   }
 
@@ -1830,7 +1825,6 @@ searchbar {
   > revealer > box {
     padding: $container_padding;
     border-spacing: $container_padding;
-    @extend %toolbar;
 
     entry, button { margin: 0; }
 
