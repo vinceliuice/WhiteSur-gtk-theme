@@ -926,7 +926,9 @@ button {
 
   @at-root %pill_button,
   &.pill {
-    padding: $container_padding $container_padding * 3;
+    min-height: $menuitem_size - 4px;
+    min-width: $menuitem_size - 4px;
+    padding: $container_padding;
     border-radius: $circular_radius;
   }
 
@@ -3642,6 +3644,10 @@ progressbar {
     min-width: $container_padding / 2;
     min-height: $container_padding / 2;
     background-color: transparent;
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 0;
 
     > trough {
       border-style: none;

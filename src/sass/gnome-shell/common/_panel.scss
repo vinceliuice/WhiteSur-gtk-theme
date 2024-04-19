@@ -268,12 +268,39 @@ $panel_height: $menuitem_size;
     // screen activity indicators
     &.screen-recording-indicator,
     &.screen-sharing-indicator {
+      border: 3px solid transparent;
+      background-color: transparent;
+
       StBoxLayout {
         spacing: $scaled_padding;
       }
 
       StIcon {
         icon-size: $scalable_icon_size;
+      }
+    }
+
+    &.screen-recording-indicator {
+      box-shadow: inset 0 0 0 1000px $error_color !important;
+
+      &:hover {
+        box-shadow: inset 0 0 0 1000px mix($panel_fg, $error_color, 12%) !important;
+      }
+
+      &:active {
+        box-shadow: inset 0 0 0 1000px mix($panel_fg, $error_color, 24%) !important;
+      }
+    }
+
+    &.screen-sharing-indicator {
+      box-shadow: inset 0 0 0 1000px $warning_color !important;
+
+      &:hover {
+        box-shadow: inset 0 0 0 1000px mix($panel_fg, $warning_color, 12%) !important;
+      }
+
+      &:active {
+        box-shadow: inset 0 0 0 1000px mix($panel_fg, $warning_color, 24%) !important;
       }
     }
   }
