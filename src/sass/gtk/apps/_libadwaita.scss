@@ -517,7 +517,7 @@ toolbarview.undershoot-bottom scrolledwindow {
     padding: $container_padding $container_padding * 2;
   }
 
-  .navigation-sidebar {
+  .navigation-sidebar:not(.view) {
     padding: $container_padding * 2;
 
     > row {
@@ -673,6 +673,10 @@ toolbarview.undershoot-bottom scrolledwindow {
     > stack, > box > stack.view {
       background-color: transparent;
     }
+  }
+
+  notebook > stack box > switch {
+    margin: 14px 0;
   }
 }
 
