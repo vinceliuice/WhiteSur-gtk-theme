@@ -2,6 +2,12 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+#TabsToolbar .toolbarbutton-1 {
+  & > .toolbarbutton-icon, & > .toolbarbutton-text, & > .toolbarbutton-badge-stack {
+    border-radius: 0 !important;
+  }
+}
+
 /* Cursors autoscroller fix */
 .autoscroller {
 	--panel-background: transparent !important;
