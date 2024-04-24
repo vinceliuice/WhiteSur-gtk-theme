@@ -6,11 +6,6 @@
 	--space-above-tabbar: 0 !important;
 }
 
-/* Fix tabs bar icon sizes */
-#TabsToolbar tab {
-	margin-bottom: 6px !important;
-}
-
 /* Tabs bar height */
 #tabbrowser-tabs,
 #tabbrowser-tabs arrowscrollbox {
@@ -302,7 +297,7 @@ tab[selected]:-moz-window-inactive .tab-label {
 }
 
 #TabsToolbar #alltabs-button {
-	padding: 0 0 !important;
+	padding: 0 !important;
 	visibility: collapse !important;
 }
 
@@ -314,18 +309,21 @@ tab[selected]:-moz-window-inactive .tab-label {
 }
 
 #TabsToolbar .toolbarbutton-1 image,
-#tabs-newtab-button image, #TabsToolbar #new-tab-button image {
+#tabs-newtab-button image,
+#TabsToolbar #new-tab-button image {
 	margin: 0 !important;
 	padding: 0 !important;
 	height: 16px !important;
 	width: 16px !important;
 }
 
-#TabsToolbar #scrollbutton-up, #TabsToolbar #scrollbutton-down {
+#TabsToolbar #scrollbutton-up,
+#TabsToolbar #scrollbutton-down {
 	height: 36px !important;
 }
 
-#TabsToolbar #scrollbutton-up image, #TabsToolbar #scrollbutton-down image {
+#TabsToolbar #scrollbutton-up image,
+#TabsToolbar #scrollbutton-down image {
 	margin: 0 !important;
 	padding: 0 !important;
 	height: 16px !important;
@@ -333,10 +331,14 @@ tab[selected]:-moz-window-inactive .tab-label {
 }
 
 /* firefox-view-button */
-:root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden]) :is(#firefox-view-button, #wrapper-firefox-view-button) + #tabbrowser-tabs {
-	border-inline-start: none !important;
-	padding-inline-start: 0 !important;
-	margin-inline-start: 0 !important;
+:root:not([privatebrowsingmode], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs,
+:root[privatebrowsingmode]:not([firefoxviewhidden]) :is(
+  toolbarbutton:not(#firefox-view-button),
+  toolbarpaletteitem:not(#wrapper-firefox-view-button)
+) + #tabbrowser-tabs {
+  border-inline-start: none !important;
+  padding-inline-start: calc(var(--tab-overflow-pinned-tabs-width)) !important;
+  margin-inline-start: 0 !important;
 }
 
 #firefox-view-button {
