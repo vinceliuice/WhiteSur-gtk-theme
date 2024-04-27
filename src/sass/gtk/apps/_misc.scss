@@ -119,6 +119,10 @@ window.background:not(.csd):not(.popup) {
   separator,
   scrolledwindow { background-color: $base_color; }
 
+  headerbar.titlebar {
+    padding: 0 12px;
+  }
+
   scrollbar {
     background: none;
     border: none;

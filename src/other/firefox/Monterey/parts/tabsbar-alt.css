@@ -355,6 +355,5 @@ tab[selected]:-moz-window-inactive .tab-label {
 }
 
 #firefox-view-button > .toolbarbutton-icon {
-	filter: none !important;
 	box-shadow: none !important;
 }
