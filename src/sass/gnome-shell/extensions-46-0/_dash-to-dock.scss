@@ -67,7 +67,7 @@
         padding: $dash_padding !important;
       }
 
-      .dash-item-container .app-well-app, .show-apps {
+      .overview-tile, .show-apps {
         padding: $dash_spacing $base_padding !important;
       }
     }
@@ -105,6 +105,10 @@
   &.bottom {
     &.extended {
       #dash {
+        .overview-tile, .show-apps {
+          padding: $base_padding $dash_spacing !important;
+        }
+
         #dashtodockDashContainer {
           padding: 0 !important;
 
@@ -214,7 +218,6 @@
     }
   }
 
-  &.extended:overview, // overview-mode #3
   &.opaque.extended:overview,
   &.transparent.extended:overview {
     #dash {
