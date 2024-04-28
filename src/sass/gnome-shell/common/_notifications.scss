@@ -11,10 +11,10 @@
   background-color: $menu_bg;
   border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
   text-shadow: none;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 3px 5px rgba(black, 0.15);
   @include font(body-1);
 
-  &:hover { background-color: rgba($menu_bg, 1); box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25); }
+  &:hover { background-color: rgba($menu_bg, 1); }
 
   &:focus { background-color: $menu_bg; }
 

@@ -103,9 +103,12 @@ $card_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($base_color, 8
 
 // message bubbles
 .message {
-  @extend %card;
   border: 1px solid transparent;
   border-left: none;
+
+  .popup-menu & {
+    @extend %card;
+  }
 
   // subtract side padding to accommodate the close button's border
   &:ltr { padding-right:-2px; }
