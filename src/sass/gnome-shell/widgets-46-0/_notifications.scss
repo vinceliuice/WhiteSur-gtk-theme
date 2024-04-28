@@ -7,12 +7,16 @@ $notification_banner_width: 34em;
 .notification-banner {
   min-height: $notification_banner_height;
   width: $notification_banner_width;
-  box-shadow: 0 3px 5px rgba(black, 0.15);
   border-radius: $wm_radius;
-  margin: $base_padding;
+  margin: $base_padding * 2;
   padding: $scaled_padding;
-  border-left: 0;
-  border-bottom: 0;
+  color: $fg_color;
+  background-color: $menu_bg;
+  border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
+  text-shadow: none;
+  box-shadow: 0 3px 5px rgba(black, 0.15);
+
+  &:hover, &:active { background-color: rgba($menu_bg, 1); }
 }
 
 .notification-buttons-bin {
