@@ -258,7 +258,7 @@ $panel_height: $menuitem_size;
       background-gradient-direction: none;
       border: none;
 
-      @if $activities == 'apple' {
+      @if $activities == 'icon' {
         @extend %apple_activites;
       } @else {
         @extend %normal_activites;

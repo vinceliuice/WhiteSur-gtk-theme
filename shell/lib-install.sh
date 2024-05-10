@@ -955,9 +955,9 @@ customize_theme() {
   fi
 
   # Change gnome-shell panel activities button style
-  if [[ "${default_activities}" == 'true' ]]; then
+  if [[ "${activities_icon}" == 'true' ]]; then
     prompt -s "Changing gnome-shell panel activities button style ...\n"
-    sed $SED_OPT "/\$activities/s/apple/normal/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    sed $SED_OPT "/\$activities/s/default/icon/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change panel font color

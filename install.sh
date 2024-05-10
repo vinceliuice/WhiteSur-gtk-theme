@@ -39,7 +39,6 @@ usage() {
   helpify "-l, --libadwaita"              ""                                                  "Install theme into gtk4.0 config for libadwaita" "Default is dark version"
   helpify "-HD, --highdefinition"         ""                                                  "Set to High Definition size"              "Default is laptop size"
   helpify "--normal, --normalshowapps"    ""                                                  "Set gnome-shell show apps button style to normal" "Default is BigSur"
-  helpify "--default, --defaultactivities" ""                                                 "Set gnome-shell panel activities button style to system default" "Default is Apple icon"
   helpify "--round, --roundedmaxwindow"   ""                                                  "Set maximized window to rounded"          "Default is square"
   helpify "--right, --rightplacement"     ""                                                  "Set Nautilus title button placement to right" "Default is left"
   helpify "--black, --blackfont"          ""                                                  "Set panel font color to black"            "Default is white"
@@ -79,8 +78,6 @@ while [[ $# -gt 0 ]]; do
       interactive='true'; shift ;;
     --normal|--normalshowapps)
       showapps_normal="true"; shift ;;
-    --default|--defaultactivities)
-      default_activities="true"; shift ;;
     --right|--rightplacement)
       right_placement="true"; shift ;;
     --round|--roundedmaxwindow)
@@ -105,6 +102,7 @@ while [[ $# -gt 0 ]]; do
     -n|--name)
       check_param "${1}" "${1}" "${2}" "must" "must" "not-at-all" && shift 2 || shift ;;
     -i|--icon)
+      activities_icon="true";
       check_param "${1}" "${1}" "${2}" "must" "must" "must" && shift 2 || shift ;;
     -s|--size)
       check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
