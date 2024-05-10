@@ -292,7 +292,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 .events-button {
   @extend %popover_bubble;
   padding: $base_padding * 3 !important;
-  margin: $base_margin $base_padding + $base_margin !important;
+  margin: $base_padding $base_padding + $base_margin !important;
 }
 
 // Events

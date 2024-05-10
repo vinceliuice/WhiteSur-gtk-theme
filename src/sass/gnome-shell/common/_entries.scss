@@ -11,7 +11,7 @@ StEntry, %entry {
   @include entry(normal);
   &:hover { @include entry(hover); }
   &:focus { @include entry(focus); }
-  &:insensitive { @include entry(insensitive);}
+  &:insensitive { @include entry(insensitive); }
 
   StIcon { icon-size: $base_icon_size !important; }
 

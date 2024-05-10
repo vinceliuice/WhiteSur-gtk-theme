@@ -19,11 +19,11 @@
 }
 
 %default_button {
-  @include button(flat-normal);
-  &:hover { @include button(flat-hover); }
-  &:active { @include button(flat-active); }
-  &:insensitive { @include button(flat-insensitive); }
-  &:focus { @include button(flat-focus); }
+  @include button(normal, $c:$selected_bg_color, $tc:$selected_fg_color);
+  &:hover { @include button(hover, $c:$selected_bg_color, $tc:$selected_fg_color); }
+  &:active { @include button(active, $c:$selected_bg_color, $tc:$selected_fg_color); }
+  &:insensitive { @include button(insensitive, $c:$selected_bg_color, $tc:$selected_fg_color); }
+  &:focus { @include button(focus, $c:$selected_bg_color, $tc:$selected_fg_color); }
 }
 
 .button {
