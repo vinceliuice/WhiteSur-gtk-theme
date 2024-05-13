@@ -264,7 +264,7 @@ window.background.chromium {
 //
 // Libre-Office
 //
-window.background:not(.solid-csd) {
+window.background:not(.solid-csd):not(.csd) {
   // reserved area at the most-right side of GtkMenuBar
   > grid.horizontal > grid.horizontal {
     background-color: $header_bg;
@@ -278,7 +278,7 @@ window.background:not(.solid-csd) {
       background-image: none;
 
       &:hover {
-        background-color: lighten($header_bg, 15%);
+        background-color: rgba($header_fg, 0.15);
         color: lighten($header_fg, 5%);
       }
 
@@ -293,9 +293,27 @@ window.background:not(.solid-csd) {
       }
     }
   }
-}
 
-window.background:not(.solid-csd) {
+  > grid.horizontal > widget > widget {
+    viewport.frame > box > box > box > grid toolbar {
+      background: none;
+      border: none;
+      padding: 3px;
+    }
+
+    > scrolledwindow > viewport.frame > grid > box.vertical {
+      > toolbar {
+        background: none;
+        border: none;
+        padding: 6px;
+      }
+    }
+
+    toolbar.small-button {
+      border: none;
+    }
+  }
+
   // for 'Notebookbar' toolbar
   > notebook {
     border: none; // unset borders
@@ -310,10 +328,24 @@ window.background:not(.solid-csd) {
 }
 
 #combobox.linked {
-  > button.combo {
-    &, &:checked {
-      border-radius: 0 $bt_radius $bt_radius 0;
-      border-right: 1px solid $borders_color;
+  > entry.combo {
+    border: 1px solid $dark_borders_color;
+    border-right: none;
+
+    &:focus {
+      border-color: $entry_highlight;
+      @if $variant == 'dark' { box-shadow: inset 0 0 0 1px $entry_highlight; }
+      @if $variant == 'light' { box-shadow: 0 1px 1px 0 transparent, inset 0 0 0 1px $entry_highlight; }
+
+      + button.combo {
+        border-left-color: $entry_highlight;
+      }
+    }
+
+    &:drop(active) {
+      border-color: $drop_target_color;
+      @if $variant == 'dark' { box-shadow: inset 0 0 0 1px $drop_target_color; }
+      @if $variant == 'light' { box-shadow: 0 1px 1px 0 transparent, inset 0 0 0 1px $drop_target_color; }
     }
   }
 }

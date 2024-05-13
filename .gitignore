@@ -8,6 +8,3 @@ src/main/cinnamon/cinnamon*.css
 src/main/gnome-shell/*/*.css
 src/other/dash-to-dock/stylesheet.css
 src/other/dash-to-dock/stylesheet-dark.css
-parse-sass.sh
-lib-release.sh
-stable-release/make-releases.sh
