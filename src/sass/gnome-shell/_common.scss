@@ -76,5 +76,6 @@ stage {
   @include fontsize(8);
 }
 
-%monospace {font-family: monospace;}
-%numeric { font-feature-settings: "tnum";}
+%monospace { font-family: monospace; }
+
+%numeric { font-feature-settings: "tnum"; }

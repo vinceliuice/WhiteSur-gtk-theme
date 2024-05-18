@@ -105,10 +105,10 @@ $panel_height: $menuitem_size;
 #panel {
   background-color: $panel_bg;
   font-weight: 500;
+  @extend %numeric;
   color: $panel_fg;
-  font-feature-settings: "tnum";
   transition-duration: 250ms;
-  @include font(body-1);
+  // @include font(body-1);
   height: $panel_height !important;
   box-shadow: 0 5px 16px rgba(black, 0.05);
 
