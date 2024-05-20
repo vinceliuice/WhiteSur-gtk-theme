@@ -45,7 +45,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 }
 
 .datemenu-popover {
-  border-radius: $base_border_radius + $base_margin * 3 !important;
+  border-radius: $base_border_radius + $base_padding * 2.5 !important;
 }
 
 // Calendar menu side column
@@ -70,13 +70,6 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   .datemenu-displays-box {
     spacing: $base_spacing;
   }
-}
-
-.world-clocks-header,
-.weather-header,
-.events-section-title {
-  color: $alt_fg_color;
-  font-weight: bold;
 }
 
 /* today button (the date) */
@@ -261,10 +254,10 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
   .calendar-week-number {
     @extend %smaller;
-    width: 22px;
-    height: 16px;
-    margin: 6px 6px 6px 4px;
-    padding: 0;
+    width: 2em !important;
+    height: 2em !important;
+    margin: 0.7em 0.7em 0.7em 0.2em !important;
+    padding: 2px !important;
     border-radius: $bt_radius;
     background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05));
     color: $hint_fg_color;
@@ -309,9 +302,10 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     text-shadow: none;
   }
 
-  .events-title {
+  .events-title,
+  .events-section-title {
     @extend %heading;
-    color: $hint_fg_color;
+    color: $alt_fg_color;
     text-shadow: none;
   }
 
@@ -336,7 +330,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   // title
   .world-clocks-header {
     @extend %heading;
-    color: $disabled_fg_color;
+    color: $alt_fg_color;
 
     // change style when no world clocks are configured
     &.no-world-clocks {

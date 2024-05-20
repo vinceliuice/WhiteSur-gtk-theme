@@ -11,15 +11,15 @@
 }
 
 .quick-settings-grid {
-  spacing-rows: 12px;
-  spacing-columns: 12px;
+  spacing-rows: $container_padding * 2;
+  spacing-columns: $container_padding * 2;
 }
 
 .quick-toggle, .quick-menu-toggle {
   border-radius: $circular_radius;
   min-width: 13em;
   max-width: 13em;
-  min-height: 42px;
+  min-height: $scalable_icon_size * 3;
   border: none;
 }
 
