@@ -34,7 +34,7 @@
 }
 
 .headline {
-  @include font(title);
+  @extend %title_4;
 }
 
 // modal dialog
@@ -92,12 +92,10 @@
 
   .message-dialog-title {
     text-align: center;
-    font-size: 18pt;
-    font-weight: 800;
+    @extend %title_2;
 
     &.lightweight {
-      font-size: 13pt;
-      font-weight: 800;
+      @extend %title_4;
     }
   }
 
@@ -110,7 +108,7 @@
 
   .dialog-list-title {
     text-align: center;
-    font-weight: bold;
+    @extend %heading;
   }
 
   .dialog-list-scrollview { max-height: 200px; }
@@ -123,7 +121,7 @@
       .dialog-list-item-title { font-weight: bold; }
       .dialog-list-item-description {
         color: $alt_fg_color;
-        @include font(title);
+        @extend %caption;
       }
     }
   }
@@ -140,7 +138,7 @@
   .run-dialog-description {
     text-align: center;
     color: $alt_fg_color;
-    @include font(title);
+    @extend %caption;
   }
 }
 
@@ -193,8 +191,7 @@
 .prompt-dialog-info-label,
 .prompt-dialog-null-label {
   text-align: center;
-  @include font(title);
-  margin: 6px;
+  @extend %caption;
 }
 
 .prompt-dialog-error-label {
@@ -248,4 +245,9 @@
   background-size: contain;
   height: 300px;
   width: 300px;
+}
+
+/* Access portal dialog */
+.access-dialog {
+  text-align: center;
 }

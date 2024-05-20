@@ -69,7 +69,6 @@ $popop_menuitem_radius: $po_radius - $base_padding;
 .popup-menu {
   min-width: 12em;
   color: $alt_fg_color;
-  @include font(body-1);
 
   //.popup-status-menu-item { font-weight: normal;  color: pink; } //dunno what that is
   &.panel-menu {
@@ -98,7 +97,6 @@ $popop_menuitem_radius: $po_radius - $base_padding;
   border-radius: $po_radius;
   border: solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
   border-width: if($variant=='light', 0, 1px);
-  @include font(body-1);
 }
 
 .popup-menu-item {

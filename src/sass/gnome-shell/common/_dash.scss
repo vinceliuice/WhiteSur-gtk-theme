@@ -3,8 +3,6 @@
 $dash_placeholder_size: 32px;
 
 #dash {
-  @include fontsize($base_font_size - 2);
-
   .empty-dash-drop-target {
     width: $dash_placeholder_size;
     height: $dash_placeholder_size;

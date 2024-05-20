@@ -102,13 +102,12 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
   // weekday label
   .day-label {
-    @include font(title);
     font-weight: bold;
   }
 
   // date label
   .date-label {
-    @include font(headline);
+    @extend %title_2;
   }
 }
 
@@ -124,12 +123,11 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
   // month
   .calendar-month-label {
+    @extend %heading;
     margin: 0;
     padding: $base_padding 0;
     color: $fg_color !important;
     background-color: transparent !important;
-    font-weight: bold;
-    font-size: 1em !important;
     text-align: center;
     text-shadow: none;
 
@@ -160,10 +158,11 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
   .calendar-day,
   .calendar-day-base {
-    @include font(caption);
+    @extend %numeric;
+    @extend %smaller;
     text-align: center;
-    width: $menuitem_size !important;
-    height: $menuitem_size !important;
+    width: 3em !important;
+    height: 3em !important;
     padding: 2px !important;
     margin: 2px !important;
     border-radius: $circular_radius;
@@ -261,6 +260,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   }
 
   .calendar-week-number {
+    @extend %smaller;
     width: 22px;
     height: 16px;
     margin: 6px 6px 6px 4px;
@@ -268,12 +268,14 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     border-radius: $bt_radius;
     background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05));
     color: $hint_fg_color;
-    font-size: inherit;
     font-weight: bold;
     text-align: center;
+    font-feature-settings: "tnum";
   }
 
   .calendar-day-heading {  //day of week heading
+    @extend %numeric;
+    @extend %smaller;
     width: $menuitem_size !important;
     height: $menuitem_size - 6px !important;
     margin: $base_margin;
@@ -281,7 +283,6 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     // border-radius: $circular_radius;
     background-color: transparent !important;
     color: $hint_fg_color !important;
-    @include font(caption);
     font-weight: bold;
     text-align: center;
   }
@@ -309,30 +310,49 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   }
 
   .events-title {
+    @extend %heading;
     color: $hint_fg_color;
-    font-weight: bold;
     text-shadow: none;
+  }
+
+  .event-summary {
+    @extend %heading;
   }
 
   .event-time {
     color: $hint_fg_color;
-    font-feature-settings: "tnum";
-    @include fontsize($base_font_size - 2);
+    @extend %numeric;
+    @extend %caption;
+  }
+
+  .event-placeholder {
+    color: $disabled_fg_color;
+    font-style: italic;
   }
 }
 
 // World Clock
 .world-clocks-button {
+  // title
+  .world-clocks-header {
+    @extend %heading;
+    color: $disabled_fg_color;
+
+    // change style when no world clocks are configured
+    &.no-world-clocks {
+      color: $fg_color;
+    }
+  }
+
   .world-clocks-city {
     color: $hint_fg_color;
     font-weight: bold;
-    @include fontsize($base_font_size - 1);
   }
 
   .world-clocks-time {
+    @extend %numeric;
+    font-weight: bold;
     color: $hint_fg_color;
-    font-feature-settings: "tnum";
-    @include fontsize($base_font_size - 1);
 
     &:ltr { text-align: right; }
     &:rtl { text-align: left; }
@@ -340,8 +360,8 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
   .world-clocks-timezone {
     color: $hint_fg_color;
-    font-feature-settings: "tnum";
-    @include fontsize($base_font_size - 2);
+    @extend %numeric;
+    @extend %caption;;
   }
 }
 
@@ -362,13 +382,12 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   }
 
   .weather-header {
+    @extend %heading;
     color: $alt_fg_color;
-    font-weight: bold;
 
     &.location {
       font-weight: normal;
       color: $hint_fg_color;
-      @include fontsize($base_font_size - 2);
     }
   }
 
@@ -378,9 +397,9 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   }
 
   .weather-forecast-time {
+    @extend %numeric;
+    @include fontsize(10pt);
     color: $alt_fg_color;
-    font-feature-settings: "tnum";
-    @include fontsize($base_font_size - 3);
     font-weight: normal;
     padding-top: 0.2em;
     padding-bottom: 0.4em;
@@ -391,6 +410,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   }
 
   .weather-forecast-temp {
+    @extend %numeric;
     font-weight: bold;
   }
 }

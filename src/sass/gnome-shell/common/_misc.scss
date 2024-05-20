@@ -30,6 +30,14 @@
     border: none;
     box-shadow: inset 0 0 0 1px transparentize($light_alt_fg_color, 0.9);
   }
+
+  .popup-menu & {
+    color: $alt_fg_color;
+
+    StIcon {
+      background-color: $track_color;
+    }
+  }
 }
 
 .user-widget.vertical .user-icon {
@@ -53,6 +61,12 @@
 .caps-lock-warning-label {
   text-align: center;
   padding-bottom: 8px;
-  @include font(body-1);
   color: $warning_color;
+  @extend %caption;
+}
+
+/* Workspace animation */
+
+.workspace-animation {
+  background-color: rgba($osd_bg_color, 1);
 }

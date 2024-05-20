@@ -12,7 +12,6 @@
   border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
   text-shadow: none;
   box-shadow: 0 3px 5px rgba(black, 0.15);
-  @include font(body-1);
 
   &:hover { background-color: rgba($menu_bg, 1); }
 
