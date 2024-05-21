@@ -21,7 +21,7 @@ $large-font-family: Roboto, "M+ 1c", Cantarell, Sans-Serif;
 // font sizes
 $root-font-size: if($laptop == 'false', 15px, 13px);
 $subheading-size: if($laptop == 'false', 17px, 15px);
-$base_font_size: 11pt;
+$base_font_size: if($laptop == 'false', 11pt, 10pt);
 
 // opacities
 $higher_opacity: 0.9;
