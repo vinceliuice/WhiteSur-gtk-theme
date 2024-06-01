@@ -9,7 +9,9 @@ $dash_spacing: $base_margin * 0.5;
 
 // container for the dash
 #dash {
-  margin-top: $dash_edge_offset;
+  // a bit of spacing so that dash doesn't touch the screen edges
+  padding-left: $base_padding;
+  padding-right: $base_padding;
 
   // background behind item container
   .dash-background {
@@ -71,7 +73,8 @@ $dash_spacing: $base_margin * 0.5;
     // running app dot
     .app-grid-running-dot {
       // manually position the dot within the dash item
-      margin-bottom: $dash_padding + $dash_edge_offset - 3px; // 3px = size of dot (5px) subtracted from its translationY from appDisplay.js
+      // margin-bottom: $dash_padding + $dash_edge_offset - 3px; // 3px = size of dot (5px) subtracted from its translationY from appDisplay.js
+      offset-y: 0;
     }
   }
 
@@ -92,5 +95,5 @@ $dash_spacing: $base_margin * 0.5;
 
 // OSD Tooltip
 .dash-label {
-  -y-offset: $base_margin; // distance from the dash edge
+  -y-offset: $base_margin * 2; // distance from the dash edge
 }

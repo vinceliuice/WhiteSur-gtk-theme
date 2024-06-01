@@ -142,8 +142,6 @@
 
     .app-grid-running-dot {
       background-color: if($variant == 'light', rgba(black, 0.75), rgba(white, 0.75));
-      margin-bottom: 0 !important;
-      margin-top: 18px !important;
     }
 
     StWidget.focused .app-grid-running-dot {
