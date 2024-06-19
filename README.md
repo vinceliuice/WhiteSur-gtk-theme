@@ -2,7 +2,7 @@
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/macbook.png"/> </p>
 
 <br>
-<p align="center"> <b> A macOS like theme for your GTK apps </b> </p>
+<p align="center"> <b> A macOS like theme for Linux GTK Desktops </b> </p>
 <br>
 
 ## Donate
