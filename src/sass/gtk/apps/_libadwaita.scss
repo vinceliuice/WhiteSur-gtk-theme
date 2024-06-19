@@ -43,6 +43,59 @@ avatar {
 }
 
 //
+// GtkVideo
+//
+
+video {
+  & image.osd {
+    min-width: 64px;
+    min-height: 64px;
+    border-radius: 32px;
+  }
+
+  background: black;
+}
+
+//
+// AdwAboutWindow
+//
+
+window.about,
+dialog.about {
+  .main-page {
+    > viewport > clamp > box {
+      margin: 12px;
+      border-spacing: 6px;
+
+      > box {
+        margin-top: 18px;
+        border-spacing: 18px;
+        margin-bottom: 6px;
+      }
+    }
+
+    .app-version {
+      padding: 3px 18px;
+      color: $primary_color;
+      border-radius: 999px;
+      margin-top: 3px;
+    }
+  }
+
+  .subpage {
+    > viewport > clamp > box {
+      margin: 18px 12px;
+      border-spacing: 18px;
+    }
+
+    > clamp > textview {
+      background: none;
+      color: inherit;
+    }
+  }
+}
+
+//
 // preferencespage
 //
 
@@ -726,7 +779,69 @@ toolbarview.undershoot-bottom scrolledwindow {
 }
 
 .top-bar {
+  background: none;
+  border: none;
+  box-shadow: none;
+
   .collapse-spacing {
     padding: 0;
+  }
+}
+
+//
+// AdwDialog
+//
+
+ floating-sheet {
+  > dimming {
+    background-color: rgba(black, 0.35);
+  }
+
+  > sheet {
+    border-radius: $wm_radius;
+    outline: 1px solid $highlight_color;
+    outline-offset: -1px;
+    box-shadow: 0 3px 6px $wm_shadow,
+                0 7px 12px $wm_shadow,
+                0 12px 20px $wm_shadow,
+                $wm_outline;
+  }
+}
+
+dialog.bottom-sheet {
+  &.landscape sheet {
+    margin-left: 30px;
+    margin-right: 30px;
+
+    > outline {
+      &.flush-left, &.flush-right, &.flush-left.flush-right {
+        box-shadow: $wm_outline;
+      }
+    }
+  }
+}
+
+dialog-host > dialog.background {
+  background: none;
+
+  sheet {
+    background-color: $bg_color;
+    color: $fg_color;
+  }
+}
+
+dialog-host > dialog.view {
+  background: none;
+
+  sheet {
+    @extend %view;
+  }
+}
+
+dialog-host > dialog.osd:not(progressbar):not(button):not(menubutton):not(splitbutton) {
+  background: none;
+
+  sheet {
+    @extend %osd;
   }
 }

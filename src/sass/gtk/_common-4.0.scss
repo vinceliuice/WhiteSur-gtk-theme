@@ -780,14 +780,41 @@ $_dot_color: if($variant=='light', $selected_bg_color,
 
 %button,
 button {
-  min-height: $menuitem_size - 4px;
-  min-width: $menuitem_size - 10px;
-  transition: $button_transition;
-  border: 1px solid;
-  border-radius: $bt_radius;
-  padding: 0 $container_padding + 2px;
-  background-clip: if($variant=='light', border-box, padding-box);
-  @include button(normal);
+  @at-root %button_basic, & {
+    min-height: $menuitem_size - 4px;
+    min-width: $menuitem_size - 10px;
+    transition: $button_transition;
+    border: 1px solid;
+    border-radius: $bt_radius;
+    padding: 0 $container_padding + 2px;
+    background-clip: if($variant=='light', border-box, padding-box);
+    @include button(normal);
+  
+    &:hover {
+      @include button(hover);
+      background-clip: if($variant=='light', border-box, padding-box);
+      -gtk-icon-filter: brightness(1.2);
+    }
+  
+    &.keyboard-activating, &:active, &:checked {
+      @include button(active);
+  
+      background-clip: if($variant=='light', border-box, padding-box);
+      transition-duration: 200ms;
+  
+      &:not(:disabled) label:disabled { color: inherit; opacity: 0.6; }
+    }
+  
+    &:disabled {
+      @include button(insensitive);
+      background-clip: if($variant=='light', border-box, padding-box);
+  
+      &:active, &:checked {
+        @include button(insensitive-active);
+        background-clip: if($variant=='light', border-box, padding-box);
+      }
+    }
+  }
 
   separator { margin: 4px 1px; }
 
@@ -815,31 +842,6 @@ button {
 
     background-color: mix($bg_color, $fg_color, 80%);
     color: $fg_color;
-  }
-
-  &:hover {
-    @include button(hover);
-    background-clip: if($variant=='light', border-box, padding-box);
-    -gtk-icon-filter: brightness(1.2);
-  }
-
-  &.keyboard-activating, &:active, &:checked {
-    @include button(active);
-
-    background-clip: if($variant=='light', border-box, padding-box);
-    transition-duration: 200ms;
-
-    &:not(:disabled) label:disabled { color: inherit; opacity: 0.6; }
-  }
-
-  &:disabled {
-    @include button(insensitive);
-    background-clip: if($variant=='light', border-box, padding-box);
-
-    &:active, &:checked {
-      @include button(insensitive-active);
-      background-clip: if($variant=='light', border-box, padding-box);
-    }
   }
 
   &.image-button {
@@ -1939,9 +1941,6 @@ actionbar > revealer > box {
 
 // Headerbar Buttons
 %headerbar_buttons {
-  // min-height: $menuitem_size - 4px;
-  // min-width: $menuitem_size - 10px;
-  // padding: 2px $container_padding * 2;
   @include button(header-normal);
 
   &:backdrop { opacity: 0.65; background-image: none; }
@@ -2064,7 +2063,14 @@ headerbar {
   spinbutton > button,
   splitbutton > button,
   splitbutton > menubutton,
-  entry > menubutton {
+  entry > menubutton,
+  popover entry,
+  popover spinbutton,
+  popover button,
+  popover menubutton,
+  popover splitbutton,
+  popover stackswitcher,
+  popover separator:not(.sidebar) {
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -3923,26 +3929,6 @@ list {
       @extend %circular_row;
     }
   }
-
-  &.boxed-list {
-    @extend %circular_list;
-
-    > row {
-      @extend %circular_row;
-
-      &.expander {
-        list {
-          background-color: transparent;
-          box-shadow: none;
-          border: none;
-
-          > row {
-            @extend %circular_row;
-          }
-        }
-      }
-    }
-  }
 }
 
 listview.view {
@@ -3952,11 +3938,11 @@ listview.view {
 
 %row_activatable {
   &.has-open-popup,
-  &:hover { background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05)); }
+  &:hover { background-color: $fill_color; }
 
   &:active {
     color: $fg_color;
-    background-color: if($variant == 'light', rgba(black, 0.2), rgba(white, 0.2));
+    background-color: $track_color;
     transition-duration: 200ms;
   }
 
@@ -3968,11 +3954,11 @@ listview.view {
   &:selected {
     &, &:active {
       color: $fg_color;
-      background-color: if($variant == 'light', rgba(black, 0.15), rgba(white, 0.15));
+      background-color: $visit_color;
     }
 
     &.has-open-popup,
-    &:hover { background-color: if($variant == 'light', rgba(black, 0.2), rgba(white, 0.2)); }
+    &:hover { background-color: $track_color; }
   }
 }
 
@@ -4010,7 +3996,7 @@ row {
 
   &:selected {
     color: $fg_color;
-    background-color: if($variant == 'light', rgba(black, 0.15), rgba(white, 0.15));
+    background-color: $visit_color;
 
     // button { @extend %selected-button; }
   }
@@ -4087,12 +4073,467 @@ columnview row:not(:selected) cell editablelabel.editing text selection {
 }
 
 .rich-list { /* rich lists usually containing other widgets than just labels/text */
-  & > row {
-    padding: $container_padding + 2px $container_padding * 2;
+  > row {
+    padding: 8px 12px;
     min-height: 32px; /* should be tall even when only containing a label */
 
-    & > box {
-      border-spacing: $container_padding * 2;
+    > box {
+      border-spacing: 12px;
+    }
+  }
+
+  > header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/****************
+ * AdwActionRow *
+ ****************/
+
+row {
+  label.subtitle {
+    font-size: smaller;
+    @extend .dim-label;
+  }
+
+  > box.header {
+    margin-left: 12px;
+    margin-right: 12px;
+    border-spacing: 6px;
+    min-height: 50px;
+
+    > .icon:disabled {
+      filter: opacity($disabled_opacity);
+    }
+
+    > box.title {
+      margin-top: 6px;
+      margin-bottom: 6px;
+      border-spacing: 3px;
+      padding: 0;
+
+      // Specificity bump for header bar
+      &,
+      > .title,
+      > .subtitle {
+        padding: 0;
+        font-weight: inherit;
+      }
+    }
+
+    > .prefixes,
+    > .suffixes {
+      border-spacing: 6px;
+    }
+
+    > .icon,
+    > .prefixes {
+      &:dir(ltr) { margin-right: 6px; }
+      &:dir(rtl) { margin-left: 6px; }
+    }
+  }
+
+  &.property > box.header > box.title > {
+    .title {
+      font-size: smaller;
+      @extend .dim-label;
+    }
+
+    .subtitle {
+      font-size: inherit;
+      opacity: 1;
+    }
+  }
+
+  &.property.monospace {
+    font-family: inherit;
+
+    & > box.header > box.title > .subtitle {
+      font-family: monospace;
+    }
+  }
+}
+
+/******************************
+ * AdwEntryRow and AdwSpinRow *
+ ******************************/
+
+row.entry {
+  &:disabled {
+    text {
+      opacity: $disabled_opacity;
+    }
+
+    .dim-label, .subtitle {
+      opacity: 1;
+    }
+  }
+
+  .edit-icon, .indicator {
+    min-width: 24px;
+    min-height: 24px;
+    padding: 5px;
+  }
+
+  .edit-icon:disabled {
+    opacity: $disabled_opacity;
+  }
+
+  .indicator {
+    opacity: $hint_opacity;
+  }
+
+  &.monospace {
+    font-family: inherit;
+
+    text {
+      font-family: monospace;
+    }
+  }
+}
+
+row.spin {
+  spinbutton {
+    background: none;
+    border-spacing: 6px;
+    box-shadow: none;
+
+    &, &:focus {
+      outline: none;
+    }
+
+    > button.image-button.up:not(.flat):not(.raised):not(.suggested-action):not(.destructive-action):not(.opaque):last-child,
+    > button.image-button.down:not(.flat):not(.raised):not(.suggested-action):not(.destructive-action):not(.opaque) {
+      &, &:dir(ltr):last-child, &:dir(rtl):first-child {
+        @extend %button_basic;
+        @extend %circular_button;
+        min-width: 30px;
+        min-height: 30px;
+        margin: 10px 2px;
+        border: none;
+      }
+    }
+  }
+
+  &:disabled spinbutton {
+    > button.image-button.up:not(.flat):not(.raised):not(.suggested-action):not(.destructive-action):not(.opaque):last-child,
+    > button.image-button.down:not(.flat):not(.raised):not(.suggested-action):not(.destructive-action):not(.opaque) {
+      &, &:dir(ltr):last-child, &:dir(rtl):first-child {
+        &:disabled {
+          filter: none;
+        }
+      }
+    }
+  }
+}
+
+row.entry,
+row.spin {
+  outline: none;
+
+  &:not(:selected).activatable.focused:hover,
+  &:not(:selected).activatable.focused:active {
+    background-color: transparent;
+  }
+
+  @each $e_type in error, warning, success {
+    &.#{$e_type} {
+      color: $primary_color;
+
+      .dim-label, .subtitle {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+/***************
+ * AdwComboRow *
+ ***************/
+
+row.combo {
+  image.dropdown-arrow:disabled {
+    filter: opacity($disabled_opacity);
+  }
+
+  listview.inline {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: inherit;
+
+    &, &:disabled {
+      background: none;
+      color: inherit;
+    }
+  }
+
+  popover > contents {
+    min-width: 120px;
+
+    .combo-searchbar {
+      margin: 6px;
+
+      + scrolledwindow {
+        @include undershoot(top);
+      }
+    }
+  }
+}
+
+/******************
+ * AdwExpanderRow *
+ ******************/
+
+@mixin margin-start($margin) {
+  &:dir(ltr) {
+    margin-left: $margin;
+  }
+
+  &:dir(rtl) {
+    margin-right: $margin;
+  }
+}
+
+row.expander {
+  // Drop transparent background on expander rows to let nested rows handle it,
+  // avoiding double highlights.
+  background: none;
+  padding: 0px;
+
+  > box > list {
+    background: none;
+    color: inherit;
+  }
+
+  list.nested {
+    background-color: color-mix(in srgb, $base_color 50%, transparent);
+    color: inherit;
+  }
+
+  list.nested > row {
+    @extend %boxed_list_row;
+  }
+
+  // AdwExpanderRow arrow rotation
+
+  image.expander-row-arrow {
+    @extend .dim-label;
+
+    transition: -gtk-icon-transform 200ms $ease-out-quad;
+    @include margin-start(3px);
+
+    &:dir(ltr) {
+      -gtk-icon-transform: rotate(0.5turn);
+    }
+
+    &:dir(rtl) {
+      -gtk-icon-transform: rotate(-0.5turn);
+    }
+
+    &:disabled {
+      filter: opacity($disabled_opacity);
+    }
+  }
+
+  &:checked image.expander-row-arrow {
+    -gtk-icon-transform: rotate(0turn);
+    opacity: 1;
+
+    &:not(:disabled) {
+      color: $primary_color;
+    }
+  }
+
+  .osd &:checked image.expander-row-arrow:not(:disabled) {
+    color: inherit;
+  }
+
+  &.property box > list > row {
+    @extend .property;
+  }
+}
+
+/***************
+ * AdwButtonRow *
+ ***************/
+
+row.button {
+  > box {
+    margin-left: 12px;
+    margin-right: 12px;
+    border-spacing: 6px;
+    min-height: 42px;
+
+    > .icon:disabled {
+      filter: opacity($disabled_opacity);
+    }
+  }
+
+  .title {
+    @extend .heading;
+  }
+
+  &.suggested-action,
+  &.destructive-action {
+    color: $primary_color;
+  }
+
+  &.destructive-action {
+    --accent-bg-color: $destructive_color;
+    --accent-fg-color: $light_fg_color;
+    --accent-color: $destructive_color;
+  }
+}
+
+
+/*****************
+ * Boxed Lists *
+ *****************/
+
+%boxed_list_row {
+  outline: none;
+  border: none;
+
+  &.has-open-popup,
+  &:hover { background-color: $fill_color; }
+
+  &:active {
+    color: $fg_color;
+    background-color: $track_color;
+    transition-duration: 200ms;
+  }
+
+  &:disabled {
+    color: $disabled_fg_color;
+    image { color: inherit; }
+  }
+
+  &:selected {
+    &, &:active {
+      color: $fg_color;
+      background-color: $visit_color;
+    }
+
+    &.has-open-popup,
+    &:hover { background-color: $track_color; }
+  }
+
+  & + row {
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(to right,
+                                  transparent 0%,
+                                  transparent 2%,
+                                  $menu_bd 2%,
+                                  $menu_bd 98%,
+                                  transparent 98%,
+                                  transparent 100%) 1 0 0 0 / 1px 0 0 0 stretch;
+  }
+
+  &:hover, &:active, &:selected {
+    &, & + row {
+      border-image: none;
+    }
+  }
+}
+
+list.boxed-list {
+  @extend %circular_list;
+
+  > row {
+    // Regular rows and expander header rows background
+    &, &.expander row.header {
+      @extend %boxed_list_row;
+    }
+
+    &.expander {
+      border: none;
+    }
+
+    // Rounded top
+    &:first-child {
+      &, &.expander row.header {
+        border-top-left-radius: $bd_radius;
+        border-top-right-radius: $bd_radius;
+      }
+    }
+
+    // Rounded bottom
+    &:last-child {
+      &,
+      &.expander:not(:checked),
+      &.expander:not(:checked) row.header,
+      &.expander:checked list.nested,
+      &.expander:checked list.nested > row:last-child {
+        border-bottom-left-radius: $bd_radius;
+        border-bottom-right-radius: $bd_radius;
+        border-bottom-width: 0;
+      }
+    }
+  }
+}
+
+list.boxed-list-separate {
+  background: none;
+  color: $fg_color;
+
+  > row {
+    @extend %boxed_list_row;
+    border: none;
+    margin-bottom: 12px;
+    outline: none;
+
+    &:selected {
+      background-color: $visit_color;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:not(.expander) {
+      &:not(:selected).activatable {
+        &:hover {
+          background-color: $base_color;
+          background-image: image(color-mix(in srgb, currentColor 3%, transparent));
+        }
+
+        &:active {
+          background-color: $base_color;
+          background-image: image(color-mix(in srgb, currentColor 8%, transparent));
+        }
+
+        &.has-open-popup {
+          background-color: $base_color;
+          background-image: image(color-mix(in srgb, currentColor 3%, transparent));
+        }
+      }
+    }
+
+    &.entry, &.spin {
+      &:not(:selected).activatable.focused:hover,
+      &:not(:selected).activatable.focused:active {
+        background-color: $base_color;
+        background-image: none;
+      }
+    }
+
+    &.expander {
+      row.header {
+        @extend %boxed_list_row;
+        border-top-left-radius: $bd_radius;
+        border-top-right-radius: $bd_radius;
+      }
+
+      &:not(:checked) row.header,
+      &.expander:checked list.nested,
+      &.expander:checked list.nested > row:last-child {
+        border-bottom-left-radius: $bd_radius;
+        border-bottom-right-radius: $bd_radius;
+        border-bottom: none;
+      }
     }
   }
 }
@@ -4615,20 +5056,6 @@ paned {
                   inset 0 -1px $borders_color;
     }
   }
-}
-
-//
-// GtkVideo
-//
-
-video {
-  & image.osd {
-    min-width: 64px;
-    min-height: 64px;
-    border-radius: 32px;
-  }
-
-  background: black;
 }
 
 //
