@@ -756,7 +756,7 @@ StScrollBar {
 
 .calendar-day-base {
   text-align: center;
-  width: 28px;
+  min-width: 28px;
   height: 28px;
   padding: 0;
   margin: 2px;
@@ -825,7 +825,7 @@ StScrollBar {
 }
 
 .calendar-week-number {
-  width: 20px;
+  min-width: 20px;
   height: 20px;
   margin: 6px 0;
   color: transparentize($fg_color, 0.3);
