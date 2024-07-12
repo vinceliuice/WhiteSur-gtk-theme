@@ -40,3 +40,21 @@
 
 /* Import your custom stylesheet */
 @import "customChrome.css"; /**/
+
+#urlbar > * {
+  outline-color: transparent !important;
+}
+
+.urlbar-input-container {
+  border: 1px solid transparent !important;
+  padding: var(--urlbar-container-padding) !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  background: var(--gnome-inactive-tabbar-tab-active-background) !important;
+  border-radius: 8px !important;
+  padding: 0 5px !important;
+}
+
+#urlbar[breakout][breakout-extend] {
+  outline-offset: 1px !important;
+}
