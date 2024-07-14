@@ -2,13 +2,6 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-#urlbar {
-	--urlbar-height: 32px !important;
-	--urlbar-container-height: 32px !important;
-	--urlbar-toolbar-height: 32px !important;
-	--urlbar-inner-padding: 0 !important;
-}
-
 /* Center the URL bar */
 toolbarspring {
 	max-width: 10000px !important;
@@ -16,23 +9,34 @@ toolbarspring {
 
 /* URL bar */
 #urlbar {
+	--urlbar-height: 32px !important;
+	--urlbar-container-height: 32px !important;
+	--urlbar-toolbar-height: 32px !important;
+	--urlbar-inner-padding: 0 !important;
 	box-shadow: none !important;
+	border: none !important;
+	padding: 0 !important;
+	padding-block: 0 !important;
+	padding-inline: 0 !important;
 }
 
 #urlbar-background {
 	box-shadow: none !important;
-	border: 0 !important;
+	border: none !important;
 	background: transparent !important;
 	border-radius: 8px !important;
 	padding: 0 !important;
 }
 
-#urlbar:-moz-window-inactive {
-	border-color: var(--gnome-inactive-headerbar-background) !important;
+#urlbar-input-container,
+.urlbar-input-container {
+	border: none !important;
+	padding: 0 3px !important;
+	background: transparent !important;
 }
 
-#urlbar #urlbar-input-container {
-	padding: 0 !important;
+#urlbar:-moz-window-inactive {
+	border-color: var(--gnome-inactive-headerbar-background) !important;
 }
 
 #urlbar[breakout][breakout-extend] {
@@ -49,10 +53,10 @@ toolbarspring {
 	max-height: unset !important;
 }
 
-#urlbar[breakout][breakout-extend] #urlbar-input-container {
+#urlbar[breakout][breakout-extend] #urlbar-input-container,
+#urlbar[breakout][breakout-extend] > .urlbar-input-container {
 	height: 32px !important;
 	max-height: 32px !important;
-	padding: 0 !important;
 }
 
 #urlbar-input {
@@ -149,6 +153,11 @@ toolbarspring {
 	margin-left: 6px !important;
 }
 
+#identity-box[pageproxystate="invalid"] > .identity-box-button,
+#urlbar:not(.searchButton) > #urlbar-input-container > #identity-box[pageproxystate="invalid"] > .identity-box-button {
+	padding-inline: 6px !important;
+}
+
 /* URL bar and Search bar */
 #urlbar[focused] .urlbar-textbox-container {
 	margin: -1px !important;
@@ -174,11 +183,6 @@ toolbarspring {
 	fill-opacity: 1 !important;
 }
 
-#identity-box {
-	margin: 3px 2px !important;
-	border-radius: 5px !important;
-}
-
 #notification-popup-box {
 	height: 26px !important;
 	width: 28px !important;
@@ -201,6 +205,11 @@ toolbarspring {
 
 #star-button-box.urlbar-page-action {
 	padding: 5px 6px !important;
+}
+
+#identity-box {
+	margin: 3px 2px !important;
+	border-radius: 5px !important;
 }
 
 #identity-box:hover {

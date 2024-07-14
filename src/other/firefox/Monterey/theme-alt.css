@@ -32,4 +32,5 @@
 #customization-container {
 	background-color: var(--gnome-browser-before-load-background) !important;
 	color: var(--gnome-toolbar-color) !important;
+	background-image: none !important;
 }
