@@ -80,6 +80,7 @@
 	--gnome-button-destructive-action-active-border-color: #851015;
 	--gnome-button-destructive-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
 
+	--gnome-headerbar-button-combined-background: rgba(255, 255, 255, 0.05);
 	--gnome-headerbar-button-hover-background: rgba(255, 255, 255, 0.1);
 	--gnome-headerbar-button-active-background: rgba(255, 255, 255, 0.15);
 

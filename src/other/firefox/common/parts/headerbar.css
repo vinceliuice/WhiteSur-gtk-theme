@@ -34,6 +34,13 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 }
 
 #nav-bar .toolbaritem-combined-buttons {
+	padding: 0 !important;
+	margin: 0 !important;
+	border-radius: 8px !important;
+	background: var(--gnome-headerbar-button-combined-background) !important;
+}
+
+#nav-bar .toolbaritem-combined-buttons toolbarbutton:not(#urlbar-zoom-button) {
 	margin: 0 !important;
 }
 

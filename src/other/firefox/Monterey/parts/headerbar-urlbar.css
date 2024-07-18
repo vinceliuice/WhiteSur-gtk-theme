@@ -2,20 +2,19 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-#urlbar {
-	--urlbar-height: 32px !important;
-	--urlbar-container-height: 32px !important;
-	--urlbar-toolbar-height: 32px !important;
-	--urlbar-inner-padding: 0 !important;
-}
-
 toolbarspring {
 	display: none !important;
 }
 
 /* URL bar */
 #urlbar {
+	--urlbar-height: 32px !important;
+	--urlbar-container-height: 32px !important;
+	--urlbar-toolbar-height: 32px !important;
+	--urlbar-inner-padding: 0 !important;
 	box-shadow: none !important;
+	width: 360px !important;
+	min-width: 360px !important;
 }
 
 #urlbar-background {
@@ -153,6 +152,13 @@ toolbarspring {
 }
 
 /* URL bar and Search bar */
+#urlbar[focused],
+#searchbar:focus-within {
+	outline: none !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
 #urlbar[focused] .urlbar-textbox-container {
 	margin: -1px !important;
 }
@@ -192,6 +198,10 @@ toolbarspring {
 #identity-box {
 	margin: 3px 2px !important;
 	border-radius: 5px !important;
+}
+
+#identity-box[pageproxystate="valid"].chromeUI {
+	margin-left: 0 !important;
 }
 
 #identity-box:hover {

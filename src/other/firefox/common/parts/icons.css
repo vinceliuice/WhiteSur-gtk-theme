@@ -609,6 +609,11 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 	fill: currentColor;
 }
 
+/* profiler */
+#profiler-button-button > .toolbarbutton-icon {
+	list-style-image: url("../icons/tool-profiler.svg") !important;
+}
+
 /* Fix flat buttons icons aproach */
 button.close::before {
 	content: "";
@@ -772,7 +777,8 @@ treechildren::-moz-tree-image {
 	.menu-iconic.bookmark-item[container] .menu-iconic-icon,
 	.panel-info-button > image,
 	#password-notification-icon,
-	#firefox-view-button .toolbarbutton-icon {
+	#firefox-view-button .toolbarbutton-icon,
+	#profiler-button-button > .toolbarbutton-icon {
 		filter: invert(60%) brightness(150%);
 	}
 

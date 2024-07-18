@@ -212,6 +212,10 @@ toolbarspring {
 	border-radius: 5px !important;
 }
 
+#identity-box[pageproxystate="valid"].chromeUI {
+	margin-left: 0 !important;
+}
+
 #identity-box:hover {
 	background: var(--gnome-headerbar-button-hover-background) !important;
 }

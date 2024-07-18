@@ -2,6 +2,10 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+:root[tabsintitlebar] #nav-bar * {
+	-moz-window-dragging: drag;
+}
+
 tab > stack {
 	margin: 0 3px !important;
 }
