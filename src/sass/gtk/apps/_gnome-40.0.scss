@@ -1156,6 +1156,38 @@ spinner.fade-in:checked {
 }
 
 //
+// Gnome Tweaks
+//
+
+window.background.csd {
+  > dialog-host > widget > widget > box > leaflet {
+    > headerbar.titlebar.tweak-titlebar-left {
+      @extend %side_headerbar_left;
+    }
+
+    > headerbar.titlebar.tweak-titlebar-right {
+      @extend %side_headerbar_right;
+    }
+
+    > separator {
+      @extend %side_separator;
+    }
+
+    > box > searchbar {
+      @extend %side_searchbar;
+    }
+
+    list.navigation-sidebar {
+      @extend %side_style_left;
+    }
+
+    stack.background {
+      background-color: $base_color;
+    }
+  }
+}
+
+//
 // Misc (other)
 //
 

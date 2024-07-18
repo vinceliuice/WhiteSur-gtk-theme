@@ -4,9 +4,18 @@
 $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 /* #{$cakeisalie} */
 
+$side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light', 0.02, 0.06)), transparent 6px);
+
+%side_style_left {
+  background-image: $side_style_shadow;
+  background-color: rgba($dark_sidebar_bg, 1);
+  box-shadow: none;
+  border: none;
+}
+
 %side_headerbar_left {
   &, &:backdrop {
-    background-image: none;
+    background-image: $side_style_shadow;
     background-color: rgba($dark_sidebar_bg, 1);
     border: none;
   }
@@ -16,6 +25,7 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
   &, &:backdrop {
     background-image: none;
     background-color: rgba($base_color, 1);
+    border: none;
   }
 }
 
