@@ -119,9 +119,10 @@ findbar:-moz-window-inactive {
 }
 
 #PersonalToolbar {
-	padding: 0 3px 3px !important;
-	height: 32px !important;
-	max-height: 32px !important;
+	height: 28px !important;
+	max-height: 28px !important;
+	padding: 0 2px !important;
+	--bookmarks-toolbar-overlapping-browser-height: auto;
 }
 
 /* bookmark-item */
