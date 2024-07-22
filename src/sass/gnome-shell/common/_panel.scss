@@ -52,10 +52,14 @@ $panel_height: $menuitem_size;
   color: $panel_fg;
 
   StBoxLayout {
+    padding: 0 $scaled_padding * 0.5;
     spacing: $container_padding;
   }
 
   .workspace-dot {
+    border-radius: $circular_radius;
+    min-width: $scalable_icon_size * 0.5;
+    min-height: $scalable_icon_size * 0.5;
     background-color: $panel_fg;
   }
 
@@ -332,7 +336,7 @@ $panel_height: $menuitem_size;
   &.unlock-screen,
   &.login-screen,
   &.lock-screen {
-    background-color: if($trans == 'false' and $variant == 'light', transparent, transparent);
+    background-color: transparent;
     box-shadow: none;
 
     StLabel, StIcon { color: $light_alt_fg_color; }
@@ -370,6 +374,16 @@ $panel_height: $menuitem_size;
 
           .clock {
             box-shadow: none;
+          }
+        }
+      }
+
+      @if $activities == 'default' {
+        &#panelActivities {
+          color: $light_fg_color;
+
+          .workspace-dot {
+            background-color: $light_fg_color;
           }
         }
       }
