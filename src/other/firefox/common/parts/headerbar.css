@@ -33,9 +33,9 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	background: none !important;
 }
 
-#nav-bar .toolbaritem-combined-buttons {
+#nav-bar .toolbaritem-combined-buttons:not(.unified-extensions-item) {
 	padding: 0 !important;
-	margin: 0 !important;
+	margin: 0 2px !important;
 	border-radius: 8px !important;
 	background: var(--gnome-headerbar-button-combined-background) !important;
 }

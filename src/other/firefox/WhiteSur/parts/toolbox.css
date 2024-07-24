@@ -18,6 +18,14 @@
 	fill: var(--gnome-toolbar-color);
 }
 
+toolbar .toolbarbutton-1 {
+	> .toolbarbutton-icon,
+	> .toolbarbutton-text,
+	> .toolbarbutton-badge-stack {
+		border-radius: 0 !important;
+	}
+}
+
 #nav-bar, #PersonalToolbar, #toolbar-menubar, .notificationbox-stack {
 	border: 0 !important;
 	color: var(--gnome-toolbar-color);
