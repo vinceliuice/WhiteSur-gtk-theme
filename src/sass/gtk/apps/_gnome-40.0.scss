@@ -116,7 +116,33 @@ $flap_sidebar_size: 240px;
 
     child.activatable {
       border-radius: $bt_radius;
-      @extend %row_activatable;
+      transition: background-color $longer_duration $deceleration_curve;
+
+      &:hover {
+        background-color: $fill_color;
+        transition-duration: $shorter_duration;
+      }
+
+      &:active:not(:selected):not(:hover) {
+        color: $fg_color;
+        background-color: transparent;
+      }
+
+      &:selected:active, &:hover:active {
+        color: $fg_color;
+        background-color: $track_color;
+      }
+
+      &:disabled {
+        color: $disabled_fg_color;
+      }
+
+      &:selected {
+        color: $fg_color;
+        background-color: $visit_color;
+
+        &:hover { background-color: $track_color; }
+      }
     }
   }
 
