@@ -26,6 +26,37 @@ $flap_sidebar_size: 240px;
                                                          $header_border 40%);
 }
 
+%nautilus_view {
+  border-radius: $bt_radius;
+  transition: background-color $longer_duration $deceleration_curve;
+
+  &:hover {
+    background-color: $fill_color;
+    transition-duration: $shorter_duration;
+  }
+
+  &:active:not(:selected):not(:hover) {
+    color: $fg_color;
+    background-color: transparent;
+  }
+
+  &:selected:active, &:hover:active {
+    color: $fg_color;
+    background-color: $track_color;
+  }
+
+  &:disabled {
+    color: $disabled_fg_color;
+  }
+
+  &:selected {
+    color: $fg_color;
+    background-color: $visit_color;
+
+    &:hover { background-color: $track_color; }
+  }
+}
+
 .nautilus-window {
   @if $nautilus_style == 'stable' or $nautilus_style == 'glassy' {
     &.background.csd {
@@ -115,34 +146,7 @@ $flap_sidebar_size: 240px;
     background-color: $base_color;
 
     child.activatable {
-      border-radius: $bt_radius;
-      transition: background-color $longer_duration $deceleration_curve;
-
-      &:hover {
-        background-color: $fill_color;
-        transition-duration: $shorter_duration;
-      }
-
-      &:active:not(:selected):not(:hover) {
-        color: $fg_color;
-        background-color: transparent;
-      }
-
-      &:selected:active, &:hover:active {
-        color: $fg_color;
-        background-color: $track_color;
-      }
-
-      &:disabled {
-        color: $disabled_fg_color;
-      }
-
-      &:selected {
-        color: $fg_color;
-        background-color: $visit_color;
-
-        &:hover { background-color: $track_color; }
-      }
+      @extend %nautilus_view;
     }
   }
 
@@ -160,8 +164,19 @@ $flap_sidebar_size: 240px;
       > row.activatable {
         padding: 0;
         margin: 0;
-        border-radius: $bt_radius;
-        @extend %row_activatable;
+        @extend %nautilus_view;
+
+        > cell {
+          padding: 0;
+
+          > widget#NautilusViewCell {
+            padding: $container_padding $container_padding * 1.5;
+          }
+        }
+
+        + row {
+          margin-top: $container_padding / 2;
+        }
       }
     }
   }

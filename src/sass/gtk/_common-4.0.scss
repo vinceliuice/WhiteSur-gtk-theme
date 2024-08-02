@@ -2104,18 +2104,18 @@ headerbar {
   // Reset linking entrys
   .linked:not(.vertical) > entry {
     @include entry(header-normal);
-    margin: 8px ($container_padding / 2 + 1px);
+    // margin: 8px ($container_padding / 2 + 1px);
     padding: 0 $container_padding * 2;
-    border-radius: $bt_radius;
+    // border-radius: $bt_radius;
     border: none;
 
     &:focus {
-      border-radius: $bt_radius;
+      // border-radius: $bt_radius;
       @include entry(header-focus);
     }
 
     &:disabled {
-      border-radius: $bt_radius;
+      // border-radius: $bt_radius;
       @include entry(header-insensitive);
     }
 
