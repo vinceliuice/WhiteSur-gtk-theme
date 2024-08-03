@@ -4319,7 +4319,7 @@ row.expander {
   }
 
   list.nested {
-    background-color: color-mix(in srgb, $base_color 50%, transparent);
+    background-color: rgba($base_color, 0.5);
     color: inherit;
   }
 
@@ -4496,17 +4496,17 @@ list.boxed-list-separate {
       &:not(:selected).activatable {
         &:hover {
           background-color: $base_color;
-          background-image: image(color-mix(in srgb, currentColor 3%, transparent));
+          background-image: image(gtkalpha(currentColor, 0.03));
         }
 
         &:active {
           background-color: $base_color;
-          background-image: image(color-mix(in srgb, currentColor 8%, transparent));
+          background-image: image(gtkalpha(currentColor, 0.08));
         }
 
         &.has-open-popup {
           background-color: $base_color;
-          background-image: image(color-mix(in srgb, currentColor 3%, transparent));
+          background-image: image(gtkalpha(currentColor, 0.03));
         }
       }
     }
