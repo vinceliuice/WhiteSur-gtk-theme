@@ -35,14 +35,9 @@ $flap_sidebar_size: 240px;
     transition-duration: $shorter_duration;
   }
 
-  &:active:not(:selected):not(:hover) {
+  &:active {
     color: $fg_color;
-    background-color: transparent;
-  }
-
-  &:selected:active, &:hover:active {
-    color: $fg_color;
-    background-color: $track_color;
+    background-color: $divider_color;
   }
 
   &:disabled {
@@ -54,6 +49,8 @@ $flap_sidebar_size: 240px;
     background-color: $visit_color;
 
     &:hover { background-color: $track_color; }
+
+    &:active { background-color: $active_color; }
   }
 }
 
