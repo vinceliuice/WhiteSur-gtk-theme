@@ -4385,17 +4385,6 @@ row.button {
   .title {
     @extend .heading;
   }
-
-  &.suggested-action,
-  &.destructive-action {
-    color: $primary_color;
-  }
-
-  &.destructive-action {
-    --accent-bg-color: $destructive_color;
-    --accent-fg-color: $light_fg_color;
-    --accent-color: $destructive_color;
-  }
 }
 
 
