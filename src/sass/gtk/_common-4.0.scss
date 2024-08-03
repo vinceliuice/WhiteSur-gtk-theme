@@ -4673,11 +4673,11 @@ calendar {
 $messagedialog_bg: if($trans == 'true', rgba($bg_color, 0.95), $bg_color);
 
 window.dialog.message { // Message Dialog styling
-  &.background { background-color: rgba($messagedialog_bg, 1); }
+  &.background { background-color: $messagedialog_bg; }
 
   .titlebar {
     min-height: 28px;
-    background-color: rgba($messagedialog_bg, 1);
+    background-color: transparent;
     border: none;
   }
 
@@ -4719,16 +4719,6 @@ window.dialog.message { // Message Dialog styling
         border-radius: $bt_radius;
       }
     }
-  }
-
-  &.csd { // rounded bottom border styling for csd version
-    &.background {
-      border-bottom-left-radius: $wm_radius;
-      border-bottom-right-radius: $wm_radius;
-      border: none;
-    }
-
-    &.background, .titlebar { background-color: $messagedialog_bg; }
   }
 }
 
