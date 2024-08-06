@@ -374,6 +374,9 @@ menu[disabled] > .menu-right {
 #downloads-button .toolbarbutton-icon { /* Downloads button / Glitch - it swaps to the default one anyway */
 	list-style-image: url("../icons/folder-download-symbolic.svg") !important;
 }
+#downloads-button, #downloads-indicator-anchor {
+	list-style-image: url("../icons/folder-download-symbolic.svg") !important;
+}
 
 #identity-box[pageproxystate="valid"].verifiedDomain #identity-icon,
 #identity-box[pageproxystate="valid"].mixedActiveBlocked #identity-icon {
@@ -735,7 +738,6 @@ treechildren::-moz-tree-image {
 	#stop-button .toolbarbutton-icon,
 	.downloadIconCancel > .button-box > .button-icon,
 	#context-stop .menu-iconic-icon,
-	#downloads-button .toolbarbutton-icon,
 	#sync-button .toolbarbutton-icon,
 	#new-window-button .toolbarbutton-icon,
 	#mozcn-mobile-bookmarks-button .toolbarbutton-icon,
@@ -743,7 +745,9 @@ treechildren::-moz-tree-image {
 	#bookmarks-toolbar-placeholder .toolbarbutton-icon,
 	#screenshot-button .toolbarbutton-icon,
 	#scrollbutton-up .toolbarbutton-icon,
-  #scrollbutton-down .toolbarbutton-icon,
+	#scrollbutton-down .toolbarbutton-icon,
+	#downloads-button,
+	#downloads-indicator-anchor,
 	#tracking-protection-icon,
 	#pageActionButton,
 	#permissions-granted-icon,
@@ -794,10 +798,10 @@ treechildren::-moz-tree-image {
 		list-style-image: url("../icons/audio-muted-symbolic-light.svg") !important;
 	}
 
-  #urlbar-go-button,
-  .search-go-button {
-	  list-style-image: url("../icons/go-next-symbolic-light.svg") !important;
-  }
+	#urlbar-go-button,
+	search-go-button {
+		list-style-image: url("../icons/go-next-symbolic-light.svg") !important;
+	}
 
 	#save-to-pocket-button,
 	#pocket-button, #pageAction-panel-pocket {
