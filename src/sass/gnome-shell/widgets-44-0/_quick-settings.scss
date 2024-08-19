@@ -17,8 +17,8 @@
 
 .quick-toggle, .quick-menu-toggle {
   border-radius: $circular_radius;
-  min-width: 13em;
-  max-width: 13em;
+  min-width: 12em;
+  max-width: 12em;
   min-height: $scalable_icon_size * 3;
   border: none;
 }
@@ -49,20 +49,20 @@
     }
   }
 
-  & > StBoxLayout { spacing: $base_padding * 2; }
+  & > StBoxLayout { spacing: $base_padding * 1.5; }
 
   /* Move padding into the box; this is to allow menu arrows
      to extend to the border */
   &.button { padding: 0; }
-  & > StBoxLayout { padding: 0 $base_padding * 2.5; }
-  &:ltr > StBoxLayout { padding-left: $base_padding * 3; }
-  &:rtl > StBoxLayout { padding-right: $base_padding * 3; }
+  & > StBoxLayout { padding: 0 $base_padding * 2; }
+  &:ltr > StBoxLayout { padding-left: $base_padding * 4; }
+  &:rtl > StBoxLayout { padding-right: $base_padding * 4; }
 
   .quick-toggle-title { font-weight: bold; }
 
   & StBoxLayout > .quick-toggle-subtitle {
+    @extend %caption;
     font-weight: normal;
-    font-size: 12px;
   }
 
   .quick-toggle-icon { icon-size: $base_icon_size !important; }
@@ -83,7 +83,7 @@
   }
 
   & .quick-toggle-arrow {
-    padding: $base_padding $base_padding * 2.5;
+    padding: $scaled_padding $scaled_padding * 2;
     border: none;
     background-color: $fill_color !important;
 

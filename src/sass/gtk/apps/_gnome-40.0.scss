@@ -86,19 +86,6 @@ $flap_sidebar_size: 240px;
 
   headerbar > windowhandle > box { padding: 0 10px; }
 
-  placessidebar {
-    .navigation-sidebar > row {
-      &:selected {
-        background-color: if($variant == 'light', rgba(black, 0.15), rgba(white, 0.15));
-        color: $fg_color;
-      }
-
-      &.sidebar-row {
-        .sidebar-icon { color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%)); }
-      }
-    }
-  }
-
   flap.unfolded,
   .sidebar-pane {
     &, &:backdrop {
@@ -107,6 +94,19 @@ $flap_sidebar_size: 240px;
 
     placessidebar {
       background: none;
+
+      .navigation-sidebar:not(.view) {
+        > row {
+          &:selected {
+            background-color: if($variant == 'light', rgba(black, 0.15), rgba(white, 0.15));
+            color: $fg_color;
+          }
+
+          &.sidebar-row {
+            .sidebar-icon { color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%)); }
+          }
+        }
+      }
     }
 
     > separator.horizontal {
