@@ -1,10 +1,10 @@
-#TabsToolbar {
+#TabsToolbar, #urlbar-container {
 	margin-right: 14vw !important;
 }
 
 /* Left window titlebuttons mode */
 @media (-moz-gtk-csd-reversed-placement) {
-	#TabsToolbar {
+	#TabsToolbar, #urlbar-container {
 		margin-right: 10vw !important;
 	}
 }

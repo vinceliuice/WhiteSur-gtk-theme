@@ -1,18 +1,10 @@
 #TabsToolbar {
-	margin-left: 451px !important;
-}
-
-:root[sizemode="maximized"] #TabsToolbar {
 	margin-left: 491px !important;
 }
 
 /* Left window titlebuttons mode */
 @media (-moz-gtk-csd-reversed-placement) {
 	#TabsToolbar {
-		margin-left: 534px !important;
-	}
-
-	:root[sizemode="maximized"] #TabsToolbar {
 		margin-left: 534px !important;
 	}
 }

@@ -47,6 +47,10 @@ findbar:-moz-window-inactive,
 	max-height: 42px !important;
 }
 
+.titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"] {
+	width: 0 !important;
+}
+
 #TabsToolbar {
 	margin-top: -40px !important;
 	margin-bottom: 8px !important;

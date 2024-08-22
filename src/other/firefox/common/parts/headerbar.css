@@ -6,6 +6,10 @@
 	padding: 8px !important;
 }
 
+#nav-bar-customization-target {
+	-moz-window-dragging: drag;
+}
+
 /* Headerbar CSD colors */
 :root[tabsintitlebar] #nav-bar {
 	border: none !important;
