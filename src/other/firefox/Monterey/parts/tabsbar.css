@@ -18,6 +18,11 @@ tab > stack {
 	background-image: none !important;
 }
 
+.tab-content {
+	height: 32px !important;
+	min-height: 32px !important;
+}
+
 .tabbrowser-tab:not([visuallyselected="true"], [multiselected]), .tabbrowser-tab:-moz-lwtheme {
 	color: var(--gnome-tabbar-tab-color) !important;
 }
