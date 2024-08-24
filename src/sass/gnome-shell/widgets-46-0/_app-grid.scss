@@ -53,7 +53,8 @@ $app_folder_size: 720px;
   height: 5px;
   border-radius: 5px;
   background-color: $light_alt_fg_color;
-  margin-bottom: 6px;
+  margin-bottom: 0 !important;
+  offset-y: 6px;
 
   StWidget.focused & {
     background-color: $primary_color;
