@@ -144,12 +144,6 @@ tab[selected]:-moz-window-inactive {
 	padding: 6px;
 }
 
-/* Hide favicon when mute icon is present */
-.tabbrowser-tab:not([pinned]):is([soundplaying], [muted], [activemedia-blocked], [crashed]) .tab-icon-image:not([sharing]),
-.tabbrowser-tab:not([pinned]):is([soundplaying], [muted], [activemedia-blocked], [crashed])[selected] .tab-icon-image {
-	display: none;
-}
-
 /* Hide secondary label about muting */
 .tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked], [crashed]) .tab-secondary-label {
 	display: none;
@@ -169,9 +163,17 @@ tab[selected]:-moz-window-inactive {
 
 /* Force tab favicon to the center */
 .tab-throbber, .tab-throbber-fallback,
-.tabbrowser-tab:not([busy]):not([soundplaying="true"],[muted="true"]) .tab-icon-image,
+.tabbrowser-tab:not([busy]):not([muted="true"]) .tab-icon-image,
 .tabbrowser-tab .tab-icon-stack {
 	margin-left: auto !important;
+}
+
+.tabbrowser-tab:is([pinned]) .tab-icon-stack {
+	margin-left: 0 !important;
+}
+
+.tabbrowser-tab:not([busy]):not([muted="true"]) .tab-icon-stack .tab-icon-image {
+	margin: auto !important;
 }
 
 /* If tab favicon is not present, force tab label to the center */
@@ -292,6 +294,10 @@ tab[selected]:-moz-window-inactive {
 .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
 	top: 0 !important;
 	inset-inline-end: 0 !important;
+}
+
+.tabbrowser-tab:not(:hover) .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
+	display: none !important;
 }
 
 .tabbrowser-tab .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {

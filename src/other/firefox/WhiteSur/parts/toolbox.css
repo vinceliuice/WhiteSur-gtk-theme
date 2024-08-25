@@ -69,6 +69,12 @@ findbar:-moz-window-inactive label,
 	opacity: 0.7 !important;
 }
 
+.tab-icon-overlay {
+  :is(:root[uidensity="compact"], #tabbrowser-tabs[secondarytext-unsupported], :root:not([uidensity="compact"]) #tabbrowser-tabs:not([secondarytext-unsupported]) .tabbrowser-tab:hover) .tab-icon-stack[indicator-replaces-favicon] > :not(&), :root:not([uidensity="compact"]) #tabbrowser-tabs:not([secondarytext-unsupported]) .tabbrowser-tab:not(:hover) &[indicator-replaces-favicon] {
+    opacity: 0 !important;
+  }
+}
+
 #toolbar-menubar:not([inactive=true]) {
 	margin-bottom: 0 !important;
 }
