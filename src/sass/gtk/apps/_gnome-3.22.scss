@@ -2873,6 +2873,13 @@ window#GearyMainWindow.background.csd { // <= 3.32
         border-radius: $bt_radius;
         padding: $container_padding;
 
+        &:hover, &:active, &:selected {
+          &, & + row {
+            box-shadow: 0 0 0 $container_padding / 2 + 1px $base_color;
+            transition: box-shadow 0;
+          }
+        }
+
         > widget > box > box {
           padding: $container_padding / 2;
         }
@@ -2886,7 +2893,8 @@ window#GearyMainWindow.background.csd { // <= 3.32
       > separator {
         background-color: $menu_bd;
         border: none;
-        margin: $container_padding / 2 $container_padding * 2;
+        margin: $container_padding / 2 $container_padding * 3;
+        transition: none;
       }
     }
   }
