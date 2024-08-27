@@ -163,7 +163,7 @@ else
 
   remove_themes; customize_theme; avoid_variant_duplicates;
 
-  prompt -w "Installing '${name}${colorscheme}' themes in '${dest}'...\n";
+  prompt -w "Installing '${name}${colorscheme}' '${themes[*]}' themes in '${dest}'...\n";
 
   prompt -t "--->>> GTK | GNOME Shell | Cinnamon | Metacity | XFWM | Plank <<<---"
   prompt -i "Color variants   : $( IFS=';'; echo "${colors[*]}" )"

@@ -30,6 +30,16 @@ pakitheme_gtk3() {
 
   if [[ -n "$theme_path" ]]; then
     prompt -i "Converting theme: $FLATPAK_THEME... \n"
+  elif [[ "${theme}" == '' ]]; then
+    prompt -e "Find other variant themes but could not locate deafult theme! \n"
+    prompt -s "Run this with right options! >>> \n"
+    prompt -i "-o, --opacity [$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"
+    prompt -i "-c, --color   [$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"
+    prompt -i "-a, --alt     [$(IFS='|'; echo "${ALT_VARIANTS[*]}")|all]"
+    prompt -i "-t, --theme   [$(IFS='|'; echo "${THEME_VARIANTS[*]}")|all]"
+    prompt -i "..."
+    echo
+    exit 0
   else
     prompt -e "Could not locate theme... install theme first! \n"
     exit 0
@@ -43,7 +53,7 @@ pakitheme_gtk3() {
   rm -rf "$build_dir"
   mkdir -p "$build_dir/files"
 
-  cp -a "$theme_path/gtk-3.0/"* "$build_dir/files"
+  cp -a "$theme_path/gtk-3.0/"{gtk.css,gtk-dark.css,gtk.gresource} "$build_dir/files"
 
   mkdir -p "$build_dir/files/share/appdata"
   cat >"$build_dir/files/share/appdata/$gtk3_app_id.appdata.xml" <<EOF

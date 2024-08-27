@@ -25,9 +25,9 @@ usage() {
   helpify_title
   helpify "[GDM theme]"         "options"                                           ".................." ""
   helpify "-g, --gdm"           "[default|x2]"                                      "Install '${THEME_NAME}' theme for GDM (scaling: 100%/200%, default is 100%)" "Requires to run this shell as root"
-  helpify "-o, --opacity"       "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "Set '${THEME_NAME}' GDM theme opacity variants"                              "Default is 'normal'"
-  helpify "-c, --color"         "[$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"         "Set '${THEME_NAME}' GDM and Dash to Dock theme color variants"               "Default is 'light'"
-  helpify "-t, --theme"         "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")]"         "Set '${THEME_NAME}' GDM theme accent color"                                  "Default is BigSur-like theme"
+  helpify "-o, --opacity"       "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "Set '${THEME_NAME}' GDM/Flatpak theme opacity variants"                      "Default is 'normal'"
+  helpify "-c, --color"         "[$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"         "Set '${THEME_NAME}' GDM/Flatpak and Dash to Dock theme color variants"       "Default is 'light'"
+  helpify "-t, --theme"         "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")]"         "Set '${THEME_NAME}' GDM/Flatpak theme accent color"                          "Default is BigSur-like theme"
   helpify "-N, --no-darken"     ""                                                  "Don't darken '${THEME_NAME}' GDM theme background image"                     ""
   helpify "-n, --no-blur"       ""                                                  "Don't blur '${THEME_NAME}' GDM theme background image"                       ""
   helpify "-b, --background"    "[default|blank|IMAGE_PATH]"                        "Set '${THEME_NAME}' GDM theme background image"                              "Default is BigSur-like wallpaper"
@@ -115,6 +115,7 @@ while [[ $# -gt 0 ]]; do
       fi; shift ;;
     -F|--flatpak)
       flatpak="true"; signal_exit
+      prompt -w "Without options it will only install default themes\n"
 
       if ! has_command flatpak; then
         prompt -e "'${1}' ERROR: There's no Flatpak installed in your system"
@@ -173,11 +174,11 @@ while [[ $# -gt 0 ]]; do
     -P|--panel-size)
       check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
     -o|--opacity)
-      check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
+      check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
     -c|--color)
-      check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
+      check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
     -t|--theme)
-      check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
+      check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
     *)
       prompt -e "ERROR: Unrecognized tweak option '${1}'."
       has_any_error="true"; shift ;;
@@ -245,7 +246,7 @@ else
 
   if [[ "${flatpak}" == 'true' && "${gdm}" != 'true' ]]; then
     prompt -i "Connecting '${name}' themes to your Flatpak... \n"
-    connect_flatpak
+    customize_theme; avoid_variant_duplicates; connect_flatpak
     prompt -s "Done! '${name}' theme has been connected to your Flatpak. \n"
   fi
 

@@ -374,7 +374,7 @@ menu[disabled] > .menu-right {
 #downloads-button .toolbarbutton-icon { /* Downloads button / Glitch - it swaps to the default one anyway */
 	list-style-image: url("../icons/folder-download-symbolic.svg") !important;
 }
-#downloads-button, #downloads-indicator-anchor {
+#downloads-indicator-anchor {
 	list-style-image: url("../icons/folder-download-symbolic.svg") !important;
 }
 
@@ -746,7 +746,7 @@ treechildren::-moz-tree-image {
 	#screenshot-button .toolbarbutton-icon,
 	#scrollbutton-up .toolbarbutton-icon,
 	#scrollbutton-down .toolbarbutton-icon,
-	#downloads-button,
+	#downloads-button .toolbarbutton-icon,
 	#downloads-indicator-anchor,
 	#tracking-protection-icon,
 	#pageActionButton,

@@ -347,26 +347,6 @@ install_beggy() {
   esac
 }
 
-install_xfwmy() {
-  local color="$(destify ${1})"
-
-  local TARGET_DIR="${dest}/${name}${color}${colorscheme}"
-  local HDPI_TARGET_DIR="${dest}/${name}${color}${colorscheme}-hdpi"
-  local XHDPI_TARGET_DIR="${dest}/${name}${color}${colorscheme}-xhdpi"
-
-  mkdir -p                                                                                    "${TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}${colorscheme}/"*".png"                  "${TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${TARGET_DIR}/xfwm4/themerc"
-
-  mkdir -p                                                                                    "${HDPI_TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}${colorscheme}-hdpi/"*".png"             "${HDPI_TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${HDPI_TARGET_DIR}/xfwm4/themerc"
-
-  mkdir -p                                                                                    "${XHDPI_TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}${colorscheme}-xhdpi/"*".png"            "${XHDPI_TARGET_DIR}/xfwm4"
-  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${XHDPI_TARGET_DIR}/xfwm4/themerc"
-}
-
 install_shelly() {
   local color="$(destify ${1})"
   local opacity="$(destify ${2})"
@@ -489,6 +469,21 @@ install_theemy() {
   cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets-common${color}${colorscheme}"                 "${TARGET_DIR}/gtk-2.0/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets${color}${theme}${colorscheme}/"*".png"        "${TARGET_DIR}/gtk-2.0/assets"
 
+  local HDPI_TARGET_DIR="${TARGET_DIR}-hdpi"
+  local XHDPI_TARGET_DIR="${TARGET_DIR}-xhdpi"
+
+  mkdir -p                                                                                    "${TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}${colorscheme}/"*".png"                  "${TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${TARGET_DIR}/xfwm4/themerc"
+
+  mkdir -p                                                                                    "${HDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}${colorscheme}-hdpi/"*".png"             "${HDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${HDPI_TARGET_DIR}/xfwm4/themerc"
+
+  mkdir -p                                                                                    "${XHDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/assets/xfwm4/assets${color}${colorscheme}-xhdpi/"*".png"            "${XHDPI_TARGET_DIR}/xfwm4"
+  cp -r "${THEME_SRC_DIR}/main/xfwm4/themerc${color}"                                         "${XHDPI_TARGET_DIR}/xfwm4/themerc"
+
   mkdir -p                                                                                    "${TARGET_DIR}/metacity-1"
   cp -r "${THEME_SRC_DIR}/main/metacity-1/metacity-theme${color}.xml"                         "${TARGET_DIR}/metacity-1/metacity-theme-1.xml"
   cp -r "${THEME_SRC_DIR}/main/metacity-1/metacity-theme-3.xml"                               "${TARGET_DIR}/metacity-1"
@@ -541,8 +536,7 @@ install_libadwaita() {
   opacity="${opacities[0]}"
   color="${colors[1]}"
 
-  gtk_base "${opacities[0]}" "${themes[0]}"
-  config_gtk4 "${colors}" "${alts}"
+  gtk_base && config_gtk4 "${colors}" "${alts}"
 }
 
 remove_libadwaita() {
@@ -574,10 +568,9 @@ install_themes() {
     for alt in "${alts[@]}"; do
       for theme in "${themes[@]}"; do
         for color in "${colors[@]}"; do
-          gtk_base "${opacity}" "${theme}" "${compact}"
+          gtk_base
           install_theemy "${color}" "${opacity}" "${alt}" "${theme}"
           install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${icon}"
-          install_xfwmy "${color}"
         done
       done
     done
@@ -621,7 +614,7 @@ install_gdm_theme() {
   # Let's go!
   install_theme_deps
   rm -rf "${WHITESUR_GS_DIR}"; install_beggy
-  gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}"
+  gtk_base
 
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
     install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
@@ -790,7 +783,7 @@ fix_dash_to_dock() {
 }
 
 install_dash_to_dock_theme() {
-  gtk_base "${colors[0]}" "${opacities[0]}" "${themes[0]}"
+  gtk_base
 
   if [[ -d "${DASH_TO_DOCK_DIR_HOME}" ]]; then
     backup_file "${DASH_TO_DOCK_DIR_HOME}/stylesheet.css" "udo"
