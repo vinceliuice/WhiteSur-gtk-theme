@@ -302,6 +302,8 @@ window.background:not(.solid-csd):not(.csd) {
     }
 
     > scrolledwindow > viewport.frame {
+      background: $base_color;
+
       > grid > box.vertical {
         > toolbar {
           background: none;
@@ -309,6 +311,9 @@ window.background:not(.solid-csd):not(.csd) {
           padding: 6px;
         }
       }
+
+      > grid > box.horizontal > #combobox.linked,
+      > grid > box.horizontal > grid.horizontal > box.horizontal { background: $base_color; }
     }
 
     toolbar.small-button {
@@ -319,18 +324,16 @@ window.background:not(.solid-csd):not(.csd) {
   // for 'Notebookbar' toolbar
   > notebook {
     border: none; // unset borders
-    background: none;
+    background-color: transparent;
     box-shadow: none;
     padding: 0;
     margin: 0;
 
     > stack {
-      border: 1px solid $dark_sidebar_border;
-      border-left: none;
-      border-right: none;
-      background-color: transparent;
+      border: 1px solid $borders_color;
+      background-color: $base_color;
       box-shadow: none;
-      border-radius: 0;
+      border-radius: $bt_radius;
     }
 
     > header {
@@ -339,7 +342,7 @@ window.background:not(.solid-csd):not(.csd) {
       padding: 0;
       margin: 0;
       border: none;
-      background: none;
+      background-color: transparent;
 
       > tabs > tab {
         margin: 3px 1px;
