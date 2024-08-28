@@ -2038,6 +2038,12 @@ $pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
     }
   }
 
+  entry {
+    &, &:focus {
+      background-color: $base_color;
+    }
+  }
+
   &.separator {
     min-height: 2px;
     color: $borders_color;

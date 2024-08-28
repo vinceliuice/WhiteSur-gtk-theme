@@ -788,3 +788,15 @@ frame.view list > row {
     > image { border-radius: 3px; }
   }
 }
+
+//
+// FileZilla
+//
+
+window.background:not(.csd) {
+  > box > widget > widget > widget > widget > widget > widget > widget > scrolledwindow {
+    entry:focus {
+      background-color: if($variant == 'light', mix(black, $bg_color, 5%), mix(white, $bg_color, 5%));
+    }
+  }
+}
