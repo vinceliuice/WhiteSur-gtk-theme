@@ -389,6 +389,28 @@ window.background:not(.solid-csd):not(.csd) {
   }
 }
 
+button {
+  &:active {
+    color: $fg_color;
+    background-color: if($variant == 'light', mix(black, $bg_color, 10%), mix(white, $bg_color, 10%));
+    border-color: transparent;
+  }
+
+  &:checked {
+    color: $fg_color;
+    background-color: if($variant == 'light', mix(black, $bg_color, 5%), mix(white, $bg_color, 5%));
+    border-color: transparent;
+  }
+
+  .background & {
+    &:active, &:checked {
+      color: $selected_fg_color;
+      background-color: $selected_bg_color;
+      border-color: if($variant=='light', $selected_bg_color, $dark_borders_color);
+    }
+  }
+}
+
 //
 // Tilix
 //
