@@ -301,11 +301,13 @@ window.background:not(.solid-csd):not(.csd) {
       padding: 3px;
     }
 
-    > scrolledwindow > viewport.frame > grid > box.vertical {
-      > toolbar {
-        background: none;
-        border: none;
-        padding: 6px;
+    > scrolledwindow > viewport.frame {
+      > grid > box.vertical {
+        > toolbar {
+          background: none;
+          border: none;
+          padding: 6px;
+        }
       }
     }
 
@@ -317,12 +319,46 @@ window.background:not(.solid-csd):not(.csd) {
   // for 'Notebookbar' toolbar
   > notebook {
     border: none; // unset borders
-    background-color: $base_color;
+    background: none;
     box-shadow: none;
+    padding: 0;
+    margin: 0;
 
     > stack {
-      border: none;
+      border: 1px solid $dark_sidebar_border;
+      border-left: none;
+      border-right: none;
+      background-color: transparent;
       box-shadow: none;
+      border-radius: 0;
+    }
+
+    > header {
+      box-shadow: none;
+      border-radius: $bt_radius;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background: none;
+
+      > tabs > tab {
+        margin: 3px 1px;
+        border-radius: $bt_radius;
+        border: none;
+        box-shadow: none;
+
+        &:hover {
+          background-color: rgba($fg_color, 0.1);
+        }
+
+        &:active {
+          background-color: rgba($fg_color, 0.2);
+        }
+
+        &:selected {
+          background-color: rgba($fg_color, 0.15);
+        }
+      }
     }
   }
 }
