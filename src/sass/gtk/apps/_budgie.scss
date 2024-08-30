@@ -877,7 +877,7 @@ $raven_opacity: if($variant =='light', 0.95, 0.95);
 $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px 0 rgba(black, 0.1);
 
 // Raven
-.background .raven {
+.raven {
   background-color: if($trans == 'true', rgba($raven_bg_color, $raven_opacity), $raven_bg_color);
   color: $raven_fg_color;
   box-shadow: $shadow_4;

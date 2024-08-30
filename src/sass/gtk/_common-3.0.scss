@@ -66,8 +66,8 @@ $side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light',
 }
 
 $list_shadow: if($variant == 'light',
-                (inset 0 0 8px rgba(black, 0.01), inset 0 0 3px rgba(black, 0.01), inset 0 0 0 1px rgba(black, 0.04), inset 0 1px rgba(black, 0.05)),
-                (inset 0 0 8px rgba(white, 0.01), inset 0 0 3px rgba(white, 0.02), inset 0 0 0 1px rgba(white, 0.04), inset 0 1px rgba(white, 0.06)));
+                (inset 0 0 0 1px rgba(black, 0.04), inset 0 1px rgba(black, 0.05)),
+                (inset 0 0 0 1px rgba(white, 0.04), inset 0 1px rgba(white, 0.06)));
 
 %circular_list {
   border-radius: $bd_radius;
@@ -710,7 +710,26 @@ button {
   padding: 0 $container_padding + 2px;
   @include button(normal);
 
-  separator { margin: 4px 1px; }
+  &:hover {
+    @include button(hover);
+    -gtk-icon-effect: highlight;
+  }
+
+  &:active, &:checked {
+    @include button(active);
+    background-clip: if($variant=='light', border-box, padding-box);
+    transition-duration: 200ms;
+
+    &:not(:disabled) label:disabled { color: inherit; opacity: 0.6; }
+  }
+
+  &:disabled {
+    @include button(insensitive);
+
+    &:active, &:checked {
+      @include button(insensitive-active);
+    }
+  }
 
   &.flat {
     @extend %flat_button;
@@ -733,26 +752,7 @@ button {
     }
   }
 
-  &:hover {
-    @include button(hover);
-    -gtk-icon-effect: highlight;
-  }
-
-  &:active, &:checked {
-    @include button(active);
-    background-clip: if($variant=='light', border-box, padding-box);
-    transition-duration: 200ms;
-
-    &:not(:disabled) label:disabled { color: inherit; opacity: 0.6; }
-  }
-
-  &:disabled {
-    @include button(insensitive);
-
-    &:active, &:checked {
-      @include button(insensitive-active);
-    }
-  }
+  separator { margin: 4px 1px; }
 
   &.image-button, &.popup {
     min-height: $menuitem_size - 4px;
@@ -958,13 +958,7 @@ button {
 .inline-toolbar toolbutton > button { // redefining the button look is
                                           // needed since those are flat...
   min-height: 20px;
-  @include button(flat-normal);
-  &:hover { @include button(flat-hover); }
-  &:active,
-  &:checked{ @include button(flat-active); }
-  &:disabled { @include button(flat-insensitive); }
-  &:disabled:active,
-  &:disabled:checked { @include button(flat-insensitive-active); }
+  @extend %flat_button;
 }
 
 // More inline toolbar buttons
@@ -1074,6 +1068,7 @@ modelbutton.flat arrow {
 //
 // Links
 //
+
 %links, *:link, link {
   color: $link_color;
 
@@ -1217,7 +1212,7 @@ combobox {
     min-width: 16px;
   }
 
-  .background & button.combo arrow {
+  button.combo arrow {
     @include button(active);
     -gtk-icon-source: -gtk-scaled(
                        url("assets/combobox-arrow-dark.png"),
@@ -1234,14 +1229,13 @@ combobox {
     }
   }
 
-  .background & button.combo:disabled arrow,
-  .background & button.combo:backdrop arrow {
+  button.combo:disabled arrow,
+  button.combo:backdrop arrow {
     background-color: if($variant == 'light', rgba($text_color, 0.45), mix(white, $button_bg, 0.25));
   }
 
   decoration,
-  button.combo:checked,
-  .background & button.combo:checked { transition: none; } // workaround for menuitem selection
+  button.combo:checked { transition: none; } // workaround for menuitem selection
 
   &:drop(active) button.combo {
     color: $drop_target_color;
@@ -1314,13 +1308,30 @@ combobox {
 //
 // Toolbars
 //
-%toolbar, toolbar {
+
+toolbar {
   -GtkWidget-window-dragging: true;
   padding: $container_padding;
   background-color: $header_bg;
   // border-radius: $wm_radius;
 
+  .background & box:not(.linked) > button {
+    @extend %flat_button;
+  }
+
   &.horizontal { border-bottom: 1px solid $borders_color; }
+
+  frame > box.vertical > &.horizontal {
+    &.primary-toolbar {
+      border-bottom: 1px solid $borders_color;
+      border-top: none;
+    }
+
+    &.toolbar {
+      border-bottom: none;
+      border-top: 1px solid $borders_color;
+    }
+  }
 
   separator { background: none; }
   &.horizontal separator { margin: 0 6px; }
@@ -1368,12 +1379,9 @@ combobox {
   border-width: 0 0 1px 0;
   border-style: solid;
   border-image: linear-gradient(to bottom, $borders_color, $borders_color) 1 0 1 0; //temporary hack for rhythmbox 3.1
-
-  // separator {}
 }
 
 .inline-toolbar {
-  @extend %toolbar;
   background-color: darken($bg_color, 3%);
   border-style: solid;
   border-color: $borders_color;
@@ -1910,7 +1918,7 @@ window.background.csd.unified {
 }
 
 window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar style for not CSD window
-  border-radius: 0 0 0 0;
+  border-radius: 0;
   box-shadow: none;
 
   // Fixes split headerbars
@@ -1956,7 +1964,7 @@ $pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
   $pathbar_button_checked_bg: if($variant == 'light', #6b7894, #adb4c3);
 }
 
-.background .path-bar button {
+.path-bar button {
   min-width: $container_padding * 2;
   min-height: if($variant == 'light', 24px, 26px);
 
@@ -1999,7 +2007,8 @@ $pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
 //
 // Tree Views
 //
-.background treeview.view {
+
+treeview.view {
   @extend %view;
 
   @at-root * {
@@ -2450,7 +2459,13 @@ cursor-handle {
 notebook {
   padding: 0;
 
-  &.frame { border: 1px solid $solid_borders_color; }
+  &.frame {
+    border: 1px solid $solid_borders_color;
+
+    > stack > .frame {
+      border: none;
+    }
+  }
 
   > stack:not(:only-child) { // the :not(:only-child) is for "hidden" notebooks
     background-color: $base_color;
@@ -3393,6 +3408,7 @@ printdialog {
 //
 // Frames
 //
+
 frame > border,
 .frame {
   margin: 0;
@@ -3856,7 +3872,7 @@ stacksidebar {
   }
 }
 
-.background placessidebar {
+placessidebar {
   > viewport.frame { border-style: none; }
 
   row {
@@ -3934,7 +3950,8 @@ stacksidebar {
 //
 // Placesview
 //
-.background placesview {
+
+placesview {
   .server-list-button > image {
     -gtk-icon-transform: rotate(0turn);
   }
@@ -3964,6 +3981,7 @@ stacksidebar {
 //
 // Paned
 //
+
 paned {
   > separator {
     min-width: 1px;
@@ -4027,7 +4045,7 @@ paned {
 // GtkInfoBar
 //
 
-.background infobar {
+infobar {
   border: none;
 
   &.info {
@@ -4265,7 +4283,7 @@ stackswitcher {
   // button.circular { @extend %circular_button; }
 }
 
-.background viewswitcher {
+viewswitcher {
   button:not(.suggested-action):not(.destructive-action) {
     margin: 0;
     padding: 0;
