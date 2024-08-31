@@ -48,7 +48,7 @@ or you can edit the config file
 
 ### Adaptive version support now!
 
-https://github.com/vinceliuice/WhiteSur-gtk-theme/commit/9b1032cb42a76b8218ee4a732505ef44918fc32d#r146060392
+https://github.com/user-attachments/assets/9b99297f-e6b3-4aa0-812a-331cddb517ce
 
 Run: `./tweaks.sh -f adaptive` to install it
 
