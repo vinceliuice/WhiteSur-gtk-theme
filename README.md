@@ -109,10 +109,10 @@ Usage:  `./install.sh [OPTIONS...]`
      4. -h, -height [default|smaller|bigger]
      Set gnome-shell panel height size. Default is 32px
 
-     5. -n, --normal 
+     5. -n, -normal 
      Set gnome-shell show apps button style to normal. Default is BigSur
 
-     6. -s, --smaller 
+     6. -s, -smaller 
      Set gnome-shell font size to smaller (10pt). Default is 11pt
 
   --round, --roundedmaxwindow 
@@ -255,13 +255,12 @@ Usage:  `./tweaks.sh [OPTIONS...]`
   --nord, --nordcolor 
    Install 'WhiteSur' Nord ColorScheme themes. 
 
-   
  [Others]... options
 
-  -f, --firefox [default|monterey|alt]
-   Install 'WhiteSur|Monterey|Alt' theme for Firefox and connect it to the current Firefox profiles. Default is WhiteSur
+  -f, --firefox [default|monterey|alt|adaptive]
+   Install 'WhiteSur|Monterey|Alt|Adaptive' theme for Firefox and connect it to the current Firefox profiles. Default is WhiteSur
 
-  -e, --edit-firefox [default|monterey|alt]
+  -e, --edit-firefox [default|monterey|alt|adaptive]
    Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles. 
 
   -F, --flatpak Support options: [-o, -c, -t...]
@@ -278,7 +277,6 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
   -h, --help 
    Show this help. 
-
 ```
 
 </details>
