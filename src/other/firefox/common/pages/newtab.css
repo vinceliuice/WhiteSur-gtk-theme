@@ -8,6 +8,8 @@ body {
 	--newtab-primary-element-text-color: #ffffff !important;
 	--newtab-overlay-color: var(--gnome-tabstoolbar-background) !important;
 	--newtab-border-color: var(--gnome-toolbar-border-color) !important;
+	--fxview-background-color: var(--gnome-browser-before-load-background) !important;
+	--fxview-background-color-secondary: var(--gnome-menu-background) !important;
 }
 
 .modalOverlayOuter {

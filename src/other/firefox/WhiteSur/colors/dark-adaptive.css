@@ -8,7 +8,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
 	/* Browser area before a page starts loading */
-	--gnome-browser-before-load-background: color-mix(in srgb, #000000 6%, var(--lwt-accent-color, #282828));
+	--gnome-browser-before-load-background: var(--lwt-accent-color, #282828);
 	--theme-primary-color: #315bef;
 	--theme-primary-hover-color: #5073f1;
 	--theme-primary-active-color: #6584f3;
@@ -19,7 +19,7 @@
 
 	/* Toolbars */
 	--gnome-toolbar-background: var(--lwt-accent-color, #363636);
-	--gnome-tabstoolbar-background: color-mix(in srgb, #ffffff 6%, var(--lwt-accent-color));
+	--gnome-tabstoolbar-background: color-mix(in srgb, #ffffff 6%, var(--lwt-accent-color, #363636));
 	--gnome-findbar-background: var(--lwt-accent-color, #282828);
 	--gnome-toolbar-color: var(--toolbar-color);
 	--gnome-toolbar-border-color: rgba(255, 255, 255, 0.1);

@@ -23,7 +23,8 @@
     --newtab-background-color: var(--gnome-browser-before-load-background) !important;
     --newtab-background-color-secondary: var(--gnome-menu-background) !important;
     --newtab-primary-action-background: var(--theme-primary-color) !important;
-
+    --fxview-background-color: var(--gnome-browser-before-load-background) !important;
+    --fxview-background-color-secondary: var(--gnome-menu-background) !important;
     scrollbar-color: rgba(250,250,250,.4) rgba(22,22,22,.3) !important;
   }
 

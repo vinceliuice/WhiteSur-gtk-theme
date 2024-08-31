@@ -7,7 +7,7 @@
 
 :root {
 	/* Browser area before a page starts loading */
-	--gnome-browser-before-load-background: color-mix(in srgb, #000000 8%, var(--lwt-accent-color, #ffffff));
+	--gnome-browser-before-load-background: var(--lwt-accent-color, #ffffff);
 	--theme-primary-color: #315bef;
 	--theme-primary-hover-color: #5073f1;
 	--theme-primary-active-color: #6584f3;
@@ -105,13 +105,13 @@
 	--gnome-tabbar-tab-background: var(--gnome-tabstoolbar-background);
 	--gnome-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
 	--gnome-tabbar-tab-border-color: var(--gnome-toolbar-border-color);
-	--gnome-tabbar-tab-hover-background: color-mix(in srgb, var(--toolbar-color) 12%, var(--lwt-accent-color));
+	--gnome-tabbar-tab-hover-background: color-mix(in srgb, var(--toolbar-color) 12%, var(--gnome-tabstoolbar-background));
 	--gnome-tabbar-tab-hover-border-color: var(--gnome-toolbar-border-color);
 	--gnome-tabbar-tab-hover-color: var(--lwt-tab-text, var(--toolbar-color));
 	--gnome-tabbar-tab-active-background: var(--gnome-headerbar-background);
 	--gnome-tabbar-tab-active-border-color: color-mix(in srgb, var(--toolbar-color) 12%, var(--gnome-headerbar-background));
 	--gnome-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
-	--gnome-tabbar-tab-active-hover-background: color-mix(in srgb, var(--toolbar-color) 12%, var(--lwt-accent-color));
+	--gnome-tabbar-tab-active-hover-background: color-mix(in srgb, var(--toolbar-color) 12%, var(--gnome-tabstoolbar-background));
 	--gnome-inactive-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
 	--gnome-inactive-tabbar-tab-background: var(--gnome-tabstoolbar-background);
 	--gnome-inactive-tabbar-tab-active-background: var(--gnome-headerbar-background);
