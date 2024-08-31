@@ -10,11 +10,11 @@ Based on https://github.com/rafaelmardojai/firefox-gnome-theme
 
 ## Installation
 
-Run `./tweaks.sh -f`
+Run: `./tweaks.sh -f`
 
 if you want to use `Monterey` style then:
 
-Run `./tweaks.sh -f monterey`
+Run: `./tweaks.sh -f monterey`
 
 ### Tips about monterey options (Fix the urlbar attached tabs issue)
 
@@ -45,6 +45,14 @@ or you can edit the config file
 ```
 
 2. Choose the right buttons number config then remove `/*` to enable it and add `/*` to disable the default one
+
+### Adaptive version support now!
+
+https://github.com/vinceliuice/WhiteSur-gtk-theme/commit/9b1032cb42a76b8218ee4a732505ef44918fc32d#r146060392
+
+Run: `./tweaks.sh -f adaptive` to install it
+
+You need install adaptive-tab-bar-colour plugin first. https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
 
 ### Manual installation
 
