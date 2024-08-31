@@ -13,11 +13,6 @@
 	background: none !important;
 }
 
-.toolbarbutton-icon {
-	color: var(--gnome-toolbar-color);
-	fill: var(--gnome-toolbar-color);
-}
-
 toolbar .toolbarbutton-1 {
 	> .toolbarbutton-icon,
 	> .toolbarbutton-text,
@@ -164,4 +159,5 @@ toolbarbutton.bookmark-item {
 	margin: 0 2px !important;
 	border-radius: 3px !important;
 	max-height: 24px !important;
+	color: var(--gnome-toolbar-color) !important;
 }

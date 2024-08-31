@@ -23,14 +23,12 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	background: none !important;
 	-moz-appearance: none !important;
 	border-radius: 8px !important;
-	margin: 8px 2px !important;
-	padding: 0 10px !important;
+	margin: 0 2px !important;
+	padding: 0 4px !important;
 	max-height: 32px !important;
 	min-height: 32px !important;
 	min-width: 32px !important;
-	color: var(--gnome-toolbar-color) !important;
 	transition: background 200ms;
-	--toolbarbutton-inner-padding: 0 !important;
 }
 
 :root:-moz-window-inactive #nav-bar toolbarbutton:not(#urlbar-zoom-button) {
@@ -78,26 +76,6 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	background: var(--gnome-inactive-button-background) !important;
 	box-shadow: var(--gnome-inactive-button-box-shadow) !important;
 	border-color: var(--gnome-inactive-button-border-color) !important;
-}
-
-/* Buttons with margins */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button) {
-	margin: 0 2px !important;
-}
-
-#nav-bar #back-button:not(#hack),
-#nav-bar #forward-button:not(#hack) {
-	padding: 0 4px !important;
-	width: 34px !important;
-	min-width: 34px !important;
-}
-
-#nav-bar #forward-button:not(#hack) {
-	margin-left: 0 !important;
-}
-
-#nav-bar #back-button:not(#hack) {
-	margin-right: 1px !important;
 }
 
 /* Headerbar entries */

@@ -8,6 +8,62 @@
   }
 }
 
+/* Icons color */
+.toolbarbutton-icon:not([class*="identity-color-"] .toolbarbutton-icon),
+menuitem:not([class*='identity']) .menu-iconic-left .menu-iconic-icon,
+.urlbar-page-action:not([readeractive]),
+.urlbar-icon,
+#blocked-permissions-container > .blocked-permission-icon,
+.button-icon:not(#hack),
+.bookmark-item[container],
+.notification-anchor-icon,
+.protections-popup-category::after,
+.protections-popup-footer-icon,
+#identity-popup-mainView .subviewbutton-nav::after,
+.widget-overflow-list .subviewbutton-nav::after,
+.PanelUI-subView .subviewbutton-nav::after,
+#identity-popup[connection^="secure"] .identity-popup-security-connection,
+.panel-info-button > image,
+.menu-right,
+.expander-down > .button-box,
+#sidebar-switcher-arrow,
+#sidebar-icon,
+#viewButton .button-menu-dropmarker,
+.menulist-label-box:after,
+.expander-up > .button-box,
+#urlbar:not(.searchButton) > #urlbar-input-container > #identity-box[pageproxystate="invalid"] > #identity-icon,
+.searchbar-search-icon,
+.textbox-search-sign,
+treechildren::-moz-tree-twisty,
+treechildren::-moz-tree-image,
+.item.client .item-twisty-container,
+menuitem[type="checkbox"],
+menuitem[type="checkbox"][checked="true"],
+menuitem[type="radio"],
+menuitem[type="radio"][checked="true"],
+.tab-icon-overlay,
+.tab-throbber::before,
+.tab-icon-stack::before,
+.close-icon:not(.tab-close-button),
+button.close::before,
+#urlbar-search-mode-indicator-close,
+#tracking-protection-icon,
+#identity-icon,
+#permissions-granted-icon,
+#downloads-indicator-icon,
+.textbox-search-clear,
+.urlbarView-type-icon,
+radio > .radio-check,
+link[href="chrome://global/skin/dropmarker.css"] + image {
+	fill: var(--gnome-toolbar-icon-fill) !important;
+	-moz-context-properties: fill;
+}
+.urlbar-icon:-moz-window-inactive,
+#urlbar:-moz-window-inactive image,
+.toolbarbutton-icon:-moz-window-inactive {
+	opacity: 0.5 !important;
+}
+
 /* Cursors autoscroller fix */
 .autoscroller {
 	--panel-background: transparent !important;
@@ -135,7 +191,7 @@ treechildren::-moz-tree-twisty {
 	background-image: url("../icons/pan-down-symbolic.svg") !important;
 }
 treechildren::-moz-tree-twisty(selected, focus, open) {
-	list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
+	list-style-image: url("../icons/pan-down-symbolic.svg") !important;
 }
 treechildren::-moz-tree-image(title, container),
 treechildren::-moz-tree-image(title, open) {
@@ -147,10 +203,10 @@ treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
 }
 
 .sidebar-panel[lwt-sidebar-brighttext] .sidebar-placesTreechildren::-moz-tree-twisty {
-	list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
+	list-style-image: url("../icons/pan-end-symbolic.svg") !important;
 }
 .sidebar-panel[lwt-sidebar-brighttext] .sidebar-placesTreechildren::-moz-tree-twisty(open) {
-	list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
+	list-style-image: url("../icons/pan-down-symbolic.svg") !important;
 }
 /* Sidebar: History: clock icon */
 #historyTree treechildren::-moz-tree-image {
@@ -239,12 +295,12 @@ menu[disabled] > .menu-right {
 	list-style-image: url("../icons/toggle-right-sidebar-symbolic.svg");
 }
 /* Back button */
-#nav-bar #back-button .toolbarbutton-icon,
+#back-button,
 #context-back {
 	list-style-image: url("../icons/go-previous-symbolic.svg") !important;
 }
 /* Forward button */
-#nav-bar #forward-button .toolbarbutton-icon,
+#forward-button,
 #context-forward,
 #urlbar-go-button,
 .search-go-button {
@@ -518,14 +574,10 @@ menu[disabled] > .menu-right {
 toolbarbutton#easyscreenshot_mozillaonline_com-BAP {
 	--webextension-menupanel-image: url("../icons/screenshot-symbolic.svg") !important;
 	--webextension-menupanel-image-2x: url("../icons/screenshot-symbolic.svg") !important;
-	--webextension-menupanel-image-light: url("../icons/screenshot-symbolic-light.svg") !important;
-	--webextension-menupanel-image-2x-light: url("../icons/screenshot-symbolic-light.svg") !important;
 	--webextension-menupanel-image-dark: url("../icons/screenshot-symbolic.svg") !important;
 	--webextension-menupanel-image-2x-dark: url("../icons/screenshot-symbolic.svg") !important;
 	--webextension-toolbar-image: url("../icons/screenshot-symbolic.svg") !important;
 	--webextension-toolbar-image-2x: url("../icons/screenshot-symbolic.svg") !important;
-	--webextension-toolbar-image-light: url("../icons/screenshot-symbolic-light.svg") !important;
-	--webextension-toolbar-image-2x-light: url("../icons/screenshot-symbolic-light.svg") !important;
 	--webextension-toolbar-image-dark: url("../icons/screenshot-symbolic.svg") !important;
 	--webextension-toolbar-image-2x-dark: url("../icons/screenshot-symbolic.svg") !important;
 }
@@ -533,14 +585,10 @@ toolbarbutton#easyscreenshot_mozillaonline_com-BAP {
 toolbarbutton#cpmanager_mozillaonline_com-BAP {
 	--webextension-menupanel-image: url("../icons/tab-restore-symbolic.svg") !important;
 	--webextension-menupanel-image-2x: url("../icons/tab-restore-symbolic.svg") !important;
-	--webextension-menupanel-image-light: url("../icons/tab-restore-symbolic-light.svg") !important;
-	--webextension-menupanel-image-2x-light: url("../icons/tab-restore-symbolic-light.svg") !important;
 	--webextension-menupanel-image-dark: url("../icons/tab-restore-symbolic.svg") !important;
 	--webextension-menupanel-image-2x-dark: url("../icons/tab-restore-symbolic.svg") !important;
 	--webextension-toolbar-image: url("../icons/tab-restore-symbolic.svg") !important;
 	--webextension-toolbar-image-2x: url("../icons/tab-restore-symbolic.svg") !important;
-	--webextension-toolbar-image-light: url("../icons/tab-restore-symbolic-light.svg") !important;
-	--webextension-toolbar-image-2x-light: url("../icons/tab-restore-symbolic-light.svg") !important;
 	--webextension-toolbar-image-dark: url("../icons/tab-restore-symbolic.svg") !important;
 	--webextension-toolbar-image-2x-dark: url("../icons/tab-restore-symbolic.svg") !important;
 }
@@ -650,217 +698,5 @@ treechildren::-moz-tree-image {
 	padding: 0 !important;
 	padding-block: 0 !important;
 	padding-inline: 0 !important;
-}
-
-/* Invert icons color in dark variant */
-@media (prefers-color-scheme: dark) {
-	.PanelUI-subView .subviewbutton-nav::after,
-	.protections-popup-category::after,
-	.identity-popup-content-blocking-category::after,
-	#identity-popup-security-expander .button-icon,
-	.subviewbutton-back .toolbarbutton-icon,
-
-	.menu-right,
-
-	#urlbar[pageproxystate="invalid"] > #identity-box > #identity-icon,
-	#urlbar:not(.searchButton) > #urlbar-input-container > #identity-box[pageproxystate="invalid"] #identity-icon,
-	.searchbar-search-icon,
-	#search-box .textbox-search-sign,
-
-	.menulist-label-box:after,
-	.expander-down image,
-	.expander-up image,
-	#sidebar-switcher-arrow,
-	#viewButton .button-menu-dropmarker,
-
-	menuitem[type="checkbox"] .menu-iconic-icon,
-	menuitem[type="radio"] .menu-iconic-icon,
-
-	.close-icon:not(.tab-close-button) image,
-	.identity-popup-permission-remove-button .button-icon,
-
-	:root[tabsintitlebar] #titlebar .titlebar-buttonbox .titlebar-close .toolbarbutton-icon,
-	:root[tabsintitlebar] #titlebar #titlebar-close .toolbarbutton-icon,
-	:root[tabsintitlebar] #titlebar .titlebar-buttonbox .titlebar-max .toolbarbutton-icon,
-	:root[tabsintitlebar] #titlebar #titlebar-max .toolbarbutton-icon,
-	:root[tabsintitlebar] #titlebar .titlebar-buttonbox .titlebar-min .toolbarbutton-icon,
-	:root[tabsintitlebar] #titlebar #titlebar-min .toolbarbutton-icon,
-	:root[tabsintitlebar][inFullscreen] #window-controls #restore-button .toolbarbutton-icon,
-
-	.popup-notification-icon[popupid="web-notifications"], .desktop-notification-icon,
-
-	#import-button .toolbarbutton-icon,
-	#panic-button .toolbarbutton-icon,
-	#open-file-button .toolbarbutton-icon,
-	#save-page-button .toolbarbutton-icon,
-	#characterencoding-button .toolbarbutton-icon,
-	#library-button .toolbarbutton-icon,
-	#privatebrowsing-button .toolbarbutton-icon,
-	#sidebar-button:-moz-locale-dir(ltr):not([positionend]) .toolbarbutton-icon,
-	#sidebar-button:-moz-locale-dir(rtl)[positionend] .toolbarbutton-icon,
-	#sidebar-button .toolbarbutton-icon,
-	#nav-bar #back-button .toolbarbutton-icon,
-	#context-back .menu-iconic-icon,
-	#nav-bar #forward-button .toolbarbutton-icon,
-	#context-forward .menu-iconic-icon,
-	#PanelUI-menu-button .toolbarbutton-icon,
-	#new-tab-button .toolbarbutton-icon,
-	.tabs-newtab-button .toolbarbutton-icon,
-	#tabs-newtab-button .toolbarbutton-icon,
-	#TabsToolbar .toolbarbutton-icon,
-	#home-button .toolbarbutton-icon,
-	#preferences-button .toolbarbutton-icon,
-	#fullscreen-button .toolbarbutton-icon,
-	#appMenu-fullscreen-button .toolbarbutton-icon,
-	#zoom-out-button .toolbarbutton-icon,
-	#appMenu-zoomReduce-button .toolbarbutton-icon,
-	#zoom-in-button .toolbarbutton-icon,
-	#appMenu-zoomEnlarge-button .toolbarbutton-icon,
-	#developer-button .toolbarbutton-icon,
-	#email-link-button .toolbarbutton-icon,
-	#print-button .toolbarbutton-icon,
-	#add-ons-button .toolbarbutton-icon,
-	#unified-extensions-button .toolbarbutton-icon,
-	#find-button .toolbarbutton-icon,
-	#bookmarks-menu-button .toolbarbutton-icon,
-	#history-panelmenu .toolbarbutton-icon,
-	#alltabs-button .toolbarbutton-icon,
-	#cut-button .toolbarbutton-icon,
-	#appMenu-cut-button .toolbarbutton-icon,
-	#copy-button .toolbarbutton-icon,
-	#appMenu-copy-button .toolbarbutton-icon,
-	#paste-button .toolbarbutton-icon,
-	#appMenu-paste-button .toolbarbutton-icon,
-	#nav-bar-overflow-button .toolbarbutton-icon,
-	#reload-button .toolbarbutton-icon,
-	.downloadIconRetry > .button-box > .button-icon,
-	#context-reload .menu-iconic-icon,
-	#stop-button .toolbarbutton-icon,
-	.downloadIconCancel > .button-box > .button-icon,
-	#context-stop .menu-iconic-icon,
-	#sync-button .toolbarbutton-icon,
-	#new-window-button .toolbarbutton-icon,
-	#mozcn-mobile-bookmarks-button .toolbarbutton-icon,
-	#bookmarks-toolbar-button .toolbarbutton-icon,
-	#bookmarks-toolbar-placeholder .toolbarbutton-icon,
-	#screenshot-button .toolbarbutton-icon,
-	#scrollbutton-up .toolbarbutton-icon,
-	#scrollbutton-down .toolbarbutton-icon,
-	#downloads-button .toolbarbutton-icon,
-	#downloads-indicator-anchor,
-	#tracking-protection-icon,
-	#pageActionButton,
-	#permissions-granted-icon,
-	#tracking-protection-icon-animatable-image,
-	#reader-mode-button > .urlbar-icon,
-	#picture-in-picture-button > .urlbar-icon,
-	.persistent-storage-icon,
-	#star-button:not([starred]),
-	#context-bookmarkpage:not([starred]) .menu-iconic-icon,
-	#geo-sharing-icon[sharing], .geo-icon,
-	.blocked-permission-icon.popup-icon,
-	#webrtc-sharing-icon[sharing="screen"],
-	.screen-icon,
-	.screen-icon.blocked-permission-icon,
-	#webrtc-sharing-icon[sharing="microphone"],
-	.microphone-icon,
-	.plugin-icon, .autoplay-media-icon,
-	.popup-notification-icon[popupid="drmContentPlaying"], .drm-icon,
-	#identity-box[pageproxystate="valid"].verifiedDomain #identity-icon,
-	#identity-box[pageproxystate="valid"].mixedActiveBlocked #identity-icon,
-	#identity-box[pageproxystate="valid"].weakCipher #identity-icon,
-	#identity-box[pageproxystate="valid"].mixedDisplayContent #identity-icon,
-	#identity-box[pageproxystate="valid"].mixedDisplayContentLoadedActiveBlocked #identity-icon,
-	#identity-box[pageproxystate="valid"].certUserOverridden #identity-icon,
-	#identity-box[pageproxystate="valid"].certErrorPage #identity-icon,
-	#identity-box[pageproxystate="valid"].notSecure #identity-icon,
-	#identity-box[pageproxystate="valid"].mixedActiveContent #identity-icon,
-	#identity-box[pageproxystate="valid"].httpsOnlyErrorPage #identity-icon,
-	#identity-box[pageproxystate="valid"].localResource #identity-icon,
-	.bookmark-item[container] .toolbarbutton-icon,
-	.menu-iconic.bookmark-item[container] .menu-iconic-icon,
-	.panel-info-button > image,
-	#password-notification-icon,
-	#firefox-view-button .toolbarbutton-icon,
-	#profiler-button-button > .toolbarbutton-icon {
-		filter: invert(60%) brightness(150%);
-	}
-
-	.tab-icon-overlay[activemedia-blocked] {
-		list-style-image: url("../icons/tab-audio-blocked-small-light.svg") !important;
-	}
-
-	.tab-icon-overlay[soundplaying] {
-		list-style-image: url("../icons/audio-playing-symbolic-light.svg") !important;
-	}
-
-	.tab-icon-overlay[muted] {
-		list-style-image: url("../icons/audio-muted-symbolic-light.svg") !important;
-	}
-
-	#urlbar-go-button,
-	search-go-button {
-		list-style-image: url("../icons/go-next-symbolic-light.svg") !important;
-	}
-
-	#save-to-pocket-button,
-	#pocket-button, #pageAction-panel-pocket {
-		list-style-image: url("../icons/save-to-pocket-light.svg") !important;
-	}
-
-	#save-to-pocket-button[open="true"], #save-to-pocket-button[pocketed="true"] {
-		list-style-image: url("../icons/save-to-pocket-open-light.svg") !important;
-	}
-
-	#mo-url2qr-icon {
-		list-style-image: url("../icons/url2qr-icon-light.svg") !important;
-	}
-
-	/* Tree views */
-	treechildren::-moz-tree-twisty,
-	.item.client .item-twisty-container {
-		list-style-image: url("../icons/pan-end-symbolic-light.svg") !important;
-		width: 16px !important;
-		height: 16px !important;
-	}
-	.item.client .item-twisty-container {
-		background-image: url("../icons/pan-end-symbolic-light.svg") !important;
-	}
-	treechildren::-moz-tree-twisty(open) {
-		list-style-image: url("../icons/pan-down-symbolic-light.svg") !important;
-	}
-	.item.client.closed .item-twisty-container {
-		background-image: url("../icons/pan-down-symbolic-light.svg") !important;
-	}
-
-	treechildren::-moz-tree-image(title, container),
-	treechildren::-moz-tree-image(title, open) {
-		list-style-image: url("../icons/folder-symbolic-light.svg") !important;
-	}
-	treechildren::-moz-tree-image(title, query, dayContainer),
-	treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
-		list-style-image: url("../icons/preferences-system-time-symbolic-light.svg") !important;
-	}
-
-	.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([busy]):not([progress]):not([crashed]) .tab-icon-stack > .tab-icon-image {
-		list-style-image: url("../icons/info-symbolic-light.svg") !important;
-	}
-
-	#sidebar-box[sidebarcommand="viewTabsSidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon,
-	.urlbarView-row[source="tabs"] > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-favicon,
-	#urlbar-engine-one-off-item-tabs {
-		list-style-image: url("../icons/tab-sync-symbolic-light.svg") !important;
-	}
-
-	#sidebar-box[sidebarcommand="viewHistorySidebar"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon,
-	.urlbarView-row[source="history"] > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-favicon,
-	#urlbar-engine-one-off-item-history {
-		list-style-image: url("../icons/preferences-system-time-symbolic-light.svg") !important;
-	}
-
-	/* Fix for extensions icons */
-	.webextension-browser-action {
-		list-style-image: var(--webextension-menupanel-image-light, inherit) !important;
-	}
 }
 

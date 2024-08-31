@@ -1,59 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   width="16"
-   height="16"
-   version="1.1"
-   id="svg10"
-   sodipodi:docname="preferences-system-time-symbolic.svg"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs14" />
-  <sodipodi:namedview
-     id="namedview12"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     showgrid="false"
-     inkscape:zoom="14.75"
-     inkscape:cx="5.7627119"
-     inkscape:cy="8"
-     inkscape:window-width="1432"
-     inkscape:window-height="452"
-     inkscape:window-x="244"
-     inkscape:window-y="312"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg10" />
-  <g
-     class="ColorScheme-Text"
-     color="#363636"
-     fill="currentColor"
-     id="g8">
-    <path
-       d="M 8,0 A 8,8 0 0 1 16,8 8,8 0 0 1 8,16 8,8 0 0 1 0,8 8,8 0 0 1 8,0 Z M 8,1 A 7,7 0 0 0 1,8 7,7 0 0 0 8,15 7,7 0 0 0 15,8 7,7 0 0 0 8,1 Z"
-       id="path2" />
-    <rect
-       x="-8"
-       y="2"
-       width="1"
-       height="7"
-       ry="0.5"
-       id="rect4"
-       transform="scale(-1,1)" />
-    <rect
-       transform="matrix(0,1,1,0,0,0)"
-       x="8"
-       y="7"
-       width="1"
-       height="6"
-       ry="0.5"
-       id="rect6" />
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="context-fill" fill-opacity="context-fill-opacity">
+ <g>
+  <path d="m8 0a8 8 0 0 1 8 8 8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm0 1a7 7 0 0 0-7 7 7 7 0 0 0 7 7 7 7 0 0 0 7-7 7 7 0 0 0-7-7z"/>
+  <rect transform="scale(-1,1)" x="-8" y="2" width="1" height="7" ry=".5"/>
+  <rect transform="matrix(0,1,1,0,0,0)" x="8" y="7" width="1" height="6" ry=".5"/>
+ </g>
 </svg>

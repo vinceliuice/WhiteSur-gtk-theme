@@ -20,7 +20,8 @@
 	--gnome-toolbar-background: var(--lwt-accent-color, #ffffff);
 	--gnome-tabstoolbar-background: color-mix(in srgb, #000000 8%, var(--lwt-accent-color, #ffffff));
 	--gnome-findbar-background: var(--lwt-accent-color, #ffffff);
-	--gnome-toolbar-color: var(--toolbar-color, #323232);
+	--gnome-toolbar-color: var(--toolbar-color, #2e2e2e);
+	--gnome-toolbar-icon-fill: var(--toolbar-color, #2e2e2e);
 	--gnome-toolbar-border-color: rgba(0, 0, 0, 0.1);
 	--gnome-inactive-toolbar-color: color-mix(in srgb, var(--gnome-toolbar-color) 45%, var(--gnome-toolbar-background));
 	--gnome-inactive-toolbar-background: var(--lwt-accent-color, #ffffff);
