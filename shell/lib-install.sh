@@ -705,6 +705,9 @@ install_firefox_theme() {
       else
         udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey.css                               "${TARGET_DIR}"/userChrome.css
       fi
+
+      sed -i "s/left_header_button_3/left_header_button_${left_button}/g"                     "${TARGET_DIR}"/userChrome.css
+      sed -i "s/right_header_button_3/right_header_button_${right_button}/g"                  "${TARGET_DIR}"/userChrome.css
     fi
   else
     udo cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur                                                  "${TARGET_DIR}"
@@ -1010,22 +1013,20 @@ customize_theme() {
 # values are taken from _variables.scss
 
 show_panel_opacity_dialog() {
-  install_dialog_deps
   dialogify panel_opacity "${THEME_NAME}" "Choose your panel opacity (Default is 15)" ${PANEL_OPACITY_VARIANTS[*]}
 }
 
 show_sidebar_size_dialog() {
-  install_dialog_deps
   dialogify sidebar_size "${THEME_NAME}" "Choose your Nautilus minimum sidebar size (default is 200px)" ${SIDEBAR_SIZE_VARIANTS[*]}
 }
 
 show_nautilus_style_dialog() {
-  install_dialog_deps
   dialogify nautilus_style "${THEME_NAME}" "Choose your Nautilus style (default is BigSur-like style)" ${NAUTILUS_STYLE_VARIANTS[*]}
 }
 
 show_needed_dialogs() {
+  install_dialog_deps
   if [[ "${need_dialog["-p"]}" == "true" ]]; then show_panel_opacity_dialog; fi
-  if [[ "${need_dialog["-s"]}" == "true" ]]; then show_sidebar_size_dialog; fi
+#  if [[ "${need_dialog["-s"]}" == "true" ]]; then show_sidebar_size_dialog; fi
   if [[ "${need_dialog["-N"]}" == "true" ]]; then show_nautilus_style_dialog; fi
 }

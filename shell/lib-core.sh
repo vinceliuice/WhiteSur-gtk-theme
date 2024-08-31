@@ -113,6 +113,9 @@ nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}"
 background="blank"
 compact="true"
 colorscheme=""
+firefoxtheme="$THEME_NAME"
+left_button="3"
+right_button="3"
 
 #--Ambigous arguments checking and overriding default values--#
 declare -A has_set=([-b]="false" [-s]="false" [-p]="false" [-P]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
@@ -392,6 +395,14 @@ helpify_title() {
 
 helpify() {
   printf "  ${c_blue}%s ${c_green}%s\n ${c_magenta}%s. ${c_cyan}%s\n\n${c_default}" "${1}" "${2}" "${3}" "${4}"
+}
+
+sec_title() {
+  printf "  ${c_blue}%s ${c_green}%s ${c_magenta}%s\n\n" "${1}" "${2}" "${3}"
+}
+
+sec_helpify() {
+  printf "      ${c_blue}%s ${c_green}%s ${c_magenta}%s ${c_cyan}%s\n\n${c_default}" "${1}" "${2}" "${3}" "${4}"
 }
 
 ###############################################################################

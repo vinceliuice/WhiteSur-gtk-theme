@@ -207,12 +207,10 @@ Parameter: `--nautilus-style` `-N`
 
 Example: `./install.sh -N mojave`
 
-
 ### <p align="center"> <b> Explore more customization features! </b> </p>
 You can run `./install.sh -h` to explore more customization features we have
 like changing panel opacity, theme opacity (normal and solid variant), window
 control button variant, etc.
-
 
 # Let's tweak!
 Usage:  `./tweaks.sh [OPTIONS...]`
@@ -257,8 +255,13 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
  [Others]... options
 
-  -f, --firefox [default|monterey|alt|adaptive]
-   Install 'WhiteSur|Monterey|Alt|Adaptive' theme for Firefox and connect it to the current Firefox profiles. Default is WhiteSur
+  -f, --firefox         [monterey|alt|adaptive]   Options:
+
+      1. monterey       [3+3,3+4,3+5,4+3,4+4,4+5,5+3,5+4,5+5]   Topbar buttons number: 'a+b'   a: left side buttons number, b: right side buttons number
+
+      2. alt            Monterey alt version
+
+      3. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
 
   -e, --edit-firefox [default|monterey|alt|adaptive]
    Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles. 

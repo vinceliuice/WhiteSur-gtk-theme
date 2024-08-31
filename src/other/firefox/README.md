@@ -19,7 +19,12 @@ Run `./tweaks.sh -f monterey`
 ### Tips about monterey options (Fix the urlbar attached tabs issue)
 
 1. Remove all space separators on left of urlbar
-2. Make sure how many buttons you put on side of urlbar an then run `./tweaks.sh -f monterey -e`
+2. Make sure how many buttons on side of urlbar, a: left side buttons number(3-5), b: right side buttons number(3-5).
+3. then run: `./tweaks.sh -f monterey a+b` for example: `./tweaks.sh -f monterey 5+5`
+
+or you can edit the config file
+
+1. run: `./tweaks.sh -f monterey -e`
 
 ```
 /*--------------Configure your Monterey theme--------------
@@ -39,7 +44,7 @@ Run `./tweaks.sh -f monterey`
 
 ```
 
-3. Choose the right buttons number config then remove `/*` to enable it and add `/*` to disable the default one
+2. Choose the right buttons number config then remove `/*` to enable it and add `/*` to disable the default one
 
 ### Manual installation
 

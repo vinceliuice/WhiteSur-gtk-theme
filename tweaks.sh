@@ -19,8 +19,6 @@ source "${REPO_DIR}/shell/lib-install.sh"
 colors=("${COLOR_VARIANTS[@]}")
 opacities=("${OPACITY_VARIANTS[@]}")
 
-firefoxtheme=$THEME_NAME
-
 usage() {
   # Please specify their default value manually, some of them are come from _variables.scss
   # You also have to check and update them regurally
@@ -38,8 +36,12 @@ usage() {
   helpify "-i, --icon"          "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"          "  Set '${THEME_NAME}' GDM (GNOME Shell) 'Activities' icon"                     "Default is 'standard'"
   helpify "--nord, --nordcolor" ""                                                  "  Install '${THEME_NAME}' Nord ColorScheme themes"                             ""
 
-  helpify "" "" "[Others].." "options"                                           
-  helpify "-f, --firefox"       "[default|monterey|alt|adaptive]"                   "  Install '${THEME_NAME}|Monterey|Alt|Adaptive' theme for Firefox and connect it to the current Firefox profiles" "Default is ${THEME_NAME}"
+  helpify "" "" "[Others].." "options"
+  sec_title "-f, --firefox" "        [monterey|alt|adaptive]"                       "  Options:"
+  sec_helpify "1. monterey" "      [3+3,3+4,3+5,4+3,4+4,4+5,5+3,5+4,5+5]"           "  Topbar buttons number: 'a+b'"                                                "  a: left side buttons number, b: right side buttons number"
+  sec_helpify "2. alt" "           Monterey alt version"                            ""                                                                              ""
+  sec_helpify "3. adaptive" "      Adaptive color version"                          "  You need install adaptive-tab-bar-colour plugin first"                       "  https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/"
+
   helpify "-e, --edit-firefox"  "[default|monterey|alt|adaptive]"                   "  Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
 
   helpify "-F, --flatpak"       "Support options: [-o, -c, -t...]"                  "  Connect '${THEME_NAME}' theme to Flatpak"                                    "Without options will only install default themes"
@@ -90,24 +92,63 @@ while [[ $# -gt 0 ]]; do
         case "${variant}" in
           default)
             firefoxtheme="WhiteSur"
-            shift 1
-            ;;
+            shift ;;
           monterey)
             firefoxtheme="Monterey"
             theme_name="Monterey"
-            shift 1
-            ;;
+            shift
+            for button in "${@}"; do
+              case "${button}" in
+                3+3)
+                  left_button="3"
+                  right_button="3"
+                  shift ;;
+                3+4)
+                  left_button="3"
+                  right_button="4"
+                  shift ;;
+                3+5)
+                  left_button="3"
+                  right_button="5"
+                  shift ;;
+                4+3)
+                  left_button="4"
+                  right_button="3"
+                  shift ;;
+                4+4)
+                  left_button="4"
+                  right_button="4"
+                  shift ;;
+                4+5)
+                  left_button="4"
+                  right_button="5"
+                  shift
+                  ;;
+                5+3)
+                  left_button="5"
+                  right_button="3"
+                  shift ;;
+                5+4)
+                  left_button="5"
+                  right_button="4"
+                  shift
+                  ;;
+                5+5)
+                  left_button="5"
+                  right_button="5"
+                  shift ;;
+              esac
+            done
+            prompt -s "Left side topbar button number: $left_button, right side topbar button number: $right_button.\n" ;;
           alt)
             firefoxtheme="Alt"
             theme_name="Monterey"
-            shift 1
-            ;;
+            shift ;;
           adaptive)
             adaptive="true"
             prompt -i "Firefox adaptive color version...\n"
             prompt -w "You need install adaptive-tab-bar-colour plugin first: https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/\n"
-            shift 1
-            ;;
+            shift ;;
         esac
       done
 
@@ -145,12 +186,10 @@ while [[ $# -gt 0 ]]; do
       for variant in "${@}"; do
         case "${variant}" in
           default)
-            shift 1
-            ;;
+            shift ;;
           x2)
             scale="x2"
-            shift 1
-            ;;
+            shift ;;
         esac
       done
 
@@ -280,7 +319,7 @@ else
     fi
 
     if [[ "${gdm}" != 'true' ]]; then
-      prompt -w "FIREFOX: Please go to [Firefox menu] > [Customize...], and customize your Firefox to make it work. Move your 'new tab' button to the titlebar instead of tab-switcher."
+      prompt -w "FIREFOX: Please go to [Firefox menu] > [Customize...], and customize your Firefox to make it work. Move your 'new tab' button to the titlebar instead of tab-switcher. \n"
       prompt -i "FIREFOX: Anyway, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory. \n"
     fi
   fi
