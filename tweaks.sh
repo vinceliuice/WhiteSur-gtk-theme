@@ -19,6 +19,8 @@ source "${REPO_DIR}/shell/lib-install.sh"
 colors=("${COLOR_VARIANTS[@]}")
 opacities=("${OPACITY_VARIANTS[@]}")
 
+firefoxtheme=$THEME_NAME
+
 usage() {
   # Please specify their default value manually, some of them are come from _variables.scss
   # You also have to check and update them regurally
@@ -102,6 +104,8 @@ while [[ $# -gt 0 ]]; do
             ;;
           adaptive)
             adaptive="true"
+            prompt -i "Firefox adaptive color version...\n"
+            prompt -w "You need install adaptive-tab-bar-colour plugin first: https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/\n"
             shift 1
             ;;
         esac

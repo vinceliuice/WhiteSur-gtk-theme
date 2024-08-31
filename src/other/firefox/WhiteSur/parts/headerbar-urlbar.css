@@ -117,8 +117,8 @@ toolbarspring {
 }
 
 .searchbar-engine-one-off-item {
-	--toolbarbutton-active-background: transparent !important;
-	--toolbarbutton-hover-background: transparent !important;
+	--toolbarbutton-active-background: var(--gnome-button-hover-background) !important;
+	--toolbarbutton-hover-background: var(--gnome-button-active-background) !important;
 	-moz-appearance: none !important;
 	background: var(--gnome-button-background) !important;
 	box-shadow: var(--gnome-button-box-shadow) !important;

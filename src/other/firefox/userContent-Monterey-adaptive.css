@@ -1,7 +1,4 @@
 @import "Monterey/colors/light-adaptive.css";
 @import "Monterey/colors/dark-adaptive.css";
 
-@import "Monterey/pages/common.css";
-@import "Monterey/pages/newtab.css";
-@import "Monterey/pages/reader.css";
-@import "Monterey/pages/privatebrowsing.css";
+@import "Monterey/pages/newtab-adaptive.css";

@@ -321,7 +321,7 @@
 
 /* Extensions sometimes assume a white background */
 .webextension-popup-browser {
-	background-color: #fff !important;
+	background-color: #ffffff !important;
 }
 
 #downloads-indicator-progress-inner {

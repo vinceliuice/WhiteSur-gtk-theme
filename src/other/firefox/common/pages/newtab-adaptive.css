@@ -1,0 +1,40 @@
+/* about:newtab */
+
+.context-menu {
+	background: var(--gnome-menu-background) !important;
+	border-radius: 12px !important;
+	box-shadow: var(--gnome-popover-shadow) !important;
+	padding: 6px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+	.context-menu {
+		border: 1px solid rgba(255, 255, 255, 0.06) !important;
+	}
+}
+
+.context-menu > ul {
+	padding: 0 !important;
+}
+
+.context-menu > ul > li > a,
+.context-menu > ul > li > button {
+	border-radius: 6px !important;
+	padding: 6px 12px !important;
+}
+
+.context-menu > ul > li.separator {
+	border-bottom: 1px solid var(--gnome-popover-separator-color) !important;
+}
+
+.home-section .section .switch {
+	width: 30px !important;
+	height: 20px !important;
+}
+
+.home-section .section .slider::before {
+	height: 12px !important;
+	width: 12px !important;
+	inset-inline-start: 3px;
+	bottom: 3px;
+}

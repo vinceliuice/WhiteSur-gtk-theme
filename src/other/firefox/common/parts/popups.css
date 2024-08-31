@@ -235,6 +235,19 @@ menupopup menu:not([disabled="true"]):is(:hover, [_moz-menuactive]),
 	background: var(--gnome-popover-button-hover-background) !important;
 }
 
+/* Menu buttons active */
+menuitem:not([disabled="true"]):is(:active, [_moz-menuactive]),
+menupopup menu:not([disabled="true"]):is(:active, [_moz-menuactive]),
+.subviewbutton:not([disabled="true"], #appMenu-zoom-controls2, #appMenu-fxa-label2):active,
+.protections-popup-footer-button:not([disabled="true"]):active,
+#protections-popup-show-report-stack:active .protections-popup-footer-button,
+.protections-popup-category:not([disabled="true"]):active,
+.identity-popup-content-blocking-category:not([disabled="true"]):active,
+#PlacesToolbar .bookmark-item:is(:active, [open], [_moz-menuactive]),
+#downloadsPanel-mainView .download-state:active {
+	background: var(--gnome-popover-button-active-background) !important;
+}
+
 /* Style popover separators */
 toolbarseparator, menuseparator {
 	appearance: none !important;
