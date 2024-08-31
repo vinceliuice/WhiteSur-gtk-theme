@@ -47,7 +47,7 @@ button.customizationmode-button {
 	background: var(--gnome-button-background) !important;
 	box-shadow: var(--gnome-button-box-shadow) !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
-	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
 	border-radius: 8px !important;
 	padding: 0 4px !important;
 	height: 28px !important;
@@ -68,7 +68,7 @@ menulist {
 	background: var(--gnome-button-background) !important;
 	box-shadow: var(--gnome-button-box-shadow) !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
-	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
 	border-radius: 8px !important;
 	color: var(--gnome-toolbar-color) !important;
 }
@@ -261,7 +261,7 @@ button.close:not(.ghost-button):not(:active):hover,
 	background: var(--gnome-headerbar-button-hover-background) !important;
 	box-shadow: none !important;
 	border-color: var(--gnome-button-border-color) !important;
-	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
 }
 
 .subviewbutton-back:not(#hack):active,

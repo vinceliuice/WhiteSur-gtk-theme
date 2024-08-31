@@ -20,17 +20,20 @@ $panel_opacity: 0.15;
 // Gnome-shell show apps button style
 $showapps_button: 'bigsur';
 
-// Maximized window radius
-$max_window_style: 'square';
+// Gnome-shell Panel height size
+$panel_size: 'default';
+
+// Gnome-shell font size
+$font_size: 'normal';
+
+// Gnome-shell Panel Activities button style
+$activities: 'default';
 
 // Panel font color
 $panel_font: 'white';
 
-// Panel height size
-$panel_size: 'default';
-
-// Panel Activities button style
-$activities: 'default';
+// Maximized window radius
+$max_window_style: 'square';
 
 // Monterey style
 $monterey: 'false';

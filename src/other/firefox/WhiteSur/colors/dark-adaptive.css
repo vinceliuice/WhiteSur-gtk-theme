@@ -8,64 +8,68 @@
 @media (prefers-color-scheme: dark) {
   :root {
 	/* Browser area before a page starts loading */
-	--gnome-browser-before-load-background: #242424;
-	--gnome-browser-content-box-background: #323232;
+	--gnome-browser-before-load-background: color-mix(in srgb, #000000 6%, var(--lwt-accent-color, #282828));
 	--theme-primary-color: #315bef;
 	--theme-primary-hover-color: #5073f1;
 	--theme-primary-active-color: #6584f3;
 
+	/* Browser colors */
+	--in-content-link-color: var(--theme-primary-color) !important;
+	--in-content-link-color-hover: var(--theme-primary-color-hover) !important;
+
 	/* Toolbars */
-	--gnome-toolbar-background: #373737;
-	--gnome-tabstoolbar-background: #1e1e1e;
-	--gnome-findbar-background: #373737;
-	--gnome-toolbar-color: #ffffff;
-	--gnome-toolbar-border-color: #070707;
-	--gnome-inactive-toolbar-background: #313131;
-	--gnome-inactive-toolbar-border-color: #121212;
+	--gnome-toolbar-background: var(--lwt-accent-color, #363636);
+	--gnome-tabstoolbar-background: color-mix(in srgb, #ffffff 6%, var(--lwt-accent-color));
+	--gnome-findbar-background: var(--lwt-accent-color, #282828);
+	--gnome-toolbar-color: var(--toolbar-color);
+	--gnome-toolbar-border-color: rgba(255, 255, 255, 0.1);
+	--gnome-inactive-toolbar-color: color-mix(in srgb, var(--gnome-toolbar-color) 45%, var(--gnome-toolbar-background));
+	--gnome-inactive-toolbar-background: var(--lwt-accent-color, #282828);
+	--gnome-inactive-toolbar-border-color: var(--chrome-content-separator-color);
 
 	/* Sidebar */
-	--gnome-sidebar-background: #3b3b3b;
-	--gnome-inactive-sidebar-background: #3f3f3f;
+	--gnome-sidebar-background: var(--lwt-accent-color, #282828);
+	--gnome-inactive-sidebar-background: var(--lwt-accent-color, #282828);
 
 	/* Popups */
-	--gnome-menu-background: rgba(51, 51, 51, 0.95);
-	--gnome-menu-border-color: #070707;
-	--gnome-popover-background: rgba(51, 51, 51, 0.95);
-	--gnome-popover-border-color: #070707;
+	--gnome-menu-background: color-mix(in srgb, var(--toolbar-field-focus-background-color) 95%, transparent);
+	--gnome-menu-border-color: rgba(0, 0, 0, 0.75);
+	--gnome-popover-background: color-mix(in srgb, var(--toolbar-field-focus-background-color) 95%, transparent);
+	--gnome-popover-border-color: rgba(0, 0, 0, 0.75);
 	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.75);
 	--gnome-popover-button-hover-background: rgba(255, 255, 255, 0.1);
 	--gnome-popover-button-active-background: rgba(255, 255, 255, 0.15);
 	--gnome-popover-separator-color: rgba(255, 255, 255, 0.08);
 
 	/* Header bar */
-	--gnome-headerbar-background: #373737;
-	--gnome-headerbar-border-color: #070707;
+	--gnome-headerbar-background: var(--lwt-accent-color);
+	--gnome-headerbar-border-color: rgba(255, 255, 255, 0.1);
 	--gnome-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.15);
-	--gnome-inactive-headerbar-background: #313131;
-	--gnome-inactive-headerbar-border-color: #202020;
+	--gnome-inactive-headerbar-background: var(--lwt-accent-color);
+	--gnome-inactive-headerbar-border-color: rgba(255, 255, 255, 0.1);
 	--gnome-inactive-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
 
 	/* Buttons */
-	--gnome-button-background: linear-gradient(to top, #636363 0%, #696969 100%);
-	--gnome-button-border-color: #282828;
-	--gnome-button-border-bottom-color: #282828;
+	--gnome-button-background: color-mix(in srgb, #ffffff 15%, var(--toolbar-field-background-color));
+	--gnome-button-border-color: color-mix(in srgb, #000000 35%, var(--toolbar-field-background-color));
+	--gnome-button-border-bottom-color: color-mix(in srgb, #000000 45%, var(--toolbar-field-background-color));
 	--gnome-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
 	--gnome-button-hover-color: rgba(255, 255, 255, 0.1);
 	--gnome-button-active-color: rgba(255, 255, 255, 0.2);
-	--gnome-button-hover-background: linear-gradient(to top, #707070 0%, #737373 100%);
-	--gnome-button-active-background: linear-gradient(to top, #464646 0%, #525252 100%);
-	--gnome-button-active-border-color: #1b1b1b;
-	--gnome-button-active-border-bottom-color: #1b1b1b;
+	--gnome-button-hover-background: color-mix(in srgb, #ffffff 25%, var(--toolbar-field-background-color));
+	--gnome-button-active-background: color-mix(in srgb, #ffffff 35%, var(--toolbar-field-background-color));
+	--gnome-button-active-border-color: color-mix(in srgb, #000000 35%, var(--toolbar-field-background-color));
+	--gnome-button-active-bottom-border-color: color-mix(in srgb, #000000 45%, var(--toolbar-field-background-color));
 	--gnome-button-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
-	--gnome-button-disabled-background: linear-gradient(to top, #434343 0%, #494949 100%);
-	--gnome-button-disabled-border-color: #282828;
+	--gnome-button-disabled-background: color-mix(in srgb, #ffffff 5%, var(--toolbar-field-background-color));
+	--gnome-button-disabled-border-color: color-mix(in srgb, #000000 35%, var(--toolbar-field-background-color));
 	--gnome-button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0.03);
-	--gnome-inactive-button-background: linear-gradient(#383838, #383838);
-	--gnome-inactive-button-border-color: #323232;
+	--gnome-inactive-button-background: color-mix(in srgb, #ffffff 5%, var(--toolbar-field-background-color));
+	--gnome-inactive-button-border-color: color-mix(in srgb, #000000 35%, var(--toolbar-field-background-color));
 	--gnome-inactive-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.0);
 	--gnome-button-suggested-action-background: linear-gradient(to top, #155099 2px, #15539e);
 	--gnome-button-suggested-action-border-color: #0f3b71;
-	--gnome-button-suggested-action-border-accent-color: #092444;;
+	--gnome-button-suggested-action-border-accent-color: #092444;
 	--gnome-button-suggested-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
 	--gnome-button-suggested-action-hover-background: linear-gradient(to top, #155099, #1655a2 1px);
 	--gnome-button-suggested-action-active-background: #103e75;
@@ -85,33 +89,34 @@
 	--gnome-headerbar-button-active-background: rgba(255, 255, 255, 0.15);
 
 	/* URL bar */
-	--gnome-urlbar-background: #505050;
-	--gnome-urlbar-border-color: #282828;
+	--gnome-urlbar-background: rgba(255, 255, 255, 0.1);
+	--gnome-urlbar-border-color: rgba(255, 255, 255, 0.1);
 	--gnome-urlbar-box-shadow: 0 3px 6px 1px rgba(0,0,0, .2), 0 5px 16px 3px rgba(0,0,0, .15), 0 0 0 1px rgba(0, 0, 0, 0.75);
-	--gnome-urlbar-color: #ffffff;
-	--gnome-hover-urlbar-border-color: #585858;
-	--gnome-inactive-urlbar-background: #424242;
-	--gnome-inactive-urlbar-border-color: #282828;
+	--gnome-urlbar-color: var(--toolbar-field-color);
+	--gnome-hover-urlbar-border-color: rgba(255, 255, 255, 0.1);
+	--gnome-inactive-urlbar-background: var(--toolbar-field-background-color);
+	--gnome-inactive-urlbar-border-color: rgba(255, 255, 255, 0.1);
 	--gnome-inactive-urlbar-box-shadow: none;
-	--gnome-inactive-urlbar-color: #d6d6d6;
+	--gnome-inactive-urlbar-color: var(--toolbar-field-color);
 	--gnome-focused-urlbar-border-color: #338CBE;
 	--gnome-focused-urlbar-highlight-color: #006EA0;
-	--gnome-private-urlbar-background: #25003e;
+	--gnome-private-urlbar-background: var(--toolbar-field-background-color);
 
 	/* Tabs */
-	--gnome-tabbar-tab-background: #404040;
-	--gnome-tabbar-tab-color: rgb(141, 144, 145);
-	--gnome-tabbar-tab-hover-background: #464646;
-	--gnome-tabbar-tab-hover-border-bottom-color: #1b1b1b;
-	--gnome-tabbar-tab-hover-color: rgb(200, 200, 200);
-	--gnome-tabbar-tab-active-background: #505050;
-	--gnome-tabbar-tab-active-border-bottom-color: #15539e;
-	--gnome-tabbar-tab-active-color: #ffffff;
-	--gnome-tabbar-tab-active-hover-background: #525252;
-	--gnome-inactive-tabbar-tab-color: rgb(141, 144, 145);
-	--gnome-inactive-tabbar-tab-background: #383838;
-	--gnome-inactive-tabbar-tab-active-background: #424242;
-	--gnome-inactive-tabbar-tab-active-border-bottom-color: var(--gnome-tabbar-tab-active-border-bottom-color);
+	--gnome-tabbar-tab-background: var(--gnome-tabstoolbar-background);
+	--gnome-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
+	--gnome-tabbar-tab-border-color: var(--gnome-toolbar-border-color);
+	--gnome-tabbar-tab-hover-background: color-mix(in srgb, var(--toolbar-color) 12%, var(--lwt-accent-color));
+	--gnome-tabbar-tab-hover-border-color: var(--gnome-toolbar-border-color);
+	--gnome-tabbar-tab-hover-color: var(--lwt-tab-text, var(--toolbar-color));
+	--gnome-tabbar-tab-active-background: var(--gnome-headerbar-background);
+	--gnome-tabbar-tab-active-border-color: color-mix(in srgb, var(--toolbar-color) 12%, var(--gnome-headerbar-background));
+	--gnome-tabbar-tab-active-color: var(--lwt-tab-text, var(--toolbar-color));
+	--gnome-tabbar-tab-active-hover-background: color-mix(in srgb, var(--toolbar-color) 12%, var(--lwt-accent-color));
+	--gnome-inactive-tabbar-tab-color: var(--lwt-tab-text, var(--toolbar-color));
+	--gnome-inactive-tabbar-tab-background: var(--gnome-tabstoolbar-background);
+	--gnome-inactive-tabbar-tab-active-background: var(--gnome-headerbar-background);
+	--gnome-inactive-tabbar-tab-active-border-color: var(--gnome-tabbar-tab-active-border-bottom-color);
 	--gnome-inactive-tabbar-tab-active-color: var(--gnome-inactive-tabbar-tab-color);
 	--gnome-tab-attention-icon-color: #718be8;
 

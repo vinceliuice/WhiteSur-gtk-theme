@@ -2888,6 +2888,7 @@ notebook {
 
         > tabs {
           margin: 0;
+          padding: 0;
 
           > tab {
             outline-offset: -4px;
@@ -3798,9 +3799,7 @@ frame {
 
   > list {
     border-radius: $wm_radius - 2px;
-    box-shadow: if($variant == 'light',
-                  (inset 0 0 8px rgba(black, 0.02), inset 0 0 3px rgba(black, 0.01)),
-                  (inset 0 0 8px rgba(white, 0.03), inset 0 0 3px rgba(white, 0.02)));
+    box-shadow: none;
   }
 }
 

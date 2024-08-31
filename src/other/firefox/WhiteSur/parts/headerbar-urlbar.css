@@ -124,7 +124,7 @@ toolbarspring {
 	box-shadow: var(--gnome-button-box-shadow) !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
 	border-left-width: 0 !important;
-	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
 	padding: 0 2px !important;
 	min-height: 34px !important;
 	min-width: 34px !important;
@@ -148,7 +148,7 @@ toolbarspring {
 #urlbar-anon-search-settings-compact,
 .search-setting-button {
 	border-left-width: 1px !important;
-	border-bottom: 1px solid var(--gnome-button-border-accent-color) !important;
+	border-bottom: 1px solid var(--gnome-button-border-bottom-color) !important;
 	border-radius: 5px !important;
 	margin-left: 6px !important;
 }

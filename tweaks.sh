@@ -23,30 +23,31 @@ usage() {
   # Please specify their default value manually, some of them are come from _variables.scss
   # You also have to check and update them regurally
   helpify_title
-  helpify "[GDM theme]"         "options"                                           ".................." ""
-  helpify "-g, --gdm"           "[default|x2]"                                      "Install '${THEME_NAME}' theme for GDM (scaling: 100%/200%, default is 100%)" "Requires to run this shell as root"
-  helpify "-o, --opacity"       "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "Set '${THEME_NAME}' GDM/Flatpak theme opacity variants"                      "Default is 'normal'"
-  helpify "-c, --color"         "[$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"         "Set '${THEME_NAME}' GDM/Flatpak and Dash to Dock theme color variants"       "Default is 'light'"
-  helpify "-t, --theme"         "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")]"         "Set '${THEME_NAME}' GDM/Flatpak theme accent color"                          "Default is BigSur-like theme"
-  helpify "-N, --no-darken"     ""                                                  "Don't darken '${THEME_NAME}' GDM theme background image"                     ""
-  helpify "-n, --no-blur"       ""                                                  "Don't blur '${THEME_NAME}' GDM theme background image"                       ""
-  helpify "-b, --background"    "[default|blank|IMAGE_PATH]"                        "Set '${THEME_NAME}' GDM theme background image"                              "Default is BigSur-like wallpaper"
-  helpify "-p, --panel-opacity" "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "Set '${THEME_NAME}' GDM (GNOME Shell) theme panel transparency"              "Default is 15%"
-  helpify "-P, --panel-size"    "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"    "Set '${THEME_NAME}' Gnome shell panel height size"                           "Default is 32px"
-  helpify "-i, --icon"          "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"          "Set '${THEME_NAME}' GDM (GNOME Shell) 'Activities' icon"                     "Default is 'standard'"
-  helpify "--nord, --nordcolor" ""                                                  "Install '${THEME_NAME}' Nord ColorScheme themes"                             ""
+  helpify "" "" "[GDM theme].." "options"
+  helpify "-g, --gdm"           "[default|x2]"                                      "  Install '${THEME_NAME}' theme for GDM (scaling: 100%/200%, default is 100%)" "Requires to run this shell as root"
+  helpify "-o, --opacity"       "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "  Set '${THEME_NAME}' GDM theme opacity variants"                              "Default is 'normal'"
+  helpify "-c, --color"         "[$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"         "  Set '${THEME_NAME}' GDM and Dash to Dock theme color variants"               "Default is 'light'"
+  helpify "-t, --theme"         "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")]"         "  Set '${THEME_NAME}' GDM theme accent color"                                  "Default is BigSur-like theme"
+  helpify "-N, --no-darken"     ""                                                  "  Don't darken '${THEME_NAME}' GDM theme background image"                     ""
+  helpify "-n, --no-blur"       ""                                                  "  Don't blur '${THEME_NAME}' GDM theme background image"                       ""
+  helpify "-b, --background"    "[default|blank|IMAGE_PATH]"                        "  Set '${THEME_NAME}' GDM theme background image"                              "Default is BigSur-like wallpaper"
+  helpify "-p, --panel-opacity" "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "  Set '${THEME_NAME}' GDM (GNOME Shell) theme panel transparency"              "Default is 15%"
+  helpify "-P, --panel-size"    "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"    "  Set '${THEME_NAME}' Gnome shell panel height size"                           "Default is 32px"
+  helpify "-i, --icon"          "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"          "  Set '${THEME_NAME}' GDM (GNOME Shell) 'Activities' icon"                     "Default is 'standard'"
+  helpify "--nord, --nordcolor" ""                                                  "  Install '${THEME_NAME}' Nord ColorScheme themes"                             ""
 
-  helpify "[Others]"            "options"                                           ".................." ""
-  helpify "-f, --firefox"       "[default|monterey|alt]"                            "Install '${THEME_NAME}|Monterey|Alt' theme for Firefox and connect it to the current Firefox profiles" "Default is ${THEME_NAME}"
-  helpify "-e, --edit-firefox"  ""                                                  "Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
+  helpify "" "" "[Others].." "options"                                           
+  helpify "-f, --firefox"       "[default|monterey|alt|adaptive]"                   "  Install '${THEME_NAME}|Monterey|Alt|Adaptive' theme for Firefox and connect it to the current Firefox profiles" "Default is ${THEME_NAME}"
+  helpify "-e, --edit-firefox"  "[default|monterey|alt|adaptive]"                   "  Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
 
-  helpify "-F, --flatpak"       ""                                                  "Connect '${THEME_NAME}' theme to Flatpak"                                    ""
-  #helpify "-s, --snap"          ""                                                  "Connect '${THEME_NAME}' theme the currently installed snap apps"             ""
-  helpify "-d, --dash-to-dock"  ""                                                  "Fixed Dash to Dock theme issue"                                              ""
+  helpify "-F, --flatpak"       "Support options: [-o, -c, -t...]"                  "  Connect '${THEME_NAME}' theme to Flatpak"                                    "Without options will only install default themes"
 
-  helpify "-r, --remove, --revert" ""                                               "Revert to the original themes, do the opposite things of install and connect" ""
-  helpify "--silent-mode"       ""                                                  "Meant for developers: ignore any confirm prompt and params become more strict" ""
-  helpify "-h, --help"          ""                                                  "Show this help"                                                              ""
+  #helpify "-s, --snap"          ""                                                  "  Connect '${THEME_NAME}' theme the currently installed snap apps"             ""
+  helpify "-d, --dash-to-dock"  ""                                                  "  Fixed Dash to Dock theme issue"                                              ""
+
+  helpify "-r, --remove, --revert" ""                                               "  Revert to the original themes, do the opposite things of install and connect" ""
+  helpify "--silent-mode"       ""                                                  "  Meant for developers: ignore any confirm prompt and params become more strict" ""
+  helpify "-h, --help"          ""                                                  "  Show this help"                                                              ""
 }
 
 ###############################################################################
@@ -86,17 +87,21 @@ while [[ $# -gt 0 ]]; do
       for variant in "${@}"; do
         case "${variant}" in
           default)
+            firefoxtheme="WhiteSur"
             shift 1
             ;;
           monterey)
-            monterey="true"
-            name="Monterey"
+            firefoxtheme="Monterey"
+            theme_name="Monterey"
             shift 1
             ;;
           alt)
-            monterey="true"
-            alttheme="true"
-            name="Monterey"
+            firefoxtheme="Alt"
+            theme_name="Monterey"
+            shift 1
+            ;;
+          adaptive)
+            adaptive="true"
             shift 1
             ;;
         esac
@@ -221,9 +226,9 @@ if [[ "${uninstall}" == 'true' ]]; then
   fi
 
   if [[ "${firefox}" == 'true' && "${gdm}" != 'true' ]]; then
-    prompt -i "Removing '${name}' Firefox theme... \n"
+    prompt -i "Removing '${firefoxtheme}' Firefox theme... \n"
     remove_firefox_theme
-    prompt -s "Done! '${name}' Firefox theme has been removed. \n"
+    prompt -s "Done! '${firefoxtheme}' Firefox theme has been removed. \n"
   fi
 else
   show_needed_dialogs; customize_theme
@@ -259,15 +264,15 @@ else
 
   if [[ "${firefox}" == 'true' || "${edit_firefox}" == 'true' ]]; then
     if [[ "${firefox}" == 'true' && "${gdm}" != 'true' ]]; then
-      prompt -i "Installing '${name}' Firefox theme... \n"
+      prompt -i "Installing '${firefoxtheme}' Firefox theme... \n"
       install_firefox_theme
-      prompt -s "Done! '${name}' Firefox theme has been installed. \n"
+      prompt -s "Done! '${firefoxtheme}' Firefox theme has been installed. \n"
     fi
 
     if [[ "${edit_firefox}" == 'true' && "${gdm}" != 'true' ]]; then
-      prompt -i "Editing '${name}' Firefox theme preferences... \n"
+      prompt -i "Editing '${firefoxtheme}' Firefox theme preferences... \n"
       edit_firefox_theme_prefs
-      prompt -s "Done! '${name}' Firefox theme preferences has been edited. \n"
+      prompt -s "Done! '${firefoxtheme}' Firefox theme preferences has been edited. \n"
     fi
 
     if [[ "${gdm}" != 'true' ]]; then

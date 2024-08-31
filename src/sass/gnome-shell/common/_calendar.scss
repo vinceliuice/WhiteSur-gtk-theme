@@ -152,10 +152,10 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   .calendar-day,
   .calendar-day-base {
     @extend %numeric;
-    @extend %smaller;
+    // @extend %smaller;
     text-align: center;
-    width: 3em !important;
-    height: 3em !important;
+    width: 2.6em !important;
+    height: 2.6em !important;
     padding: 2px !important;
     margin: 2px !important;
     border-radius: $circular_radius;
@@ -256,7 +256,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     @extend %smaller;
     width: 2em !important;
     height: 2em !important;
-    margin: 0.7em 0.7em 0.7em 0.2em !important;
+    margin: 0.6em 0.6em 0.6em 0.2em !important;
     padding: 2px !important;
     border-radius: $bt_radius;
     background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05));

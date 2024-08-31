@@ -48,14 +48,13 @@
 	/* Buttons */
 	--gnome-button-background: linear-gradient(to top, #f1f1f1 0%, #fdfdfd 95%, #fefefe 100%);
 	--gnome-button-border-color: #cdc7c2;
-	--gnome-button-border-bottom-color: #b2b2b1;
+	--gnome-button-border-accent-color: #b2b2b1;
 	--gnome-button-box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.03);
 	--gnome-button-hover-color: rgba(0, 0, 0, 0.1);
 	--gnome-button-active-color: rgba(0, 0, 0, 0.2);
 	--gnome-button-hover-background: linear-gradient(to top, #fdfdfd 0%, #ffffff 100%);
 	--gnome-button-active-background: #cfcfcf;
 	--gnome-button-active-border-color: #b2b2b1;
-	--gnome-button-active-border-bottom-color: #b2b2b1;
 	--gnome-button-active-box-shadow: 0 1px rgba(255, 255, 255, 0) inset;
 	--gnome-button-disabled-background: #faf9f8;
 	--gnome-button-disabled-border-color: #cdc7c2;

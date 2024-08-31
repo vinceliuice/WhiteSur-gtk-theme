@@ -74,7 +74,7 @@ $dash_spacing: $base_margin * 0.5;
     .app-grid-running-dot {
       // manually position the dot within the dash item
       // margin-bottom: $dash_padding + $dash_edge_offset - 3px; // 3px = size of dot (5px) subtracted from its translationY from appDisplay.js
-      offset-y: 0;
+      offset-y: -9px;
     }
   }
 

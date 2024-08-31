@@ -680,25 +680,45 @@ install_firefox_theme() {
   udo mkdir -p                                                                                "${TARGET_DIR}"
   udo cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                            "${TARGET_DIR}"
 
-  if [[ "${monterey}" == 'true' ]]; then
+  if [[ "${theme_name}" == 'Monterey' ]]; then
     udo cp -rf "${FIREFOX_SRC_DIR}"/Monterey                                                  "${TARGET_DIR}"
     udo cp -rf "${FIREFOX_SRC_DIR}"/common/{icons,titlebuttons,pages}                         "${TARGET_DIR}"/Monterey
     udo cp -rf "${FIREFOX_SRC_DIR}"/common/*.css                                              "${TARGET_DIR}"/Monterey
     udo cp -rf "${FIREFOX_SRC_DIR}"/common/parts/*.css                                        "${TARGET_DIR}"/Monterey/parts
-    udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-Monterey.css                                  "${TARGET_DIR}"/userContent.css
-    if [[ "${alttheme}" == 'true' ]]; then
-      udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt.css                             "${TARGET_DIR}"/userChrome.css
+
+    if [[ "${adaptive}" == 'true' ]]; then
+      udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-Monterey-adaptive.css                       "${TARGET_DIR}"/userContent.css
+    else
+      udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-Monterey.css                                "${TARGET_DIR}"/userContent.css
+    fi
+
+    if [[ "${firefoxtheme}" == 'Alt' ]]; then
+      if [[ "${adaptive}" == 'true' ]]; then
+        udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt-adaptive.css                  "${TARGET_DIR}"/userChrome.css
+      else
+        udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt.css                           "${TARGET_DIR}"/userChrome.css
+      fi
       udo cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur/parts/headerbar-urlbar.css                     "${TARGET_DIR}"/Monterey/parts/headerbar-urlbar-alt.css
     else
-      udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey.css                                 "${TARGET_DIR}"/userChrome.css
+      if [[ "${adaptive}" == 'true' ]]; then
+        udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-adaptive.css                      "${TARGET_DIR}"/userChrome.css
+      else
+        udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey.css                               "${TARGET_DIR}"/userChrome.css
+      fi
     fi
   else
     udo cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur                                                  "${TARGET_DIR}"
     udo cp -rf "${FIREFOX_SRC_DIR}"/common/{icons,titlebuttons,pages}                         "${TARGET_DIR}"/WhiteSur
     udo cp -rf "${FIREFOX_SRC_DIR}"/common/*.css                                              "${TARGET_DIR}"/WhiteSur
     udo cp -rf "${FIREFOX_SRC_DIR}"/common/parts/*.css                                        "${TARGET_DIR}"/WhiteSur/parts
-    udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-WhiteSur.css                                   "${TARGET_DIR}"/userChrome.css
-    udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-WhiteSur.css                                  "${TARGET_DIR}"/userContent.css
+
+    if [[ "${adaptive}" == 'true' ]]; then
+      udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-WhiteSur-adaptive.css                        "${TARGET_DIR}"/userChrome.css
+      udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-WhiteSur-adaptive.css                       "${TARGET_DIR}"/userContent.css
+    else
+      udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-WhiteSur.css                                 "${TARGET_DIR}"/userChrome.css
+      udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-WhiteSur.css                                "${TARGET_DIR}"/userContent.css
+    fi
   fi
 
   config_firefox
@@ -945,6 +965,12 @@ customize_theme() {
   if [[ "${showapps_normal}" == 'true' ]]; then
     prompt -s "Changing gnome-shell show apps button style ...\n"
     sed $SED_OPT "/\$showapps_button/s/bigsur/normal/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
+  # Change gnome-shell font size
+  if [[ "${smaller_font}" == 'true' ]]; then
+    prompt -s "Changing gnome-shell font size to smaller ...\n"
+    sed $SED_OPT "/\$font_size/s/normal/smaller/"                               "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change gnome-shell panel activities button style

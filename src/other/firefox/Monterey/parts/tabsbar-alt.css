@@ -49,8 +49,13 @@ tab > stack {
 
 .tab-background {
 	margin: 0 !important;
-	transition: background 200ms;
+	transition: none;
 	margin-block: 0 !important;
+}
+
+.tab-background:hover,
+.tab-background:is([selected]) {
+	transition: background 200ms;
 }
 
 #TabsToolbar .tabbrowser-tab:not([selected=true]) .tab-background {
