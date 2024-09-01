@@ -437,10 +437,16 @@ parsimplify() {
       echo "-i" ;;
     --theme)
       echo "-t" ;;
+    -height)
+      echo "-h" ;;
+    -panelopacity)
+      echo "-p" ;;
     --panel-opacity)
       echo "-p" ;;
     --panel-size)
       echo "-P" ;;
+    --nautilus)
+      echo "-N" ;;
     --nautilus-style)
       echo "-N" ;;
     --background)
@@ -551,6 +557,12 @@ check_param() {
           fi
         done ;;
       -P)
+        for i in {0..2}; do
+          if [[ "${value}" == "${PANEL_SIZE_VARIANTS[i]}" ]]; then
+            panel_size="${value}"; variant_found="true"; break
+          fi
+        done ;;
+      -h)
         for i in {0..2}; do
           if [[ "${value}" == "${PANEL_SIZE_VARIANTS[i]}" ]]; then
             panel_size="${value}"; variant_found="true"; break

@@ -102,11 +102,11 @@ while [[ $# -gt 0 ]]; do
             check_param "${1}" "${1}" "${2}" "must" "must" "must" && shift 2 || shift ;;
           -b|-background)
             check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
-          -o|-opacity)
+          -p|-panelopacity)
             check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
           -h|-height)
             check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
-          -n|-normal)
+          -g|-general|-normal)
             showapps_normal="true"; shift ;;
           -s|-smaller)
             smaller_font="true"; shift ;;

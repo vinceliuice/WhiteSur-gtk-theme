@@ -954,7 +954,7 @@ customize_theme() {
 
   # Change gnome-shell panel transparency
   if [[ "${panel_opacity}" != 'default' ]]; then
-    prompt -s "Changing panel transparency ...\n"
+    prompt -s "Changing panel transparency to ${panel_opacity}% ...\n"
     sed $SED_OPT "/\$panel_opacity/s/0.15/0.${panel_opacity}/"                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 

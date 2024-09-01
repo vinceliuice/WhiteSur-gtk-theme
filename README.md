@@ -103,14 +103,14 @@ Usage:  `./install.sh [OPTIONS...]`
      2. -b, -background [default|blank|IMAGE_PATH]
      Set gnome-shell background image. Default is BigSur-like wallpaper
 
-     3. -o, -opacity [default|30|45|60|75]
+     3. -p, -panelopacity [default|30|45|60|75]
      Set gnome-shell panel transparency. Default is 15%
 
      4. -h, -height [default|smaller|bigger]
      Set gnome-shell panel height size. Default is 32px
 
-     5. -n, -normal 
-     Set gnome-shell show apps button style to normal. Default is BigSur
+     5. -g, -general, -normal 
+     Set gnome-shell show apps button style to general/normal. Default is BigSur
 
      6. -s, -smaller 
      Set gnome-shell font size to smaller (10pt). Default is 11pt
