@@ -52,7 +52,7 @@
 	--gnome-inactive-headerbar-box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
 
 	/* Buttons */
-	--gnome-button-background: color-mix(in srgb, #ffffff 15%, var(--toolbar-field-background-color));
+	--gnome-button-background: image(color-mix(in srgb, #ffffff 15%, var(--toolbar-field-background-color)));
 	--gnome-button-border-color: color-mix(in srgb, #000000 35%, var(--toolbar-field-background-color));
 	--gnome-button-border-bottom-color: color-mix(in srgb, #000000 45%, var(--toolbar-field-background-color));
 	--gnome-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);

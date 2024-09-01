@@ -16,30 +16,6 @@
 	font-weight: 400 !important;
 }
 
-/* Overrides: Make the back button the same as other buttons */
-:root:not([uidensity=compact]) #back-button {
-	border-radius: var(--toolbarbutton-border-radius) !important;
-}
-:root:not([uidensity=compact]) #back-button > .toolbarbutton-icon {
-	background-color: unset !important;
-	border: unset !important;
-	width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
-	height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
-	padding: var(--toolbarbutton-inner-padding) !important;
-	border-radius: var(--toolbarbutton-border-radius);
-	box-shadow: none !important;
-}
-:root:not([uidensity=compact]) #back-button:not([disabled]):not([open]):hover > .toolbarbutton-icon {
-	background-color: var(--toolbarbutton-hover-background) !important;
-	box-shadow: unset;
-	border-color: unset;
-}
-:root:not([uidensity=compact]) #back-button[open] > .toolbarbutton-icon,
-:root:not([uidensity=compact]) #back-button:not([disabled]):hover:active > .toolbarbutton-icon {
-	background-color: var(--toolbarbutton-active-background) !important;
-	border-color: unset;
-}
-
 /* Glitch customizing: Cut / Copy / Paste buttons' icons
  * :not(#hack) is there just to elevate rule priority */
 :root[customizing] #nav-bar > hbox toolbaritem toolbarbutton image:not(#hack) {

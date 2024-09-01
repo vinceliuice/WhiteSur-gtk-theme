@@ -13,6 +13,7 @@
 
 .sidebar-splitter {
 	width: 1px !important;
-	background-color: var(--gnome-sidebar-border-color) !important;
+	background-color: var(--gnome-sidebar-border-color, var(--gnome-toolbar-background)) !important;
+	background-image: linear-gradient(to top, var(--sidebar-background-color) 0%, var(--sidebar-background-color) 100%);
 	border: none !important;
 }
