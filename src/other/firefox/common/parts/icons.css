@@ -303,6 +303,7 @@ menu[disabled] > .menu-right {
 #forward-button,
 #context-forward,
 #urlbar-go-button,
+.urlbar-go-button,
 .search-go-button {
 	list-style-image: url("../icons/go-next-symbolic.svg") !important;
 }

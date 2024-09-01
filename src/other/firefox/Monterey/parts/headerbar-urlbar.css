@@ -191,7 +191,10 @@ toolbarspring {
 	border-radius: 5px !important;
 }
 
-.urlbar-page-action, #urlbar-go-button, .search-go-button,
+.urlbar-page-action,
+#urlbar-go-button,
+.urlbar-go-button,
+.search-go-button,
 #tracking-protection-icon-container {
 	width: 28px !important;
 	height: 26px !important;
@@ -209,10 +212,21 @@ toolbarspring {
 	margin-left: 0 !important;
 }
 
+#tracking-protection-icon-container:hover,
+.urlbar-page-action:hover,
+#urlbar-go-button:hover,
+.urlbar-go-button:hover,
+.search-go-button:hover,
 #identity-box:hover {
 	background: var(--gnome-headerbar-button-hover-background) !important;
 }
 
+#tracking-protection-icon-container:active,
+#tracking-protection-icon-container[open="true"],
+.urlbar-page-action:active,
+#urlbar-go-button:active,
+.urlbar-go-button:active,
+.search-go-button:active,
 #identity-box:active {
 	background: var(--gnome-headerbar-button-active-background) !important;
 }

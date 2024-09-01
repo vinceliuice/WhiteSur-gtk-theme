@@ -40,12 +40,6 @@
 	border-color: unset;
 }
 
-/* Remove the header bar buttons' hover styles */
-#nav-bar {
-	--toolbarbutton-active-background: transparent !important;
-	--toolbarbutton-hover-background: transparent !important;
-}
-
 /* Glitch customizing: Cut / Copy / Paste buttons' icons
  * :not(#hack) is there just to elevate rule priority */
 :root[customizing] #nav-bar > hbox toolbaritem toolbarbutton image:not(#hack) {
