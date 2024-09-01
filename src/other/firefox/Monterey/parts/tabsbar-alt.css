@@ -7,15 +7,28 @@
 }
 
 /* Tabs bar height */
+
+#TabsToolbar {
+	min-height: 32px !important;
+}
+
+#TabsToolbar-customization-target {
+	padding-bottom: 6px !important;
+}
+
 #tabbrowser-tabs,
 #tabbrowser-tabs arrowscrollbox {
-	min-height: 36px !important;
-	--tab-min-height: 36px !important;
+	min-height: 32px !important;
+	--tab-min-height: 32px !important;
+}
+
+#tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
+	max-height: 32px !important;
 }
 
 .tab-background, .tab-stack {
-	height: 36px !important;
-	min-height: 36px !important;
+	height: 32px !important;
+	min-height: 32px !important;
 }
 
 tab > stack {
@@ -209,8 +222,8 @@ tab[selected]:-moz-window-inactive .tab-label {
 
 .close-icon {
 	height: 16px !important;
-	padding: 0 !important;
 	width: 16px !important;
+	padding: 0 !important;
 }
 
 .tab-close-button {
@@ -234,11 +247,6 @@ tab[selected]:-moz-window-inactive .tab-label {
 	visibility: visible;
 }
 
-@media (prefers-color-scheme: dark) {
-	.tab-close-button {
-		list-style-image: url("../icons/window-close-symbolic-light.svg") !important;
-	}
-}
 :root:-moz-window-inactive .tab-close-button:not(#hack) {
 	opacity: .18 !important;
 }
@@ -308,6 +316,7 @@ tab[selected]:-moz-window-inactive .tab-label {
 
 #TabsToolbar .toolbarbutton-1,
 #tabs-newtab-button, #TabsToolbar #new-tab-button {
+	min-height: 32px !important;
 	margin: 0 2px !important;
 	padding: 0 10px !important;
 	border-radius: 8px !important;
@@ -324,7 +333,7 @@ tab[selected]:-moz-window-inactive .tab-label {
 
 #TabsToolbar #scrollbutton-up,
 #TabsToolbar #scrollbutton-down {
-	height: 36px !important;
+	height: 32px !important;
 }
 
 #TabsToolbar #scrollbutton-up image,

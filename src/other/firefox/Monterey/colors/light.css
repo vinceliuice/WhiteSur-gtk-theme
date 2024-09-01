@@ -27,6 +27,7 @@
 	/* Sidebar */
 	--gnome-sidebar-background: #f5f5f5;
 	--gnome-inactive-sidebar-background: #f9f9f8;
+	--gnome-sidebar-border-color: color-mix(in srgb, #000000 12%, var(--gnome-sidebar-background));
 
 	/* Popups */
 	--gnome-menu-background: rgba(255, 255, 255, 0.95);

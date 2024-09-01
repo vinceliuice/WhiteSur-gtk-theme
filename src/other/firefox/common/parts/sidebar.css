@@ -1,0 +1,18 @@
+/* Sidebar */
+#sidebar-box, #sidebar,
+.sidebar-panel[lwt-sidebar] {
+	color: var(--gnome-toolbar-color) !important;
+	background: var(--gnome-sidebar-background) !important;
+}
+
+#sidebar-header {
+	padding: 8px;
+	border-bottom: 1px solid var(--gnome-sidebar-border-color) !important;
+	background: var(--sidebar-background-color) !important;
+}
+
+.sidebar-splitter {
+	width: 1px !important;
+	background-color: var(--gnome-sidebar-border-color) !important;
+	border: none !important;
+}

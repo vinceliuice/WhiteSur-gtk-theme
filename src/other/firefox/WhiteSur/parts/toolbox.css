@@ -39,12 +39,6 @@ toolbar .toolbarbutton-1 {
 	background: var(--gnome-tabstoolbar-background) !important;
 }
 
-findbar {
-	border: 0 !important;
-	background: var(--gnome-findbar-background) !important;
-	border-top: 1px solid var(--gnome-toolbar-border-color) !important;
-}
-
 .container.infobar {
 	background: var(--gnome-browser-before-load-background) !important;
 }
@@ -126,19 +120,6 @@ findbar:-moz-window-inactive label,
 }
 #TabsToolbar[movingtab] + #nav-bar {
 	margin-top: 0 !important;
-}
-
-/* Sidebar */
-#sidebar-box, #sidebar,
-.sidebar-panel[lwt-sidebar] {
-	color: var(--gnome-toolbar-color) !important;
-	background: var(--gnome-toolbar-background) !important;
-}
-
-.sidebar-splitter {
-	width: 1px !important;
-	background-color: var(--gnome-toolbar-border-color) !important;
-	border: none !important;
 }
 
 /* Customization page */

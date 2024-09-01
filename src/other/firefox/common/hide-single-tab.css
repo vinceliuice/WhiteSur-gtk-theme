@@ -9,6 +9,10 @@
 	min-height: 0 !important;
 }
 
+#TabsToolbar {
+	min-height: 0 !important;
+}
+
 #tabbrowser-tabs,
 #tabbrowser-tabs arrowscrollbox {
 	min-height: 0 !important;

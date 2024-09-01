@@ -17,16 +17,9 @@
 	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
 }
 
-findbar {
-	border: none !important;
-	background: var(--gnome-findbar-background) !important;
-	border-top: 1px solid var(--gnome-toolbar-border-color) !important;
-}
-
 #nav-bar:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive,
 #toolbar-menubar:-moz-window-inactive,
-findbar:-moz-window-inactive,
 #titlebar:-moz-window-inactive {
 	background: var(--gnome-inactive-toolbar-background) !important;
 }
@@ -99,19 +92,6 @@ findbar:-moz-window-inactive,
 	max-height: 28px !important;
 	padding: 0 2px !important;
 	--bookmarks-toolbar-overlapping-browser-height: auto;
-}
-
-/* Sidebar */
-#sidebar-box, #sidebar,
-.sidebar-panel[lwt-sidebar] {
-	color: var(--gnome-toolbar-color) !important;
-	background: var(--gnome-toolbar-background) !important;
-}
-
-.sidebar-splitter {
-	width: 1px !important;
-	background-color: var(--gnome-toolbar-border-color) !important;
-	border: none !important;
 }
 
 /* Customization page */

@@ -90,20 +90,6 @@ findbar:-moz-window-inactive {
 #navigator-toolbox #TabsToolbar {
 	-moz-box-ordinal-group: 100;
 	order: 100;
-	padding-bottom: 6px !important;
-}
-
-/* Sidebar */
-#sidebar-box, #sidebar,
-.sidebar-panel[lwt-sidebar] {
-	color: var(--gnome-toolbar-color) !important;
-	background: var(--gnome-toolbar-background) !important;
-}
-
-.sidebar-splitter {
-	width: 1px !important;
-	background-color: var(--gnome-toolbar-border-color) !important;
-	border: none !important;
 }
 
 /* Customization page */

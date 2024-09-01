@@ -5,6 +5,9 @@
 findbar {
 	padding: 0 !important;
 	position: relative;
+	border: none !important;
+	background: var(--gnome-findbar-background) !important;
+	border-top: 1px solid var(--gnome-toolbar-border-color) !important;
 }
 
 .findbar-container {
