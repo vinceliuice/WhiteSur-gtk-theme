@@ -33,13 +33,56 @@ hbox[anonid="findbar-textbox-wrapper"] {
 	order: -1;
 	padding: 7px 0;
 }
+
 .findbar-find-status {
 	padding-left: 6px;
 	flex: 1;
 }
 
+.findbar-textbox {
+	-moz-appearance: none !important;
+	background-color: var(--gnome-urlbar-background) !important;
+	border: 1px solid var(--gnome-button-border-color) !important;
+	outline: 2px solid transparent;
+	outline-offset: -2px;
+	border-radius: 8px !important;
+	box-shadow: none !important;
+	color: var(--gnome-urlbar-color) !important;
+	height: 28px !important;
+	max-height: 28px !important;
+	margin: 0 !important;
+	padding: 6px !important;
+	box-sizing: padding-box;
+	transition: outline 100ms ease-out;
+	background-clip: padding-box !important;
+}
+
+.findbar-textbox[focused],
+.findbar-textbox:focus {
+	outline: none !important;
+	box-shadow: inset 0 0 0 1px var(--gnome-focused-urlbar-border-color) !important;
+	border: 1px solid var(--gnome-focused-urlbar-border-color) !important;
+}
+
+.findbar-textbox:-moz-window-inactive {
+	background-color: var(--gnome-inactive-urlbar-background) !important;
+	border-color: var(--gnome-inactive-urlbar-border-color) !important;
+	color: var(--gnome-inactive-urlbar-color) !important;
+}
+
 .findbar-textbox:focus + .findbar-find-previous {
 	border-left-color: var(--gnome-focused-urlbar-border-color) !important;
+}
+
+/* Entries combined */
+.findbar-textbox:not(.minimal) {
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+
+.findbar-textbox:not(.minimal)[focused],
+.findbar-textbox:not(.minimal):focus {
+	-moz-outline-radius: 8px 0 0 8px !important;
 }
 
 .findbar-highlight, .findbar-case-sensitive, .findbar-match-diacritics, .findbar-entire-word, .findbar-label {

@@ -17,12 +17,17 @@ toolbarspring {
 	min-width: 360px !important;
 }
 
-#urlbar-background {
-	box-shadow: none !important;
-	border: 0 !important;
-	background: transparent !important;
-	border-radius: 8px !important;
+#urlbar[breakout][breakout-extend] {
+	left: 0 !important;
+	top: 0 !important;
+	width: 100% !important;
+	z-index: 5 !important;
 	padding: 0 !important;
+	border-radius: 8px !important;
+	outline: 2px solid var(--gnome-focused-urlbar-border-color) !important;
+	outline-offset: -2px;
+	-moz-outline-radius: 8px;
+	transition: outline 100ms ease-out;
 }
 
 #urlbar:-moz-window-inactive {

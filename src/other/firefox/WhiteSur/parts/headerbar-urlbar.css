@@ -32,7 +32,7 @@ toolbarspring {
 .urlbar-input-container {
 	border: none !important;
 	padding: 0 3px !important;
-	background: transparent !important;
+	background: none !important;
 }
 
 #urlbar:-moz-window-inactive {
@@ -46,6 +46,10 @@ toolbarspring {
 	z-index: 5 !important;
 	padding: 0 !important;
 	border-radius: 8px !important;
+	outline: 2px solid var(--gnome-focused-urlbar-border-color) !important;
+	outline-offset: -2px;
+	-moz-outline-radius: 8px;
+	transition: outline 100ms ease-out;
 }
 
 #urlbar[breakout][breakout-extend][open] {
@@ -120,7 +124,7 @@ toolbarspring {
 	--toolbarbutton-active-background: var(--gnome-button-hover-background) !important;
 	--toolbarbutton-hover-background: var(--gnome-button-active-background) !important;
 	-moz-appearance: none !important;
-	background: var(--gnome-button-background) !important;
+	background-image: var(--gnome-button-background) !important;
 	box-shadow: var(--gnome-button-box-shadow) !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
 	border-left-width: 0 !important;
@@ -133,7 +137,7 @@ toolbarspring {
 }
 
 .searchbar-engine-one-off-item:hover, .searchbar-engine-one-off-item[selected] {
-	background: var(--gnome-button-hover-background) !important;
+	background-image: var(--gnome-button-hover-background) !important;
 	color: unset !important;
 }
 

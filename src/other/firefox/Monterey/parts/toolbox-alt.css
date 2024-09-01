@@ -17,24 +17,19 @@
 	border: none !important;
 	color: var(--gnome-toolbar-color);
 	background: var(--gnome-toolbar-background) !important;
+	transition: none !important;
 }
 
 #TabsToolbar {
 	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
 }
 
-findbar {
-	border: 0 !important;
-	background: var(--gnome-findbar-background) !important;
-	border-top: 1px solid var(--gnome-toolbar-border-color) !important;
-}
-
 #nav-bar:-moz-window-inactive,
+#titlebar:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive,
 #toolbar-menubar:-moz-window-inactive,
 #TabsToolbar:-moz-window-inactive,
-#navigator-toolbox:-moz-window-inactive,
-findbar:-moz-window-inactive {
+#navigator-toolbox:-moz-window-inactive {
 	background: var(--gnome-inactive-toolbar-background) !important;
 }
 

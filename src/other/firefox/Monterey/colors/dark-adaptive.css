@@ -36,10 +36,10 @@
 
 	/* Popups */
 	--gnome-menu-background: color-mix(in srgb, var(--toolbar-field-focus-background-color) 95%, transparent);
-	--gnome-menu-border-color: color-mix(in srgb, currentColor 75%, transparent);
+	--gnome-menu-border-color: light-dark(rgba(0,0,0,.15), #000000);
 	--gnome-popover-background: color-mix(in srgb, var(--toolbar-field-focus-background-color) 95%, transparent);
-	--gnome-popover-border-color: color-mix(in srgb, currentColor 75%, transparent);
-	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.75);
+	--gnome-popover-border-color: light-dark(rgba(0,0,0,.15), #000000);
+	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px light-dark(rgba(0,0,0,.15), #000000);
 	--gnome-popover-button-hover-background: color-mix(in srgb, currentColor 10%, transparent);
 	--gnome-popover-button-active-background: color-mix(in srgb, currentColor 15%, transparent);
 	--gnome-popover-separator-color: color-mix(in srgb, currentColor 8%, transparent);
@@ -95,7 +95,7 @@
 	--gnome-urlbar-color: var(--toolbar-color, #ffffff);
 	--gnome-urlbar-background: color-mix(in srgb, currentColor 10%, transparent);
 	--gnome-urlbar-border-color: color-mix(in srgb, currentColor 10%, transparent);
-	--gnome-urlbar-box-shadow: 0 3px 6px 1px rgba(0,0,0, .2), 0 5px 16px 3px rgba(0,0,0, .15), 0 0 0 1px rgba(0, 0, 0, 0.75);
+	--gnome-urlbar-box-shadow: 0 3px 6px 1px rgba(0,0,0, .2), 0 5px 16px 3px rgba(0,0,0, .15), 0 0 0 1px light-dark(rgba(0,0,0,.15), rgba(0,0,0,.75));
 	--gnome-hover-urlbar-border-color: color-mix(in srgb, currentColor 10%, transparent);
 	--gnome-inactive-urlbar-background: color-mix(in srgb, currentColor 5%, transparent);
 	--gnome-inactive-urlbar-border-color: color-mix(in srgb, currentColor 10%, transparent);

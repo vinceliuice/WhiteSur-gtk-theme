@@ -3,7 +3,7 @@
  * Add "/*" at the begining of "@import" line to DISABLE.
  */
 
-@import "Monterey/theme-alt-adaptive.css"; /**/
+@import "Monterey/theme-alt.css"; /**/
 
 /*--------------Configure common theme features--------------*/
 

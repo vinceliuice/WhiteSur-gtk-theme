@@ -65,11 +65,12 @@ menuitem[type="radio"] image {
 	}
 }
 
-menuitem[disabled="true"],
 menupopup menu[disabled="true"],
 menuitem[disabled="true"]:hover,
 menupopup menu[disabled="true"]:hover {
-	background: transparent !important;
+	background-image: none !important;
+	background-color: transparent !important;
+	color: var(--gnome-inactive-toolbar-color) !important;
 }
 
 /* Bookmarks Folder Popup */
@@ -99,7 +100,7 @@ panel:not([remote]), #BMB_bookmarksPopup {
 panel[type="arrow"] {
 	appearance: none !important;
 	background-color: transparent !important;
-	margin: 10px -18px 0 !important;
+	margin: 0 -18px !important;
 }
 
 /* Style popovers */
@@ -205,21 +206,40 @@ menuitem, menupopup menu,
 	opacity: 0.5 !important;
 }
 
+.subviewbutton {
+  @media not (prefers-contrast) {
+    &[shortcut]:not([disabled])::after {
+      color: var(--gnome-toolbar-color) !important;
+      opacity: 0.5 !important;
+    }
+  }
+}
+
 .bookmark-item .menu-right {
 	fill-opacity: 1 !important;
 }
 
 /* Menu buttons disabled */
 menuitem[disabled="true"], menupopup menu[disabled="true"],
-.subviewbutton[disabled="true"], .toolbarbutton-1[disabled="true"],
+.subviewbutton[disabled="true"],
+.subviewbutton:not(#appMenu-fxa-label2)[disabled="true"],
+.toolbarbutton-1[disabled="true"],
 .protections-popup-category[disabled="true"],
 .identity-popup-content-blocking-category[disabled="true"] {
-	opacity: 0.5 !important;
-/*	color: var(--gnome-inactive-toolbar-color) !important;*/
+	opacity: 1 !important;
+	color: var(--gnome-inactive-toolbar-color) !important;
+	background-image: none !important;
+	background-color: transparent !important;
+	border-color: var(--gnome-button-disabled-border-color) !important;
+	box-shadow: none !important;
+}
+
+menuitem[disabled="true"] {
+	background-image: var(--gnome-button-disabled-background) !important;
 }
 
 menuitem[disabled="true"][_moz-menuactive], menupopup menu[disabled="true"][_moz-menuactive] {
-	background: none !important;
+	background-image: none !important;
 }
 
 /* Menu buttons hover */
@@ -232,7 +252,7 @@ menupopup menu:not([disabled="true"]):is(:hover, [_moz-menuactive]),
 .identity-popup-content-blocking-category:not([disabled="true"]):hover,
 #PlacesToolbar .bookmark-item:is(:hover, [open], [_moz-menuactive]),
 #downloadsPanel-mainView .download-state:hover {
-	background: var(--gnome-popover-button-hover-background) !important;
+	background-color: var(--gnome-popover-button-hover-background) !important;
 }
 
 /* Menu buttons active */
@@ -245,7 +265,7 @@ menupopup menu:not([disabled="true"]):is(:active, [_moz-menuactive]),
 .identity-popup-content-blocking-category:not([disabled="true"]):active,
 #PlacesToolbar .bookmark-item:is(:active, [open], [_moz-menuactive]),
 #downloadsPanel-mainView .download-state:active {
-	background: var(--gnome-popover-button-active-background) !important;
+	background-color: var(--gnome-popover-button-active-background) !important;
 }
 
 /* Style popover separators */
