@@ -676,6 +676,15 @@ dialog.background {
   }
 }
 
+treeview#ObjectsTreeView.view {
+  transition: none;
+
+  &:selected {
+    background-color: rgba($selected_bg_color, 0.35);
+    color: $fg_color;
+  }
+}
+
 //
 // Synaptic
 //

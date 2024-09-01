@@ -2009,8 +2009,6 @@ $pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
 //
 
 treeview.view {
-  @extend %view;
-
   @at-root * {
     -GtkTreeView-horizontal-separator: 4;
     -GtkTreeView-grid-line-width: 1;
@@ -2029,14 +2027,14 @@ treeview.view {
 
   acceleditor > label { background-color: $selected_bg_color; }
 
-  &:selected {
-    &, &:focus {
-      border-radius: 0;
-      border-left-color: mix($selected_fg_color, $selected_bg_color, 50%);
-      border-top-color: rgba($fg_color, 0.15); // doesn't work unfortunately
+  &:hover { background-color: if($variant=='light', darken($base_color, 3%), lighten($base_color, 3%)); }
 
-      @extend %selected_items;
-    }
+  &:selected {
+    border-radius: 0;
+    border-left-color: mix($selected_fg_color, $selected_bg_color, 50%);
+    border-top-color: rgba($fg_color, 0.15); // doesn't work unfortunately
+
+    @extend %selected_items;
   }
 
   &:disabled {
@@ -2047,9 +2045,13 @@ treeview.view {
     }
   }
 
-  entry {
-    &, &:focus {
-      background-color: $base_color;
+  entry,
+  &:selected entry {
+    background-color: $base_color;
+
+    &:focus {
+      color: $fg_color;
+      background-color: mix(white, $base_color, 8%);
     }
   }
 
@@ -2112,7 +2114,7 @@ treeview.view {
 
   > header {
     > button {
-      $_column_header_color: mix($fg_color,$base_color,80%);
+      $_column_header_color: mix($fg_color, $base_color, 80%);
 
       min-height: if($variant =='light', 24px, 26px);
       min-width: 38px;
@@ -2162,15 +2164,6 @@ treeview.view {
       background-color: $selected_bg_color;
       border-radius: 0;
       border-style: none;
-    }
-  }
-
-  entry, &:selected entry {
-    background-color: $base_color;
-
-    &:focus {
-      color: $fg_color;
-      background-color: mix(white, $base_color, 8%);
     }
   }
 }
