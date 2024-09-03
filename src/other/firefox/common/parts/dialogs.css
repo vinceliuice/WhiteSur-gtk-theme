@@ -33,9 +33,9 @@ window {
 }
 
 window[role="dialog"] {
-	background: var(--gnome-toolbar-background) !important;
-	border: 0 !important;
-	box-shadow: var(--gnome-popover-shadow) !important;
+	background: none !important;
+	border: none !important;
+	box-shadow: none !important;
 	padding: 0 !important;
 }
 
@@ -44,9 +44,17 @@ dialog {
 }
 
 dialog[subdialog] {
+	background-color: var(--gnome-popover-background) !important;
 	border-radius: 12px !important;
 	border: none !important;
-	box-shadow: var(--gnome-popover-shadow) !important;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+.dialogBox {
+	&:not(.spotlightBox) {
+		box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px #000000 !important;
+		border-radius: 12px !important;
+	}
 }
 
 /* Content */
@@ -118,8 +126,9 @@ dialog[subdialog] {
 	padding: 0 12px !important;
 	min-height: 26px !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
-	border-bottom-color: var(--gnome-button-border-accent-color) !important;
-	background-color: #ffffff !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
+	background-color: var(--gnome-urlbar-background) !important;
+	background-clip: padding-box;
 	border-radius: 8px !important;
 }
 
@@ -206,12 +215,6 @@ dialog[subdialog] {
 .toggle-group-input:enabled:checked + .toggle-group-label:hover {
 	background-color: var(--theme-primary-hover-color) !important;
 	color: #ffffff !important;
-}
-
-@media (prefers-color-scheme: dark) {
-#editBookmarkPanelContent > input,
-#editBookmarkPanelContent > hbox > input {
-	background-color: #666666 !important;
 }
 
 #cancel-button,

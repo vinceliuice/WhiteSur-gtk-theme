@@ -67,6 +67,7 @@ button.customizationmode-button {
 menulist {
 	-moz-appearance: none !important;
 	background-image: var(--gnome-button-background) !important;
+	background-clip: padding-box;
 	box-shadow: var(--gnome-button-box-shadow) !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
 	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
