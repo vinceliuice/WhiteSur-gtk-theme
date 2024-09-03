@@ -742,17 +742,21 @@ config_firefox() {
   killall "firefox" "firefox-bin" &> /dev/null || true
 
   for d in "${FIREFOX_DIR}/"*"default"*; do
-    if [[ -f "${d}/prefs.js" ]]; then
-      rm -rf                                                                                  "${d}/chrome"
-      udo ln -sf "${TARGET_DIR}"                                                              "${d}/chrome"
-      udoify_file                                                                             "${d}/prefs.js"
-      echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>     "${d}/prefs.js"
-      echo "user_pref(\"browser.tabs.drawInTitlebar\", true);" >>                             "${d}/prefs.js"
-      echo "user_pref(\"browser.uidensity\", 0);" >>                                          "${d}/prefs.js"
-      echo "user_pref(\"layers.acceleration.force-enabled\", true);" >>                       "${d}/prefs.js"
-      echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);" >>                         "${d}/prefs.js"
-      echo "user_pref(\"widget.gtk.rounded-bottom-corners.enabled\", true);" >>               "${d}/prefs.js"
-    fi
+    rm -rf                                                                                  "${d}/chrome"
+    udo ln -sf "${TARGET_DIR}"                                                              "${d}/chrome"
+    rm -rf                                                                                  "${d}/user.js"
+    udoify_file                                                                             "${d}/user.js"
+    #  Enable customChrome.css
+    echo "user_pref(\"toolkit.legacyUserProfileCustomizations.stylesheets\", true);" >>     "${d}/user.js"
+    echo "user_pref(\"browser.tabs.drawInTitlebar\", true);"                         >>     "${d}/user.js"
+    # Set UI density to normal
+    echo "user_pref(\"browser.uidensity\", 0);"                                      >>     "${d}/user.js"
+    echo "user_pref(\"layers.acceleration.force-enabled\", true);"                   >>     "${d}/user.js"
+    echo "user_pref(\"mozilla.widget.use-argb-visuals\", true);"                     >>     "${d}/user.js"
+    # Enable rounded bottom window corners
+    echo "user_pref(\"widget.gtk.rounded-bottom-corners.enabled\", true);"           >>     "${d}/user.js"
+    # Enable SVG context-propertes
+    echo "user_pref(\"svg.context-properties.content.enabled\", true);"              >>     "${d}/user.js"
   done
 }
 

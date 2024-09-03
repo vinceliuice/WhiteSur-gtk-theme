@@ -2,6 +2,11 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+:root[tabsintitlebar] #nav-bar toolbaritem,
+#nav-bar-customization-target {
+	-moz-window-dragging: drag;
+}
+
 tab > stack {
 	margin: 0 3px !important;
 }
