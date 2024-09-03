@@ -350,7 +350,7 @@ button.popup-notification-primary-button:active,
 .identity-popup-permission-remove-button,
 #PanelUI-panic-view-button {
 	color: white !important;
-	background-color: var(--gnome-button-destructive-action-background) !important;
+	background-image: var(--gnome-button-destructive-action-background) !important;
 	border-color: var(--gnome-button-destructive-action-border-color) !important;
 	border-bottom-color: var(--gnome-button-destructive-action-border-accent-color) !important;
 	box-shadow: var(--gnome-button-destructive-action-box-shadow) !important;
