@@ -246,12 +246,6 @@ tab[selected]:-moz-window-inactive {
 	visibility: visible;
 }
 
-@media (prefers-color-scheme: dark) {
-	.tab-close-button {
-		list-style-image: url("../icons/window-close-symbolic-light.svg") !important;
-	}
-}
-
 :root:-moz-window-inactive .tab-close-button:not(#hack) {
 	opacity: .18 !important;
 }
