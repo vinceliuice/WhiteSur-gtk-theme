@@ -54,6 +54,13 @@ usage() {
   helpify "-h, --help"          ""                                                  "  Show this help"                                                              ""
 }
 
+gdm_info() {
+  if [[ "${gdm}" == "false" ]]; then
+    prompt -e "Oops... there's nothing to tweak. this option '${1}' only works for GDM theme! ..."
+    prompt -i "HINT: Run ./tweaks.sh -h for help!... \n"
+  fi
+}
+
 ###############################################################################
 #                                  MAIN                                       #
 ###############################################################################
@@ -205,21 +212,25 @@ while [[ $# -gt 0 ]]; do
         dash_to_dock="true"
       fi; shift ;;
     -N|--no-darken)
+      gdm_info ${1}
       no_darken="true"; shift ;;
     -n|--no-blur)
+      gdm_info ${1}
       no_blur="true"; shift ;;
-    -l|--libadwaita)
-      libadwaita="true"; shift ;;
     --nord|--nordcolor)
       colorscheme="-nord"; shift ;;
       # Parameters that require value, single use
     -b|--background)
+      gdm_info ${1}
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
     -i|--icon)
+      gdm_info ${1}
       check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
     -p|--panel-opacity)
+      gdm_info ${1}
       check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
     -P|--panel-size)
+      gdm_info ${1}
       check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
     -o|--opacity)
       check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
@@ -318,7 +329,7 @@ else
       prompt -s "Done! '${firefoxtheme}' Firefox theme preferences has been edited. \n"
     fi
 
-    if [[ "${gdm}" != 'true' ]]; then
+    if [[ "${gdm}" == "false" ]]; then
       prompt -w "FIREFOX: Please go to [Firefox menu] > [Customize...], and customize your Firefox to make it work. Move your 'new tab' button to the titlebar instead of tab-switcher. \n"
       prompt -i "FIREFOX: Anyway, you can also edit 'userChrome.css' and 'customChrome.css' later in your Firefox profile directory. \n"
     fi
