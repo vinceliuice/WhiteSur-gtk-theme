@@ -27,10 +27,6 @@
 #context-navigation > menuitem > .menu-iconic-left {
 	margin: auto !important;
 }
-#context-navigation menuitem {
-	--toolbarbutton-active-background: transparent !important;
-	--toolbarbutton-hover-background: transparent !important;
-}
 
 /* Remove icons from the main context menu */
 #contentAreaContextMenu menuitem image,

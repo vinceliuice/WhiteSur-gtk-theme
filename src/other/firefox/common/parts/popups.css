@@ -234,7 +234,7 @@ menupopup menu[disabled="true"][_moz-menuactive],
 	background-color: transparent !important;
 }
 
-.menuitem-iconic[disabled="true"] {
+#context-navigation menuitem.menuitem-iconic[disabled="true"] {
 	opacity: 1 !important;
 	color: var(--gnome-inactive-toolbar-color) !important;
 	background-image: var(--gnome-button-disabled-background) !important;
@@ -262,7 +262,6 @@ menupopup menu:not([disabled="true"]):is(:hover, [_moz-menuactive]),
 #protections-popup-show-report-stack:active .protections-popup-footer-button,
 .protections-popup-category:not([disabled="true"]):active,
 .identity-popup-content-blocking-category:not([disabled="true"]):active,
-#PlacesToolbar .bookmark-item:is(:active, [open], [_moz-menuactive]),
 #downloadsPanel-mainView .download-state:active {
 	background-image: none !important;
 	background-color: var(--gnome-popover-button-active-background) !important;
