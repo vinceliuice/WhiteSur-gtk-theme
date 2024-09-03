@@ -34,10 +34,10 @@
 
 	/* Popups */
 	--gnome-menu-background: color-mix(in srgb, var(--toolbar-field-focus-background-color) 95%, transparent);
-	--gnome-menu-border-color: color-mix(in srgb, currentColor 12%, transparent);
+	--gnome-menu-border-color: light-dark(rgba(0,0,0,.15), #000000);
 	--gnome-popover-background: color-mix(in srgb, var(--toolbar-field-focus-background-color) 95%, transparent);
-	--gnome-popover-border-color: color-mix(in srgb, currentColor 12%, transparent);
-	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.12);
+	--gnome-popover-border-color: light-dark(rgba(0,0,0,.15), #000000);
+	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.15), 0 0 0 1px light-dark(rgba(0,0,0,.15), #000000);
 	--gnome-popover-button-hover-background: color-mix(in srgb, currentColor 10%, transparent);
 	--gnome-popover-button-active-background: color-mix(in srgb, currentColor 20%, transparent);
 	--gnome-popover-separator-color: color-mix(in srgb, currentColor 10%, transparent);
@@ -51,22 +51,25 @@
 	--gnome-inactive-headerbar-box-shadow: 0 1px rgba(var(--lwt-accent-color), 0.35) inset;
 
 	/* Buttons */
-	--gnome-button-background: color-mix(in srgb, var(--lwt-accent-color, #ffffff) 35%, transparent);
-	--gnome-button-border-color: color-mix(in srgb, currentColor 15%, transparent);
-	--gnome-button-border-bottom-color: color-mix(in srgb, currentColor 20%, transparent);
-	--gnome-button-box-shadow: inset 0 1px color-mix(in srgb, var(--lwt-accent-color, #ffffff) 50%, transparent), 0 1px 2px rgba(0, 0, 0, 0.03);
-	--gnome-button-hover-color: color-mix(in srgb, currentColor 10%, transparent);
-	--gnome-button-active-color: color-mix(in srgb, currentColor 20%, transparent);
-	--gnome-button-hover-background: var(--lwt-accent-color, #ffffff);
-	--gnome-button-active-background: color-mix(in srgb, currentColor 10%, transparent);
-	--gnome-button-active-border-color: color-mix(in srgb, currentColor 15%, transparent);
-	--gnome-button-active-bottom-border-color: color-mix(in srgb, currentColor 20%, transparent);
+	--button-background-color: color-mix(in srgb, var(--lwt-accent-color, #ffffff) 35%, transparent);
+	--button-background-hover-color: color-mix(in srgb, var(--lwt-accent-color, #ffffff) 75%, transparent);
+	--button-background-active-color: color-mix(in srgb, currentColor 10%, transparent);
+	--button-background-disabled-color: color-mix(in srgb, var(--lwt-accent-color, #ffffff) 15%, transparent);
+
+	--gnome-button-background: linear-gradient(to top, var(--button-background-color) 0%, var(--button-background-color) 100%);
+	--gnome-button-border-color: light-dark(rgba(0,0,0,.15), #000000);
+	--gnome-button-border-bottom-color: light-dark(rgba(0,0,0,.20), #000000);
+	--gnome-button-box-shadow: inset 0 1px rgba(255, 255, 255, 0.15), 0 1px 2px rgba(0, 0, 0, 0.03);
+	--gnome-button-hover-background: linear-gradient(to top, var(--button-background-hover-color) 0%, var(--button-background-hover-color) 100%);
+	--gnome-button-active-background: linear-gradient(to top, var(--button-background-active-color) 0%, var(--button-background-active-color) 100%);
+	--gnome-button-active-border-color: light-dark(rgba(0,0,0,.15), #000000);
+	--gnome-button-active-bottom-border-color: light-dark(rgba(0,0,0,.20), #000000);
 	--gnome-button-active-box-shadow: 0 1px rgba(255, 255, 255, 0) inset;
-	--gnome-button-disabled-background: color-mix(in srgb, currentColor 5%, transparent);
-	--gnome-button-disabled-border-color: color-mix(in srgb, currentColor 15%, transparent);
+	--gnome-button-disabled-background: linear-gradient(to top, var(--button-background-disabled-color) 0%, var(--button-background-disabled-color) 100%);
+	--gnome-button-disabled-border-color: light-dark(rgba(0,0,0,.15), #000000);
 	--gnome-button-disabled-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
 	--gnome-inactive-button-background: color-mix(in srgb, currentColor 5%, transparent);
-	--gnome-inactive-button-border-color: color-mix(in srgb, currentColor 15%, transparent);
+	--gnome-inactive-button-border-color: light-dark(rgba(0,0,0,.15), #000000);
 	--gnome-inactive-button-box-shadow: 0 1px rgba(255, 255, 255, 0) inset, 0 1px rgba(255, 255, 255, 0);
 	--gnome-button-suggested-action-background: linear-gradient(to top, #2379e2 2px, #3584e4);
 	--gnome-button-suggested-action-border-color: #1b6acb;
@@ -85,6 +88,8 @@
 	--gnome-button-destructive-action-active-border-color: #b2161d;
 	--gnome-button-destructive-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
 
+	--gnome-button-hover-color: color-mix(in srgb, currentColor 10%, transparent);
+	--gnome-button-active-color: color-mix(in srgb, currentColor 20%, transparent);
 	--gnome-headerbar-button-combined-background: color-mix(in srgb, currentColor 5%, transparent);
 	--gnome-headerbar-button-hover-background: color-mix(in srgb, currentColor 10%, transparent);
 	--gnome-headerbar-button-active-background: color-mix(in srgb, currentColor 15%, transparent);
