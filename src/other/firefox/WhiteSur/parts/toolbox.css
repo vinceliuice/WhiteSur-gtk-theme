@@ -8,43 +8,23 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Toolbox colors */
-#navigator-toolbox {
-	border: 0 !important;
-	background: none !important;
-}
-
-toolbar .toolbarbutton-1 {
-	> .toolbarbutton-icon,
-	> .toolbarbutton-text,
-	> .toolbarbutton-badge-stack {
-		border-radius: 0 !important;
-	}
-}
-
-#nav-bar, #PersonalToolbar, #toolbar-menubar, .notificationbox-stack {
-	border: 0 !important;
+#navigator-toolbox, #PersonalToolbar, #toolbar-menubar, .notificationbox-stack {
+	border: none !important;
 	color: var(--gnome-toolbar-color);
 	background: var(--gnome-toolbar-background) !important;
-	border-bottom: none !important;
 }
 
-#TabsToolbar {
+#nav-bar {
 	border: none !important;
-	background: var(--gnome-tabstoolbar-background) !important;
-	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
-	box-shadow: inset 0 1px var(--gnome-toolbar-border-color) !important;
+	color: var(--gnome-toolbar-color);
+	background: var(--gnome-headerbar-background) !important;
 }
 
-#navigator-toolbox {
-	background: var(--gnome-tabstoolbar-background) !important;
+#nav-bar:-moz-window-inactive {
+	background: var(--gnome-inactive-toolbar-background) !important;
 }
 
-.container.infobar {
-	background: var(--gnome-browser-before-load-background) !important;
-}
-
-#navigator-toolbox:-moz-window-inactive,
-#nav-bar:-moz-window-inactive, .notificationbox-stack:-moz-window-inactive,
+#navigator-toolbox:-moz-window-inactive, .notificationbox-stack:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive, #toolbar-menubar:-moz-window-inactive,
 #TabsToolbar:-moz-window-inactive, findbar:-moz-window-inactive {
 	background: var(--gnome-inactive-toolbar-background) !important;
@@ -56,6 +36,17 @@ findbar:-moz-window-inactive image:not(#hack),
 findbar:-moz-window-inactive label,
 #viewButton:-moz-window-inactive dropmarker {
 	opacity: 0.7 !important;
+}
+
+#TabsToolbar {
+	border: none !important;
+	background: var(--gnome-tabstoolbar-background) !important;
+	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
+	box-shadow: inset 0 1px var(--gnome-toolbar-border-color) !important;
+}
+
+.container.infobar {
+	background: var(--gnome-browser-before-load-background) !important;
 }
 
 .tab-icon-overlay {
@@ -134,6 +125,14 @@ findbar:-moz-window-inactive label,
 	border-radius: 0 0 12px 12px !important;
 }
 
+/* Buttons */
+toolbar .toolbarbutton-1 {
+	> .toolbarbutton-icon,
+	> .toolbarbutton-text,
+	> .toolbarbutton-badge-stack {
+		border-radius: 0 !important;
+	}
+}
 /* bookmark-item */
 toolbarbutton.bookmark-item {
 	padding: 3px 6px !important;
