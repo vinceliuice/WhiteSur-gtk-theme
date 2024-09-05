@@ -9,7 +9,7 @@ menupopup, panel {
 	--panel-background: var(--gnome-menu-background) !important;
 	--panel-border-radius: 12px !important;
 	--panel-padding: 6px !important;
-	--panel-shadow: var(--gnome-popover-shadow) !important;
+	--panel-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-popover-border-color) !important;
 	/* --panel-shadow-margin: 3px 8px 13px !important; */
 	--panel-separator-color: var(--gnome-popover-separator-color) !important;
 	--panel-border-color: transparent !important;
@@ -20,19 +20,23 @@ menupopup, panel {
 	padding: 2px 4px 9px !important;
 }
 
+menupopup {
+	--panel-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-menu-border-color) !important;
+}
+
 .panel-arrowcontent {
 	border: none !important;
 }
 
 @media (prefers-color-scheme: dark) {
-menupopup, panel {
-	--panel-border-color: rgba(255, 255, 255, 0.06) !important;
-	--arrowpanel-border-color: rgba(255, 255, 255, 0.06) !important;
-}
+	menupopup, panel {
+		--panel-border-color: rgba(255, 255, 255, 0.06) !important;
+		--arrowpanel-border-color: rgba(255, 255, 255, 0.06) !important;
+	}
 
-.panel-arrowcontent {
-	border: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
+	.panel-arrowcontent {
+		border: 1px solid rgba(255, 255, 255, 0.06) !important;
+	}
 }
 
 menupopup label {
