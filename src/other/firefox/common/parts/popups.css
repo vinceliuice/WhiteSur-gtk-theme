@@ -173,7 +173,7 @@ panelview {
 
 /* Style popovers menu buttons */
 menuitem, menupopup menu,
-.subviewbutton:not(#appMenu-fxa-label2),
+.subviewbutton:not(#appMenu-fxa-label2, #downloadsHistory),
 .toolbarbutton-1,
 .protections-popup-footer-button,
 .protections-popup-category,
@@ -187,8 +187,20 @@ menuitem, menupopup menu,
 	min-height: 28px !important;
 }
 
+#downloadsHistory {
+	border-radius: 6px !important;
+}
+
 .toolbar-menupopup :is(menu, menuitem) {
 	margin: 0 !important;
+}
+
+#downloadsPanel-mainView .download-state .downloadButton {
+	border: none !important;
+	background: none !important;
+	box-shadow: none !important;
+	--button-hover-bgcolor: var(--gnome-popover-button-hover-background) !important;
+	--button-active-bgcolor: var(--gnome-popover-button-active-background) !important;
 }
 
 .subviewbutton,
@@ -245,7 +257,7 @@ menupopup menu[disabled="true"][_moz-menuactive],
 /* Menu buttons hover */
 menuitem:not([disabled="true"]):is(:hover, [_moz-menuactive]),
 menupopup menu:not([disabled="true"]):is(:hover, [_moz-menuactive]),
-.subviewbutton:not([disabled="true"], #appMenu-zoom-controls2, #appMenu-fxa-label2):hover,
+.subviewbutton:not([disabled="true"], #appMenu-zoom-controls2, #appMenu-fxa-label2, #downloadsHistory):hover,
 .protections-popup-footer-button:not([disabled="true"]):hover,
 #protections-popup-show-report-stack:hover .protections-popup-footer-button,
 .protections-popup-category:not([disabled="true"]):hover,
@@ -257,7 +269,7 @@ menupopup menu:not([disabled="true"]):is(:hover, [_moz-menuactive]),
 }
 
 /* Menu buttons active */
-.subviewbutton:not([disabled="true"], #appMenu-zoom-controls2, #appMenu-fxa-label2):active,
+.subviewbutton:not([disabled="true"], #appMenu-zoom-controls2, #appMenu-fxa-label2, #downloadsHistory):active,
 .protections-popup-footer-button:not([disabled="true"]):active,
 #protections-popup-show-report-stack:active .protections-popup-footer-button,
 .protections-popup-category:not([disabled="true"]):active,

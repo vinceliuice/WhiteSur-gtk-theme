@@ -43,6 +43,10 @@ dialog {
 	padding: 0 !important;
 }
 
+dialog#handling {
+	padding: 8px 0 6px !important;
+}
+
 dialog[subdialog] {
 	background-color: var(--gnome-popover-background) !important;
 	border-radius: 12px !important;
@@ -62,6 +66,10 @@ dialog[subdialog] {
 #dialogGrid {
 	padding: 24px;
 	padding-bottom: 0;
+}
+
+#description {
+	margin: 8px 10px 16px !important;
 }
 
 #description-box {
@@ -146,8 +154,9 @@ dialog[subdialog] {
 	background-position: right 12px center !important;
 	background-repeat: no-repeat !important;
 	background-size: auto 12px !important;
+	background-clip: padding-box !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
-	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
 	border-radius: 8px !important;
 	padding: 2px 12px !important;
 	min-height: 28px !important;
@@ -162,8 +171,9 @@ dialog[subdialog] {
 	min-height: 28px !important;
 	border-radius: 8px !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
-	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
 	color: var(--gnome-toolbar-color) !important;
+	background-clip: padding-box !important;
 }
 
 #print-button.primary {
@@ -191,8 +201,9 @@ dialog[subdialog] {
 }
 
 .toggle-group-label {
+	background-clip: padding-box !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
-	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
 }
 
 .toggle-group-label:first-of-type {
@@ -224,7 +235,7 @@ dialog[subdialog] {
 
 #print-button.primary {
 	border-color: var(--gnome-button-border-color) !important;
-	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
 }
 
 .toggle-group-label {
@@ -233,7 +244,7 @@ dialog[subdialog] {
 
 .toggle-group-input:enabled:checked + .toggle-group-label {
 	border-color: var(--gnome-button-border-color) !important;
-	border-bottom-color: var(--gnome-button-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
 }
 
 :root[dialogroot] select,
