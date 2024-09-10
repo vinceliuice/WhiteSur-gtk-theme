@@ -165,16 +165,18 @@ Run this command to install `WhiteSur` into `gtk-4.0 configuration folder` ($HOM
 ./install.sh -l -c Light       # install light theme for libadwaita
 ```
 
-### Connect WhiteSur theme to Flatpak (Snap not support)
+### Fix for Flatpak
+
+```sh
+sudo flatpak override --filesystem=xdg-config/gtk-3.0 && sudo flatpak override --filesystem=xdg-config/gtk-4.0
+```
+
+If you use flatpak apps, you can run this to fix theme issue
+
+### Connect WhiteSur theme to Flatpak (gtk 3.0) (Snap not support)
 Parameter: `--flatpak` `-F`
 
 Example: `./tweaks.sh -F`
-
-Fix for Flatpak gtk-4.0 app:
-
-```bash
-sudo flatpak override --filesystem=xdg-config/gtk-4.0
-```
 
 ### <p align="center"> <b> Change theme color and accent </b> </p>
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/colors-themes.png"/> </p>

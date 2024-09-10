@@ -119,7 +119,7 @@ tab[selected]:-moz-window-inactive .tab-label {
 	justify-content: center !important;
 	align-items: center !important;
 	min-width: 100% !important;
-	padding: 0 10px !important;
+	padding: 0 8px !important;
 }
 
 .tab-label {
