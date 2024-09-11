@@ -149,28 +149,27 @@ $header_border:                     if($variant == 'light', mix(black, $header_b
 
 // Sidebar colors
 $dark_sidebar_bg: white;
+$opacity: 0.96;
 
-@if $trans=='true' and $variant=='light' {
-  $dark_sidebar_bg:                 rgba(if($colorscheme == 'nord', #eeeff2, #f0f0f0), 0.96);
-}
-
-@if $trans=='false' and $variant=='light' {
-  $dark_sidebar_bg:                 if($colorscheme == 'nord', #eeeff2, #f0f0f0);
-}
-
-@if $trans=='true' and $variant=='dark' {
-  @if $colorscheme == 'nord' {
-    $dark_sidebar_bg:               rgba(if($darker == 'true', #22262e, #2b303b), 0.96);
+@if $trans=='true' {
+  @if $variant=='light' {
+    $dark_sidebar_bg:                 rgba(if($colorscheme == 'nord', #eeeff2, #f0f0f0), $opacity);
   } @else {
-    $dark_sidebar_bg:               rgba(if($darker == 'true', #282828, #333333), 0.96);
+    @if $colorscheme == 'nord' {
+      $dark_sidebar_bg:               rgba(if($darker == 'true', #22262e, #2b303b), $opacity);
+    } @else {
+      $dark_sidebar_bg:               rgba(if($darker == 'true', #282828, #333333), $opacity);
+    }
   }
-}
-
-@if $trans=='false' and $variant=='dark' {
-  @if $colorscheme == 'nord' {
-    $dark_sidebar_bg:               if($darker == 'true', #22262e, #2b303b);
+} @else {
+  @if $variant=='light' {
+    $dark_sidebar_bg:                 if($colorscheme == 'nord', #eeeff2, #f0f0f0);
   } @else {
-    $dark_sidebar_bg:               if($darker == 'true', #282828, #333333);
+    @if $colorscheme == 'nord' {
+      $dark_sidebar_bg:               if($darker == 'true', #22262e, #2b303b);
+    } @else {
+      $dark_sidebar_bg:               if($darker == 'true', #282828, #333333);
+    }
   }
 }
 
@@ -180,13 +179,15 @@ $sidebar_theme_color:               if($variant == 'light', rgba(black, 0.12), r
 
 //OSD colors
 $osd_fg_color:                      if($colorscheme == 'nord', #dadada, #d3d7df);
-$osd_bg_color:                      if($trans == 'true', rgba(if($darker == 'true', #1a1a1a, #2a2a2a), 0.95), if($darker == 'true', #1a1a1a, #2a2a2a));
+$osd_bg_color:                      if($trans == 'true', rgba(if($darker == 'true', #1a1a1a, #2a2a2a), $opacity), if($darker == 'true', #1a1a1a, #2a2a2a));
+
 @if $colorscheme == 'nord' {
-  $osd_bg_color:                    if($trans == 'true', rgba(if($darker == 'true', #16191e, #222730), 0.95), if($darker == 'true', #16191e, #222730));
+  $osd_bg_color:                    if($trans == 'true', rgba(if($darker == 'true', #16191e, #222730), $opacity), if($darker == 'true', #16191e, #222730));
 }
-$osd_button_bg:                     rgba(lighten($osd_bg_color, 22%), 0.96);
+
+$osd_button_bg:                     rgba(lighten($osd_bg_color, 22%), $opacity);
 $osd_button_border:                 $dark_borders_color;
-$osd_entry_bg:                      rgba(lighten($osd_bg_color, 22%), 0.96);
+$osd_entry_bg:                      rgba(lighten($osd_bg_color, 22%), $opacity);
 $osd_entry_border:                  $dark_borders_color;
 $osd_disabled_bg_color:             darken($osd_bg_color, 3%);
 $osd_disabled_fg_color:             rgba($osd_fg_color, 0.35);
@@ -197,13 +198,13 @@ $menu_bg:                           if($variant == 'light', $base_color, $bg_col
 $menu_bd:                           if($variant == 'light', rgba(black, 0.08), rgba(white, 0.07));
 
 @if $trans == 'true' {
-  $menu_bg:                         if($variant == 'light', rgba($base_color, 0.95), rgba($bg_color, 0.95));
+  $menu_bg:                         if($variant == 'light', rgba($base_color, $opacity), rgba($bg_color, $opacity));
 }
 
 $dialog_bg_color:                   if($variant == 'light', $bg_color, $base_color);
 
 @if $trans=='true' {
-  $dialog_bg_color:                 if($variant == 'light', rgba($bg_color, 0.95), rgba($base_color, 0.95));
+  $dialog_bg_color:                 if($variant == 'light', rgba($bg_color, $opacity), rgba($base_color, $opacity));
 }
 
 $submenu_bg_color:                  if($variant == 'light', rgba(white, 1), rgba(white, 0.1));
