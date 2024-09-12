@@ -177,6 +177,13 @@ $dark_sidebar_fg:                   $text_color;
 $dark_sidebar_border:               if($variant == 'light', $solid_borders_color, $header_border);
 $sidebar_theme_color:               if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
 
+//dialog
+$dialog_bg_color:                   if($variant == 'light', $bg_color, $base_color);
+
+@if $trans=='true' {
+  $dialog_bg_color:                 if($variant == 'light', rgba($bg_color, $opacity), rgba($base_color, $opacity));
+}
+
 //OSD colors
 $osd_fg_color:                      if($colorscheme == 'nord', #dadada, #d3d7df);
 $osd_bg_color:                      if($trans == 'true', rgba(if($darker == 'true', #1a1a1a, #2a2a2a), $opacity), if($darker == 'true', #1a1a1a, #2a2a2a));
@@ -197,14 +204,10 @@ $osd_borders_color:                 $dark_borders_color;
 $menu_bg:                           if($variant == 'light', $base_color, $bg_color);
 $menu_bd:                           if($variant == 'light', rgba(black, 0.08), rgba(white, 0.07));
 
+$menu_opacity: 0.96;
+
 @if $trans == 'true' {
-  $menu_bg:                         if($variant == 'light', rgba($base_color, $opacity), rgba($bg_color, $opacity));
-}
-
-$dialog_bg_color:                   if($variant == 'light', $bg_color, $base_color);
-
-@if $trans=='true' {
-  $dialog_bg_color:                 if($variant == 'light', rgba($bg_color, $opacity), rgba($base_color, $opacity));
+  $menu_bg:                         if($variant == 'light', rgba($base_color, $menu_opacity), rgba($bg_color, $menu_opacity));
 }
 
 $submenu_bg_color:                  if($variant == 'light', rgba(white, 1), rgba(white, 0.1));
@@ -273,9 +276,11 @@ $entry_highlight:                   rgba($selection_mode_bg, 0.75);
 
 // Button colors
 $button_bg:                         if($variant == 'light', white, #656565);
+
 @if $colorscheme == 'nord' {
   $button_bg:                       if($variant == 'light', #fbfcfd, #556075);
 }
+
 $button_border:                     $borders_color;
 
 // Button borders and highlights colors
