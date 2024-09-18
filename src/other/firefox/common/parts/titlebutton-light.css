@@ -112,7 +112,7 @@
 	background-size: contain;
 }
 :root[tabsintitlebar][inFullscreen] #window-controls #restore-button {
-	background: url("../titlebuttons/titlebutton-maximize.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-unmaximize.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar][inFullscreen] #window-controls #restore-button:hover {

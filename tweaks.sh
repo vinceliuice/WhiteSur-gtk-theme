@@ -19,6 +19,13 @@ source "${REPO_DIR}/shell/lib-install.sh"
 colors=("${COLOR_VARIANTS[@]}")
 opacities=("${OPACITY_VARIANTS[@]}")
 
+# Firefox values
+adaptive=''
+theme_name="$THEME_NAME"
+firefoxtheme="$THEME_NAME"
+left_button="3"
+right_button="3"
+
 usage() {
   # Please specify their default value manually, some of them are come from _variables.scss
   # You also have to check and update them regurally
@@ -37,10 +44,11 @@ usage() {
   helpify "--nord, --nordcolor" ""                                                  "  Install '${THEME_NAME}' Nord ColorScheme themes"                             ""
 
   helpify "" "" "[Others].." "options"
-  sec_title "-f, --firefox" "        [monterey|alt|adaptive]"                       "  Options:"
-  sec_helpify "1. monterey" "      [3+3,3+4,3+5,4+3,4+4,4+5,5+3,5+4,5+5]"           "  Topbar buttons number: 'a+b'"                                                "  a: left side buttons number, b: right side buttons number"
-  sec_helpify "2. alt" "           Monterey alt version"                            ""                                                                              ""
-  sec_helpify "3. adaptive" "      Adaptive color version"                          "  You need install adaptive-tab-bar-colour plugin first"                       "  https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/"
+  sec_title "-f, --firefox" "        [(monterey/flat)|alt|adaptive]"                "  Without options default WhiteSur theme will install..."                      "  Options:"
+  sec_helpify "1. monterey" "      [3+3|3+4|3+5|4+3|4+4|4+5|5+3|5+4|5+5]"           "  Topbar buttons number: 'a+b'"                                                "  a: left side buttons number, b: right side buttons number"
+  sec_helpify "2. flat" "          Monterey alt version"                            ""                                                                              "  Flat round tabs..."
+  sec_helpify "3. alt" "           Alt windows button version"                      ""                                                                              "  Alt window button style like gtk theme"
+  sec_helpify "4. adaptive" "      Adaptive color version"                          "  You need install adaptive-tab-bar-colour plugin first"                       "  https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/"
 
   helpify "-e, --edit-firefox"  "[default|monterey|alt|adaptive]"                   "  Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
 
@@ -147,12 +155,16 @@ while [[ $# -gt 0 ]]; do
               esac
             done
             prompt -s "Left side topbar button number: $left_button, right side topbar button number: $right_button.\n" ;;
-          alt)
-            firefoxtheme="Alt"
+          flat)
+            firefoxtheme="Flat"
             theme_name="Monterey"
             shift ;;
+          alt)
+            window="alt"
+            prompt -i "Alt windnows button version...\n"
+            shift ;;
           adaptive)
-            adaptive="true"
+            adaptive="-adaptive"
             prompt -i "Firefox adaptive color version...\n"
             prompt -w "You need install adaptive-tab-bar-colour plugin first: https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/\n"
             shift ;;

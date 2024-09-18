@@ -680,48 +680,26 @@ install_firefox_theme() {
   udo mkdir -p                                                                                "${TARGET_DIR}"
   udo cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                            "${TARGET_DIR}"
 
-  if [[ "${theme_name}" == 'Monterey' ]]; then
-    udo cp -rf "${FIREFOX_SRC_DIR}"/Monterey                                                  "${TARGET_DIR}"
-    udo cp -rf "${FIREFOX_SRC_DIR}"/common/{icons,titlebuttons,pages}                         "${TARGET_DIR}"/Monterey
-    udo cp -rf "${FIREFOX_SRC_DIR}"/common/*.css                                              "${TARGET_DIR}"/Monterey
-    udo cp -rf "${FIREFOX_SRC_DIR}"/common/parts/*.css                                        "${TARGET_DIR}"/Monterey/parts
+  mkdir -p                                                                                    "${TARGET_DIR}"
+  cp -rf "${FIREFOX_SRC_DIR}/${theme_name}"                                                   "${TARGET_DIR}"
+  [[ -f "${TARGET_DIR}"/customChrome.css ]] && mv "${TARGET_DIR}"/customChrome.css            "${TARGET_DIR}"/customChrome.css.bak
+  cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                                "${TARGET_DIR}"
+  cp -rf "${FIREFOX_SRC_DIR}"/common/{icons,titlebuttons,pages}                               "${TARGET_DIR}/${theme_name}"
+  cp -rf "${FIREFOX_SRC_DIR}"/common/*.css                                                    "${TARGET_DIR}/${theme_name}"
+  cp -rf "${FIREFOX_SRC_DIR}"/common/parts/*.css                                              "${TARGET_DIR}/${theme_name}"/parts
+  [[ -f "${TARGET_DIR}"/userChrome.css ]] && mv "${TARGET_DIR}"/userChrome.css                "${TARGET_DIR}"/userChrome.css.bak
+  cp -rf "${FIREFOX_SRC_DIR}"/userChrome-"${theme_name}${adaptive}".css                       "${TARGET_DIR}"/userChrome.css
+  [[ -f "${TARGET_DIR}"/userContent.css ]] && mv "${TARGET_DIR}"/userContent.css              "${TARGET_DIR}"/userContent.css.bak
+  cp -rf "${FIREFOX_SRC_DIR}"/userContent-"${theme_name}${adaptive}".css                      "${TARGET_DIR}"/userContent.css
 
-    if [[ "${adaptive}" == 'true' ]]; then
-      udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-Monterey-adaptive.css                       "${TARGET_DIR}"/userContent.css
-    else
-      udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-Monterey.css                                "${TARGET_DIR}"/userContent.css
-    fi
+  if [[ "${firefoxtheme}" == 'Flat' && "${theme_name}" == 'Monterey' ]]; then
+    cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt"${adaptive}".css                      "${TARGET_DIR}"/userChrome.css
+    cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur/parts/headerbar-urlbar.css                           "${TARGET_DIR}"/Monterey/parts/headerbar-urlbar-alt.css
+  fi
 
-    if [[ "${firefoxtheme}" == 'Alt' ]]; then
-      if [[ "${adaptive}" == 'true' ]]; then
-        udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt-adaptive.css                  "${TARGET_DIR}"/userChrome.css
-      else
-        udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt.css                           "${TARGET_DIR}"/userChrome.css
-      fi
-      udo cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur/parts/headerbar-urlbar.css                     "${TARGET_DIR}"/Monterey/parts/headerbar-urlbar-alt.css
-    else
-      if [[ "${adaptive}" == 'true' ]]; then
-        udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-adaptive.css                      "${TARGET_DIR}"/userChrome.css
-      else
-        udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey.css                               "${TARGET_DIR}"/userChrome.css
-      fi
-
-      sed -i "s/left_header_button_3/left_header_button_${left_button}/g"                     "${TARGET_DIR}"/userChrome.css
-      sed -i "s/right_header_button_3/right_header_button_${right_button}/g"                  "${TARGET_DIR}"/userChrome.css
-    fi
-  else
-    udo cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur                                                  "${TARGET_DIR}"
-    udo cp -rf "${FIREFOX_SRC_DIR}"/common/{icons,titlebuttons,pages}                         "${TARGET_DIR}"/WhiteSur
-    udo cp -rf "${FIREFOX_SRC_DIR}"/common/*.css                                              "${TARGET_DIR}"/WhiteSur
-    udo cp -rf "${FIREFOX_SRC_DIR}"/common/parts/*.css                                        "${TARGET_DIR}"/WhiteSur/parts
-
-    if [[ "${adaptive}" == 'true' ]]; then
-      udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-WhiteSur-adaptive.css                        "${TARGET_DIR}"/userChrome.css
-      udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-WhiteSur-adaptive.css                       "${TARGET_DIR}"/userContent.css
-    else
-      udo cp -rf "${FIREFOX_SRC_DIR}"/userChrome-WhiteSur.css                                 "${TARGET_DIR}"/userChrome.css
-      udo cp -rf "${FIREFOX_SRC_DIR}"/userContent-WhiteSur.css                                "${TARGET_DIR}"/userContent.css
-    fi
+  if [[ "${window}" == "alt" ]]; then
+    sed -i "s|titlebutton-light|titlebutton-light-alt|" "${TARGET_DIR}/${theme_name}"/theme*.css
+    sed -i "s|titlebutton-dark|titlebutton-dark-alt|" "${TARGET_DIR}/${theme_name}"/theme*.css
   fi
 
   config_firefox

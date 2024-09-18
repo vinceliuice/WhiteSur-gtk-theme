@@ -23,12 +23,12 @@
 }
 :root[tabsintitlebar] #titlebar .titlebar-close:hover,
 :root[tabsintitlebar] #titlebar #titlebar-close:hover {
-	background: url("../titlebuttons/titlebutton-close-hover-dark.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-close-hover-dark-alt.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar] #titlebar .titlebar-max:hover,
 :root[tabsintitlebar] #titlebar #titlebar-max:hover {
-	background: url("../titlebuttons/titlebutton-maximize-hover-dark.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-maximize-hover-dark-alt.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar] #titlebar .titlebar-min:hover,
@@ -40,17 +40,17 @@
 :root[tabsintitlebar] #titlebar #titlebar-restore:hover,
 :root[tabsintitlebar][sizemode="maximized"] #titlebar .titlebar-max:hover,
 :root[tabsintitlebar][sizemode="maximized"] #titlebar #titlebar-max:hover {
-	background: url("../titlebuttons/titlebutton-unmaximize-hover-dark.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-unmaximize-hover-dark-alt.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar] #titlebar .titlebar-close:active,
 :root[tabsintitlebar] #titlebar #titlebar-close:active {
-	background: url("../titlebuttons/titlebutton-close-active-dark.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-close-active-dark-alt.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar] #titlebar .titlebar-max:active,
 :root[tabsintitlebar] #titlebar #titlebar-max:active {
-	background: url("../titlebuttons/titlebutton-maximize-active-dark.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-maximize-active-dark-alt.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar] #titlebar .titlebar-min:active,
@@ -62,7 +62,7 @@
 :root[tabsintitlebar] #titlebar #titlebar-restore:active,
 :root[tabsintitlebar][sizemode="maximized"] #titlebar .titlebar-max:active,
 :root[tabsintitlebar][sizemode="maximized"] #titlebar #titlebar-max:active {
-	background: url("../titlebuttons/titlebutton-unmaximize-active-dark.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-unmaximize-active-dark-alt.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-close,
@@ -89,12 +89,12 @@
 }
 :root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-close:hover,
 :root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-close:hover {
-	background: url("../titlebuttons/titlebutton-close-backdrop-dark.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-close-backdrop-dark-alt.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-max:hover,
 :root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-max:hover {
-	background: url("../titlebuttons/titlebutton-maximize-backdrop-dark.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-maximize-backdrop-dark-alt.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-min:hover,
@@ -106,7 +106,7 @@
 :root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-restore:hover,
 :root[tabsintitlebar][sizemode="maximized"] #titlebar:-moz-window-inactive .titlebar-max:hover,
 :root[tabsintitlebar][sizemode="maximized"] #titlebar:-moz-window-inactive #titlebar-max:hover {
-	background: url("../titlebuttons/titlebutton-unmaximize-backdrop-dark.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-unmaximize-backdrop-dark-alt.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar][inFullscreen] #window-controls #restore-button {
@@ -114,11 +114,11 @@
 	background-size: contain;
 }
 :root[tabsintitlebar][inFullscreen] #window-controls #restore-button:hover {
-	background: url("../titlebuttons/titlebutton-unmaximize-hover-dark.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-unmaximize-hover-dark-alt.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar][inFullscreen] #window-controls #restore-button:active {
-	background: url("../titlebuttons/titlebutton-unmaximize-active-dark.svg") no-repeat;
+	background: url("../titlebuttons/titlebutton-unmaximize-active-dark-alt.svg") no-repeat;
 	background-size: contain;
 }
 :root[tabsintitlebar][inFullscreen] #window-controls:-moz-window-inactive #restore-button {

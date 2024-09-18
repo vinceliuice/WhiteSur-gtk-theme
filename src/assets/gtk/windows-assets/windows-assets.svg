@@ -2,25 +2,21 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="240"
    height="270"
    id="svg9892"
    version="1.1"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14"
-   sodipodi:docname="windows-assets.svg">
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   sodipodi:docname="windows-assets.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
   <defs
      id="mojave_theme">
     <linearGradient
        id="header_button_img_dark"
-       osb:paint="gradient">
+       inkscape:swatch="gradient">
       <stop
          id="stop1959"
          offset="0"
@@ -32,7 +28,7 @@
     </linearGradient>
     <linearGradient
        id="header_button_img"
-       osb:paint="gradient">
+       inkscape:swatch="gradient">
       <stop
          style="stop-color:#f1f1f1;stop-opacity:1"
          offset="0"
@@ -44,7 +40,7 @@
     </linearGradient>
     <linearGradient
        id="theme_darker_color"
-       osb:paint="solid">
+       inkscape:swatch="solid">
       <stop
          style="stop-color:#4d4d4d;stop-opacity:1;"
          offset="0"
@@ -52,7 +48,7 @@
     </linearGradient>
     <linearGradient
        id="button_active"
-       osb:paint="gradient">
+       inkscape:swatch="gradient">
       <stop
          style="stop-color:#3d6ffc;stop-opacity:1"
          offset="0"
@@ -64,7 +60,7 @@
     </linearGradient>
     <linearGradient
        id="unchecked_highlight"
-       osb:paint="solid">
+       inkscape:swatch="solid">
       <stop
          style="stop-color:#5f5f5f;stop-opacity:1;"
          offset="0"
@@ -72,7 +68,7 @@
     </linearGradient>
     <linearGradient
        id="dark_unchecked_bg"
-       osb:paint="gradient">
+       inkscape:swatch="gradient">
       <stop
          id="stop1615"
          offset="0"
@@ -84,7 +80,7 @@
     </linearGradient>
     <linearGradient
        id="hightlight"
-       osb:paint="solid">
+       inkscape:swatch="solid">
       <stop
          style="stop-color:#5887fc;stop-opacity:1;"
          offset="0"
@@ -92,7 +88,7 @@
     </linearGradient>
     <linearGradient
        id="dark_checked_bg"
-       osb:paint="gradient">
+       inkscape:swatch="gradient">
       <stop
          style="stop-color:#3458c0;stop-opacity:1"
          offset="0"
@@ -104,7 +100,7 @@
     </linearGradient>
     <linearGradient
        id="selected_fg_color"
-       osb:paint="solid">
+       inkscape:swatch="solid">
       <stop
          style="stop-color:#ffffffgit;stop-opacity:1;"
          offset="0"
@@ -112,7 +108,7 @@
     </linearGradient>
     <linearGradient
        id="selected_bg_color"
-       osb:paint="solid">
+       inkscape:swatch="solid">
       <stop
          style="stop-color:#5683fa;stop-opacity:1;"
          offset="0"
@@ -126,17 +122,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4390728"
-     inkscape:cx="174.05714"
-     inkscape:cy="115.84359"
+     inkscape:zoom="1.0175781"
+     inkscape:cx="278.11132"
+     inkscape:cy="133.65067"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      showborder="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="702"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
      inkscape:window-x="0"
-     inkscape:window-y="36"
+     inkscape:window-y="28"
      inkscape:window-maximized="1"
      inkscape:snap-nodes="false"
      inkscape:snap-bbox="true"
@@ -155,7 +151,8 @@
      inkscape:pagecheckerboard="true"
      inkscape:showpageshadow="false"
      inkscape:snap-others="false"
-     inkscape:object-paths="false">
+     inkscape:object-paths="false"
+     inkscape:deskcolor="#d1d1d1">
     <inkscape:grid
        type="xygrid"
        id="grid10919"
@@ -164,20 +161,11 @@
        enabled="true"
        snapvisiblegridlinesonly="true"
        originx="8.000005"
-       originy="-1062" />
+       originy="-1062"
+       spacingy="1"
+       spacingx="1"
+       units="px" />
   </sodipodi:namedview>
-  <metadata
-     id="metadata9897">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
   <g
      inkscape:groupmode="layer"
      id="layer3"
@@ -211,20 +199,6 @@
      id="layer1"
      style="display:inline"
      transform="translate(8.000005,279.63782)">
-    <g
-       inkscape:label="#g10801"
-       transform="matrix(1.9947791,0,0,1.9939719,354.38167,165.09433)"
-       id="sjhgfjsgf" />
-    <g
-       id="g4816-7"
-       transform="translate(-888.87744,-514.39281)" />
-    <g
-       id="g4816-6-6"
-       transform="translate(-829.87744,-514.39281)" />
-    <g
-       id="g3981-6-4-9-3"
-       transform="rotate(45,1540.4502,361.70955)"
-       style="opacity:0.85;fill:#1a1a1a;fill-opacity:1" />
     <g
        id="titlebutton-close-small-dark"
        inkscape:label="#g1637"

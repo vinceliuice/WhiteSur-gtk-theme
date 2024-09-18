@@ -257,13 +257,15 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
  [Others]... options
 
-  -f, --firefox         [monterey|alt|adaptive]   Options:
+  -f, --firefox         [(monterey/flat)|alt|adaptive]   Without options default WhiteSur theme will install...   Options:
 
-      1. monterey       [3+3,3+4,3+5,4+3,4+4,4+5,5+3,5+4,5+5]   Topbar buttons number: 'a+b'   a: left side buttons number, b: right side buttons number
+      1. monterey       [3+3|3+4|3+5|4+3|4+4|4+5|5+3|5+4|5+5]   Topbar buttons number: 'a+b'   a: left side buttons number, b: right side buttons number
 
-      2. alt            Monterey alt version
+      2. flat           Monterey alt version    Flat round tabs...
 
-      3. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
+      3. alt            Alt windows button version    Alt window button style like gtk theme
+
+      4. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
 
   -e, --edit-firefox [default|monterey|alt|adaptive]
    Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles. 
