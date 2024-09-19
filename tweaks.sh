@@ -50,7 +50,7 @@ usage() {
   sec_helpify "3. alt" "           Alt windows button version"                      ""                                                                              "  Alt window button style like gtk theme"
   sec_helpify "4. adaptive" "      Adaptive color version"                          "  You need install adaptive-tab-bar-colour plugin first"                       "  https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/"
 
-  helpify "-e, --edit-firefox"  "[default|monterey|alt|adaptive]"                   "  Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
+  helpify "-e, --edit-firefox"  "[(monterey/flat)|alt|adaptive]"                    "  Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
 
   helpify "-F, --flatpak"       "Support options: [-o, -c, -t...]"                  "  Connect '${THEME_NAME}' theme to Flatpak"                                    "Without options will only install default themes"
 
