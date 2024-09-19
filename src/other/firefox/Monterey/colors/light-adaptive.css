@@ -74,7 +74,7 @@
 	--gnome-inactive-button-box-shadow: 0 1px rgba(255, 255, 255, 0) inset, 0 1px rgba(255, 255, 255, 0);
 	--gnome-button-suggested-action-background: linear-gradient(to top, #2379e2 2px, #3584e4);
 	--gnome-button-suggested-action-border-color: #1b6acb;
-	--gnome-button-suggested-action-border-accent-color: #15539e;
+	--gnome-button-suggested-action-border-bottom-color: #15539e;
 	--gnome-button-suggested-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
 	--gnome-button-suggested-action-hover-background: linear-gradient(to top, #3584e4, #3987e5 1px);
 	--gnome-button-suggested-action-active-background: linear-gradient(to top, #1961b9, #1961b9 1px);
@@ -82,7 +82,7 @@
 	--gnome-button-suggested-action-active-box-shadow: inset 0 1px rgba(255, 255, 255, 0);
 	--gnome-button-destructive-action-background: linear-gradient(to top, #ce1921 2px, #e01b24);
 	--gnome-button-destructive-action-border-color: #b2161d;
-	--gnome-button-destructive-action-border-accent-color: #851015;
+	--gnome-button-destructive-action-border-bottom-color: #851015;
 	--gnome-button-destructive-action-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.07);
 	--gnome-button-destructive-action-hover-background: linear-gradient(to top, #e01b24, #e41c26 1px);
 	--gnome-button-destructive-action-active-background: linear-gradient(to top, #a0131a, #a0131a 1px);

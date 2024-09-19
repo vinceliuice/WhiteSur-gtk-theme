@@ -11,7 +11,7 @@
 	border: 0 !important;
 }
 
-/* Buttons  */
+/* Buttons */
 /*#nav-bar toolbarbutton:not(#urlbar-zoom-button),*/
 .subviewbutton.panel-subview-footer,
 .panel-footer button,
@@ -45,6 +45,7 @@ button.close:not(.ghost-button),
 button.customizationmode-button {
 	-moz-appearance: none !important;
 	background-image: var(--gnome-button-background) !important;
+	background-color: transparent !important;
 	box-shadow: var(--gnome-button-box-shadow) !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
 	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
@@ -67,6 +68,7 @@ button.customizationmode-button {
 menulist {
 	-moz-appearance: none !important;
 	background-image: var(--gnome-button-background) !important;
+	background-color: transparent !important;
 	background-clip: padding-box;
 	box-shadow: var(--gnome-button-box-shadow) !important;
 	border: 1px solid var(--gnome-button-border-color) !important;
@@ -168,6 +170,7 @@ menulist:hover .menulist-label-box,
 button.customizationmode-button:hover {
 	outline: 0 !important;
 	background-image: var(--gnome-button-hover-background) !important;
+	background-color: transparent !important;
 }
 
 /* Active buttons */
@@ -205,6 +208,7 @@ menulist[open] .menulist-label-box,
 .permission-popup-permission-remove-button:active,
 button.customizationmode-button:active {
 	background-image: var(--gnome-button-active-background) !important;
+	background-color: transparent !important;
 	box-shadow: var(--gnome-button-active-box-shadow) !important;
 	border-color: var(--gnome-button-active-border-color) !important;
 }
@@ -215,6 +219,7 @@ button.customizationmode-button:active {
 #context-navigation menuitem[disabled],
 button.customizationmode-button[disabled] {
 	background-image: var(--gnome-button-disabled-background) !important;
+	background-color: transparent !important;
 	border-color: var(--gnome-button-disabled-border-color) !important;
 	box-shadow: var(--gnome-button-disabled-box-shadow) !important;
 	opacity: 1 !important;
@@ -228,7 +233,7 @@ button.customizationmode-button[disabled] {
 
 #nav-bar toolbarbutton:not(#urlbar-zoom-button)[disabled]:hover,
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled]:hover {
-	background: transparent !important;
+	background: none !important;
 }
 
 /* Inactive window buttons */
@@ -238,6 +243,7 @@ button.customizationmode-button[disabled] {
 #viewButton:-moz-window-inactive,
 .notification-button:-moz-window-inactive {
 	background-image: var(--gnome-inactive-button-background) !important;
+	background-color: transparent !important;
 	box-shadow: var(--gnome-inactive-button-box-shadow) !important;
 	border-color: var(--gnome-inactive-button-border-color) !important;
 }
@@ -248,7 +254,7 @@ button.customizationmode-button[disabled] {
 button.close:not(.ghost-button),
 #protections-popup-info-button,
 .permission-popup-permission-remove-button {
-	background: transparent !important;
+	background: none !important;
 	box-shadow: none !important;
 	border-color: transparent !important;
 	border-radius: 8px !important;
@@ -260,7 +266,8 @@ button.close:not(.ghost-button),
 button.close:not(.ghost-button):not(:active):hover,
 #protections-popup-info-button:hover,
 .permission-popup-permission-remove-button:not(:active):hover {
-	background: var(--gnome-headerbar-button-hover-background) !important;
+	background-color: var(--gnome-headerbar-button-hover-background) !important;
+	background-image: none !important;
 	box-shadow: none !important;
 	border-color: var(--gnome-button-border-color) !important;
 	border-bottom-color: var(--gnome-button-border-bottom-color) !important;
@@ -272,7 +279,8 @@ button.close:not(.ghost-button):active,
 #protections-popup-info-button:active,
 .permission-popup-permission-remove-button:active {
 	box-shadow: none !important;
-	background: var(--gnome-headerbar-button-active-background) !important;
+	background-color: var(--gnome-headerbar-button-active-background) !important;
+	background-image: none !important;
 }
 
 button.close,
@@ -318,28 +326,37 @@ button.close,
 }
 
 /* Buttons with suggested action */
+xul|button[default], button.primary,
+.dialog-button-box button[default="true"],
 #appMenu-popup .panel-banner-item[notificationid="update-restart"],
 button.popup-notification-primary-button,
 #editBookmarkPanelDoneButton,
 #tracking-action-block {
 	color: white !important;
 	background-image: var(--gnome-button-suggested-action-background) !important;
+	background-color: transparent !important;
 	border-color: var(--gnome-button-suggested-action-border-color) !important;
-	border-bottom-color: var(--gnome-button-suggested-action-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-suggested-action-border-bottom-color) !important;
 	box-shadow: var(--gnome-button-suggested-action-box-shadow) !important;
 	text-shadow: 0 -1px rgba(0, 0, 0, 0.5) !important;
 }
 
+xul|button[default]:hover, button.primary:hover,
+.dialog-button-box button[default="true"]:hover,
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:hover,
 button.popup-notification-primary-button:hover,
 #editBookmarkPanelDoneButton:hover {
-	background: var(--gnome-button-suggested-action-hover-background) !important;
+	background-image: var(--gnome-button-suggested-action-hover-background) !important;
+	background-color: transparent !important;
 }
 
+xul|button[default]:active, button.primary:active,
+.dialog-button-box button[default="true"]:active,
 #appMenu-popup .panel-banner-item[notificationid="update-restart"]:active,
 button.popup-notification-primary-button:active,
 #editBookmarkPanelDoneButton:active {
 	background-image: var(--gnome-button-suggested-action-active-background) !important;
+	background-color: transparent !important;
 	border-color: var(--gnome-button-suggested-action-active-border-color) !important;
 	box-shadow: var(--gnome-button-suggested-action-active-box-shadow) !important;
 	text-shadow: none !important;
@@ -352,8 +369,9 @@ button.popup-notification-primary-button:active,
 #PanelUI-panic-view-button {
 	color: white !important;
 	background-image: var(--gnome-button-destructive-action-background) !important;
+	background-color: transparent !important;
 	border-color: var(--gnome-button-destructive-action-border-color) !important;
-	border-bottom-color: var(--gnome-button-destructive-action-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-destructive-action-border-bottom-color) !important;
 	box-shadow: var(--gnome-button-destructive-action-box-shadow) !important;
 	text-shadow: 0 -1px rgba(0, 0, 0, 0.5) !important;
 }
@@ -362,19 +380,21 @@ button.popup-notification-primary-button:active,
 .identity-popup-permission-remove-button:not(#hack):hover,
 #PanelUI-panic-view-button:hover {
 	background-image: var(--gnome-button-destructive-action-hover-background) !important;
+	background-color: transparent !important;
 }
 
 #editBookmarkPanelRemoveButton:active,
 .identity-popup-permission-remove-button:not(#hack):active,
 #PanelUI-panic-view-button:active {
 	background-image: var(--gnome-button-destructive-action-active-background) !important;
+	background-color: transparent !important;
 	border-color: var(--gnome-button-destructive-action-active-border-color) !important;
 	box-shadow: var(--gnome-button-destructive-action-active-box-shadow) !important;
 }
 
 .identity-popup-permission-remove-button:not(#hack):hover { /* Is flat */
 	border-color: var(--gnome-button-destructive-action-border-color) !important;
-	border-bottom-color: var(--gnome-button-destructive-action-border-accent-color) !important;
+	border-bottom-color: var(--gnome-button-destructive-action-border-bottom-color) !important;
 	box-shadow: var(--gnome-button-destructive-action-box-shadow) !important;
 }
 .identity-popup-permission-remove-button:not(#hack):hover .button-icon {

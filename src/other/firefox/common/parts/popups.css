@@ -13,9 +13,11 @@ menupopup, panel {
 	/* --panel-shadow-margin: 3px 8px 13px !important; */
 	--panel-separator-color: var(--gnome-popover-separator-color) !important;
 	--panel-border-color: transparent !important;
+	--panel-color: var(--gnome-toolbar-color) !important;
 	--arrowpanel-border-radius: 12px !important;
 	--arrowpanel-background: var(--gnome-menu-background) !important;
 	--arrowpanel-border-color: transparent !important;
+	--arrowpanel-color: var(--gnome-toolbar-color) !important;
 	color: var(--gnome-toolbar-color) !important;
 	padding: 2px 4px 9px !important;
 }
