@@ -161,7 +161,7 @@ while [[ $# -gt 0 ]]; do
             shift ;;
           alt)
             window="alt"
-            prompt -i "Alt windnows button version...\n"
+            prompt -i "Alt windows button version...\n"
             shift ;;
           adaptive)
             adaptive="-adaptive"
