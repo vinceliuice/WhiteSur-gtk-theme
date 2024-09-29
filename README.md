@@ -265,7 +265,9 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
       3. alt            Alt windows button version    Alt window button style like gtk theme
 
-      4. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
+      4. darker         Darker Firefox theme version    Darker theme according to darker gtk theme
+
+      5. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
 
   -e, --edit-firefox [(monterey/flat)|alt|adaptive]
    Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles. 
