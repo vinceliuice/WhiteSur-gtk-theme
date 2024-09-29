@@ -79,6 +79,7 @@
 /* Tab labels */
 tab {
 	color: var(--gnome-tabbar-tab-color) !important;
+	background-color: var(--gnome-tabbar-tab-background) !important;
 }
 tab:hover {
 	color: var(--gnome-tabbar-tab-hover-color) !important;
