@@ -688,12 +688,12 @@ install_firefox_theme() {
   cp -rf "${FIREFOX_SRC_DIR}"/common/*.css                                                    "${TARGET_DIR}/${theme_name}"
   cp -rf "${FIREFOX_SRC_DIR}"/common/parts/*.css                                              "${TARGET_DIR}/${theme_name}"/parts
   [[ -f "${TARGET_DIR}"/userChrome.css ]] && mv "${TARGET_DIR}"/userChrome.css                "${TARGET_DIR}"/userChrome.css.bak
-  cp -rf "${FIREFOX_SRC_DIR}"/userChrome-"${theme_name}${adaptive}".css                       "${TARGET_DIR}"/userChrome.css
+  cp -rf "${FIREFOX_SRC_DIR}"/userChrome-"${theme_name}${darker}${adaptive}".css              "${TARGET_DIR}"/userChrome.css
   [[ -f "${TARGET_DIR}"/userContent.css ]] && mv "${TARGET_DIR}"/userContent.css              "${TARGET_DIR}"/userContent.css.bak
-  cp -rf "${FIREFOX_SRC_DIR}"/userContent-"${theme_name}${adaptive}".css                      "${TARGET_DIR}"/userContent.css
+  cp -rf "${FIREFOX_SRC_DIR}"/userContent-"${theme_name}${darker}${adaptive}".css             "${TARGET_DIR}"/userContent.css
 
   if [[ "${firefoxtheme}" == 'Flat' && "${theme_name}" == 'Monterey' ]]; then
-    cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt"${adaptive}".css                      "${TARGET_DIR}"/userChrome.css
+    cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt"${darker}${adaptive}".css             "${TARGET_DIR}"/userChrome.css
     cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur/parts/headerbar-urlbar.css                           "${TARGET_DIR}"/Monterey/parts/headerbar-urlbar-alt.css
   fi
 
