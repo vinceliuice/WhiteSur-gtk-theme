@@ -2033,8 +2033,13 @@ treeview.view {
     border-radius: 0;
     border-left-color: mix($selected_fg_color, $selected_bg_color, 50%);
     border-top-color: rgba($fg_color, 0.15); // doesn't work unfortunately
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
 
-    @extend %selected_items;
+    &:hover {
+      background-color: if($variant=='light', darken($selected_bg_color, 3%), lighten($selected_bg_color, 3%));
+      color: $selected_fg_color;
+    }
   }
 
   &:disabled {
