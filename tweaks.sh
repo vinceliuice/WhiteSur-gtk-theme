@@ -44,13 +44,14 @@ usage() {
   helpify "--nord, --nordcolor" ""                                                  "  Install '${THEME_NAME}' Nord ColorScheme themes"                             ""
 
   helpify "" "" "[Others].." "options"
-  sec_title "-f, --firefox" "        [(monterey/flat)|alt|adaptive]"                "  Without options default WhiteSur theme will install..."                      "  Options:"
+  sec_title "-f, --firefox" "        [(monterey/flat)|alt|darker|adaptive]"         "  Without options default WhiteSur theme will install..."                      "  Options:"
   sec_helpify "1. monterey" "      [3+3|3+4|3+5|4+3|4+4|4+5|5+3|5+4|5+5]"           "  Topbar buttons number: 'a+b'"                                                "  a: left side buttons number, b: right side buttons number"
   sec_helpify "2. flat" "          Monterey alt version"                            ""                                                                              "  Flat round tabs..."
   sec_helpify "3. alt" "           Alt windows button version"                      ""                                                                              "  Alt window button style like gtk theme"
-  sec_helpify "4. adaptive" "      Adaptive color version"                          "  You need install adaptive-tab-bar-colour plugin first"                       "  https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/"
+  sec_helpify "4. darker" "        Darker Firefox theme version"                    ""                                                                              "  Darker Firefox theme version"
+  sec_helpify "5. adaptive" "      Adaptive color version"                          "  You need install adaptive-tab-bar-colour plugin first"                       "  https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/"
 
-  helpify "-e, --edit-firefox"  "[(monterey/flat)|alt|adaptive]"                    "  Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
+  helpify "-e, --edit-firefox"  "[(monterey/flat)|alt|darker|adaptive]"             "  Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
 
   helpify "-F, --flatpak"       "Support options: [-o, -c, -t...]"                  "  Connect '${THEME_NAME}' theme to Flatpak"                                    "Without options will only install default themes"
 
@@ -161,7 +162,11 @@ while [[ $# -gt 0 ]]; do
             shift ;;
           alt)
             window="alt"
-            prompt -i "Alt windnows button version...\n"
+            prompt -i "Alt windows button version...\n"
+            shift ;;
+          darker)
+            darker="-darker"
+            prompt -i "Darker Firefox theme version...\n"
             shift ;;
           adaptive)
             adaptive="-adaptive"
@@ -329,6 +334,13 @@ else
   fi
 
   if [[ "${firefox}" == 'true' || "${edit_firefox}" == 'true' ]]; then
+
+    if [[ "${darker}" == '-darker' && "${adaptive}" == '-adaptive' ]]; then
+      prompt -w "FIREFOX: You can't use 'adaptive' and 'darker' at the same time. \n"
+      prompt -i "FIREFOX: Setting to adaptive only... \n"
+      darker=''
+    fi
+
     if [[ "${firefox}" == 'true' && "${gdm}" != 'true' ]]; then
       prompt -i "Installing '${firefoxtheme}' Firefox theme... \n"
       install_firefox_theme
