@@ -1988,8 +1988,8 @@ $pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
   &.text-button.image-button label { padding-left: 0; padding-right: 0; }
 
   &.text-button.image-button, & {
-    label:last-child { padding-right: 10px; }
-    label:first-child { padding-left: 10px; }
+    label:last-child { padding-right: $container_padding; }
+    label:first-child { padding-left: $container_padding; }
   }
 
   &.slider-button,

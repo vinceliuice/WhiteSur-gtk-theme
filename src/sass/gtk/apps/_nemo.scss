@@ -111,11 +111,18 @@
 
     // Pathbar
     .linked.path-bar {
-      > button, > button.image-button {
+      > button.text-button,
+      > button.image-button {
         min-height: 0;
         min-width: 0;
-        padding-top: 0;
-        padding-bottom: 0;
+        padding: 0 $container_padding;
+        border-radius: $bt_radius;
+      }
+
+      > button.slider-button {
+        min-height: 0;
+        min-width: 0;
+        padding: 0;
         border-radius: $bt_radius;
       }
     }
