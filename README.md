@@ -257,7 +257,7 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
  [Others]... options
 
-  -f, --firefox         [(monterey/flat)|alt|darker|adaptive]   Without options default WhiteSur theme will install...   Options:
+  -f, --firefox         [(monterey|flat)|alt|(darker|adaptive)]   Without options default WhiteSur theme will install...   Options:
 
       1. monterey       [3+3|3+4|3+5|4+3|4+4|4+5|5+3|5+4|5+5]   Topbar buttons number: 'a+b'   a: left side buttons number, b: right side buttons number
 
@@ -269,7 +269,7 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
       5. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
 
-  -e, --edit-firefox [(monterey/flat)|alt|darker|adaptive]
+  -e, --edit-firefox [(monterey|flat)|alt|(darker|adaptive)]
    Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles. 
 
   -F, --flatpak Support options: [-o, -c, -t...]
