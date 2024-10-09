@@ -1998,7 +1998,7 @@ $pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
     padding-right: 1px;
   }
 
-  image {
+  &.image-button image {
     padding-left: $container_padding;
     padding-right: $container_padding;
   }

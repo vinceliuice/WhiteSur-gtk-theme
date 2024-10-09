@@ -389,14 +389,15 @@ window.background:not(.solid-csd):not(.csd) {
   }
 }
 
-toolbar  {
+// Fix libreoffice toolbar button background color
+toolbar.toolbar {
   box:not(.linked) > button {
     &:active {
       color: $fg_color;
       background-color: if($variant == 'light', mix(black, $bg_color, 10%), mix(white, $bg_color, 10%));
       border-color: transparent;
     }
-  
+
     &:checked {
       color: $fg_color;
       background-color: if($variant == 'light', mix(black, $bg_color, 5%), mix(white, $bg_color, 5%));
