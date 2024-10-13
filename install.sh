@@ -29,7 +29,8 @@ usage() {
   helpify "-c, --color"                   "[$(IFS='|'; echo "${COMMAND_COLOR_VARIANTS[*]}")]" "  Set theme color variants"                       "Repeatable. Default is all variants"
   helpify "-a, --alt"                     "[$(IFS='|'; echo "${ALT_VARIANTS[*]}")|all]"       "  Set window control buttons variant"             "Repeatable. Default is 'normal'"
   helpify "-t, --theme"                   "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")|all]"     "  Set theme accent color"                         "Repeatable. Default is BigSur-like theme"
-  helpify "-s, --size"                    "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]"  "  Set Nautilus (version < 40.0) sidebar minimum width" "Default is 200px"
+  helpify "-s, --scheme"                  "[$(IFS='|'; echo "${SCHEME_VARIANTS[*]}")]"        "  Set theme colorscheme style"                    "Repeatable. Default is 'standard'"
+#  helpify "-s, --size"                    "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]"  "  Set Nautilus (version < 40.0) sidebar minimum width" "Default is 200px"
 
   helpify "-m, --monterey"                ""                                                  "  Set to MacOS Monterey style"                     ""
   helpify "-N, --nautilus"                "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "  Set Nautilus style"                             "Default is BigSur-like style (stabled sidebar)"
@@ -47,7 +48,6 @@ usage() {
   helpify "--round, --roundedmaxwindow"   ""                                                  "  Set maximized window to rounded"                 "Default is square"
   helpify "--black, --blackfont"          ""                                                  "  Set panel font color to black"                   "Default is white"
   helpify "--darker, --darkercolor"       ""                                                  "  Install darker '${THEME_NAME}' dark themes"      ""
-  helpify "--nord, --nordcolor"           ""                                                  "  Install '${THEME_NAME}' Nord ColorScheme themes" ""
   helpify "--dialog, --interactive"       ""                                                  "  Run this installer interactively, with dialogs"  ""
   helpify "--silent-mode"                 ""                                                  "  Meant for developers: ignore any confirm prompt and params become more strict" ""
   helpify "-r, --remove, -u, --uninstall" ""                                                  "  Remove all installed ${THEME_NAME} themes"       ""
@@ -80,6 +80,8 @@ while [[ $# -gt 0 ]]; do
       check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
     -t|--theme)
       check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
+    -s|--scheme)
+      check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
     -a|--alt)
       check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
     # Parameters that require a value, single use
@@ -87,8 +89,8 @@ while [[ $# -gt 0 ]]; do
       check_param "${1}" "${1}" "${2}" "must" "must" "not-at-all" && shift 2 || shift ;;
     -n|--name)
       check_param "${1}" "${1}" "${2}" "must" "must" "not-at-all" && shift 2 || shift ;;
-    -s|--size) # only works on gnome < 40.0
-      check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
+#    -s|--size) # only works on gnome < 40.0
+#      check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
     -N|--nautilus)
       check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
     # Parameters that require a second value
@@ -121,8 +123,6 @@ while [[ $# -gt 0 ]]; do
       black_font="true"; shift ;;
     --darker|--darkercolor)
       darker="true"; shift ;;
-    --nord|--nordcolor)
-      colorscheme="-nord"; shift ;;
     -HD|--highdefinition)
       compact="false"; shift ;;
     -m|--monterey)
@@ -173,17 +173,18 @@ else
     show_needed_dialogs
   fi
 
-  prompt -w "Removing the old '${name}${colorscheme}' themes...\n"
+  prompt -w "Removing the old '${name}' themes...\n"
 
   remove_themes; customize_theme; avoid_variant_duplicates;
 
-  prompt -w "Installing '${name}${colorscheme}' '${themes[*]}' themes in '${dest}'...\n";
+  prompt -w "Installing '${name}' '${themes[*]}' '${schemes[*]}' themes in '${dest}'...\n";
 
   prompt -t "--->>> GTK | GNOME Shell | Cinnamon | Metacity | XFWM | Plank <<<---"
   prompt -i "Color variants   : $( IFS=';'; echo "${colors[*]}" )"
   prompt -i "Theme variants   : $( IFS=';'; echo "${themes[*]}" )"
   prompt -i "Opacity variants : $( IFS=';'; echo "${opacities[*]}" )"
   prompt -i "Alt variants     : $( IFS=';'; echo "${alts[*]}" )"
+  prompt -i "Scheme variants  : $( IFS=';'; echo "${schemes[*]}" )"
   prompt -i "Icon variant     : ${icon}"
   prompt -i "Nautilus variant : ${nautilus_style}"
 

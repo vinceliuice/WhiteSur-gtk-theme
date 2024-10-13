@@ -75,7 +75,7 @@ $list_shadow: if($variant == 'light',
   background-color: if($variant == 'light', rgba(black, 0.03), rgba(white, 0.05));
   border: none;
 
-  @if $colorscheme == 'nord' {
+  @if $scheme == 'nord' {
     background-color: if($variant == 'light', rgba(#2e3440, 0.06), rgba(#4c566a, 0.25));
   } @else {
     background-color: if($variant == 'light', rgba(black, 0.03), rgba(white, 0.05));
@@ -1960,7 +1960,7 @@ window.background > box.vertical > headerbar:not(.titlebar) { // reset headerbar
 
 $pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
 
-@if $colorscheme == 'nord' {
+@if $scheme == 'nord' {
   $pathbar_button_checked_bg: if($variant == 'light', #6b7894, #adb4c3);
 }
 
@@ -2867,7 +2867,7 @@ checkbutton, radiobutton {
 }
 
 $check_radio_border: if($variant == 'light', rgba(black, 0.2), rgba(black, 0.1));
-$check_radio_image: if($colorscheme == 'nord', linear-gradient(0deg, #59647b 0%, #475061 100%), linear-gradient(0deg, #6a6a6a 0%, #545454 100%));
+$check_radio_image: if($scheme == 'nord', linear-gradient(0deg, #59647b 0%, #475061 100%), linear-gradient(0deg, #6a6a6a 0%, #545454 100%));
 $check_radio_checked_image: linear-gradient(0deg, darken($selected_bg_color, 5%) 0%, lighten($selected_bg_color, 5%) 100%);
 
 %check,

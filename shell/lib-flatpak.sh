@@ -7,8 +7,9 @@ pakitheme_gtk3() {
   local opacity="$(destify ${2})"
   local alt="$(destify ${3})"
   local theme="$(destify ${4})"
+  local scheme="$(destify ${5})"
 
-  local FLATPAK_THEME="${name}${color}${opacity}${alt}${theme}${colorscheme}"
+  local FLATPAK_THEME="${name}${color}${opacity}${alt}${theme}${scheme}"
 
   local GTK_3_THEME_VER=3.22
   local cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
@@ -37,6 +38,7 @@ pakitheme_gtk3() {
     prompt -i "-c, --color   [$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"
     prompt -i "-a, --alt     [$(IFS='|'; echo "${ALT_VARIANTS[*]}")|all]"
     prompt -i "-t, --theme   [$(IFS='|'; echo "${THEME_VARIANTS[*]}")|all]"
+    prompt -i "-s, --scheme  [$(IFS='|'; echo "${SCHEME_VARIANTS[*]}")]"
     prompt -i "..."
     echo
     exit 0
@@ -112,10 +114,11 @@ flatpak_remove() {
   local opacity="$(destify ${2})"
   local alt="$(destify ${3})"
   local theme="$(destify ${4})"
+  local scheme="$(destify ${5})"
 
   if [[ -w "/root" ]]; then
-    sudo flatpak remove -y --system org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}${colorscheme}
+    sudo flatpak remove -y --system org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}${scheme}
   else
-    flatpak remove -y --user org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}${colorscheme}
+    flatpak remove -y --user org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}${scheme}
   fi
 }

@@ -93,6 +93,7 @@ COLOR_VARIANTS=('Light' 'Dark')
 OPACITY_VARIANTS=('normal' 'solid')
 ALT_VARIANTS=('normal' 'alt')
 THEME_VARIANTS=('default' 'blue' 'purple' 'pink' 'red' 'orange' 'yellow' 'green' 'grey')
+SCHEME_VARIANTS=('standard' 'nord')
 ICON_VARIANTS=('apple' 'simple' 'gnome' 'ubuntu' 'tux' 'arch' 'manjaro' 'fedora' 'debian' 'void' 'opensuse' 'popos' 'mxlinux' 'zorin' 'budgie' 'gentoo')
 SIDEBAR_SIZE_VARIANTS=('default' '180' '220' '240' '260' '280')
 PANEL_OPACITY_VARIANTS=('default' '30' '45' '60' '75')
@@ -106,6 +107,7 @@ colors=("${COLOR_VARIANTS}")
 opacities=("${OPACITY_VARIANTS}")
 alts=("${ALT_VARIANTS[0]}")
 themes=("${THEME_VARIANTS[0]}")
+schemes=("${SCHEME_VARIANTS[0]}")
 icon="${ICON_VARIANTS[0]}"
 sidebar_size="${SIDEBAR_SIZE_VARIANTS[0]}"
 panel_opacity="${PANEL_OPACITY_VARIANTS[0]}"
@@ -113,11 +115,10 @@ panel_size="${PANEL_SIZE_VARIANTS[0]}"
 nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}"
 background="blank"
 compact="true"
-colorscheme=""
 
 #--Ambigous arguments checking and overriding default values--#
-declare -A has_set=([-b]="false" [-s]="false" [-p]="false" [-h]="false" [-s]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
-declare -A need_dialog=([-b]="false" [-s]="false" [-p]="false" [-h]="false" [-s]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
+declare -A has_set=([-b]="false" [-s]="false" [-p]="false" [-h]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
+declare -A need_dialog=([-b]="false" [-s]="false" [-p]="false" [-h]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
 
 #------------Tweaks---------------#
 need_help="false"
@@ -433,7 +434,7 @@ parsimplify() {
       echo "-i" ;;
     --theme)
       echo "-t" ;;
-    --size)
+    --scheme)
       echo "-s" ;;
     --nautilus)
       echo "-N" ;;
@@ -504,10 +505,10 @@ check_param() {
 
     case "${global_param}" in
       -d)
-        if [[ "$(readlink -m "${value}")" =~ "${REPO_DIR}" ]]; then
+        if [[ "$(readlink -m ${value})" =~ "${REPO_DIR}" ]]; then
           prompt -e "'${display_param}' ERROR: Can't install in the source directory."
           has_any_error="true"
-        elif [[ ! -w "${value}" && ! -w "$(dirname "${value}")" ]]; then
+        elif [[ ! -w "${value}" && ! -w "$(dirname ${value})" ]]; then
           prompt -e "'${display_param}' ERROR: You have no permission to access that directory."
           has_any_error="true"
         else
@@ -519,7 +520,7 @@ check_param() {
           dest="${value}"
         fi
 
-        remind_relative_path "${display_param}" "${value}"; variant_found="skip" ;;
+        remind_relative_path "${display_param}" "${value}"; variant_found="skip";;
       -b)
         if [[ "${value}" == "blank" || "${value}" == "default" ]]; then
           background="${value}"
@@ -536,12 +537,12 @@ check_param() {
         remind_relative_path "${display_param}" "${value}"; variant_found="skip" ;;
       -n)
         name="${value}"; variant_found="skip" ;;
-      -s)
-        for i in {0..5}; do
-          if [[ "${value}" == "${SIDEBAR_SIZE_VARIANTS[i]}" ]]; then
-            sidebar_size="${value}"; variant_found="true"; break
-          fi
-        done ;;
+#      -s)
+#        for i in {0..5}; do
+#          if [[ "${value}" == "${SIDEBAR_SIZE_VARIANTS[i]}" ]]; then
+#            sidebar_size="${value}"; variant_found="true"; break
+#          fi
+#        done ;;
       -p)
         for i in {0..4}; do
           if [[ "${value}" == "${PANEL_OPACITY_VARIANTS[i]}" ]]; then
@@ -593,17 +594,22 @@ check_param() {
           for i in {0..8}; do
             themes+=("${THEME_VARIANTS[i]}")
           done
-
           variant_found="true"
         else
           for i in {0..8}; do
             if [[ "${value}" == "${THEME_VARIANTS[i]}" ]]; then
               themes+=("${THEME_VARIANTS[i]}")
-              variant_found="true"
-              break
+              variant_found="true"; break
             fi
           done
         fi ;;
+      -s)
+        for i in {0..1}; do
+          if [[ "${value}" == "${SCHEME_VARIANTS[i]}" ]]; then
+            schemes+=("${SCHEME_VARIANTS[i]}")
+            variant_found="true"; break
+          fi
+        done ;;
       -N)
         for i in {0..4}; do
           if [[ "${value}" == "${NAUTILUS_STYLE_VARIANTS[i]}" ]]; then
@@ -633,6 +639,7 @@ avoid_variant_duplicates() {
   opacities=($(printf "%s\n" "${opacities[@]}" | sort -u))
   alts=($(printf "%s\n" "${alts[@]}" | sort -u))
   themes=($(printf "%s\n" "${themes[@]}" | sort -u))
+  schemes=($(printf "%s\n" "${schemes[@]}" | sort -u))
 }
 
 # 'finalize_argument_parsing' is in the 'MISC' section

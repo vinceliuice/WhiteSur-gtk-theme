@@ -30,7 +30,7 @@ $fg_color:                          if($variant == 'light', #242424, #dedede);
 $alt_fg_color:                      if($variant == 'light', #424242, #afafaf);
 $hint_fg_color:                     if($variant == 'light', #565656, #999999);
 
-@if $colorscheme == 'nord' {
+@if $scheme == 'nord' {
   $base_color:                      if($variant == 'light', #fbfcfd, if($darker == 'true', #1d2025, #252932));
   $text_color:                      if($variant == 'light', #2b303b, #d3d7df);
   $bg_color:                        if($variant == 'light', #f3f4f6, if($darker == 'true', #23272f, #2b303b));
@@ -60,38 +60,38 @@ $light_divider_color:               rgba(white, 0.12);
 $light_fill_color:                  rgba(white, 0.06);
 
 $selected_fg_color:                 $light_fg_color;
-$selected_bg_color:                 if($colorscheme == 'nord', $nord_color_default, $theme_color_default);
+$selected_bg_color:                 if($scheme == 'nord', $nord_color_default, $theme_color_default);
 
 @if $theme == 'blue' {
-  $selected_bg_color:               if($colorscheme == 'nord', $nord_color_blue, $theme_color_blue);
+  $selected_bg_color:               if($scheme == 'nord', $nord_color_blue, $theme_color_blue);
 }
 
 @if $theme == 'purple' {
-  $selected_bg_color:               if($colorscheme == 'nord', $nord_color_purple, $theme_color_purple);
+  $selected_bg_color:               if($scheme == 'nord', $nord_color_purple, $theme_color_purple);
 }
 
 @if $theme == 'pink' {
-  $selected_bg_color:               if($colorscheme == 'nord', $nord_color_pink, $theme_color_pink);
+  $selected_bg_color:               if($scheme == 'nord', $nord_color_pink, $theme_color_pink);
 }
 
 @if $theme == 'red' {
-  $selected_bg_color:               if($colorscheme == 'nord', $nord_color_red, $theme_color_red);
+  $selected_bg_color:               if($scheme == 'nord', $nord_color_red, $theme_color_red);
 }
 
 @if $theme == 'orange' {
-  $selected_bg_color:               if($colorscheme == 'nord', $nord_color_orange, $theme_color_orange);
+  $selected_bg_color:               if($scheme == 'nord', $nord_color_orange, $theme_color_orange);
 }
 
 @if $theme == 'yellow' {
-  $selected_bg_color:               if($colorscheme == 'nord', $nord_color_yellow, $theme_color_yellow);
+  $selected_bg_color:               if($scheme == 'nord', $nord_color_yellow, $theme_color_yellow);
 }
 
 @if $theme == 'green' {
-  $selected_bg_color:               if($colorscheme == 'nord', $nord_color_green, $theme_color_green);
+  $selected_bg_color:               if($scheme == 'nord', $nord_color_green, $theme_color_green);
 }
 
 @if $theme == 'grey' {
-  $selected_bg_color:               if($colorscheme == 'nord', $nord_color_grey, $theme_color_grey);
+  $selected_bg_color:               if($scheme == 'nord', $nord_color_grey, $theme_color_grey);
 }
 
 $primary_color:                     $selected_bg_color;
@@ -112,32 +112,32 @@ $alt_dark_bg_color:                 rgba(black, 0.3);
 $solid_bg_color:                    if($variant == 'light', #eeeeee, #555555);
 $alt_solid_bg_color:                if($variant == 'light', #c0c0c0, #242424);
 
-@if $colorscheme == 'nord' {
+@if $scheme == 'nord' {
   $solid_bg_color:                  if($variant == 'light', #eaecf0, #464f62);
   $alt_solid_bg_color:              if($variant == 'light', #b6bdca, #1e222a);
 }
 
 // Link colors
-$link_color:                        if($colorscheme == 'nord', #5e81ac, #3484e2);
+$link_color:                        if($scheme == 'nord', #5e81ac, #3484e2);
 $link_visited_color:                if($variant == 'light', lighten($text_color, 10%), darken($text_color, 15%));
 
 // Theme colors
 $selection_mode_bg:                 lighten($selected_bg_color, 15%);
-$warning_color:                     if($colorscheme == 'nord', $nord_color_orange, $theme_color_orange);
-$error_color:                       if($colorscheme == 'nord', $nord_color_red, $theme_color_red);
-$success_color:                     if($colorscheme == 'nord', $nord_color_green, $theme_color_green);
-$destructive_color:                 if($colorscheme == 'nord', $nord_color_red, $theme_color_red);
-$suggested_color:                   if($colorscheme == 'nord', $nord_color_blue, $theme_color_blue);
+$warning_color:                     if($scheme == 'nord', $nord_color_orange, $theme_color_orange);
+$error_color:                       if($scheme == 'nord', $nord_color_red, $theme_color_red);
+$success_color:                     if($scheme == 'nord', $nord_color_green, $theme_color_green);
+$destructive_color:                 if($scheme == 'nord', $nord_color_red, $theme_color_red);
+$suggested_color:                   if($scheme == 'nord', $nord_color_blue, $theme_color_blue);
 
 $progress_color:                    $selected_bg_color;
-$drop_target_color:                 if($colorscheme == 'nord', $nord_color_orange, $theme_color_orange);
+$drop_target_color:                 if($scheme == 'nord', $nord_color_orange, $theme_color_orange);
 
 // Headerbar colors
 $header_bg:                         if($variant == 'light', #ffffff, if($darker == 'true', #1e1e1e, #373737));
 $header_highlight:                  if($variant == 'dark', if($darker == 'true', #242424, #434343), #f5f5f5); // For metacity
 $header_fg:                         if($variant == 'light', #575757, #FDFDFD);
 
-@if $colorscheme == 'nord' {
+@if $scheme == 'nord' {
   $header_bg:                       if($variant == 'light', #fbfcfd, if($darker == 'true', #191c23, #2e3440));
   $header_highlight:                if($variant == 'dark', if($darker == 'true', #1e222a, #383f4e), #f3f4f7); // For metacity
   $header_fg:                       if($variant == 'light', #57647f, #f8f9fc);
@@ -153,9 +153,9 @@ $opacity: 0.96;
 
 @if $trans=='true' {
   @if $variant=='light' {
-    $dark_sidebar_bg:                 rgba(if($colorscheme == 'nord', #eeeff2, #f0f0f0), $opacity);
+    $dark_sidebar_bg:                 rgba(if($scheme == 'nord', #eeeff2, #f0f0f0), $opacity);
   } @else {
-    @if $colorscheme == 'nord' {
+    @if $scheme == 'nord' {
       $dark_sidebar_bg:               rgba(if($darker == 'true', #22262e, #2b303b), $opacity);
     } @else {
       $dark_sidebar_bg:               rgba(if($darker == 'true', #282828, #333333), $opacity);
@@ -163,9 +163,9 @@ $opacity: 0.96;
   }
 } @else {
   @if $variant=='light' {
-    $dark_sidebar_bg:                 if($colorscheme == 'nord', #eeeff2, #f0f0f0);
+    $dark_sidebar_bg:                 if($scheme == 'nord', #eeeff2, #f0f0f0);
   } @else {
-    @if $colorscheme == 'nord' {
+    @if $scheme == 'nord' {
       $dark_sidebar_bg:               if($darker == 'true', #22262e, #2b303b);
     } @else {
       $dark_sidebar_bg:               if($darker == 'true', #282828, #333333);
@@ -185,10 +185,10 @@ $dialog_bg_color:                   if($variant == 'light', $bg_color, $base_col
 }
 
 //OSD colors
-$osd_fg_color:                      if($colorscheme == 'nord', #dadada, #d3d7df);
+$osd_fg_color:                      if($scheme == 'nord', #dadada, #d3d7df);
 $osd_bg_color:                      if($trans == 'true', rgba(if($darker == 'true', #1a1a1a, #2a2a2a), $opacity), if($darker == 'true', #1a1a1a, #2a2a2a));
 
-@if $colorscheme == 'nord' {
+@if $scheme == 'nord' {
   $osd_bg_color:                    if($trans == 'true', rgba(if($darker == 'true', #16191e, #222730), $opacity), if($darker == 'true', #16191e, #222730));
 }
 
@@ -216,7 +216,7 @@ $submenu_bg_color:                  if($variant == 'light', rgba(white, 1), rgba
   $submenu_bg_color:                if($variant == 'light', rgba(white, 0.75), rgba(white, 0.15));
 }
 
-@if $colorscheme == 'nord' {
+@if $scheme == 'nord' {
   $submenu_bg_color:                  if($variant == 'light', rgba(#fbfcfd, 1), rgba(#fbfcfd, 0.1));
 
   @if $trans=='true' {
@@ -227,7 +227,7 @@ $submenu_bg_color:                  if($variant == 'light', rgba(white, 1), rgba
 // Panel colors
 $panel_bg:                          if($variant == 'light', #f1f1f1, if($darker == 'true', #1f1f1f, #2a2a2a));
 
-@if $colorscheme == 'nord' {
+@if $scheme == 'nord' {
   $panel_bg:                        if($variant == 'light', #f0f1f4, if($darker == 'true', #1a1d24, #222730));
 }
 
@@ -238,14 +238,14 @@ $panel_bg:                          if($variant == 'light', #f1f1f1, if($darker 
     $panel_bg:                      if($variant == 'light', rgba(white, $panel_opacity/2 + 0.08), rgba(black, $panel_opacity/2));
   }
 
-  @if $colorscheme == 'nord' {
+  @if $scheme == 'nord' {
     $panel_bg:                      if($variant == 'light', rgba(#9da8be, $panel_opacity/2 + 0.12), rgba(#1a1d23, $panel_opacity + 0.08));
   }
 }
 
 $panel_text:                        if($variant == 'light', #363636, white);
 
-@if $colorscheme == 'nord' {
+@if $scheme == 'nord' {
   $panel_text:                      if($variant == 'light', #2d333f, #fbfcfd);
 }
 
@@ -260,7 +260,7 @@ $dash_bg:                           if($variant == 'light', rgba(#d1d1d1, $panel
   $dash_bg:                         if($variant == 'light', rgba(#d1d1d1, $panel_opacity/2 + 0.08), rgba(if($darker == 'true', #1f1f1f, #222222), $panel_opacity + 0.15));
 }
 
-@if $colorscheme == 'nord' {
+@if $scheme == 'nord' {
   $dash_bg:                         if($variant == 'light', rgba(#9da8be, $panel_opacity + 0.33), rgba(if($darker == 'true', #1a1d24, #1d2027), $panel_opacity/2 + 0.6));
 
   @if $trans == 'true' and $panel_font == 'black' {
@@ -277,7 +277,7 @@ $entry_highlight:                   rgba($selection_mode_bg, 0.75);
 // Button colors
 $button_bg:                         if($variant == 'light', white, #656565);
 
-@if $colorscheme == 'nord' {
+@if $scheme == 'nord' {
   $button_bg:                       if($variant == 'light', #fbfcfd, #556075);
 }
 

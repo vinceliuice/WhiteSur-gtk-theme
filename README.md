@@ -79,8 +79,8 @@ OPTIONS:
   -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey|all]
    Set theme accent color. Repeatable. Default is BigSur-like theme
 
-  -s, --size [default|180|220|240|260|280]
-   Set Nautilus (version lower than 40.0) sidebar minimum width. Default is 200px
+  -s, --scheme [standard|nord]
+   Set theme colorscheme style. Repeatable. Default is 'standard'
 
   -m, --monterey 
    Set to MacOS Monterey style. 
@@ -123,9 +123,6 @@ OPTIONS:
 
   --darker, --darkercolor 
    Install darker 'WhiteSur' dark themes. 
-
-  --nord, --nordcolor 
-   Install 'WhiteSur' Nord ColorScheme themes. 
 
   --dialog, --interactive 
    Run this installer interactively, with dialogs. 
@@ -205,6 +202,9 @@ OPTIONS:
   -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]
    Set 'WhiteSur' GDM/Flatpak theme accent color. Default is BigSur-like theme
 
+  -s, --scheme [standard|nord]
+   Set theme colorscheme style. Default is 'standard'
+
    
  Tweaks for GDM theme. options
 
@@ -223,8 +223,6 @@ OPTIONS:
       6. -nd, -nodarken    Don't darken 'WhiteSur' GDM theme background image 
 
       7. -nb, -noblur    Don't blur 'WhiteSur' GDM theme background image 
-
-      8. -nord, -nordcolor    Install 'WhiteSur' Nord ColorScheme gnome-shell themes 
 
    
  Tweaks for firefox. options
@@ -254,6 +252,8 @@ OPTIONS:
       2.  -c, --color [Light|Dark]   Set 'WhiteSur' flatpak theme color variants Default is 'light'
 
       3.  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]   Set 'WhiteSur' flatpak theme accent color Default is BigSur-like theme
+
+      4.  -s, --scheme [standard|nord]   Set 'WhiteSur' flatpak theme colorscheme style Default is 'standard'
 
   -d, --dash-to-dock 
    Fixed Dash to Dock theme issue. 

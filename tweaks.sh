@@ -33,6 +33,7 @@ usage() {
   helpify "-o, --opacity"                  "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "  Set '${THEME_NAME}' GDM/Flatpak theme opacity variants"           "Default is 'normal'"
   helpify "-c, --color"                    "[$(IFS='|'; echo "${COMMAND_COLOR_VARIANTS[*]}")]" "  Set '${THEME_NAME}' GDM/Flatpak theme color variants"             "Default is 'light'"
   helpify "-t, --theme"                    "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")]"         "  Set '${THEME_NAME}' GDM/Flatpak theme accent color"               "Default is BigSur-like theme"
+  helpify "-s, --scheme"                   "[$(IFS='|'; echo "${SCHEME_VARIANTS[*]}")]"        "  Set theme colorscheme style"                                      "Default is 'standard'"
 
   helpify "" "" "Tweaks for GDM theme" "options"
   sec_title "-g, --gdm"                    ""                                                  "  Without options default GDM theme will install..."                ""
@@ -43,7 +44,6 @@ usage() {
   sec_helpify "5. -s, -smaller"            ""                                                  "  Set GDM font size to smaller (10pt)"                              "Default is 11pt"
   sec_helpify "6. -nd, -nodarken"          ""                                                  "  Don't darken '${THEME_NAME}' GDM theme background image"          ""
   sec_helpify "7. -nb, -noblur"            ""                                                  "  Don't blur '${THEME_NAME}' GDM theme background image"            ""
-  sec_helpify "8. -nord, -nordcolor"       ""                                                  "  Install '${THEME_NAME}' Nord ColorScheme gnome-shell themes"      ""
 
   helpify "" "" "Tweaks for firefox" "options"
   sec_title "-f, --firefox" "        [(monterey|flat)|alt|(darker|adaptive)]"       "  Without options default WhiteSur theme will install..."                      "  Options:"
@@ -60,6 +60,7 @@ usage() {
   sec_helpify "1.  -o, --opacity"          "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "  Set '${THEME_NAME}' flatpak theme opacity variants"               "Default is 'normal'"
   sec_helpify "2.  -c, --color"            "[$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"         "  Set '${THEME_NAME}' flatpak theme color variants"                 "Default is 'light'"
   sec_helpify "3.  -t, --theme"            "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")]"         "  Set '${THEME_NAME}' flatpak theme accent color"                   "Default is BigSur-like theme"
+  sec_helpify "4.  -s, --scheme"           "[$(IFS='|'; echo "${SCHEME_VARIANTS[*]}")]"        "  Set '${THEME_NAME}' flatpak theme colorscheme style"              "Default is 'standard'"
 
   #helpify "-s, --snap"          ""                                                  "  Connect '${THEME_NAME}' theme the currently installed snap apps"             ""
 
