@@ -147,7 +147,7 @@ OPTIONS:
 
 </details>
 
-### Fix for libadwaita (not perfect)
+## Fix for libadwaita (not perfect)
 
 <details> <summary> Details <b>(click to open)</b> </summary>
 
@@ -166,15 +166,8 @@ Run this command to install `WhiteSur` into `gtk-4.0 configuration folder` ($HOM
 ./install.sh -l -c light       # install light theme for libadwaita
 ```
 
-#### Install theme color
-Parameter: `--color` `-c` (repeatable)
-
-Example:
-
-```bash
-./install.sh -c light          # install light theme color only
-./install.sh -c dark -c light  # install dark and light theme colors
-```
+## <p align="center"> <b> Change theme color and accent </b> </p>
+<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/colors-themes.png"/> </p>
 
 #### Install theme accent
 Parameter: `--theme` `-t` (repeatable)
@@ -187,14 +180,14 @@ Example:
 ./install.sh -t all            # install all available theme accents
 ```
 
-### <p align="center"> <b> Change Nautilus style </b> </p>
+## <p align="center"> <b> Change Nautilus style </b> </p>
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/nautilus.png"/> </p>
 
 Parameter: `--nautilus` `-N`
 
 Example: `./install.sh -N mojave`
 
-### <p align="center"> <b> Explore more customization features! </b> </p>
+## <p align="center"> <b> Explore more customization features! </b> </p>
 You can run `./install.sh -h` to explore more customization features we have
 like changing panel opacity, theme opacity (normal and solid variant), window
 control button variant, etc.
@@ -349,6 +342,8 @@ You can do [the similar customization features in `./install.sh`](#theres-so-man
 like changing theme color (dark and light variant) and accent, GNOME Shell
 'Activities' icon, etc. related to GDM. Run `./tweaks.sh -h` to explore!
 
+##
+
 ### Fix for Flatpak
 
 ```sh
@@ -361,9 +356,6 @@ If you use flatpak apps, you can run this to fix theme issue
 Parameter: `--flatpak` `-F`
 
 Example: `./tweaks.sh -F`
-
-### <p align="center"> <b> Change theme color and accent </b> </p>
-<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/colors-themes.png"/> </p>
 
 ## Other recommended stuff
 ### WhiteSur Icon Theme
