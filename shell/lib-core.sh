@@ -88,6 +88,7 @@ GS_GR_XML_FILE="${THEME_SRC_DIR}/main/gnome-shell/gnome-shell-theme.gresource.xm
 
 #-------------Theme---------------#
 THEME_NAME="WhiteSur"
+COMMAND_COLOR_VARIANTS=('light' 'dark')
 COLOR_VARIANTS=('Light' 'Dark')
 OPACITY_VARIANTS=('normal' 'solid')
 ALT_VARIANTS=('normal' 'alt')
@@ -96,7 +97,7 @@ ICON_VARIANTS=('apple' 'simple' 'gnome' 'ubuntu' 'tux' 'arch' 'manjaro' 'fedora'
 SIDEBAR_SIZE_VARIANTS=('default' '180' '220' '240' '260' '280')
 PANEL_OPACITY_VARIANTS=('default' '30' '45' '60' '75')
 PANEL_SIZE_VARIANTS=('default' 'smaller' 'bigger')
-NAUTILUS_STYLE_VARIANTS=('stable' 'normal' 'mojave' 'glassy')
+NAUTILUS_STYLE_VARIANTS=('stable' 'normal' 'mojave' 'glassy' 'right')
 
 #--------Customization, default values----------#
 dest="${THEME_DIR}"
@@ -115,8 +116,8 @@ compact="true"
 colorscheme=""
 
 #--Ambigous arguments checking and overriding default values--#
-declare -A has_set=([-b]="false" [-s]="false" [-p]="false" [-P]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
-declare -A need_dialog=([-b]="false" [-s]="false" [-p]="false" [-P]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
+declare -A has_set=([-b]="false" [-s]="false" [-p]="false" [-h]="false" [-s]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
+declare -A need_dialog=([-b]="false" [-s]="false" [-p]="false" [-h]="false" [-s]="false" [-d]="false" [-n]="false" [-a]="false" [-o]="false" [-c]="false" [-i]="false" [-t]="false" [-N]="false")
 
 #------------Tweaks---------------#
 need_help="false"
@@ -422,8 +423,6 @@ parsimplify() {
       echo "~-n" | cut -c 2- ;;
     --dest)
       echo "-d" ;;
-    --size)
-      echo "-s" ;;
     --alt)
       echo "-a" ;;
     --opacity)
@@ -434,20 +433,16 @@ parsimplify() {
       echo "-i" ;;
     --theme)
       echo "-t" ;;
-    -height)
+    --size)
+      echo "-s" ;;
+    --nautilus)
+      echo "-N" ;;
+    -background)
+      echo "-b" ;;
+    -panelheight)
       echo "-h" ;;
     -panelopacity)
       echo "-p" ;;
-    --panel-opacity)
-      echo "-p" ;;
-    --panel-size)
-      echo "-P" ;;
-    --nautilus)
-      echo "-N" ;;
-    --nautilus-style)
-      echo "-N" ;;
-    --background)
-      echo "-b" ;;
     *)
       echo "${1}" ;;
   esac
@@ -553,12 +548,6 @@ check_param() {
             panel_opacity="${value}"; variant_found="true"; break
           fi
         done ;;
-      -P)
-        for i in {0..2}; do
-          if [[ "${value}" == "${PANEL_SIZE_VARIANTS[i]}" ]]; then
-            panel_size="${value}"; variant_found="true"; break
-          fi
-        done ;;
       -h)
         for i in {0..2}; do
           if [[ "${value}" == "${PANEL_SIZE_VARIANTS[i]}" ]]; then
@@ -589,6 +578,8 @@ check_param() {
         for i in {0..1}; do
           if [[ "${value}" == "${COLOR_VARIANTS[i]}" ]]; then
             colors+=("${COLOR_VARIANTS[i]}"); variant_found="true"; break
+          elif [[ "${value}" == "${COMMAND_COLOR_VARIANTS[i]}" ]]; then
+            colors+=("${COLOR_VARIANTS[i]}"); variant_found="true"; break
           fi
         done ;;
       -i)
@@ -614,7 +605,7 @@ check_param() {
           done
         fi ;;
       -N)
-        for i in {0..3}; do
+        for i in {0..4}; do
           if [[ "${value}" == "${NAUTILUS_STYLE_VARIANTS[i]}" ]]; then
             nautilus_style="${NAUTILUS_STYLE_VARIANTS[i]}"; variant_found="true"; break
           fi

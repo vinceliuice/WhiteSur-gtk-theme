@@ -923,7 +923,7 @@ customize_theme() {
   fi
 
   # Change Nautilus titlebutton placement style
-  if [[ "${right_placement}" == 'true' ]]; then
+  if [[ "${nautilus_style}" == 'right' ]]; then
     prompt -s "Changing Nautilus titlebutton placement style ...\n"
     sed $SED_OPT "/\$placement/s/left/right/"                                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi

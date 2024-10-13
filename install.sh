@@ -23,29 +23,28 @@ usage() {
   # Please specify their default value manually, some of them come from _variables.scss
   # You also have to check and update them regularly
   helpify_title
-  helpify "-d, --dest"                    "DIR"                                               "  Set destination directory"                     "Default is '${THEME_DIR}'"
+  helpify "-d, --dest"                    "DIR"                                               "  Set destination directory"                      "Default is '${THEME_DIR}'"
   helpify "-n, --name"                    "NAME"                                              "  Set theme name"                                 "Default is '${THEME_NAME}'"
   helpify "-o, --opacity"                 "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "  Set theme opacity variants"                     "Repeatable. Default is all variants"
-  helpify "-c, --color"                   "[$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"         "  Set theme color variants"                       "Repeatable. Default is all variants"
+  helpify "-c, --color"                   "[$(IFS='|'; echo "${COMMAND_COLOR_VARIANTS[*]}")]" "  Set theme color variants"                       "Repeatable. Default is all variants"
   helpify "-a, --alt"                     "[$(IFS='|'; echo "${ALT_VARIANTS[*]}")|all]"       "  Set window control buttons variant"             "Repeatable. Default is 'normal'"
   helpify "-t, --theme"                   "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")|all]"     "  Set theme accent color"                         "Repeatable. Default is BigSur-like theme"
-  # helpify "-s, --size"                    "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]"  "Set Nautilus sidebar minimum width"               "Default is 200px"
+  helpify "-s, --size"                    "[$(IFS='|'; echo "${SIDEBAR_SIZE_VARIANTS[*]}")]"  "  Set Nautilus (version < 40.0) sidebar minimum width" "Default is 200px"
 
   helpify "-m, --monterey"                ""                                                  "  Set to MacOS Monterey style"                     ""
   helpify "-N, --nautilus"                "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "  Set Nautilus style"                             "Default is BigSur-like style (stabled sidebar)"
   helpify "-l, --libadwaita"              ""                                                  "  Install theme into gtk4.0 config for libadwaita" "Default is dark version"
   helpify "-HD, --highdefinition"         ""                                                  "  Set to High Definition size"                     "Default is laptop size"
 
-  helpify "--shell, --gnome-shell"        ""                                                  "  Tweaks for gnome-shell"                          "Options:"
+  helpify "--shell, --gnomeshell"         ""                                                  "  Tweaks for gnome-shell"                          "Options:"
   helpify "   1. -i, -icon"               "[$(IFS='|'; echo "${ICON_VARIANTS[*]}")]"          "    Set gnome-shell panel 'Activities' icon"       "Default is 'standard'"
   helpify "   2. -b, -background"         "[default|blank|IMAGE_PATH]"                        "    Set gnome-shell background image"              "Default is BigSur-like wallpaper"
   helpify "   3. -p, -panelopacity"       "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "    Set gnome-shell panel transparency"            "Default is 15%"
-  helpify "   4. -h, -height"             "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"    "    Set gnome-shell panel height size"             "Default is 32px"
-  helpify "   5. -n, -normal"            ""                                                  "    Set gnome-shell show apps button style to normal" "Default is BigSur"
-  helpify "   6. -s, -smaller"           ""                                                  "    Set gnome-shell font size to smaller (10pt)"   "Default is 11pt"
+  helpify "   4. -h, -panelheight"        "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"    "    Set gnome-shell panel height size"             "Default is 32px"
+  helpify "   5. -n, -normal"             ""                                                  "    Set gnome-shell show apps button style to normal" "Default is BigSur"
+  helpify "   6. -s, -smaller"            ""                                                  "    Set gnome-shell font size to smaller (10pt)"   "Default is 11pt"
 
   helpify "--round, --roundedmaxwindow"   ""                                                  "  Set maximized window to rounded"                 "Default is square"
-  helpify "--right, --rightplacement"     ""                                                  "  Set Nautilus title button placement to right"    "Default is left"
   helpify "--black, --blackfont"          ""                                                  "  Set panel font color to black"                   "Default is white"
   helpify "--darker, --darkercolor"       ""                                                  "  Install darker '${THEME_NAME}' dark themes"      ""
   helpify "--nord, --nordcolor"           ""                                                  "  Install '${THEME_NAME}' Nord ColorScheme themes" ""
@@ -104,9 +103,9 @@ while [[ $# -gt 0 ]]; do
             check_param "${1}" "${1}" "${2}" "must" "must" "must" "false" && shift 2 || shift ;;
           -p|-panelopacity)
             check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
-          -h|-height)
+          -h|-panelheight)
             check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
-          -g|-general|-normal)
+          -n|-normal)
             showapps_normal="true"; shift ;;
           -s|-smaller)
             smaller_font="true"; shift ;;

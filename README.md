@@ -64,8 +64,9 @@ Usage:  `./install.sh [OPTIONS...]`
 
 ```bash
 
+OPTIONS:
   -d, --dest DIR
-   Set destination directory. Default is '/home/USER/.themes'
+   Set destination directory. Default is '/home/vince/.themes'
 
   -n, --name NAME
    Set theme name. Default is 'WhiteSur'
@@ -73,7 +74,7 @@ Usage:  `./install.sh [OPTIONS...]`
   -o, --opacity [normal|solid]
    Set theme opacity variants. Repeatable. Default is all variants
 
-  -c, --color [Light|Dark]
+  -c, --color [light|dark]
    Set theme color variants. Repeatable. Default is all variants
 
   -a, --alt [normal|alt|all]
@@ -82,10 +83,13 @@ Usage:  `./install.sh [OPTIONS...]`
   -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey|all]
    Set theme accent color. Repeatable. Default is BigSur-like theme
 
+  -s, --size [default|180|220|240|260|280]
+   Set Nautilus (version lower than 40.0) sidebar minimum width. Default is 200px
+
   -m, --monterey 
    Set to MacOS Monterey style. 
 
-  -N, --nautilus [stable|normal|mojave|glassy]
+  -N, --nautilus [stable|normal|mojave|glassy|right]
    Set Nautilus style. Default is BigSur-like style (stabled sidebar)
 
   -l, --libadwaita 
@@ -94,7 +98,7 @@ Usage:  `./install.sh [OPTIONS...]`
   -HD, --highdefinition 
    Set to High Definition size. Default is laptop size
 
-  --shell, --gnome-shell 
+  --shell, --gnomeshell 
    Tweaks for gnome-shell. Options:
 
      1. -i, -icon [apple|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin|budgie|gentoo]
@@ -106,20 +110,17 @@ Usage:  `./install.sh [OPTIONS...]`
      3. -p, -panelopacity [default|30|45|60|75]
      Set gnome-shell panel transparency. Default is 15%
 
-     4. -h, -height [default|smaller|bigger]
+     4. -h, -panelheight [default|smaller|bigger]
      Set gnome-shell panel height size. Default is 32px
 
-     5. -g, -general, -normal 
-     Set gnome-shell show apps button style to general/normal. Default is BigSur
+     5. -n, -normal 
+     Set gnome-shell show apps button style to normal. Default is BigSur
 
      6. -s, -smaller 
      Set gnome-shell font size to smaller (10pt). Default is 11pt
 
   --round, --roundedmaxwindow 
    Set maximized window to rounded. Default is square
-
-  --right, --rightplacement 
-   Set Nautilus title button placement to right. Default is left
 
   --black, --blackfont 
    Set panel font color to black. Default is white
@@ -162,24 +163,8 @@ Run this command to install `WhiteSur` into `gtk-4.0 configuration folder` ($HOM
 
 ```bash
 ./install.sh -l                # Default is the normal dark theme
-./install.sh -l -c Light       # install light theme for libadwaita
+./install.sh -l -c light       # install light theme for libadwaita
 ```
-
-### Fix for Flatpak
-
-```sh
-sudo flatpak override --filesystem=xdg-config/gtk-3.0 && sudo flatpak override --filesystem=xdg-config/gtk-4.0
-```
-
-If you use flatpak apps, you can run this to fix theme issue
-
-### Connect WhiteSur theme to Flatpak (gtk 3.0) (Snap not support)
-Parameter: `--flatpak` `-F`
-
-Example: `./tweaks.sh -F`
-
-### <p align="center"> <b> Change theme color and accent </b> </p>
-<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/colors-themes.png"/> </p>
 
 #### Install theme color
 Parameter: `--color` `-c` (repeatable)
@@ -187,8 +172,8 @@ Parameter: `--color` `-c` (repeatable)
 Example:
 
 ```bash
-./install.sh -c Light          # install light theme color only
-./install.sh -c Dark -c Light  # install dark and light theme colors
+./install.sh -c light          # install light theme color only
+./install.sh -c dark -c light  # install dark and light theme colors
 ```
 
 #### Install theme accent
@@ -205,7 +190,7 @@ Example:
 ### <p align="center"> <b> Change Nautilus style </b> </p>
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/nautilus.png"/> </p>
 
-Parameter: `--nautilus-style` `-N`
+Parameter: `--nautilus` `-N`
 
 Example: `./install.sh -N mojave`
 
@@ -220,42 +205,40 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 <details> <summary> Options <b>(click to open)</b> </summary>
 
 ```bash
- [GDM theme]... options
 
-  -g, --gdm [default|x2]
-   Install 'WhiteSur' theme for GDM (scaling: 100%/200%, default is 100%). Requires to run this shell as root
-
+OPTIONS:
   -o, --opacity [normal|solid]
-   Set 'WhiteSur' GDM theme opacity variants. Default is 'normal'
+   Set 'WhiteSur' GDM/Flatpak theme opacity variants. Default is 'normal'
 
-  -c, --color [Light|Dark]
-   Set 'WhiteSur' GDM and Dash to Dock theme color variants. Default is 'light'
+  -c, --color [light|dark]
+   Set 'WhiteSur' GDM/Flatpak theme color variants. Default is 'light'
 
   -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]
-   Set 'WhiteSur' GDM theme accent color. Default is BigSur-like theme
+   Set 'WhiteSur' GDM/Flatpak theme accent color. Default is BigSur-like theme
 
-  -N, --no-darken 
-   Don't darken 'WhiteSur' GDM theme background image. 
+   
+ Tweaks for GDM theme. options
 
-  -n, --no-blur 
-   Don't blur 'WhiteSur' GDM theme background image. 
+  -g, --gdm    Without options default GDM theme will install... 
 
-  -b, --background [default|blank|IMAGE_PATH]
-   Set 'WhiteSur' GDM theme background image. Default is BigSur-like wallpaper
+      1. -i, -icon [apple|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin|budgie|gentoo]   Set GDM panel 'Activities' icon Default is 'standard'
 
-  -p, --panel-opacity [default|30|45|60|75]
-   Set 'WhiteSur' GDM (GNOME Shell) theme panel transparency. Default is 15%
+      2. -b, -background [default|blank|IMAGE_PATH]   Set GDM background image Default is BigSur-like wallpaper
 
-  -P, --panel-size [default|smaller|bigger]
-   Set 'WhiteSur' Gnome shell panel height size. Default is 32px
+      3. -p, -panelopacity [default|30|45|60|75]   Set GDM panel transparency Default is 15%
 
-  -i, --icon [apple|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin|budgie|gentoo]
-   Set 'WhiteSur' GDM (GNOME Shell) 'Activities' icon. Default is 'standard'
+      4. -h, -panelheight [default|smaller|bigger]   Set GDM panel height size Default is 32px
 
-  --nord, --nordcolor 
-   Install 'WhiteSur' Nord ColorScheme themes. 
+      5. -s, -smaller    Set GDM font size to smaller (10pt) Default is 11pt
 
- [Others]... options
+      6. -nd, -nodarken    Don't darken 'WhiteSur' GDM theme background image 
+
+      7. -nb, -noblur    Don't blur 'WhiteSur' GDM theme background image 
+
+      8. -nord, -nordcolor    Install 'WhiteSur' Nord ColorScheme gnome-shell themes 
+
+   
+ Tweaks for firefox. options
 
   -f, --firefox         [(monterey|flat)|alt|(darker|adaptive)]   Without options default WhiteSur theme will install...   Options:
 
@@ -263,17 +246,25 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
       2. flat           Monterey alt version    Flat round tabs...
 
-      3. alt            Alt window control buttons version    Alt window control buttons style like gtk theme
+      3. alt            Alt windows button version    Alt windows button style like gtk theme
 
-      4. darker         Darker Firefox theme version    Darker theme according to darker gtk theme
+      4. darker         Darker Firefox theme version    Darker Firefox theme version
 
       5. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
 
   -e, --edit-firefox [(monterey|flat)|alt|(darker|adaptive)]
    Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles. 
 
-  -F, --flatpak Support options: [-o, -c, -t...]
-   Connect 'WhiteSur' theme to Flatpak. Without options will only install default themes
+   
+ Others. options
+
+  -F, --flatpak Support options: [-o, -c, -t...]   Connect 'WhiteSur' theme to Flatpak Without options will only install default themes
+
+      1.  -o, --opacity [normal|solid]   Set 'WhiteSur' flatpak theme opacity variants Default is 'normal'
+
+      2.  -c, --color [Light|Dark]   Set 'WhiteSur' flatpak theme color variants Default is 'light'
+
+      3.  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]   Set 'WhiteSur' flatpak theme accent color Default is BigSur-like theme
 
   -d, --dash-to-dock 
    Fixed Dash to Dock theme issue. 
@@ -286,6 +277,7 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
   -h, --help 
    Show this help. 
+
 ```
 
 </details>
@@ -333,29 +325,45 @@ sudo ./tweaks.sh -g -b blank            # make it blank
 ```
 
 #### Don't darken the background
-Parameter: `--no-darken` `-N`
+Parameter: `--nodarken` `-nd`
 
 Example:
 
 ```bash
-sudo ./tweaks.sh -g -N                          # darken the default background
-sudo ./tweaks.sh -g -N -b "wallpapers/snow.jpg" # darken the custom background
+sudo ./tweaks.sh -g -nd                          # darken the default background
+sudo ./tweaks.sh -g -nd -b "wallpapers/snow.jpg" # darken the custom background
 ```
 
 #### Don't blur the background
-Parameter: `--no-blur` `-n`
+Parameter: `--noblur` `-nb`
 
 Example:
 
 ```bash
-sudo ./tweaks.sh -g -n                           # don't blur the default background
-sudo ./tweaks.sh -g -n -b "wallpapers/rocks.jpg" # don't blur the custom background
+sudo ./tweaks.sh -g -nb                           # don't blur the default background
+sudo ./tweaks.sh -g -nb -b "wallpapers/rocks.jpg" # don't blur the custom background
 ```
 
 #### Do more GDM customizations
 You can do [the similar customization features in `./install.sh`](#theres-so-many-customizations-you-can-do)
 like changing theme color (dark and light variant) and accent, GNOME Shell
 'Activities' icon, etc. related to GDM. Run `./tweaks.sh -h` to explore!
+
+### Fix for Flatpak
+
+```sh
+sudo flatpak override --filesystem=xdg-config/gtk-3.0 && sudo flatpak override --filesystem=xdg-config/gtk-4.0
+```
+
+If you use flatpak apps, you can run this to fix theme issue
+
+### Connect WhiteSur theme to Flatpak (gtk 3.0) (Snap not support)
+Parameter: `--flatpak` `-F`
+
+Example: `./tweaks.sh -F`
+
+### <p align="center"> <b> Change theme color and accent </b> </p>
+<p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/colors-themes.png"/> </p>
 
 ## Other recommended stuff
 ### WhiteSur Icon Theme

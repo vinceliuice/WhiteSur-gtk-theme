@@ -88,7 +88,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
         > .linked > button.disclosure-button { margin-left: $container_padding / 2; }
 
-        @if $placement == 'left' {
+        @if $nautilus_style != 'right' {
           > box > stack > box {
             margin-left: 18px;
           }
@@ -122,7 +122,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
       }
 
       @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
-        @if $placement == 'left' {
+        @if $nautilus_style != 'right' {
           > .linked.raised > button:first-child { margin-left: $nautilus_sidebar_size - (48px + $container_padding * 6); }
         }
       }
