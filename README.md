@@ -192,7 +192,7 @@ You can run `./install.sh -h` to explore more customization features we have
 like changing panel opacity, theme opacity (normal and solid variant), window
 control button variant, etc.
 
-# Let's tweak!
+# <p align="center"> <b> Let's tweak! </b> </p>
 Usage:  `./tweaks.sh [OPTIONS...]`
 
 <details> <summary> Options <b>(click to open)</b> </summary>
