@@ -169,7 +169,7 @@ Run this command to install `WhiteSur` into `gtk-4.0 configuration folder` ($HOM
 ## <p align="center"> <b> Change theme color and accent </b> </p>
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/colors-themes.png"/> </p>
 
-#### Install theme accent
+#### - Install theme accent
 Parameter: `--theme` `-t` (repeatable)
 
 Example:
@@ -282,12 +282,12 @@ OPTIONS:
 <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/firefox.svg"/>
 </a> </p>
 
-#### [Install Firefox theme](src/other/firefox)
+#### - [Install Firefox theme](src/other/firefox)
 Parameter: `--firefox` `-f`
 
 Example: `./tweaks.sh -f`
 
-#### Edit Firefox theme
+#### - Edit Firefox theme
 Parameter: `--edit-firefox` `-e`
 
 Example:
@@ -303,12 +303,12 @@ Example:
 ### <p align="center"> <b> Install and customize GDM theme </b> </p>
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/gdm.png"/> </p>
 
-#### Install GDM theme
+#### - Install GDM theme
 Parameter: `--gdm` `-g` (requires to be run as root)
 
 Example: `sudo ./tweaks.sh -g`
 
-#### Change the background
+#### - Change the background
 Parameter: `--background` `-b`
 
 Example:
@@ -319,7 +319,7 @@ sudo ./tweaks.sh -g -b default          # use the default background
 sudo ./tweaks.sh -g -b blank            # make it blank
 ```
 
-#### Don't darken the background
+#### - Don't darken the background
 Parameter: `--nodarken` `-nd`
 
 Example:
@@ -329,7 +329,7 @@ sudo ./tweaks.sh -g -nd                          # darken the default background
 sudo ./tweaks.sh -g -nd -b "wallpapers/snow.jpg" # darken the custom background
 ```
 
-#### Don't blur the background
+#### - Don't blur the background
 Parameter: `--noblur` `-nb`
 
 Example:
@@ -339,7 +339,7 @@ sudo ./tweaks.sh -g -nb                           # don't blur the default backg
 sudo ./tweaks.sh -g -nb -b "wallpapers/rocks.jpg" # don't blur the custom background
 ```
 
-#### Do more GDM customizations
+#### - Do more GDM customizations
 You can do [the similar customization features in `./install.sh`](#theres-so-many-customizations-you-can-do)
 like changing theme color (dark and light variant) and accent, GNOME Shell
 'Activities' icon, etc. related to GDM. Run `./tweaks.sh -h` to explore!
@@ -359,8 +359,8 @@ Parameter: `--flatpak` `-F`
 
 Example: `./tweaks.sh -F`
 
-## Other recommended stuff
-### WhiteSur Icon Theme
+## <p align="center"> <b> Other recommended stuff </b> </p>
+### <p align="center"> <b> WhiteSur Icon Theme </b> </p>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-icon-theme">
   <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/icon-theme.png"/>
 </a> </p>
@@ -370,7 +370,7 @@ Example: `./tweaks.sh -F`
 </a> </p>
 <br>
 
-### WhiteSur Wallpapers
+### <p align="center"> <b> WhiteSur Wallpapers </b> </p>
 <p align="center"> <a href="https://github.com/vinceliuice/WhiteSur-wallpapers">
   <img class="image" src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/wallpaper.gif"/>
 </a> </p>
