@@ -48,14 +48,10 @@ Don't worry, WhiteSur installer already provides all of those dependencies.
 
 ### Uninstall
 
-<details> <summary> For example: <b>(click to open)</b> </summary>
-
 - uninstall Gtk themes: `./install.sh -r`
 - uninstall GDM theme: `sudo ./tweaks.sh -g -r`
 - uninstall Firefox theme: `./tweaks.sh -f -r`
 - uninstall Flatpak Gtk themes: `./tweaks.sh -F -r`
-
-</details>
 
 ## There's so many customizations you can do!
 Usage:  `./install.sh [OPTIONS...]`
