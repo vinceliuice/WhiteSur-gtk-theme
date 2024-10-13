@@ -298,6 +298,8 @@ Example:
 ./tweaks.sh -f monterey  # install Monterey Firefox theme
 ```
 
+##
+
 ### <p align="center"> <b> Install and customize GDM theme </b> </p>
 <p align="center"> <img src="https://github.com/vinceliuice/WhiteSur-gtk-theme/blob/pictures/pictures/gdm.png"/> </p>
 
