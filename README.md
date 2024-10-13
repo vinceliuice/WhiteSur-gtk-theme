@@ -346,7 +346,9 @@ like changing theme color (dark and light variant) and accent, GNOME Shell
 
 ##
 
-### Fix for Flatpak
+### <p align="center"> <b> Fix for Flatpak </b> </p>
+
+#### 1. Run command to fix it
 
 ```sh
 sudo flatpak override --filesystem=xdg-config/gtk-3.0 && sudo flatpak override --filesystem=xdg-config/gtk-4.0
@@ -354,7 +356,8 @@ sudo flatpak override --filesystem=xdg-config/gtk-3.0 && sudo flatpak override -
 
 If you use flatpak apps, you can run this to fix theme issue
 
-### Connect WhiteSur theme to Flatpak (gtk 3.0) (Snap not support)
+#### 2. Connect WhiteSur theme to Flatpak (gtk 3.0) (Snap not support)
+
 Parameter: `--flatpak` `-F`
 
 Example: `./tweaks.sh -F`
