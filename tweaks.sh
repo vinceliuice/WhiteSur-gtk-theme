@@ -197,7 +197,7 @@ while [[ $# -gt 0 ]]; do
       gdm="true"; full_sudo "${1}"
       showapps_normal="true" # use normal showapps icon
       background="default"
-
+      shift
       for variant in "${@}"; do
         case "${variant}" in
           -i|-icon)
@@ -225,7 +225,7 @@ while [[ $# -gt 0 ]]; do
       if ! has_command gdm && ! has_command gdm3 && [[ ! -e /usr/sbin/gdm3 ]]; then
         prompt -e "'${1}' ERROR: There's no GDM installed in your system"
         has_any_error="true"
-      fi; shift ;;
+      fi ;;
     -F|--flatpak)
       flatpak="true"; signal_exit
 

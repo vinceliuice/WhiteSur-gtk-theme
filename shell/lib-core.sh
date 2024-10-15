@@ -577,9 +577,7 @@ check_param() {
         done ;;
       -c)
         for i in {0..1}; do
-          if [[ "${value}" == "${COLOR_VARIANTS[i]}" ]]; then
-            colors+=("${COLOR_VARIANTS[i]}"); variant_found="true"; break
-          elif [[ "${value}" == "${COMMAND_COLOR_VARIANTS[i]}" ]]; then
+          if [[ "${value}" == "${COLOR_VARIANTS[i]}" || "${value}" == "${COMMAND_COLOR_VARIANTS[i]}" ]]; then
             colors+=("${COLOR_VARIANTS[i]}"); variant_found="true"; break
           fi
         done ;;

@@ -517,35 +517,40 @@ remove_old_packy() {
 
 config_gtk4() {
   local color="$(destify ${1})"
-  local alt="$(destify ${2})"
-  local scheme="$(destify ${3})"
+  local opacity="$(destify ${2})"
+  local alt="$(destify ${3})"
+  local theme="$(destify ${4})"
+  local scheme="$(destify ${5})"
 
   local TARGET_DIR="${HOME}/.config/gtk-4.0"
 
   # Install gtk4.0 into config for libadwaita
+
   mkdir -p                                                                                    "${TARGET_DIR}"
   # backup_file "${TARGET_DIR}/gtk.css" "udo"
-  rm -rf                                                                                      "${TARGET_DIR}/"{gtk.css,gtk-Light.css,gtk-Dark.css,assets,windows-assets}
+  rm -rf                                                                                      "${TARGET_DIR}/"{gtk.css,gtk-dark.css,gtk-Light.css,gtk-Dark.css,assets,windows-assets}
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-Light.scss"                           "${TARGET_DIR}/gtk-Light.css"
   sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gtk-4.0/gtk-Dark.scss"                            "${TARGET_DIR}/gtk-Dark.css"
-  ln -sf "${TARGET_DIR}/gtk-${color}.css"                                                     "${TARGET_DIR}/gtk.css"
+  ln -sf "${TARGET_DIR}/gtk${color}.css"                                                      "${TARGET_DIR}/gtk.css"
+  ln -sf "${TARGET_DIR}/gtk-Dark.css"                                                         "${TARGET_DIR}/gtk-dark.css"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/assets"                                    "${TARGET_DIR}"
   cp -r "${THEME_SRC_DIR}/assets/gtk/common-assets/sidebar-assets/"*".png"                    "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/scalable"                                                "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gtk/windows-assets/titlebutton${alt}${scheme}"               "${TARGET_DIR}/windows-assets"
+
+  prompt -s "\n  Installed ${name}${color}${opacity}${alt}${theme}${scheme} gtk-4.0 theme in '${HOME}/.config/gtk-4.0' for libadwaita!"
 }
 
 install_libadwaita() {
+  color="${colors[0]}"
   opacity="${opacities[0]}"
-  color="${colors[1]}"
-  scheme="${schemes[0]}"
 
-  gtk_base && config_gtk4 "${color}" "${alt}" "${scheme}"
+  gtk_base && config_gtk4 "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
 }
 
 remove_libadwaita() {
   # restore_file "${TARGET_DIR}/gtk.css"
-  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-Light.css,gtk-Dark.css,assets,windows-assets}
+  rm -rf "${HOME}/.config/gtk-4.0/"{gtk.css,gtk-dark.css,gtk-Light.css,gtk-Dark.css,assets,windows-assets}
 }
 
 ###############################################################################

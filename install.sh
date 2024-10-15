@@ -177,7 +177,7 @@ else
 
   remove_themes; customize_theme; avoid_variant_duplicates;
 
-  prompt -w "Installing '${name}' '${themes[*]}' '${schemes[*]}' themes in '${dest}'...\n";
+  prompt -w "Installing '${name}' themes in '${dest}'...\n";
 
   prompt -t "--->>> GTK | GNOME Shell | Cinnamon | Metacity | XFWM | Plank <<<---"
   prompt -i "Color variants   : $( IFS=';'; echo "${colors[*]}" )"
@@ -193,7 +193,6 @@ else
   if [[ "${libadwaita}" == 'true' ]]; then
     if [[ "$UID" != '0' ]]; then
       install_libadwaita
-      echo; prompt -s "Installed ${name} ${opacities} ${colors} gtk-4.0 theme in '${HOME}/.config/gtk-4.0' for libadwaita!"
       echo; prompt -w "Some colorsheme extension will re-writes config files in '${HOME}/.config/gtk-4.0' like: 'custom-accent-colors' you need disable it!"
     else
       echo; prompt -e "Do not run '--libadwaita' option with sudo!"
