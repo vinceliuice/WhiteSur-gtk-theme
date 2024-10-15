@@ -138,8 +138,8 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     @extend %numeric;
     // @extend %smaller;
     text-align: center;
-    width: if($font_size == 'normal', 2.8em, 2.4em) !important;
-    height: if($font_size == 'normal', 2.8em, 2.4em) !important;
+    width: if($font_size == 'normal', 2.8em, 2.4em);
+    height: if($font_size == 'normal', 2.8em, 2.4em);
     padding: 0;
     margin: 2px;
     border-radius: $circular_radius;
@@ -238,10 +238,10 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
   .calendar-week-number {
     @extend %smaller;
-    width: 2.4em !important;
-    height: 2.4em !important;
-    margin: 6px !important;
-    padding: 0 !important;
+    width: 2.4em;
+    height: 2.4em;
+    margin: 6px;
+    padding: 0;
     border-radius: $bt_radius;
     background-color: if($variant == 'light', rgba(black, 0.05), rgba(white, 0.05));
     color: $hint_fg_color;
