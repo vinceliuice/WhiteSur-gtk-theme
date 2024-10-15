@@ -33,6 +33,7 @@ pakitheme_gtk3() {
     prompt -i "Converting theme: $FLATPAK_THEME... \n"
   elif [[ "${theme}" == '' ]]; then
     prompt -e "Find other variant themes but could not locate deafult theme! \n"
+    prompt -s "You can run './install.sh' install theme first! \n"
     prompt -s "Run this with right options! >>> \n"
     prompt -i "-o, --opacity [$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"
     prompt -i "-c, --color   [$(IFS='|'; echo "${COLOR_VARIANTS[*]}")]"
@@ -116,9 +117,14 @@ flatpak_remove() {
   local theme="$(destify ${4})"
   local scheme="$(destify ${5})"
 
-  if [[ -w "/root" ]]; then
+  local system_theme_dir="/var/lib/flatpak/runtime/org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}${scheme}"
+  local user_theme_dir="$HOME/.local/share/flatpak/runtime/org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}${scheme}"
+
+  if [[ -d "$system_theme_dir" ]]; then
     sudo flatpak remove -y --system org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}${scheme}
-  else
+  fi
+
+  if [[ -d "$user_theme_dir" ]]; then
     flatpak remove -y --user org.gtk.Gtk3theme.${name}${color}${opacity}${alt}${theme}${scheme}
   fi
 }

@@ -228,7 +228,6 @@ while [[ $# -gt 0 ]]; do
       fi; shift ;;
     -F|--flatpak)
       flatpak="true"; signal_exit
-      prompt -w "Without options it will only install default themes\n"
 
       if ! has_command flatpak; then
         prompt -e "'${1}' ERROR: There's no Flatpak installed in your system"
@@ -322,6 +321,7 @@ else
 
   if [[ "${flatpak}" == 'true' && "${gdm}" != 'true' ]]; then
     prompt -i "Connecting '${name}' themes to your Flatpak... \n"
+    prompt -w "Without options it will only install default themes\n"
     customize_theme; avoid_variant_duplicates; connect_flatpak
     prompt -s "Done! '${name}' theme has been connected to your Flatpak. \n"
   fi

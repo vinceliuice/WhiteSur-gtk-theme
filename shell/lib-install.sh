@@ -853,11 +853,11 @@ connect_flatpak() {
 }
 
 disconnect_flatpak() {
-  for color in "${colors[@]}"; do
-    for opacity in "${opacities[@]}"; do
-      for alt in "${alts[@]}"; do
-        for theme in "${themes[@]}"; do
-          for scheme in "${schemes[@]}"; do
+  for color in "${COLOR_VARIANTS[@]}"; do
+    for opacity in "${OPACITY_VARIANTS[@]}"; do
+      for alt in "${ALT_VARIANTS[@]}"; do
+        for theme in "${THEME_VARIANTS[@]}"; do
+          for scheme in "${SCHEME_VARIANTS[@]}"; do
             flatpak_remove "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
           done
         done
