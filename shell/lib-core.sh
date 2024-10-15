@@ -500,6 +500,8 @@ check_param() {
           colors=() ;;
         -t)
           themes=() ;;
+        -s)
+          schemes=() ;;
       esac
     fi
 

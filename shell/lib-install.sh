@@ -500,15 +500,7 @@ install_theemy() {
 }
 
 remove_packy() {
-  rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})$(destify ${5})"
-  rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${5})-hdpi"
-  rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${5})-xhdpi"
-}
-
-remove_old_packy() {
-  rm -rf "${dest}/${name}${1}$(destify ${2})$(destify ${3})$(destify ${4})${5}"
-  rm -rf "${dest}/${name}${1}${5}-hdpi"
-  rm -rf "${dest}/${name}${1}${5}-xhdpi"
+  rm -rf "${dest}/${name}$(destify ${1})$(destify ${2})$(destify ${3})$(destify ${4})$(destify ${5})"{'','-hdpi','-xhdpi'}
 }
 
 ###############################################################################
@@ -544,6 +536,8 @@ config_gtk4() {
 install_libadwaita() {
   color="${colors[0]}"
   opacity="${opacities[0]}"
+
+  echo -e "${color} ${opacity} ${alt} ${theme} ${scheme}"
 
   gtk_base && config_gtk4 "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
 }
@@ -605,18 +599,6 @@ remove_themes() {
       done
     done
   done
-
-#  for color in '-light' '-dark'; do
-#    for opacity in "${OPACITY_VARIANTS[@]}"; do
-#      for alt in "${ALT_VARIANTS[@]}"; do
-#        for theme in "${THEME_VARIANTS[@]}"; do
-#          for scheme in '' '-nord'; do
-#            remove_old_packy "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
-#          done
-#        done
-#      done
-#    done
-#  done
 
   wait ${process_ids[*]} &> /dev/null
 }

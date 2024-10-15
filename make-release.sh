@@ -15,7 +15,7 @@ N_VARIANTS=('' '-nord')
 install() {
   remove_themes; customize_theme; avoid_variant_duplicates
   install_themes; echo; prompt -s "Install Gnome${RELEASE_VERSION} version finished!"; echo
-  local colorscheme="-nord"
+  local schemes=("${SCHEME_VARIANTS[1]}")
   install_themes; echo; prompt -s "Install Gnome${RELEASE_VERSION} nord version finished!"; echo
 }
 
