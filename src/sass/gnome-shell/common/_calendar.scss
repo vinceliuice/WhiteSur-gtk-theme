@@ -23,22 +23,6 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   }
 }
 
-%show_apps_bigsur {
-  .show-apps-icon {
-    color: transparent !important;
-    background-image: url("assets/view-app-grid.svg");
-    background-size: contain;
-  }
-
-  &,
-  &:hover,
-  &:active,
-  &:checked,
-  &:focus {
-    .overview-icon, .show-apps-icon { color: transparent !important; }
-  }
-}
-
 // overall menu
 #calendarArea {
   padding: $base_margin 0;

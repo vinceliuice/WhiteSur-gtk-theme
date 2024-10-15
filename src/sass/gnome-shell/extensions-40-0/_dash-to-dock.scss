@@ -204,6 +204,8 @@
 
     .show-apps,
     .app-well-app {
+      color: $light_fg_color;
+
       &:hover .overview-icon,
       &:focus .overview-icon,
       &:selected .overview-icon {
