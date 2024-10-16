@@ -1868,6 +1868,11 @@ searchbar {
   button.flat {
     @extend %circular_button;
   }
+
+  .top-bar &:not(.inline) > revealer > box,
+  .bottom-bar &:not(.inline) > revealer > box {
+    background-color: transparent;
+  }
 }
 
 actionbar > revealer > box {
@@ -4474,14 +4479,17 @@ list.boxed-list {
 }
 
 list.boxed-list-separate {
-  background: none;
   color: $fg_color;
+  @extend %circular_list;
 
   > row {
-    @extend %boxed_list_row;
     border: none;
     margin-bottom: 12px;
     outline: none;
+    box-shadow: none;
+    background-color: transparent;
+    @extend %boxed_list_row;
+    @extend %circular_row;
 
     &:selected {
       background-color: $visit_color;
