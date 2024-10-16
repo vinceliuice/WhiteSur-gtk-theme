@@ -42,8 +42,8 @@ usage() {
   helpify "   2. -b, -background"         "[default|blank|IMAGE_PATH]"                        "    Set gnome-shell background image"              "Default is BigSur-like wallpaper"
   helpify "   3. -p, -panelopacity"       "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "    Set gnome-shell panel transparency"            "Default is 15%"
   helpify "   4. -h, -panelheight"        "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"    "    Set gnome-shell panel height size"             "Default is 32px"
-  helpify "   5. -n, -normal"             ""                                                  "    Set gnome-shell show apps button style to normal" "Default is BigSur"
-  helpify "   6. -s, -smaller"            ""                                                  "    Set gnome-shell font size to smaller (10pt)"   "Default is 11pt"
+  helpify "   5. -sf, -smallerfont"       ""                                                  "    Set gnome-shell font size to smaller (10pt)"   "Default is 11pt"
+  helpify "   6. normal, -normal"         ""                                                  "    Set gnome-shell show apps button style to normal" "Default is BigSur"
 
   helpify "--round, --roundedmaxwindow"   ""                                                  "  Set maximized window to rounded"                 "Default is square"
   helpify "--black, --blackfont"          ""                                                  "  Set panel font color to black"                   "Default is white"
@@ -107,10 +107,10 @@ while [[ $# -gt 0 ]]; do
             check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
           -h|-panelheight)
             check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
-          -n|-normal)
-            showapps_normal="true"; shift ;;
-          -s|-smaller)
+          -sf|-smallerfont)
             smaller_font="true"; shift ;;
+          normal|-normal)
+            showapps_normal="true"; shift ;;
         esac
       done
       ;;

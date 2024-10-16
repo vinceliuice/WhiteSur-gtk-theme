@@ -62,7 +62,7 @@ Usage:  `./install.sh [OPTIONS...]`
 
 OPTIONS:
   -d, --dest DIR
-   Set destination directory. Default is '/home/vince/.themes'
+   Set destination directory. Default is '/home/[USER_NAME]/.themes'
 
   -n, --name NAME
    Set theme name. Default is 'WhiteSur'
@@ -109,11 +109,11 @@ OPTIONS:
      4. -h, -panelheight [default|smaller|bigger]
      Set gnome-shell panel height size. Default is 32px
 
-     5. -n, -normal 
-     Set gnome-shell show apps button style to normal. Default is BigSur
-
-     6. -s, -smaller 
+     5. -sf, -smallerfont 
      Set gnome-shell font size to smaller (10pt). Default is 11pt
+
+     6. normal, -normal 
+     Set gnome-shell show apps button style to normal. Default is BigSur
 
   --round, --roundedmaxwindow 
    Set maximized window to rounded. Default is square
@@ -203,7 +203,7 @@ OPTIONS:
    Set 'WhiteSur' GDM/Flatpak theme accent color. Default is BigSur-like theme
 
   -s, --scheme [standard|nord]
-   Set theme colorscheme style. Default is 'standard'
+   Set 'WhiteSur' GDM/Flatpak theme colorscheme style. Default is 'standard'
 
    
  Tweaks for GDM theme. options
@@ -218,7 +218,7 @@ OPTIONS:
 
       4. -h, -panelheight [default|smaller|bigger]   Set GDM panel height size Default is 32px
 
-      5. -s, -smaller    Set GDM font size to smaller (10pt) Default is 11pt
+      5. -sf, -smallerfont    Set GDM font size to smaller (10pt) Default is 11pt
 
       6. -nd, -nodarken    Don't darken 'WhiteSur' GDM theme background image 
 

@@ -33,7 +33,7 @@ usage() {
   helpify "-o, --opacity"                  "[$(IFS='|'; echo "${OPACITY_VARIANTS[*]}")]"       "  Set '${THEME_NAME}' GDM/Flatpak theme opacity variants"           "Default is 'normal'"
   helpify "-c, --color"                    "[$(IFS='|'; echo "${COMMAND_COLOR_VARIANTS[*]}")]" "  Set '${THEME_NAME}' GDM/Flatpak theme color variants"             "Default is 'light'"
   helpify "-t, --theme"                    "[$(IFS='|'; echo "${THEME_VARIANTS[*]}")]"         "  Set '${THEME_NAME}' GDM/Flatpak theme accent color"               "Default is BigSur-like theme"
-  helpify "-s, --scheme"                   "[$(IFS='|'; echo "${SCHEME_VARIANTS[*]}")]"        "  Set theme colorscheme style"                                      "Default is 'standard'"
+  helpify "-s, --scheme"                   "[$(IFS='|'; echo "${SCHEME_VARIANTS[*]}")]"        "  Set '${THEME_NAME}' GDM/Flatpak theme colorscheme style"          "Default is 'standard'"
 
   helpify "" "" "Tweaks for GDM theme" "options"
   sec_title "-g, --gdm"                    ""                                                  "  Without options default GDM theme will install..."                ""
@@ -41,7 +41,7 @@ usage() {
   sec_helpify "2. -b, -background"         "[default|blank|IMAGE_PATH]"                        "  Set GDM background image"                                         "Default is BigSur-like wallpaper"
   sec_helpify "3. -p, -panelopacity"       "[$(IFS='|'; echo "${PANEL_OPACITY_VARIANTS[*]}")]" "  Set GDM panel transparency"                                       "Default is 15%"
   sec_helpify "4. -h, -panelheight"        "[$(IFS='|'; echo "${PANEL_SIZE_VARIANTS[*]}")]"    "  Set GDM panel height size"                                        "Default is 32px"
-  sec_helpify "5. -s, -smaller"            ""                                                  "  Set GDM font size to smaller (10pt)"                              "Default is 11pt"
+  sec_helpify "5. -sf, -smallerfont"       ""                                                  "  Set GDM font size to smaller (10pt)"                              "Default is 11pt"
   sec_helpify "6. -nd, -nodarken"          ""                                                  "  Don't darken '${THEME_NAME}' GDM theme background image"          ""
   sec_helpify "7. -nb, -noblur"            ""                                                  "  Don't blur '${THEME_NAME}' GDM theme background image"            ""
 
@@ -209,16 +209,14 @@ while [[ $# -gt 0 ]]; do
             check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
           -h|-panelheight)
             check_param "${1}" "${1}" "${2}" "optional" "optional" "optional" && shift 2 || shift ;;
-          -s|-smaller)
-            smaller_font="true"; shift ;;
-          -nd|--nodarken)
+          -nd|-nodarken)
             gdm_info ${1}
             no_darken="true"; shift ;;
-          -nb|--noblur)
+          -nb|-noblur)
             gdm_info ${1}
             no_blur="true"; shift ;;
-          -nord|--nordcolor)
-            colorscheme="-nord"; shift ;;
+          -sf|-smallerfont)
+            smaller_font="true"; shift ;;
         esac
       done
 
@@ -253,6 +251,8 @@ while [[ $# -gt 0 ]]; do
     -c|--color)
       check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
     -t|--theme)
+      check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
+    -s|--scheme)
       check_param "${1}" "${1}" "${2}" "not-at-all" "must" "must" && shift 2 || shift ;;
     *)
       prompt -e "ERROR: Unrecognized tweak option '${1}'."
