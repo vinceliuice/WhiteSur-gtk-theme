@@ -918,6 +918,13 @@ button {
     &.text-button {
       padding-left: $container_padding + 4px;
       padding-right: $container_padding + 4px;
+      min-width: 80px;
+
+      &.circular {
+        min-height: $menuitem_size - 4px;
+        min-width: $menuitem_size - 4px;
+        padding: $container_padding - 2px;
+      }
     }
 
     &.image-button {
@@ -4274,11 +4281,6 @@ colorchooser .popover.osd { border-radius: $bt_radius; }
   border: 1px solid $borders_color;
   border-radius: $bt_radius;
   box-shadow: inset 0px -2px 0px if($variant=='light', transparentize(black, 0.95), transparentize(black, 0.85));
-}
-
-stackswitcher {
-  button.text-button { min-width: 80px; }
-  // button.circular { @extend %circular_button; }
 }
 
 viewswitcher {

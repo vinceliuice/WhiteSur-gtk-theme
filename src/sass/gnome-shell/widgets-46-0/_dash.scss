@@ -81,9 +81,9 @@ $dash_spacing: $base_margin * 0.5;
   // separator between pinned and running apps
   .dash-separator {
     width: 1px;
-    margin-left:$base_margin;
-    margin-right:$base_margin;
-    background-color: rgba(white, 0.25);
+    margin-left: $base_margin;
+    margin-right: $base_margin;
+    background-color: rgba(white, 0.15);
   }
 
   // make sure all dash components have same margin from screen edge

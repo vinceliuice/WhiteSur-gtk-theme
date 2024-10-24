@@ -276,6 +276,7 @@ $entry_highlight:                   rgba($selection_mode_bg, 0.75);
 
 // Button colors
 $button_bg:                         if($variant == 'light', white, #656565);
+$button_shell_bg:                   if($variant == 'light', mix(black, $dialog_bg_color, 6%), mix(white, $dialog_bg_color, 6%));
 
 @if $scheme == 'nord' {
   $button_bg:                       if($variant == 'light', #fbfcfd, #556075);
