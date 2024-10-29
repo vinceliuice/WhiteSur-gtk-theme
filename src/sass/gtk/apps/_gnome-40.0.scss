@@ -1233,3 +1233,17 @@ window.background.csd {
   background-color: transparent;
   background-image: none;
 }
+
+//
+// Pamac manager
+//
+
+dialog-host > widget > widget > toolbarview {
+  > box > entry.search {
+    margin: $base_padding * 2 0;
+
+    + toastoverlay > stack {
+      border-top: 1px solid $header_border;
+    }
+  }
+}
