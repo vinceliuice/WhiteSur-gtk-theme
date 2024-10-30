@@ -2329,6 +2329,76 @@ headerbar {
   }
 
   separator.titlebutton { @extend %header_separator; }
+
+  // Titlebuttons
+  windowcontrols {
+    border-spacing: 6px;
+    padding: 0 10px;
+  
+    &:not(.empty) {
+      &.start:dir(ltr),
+      &.end:dir(rtl) {
+        margin-right: $container_padding + 2px;
+      }
+  
+      &.start:dir(rtl),
+      &.end:dir(ltr) {
+        margin-left: $container_padding + 2px;
+      }
+    }
+  
+    headerbar.titlebar & {
+      border-spacing: $container_padding;
+    }
+  
+    button {
+      > image {
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        background-image: none;
+      }
+  
+      &.close, &.maximize, &.minimize {
+        min-width: 16px;
+        min-height: 16px;
+        margin: 8px 0;
+        padding: ($menuitem_size - 20px) / 2 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 16px 16px;
+  
+        &, &:hover, &:focus, &:active, &:backdrop {
+          @include button(undecorated);
+          color: transparent;
+        }
+  
+        &:backdrop { opacity: 1; }
+      }
+  
+      // Load png assets for each button, Fix the Chrome window restore button bug
+      @each $k in ('close', 'maximize', 'minimize') {
+        @each $l, $m in ('',''), (':backdrop','-backdrop'), (':backdrop:hover','-backdrop-hover'), (':hover','-hover'), (':active','-active') {
+          &.#{$k}#{$l} {
+            background-image: -gtk-scaled(url('windows-assets/titlebutton-#{$k}#{$m}#{$asset_suffix}.png'),
+                                          url('windows-assets/titlebutton-#{$k}#{$m}#{$asset_suffix}@2.png'));
+          }
+        }
+      }
+    }
+  }
+
+  .fullscreen & windowcontrols,
+  .maximized & windowcontrols {
+    button {
+      @each $l, $m in ('',''), (':backdrop','-backdrop'), (':backdrop:hover','-backdrop-hover'), (':hover','-hover'), (':active','-active') {
+        &.maximize#{$l} {
+          background-image: -gtk-scaled(url('windows-assets/titlebutton-restore#{$m}#{$asset_suffix}.png'),
+                                        url('windows-assets/titlebutton-restore#{$m}#{$asset_suffix}@2.png'));
+        }
+      }
+    }
+  }
 }
 
 .titlebar {
@@ -5474,6 +5544,29 @@ window {
       box-shadow: none;
       transition: none;
     }
+
+    &.ssd-frame {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      outline: none;
+
+      @if $variant == 'dark' {
+        headerbar {
+          border-top-left-radius: $wm_radius;
+          border-top-right-radius: $wm_radius;
+          box-shadow: inset 0 1px $highlight_color;
+        }
+
+        &.maximized,
+        &.fullscreen {
+          headerbar {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            box-shadow: none;
+          }
+        }
+      }
+    }
   }
 
   &.solid-csd {
@@ -5483,78 +5576,11 @@ window {
     background-color: $header_bg;
     box-shadow: none;
   }
-}
 
-//
-// Titlebuttons
-//
-
-windowcontrols {
-  border-spacing: 6px;
-  padding: 0 10px;
-
-  &:not(.empty) {
-    &.start:dir(ltr),
-    &.end:dir(rtl) {
-      margin-right: $container_padding + 2px;
-    }
-
-    &.start:dir(rtl),
-    &.end:dir(ltr) {
-      margin-left: $container_padding + 2px;
-    }
-  }
-
-  headerbar.titlebar & {
-    border-spacing: $container_padding;
-  }
-
-  button {
-    > image {
-      padding: 0;
-      margin: 0;
-      background-color: transparent;
-      background-image: none;
-    }
-
-    &.close, &.maximize, &.minimize {
-      min-width: 16px;
-      min-height: 16px;
-      margin: 8px 0;
-      padding: ($menuitem_size - 20px) / 2 0;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 16px 16px;
-
-      &, &:hover, &:focus, &:active, &:backdrop {
-        @include button(undecorated);
-        color: transparent;
-      }
-
-      &:backdrop { opacity: 1; }
-    }
-
-    // Load png assets for each button, Fix the Chrome window restore button bug
-    @each $k in ('close', 'maximize', 'minimize') {
-      @each $l, $m in ('',''), (':backdrop','-backdrop'), (':backdrop:hover','-backdrop-hover'), (':hover','-hover'), (':active','-active') {
-        &.#{$k}#{$l} {
-          background-image: -gtk-scaled(url('windows-assets/titlebutton-#{$k}#{$m}#{$asset_suffix}.png'),
-                                        url('windows-assets/titlebutton-#{$k}#{$m}#{$asset_suffix}@2.png'));
-        }
-      }
-    }
-  }
-
-  .fullscreen &,
-  .maximized & {
-    button {
-      @each $l, $m in ('',''), (':backdrop','-backdrop'), (':backdrop:hover','-backdrop-hover'), (':hover','-hover'), (':active','-active') {
-        &.maximize#{$l} {
-          background-image: -gtk-scaled(url('windows-assets/titlebutton-restore#{$m}#{$asset_suffix}.png'),
-                                        url('windows-assets/titlebutton-restore#{$m}#{$asset_suffix}@2.png'));
-        }
-      }
-    }
+  // server-side decorations as used by mutter
+  &.ssd {
+    // just doing borders, wm draws actual shadows
+    box-shadow: 0 0 0 1px rgba(black, if($variant == 'light', 0.15, 0.75));
   }
 }
 
