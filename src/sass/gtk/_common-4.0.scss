@@ -2294,40 +2294,6 @@ headerbar {
     }
   }
 
-  &.default-decoration {
-    min-height: $medium_size;
-    padding: 0;
-    background-color: $header_bg;
-    border: none;
-    box-shadow: none;
-
-    > windowhandle > box {
-      padding: 0 $container_padding / 2;
-    }
-
-    .tiled &,
-    .maximized &,
-    .fullscreen & { box-shadow: none; }
-
-    windowcontrols {
-      button,
-      menubutton {
-        border: none;
-        min-width: 16px;
-        min-height: 16px;
-        margin: 0;
-        padding: 0;
-      }
-
-      menubutton button {
-        min-height: 20px;
-        min-width: 20px;
-        margin: 0;
-        padding: $container_padding - 2px;
-      }
-    }
-  }
-
   separator.titlebutton { @extend %header_separator; }
 
   // Titlebuttons
@@ -2396,6 +2362,47 @@ headerbar {
           background-image: -gtk-scaled(url('windows-assets/titlebutton-restore#{$m}#{$asset_suffix}.png'),
                                         url('windows-assets/titlebutton-restore#{$m}#{$asset_suffix}@2.png'));
         }
+      }
+    }
+  }
+
+  &.default-decoration {
+    min-height: $medium_size;
+    padding: 0;
+    background-color: $header_bg;
+    border: none;
+    box-shadow: none;
+
+    > windowhandle > box {
+      padding: 0 $container_padding / 2;
+    }
+
+    .tiled &,
+    .maximized &,
+    .fullscreen & { box-shadow: none; }
+
+    windowcontrols {
+      button,
+      menubutton {
+        border: none;
+        min-width: 16px;
+        min-height: 16px;
+        margin: 0;
+        padding: 0;
+      }
+
+      menubutton button {
+        min-height: 20px;
+        min-width: 20px;
+        margin: 0;
+        padding: $container_padding - 2px;
+      }
+
+      button.close, button.maximize, button.minimize {
+        min-width: 16px;
+        min-height: 16px;
+        margin: 0;
+        padding: 0;
       }
     }
   }
