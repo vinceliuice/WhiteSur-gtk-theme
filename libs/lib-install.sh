@@ -8,8 +8,8 @@
 #                                VARIABLES                                    #
 ###############################################################################
 
-source "${REPO_DIR}/shell/lib-core.sh"
-source "${REPO_DIR}/shell/lib-flatpak.sh"
+source "${REPO_DIR}/libs/lib-core.sh"
+source "${REPO_DIR}/libs/lib-flatpak.sh"
 WHITESUR_SOURCE+=("lib-install.sh")
 
 ###############################################################################
@@ -892,7 +892,7 @@ gtk_base() {
     sed $SED_OPT "/\$scheme/s/standard/nord/"                                   "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 
-  if [[ "${GNOME_VERSION}" -ge '47-0' ]]; then
+  if [[ "${GNOME_VERSION}" -ge '47-0' && "${libadwaita}" == 'true' ]]; then
     sed $SED_OPT "/\$gnome_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 }

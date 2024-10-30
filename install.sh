@@ -13,7 +13,7 @@
 ###############################################################################
 
 readonly REPO_DIR="$(dirname "$(readlink -m "${0}")")"
-source "${REPO_DIR}/shell/lib-install.sh"
+source "${REPO_DIR}/libs/lib-install.sh"
 
 # Customization, default values
 colors=("${COLOR_VARIANTS[@]}")
