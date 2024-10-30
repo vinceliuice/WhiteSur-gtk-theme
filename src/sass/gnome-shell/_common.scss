@@ -23,6 +23,11 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
  * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+@if $gnome_version == 'new' {
+  $selected_bg_color: -st-accent-color;
+  $primary_color: -st-accent-color;
+}
+
 // Stage
 stage {
   @include fontsize($base_font_size);

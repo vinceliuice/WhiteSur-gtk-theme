@@ -3,8 +3,14 @@
   width: 48px;
   height: 48px;
   border-radius: 24px; // radius equals the size of the box to give us the curve
-  background-color: lighten(transparentize($primary_color, 0.7), 30%);
-  box-shadow: 0 0 2px 2px lighten($primary_color, 20%);
+
+  @if $gnome_version == 'old' {
+    background-color: lighten(transparentize($primary_color, 0.7), 30%);
+    box-shadow: 0 0 2px 2px lighten($primary_color, 20%);
+  } @else {
+    background-color: st-lighten(st-transparentize($primary_color, 0.7), 30%);
+    box-shadow: 0 0 2px 2px st-lighten($primary_color, 20%);
+  }
 }
 
 // Pointer accessibility notifications
@@ -13,7 +19,12 @@
   height: 60px;
   -pie-border-width: 3px;
   -pie-border-color: $primary_color;
-  -pie-background-color: lighten(transparentize($primary_color, 0.7), 40%);
+
+  @if $gnome_version == 'old' {
+    -pie-background-color: lighten(transparentize($primary_color, 0.7), 40%);
+  } @else {
+    -pie-background-color: st-lighten(st-transparentize($primary_color, 0.7), 40%);
+  }
 }
 
 // Screen zoom/Magnifier

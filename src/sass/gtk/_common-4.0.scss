@@ -107,13 +107,25 @@ $list_shadow: if($variant == 'light',
   background-color: $selected_bg_color;
   color: $selected_fg_color;
 
-  &:disabled { color: mix($selected_fg_color, $selected_bg_color, 50%); }
+  &:disabled {
+    @if $gnome_version == 'old' {
+      color: mix($selected_fg_color, $selected_bg_color, 50%);
+    } @else {
+      color: color-mix(in srgb, $selected_fg_color 50%, $selected_bg_color);
+    }
+  }
 }
 
 %nobg_selected_items {
   color: $selected_fg_color;
 
-  &:disabled { color: mix($selected_fg_color, $selected_bg_color, 50%); }
+  &:disabled {
+    @if $gnome_version == 'old' {
+      color: mix($selected_fg_color, $selected_bg_color, 50%);
+    } @else {
+      color: color-mix(in srgb, $selected_fg_color 50%, $selected_bg_color);
+    }
+  }
 }
 
 %linked_middle {
@@ -312,8 +324,13 @@ iconview {
 
 %rubberband,
 rubberband {
-  border: 1px solid darken($selected_bg_color, 10%);
-  background-color: transparentize(darken($selected_bg_color, 10%), 0.8);
+  @if $gnome_version == 'old' {
+    border: 1px solid darken($selected_bg_color, 10%);
+    background-color: transparentize(darken($selected_bg_color, 10%), 0.8);
+  } @else {
+    border: 1px solid color-mix(in srgb, black 10%, $selected_bg_color);
+    background-color: RGB(color-mix(in srgb, black 10%, $selected_bg_color), 80%);
+  }
 }
 
 flowbox {
@@ -340,8 +357,11 @@ gridview {
     padding: 3px;
 
     &:selected {
-      outline-color: darken($selected_bg_color, 15%);
-
+      @if $gnome_version == 'old' {
+        outline-color: darken($selected_bg_color, 15%);
+      } @else {
+        outline-color: color-mix(in srgb, black 15%, $selected_bg_color);
+      }
       @extend %selected_items;
     }
 
@@ -379,7 +399,13 @@ label {
     opacity: 1;
     color: $disabled_fg_color;
 
-    selection { color: mix($selected_fg_color, $selected_bg_color, 50%); }
+    selection {
+      @if $gnome_version == 'old' {
+        color: mix($selected_fg_color, $selected_bg_color, 50%);
+      } @else {
+        color: color-mix(in srgb, $selected_fg_color 50%, $selected_bg_color);
+      }
+    }
   }
 }
 
@@ -720,11 +746,18 @@ editablelabel > stack > text {
 // Buttons
 //
 // stuff for .needs-attention
-$_dot_color: if($variant=='light', $selected_bg_color,
-                                   lighten($selected_bg_color, 15%));
+
+$_dot_color: '';
+
+@if $gnome_version == 'old' {
+  $_dot_color: if($variant=='light', $selected_bg_color, lighten($selected_bg_color, 15%));
+} @else {
+  $_dot_color: if($variant=='light', $selected_bg_color, color-mix(in srgb, white 15%, $selected_bg_color));
+}
+
 @keyframes needs_attention {
-  from { background-image: radial-gradient(farthest-side, $_dot_color 0%, transparentize($_dot_color, 1) 0%); }
-  to { background-image: radial-gradient(farthest-side, $_dot_color 95%, transparentize($_dot_color, 1)); }
+  from { background-image: radial-gradient(farthest-side, $_dot_color 0%, $_dot_color 0%); }
+  to { background-image: radial-gradient(farthest-side, $_dot_color 95%, $_dot_color); }
 }
 
 %needs_attention {
@@ -732,7 +765,7 @@ $_dot_color: if($variant=='light', $selected_bg_color,
   // simulates the shadow labels and icons normally have in buttons.
   animation: needs_attention 150ms ease-in;
 
-  background-image: radial-gradient(farthest-side, $_dot_color 96%, transparentize($_dot_color,1 ));
+  background-image: radial-gradient(farthest-side, $_dot_color 96%, $_dot_color);
   background-size: 6px 6px, 6px 6px;
   background-repeat: no-repeat;
 
@@ -1471,30 +1504,38 @@ list > row button.image-button:not(.flat) {
 //
 // Links
 //
-link, %links {
+%links,
+link,
+button.link {
   color: $link_color;
+  text-decoration: underline;
+  font-weight: inherit;
 
   &:visited {
     color: $link_visited_color;
-    *:selected & { color: mix($selected_fg_color, $selected_bg_color, 60%); }
-  }
-  &:hover {
-    color: lighten($link_color,10%);
-    *:selected & { color: mix($selected_fg_color, $selected_bg_color, 90%); }
-  }
-  &:active {
-    color: $link_color;
-    *:selected & { color: mix($selected_fg_color, $selected_bg_color, 80%); }
   }
 
+  &:hover {
+    color: HSL(from $link_color h calc(s * 1.1) calc(l * 1.1));
+  }
+
+  &:active {
+    color: $link_color;
+  }
+
+  &:disabled { color: gtkalpha(currentColor, 0.35); }
+
   @at-root %link_selected,
-  &:selected,
-  *:selected & { color: mix($selected_fg_color, $selected_bg_color, 80%); }
+  &:selected {
+    @if $gnome_version == 'old' {
+      color: mix($selected_fg_color, $selected_bg_color, 80%);
+    } @else {
+      color: color-mix(in srgb, $selected_fg_color 80%, $selected_bg_color);
+    }
+  }
 }
 
 button.link {
-  @extend %links;
-
   &, &:hover, &:active, &:checked {
     @extend %undecorated_button;
   }
@@ -2188,15 +2229,25 @@ headerbar {
   &.selection-mode {
     color: $light_fg_color;
     background-color: $selection_mode_bg;
-    border-color: darken($selection_mode_bg, 4%);
     box-shadow: none;
     background-image: none;
     text-shadow: none;
 
+    @if $gnome_version == 'old' {
+      border-color: darken($selection_mode_bg, 5%);
+    } @else {
+      border-color: color-mix(in srgb, black 15%, $selection_mode_bg)
+    }
+
     &:backdrop {
       background-color: $selection_mode_bg;
       color: transparentize($light_fg_color, 0.4);
-      border-color: darken($selection_mode_bg, 4%);
+
+      @if $gnome_version == 'old' {
+        border-color: darken($selection_mode_bg, 5%);
+      } @else {
+        border-color: color-mix(in srgb, black 15%, $selection_mode_bg)
+      }
     }
 
     button {
@@ -2366,9 +2417,6 @@ treeview.view {
   &:selected {
     &, &:focus {
       border-radius: 0;
-      border-left-color: mix($selected_fg_color, $selected_bg_color, 50%);
-      border-top-color: rgba($fg_color, 0.15); // doesn't work unfortunately
-
       @extend %selected_items;
     }
   }
@@ -2377,7 +2425,7 @@ treeview.view {
     color: $disabled_fg_color;
 
     &:selected {
-      color: mix($selected_fg_color, $selected_bg_color, 40%);
+      color: rgba($selected_fg_color, 0.45);
     }
   }
 
@@ -2389,7 +2437,7 @@ treeview.view {
   > dndtarget:drop(active) {
     border-style: solid none;
     border-width: 1px;
-    border-color: mix($fg_color, $selected_bg_color, 50%);
+    border-color: $drop_target_color;
 
     &.after { border-top-style: none; }
 
@@ -2403,16 +2451,13 @@ treeview.view {
 
     &:dir(rtl) { -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl'); }
 
-    color: mix($fg_color, $base_color, 50%);
+    color: $alt_fg_color;
 
     &:hover { color: $fg_color; }
 
-    &:selected {
-      color: mix($selected_fg_color, $selected_bg_color, 70%);
-      &:hover { color: $selected_fg_color; }
-    }
-
     &:checked { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
+
+    &:disabled { color: $alt_disabled_fg_color; }
   }
 
   &.progressbar { // progress bar in treeviews
@@ -2750,8 +2795,13 @@ popover.menu {
 
     &:selected:active {
       color: $selected_fg_color;
-      background-color: darken($selected_bg_color, 5%); // matching buttons
       transition: background-color $shorter_duration $deceleration_curve;
+
+      @if $gnome_version == 'old' {
+        background-color: darken($selected_bg_color, 5%);
+      } @else {
+        background-color: color-mix(in srgb, black 10%, $selected_bg_color);
+      }
     }
   }
 
@@ -3123,10 +3173,20 @@ scrollbar {
 
 $switch_image: linear-gradient(0deg, rgba($fg_color, 0.25) 0%, rgba($fg_color, 0.35) 100%);
 $switch_disabled_image: linear-gradient(0deg, rgba($fg_color, 0.1) 0%, rgba($fg_color, 0.15) 100%);
-$switch_checked_image: linear-gradient(0deg, lighten($selected_bg_color, 10%) 0%, $selected_bg_color 100%);
 $switch_checked_backdrop_image: linear-gradient(0deg, rgba($fg_color, 0.45) 0%, rgba($fg_color, 0.55) 100%);
-$switch_checked_disabled_image: linear-gradient(0deg, lighten($selected_bg_color, 35%) 0%, lighten($selected_bg_color, 25%) 100%);
-$switch_animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
+
+$switch_checked_image: '';
+$switch_checked_disabled_image: '';
+
+@if $gnome_version == 'old' {
+  $switch_checked_image: linear-gradient(0deg, lighten($selected_bg_color, 10%) 0%, $selected_bg_color 100%);
+  $switch_checked_disabled_image: linear-gradient(0deg, lighten($selected_bg_color, 35%) 0%, lighten($selected_bg_color, 25%) 100%);
+} @else {
+  $switch_checked_image: linear-gradient(0deg, color-mix(in srgb, white 25%, $selected_bg_color) 0%, color-mix(in srgb, black 10%, $selected_bg_color) 100%);
+  $switch_checked_disabled_image: linear-gradient(0deg, color-mix(in srgb, white 35%, $selected_bg_color) 0%, color-mix(in srgb, white 25%, $selected_bg_color) 100%);
+}
+
+$switch_animation: switch_ripple_effect 0.1s cubic-bezier(0, 0, 0.2, 1);
 
 @keyframes switch_ripple_effect {
   from {
@@ -3137,8 +3197,8 @@ $switch_animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
 
   to {
     background-image: $switch_checked_image, radial-gradient(circle farthest-corner at center,
-                                      rgba($selected_bg_color, 0.75) 100%,
-                                      rgba($selected_bg_color, 0.0) 0%);
+                                      RGB($selected_bg_color, 75%) 100%,
+                                      transparent 0%);
   }
 }
 
@@ -3153,7 +3213,12 @@ switch {
   font-size: 0;
   padding: 0;
   box-shadow: inset 0 1px 2px rgba(black, 0.1);
-  background-image: $switch_image, radial-gradient(circle farthest-corner at center, transparent 0%, transparent 0%);
+
+  @if $gnome_version == 'old' {
+    background-image: $switch_image, radial-gradient(circle farthest-corner at center, transparent 0%, transparent 0%); 
+  } @else {
+    background-image: $switch_image;
+  }
 
   &:disabled {
     color: transparent;
@@ -3166,8 +3231,13 @@ switch {
     background-color: transparent;
     color: transparent;
     box-shadow: inset 0 1px 2px rgba(black, 0.15);
-    transition: background-image 0.3s, box-shadow 0;
-    background-image: $switch_checked_image, radial-gradient(circle farthest-corner at center, rgba($selected_bg_color, 0.75) 100%, transparent 0%);
+    transition: background-image 0.1s, box-shadow 0;
+
+    @if $gnome_version == 'old' {
+      background-image: $switch_checked_image, radial-gradient(circle farthest-corner at center, rgba($selected_bg_color, 0.75) 100%, transparent 0%);
+    } @else {
+      background-image: $switch_checked_image;
+    }
 
     &:disabled {
       background-color: transparent;
@@ -3242,7 +3312,13 @@ checkbutton, radiobutton {
 
 $check_radio_border: if($variant == 'light', rgba(black, 0.2), rgba(black, 0.1));
 $check_radio_image: linear-gradient(0deg, #6a6a6a 0%, #545454 100%);
-$check_radio_checked_image: linear-gradient(0deg, darken($selected_bg_color, 5%) 0%, lighten($selected_bg_color, 5%) 100%);
+$check_radio_checked_image: '';
+
+@if $gnome_version == 'old' {
+  $check_radio_checked_image: linear-gradient(0deg, darken($selected_bg_color, 5%) 0%, lighten($selected_bg_color, 5%) 100%);
+} @else {
+  $check_radio_checked_image: linear-gradient(0deg, color-mix(in srgb, black 5%, $selected_bg_color) 0%, color-mix(in srgb, white 5%, $selected_bg_color) 100%);
+}
 
 check,
 radio {
@@ -3407,7 +3483,7 @@ scale {
       > trough > highlight {
         background-color: $selected_fg_color;
 
-        &:disabled { background-color: mix($selected_fg_color, $selected_bg_color, 55%); }
+        &:disabled { background-color: rgba($selected_fg_color, 0.5); }
       }
 
       &:disabled { background-color: transparentize(black, 0.9); }
@@ -3419,14 +3495,14 @@ scale {
     border-radius: $bt_radius;
     background-color: $selected_bg_color;
 
-    &:disabled { background-color: transparentize($selected_bg_color, 0.45); }
+    &:disabled { background-color: rgba($selected_bg_color, 0.55); }
   }
 
   // this is another differently styled part of the trough, the most relevant use case is for example
   // in media player to indicate how much video stream as been cached
   > trough > fill {
     border-radius: $bt_radius;
-    background-color: transparentize($selected_bg_color, 0.5);
+    background-color: rgba($selected_bg_color, 0.5);
 
     &:disabled { background-color: transparent; }
   }
@@ -3468,17 +3544,32 @@ scale {
       background-color: $selected_fg_color;
       border-color: $selected_fg_color;
 
-      &:hover {
-        background-color: mix($selected_fg_color, $selected_bg_color, 85%);
-        border-color: mix($selected_fg_color, $selected_bg_color, 85%);
-      }
-      &:active {
-        background-color: mix($selected_fg_color, $selected_bg_color, 50%);
-        border-color: mix($selected_fg_color, $selected_bg_color, 50%);
-      }
-      &:disabled{
-        background-color: mix($selected_fg_color, $selected_bg_color, 55%);
-        border-color: mix($selected_fg_color, $selected_bg_color, 55%);
+      @if $gnome_version == 'old' {
+        &:hover {
+          background-color: mix($selected_fg_color, $selected_bg_color, 85%);
+          border-color: mix($selected_fg_color, $selected_bg_color, 85%);
+        }
+        &:active {
+          background-color: mix($selected_fg_color, $selected_bg_color, 50%);
+          border-color: mix($selected_fg_color, $selected_bg_color, 50%);
+        }
+        &:disabled {
+          background-color: mix($selected_fg_color, $selected_bg_color, 55%);
+          border-color: mix($selected_fg_color, $selected_bg_color, 55%);
+        }
+      } @else {
+        &:hover {
+          background-color: color-mix(in srgb, $selected_fg_color 85%, $selected_bg_color);
+          border-color: color-mix(in srgb, $selected_fg_color 85%, $selected_bg_color);
+        }
+        &:active {
+          background-color: color-mix(in srgb, $selected_fg_color 50%, $selected_bg_color);
+          border-color: color-mix(in srgb, $selected_fg_color 50%, $selected_bg_color);
+        }
+        &:disabled {
+          background-color: color-mix(in srgb, $selected_fg_color 55%, $selected_bg_color);
+          border-color: color-mix(in srgb, $selected_fg_color 55%, $selected_bg_color);
+        }
       }
     }
 

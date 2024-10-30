@@ -3,15 +3,15 @@
 .toggle-switch {
   width: 40px;
   height: 24px;
-  background-size: contain;
-  background-image: url("assets/toggle-off.svg");
+  background-gradient-direction: vertical;
+  background-gradient-start: rgba($fg_color, 0.25);
+  background-gradient-end: rgba($fg_color, 0.35);
+  background: rgba($fg_color, 0.25);
 
-  &:checked { background-image: url("assets/toggle-on.svg"); }
-
-  .popup-menu-item.selected & {
-    background-image: url("assets/toggle-off.svg");
-
-    &:checked { background-image: url("assets/toggle-on.svg"); }
+  &:hover {
+    background-gradient-start: rgba($fg_color, 0.3);
+    background-gradient-end: rgba($fg_color, 0.4);
+    background: rgba($fg_color, 0.3);
   }
 
   StIcon {
@@ -19,25 +19,29 @@
   }
 
   .handle {
-    margin: 0;
-    width: 0;
-    height: 0;
-    background: none;
-    box-shadow: none;
-    transition-duration: 0;
+    margin: 1px;
+    width: 22px;
+    height: 22px;
+    background: white;
+    box-shadow: 0 2px 4px transparentize(black, .9);
+    transition-duration: 100ms;
   }
 
   &:checked {
-    background-color: transparent;
-    color: transparent;
+    background: $primary_color;
+    color: $primary_color;
+    background-gradient-start: $primary_color;
+    background-gradient-end: st-lighten($primary_color, 10%);
 
     &:hover {
-      background-color: transparent;
-      color: transparent;
+      background: $primary_color;
+      color: $primary_color;
+      background-gradient-start: $primary_color;
+      background-gradient-end: st-lighten($primary_color, 10%);
     }
 
     .handle {
-      background: none;
+      background: white;
     }
   }
 }

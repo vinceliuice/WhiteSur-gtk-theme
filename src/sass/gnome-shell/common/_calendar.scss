@@ -199,7 +199,11 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     }
 
     &:active {
-      background-color: darken($primary_color, 5%);
+      @if $gnome_version == 'old' {
+        background-color: darken($primary_color, 5%);
+      } @else {
+        background-color: st-darken($primary_color, 5%);
+      }
       color: $light_fg_color !important;
       background-gradient-direction: none !important;
     }
@@ -210,8 +214,12 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
       background-gradient-direction: none !important;
 
       &:hover, &:focus {
-        background-color: lighten($primary_color, 8%);
         color: $light_fg_color !important;
+        @if $gnome_version == 'old' {
+          background-color: lighten($primary_color, 8%);
+        } @else {
+          background-color: st-lighten($primary_color, 8%);
+        }
       }
     }
   }

@@ -126,7 +126,11 @@ $popop_menuitem_radius: $po_radius - $base_padding;
 
     &:active {
       color: $selected_fg_color !important;
-      background-color: mix($fg_color, $selected_bg_color, 5%) !important;
+      @if $gnome_version == 'old' {
+        background-color: mix($fg_color, $selected_bg_color, 5%) !important;
+      } @else {
+        background-color: st-mix($fg_color, $selected_bg_color, 5%) !important;
+      }
     }
 
     &:insensitive { color: $disabled_fg_color !important; }
@@ -140,7 +144,11 @@ $popop_menuitem_radius: $po_radius - $base_padding;
 
   &:active, &.selected:active {
     color: $selected_fg_color !important;
-    background-color: mix($fg_color, $selected_bg_color, 5%) !important;
+    @if $gnome_version == 'old' {
+      background-color: mix($fg_color, $selected_bg_color, 5%) !important;
+    } @else {
+      background-color: st-mix($fg_color, $selected_bg_color, 5%) !important;
+    }
   }
 
   &:insensitive { color: $disabled_fg_color !important; }
@@ -170,7 +178,11 @@ $popop_menuitem_radius: $po_radius - $base_padding;
 
     &:active {
       color: $selected_fg_color !important;
-      background-color: mix($fg_color, $selected_bg_color, 5%) !important;
+      @if $gnome_version == 'old' {
+        background-color: mix($fg_color, $selected_bg_color, 5%) !important;
+      } @else {
+        background-color: st-mix($fg_color, $selected_bg_color, 5%) !important;
+      }
     }
   }
 }

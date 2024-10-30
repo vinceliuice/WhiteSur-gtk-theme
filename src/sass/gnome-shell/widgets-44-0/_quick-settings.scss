@@ -39,13 +39,21 @@
     color: $light_fg_color;
 
     &:hover {
-      background-color: mix($text_color, $primary_color, 6%) !important;
       color: $light_fg_color;
+      @if $gnome_version == 'old' {
+        background-color: mix($text_color, $primary_color, 6%) !important;
+      } @else {
+        background-color: st-mix($text_color, $primary_color, 6%) !important;
+      }
     }
 
     &:active {
-      background-color: mix($text_color, $primary_color, 15%) !important;
       color: $light_fg_color;
+      @if $gnome_version == 'old' {
+        background-color: mix($text_color, $primary_color, 15%) !important;
+      } @else {
+        background-color: st-mix($text_color, $primary_color, 15%) !important;
+      }
     }
   }
 
@@ -100,13 +108,21 @@
       color: $light_fg_color;
   
       &:hover {
-        background-color: mix($text_color, $primary_color, 6%) !important;
         color: $light_fg_color;
+        @if $gnome_version == 'old' {
+          background-color: mix($text_color, $primary_color, 6%) !important;
+        } @else {
+          background-color: st-mix($text_color, $primary_color, 6%) !important;
+        }
       }
   
       &:active {
-        background-color: mix($text_color, $primary_color, 15%) !important;
         color: $light_fg_color;
+        @if $gnome_version == 'old' {
+          background-color: mix($text_color, $primary_color, 15%) !important;
+        } @else {
+          background-color: st-mix($text_color, $primary_color, 15%) !important;
+        }
       }
     }
 

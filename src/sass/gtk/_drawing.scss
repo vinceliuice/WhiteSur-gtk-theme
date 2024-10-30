@@ -105,8 +105,13 @@
   // active osd entry
   //
     color: $selected_fg_color;
-    border-color: darken($selection_mode_bg, 5%);
     background-color: $selected_bg_color;
+
+    @if $gnome_version == 'old' {
+      border-color: darken($selection_mode_bg, 5%);
+    } @else {
+      border-color: color-mix(in srgb, black 25%, $selected_bg_color)
+    }
   }
 
   @else if $t==osd-insensitive {
@@ -180,8 +185,8 @@
   //
     label, & { color: transparentize($selected_fg_color, 0.45); }
 
-    border-color: if($variant == 'light', transparentize($selected_bg_color, 1), $dark_borders_color);
-    background-color: transparentize($selected_bg_color, 0.45);
+    border-color: if($variant == 'light', $selected_bg_color, $dark_borders_color);
+    background-color: rgba($selected_bg_color, 0.45);
     @if $variant=='light' { box-shadow: none; }
 
     opacity: 0.6;
@@ -356,9 +361,14 @@
 
     color: $actionb_fg;
     background-color: $actionb_bg;
-    border-color: if($variant == 'light', darken($actionb_bg, 6%), $dark_borders_color);
     background-image: none;
     box-shadow: if($variant=='light', none, (inset 0 1px rgba(white, 0.15), inset 0 -1px rgba(white, 0.03)));
+
+    @if $gnome_version == 'old' {
+      border-color: if($variant == 'light', darken($actionb_bg, 6%), $dark_borders_color);
+    } @else {
+      border-color: if($variant == 'light', color-mix(in srgb, black 6% $actionb_bg), $dark_borders_color);
+    }
   }
 
   @else if $t==undecorated {

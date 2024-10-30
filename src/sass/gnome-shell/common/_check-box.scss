@@ -25,9 +25,9 @@
     background-image: url("assets/checkbox.svg");
   }
   &:hover:checked StBin {
-    background-color: rgba($primary_color, $lower_opacity / 2);
+    background-color: RGB($primary_color, 15%);
   }
   &:active:checked StBin {
-    background-color: rgba($primary_color, $lower_opacity);
+    background-color: RGB($primary_color, 30%);
   }
 }

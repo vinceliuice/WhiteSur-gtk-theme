@@ -68,7 +68,12 @@
 #unlockDialogNotifications {
   StButton#vhandle, StButton#hhandle {
     background-color: transparentize($bg_color,0.7);
-    &:hover, &:focus { background-color: transparentize($bg_color,0.5); }
-    &:active { background-color: transparentize($selected_bg_color,0.5); }
+    &:hover, &:focus { background-color: transparentize($bg_color, 0.5); }
+
+    @if $gnome_version == 'old' {
+      &:active { background-color: transparentize($selected_bg_color, 0.5); }
+    } @else {
+      &:active { background-color: st-transparentize($selected_bg_color, 0.5); }
+    }
   }
 }

@@ -15,20 +15,33 @@
 
   &:hover {
     color: white !important;
-    background-color: lighten($primary_color, 9%);
     background-gradient-direction: none !important;
+    @if $gnome_version == 'old' {
+      background-color: lighten($primary_color, 9%);
+    } @else {
+      background-color: st-lighten($primary_color, 9%);
+    }
   }
 
   &:active {
     color: white !important;
-    background-color: darken($primary_color, 5%);
     background-gradient-direction: none !important;
+    @if $gnome_version == 'old' {
+      background-color: darken($primary_color, 5%);
+    } @else {
+      background-color: st-darken($primary_color, 5%);
+    }
   }
 
   &:insensitive {
-    background-color: rgba($primary_color, 0.05);
-    color: rgba($primary_color, 0.35) !important;
     background-gradient-direction: none !important;
+    @if $gnome_version == 'old' {
+      background-color: transparentize($primary_color, 0.9);
+      color: transparentize($primary_color, 0.65) !important;
+    } @else {
+      background-color: st-transparentize($primary_color, 0.9);
+      color: st-transparentize($primary_color, 0.65) !important;
+    }
   }
 }
 

@@ -103,7 +103,13 @@ $flap_sidebar_size: 240px;
           }
 
           &.sidebar-row {
-            .sidebar-icon { color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%)); }
+            .sidebar-icon {
+              @if $gnome_version == 'old' {
+                color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%));
+              } @else {
+                color: if($variant == 'light', $selected_bg_color, color-mix(in srgb, white 20%, $selected_bg_color));
+              }
+            }
           }
         }
       }
@@ -352,6 +358,66 @@ preferencesgroup > box {
     &:selected {
       outline-color: $selected_bg_color;
       background-color: transparent;
+    }
+  }
+
+  .cutout-button { background-color: $dialog_bg_color; }
+
+  @if $gnome_version == 'new' {
+    button.accent-button {
+      min-height: 24px;
+      min-width: 24px;
+      padding: $base_padding / 2;
+      border-radius: $circular_radius;
+      background: var(--accent-bg-color);
+      outline: none;
+      background-clip: content-box;
+      box-shadow: none;
+      border: none;
+
+      &:hover { box-shadow: 0 0 0 3px $divider_color; }
+
+      &:checked { box-shadow: 0 0 0 3px var(--accent-bg-color); }
+
+      &.blue, &.teal, &.green, &.yellow, &.orange, &.red, &.pink, &.purple, &.slate {
+        --accent-color: oklab(from var(--accent-bg-color) var(--standalone-color-oklab));
+      }
+
+      &.blue {
+        --accent-bg-color: var(--accent-blue);
+      }
+
+      &.teal {
+        --accent-bg-color: var(--accent-teal);
+      }
+
+      &.green {
+        --accent-bg-color: var(--accent-green);
+      }
+
+      &.yellow {
+        --accent-bg-color: var(--accent-yellow);
+      }
+
+      &.orange {
+        --accent-bg-color: var(--accent-orange);
+      }
+
+      &.red {
+        --accent-bg-color: var(--accent-red);
+      }
+
+      &.pink {
+        --accent-bg-color: var(--accent-pink);
+      }
+
+      &.purple {
+        --accent-bg-color: var(--accent-purple);
+      }
+
+      &.slate {
+        --accent-bg-color: var(--accent-slate);
+      }
     }
   }
 }

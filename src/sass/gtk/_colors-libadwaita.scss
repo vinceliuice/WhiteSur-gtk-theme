@@ -104,8 +104,12 @@ $dark_5: #000000;
 // define variables for them in _colors.scss
 
 // The main accent color and the matching text value
-@define-color accent_bg_color #{$primary_color};
-@define-color accent_fg_color #{$light_fg_color};
+
+@if $gnome_version == 'old' {
+  @define-color accent_bg_color #{$primary_color};
+  @define-color accent_fg_color #{$light_fg_color};
+}
+
 @define-color accent_color #{$primary_color};
 
 // destructive-action buttons
@@ -157,3 +161,28 @@ $dark_5: #000000;
 // Miscellaneous
 @define-color shade_color #{$borders_color};
 @define-color scrollbar_outline_color #{$borders_color};
+
+@if $gnome_version == 'new' {
+  :root {
+    --accent-blue: #{$theme_color_default};
+    --accent-teal: #2190a4;
+    --accent-green: #{$theme_color_green};
+    --accent-yellow: #{$theme_color_yellow};
+    --accent-orange: #{$theme_color_orange};
+    --accent-red: #{$theme_color_red};
+    --accent-pink: #{$theme_color_pink};
+    --accent-purple: #{$theme_color_purple};
+    --accent-slate: #6f8396;
+
+    --accent-color: @accent_bg_color;
+    --accent-bg-color: @accent_bg_color;
+    --accent-fg-color: @accent_fg_color;
+  }
+
+  $selected_bg_color: var(--accent-bg-color);
+  $primary_color: var(--accent-bg-color);
+  $entry_highlight: RGB(color-mix(in srgb, white 25%, var(--accent-bg-color)), 75%);
+  $progress_color: var(--accent-bg-color);
+  $selection_mode_bg: color-mix(in srgb, white 25%, var(--accent-bg-color));
+  $selected_borders_color:  color-mix(in srgb, black 25%, var(--accent-bg-color));
+}

@@ -366,7 +366,7 @@ install_shelly() {
   mkdir -p                                                                                    "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/icons"                                           "${TARGET_DIR}"
   cp -r "${THEME_SRC_DIR}/main/gnome-shell/pad-osd.css"                                       "${TARGET_DIR}"
-  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/shell-${GNOME_VERSION}/gnome-shell${color}.scss" "${TARGET_DIR}/gnome-shell.css"
+  sassc ${SASSC_OPT} "${THEME_SRC_DIR}/main/gnome-shell/gnome-shell${color}.scss"             "${TARGET_DIR}/gnome-shell.css"
 
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/common-assets/"*".svg"                           "${TARGET_DIR}/assets"
   cp -r "${THEME_SRC_DIR}/assets/gnome-shell/assets${color}/"*".svg"                          "${TARGET_DIR}/assets"
@@ -537,8 +537,6 @@ install_libadwaita() {
   color="${colors[0]}"
   opacity="${opacities[0]}"
 
-  echo -e "${color} ${opacity} ${alt} ${theme} ${scheme}"
-
   gtk_base && config_gtk4 "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
 }
 
@@ -574,6 +572,7 @@ install_themes() {
           for scheme in "${schemes[@]}"; do
             gtk_base
             install_theemy "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
+            shell_base
             install_shelly "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}" "${icon}"
           done
         done
@@ -891,6 +890,22 @@ gtk_base() {
 
   if [[ "${scheme}" == 'nord' ]]; then
     sed $SED_OPT "/\$scheme/s/standard/nord/"                                   "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  fi
+
+  if [[ "${GNOME_VERSION}" -ge '47-0' ]]; then
+    sed $SED_OPT "/\$gnome_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  fi
+}
+
+shell_base() {
+  cp -rf "${THEME_SRC_DIR}/main/gnome-shell/_shell-base"{".scss","-temp.scss"}
+
+  sed $SED_OPT "/\widgets/s/46-0/$GNOME_VERSION/"                               "${THEME_SRC_DIR}/main/gnome-shell/_shell-base-temp.scss"
+
+  if [[ "${GNOME_VERSION}" == '3-28' ]]; then
+    sed $SED_OPT "/\extensions/s/46-0/3-28/"                                    "${THEME_SRC_DIR}/main/gnome-shell/_shell-base-temp.scss"
+  elif [[ "${GNOME_VERSION}" -gt '3-28' && "${GNOME_VERSION}" -lt '46-0' ]]; then
+    sed $SED_OPT "/\extensions/s/46-0/40-0/"                                    "${THEME_SRC_DIR}/main/gnome-shell/_shell-base-temp.scss"
   fi
 }
 

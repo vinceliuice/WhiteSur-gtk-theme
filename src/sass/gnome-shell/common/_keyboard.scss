@@ -63,8 +63,13 @@ $default_key_bg_color: if($variant=='light', darken($osd_bg_color, 11%), lighten
     background-color: $primary_color;
     box-shadow: 0 2px 3px rgba(black, 0.15);
 
-    &:focus, &:hover { color: $light_fg_color; background-color: lighten($primary_color, 5%); }
-    &:checked, &:active { color: $light_fg_color; background-color: darken($primary_color, 10%); }
+    @if $gnome_version == 'old' {
+      &:focus, &:hover { color: $light_fg_color; background-color: lighten($primary_color, 5%); }
+      &:checked, &:active { color: $light_fg_color; background-color: darken($primary_color, 10%); }
+    } @else {
+      &:focus, &:hover { color: $light_fg_color; background-color: st-lighten($primary_color, 5%); }
+      &:checked, &:active { color: $light_fg_color; background-color: st-darken($primary_color, 10%); }
+    }
   }
 
   &.shift-key-uppercase {
@@ -99,8 +104,12 @@ $default_key_bg_color: if($variant=='light', darken($osd_bg_color, 11%), lighten
 
 .emoji-panel {
   .keyboard-key:latched {
-    border-color: lighten($primary_color, 5%);
     background-color: $primary_color;
+    @if $gnome_version == 'old' {
+      border-color: lighten($primary_color, 5%);
+    } @else {
+      border-color: st-lighten($primary_color, 5%);
+    }
   }
 }
 

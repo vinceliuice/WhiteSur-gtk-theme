@@ -1,8 +1,13 @@
 // Rubberband for select-area screenshots
 .select-area-rubberband {
-  background-color: transparentize($primary_color, 0.7);
   border: 1px solid $primary_color;
   border-radius: 3px;
+
+  @if $gnome_version == 'old' {
+    background-color: transparentize($primary_color, 0.3);
+  } @else {
+    background-color: st-transparentize($primary_color, 0.3);
+  }
 }
 
 // User icon

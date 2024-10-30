@@ -350,31 +350,36 @@ indicatorbin {
   }
 }
 
-headerbar > windowhandle > box viewswitcher.wide {
-  box-shadow: inset 0 0 0 1px $light_borders_color;
-  border-radius: $bt_radius;
-  padding: 0;
-  margin: 8px 0;
+headerbar > windowhandle > box viewswitcher {
+  min-height: 0;
 
-  > button.toggle {
-    margin: 0;
-    font-weight: 500;
+  &.wide {
+    box-shadow: inset 0 0 0 1px $light_borders_color;
     border-radius: $bt_radius;
-
-    &:not(:first-child) {
-      border-width: 0 0 0 1px;
-      border-style: none solid none none;
-      border-image: linear-gradient(to bottom,
-                                    transparent 16%,
-                                    $light_borders_color 16%,
-                                    $light_borders_color 84%,
-                                    transparent 84%) 0 0 0 1 / 0 0 0 1px stretch;
-    }
-
-    &:hover, &:active, &:checked {
-      border-image: none;
-
-      & + button { border-image: none; }
+    padding: 0;
+    margin: 8px 0;
+  
+    > button.toggle {
+      margin: 0;
+      min-height: 0;
+      font-weight: 500;
+      border-radius: $bt_radius;
+  
+      &:not(:first-child) {
+        border-width: 0 0 0 1px;
+        border-style: none solid none none;
+        border-image: linear-gradient(to bottom,
+                                      transparent 16%,
+                                      $light_borders_color 16%,
+                                      $light_borders_color 84%,
+                                      transparent 84%) 0 0 0 1 / 0 0 0 1px stretch;
+      }
+  
+      &:hover, &:active, &:checked {
+        border-image: none;
+  
+        & + button { border-image: none; }
+      }
     }
   }
 }

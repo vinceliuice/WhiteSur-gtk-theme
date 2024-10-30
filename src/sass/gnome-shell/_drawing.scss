@@ -125,8 +125,12 @@
   }
 
   @if $t == focus {
-    border: 2px solid lighten($fc, 15%) !important;
     box-shadow: inset 0 0 0 1px rgba($borders_color, 0) !important;
+    @if $gnome_version == 'old' {
+      border: 2px solid lighten($fc, 15%) !important;
+    } @else {
+      border: 2px solid st-lighten($fc, 15%) !important;
+    }
   }
 
   @if $t == insensitive {
@@ -222,18 +226,26 @@
 
   @if $t == hover {
     color: $tc;
-    background-color: mix($tc, $c, 6%);
     border: none;
     text-shadow: none;
     icon-shadow: none;
+    @if $gnome_version == 'old' {
+      background-color: mix($tc, $c, 6%);
+    } @else {
+      background-color: st-mix($tc, $c, 6%);
+    }
   }
 
   @if $t == active {
     color: $tc;
-    background-color: mix($tc, $c, 12%);
     border: none;
     text-shadow: none;
     icon-shadow: none;
+    @if $gnome_version == 'old' {
+      background-color: mix($tc, $c, 12%);
+    } @else {
+      background-color: st-mix($tc, $c, 12%);
+    }
   }
 
   @if $t == checked {

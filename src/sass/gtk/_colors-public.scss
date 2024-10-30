@@ -87,8 +87,14 @@ $wm_borders_unfocused: if($variant == 'light', darken($header_bg, 10%), darken($
 @define-color budgie_tasklist_indicator_color #{"" + $fg_color};
 // focused window 'line'
 @define-color budgie_tasklist_indicator_color_active #{"" + $selected_bg_color};
+
 // group-ed and unfocused window 'line(s)'
-@define-color budgie_tasklist_indicator_color_active_window #{"" + mix($selected_bg_color, opacify($header_bg, 1), 35%)};
+@if $gnome_version == 'old' {
+  @define-color budgie_tasklist_indicator_color_active_window #{"" + mix($selected_bg_color, opacify($header_bg, 1), 35%)};
+} @else {
+  @define-color budgie_tasklist_indicator_color_active_window #{"" + color-mix(in srgb, $selected_bg_color 35%, $header_bg)};
+}
+
 // attention 'dot'
 // FIXME: we can't fill whole widget backgrounds with our suggestion colour
 //        because of lacking specific style-class on 'needs_attention' state,
