@@ -14,9 +14,11 @@ N_VARIANTS=('' '-nord')
 
 install() {
   remove_themes; customize_theme; avoid_variant_duplicates
-  install_themes; echo; prompt -s "Install Gnome${RELEASE_VERSION} version finished!"; echo
+  install_themes
+  echo; prompt -s "Install GNOME ${RELEASE_VERSION} version finished!\n"
   local schemes=("${SCHEME_VARIANTS[1]}")
-  install_themes; echo; prompt -s "Install Gnome${RELEASE_VERSION} nord version finished!"; echo
+  install_themes
+  echo; prompt -s "Install GNOME ${RELEASE_VERSION} Nord version finished!\n"
 }
 
 compress() {
@@ -44,10 +46,10 @@ compress() {
 #install && compress
 #prompt -s "Compress Gnome${RELEASE_VERSION} version finished!"; echo
 
-GNOME_VERSION="46-0"
-RELEASE_VERSION="-last"
+GNOME_VERSION="47-0"
+RELEASE_VERSION="47.0"
 install && compress
-prompt -s "Compress Gnome${RELEASE_VERSION} version finished!"; echo
+prompt -i "Compress ${THEME_NAME} themes finished!\n"
 
 prompt -s "Done!"; echo
 exit 0
