@@ -115,7 +115,7 @@ prepare_swupd() {
 
 install_swupd_packages() {
   if [[ ! "${swupd_packages}" ]]; then
-    swupd_packages="$(curl -s -o - "${swupd_url}" | awk -F '"' '/-bin-|-lib-/{print $2}')"
+    swupd_packages=$(curl -s -o - "${swupd_url}" | awk -F '"' '/-bin-|-lib-/{print $2}')
   fi
 
   for key in "${@}"; do

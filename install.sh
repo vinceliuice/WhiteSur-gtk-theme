@@ -185,8 +185,8 @@ else
   prompt -i "Opacity variants : $( IFS=';'; echo "${opacities[*]}" )"
   prompt -i "Alt variants     : $( IFS=';'; echo "${alts[*]}" )"
   prompt -i "Scheme variants  : $( IFS=';'; echo "${schemes[*]}" )"
-  prompt -i "Icon variant     : ${icon}"
-  prompt -i "Nautilus variant : ${nautilus_style}"
+  prompt -i "Start icon style : ${icon}"
+  prompt -i "Nautilus style   : ${nautilus_style}"
 
   echo; install_themes; echo; prompt -s "Done!"
 

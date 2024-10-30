@@ -1,0 +1,34 @@
+VERSION: (GNOME-SHELL) 47.0
+2024年 10月 30日 星期三 20:53:18 CST
+--->>> GTK | GNOME Shell | Cinnamon | Metacity | XFWM | Plank <<<---
+Color variants   : Light;Dark
+Theme variants   : default
+Opacity variants : normal;solid
+Alt variants     : normal
+Scheme variants  : standard
+Start icon style : apple
+Nautilus style   : stable
+VERSION: (GNOME-SHELL) 47.0
+
+2024年 10月 30日 星期三 20:53:52 CST
+
+--->>> GTK | GNOME Shell | Cinnamon | Metacity | XFWM | Plank <<<---
+Color variants   : Light;Dark
+Theme variants   : default
+Opacity variants : normal;solid
+Alt variants     : normal
+Scheme variants  : standard
+Start icon style : apple
+Nautilus style   : stable
+VERSION: (GNOME-SHELL) 47.0
+
+2024年 10月 30日 星期三 20:54:12 CST
+
+--->>> GTK | GNOME Shell | Cinnamon | Metacity | XFWM | Plank <<<---
+Color variants   : Light;Dark
+Theme variants   : default
+Opacity variants : normal;solid
+Alt variants     : normal
+Scheme variants  : standard
+Start icon style : apple
+Nautilus style   : stable
