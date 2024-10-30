@@ -168,3 +168,22 @@
     }
   }
 }
+
+//
+// Mediacontrols
+//
+
+.popup-menu-container {
+  padding: $base_padding * 2 !important;
+  min-width: 20em !important;
+}
+
+.popup-menu-control-icon {
+  min-height: 24px !important;
+  min-width: 24px !important;
+  border-radius: $circular_radius !important;
+}
+
+.popup-menu-player-icons-icon {
+  background: $divider_color !important;
+}

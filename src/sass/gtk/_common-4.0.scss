@@ -976,7 +976,7 @@ button {
     padding: $container_padding;
     border-radius: $circular_radius;
 
-    &.text-button {
+    &.text-button, &.image-text-button {
       padding-left: $container_padding * 3;
       padding-right: $container_padding * 3;
     }

@@ -33,6 +33,7 @@ do
 done
 
 echo "    <file>assets/scalable/checkbox-checked-symbolic.svg</file>" >> gtk.gresource.xml
+echo "    <file>assets/scalable/checkbox-checked-big-symbolic.svg</file>" >> gtk.gresource.xml
 echo "    <file>assets/scalable/checkbox-mixed-symbolic.svg</file>" >> gtk.gresource.xml
 echo "    <file>assets/scalable/radio-checked-symbolic.svg</file>" >> gtk.gresource.xml
 echo "    <file>assets/scalable/combobox-arrow-symbolic.svg</file>" >> gtk.gresource.xml
