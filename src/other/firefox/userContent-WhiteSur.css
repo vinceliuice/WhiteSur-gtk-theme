@@ -1,7 +1,7 @@
 @import "WhiteSur/colors/light.css";
 @import "WhiteSur/colors/dark.css";
 
-@import "Monterey/pages/common.css";
-@import "Monterey/pages/newtab.css";
-@import "Monterey/pages/reader.css";
-@import "Monterey/pages/privatebrowsing.css";
+@import "WhiteSur/pages/common.css";
+@import "WhiteSur/pages/newtab.css";
+@import "WhiteSur/pages/reader.css";
+@import "WhiteSur/pages/privatebrowsing.css";
