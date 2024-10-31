@@ -12,7 +12,7 @@
 }
 
 /* Headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button),
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton),
 toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	border: none !important;
 	box-shadow: none !important;
