@@ -26,6 +26,10 @@ menupopup {
 	--panel-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-menu-border-color) !important;
 }
 
+.cui-widget-panelview[id^="PanelUI-webext-"] {
+  border-radius: 6px !important;
+}
+
 .panel-arrowcontent {
 	border: none !important;
 }
