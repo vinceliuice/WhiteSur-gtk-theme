@@ -608,7 +608,7 @@ install_gdm_theme() {
   # Let's go!
   install_theme_deps
   rm -rf "${WHITESUR_GS_DIR}"; install_beggy
-  gtk_base
+  gtk_base && shell_base
 
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
     install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
