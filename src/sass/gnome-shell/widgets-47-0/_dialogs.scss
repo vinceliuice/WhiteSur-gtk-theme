@@ -2,7 +2,7 @@
 
 %theme_dialogs {
   background-color: $dialog_bg_color;
-  border-radius: $modal_radius;
+  border-radius: $modal_radius + $base_padding;
   border: solid rgba(black, 0.75);
   border-width: if($variant=='light', 0, 1px);
   box-shadow: 0 3px 6px 0 rgba(black, if($variant=='light', 0.25, 0.35));
@@ -45,34 +45,31 @@
   }
 }
 
-.headline {
-  @extend %title_4;
-}
-
 // modal dialog
 .modal-dialog {
   color: $fg_color;
   padding: $base_padding * 3;
-  @extend %theme_dialogs !optional;
+  @extend %theme_dialogs;
 
   .modal-dialog-content-box {
-    margin: 32px 40px;
-    spacing: 32px;
+    padding: 16px 32px 6px;
+    spacing: $base_padding * 3;
     max-width: 28em;
   }
 
   .modal-dialog-button-box {
     padding-top: $base_padding;
-    spacing: 0;
+    spacing: $base_padding;
 
     .modal-dialog-button {
       min-height: 40px;
       padding: 0 16px;
-      margin: 0 !important;
+      margin: 0;
+      margin-right: 6px;
       border: none !important;
       border-radius: $modal_radius - $base_padding * 2;
+      font-weight: bold;
 
-      @include font(button);
       @include button(normal);
       &:hover { @include button(hover); }
       &:active { @include button(active); }
@@ -82,6 +79,7 @@
 
       &:last-child {
         @extend %last_dialog_button;
+        margin-right: 0;
       }
     }
   }
@@ -89,7 +87,7 @@
 
 // End Session Dialog
 .end-session-dialog {
-  width: 30em;
+  width: 28em;
   // border: none;
 
   .end-session-dialog-battery-warning,
@@ -262,4 +260,9 @@
 /* Access portal dialog */
 .access-dialog {
   text-align: center;
+}
+
+// specific label style for restart message
+.restart-message {
+  @extend %title_4;
 }
