@@ -139,12 +139,12 @@
 
 // Run Dialog
 .run-dialog {
-  .modal-dialog-content-box {
-    margin-top: 24px;
-    margin-bottom: 14px;
+  width: 24em;
+
+  .run-dialog-entry {
+    padding: $base_padding * 2 $base_padding * 1.5;
   }
 
-  .run-dialog-entry { width: 20em; }
   .run-dialog-description {
     text-align: center;
     color: $alt_fg_color;
@@ -155,25 +155,8 @@
 // Password or Authentication Dialog
 .prompt-dialog {
   //this is the width of the entire modal popup
-  width: 28em;
+  width: 24em;
   // border: none;
-
-  .modal-dialog-content-box {
-    margin-bottom: 24px;
-  }
-}
-
-.prompt-dialog-password-grid {
-  spacing-rows: 8px;
-  spacing-columns: 4px;
-
-  .prompt-dialog-password-entry {
-    width: auto;
-
-    // 4px (spacing) + 16px (spinner-width)
-    &:ltr { margin-left: 20px; }
-    &:rtl { margin-right: 20px; }
-  }
 }
 
 .prompt-dialog-password-grid {
@@ -195,6 +178,7 @@
 
 .prompt-dialog-password-entry {
   width: 20em;
+  padding: $base_padding * 2 $base_padding * 1.5;
 }
 
 .prompt-dialog-error-label,
@@ -219,6 +203,11 @@
   spacing: 8px;
   margin-bottom: 6px;
 
+  .polkit-dialog-user-label,
+  .polkit-dialog-user-root-label {
+    @extend %title_4;
+  }
+
   .polkit-dialog-user-root-label {
     color: $warning_color;
   }
@@ -231,8 +220,10 @@
 }
 
 .audio-selection-device {
+  min-width: 24em;
   border: 1px solid $borders_color;
   border-radius: $bt_radius;
+
   &:hover, &:focus { background-color: $visit_color; }
   &:active {
     background-color: $selected_bg_color;
@@ -241,8 +232,8 @@
 }
 
 .audio-selection-device-box {
-  padding: 20px;
-  spacing: 20px;
+  padding: $base_padding * 2;
+  spacing: $base_padding * 2;
 }
 
 .audio-selection-device-icon {
