@@ -116,6 +116,10 @@ preferencesgroup > box {
   > box.single-line {
     min-height: 34px;
   }
+
+  grid > box > switch {
+    margin: 14px 0;
+  }
 }
 
 //

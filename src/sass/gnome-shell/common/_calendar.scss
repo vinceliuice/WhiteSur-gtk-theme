@@ -136,7 +136,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   .calendar-day,
   .calendar-day-base {
     @extend %numeric;
-    // @extend %smaller;
+    @extend %smaller;
     text-align: center;
     width: if($font_size == 'normal', 2.8em, 2.4em);
     height: if($font_size == 'normal', 2.8em, 2.4em);

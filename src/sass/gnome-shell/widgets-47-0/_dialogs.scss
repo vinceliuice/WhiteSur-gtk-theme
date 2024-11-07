@@ -65,7 +65,6 @@
       min-height: 40px;
       padding: 0 16px;
       margin: 0;
-      margin-right: 6px;
       border: none !important;
       border-radius: $modal_radius - $base_padding * 2;
       font-weight: bold;
@@ -79,7 +78,6 @@
 
       &:last-child {
         @extend %last_dialog_button;
-        margin-right: 0;
       }
     }
   }

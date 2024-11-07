@@ -1548,6 +1548,7 @@ button.link {
 //
 spinbutton {
   background: none;
+  min-height: $small_size;
 
   &:drop(active) { box-shadow: none; }
 
@@ -1599,9 +1600,12 @@ spinbutton {
       padding-top: 2px;
       padding-bottom: 2px;
       min-width: $menuitem_size;
+      min-height: $small_size - 4px;
     }
 
-    > button, > text { @extend %linked; min-height: $small_size; }
+    > button { min-height: $small_size; }
+
+    > button, > text { @extend %linked; }
 
     &:dir(ltr) > text,
     &:dir(rtl) > button.up { border-radius: $bt_radius 0 0 $bt_radius; }
@@ -4024,10 +4028,10 @@ scrolledwindow {
   // This is used by GtkScrolledWindow, when content is touch-dragged past boundaries.
   // This draws a box on top of the content, the size changes programmatically.
   > overshoot {
-    &.top { @include overshoot_alt(top); }
-    &.bottom { @include overshoot_alt(bottom); }
-    &.left { @include overshoot_alt(left); }
-    &.right { @include overshoot_alt(right); }
+    &.top { @include overshoot(top); }
+    &.bottom { @include overshoot(bottom); }
+    &.left { @include overshoot(left); }
+    &.right { @include overshoot(right); }
   }
 
   // Overflow indication, works similarly to the overshoot, the size if fixed tho.
