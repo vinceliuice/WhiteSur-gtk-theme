@@ -93,8 +93,8 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
   border: none;
   box-shadow: none !important;
   background-color: transparent;
-  padding: $base_padding !important;
-  margin: 0 !important;
+  padding: $base_padding;
+  margin: 0 $base_padding;
   text-shadow: none;
   // border-radius: $base_border_radius;
 
@@ -138,8 +138,8 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     @extend %numeric;
     @extend %smaller;
     text-align: center;
-    width: if($font_size == 'normal', 2.8em, 2.4em);
-    height: if($font_size == 'normal', 2.8em, 2.4em);
+    width: if($font_size == 'normal', 3em, 2.8em);
+    height: if($font_size == 'normal', 3em, 2.8em);
     padding: 0;
     margin: 2px;
     border-radius: $circular_radius;
