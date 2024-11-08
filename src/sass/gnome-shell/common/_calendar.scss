@@ -360,7 +360,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 // Weather
 .weather-button {
   .weather-box {
-    spacing: $base_spacing + $base_margin;
+    spacing: $base_spacing;
   }
 
   .weather-header-box {
@@ -384,15 +384,16 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
   .weather-forecast-time {
     @extend %numeric;
-    @include fontsize(10pt);
+    @extend %smaller;
     color: $alt_fg_color;
     font-weight: normal;
-    padding-top: 0.2em;
-    padding-bottom: 0.4em;
+    padding-top: $base_padding;
+    padding-bottom: $base_padding;
   }
 
   .weather-forecast-icon {
     icon-size: 32px;
+    margin-bottom: $base_margin;
   }
 
   .weather-forecast-temp {
