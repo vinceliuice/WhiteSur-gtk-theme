@@ -60,25 +60,26 @@
   .modal-dialog-button-box {
     padding-top: $base_padding;
     spacing: $base_padding;
+  }
 
-    .modal-dialog-button {
-      min-height: 40px;
-      padding: 0 16px;
-      margin: 0;
-      border: none !important;
-      border-radius: $modal_radius - $base_padding * 2;
-      font-weight: bold;
+  .modal-dialog-button,
+  .modal-dialog-linked-button {
+    min-height: 40px;
+    padding: 0 16px;
+    margin: 0;
+    border: none !important;
+    border-radius: $modal_radius - $base_padding * 2;
+    font-weight: bold;
 
-      @include button(normal);
-      &:hover { @include button(hover); }
-      &:active { @include button(active); }
-      &:checked { @include button(checked); }
-      &:insensitive { @include button(insensitive); }
-      &:focus { @include button(focus); }
+    @include button(normal);
+    &:hover { @include button(hover); }
+    &:active { @include button(active); }
+    &:checked { @include button(checked); }
+    &:insensitive { @include button(insensitive); }
+    &:focus { @include button(focus); }
 
-      &:last-child {
-        @extend %last_dialog_button;
-      }
+    &:last-child {
+      @extend %last_dialog_button;
     }
   }
 }
