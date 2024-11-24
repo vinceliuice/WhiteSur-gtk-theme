@@ -91,6 +91,9 @@ OPTIONS:
   -l, --libadwaita 
    Install theme into gtk4.0 config for libadwaita. Default is dark version
 
+  -f, --fixed 
+   Install fixed accent color version. Default is adaptive version
+
   -HD, --highdefinition 
    Set to High Definition size. Default is laptop size
 

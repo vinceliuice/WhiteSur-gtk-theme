@@ -895,6 +895,10 @@ gtk_base() {
   if [[ "${GNOME_VERSION}" -ge '47-0' && "${libadwaita}" == 'true' ]]; then
     sed $SED_OPT "/\$gnome_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
+
+  if [[ "${accent_type}" == 'fixed' ]]; then
+    sed $SED_OPT "/\$accent_type/s/default/fixed/"                              "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  fi
 }
 
 shell_base() {

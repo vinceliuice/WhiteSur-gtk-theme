@@ -105,7 +105,7 @@ $dark_5: #000000;
 
 // The main accent color and the matching text value
 
-@if $gnome_version == 'old' {
+@if $gnome_version == 'old' or $accent_type == 'fixed' {
   @define-color accent_bg_color #{$primary_color};
   @define-color accent_fg_color #{$light_fg_color};
 }

@@ -35,6 +35,7 @@ usage() {
   helpify "-m, --monterey"                ""                                                  "  Set to MacOS Monterey style"                     ""
   helpify "-N, --nautilus"                "[$(IFS='|'; echo "${NAUTILUS_STYLE_VARIANTS[*]}")]" "  Set Nautilus style"                             "Default is BigSur-like style (stabled sidebar)"
   helpify "-l, --libadwaita"              ""                                                  "  Install theme into gtk4.0 config for libadwaita" "Default is dark version"
+  helpify "-f, --fixed"                   ""                                                  "  Install fixed accent color version"              "Default is adaptive version"
   helpify "-HD, --highdefinition"         ""                                                  "  Set to High Definition size"                     "Default is laptop size"
 
   helpify "--shell, --gnomeshell"         ""                                                  "  Tweaks for gnome-shell"                          "Options:"
@@ -129,6 +130,8 @@ while [[ $# -gt 0 ]]; do
       monterey="true"; shift ;;
     -l|--libadwaita)
       libadwaita="true"; shift ;;
+    -f|--fixed)
+      accent_type="fixed"; shift ;;
     -r|--remove|-u|-uninstall)
       uninstall='true'; shift ;;
     --silent-mode)
@@ -167,10 +170,11 @@ if [[ "${uninstall}" == 'true' ]]; then
   fi
 else
   if [[ "${interactive}" == 'true' ]]; then
-    show_panel_opacity_dialog; show_sidebar_size_dialog; show_nautilus_style_dialog
-    echo; prompt -w "DIALOG: '--size' and '--panel' parameters are ignored if exist."; echo
-  else
-    show_needed_dialogs
+    show_panel_opacity_dialog
+#    show_sidebar_size_dialog
+    show_nautilus_style_dialog
+#  else
+#    show_needed_dialogs
   fi
 
   prompt -w "Removing the old '${name}' themes...\n"
