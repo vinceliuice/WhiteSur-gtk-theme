@@ -5,8 +5,8 @@
 /* Headerbar top border corners rounded */
 :root[tabsintitlebar][sizemode="normal"]:not([gtktiledwindow="true"]) {
   #nav-bar {
-    border-top-left-radius: 12px !important;
-    border-top-right-radius: 12px !important;
+    border-top-left-radius: env(-moz-gtk-csd-titlebar-radius, 12px) !important;
+    border-top-right-radius: env(-moz-gtk-csd-titlebar-radius, 12px) !important;
     box-shadow: var(--gnome-headerbar-box-shadow) !important;
   }
 
@@ -21,14 +21,28 @@
     body::backdrop,
     dialog::backdrop {
       /* Use an uniform clip to allow WebRender to optimize it better */
-      border-radius: 12px !important;
+      border-radius: env(-moz-gtk-csd-titlebar-radius, 12px) !important;
     }
 
     window[role="dialog"] {
-      border-bottom-left-radius: 12px !important;
-      border-bottom-right-radius: 12px !important;
+      border-bottom-left-radius: env(-moz-gtk-csd-titlebar-radius, 12px) !important;
+      border-bottom-right-radius: env(-moz-gtk-csd-titlebar-radius, 12px) !important;
     }
   }
+}
+
+:root[tabsintitlebar] {
+	/* Always show nav bar window buttons*/
+	#nav-bar > .titlebar-buttonbox-container {
+		display: flex !important;
+	}
+
+	#toolbar-menubar, #TabsToolbar {
+		/* Always hide menu bar window buttons*/
+		& > .titlebar-buttonbox-container {
+			display: none !important;
+		}
+	}
 }
 
 /* Window buttons: at least 1 button */
@@ -58,6 +72,7 @@
 }
 
 /* Window buttons box */
+:root[tabsintitlebar] #nav-bar .titlebar-buttonbox-container,
 :root[tabsintitlebar] #titlebar .titlebar-buttonbox-container,
 :root[tabsintitlebar] #titlebar-buttonbox-container,
 :root[tabsintitlebar][inFullscreen] #window-controls {
@@ -68,11 +83,13 @@
 	top: 0;
 	display: block !important;
 }
+:root[tabsintitlebar] #nav-bar .titlebar-buttonbox,
 :root[tabsintitlebar] #titlebar .titlebar-buttonbox {
 	-moz-appearance: none !important;
 }
 
 /* Window buttons style */
+:root[tabsintitlebar] #nav-bar .titlebar-button,
 :root[tabsintitlebar] #titlebar .titlebar-button,
 :root[tabsintitlebar][inFullscreen] #window-controls toolbarbutton {
 	-moz-appearance: none !important;
@@ -82,7 +99,9 @@
 	margin: 16px 4px !important;
 	padding: 2px 0 !important;
 	width: 16px;
+	--inactive-titlebar-opacity: 1 !important;
 }
+:root[tabsintitlebar][inFullscreen] #nav-bar .titlebar-button,
 :root[tabsintitlebar][inFullscreen] #titlebar .titlebar-button,
 :root[tabsintitlebar][inFullscreen] #window-controls toolbarbutton {
 	height: 24px !important;
@@ -90,10 +109,10 @@
 	margin: 12px 4px !important;
 	padding: 0 !important;
 }
+:root[tabsintitlebar] #nav-bar .titlebar-button .toolbarbutton-icon,
+:root[tabsintitlebar] #nav-bar:-moz-window-inactive .titlebar-button .toolbarbutton-icon,
 :root[tabsintitlebar] #titlebar .titlebar-button .toolbarbutton-icon,
-:root[tabsintitlebar][inFullscreen] #window-controls toolbarbutton .toolbarbutton-icon {
-	opacity: 0 !important;
-}
+:root[tabsintitlebar][inFullscreen] #window-controls toolbarbutton .toolbarbutton-icon,
 :root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-button .toolbarbutton-icon,
 :root[tabsintitlebar][inFullscreen] #window-controls:-moz-window-inactive toolbarbutton .toolbarbutton-icon {
 	opacity: 0 !important;
@@ -103,7 +122,9 @@
 :root[tabsintitlebar][inFullscreen] #window-controls #close-button,
 :root[tabsintitlebar][inFullscreen] #window-controls #minimize-button,
 :root[tabsintitlebar][inFullscreen] #titlebar .titlebar-buttonbox .titlebar-close,
-:root[tabsintitlebar][inFullscreen] #titlebar .titlebar-buttonbox .titlebar-min {
+:root[tabsintitlebar][inFullscreen] #titlebar .titlebar-buttonbox .titlebar-min,
+:root[tabsintitlebar][inFullscreen] #nav-bar .titlebar-buttonbox .titlebar-close,
+:root[tabsintitlebar][inFullscreen] #nav-bar .titlebar-buttonbox .titlebar-min {
 	display: none !important;
 }
 

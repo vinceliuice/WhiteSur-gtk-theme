@@ -9,6 +9,7 @@
 /* Tabs bar height */
 #tabbrowser-tabs {
 	--tab-min-height: 32px !important;
+	--tabstrip-min-height: 32px !important;
 }
 
 #tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {

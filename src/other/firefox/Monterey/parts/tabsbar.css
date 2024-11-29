@@ -15,6 +15,12 @@ tab > stack {
 	margin: 0 3px !important;
 }
 
+/* Tabs bar height */
+#tabbrowser-tabs {
+	--tab-min-height: 32px !important;
+	--tabstrip-min-height: 32px !important;
+}
+
 .tabbrowser-tab,
 .tab-background {
 	border: none !important;
