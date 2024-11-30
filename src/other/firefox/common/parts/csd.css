@@ -135,7 +135,7 @@
 	}
 
 	/* Window buttons box */
-	:root[tabsintitlebar] #titlebar .titlebar-buttonbox-container {
+	:root[tabsintitlebar] #nav-bar .titlebar-buttonbox-container {
 		padding: 0 3px 0 4px;
 		left: 8px;
 		right: auto;
