@@ -12,10 +12,6 @@
 	min-height: 32px !important;
 }
 
-#TabsToolbar-customization-target {
-	padding-bottom: 6px !important;
-}
-
 #TabsToolbar #tabbrowser-tabs,
 #TabsToolbar #tabbrowser-tabs arrowscrollbox {
 	min-height: 32px !important;
@@ -33,7 +29,7 @@
 }
 
 #TabsToolbar tab > stack {
-	margin: 0 3px !important;
+	margin: 6px 3px !important;
 }
 
 :root:not([sizemode="normal"]) .titlebar-spacer[type="pre-tabs"], :root[gtktiledwindow="true"] .titlebar-spacer[type="pre-tabs"] { /* reset */
@@ -44,10 +40,13 @@
 	width: 8px !important;
 }
 
-.tabbrowser-tab,
 .tab-background {
 	border: none !important;
 	box-shadow: none !important;
+}
+
+#TabsToolbar .tabbrowser-tab,
+#TabsToolbar .tab-background {
 	border-radius: 8px !important;
 	padding: 0 !important;
 	background-image: none !important;
@@ -321,7 +320,7 @@ tab[selected]:-moz-window-inactive .tab-label {
 #TabsToolbar #tabs-newtab-button,
 #TabsToolbar #new-tab-button {
 	min-height: 32px !important;
-	margin: 0 2px !important;
+	margin: 6px 2px !important;
 	padding: 0 10px !important;
 	border-radius: 8px !important;
 }

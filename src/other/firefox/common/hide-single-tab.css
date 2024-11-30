@@ -1,20 +1,21 @@
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-#tabbrowser-tabs tab:only-of-type,
-#TabsToolbar #alltabs-button {
-	display: none !important;
-}
-
-.tab-background, .tab-stack {
-	min-height: 0 !important;
-}
-
 #TabsToolbar {
 	min-height: 0 !important;
-}
 
-#tabbrowser-tabs,
-#tabbrowser-tabs arrowscrollbox {
-	min-height: 0 !important;
-	--tab-min-height: 0 !important;
+	#tabbrowser-tabs tab:only-of-type,
+	#alltabs-button {
+		display: none !important;
+	}
+
+	.tab-background,
+	.tab-stack {
+		min-height: 0 !important;
+	}
+
+	#tabbrowser-tabs,
+	#tabbrowser-tabs arrowscrollbox {
+		min-height: 0 !important;
+		--tab-min-height: 0 !important;
+	}
 }
