@@ -6,6 +6,10 @@
 	padding: 8px !important;
 }
 
+.titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"] {
+	width: 0 !important;
+}
+
 /* Headerbar CSD colors */
 :root[tabsintitlebar] #nav-bar {
 	border: none !important;
