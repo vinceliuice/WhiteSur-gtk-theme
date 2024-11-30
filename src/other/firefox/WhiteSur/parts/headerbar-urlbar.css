@@ -40,7 +40,7 @@ toolbarspring {
 }
 
 #urlbar[breakout][breakout-extend] {
-	width: 100% !important;
+	width: var(--urlbar-width) !important;
 	z-index: 5 !important;
 	padding: 0 !important;
 	border-radius: 8px !important;
