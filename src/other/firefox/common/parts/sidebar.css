@@ -1,8 +1,50 @@
 /* Sidebar */
+#sidebar-main,
 #sidebar-box, #sidebar,
 .sidebar-panel[lwt-sidebar] {
 	color: var(--gnome-toolbar-color) !important;
 	background: var(--gnome-sidebar-background) !important;
+}
+
+#sidebar-main {
+	padding: 8px 0;
+}
+
+@media (-moz-bool-pref: "sidebar.revamp") {
+	#tabbrowser-tabbox {
+		outline: none !important;
+		box-shadow: none !important;
+	}
+	
+	#sidebar {
+		border-radius: 12px !important;
+		box-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-popover-border-color) !important;
+		border: 1px solid rgba(255, 255, 255, 0.06) !important;
+		color: var(--gnome-toolbar-color) !important;
+		background: var(--gnome-menu-background) !important;
+		margin: 6px 6px 0 0 !important;
+	}
+}
+
+.search-container {
+	border-radius: 1000px;
+	background-color: var(--gnome-urlbar-background) !important;
+	border: 1px solid var(--gnome-urlbar-border-color) !important;
+	outline: 2px solid transparent !important;
+	box-shadow: none !important;
+}
+
+.search-container:focus-within {
+	border: 1px solid transparent !important;
+	outline: 2px solid var(--gnome-focused-urlbar-border-color) !important;
+	outline-offset: -2px;
+	transition: outline 100ms ease-out;
+}
+
+fxview-search-textbox {
+  &::part(input) {
+    border: var(--sidebar-box-border) !important;
+  }
 }
 
 #sidebar-header {
@@ -13,7 +55,7 @@
 
 .sidebar-splitter {
 	width: 1px !important;
-	background-color: var(--gnome-sidebar-border-color, var(--gnome-toolbar-background)) !important;
+	background-color: var(--gnome-toolbar-border-color, var(--gnome-toolbar-background)) !important;
 	background-image: linear-gradient(to top, var(--sidebar-background-color) 0%, var(--sidebar-background-color) 100%);
 	border: none !important;
 }

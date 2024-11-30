@@ -14,13 +14,12 @@
 #TabsToolbar,
 #navigator-toolbox,
 .notificationbox-stack {
-	border: none !important;
 	color: var(--gnome-toolbar-color);
 	background: var(--gnome-toolbar-background) !important;
 	transition: none !important;
 }
 
-#TabsToolbar {
+#navigator-toolbox {
 	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
 }
 
@@ -35,7 +34,6 @@
 
 /* Toolbox colors */
 #navigator-toolbox {
-	border: 0 !important;
 	background: none !important;
 }
 

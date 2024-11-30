@@ -14,6 +14,10 @@
 	background: var(--gnome-toolbar-background) !important;
 }
 
+#navigator-toolbox {
+	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
+}
+
 #nav-bar {
 	border: none !important;
 	color: var(--gnome-toolbar-color);
@@ -41,7 +45,6 @@ findbar:-moz-window-inactive label,
 #TabsToolbar {
 	border: none !important;
 	background: var(--gnome-tabstoolbar-background) !important;
-	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
 	box-shadow: inset 0 1px var(--gnome-toolbar-border-color) !important;
 }
 

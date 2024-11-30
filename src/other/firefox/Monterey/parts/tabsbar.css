@@ -11,14 +11,20 @@
 	margin-inline-start: 6px !important;
 }
 
-tab > stack {
+#TabsToolbar tab > stack {
 	margin: 0 3px !important;
 }
 
 /* Tabs bar height */
-#tabbrowser-tabs {
+#TabsToolbar #tabbrowser-tabs {
 	--tab-min-height: 32px !important;
 	--tabstrip-min-height: 32px !important;
+}
+
+#TabsToolbar .tab-background,
+#TabsToolbar .tab-stack {
+	height: 32px !important;
+	min-height: 32px !important;
 }
 
 .tabbrowser-tab,
@@ -26,16 +32,8 @@ tab > stack {
 	border: none !important;
 	box-shadow: none !important;
 	border-radius: 8px !important;
-	height: 32px !important;
-	min-height: 32px !important;
-	max-height: 32px !important;
 	padding: 0 !important;
 	background-image: none !important;
-}
-
-.tab-content {
-	height: 32px !important;
-	min-height: 32px !important;
 }
 
 .tabbrowser-tab:not([visuallyselected="true"], [multiselected]), .tabbrowser-tab:-moz-lwtheme {
@@ -47,21 +45,24 @@ tab > stack {
 }
 
 .tab-background {
-	margin: 0 !important;
-	background-color: transparent !important;
+	background: transparent !important;
 	transition: background 200ms !important;
 }
 
-#TabsToolbar .tabbrowser-tab:not([selected=true]) .tab-background {
+#TabsToolbar .tab-background {
+	margin: 0 !important;
+}
+
+.tabbrowser-tab:not([selected=true]) .tab-background {
 	background: var(--gnome-tabbar-tab-background) !important;
 }
 
-#TabsToolbar .tabbrowser-tab:not([selected=true]) .tab-background:-moz-window-inactive {
+.tabbrowser-tab:not([selected=true]) .tab-background:-moz-window-inactive {
 	background: var(--gnome-inactive-tabbar-tab-background) !important;
 }
 
 /* Tab hover */
-#TabsToolbar .tabbrowser-tab:not([selected=true]):hover .tab-background {
+.tabbrowser-tab:not([selected=true]):hover .tab-background {
 	background: var(--gnome-tabbar-tab-hover-background) !important;
 }
 

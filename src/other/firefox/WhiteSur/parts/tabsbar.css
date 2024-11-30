@@ -6,39 +6,41 @@
 	--space-above-tabbar: 0 !important;
 }
 
+.tab-background:is([selected]) {
+	box-shadow: none !important;
+}
+
+#TabsToolbar {
+/* Remove hover effects on tab bar buttons */
+	--toolbarbutton-active-background: transparent !important;
+	--toolbarbutton-hover-background: transparent !important;
+	padding: 0 !important;
+	box-shadow: inset 0 1px var(--gnome-toolbar-border-color), inset 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+
+/* New hover effect */
+toolbarbutton {
+	fill-opacity: .6 !important;
+}
+toolbarbutton:not([disabled]):hover,
+toolbarbutton[open=true] {
+	fill-opacity: 1 !important;
+}
 /* Tabs bar height */
 #tabbrowser-tabs {
 	--tab-min-height: 32px !important;
 	--tabstrip-min-height: 32px !important;
 }
 
+.tab-background, .tab-stack {
+	min-height: 32px !important;
+}
+
 #tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
 	max-height: 32px !important;
 }
 
-#TabsToolbar .toolbar-items {
+.toolbar-items {
 	margin-bottom: -1px !important;
-}
-
-:root[tabsintitlebar][inFullscreen] #TabsToolbar .toolbar-items {
-	margin-bottom: 0 !important;
-}
-
-/* Remove hover effects on tab bar buttons */
-#TabsToolbar {
-	--toolbarbutton-active-background: transparent !important;
-	--toolbarbutton-hover-background: transparent !important;
-	padding: 0 !important;
-	box-shadow: inset 0 1px var(--gnome-toolbar-border-color), inset 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-}
-
-/* New hover effect */
-#TabsToolbar toolbarbutton {
-	fill-opacity: .6 !important;
-}
-#TabsToolbar toolbarbutton:not([disabled]):hover,
-#TabsToolbar toolbarbutton[open=true] {
-	fill-opacity: 1 !important;
 }
 
 /* Remove shadow next to tab scroll buttons */
@@ -75,23 +77,6 @@
 /* Space between tabs */
 .tabbrowser-tab:not([pinned]) {
 	margin: 0 !important;
-}
-
-/* Tab labels */
-tab {
-	color: var(--gnome-tabbar-tab-color) !important;
-}
-tab:hover {
-	color: var(--gnome-tabbar-tab-hover-color) !important;
-}
-tab[selected] {
-	color: var(--gnome-tabbar-tab-active-color) !important;
-}
-tab:-moz-window-inactive {
-	color: var(--gnome-inactive-tabbar-tab-color) !important;
-}
-tab[selected]:-moz-window-inactive {
-	color: var(--gnome-inactive-tabbar-tab-active-color) !important;
 }
 
 /* Center all inside tab */
@@ -219,6 +204,102 @@ tab[selected]:-moz-window-inactive {
 	margin-right: auto !important
 }
 
+/* Tab hover */
+.tabbrowser-tab:not([selected=true]):hover .tab-background {
+	background-color: var(--gnome-tabbar-tab-hover-background) !important;
+	border-image: none !important;
+	box-shadow: inset 0 1px var(--gnome-tabbar-tab-hover-border-color), inset 0 -1px var(--gnome-tabbar-tab-hover-border-color) !important;
+}
+
+/* Active tab */
+.tab-background:is([selected]) {
+	background-color: var(--gnome-tabbar-tab-active-background) !important;
+	background-image: none !important;
+	border: none !important;
+	border-image: none !important;
+	transition: none !important;
+	margin-left: -1px !important;
+	margin-right: -1px !important;
+	border-radius: 0 !important;
+	box-shadow: 1px 0 var(--gnome-tabbar-tab-active-border-color), 1px 0 3px rgba(0, 0, 0, 0.08),
+	            -1px 0 var(--gnome-tabbar-tab-active-border-color), -1px 0 3px rgba(0, 0, 0, 0.08),
+	            inset 0 -1px var(--gnome-tabbar-tab-active-border-color) !important;
+}
+
+.tab-background:is([selected]):-moz-window-inactive {
+	background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
+	border-image: none !important;
+}
+
+/* Tabs scroll buttons */
+#scrollbutton-up:not([disabled]):hover,
+#scrollbutton-down:not([disabled]):hover {
+	background: var(--gnome-tabbar-tab-active-hover-background) !important;
+}
+
+/* Full width tabs */
+.tabbrowser-tab:not([style^="max-width"]):not([pinned]),
+.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]) {
+	max-width: 100% !important;
+}
+
+.tabbrowser-tab:not([style^="max-width"]):not([pinned]):not([fadein]),
+.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]):not([fadein]) {
+	max-width: .1px !important;
+}
+
+/* Remove blank spaces on tabs start and end */
+.titlebar-spacer {
+	display: none !important;
+}
+
+/* TabsToolbar buttons */
+.toolbarbutton-1 {
+	margin: 0 !important;
+	border-radius: 0 !important;
+	min-width: 32px !important;
+	min-height: 32px !important;
+	padding: 0 !important;
+	border: none !important;
+}
+
+.toolbarbutton-1 > .toolbarbutton-icon,
+.toolbarbutton-1 > .toolbarbutton-text,
+.toolbarbutton-1 > .toolbarbutton-badge-stack {
+	padding: 8px !important;
+}
+
+.toolbarbutton-1 > .toolbarbutton-icon {
+	width: 32px !important;
+	height: 32px !important;
+}
+
+#alltabs-button {
+	display: none !important;
+}
+}
+
+:root[tabsintitlebar][inFullscreen] #TabsToolbar .toolbar-items {
+	margin-bottom: 0 !important;
+}
+
+/* Tab labels */
+tab {
+	color: var(--gnome-tabbar-tab-color) !important;
+}
+tab:hover {
+	color: var(--gnome-tabbar-tab-hover-color) !important;
+}
+tab[selected] {
+	color: var(--gnome-tabbar-tab-active-color) !important;
+}
+tab:-moz-window-inactive {
+	color: var(--gnome-inactive-tabbar-tab-color) !important;
+}
+tab[selected]:-moz-window-inactive {
+	color: var(--gnome-inactive-tabbar-tab-active-color) !important;
+}
+
 /* Close tab button */
 .close-icon {
 	height: 16px !important;
@@ -326,86 +407,7 @@ tab[selected]:-moz-window-inactive {
 }
 
 .tab-background {
-	background-color: transparent !important;
-	transition: background-color 200ms;
-}
-
-.tab-background, .tab-stack {
-	min-height: 32px !important;
-}
-
-/* Tab hover */
-#TabsToolbar .tabbrowser-tab:not([selected=true]):hover .tab-background {
-	background-color: var(--gnome-tabbar-tab-hover-background) !important;
-	border-image: none !important;
-	box-shadow: inset 0 1px var(--gnome-tabbar-tab-hover-border-color), inset 0 -1px var(--gnome-tabbar-tab-hover-border-color) !important;
-}
-
-/* Active tab */
-.tab-background:is([selected]) {
-	background-color: var(--gnome-tabbar-tab-active-background) !important;
-	background-image: none !important;
-	border: none !important;
-	border-image: none !important;
-	transition: none !important;
-	margin-left: -1px !important;
-	margin-right: -1px !important;
-	border-radius: 0 !important;
-	box-shadow: 1px 0 var(--gnome-tabbar-tab-active-border-color), 1px 0 3px rgba(0, 0, 0, 0.08),
-	            -1px 0 var(--gnome-tabbar-tab-active-border-color), -1px 0 3px rgba(0, 0, 0, 0.08),
-	            inset 0 -1px var(--gnome-tabbar-tab-active-border-color) !important;
-}
-
-.tab-background:is([selected]):-moz-window-inactive {
-	background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
-	border-image: none !important;
-}
-
-/* Tabs scroll buttons */
-#TabsToolbar #scrollbutton-up:not([disabled]):hover,
-#TabsToolbar #scrollbutton-down:not([disabled]):hover {
-	background: var(--gnome-tabbar-tab-active-hover-background) !important;
-}
-
-/* Full width tabs */
-.tabbrowser-tab:not([style^="max-width"]):not([pinned]),
-.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]) {
-	max-width: 100% !important;
-}
-
-.tabbrowser-tab:not([style^="max-width"]):not([pinned]):not([fadein]),
-.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]):not([fadein]) {
-	max-width: .1px !important;
-}
-
-/* Remove blank spaces on tabs start and end */
-#TabsToolbar .titlebar-spacer {
-	display: none !important;
-}
-
-/* TabsToolbar buttons */
-#TabsToolbar .toolbarbutton-1 {
-	margin: 0 !important;
-	border-radius: 0 !important;
-	min-width: 32px !important;
-	min-height: 32px !important;
-	padding: 0 !important;
-	border: none !important;
-}
-
-#TabsToolbar .toolbarbutton-1 > .toolbarbutton-icon,
-#TabsToolbar .toolbarbutton-1 > .toolbarbutton-text,
-#TabsToolbar .toolbarbutton-1 > .toolbarbutton-badge-stack {
-	padding: 8px !important;
-}
-
-#TabsToolbar .toolbarbutton-1 > .toolbarbutton-icon {
-	width: 32px !important;
-	height: 32px !important;
-}
-
-#TabsToolbar #alltabs-button {
-	display: none !important;
+	transition: background 200ms;
 }
 
 /* firefox-view-button */
