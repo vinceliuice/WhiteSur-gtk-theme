@@ -175,6 +175,18 @@ tab[selected]:-moz-window-inactive .tab-label {
 	display: none;
 }
 
+/* tab-context-line above tabs */
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
+	height: 2px;
+	border-radius: 2px;
+	margin: 0 12px !important;
+}
+
+/* Remove alt colours references for multi tabs*/
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-bottom-line {
+	display: none;
+}
+
 /* Tab attention dot */
 .tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]), .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]), #firefox-view-button[attention] {
 	background-image: radial-gradient(circle, var(--gnome-tab-attention-icon-color), var(--gnome-tab-attention-icon-color) 2px, transparent 2px) !important;

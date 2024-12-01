@@ -276,6 +276,18 @@ tab[selected]:-moz-window-inactive .tab-label {
 	display: none;
 }
 
+/* tab-context-line above tabs */
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
+	height: 2px;
+	border-radius: 2px;
+	margin: 0 12px !important;
+}
+
+/* Remove alt colours references for multi tabs*/
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-bottom-line {
+	display: none;
+}
+
 /* Remove tab separators */
 .tabbrowser-tab::after,
 .tabbrowser-tab::before {
@@ -300,11 +312,6 @@ tab[selected]:-moz-window-inactive .tab-label {
 .tabbrowser-tab:not([style^="max-width"]):not([pinned]):not([fadein]),
 .tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]):not([fadein]) {
 	max-width: .1px !important;
-}
-
-/* Remove alt colours references for multi tabs*/
-.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-bottom-line {
-	display: none;
 }
 
 .tabbrowser-tab[class*="identity-color-"][pinned] {

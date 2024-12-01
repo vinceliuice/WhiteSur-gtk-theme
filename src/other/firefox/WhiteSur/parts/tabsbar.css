@@ -389,17 +389,24 @@ tab[selected]:-moz-window-inactive {
 	display: none;
 }
 
+/* tab-context-line above tabs */
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
+	height: 2px;
+	border-radius: 0 !important;
+	margin: 0 !important;
+}
+
+/* Remove alt colours references for multi tabs*/
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-bottom-line {
+	display: none;
+}
+
 /* Tab attention dot */
 .tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]), .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]), #firefox-view-button[attention] {
 	background-image: radial-gradient(circle, var(--gnome-tab-attention-icon-color), var(--gnome-tab-attention-icon-color) 2px, transparent 2px) !important;
 	background-position: center bottom 3px !important;
 	background-size: 4px 4px;
 	background-repeat: no-repeat;
-}
-
-/* Remove alt colours references for multi tabs*/
-.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
-	display: none;
 }
 
 .tabbrowser-tab[class*="identity-color-"][pinned] {
@@ -437,34 +444,6 @@ tab[selected]:-moz-window-inactive {
 
 #TabsToolbar #firefox-view-button[open]:-moz-window-inactive {
 	background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
-}
-
-/* Create new container tab indicator */
-.tabbrowser-tab[class*="identity-color-"] .tab-content::before {
-	content: "";
-	display: block;
-	background-image: var(#userContext-icons:--identity-icon);
-	background: var( --identity-tab-color);
-	-moz-context-properties: fill;
-	fill: var(--identity-icon-color);
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center center;
-	min-width: 10px;
-	height: 10px;
-	margin-right: 5px;
-	margin-left: auto !important;
-	border-radius: 100%;
-}
-
-.tabbrowser-tab[class*="identity-color-"][pinned] .tab-content::before,
-.tabbrowser-tab[class*="identity-color-"][image] .tab-content::before,
-.tabbrowser-tab[class*="identity-color-"][busy] .tab-content::before,
-.tabbrowser-tab[class*="identity-color-"][progress] .tab-content::before {
-	right: -10px;
-	top: -8px;
-	position: relative;
-	margin-right: -10px;
 }
 
 /* fix pip on small displays */
