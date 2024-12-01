@@ -665,6 +665,44 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 	list-style-image: url("../icons/tool-profiler.svg") !important;
 }
 
+/* page action */
+.urlbar-page-action {
+	list-style-image: url("../icons/container-openin.svg") !important;
+
+	> .urlbar-icon {
+		filter: none !important;
+	}
+}
+
+#_testpilot-containers-BAP .toolbarbutton-icon {
+	list-style-image: url("../icons/multi-account-container.svg") !important;
+}
+
+.userContext-icon, .subviewbutton[usercontextid] > .toolbarbutton-icon, #userContext-indicator {
+	background-image: var(--identity-icon) !important;
+	-moz-context-properties: fill;
+	fill: var(--identity-icon-color) !important;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.identity-icon-briefcase {
+	--identity-icon: url("../icons/briefcase.svg") !important;
+}
+
+.identity-icon-fingerprint {
+	--identity-icon: url("../icons/fingerprint.svg") !important;
+}
+
+.identity-icon-cart {
+	--identity-icon: url("../icons/cart.svg") !important;
+}
+
+.identity-icon-dollar {
+	--identity-icon: url("../icons/dollar.svg") !important;
+}
+
 /* Fix flat buttons icons aproach */
 button.close::before {
 	content: "";
