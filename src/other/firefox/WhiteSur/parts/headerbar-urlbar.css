@@ -209,7 +209,7 @@ toolbarspring {
 	border-radius: 5px !important;
 }
 
-#star-button-box.urlbar-page-action {
+.urlbar-page-action {
 	padding: 5px 6px !important;
 }
 

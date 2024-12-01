@@ -266,16 +266,19 @@ menu[disabled] > .menu-right {
 }
 
 /* Sound icons */
-.tab-icon-overlay[soundplaying] {
+.tab-icon-overlay:not([crashed])[soundplaying] {
 	list-style-image: url("../icons/audio-playing-symbolic.svg") !important;
+	background-image: none !important;
 }
 
-.tab-icon-overlay[muted] {
+.tab-icon-overlay:not([crashed])[muted] {
 	list-style-image: url("../icons/audio-muted-symbolic.svg") !important;
+	background-image: none !important;
 }
 
 .tab-icon-overlay[activemedia-blocked] {
 	list-style-image: url("../icons/tab-audio-blocked-small.svg") !important;
+	background-image: none !important;
 }
 
 .tab-icon-stack[activemedia-blocked="true"] .tab-icon-image {
@@ -357,7 +360,8 @@ menu[disabled] > .menu-right {
 #add-ons-button,
 #unified-extensions-button,
 #addons-notification-icon,
-.install-icon {
+.install-icon,
+#identity-box[pageproxystate="valid"].extensionPage #identity-icon {
 	list-style-image: url("../icons/application-x-addon-symbolic.svg") !important;
 }
 /* Find button */
@@ -665,13 +669,13 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 	list-style-image: url("../icons/tool-profiler.svg") !important;
 }
 
-/* page action */
-.urlbar-page-action {
-	list-style-image: url("../icons/container-openin.svg") !important;
+/* containers extension */
+.urlbar-page-action > .urlbar-icon {
+	filter: none !important;
+}
 
-	> .urlbar-icon {
-		filter: none !important;
-	}
+#pageAction-urlbar-_testpilot-containers {
+	list-style-image: url("../icons/container-openin.svg") !important;
 }
 
 #_testpilot-containers-BAP .toolbarbutton-icon {
@@ -701,6 +705,25 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 
 .identity-icon-dollar {
 	--identity-icon: url("../icons/dollar.svg") !important;
+}
+
+/* side view extension */
+#pageAction-urlbar-side-view_mozilla_org,
+#sidebarswitcher_menu_side-view_mozilla_org-sidebar-action,
+#side-view_mozilla_org-BAP .toolbarbutton-icon,
+#sidebar-box[sidebarcommand="side-view_mozilla_org-sidebar-action"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon {
+	list-style-image: url("../icons/side-view.svg") !important;
+}
+
+#side-view_mozilla_org-menuitem-_open-in-sidebar .menu-iconic-icon {
+	background-image: url("../icons/side-view.svg") !important;
+}
+
+/* Firefox note extension */
+#notes_mozilla_com-BAP .toolbarbutton-icon,
+#sidebarswitcher_menu_notes_mozilla_com-sidebar-action,
+#sidebar-box[sidebarcommand="notes_mozilla_com-sidebar-action"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon {
+	list-style-image: url("../icons/universal-notepad.svg") !important;
 }
 
 /* Fix flat buttons icons aproach */

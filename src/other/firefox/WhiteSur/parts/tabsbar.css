@@ -372,15 +372,15 @@ tab[selected]:-moz-window-inactive {
 	display: none !important;
 }
 
-.tabbrowser-tab .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
+.tabbrowser-tab .tab-icon-overlay:not([crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
 	background-color: var(--gnome-tabbar-tab-background) !important;
 }
 
-.tabbrowser-tab[selected=true] .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
+.tabbrowser-tab[selected=true] .tab-icon-overlay:not([crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
 	background-color: var(--gnome-tabbar-tab-active-background) !important;
 }
 
-.tabbrowser-tab .tab-icon-overlay:not([crashed]):is([pinned], [sharing]):hover {
+.tabbrowser-tab .tab-icon-overlay:not([crashed]):is([soundplaying], [muted], [activemedia-blocked]):hover {
 	background-color: var(--gnome-tabbar-tab-hover-background) !important;
 }
 
