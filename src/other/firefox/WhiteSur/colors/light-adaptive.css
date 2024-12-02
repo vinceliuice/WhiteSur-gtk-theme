@@ -8,6 +8,10 @@
 :root {
 	/* Browser area before a page starts loading */
 	--gnome-browser-before-load-background: var(--lwt-accent-color, #ffffff);
+	--gnome-content-page-dialog-background: #ffffff;
+	--gnome-content-page-background: #f2f2f2;
+	--gnome-content-box-background: #ffffff;
+	--gnome-content-page-color: #242424;
 	--theme-primary-color: #315bef;
 	--theme-primary-hover-color: #5073f1;
 	--theme-primary-active-color: #6584f3;

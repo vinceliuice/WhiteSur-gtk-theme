@@ -1,24 +1,26 @@
 @media (prefers-color-scheme: dark) {
   :host,
+  :host(.anonymous-content-host),
   :root {
-    --in-content-page-background: rgb(29,29,29) !important;
-    --in-content-page-color: rgb(253,253,253) !important;
+    --color-accent-primary: var(--theme-primary-active-color) !important;
+    --in-content-page-color: var(--gnome-content-page-color) !important;
+    --in-content-page-background: var(--gnome-content-page-background) !important;
 
-    --in-content-box-background: rgb(36, 36, 36) !important;
+    --in-content-box-background: var(--gnome-browser-before-load-background) !important;
     --in-content-box-background-odd: rgba(250,250,250,0.05) !important;
     --in-content-box-info-background: rgba(250,250,250,0.15) !important;
 
     --in-content-border-color: rgba(250,250,250,0.2) !important;
     --in-content-border-hover: rgba(250,250,250,0.3) !important;
 
-    --in-content-icon-color: rgb(252,252,252) !important;
+    --in-content-icon-color: var(--gnome-content-page-color) !important;
 
-    --in-content-primary-button-text-color: rgb(255,255,255) !important;
+    --in-content-primary-button-text-color: var(--gnome-toolbar-color) !important;
     --in-content-primary-button-background: var(--theme-primary-color) !important;
     --in-content-primary-button-background-hover: var(--theme-primary-hover-color) !important;
     --in-content-primary-button-background-active: var(--theme-primary-active-color) !important;
 
-    --in-content-table-background: rgb(35, 35, 35) !important;
+    --in-content-table-background: var(--gnome-browser-before-load-background) !important;
 
     --newtab-background-color: var(--gnome-browser-before-load-background) !important;
     --newtab-background-color-secondary: var(--gnome-menu-background) !important;
@@ -26,12 +28,13 @@
     --fxview-background-color: var(--gnome-browser-before-load-background) !important;
     --fxview-background-color-secondary: var(--gnome-menu-background) !important;
     scrollbar-color: rgba(250,250,250,.4) rgba(22,22,22,.3) !important;
+    --background-color-box: var(--gnome-content-box-background) !important;
   }
 
   @media not (prefers-contrast) {
     :root[dialogroot],
     :host(dialog) {
-      --in-content-page-background: #424242 !important;
+      --in-content-page-background: var(--gnome-content-page-dialog-background) !important;
     }
   }
 }

@@ -51,7 +51,8 @@ usage() {
   sec_helpify "2. flat" "          Monterey alt version"                            ""                                                                              "  Flat round tabs..."
   sec_helpify "3. alt" "           Alt windows button version"                      ""                                                                              "  Alt windows button style like gtk theme"
   sec_helpify "4. darker" "        Darker Firefox theme version"                    ""                                                                              "  Darker Firefox theme version"
-  sec_helpify "5. adaptive" "      Adaptive color version"                          "  You need install adaptive-tab-bar-colour plugin first"                       "  https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/"
+  sec_helpify "5. nord" "          Nord Firefox colorscheme version"                ""                                                                              "  Nord Firefox colorscheme version"
+  sec_helpify "6. adaptive" "      Adaptive color version"                          "  You need install adaptive-tab-bar-colour plugin first"                       "  https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/"
 
   helpify "-e, --edit-firefox"  "[(monterey|flat)|alt|(darker|adaptive)]"           "  Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
 
@@ -173,6 +174,10 @@ while [[ $# -gt 0 ]]; do
           darker)
             darker="-darker"
             prompt -i "Darker Firefox theme version...\n"
+            shift ;;
+          nord)
+            colorscheme="-nord"
+            prompt -i "Nord Firefox colorscheme version...\n"
             shift ;;
           adaptive)
             adaptive="-adaptive"
