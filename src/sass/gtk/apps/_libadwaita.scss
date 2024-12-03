@@ -116,6 +116,10 @@ preferencesgroup > box {
   > box.single-line {
     min-height: 34px;
   }
+
+  grid > box > switch {
+    margin: 14px 0;
+  }
 }
 
 //
@@ -235,10 +239,6 @@ viewswitcher {
 
   &.wide {
     border-spacing: 0;
-
-    > button.toggle {
-      margin: 8px 0;
-    }
   }
 
   &.narrow > button.toggle {
@@ -357,7 +357,6 @@ headerbar > windowhandle > box viewswitcher {
     box-shadow: inset 0 0 0 1px $light_borders_color;
     border-radius: $bt_radius;
     padding: 0;
-    margin: 8px 0;
   
     > button.toggle {
       margin: 0;
@@ -848,6 +847,112 @@ dialog-host > dialog.osd:not(progressbar):not(button):not(menubutton):not(splitb
 
   sheet {
     @extend %osd;
+  }
+}
+
+//
+// AdwToolbarView
+//
+toolbarview {
+  > .top-bar,
+  > .bottom-bar {
+    searchbar,
+    actionbar {
+      > revealer > box {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+      }
+    }
+
+    .toolbar  {
+      background-color: transparent;
+    }
+
+    .collapse-spacing {
+      padding-top: 0;
+      padding-bottom: 0;
+
+      headerbar {
+        min-height: $headerbar_size;
+
+        > windowhandle > box {
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+
+        &.default-decoration {
+          min-height: $medium_size;
+
+          > windowhandle > box {
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+        }
+      }
+
+      searchbar,
+      actionbar {
+        > revealer > box {
+          padding-top: $container_padding;
+          padding-bottom: $container_padding;
+        }
+      }
+
+      .toolbar  {
+        padding-top: $container_padding;
+        padding-bottom: $container_padding;
+      }
+
+      tabbar {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    &.raised {
+      background-color: transparent;
+      color: $header_fg;
+
+      &:backdrop {
+        background-color: transparent;
+      }
+    }
+
+    &:backdrop > windowhandle {
+      filter: none;
+    }
+  }
+
+  > .bottom-bar {
+    padding: 0;
+    border-spacing: 0;
+    box-shadow: inset 0 1px $borders_color;
+    background-color: darken($bg_color, 3%);
+    color: $text_color;
+
+    &:backdrop {
+      background-color: $bg_color;
+      color: $disabled_fg_color;
+    }
+
+    actionbar { @extend %actionbar-inline; }
+  }
+
+  > .top-bar.raised {
+    box-shadow: none;
+
+    &.border {
+      box-shadow: none;
+    }
+  }
+
+  > .bottom-bar.raised {
+    box-shadow: none;
+
+    &.border {
+      box-shadow: none;
+    }
   }
 }
 

@@ -608,7 +608,7 @@ install_gdm_theme() {
   # Let's go!
   install_theme_deps
   rm -rf "${WHITESUR_GS_DIR}"; install_beggy
-  gtk_base
+  gtk_base && shell_base
 
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
     install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
@@ -670,7 +670,10 @@ install_firefox_theme() {
     local TARGET_DIR="${FIREFOX_THEME_DIR}"
   fi
 
+  local theme_type="${darker}${adaptive}${colorscheme}"
+
   remove_firefox_theme
+
   udo mkdir -p                                                                                "${TARGET_DIR}"
   udo cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                            "${TARGET_DIR}"
 
@@ -682,12 +685,12 @@ install_firefox_theme() {
   cp -rf "${FIREFOX_SRC_DIR}"/common/*.css                                                    "${TARGET_DIR}/${theme_name}"
   cp -rf "${FIREFOX_SRC_DIR}"/common/parts/*.css                                              "${TARGET_DIR}/${theme_name}"/parts
   [[ -f "${TARGET_DIR}"/userChrome.css ]] && mv "${TARGET_DIR}"/userChrome.css                "${TARGET_DIR}"/userChrome.css.bak
-  cp -rf "${FIREFOX_SRC_DIR}"/userChrome-"${theme_name}${darker}${adaptive}".css              "${TARGET_DIR}"/userChrome.css
+  cp -rf "${FIREFOX_SRC_DIR}"/userChrome-"${theme_name}${theme_type}".css                     "${TARGET_DIR}"/userChrome.css
   [[ -f "${TARGET_DIR}"/userContent.css ]] && mv "${TARGET_DIR}"/userContent.css              "${TARGET_DIR}"/userContent.css.bak
-  cp -rf "${FIREFOX_SRC_DIR}"/userContent-"${theme_name}${darker}${adaptive}".css             "${TARGET_DIR}"/userContent.css
+  cp -rf "${FIREFOX_SRC_DIR}"/userContent-"${theme_name}${theme_type}".css                    "${TARGET_DIR}"/userContent.css
 
   if [[ "${firefoxtheme}" == 'Flat' && "${theme_name}" == 'Monterey' ]]; then
-    cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt"${darker}${adaptive}".css             "${TARGET_DIR}"/userChrome.css
+    cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt"${theme_type}".css                    "${TARGET_DIR}"/userChrome.css
     cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur/parts/headerbar-urlbar.css                           "${TARGET_DIR}"/Monterey/parts/headerbar-urlbar-alt.css
   fi
 
@@ -894,6 +897,10 @@ gtk_base() {
 
   if [[ "${GNOME_VERSION}" -ge '47-0' && "${libadwaita}" == 'true' ]]; then
     sed $SED_OPT "/\$gnome_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+  fi
+
+  if [[ "${accent_type}" == 'fixed' ]]; then
+    sed $SED_OPT "/\$accent_type/s/default/fixed/"                              "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 }
 

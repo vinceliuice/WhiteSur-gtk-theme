@@ -3,6 +3,7 @@
 .toggle-switch {
   width: 40px;
   height: 24px;
+  border-radius: $circular_radius;
   background-gradient-direction: vertical;
   background-gradient-start: rgba($fg_color, 0.25);
   background-gradient-end: rgba($fg_color, 0.35);
@@ -23,6 +24,7 @@
     width: 22px;
     height: 22px;
     background: white;
+    border-radius: $circular_radius;
     box-shadow: 0 2px 4px transparentize(black, .9);
     transition-duration: 100ms;
   }

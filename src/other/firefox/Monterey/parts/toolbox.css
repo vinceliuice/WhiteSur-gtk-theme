@@ -10,10 +10,9 @@
 #nav-bar, #PersonalToolbar, #toolbar-menubar, #titlebar {
 	color: var(--gnome-toolbar-color);
 	background: var(--gnome-toolbar-background) !important;
-	border: none !important;
 }
 
-#PersonalToolbar {
+#navigator-toolbox {
 	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
 }
 
@@ -26,7 +25,6 @@
 
 /* Toolbox colors */
 #navigator-toolbox {
-	border: none !important;
 	background: none !important;
 }
 

@@ -1548,6 +1548,7 @@ button.link {
 //
 spinbutton {
   background: none;
+  min-height: $small_size;
 
   &:drop(active) { box-shadow: none; }
 
@@ -1599,9 +1600,12 @@ spinbutton {
       padding-top: 2px;
       padding-bottom: 2px;
       min-width: $menuitem_size;
+      min-height: $small_size - 4px;
     }
 
-    > button, > text { @extend %linked; min-height: $small_size; }
+    > button { min-height: $small_size; }
+
+    > button, > text { @extend %linked; }
 
     &:dir(ltr) > text,
     &:dir(rtl) > button.up { border-radius: $bt_radius 0 0 $bt_radius; }
@@ -1885,15 +1889,6 @@ searchbar {
   > revealer > box {
     padding: $container_padding;
     border-spacing: $container_padding;
-
-    entry, button { margin: 0; }
-
-   .close {
-      min-width: 18px;
-      min-height: 18px;
-      padding: 4px;
-      border-radius: 50%;
-    }
   }
 
   &:not(.inline) > revealer > box {
@@ -1906,8 +1901,11 @@ searchbar {
   }
 
   // Close button on searchbar
-  button.flat {
-    @extend %circular_button;
+  button.flat, .close {
+    min-width: 18px;
+    min-height: 18px;
+    padding: 4px;
+    border-radius: 50%;
   }
 
   .top-bar &:not(.inline) > revealer > box,
@@ -1924,10 +1922,33 @@ actionbar > revealer > box {
   box-shadow: none;
   color: $text_color;
 
-  entry, button { margin: 0; }
-
   &, > box.start, > box.end {
     border-spacing: $container_padding;
+  }
+
+  &:backdrop {
+    background-color: $bg_color;
+
+    > * {
+      filter: opacity(.5);
+    }
+  }
+}
+
+%actionbar-inline > revealer > box {
+  background-color: transparent;
+  color: inherit;
+  box-shadow: none;
+  padding-top: $container_padding;
+
+  &:backdrop {
+    background-color: transparent;
+    transition: none;
+
+    > * {
+      filter: none;
+      transition: none;
+    }
   }
 }
 
@@ -2033,11 +2054,11 @@ actionbar > revealer > box {
 headerbar {
   min-height: $headerbar_size;
   padding: 0;
+  margin: 0;
   color: $header_fg;
   background-color: $header_bg;
   border-bottom: 1px solid $header_border;
   box-shadow: none;
-  margin: 0;
 
   &:backdrop {
     opacity: 1;
@@ -2052,16 +2073,6 @@ headerbar {
     &, &:backdrop {
       border: none;
       background: none;
-    }
-
-    > windowhandle > box {
-      padding: 0 8px;
-  
-      &,
-      > box.start,
-      > box.end {
-        border-spacing: $container_padding;
-      }
     }
 
     windowcontrols {
@@ -2081,7 +2092,7 @@ headerbar {
   }
 
   > windowhandle > box {
-    padding: 0 8px;
+    padding: 8px;
 
     &,
     > box.start,
@@ -2092,6 +2103,7 @@ headerbar {
 
   entry {
     @extend %headerbar_entrys;
+    border-spacing: 4px;
   }
 
   button {
@@ -2102,33 +2114,6 @@ headerbar {
       padding: 2px;
       border-radius: $circular_radius;
     }
-  }
-
-  entry,
-  spinbutton,
-  button,
-  menubutton,
-  splitbutton,
-  stackswitcher,
-  separator:not(.sidebar) {
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
-
-  menubutton > button,
-  spinbutton > button,
-  splitbutton > button,
-  splitbutton > menubutton,
-  entry > menubutton,
-  popover entry,
-  popover spinbutton,
-  popover button,
-  popover menubutton,
-  popover splitbutton,
-  popover stackswitcher,
-  popover separator:not(.sidebar) {
-    margin-top: 0;
-    margin-bottom: 0;
   }
 
   // Reset linked buttons
@@ -2142,7 +2127,6 @@ headerbar {
   }
 
   stackswitcher.linked:not(.vertical) > button {
-    // min-height: $menuitem_size - 8px;
     min-width: $menuitem_size - 4px;
     border-radius: $bt_radius;
   }
@@ -2150,18 +2134,14 @@ headerbar {
   // Reset linking entrys
   .linked:not(.vertical) > entry {
     @include entry(header-normal);
-    // margin: 8px ($container_padding / 2 + 1px);
     padding: 0 $container_padding * 2;
-    // border-radius: $bt_radius;
     border: none;
 
     &:focus {
-      // border-radius: $bt_radius;
       @include entry(header-focus);
     }
 
     &:disabled {
-      // border-radius: $bt_radius;
       @include entry(header-insensitive);
     }
 
@@ -2174,8 +2154,6 @@ headerbar {
     padding: 0;
 
     > button {
-      // min-height: $menuitem_size - 8px;
-      margin: 0;
       font-weight: 500;
 
       &:not(:first-child) {
@@ -2298,7 +2276,7 @@ headerbar {
 
   // Titlebuttons
   windowcontrols {
-    border-spacing: 6px;
+    border-spacing: $container_padding;
     padding: 0 10px;
   
     &:not(.empty) {
@@ -2328,7 +2306,6 @@ headerbar {
       &.close, &.maximize, &.minimize {
         min-width: 16px;
         min-height: 16px;
-        margin: 8px 0;
         padding: ($menuitem_size - 20px) / 2 0;
         background-position: center;
         background-repeat: no-repeat;
@@ -4024,10 +4001,10 @@ scrolledwindow {
   // This is used by GtkScrolledWindow, when content is touch-dragged past boundaries.
   // This draws a box on top of the content, the size changes programmatically.
   > overshoot {
-    &.top { @include overshoot_alt(top); }
-    &.bottom { @include overshoot_alt(bottom); }
-    &.left { @include overshoot_alt(left); }
-    &.right { @include overshoot_alt(right); }
+    &.top { @include overshoot(top); }
+    &.bottom { @include overshoot(bottom); }
+    &.left { @include overshoot(left); }
+    &.right { @include overshoot(right); }
   }
 
   // Overflow indication, works similarly to the overshoot, the size if fixed tho.

@@ -40,9 +40,7 @@ toolbarspring {
 }
 
 #urlbar[breakout][breakout-extend] {
-	left: 0 !important;
-	top: 0 !important;
-	width: 100% !important;
+	width: var(--urlbar-width) !important;
 	z-index: 5 !important;
 	padding: 0 !important;
 	border-radius: 8px !important;
@@ -211,7 +209,7 @@ toolbarspring {
 	border-radius: 5px !important;
 }
 
-#star-button-box.urlbar-page-action {
+.urlbar-page-action {
 	padding: 5px 6px !important;
 }
 

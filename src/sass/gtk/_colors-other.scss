@@ -1,0 +1,122 @@
+//WM
+$wm_borders_focused: if($variant == 'light', darken($header_bg, 15%), darken($header_bg, 20%));
+$wm_borders_unfocused: if($variant == 'light', darken($header_bg, 10%), darken($header_bg, 15%));
+
+@define-color wm_title alpha(#{"" + opacify($header_fg, 1)}, 0.8);
+@define-color wm_unfocused_title alpha(#{"" + opacify($header_fg, 1)}, 0.5);
+
+@define-color wm_bg #{"" + opacify($header_bg, 1)};
+@define-color wm_bg_unfocused #{"" + opacify($header_bg_backdrop, 1)};
+
+@define-color wm_border_focused #{"" + $wm_borders_focused};
+@define-color wm_border_unfocused #{"" + $wm_borders_unfocused};
+
+@define-color wm_highlight alpha(#{white}, 0.12);
+@define-color wm_shadow alpha(#{black}, 0.75);
+
+//WM Buttons
+
+// Close
+@define-color wm_button_close_bg #{"" + $wm_button_close_bg};
+@define-color wm_button_close_hover_bg #{"" + $wm_button_close_hover_bg};
+@define-color wm_button_close_active_bg #{"" + $wm_button_close_active_bg};
+
+@define-color wm_icon_close_bg #{"" + $wm_icon_close_bg};
+
+// Minimize, Maximize
+@define-color wm_button_hover_bg #{"" + $bg_color};
+@define-color wm_button_active_bg #{"" + $bg_color};
+
+@define-color wm_button_hover_border #{"" + $solid_borders_color};
+
+@define-color wm_icon_bg #{"" + $alt_fg_color};
+@define-color wm_icon_unfocused_bg #{"" + $alt_disabled_fg_color};
+@define-color wm_icon_hover_bg #{"" + $fg_color};
+@define-color wm_icon_active_bg #{"" + $fg_color};
+
+// Titlebar
+@define-color titlebar_gradient_a #{"" + $header_bg};
+@define-color titlebar_gradient_b #{"" + $header_bg};
+
+//
+// Budgie-desktop specific indicator colours
+//
+
+// unfocused window 'dot(s)'
+@define-color budgie_tasklist_indicator_color #{"" + $fg_color};
+// focused window 'line'
+@define-color budgie_tasklist_indicator_color_active #{"" + $selected_bg_color};
+
+// group-ed and unfocused window 'line(s)'
+@define-color budgie_tasklist_indicator_color_active_window #{"" + mix($selected_bg_color, opacify($header_bg, 1), 35%)};
+
+// attention 'dot'
+// FIXME: we can't fill whole widget backgrounds with our suggestion colour
+//        because of lacking specific style-class on 'needs_attention' state,
+//        so use warning orange dot instead.
+@define-color budgie_tasklist_indicator_color_attention #{"" + $warning_color};
+
+//
+// Color Palette Definitions for compatibility with Granite.
+//
+
+//* Strawberry *
+@define-color STRAWBERRY_100 #{#FF9262};
+@define-color STRAWBERRY_300 #{#FF793E};
+@define-color STRAWBERRY_500 #{#F15D22};
+@define-color STRAWBERRY_700 #{#CF3B00};
+@define-color STRAWBERRY_900 #{#AC1800};
+//* Orange *
+@define-color ORANGE_100 #{#FFDB91};
+@define-color ORANGE_300 #{#FFCA40};
+@define-color ORANGE_500 #{#FAA41A};
+@define-color ORANGE_700 #{#DE8800};
+@define-color ORANGE_900 #{#C26C00};
+//* Banana *
+@define-color BANANA_100 #{#FFFFA8};
+@define-color BANANA_300 #{#FFFA7D};
+@define-color BANANA_500 #{#FFCE51};
+@define-color BANANA_700 #{#D1A023};
+@define-color BANANA_900 #{#A27100};
+//* Lime *
+@define-color LIME_100 #{#A2F3BE};
+@define-color LIME_300 #{#8ADBA6};
+@define-color LIME_500 #{#73C48F};
+@define-color LIME_700 #{#479863};
+@define-color LIME_900 #{#1C6D38};
+//* Blueberry *
+@define-color BLUEBERRY_100 #{#94A6FF};
+@define-color BLUEBERRY_300 #{#6A7CE0};
+@define-color BLUEBERRY_500 #{#3F51B5};
+@define-color BLUEBERRY_700 #{#213397};
+@define-color BLUEBERRY_900 #{#031579};
+//* Grape *
+@define-color GRAPE_100 #{#D25DE6};
+@define-color GRAPE_300 #{#B84ACB};
+@define-color GRAPE_500 #{#9C27B0};
+@define-color GRAPE_700 #{#830E97};
+@define-color GRAPE_900 #{#6A007E};
+//* Cocoa *
+@define-color COCOA_100 #{#9F9792};
+@define-color COCOA_300 #{#7B736E};
+@define-color COCOA_500 #{#574F4A};
+@define-color COCOA_700 #{#463E39};
+@define-color COCOA_900 #{#342C27};
+//* Silver *
+@define-color SILVER_100 #{#EEE};
+@define-color SILVER_300 #{#CCC};
+@define-color SILVER_500 #{#AAA};
+@define-color SILVER_700 #{#888};
+@define-color SILVER_900 #{#666};
+//* Slate *
+@define-color SLATE_100 #{#888};
+@define-color SLATE_300 #{#666};
+@define-color SLATE_500 #{#444};
+@define-color SLATE_700 #{#222};
+@define-color SLATE_900 #{#111};
+//* Black *
+@define-color BLACK_100 #{#474341};
+@define-color BLACK_300 #{#403C3A};
+@define-color BLACK_500 #{#393634};
+@define-color BLACK_700 #{#33302F};
+@define-color BLACK_900 #{#2B2928};

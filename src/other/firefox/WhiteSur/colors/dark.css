@@ -9,6 +9,10 @@
   :root {
 	/* Browser area before a page starts loading */
 	--gnome-browser-before-load-background: #242424;
+	--gnome-content-page-dialog-background: #424242;
+	--gnome-content-page-background: #1d1d1d;
+	--gnome-content-box-background: #2b2b2b;
+	--gnome-content-page-color: #fdfdfd;
 	--theme-primary-color: #315bef;
 	--theme-primary-hover-color: #5073f1;
 	--theme-primary-active-color: #6584f3;
@@ -103,20 +107,20 @@
 
 	/* Tabs */
 	--gnome-tabbar-tab-background: #262626;
-	--gnome-tabbar-tab-color: rgb(141, 144, 145);
+	--gnome-tabbar-tab-color: #909090;
 	--gnome-tabbar-tab-border-color: #070707;
 	--gnome-tabbar-tab-hover-background: #2b2b2b;
-	--gnome-tabbar-tab-hover-border-color: #1b1b1b;
-	--gnome-tabbar-tab-hover-color: rgb(200, 200, 200);
+	--gnome-tabbar-tab-hover-border-color: #070707;
+	--gnome-tabbar-tab-hover-color: #c8c8c8;
 	--gnome-tabbar-tab-active-background: #373737;
 	--gnome-tabbar-tab-active-border-color: #070707;
 	--gnome-tabbar-tab-active-color: #ffffff;
 	--gnome-tabbar-tab-active-hover-background: #313131;
-	--gnome-inactive-tabbar-tab-color: rgb(141, 144, 145);
+	--gnome-inactive-tabbar-tab-color: #686868;
 	--gnome-inactive-tabbar-tab-background: #202020;
 	--gnome-inactive-tabbar-tab-active-background: #313131;
 	--gnome-inactive-tabbar-tab-active-border-color: var(--gnome-tabbar-tab-active-border-bottom-color);
-	--gnome-inactive-tabbar-tab-active-color: var(--gnome-inactive-tabbar-tab-color);
+	--gnome-inactive-tabbar-tab-active-color: #898989;
 	--gnome-tab-attention-icon-color: #718be8;
 
 	/* Switch */

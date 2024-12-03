@@ -91,6 +91,9 @@ OPTIONS:
   -l, --libadwaita 
    Install theme into gtk4.0 config for libadwaita. Default is dark version
 
+  -f, --fixed 
+   Install fixed accent color version. Default is adaptive version
+
   -HD, --highdefinition 
    Set to High Definition size. Default is laptop size
 
@@ -237,7 +240,9 @@ OPTIONS:
 
       4. darker         Darker Firefox theme version    Darker Firefox theme version
 
-      5. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
+      5. nord           Nord Firefox colorscheme version    Nord Firefox colorscheme version
+
+      6. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
 
   -e, --edit-firefox [(monterey|flat)|alt|(darker|adaptive)]
    Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles. 

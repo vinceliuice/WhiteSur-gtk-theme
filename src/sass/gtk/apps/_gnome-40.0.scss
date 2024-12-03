@@ -84,8 +84,6 @@ $flap_sidebar_size: 240px;
     }
   }
 
-  headerbar > windowhandle > box { padding: 0 10px; }
-
   flap.unfolded,
   .sidebar-pane {
     &, &:backdrop {
@@ -211,9 +209,8 @@ $flap_sidebar_size: 240px;
 }
 
 #NautilusQueryEditor { // search entry
-  padding: 0 $container_padding;
+  padding: 2px $container_padding;
   border-spacing: 0;
-  margin: 9px 0 8px 0;
 
   > image, > box, > text {
     margin: 0;
@@ -239,7 +236,7 @@ $flap_sidebar_size: 240px;
 #NautilusPathBar {
   background-color: $fill_color;
   border-radius: $bt_radius;
-  margin: 8px 0 8px $container_padding;
+  margin: 0 0 0 $container_padding;
 
   #NautilusPathButton {
     margin: 0 $container_padding / 2;

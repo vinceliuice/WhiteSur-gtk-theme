@@ -106,12 +106,7 @@
   //
     color: $selected_fg_color;
     background-color: $selected_bg_color;
-
-    @if $gnome_version == 'old' {
-      border-color: darken($selection_mode_bg, 5%);
-    } @else {
-      border-color: color-mix(in srgb, black 25%, $selected_bg_color)
-    }
+    border-color: darken($selection_mode_bg, 5%);
   }
 
   @else if $t==osd-insensitive {
@@ -363,12 +358,7 @@
     background-color: $actionb_bg;
     background-image: none;
     box-shadow: if($variant=='light', none, (inset 0 1px rgba(white, 0.15), inset 0 -1px rgba(white, 0.03)));
-
-    @if $gnome_version == 'old' {
-      border-color: if($variant == 'light', darken($actionb_bg, 6%), $dark_borders_color);
-    } @else {
-      border-color: if($variant == 'light', color-mix(in srgb, black 6% $actionb_bg), $dark_borders_color);
-    }
+    border-color: if($variant == 'light', darken($actionb_bg, 6%), $dark_borders_color);
   }
 
   @else if $t==undecorated {
@@ -464,46 +454,6 @@
   box-shadow: none;              //
 }
 
-@mixin overshoot_alt($p) {
-//
-// overshoot
-//
-// $p: position
-//
-// possible $p values:
-// top, bottom, right, left
-//
-
-  $_small_gradient_length: 3%;
-  $_big_gradient_length: 50%;
-
-  $_small_gradient_size: 100% $_small_gradient_length;
-  $_big_gradient_size: 100% $_big_gradient_length;
-
-  @if $p==right or $p==left {
-    $_small_gradient_size: $_small_gradient_length 100%;
-    $_big_gradient_size: $_big_gradient_length 100%;
-  }
-
-  $_small_gradient: radial-gradient(farthest-side at $p,
-                                    gtkalpha(currentColor, 0.12) 85%,
-                                    gtkalpha(currentColor, 0));
-
-  $_big_gradient: radial-gradient(farthest-side at $p,
-                                  gtkalpha(currentColor, 0.05),
-                                  gtkalpha(currentColor, 0));
-
-  background-image: $_small_gradient, $_big_gradient;
-  background-size: $_small_gradient_size, $_big_gradient_size;
-
-  background-repeat: no-repeat;
-  background-position: $p;
-
-  background-color: transparent; // reset some properties to be sure to not inherit them somehow
-  border: none;                  //
-  box-shadow: none;              //
-}
-
 @mixin undershoot($p, $c: $wm_shadow, $neighbor: false, $style: default) {
 //
 // undershoot
@@ -539,38 +489,6 @@
   #{$_selector} undershoot.#{$p} {
     box-shadow: if($style == 'default', none, inset $_border_pos $borders_color);
     background: linear-gradient(to $_direction, gtkalpha($c, .25), transparent 6px);
-  }
-}
-
-@mixin background-shadow($direction, $color) {
-  background-image:
-  linear-gradient($direction,
-                  gtkalpha($color, 0.7),
-                  gtkalpha($color, 0.14) 40px,
-                  gtkalpha($color, 0) 56px),
-  linear-gradient($direction,
-                  gtkalpha($color, 0.4),
-                  gtkalpha($color, 0.14) 7px,
-                  gtkalpha($color, 0) 24px);
-}
-
-@mixin transition-shadows($color) {
-  > dimming {
-    background: none;
-  }
-  
-  > border {
-    background: none;
-  }
-  
-  > shadow {
-    min-width: 56px;
-    min-height: 56px;
-  
-    &.left  { @include background-shadow(to right,  $color); }
-    &.right { @include background-shadow(to left,   $color); }
-    &.up    { @include background-shadow(to bottom, $color); }
-    &.down  { @include background-shadow(to top,    $color); }
   }
 }
 

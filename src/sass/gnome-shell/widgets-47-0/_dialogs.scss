@@ -2,7 +2,7 @@
 
 %theme_dialogs {
   background-color: $dialog_bg_color;
-  border-radius: $modal_radius;
+  border-radius: $modal_radius + $base_padding;
   border: solid rgba(black, 0.75);
   border-width: if($variant=='light', 0, 1px);
   box-shadow: 0 3px 6px 0 rgba(black, if($variant=='light', 0.25, 0.35));
@@ -45,51 +45,48 @@
   }
 }
 
-.headline {
-  @extend %title_4;
-}
-
 // modal dialog
 .modal-dialog {
   color: $fg_color;
   padding: $base_padding * 3;
-  @extend %theme_dialogs !optional;
+  @extend %theme_dialogs;
 
   .modal-dialog-content-box {
-    margin: 32px 40px;
-    spacing: 32px;
+    padding: 16px 32px 6px;
+    spacing: $base_padding * 3;
     max-width: 28em;
   }
 
   .modal-dialog-button-box {
     padding-top: $base_padding;
-    spacing: 0;
+    spacing: $base_padding;
+  }
 
-    .modal-dialog-button {
-      min-height: 40px;
-      padding: 0 16px;
-      margin: 0 !important;
-      border: none !important;
-      border-radius: $modal_radius - $base_padding * 2;
+  .modal-dialog-button,
+  .modal-dialog-linked-button {
+    min-height: 40px;
+    padding: 0 16px;
+    margin: 0;
+    border: none !important;
+    border-radius: $modal_radius - $base_padding * 2;
+    font-weight: bold;
 
-      @include font(button);
-      @include button(normal);
-      &:hover { @include button(hover); }
-      &:active { @include button(active); }
-      &:checked { @include button(checked); }
-      &:insensitive { @include button(insensitive); }
-      &:focus { @include button(focus); }
+    @include button(normal);
+    &:hover { @include button(hover); }
+    &:active { @include button(active); }
+    &:checked { @include button(checked); }
+    &:insensitive { @include button(insensitive); }
+    &:focus { @include button(focus); }
 
-      &:last-child {
-        @extend %last_dialog_button;
-      }
+    &:last-child {
+      @extend %last_dialog_button;
     }
   }
 }
 
 // End Session Dialog
 .end-session-dialog {
-  width: 30em;
+  width: 28em;
   // border: none;
 
   .end-session-dialog-battery-warning,
@@ -141,12 +138,12 @@
 
 // Run Dialog
 .run-dialog {
-  .modal-dialog-content-box {
-    margin-top: 24px;
-    margin-bottom: 14px;
+  width: 24em;
+
+  .run-dialog-entry {
+    padding: $base_padding * 2 $base_padding * 1.5;
   }
 
-  .run-dialog-entry { width: 20em; }
   .run-dialog-description {
     text-align: center;
     color: $alt_fg_color;
@@ -157,25 +154,8 @@
 // Password or Authentication Dialog
 .prompt-dialog {
   //this is the width of the entire modal popup
-  width: 28em;
+  width: 24em;
   // border: none;
-
-  .modal-dialog-content-box {
-    margin-bottom: 24px;
-  }
-}
-
-.prompt-dialog-password-grid {
-  spacing-rows: 8px;
-  spacing-columns: 4px;
-
-  .prompt-dialog-password-entry {
-    width: auto;
-
-    // 4px (spacing) + 16px (spinner-width)
-    &:ltr { margin-left: 20px; }
-    &:rtl { margin-right: 20px; }
-  }
 }
 
 .prompt-dialog-password-grid {
@@ -197,6 +177,7 @@
 
 .prompt-dialog-password-entry {
   width: 20em;
+  padding: $base_padding * 2 $base_padding * 1.5;
 }
 
 .prompt-dialog-error-label,
@@ -221,6 +202,11 @@
   spacing: 8px;
   margin-bottom: 6px;
 
+  .polkit-dialog-user-label,
+  .polkit-dialog-user-root-label {
+    @extend %title_4;
+  }
+
   .polkit-dialog-user-root-label {
     color: $warning_color;
   }
@@ -233,8 +219,10 @@
 }
 
 .audio-selection-device {
+  min-width: 24em;
   border: 1px solid $borders_color;
   border-radius: $bt_radius;
+
   &:hover, &:focus { background-color: $visit_color; }
   &:active {
     background-color: $selected_bg_color;
@@ -243,8 +231,8 @@
 }
 
 .audio-selection-device-box {
-  padding: 20px;
-  spacing: 20px;
+  padding: $base_padding * 2;
+  spacing: $base_padding * 2;
 }
 
 .audio-selection-device-icon {
@@ -262,4 +250,9 @@
 /* Access portal dialog */
 .access-dialog {
   text-align: center;
+}
+
+// specific label style for restart message
+.restart-message {
+  @extend %title_4;
 }

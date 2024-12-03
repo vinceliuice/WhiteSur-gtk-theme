@@ -26,6 +26,10 @@ menupopup {
 	--panel-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-menu-border-color) !important;
 }
 
+.cui-widget-panelview[id^="PanelUI-webext-"] {
+  border-radius: 6px !important;
+}
+
 .panel-arrowcontent {
 	border: none !important;
 }
@@ -179,8 +183,6 @@ panelview {
 
 /* Style popovers menu buttons */
 menuitem, menupopup menu,
-.subviewbutton:not(#appMenu-fxa-label2, #downloadsHistory),
-.toolbarbutton-1,
 .protections-popup-footer-button,
 .protections-popup-category,
 .identity-popup-content-blocking-category,
@@ -191,6 +193,18 @@ menuitem, menupopup menu,
 	font: menu !important;
 	padding: 0 6px !important;
 	min-height: 28px !important;
+	margin: 0 !important;
+}
+
+.subviewbutton,
+panelview toolbarbutton {
+	-moz-appearance: none !important;
+	border-radius: 6px !important;
+	color: var(--gnome-toolbar-color) !important;
+	font: menu !important;
+	min-height: 28px !important;
+  padding: 3px 6px !important;
+  margin: 0 !important;
 }
 
 #downloadsHistory {
@@ -209,14 +223,13 @@ menuitem, menupopup menu,
 	--button-active-bgcolor: var(--gnome-popover-button-active-background) !important;
 }
 
-.subviewbutton,
 .protections-popup-footer-button,
 .protections-popup-category,
 .identity-popup-content-blocking-category,
 #PlacesToolbar menupopup[placespopup="true"] .bookmark-item,
 .openintabs-menuitem,
 .widget-overflow-list .toolbarbutton-1 {
-	padding: 5px !important;
+	padding: 3px 6px !important;
 	margin: 0 !important;
 }
 

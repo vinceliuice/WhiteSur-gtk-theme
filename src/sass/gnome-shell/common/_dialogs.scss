@@ -166,19 +166,6 @@
   }
 }
 
-.prompt-dialog-password-grid {
-  spacing-rows: 8px;
-  spacing-columns: 4px;
-
-  .prompt-dialog-password-entry {
-    width: auto;
-
-    // 4px (spacing) + 16px (spinner-width)
-    &:ltr { margin-left: 20px; }
-    &:rtl { margin-right: 20px; }
-  }
-}
-
 .prompt-dialog-password-layout {
   spacing: 8px;
 }

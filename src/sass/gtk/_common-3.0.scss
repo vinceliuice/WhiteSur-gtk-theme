@@ -1531,7 +1531,7 @@ headerbar {
     font-size: smaller;
     padding-left: $container_padding * 2;
     padding-right: $container_padding * 2;
-    margin-top: -3px;
+    // margin-top: -3px;
     @extend %dim-label;
   }
 

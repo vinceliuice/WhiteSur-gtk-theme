@@ -1,0 +1,498 @@
+
+// Solid color image
+@function _solid($c) {
+  @return linear-gradient(to bottom, $c, $c);
+}
+
+// Entries
+
+@mixin entry($t) {
+//
+// Entries drawing function
+//
+// $t: entry type
+//
+
+  @if $t==normal {
+  //
+  // normal entry
+  //
+    color: $text_color;
+    background-color: $entry_bg;
+    box-shadow: inset 0 0 0 2px transparent;
+  }
+
+  @if $t==hover {
+  //
+  // hover entry
+  //
+    color: $text_color;
+    background-color: $entry_bg;
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05), inset 0 0 0 2px transparent;
+    transition-duration: $shorter_duration * 2;
+  }
+
+  @if $t==focus {
+  //
+  // focused entry
+  //
+    color: $text_color;
+    background-color: $entry_bg;
+    box-shadow: inset 0 0 0 2px $entry_highlight;
+    transition-duration: $longer_duration * 2;
+  }
+
+  @if $t==insensitive {
+  //
+  // insensitive entry
+  //
+    color: $disabled_fg_color;
+    background-color: rgba($entry_bg, 0.02);
+  }
+
+  @if $t==header-normal {
+  //
+  // normal header-bar entry
+  //
+    color: $header_fg;
+    background-color: $entry_bg;
+    box-shadow: inset 0 0 0 2px transparent;
+
+    image, image:hover { color: inherit; }
+  }
+
+  @if $t==header-hover {
+  //
+  // header-hover entry
+  //
+    color: $header_fg;
+    background-color: $entry_bg;
+    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05), inset 0 0 0 2px transparent;
+    transition-duration: $shorter_duration * 2;
+  }
+
+  @if $t==header-focus {
+  //
+  // focused header-bar entry
+  //
+    // border-color: $selection_mode_bg;
+    background-image: none;
+    background-color: $entry_bg;
+    box-shadow: inset 0 0 0 2px $entry_highlight;
+  }
+
+  @if $t==header-insensitive {
+  //
+  // insensitive header-bar entry
+  //
+    color: rgba($header_fg, 0.35);
+    background-color: rgba($entry_bg, 0.02);
+  }
+
+  @else if $t==osd {
+  //
+  // normal osd entry
+  //
+    color: $osd_fg_color;
+    border-color: $osd_entry_border;
+    background-color: $osd_entry_bg;
+
+    image, image:hover { color: inherit; }
+  }
+
+  @else if $t==osd-focus {
+  //
+  // active osd entry
+  //
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+
+    @if $gnome_version == 'old' {
+      border-color: darken($selection_mode_bg, 5%);
+    } @else {
+      border-color: color-mix(in srgb, black 25%, $selected_bg_color)
+    }
+  }
+
+  @else if $t==osd-insensitive {
+  //
+  // insensitive osd entry
+  //
+    color: $osd_disabled_fg_color;
+    background-color: transparentize($osd_entry_bg, 0.15);
+  }
+}
+
+// Buttons
+
+@mixin button($t, $actionb_bg: red, $actionb_fg: green) {
+//
+// Button drawing function
+//
+// $t:    button type,
+// $actionb_bg, $actionb_fg: used for destructive and suggested action buttons
+
+  @if $t==normal {
+  //
+  // normal button
+  //
+    color: $fg_color;
+    border-color: $button_borders;
+    background-color: $button_bg;
+    @if $variant=='light' { box-shadow: $shadow_3; }
+    @if $variant=='dark' {
+      box-shadow: inset 0 1px $button_highlight, inset 0 -1px rgba(white, 0.02), $shadow_3;
+    }
+  }
+
+  @else if $t==hover {
+  //
+  // hovered button
+  //
+    color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
+    border-color: $button_borders;
+    background-color: if($variant=='light', darken($button_bg, 3%), lighten($button_bg, 3%));
+    @if $variant=='light' { box-shadow: none; }
+    @if $variant=='dark' {
+      box-shadow: inset 0 1px rgba($button_highlight, 0.12), $shadow_3;
+    }
+  }
+
+  @else if $t==active {
+  //
+  // pushed button
+  //
+    color: $selected_fg_color;
+    background-color: $selected_bg_color;
+    border-color: if($variant=='light', $selected_bg_color, $dark_borders_color);
+    @if $variant=='light' { box-shadow: none; }
+  }
+
+  @else if $t==insensitive {
+  //
+  // insensitive button
+  //
+    label, & { color: $disabled_fg_color; }
+
+    border-color: if($variant == 'light', $button_border, $dark_borders_color);
+    background-color: rgba($button_bg, 0.55);
+    box-shadow: none;
+  }
+
+  @else if $t==insensitive-active {
+  //
+  // insensitive pushed button
+  //
+    label, & { color: transparentize($selected_fg_color, 0.45); }
+
+    border-color: if($variant == 'light', $selected_bg_color, $dark_borders_color);
+    background-color: rgba($selected_bg_color, 0.45);
+    @if $variant=='light' { box-shadow: none; }
+
+    opacity: 0.6;
+  }
+
+  @if $t==flat-normal {
+  //
+  // normal button
+  //
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    background-clip: if($variant=='light', border-box, padding-box);
+  }
+
+  @else if $t==flat-hover {
+  //
+  // hovered button
+  //
+    color: darken($fg_color, 10%);
+    background-color: if($variant=='light', rgba(black, 0.15), rgba(white, 0.15));
+    background-image: none;
+    box-shadow: none;
+    // border-color: if($variant=='light', rgba(black, 0.15), rgba(white, 0.15));
+  }
+
+  @else if $t==flat-active {
+  //
+  // pushed button
+  //
+    background-image: none;
+    color: $selected_fg_color;
+    background-color: if($variant=='light', rgba(black, 0.5), rgba(white, 0.25));
+  }
+
+  @else if $t==flat-checked {
+  //
+  // pushed button
+  //
+    background-image: none;
+    color: $selected_fg_color;
+    background-color: if($variant=='light', rgba(black, 0.65), rgba(white, 0.35));
+  }
+
+  @else if $t==flat-insensitive {
+  //
+  // insensitive button
+  //
+    label, & { color: $disabled_fg_color; }
+
+    background-color: transparent;
+  }
+
+  @else if $t==flat-insensitive-active {
+  //
+  // insensitive pushed button
+  //
+    label, & { color: transparentize($selected_fg_color, 0.35); }
+
+    background-color: if($variant=='light', rgba(black, 0.3), rgba(white, 0.15));
+    opacity: 0.6;
+  }
+
+  @if $t==header-normal {
+  //
+  // normal header-bar button
+  //
+    color: $header_fg;
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  @else if $t==header-hover {
+  //
+  // hovered header-bar button
+  //
+    color: darken($header_fg, 2%);
+    background-color: rgba($header_fg, 0.1);
+    background-image: none;
+    box-shadow: none;
+  }
+
+  @else if $t==header-active {
+  //
+  // pushed header-bar button
+  //
+    color: $header_fg;
+    background-color: rgba($header_fg, 0.25);
+    background-image: none;
+    box-shadow: none;
+  }
+
+  @else if $t==header-checked {
+  //
+  // pushed header-bar button
+  //
+    color: $header_fg;
+    background-color: rgba($header_fg, 0.12);
+    background-image: none;
+    box-shadow: none;
+  }
+
+  @else if $t==header-insensitive {
+  //
+  // insensitive header-bar button
+  //
+    label, & { color: rgba($header_fg, 0.35); }
+    background-image: none;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  @else if $t==header-insensitive-active {
+  //
+  // header-bar insensitive pushed button
+  //
+    label, & { color: rgba($header_fg, 0.35); }
+    background-image: none;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  @else if $t==osd {
+  //
+  // normal osd button
+  //
+    color: $osd_fg_color;
+    border-color: $osd_button_border;
+    background-color: rgba(white, 0.08);
+    box-shadow: none;
+  }
+
+  @else if $t==osd-hover {
+  //
+  // active osd button
+  //
+    color: $osd_fg_color;
+    border-color: $osd_button_border;
+    background-color: rgba(white, 0.16);
+    box-shadow: none;
+  }
+
+  @else if $t==osd-active {
+  //
+  // active osd button
+  //
+    color: $selected_fg_color;
+    border-color: $osd_button_border;
+    background-color: rgba(white, 0.25);
+    background-image: none;
+    box-shadow: none;
+    background-clip: padding-box;
+  }
+
+  @else if $t==osd-insensitive {
+  //
+  // insensitive osd button
+  //
+    color: $osd_disabled_fg_color;
+    border-color: $osd_button_border;
+    background-color: rgba(white, 0.03);
+    box-shadow: none;
+  }
+
+  @else if $t==suggested_destructive {
+  //
+  // suggested or destructive action buttons
+  //
+    @if $variant == 'light' { background-clip: border-box; }
+
+    color: $actionb_fg;
+    background-color: $actionb_bg;
+    background-image: none;
+    box-shadow: if($variant=='light', none, (inset 0 1px rgba(white, 0.15), inset 0 -1px rgba(white, 0.03)));
+
+    @if $gnome_version == 'old' {
+      border-color: if($variant == 'light', darken($actionb_bg, 6%), $dark_borders_color);
+    } @else {
+      border-color: if($variant == 'light', color-mix(in srgb, black 6% $actionb_bg), $dark_borders_color);
+    }
+  }
+
+  @else if $t==undecorated {
+  //
+  // reset
+  //
+    border-color: transparent;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+  }
+}
+
+//
+// Overshoot
+//
+
+@mixin overshoot($p) {
+//
+// overshoot
+//
+// $p: position
+//
+// possible $p values:
+// top, bottom, right, left
+//
+
+  $_small_gradient_length: 3%;
+  $_big_gradient_length: 50%;
+
+  $_small_gradient_size: 100% $_small_gradient_length;
+  $_big_gradient_size: 100% $_big_gradient_length;
+
+  @if $p==right or $p==left {
+    $_small_gradient_size: $_small_gradient_length 100%;
+    $_big_gradient_size: $_big_gradient_length 100%;
+  }
+
+  $_small_gradient: radial-gradient(farthest-side at $p,
+                                    gtkalpha(currentColor, 0.12) 85%,
+                                    gtkalpha(currentColor, 0));
+
+  $_big_gradient: radial-gradient(farthest-side at $p,
+                                  gtkalpha(currentColor, 0.05),
+                                  gtkalpha(currentColor, 0));
+
+  background-image: $_small_gradient, $_big_gradient;
+  background-size: $_small_gradient_size, $_big_gradient_size;
+
+  background-repeat: no-repeat;
+  background-position: $p;
+
+  background-color: transparent; // reset some properties to be sure to not inherit them somehow
+  border: none;                  //
+  box-shadow: none;              //
+}
+
+@mixin undershoot($p, $c: $wm_shadow, $neighbor: false, $style: default) {
+//
+// undershoot
+//
+// $p: position
+// $c: shade color
+// $neighbor: use ~ instead of >
+//
+// possible $p values:
+// top, bottom, right, left
+//
+
+  $_border_pos: '';
+  $_direction: '';
+  $_selector: if($neighbor, '~', '>');
+
+  @if $p==top {
+    $_direction: bottom;
+    $_border_pos: 0 1px;
+  } @else if $p==bottom {
+    $_direction: top;
+    $_border_pos: 0 -1px;
+  } @else if $p==left {
+    $_direction: right;
+    $_border_pos: 1px 0;
+  } @else if $p==right {
+    $_direction: left;
+    $_border_pos: -1px 0;
+  } @else {
+    @error "Unknown position #{$p}"
+  }
+
+  #{$_selector} undershoot.#{$p} {
+    box-shadow: if($style == 'default', none, inset $_border_pos $borders_color);
+    background: linear-gradient(to $_direction, gtkalpha($c, .25), transparent 6px);
+  }
+}
+
+@mixin background-shadow($direction, $color) {
+  background-image:
+  linear-gradient($direction,
+                  gtkalpha($color, 0.7),
+                  gtkalpha($color, 0.14) 40px,
+                  gtkalpha($color, 0) 56px),
+  linear-gradient($direction,
+                  gtkalpha($color, 0.4),
+                  gtkalpha($color, 0.14) 7px,
+                  gtkalpha($color, 0) 24px);
+}
+
+@mixin transition-shadows($color) {
+  > dimming {
+    background: none;
+  }
+  
+  > border {
+    background: none;
+  }
+  
+  > shadow {
+    min-width: 56px;
+    min-height: 56px;
+  
+    &.left  { @include background-shadow(to right,  $color); }
+    &.right { @include background-shadow(to left,   $color); }
+    &.up    { @include background-shadow(to bottom, $color); }
+    &.down  { @include background-shadow(to top,    $color); }
+  }
+}
+
