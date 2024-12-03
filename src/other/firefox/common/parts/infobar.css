@@ -1,0 +1,97 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+:host(.infobar) {
+  --info-bar-background-color: light-dark(var(--color-white), var(--gnome-tabbar-tab-active-background));
+  --info-bar-text-color: light-dark(var(--color-gray-100), var(--color-gray-05));
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 2px;
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    height: 100%;
+    border-start-start-radius: 4px;
+    border-end-start-radius: 4px;
+  }
+
+  .container {
+    /* Don't let lwthemes set a text-shadow. */
+    text-shadow: none;
+    padding-block: 3px;
+    align-items: center;
+  }
+
+  .content {
+    gap: 0 12px;
+    height: fit-content;
+  }
+
+  .close {
+    margin-block: 2px;
+    margin-inline-start: 8px;
+    align-self: flex-start;
+  }
+}
+
+@media (prefers-contrast) {
+  :host(.infobar)::before {
+    background-color: CanvasText;
+  }
+}
+
+@media not (prefers-contrast) {
+  :host(.infobar) {
+    box-shadow: 0 1px 2px rgba(48, 48, 48, 0.1);
+    background-color: var(--gnome-tabbar-tab-active-background);
+    color: var(--info-bar-text-color);
+
+    &::before {
+      background-image: linear-gradient(0deg, #9059ff 0%, #ff4aa2 52.08%, #ffbd4f 100%);
+    }
+  }
+}
+
+:host([message-bar-type=infobar]:first-of-type) {
+  margin-top: 4px;
+}
+
+:host([message-bar-type=infobar]) {
+  margin: 0 4px 4px;
+}
+
+::slotted(.notification-button-container) {
+  gap: 8px;
+  display: inline-flex;
+}
+
+::slotted(.text-link) {
+  margin: 0 !important;
+}
+
+img.inline-icon {
+  /* Align inline icon images in the message content */
+  vertical-align: middle;
+  /* Ensure they get the right fill color. */
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+/* type="system" infobar styles */
+
+:host([type=system]) .icon {
+  display: none;
+}
+
+:host([type=system]) .content {
+  margin-inline-start: 0;
+}
+
