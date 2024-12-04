@@ -259,6 +259,7 @@ button.close:not(.ghost-button),
 	border-color: transparent !important;
 	border-radius: 8px !important;
 	border: none !important;
+	outline: none !important;
 }
 
 .subviewbutton-back:not(#hack):not(:active):hover,

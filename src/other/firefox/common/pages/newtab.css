@@ -19,14 +19,14 @@ body {
 .context-menu {
 	background: var(--gnome-menu-background) !important;
 	border-radius: 12px !important;
-	box-shadow: var(--gnome-popover-shadow) !important;
+	box-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-popover-border-color) !important;
 	padding: 6px !important;
 }
 
 @media (prefers-color-scheme: dark) {
-.context-menu {
-	border: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
+	.context-menu {
+		border: 1px solid rgba(255, 255, 255, 0.06) !important;
+	}
 }
 
 .context-menu > ul {

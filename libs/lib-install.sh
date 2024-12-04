@@ -681,7 +681,12 @@ install_firefox_theme() {
   cp -rf "${FIREFOX_SRC_DIR}/${theme_name}"                                                   "${TARGET_DIR}"
   [[ -f "${TARGET_DIR}"/customChrome.css ]] && mv "${TARGET_DIR}"/customChrome.css            "${TARGET_DIR}"/customChrome.css.bak
   cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                                "${TARGET_DIR}"
-  cp -rf "${FIREFOX_SRC_DIR}"/common/{icons,titlebuttons,pages}                               "${TARGET_DIR}/${theme_name}"
+  cp -rf "${FIREFOX_SRC_DIR}"/common/{icons,pages}                                            "${TARGET_DIR}/${theme_name}"
+  if [[ "${colorscheme}" == '-nord' ]]; then
+    cp -rf "${FIREFOX_SRC_DIR}"/common/titlebuttons-nord                                      "${TARGET_DIR}/${theme_name}"/titlebuttons
+  else
+    cp -rf "${FIREFOX_SRC_DIR}"/common/titlebuttons                                           "${TARGET_DIR}/${theme_name}"
+  fi
   cp -rf "${FIREFOX_SRC_DIR}"/common/*.css                                                    "${TARGET_DIR}/${theme_name}"
   cp -rf "${FIREFOX_SRC_DIR}"/common/parts/*.css                                              "${TARGET_DIR}/${theme_name}"/parts
   [[ -f "${TARGET_DIR}"/userChrome.css ]] && mv "${TARGET_DIR}"/userChrome.css                "${TARGET_DIR}"/userChrome.css.bak

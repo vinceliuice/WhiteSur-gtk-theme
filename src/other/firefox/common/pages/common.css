@@ -8,7 +8,7 @@
 
     --in-content-box-background: var(--gnome-browser-before-load-background) !important;
     --in-content-box-background-odd: rgba(250,250,250,0.05) !important;
-    --in-content-box-info-background: rgba(250,250,250,0.15) !important;
+    --in-content-box-info-background: var(--gnome-content-box-background) !important;
 
     --in-content-border-color: rgba(250,250,250,0.2) !important;
     --in-content-border-hover: rgba(250,250,250,0.3) !important;
