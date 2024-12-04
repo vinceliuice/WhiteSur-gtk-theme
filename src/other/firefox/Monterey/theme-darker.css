@@ -14,6 +14,7 @@
 @import "parts/sidebar.css";
 @import "parts/dialogs.css";
 @import "parts/notification.css";
+@import "parts/infobar.css";
 @import "parts/video-player.css";
 @import "parts/remove-white-flash.css";
 @import "parts/icons.css";
