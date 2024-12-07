@@ -4355,12 +4355,12 @@ row.entry {
 
 row.spin {
   spinbutton {
-    background: none;
-    border-spacing: 6px;
-    box-shadow: none;
+    border-spacing: $container_padding;
 
-    &, &:focus {
+    &, &:focus, &:focus-within, &:hover, &:active {
       outline: none;
+      box-shadow: none;
+      background: none;
     }
 
     > button.image-button.up:not(.flat):not(.raised):not(.suggested-action):not(.destructive-action):not(.opaque):last-child,
