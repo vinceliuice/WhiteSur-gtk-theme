@@ -107,6 +107,10 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	transition-duration: 100ms;
 }
 
+#urlbar[breakout] {
+	position: static !important; 
+}
+
 #urlbar[breakout][breakout-extend] #urlbar-input-container,
 #urlbar[breakout][breakout-extend] #urlbar-input-container:hover,
 #urlbar[breakout][breakout-extend] .urlbar-input-container,
@@ -114,6 +118,11 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	background: none !important;
 	box-shadow: none !important;
 	padding: 0 3px !important;
+}
+
+#urlbar[focused]:not([suppress-focus-border]) > #urlbar-background, 
+#searchbar:focus-within {
+	outline: none !important;
 }
 
 #nav-bar #searchbar:focus-within {
