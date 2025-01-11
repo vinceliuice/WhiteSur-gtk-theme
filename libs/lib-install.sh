@@ -773,7 +773,7 @@ remove_firefox_theme() {
   [[ -f "${TARGET_DIR}"/userChrome.css && ! -f "${TARGET_DIR}"/userChrome.css.bak ]] && cp -r "${TARGET_DIR}"/userChrome.css "${TARGET_DIR}"/userChrome.css.bak
   [[ -f "${TARGET_DIR}"/userContent.css && ! -f "${TARGET_DIR}"/userContent.css.bak ]] && cp -r "${TARGET_DIR}"/userContent.css "${TARGET_DIR}"/userContent.css.bak
 
-  rm -rf "${TARGET_DIR}/${THEME_NAME}"
+  rm -rf "${TARGET_DIR}/${theme_name}"
   rm -rf "${TARGET_DIR}"/customChrome.css
   rm -rf "${TARGET_DIR}"/userChrome.css
   rm -rf "${TARGET_DIR}"/userContent.css

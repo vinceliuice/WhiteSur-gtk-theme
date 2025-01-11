@@ -23,11 +23,6 @@
 	background: var(--gnome-inactive-toolbar-background) !important;
 }
 
-/* Toolbox colors */
-#navigator-toolbox {
-	background: none !important;
-}
-
 .toolbarbutton-icon {
 	color: var(--gnome-toolbar-color);
 	fill: var(--gnome-toolbar-color);
