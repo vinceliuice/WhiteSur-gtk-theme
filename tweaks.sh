@@ -339,7 +339,6 @@ else
   fi
 
   if [[ "${firefox}" == 'true' || "${edit_firefox}" == 'true' ]]; then
-
     if [[ "${darker}" == '-darker' && "${adaptive}" == '-adaptive' ]]; then
       prompt -w "FIREFOX: You can't use 'adaptive' and 'darker' at the same time. \n"
       prompt -i "FIREFOX: Setting to adaptive only... \n"
