@@ -120,6 +120,7 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	padding: 0 3px !important;
 }
 
+/* New tab url bar focusing */
 #urlbar[focused]:not([suppress-focus-border]) > #urlbar-background, 
 #searchbar:focus-within {
 	outline: none !important;
