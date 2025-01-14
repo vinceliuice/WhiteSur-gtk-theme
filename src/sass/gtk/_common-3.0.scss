@@ -2222,14 +2222,16 @@ menubar,
 menu {
   margin: 0;
   padding: $container_padding;
-  border-radius: $mn_radius;
   background-color: opacify($menu_bg, 1);
-  border: none;
   color: $fg_color;
+  border: none; // adds borders in a non composited env
+  border-radius: 0;
 
   @if $variant == 'dark' { box-shadow: inset 0 0 0 1px $highlight_color; }
 
-  .csd & {
+  .background.csd > & {
+    border: none; // axes borders in a composited env
+    border-radius: $mn_radius;
     background-color: $menu_bg;
   }
 
@@ -2245,7 +2247,7 @@ menu {
     min-height: 12px;
     min-width: 40px;
     padding: $container_padding / 2 $container_padding;
-    border-radius: $bt_radius;
+    border-radius: $bt_radius / 2;
     text-shadow: none;
     color: $fg_color;
     font: initial;
@@ -2312,6 +2314,10 @@ menu {
         &:dir(rtl) { margin-left: 6px; margin-right: 0; }
       }
     }
+  }
+
+  .background.csd > & > menuitem {
+    border-radius: $bt_radius;
   }
 
   // overflow buttons
