@@ -151,19 +151,15 @@ StScrollBar {
 //
 .popup-slider-menu-item,
 .slider {
-  -slider-height: 4px;
-  -slider-background-color: $button_border;                   //background of the trough
-  -slider-border-color: transparentize(black, 1);             //trough border color
-  -slider-active-background-color: $selected_bg_color;        //active trough fill
-  -slider-active-border-color: transparentize(black, 1);      //active trough border
+  -slider-height: 0.3em;
+  -slider-background-color: $button_border;            //background of the trough
+  -slider-border-color: transparent;                //trough border color
+  -slider-active-background-color: $selected_bg_color; //active trough fill
+  -slider-active-border-color: transparent;            //active trough border
   -slider-border-width: 0;
-  -slider-handle-radius: 4px;
-  height: 18px;
+  -slider-handle-radius: 0.6em;
+  height: 1.2em;
   min-width: 15em;
-  border: 0 solid transparent;
-  border-right-width: 1px;
-  border-left-width: 5px;
-  color: transparent;
 
   .popup-menu-item:active & {
     -slider-background-color: transparentize(black, 0.8);
@@ -274,6 +270,8 @@ StScrollBar {
 .menu,
 .popup-menu,
 %menu {
+  min-width: 15em;
+  margin: 0;
   padding: 0 $container_padding $container_padding / 2;
   color: $fg_color;
 
@@ -302,7 +300,12 @@ StScrollBar {
     }
   }
 
-  .popup-menu-content { padding: 1em 6px 1em 6px; }
+  .popup-menu-content {
+    padding: 1em 6px 1em 6px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
 
   .popup-menu-item {
     padding: .4em 1.75em;
@@ -338,8 +341,6 @@ StScrollBar {
   -arrow-border-color: rgba(0,0,0,0.0);
   -arrow-base: 0;
   -arrow-rise: 0;
-  margin: 0.5em;
-  border-radius: $bt_radius;
 }
 
 .popup-combo-menu {
@@ -981,13 +982,14 @@ StScrollBar {
 //
 #notification {
   border-radius: $wm_radius;
-  padding: 13px;
+  padding: 12px;
   spacing-rows: 10px;
   spacing-columns: 10px;
   margin-from-right-edge-of-screen: 20px;
   width: 34em;
   color: $text_color;
   background-color: $menu_bg;
+  box-shadow: 0 5px 12px rgba(black, 0.25);
 
   .notification-button, .notification-icon-button {
     @extend %flat_button;
@@ -1001,6 +1003,7 @@ StScrollBar {
     border: none;
     border-radius: $bt_radius;
     background-color: rgba($fg_color, 0.05);
+    box-shadow: none;
 
     &:hover, &:selected {
       background-color: rgba($fg_color, 0.1);
@@ -1153,13 +1156,9 @@ StScrollBar {
 .lightbox { background-color: rgba(0, 0, 0, 0.4); }
 .flashspot { background-color: white; }
 
+.dialog,
 .modal-dialog {
-  color: $osd_fg_color;
-  background-color: rgba(darken($osd_bg_color, 3%), 0.95);
-  border: 1px solid rgba(black, 0.65);
-  padding: 0 5px 6px 5px;
-  border-radius: $bt_radius;
-  box-shadow: 0 3px 8px rgba(black, 0.75), 0 5px 18px rgba(black, 0.55);
+  @extend %osd_window;
 
   > StBoxLayout:first-child {
     padding: 20px 10px 10px 10px;
@@ -1171,16 +1170,61 @@ StScrollBar {
     padding: 14px 10px;
     background-color: transparent;
     border: none;
+  }
 
-    .modal-dialog-button {
-      padding-top: 0;
-      padding-bottom: 0;
-      height: 30px;
+  &-button {
+    padding: $container_padding $container_padding * 2;
+    min-height: 24px;
+    min-width: 100px;
+    @extend %osd_button;
 
-      @extend %osd_button;
+    &:destructive-action {
+      background-color: $destructive_color;
+      color: white;
+
+      &:hover {
+        background-color: lighten($destructive_color, 8%);
+      }
+
+      &:active {
+        background-color: darken($destructive_color, 8%);
+      }
+
+      &:insensitive {
+        background-color: rgba($destructive_color, 0.3);
+        color: rgba(white, 0.3);
+      }
+    }
+
+    &:default {
+      background-color: $suggested_color;
+      color: white;
+
+      &:hover {
+        background-color: lighten($suggested_color, 8%);
+      }
+
+      &:active {
+        background-color: darken($suggested_color, 8%);
+      }
+
+      &:insensitive {
+        background-color: rgba($suggested_color, 0.3);
+        color: rgba(white, 0.3);
+      }
     }
   }
+
+  &-content-box {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    spacing: 32px;
+    max-width: 28em;
+  }
+
+  .confirm-dialog-title { text-align: center; }
 }
+
 
 //
 // Run dialog
@@ -1496,27 +1540,29 @@ StScrollBar {
 //
 // OSD
 //
-.info-osd {
-  text-align: center;
-  font-weight: bold;
-  spacing: 1em;
-  padding: 16px;
+
+%osd_window {
   color: $osd_fg_color;
   background-color: $osd_bg_color;
+  box-shadow: inset 0 0 0 1px rgba(white, 0.08);
+  border: 1px solid black;
+  border-radius: $wm_radius * 1.5;
+  text-align: center;
+  padding: 20px;
+}
+
+.info-osd {
+  font-weight: bold;
+  spacing: 1em;
+  @extend %osd_window;
 }
 
 .osd-window {
-  text-align: center;
   font-weight: bold;
   spacing: 1em;
-  padding: 20px;
   min-width: 64px;
   min-height: 64px;
-  color: $osd_fg_color;
-  background-color: $osd_bg_color;
-  box-shadow: 0 6px 16px rgba(black, 0.25);
-  border: none;
-  border-radius: $wm_radius;
+  @extend %osd_window;
 
   .osd-monitor-label { font-size: 3em; }
 
@@ -1532,6 +1578,83 @@ StScrollBar {
     border-radius: $bt_radius;
     background-color: $selected_bg_color;
   }
+}
+
+.media-keys-osd {
+  font-weight: bold;
+  font-size: 1.182em;
+  @extend %osd_window;
+
+  margin-bottom: 1em;
+  border-radius: 9999px;
+  spacing: 12px;
+  padding: 12px 24px;
+
+  > * { spacing: 12px; }
+  StIcon { icon-size: 32px; }
+  StLabel:ltr { margin-right: 6px; }
+  StLabel:rtl { margin-left: 6px; }
+
+  .level {
+    min-width: 160px;
+    -barlevel-height: 6px;
+    -barlevel-background-color: #303030;
+    -barlevel-active-background-color: white;
+    -barlevel-amplify-color: #f8e45c;
+    -barlevel-amplify-separator-width: 3px;
+  }
+
+  .level:ltr { margin-right: 6px; }
+  .level:rtl { margin-left: 6px; }
+
+  .level-bar {
+    border-radius: 8px;
+    background-color: white;
+  }
+}
+
+//
+// Workspace OSD
+//
+
+.workspace-osd {
+  text-shadow: black 5px 5px 5px;
+  font-weight: bold;
+  font-size: 48pt;
+}
+
+.workspace-switch-osd {
+  min-width: 140px;
+  margin-bottom: 1em;
+  border-radius: 9999px;
+  font-weight: bold;
+  padding: 12px 36px 0 36px;
+}
+
+.workspace-switch-osd-indicator-box { spacing: 12px; }
+
+.workspace-switch-osd-indicator {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 3px;
+  margin: 12px;
+  border-radius: 32px;
+
+  &:active {
+    background-color: #3584e4;
+    padding: 6px;
+    margin: 12px;
+  }
+}
+
+.monitor-label {
+  border-radius: 0;
+  color: black;
+  padding: 12px;
+  text-align: center;
+}
+
+.resize-popup {
+  padding: 12px;
 }
 
 //
@@ -1701,25 +1824,25 @@ StScrollBar {
     }
   }
 
-  &-number-label {
-    z-index: 120;
-    text-shadow: none;
-    color: $selected_fg_color;
-    padding: 0;
+  &-button-label {
+    padding-left: 4px;
   }
 
-  &-button-label {
-    padding-left: 2px;
+  &-number-label {
+    font-size: 0.8em;
+    z-index: 99;
+    text-shadow: none;
+    color: $selected_fg_color;
+    padding: 0.1em;
   }
 
   &-badge {
-    border-radius: 256px;
+    border-radius: $circular_radius;
     background-color: $selected_bg_color;
   }
 
   &-item-box {
     font-weight: normal;
-    background-image: none;
     transition-duration: 100;
     border: none;
     margin: 0;
@@ -1767,8 +1890,7 @@ StScrollBar {
   }
 
   &-item-demands-attention {
-    background-gradient-start: $warning_color;
-    background-gradient-end: $warning_color;
+    background-color: $destructive_color;
   }
 }
 
@@ -1900,11 +2022,11 @@ StScrollBar {
     border-bottom: 1px;
     -slider-height: 0.5em;
     -slider-background-color: if($variant == 'light', $button_border, darken($bg_color, 5%));
-    -slider-border-color: rgba(0,0,0,0);
+    -slider-border-color: transparent;
     -slider-active-background-color: $selected_bg_color;
-    -slider-active-border-color: rgba(0,0,0,0);
+    -slider-active-border-color: transparent;
     -slider-border-width: 0px;
-    -slider-handle-radius: 0px;
+    -slider-handle-radius: 1em;
   }
 }
 
@@ -2151,15 +2273,6 @@ StScrollBar {
   background-color: $osd_bg_color;
   padding: 12px;
   padding-bottom: 16px;
-}
-
-//
-// Workspace OSD
-//
-.workspace-osd {
-  text-shadow: black 5px 5px 5px;
-  font-weight: bold;
-  font-size: 48pt;
 }
 
 //
