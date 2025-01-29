@@ -250,9 +250,25 @@ window.thunar {
     header.top tab.reorderable-page > box > label { min-height: 0; }
   }
 
-  > grid > paned > grid > notebook > .standard-view {
-    > .view {
-      border-radius: $bt_radius;
+  .standard-view.frame {
+    border: none;
+
+    widget.view {
+      &:selected {
+        background-color: rgba($fg_color, 0.12);
+        color: $fg_color;
+        border-radius: $bt_radius;
+      }
+    }
+  }
+
+  paned paned paned > notebook.frame {
+    border: none;
+    border-radius: 0;
+
+    .standard-view.frame > widget.view {
+      border-radius: 0;
+      box-shadow: inset 0 0 0 3px lighten($selected_bg_color, 25%);
     }
   }
 }
