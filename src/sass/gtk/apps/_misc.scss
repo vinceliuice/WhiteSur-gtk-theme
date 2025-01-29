@@ -776,11 +776,6 @@ menubar.-vala-panel-background {
   > menu {
     padding: $container_padding;
 
-    separator {
-      margin: 0;
-      border-bottom: none;
-    }
-
     > menuitem {
       border-radius: $bt_radius;
 

@@ -2229,13 +2229,14 @@ menu {
 
   @if $variant == 'dark' { box-shadow: inset 0 0 0 1px $highlight_color; }
 
-  .background.csd > & {
+  .background.csd > &,
+  .background.popup > & {
     border: none; // axes borders in a composited env
     border-radius: $mn_radius;
     background-color: $menu_bg;
   }
 
-  separator {
+  > separator {
     margin: 3px 4px;
     min-height: 1px;
     background-color: $borders_color;
