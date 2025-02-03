@@ -43,6 +43,8 @@
 .tab-background {
 	border: none !important;
 	box-shadow: none !important;
+	outline: none !important;
+	transition: background-color 200ms !important;
 }
 
 #TabsToolbar .tabbrowser-tab,
@@ -56,19 +58,13 @@
 	color: var(--gnome-tabbar-tab-color) !important;
 }
 
-.tabbrowser-tab .tab-background:not([selected=true]) {
-	color: var(--gnome-tabbar-tab-active-color) !important;
-}
-
 #TabsToolbar .tab-background {
 	margin: 0 !important;
-	transition: none;
 	margin-block: 0 !important;
 }
 
-.tab-background:hover,
-.tab-background:is([selected]) {
-	transition: background 200ms;
+.tabbrowser-tab .tab-background:not([selected=true]) {
+	color: var(--gnome-tabbar-tab-active-color) !important;
 }
 
 .tabbrowser-tab:not([selected=true]) .tab-background {

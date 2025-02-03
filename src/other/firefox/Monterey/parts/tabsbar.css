@@ -46,7 +46,8 @@
 
 .tab-background {
 	background: transparent !important;
-	transition: background 200ms !important;
+	transition: background-color 200ms !important;
+	outline: none !important;
 }
 
 #TabsToolbar .tab-background {
