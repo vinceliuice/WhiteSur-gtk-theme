@@ -6,10 +6,6 @@
 	--space-above-tabbar: 0 !important;
 }
 
-.tab-background:is([selected]) {
-	box-shadow: none !important;
-}
-
 #TabsToolbar {
 /* Remove hover effects on tab bar buttons */
 	--toolbarbutton-active-background: transparent !important;
@@ -177,11 +173,6 @@ toolbarbutton[open=true] {
 	margin-left: 0 !important
 }
 
-.tab-background {
-	border-radius: 0 !important;
-	margin-block: 0 !important;
-}
-
 /*Align personal bookmarks v89 */
 #personal-bookmarks {
 	-moz-box-align: center !important;
@@ -202,6 +193,14 @@ toolbarbutton[open=true] {
 .tabbrowser-tab:is([soundplaying]) .tab-label-container {
 	margin-left: 0 !important;
 	margin-right: auto !important
+}
+
+/* Tabs */
+.tab-background {
+	transition: background-color 200ms;
+	border-radius: 0 !important;
+	margin-block: 0 !important;
+	outline: none !important;
 }
 
 /* Tab hover */
@@ -411,10 +410,6 @@ tab[selected]:-moz-window-inactive {
 
 .tabbrowser-tab[class*="identity-color-"][pinned] {
 	display: flex;
-}
-
-.tab-background {
-	transition: background 200ms;
 }
 
 /* firefox-view-button */

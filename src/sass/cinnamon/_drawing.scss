@@ -2,10 +2,13 @@
 
 // generic drawing of more complex things
 
-// provide font size in rem, with px fallback
-@mixin fontsize($size: 24, $base: 16) {
-  font-size: round($size) + pt;
-  //font-size: ($size / $base) * 1rem;
+// Mixin to convert provided font size in pt to em units
+@mixin fontsize($size, $base: 16px, $unit: pt) {
+  // if pt, convert into unitless value with the assumption: 1pt = 1.091px
+  $adjusted_size: if($unit == pt, $size * 1.091, $size) * 1000;
+  $rounded_size: round($adjusted_size / $base) / 1000;
+  font-size: $rounded_size * 1em;
+  // font-size: round($size) + pt;
 }
 
 // Entries

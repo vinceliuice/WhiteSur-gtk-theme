@@ -9,6 +9,52 @@ $_bubble_bg_color: opacify($osd_bg_color,0.25);
 $_bubble_fg_color: $osd_fg_color;
 $_bubble_borders_color: transparentize($osd_fg_color,0.8);
 
+/* General Typography */
+%large_title {
+  font-weight: 300;
+  @include fontsize(24pt);
+}
+
+%title_1 {
+  font-weight: 800;
+  @include fontsize(20pt);
+}
+
+%title_2 {
+  font-weight: 800;
+  @include fontsize(15pt);
+}
+
+%title_3 {
+  font-weight: 700;
+  @include fontsize(15pt);
+}
+
+%title_4 {
+  font-weight: 700;
+  @include fontsize(13pt);
+}
+
+%heading {
+  font-weight: 700;
+  @include fontsize(11pt);
+}
+
+%caption_heading {
+  font-weight: 700;
+  @include fontsize(9pt);
+}
+
+%caption {
+  font-weight: 400;
+  @include fontsize(9pt);
+}
+
+%smaller {
+  font-weight: 400;
+  @include fontsize(8pt);
+}
+
 stage {
   // font-family: $font-family;
   // @include fontsize($font-size);
@@ -1225,6 +1271,32 @@ StScrollBar {
   .confirm-dialog-title { text-align: center; }
 }
 
+
+// Lists in dialogs
+
+.dialog-list {
+  spacing: $base_padding * 3;
+
+  .dialog-list-title {
+    @extend %heading;
+    text-align: center;
+  }
+
+  .dialog-list-scrollview { max-height: 200px; }
+  .dialog-list-box {
+    spacing: 1em;
+
+    .dialog-list-item {
+      spacing: 1em;
+
+      .dialog-list-item-title { font-weight: bold; }
+      .dialog-list-item-description {
+        @extend %caption;
+        color: darken($fg_color, 5%);
+      }
+    }
+  }
+}
 
 //
 // Run dialog
