@@ -50,7 +50,7 @@
 }
 
 /* allow to drag headerbar empty space */
-:root[tabsintitlebar] #nav-bar .chromeclass-location {
+#nav-bar .chromeclass-location {
 	-moz-window-dragging: drag !important;
 }
 

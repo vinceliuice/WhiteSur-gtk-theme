@@ -1,151 +1,135 @@
-:root[tabsintitlebar] #nav-bar .titlebar-close,
-:root[tabsintitlebar] #titlebar .titlebar-close,
-:root[tabsintitlebar] #titlebar #titlebar-close {
+#nav-bar .titlebar-close,
+#titlebar .titlebar-close,
+#titlebar #titlebar-close {
 	background: url("../titlebuttons/titlebutton-close.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar .titlebar-max,
-:root[tabsintitlebar] #titlebar .titlebar-max,
-:root[tabsintitlebar] #titlebar #titlebar-max {
+#nav-bar .titlebar-max,
+#titlebar .titlebar-max,
+#titlebar #titlebar-max {
 	background: url("../titlebuttons/titlebutton-maximize.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar .titlebar-min,
-:root[tabsintitlebar] #titlebar .titlebar-min,
-:root[tabsintitlebar] #titlebar #titlebar-min {
+#nav-bar .titlebar-min,
+#titlebar .titlebar-min,
+#titlebar #titlebar-min {
 	background: url("../titlebuttons/titlebutton-minimize.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar .titlebar-restore,
-:root[tabsintitlebar] #titlebar .titlebar-restore,
-:root[tabsintitlebar] #titlebar #titlebar-restore,
-:root[tabsintitlebar][sizemode="maximized"] #nav-bar .titlebar-max,
-:root[tabsintitlebar][sizemode="maximized"] #titlebar .titlebar-max,
-:root[tabsintitlebar][sizemode="maximized"] #titlebar #titlebar-max {
+#nav-bar .titlebar-restore,
+#titlebar .titlebar-restore,
+#titlebar #titlebar-restore,
+:root[sizemode="maximized"] #nav-bar .titlebar-max,
+:root[sizemode="maximized"] #titlebar .titlebar-max,
+:root[sizemode="maximized"] #titlebar #titlebar-max {
 	background: url("../titlebuttons/titlebutton-maximize.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar .titlebar-close:hover,
-:root[tabsintitlebar] #titlebar .titlebar-close:hover,
-:root[tabsintitlebar] #titlebar #titlebar-close:hover {
+#nav-bar .titlebar-close:hover,
+#titlebar .titlebar-close:hover,
+#titlebar #titlebar-close:hover {
 	background: url("../titlebuttons/titlebutton-close-hover.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar .titlebar-max:hover,
-:root[tabsintitlebar] #titlebar .titlebar-max:hover,
-:root[tabsintitlebar] #titlebar #titlebar-max:hover {
+#nav-bar .titlebar-max:hover,
+#titlebar .titlebar-max:hover,
+#titlebar #titlebar-max:hover {
 	background: url("../titlebuttons/titlebutton-maximize-hover.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar .titlebar-min:hover,
-:root[tabsintitlebar] #titlebar .titlebar-min:hover,
-:root[tabsintitlebar] #titlebar #titlebar-min:hover {
+#nav-bar .titlebar-min:hover,
+#titlebar .titlebar-min:hover,
+#titlebar #titlebar-min:hover {
 	background: url("../titlebuttons/titlebutton-minimize-hover.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar .titlebar-restore:hover,
-:root[tabsintitlebar] #titlebar .titlebar-restore:hover,
-:root[tabsintitlebar] #titlebar #titlebar-restore:hover,
-:root[tabsintitlebar][sizemode="maximized"] #nav-bar .titlebar-max:hover,
-:root[tabsintitlebar][sizemode="maximized"] #titlebar .titlebar-max:hover,
-:root[tabsintitlebar][sizemode="maximized"] #titlebar #titlebar-max:hover {
+#nav-bar .titlebar-restore:hover,
+#titlebar .titlebar-restore:hover,
+#titlebar #titlebar-restore:hover,
+:root[sizemode="maximized"] #nav-bar .titlebar-max:hover,
+:root[sizemode="maximized"] #titlebar .titlebar-max:hover,
+:root[sizemode="maximized"] #titlebar #titlebar-max:hover {
 	background: url("../titlebuttons/titlebutton-unmaximize-hover.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar .titlebar-close:active,
-:root[tabsintitlebar] #titlebar .titlebar-close:active,
-:root[tabsintitlebar] #titlebar #titlebar-close:active {
+#nav-bar .titlebar-close:active,
+#titlebar .titlebar-close:active,
+#titlebar #titlebar-close:active {
 	background: url("../titlebuttons/titlebutton-close-active.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar .titlebar-max:active,
-:root[tabsintitlebar] #titlebar .titlebar-max:active,
-:root[tabsintitlebar] #titlebar #titlebar-max:active {
+#nav-bar .titlebar-max:active,
+#titlebar .titlebar-max:active,
+#titlebar #titlebar-max:active {
 	background: url("../titlebuttons/titlebutton-maximize-active.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar .titlebar-min:active,
-:root[tabsintitlebar] #titlebar .titlebar-min:active,
-:root[tabsintitlebar] #titlebar #titlebar-min:active {
+#nav-bar .titlebar-min:active,
+#titlebar .titlebar-min:active,
+#titlebar #titlebar-min:active {
 	background: url("../titlebuttons/titlebutton-minimize-active.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar .titlebar-restore:active,
-:root[tabsintitlebar] #titlebar .titlebar-restore:active,
-:root[tabsintitlebar] #titlebar #titlebar-restore:active,
-:root[tabsintitlebar][sizemode="maximized"] #nav-bar .titlebar-max:active,
-:root[tabsintitlebar][sizemode="maximized"] #titlebar .titlebar-max:active,
-:root[tabsintitlebar][sizemode="maximized"] #titlebar #titlebar-max:active {
+#nav-bar .titlebar-restore:active,
+#titlebar .titlebar-restore:active,
+#titlebar #titlebar-restore:active,
+:root[sizemode="maximized"] #nav-bar .titlebar-max:active,
+:root[sizemode="maximized"] #titlebar .titlebar-max:active,
+:root[sizemode="maximized"] #titlebar #titlebar-max:active {
 	background: url("../titlebuttons/titlebutton-unmaximize-active.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar:-moz-window-inactive .titlebar-close,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-close,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-close {
+#nav-bar:-moz-window-inactive .titlebar-close,
+#titlebar:-moz-window-inactive .titlebar-close,
+#titlebar:-moz-window-inactive #titlebar-close {
 	background: url("../titlebuttons/titlebutton-backdrop.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar:-moz-window-inactive .titlebar-max,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-max,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-max {
+#nav-bar:-moz-window-inactive .titlebar-max,
+#titlebar:-moz-window-inactive .titlebar-max,
+#titlebar:-moz-window-inactive #titlebar-max {
 	background: url("../titlebuttons/titlebutton-backdrop.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar:-moz-window-inactive .titlebar-min,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-min,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-min {
+#nav-bar:-moz-window-inactive .titlebar-min,
+#titlebar:-moz-window-inactive .titlebar-min,
+#titlebar:-moz-window-inactive #titlebar-min {
 	background: url("../titlebuttons/titlebutton-backdrop.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar:-moz-window-inactive .titlebar-restore,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-restore,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-restore,
-:root[tabsintitlebar][sizemode="maximized"] #nav-bar:-moz-window-inactive .titlebar-max,
-:root[tabsintitlebar][sizemode="maximized"] #titlebar:-moz-window-inactive .titlebar-max,
-:root[tabsintitlebar][sizemode="maximized"] #titlebar:-moz-window-inactive #titlebar-max {
+#nav-bar:-moz-window-inactive .titlebar-restore,
+#titlebar:-moz-window-inactive .titlebar-restore,
+#titlebar:-moz-window-inactive #titlebar-restore,
+:root[sizemode="maximized"] #nav-bar:-moz-window-inactive .titlebar-max,
+:root[sizemode="maximized"] #titlebar:-moz-window-inactive .titlebar-max,
+:root[sizemode="maximized"] #titlebar:-moz-window-inactive #titlebar-max {
 	background: url("../titlebuttons/titlebutton-backdrop.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar:-moz-window-inactive .titlebar-close:hover,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-close:hover,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-close:hover {
+#nav-bar:-moz-window-inactive .titlebar-close:hover,
+#titlebar:-moz-window-inactive .titlebar-close:hover,
+#titlebar:-moz-window-inactive #titlebar-close:hover {
 	background: url("../titlebuttons/titlebutton-close-backdrop.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar:-moz-window-inactive .titlebar-max:hover,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-max:hover,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-max:hover {
+#nav-bar:-moz-window-inactive .titlebar-max:hover,
+#titlebar:-moz-window-inactive .titlebar-max:hover,
+#titlebar:-moz-window-inactive #titlebar-max:hover {
 	background: url("../titlebuttons/titlebutton-maximize-backdrop.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar:-moz-window-inactive .titlebar-min:hover,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-min:hover,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-min:hover {
+#nav-bar:-moz-window-inactive .titlebar-min:hover,
+#titlebar:-moz-window-inactive .titlebar-min:hover,
+#titlebar:-moz-window-inactive #titlebar-min:hover {
 	background: url("../titlebuttons/titlebutton-minimize-backdrop.svg") no-repeat;
 	background-size: contain;
 }
-:root[tabsintitlebar] #nav-bar:-moz-window-inactive .titlebar-restore:hover,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive .titlebar-restore:hover,
-:root[tabsintitlebar] #titlebar:-moz-window-inactive #titlebar-restore:hover,
-:root[tabsintitlebar][sizemode="maximized"] #nav-bar:-moz-window-inactive .titlebar-max:hover,
-:root[tabsintitlebar][sizemode="maximized"] #titlebar:-moz-window-inactive .titlebar-max:hover,
-:root[tabsintitlebar][sizemode="maximized"] #titlebar:-moz-window-inactive #titlebar-max:hover {
+#nav-bar:-moz-window-inactive .titlebar-restore:hover,
+#titlebar:-moz-window-inactive .titlebar-restore:hover,
+#titlebar:-moz-window-inactive #titlebar-restore:hover,
+:root[sizemode="maximized"] #nav-bar:-moz-window-inactive .titlebar-max:hover,
+:root[sizemode="maximized"] #titlebar:-moz-window-inactive .titlebar-max:hover,
+:root[sizemode="maximized"] #titlebar:-moz-window-inactive #titlebar-max:hover {
 	background: url("../titlebuttons/titlebutton-unmaximize-backdrop.svg") no-repeat;
-	background-size: contain;
-}
-:root[tabsintitlebar][inFullscreen] #window-controls #restore-button {
-	background: url("../titlebuttons/titlebutton-unmaximize.svg") no-repeat;
-	background-size: contain;
-}
-:root[tabsintitlebar][inFullscreen] #window-controls #restore-button:hover {
-	background: url("../titlebuttons/titlebutton-unmaximize-hover.svg") no-repeat;
-	background-size: contain;
-}
-:root[tabsintitlebar][inFullscreen] #window-controls #restore-button:active {
-	background: url("../titlebuttons/titlebutton-unmaximize-active.svg") no-repeat;
-	background-size: contain;
-}
-:root[tabsintitlebar][inFullscreen] #window-controls:-moz-window-inactive #restore-button {
-	background: url("../titlebuttons/titlebutton-backdrop.svg") no-repeat;
 	background-size: contain;
 }

@@ -669,6 +669,18 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 	list-style-image: url("../icons/tool-profiler.svg") !important;
 }
 
+/* empty user button */
+#fxa-toolbar-menu-button .toolbarbutton-icon {
+	fill: var(--gnome-toolbar-icon-fill) !important;
+	-moz-context-properties: fill;
+}
+:root[fxastatus="not_configured"] {
+	--avatar-image-url: url("../icons/system-users-symbolic.svg") !important;
+}
+:root[fxastatus="not_configured"] #fxa-toolbar-menu-button .toolbarbutton-icon {
+	list-style-image: url("../icons/system-users-symbolic.svg") !important;
+}
+
 /* containers extension */
 .urlbar-page-action > .urlbar-icon {
 	filter: none !important;

@@ -4,15 +4,11 @@
 /* Headerbar */
 #nav-bar {
 	padding: 8px !important;
+	border: none !important;
 }
 
 .titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"] {
 	width: 0 !important;
-}
-
-/* Headerbar CSD colors */
-:root[tabsintitlebar] #nav-bar {
-	border: none !important;
 }
 
 /* Headerbar buttons */
