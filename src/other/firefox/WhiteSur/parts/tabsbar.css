@@ -7,275 +7,275 @@
 }
 
 #TabsToolbar {
-/* Remove hover effects on tab bar buttons */
+	/* Remove hover effects on tab bar buttons */
 	--toolbarbutton-active-background: transparent !important;
 	--toolbarbutton-hover-background: transparent !important;
 	padding: 0 !important;
 	box-shadow: inset 0 1px var(--gnome-toolbar-border-color), inset 0 1px 3px rgba(0, 0, 0, 0.08) !important;
 
-/* New hover effect */
-toolbarbutton {
-	fill-opacity: .6 !important;
-}
-toolbarbutton:not([disabled]):hover,
-toolbarbutton[open=true] {
-	fill-opacity: 1 !important;
-}
-/* Tabs bar height */
-#tabbrowser-tabs {
-	--tab-min-height: 32px !important;
-	--tabstrip-min-height: 32px !important;
-}
+	/* New hover effect */
+	toolbarbutton {
+		fill-opacity: .6 !important;
+	}
+	toolbarbutton:not([disabled]):hover,
+	toolbarbutton[open=true] {
+		fill-opacity: 1 !important;
+	}
+	/* Tabs bar height */
+	#tabbrowser-tabs {
+		--tab-min-height: 32px !important;
+		--tabstrip-min-height: 32px !important;
+	}
 
-.tab-background, .tab-stack {
-	min-height: 32px !important;
-}
+	.tab-background, .tab-stack {
+		min-height: 32px !important;
+	}
 
-#tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
-	max-height: 32px !important;
-}
+	#tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
+		max-height: 32px !important;
+	}
 
-.toolbar-items {
-	margin-bottom: -1px !important;
-}
+	.toolbar-items {
+		margin-bottom: -1px !important;
+	}
 
-/* Remove shadow next to tab scroll buttons */
-.arrowscrollbox-overflow-start-indicator,
-.arrowscrollbox-overflow-end-indicator {
-	display: none;
-}
+	/* Remove shadow next to tab scroll buttons */
+	.arrowscrollbox-overflow-start-indicator,
+	.arrowscrollbox-overflow-end-indicator {
+		display: none;
+	}
 
-/* Remove tab separators */
-.tabbrowser-tab::after,
-.tabbrowser-tab::before {
-	border-color: transparent !important;
-	border-image: none !important;
-}
+	/* Remove tab separators */
+	.tabbrowser-tab::after,
+	.tabbrowser-tab::before {
+		border-color: transparent !important;
+		border-image: none !important;
+	}
 
-/* Tabs separators */
-.tabbrowser-tab {
-	border-left: 1px solid transparent !important;
-}
+	/* Tabs separators */
+	.tabbrowser-tab {
+		border-left: 1px solid transparent !important;
+	}
 
-.tabbrowser-tab + .tabbrowser-tab:not([selected], :hover) {
-	border-color: var(--gnome-tabbar-tab-border-color) !important;
-}
+	.tabbrowser-tab + .tabbrowser-tab:not([selected], :hover) {
+		border-color: var(--gnome-tabbar-tab-border-color) !important;
+	}
 
-.tabbrowser-tab[selected] + .tabbrowser-tab,
-.tabbrowser-tab:hover + .tabbrowser-tab {
-	border-color: transparent !important;
-}
+	.tabbrowser-tab[selected] + .tabbrowser-tab,
+	.tabbrowser-tab:hover + .tabbrowser-tab {
+		border-color: transparent !important;
+	}
 
-.tabbrowser-tab:first-of-type {
-	border-left: none !important;
-}
+	.tabbrowser-tab:first-of-type {
+		border-left: none !important;
+	}
 
-/* Space between tabs */
-.tabbrowser-tab:not([pinned]) {
-	margin: 0 !important;
-}
+	/* Space between tabs */
+	.tabbrowser-tab:not([pinned]) {
+		margin: 0 !important;
+	}
 
-/* Center all inside tab */
-.tab-content {
-	display: flex;
-	flex-direction: row;
-	justify-content: center !important;
-	align-items: center !important;
-	min-width: 44px !important;
-	min-height: 32px !important;
-	padding: 0 8px !important;
-}
+	/* Center all inside tab */
+	.tab-content {
+		display: flex;
+		flex-direction: row;
+		justify-content: center !important;
+		align-items: center !important;
+		min-width: 44px !important;
+		min-height: 32px !important;
+		padding: 0 8px !important;
+	}
 
-/* Fix custom info tab icon */
-.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([pinned]):not([busy]):not([progress]) .tab-icon-stack::before {
-	margin-inline-end: 5.5px;
-}
+	/* Fix custom info tab icon */
+	.tabbrowser-tab[image="chrome://global/skin/icons/info.svg"]:not([pinned]):not([busy]):not([progress]) .tab-icon-stack::before {
+		margin-inline-end: 5.5px;
+	}
 
-/* Prevent tab icons size breaking */
-.tab-icon-image, .tab-icon-sound, .tab-throbber, .tab-throbber-fallback, .tab-close-button {
-	min-width: 16px;
-}
+	/* Prevent tab icons size breaking */
+	.tab-icon-image, .tab-icon-sound, .tab-throbber, .tab-throbber-fallback, .tab-close-button {
+		min-width: 16px;
+	}
 
-/* Center tab text */
-.tab-label {
-	margin-inline: 0 !important;
-}
+	/* Center tab text */
+	.tab-label {
+		margin-inline: 0 !important;
+	}
 
-/* Adjust tab label width */
-.tab-label-container {
-	min-width: 0 !important;
-}
+	/* Adjust tab label width */
+	.tab-label-container {
+		min-width: 0 !important;
+	}
 
-.tabbrowser-tab:not([pinned]) .tab-label-container {
-	max-width: min-content !important;
-}
+	.tabbrowser-tab:not([pinned]) .tab-label-container {
+		max-width: min-content !important;
+	}
 
-.tabbrowser-tab[pinned] .tab-label-container {
-	display: none !important;
-}
+	.tabbrowser-tab[pinned] .tab-label-container {
+		display: none !important;
+	}
 
-.tab-throbber:not([pinned]), .tab-icon-pending:not([pinned]), .tab-icon-image:not([pinned]), .tab-sharing-icon-overlay:not([pinned]), .tab-icon-overlay:not([pinned]) {
-	margin-inline-end: 0 !important;
-}
+	.tab-throbber:not([pinned]), .tab-icon-pending:not([pinned]), .tab-icon-image:not([pinned]), .tab-sharing-icon-overlay:not([pinned]), .tab-icon-overlay:not([pinned]) {
+		margin-inline-end: 0 !important;
+	}
 
-.tabbrowser-tab:not([soundplaying], [muted], [activemedia-blocked], [crashed]) .tab-icon-stack {
-	padding: 6px;
-}
+	.tabbrowser-tab:not([soundplaying], [muted], [activemedia-blocked], [crashed]) .tab-icon-stack {
+		padding: 6px;
+	}
 
-/* Hide secondary label about muting */
-.tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked], [crashed]) .tab-secondary-label {
-	display: none;
-}
+	/* Hide secondary label about muting */
+	.tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked], [crashed]) .tab-secondary-label {
+		display: none;
+	}
 
-/* Put tab close button and icon sound to the right */
-.tab-icon-sound[soundplaying="true"], .tab-icon-sound[muted="true"],
-.tab-icon-sound[activemedia-blocked="true"] {
-	margin-left: auto !important;
-}
-/*.tabbrowser-tab:not([soundplaying]):not([muted]):not([activemedia-blocked]) .tab-close-button {*/
-/*	margin-left: auto !important;*/
-/*}*/
-.tab-icon-sound {
-	margin-right: 6px;
-}
+	/* Put tab close button and icon sound to the right */
+	.tab-icon-sound[soundplaying="true"], .tab-icon-sound[muted="true"],
+	.tab-icon-sound[activemedia-blocked="true"] {
+		margin-left: auto !important;
+	}
+	/*.tabbrowser-tab:not([soundplaying]):not([muted]):not([activemedia-blocked]) .tab-close-button {*/
+	/*	margin-left: auto !important;*/
+	/*}*/
+	.tab-icon-sound {
+		margin-right: 6px;
+	}
 
-/* Force tab favicon to the center */
-.tab-throbber, .tab-throbber-fallback,
-.tabbrowser-tab:not([busy]):not([muted="true"]) .tab-icon-image,
-.tabbrowser-tab .tab-icon-stack {
-	margin-left: auto !important;
-}
+	/* Force tab favicon to the center */
+	.tab-throbber, .tab-throbber-fallback,
+	.tabbrowser-tab:not([busy]):not([muted="true"]) .tab-icon-image,
+	.tabbrowser-tab .tab-icon-stack {
+		margin-left: auto !important;
+	}
 
-.tabbrowser-tab:is([pinned]) .tab-icon-stack {
-	margin-left: 0 !important;
-}
+	.tabbrowser-tab:is([pinned]) .tab-icon-stack {
+		margin-left: 0 !important;
+	}
 
-.tabbrowser-tab:not([busy]):not([muted="true"]) .tab-icon-stack .tab-icon-image {
-	margin: auto !important;
-}
+	.tabbrowser-tab:not([busy]):not([muted="true"]) .tab-icon-stack .tab-icon-image {
+		margin: auto !important;
+	}
 
-/* If tab favicon is not present, force tab label to the center */
-.tabbrowser-tab .tab-label-container {
-	margin-left: 0 !important;
-	margin-right: auto !important;
-}
+	/* If tab favicon is not present, force tab label to the center */
+	.tabbrowser-tab .tab-label-container {
+		margin-left: 0 !important;
+		margin-right: auto !important;
+	}
 
-.tabbrowser-tab:not([image]):not([busy]):not([progress]) .tab-label-container {
-	margin-left: auto !important;
-}
+	.tabbrowser-tab:not([image]):not([busy]):not([progress]) .tab-label-container {
+		margin-left: auto !important;
+	}
 
-/* Fix website with no favicon centred text */
-.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) .tab-icon-stack {
-	margin-left: 0 !important
-}
+	/* Fix website with no favicon centred text */
+	.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) .tab-icon-stack {
+		margin-left: 0 !important
+	}
 
-.tabbrowser-tab:not([image], [busy]) .tab-icon-stack {
-	margin-left: 0 !important
-}
+	.tabbrowser-tab:not([image], [busy]) .tab-icon-stack {
+		margin-left: 0 !important
+	}
 
-/*Align personal bookmarks v89 */
-#personal-bookmarks {
-	-moz-box-align: center !important;
-}
+	/*Align personal bookmarks v89 */
+	#personal-bookmarks {
+		-moz-box-align: center !important;
+	}
 
-/* fix misc spacing between tabs */
-.tabbrowser-tab {
-	padding-inline: 0 !important;
-	padding: 0 !important;
-}
+	/* fix misc spacing between tabs */
+	.tabbrowser-tab {
+		padding-inline: 0 !important;
+		padding: 0 !important;
+	}
 
-.tabbrowser-tab[selected="true"] > .tab-stack > .tab-background {
-	margin-left: 0px !important;
-	margin-right: 0px !important;
-}
+	.tabbrowser-tab[selected="true"] > .tab-stack > .tab-background {
+		margin-left: 0px !important;
+		margin-right: 0px !important;
+	}
 
-/* centre text when audio is playing */
-.tabbrowser-tab:is([soundplaying]) .tab-label-container {
-	margin-left: 0 !important;
-	margin-right: auto !important
-}
+	/* centre text when audio is playing */
+	.tabbrowser-tab:is([soundplaying]) .tab-label-container {
+		margin-left: 0 !important;
+		margin-right: auto !important
+	}
 
-/* Tabs */
-.tab-background {
-	transition: background-color 200ms;
-	border-radius: 0 !important;
-	margin-block: 0 !important;
-	outline: none !important;
-}
+	/* Tabs */
+	.tab-background {
+		transition: background-color 200ms;
+		border-radius: 0 !important;
+		margin-block: 0 !important;
+		outline: none !important;
+	}
 
-/* Tab hover */
-.tabbrowser-tab:not([selected=true]):hover .tab-background {
-	background-color: var(--gnome-tabbar-tab-hover-background) !important;
-	border-image: none !important;
-	box-shadow: inset 0 1px var(--gnome-tabbar-tab-hover-border-color), inset 0 -1px var(--gnome-tabbar-tab-hover-border-color) !important;
-}
+	/* Tab hover */
+	.tabbrowser-tab:not([selected=true]):hover .tab-background {
+		background-color: var(--gnome-tabbar-tab-hover-background) !important;
+		border-image: none !important;
+		box-shadow: inset 0 1px var(--gnome-tabbar-tab-hover-border-color), inset 0 -1px var(--gnome-tabbar-tab-hover-border-color) !important;
+	}
 
-/* Active tab */
-.tab-background:is([selected]) {
-	background-color: var(--gnome-tabbar-tab-active-background) !important;
-	background-image: none !important;
-	border: none !important;
-	border-image: none !important;
-	transition: none !important;
-	margin-left: -1px !important;
-	margin-right: -1px !important;
-	border-radius: 0 !important;
-	box-shadow: 1px 0 var(--gnome-tabbar-tab-active-border-color), 1px 0 3px rgba(0, 0, 0, 0.08),
-	            -1px 0 var(--gnome-tabbar-tab-active-border-color), -1px 0 3px rgba(0, 0, 0, 0.08),
-	            inset 0 -1px var(--gnome-tabbar-tab-active-border-color) !important;
-}
+	/* Active tab */
+	.tab-background:is([selected]) {
+		background-color: var(--gnome-tabbar-tab-active-background) !important;
+		background-image: none !important;
+		border: none !important;
+		border-image: none !important;
+		transition: none !important;
+		margin-left: -1px !important;
+		margin-right: -1px !important;
+		border-radius: 0 !important;
+		box-shadow: 1px 0 var(--gnome-tabbar-tab-active-border-color), 1px 0 3px rgba(0, 0, 0, 0.08),
+		            -1px 0 var(--gnome-tabbar-tab-active-border-color), -1px 0 3px rgba(0, 0, 0, 0.08),
+		            inset 0 -1px var(--gnome-tabbar-tab-active-border-color) !important;
+	}
 
-.tab-background:is([selected]):-moz-window-inactive {
-	background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
-	border-image: none !important;
-}
+	.tab-background:is([selected]):-moz-window-inactive {
+		background-color: var(--gnome-inactive-tabbar-tab-active-background) !important;
+		border-image: none !important;
+	}
 
-/* Tabs scroll buttons */
-#scrollbutton-up:not([disabled]):hover,
-#scrollbutton-down:not([disabled]):hover {
-	background: var(--gnome-tabbar-tab-active-hover-background) !important;
-}
+	/* Tabs scroll buttons */
+	#scrollbutton-up:not([disabled]):hover,
+	#scrollbutton-down:not([disabled]):hover {
+		background: var(--gnome-tabbar-tab-active-hover-background) !important;
+	}
 
-/* Full width tabs */
-.tabbrowser-tab:not([style^="max-width"]):not([pinned]),
-.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]) {
-	max-width: 100% !important;
-}
+	/* Full width tabs */
+	.tabbrowser-tab:not([style^="max-width"]):not([pinned]),
+	.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]) {
+		max-width: 100% !important;
+	}
 
-.tabbrowser-tab:not([style^="max-width"]):not([pinned]):not([fadein]),
-.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]):not([fadein]) {
-	max-width: .1px !important;
-}
+	.tabbrowser-tab:not([style^="max-width"]):not([pinned]):not([fadein]),
+	.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]):not([fadein]) {
+		max-width: .1px !important;
+	}
 
-/* Remove blank spaces on tabs start and end */
-.titlebar-spacer {
-	display: none !important;
-}
+	/* Remove blank spaces on tabs start and end */
+	.titlebar-spacer {
+		display: none !important;
+	}
 
-/* TabsToolbar buttons */
-.toolbarbutton-1 {
-	margin: 0 !important;
-	border-radius: 0 !important;
-	min-width: 32px !important;
-	min-height: 32px !important;
-	padding: 0 !important;
-	border: none !important;
-}
+	/* TabsToolbar buttons */
+	.toolbarbutton-1 {
+		margin: 0 !important;
+		border-radius: 0 !important;
+		min-width: 32px !important;
+		min-height: 32px !important;
+		padding: 0 !important;
+		border: none !important;
+	}
 
-.toolbarbutton-1 > .toolbarbutton-icon,
-.toolbarbutton-1 > .toolbarbutton-text,
-.toolbarbutton-1 > .toolbarbutton-badge-stack {
-	padding: 8px !important;
-}
+	.toolbarbutton-1 > .toolbarbutton-icon,
+	.toolbarbutton-1 > .toolbarbutton-text,
+	.toolbarbutton-1 > .toolbarbutton-badge-stack {
+		padding: 8px !important;
+	}
 
-.toolbarbutton-1 > .toolbarbutton-icon {
-	width: 32px !important;
-	height: 32px !important;
-}
+	.toolbarbutton-1 > .toolbarbutton-icon {
+		width: 32px !important;
+		height: 32px !important;
+	}
 
-#alltabs-button {
-	display: none !important;
-}
+	#alltabs-button {
+		display: none !important;
+	}
 }
 
 :root[tabsintitlebar][inFullscreen] #TabsToolbar .toolbar-items {
@@ -418,9 +418,9 @@ tab[selected]:-moz-window-inactive {
   toolbarbutton:not(#firefox-view-button),
   toolbarpaletteitem:not(#wrapper-firefox-view-button)
 ) + #tabbrowser-tabs {
-  border-inline-start: 1px solid var(--gnome-toolbar-border-color) !important;
-  padding-inline-start: calc(var(--tab-overflow-pinned-tabs-width)) !important;
-  margin-inline-start: 0 !important;
+	border-inline-start: 1px solid var(--gnome-toolbar-border-color) !important;
+	padding-inline-start: calc(var(--tab-overflow-pinned-tabs-width)) !important;
+	margin-inline-start: 0 !important;
 }
 
 #TabsToolbar #firefox-view-button {
@@ -430,6 +430,7 @@ tab[selected]:-moz-window-inactive {
 
 #firefox-view-button > .toolbarbutton-icon {
 	box-shadow: none !important;
+	outline: none !important;
 }
 
 #TabsToolbar #firefox-view-button[open] {

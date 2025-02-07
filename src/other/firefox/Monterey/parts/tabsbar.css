@@ -250,6 +250,7 @@ tab[selected]:-moz-window-inactive .tab-label {
 #firefox-view-button > .toolbarbutton-icon {
 	filter: none !important;
 	box-shadow: none !important;
+	outline: none !important;
 }
 
 /* Remove shadow next to tab scroll buttons */
