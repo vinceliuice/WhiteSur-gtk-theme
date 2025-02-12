@@ -44,41 +44,46 @@
 	}
 }
 
-/* Window buttons box */
-#nav-bar .titlebar-buttonbox-container,
-#titlebar .titlebar-buttonbox-container,
-#titlebar-buttonbox-container {
-	-moz-appearance: none !important;
-	padding: 0 3px 0 4px;
-	position: absolute !important;
-	right: 8px;
-	top: 0;
-	display: block !important;
-}
-#nav-bar .titlebar-buttonbox,
-#titlebar .titlebar-buttonbox {
-	-moz-appearance: none !important;
+#nav-bar, #titlebar {
+	/* Window buttons box */
+	.titlebar-buttonbox-container,
+	#titlebar-buttonbox-container {
+		-moz-appearance: none !important;
+		padding: 0 3px 0 4px;
+		position: absolute !important;
+		right: 8px;
+		top: 0;
+		display: block !important;
+	}
+
+	.titlebar-buttonbox {
+		-moz-appearance: none !important;
+	}
+
+	/* Window buttons style */
+	.titlebar-button {
+		-moz-appearance: none !important;
+		border: none !important;
+		border-radius: 100px !important;
+		height: 16px;
+		width: 16px;
+		margin: 16px 4px !important;
+		padding: 2px 0 !important;
+		--inactive-titlebar-opacity: 1 !important;
+	}
+
+	&, &:-moz-window-inactive {
+		.titlebar-button .toolbarbutton-icon {
+			opacity: 0 !important;
+			appearance: none !important;
+		}
+
+		.titlebar-button[disabled="true"] {
+			opacity: 0.35 !important;
+		}
+	}
 }
 
-/* Window buttons style */
-#nav-bar .titlebar-button,
-#titlebar .titlebar-button {
-	-moz-appearance: none !important;
-	border: none !important;
-	border-radius: 100px !important;
-	height: 16px;
-	width: 16px;
-	margin: 16px 4px !important;
-	padding: 2px 0 !important;
-	--inactive-titlebar-opacity: 1 !important;
-}
-
-#nav-bar .titlebar-button .toolbarbutton-icon,
-#nav-bar:-moz-window-inactive .titlebar-button .toolbarbutton-icon,
-#titlebar .titlebar-button .toolbarbutton-icon,
-#titlebar:-moz-window-inactive .titlebar-button .toolbarbutton-icon {
-	opacity: 0 !important;
-}
 
 /* Fullscreen headerbar */
 &:root[inFullscreen] {

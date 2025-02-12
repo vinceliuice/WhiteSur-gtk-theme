@@ -82,22 +82,13 @@
 }
 #nav-bar:-moz-window-inactive .titlebar-close,
 #titlebar:-moz-window-inactive .titlebar-close,
-#titlebar:-moz-window-inactive #titlebar-close {
-	background: url("../titlebuttons/titlebutton-backdrop-dark.svg") no-repeat;
-	background-size: contain;
-}
+#titlebar:-moz-window-inactive #titlebar-close,
 #nav-bar:-moz-window-inactive .titlebar-max,
 #titlebar:-moz-window-inactive .titlebar-max,
-#titlebar:-moz-window-inactive #titlebar-max {
-	background: url("../titlebuttons/titlebutton-backdrop-dark.svg") no-repeat;
-	background-size: contain;
-}
+#titlebar:-moz-window-inactive #titlebar-max,
 #nav-bar:-moz-window-inactive .titlebar-min,
 #titlebar:-moz-window-inactive .titlebar-min,
-#titlebar:-moz-window-inactive #titlebar-min {
-	background: url("../titlebuttons/titlebutton-backdrop-dark.svg") no-repeat;
-	background-size: contain;
-}
+#titlebar:-moz-window-inactive #titlebar-min,
 #nav-bar:-moz-window-inactive .titlebar-restore,
 #titlebar:-moz-window-inactive .titlebar-restore,
 #titlebar:-moz-window-inactive #titlebar-restore,

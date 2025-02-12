@@ -225,13 +225,13 @@ button.customizationmode-button[disabled] {
 	opacity: 1 !important;
 }
 
-#nav-bar toolbarbutton:not(#urlbar-zoom-button)[disabled] image,
+/*#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button)[disabled] image,*/
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled] image,
 #context-navigation menuitem[disabled] image {
 	opacity: .4 !important;
 }
 
-#nav-bar toolbarbutton:not(#urlbar-zoom-button)[disabled]:hover,
+/*#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button)[disabled]:hover,*/
 #appMenu-popup .toolbaritem-combined-buttons toolbarbutton[disabled]:hover {
 	background: none !important;
 }

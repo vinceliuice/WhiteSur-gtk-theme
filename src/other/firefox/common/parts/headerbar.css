@@ -67,6 +67,10 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	opacity: 1 !important;
 }
 
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button)[disabled] image {
+	opacity: .4 !important;
+}
+
 /* Inactive window buttons */
 #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):-moz-window-inactive {
 	background: var(--gnome-inactive-button-background) !important;
