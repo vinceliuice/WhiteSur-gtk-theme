@@ -2320,7 +2320,7 @@ headerbar {
       &.close, &.maximize, &.minimize {
         min-width: 16px;
         min-height: 16px;
-        padding: ($menuitem_size - 20px) / 2 0;
+        padding: ($menuitem_size - 20px) / 2 1px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: 16px 16px;
@@ -2392,7 +2392,7 @@ headerbar {
       button.close, button.maximize, button.minimize {
         min-width: 16px;
         min-height: 16px;
-        margin: 0;
+        margin: 0 1px;
         padding: 0;
       }
     }

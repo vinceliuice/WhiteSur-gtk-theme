@@ -1799,7 +1799,7 @@ headerbar {
       border: none;
       min-width: 16px;
       min-height: 16px;
-      margin: 0;
+      margin: 0 1px;
       padding: 0;
     }
   }
@@ -4437,7 +4437,7 @@ headerbar {
     &.close, &.maximize, &.minimize {
       min-width: 16px;
       min-height: 16px;
-      margin: 0;
+      margin: 0 1px;
       padding: 0;
       background-position: center;
       background-repeat: no-repeat;
