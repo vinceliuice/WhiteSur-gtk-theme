@@ -236,14 +236,19 @@ toast {
 
 viewswitcher {
   margin: 0;
+  min-height: 26px;
 
   &.wide {
-    border-spacing: 0;
+    border-spacing: $container_padding / 2;
   }
 
   &.narrow > button.toggle {
     border-radius: 0;
     margin: 0;
+
+    indicatorbin > image {
+      -gtk-icon-size: 12px;
+    }
   }
 
   > button.toggle {
@@ -255,7 +260,7 @@ viewswitcher {
         font-size: 0.75rem;
         padding-top: $container_padding;
         padding-bottom: $container_padding;
-        border-spacing: 0;
+        border-spacing: $container_padding - 2px;
 
         > stack > label {
           padding-left: $container_padding + 2px;
@@ -265,12 +270,7 @@ viewswitcher {
 
       &.wide {
         padding: 0 $container_padding * 2;
-        border-spacing: 0;
-
-        > label, > indicatorbin > image {
-          padding-left: $container_padding / 2;
-          padding-right: $container_padding / 2;
-        }
+        border-spacing: $container_padding;
       }
     }
   }
@@ -343,6 +343,12 @@ indicatorbin {
     background: black;
   }
 
+  > image {
+    -gtk-icon-size: 16px;
+    margin-top: -4px;
+    margin-bottom: -4px;
+  }
+
   &.needs-attention > indicator {
     background: $selected_bg_color;
 
@@ -357,13 +363,13 @@ headerbar > windowhandle > box viewswitcher {
     box-shadow: inset 0 0 0 1px $light_borders_color;
     border-radius: $bt_radius;
     padding: 0;
-  
+
     > button.toggle {
       margin: 0;
       min-height: 0;
       font-weight: 500;
       border-radius: $bt_radius;
-  
+
       &:not(:first-child) {
         border-width: 0 0 0 1px;
         border-style: none solid none none;
@@ -373,7 +379,7 @@ headerbar > windowhandle > box viewswitcher {
                                       $light_borders_color 84%,
                                       transparent 84%) 0 0 0 1 / 0 0 0 1px stretch;
       }
-  
+
       &:hover, &:active, &:checked {
         border-image: none;
   
@@ -877,8 +883,8 @@ toolbarview {
         min-height: $headerbar_size;
 
         > windowhandle > box {
-          padding-top: 8px;
-          padding-bottom: 8px;
+          padding-top: 0;
+          padding-bottom: 0;
         }
 
         &.default-decoration {

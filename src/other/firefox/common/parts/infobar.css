@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 :host(.infobar) {
-  --info-bar-background-color: light-dark(var(--color-white), var(--gnome-tabbar-tab-active-background));
-  --info-bar-text-color: light-dark(var(--color-gray-100), var(--color-gray-05));
+  --info-bar-background-color: light-dark(var(--color-white), var(--gnome-tabbar-tab-active-background)) !important;
+  --info-bar-text-color: light-dark(var(--color-gray-100), var(--color-gray-05)) !important;
   position: relative;
 
   &::before {
@@ -47,8 +47,8 @@
 @media not (prefers-contrast) {
   :host(.infobar) {
     box-shadow: 0 1px 2px rgba(48, 48, 48, 0.1);
-    background-color: var(--gnome-tabbar-tab-active-background);
-    color: var(--info-bar-text-color);
+    background-color: var(--gnome-tabbar-tab-active-background) !important;
+    color: var(--info-bar-text-color) !important;
 
     &::before {
       background-image: linear-gradient(0deg, #9059ff 0%, #ff4aa2 52.08%, #ffbd4f 100%);
