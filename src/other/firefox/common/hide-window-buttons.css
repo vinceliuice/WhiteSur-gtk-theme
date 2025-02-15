@@ -1,10 +1,18 @@
 @namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-[sizemode="maximized"] #nav-bar .titlebar-buttonbox-container,
-[sizemode="maximized"] #titlebar .titlebar-buttonbox-container {
-    display: none !important;
-}
+:root[tabsintitlebar], :root[customtitlebar] {
+	&[sizemode="maximized"] {
+		#nav-bar, #titlebar {
+			.titlebar-buttonbox-container {
+				display: none !important;
+				padding: 0 !important;
+				right: 0 !important;
+			}
+		}
 
-[sizemode="maximized"] #nav-bar {
-    padding-left: 3px !important;
+		&:not([inFullscreen]) #nav-bar {
+			padding-left: 8px !important;
+			padding-right: 8px !important;
+		}
+	}
 }
