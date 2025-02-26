@@ -44,6 +44,56 @@ $dark_3: #3d3846;
 $dark_4: #241f31;
 $dark_5: #000000;
 
+@if $gnome_version == 'new' {
+  :root {
+    --blue-1: #{$blue_1};
+    --blue-2: #{$blue_2};
+    --blue-3: #{$blue_3};
+    --blue-4: #{$blue_4};
+    --blue-5: #{$blue_5};
+    --green-1: #{$green_1};
+    --green-2: #{$green_2};
+    --green-3: #{$green_3};
+    --green-4: #{$green_4};
+    --green-5: #{$green_5};
+    --yellow-1: #{$yellow_1};
+    --yellow-2: #{$yellow_2};
+    --yellow-3: #{$yellow_3};
+    --yellow-4: #{$yellow_4};
+    --yellow-5: #{$yellow_5};
+    --orange-1: #{$orange_1};
+    --orange-2: #{$orange_2};
+    --orange-3: #{$orange_3};
+    --orange-4: #{$orange_4};
+    --orange-5: #{$orange_5};
+    --red-1: #{$red_1};
+    --red-2: #{$red_2};
+    --red-3: #{$red_3};
+    --red-4: #{$red_4};
+    --red-5: #{$red_5};
+    --purple-1: #{$purple_1};
+    --purple-2: #{$purple_2};
+    --purple-3: #{$purple_3};
+    --purple-4: #{$purple_4};
+    --purple-5: #{$purple_5};
+    --brown-1: #{$brown_1};
+    --brown-2: #{$brown_2};
+    --brown-3: #{$brown_3};
+    --brown-4: #{$brown_4};
+    --brown-5: #{$brown_5};
+    --light-1: #{$light_1};
+    --light-2: #{$light_2};
+    --light-3: #{$light_3};
+    --light-4: #{$light_4};
+    --light-5: #{$light_5};
+    --dark-1: #{$dark_1};
+    --dark-2: #{$dark_2};
+    --dark-3: #{$dark_3};
+    --dark-4: #{$dark_4};
+    --dark-5: #{$dark_5};
+  }
+}
+
 // Sass thinks we're using the colors in the variables as strings and may shoot
 // warning, it's innocuous and can be defeated by using #{$var}.
 
