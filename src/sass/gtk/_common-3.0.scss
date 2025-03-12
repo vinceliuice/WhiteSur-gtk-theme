@@ -2261,23 +2261,18 @@ menu {
 
       // image { -gtk-icon-style: symbolic; }
 
-      arrow {
+      > arrow {
         transition: none;
         color: $selected_fg_color;
       }
 
-      menu { //sunmenu
+      menu { //submenu
         arrow {
-          color: $fg_color;
           text-shadow: none;
           -gtk-icon-shadow: none;
         }
 
         // menuitem { -gtk-icon-style: symbolic; }
-
-        menuitem:hover {
-          arrow { color: $selected_fg_color; }
-        }
       }
     }
 
