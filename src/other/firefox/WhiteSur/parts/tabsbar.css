@@ -362,6 +362,30 @@ tab[selected]:-moz-window-inactive {
 	border-radius: 100px !important;
 }
 
+.tab-audio-button {
+  --icon-size-default: 12px;
+  --button-size-icon-small: 24px;
+  --button-min-height-small: 24px;
+  --button-border-radius: 100px !important;
+  margin: -3px 3px 0 !important;
+}
+
+/*.tab-content*/
+/*	/* Rearrange content */
+/*	.tab-audio-button {*/
+/*		order: 0;*/
+/*	}*/
+/*	.tab-icon-stack {*/
+/*		order: 1;*/
+/*	}*/
+/*	.tab-label-container {*/
+/*		order: 2;*/
+/*	}*/
+/*	.tab-close-button {*/
+/*		order: 3;*/
+/*	}*/
+/*}*/
+
 .tab-icon-overlay:not([crashed]):is([pinned], [sharing]) {
 	top: 0 !important;
 	inset-inline-end: 0 !important;
