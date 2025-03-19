@@ -149,7 +149,7 @@ $header_border:                     if($variant == 'light', mix(black, $header_b
 
 // Sidebar colors
 $dark_sidebar_bg: white;
-$opacity: 0.96;
+$opacity: 0.95;
 
 @if $trans=='true' {
   @if $variant=='light' {

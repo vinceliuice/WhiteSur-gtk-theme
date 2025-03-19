@@ -13,11 +13,11 @@ if [ ! "$(which sassc 2> /dev/null)" ]; then
   if has_command zypper; then
     sudo zypper in sassc
   elif has_command apt; then
-    sudo apt install sassc
+    sudo apt install -y sassc
   elif has_command dnf; then
     sudo dnf install -y sassc
   elif has_command yum; then
-    sudo yum install sassc
+    sudo yum install -y sassc
   elif has_command pacman; then
     sudo pacman -S --noconfirm sassc
   fi
