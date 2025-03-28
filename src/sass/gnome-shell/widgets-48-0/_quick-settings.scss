@@ -6,7 +6,7 @@
   .icon-button, .button {
     padding: $base_padding * 1.75;
 
-    StIcon { icon-size: $base_icon_size !important; }
+    StIcon { icon-size: $scalable_icon_size; }
   }
 }
 
@@ -15,7 +15,7 @@
   spacing-columns: $container_padding * 2;
 }
 
-.quick-toggle, .quick-menu-toggle {
+.quick-toggle, .quick-toggle-has-menu {
   border-radius: $circular_radius;
   min-width: 12em;
   max-width: 12em;
@@ -66,17 +66,19 @@
   &:ltr > StBoxLayout { padding-left: $base_padding * 4; }
   &:rtl > StBoxLayout { padding-right: $base_padding * 4; }
 
-  .quick-toggle-title { font-weight: bold; }
+  .quick-toggle-title {
+    @extend %heading;
+  }
 
-  & StBoxLayout > .quick-toggle-subtitle {
+  .quick-toggle-subtitle {
     @extend %caption;
     font-weight: normal;
   }
 
-  .quick-toggle-icon { icon-size: $base_icon_size !important; }
+  .quick-toggle-icon { icon-size: $scalable_icon_size; }
 }
 
-.quick-menu-toggle {
+.quick-toggle-has-menu {
   & .quick-toggle {
     min-width: auto;
     max-width: auto;
@@ -90,7 +92,7 @@
     &:rtl:last-child { border-radius: $circular_radius; }
   }
 
-  & .quick-toggle-arrow {
+  & .quick-toggle-menu-button {
     padding: $scaled_padding $scaled_padding * 2;
     border: none;
     background-color: $fill_color !important;
@@ -135,6 +137,10 @@
       border-radius: $circular_radius 0 0 $circular_radius;
       border-right-width: 0;
     }
+  }
+
+  & .quick-toggle-separator {
+    width: 0;
   }
 }
 
