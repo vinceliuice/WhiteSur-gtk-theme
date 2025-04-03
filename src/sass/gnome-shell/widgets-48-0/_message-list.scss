@@ -3,24 +3,13 @@
 
 .message-list {
   width: 29em;
-  padding: 0 $base_margin;
   text-shadow: none;
   border: none;
+  padding: 0 $base_margin;
 
   // padding and margins to account for scrollbar
-  &:ltr {
-    margin-left: 0;
-    margin-right: 0;
-    padding-right: 0;
-    border-right-width: 0;
-  }
-
-  &:rtl {
-    margin-right: 0;
-    margin-left: 0;
-    padding-left: 0;
-    border-left-width: 0;
-  }
+  &:ltr { margin-left: 0; margin-right: 0; padding-right: $base_padding; border-right-width: 0; }
+  &:rtl { margin-right: 0; margin-left: 0; padding-left: $base_padding; border-left-width: 0; }
 
   .message-list-placeholder {
     @extend %title_2;
@@ -37,8 +26,8 @@
 
 .message-view {
   // to account for scrollbar
-  &:ltr {margin-right: $base_margin * 3; }
-  &:rtl {margin-left: $base_margin * 3;}
+  &:ltr { margin-right: $base_margin * 5; }
+  &:rtl { margin-left: $base_margin * 5; }
 
   -st-vfade-offset: 68px;
 
@@ -99,10 +88,10 @@
   }
 }
 
-$card_bg_color: if($variant == 'light', mix(white, $bg_color, 95%), lighten($base_color, 7%));
+$card_bg_color: if($variant == 'light', mix(white, $bg_color, 95%), lighten($base_color, 10%));
 
 %card {
-  border-radius: $base_border_radius;
+  border-radius: $bt_radius + $base_padding * 1.5;
   padding: $base_padding;
   margin: $base_margin;
   background-color: $card_bg_color;
@@ -132,21 +121,20 @@ $card_bg_color: if($variant == 'light', mix(white, $bg_color, 95%), lighten($bas
 // message bubbles
 .message {
   border: 1px solid transparent;
-  border-left: none;
 
   .popup-menu & {
     @extend %card;
   }
 
   &:second-in-stack {
-    background-color: if($variant == 'light', darken($card_bg_color, 4%), darken($card_bg_color, 1%));
-    box-shadow: 0 1px 3px rgba(black, 0.05);
+    background-color: if($variant == 'light', darken($card_bg_color, 3%), darken($card_bg_color, 2%));
+    box-shadow: 0 1px 2px rgba(black, 0.05);
   }
 
   &:lower-in-stack {
-    background-color: if($variant == 'light', darken($card_bg_color, 7%), darken($card_bg_color, 4%));
-    box-shadow: none;
-    border-color: if($variant == 'light', darken($card_bg_color, 10%), transparent); // a not ideal workaround for light theme
+    background-color: if($variant == 'light', darken($card_bg_color, 5%), darken($card_bg_color, 4%));
+    box-shadow: 0 1px 2px rgba(black, 0.01);
+    border-color: transparent; // a not ideal workaround for light theme
   }
 
   // message header
@@ -223,14 +211,14 @@ $card_bg_color: if($variant == 'light', mix(white, $bg_color, 95%), lighten($bas
 
       // icon size and color
       icon-size: $base_icon_size * 3; // 48px
-      -st-icon-style: symbolic;
 
       &.message-themed-icon {
         border-radius: $circular_radius; // is circular
         background-color: transparentize($fg_color, 0.8);
         icon-size: $base_icon_size;
-        min-width: $base_icon_size * 3;
-        min-height: $base_icon_size * 3;
+        min-width: $base_icon_size * 2;
+        min-height: $base_icon_size * 2;
+        padding: $base_icon_size / 2;
       }
     }
 

@@ -29,7 +29,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 }
 
 .datemenu-popover {
-  border-radius: $base_border_radius + $base_padding * 2.5 !important;
+  border-radius: $bt_radius + $base_padding * 4 !important;
 }
 
 // Calendar menu side column

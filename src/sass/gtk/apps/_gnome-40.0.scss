@@ -266,12 +266,6 @@ navigation-view-page > toolbarview > scrolledwindow > viewport > clamp {
   }
 }
 
-// Extensions
-window.nightthemeswitcher headerbar {
-  background: $header_bg;
-  color: $header_fg;
-}
-
 //
 // Gnome Control Center
 //
@@ -1289,6 +1283,17 @@ window.background.csd {
 }
 
 //
+// Gnome extensions tool
+//
+popover.details-popover {
+  .actions {
+    border-spacing: 6px;
+
+    > button { padding: 8px; }
+  }
+}
+
+//
 // Ptyxis
 //
 
@@ -1305,6 +1310,15 @@ window.background.csd {
 #desktopwindow.background {
   background-color: transparent;
   background-image: none;
+}
+
+//
+// Other Extensions
+//
+
+window.nightthemeswitcher headerbar {
+  background: $header_bg;
+  color: $header_fg;
 }
 
 //
