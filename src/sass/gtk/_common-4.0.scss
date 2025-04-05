@@ -1516,7 +1516,7 @@ button.link {
   }
 
   &:hover {
-    color: HSL(from $link_color h calc(s * 1.1) calc(l * 1.1));
+    color: hsl(hue($link_color), saturation($link_color) * 1.1, lightness($link_color) * 1.1);
   }
 
   &:active {
@@ -3265,7 +3265,7 @@ $switch_animation: switch_ripple_effect 0.1s cubic-bezier(0, 0, 0.2, 1);
 
   to {
     background-image: $switch_checked_image, radial-gradient(circle farthest-corner at center,
-                                      RGB($selected_bg_color, 75%) 100%,
+                                      rgba($selected_bg_color, 0.75) 100%,
                                       transparent 0%);
   }
 }
