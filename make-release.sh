@@ -62,8 +62,8 @@ echo "Nautilus style   : ${nautilus_style}" >> ${RELEASE_DIR}/release-info.txt
 #install && compress
 #prompt -s "Compress Gnome${RELEASE_VERSION} version finished!"; echo
 
-GNOME_VERSION="47-0"
-RELEASE_VERSION="47.0"
+GNOME_VERSION="48-0"
+RELEASE_VERSION="48.0"
 install && compress
 prompt -i "Compress ${THEME_NAME} themes finished!\n"
 release_info
