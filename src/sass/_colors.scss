@@ -122,7 +122,7 @@ $link_color:                        if($scheme == 'nord', #5e81ac, #3484e2);
 $link_visited_color:                if($variant == 'light', lighten($text_color, 10%), darken($text_color, 15%));
 
 // Theme colors
-$selection_mode_bg:                 lighten($selected_bg_color, 15%);
+$selection_mode_bg:                 gtkmix(white, $selected_bg_color, 25%);
 $warning_color:                     if($scheme == 'nord', $nord_color_orange, $theme_color_orange);
 $error_color:                       if($scheme == 'nord', $nord_color_red, $theme_color_red);
 $success_color:                     if($scheme == 'nord', $nord_color_green, $theme_color_green);
@@ -273,7 +273,7 @@ $dash_bg:                           if($variant == 'light', rgba(#d1d1d1, $panel
 $entry_bg:                          gtkalpha(currentColor, 0.05);
 $entry_shell_bg:                    gtkalpha(currentColor, 0.1);
 $entry_border:                      $borders_color;
-$entry_highlight:                   rgba($selection_mode_bg, 0.75);
+$entry_highlight:                   gtkalpha($selection_mode_bg, 0.75);
 
 // Button colors
 $button_bg:                         if($variant == 'light', white, #656565);

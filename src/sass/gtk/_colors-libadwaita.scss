@@ -247,12 +247,11 @@ $dark_5: #000000;
     --accent-fg-color: @accent_fg_color;
   }
 
-  $selected_bg_color: var(--accent-bg-color);
-  $primary_color: var(--accent-bg-color);
-  $entry_highlight: RGB(color-mix(in srgb, white 25%, var(--accent-bg-color)), 75%);
-  $progress_color: var(--accent-bg-color);
-  $selection_mode_bg: color-mix(in srgb, white 25%, var(--accent-bg-color));
-  $selected_borders_color:  color-mix(in srgb, black 25%, var(--accent-bg-color));
+  $selected_bg_color: gtkcolor(accent_bg_color);
+  $primary_color: gtkcolor(accent_bg_color);
+  $progress_color: gtkcolor(accent_bg_color);
+  $selection_mode_bg: color-mix(in srgb, white 25%, gtkcolor(accent_bg_color));
+  $entry_highlight: color-mix(in srgb, gtkcolor(window_bg_color) 25%, $selection_mode_bg);
 
   $bg_color: gtkcolor(window_bg_color);
   $base_color: gtkcolor(view_bg_color);

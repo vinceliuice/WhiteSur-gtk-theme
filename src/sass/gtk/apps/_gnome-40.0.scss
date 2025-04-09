@@ -22,7 +22,7 @@ $flap_sidebar_size: 240px;
   $nautilus_header_image: linear-gradient(90deg, transparent ($flap_sidebar_size / 2),
                                                  $dark_header_bg 40%);
 
-  $nautilus_header_borders_image: linear-gradient(90deg, rgba($header_border, 0) (($flap_sidebar_size / 2) - 40px),
+  $nautilus_header_borders_image: linear-gradient(90deg, gtkalpha($header_border, 0) (($flap_sidebar_size / 2) - 40px),
                                                          $header_border 40%);
 }
 
@@ -1155,28 +1155,28 @@ carousel.card {
 
   &.green, &.details-rating-0 {
     color: darken($theme_color_green, 15%);
-    background-color: rgba($theme_color_green, 0.15);
+    background-color: gtkalpha($theme_color_green, 0.15);
   }
 
   &.blue,
   &.details-rating-5 {
     color: $theme_color_blue;
-    background-color: rgba($theme_color_blue, 0.15);
+    background-color: gtkalpha($theme_color_blue, 0.15);
   }
 
   &.yellow, &.details-rating-12 {
     color: darken($theme_color_yellow, 15%);
-    background-color: rgba($theme_color_yellow, 0.15);
+    background-color: gtkalpha($theme_color_yellow, 0.15);
   }
 
   &.details-rating-15 {
     color: $theme_color_orange;
-    background-color: rgba($theme_color_orange, .15);
+    background-color: gtkalpha($theme_color_orange, .15);
   }
 
   &.red, &.details-rating-18 {
     color: darken($theme_color_red, 15%);
-    background-color: rgba($theme_color_red, 0.15);
+    background-color: gtkalpha($theme_color_red, 0.15);
   }
 }
 

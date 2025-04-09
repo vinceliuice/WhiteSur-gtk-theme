@@ -525,7 +525,7 @@ spinner {
   @include entry(normal);
   border: none;
 
-  &:focus {
+  &:focus-within {
     @include entry(focus);
   }
 
@@ -2225,7 +2225,7 @@ headerbar {
     text-shadow: none;
 
     @if $gnome_version == 'old' {
-      border-color: darken($selection_mode_bg, 5%);
+      border-color: gtkmix(black, $selection_mode_bg, 6%);
     } @else {
       border-color: color-mix(in srgb, black 15%, $selection_mode_bg)
     }
@@ -2235,7 +2235,7 @@ headerbar {
       color: gtkalpha($light_fg_color, 0.6);
 
       @if $gnome_version == 'old' {
-        border-color: darken($selection_mode_bg, 5%);
+        border-color: gtkmix(black, $selection_mode_bg, 6%);
       } @else {
         border-color: color-mix(in srgb, black 15%, $selection_mode_bg)
       }

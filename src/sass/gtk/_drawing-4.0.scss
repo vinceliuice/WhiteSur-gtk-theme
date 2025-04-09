@@ -47,7 +47,7 @@
   // insensitive entry
   //
     color: $disabled_fg_color;
-    background-color: gtkalpha($entry_bg, 0.02);
+    background-color: $entry_bg;
   }
 
   @if $t==header-normal {
@@ -108,7 +108,7 @@
     background-color: $selected_bg_color;
 
     @if $gnome_version == 'old' {
-      border-color: darken($selection_mode_bg, 5%);
+      border-color: gtkmix(black, $selected_bg_color, 6%);
     } @else {
       border-color: color-mix(in srgb, black 25%, $selected_bg_color)
     }

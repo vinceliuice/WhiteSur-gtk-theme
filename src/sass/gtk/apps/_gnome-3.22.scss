@@ -19,8 +19,8 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 @if $nautilus_style == 'stable' {
   $nautilus_sidebar_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                                   $dark_sidebar_bg $nautilus_sidebar_size,
-                                                  rgba($dark_sidebar_bg, 0) $nautilus_sidebar_size,
-                                                  rgba($dark_sidebar_bg, 0) 100%);
+                                                  gtkalpha($dark_sidebar_bg, 0) $nautilus_sidebar_size,
+                                                  gtkalpha($dark_sidebar_bg, 0) 100%);
 
   $nautilus_bg_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                              $dark_sidebar_bg $nautilus_sidebar_size,
@@ -37,7 +37,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   $dialog_header_borders_image: linear-gradient(90deg, $dialog_bg_color 0px,
                                                        $header_border 25%);
 
-  $nautilus_actionbar_image: linear-gradient(90deg, rgba($dark_header_bg, 0) 5%,
+  $nautilus_actionbar_image: linear-gradient(90deg, gtkalpha($dark_header_bg, 0) 5%,
                                                     transparentize($dark_header_bg, 0.2) 40%);
 
   $nautilus_actionbar_borders_image: linear-gradient(90deg, transparent 0px,
@@ -207,12 +207,12 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
           padding: 2px 4px;
 
           &:hover {
-            background-color: rgba($fg_color, 0.1);
+            background-color: gtkalpha($fg_color, 0.1);
           }
 
           &:active, &:active:hover {
             transition: background-color ease-out 200ms;
-            background-color: rgba($fg_color, 0.2);
+            background-color: gtkalpha($fg_color, 0.2);
           }
 
           &:selected.has-open-popup,
@@ -240,14 +240,14 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
         &:drop(active):not(:disabled) {
           border: none;
           border-radius: 0;
-          background-color: rgba($dark_sidebar_fg, 0.15);
+          background-color: gtkalpha($dark_sidebar_fg, 0.15);
 
           &, label, .sidebar-icon { color: $dark_sidebar_fg; }
 
           &:selected.has-open-popup,
           &:selected, &:selected:hover {
             background-image: none;
-            background-color: rgba($selected_bg_color, 0.15);
+            background-color: gtkalpha($selected_bg_color, 0.15);
             &, label, .sidebar-icon { color: $selected_bg_color; }
           }
         }
@@ -375,16 +375,16 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
       button {
         color: $selection_mode_bg;
-        background-color: rgba($selection_mode_bg, 0.15);
+        background-color: gtkalpha($selection_mode_bg, 0.15);
         border: none;
 
-        &:hover { background-color: rgba($selection_mode_bg, 0.25); }
+        &:hover { background-color: gtkalpha($selection_mode_bg, 0.25); }
         &:active, &:checked { background-color: $selection_mode_bg; color: white; }
         &:disabled {
-          background-color: rgba($selection_mode_bg, 0.05);
-          color: rgba($selection_mode_bg, 0.35);
+          background-color: gtkalpha($selection_mode_bg, 0.05);
+          color: gtkalpha($selection_mode_bg, 0.35);
 
-          label { color: rgba($selection_mode_bg, 0.35); }
+          label { color: gtkalpha($selection_mode_bg, 0.35); }
         }
       }
 
@@ -1082,7 +1082,7 @@ window.org-gnome-Builder.workspace {
 
         &:active, &:checked {
           color: $fg_color;
-          background-color: rgba($fg_color, 0.25);
+          background-color: gtkalpha($fg_color, 0.25);
         }
 
         > box.horizontal > box.horizontal {
@@ -1199,9 +1199,9 @@ widget {
       margin: -1px; // kill ugly borders
 
       row.activatable {
-        color: rgba($fg_color, 0.75);
+        color: gtkalpha($fg_color, 0.75);
         &:hover,
-        &:active { color: rgba($fg_color, 0.75); }
+        &:active { color: gtkalpha($fg_color, 0.75); }
       }
 
       // kill ugly separators
@@ -1225,7 +1225,7 @@ widget {
 }
 
 graph-switcher-button.toggle {
-  color: rgba($fg_color, 0.75);
+  color: gtkalpha($fg_color, 0.75);
   font-weight: 500;
   &:hover { // use opaque
     color: $fg_color;
@@ -1248,7 +1248,7 @@ box.speedometer {
   &-outter { opacity: 0.8; } // reduce alpha for our troughs
 
   &-content-area { // cover up meter troughs with selection colour
-    box-shadow: 0 0 0 4px rgba($selected_bg_color, 0.2);
+    box-shadow: 0 0 0 4px gtkalpha($selected_bg_color, 0.2);
   }
 }
 
@@ -1779,7 +1779,7 @@ window.background.csd {
     }
 
     > overlay > scrolledwindow > viewport.frame {
-      background-color: rgba($base_color, 1);
+      background-color: gtkalpha($base_color, 1);
       border-bottom-right-radius: $wm_radius;
 
       > hdycolumn > stack > box.horizontal > box.vertical > box.horizontal {
@@ -1835,7 +1835,7 @@ headerbar.titlebar.incognito-mode {
 
 // reset inverted foreground colour
 notebook > box > stack > box.vertical > paned.vertical > overlay {
-  > .floating-bar { color: rgba($fg_color, 0.75); }
+  > .floating-bar { color: gtkalpha($fg_color, 0.75); }
 }
 
 // overrides foregrounds for 3.24's ssd-mode
@@ -1872,7 +1872,7 @@ popover.background:not(.emoji-picker) > box.vertical > scrolledwindow {
 
     > row.activatable {
       background-color: if($variant=='light', $bg_color, lighten($bg_color, 10%));
-      color: rgba($fg_color, 0.85);
+      color: gtkalpha($fg_color, 0.85);
       border-radius: $bt_radius;
       border: 1px solid $borders_color;
       margin: 2px;
@@ -1890,14 +1890,14 @@ popover.background:not(.emoji-picker) > box.vertical > stack > box.vertical {
     border: 1px solid $borders_color;
 
     > list.background > row.activatable.bookmarks-row {
-      background-color: rgba($base_color, 0.35);
-      color: rgba($fg_color, 0.85);
+      background-color: gtkalpha($base_color, 0.35);
+      color: gtkalpha($fg_color, 0.85);
       border-bottom: 1px dashed gtkalpha(currentColor, 0.05);
       padding: 6px;
 
       &:hover,
       &:active,
-      &:checked { color: $fg_color; background-color: rgba($fg_color, 0.05); }
+      &:checked { color: $fg_color; background-color: gtkalpha($fg_color, 0.05); }
 
       button.flat {
         min-width: 16px;
@@ -2129,13 +2129,13 @@ stack.view.polari-entry-area {
 
   button.popup.flat.toggle.polari-nick-button {
     &:hover {
-      background-color: rgba($fg_color, 0.15);
+      background-color: gtkalpha($fg_color, 0.15);
       box-shadow: none;
       background-image: none;
     }
 
     &:active, &:checked {
-      background-color: rgba($fg_color, 0.25);
+      background-color: gtkalpha($fg_color, 0.25);
       box-shadow: none;
       background-image: none;
     }
@@ -2390,7 +2390,7 @@ window.background.csd {
     // border-radius: 0 0 $wm_radius $wm_radius;
   }
 
-  .content-view:hover { background-color: rgba($fg_color, 0.08); }
+  .content-view:hover { background-color: gtkalpha($fg_color, 0.08); }
 
   viewport.frame { // Documents
     background-color: transparent;
@@ -2608,12 +2608,12 @@ window#GearyMainWindow.background.csd { // <= 3.32
 
           &:hover {
             color: $fg_color;
-            background-color: rgba($fg_color, 0.1);
+            background-color: gtkalpha($fg_color, 0.1);
           }
 
           &:selected {
             color: $fg_color;
-            background-color: rgba($fg_color, 0.15);
+            background-color: gtkalpha($fg_color, 0.15);
           }
         }
       }
@@ -2629,14 +2629,14 @@ window#GearyMainWindow.background.csd { // <= 3.32
     statusbar {
       margin: -8px -12px;
       border: none;
-      background-color: rgba($dark_sidebar_bg, 1);
+      background-color: gtkalpha($dark_sidebar_bg, 1);
       border-bottom-left-radius: $wm_radius;
 
       frame > border { border: none; }
     }
 
     frame.geary-conversation-frame {
-      background-color: rgba($dark_sidebar_bg, 1);
+      background-color: gtkalpha($dark_sidebar_bg, 1);
 
       > border { border: none; }
 
@@ -2650,10 +2650,10 @@ window#GearyMainWindow.background.csd { // <= 3.32
         treeview.view {
           background-image: none;
 
-          &:hover { background-color: rgba($fg_color, 0.1); }
+          &:hover { background-color: gtkalpha($fg_color, 0.1); }
 
           &:selected {
-            background-color: rgba($fg_color, 0.15);
+            background-color: gtkalpha($fg_color, 0.15);
             color: if($variant == 'light', $fg_color, $selected_fg_color);
           }
 
@@ -2754,15 +2754,15 @@ window#GearyMainWindow.background.csd { // <= 3.32
 
         &:hover {
           color: $fg_color;
-          background-color: rgba($fg_color, 0.1);
+          background-color: gtkalpha($fg_color, 0.1);
         }
 
         &:selected {
           color: $fg_color;
-          background-color: rgba($fg_color, 0.15);
+          background-color: gtkalpha($fg_color, 0.15);
 
           &:hover {
-            background-color: rgba($fg_color, 0.12);
+            background-color: gtkalpha($fg_color, 0.12);
           }
         }
       }
@@ -2785,15 +2785,15 @@ window#GearyMainWindow.background.csd { // <= 3.32
 
         &:hover {
           color: $fg_color;
-          background-color: rgba($fg_color, 0.1);
+          background-color: gtkalpha($fg_color, 0.1);
         }
 
         &:selected {
           color: $fg_color;
-          background-color: rgba($fg_color, 0.15);
+          background-color: gtkalpha($fg_color, 0.15);
 
           &:hover {
-            background-color: rgba($fg_color, 0.12);
+            background-color: gtkalpha($fg_color, 0.12);
           }
         }
       }
@@ -2819,14 +2819,14 @@ window#GearyMainWindow.background.csd { // <= 3.32
         margin: 0 $container_padding / 2;
 
         &:hover {
-          background-color: rgba($fg_color, 0.1);
+          background-color: gtkalpha($fg_color, 0.1);
           border-color: transparent;
         }
 
         &:selected, &:active {
           border-color: transparent;
           border-radius: $mn_radius;
-          background-color: rgba($fg_color, 0.15);
+          background-color: gtkalpha($fg_color, 0.15);
           color: if($variant == 'light', $fg_color, $selected_fg_color);
         }
 

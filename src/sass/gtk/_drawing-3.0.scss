@@ -106,7 +106,7 @@
   //
     color: $selected_fg_color;
     background-color: $selected_bg_color;
-    border-color: darken($selection_mode_bg, 5%);
+    border-color: gtkmix(black, $selected_bg_color, 8%);
   }
 
   @else if $t==osd-insensitive {
