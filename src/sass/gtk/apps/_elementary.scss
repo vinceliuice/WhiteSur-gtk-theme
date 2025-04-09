@@ -580,7 +580,6 @@ scale.warmth trough {
       color: transparentize($header_fg, 0.3);
       background-image: none;
       background-color: $header_bg_backdrop;
-      border-color: if($variant=='light', lighten($header_border, 15%), darken($header_border, 3%));
     }
   }
 

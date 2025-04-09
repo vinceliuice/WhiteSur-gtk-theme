@@ -2,11 +2,11 @@
 $wm_borders_focused: if($variant == 'light', darken($header_bg, 15%), darken($header_bg, 20%));
 $wm_borders_unfocused: if($variant == 'light', darken($header_bg, 10%), darken($header_bg, 15%));
 
-@define-color wm_title alpha(#{"" + opacify($header_fg, 1)}, 0.8);
-@define-color wm_unfocused_title alpha(#{"" + opacify($header_fg, 1)}, 0.5);
+@define-color wm_title alpha(#{"" + $header_fg}, 0.8);
+@define-color wm_unfocused_title alpha(#{"" + $header_fg}, 0.5);
 
-@define-color wm_bg #{"" + opacify($header_bg, 1)};
-@define-color wm_bg_unfocused #{"" + opacify($header_bg_backdrop, 1)};
+@define-color wm_bg #{"" + $header_bg};
+@define-color wm_bg_unfocused #{"" + $header_bg_backdrop};
 
 @define-color wm_border_focused #{"" + $wm_borders_focused};
 @define-color wm_border_unfocused #{"" + $wm_borders_unfocused};

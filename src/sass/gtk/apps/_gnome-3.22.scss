@@ -40,12 +40,12 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   $nautilus_actionbar_image: linear-gradient(90deg, rgba($dark_header_bg, 0) 5%,
                                                     transparentize($dark_header_bg, 0.2) 40%);
 
-  $nautilus_actionbar_borders_image: linear-gradient(90deg, rgba($header_border, 0) 0px,
+  $nautilus_actionbar_borders_image: linear-gradient(90deg, transparent 0px,
                                                             $header_border 25%);
 }
 
 @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
-  $nautilus_header_borders_image: linear-gradient(90deg, rgba($header_border, 0) $nautilus_sidebar_size,
+  $nautilus_header_borders_image: linear-gradient(90deg, transparent $nautilus_sidebar_size,
                                                          $header_border $nautilus_sidebar_size);
 }
 
@@ -58,7 +58,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   $nautilus_header_image: linear-gradient(90deg, $dark_sidebar_bg ($nautilus_sidebar_size / 2),
                                                  $dark_header_bg 40%);
 
-  $nautilus_header_borders_image: linear-gradient(90deg, rgba($header_border, 0) (($nautilus_sidebar_size / 2) - 40px),
+  $nautilus_header_borders_image: linear-gradient(90deg, transparent (($nautilus_sidebar_size / 2) - 40px),
                                                          $header_border 40%);
 }
 
@@ -80,7 +80,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 
       > deck > box.vertical > headerbar.titlebar {
         @if $nautilus_style == 'normal' or $nautilus_style == 'stable' {
-          background-image: linear-gradient(90deg, rgba($dark_header_bg, 0) $nautilus_sidebar_size,
+          background-image: linear-gradient(90deg, transparent $nautilus_sidebar_size,
                                                    $nautilus_borders_color $nautilus_sidebar_size,
                                                    $nautilus_borders_color ($nautilus_sidebar_size + 1px),
                                                    $dark_header_bg ($nautilus_sidebar_size + 1px));
@@ -219,7 +219,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
           &:selected, &:selected:hover {
             color: $fg_color;
             transition: background-color ease-out 200ms;
-            background-color: rgba($fg_color, 0.15);
+            background-color: $sidebar_theme_color;
 
             &, label { color: $fg_color; }
           }
@@ -1876,7 +1876,7 @@ popover.background:not(.emoji-picker) > box.vertical > scrolledwindow {
       border-radius: $bt_radius;
       border: 1px solid $borders_color;
       margin: 2px;
-      @if $variant=='light' { box-shadow: $shadow_3, inset 0 0 0 1px rgba($borders_color, 0.01); }
+      @if $variant=='light' { box-shadow: $shadow_3, inset 0 0 0 1px gtkalpha(currentColor, 0.01); }
 
       &:hover { @include button(hover); }
       &:active, &:checked { @include button(flat-active); }
@@ -1892,7 +1892,7 @@ popover.background:not(.emoji-picker) > box.vertical > stack > box.vertical {
     > list.background > row.activatable.bookmarks-row {
       background-color: rgba($base_color, 0.35);
       color: rgba($fg_color, 0.85);
-      border-bottom: 1px dashed rgba($borders_color, 0.05);
+      border-bottom: 1px dashed gtkalpha(currentColor, 0.05);
       padding: 6px;
 
       &:hover,
@@ -1991,12 +1991,12 @@ tabbox {
 
       &:hover {
         color: $fg_color;
-        background-color: rgba($borders_color, 0.1);
+        background-color: gtkalpha(currentColor, 0.1);
       }
 
       &:active, &:active:hover {
         color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
-        background-color: rgba($borders_color, 0.2);
+        background-color: gtkalpha(currentColor, 0.2);
       }
 
       &.tab-close-button {

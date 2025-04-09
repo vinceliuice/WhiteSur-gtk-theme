@@ -33,7 +33,7 @@
 
   @if $t==insensitive {
     color: $disabled_fg_color;
-    background-color: transparentize($entry_bg, 0.45);
+    background-color: gtkalpha($entry_bg, 0.45);
   }
 
   @if $t==osd {
@@ -50,7 +50,7 @@
 
   @if $t==osd-insensitive {
     color: transparentize($osd_fg_color, 0.45);
-    background-color: transparentize($osd_entry_bg, 0.15);
+    background-color: gtkalpha($osd_entry_bg, 0.85);
     box-shadow: inset 0 2px 4px transparentize(black, 0.95);
   }
 }
@@ -76,21 +76,21 @@
     color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
     border: 1px solid $button_borders;
     background-color: if($variant=='light', #ffffff, lighten($button_bg, 3%));
-    box-shadow: inset 0 1px rgba($button_highlight, 0.12);
+    box-shadow: inset 0 1px gtkalpha($button_highlight, 0.12);
   }
 
   @else if $t==focus {
     color: $fg_color;
     background-color: $button_bg;
     border: 1px solid $selected_bg_color;
-    box-shadow: inset 0 1px rgba($button_highlight, 0.12);
+    box-shadow: inset 0 1px gtkalpha($button_highlight, 0.12);
   }
 
   @else if $t==focus-hover {
     color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
     background-color: if($variant=='light', #ffffff, lighten($button_bg, 3%));
     border: 1px solid $selected_bg_color;
-    box-shadow: inset 0 1px rgba($button_highlight, 0.12);
+    box-shadow: inset 0 1px gtkalpha($button_highlight, 0.12);
   }
 
   @else if $t==active {
@@ -102,7 +102,7 @@
   @else if $t==insensitive {
     color: $disabled_fg_color;
     border: 1px solid if($variant == 'light', $button_border, $dark_borders_color);
-    background-color: rgba($button_bg, 0.55);
+    background-color: gtkalpha($button_bg, 0.55);
   }
 
   @else if $t==flat {
@@ -112,12 +112,12 @@
 
   @else if $t==flat-hover {
     color: $fg_color;
-    background-color: rgba($fg_color, 0.1);
+    background-color: gtkalpha($fg_color, 0.1);
   }
 
   @else if $t==flat-active {
     color: $fg_color;
-    background-color: rgba($fg_color, 0.2);
+    background-color: gtkalpha($fg_color, 0.2);
   }
 
   @else if $t==flat-insensitive {
@@ -132,7 +132,7 @@
 
   @else if $t==osd-hover {
     color: $osd_fg_color;
-    background-color: opacify(lighten($osd_button_bg, 7%), 0.1);
+    background-color: gtkalpha(gtkmix($osd_fg_color, $osd_button_bg, 7%), 0.1);
   }
 
   @else if $t==osd-active {
@@ -142,6 +142,6 @@
 
   @else if $t==osd-insensitive {
     color: $osd_disabled_fg_color;
-    background-color: transparentize($osd_button_bg, 0.15);
+    background-color: gtkalpha($osd_button_bg, 0.85);
   }
 }

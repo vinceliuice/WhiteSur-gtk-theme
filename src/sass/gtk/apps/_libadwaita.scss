@@ -418,15 +418,13 @@ tabbar {
     .box {
       color: $text_color;
       margin: 0;
+      box-shadow: none;
+      border-bottom: 1px solid $borders_color;
 
       @if $monterey == 'false' {
         padding: 0;
-        box-shadow: inset 0 -1px if($variant == 'light', darken($header_bg, 15%), lighten($header_bg, 5%));
-        border-bottom: none;
-        background-color: darken($header_bg, 10%);
+        background-color: color-mix(in srgb, black 15%, $header_bg);
       } @else {
-        box-shadow: none;
-        border-bottom: 1px solid $borders_color;
         padding: $container_padding / 2 0;
         background-color: $header_bg;
       }
@@ -482,6 +480,7 @@ tabbar {
       @if $monterey == 'false' {
         @extend %tabs_tab;
         border-top: none;
+        border-bottom: none;
       } @else {
         @extend %monterey_tab;
       }
@@ -507,12 +506,12 @@ tabbar {
 
         &:hover {
           color: $fg_color;
-          background-color: rgba($borders_color, 0.1);
+          background-color: gtkalpha(currentColor, 0.1);
         }
 
         &:active, &:active:hover {
-          color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
-          background-color: rgba($borders_color, 0.2);
+          color: $text_color;
+          background-color: gtkalpha(currentColor, 0.2);
         }
       }
     }
@@ -934,7 +933,7 @@ toolbarview {
     padding: 0;
     border-spacing: 0;
     box-shadow: inset 0 1px $borders_color;
-    background-color: darken($bg_color, 3%);
+    background-color: color-mix(in srgb, black 5%, $bg_color);
     color: $text_color;
 
     &:backdrop {

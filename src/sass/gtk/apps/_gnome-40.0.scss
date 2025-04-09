@@ -5,7 +5,7 @@
 
 $nautilus_header_image: image($header_bg);
 $nautilus_header_borders_image: image($header_border);
-$nautilus_borders_color: if($variant=='light', darken(rgba($dark_sidebar_bg, 1), 12%), $header_border);
+$nautilus_borders_color: if($variant=='light', gtkmix(black, $dark_sidebar_bg, 12%), $header_border);
 $flap_sidebar_size: 240px;
 
 @if $nautilus_style == 'stable' {
@@ -96,7 +96,7 @@ $flap_sidebar_size: 240px;
       .navigation-sidebar:not(.view) {
         > row {
           &:selected {
-            background-color: if($variant == 'light', rgba(black, 0.15), rgba(white, 0.15));
+            background-color: $sidebar_theme_color;
             color: $fg_color;
           }
 
@@ -133,7 +133,7 @@ $flap_sidebar_size: 240px;
   tabbar:not(.inline) {
     .box {
       @if $monterey == 'false' {
-        background-color: mix(black, $base_color, 6%);
+        background-color: color-mix(in srgb, black 6%, $base_color);
         border-top: 1px solid $borders_color;
       } @else {
         background-color: $base_color;
@@ -289,7 +289,7 @@ window.background.csd {
 
       > scrolledwindow > viewport > widget > stack {
         > list.navigation-sidebar {
-          background-color: rgba($dark_sidebar_bg, 1);
+          background-color: $dark_sidebar_bg;
 
           > separator {
             background-color: transparent;
@@ -298,7 +298,7 @@ window.background.csd {
           }
         }
 
-        > box > list.navigation-sidebar { background-color: rgba($dark_sidebar_bg, 1); }
+        > box > list.navigation-sidebar { background-color: $dark_sidebar_bg; }
       }
 
       > stack.background { background-color: $base_color; }

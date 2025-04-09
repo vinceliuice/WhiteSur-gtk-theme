@@ -17,14 +17,14 @@ $theme_text: currentColor;
 @define-color base_color #{"" + $base_color};
 @define-color selected_bg_color #{"" + $selected_bg_color};
 @define-color selected_fg_color #{"" + $selected_fg_color};
-@define-color insensitive_bg_color #{"" + mix($bg_color, $base_color, 60%)};
+@define-color insensitive_bg_color #{"" + color-mix(in srgb, $bg_color 60%, $base_color)};
 @define-color insensitive_fg_color #{"" + $disabled_fg_color};
 @define-color insensitive_base_color #{"" + $base_color};
 @define-color theme_unfocused_fg_color #{"" + $fg_color};
 @define-color theme_unfocused_text_color #{"" + $theme_text};
 @define-color theme_unfocused_bg_color #{"" + $bg_color};
 @define-color theme_unfocused_base_color #{"" + $base_color};
-@define-color unfocused_insensitive_color #{"" + mix($fg_color, $bg_color, 35%)};
+@define-color unfocused_insensitive_color #{"" + color-mix(in srgb, $fg_color 35%, $bg_color)};
 @define-color borders #{"" + $borders_color};
 @define-color unfocused_borders #{"" + $borders_color};
 
@@ -36,4 +36,4 @@ $theme_text: currentColor;
 @define-color content_view_bg #{"" + $base_color};
 
 /* Very contrasty background for text views (@theme_text_color foreground) */
-@define-color text_view_bg #{"" + if($variant == 'light', $base_color, darken($base_color, 6%))};
+@define-color text_view_bg #{"" + $base_color};

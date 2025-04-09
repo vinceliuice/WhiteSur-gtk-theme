@@ -28,7 +28,7 @@
   //
     color: $text_color;
     background-color: $entry_bg;
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05), inset 0 0 0 2px transparent;
+    box-shadow: inset 0 0 0 1px gtkalpha($borders_color, 0.05), inset 0 0 0 2px transparent;
     transition-duration: $shorter_duration * 2;
   }
 
@@ -47,7 +47,7 @@
   // insensitive entry
   //
     color: $disabled_fg_color;
-    background-color: rgba($entry_bg, 0.02);
+    background-color: gtkalpha($entry_bg, 0.02);
   }
 
   @if $t==header-normal {
@@ -67,7 +67,7 @@
   //
     color: $header_fg;
     background-color: $entry_bg;
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05), inset 0 0 0 2px transparent;
+    box-shadow: inset 0 0 0 1px gtkalpha($borders_color, 0.05), inset 0 0 0 2px transparent;
     transition-duration: $shorter_duration * 2;
   }
 
@@ -85,8 +85,8 @@
   //
   // insensitive header-bar entry
   //
-    color: rgba($header_fg, 0.35);
-    background-color: rgba($entry_bg, 0.02);
+    color: gtkalpha($header_fg, 0.35);
+    background-color: gtkalpha($entry_bg, 0.02);
   }
 
   @else if $t==osd {
@@ -114,7 +114,7 @@
   // insensitive osd entry
   //
     color: $osd_disabled_fg_color;
-    background-color: transparentize($osd_entry_bg, 0.15);
+    background-color: gtkalpha($osd_entry_bg, 0.8);
   }
 }
 
@@ -149,7 +149,7 @@
     background-color: if($variant=='light', darken($button_bg, 3%), lighten($button_bg, 3%));
     @if $variant=='light' { box-shadow: none; }
     @if $variant=='dark' {
-      box-shadow: inset 0 1px rgba($button_highlight, 0.12), $shadow_3;
+      box-shadow: inset 0 1px $light_divider_color, $shadow_3;
     }
   }
 
@@ -170,7 +170,7 @@
     label, & { color: $disabled_fg_color; }
 
     border-color: if($variant == 'light', $button_border, $dark_borders_color);
-    background-color: rgba($button_bg, 0.55);
+    background-color: gtkalpha($button_bg, 0.55);
     box-shadow: none;
   }
 
@@ -181,7 +181,7 @@
     label, & { color: transparentize($selected_fg_color, 0.45); }
 
     border-color: if($variant == 'light', $selected_bg_color, $dark_borders_color);
-    background-color: rgba($selected_bg_color, 0.45);
+    background-color: gtkalpha($selected_bg_color, 0.45);
     @if $variant=='light' { box-shadow: none; }
 
     opacity: 0.6;
@@ -261,7 +261,7 @@
   // hovered header-bar button
   //
     color: darken($header_fg, 2%);
-    background-color: rgba($header_fg, 0.1);
+    background-color: gtkalpha($header_fg, 0.1);
     background-image: none;
     box-shadow: none;
   }
@@ -271,7 +271,7 @@
   // pushed header-bar button
   //
     color: $header_fg;
-    background-color: rgba($header_fg, 0.25);
+    background-color: gtkalpha($header_fg, 0.25);
     background-image: none;
     box-shadow: none;
   }
@@ -281,7 +281,7 @@
   // pushed header-bar button
   //
     color: $header_fg;
-    background-color: rgba($header_fg, 0.12);
+    background-color: gtkalpha($header_fg, 0.12);
     background-image: none;
     box-shadow: none;
   }
@@ -290,7 +290,7 @@
   //
   // insensitive header-bar button
   //
-    label, & { color: rgba($header_fg, 0.35); }
+    label, & { color: gtkalpha($header_fg, 0.35); }
     background-image: none;
     background-color: transparent;
     box-shadow: none;
@@ -300,7 +300,7 @@
   //
   // header-bar insensitive pushed button
   //
-    label, & { color: rgba($header_fg, 0.35); }
+    label, & { color: gtkalpha($header_fg, 0.35); }
     background-image: none;
     background-color: transparent;
     box-shadow: none;
@@ -428,13 +428,13 @@
                                   $_position, 0,
                                   $_position, 0.5,
                                   to($_small_gradient_color),
-                                  to(rgba($_small_gradient_color, 0)));
+                                  to(gtkalpha($_small_gradient_color, 0)));
 
   $_big_gradient: -gtk-gradient(radial,
                                 $_position, 0,
                                 $_position, 0.6,
-                                from(rgba($_big_gradient_color, 0.07)),
-                                to(rgba($_big_gradient_color, 0)));
+                                from(gtkalpha($_big_gradient_color, 0.07)),
+                                to(gtkalpha($_big_gradient_color, 0)));
 
   @if $t==normal {
     background-image: $_small_gradient, $_big_gradient;

@@ -158,61 +158,79 @@ $dark_5: #000000;
 @if $gnome_version == 'old' or $accent_type == 'fixed' {
   @define-color accent_bg_color #{$primary_color};
   @define-color accent_fg_color #{$light_fg_color};
+  @define-color accent_color #{$primary_color};
+
+  // destructive-action buttons
+  @define-color destructive_bg_color #{$destructive_color};
+  @define-color destructive_fg_color #{$light_fg_color};
+  @define-color destructive_color #{$destructive_color};
+  
+  // Levelbars, entries, labels and infobars. These don't need text colors
+  @define-color success_bg_color #{$success_color};
+  @define-color success_fg_color #{$light_fg_color};
+  @define-color success_color #{$success_color};
+  
+  @define-color warning_bg_color #{$warning_color};
+  @define-color warning_fg_color #{$light_fg_color};
+  @define-color warning_color #{$warning_color};
+  
+  @define-color error_bg_color #{$error_color};
+  @define-color error_fg_color #{$light_fg_color};
+  @define-color error_color #{$error_color};
+  
+  // Window
+  @define-color window_bg_color #{$bg_color};
+  @define-color window_fg_color #{$text_color};
+  
+  // Views - e.g. text view or tree view
+  @define-color view_bg_color #{$base_color};
+  @define-color view_fg_color #{$text_color};
+  
+  // Header bar, search bar, tab bar
+  @define-color headerbar_bg_color #{$header_bg};
+  @define-color headerbar_fg_color #{$header_fg};
+  @define-color headerbar_border_color #{$borders_color};
+  @define-color headerbar_backdrop_color #{$header_bg_backdrop};
+  @define-color headerbar_shade_color #{$header_border};
+  @define-color headerbar_darker_shade_color #{$header_border};
+  
+  // Split pane views
+  @define-color sidebar_bg_color #{$dark_sidebar_bg};
+  @define-color sidebar_fg_color #{$dark_sidebar_fg};
+  @define-color sidebar_backdrop_color #{$dark_sidebar_bg};
+  @define-color sidebar_shade_color #{if($variant == 'light', transparentize(black, .93), transparentize(black, .75))};
+  @define-color sidebar_border_color #{gtkalpha($dark_sidebar_fg, .08)};
+  
+  @define-color secondary_sidebar_bg_color #{$base_color};
+  @define-color secondary_sidebar_fg_color #{$text_color};
+  @define-color secondary_sidebar_backdrop_color #{$bg_color};
+  @define-color secondary_sidebar_shade_color #{if($variant == 'light', transparentize(black, .93), transparentize(black, .75))};
+  @define-color secondary_sidebar_border_color #{$borders_color};
+
+  // Cards, boxed lists
+  @define-color card_bg_color #{$base_color};
+  @define-color card_fg_color #{$text_color};
+  @define-color card_shade_color #{$borders_color};
+  
+  // Dialogs
+  @define-color dialog_bg_color #{$dialog_bg_color};
+  @define-color dialog_fg_color #{$text_color};
+  
+  // Popovers
+  @define-color popover_bg_color #{$menu_bg};
+  @define-color popover_fg_color #{$text_color};
+  @define-color popover_shade_color #{if($variant == 'light', transparentize(black, .93), transparentize(black, .75))};
+  
+  // Thumbnails
+  @define-color thumbnail_bg_color #{gtkmix($base_color, $bg_color, 50%)};
+  @define-color thumbnail_fg_color #{$text_color};
+
+  // Miscellaneous
+  @define-color shade_color #{$borders_color};
+  @define-color scrollbar_outline_color #{$borders_color};
 }
 
-@define-color accent_color #{$primary_color};
-
-// destructive-action buttons
-@define-color destructive_bg_color #{$destructive_color};
-@define-color destructive_fg_color #{$light_fg_color};
-@define-color destructive_color #{$destructive_color};
-
-// Levelbars, entries, labels and infobars. These don't need text colors
-@define-color success_bg_color #{$success_color};
-@define-color success_fg_color #{$light_fg_color};
-@define-color success_color #{$success_color};
-
-@define-color warning_bg_color #{$warning_color};
-@define-color warning_fg_color #{$light_fg_color};
-@define-color warning_color #{$warning_color};
-
-@define-color error_bg_color #{$error_color};
-@define-color error_fg_color #{$light_fg_color};
-@define-color error_color #{$error_color};
-
-// Window
-@define-color window_bg_color #{$bg_color};
-@define-color window_fg_color #{$text_color};
-
-// Views - e.g. text view or tree view
-@define-color view_bg_color #{$base_color};
-@define-color view_fg_color #{$text_color};
-
-// Header bar, search bar, tab bar
-@define-color headerbar_bg_color #{$header_bg};
-@define-color headerbar_fg_color #{$header_fg};
-@define-color headerbar_border_color #{$borders_color};
-@define-color headerbar_backdrop_color #{$header_bg_backdrop};
-@define-color headerbar_shade_color #{$header_border};
-
-// Cards, boxed lists
-@define-color card_bg_color #{$base_color};
-@define-color card_fg_color #{$text_color};
-@define-color card_shade_color #{$borders_color};
-
-// Dialogs
-@define-color dialog_bg_color #{$dialog_bg_color};
-@define-color dialog_fg_color #{$text_color};
-
-// Popovers
-@define-color popover_bg_color #{$menu_bg};
-@define-color popover_fg_color #{$text_color};
-
-// Miscellaneous
-@define-color shade_color #{$borders_color};
-@define-color scrollbar_outline_color #{$borders_color};
-
-@if $gnome_version == 'new' {
+@if $gnome_version == 'new' and $accent_type != 'fixed' {
   :root {
     --accent-blue: #{$theme_color_default};
     --accent-teal: #2190a4;
@@ -235,4 +253,35 @@ $dark_5: #000000;
   $progress_color: var(--accent-bg-color);
   $selection_mode_bg: color-mix(in srgb, white 25%, var(--accent-bg-color));
   $selected_borders_color:  color-mix(in srgb, black 25%, var(--accent-bg-color));
+
+  $bg_color: gtkcolor(window_bg_color);
+  $base_color: gtkcolor(view_bg_color);
+  $button_bg: gtkcolor(card_bg_color);
+
+  $text_color: gtkcolor(window_fg_color);
+  $fg_color: gtkcolor(window_fg_color);
+  $alt_fg_color: gtkalpha($fg_color, 0.8);
+  $hint_fg_color: gtkalpha($fg_color, 0.6);
+  $disabled_fg_color: gtkalpha($fg_color, 0.45);
+  $alt_disabled_fg_color: gtkalpha($fg_color, 0.35);
+
+  $header_bg: gtkcolor(headerbar_bg_color);
+  $header_fg: gtkcolor(headerbar_fg_color);
+  $header_border: gtkcolor(headerbar_darker_shade_color);
+  $header_bg_backdrop: gtkcolor(headerbar_backdrop_color);
+
+  $dialog_bg_color: gtkcolor(dialog_bg_color);
+  $dialog_fg_color: gtkcolor(dialog_fg_color);
+
+  $dark_sidebar_bg: gtkcolor(sidebar_bg_color);
+  $dark_sidebar_fg: gtkcolor(sidebar_fg_color);
+  $dark_sidebar_border: gtkcolor(headerbar_darker_shade_color);
+
+  $menu_bg: gtkcolor(popover_bg_color);
+  $menu_fg: gtkcolor(popover_fg_color);
+
+  $wm_shadow: gtkcolor(headerbar_shade_color);
+  $wm_shadow_backdrop: gtkcolor(sidebar_shade_color);
+  $wm_outline: 0 0 0 2px rgba(black, 0.03), 0 0 0 1px gtkcolor(headerbar_darker_shade_color);
+  $wm_border: gtkcolor(headerbar_darker_shade_color);
 }

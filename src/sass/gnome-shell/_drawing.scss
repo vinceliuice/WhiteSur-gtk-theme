@@ -115,17 +115,17 @@
     background-color: $c;
     border-radius: $circular_radius;
     border: 2px solid transparent !important;
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0) !important;
+    box-shadow: inset 0 0 0 1px transparent !important;
     outline: none;
   }
 
   @if $t == hover {
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.1) !important;
+    box-shadow: inset 0 0 0 1px gtkalpha($borders_color, 0.1) !important;
     border: 2px solid transparent !important;
   }
 
   @if $t == focus {
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0) !important;
+    box-shadow: inset 0 0 0 1px transparent !important;
     @if $gnome_version == 'old' {
       border: 2px solid lighten($fc, 15%) !important;
     } @else {
@@ -134,7 +134,7 @@
   }
 
   @if $t == insensitive {
-    background-color: rgba($c, 0.05);
+    background-color: gtkalpha($c, 0.05);
     color: $disabled_fg_color;
   }
 
@@ -148,20 +148,20 @@
 
   @if $t == flat-hover {
     background-color: $c;
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05) !important;
+    box-shadow: inset 0 0 0 1px gtkalpha($borders_color, 0.05) !important;
     color: $tc;
   }
 
   @if $t == flat-focus {
     border: none !important;
-    background-color: rgba($c, 0.2);
+    background-color: gtkalpha($c, 0.2);
     color: $tc;
   }
 
   @if $t == flat-insensitive {
     border: none !important;
-    background-color: rgba($c, 0.05);
-    color: rgba($tc, 0.45);
+    background-color: gtkalpha($c, 0.05);
+    color: gtkalpha($tc, 0.45);
   }
 }
 
@@ -230,7 +230,7 @@
     text-shadow: none;
     icon-shadow: none;
     @if $gnome_version == 'old' {
-      background-color: mix($tc, $c, 6%);
+      background-color: gtkmix($tc, $c, 6%);
     } @else {
       background-color: st-mix($tc, $c, 6%);
     }
@@ -242,7 +242,7 @@
     text-shadow: none;
     icon-shadow: none;
     @if $gnome_version == 'old' {
-      background-color: mix($tc, $c, 12%);
+      background-color: gtkmix($tc, $c, 12%);
     } @else {
       background-color: st-mix($tc, $c, 12%);
     }

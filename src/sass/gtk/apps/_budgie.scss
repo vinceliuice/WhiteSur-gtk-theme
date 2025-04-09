@@ -59,7 +59,7 @@ $raven_padding: 8px;
     background-color: $menu_bg;
 
     &:hover {
-      background-color: if($variant =='light', darken($menu_bg, 5%), lighten($menu_bg, 5%));
+      background-color: gtkmix(currentColor, $menu_bg, 5%);
     }
 
     &:active, &:checked {
@@ -98,7 +98,7 @@ $raven_padding: 8px;
 .budgie-popover.background {
   margin: 0;
   padding: 0;
-  border: 1px solid if($variant=='light', rgba($borders_color, 0.2), lighten($menu_bg, 6%));
+  border: 1px solid if($variant=='light', gtkalpha(currentColor, 0.2), gtkmix(currentColor, $menu_bg, 6%));
   border-radius: $wm_radius;
   background-color: $menu_bg;
   background-clip: padding-box;
@@ -878,7 +878,7 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
 
 // Raven
 .raven {
-  background-color: if($trans == 'true', rgba($raven_bg_color, $raven_opacity), $raven_bg_color);
+  background-color: if($trans == 'true', gtkalpha($raven_bg_color, $raven_opacity), $raven_bg_color);
   color: $raven_fg_color;
   box-shadow: $shadow_4;
 
@@ -1063,7 +1063,7 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
           @extend %raven_middle_button;
 
           &:hover {
-            background-color: if($variant =='light', darken($menu_bg, 5%), lighten($menu_bg, 5%));
+            background-color: gtkmix(currentColor, $menu_bg, 5%);
           }
 
           &:active, &:checked {
@@ -1168,16 +1168,16 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
             border: none;
             margin: $container_padding / 2;
             border-radius: $bt_radius;
-            background-color: if($variant == 'light', lighten($raven_bg_color, 5%), darken($raven_bg_color, 5%));
+            background-color: gtkmix($fg_color, $raven_bg_color, 5%);
             box-shadow: 0 2px 3px rgba(black, 0.08);
 
             &:hover, &:selected {
-              background-color: if($variant == 'light', $raven_bg_color, darken($raven_bg_color, 8%));
+              background-color: if($variant == 'light', $raven_bg_color, gtkmix(black, $raven_bg_color, 8%));
               box-shadow: 0 2px 4px rgba(black, 0.15);
             }
 
             &:active {
-              background-color: if($variant == 'light', darken($raven_bg_color, 5%), darken($raven_bg_color, 10%));
+              background-color: if($variant == 'light', gtkmix(black, $raven_bg_color, 5%), gtkmix(black, $raven_bg_color, 10%));
               box-shadow: none;
             }
 
@@ -1189,7 +1189,7 @@ $raven_shadow: 0 0 3px 0 rgba(black, 0.2), 0 0 8px 0 rgba(black, 0.15), 0 0 16px
 
               image { padding: 0; }
 
-              &:active { image { color: $fg_color; }}
+              &:active { image { color: $fg_color; } }
             }
           }
         }

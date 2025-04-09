@@ -28,7 +28,7 @@
   //
     color: $text_color;
     background-color: $entry_bg;
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05), inset 0 0 0 2px transparent;
+    box-shadow: inset 0 0 0 1px gtkalpha($borders_color, 0.05), inset 0 0 0 2px transparent;
     transition-duration: $shorter_duration * 2;
   }
 
@@ -47,7 +47,7 @@
   // insensitive entry
   //
     color: $disabled_fg_color;
-    background-color: rgba($entry_bg, 0.02);
+    background-color: gtkalpha($entry_bg, 0.02);
   }
 
   @if $t==header-normal {
@@ -67,7 +67,7 @@
   //
     color: $header_fg;
     background-color: $entry_bg;
-    box-shadow: inset 0 0 0 1px rgba($borders_color, 0.05), inset 0 0 0 2px transparent;
+    box-shadow: inset 0 0 0 1px gtkalpha($borders_color, 0.05), inset 0 0 0 2px transparent;
     transition-duration: $shorter_duration * 2;
   }
 
@@ -85,8 +85,8 @@
   //
   // insensitive header-bar entry
   //
-    color: rgba($header_fg, 0.35);
-    background-color: rgba($entry_bg, 0.02);
+    color: gtkalpha($header_fg, 0.35);
+    background-color: gtkalpha($entry_bg, 0.02);
   }
 
   @else if $t==osd {
@@ -119,7 +119,7 @@
   // insensitive osd entry
   //
     color: $osd_disabled_fg_color;
-    background-color: transparentize($osd_entry_bg, 0.15);
+    background-color: gtkalpha($osd_entry_bg, 0.8);
   }
 }
 
@@ -136,7 +136,7 @@
   //
   // normal button
   //
-    color: $fg_color;
+    color: $alt_fg_color;
     border-color: $button_borders;
     background-color: $button_bg;
     @if $variant=='light' { box-shadow: $shadow_3; }
@@ -149,12 +149,12 @@
   //
   // hovered button
   //
-    color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
+    color: $fg_color;
     border-color: $button_borders;
-    background-color: if($variant=='light', darken($button_bg, 3%), lighten($button_bg, 3%));
+    background-color: gtkmix($fg_color, $button_bg, 5%);
     @if $variant=='light' { box-shadow: none; }
     @if $variant=='dark' {
-      box-shadow: inset 0 1px rgba($button_highlight, 0.12), $shadow_3;
+      box-shadow: inset 0 1px $light_divider_color, $shadow_3;
     }
   }
 
@@ -175,7 +175,7 @@
     label, & { color: $disabled_fg_color; }
 
     border-color: if($variant == 'light', $button_border, $dark_borders_color);
-    background-color: rgba($button_bg, 0.55);
+    background-color: gtkalpha($button_bg, 0.55);
     box-shadow: none;
   }
 
@@ -183,10 +183,10 @@
   //
   // insensitive pushed button
   //
-    label, & { color: transparentize($selected_fg_color, 0.45); }
+    label, & { color: gtkalpha($selected_fg_color, 0.55); }
 
     border-color: if($variant == 'light', $selected_bg_color, $dark_borders_color);
-    background-color: rgba($selected_bg_color, 0.45);
+    background-color: gtkalpha($selected_bg_color, 0.45);
     @if $variant=='light' { box-shadow: none; }
 
     opacity: 0.6;
@@ -206,8 +206,7 @@
   //
   // hovered button
   //
-    color: darken($fg_color, 10%);
-    background-color: if($variant=='light', rgba(black, 0.15), rgba(white, 0.15));
+    background-color: gtkalpha(currentColor, 0.15);
     background-image: none;
     box-shadow: none;
     // border-color: if($variant=='light', rgba(black, 0.15), rgba(white, 0.15));
@@ -218,8 +217,8 @@
   // pushed button
   //
     background-image: none;
-    color: $selected_fg_color;
-    background-color: if($variant=='light', rgba(black, 0.5), rgba(white, 0.25));
+    color: if($variant=='light', $light_fg_color, $fg_color);
+    background-color: if($variant=='light', gtkalpha(black, 0.5), gtkalpha(currentColor, 0.25));
   }
 
   @else if $t==flat-checked {
@@ -227,8 +226,8 @@
   // pushed button
   //
     background-image: none;
-    color: $selected_fg_color;
-    background-color: if($variant=='light', rgba(black, 0.65), rgba(white, 0.35));
+    color: if($variant=='light', $light_fg_color, $fg_color);
+    background-color: if($variant=='light', gtkalpha(black, 0.65), gtkalpha(currentColor, 0.35));
   }
 
   @else if $t==flat-insensitive {
@@ -246,7 +245,7 @@
   //
     label, & { color: transparentize($selected_fg_color, 0.35); }
 
-    background-color: if($variant=='light', rgba(black, 0.3), rgba(white, 0.15));
+    background-color: if($variant=='light', gtkalpha(black, 0.3), gtkalpha(currentColor, 0.15));
     opacity: 0.6;
   }
 
@@ -265,8 +264,8 @@
   //
   // hovered header-bar button
   //
-    color: darken($header_fg, 2%);
-    background-color: rgba($header_fg, 0.1);
+    color: $header_fg;
+    background-color: gtkalpha($header_fg, 0.1);
     background-image: none;
     box-shadow: none;
   }
@@ -276,7 +275,7 @@
   // pushed header-bar button
   //
     color: $header_fg;
-    background-color: rgba($header_fg, 0.25);
+    background-color: gtkalpha($header_fg, 0.25);
     background-image: none;
     box-shadow: none;
   }
@@ -286,7 +285,7 @@
   // pushed header-bar button
   //
     color: $header_fg;
-    background-color: rgba($header_fg, 0.12);
+    background-color: gtkalpha($header_fg, 0.12);
     background-image: none;
     box-shadow: none;
   }
@@ -295,7 +294,7 @@
   //
   // insensitive header-bar button
   //
-    label, & { color: rgba($header_fg, 0.35); }
+    label, & { color: gtkalpha($header_fg, 0.35); }
     background-image: none;
     background-color: transparent;
     box-shadow: none;
@@ -305,7 +304,7 @@
   //
   // header-bar insensitive pushed button
   //
-    label, & { color: rgba($header_fg, 0.35); }
+    label, & { color: gtkalpha($header_fg, 0.35); }
     background-image: none;
     background-color: transparent;
     box-shadow: none;

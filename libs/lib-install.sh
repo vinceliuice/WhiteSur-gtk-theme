@@ -536,6 +536,9 @@ config_gtk4() {
 install_libadwaita() {
   color="${colors[0]}"
   opacity="${opacities[0]}"
+  alt="${alts[0]}"
+  theme="${themes[0]}"
+  scheme="${schemes[0]}"
 
   gtk_base && config_gtk4 "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
 }

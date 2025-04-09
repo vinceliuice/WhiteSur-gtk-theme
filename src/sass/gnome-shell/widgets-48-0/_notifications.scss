@@ -16,7 +16,7 @@ $notification_banner_width: 34em;
   text-shadow: none;
   box-shadow: 0 3px 5px rgba(black, 0.15);
 
-  &:hover, &:active { background-color: rgba($menu_bg, 1); }
+  &:hover, &:active { background-color: gtkalpha($menu_bg, 1); }
 }
 
 .notification-buttons-bin {
