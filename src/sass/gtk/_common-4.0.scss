@@ -4817,10 +4817,8 @@ calendar {
 // Dialogs
 //
 
-$messagedialog_bg: if($trans == 'true', gtkalpha($bg_color, 0.95), $bg_color);
-
 window.dialog.message { // Message Dialog styling
-  &.background { background-color: $messagedialog_bg; }
+  &.background { background-color: $dialog_bg_color; }
 
   .titlebar {
     min-height: 28px;
@@ -5003,7 +5001,7 @@ stacksidebar {
 
 // Navigation Sidebar
 .navigation-sidebar {
-  background-color: $dark_sidebar_bg;
+  background-color: transparent;
   padding: $container_padding; //only vertical padding. horizontal row size would clip
 
   > separator {

@@ -586,11 +586,11 @@ toolbarview.undershoot-bottom scrolledwindow {
 .unfolded stacksidebar.sidebar { border: none; }
 
 .sidebar-pane {
-  background-color: $dark_sidebar_bg;
+  background-color: transparent;
   color: $dark_sidebar_fg;
 
   &:backdrop {
-    background-color: $dark_sidebar_bg;
+    background-color: transparent;
     // transition: background-color $longer_duration $deceleration_curve;
   }
 

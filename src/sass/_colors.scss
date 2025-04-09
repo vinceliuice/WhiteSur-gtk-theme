@@ -146,7 +146,7 @@ $header_fg:                         if($variant == 'light', #575757, #FDFDFD);
 $dark_header_bg:                    if($trans == 'true', gtkalpha($base_color, 0.96), $base_color);
 $header_bg_backdrop:                if($variant == 'light', gtkmix(black, $header_bg, 2%), gtkmix(black, $header_bg, 1%));
 $header_border:                     if($variant == 'light', gtkmix(black, $header_bg, 12%), gtkmix(black, $header_bg, 75%));
-$header_border_backdrop:            if($variant == 'light', gtkmix(black, $header_bg, 8%), gtkmix(black, $header_bg, 35%));
+$header_border_backdrop:            if($variant == 'light', gtkmix(black, $header_bg, 8%), gtkmix(black, $header_bg, 45%));
 
 // Sidebar colors
 $dark_sidebar_bg: white;
