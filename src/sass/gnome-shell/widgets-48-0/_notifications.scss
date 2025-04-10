@@ -23,8 +23,8 @@ $notification_banner_width: 34em;
 }
 
 .notification-button {
-  min-height: 40px;
-  padding: 0 16px;
+  min-height: $medium_size;
+  padding: 0 $base_padding * 2;
   background-color: $fill_color;
   color: $alt_fg_color;
   font-weight: 500;
