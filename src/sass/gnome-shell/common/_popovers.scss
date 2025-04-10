@@ -1,6 +1,8 @@
 /* Popovers/Menus */
 
+$popover_opacity: if($trans == 'false', 1, if($gnome_version == 'new', 0.92, 0.96));
 $popop_menuitem_radius: $po_radius - $base_padding;
+$popover_bg_color: if($variant == 'light', rgba($base_color, $popover_opacity), rgba($bg_color, $popover_opacity));
 
 //.the popover itself
 .popup-menu-boxpointer {
@@ -93,7 +95,7 @@ $popop_menuitem_radius: $po_radius - $base_padding;
   padding: $base_padding;
   box-shadow: 0 5px 10px 0 rgba(black, 0.18);
   margin: 4px 12px 17px 12px;
-  background-color: $dialog_bg_color;
+  background-color: $popover_bg_color;
   border-radius: $po_radius;
   border: solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
   border-width: if($variant=='light', 0, 1px);

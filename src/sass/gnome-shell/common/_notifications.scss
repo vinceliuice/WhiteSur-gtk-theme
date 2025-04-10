@@ -7,15 +7,14 @@
   min-height: $menuitem_size * 2;
   margin: 12px 6px 8px;
   border-radius: $wm_radius;
-  color: $fg_color;
-  background-color: $menu_bg;
   border: 1px solid if($variant=='light', rgba(black, 0), rgba(black, 0.75));
   text-shadow: none;
   box-shadow: 0 3px 5px rgba(black, 0.15);
 
-  &:hover { background-color: $menu_bg; }
-
-  &:focus { background-color: $menu_bg; }
+  &, &:hover, &:focus {
+    color: $fg_color;
+    background-color: $popover_bg_color;
+  }
 
   .notification-icon { padding: $base_padding; }
 

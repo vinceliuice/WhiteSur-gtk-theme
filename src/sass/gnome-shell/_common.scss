@@ -23,10 +23,32 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
  * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+// reset colors
+
 @if $gnome_version == 'new' and $accent_type == 'default' {
   $selected_bg_color: -st-accent-color;
   $primary_color: -st-accent-color;
 }
+
+@if $trans == 'true' {
+  $menu_bg:                         if($variant == 'light', rgba($base_color, $opacity), rgba($bg_color, $opacity));
+  $osd_bg_color:                    rgba($solid_osd_bg_color, $opacity);
+  $dialog_bg_color:                 if($variant == 'light', rgba($bg_color, $opacity), rgba($base_color, $opacity));
+}
+
+$active_color:                      if($variant == 'light', rgba(black, 0.26), rgba(white, 0.2));
+$track_color:                       if($variant == 'light', rgba(black, 0.20), rgba(white, 0.16));
+$visit_color:                       if($variant == 'light', rgba(black, 0.16), rgba(white, 0.12));
+$divider_color:                     if($variant == 'light', rgba(black, 0.12), rgba(white, 0.1));
+$fill_color:                        if($variant == 'light', rgba(black, 0.06), rgba(white, 0.05));
+
+$menu_bd:                           if($variant == 'light', rgba(black, 0.08), rgba(white, 0.08));
+$borders_color:                     if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
+$light_borders_color:               if($variant == 'light', rgba(black, 0.08), rgba(white, 0.10));
+$dark_borders_color:                if($variant == 'light', rgba(black, 0.08), rgba(black, 0.15));
+$solid_borders_color:               if($variant == 'light', mix(black, $base_color, 12%), mix(white, $base_color, 12%));
+$dark_solid_borders_color:          if($variant == 'light', mix(black, $base_color, 12%), mix(white, $base_color, 15%));
+$highlight_color:                   if($variant == 'light', rgba(white, 0.15), rgba(white, 0.1));
 
 // Stage
 stage {

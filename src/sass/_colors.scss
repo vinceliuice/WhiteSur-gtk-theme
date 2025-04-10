@@ -150,7 +150,7 @@ $header_border_backdrop:            if($variant == 'light', gtkmix(black, $heade
 
 // Sidebar colors
 $dark_sidebar_bg: white;
-$opacity: if($gnome_version == 'new', 0.92, 0.95);
+$opacity: 0.96;
 
 @if $trans=='true' {
   @if $variant=='light' {
@@ -193,24 +193,22 @@ $solid_osd_bg_color:                if($darker == 'true', #1a1a1a, #2a2a2a);
   $solid_osd_bg_color:              if($darker == 'true', #16191e, #222730);
 }
 
-$osd_bg_color:                      if($trans == 'true', gtkalpha($solid_osd_bg_color, $opacity), $solid_osd_bg_color);
+$osd_bg_color:                      if($trans == 'true', rgba($solid_osd_bg_color, $opacity), $solid_osd_bg_color);
 
-$osd_button_bg:                     gtkalpha(lighten($solid_osd_bg_color, 22%), $opacity);
+$osd_button_bg:                     rgba(lighten($solid_osd_bg_color, 22%), $opacity);
 $osd_button_border:                 $dark_borders_color;
-$osd_entry_bg:                      gtkalpha(lighten($solid_osd_bg_color, 22%), $opacity);
+$osd_entry_bg:                      rgba(lighten($solid_osd_bg_color, 22%), $opacity);
 $osd_entry_border:                  $dark_borders_color;
 $osd_disabled_bg_color:             darken($solid_osd_bg_color, 3%);
-$osd_disabled_fg_color:             gtkalpha($solid_osd_bg_color, 0.35);
+$osd_disabled_fg_color:             rgba($solid_osd_bg_color, 0.35);
 $osd_borders_color:                 $dark_borders_color;
 
 // Menu colors
 $menu_bg:                           if($variant == 'light', $base_color, $bg_color);
 $menu_bd:                           if($variant == 'light', gtkalpha(currentColor, 0.08), gtkalpha(currentColor, 0.07));
 
-$menu_opacity: 0.96;
-
 @if $trans == 'true' {
-  $menu_bg:                         if($variant == 'light', gtkalpha($base_color, $menu_opacity), gtkalpha($bg_color, $menu_opacity));
+  $menu_bg:                         if($variant == 'light', gtkalpha($base_color, $opacity), gtkalpha($bg_color, $opacity));
 }
 
 $submenu_bg_color:                  if($variant == 'light', rgba(white, 1), rgba(white, 0.1));
@@ -273,13 +271,11 @@ $dash_bg:                           if($variant == 'light', rgba(#d1d1d1, $panel
 
 // Entry colors
 $entry_bg:                          gtkalpha(currentColor, 0.05);
-$entry_shell_bg:                    gtkalpha(currentColor, 0.1);
 $entry_border:                      $borders_color;
 $entry_highlight:                   gtkalpha($selection_mode_bg, 0.75);
 
 // Button colors
 $button_bg:                         if($variant == 'light', white, #656565);
-$button_shell_bg:                   if($variant == 'light', gtkmix(black, $dialog_bg_color, 6%), gtkmix(white, $dialog_bg_color, 6%));
 
 @if $scheme == 'nord' {
   $button_bg:                       if($variant == 'light', #fbfcfd, #556075);
