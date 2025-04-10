@@ -236,35 +236,29 @@ toast {
 
 viewswitcher {
   margin: 0;
-  min-height: 26px;
+  min-height: $small_size + 8px;
+  border-spacing: $container_padding / 2;
 
-  &.wide {
-    border-spacing: $container_padding / 2;
+  &.narrow {
+    margin-top: 0;
+    margin-bottom: 0;
+    min-height: $container_padding;
   }
 
-  &.narrow > button.toggle {
-    border-radius: 0;
-    margin: 0;
-
-    indicatorbin > image {
-      -gtk-icon-size: 12px;
-    }
-  }
-
-  > button.toggle {
+  button.toggle {
     font-weight: normal;
     padding: 0;
 
     > stack > box {
       &.narrow {
         font-size: 0.75rem;
-        padding-top: $container_padding;
-        padding-bottom: $container_padding;
-        border-spacing: $container_padding - 2px;
+        padding-top: $container_padding + 2px;
 
-        > stack > label {
-          padding-left: $container_padding + 2px;
-          padding-right: $container_padding + 2px;
+        > label {
+          min-height: 18px;
+          padding-left: 3px;
+          padding-right: 3px;
+          padding-bottom: 0;
         }
       }
 
@@ -276,10 +270,10 @@ viewswitcher {
   }
 }
 
-// AdwViewSwitcherBar
-
 viewswitcherbar actionbar > revealer > box {
-  padding: 0;
+  padding-left: $container_padding;
+  padding-right: $container_padding;
+  padding-top: $container_padding;
 }
 
 // AdwViewSwitcherTitle
@@ -354,10 +348,40 @@ indicatorbin {
 
     > label { color: $selected_fg_color; }
   }
+
+  &.badge {
+    > indicator,
+    > mask {
+      min-height: 13px;
+    }
+
+    > indicator > label {
+      font-size: 0.6rem;
+      font-weight: bold;
+      padding-left: 4px;
+      padding-right: 4px;
+      color: white;
+    }
+
+    &.needs-attention > indicator {
+      background: $selected_bg_color;
+
+      > label { color: $selected_fg_color; }
+    }
+  }
 }
 
 headerbar > windowhandle > box viewswitcher {
   min-height: 0;
+
+  &.narrow > button.toggle {
+    border-radius: 0;
+    margin: 0;
+
+    indicatorbin > image {
+      -gtk-icon-size: 12px;
+    }
+  }
 
   &.wide {
     box-shadow: inset 0 0 0 1px $light_borders_color;
@@ -784,16 +808,6 @@ toolbarview.undershoot-bottom scrolledwindow {
       box-shadow: none;
       border: none;
     }
-  }
-}
-
-.top-bar {
-  background: none;
-  border: none;
-  box-shadow: none;
-
-  .collapse-spacing {
-    padding: 0;
   }
 }
 

@@ -1926,7 +1926,7 @@ actionbar > revealer > box {
   background-color: transparent;
   color: inherit;
   box-shadow: none;
-  padding-top: $container_padding;
+  padding: $container_padding;
 
   &:backdrop {
     background-color: transparent;
