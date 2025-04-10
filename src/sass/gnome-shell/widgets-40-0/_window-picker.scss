@@ -47,5 +47,5 @@ $window_close_button_padding: 3px;
   // keep in sync with BACKGROUND_CORNER_RADIUS_PIXELS in workspace.js
   border-radius: 30px;
   background-color: $osd_bg_color;
-  box-shadow: 0 4px 16px 4px transparentize(darken($osd_bg_color, 30%), 0.7);
+  box-shadow: 0 4px 16px 4px transparentize(darken($solid_osd_bg_color, 30%), 0.7);
 }

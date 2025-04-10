@@ -1,7 +1,7 @@
 /* Login Dialog */
 
 #lockDialogGroup {
-  background-color: rgba($osd_bg_color, 1);
+  background-color: $solid_osd_bg_color;
   background-image: url("assets/background.png");
   background-size: cover;
 

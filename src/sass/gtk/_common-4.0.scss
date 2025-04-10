@@ -5273,7 +5273,7 @@ tooltip {
   &.background {
     // background-color needs to be set this way otherwise it gets drawn twice
     // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
-    background-color: gtkalpha($osd_bg_color, 0.96);
+    background-color: $osd_bg_color;
     background-clip: padding-box;
     border-radius: $wm_radius;
     color: $osd_fg_color;

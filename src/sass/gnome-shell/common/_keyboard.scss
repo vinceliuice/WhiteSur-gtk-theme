@@ -4,7 +4,7 @@ $key_size: 1.2em;
 $key_border_radius: $base_border_radius + 3px;
 $key_bg_color:  $bg_color;
 // $default_key_bg_color: darken($key_bg_color, 4%);
-$default_key_bg_color: if($variant=='light', darken($osd_bg_color, 11%), lighten($osd_bg_color, 2%));
+$default_key_bg_color: if($variant=='light', darken($solid_osd_bg_color, 11%), lighten($solid_osd_bg_color, 2%));
 
 
 // draw keys using button function

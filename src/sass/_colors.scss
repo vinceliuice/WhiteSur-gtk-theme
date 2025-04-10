@@ -187,18 +187,20 @@ $dialog_bg_color:                   if($variant == 'light', $bg_color, $base_col
 
 //OSD colors
 $osd_fg_color:                      if($scheme == 'nord', #dadada, #d3d7df);
-$osd_bg_color:                      if($trans == 'true', rgba(if($darker == 'true', #1a1a1a, #2a2a2a), $opacity), if($darker == 'true', #1a1a1a, #2a2a2a));
+$solid_osd_bg_color:                if($darker == 'true', #1a1a1a, #2a2a2a);
 
 @if $scheme == 'nord' {
-  $osd_bg_color:                    if($trans == 'true', rgba(if($darker == 'true', #16191e, #222730), $opacity), if($darker == 'true', #16191e, #222730));
+  $solid_osd_bg_color:              if($darker == 'true', #16191e, #222730);
 }
 
-$osd_button_bg:                     gtkalpha(lighten($osd_bg_color, 22%), $opacity);
+$osd_bg_color:                      if($trans == 'true', gtkalpha($solid_osd_bg_color, $opacity), $solid_osd_bg_color);
+
+$osd_button_bg:                     gtkalpha(lighten($solid_osd_bg_color, 22%), $opacity);
 $osd_button_border:                 $dark_borders_color;
-$osd_entry_bg:                      gtkalpha(lighten($osd_bg_color, 22%), $opacity);
+$osd_entry_bg:                      gtkalpha(lighten($solid_osd_bg_color, 22%), $opacity);
 $osd_entry_border:                  $dark_borders_color;
-$osd_disabled_bg_color:             darken($osd_bg_color, 3%);
-$osd_disabled_fg_color:             gtkalpha($osd_fg_color, 0.35);
+$osd_disabled_bg_color:             darken($solid_osd_bg_color, 3%);
+$osd_disabled_fg_color:             gtkalpha($solid_osd_bg_color, 0.35);
 $osd_borders_color:                 $dark_borders_color;
 
 // Menu colors

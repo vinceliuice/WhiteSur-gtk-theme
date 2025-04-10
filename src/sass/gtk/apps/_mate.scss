@@ -67,7 +67,7 @@ panel-toplevel.background {
 //
 MsdOsdWindow.background.osd {
   border-radius: 2px;
-  border: 1px solid darken($osd_bg_color, 8%);
+  border: 1px solid darken($solid_osd_bg_color, 8%);
 
   .progressbar {
     background-color: $selected_bg_color;
@@ -75,8 +75,9 @@ MsdOsdWindow.background.osd {
     border-color: red;
     border-radius: 5px;
   }
+
   .trough {
-    background-color: darken($osd_bg_color, 5%);
+    background-color: darken($solid_osd_bg_color, 5%);
     border: none;
     border-radius: 5px;
   }

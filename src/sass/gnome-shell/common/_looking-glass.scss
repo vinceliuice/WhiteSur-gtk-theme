@@ -2,7 +2,7 @@
 
 // Dialog
 #LookingGlassDialog {
-  background-color: rgba($osd_bg_color, 1);
+  background-color: $solid_osd_bg_color;
   spacing: $base_padding;
   margin: $base_padding;
   padding: 0;
@@ -141,7 +141,7 @@
 
 // Inspector
 #LookingGlassPropertyInspector {
-  background: lighten(rgba($osd_bg_color, 1), 5%);
+  background: lighten($solid_osd_bg_color, 5%);
   border: 1px solid black;
   border-radius: $wm_radius;
   padding: $base_padding * 2;

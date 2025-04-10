@@ -13,7 +13,7 @@
   text-shadow: none;
   box-shadow: 0 3px 5px rgba(black, 0.15);
 
-  &:hover { background-color: rgba($menu_bg, 1); }
+  &:hover { background-color: $menu_bg; }
 
   &:focus { background-color: $menu_bg; }
 

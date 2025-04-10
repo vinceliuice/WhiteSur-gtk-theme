@@ -5,9 +5,9 @@ $asset_path: assets;
 //
 $font-size: 9;
 $font-family: Futura Bk bt, sans, Sans-Serif;
-$_bubble_bg_color: opacify($osd_bg_color,0.25);
+$_bubble_bg_color: gtkalpha($solid_osd_bg_color, 0.25);
 $_bubble_fg_color: $osd_fg_color;
-$_bubble_borders_color: transparentize($osd_fg_color,0.8);
+$_bubble_borders_color: transparentize($osd_fg_color, 0.8);
 
 /* General Typography */
 %large_title {
@@ -591,7 +591,7 @@ StScrollBar {
 }
 
 .expo-background {
-  background-color: opacify($osd_bg_color, 1);
+  background-color: $solid_osd_bg_color;
 }
 
 .workspace {
@@ -2217,7 +2217,7 @@ StScrollBar {
   .slider {
     height: 0.5em;
     padding: 0;
-    border: 0px solid darken($osd_bg_color, 8%);
+    border: 0px solid darken($solid_osd_bg_color, 8%);
     border-bottom: 1px;
     -slider-height: 0.5em;
     -slider-background-color: if($variant == 'light', $button_border, darken($bg_color, 5%));
