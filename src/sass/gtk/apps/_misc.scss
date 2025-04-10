@@ -195,7 +195,7 @@ $chrome_menu_fg_color: $fg_color;
 
 window.background.chromium {
   // checked-tab & toolbar & button widgets
-  background-color: $bg_color;
+  background-color: $chrome_bg_color;
   color: $text_color;
 
   headerbar.titlebar {
@@ -216,7 +216,7 @@ window.background.chromium {
       min-width: 16px;
       min-height: 16px;
       margin: 0; // unset margins
-      padding: 0 0;
+      padding: 0;
       background-size: 16px 16px;
       color: transparent; // hide stock icons
       border: none;

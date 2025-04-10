@@ -1334,3 +1334,64 @@ dialog-host > widget > widget > toolbarview {
     }
   }
 }
+
+//
+// Chrome
+//
+
+$chrome_bg_color: if($variant == 'light', #dedede, #242424);
+$chrome_fg_color: if($variant == 'light', #242424, #dedede);
+
+window.background.chromium {
+  box-shadow: 0 12px 20px rgba(black, 0.35),
+              0 0 0 1px rgba(black, 0.75);
+
+  &:backdrop {
+    transition: $shadow_transition;
+    box-shadow: 0 7px 12px rgba(black, 0.15),
+                0 0 0 1px rgba(black, 0.65);
+  }
+
+  &, headerbar {
+    &, &:backdrop {
+      background-color: $chrome_bg_color;
+      color: $chrome_fg_color;
+    }
+  }
+
+  headerbar.header-bar.titlebar {
+    padding: 0 $container_padding * 2;
+    color: currentColor;
+    box-shadow: inset 0 1px rgba(white, 0.1);
+    border-radius: $wm_radius $wm_radius 0 0;
+
+    button.titlebutton { // title-buttons
+      // define global titlebutton class sizing
+      min-width: 22px;
+      min-height: 22px;
+      margin: 0 3px; // unset margins
+      padding: 0;
+      color: currentColor; // hide stock icons
+      border: none;
+      border-radius: $circular_radius;
+      background-image: none;
+      background-color: gtkalpha(currentColor, 0.12);
+
+      &:hover {
+        background-color: gtkalpha(currentColor, 0.2);
+        transition-duration: $shorter_duration;
+      }
+
+      &:active {
+        background-color: gtkalpha(currentColor, 0.3);
+        transition-duration: $shorter_duration;
+      }
+    }
+  }
+
+  // internal region of toolbar's entry widget
+  > textview.view, textview {
+    background-color: gtkalpha(currentColor, 0.1);
+    color: $chrome_fg_color;
+  }
+}

@@ -2314,6 +2314,8 @@ headerbar {
         margin: 0;
         background-color: transparent;
         background-image: none;
+        color: transparent;
+        -gtk-icon-size: 0;
       }
 
       &.close, &.maximize, &.minimize {
