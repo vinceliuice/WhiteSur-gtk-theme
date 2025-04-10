@@ -63,7 +63,7 @@ $default_key_bg_color: if($variant=='light', darken($solid_osd_bg_color, 11%), l
     background-color: $primary_color;
     box-shadow: 0 2px 3px rgba(black, 0.15);
 
-    @if $gnome_version == 'old' {
+    @if $shell_version == 'old' {
       &:focus, &:hover { color: $light_fg_color; background-color: lighten($primary_color, 5%); }
       &:checked, &:active { color: $light_fg_color; background-color: darken($primary_color, 10%); }
     } @else {
@@ -105,7 +105,7 @@ $default_key_bg_color: if($variant=='light', darken($solid_osd_bg_color, 11%), l
 .emoji-panel {
   .keyboard-key:latched {
     background-color: $primary_color;
-    @if $gnome_version == 'old' {
+    @if $shell_version == 'old' {
       border-color: lighten($primary_color, 5%);
     } @else {
       border-color: st-lighten($primary_color, 5%);

@@ -199,7 +199,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
     }
 
     &:active {
-      @if $gnome_version == 'old' {
+      @if $shell_version == 'old' {
         background-color: darken($primary_color, 5%);
       } @else {
         background-color: st-darken($primary_color, 5%);
@@ -215,7 +215,7 @@ $popover_bubble_bg: if($variant == 'light', rgba(white, 0.95), rgba(lighten($bas
 
       &:hover, &:focus {
         color: $light_fg_color !important;
-        @if $gnome_version == 'old' {
+        @if $shell_version == 'old' {
           background-color: lighten($primary_color, 8%);
         } @else {
           background-color: st-lighten($primary_color, 8%);

@@ -8,7 +8,7 @@ $ripple_size: 50px;
   height: $ripple_size + 2px;
   border-radius: 0 0 $ripple_size + 2px 0; // radius equals the size of the box to give us the curve
 
-  @if $gnome_version == 'old' {
+  @if $shell_version == 'old' {
     background-color: transparentize($primary_color, 0.65);
     box-shadow: 0 0 2px 2px lighten($primary_color, 20%);
   } @else {

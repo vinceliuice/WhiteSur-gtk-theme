@@ -127,7 +127,7 @@ $entry_shell_bg: if($variant == 'light', rgba(black, 0.1), rgba(white, 0.1));
 
   @if $t == focus {
     box-shadow: inset 0 0 0 1px transparent !important;
-    @if $gnome_version == 'old' {
+    @if $shell_version == 'old' {
       border: 2px solid lighten($fc, 15%) !important;
     } @else {
       border: 2px solid st-lighten($fc, 15%) !important;
@@ -233,7 +233,7 @@ $button_shell_bg: if($variant == 'light', mix(black, $button_shell, 6%), mix(whi
     border: none;
     text-shadow: none;
     icon-shadow: none;
-    @if $gnome_version == 'old' {
+    @if $shell_version == 'old' {
       background-color: mix($tc, $c, 6%);
     } @else {
       background-color: st-mix($tc, $c, 6%);
@@ -245,7 +245,7 @@ $button_shell_bg: if($variant == 'light', mix(black, $button_shell, 6%), mix(whi
     border: none;
     text-shadow: none;
     icon-shadow: none;
-    @if $gnome_version == 'old' {
+    @if $shell_version == 'old' {
       background-color: mix($tc, $c, 12%);
     } @else {
       background-color: st-mix($tc, $c, 12%);

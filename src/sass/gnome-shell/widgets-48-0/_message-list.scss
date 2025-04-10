@@ -55,7 +55,7 @@
     border-style: solid;
 
     &:focus {
-      @if $gnome_version == 'old' {
+      @if $shell_version == 'old' {
         border-color: transparentize($selected_bg_color, 0.4);
       } @else {
         border-color: st-transparentize($selected_bg_color, 0.4);

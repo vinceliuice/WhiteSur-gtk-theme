@@ -3,7 +3,7 @@
   border: 1px solid $primary_color;
   border-radius: 3px;
 
-  @if $gnome_version == 'old' {
+  @if $shell_version == 'old' {
     background-color: transparentize($primary_color, 0.3);
   } @else {
     background-color: st-transparentize($primary_color, 0.3);

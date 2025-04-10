@@ -170,7 +170,7 @@ $screenshot_ui_button_red: $error_color;
 .screenshot-ui-window-selector-window {
   &:hover {
     .screenshot-ui-window-selector-window-border {
-      @if $gnome_version == 'old' {
+      @if $shell_version == 'old' {
         border-color: darken($primary_color, 15%);
       } @else {
         border-color: st-darken($primary_color, 15%);
@@ -181,7 +181,7 @@ $screenshot_ui_button_red: $error_color;
   &:checked {
     .screenshot-ui-window-selector-window-border {
       border-color: $primary_color;
-      @if $gnome_version == 'old' {
+      @if $shell_version == 'old' {
         background-color: transparentize($primary_color, 0.8);
       } @else {
         background-color: st-transparentize($primary_color, 0.8);

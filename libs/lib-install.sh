@@ -937,6 +937,10 @@ shell_base() {
 customize_theme() {
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
+  if [[ "${GNOME_VERSION}" -ge '47-0' ]]; then
+    sed $SED_OPT "/\$shell_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
   # Darker dark colors
   if [[ "${darker}" == 'true' ]]; then
     prompt -s "Changing dark color style to darker one ...\n"

@@ -25,7 +25,7 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
 
 // reset colors
 
-@if $gnome_version == 'new' and $accent_type == 'default' {
+@if $shell_version == 'new' and $accent_type == 'default' {
   $selected_bg_color: -st-accent-color;
   $primary_color: -st-accent-color;
 }

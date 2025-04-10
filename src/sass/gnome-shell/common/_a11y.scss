@@ -4,7 +4,7 @@
   height: 48px;
   border-radius: 24px; // radius equals the size of the box to give us the curve
 
-  @if $gnome_version == 'old' {
+  @if $shell_version == 'old' {
     background-color: lighten(transparentize($primary_color, 0.7), 30%);
     box-shadow: 0 0 2px 2px lighten($primary_color, 20%);
   } @else {
@@ -20,7 +20,7 @@
   -pie-border-width: 3px;
   -pie-border-color: $primary_color;
 
-  @if $gnome_version == 'old' {
+  @if $shell_version == 'old' {
     -pie-background-color: lighten(transparentize($primary_color, 0.7), 40%);
   } @else {
     -pie-background-color: st-lighten(st-transparentize($primary_color, 0.7), 40%);

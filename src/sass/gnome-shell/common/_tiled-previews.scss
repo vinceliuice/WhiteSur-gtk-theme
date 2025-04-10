@@ -4,7 +4,7 @@
 $tile_corner_radius: $base_border_radius + 1px;
 
 .tile-preview {
-  @if $gnome_version == 'old' {
+  @if $shell_version == 'old' {
     background-color: transparentize($primary_color, 0.75);
   } @else {
     background-color: st-transparentize($primary_color, 0.75);
