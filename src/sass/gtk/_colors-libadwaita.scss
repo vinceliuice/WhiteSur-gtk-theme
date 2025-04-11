@@ -242,17 +242,17 @@ $dark_5: #000000;
     --accent-purple: #{$theme_color_purple};
     --accent-slate: #6f8396;
 
-    // --accent-color: @accent_bg_color;
-    // --accent-bg-color: @accent_bg_color;
-    // --accent-fg-color: @accent_fg_color;
+    --accent-color: @accent_bg_color;
+    --accent-bg-color: @accent_bg_color;
+    --accent-fg-color: @accent_fg_color;
   }
 
-  // $selected_bg_color: gtkcolor(accent_bg_color);
-  // $primary_color: gtkcolor(accent_bg_color);
-  // $progress_color: gtkcolor(accent_bg_color);
-  $selected_bg_color: var(--accent-bg-color);
-  $primary_color: var(--accent-bg-color);
-  $progress_color: var(--accent-bg-color);
+  $selected_bg_color: gtkcolor(accent_bg_color);
+  $primary_color: gtkcolor(accent_bg_color);
+  $progress_color: gtkcolor(accent_bg_color);
+  $selected_bg_color: gtkcolor(accent_bg_color);
+  $primary_color: gtkcolor(accent_bg_color);
+  $progress_color: gtkcolor(accent_bg_color);
   $selection_mode_bg: color-mix(in srgb, white 25%, gtkcolor(accent_bg_color));
   $entry_highlight: color-mix(in srgb, gtkcolor(window_bg_color) 25%, $selection_mode_bg);
 
