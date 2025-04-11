@@ -1283,8 +1283,145 @@ window.background.csd {
 }
 
 //
+// Builder
+//
+
+popover.background.global-search {
+  > arrow, > contents { padding: 0; }
+}
+
+popover.background.pages-popover {
+  listview > row {
+    padding: $base_padding;
+
+    button {
+      margin: 0;
+    }
+
+    check {
+      margin: 4px 2px;
+      -gtk-icon-size: 12px;
+    }
+  }
+}
+
+panelresizer .top-bar {
+  box-shadow: inset 0 -1px $borders_color;
+}
+
+.frameheader.header:not(.vertical) {
+  min-height: $medium_size;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid $borders_color;
+  background-color: color-mix(in srgb, black 6%, $base_color);
+
+  &:backdrop {
+    background-color: color-mix(in srgb, black 7%, $base_color);
+  }
+
+  tabbar.inline {
+    tabbox {
+      min-height: $medium_size;
+    }
+
+    .start-action {
+      padding: $container_padding / 2 $container_padding / 2 $container_padding / 2 $container_padding;
+    }
+
+    .end-action {
+      padding: $container_padding / 2 $container_padding $container_padding / 2 $container_padding / 2;
+    }
+  }
+}
+
+panelframeswitcher:not(.vertical) {
+  &.frameheader.header { padding: 0 $base_padding; }
+
+  > button.toggle.image-button {
+    border: none;
+    margin: $base_padding 0;
+  }
+}
+
+panelframeswitcher.frameheader.header.vertical {
+  > button.toggle.image-button {
+    min-height: 24px;
+    min-width: 24px;
+    padding: $base_padding;
+  }
+}
+
+panelstatusbar {
+  box-shadow: inset 0 1px $borders_color;
+
+  > menubutton > button,
+  > paneltogglebutton button {
+    border-radius: 0;
+    @extend %flat_button;
+  }
+}
+
+panelwidget entry.statusbar {
+  background-color: $bg_color;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  border-top: 1px solid $borders_color;
+
+  &:focus-within {
+    outline: none;
+  }
+}
+
+.IdeTweaksWindow,
+.org-gnome-Builder {
+  .boxed-list {
+    box-shadow: inset 0 0 0 1px gtkalpha(currentColor, 0.08);
+  }
+}
+
+// Setting window
+.style-variant {
+  padding: 0 $base_padding * 2;
+
+  button.toggle {
+    padding: 0;
+
+    &, &:hover, &:focus, &:active, &:checked {
+      background: none;
+      outline: none;
+      border: none;
+      box-shadow: none;
+    }
+
+    > stylevariantpreview > .wallpaper {
+      border-radius: $bt_radius;
+      outline-color: transparent;
+      outline-width: 3px;
+      outline-offset: $base_padding / 2;
+      outline-style: solid;
+      box-shadow: none;
+    }
+
+    &:hover > stylevariantpreview > .wallpaper {
+      outline-color: gtkalpha(currentColor, 0.05);
+    }
+
+    &:active > stylevariantpreview > .wallpaper {
+      outline-color: gtkalpha(currentColor, 0.15);
+    }
+
+    &:checked > stylevariantpreview > .wallpaper {
+      outline-color: $primary_color;
+    }
+  }
+}
+
+//
 // Gnome extensions tool
 //
+
 popover.details-popover {
   .actions {
     border-spacing: 6px;

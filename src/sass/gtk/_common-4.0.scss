@@ -1274,6 +1274,11 @@ splitbutton {
   }
 
   // Reimplementing linked so we don't blow up css
+  > button:not(:only-child):not(:first-child):not(:last-child),
+  > menubutton:not(:only-child):not(:first-child):not(:last-child) > button {
+    border-radius: 0;
+  }
+
   > button:dir(ltr),
   > menubutton > button:dir(rtl) {
     border-top-right-radius: 0;
