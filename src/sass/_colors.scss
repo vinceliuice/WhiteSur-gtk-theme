@@ -211,6 +211,9 @@ $menu_bd:                           if($variant == 'light', gtkalpha(currentColo
   $menu_bg:                         if($variant == 'light', gtkalpha($base_color, $opacity), gtkalpha($bg_color, $opacity));
 }
 
+$popover_opacity:                   if($trans == 'false', 1, if($shell_version == 'new', 0.92, 0.96));
+$popover_bg_color:                  if($variant == 'light', rgba($bg_color, $popover_opacity), rgba($base_color, $popover_opacity));
+
 $submenu_bg_color:                  if($variant == 'light', rgba(white, 1), rgba(white, 0.1));
 
 @if $trans=='true' {

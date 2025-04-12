@@ -160,7 +160,7 @@ $flap_sidebar_size: 240px;
     listview.view {
       padding: 0;
       margin: 0;
-      border-spacing: 0;
+      border-spacing: $container_padding / 2;
 
       > row.activatable {
         padding: 0;
@@ -173,10 +173,6 @@ $flap_sidebar_size: 240px;
           > widget#NautilusViewCell {
             padding: $container_padding $container_padding * 1.5;
           }
-        }
-
-        + row {
-          margin-top: $container_padding / 2;
         }
       }
     }

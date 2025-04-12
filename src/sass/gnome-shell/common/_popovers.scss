@@ -1,8 +1,6 @@
 /* Popovers/Menus */
 
-$popover_opacity: if($trans == 'false', 1, if($shell_version == 'new', 0.92, 0.96));
 $popop_menuitem_radius: $po_radius - $base_padding;
-$popover_bg_color: if($variant == 'light', rgba($bg_color, $popover_opacity), rgba($base_color, $popover_opacity));
 
 //.the popover itself
 .popup-menu-boxpointer {

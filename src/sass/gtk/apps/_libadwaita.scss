@@ -610,12 +610,12 @@ toolbarview.undershoot-bottom scrolledwindow {
 .unfolded stacksidebar.sidebar { border: none; }
 
 .sidebar-pane {
-  background-color: transparent;
+  background-color: $dark_sidebar_bg;
   color: $dark_sidebar_fg;
 
   &:backdrop {
-    background-color: transparent;
-    // transition: background-color $longer_duration $deceleration_curve;
+    background-color: $bg_color;
+    transition: background-color $longer_duration $deceleration_curve;
   }
 
   .sidebar,
@@ -709,8 +709,8 @@ toolbarview.undershoot-bottom scrolledwindow {
   color: $text_color;
 
   &:backdrop {
-    background-color: $base_color;
-    // transition: background-color $longer_duration $deceleration_curve;
+    background-color: $bg_color;
+    transition: background-color $longer_duration $deceleration_curve;
   }
 
   toolbarview.undershoot-top scrolledwindow {
