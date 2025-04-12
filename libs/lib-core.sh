@@ -27,19 +27,19 @@ MY_HOME=$(getent passwd "${MY_USERNAME}" | cut -d: -f6)
 if command -v gnome-shell &> /dev/null; then
   SHELL_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -1)"
   if [[ "${SHELL_VERSION:-}" -ge "48" ]]; then
-    GS_VERSION="48-0"
+    GNOME_VERSION="48-0"
   elif [[ "${SHELL_VERSION:-}" -ge "47" ]]; then
-    GS_VERSION="47-0"
+    GNOME_VERSION="47-0"
   elif [[ "${SHELL_VERSION:-}" -ge "46" ]]; then
-    GS_VERSION="46-0"
+    GNOME_VERSION="46-0"
   elif [[ "${SHELL_VERSION:-}" -ge "44" ]]; then
-    GS_VERSION="44-0"
+    GNOME_VERSION="44-0"
   elif [[ "${SHELL_VERSION:-}" -ge "42" ]]; then
-    GS_VERSION="42-0"
+    GNOME_VERSION="42-0"
   elif [[ "${SHELL_VERSION:-}" -ge "40" ]]; then
-    GS_VERSION="40-0"
+    GNOME_VERSION="40-0"
   else
-    GS_VERSION="3-28"
+    GNOME_VERSION="3-28"
   fi
 else
   GNOME_VERSION="48-0"

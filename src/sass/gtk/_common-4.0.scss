@@ -2372,6 +2372,8 @@ headerbar {
 
     > windowhandle > box {
       padding: 0 $container_padding / 2;
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     .tiled &,

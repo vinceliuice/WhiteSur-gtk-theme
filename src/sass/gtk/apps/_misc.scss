@@ -264,7 +264,7 @@ window.background.chromium {
 //
 // Libre-Office
 //
-window.background:not(.solid-csd):not(.csd) {
+window.background:not(.solid-csd) {
   // reserved area at the most-right side of GtkMenuBar
   > grid.horizontal > grid.horizontal {
     background-color: $header_bg;
@@ -296,13 +296,13 @@ window.background:not(.solid-csd):not(.csd) {
 
   > grid.horizontal > widget > widget {
     viewport.frame > box > box > box > grid toolbar {
-      background: none;
+      background-color: transparent;
       border: none;
       padding: 3px;
     }
 
     > scrolledwindow > viewport.frame {
-      background: $base_color;
+      background-color: $base_color;
 
       > grid > box.vertical {
         > toolbar {
@@ -313,7 +313,7 @@ window.background:not(.solid-csd):not(.csd) {
       }
 
       > grid > box.horizontal > #combobox.linked,
-      > grid > box.horizontal > grid.horizontal > box.horizontal { background: $base_color; }
+      > grid > box.horizontal > grid.horizontal > box.horizontal { background-color: $base_color; }
     }
 
     toolbar.small-button {
@@ -402,6 +402,10 @@ toolbar.toolbar {
       color: $fg_color;
       background-color: if($variant == 'light', mix(black, $bg_color, 5%), mix(white, $bg_color, 5%));
       border-color: transparent;
+    }
+
+    &:disabled {
+      color: $disabled_fg_color;
     }
   }
 }
