@@ -258,7 +258,6 @@ $dark_5: #000000;
 
   $bg_color: gtkcolor(window_bg_color);
   $base_color: gtkcolor(view_bg_color);
-  $button_bg: gtkcolor(card_bg_color);
 
   $text_color: gtkcolor(window_fg_color);
   $fg_color: gtkcolor(window_fg_color);
@@ -266,6 +265,19 @@ $dark_5: #000000;
   $hint_fg_color: gtkalpha($fg_color, 0.6);
   $disabled_fg_color: gtkalpha($fg_color, 0.45);
   $alt_disabled_fg_color: gtkalpha($fg_color, 0.35);
+
+  $borders_color:                     gtkalpha(currentColor, 0.12);
+  $light_borders_color:               if($variant == 'light', gtkalpha(currentColor, 0.08), gtkalpha(currentColor, 0.10));
+  $solid_borders_color:               if($variant == 'light', gtkmix(currentColor, $base_color, 12%), gtkmix(currentColor, $base_color, 12%));
+  $dark_solid_borders_color:          if($variant == 'light', gtkmix(currentColor, $base_color, 12%), gtkmix(currentColor, $base_color, 15%));
+
+  $entry_bg:                          gtkalpha(currentColor, 0.05);
+  $entry_border:                      $borders_color;
+
+  $button_bg:                         gtkcolor(card_bg_color);
+  $button_border:                     $borders_color;
+  $button_highlight:                  if($variant == 'light', white, rgba(white, 0.1));
+  $button_borders:                    if($variant == 'light', $button_border, $dark_borders_color);
 
   $header_bg: gtkcolor(headerbar_bg_color);
   $header_fg: gtkcolor(headerbar_fg_color);
@@ -282,6 +294,7 @@ $dark_5: #000000;
 
   $menu_bg: gtkcolor(popover_bg_color);
   $menu_fg: gtkcolor(popover_fg_color);
+  $menu_bd: if($variant == 'light', gtkalpha(currentColor, 0.08), gtkalpha(currentColor, 0.07));
 
   $wm_shadow: gtkcolor(headerbar_shade_color);
   $wm_shadow_backdrop: gtkcolor(sidebar_shade_color);

@@ -468,6 +468,7 @@ tabbar {
     padding: 0;
     box-shadow: none;
     background-color: transparent;
+    min-height: $menuitem_size;
 
     > separator {
       margin: 0;
@@ -812,66 +813,9 @@ toolbarview.undershoot-bottom scrolledwindow {
 }
 
 //
-// AdwDialog
-//
-
-floating-sheet {
-  > dimming {
-    background-color: rgba(black, 0.35);
-  }
-
-  > sheet {
-    border-radius: $wm_radius;
-    outline: 1px solid $highlight_color;
-    outline-offset: -1px;
-    box-shadow: 0 3px 6px $wm_shadow,
-                0 7px 12px $wm_shadow,
-                0 12px 20px $wm_shadow,
-                $wm_outline;
-  }
-}
-
-dialog.bottom-sheet {
-  &.landscape sheet {
-    margin-left: 30px;
-    margin-right: 30px;
-
-    > outline {
-      &.flush-left, &.flush-right, &.flush-left.flush-right {
-        box-shadow: $wm_outline;
-      }
-    }
-  }
-}
-
-dialog-host > dialog.background {
-  background: none;
-
-  sheet {
-    background-color: $bg_color;
-    color: $fg_color;
-  }
-}
-
-dialog-host > dialog.view {
-  background: none;
-
-  sheet {
-    @extend %view;
-  }
-}
-
-dialog-host > dialog.osd:not(progressbar):not(button):not(menubutton):not(splitbutton) {
-  background: none;
-
-  sheet {
-    @extend %osd;
-  }
-}
-
-//
 // AdwToolbarView
 //
+
 toolbarview {
   > .top-bar,
   > .bottom-bar {
@@ -896,8 +840,13 @@ toolbarview {
         min-height: $headerbar_size;
 
         > windowhandle > box {
-          padding-top: 0;
-          padding-bottom: 0;
+          padding-top: 8px;
+          padding-bottom: 8px;
+
+          > widget > box.vertical {
+            margin-top: -8px;
+            margin-bottom: -8px;
+          }
         }
 
         &.default-decoration {
@@ -972,6 +921,64 @@ toolbarview {
     &.border {
       box-shadow: none;
     }
+  }
+}
+
+//
+// AdwDialog
+//
+
+floating-sheet {
+  > dimming {
+    background-color: rgba(black, 0.35);
+  }
+
+  > sheet {
+    border-radius: $wm_radius;
+    outline: 1px solid $highlight_color;
+    outline-offset: -1px;
+    box-shadow: 0 3px 6px $wm_shadow,
+                0 7px 12px $wm_shadow,
+                0 12px 20px $wm_shadow,
+                $wm_outline;
+  }
+}
+
+dialog.bottom-sheet {
+  &.landscape sheet {
+    margin-left: 30px;
+    margin-right: 30px;
+
+    > outline {
+      &.flush-left, &.flush-right, &.flush-left.flush-right {
+        box-shadow: $wm_outline;
+      }
+    }
+  }
+}
+
+dialog-host > dialog.background {
+  background: none;
+
+  sheet {
+    background-color: $bg_color;
+    color: $fg_color;
+  }
+}
+
+dialog-host > dialog.view {
+  background: none;
+
+  sheet {
+    @extend %view;
+  }
+}
+
+dialog-host > dialog.osd:not(progressbar):not(button):not(menubutton):not(splitbutton) {
+  background: none;
+
+  sheet {
+    @extend %osd;
   }
 }
 

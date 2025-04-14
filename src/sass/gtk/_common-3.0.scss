@@ -248,7 +248,7 @@ $maximized_radius_style: 0 0 $maximized_radius $maximized_radius;
 
   &.csd {
     border-radius: $background_radius_style; // Set csd windows botttom border radius
-    background-color: gtkalpha($bg_color, 0.999);
+    background-color: rgba($bg_color, 0.999);
 
     &.maximized, &.tiled, &.fullscreen {
       border-radius: $maximized_radius_style; // Set csd windows botttom border radius
@@ -1220,7 +1220,7 @@ combobox {
 
   button.combo:disabled arrow,
   button.combo:backdrop arrow {
-    background-color: if($variant == 'light', gtkalpha($text_color, 0.45), gtkmix(white, $button_bg, 25%));
+    background-color: if($variant == 'light', rgba($text_color, 0.45), gtkmix(white, $button_bg, 25%));
   }
 
   decoration,
@@ -2021,7 +2021,7 @@ treeview.view {
   &:selected {
     border-radius: 0;
     border-left-color: gtkmix($selected_fg_color, $selected_bg_color, 50%);
-    border-top-color: gtkalpha($fg_color, 0.15); // doesn't work unfortunately
+    border-top-color: rgba($fg_color, 0.15); // doesn't work unfortunately
     background-color: $selected_bg_color;
     color: $selected_fg_color;
 
@@ -2128,12 +2128,12 @@ treeview.view {
 
       &:hover {
         color: $fg_color;
-        background-color: gtkalpha($fg_color, 0.06);
+        background-color: rgba($fg_color, 0.06);
       }
 
       &:active {
         color: $fg_color;
-        background-color: gtkalpha($fg_color, 0.1);
+        background-color: rgba($fg_color, 0.1);
       }
 
       &:disabled {
@@ -2204,7 +2204,7 @@ menubar,
 menu {
   margin: 0;
   padding: $container_padding;
-  background-color: gtkalpha($menu_bg, 1);
+  background-color: rgba($menu_bg, 1);
   color: $fg_color;
   border: none; // adds borders in a non composited env
   border-radius: 0;
@@ -2321,7 +2321,7 @@ menu {
       -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
     }
 
-    &:hover { background-color: gtkalpha($fg_color, 0.08); }
+    &:hover { background-color: rgba($fg_color, 0.08); }
 
     &:disabled {
       color: transparent;
@@ -2436,12 +2436,12 @@ cursor-handle {
 
   &:hover:not(:checked) {
     color: gtkmix($fg_color, $disabled_fg_color, 50%);
-    background-color: gtkalpha($fg_color, 0.06);
+    background-color: rgba($fg_color, 0.06);
   }
 
   &:checked {
     color: $fg_color;
-    background-color: gtkalpha($fg_color, 0.12);
+    background-color: rgba($fg_color, 0.12);
   }
 }
 
@@ -2460,8 +2460,8 @@ notebook {
     background-color: $base_color;
   }
 
-  .csd &:not(.frame),
-  .csd &:not(.frame) > stack {
+  .background.csd > &:not(.frame),
+  .background.csd > &:not(.frame) > stack {
     border-radius: 0 0 $wm_radius $wm_radius;
   }
 
@@ -2645,12 +2645,12 @@ notebook {
 
         &:hover {
           color: $fg_color;
-          background-color: gtkalpha($fg_color, 0.1);
+          background-color: rgba($fg_color, 0.1);
         }
 
         &:active {
           color: if($variant == 'light', darken($fg_color, 10%), lighten($fg_color, 10%));
-          background-color: gtkalpha($fg_color, 0.2);
+          background-color: rgba($fg_color, 0.2);
         }
       }
     }
@@ -2754,10 +2754,10 @@ scrollbar {
 // Switches
 //
 
-$switch_image: linear-gradient(0deg, gtkalpha($fg_color, 0.25) 0%, gtkalpha($fg_color, 0.35) 100%);
-$switch_disabled_image: linear-gradient(0deg, gtkalpha($fg_color, 0.1) 0%, gtkalpha($fg_color, 0.15) 100%);
+$switch_image: linear-gradient(0deg, rgba($fg_color, 0.25) 0%, rgba($fg_color, 0.35) 100%);
+$switch_disabled_image: linear-gradient(0deg, rgba($fg_color, 0.1) 0%, rgba($fg_color, 0.15) 100%);
 $switch_checked_image: linear-gradient(0deg, lighten($selected_bg_color, 10%) 0%, $selected_bg_color 100%);
-$switch_checked_backdrop_image: linear-gradient(0deg, gtkalpha($fg_color, 0.45) 0%, gtkalpha($fg_color, 0.55) 100%);
+$switch_checked_backdrop_image: linear-gradient(0deg, rgba($fg_color, 0.45) 0%, rgba($fg_color, 0.55) 100%);
 $switch_checked_disabled_image: linear-gradient(0deg, lighten($selected_bg_color, 35%) 0%, lighten($selected_bg_color, 25%) 100%);
 $switch_animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
 
@@ -2770,8 +2770,8 @@ $switch_animation: switch_ripple_effect 0.3s cubic-bezier(0, 0, 0.2, 1);
 
   to {
     background-image: $switch_checked_image, radial-gradient(circle farthest-corner at center,
-                                      gtkalpha($selected_bg_color, 0.75) 100%,
-                                      gtkalpha($selected_bg_color, 0.0) 0%);
+                                      rgba($selected_bg_color, 0.75) 100%,
+                                      rgba($selected_bg_color, 0.0) 0%);
   }
 }
 
@@ -2799,7 +2799,7 @@ switch {
     color: transparent;
     box-shadow: inset 0 1px 2px rgba(black, 0.15);
     transition: background-image 0.3s, box-shadow 0;
-    background-image: $switch_checked_image, radial-gradient(circle farthest-corner at center, gtkalpha($selected_bg_color, 0.75) 100%, transparent 0%);
+    background-image: $switch_checked_image, radial-gradient(circle farthest-corner at center, rgba($selected_bg_color, 0.75) 100%, transparent 0%);
 
     &:disabled {
       background-color: transparent;
@@ -3040,7 +3040,7 @@ scale {
     border-radius: $bt_radius;
     background-color: $_scale_trough_bg;
 
-    &:disabled { background-color: gtkalpha($_scale_trough_bg, 0.12); }
+    &:disabled { background-color: rgba($_scale_trough_bg, 0.12); }
 
     //OSD troughs
     .osd & {
@@ -3153,10 +3153,10 @@ scale {
     }
   }
 
-  value { color: gtkalpha(currentColor, 0.4); }
+  value { color: gtkalpha(currentColor, 0.45); }
 
   marks {
-    color: gtkalpha(currentColor, 0.4);
+    color: gtkalpha(currentColor, 0.45);
 
     @each $marks_class, $marks_pos, $marks_margin in (top, top, bottom),
                                                      (bottom, bottom, top),
@@ -3572,7 +3572,7 @@ row {
   padding: $container_padding;
   margin: 6px 20px 24px 20px;
   color: $fg_color;
-  background-color: gtkalpha($header_bg, 0.85);
+  background-color: rgba($header_bg, 0.85);
   // background-image: linear-gradient(0deg, $bg_color 0%, $bg_color 85%, darken($bg_color, 5%) 95%, darken($bg_color, 15%) 100%);
   border-radius: $wm_radius;
   border: none;
@@ -3638,29 +3638,29 @@ calendar {
   &.button {
     @extend %undecorated_button;
 
-    color: gtkalpha($fg_color, 0.45);
+    color: rgba($fg_color, 0.45);
 
     &:hover { color: $fg_color; }
 
     &:disabled { color: $disabled_fg_color; }
   }
 
-  &:indeterminate { color: gtkalpha($fg_color, 0.55); }
-  &.highlight { color: gtkalpha($fg_color, 0.65); font-weight: 500; }
+  &:indeterminate { color: rgba($fg_color, 0.55); }
+  &.highlight { color: rgba($fg_color, 0.65); font-weight: 500; }
 }
 
 //
 // Dialogs
 //
 
-$messagedialog_bg: if($trans == 'true', gtkalpha($bg_color, 0.98), $bg_color);
+$messagedialog_bg: if($trans == 'true', rgba($bg_color, 0.98), $bg_color);
 
 messagedialog { // Message Dialog styling
-  &.background { background-color: gtkalpha($messagedialog_bg, 1); }
+  &.background { background-color: rgba($messagedialog_bg, 1); }
 
   .titlebar {
     min-height: 28px;
-    background-color: gtkalpha($messagedialog_bg, 1);
+    background-color: rgba($messagedialog_bg, 1);
     border: none;
   }
 
@@ -3757,20 +3757,18 @@ filechooser {
       label, combobox { color: $dark_sidebar_fg; }
     }
 
-    paned {
-      stack {
-        &:dir(ltr) { border-radius: 0 0 (($wm_radius/1.5) + 2) 0 }
-        &:dir(rtl) { border-radius: 0 0 0 (($wm_radius/1.5) + 2) }
+    > box:only-child > paned {
+      stack.view {
+        &:dir(ltr) { border-radius: 0 0 $wm_radius 0; }
+        &:dir(rtl) { border-radius: 0 0 0 $wm_radius; }
       }
     }
 
     stack.view {
       background-color: $base_color;
-      border-bottom-right-radius: $wm_radius;
 
       scrolledwindow {
         background-color: transparent;
-        border-radius: 0 0 $wm_radius $wm_radius;
 
         list { background-color: transparent; }
 
@@ -3923,13 +3921,13 @@ placessidebar {
 
     &:drop(active):not(:disabled) {
       box-shadow: none;
-      background-color: gtkalpha($drop_target_color, 0.15);
+      background-color: rgba($drop_target_color, 0.15);
 
       &, label, image { color: $drop_target_color; }
 
       &:selected {
         &, label, image { color: $drop_target_color; }
-        background-color: gtkalpha($drop_target_color, 0.35);
+        background-color: rgba($drop_target_color, 0.35);
       }
     }
   }

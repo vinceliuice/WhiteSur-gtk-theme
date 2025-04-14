@@ -259,7 +259,6 @@ if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
 
   if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
     prompt -e "ERROR: Whitesur installer or tweaks is already running. Probably it's run by '$(ls -ld "${WHITESUR_TMP_DIR}" | awk '{print $3}')'"
-    exit 1
   fi
 fi
 

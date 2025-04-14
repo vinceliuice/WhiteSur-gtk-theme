@@ -40,8 +40,8 @@ $hint_fg_color:                     if($variant == 'light', #565656, #999999);
 }
 
 //insensitive state derived colors
-$disabled_fg_color:                 if($variant == 'light', transparentize($fg_color, 0.55), transparentize($fg_color, 0.65));
-$alt_disabled_fg_color:             if($variant == 'light', transparentize($alt_fg_color, 0.55), transparentize($alt_fg_color, 0.65));
+$disabled_fg_color:                 if($variant == 'light', rgba($fg_color, 0.45), rgba($fg_color, 0.35));
+$alt_disabled_fg_color:             if($variant == 'light', rgba($alt_fg_color, 0.45), rgba($alt_fg_color, 0.35));
 $disabled_bg_color:                 if($variant == 'light', gtkmix($bg_color, $base_color, 40%), lighten($bg_color, 2%));
 
 $active_color:                      if($variant == 'light', gtkalpha(currentColor, 0.26), gtkalpha(currentColor, 0.2));
@@ -97,12 +97,12 @@ $selected_bg_color:                 if($scheme == 'nord', $nord_color_default, $
 $primary_color:                     $selected_bg_color;
 
 $selected_borders_color:            darken($selected_bg_color, 10%);
-$borders_color:                     if($variant == 'light', gtkalpha(currentColor, 0.12), gtkalpha(currentColor, 0.12));
-$light_borders_color:               if($variant == 'light', gtkalpha(currentColor, 0.08), gtkalpha(currentColor, 0.10));
-$dark_borders_color:                if($variant == 'light', gtkalpha(black, 0.08), gtkalpha(black, 0.15));
-$solid_borders_color:               if($variant == 'light', gtkmix(currentColor, $base_color, 12%), gtkmix(currentColor, $base_color, 12%));
-$dark_solid_borders_color:          if($variant == 'light', gtkmix(currentColor, $base_color, 12%), gtkmix(currentColor, $base_color, 15%));
-$highlight_color:                   if($variant == 'light', gtkalpha(white, 0.15), gtkalpha(white, 0.1));
+$borders_color:                     if($variant == 'light', rgba(black, 0.12), rgba(white, 0.12));
+$light_borders_color:               if($variant == 'light', rgba(black, 0.08), rgba(white, 0.10));
+$dark_borders_color:                if($variant == 'light', rgba(black, 0.08), rgba(black, 0.15));
+$solid_borders_color:               if($variant == 'light', gtkmix(black, $base_color, 12%), gtkmix(white, $base_color, 12%));
+$dark_solid_borders_color:          if($variant == 'light', gtkmix(black, $base_color, 12%), gtkmix(white, $base_color, 15%));
+$highlight_color:                   if($variant == 'light', rgba(white, 0.15), rgba(white, 0.1));
 
 // Gnome-shell background colors
 $dark_bg_color:                     rgba(black, 0.6);
@@ -205,10 +205,10 @@ $osd_borders_color:                 $dark_borders_color;
 
 // Menu colors
 $menu_bg:                           if($variant == 'light', $base_color, $bg_color);
-$menu_bd:                           if($variant == 'light', gtkalpha(currentColor, 0.08), gtkalpha(currentColor, 0.07));
+$menu_bd:                           if($variant == 'light', rgba(black, 0.08), rgba(white, 0.07));
 
 @if $trans == 'true' {
-  $menu_bg:                         if($variant == 'light', gtkalpha($base_color, $opacity), gtkalpha($bg_color, $opacity));
+  $menu_bg:                         if($variant == 'light', rgba($base_color, $opacity), rgba($bg_color, $opacity));
 }
 
 $popover_opacity:                   if($trans == 'false', 1, if($shell_version == 'new', 0.92, 0.96));
@@ -273,7 +273,7 @@ $dash_bg:                           if($variant == 'light', rgba(#d1d1d1, $panel
 }
 
 // Entry colors
-$entry_bg:                          gtkalpha(currentColor, 0.05);
+$entry_bg:                          if($variant=='light', rgba(black, 0.05), rgba(white, 0.05));
 $entry_border:                      $borders_color;
 $entry_highlight:                   gtkalpha($selection_mode_bg, 0.75);
 
