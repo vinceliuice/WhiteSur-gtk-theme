@@ -907,6 +907,7 @@ gtk_base() {
 
   if [[ "${scheme}" == 'nord' ]]; then
     sed $SED_OPT "/\$scheme/s/standard/nord/"                                   "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+    accent_type="fixed"
   fi
 
   if [[ "${GNOME_VERSION}" -ge '47-0' && "${libadwaita}" == 'true' ]]; then

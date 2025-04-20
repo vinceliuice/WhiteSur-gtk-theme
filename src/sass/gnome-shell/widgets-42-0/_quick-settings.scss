@@ -112,7 +112,7 @@
 }
 
 .quick-toggle-menu {
-  background-color: $menu_bg !important;
+  background-color: if($variant == 'light', $base_color, $bg_color) !important;
   color: $text_color !important;
   border-radius: $base_border_radius * 3;
   padding: $base_padding * 3;
