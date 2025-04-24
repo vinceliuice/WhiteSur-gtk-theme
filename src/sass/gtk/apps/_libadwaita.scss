@@ -419,10 +419,6 @@ headerbar > windowhandle > box viewswitcher {
 //
 
 tabbar {
-  .box {
-    min-height: $menuitem_size;
-  }
-
   .start-action,
   .end-action {
     padding: $container_padding;
@@ -438,28 +434,27 @@ tabbar {
     padding-left: 0;
   }
 
-  &:not(.inline) {
-    .box {
-      color: $text_color;
-      margin: 0;
-      box-shadow: none;
-      border-bottom: 1px solid $borders_color;
+  .box {
+    min-height: $menuitem_size;
+    color: $text_color;
+    margin: 0;
+    box-shadow: none;
+    border-bottom: 1px solid $borders_color;
 
-      @if $monterey == 'false' {
-        padding: 0;
-        background-color: color-mix(in srgb, black 15%, $header_bg);
-      } @else {
-        padding: $container_padding / 2 0;
-        background-color: $header_bg;
-      }
+    @if $monterey == 'false' {
+      padding: 0;
+      background-color: color-mix(in srgb, black 15%, $header_bg);
+    } @else {
+      padding: $container_padding / 2 0;
+      background-color: $header_bg;
     }
+  }
 
-    &:backdrop .box {
-      > scrolledwindow,
-      > .start-action,
-      > .end-action {
-        filter: opacity(0.5);
-      }
+  &:backdrop .box {
+    > scrolledwindow,
+    > .start-action,
+    > .end-action {
+      filter: opacity(0.5);
     }
   }
 
@@ -483,6 +478,7 @@ tabbar {
       min-width: 2px;
       border-radius: 2px;
       background: gtkalpha($selected_bg_color, 0.5);
+      margin: 3px 6px;
     }
 
     > tabboxchild {
@@ -548,6 +544,22 @@ tabbar {
         margin: 0 -3px;
       } @else {
         margin: 0;
+      }
+    }
+  }
+
+  scrolledwindow.pinned {
+    @if $monterey == 'false' {
+      padding: $container_padding / 2 0;
+    }
+
+    tabbox {
+      > tab,
+      > tabboxchild > tab {
+        @extend %monterey_tab;
+        @if $monterey == 'false' {
+          padding: 0 $container_padding / 2;
+        }
       }
     }
   }

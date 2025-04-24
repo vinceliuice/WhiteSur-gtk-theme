@@ -77,7 +77,11 @@ prepare_deps() {
     prompt -w "DEPS: Your system clock is wrong"
     prompt -i "DEPS: Updating your system clock..."
     # Add "+ 25" here to accomodate potential time delay by sudo prompt
-    sudo date -s "@$((remote_time + 25))"; sudo hwclock --systohc
+    sudo date -s "@$((remote_time + 25))"
+
+    if has_command hwclock; then
+      sudo hwclock --systohc
+    fi
   fi
 }
 
