@@ -544,6 +544,8 @@ install_libadwaita() {
   theme="${themes[0]}"
   scheme="${schemes[0]}"
 
+  install_theme_deps
+
   gtk_base && config_gtk4 "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
 }
 
