@@ -179,11 +179,7 @@ else
 
   prompt -w "Removing the old '${name}' themes...\n"
 
-  if [[ "${libadwaita}" != 'true' ]]; then
-    remove_themes
-  fi
-
-  customize_theme; avoid_variant_duplicates;
+  remove_themes; customize_theme; avoid_variant_duplicates;
 
   prompt -w "Installing '${name}' themes in '${dest}'...\n";
 
@@ -196,6 +192,8 @@ else
   prompt -i "Start icon style : ${icon}"
   prompt -i "Nautilus style   : ${nautilus_style}"
 
+  echo; install_themes; echo; prompt -s "Done!"
+
   if [[ "${libadwaita}" == 'true' ]]; then
     if [[ "$UID" != '0' ]]; then
       install_libadwaita
@@ -203,8 +201,6 @@ else
     else
       echo; prompt -e "Do not run '--libadwaita' option with sudo!"
     fi
-  else
-    echo; install_themes; echo; prompt -s "Done!"
   fi
 
   if (is_my_distro "solus") && (is_running "gnome-session"); then
