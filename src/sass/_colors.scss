@@ -1,6 +1,11 @@
-@function gtkalpha($c,$a) {
-  @return unquote("alpha(#{$c},#{$a})");
+@function gtkalpha($c, $a) {
+  @if type-of($c) == 'color' {
+    @return rgba($c, $a);                     // objeto-cor quando $c é cor Sass
+  }
+  @return unquote("rgba(#{$c}, #{$a})");      // string para currentColor etc.
 }
+
+
 
 @function gtkmix($c1,$c2,$r) {
   $ratio: 1 -  $r / 100%; // match SCSS gtkmix()
