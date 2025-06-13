@@ -3364,15 +3364,21 @@ checkbutton, radiobutton {
 }
 
 $check_radio_border: if($variant == 'light', rgba(black, 0.2), rgba(black, 0.1));
-$check_radio_image: linear-gradient(0deg, #6a6a6a 0%, #545454 100%);
+$check_radio_image: '';
+$check_radio_hover_image: '';
 $check_radio_checked_image: '';
+$check_radio_checked_hover_image: '';
 
 @if $gnome_version == 'old' {
   $check_radio_image: linear-gradient(0deg, #6a6a6a 0%, #545454 100%);
+  $check_radio_hover_image: linear-gradient(0deg, #7a7a7a 0%, #636363 100%);
   $check_radio_checked_image: linear-gradient(0deg, darken($selected_bg_color, 5%) 0%, lighten($selected_bg_color, 5%) 100%);
+  $check_radio_checked_hover_image: linear-gradient(0deg, lighten($selected_bg_color, 5%), lighten($selected_bg_color, 15%) 100%);
 } @else {
   $check_radio_image: linear-gradient(0deg, gtkmix(white, $bg_color, 27%) 0%, gtkmix(white, $bg_color, 17%) 100%);
+  $check_radio_hover_image: linear-gradient(0deg, gtkmix(white, $bg_color, 37%) 0%, gtkmix(white, $bg_color, 27%) 100%);
   $check_radio_checked_image: linear-gradient(0deg, color-mix(in srgb, black 5%, $selected_bg_color) 0%, color-mix(in srgb, white 5%, $selected_bg_color) 100%);
+  $check_radio_checked_hover_image: linear-gradient(0deg, color-mix(in srgb, white 5%, $selected_bg_color), color-mix(in srgb, white 15%, $selected_bg_color) 100%);
 }
 
 check,
@@ -3392,21 +3398,15 @@ radio {
     background-image: $check_radio_image;
     box-shadow: inset 0 1px $highlight_color, 0 1px 2px rgba(black, 0.25), 0 0 0 1px $check_radio_border;
 
-    &:hover {
-      box-shadow: inset 0 1px $highlight_color;
-    }
-
-    &:active {
-      box-shadow: inset 0 1px $highlight_color;
+    &:hover, &:active {
+      background-image: $check_radio_hover_image;
+      box-shadow: inset 0 1px $highlight_color, 0 0 0 1px $check_radio_border;
     }
   } @else {
     box-shadow: inset 0 1px 2px rgba(black, 0.1), inset 0 0 0 1px $check_radio_border;
 
-    &:hover {
-      box-shadow: inset 0 0 0 1px $check_radio_border;
-    }
-
-    &:active {
+    &:hover, &:active {
+      background-image: $check_radio_hover_image;
       box-shadow: inset 0 0 0 1px $check_radio_border;
     }
   }
@@ -3435,6 +3435,7 @@ radio {
         box-shadow: inset 0 0 0 1px $check_radio_border;
       } @else {
         box-shadow: inset 0 1px $highlight_color;
+        background-image: $check_radio_checked_hover_image;
       }
     }
 
