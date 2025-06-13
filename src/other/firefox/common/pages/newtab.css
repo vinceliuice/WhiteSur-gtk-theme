@@ -3,7 +3,8 @@
 @-moz-document url("about:newtab"), url("about:home") {
 body {
 	--newtab-background-color: var(--gnome-browser-before-load-background) !important;
-	--newtab-background-color-secondary: var(--gnome-menu-background) !important;
+	--newtab-background-color-secondary: var(--gnome-content-page-dialog-background) !important;
+	--newtab-background-card: var(--gnome-content-page-dialog-background) !important;
 	--newtab-primary-action-background: var(--theme-primary-color) !important;
 	--newtab-primary-element-text-color: #ffffff !important;
 	--newtab-overlay-color: var(--gnome-tabstoolbar-background) !important;
@@ -17,7 +18,7 @@ body {
 }
 
 .context-menu {
-	background: var(--gnome-menu-background) !important;
+	background: var(--gnome-toolbar-background) !important;
 	border-radius: 12px !important;
 	box-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-popover-border-color) !important;
 	padding: 6px !important;

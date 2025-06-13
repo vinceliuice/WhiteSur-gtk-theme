@@ -23,7 +23,7 @@
     --in-content-table-background: var(--gnome-browser-before-load-background) !important;
 
     --newtab-background-color: var(--gnome-browser-before-load-background) !important;
-    --newtab-background-color-secondary: var(--gnome-menu-background) !important;
+    --newtab-background-color-secondary: var(--gnome-content-page-dialog-background) !important;
     --newtab-primary-action-background: var(--theme-primary-color) !important;
     --fxview-background-color: var(--gnome-browser-before-load-background) !important;
     --fxview-background-color-secondary: var(--gnome-menu-background) !important;
