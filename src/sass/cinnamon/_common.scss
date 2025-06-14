@@ -2353,6 +2353,7 @@ StScrollBar {
 
   &-box {
     padding: 0 8px;
+    spacing: 4px;
     color: $panel_fg;
     text-shadow: none;
     transition-duration: 100;
@@ -2408,7 +2409,7 @@ StScrollBar {
     height: 32px;
     background-color: transparent;
     border: none;
-    border-radius: 0;
+    border-radius: 32px;
 }
 
 .user-label {
