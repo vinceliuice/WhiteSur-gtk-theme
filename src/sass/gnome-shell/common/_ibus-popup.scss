@@ -18,6 +18,7 @@
   margin: ($container_padding / 2) 12px 17px 12px;
   padding: $container_padding + 2px;
   spacing: $container_padding;
+  border-radius: $bt_radius + $container_padding + 2px !important;
 }
 
 .candidate-index {
@@ -29,7 +30,7 @@
 .candidate-box {
   padding: 0.3em 0.5em 0.3em 0.5em;
   margin-right: 2px;
-  border-radius: $bt_radius;
+  border-radius: $bt_radius !important;
   color: $hint_fg_color;
   &:hover { background-color: $divider_color; color: $fg_color; }
   &:active { background-color: $track_color; color: $fg_color; }

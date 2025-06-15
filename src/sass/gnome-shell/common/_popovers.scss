@@ -1,6 +1,6 @@
 /* Popovers/Menus */
 
-$popop_menuitem_radius: $po_radius - $base_padding;
+$popop_menuitem_radius: $po_radius - $base_padding - if($variant=='light', 0, 2px); // radius of the menu item, used in popovers
 
 //.the popover itself
 .popup-menu-boxpointer {
@@ -35,7 +35,7 @@ $popop_menuitem_radius: $po_radius - $base_padding;
       spacing: $base_spacing * 4;
       padding-top: 12px;
       padding-bottom: 12px;
-      border-radius: $popop_menuitem_radius * 2;
+      border-radius: $popop_menuitem_radius * 2 !important;
       margin: 0 12px;
 
       &:ltr { padding-right: 4em; padding-left: 0; }
@@ -51,7 +51,7 @@ $popop_menuitem_radius: $po_radius - $base_padding;
       margin: 0 6px;
 
       .popup-menu-item {
-        border-radius: $popop_menuitem_radius * 2;
+        border-radius: $popop_menuitem_radius * 2 !important;
       }
     }
 

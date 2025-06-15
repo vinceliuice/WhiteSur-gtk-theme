@@ -127,13 +127,13 @@ $card_bg_color: if($variant == 'light', mix(white, $bg_color, 95%), lighten($bas
   }
 
   &:second-in-stack {
-    background-color: if($variant == 'light', darken($card_bg_color, 3%), darken($card_bg_color, 2%));
+    background-color: if($variant == 'light', darken($card_bg_color, 3%), darken($card_bg_color, 3%));
     box-shadow: 0 1px 2px rgba(black, 0.05);
   }
 
   &:lower-in-stack {
-    background-color: if($variant == 'light', darken($card_bg_color, 5%), darken($card_bg_color, 4%));
-    box-shadow: 0 1px 2px rgba(black, 0.01);
+    background-color: if($variant == 'light', darken($card_bg_color, 6%), darken($card_bg_color, 6%));
+    box-shadow: none;
     border-color: transparent; // a not ideal workaround for light theme
   }
 
