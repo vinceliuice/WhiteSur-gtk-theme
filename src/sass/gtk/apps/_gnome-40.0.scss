@@ -131,6 +131,8 @@ $flap_sidebar_size: 240px;
   }
 
   tabbar:not(.inline) {
+    margin: 0 -3px;
+
     .box {
       @if $monterey == 'false' {
         background-color: color-mix(in srgb, black 6%, $base_color);
@@ -138,8 +140,6 @@ $flap_sidebar_size: 240px;
       } @else {
         background-color: $base_color;
       }
-
-      tabbox { margin: 0 -3px; }
     }
   }
 
