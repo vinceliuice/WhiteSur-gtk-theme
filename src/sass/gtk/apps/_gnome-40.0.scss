@@ -20,7 +20,7 @@ $flap_sidebar_size: 240px;
 
 @if $nautilus_style == 'glassy' {
   $nautilus_header_image: linear-gradient(90deg, transparent ($flap_sidebar_size / 2),
-                                                 $dark_header_bg 40%);
+                                                 if($trans == 'true', gtkalpha($base_color, 0.96), $base_color) 40%);
 
   $nautilus_header_borders_image: linear-gradient(90deg, gtkalpha($header_border, 0) (($flap_sidebar_size / 2) - 40px),
                                                          $header_border 40%);

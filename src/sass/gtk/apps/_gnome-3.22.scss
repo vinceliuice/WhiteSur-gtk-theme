@@ -2,6 +2,7 @@
 //
 // Nautilus
 //
+
 $nautilus_radius: $wm_radius + 1px;
 $nautilus_sidebar_size: $sidebar_size;
 $nautilus_borders_color: if($variant=='light', darken(rgba($dark_sidebar_bg, 1), 12%), $header_border);
