@@ -20,8 +20,8 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 @if $nautilus_style == 'stable' {
   $nautilus_sidebar_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                                   $dark_sidebar_bg $nautilus_sidebar_size,
-                                                  gtkalpha($dark_sidebar_bg, 0) $nautilus_sidebar_size,
-                                                  gtkalpha($dark_sidebar_bg, 0) 100%);
+                                                  tranparent $nautilus_sidebar_size,
+                                                  tranparent 100%);
 
   $nautilus_bg_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                              $dark_sidebar_bg $nautilus_sidebar_size,
@@ -38,8 +38,8 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
   $dialog_header_borders_image: linear-gradient(90deg, $dialog_bg_color 0px,
                                                        $header_border 25%);
 
-  $nautilus_actionbar_image: linear-gradient(90deg, gtkalpha($dark_header_bg, 0) 5%,
-                                                    transparentize($dark_header_bg, 0.2) 40%);
+  $nautilus_actionbar_image: linear-gradient(90deg, transparent 5%,
+                                                    $dark_header_bg 40%);
 
   $nautilus_actionbar_borders_image: linear-gradient(90deg, transparent 0px,
                                                             $header_border 25%);
@@ -76,7 +76,7 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
       border-radius: $wm_radius;
 
       @if $nautilus_style == 'glassy' {
-        background-image: image(rgba($dark_sidebar_bg, 0));
+        background-image: none;
       }
 
       > deck > box.vertical > headerbar.titlebar {

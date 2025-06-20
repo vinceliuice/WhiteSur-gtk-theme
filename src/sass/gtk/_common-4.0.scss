@@ -159,7 +159,7 @@ $list_shadow: if($variant == 'light',
   border-bottom-style: none;
 }
 
-%linked_vertical{
+%linked_vertical {
   border-radius: 0;
   border-bottom-style: none;
 
@@ -1546,9 +1546,9 @@ spinbutton {
 
   &:disabled { color: $disabled_fg_color; }
 
-  button:active { color: $selected_fg_color; }
-
   &:focus-within { outline: none; }
+
+  // > button { }
 
   > text {
     padding: $container_padding;
@@ -1640,8 +1640,6 @@ spinbutton {
 
       @extend %linked_vertical;
     }
-
-    > button.up { border-radius: $bt_radius $bt_radius 0 0; }
 
     @if $variant == 'light' {
       > text:focus-within + button { border-top-color: $entry_highlight; }
@@ -3513,13 +3511,13 @@ scale {
 
   // Trough
   > trough {
-    $_scale_trough_bg: rgba(black, 0.2);
+    $_scale_trough_bg: rgba(black, 0.25);
 
     outline-offset: 2px;
     border-radius: $bt_radius;
     background-color: $_scale_trough_bg;
 
-    &:disabled { background-color: gtkalpha($_scale_trough_bg, 0.12); }
+    &:disabled { background-color: rgba(black, 0.16); }
 
     //OSD troughs
     .osd & {
