@@ -6,7 +6,7 @@
 /* Switchers */
 .toggle-button {
 	--toggle-height: 26px !important;
-	--toggle-width: 48px !important;
+	--toggle-width: 42px !important;
 	--toggle-border-radius: 24px !important;
 	--toggle-border-color: var(--gnome-switch-border-color) !important;
 	--toggle-background-color:  var(--gnome-switch-background) !important;
@@ -16,9 +16,10 @@
 	--toggle-background-color-pressed-hover: var(--gnome-switch-pressed-hover-background) !important;
 	--toggle-background-color-pressed-active: var(--gnome-switch-pressed-active-background) !important;
 	--toggle-dot-height: 22px !important;
+	--toggle-dot-width: 22px !important;
 	--toggle-dot-background-color: #ffffff !important;
 	--toggle-dot-background-color-on-pressed: #ffffff !important;
-	--toggle-dot-margin: 1px !important/*	border: 0 !important;*/
+	--toggle-dot-margin: 1px !important;
 }
 
 .toggle-button:enabled:hover {

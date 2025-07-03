@@ -2,7 +2,7 @@
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
 /* Fix hover background */
-.toolbarbutton-badge-stack:not(#hack), .toolbarbutton-icon:not(#hack), .toolbarbutton-text:not(#hack) {
+.toolbarbutton-badge-stack:not(#hack), .toolbarbutton-icon:not(#hack):not(.close-button), .toolbarbutton-text:not(#hack) {
 	background: transparent !important;
 }
 

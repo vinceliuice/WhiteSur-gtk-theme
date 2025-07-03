@@ -537,6 +537,11 @@ config_gtk4() {
   prompt -s "\n  Installed ${name}${color}${opacity}${alt}${theme}${scheme} gtk-4.0 theme in '${HOME}/.config/gtk-4.0' for libadwaita!"
 }
 
+reset_gtk_base() {
+  libadwaita='true'
+  accent_type='fixed'
+}
+
 install_libadwaita() {
   color="${colors[0]}"
   opacity="${opacities[0]}"
@@ -590,6 +595,20 @@ install_themes() {
   done
 
   stop_animation; fix_whiskermenu
+}
+
+clean_themes() {
+  for color in "${colors[@]}"; do
+    for opacity in "${opacities[@]}"; do
+      for alt in "${alts[@]}"; do
+        for theme in "${themes[@]}"; do
+          for scheme in "${schemes[@]}"; do
+            remove_packy "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
+          done
+        done
+      done
+    done
+  done
 }
 
 remove_themes() {

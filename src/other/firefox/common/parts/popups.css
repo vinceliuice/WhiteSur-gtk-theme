@@ -58,6 +58,16 @@ menuitem, menupopup menu {
 	box-shadow: none !important;
 }
 
+/* checkbox / radio rendering */
+
+@media (-moz-platform: linux) {
+  menuitem[type="radio"] .menu-icon,
+  menuitem:is([type="checkbox"], [checked="true"]) .menu-icon {
+    appearance: none !important;
+    -moz-default-appearance: none !important;
+  }
+}
+
 menuitem[type="checkbox"] image,
 menuitem[type="radio"] image {
 	visibility: visible !important;

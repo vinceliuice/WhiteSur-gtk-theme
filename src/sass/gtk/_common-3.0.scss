@@ -1694,7 +1694,7 @@ headerbar {
       margin-bottom: 0;
       min-height: 0;
       min-width: 120px;
-      padding: 0 0;
+      padding: 0;
       background-color: transparent;
 
       > stack > box {
@@ -1956,10 +1956,12 @@ $pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
 .path-bar button {
   min-width: $container_padding * 2;
   min-height: if($variant == 'light', 24px, 26px);
+  padding-left: $container_padding;
+  padding-right: $container_padding;
 
-  &.text-button, &.image-button, & {
-    padding-left: $container_padding;
-    padding-right: $container_padding;
+  label, image {
+    padding-left: $container_padding / 2;
+    padding-right: $container_padding / 2;
   }
 
   &:hover { box-shadow: none; }
@@ -1974,22 +1976,10 @@ $pathbar_button_checked_bg: if($variant == 'light', #808080, #b8b8b8);
     border-color: $button_borders;
   }
 
-  &.text-button.image-button label { padding-left: 0; padding-right: 0; }
-
-  &.text-button.image-button, & {
-    label:last-child { padding-right: $container_padding; }
-    label:first-child { padding-left: $container_padding; }
-  }
-
   &.slider-button,
   &:not(.image-button):not(.text-button) {
-    padding-left: 1px;
-    padding-right: 1px;
-  }
-
-  &.image-button image {
-    padding-left: $container_padding;
-    padding-right: $container_padding;
+    padding-left: $container_padding / 2;
+    padding-right: $container_padding / 2;
   }
 }
 

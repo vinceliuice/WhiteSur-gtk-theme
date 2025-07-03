@@ -169,17 +169,9 @@ if [[ "${uninstall}" == 'true' ]]; then
     prompt -e "Find installed GDM theme, you need to run: 'sudo ./tweaks.sh -g -r' to remove it!"
   fi
 else
-  if [[ "${interactive}" == 'true' ]]; then
-    show_panel_opacity_dialog
-#    show_sidebar_size_dialog
-    show_nautilus_style_dialog
-#  else
-#    show_needed_dialogs
-  fi
+  #prompt -w "Removing the old '${name}' themes...\n"
 
-  prompt -w "Removing the old '${name}' themes...\n"
-
-  remove_themes; customize_theme; avoid_variant_duplicates;
+  clean_themes; customize_theme; avoid_variant_duplicates;
 
   prompt -w "Installing '${name}' themes in '${dest}'...\n";
 
@@ -192,16 +184,16 @@ else
   prompt -i "Start icon style : ${icon}"
   prompt -i "Nautilus style   : ${nautilus_style}"
 
-  echo; install_themes; echo; prompt -s "Done!"
-
   if [[ "${libadwaita}" == 'true' ]]; then
     if [[ "$UID" != '0' ]]; then
-      install_libadwaita
+      install_libadwaita && reset_gtk_base
       echo; prompt -w "Some colorsheme extension will re-writes config files in '${HOME}/.config/gtk-4.0' like: 'custom-accent-colors' you need to disable it!"
     else
       echo; prompt -e "Do not run '--libadwaita' option with sudo!"
     fi
   fi
+
+  echo; install_themes; echo; prompt -s "Done!"
 
   if (is_my_distro "solus") && (is_running "gnome-session"); then
     msg="GNOME: you may need to disable 'User Themes' extension to fix your dock."

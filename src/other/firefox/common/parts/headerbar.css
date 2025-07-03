@@ -12,7 +12,7 @@
 }
 
 /* Headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.titlebar-button),
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.subviewbutton):not(.titlebar-button):not(.close-button),
 toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	border: none !important;
 	box-shadow: none !important;
@@ -27,7 +27,7 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	transition: background 200ms;
 }
 
-:root:-moz-window-inactive #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button) {
+:root:-moz-window-inactive #nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not(.close-button) {
 	background: none !important;
 }
 
@@ -43,7 +43,7 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 }
 
 /* Hover headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not([open]):not([disabled]):not([checked]):hover,
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not(.close-button):not([open]):not([disabled]):not([checked]):hover,
 #TabsToolbar .toolbarbutton-1:hover,
 #tabs-newtab-button:hover, #TabsToolbar #new-tab-button:hover {
 	outline: 0 !important;
@@ -51,28 +51,28 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 }
 
 /* Active headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not([disabled]):not(#hack):active,
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not([disabled])[open],
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not([disabled])[checked],
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not(.close-button):not([disabled]):not(#hack):active,
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not(.close-button):not([disabled])[open],
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not(.close-button):not([disabled])[checked],
 #TabsToolbar .toolbarbutton-1:active, #TabsToolbar .toolbarbutton-1[open],
 #tabs-newtab-button:active, #TabsToolbar #new-tab-button:active {
 	background: var(--gnome-headerbar-button-active-background) !important;
 }
 
 /* Disabled headerbar buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button)[disabled] {
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not(.close-button)[disabled] {
 	background: transparent !important;
 	border-color: var(--gnome-button-disabled-border-color) !important;
 	box-shadow: none !important;
 	opacity: 1 !important;
 }
 
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button)[disabled] image {
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not(.close-button)[disabled] image {
 	opacity: .4 !important;
 }
 
 /* Inactive window buttons */
-#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):-moz-window-inactive {
+#nav-bar toolbarbutton:not(#urlbar-zoom-button):not(.titlebar-button):not(.close-button):-moz-window-inactive {
 	background: var(--gnome-inactive-button-background) !important;
 	box-shadow: var(--gnome-inactive-button-box-shadow) !important;
 	border-color: var(--gnome-inactive-button-border-color) !important;
