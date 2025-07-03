@@ -314,6 +314,14 @@ tab[selected]:-moz-window-inactive .tab-label {
 	display: flex;
 }
 
+.button-background {
+  &[type~="icon"]:not(.labelled), &:not(.labelled):has(img) {
+    &[size="small"] {
+      margin-bottom: 3px !important;
+    }
+  }
+}
+
 #TabsToolbar #alltabs-button {
 	padding: 0 !important;
 	visibility: collapse !important;

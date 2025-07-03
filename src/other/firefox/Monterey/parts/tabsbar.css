@@ -159,6 +159,14 @@ tab[selected]:-moz-window-inactive .tab-label {
 	inset-inline-end: 0 !important;
 }
 
+.button-background {
+  &[type~="icon"]:not(.labelled), &:not(.labelled):has(img) {
+    &[size="small"] {
+      margin-bottom: 3px !important;
+    }
+  }
+}
+
 .tabbrowser-tab .tab-icon-overlay:not([crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
 	background-color: transparent !important;
 }
