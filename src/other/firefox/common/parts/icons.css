@@ -738,6 +738,14 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 	list-style-image: url("../icons/universal-notepad.svg") !important;
 }
 
+@media (prefers-color-scheme: dark) {
+#notes_mozilla_com-BAP .toolbarbutton-icon,
+#sidebarswitcher_menu_notes_mozilla_com-sidebar-action,
+#sidebar-box[sidebarcommand="notes_mozilla_com-sidebar-action"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon {
+	list-style-image: url("../icons/universal-notepad-dark.svg") !important;
+}
+}
+
 /* Fix flat buttons icons aproach */
 button.close::before {
 	content: "";
