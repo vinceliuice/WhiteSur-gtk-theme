@@ -2118,6 +2118,15 @@ headerbar {
   entry {
     @extend %headerbar_entrys;
     border-spacing: 4px;
+
+    &.location-entry {
+      padding: 2px;
+
+      > text {
+        margin-left: $container_padding * 2;
+        margin-right: $container_padding * 2;
+      }
+    }
   }
 
   button {
@@ -2316,7 +2325,6 @@ headerbar {
         background-color: transparent;
         background-image: none;
         color: transparent;
-        -gtk-icon-size: 0;
       }
 
       &.close, &.maximize, &.minimize {
