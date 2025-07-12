@@ -648,9 +648,13 @@ install_gdm_theme() {
       TARGET="${ZORIN_CSS_FILE}"
     fi
 
-    backup_file "${COMMON_CSS_FILE}"; backup_file "${TARGET}"
+    backup_file "${COMMON_CSS_FILE}"
     ln -sf "${WHITESUR_GS_DIR}/gnome-shell.css" "${COMMON_CSS_FILE}"
-    ln -sf "${WHITESUR_GS_DIR}/gnome-shell.css" "${TARGET}"
+
+    if [[ "${TARGET}" != '' ]]; then
+      backup_file "${TARGET}"
+      ln -sf "${WHITESUR_GS_DIR}/gnome-shell.css" "${TARGET}"
+    fi
 
     # Fix previously installed WhiteSur
     restore_file "${ETC_CSS_FILE}"
