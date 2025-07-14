@@ -20,8 +20,8 @@ $nautilus_sidebar_image: image($dark_sidebar_bg);
 @if $nautilus_style == 'stable' {
   $nautilus_sidebar_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                                   $dark_sidebar_bg $nautilus_sidebar_size,
-                                                  tranparent $nautilus_sidebar_size,
-                                                  tranparent 100%);
+                                                  transparent $nautilus_sidebar_size,
+                                                  transparent 100%);
 
   $nautilus_bg_image: linear-gradient(90deg, $dark_sidebar_bg 0%,
                                              $dark_sidebar_bg $nautilus_sidebar_size,

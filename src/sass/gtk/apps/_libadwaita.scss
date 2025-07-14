@@ -516,8 +516,8 @@ tabbar {
         @if $monterey == 'false' {
           min-height: $small_size;
           min-width: $small_size;
-          margin-top: 2px;
-          margin-bottom: 2px;
+          margin-top: 0;
+          margin-bottom: 0;
         } @else {
           min-height: 16px;
           min-width: 16px;

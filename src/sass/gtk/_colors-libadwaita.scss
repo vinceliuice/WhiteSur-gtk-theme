@@ -296,8 +296,6 @@ $dark_5: #000000;
   $menu_fg: gtkcolor(popover_fg_color);
   $menu_bd: if($variant == 'light', gtkalpha(currentColor, 0.08), gtkalpha(currentColor, 0.07));
 
-  $wm_shadow: gtkcolor(headerbar_shade_color);
-  $wm_shadow_backdrop: gtkcolor(sidebar_shade_color);
   $wm_outline: 0 0 0 2px rgba(black, 0.03), 0 0 0 1px gtkcolor(headerbar_darker_shade_color);
   $wm_border: gtkcolor(headerbar_darker_shade_color);
 

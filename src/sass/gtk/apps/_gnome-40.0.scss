@@ -1306,7 +1306,7 @@ panelresizer .top-bar {
 }
 
 .frameheader.header:not(.vertical) {
-  min-height: $medium_size;
+  min-height: $menuitem_size;
   padding: 0;
   border: none;
   border-bottom: 1px solid $borders_color;
@@ -1316,27 +1316,30 @@ panelresizer .top-bar {
     background-color: color-mix(in srgb, black 7%, $base_color);
   }
 
-  tabbar.inline {
-    tabbox {
-      min-height: $medium_size;
+  tabbar {
+    .box {
+      min-height: $menuitem_size;
+      border: none;
     }
 
-    .start-action {
-      padding: $container_padding / 2 $container_padding / 2 $container_padding / 2 $container_padding;
-    }
+    .start-action, .end-action {
+      padding: $base_padding / 2;
 
-    .end-action {
-      padding: $container_padding / 2 $container_padding $container_padding / 2 $container_padding / 2;
+      button {
+        min-height: 20px;
+        min-width: 20px;
+        padding: $base_padding / 2;
+      }
     }
   }
 }
 
 panelframeswitcher:not(.vertical) {
-  &.frameheader.header { padding: 0 $base_padding; }
+  &.frameheader.header { padding: $container_padding / 2; }
 
   > button.toggle.image-button {
     border: none;
-    margin: $base_padding 0;
+    margin: 0;
   }
 }
 
