@@ -118,6 +118,20 @@ $flap_sidebar_size: 240px;
     }
   }
 
+  .content-pane toolbarview {
+    > .top-bar,
+    > .bottom-bar {
+      .collapse-spacing {
+        headerbar {
+          > windowhandle > box {
+            padding-top: 7px;
+            padding-bottom: 7px;
+          }
+        }
+      }
+    }
+  }
+
   flap.unfolded {
     list.navigation-sidebar {
       background-color: transparent;
@@ -232,7 +246,7 @@ $flap_sidebar_size: 240px;
 #NautilusPathBar {
   background-color: $fill_color;
   border-radius: $bt_radius;
-  margin: 0 0 0 $container_padding;
+  margin: 0;
 
   #NautilusPathButton {
     margin: 0 $container_padding / 2;
@@ -251,8 +265,13 @@ $flap_sidebar_size: 240px;
   }
 
   > menubutton {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
+  }
+}
+
+#NautilusFileChooser {
+  multi-layout-view > box {
+    padding-left: $container_padding * 2;
   }
 }
 
