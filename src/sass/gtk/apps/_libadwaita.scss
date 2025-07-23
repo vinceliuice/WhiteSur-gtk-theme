@@ -379,7 +379,7 @@ headerbar > windowhandle > box viewswitcher {
     margin: 0;
 
     indicatorbin > image {
-      -gtk-icon-size: 12px;
+      // -gtk-icon-size: 12px;
     }
   }
 
@@ -443,7 +443,7 @@ tabbar {
 
     @if $monterey == 'false' {
       padding: 0;
-      background-color: color-mix(in srgb, black 15%, $header_bg);
+      background-color: gtkmix(black, $header_bg, 15%);
     } @else {
       padding: $container_padding / 2 0;
       background-color: $header_bg;
@@ -891,7 +891,7 @@ toolbarview {
     padding: 0;
     border-spacing: 0;
     box-shadow: inset 0 1px $borders_color;
-    background-color: color-mix(in srgb, black 5%, $bg_color);
+    background-color: gtkmix(black, $bg_color, 5%);
     color: $text_color;
 
     &:backdrop {

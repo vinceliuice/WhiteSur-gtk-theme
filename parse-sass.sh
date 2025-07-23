@@ -31,6 +31,9 @@ if [ ! -z "${COLOR_VARIANTS:-}" ]; then
   IFS=', ' read -r -a _COLOR_VARIANTS <<< "${COLOR_VARIANTS:-}"
 fi
 
+cp -rf "src/sass/_gtk-base"{".scss","-temp.scss"}
+cp -rf "src/sass/_theme-options"{".scss","-temp.scss"}
+
 for color in "${_COLOR_VARIANTS[@]}"; do
   sassc $SASSC_OPT src/main/gtk-3.0/gtk${color}.{scss,css}
   echo "==> Generating the 3.0 gtk${color}.css..."

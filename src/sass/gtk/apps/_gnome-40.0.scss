@@ -149,7 +149,7 @@ $flap_sidebar_size: 240px;
 
     .box {
       @if $monterey == 'false' {
-        background-color: color-mix(in srgb, black 6%, $base_color);
+        background-color: gtkmix(black, $base_color, 6%);
         border-top: 1px solid $borders_color;
       } @else {
         background-color: $base_color;
@@ -1315,7 +1315,7 @@ popover.background.pages-popover {
 
     check {
       margin: 4px 2px;
-      -gtk-icon-size: 12px;
+      // -gtk-icon-size: 12px;
     }
   }
 }
@@ -1329,10 +1329,10 @@ panelresizer .top-bar {
   padding: 0;
   border: none;
   border-bottom: 1px solid $borders_color;
-  background-color: color-mix(in srgb, black 6%, $base_color);
+  background-color: gtkmix(black, $base_color, 6%);
 
   &:backdrop {
-    background-color: color-mix(in srgb, black 7%, $base_color);
+    background-color: gtkmix(black, $base_color, 7%);
   }
 
   tabbar {

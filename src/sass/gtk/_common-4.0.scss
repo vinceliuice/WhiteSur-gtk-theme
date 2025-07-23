@@ -294,7 +294,7 @@ textview {
   }
 
   border {
-    background-color: color-mix(in srgb, $bg_color 50%, $base_color);
+    background-color: gtkmix($bg_color, $base_color, 50%);
   }
 
   &:drop(active) {
@@ -592,7 +592,7 @@ entry {
                                           (search-missing, $error_color, $light_fg_color) { // entry.search-missing for Gnome-Builder
     &.#{$e_type} {
       color: $e_fg_color;
-      background-color: color-mix(in srgb, $e_color 60%, $base_color);
+      background-color: gtkmix($e_color, $base_color, 60%);
       border-image: none;
 
       image { color: $e_fg_color; }
@@ -870,7 +870,7 @@ button {
   &.opaque {
     @extend %opaque_button;
 
-    background-color: color-mix(in srgb, $bg_color 80%, $fg_color);
+    background-color: gtkmix($bg_color, $fg_color, 80%);
     color: $fg_color;
   }
 
@@ -1172,7 +1172,7 @@ menubutton {
   }
 
   &.opaque {
-    background-color: color-mix(in srgb, $bg_color 80%, $fg_color);
+    background-color: gtkmix($bg_color, $fg_color, 80%);
     color: $fg_color;
   }
 
@@ -1332,7 +1332,7 @@ splitbutton {
   }
 
   &.opaque {
-    background-color: color-mix(in srgb, $bg_color 80%, $fg_color);
+    background-color: gtkmix($bg_color, $fg_color, 80%);
     color: $fg_color;
   }
 
@@ -1989,7 +1989,7 @@ actionbar > revealer > box {
     &.#{$e_type} {
       color: $e_fg_color;
       border-color: if($variant=='light', $e_color, $entry_border);
-      background-color: color-mix(in srgb, $e_color 60%, $header_bg);
+      background-color: gtkmix($e_color, $header_bg, 60%);
 
       &:focus {
         color: $e_fg_color;
@@ -2063,7 +2063,7 @@ headerbar {
   &:backdrop {
     opacity: 1;
     transition: $backdrop_transition;
-    color: color-mix(in srgb, $header_fg 70%, $header_bg_backdrop);
+    color: gtkmix($header_fg, $header_bg_backdrop, 70%);
     background-color: $header_bg_backdrop;
     border-color: $header_border_backdrop;
     box-shadow: none;
@@ -2628,7 +2628,7 @@ menubar {
   box-shadow: inset 0 -1px $borders_color;
 
   &:backdrop {
-    color: color-mix(in srgb, $header_fg 70%, $header_bg);
+    color: gtkmix($header_fg, $header_bg, 70%);
   }
 
   > item {
@@ -2643,7 +2643,7 @@ menubar {
     }
 
     &:disabled {
-      color: color-mix(in srgb, $header_fg 50%, $header_bg);
+      color: gtkmix($header_fg, $header_bg, 50%);
     }
   }
 
@@ -2679,7 +2679,7 @@ popover {
     background-color: $menu_bg;
     box-shadow: 0 3px 6px 0 if($variant=='light', transparentize(black, 0.85), transparentize(black, 0.85)),
                 0 0 0 1px if($variant=='light', gtkalpha(black, 0.03), $wm_border);
-    border: 1px solid if($variant=='light', gtkalpha(black, 0.2), color-mix(in srgb, white 8%, $menu_bg));
+    border: 1px solid if($variant=='light', gtkalpha(black, 0.2), gtkmix(white, $menu_bg, 8%));
   }
 
   &, &:backdrop {
@@ -2947,7 +2947,7 @@ notebook {
 
   > header {
     @if $monterey == 'false' {
-      background-color: color-mix(in srgb, black 6%, $base_color);
+      background-color: gtkmix(black, $base_color, 6%);
       border: none;
     }
 
@@ -3152,13 +3152,13 @@ scrollbar {
       border: 4px solid transparent;
       border-radius: $container_padding * 2;
       background-clip: padding-box;
-      background-color: color-mix(in srgb, $fg_color 40%, $bg_color);
+      background-color: gtkmix($fg_color, $bg_color, 40%);
       box-shadow: none;
       outline: none;
       transition: all 200ms linear;
 
-      &:hover { background-color: color-mix(in srgb, $fg_color 30%, $bg_color); }
-      &:hover:active { background-color: color-mix(in srgb, $fg_color 50%, $bg_color);}
+      &:hover { background-color: gtkmix($fg_color, $bg_color, 30%); }
+      &:hover:active { background-color: gtkmix($fg_color, $bg_color, 50%); }
       &:disabled { background-color: transparent; }
     }
   }
@@ -3198,7 +3198,7 @@ scrollbar {
         margin: $container_padding / 2;
         min-width: $container_padding - 2px;
         min-height: $container_padding - 2px;
-        background-color: color-mix(in srgb, $fg_color 70%, $bg_color);
+        background-color: gtkmix($fg_color, $bg_color, 70%);
         border: none;
       }
 
@@ -3396,7 +3396,7 @@ radio {
   transition: $button_transition;
   background-clip: padding-box;
   border: none;
-  -gtk-icon-size: 14px;
+  // -gtk-icon-size: 14px;
 
   @if $variant == 'dark' {
     background-image: $check_radio_image;
@@ -5431,7 +5431,7 @@ colorchooser .popover.osd { border-radius: $bt_radius; }
     padding: 0;
 
     &:active, &:selected { background-color: if($variant=='light', transparent, $selected_bg_color); }
-    &:disabled { background-color: if($variant=='light', transparent, color-mix(in srgb, $bg_color 60%, $base_color)); }
+    &:disabled { background-color: if($variant=='light', transparent, gtkmix($bg_color, $base_color, 60%)); }
   }
 
   > rubberband { @extend %rubberband; }
