@@ -4,8 +4,8 @@
 
 /* Entries */
 #searchbar,
-#input,
 #loginTextbox,
+search-textbox,
 #password1Textbox {
 	-moz-appearance: none !important;
 	background-color: var(--gnome-urlbar-background) !important;
@@ -24,9 +24,19 @@
 	transition: outline 100ms ease-out;
 }
 
+#input {
+	background-color: var(--gnome-urlbar-background) !important;
+	border: 1px solid var(--gnome-urlbar-border-color) !important;
+	outline: 2px solid transparent;
+	outline-offset: -2px;
+	border-radius: 8px !important;
+	background-clip: padding-box !important;
+}
+
 /* Entries focused */
 #searchbar:focus-within,
-#input[focused],
+#input:focus,
+search-textbox:focus,
 #loginTextbox:focus,
 #password1Textbox:focus {
 	border: 1px solid transparent !important;
@@ -39,7 +49,7 @@
 
 /* Inactive window entries */
 #searchbar:-moz-window-inactive,
-#search-box:-moz-window-inactive #input,
+#input:-moz-window-inactive,
 #loginTextbox:-moz-window-inactive,
 #password1Textbox:-moz-window-inactive {
 	background-color: var(--gnome-inactive-urlbar-background) !important;

@@ -54,8 +54,8 @@ fxview-search-textbox {
 }
 
 .sidebar-splitter {
-	width: 1px !important;
-	background-color: var(--gnome-toolbar-border-color, var(--gnome-toolbar-background)) !important;
-	background-image: linear-gradient(to top, var(--sidebar-background-color) 0%, var(--sidebar-background-color) 100%);
-	border: none !important;
+	min-width: 1px !important;
+	background: var(--gnome-browser-before-load-background) !important;
+	border-left: 1px solid var(--gnome-sidebar-border-color) !important;
+	border-right: none !important;
 }
