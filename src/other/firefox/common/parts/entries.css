@@ -4,7 +4,7 @@
 
 /* Entries */
 #searchbar,
-#search-box,
+#input,
 #loginTextbox,
 #password1Textbox {
 	-moz-appearance: none !important;
@@ -26,7 +26,7 @@
 
 /* Entries focused */
 #searchbar:focus-within,
-#search-box[focused],
+#input[focused],
 #loginTextbox:focus,
 #password1Textbox:focus {
 	border: 1px solid transparent !important;
@@ -39,7 +39,7 @@
 
 /* Inactive window entries */
 #searchbar:-moz-window-inactive,
-#search-box:-moz-window-inactive,
+#search-box:-moz-window-inactive #input,
 #loginTextbox:-moz-window-inactive,
 #password1Textbox:-moz-window-inactive {
 	background-color: var(--gnome-inactive-urlbar-background) !important;
@@ -55,12 +55,6 @@
 #urlbar, #searchbar {
 	margin: 0 3px !important;
 	padding: 0 !important;
-}
-.searchbar-textbox {
-	border: 0 !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	min-height: auto !important;
 }
 #searchbar > .searchbar-textbox[focused] .searchbar-search-button:not(#hack) {
 	margin: 0 !important;

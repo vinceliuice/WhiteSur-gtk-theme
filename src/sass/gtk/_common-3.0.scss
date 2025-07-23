@@ -170,15 +170,18 @@ $list_shadow: if($variant == 'light',
 %linked_vertical{
   border-radius: 0;
   border-bottom-style: none;
+
   &:first-child {
     border-top-left-radius: $bt_radius;
     border-top-right-radius: $bt_radius;
   }
+
   &:last-child {
     border-bottom-left-radius: $bt_radius;
     border-bottom-right-radius: $bt_radius;
     border-bottom-style: solid;
   }
+
   &:only-child {
     border-radius: $bt_radius;
     border-style: solid;
