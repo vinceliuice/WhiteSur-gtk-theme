@@ -50,14 +50,14 @@ $visit_color:                       if($variant == 'light', gtkalpha(currentColo
 $divider_color:                     if($variant == 'light', gtkalpha(currentColor, 0.12), gtkalpha(currentColor, 0.1));
 $fill_color:                        if($variant == 'light', gtkalpha(currentColor, 0.06), gtkalpha(currentColor, 0.05));
 
-$light_fg_color:                    white;
-$light_alt_fg_color:                rgba(white, 0.85);
-$light_hint_fg_color:               rgba(white, 0.50);
-$light_disabled_fg_color:           rgba(white, 0.45);
-$light_alt_disabled_fg_color:       rgba(white, 0.35);
-$light_track_color:                 rgba(white, 0.2);
-$light_divider_color:               rgba(white, 0.12);
-$light_fill_color:                  rgba(white, 0.06);
+$light_fg_color:                    #ffffff;
+$light_alt_fg_color:                rgba($light_fg_color, 0.85);
+$light_hint_fg_color:               rgba($light_fg_color, 0.50);
+$light_disabled_fg_color:           rgba($light_fg_color, 0.45);
+$light_alt_disabled_fg_color:       rgba($light_fg_color, 0.35);
+$light_track_color:                 rgba($light_fg_color, 0.2);
+$light_divider_color:               rgba($light_fg_color, 0.12);
+$light_fill_color:                  rgba($light_fg_color, 0.06);
 
 $selected_fg_color:                 $light_fg_color;
 $selected_bg_color:                 if($scheme == 'nord', $nord_color_default, $theme_color_default);
