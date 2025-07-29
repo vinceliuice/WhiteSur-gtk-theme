@@ -558,20 +558,60 @@ menubutton.flat.popup.sources-button {
 .history-view { background-color: $base_color; }
 
 .card {
-  &.display-container {
+  &.display-container, &.bit-panel {
     border: 1px solid $borders_color;
-
-    .small & {
-      border-radius: 0;
-
-      &.display-container {
-        border-width: 0 0 1px 0;
-      }
-    }
+    box-shadow: none;
+    background-color: $base_color;
   }
 
   #displayitem {
     border-top: 1px solid $borders_color;
+  }
+
+  &.bit-panel {
+    padding: $container_padding 0;
+
+    button, button.flat,
+    button.text-button {
+      min-width: 14px;
+      min-height: 12px;
+      padding: 0;
+    }
+  }
+}
+
+.small .card {
+  border-radius: 0;
+
+  &.display-container {
+    border-width: 0;
+  }
+
+  &.bit-panel {
+    border-width: 1px 0;
+  }
+
+  + widget > stack {
+    border-top: 1px solid $borders_color;
+  }
+}
+
+.math-buttons {
+  .buttons {
+    min-width: 0;
+    min-height: 0;
+  }
+
+  button,
+  button.text-button,
+  menubutton > button,
+  menubutton > button.text-button {
+    min-width: 16px;
+    padding: 2px 4px;
+  }
+
+  button.number-button {
+    background-image: image($button_bg);
   }
 }
 
