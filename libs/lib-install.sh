@@ -971,7 +971,7 @@ shell_base() {
 customize_theme() {
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
-  if [[ "${GNOME_VERSION}" -ge '47-0' && "${accent_type}" != 'fixed' ]]; then
+  if [[ "${GNOME_VERSION}" -ge '47-0' && "${accent_type}" != 'fixed' && "${scheme}" != 'nord' ]]; then
     sed $SED_OPT "/\$shell_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
