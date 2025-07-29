@@ -537,11 +537,6 @@ config_gtk4() {
   prompt -s "\n  Installed ${name}${color}${opacity}${alt}${theme}${scheme} gtk-4.0 theme in '${HOME}/.config/gtk-4.0' for libadwaita!"
 }
 
-reset_gtk_base() {
-  libadwaita='false'
-  accent_type='fixed'
-}
-
 install_libadwaita() {
   color="${colors[0]}"
   opacity="${opacities[0]}"
@@ -551,7 +546,7 @@ install_libadwaita() {
 
   install_theme_deps
 
-  gtk_base && config_gtk4 "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
+  libadwaita_base && config_gtk4 "${color}" "${opacity}" "${alt}" "${theme}" "${scheme}"
 }
 
 remove_libadwaita() {
@@ -918,6 +913,11 @@ disconnect_flatpak() {
 #                               GTK BASE                                #
 #########################################################################
 
+reset_gtk_base() {
+  libadwaita='false'
+  accent_type='fixed'
+}
+
 gtk_base() {
   cp -rf "${THEME_SRC_DIR}/sass/_gtk-base"{".scss","-temp.scss"}
 
@@ -938,6 +938,10 @@ gtk_base() {
     sed $SED_OPT "/\$scheme/s/standard/nord/"                                   "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
     accent_type="fixed"
   fi
+}
+
+libadwaita_base() {
+  gtk_base
 
   if [[ "${GNOME_VERSION}" -ge '47-0' && "${libadwaita}" == 'true' ]]; then
     sed $SED_OPT "/\$gnome_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
@@ -967,7 +971,7 @@ shell_base() {
 customize_theme() {
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
-  if [[ "${GNOME_VERSION}" -ge '47-0' ]]; then
+  if [[ "${GNOME_VERSION}" -ge '47-0' && "${accent_type}" != 'fixed' ]]; then
     sed $SED_OPT "/\$shell_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 

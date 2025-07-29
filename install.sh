@@ -186,7 +186,7 @@ else
 
   if [[ "${libadwaita}" == 'true' ]]; then
     if [[ "$UID" != '0' ]]; then
-      install_libadwaita && reset_gtk_base
+      install_libadwaita
       echo; prompt -w "Some colorsheme extension will re-writes config files in '${HOME}/.config/gtk-4.0' like: 'custom-accent-colors' you need to disable it!"
     else
       echo; prompt -e "Do not run '--libadwaita' option with sudo!"
