@@ -167,7 +167,7 @@
 
   .popup-menu-item {
     border-radius: $circular_radius !important;
-    min-height: 20px;
+    // min-height: 20px;
 
     &:focus, &:hover, &.selected {
       color: $text_color !important;
