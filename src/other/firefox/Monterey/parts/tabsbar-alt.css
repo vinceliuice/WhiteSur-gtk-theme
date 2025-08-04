@@ -206,6 +206,10 @@ tab[selected]:-moz-window-inactive .tab-label {
 }
 }
 
+#pinned-tabs-container[orient="horizontal"] {
+	margin-inline-end: 6px !important;
+}
+
 .tabbrowser-tab .tab-icon-overlay:not([crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
 	background-color: transparent !important;
 }

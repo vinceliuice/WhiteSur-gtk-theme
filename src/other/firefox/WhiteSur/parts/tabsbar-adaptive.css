@@ -184,6 +184,11 @@ toolbarbutton[open=true] {
 	padding: 0 !important;
 }
 
+#pinned-tabs-container[orient="horizontal"] {
+	margin-inline-end: 0 !important;
+	border-right: 1px solid var(--gnome-tabbar-tab-border-color) !important;
+}
+
 /* Tabs */
 .tab-background {
 	background-color: transparent !important;

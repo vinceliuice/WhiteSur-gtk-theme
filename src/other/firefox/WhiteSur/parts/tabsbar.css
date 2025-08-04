@@ -282,6 +282,11 @@
 	margin-bottom: 0 !important;
 }
 
+#pinned-tabs-container[orient="horizontal"] {
+	margin-inline-end: 0 !important;
+	border-right: 1px solid var(--gnome-tabbar-tab-border-color) !important;
+}
+
 /* Tab labels */
 tab {
 	color: var(--gnome-tabbar-tab-color) !important;
