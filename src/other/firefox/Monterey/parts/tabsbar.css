@@ -2,9 +2,14 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
-:root[tabsintitlebar] #nav-bar toolbaritem,
+:root[tabsintitlebar] #nav-bar toolbarbutton,
 #nav-bar-customization-target {
-	-moz-window-dragging: drag;
+	-moz-window-dragging: drag !important;
+}
+
+#tabbrowser-tabs,
+#tabbrowser-arrowscrollbox {
+  -moz-window-dragging: drag !important;
 }
 
 #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]):not([orient="vertical"]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
@@ -13,6 +18,11 @@
 
 #TabsToolbar tab > stack {
 	margin: 0 3px !important;
+}
+
+#pinned-tabs-container[orient="horizontal"] {
+	margin-inline-end: 6px !important;
+	margin-inline-start: 6px !important;
 }
 
 /* Tabs bar height */

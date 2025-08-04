@@ -727,6 +727,11 @@ install_firefox_theme() {
   [[ -f "${TARGET_DIR}"/userContent.css ]] && mv "${TARGET_DIR}"/userContent.css              "${TARGET_DIR}"/userContent.css.bak
   cp -rf "${FIREFOX_SRC_DIR}"/userContent-"${theme_name}${theme_type}".css                    "${TARGET_DIR}"/userContent.css
 
+  if [[  "${theme_name}" == 'Monterey' ]]; then
+    sed -i "s/left_header_button_3/left_header_button_${left_button}/g"                       "${TARGET_DIR}"/userChrome.css
+    sed -i "s/right_header_button_3/right_header_button_${right_button}/g"                    "${TARGET_DIR}"/userChrome.css
+  fi
+
   if [[ "${firefoxtheme}" == 'Flat' && "${theme_name}" == 'Monterey' ]]; then
     cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt"${theme_type}".css                    "${TARGET_DIR}"/userChrome.css
     cp -rf "${FIREFOX_SRC_DIR}"/WhiteSur/parts/headerbar-urlbar.css                           "${TARGET_DIR}"/Monterey/parts/headerbar-urlbar-alt.css
