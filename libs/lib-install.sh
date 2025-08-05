@@ -683,6 +683,17 @@ install_gdm_theme() {
       TARGET="${MISC_GR_FILE}"
     fi
 
+    # For Kali Linux GDM >>>
+    local KALI_BACKGROUND_FOLDER="/usr/share/desktop-base/kali-theme/login"
+
+    if [[ -d "${KALI_BACKGROUND_FOLDER}" ]]; then
+      backup_file "${KALI_BACKGROUND_FOLDER}"
+      mkdir -p "${KALI_BACKGROUND_FOLDER}"
+      cp -rf "${MACTAHOE_TMP_DIR}/background.png" "${KALI_BACKGROUND_FOLDER}/background-blurred"
+      cp -rf "${REPO_DIR}/wallpaper/MacTahoe-night.jpeg" "${KALI_BACKGROUND_FOLDER}/background"
+    fi
+    # For Kali Linux GDM <<<
+
     backup_file "${TARGET}"
     glib-compile-resources --sourcedir="${WHITESUR_TMP_DIR}/shelly" --target="${TARGET}" "${GS_GR_XML_FILE}"
 
@@ -707,16 +718,14 @@ install_only_gdm_theme() {
   cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/theme/background.png"
 
   # For Kali Linux GDM >>>
-
   local KALI_BACKGROUND_FOLDER="/usr/share/desktop-base/kali-theme/login"
 
-  if [[ -f "${KALI_BACKGROUND_FOLDER}/background.png" ]]; then
+  if [[ -d "${KALI_BACKGROUND_FOLDER}" ]]; then
     backup_file "${KALI_BACKGROUND_FOLDER}"
     mkdir -p "${KALI_BACKGROUND_FOLDER}"
     cp -rf "${MACTAHOE_TMP_DIR}/background.png"                                               "${KALI_BACKGROUND_FOLDER}/background-blurred"
     cp -rf "${REPO_DIR}/wallpaper/MacTahoe-night.jpeg"                                        "${KALI_BACKGROUND_FOLDER}/background"
   fi
-
   # For Kali Linux GDM <<<
 
   backup_file "${TARGET}"
