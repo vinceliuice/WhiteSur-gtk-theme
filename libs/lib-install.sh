@@ -689,8 +689,9 @@ install_gdm_theme() {
     if [[ -d "${KALI_BACKGROUND_FOLDER}" ]]; then
       backup_file "${KALI_BACKGROUND_FOLDER}"
       mkdir -p "${KALI_BACKGROUND_FOLDER}"
-      cp -rf "${MACTAHOE_TMP_DIR}/background.png" "${KALI_BACKGROUND_FOLDER}/background-blurred"
-      cp -rf "${REPO_DIR}/wallpaper/MacTahoe-night.jpeg" "${KALI_BACKGROUND_FOLDER}/background"
+      cp -rf "${WHITESUR_TMP_DIR}/beggy.png" "${KALI_BACKGROUND_FOLDER}/background-blurred"
+      cp -rf "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.png" "${KALI_BACKGROUND_FOLDER}/background"
+      cp -rf "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.png" "${KALI_BACKGROUND_FOLDER}/background.svg"
     fi
     # For Kali Linux GDM <<<
 
@@ -723,8 +724,9 @@ install_only_gdm_theme() {
   if [[ -d "${KALI_BACKGROUND_FOLDER}" ]]; then
     backup_file "${KALI_BACKGROUND_FOLDER}"
     mkdir -p "${KALI_BACKGROUND_FOLDER}"
-    cp -rf "${MACTAHOE_TMP_DIR}/background.png"                                               "${KALI_BACKGROUND_FOLDER}/background-blurred"
-    cp -rf "${REPO_DIR}/wallpaper/MacTahoe-night.jpeg"                                        "${KALI_BACKGROUND_FOLDER}/background"
+    cp -rf "${WHITESUR_TMP_DIR}/beggy.png"                                                    "${KALI_BACKGROUND_FOLDER}/background-blurred"
+    cp -rf "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.png"           "${KALI_BACKGROUND_FOLDER}/background"
+    cp -rf "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.png"           "${KALI_BACKGROUND_FOLDER}/background.svg"
   fi
   # For Kali Linux GDM <<<
 
