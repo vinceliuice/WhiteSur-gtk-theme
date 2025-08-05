@@ -691,14 +691,6 @@ install_gdm_theme() {
   fi
 }
 
-install_gdm_tmp() {
-  local TARGET_DIR="${1}"
-
-  mkdir -p                                                                                    "${TARGET_DIR}"
-  cp -r "${REPO_DIR}/other/gdm/theme"                                                         "${TARGET_DIR}"
-  cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/theme/background.png"
-}
-
 install_only_gdm_theme() {
   if check_theme_file "$MISC_GR_FILE"; then
     TARGET="${MISC_GR_FILE}"
@@ -706,7 +698,26 @@ install_only_gdm_theme() {
     prompt -e "\n  $MISC_GR_FILE File not found! exit..."; exit 1
   fi
 
-  install_theme_deps; install_beggy; install_gdm_tmp "${WHITESUR_TMP_DIR}/gdm"
+  install_theme_deps; install_beggy "${WHITESUR_TMP_DIR}/gdm"
+
+  local TARGET_DIR="${WHITESUR_TMP_DIR}/gdm"
+
+  mkdir -p                                                                                    "${TARGET_DIR}"
+  cp -r "${REPO_DIR}/other/gdm/theme"                                                         "${TARGET_DIR}"
+  cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/theme/background.png"
+
+  # For Kali Linux GDM >>>
+
+  local KALI_BACKGROUND_FOLDER="/usr/share/desktop-base/kali-theme/login"
+
+  if [[ -f "${KALI_BACKGROUND_FOLDER}/background.png" ]]; then
+    backup_file "${KALI_BACKGROUND_FOLDER}"
+    mkdir -p "${KALI_BACKGROUND_FOLDER}"
+    cp -rf "${MACTAHOE_TMP_DIR}/background.png"                                               "${KALI_BACKGROUND_FOLDER}/background-blurred"
+    cp -rf "${REPO_DIR}/wallpaper/MacTahoe-night.jpeg"                                        "${KALI_BACKGROUND_FOLDER}/background"
+  fi
+
+  # For Kali Linux GDM <<<
 
   backup_file "${TARGET}"
   glib-compile-resources --sourcedir="${WHITESUR_TMP_DIR}/gdm/theme" --target="${TARGET}" "${GDM_GR_XML_FILE}"
