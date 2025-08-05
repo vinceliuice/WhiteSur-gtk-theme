@@ -686,12 +686,9 @@ install_gdm_theme() {
     # For Kali Linux GDM >>>
     local KALI_BACKGROUND_FOLDER="/usr/share/desktop-base/kali-theme/login"
 
-    if [[ -d "${KALI_BACKGROUND_FOLDER}" ]]; then
-      backup_file "${KALI_BACKGROUND_FOLDER}"
-      mkdir -p "${KALI_BACKGROUND_FOLDER}"
+    if [[ -f "${KALI_BACKGROUND_FOLDER}/background-blurred" ]]; then
+      backup_file "${KALI_BACKGROUND_FOLDER}/background-blurred"
       cp -rf "${WHITESUR_TMP_DIR}/beggy.png" "${KALI_BACKGROUND_FOLDER}/background-blurred"
-      cp -rf "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.png" "${KALI_BACKGROUND_FOLDER}/background"
-      cp -rf "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.png" "${KALI_BACKGROUND_FOLDER}/background.svg"
     fi
     # For Kali Linux GDM <<<
 
@@ -721,12 +718,9 @@ install_only_gdm_theme() {
   # For Kali Linux GDM >>>
   local KALI_BACKGROUND_FOLDER="/usr/share/desktop-base/kali-theme/login"
 
-  if [[ -d "${KALI_BACKGROUND_FOLDER}" ]]; then
-    backup_file "${KALI_BACKGROUND_FOLDER}"
-    mkdir -p "${KALI_BACKGROUND_FOLDER}"
+  if [[ -f "${KALI_BACKGROUND_FOLDER}/background-blurred" ]]; then
+    backup_file "${KALI_BACKGROUND_FOLDER}/background-blurred"
     cp -rf "${WHITESUR_TMP_DIR}/beggy.png"                                                    "${KALI_BACKGROUND_FOLDER}/background-blurred"
-    cp -rf "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.png"           "${KALI_BACKGROUND_FOLDER}/background"
-    cp -rf "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.png"           "${KALI_BACKGROUND_FOLDER}/background.svg"
   fi
   # For Kali Linux GDM <<<
 
