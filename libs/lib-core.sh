@@ -58,11 +58,11 @@ SUDO_BIN="$(which sudo)"
 
 #------------Directories--------------#
 THEME_SRC_DIR="${REPO_DIR}/src"
-DASH_TO_DOCK_SRC_DIR="${REPO_DIR}/src/other/dash-to-dock"
+DASH_TO_DOCK_SRC_DIR="${REPO_DIR}/other/dash-to-dock"
 DASH_TO_DOCK_DIR_ROOT="/usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
 DASH_TO_DOCK_DIR_HOME="${MY_HOME}/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com"
 GNOME_SHELL_EXTENSION_DIR="${MY_HOME}/.local/share/gnome-shell/extensions"
-FIREFOX_SRC_DIR="${REPO_DIR}/src/other/firefox"
+FIREFOX_SRC_DIR="${REPO_DIR}/other/firefox"
 FIREFOX_DIR_HOME="${MY_HOME}/.mozilla/firefox"
 FIREFOX_THEME_DIR="${MY_HOME}/.mozilla/firefox/firefox-themes"
 FIREFOX_FLATPAK_DIR_HOME="${MY_HOME}/.var/app/org.mozilla.firefox/.mozilla/firefox"
@@ -89,7 +89,7 @@ POP_OS_GR_FILE="/usr/share/gnome-shell/theme/Pop/gnome-shell-theme.gresource"
 ZORIN_GR_FILE="/usr/share/gnome-shell/theme/ZorinBlue-Light/gnome-shell-theme.gresource"
 MISC_GR_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
 GS_GR_XML_FILE="${THEME_SRC_DIR}/main/gnome-shell/gnome-shell-theme.gresource.xml"
-GDM_GR_XML_FILE="${THEME_SRC_DIR}/other/gdm/gnome-shell-theme.gresource.xml"
+GDM_GR_XML_FILE="${REPO_DIR}/other/gdm/gnome-shell-theme.gresource.xml"
 
 #-------------Theme---------------#
 THEME_NAME="WhiteSur"

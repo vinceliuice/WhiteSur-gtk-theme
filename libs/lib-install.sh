@@ -354,7 +354,7 @@ install_beggy() {
       fi
       ;;
     *)
-      if [[ "${no_blur}" == "false" || "${darken}" == "false" ]]; then
+      if [[ "${no_blur}" == "false" || "${no_darken}" == "false" ]]; then
         install_beggy_deps
         prompt -i "Installed Custome $BLUR_INFO $DARK_INFO ${background} picture for background! \n"
         convert "${background}" ${CONVERT_OPT}                                                "${WHITESUR_TMP_DIR}/beggy.png"
@@ -513,7 +513,7 @@ install_theemy() {
   ( cd "${TARGET_DIR}/metacity-1" && ln -s "metacity-theme-1.xml" "metacity-theme-2.xml" )
 
   mkdir -p                                                                                    "${TARGET_DIR}/plank"
-  cp -r "${THEME_SRC_DIR}/other/plank/theme${color}/"*".theme"                                "${TARGET_DIR}/plank"
+  cp -r "${REPO_DIR}/other/plank/theme${color}/"*".theme"                                     "${TARGET_DIR}/plank"
 
   cp -r "${THEME_SRC_DIR}/assets/unity"                                                       "${TARGET_DIR}"
 }
@@ -695,7 +695,7 @@ install_gdm_tmp() {
   local TARGET_DIR="${1}"
 
   mkdir -p                                                                                    "${TARGET_DIR}"
-  cp -r "${THEME_SRC_DIR}/other/gdm/theme"                                                    "${TARGET_DIR}"
+  cp -r "${REPO_DIR}/other/gdm/theme"                                                         "${TARGET_DIR}"
   cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/theme/background.png"
 }
 
