@@ -1,0 +1,185 @@
+/* App Grid */
+
+$app_icon_size: 96px;
+$app_folder_size: 720px;
+
+// app icons
+.icon-grid {
+  row-spacing: $base_padding * 2;
+  column-spacing: $base_padding * 2;
+  max-row-spacing: $base_padding * 6;
+  max-column-spacing: $base_padding * 6;
+  page-padding-top: $base_padding * 4;
+  page-padding-bottom: $base_padding * 4;
+  page-padding-left: $base_padding * 3;
+  page-padding-right: $base_padding * 3;
+}
+
+/* App Icons */
+
+// items in the app grid and dash
+.overview-tile {
+  @include tile_button($bg:$system_base_color);
+
+  // override the %tile style
+  border-radius: $base_border_radius*3;
+  padding: $base_padding * 2;
+
+  // the icon itself
+  .overview-icon {
+    // item with a label
+    &.overview-icon-with-label {
+      > StBoxLayout {
+        spacing: $base_padding;
+      }
+    }
+  }
+}
+
+// app folders
+.app-folder {
+  @include tile_button($bg:$system_base_color, $raised: true);
+}
+
+// Running app indicator (also shown in dash)
+.app-grid-running-dot {
+  height: 5px;
+  width: 5px;
+  border-radius:5px;
+  background-color: $system_fg_color;
+  offset-y: 6px;
+}
+
+.app-folder-dialog-container {
+  // pad the top with panel height so the folder doesn't overlap the panel on smaller resolutions
+  padding-top: $panel_height;
+}
+
+// Expanded app folder dialog
+.app-folder-dialog {
+  width: $app_folder_size;
+  height: $app_folder_size;
+
+  border-radius: $modal_radius * 4;
+  background-color: $system_overlay_bg_color;
+  color: $system_fg_color;
+
+  @if $contrast == 'high' {
+    padding: 0 2px;
+    box-shadow: inset 0 0 0 2px $hc_inset_color;
+  } @else {
+    padding: 0 1px;
+    box-shadow: inset 0 0 0 1px $system_borders_color;
+  }
+
+  & .folder-name-container {
+    padding: $base_padding * 4 $base_padding * 6;
+    padding-bottom: 0;
+
+    & .folder-name-label,
+    & .folder-name-entry {
+      @extend %title_1;
+    }
+
+    & .folder-name-entry {
+      @extend %system_entry;
+      width: 12em;
+    }
+  }
+
+  & .icon-button {
+    @include button(normal, $tc:$system_fg_color, $c:$system_overlay_bg_color, $always_dark: true);
+    &:hover { @include button(hover, $tc:$system_fg_color, $c:$system_overlay_bg_color, $always_dark: true);}
+    &:active { @include button(active, $tc:$system_fg_color, $c:$system_overlay_bg_color, $always_dark: true);}
+  }
+
+  & .page-indicators {
+    margin-bottom: $base_padding * 4;
+  }
+
+  & .page-navigation-arrow {
+    @include button(normal, $tc:$system_fg_color, $c:$system_overlay_bg_color, $style: flat, $always_dark: true);
+    &:hover { @include button(hover, $tc:$system_fg_color, $c:$system_overlay_bg_color, $style: flat, $always_dark: true);}
+    &:active { @include button(active, $tc:$system_fg_color, $c:$system_overlay_bg_color, $style: flat, $always_dark: true);}
+  }
+
+  & .overview-tile {
+    @include tile_button($bg:$system_overlay_bg_color);
+  }
+}
+
+// Rename popup for app folders
+.rename-folder-popup {
+  .rename-folder-popup-item {
+    spacing: $base_padding;
+    &:ltr, &:rtl { padding: 0 $base_padding * 2; }
+  }
+}
+
+// App Grid pagination indicators
+$page_indicator_size: 10px;
+.page-indicator {
+  padding: $base_padding $base_padding * 2 0;
+  transition-duration:400ms;
+
+  .page-indicator-icon {
+    width: $page_indicator_size;
+    height: $page_indicator_size;
+    border-radius: $forced_circular_radius;
+    background-color: $system_fg_color;
+    transition-duration: 400ms;
+  }
+}
+
+.apps-scroll-view {
+  padding: 0;
+}
+
+// shutdown and other actions in the grid
+.system-action-icon {
+  background-color: transparentize($system_fg_color,.9);
+  color: $system_fg_color;
+  border-radius: $forced_circular_radius;
+  icon-size: $app_icon_size * 0.5;
+  @if $contrast == 'high' {
+    box-shadow: inset 0 0 0 2px $hc_inset_color;
+  }
+}
+
+// page navigation
+.page-navigation-hint {
+  &.dnd {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &.next:ltr,
+  &.previous:rtl {
+    background-gradient-start: rgba(255, 255, 255, 0.05);
+    background-gradient-end: transparent;
+    background-gradient-direction: horizontal;
+    border-radius: $modal_radius * 1.5 0px 0px $modal_radius * 1.5;
+  }
+
+  &.previous:ltr,
+  &.next:rtl {
+    background-gradient-start: transparent;
+    background-gradient-end: rgba(255, 255, 255, 0.05);
+    background-gradient-direction: horizontal;
+    border-radius: 0px $modal_radius * 1.5 $modal_radius * 1.5 0px;
+  }
+}
+
+.page-navigation-arrow {
+  margin: $base_padding;
+  padding: $base_padding * 3;
+  width: $medium_icon_size;
+  height: $medium_icon_size;
+  border-radius: $forced_circular_radius;
+  transition-duration: 100ms;
+
+  > StIcon { color: $system_fg_color;}
+
+  @include button(normal, $tc:$system_fg_color, $c:$system_base_color, $style: flat, $always_dark: true);
+  &:hover { @include button(hover, $tc:$system_fg_color, $c:$system_base_color, $style: flat, $always_dark: true);}
+  &:active { @include button(active, $tc:$system_fg_color, $c:$system_base_color, $style: flat, $always_dark: true);}
+}

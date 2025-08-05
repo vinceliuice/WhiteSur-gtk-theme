@@ -1,0 +1,25 @@
+/* Notifications & Message Tray */
+
+$notification_banner_height: 64px;
+$notification_banner_width: 34em;
+
+// Banner notifications
+.notification-banner {
+  min-height: $notification_banner_height;
+  width: $notification_banner_width;
+  box-shadow: 0 2px 4px 2px $shadow_color;
+  border-radius: $modal_radius;
+  margin: $base_margin;
+
+  @if $contrast == 'high' {
+    @include draw_hc_inset();
+  }
+}
+
+.notification-buttons-bin {
+  spacing: 0;
+}
+
+.notification-button {
+  @extend %notification_button;
+}

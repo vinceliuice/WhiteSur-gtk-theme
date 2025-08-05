@@ -1,0 +1,25 @@
+/* Workspace Switcher */
+
+$ws_indicator_height: 32px;
+$ws_dot_active: $ws_indicator_height / 3;
+$ws_dot_inactive: $ws_indicator_height / 6;
+
+.workspace-switcher {
+  @extend %osd_panel;
+  margin-bottom: 4em;
+  spacing: $base_padding * 2;
+  padding: $base_padding * 2 $base_padding * 3;
+}
+
+.ws-switcher-indicator {
+  background-color: transparentize($osd_fg_color,0.5);
+  padding: $ws_dot_inactive / 2;
+  margin: ($ws_indicator_height - $ws_dot_inactive) / 2;
+  border-radius: $ws_indicator_height;
+
+  &:active {
+    background-color: $osd_fg_color;
+    padding: $ws_dot_active / 2;
+    margin: ($ws_indicator_height - $ws_dot_active) / 2;
+  }
+}

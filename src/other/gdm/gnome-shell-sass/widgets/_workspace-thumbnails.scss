@@ -1,0 +1,32 @@
+/* Workspace pager */
+
+// thumbnails in overview
+.workspace-thumbnails {
+  visible-width: 32px; //amount visible before hover
+  spacing: $base_padding;
+  padding: $base_padding;
+
+  .workspace-thumbnail {
+    color: $system_fg_color;
+    background-color: lighten($system_bg_color, 10%);
+    border-radius: $base_border_radius * 0.5;
+    border: 1px solid transparent;
+
+    @if $contrast == 'high' {
+      border-color: $hc_inset_color;
+    }
+  }
+
+  // drag and drop indicator
+  .placeholder {
+    background-image: url("resource:///org/gnome/shell/theme/workspace-placeholder.svg");
+    background-size: contain;
+    width: 18px;
+  }
+}
+
+// selected indicator
+.workspace-thumbnail-indicator {
+  border: 3px solid -st-accent-color;
+  border-radius: $base_border_radius;
+}

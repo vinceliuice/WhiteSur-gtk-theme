@@ -1,0 +1,27 @@
+/* Slider */
+
+$slider_size: $scalable_icon_size;
+
+.slider {
+  color: if($variant == 'light', $fg_color, darken($fg_color, 9%));
+
+  // slider trough
+  -barlevel-height: 4px;
+  -barlevel-background-color: transparentize($fg_color, 0.9);
+  // fill style
+  -barlevel-active-background-color: -st-accent-color;
+  // overfill style (red in this case)
+  -barlevel-overdrive-color: $destructive_color;
+  -barlevel-overdrive-separator-width:1px;
+  // slider handler
+  -slider-handle-radius: $slider_size * 0.5; // half the size of the size
+
+  // hc style
+  @if $contrast == 'high' {
+    -barlevel-background-color: transparentize($fg_color, 0.6);
+  }
+
+  &:hover {
+    color: if($variant == 'light', lighten($fg_color, 7%), $fg_color);
+  }
+}

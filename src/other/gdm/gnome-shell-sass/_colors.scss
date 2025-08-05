@@ -1,0 +1,70 @@
+//
+// Main color definitions
+//
+// When color definition differs for dark and light variant, it gets @if-ed depending on $variant
+
+@import '_palette.scss';
+@import '_default-colors.scss';
+
+
+// global colors
+$base_color: if($variant == 'light', $light_1, $_base_color_dark);
+$bg_color: if($variant == 'light', $_base_color_light, #36363a);
+$fg_color: if($variant == 'light', $_base_color_dark, $light_1);
+
+// OSD elements
+$osd_fg_color: $light_1;
+$osd_bg_color: lighten($_base_color_dark, 5%);
+
+// system elements (e.g. the overview) that are always dark
+$system_base_color: $_base_color_dark;
+$system_fg_color: $_base_color_light;
+
+// panel colors
+$panel_bg_color: if($variant == 'light', $_base_color_light, $dark_5);
+$panel_fg_color: if($variant == 'light', $_base_color_dark, $light_1);
+$panel_border_color: if($variant == 'light', transparentize($_base_color_dark, .9), transparent);
+
+// card elements
+$card_bg_color: if($variant == 'light', $light_1, lighten($bg_color, 7%));
+$card_shadow_color: if($variant == 'light', transparentize($dark_5, .97), transparent);
+$card_shadow_border_color: if($variant == 'light', transparentize($dark_5, .91), transparent);
+
+//
+// Derived Colors
+//
+// colors based on the global defines above
+
+// borders
+$borders_color: transparentize($fg_color, $border_opacity);
+$outer_borders_color: if($variant == 'light', darken($bg_color, 7%), lighten($bg_color, 5%));
+
+// osd colors
+$osd_borders_color: transparentize($osd_fg_color, 0.9);
+$osd_outer_borders_color: transparentize($osd_fg_color, 0.98);
+
+// system colors
+$system_bg_color: lighten($system_base_color, 5%);
+$system_borders_color: transparentize($system_fg_color, .9);
+$system_insensitive_fg_color: mix($system_bg_color, $system_fg_color, 37%);
+$system_overlay_bg_color: mix($system_base_color, $system_fg_color, 90%); // for non-transparent items, e.g. dash
+
+// insensitive state
+$insensitive_fg_color: if($variant == 'light', mix($fg_color, $bg_color, 60%),  mix($fg_color, $bg_color, 50%));
+$insensitive_bg_color: mix($bg_color, $base_color, 60%);
+$insensitive_borders_color: mix($borders_color, $base_color, 60%);
+
+// checked state
+$checked_bg_color: if($variant=='light', darken($bg_color, 7%), lighten($bg_color, 7%));
+$checked_fg_color: if($variant=='light', darken($fg_color, 7%), lighten($fg_color, 7%));
+
+// hover state
+$hover_bg_color: if($variant=='light', darken($bg_color,9%), lighten($bg_color, 10%));
+$hover_fg_color: if($variant=='light', darken($fg_color,9%), lighten($fg_color, 10%));
+
+// active state
+$active_bg_color: if($variant=='light', darken($bg_color, 11%), lighten($bg_color, 12%));
+$active_fg_color: if($variant=='light', darken($fg_color, 11%), lighten($fg_color, 12%));
+
+// accent colors
+$accent_borders_color: if($variant== 'light', st-darken(-st-accent-color, 20%), st-lighten(-st-accent-color, 30%));

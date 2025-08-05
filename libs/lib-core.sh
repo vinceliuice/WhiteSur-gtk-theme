@@ -4,7 +4,7 @@
 # WARNING: Don't use "cd" in this shell, use it in a subshell instead,
 # for example ( cd blabla && do_blabla ) or $( cd .. && do_blabla )
 
-set -Eeo pipefail
+set -o pipefail
 
 if [[ ! "${REPO_DIR}" ]]; then
   echo "Please define 'REPODIR' variable"; exit 1
@@ -89,6 +89,7 @@ POP_OS_GR_FILE="/usr/share/gnome-shell/theme/Pop/gnome-shell-theme.gresource"
 ZORIN_GR_FILE="/usr/share/gnome-shell/theme/ZorinBlue-Light/gnome-shell-theme.gresource"
 MISC_GR_FILE="/usr/share/gnome-shell/gnome-shell-theme.gresource"
 GS_GR_XML_FILE="${THEME_SRC_DIR}/main/gnome-shell/gnome-shell-theme.gresource.xml"
+GDM_GR_XML_FILE="${THEME_SRC_DIR}/other/gdm/gnome-shell-theme.gresource.xml"
 
 #-------------Theme---------------#
 THEME_NAME="WhiteSur"
@@ -119,6 +120,10 @@ panel_size="${PANEL_SIZE_VARIANTS[0]}"
 nautilus_style="${NAUTILUS_STYLE_VARIANTS[0]}"
 background="blank"
 compact="true"
+
+# Firefox values
+adaptive=''
+theme_name="$THEME_NAME"
 firefoxtheme="$THEME_NAME"
 left_button="3"
 right_button="3"
@@ -394,8 +399,7 @@ dialogify() {
 }
 
 helpify_title() {
-  printf "${c_cyan}%s${c_blue}%s ${c_green}%s\n\n" "Usage: " "$0" "[OPTIONS...]"
-  printf "${c_cyan}%s\n" "OPTIONS:"
+  printf "${c_cyan}%s${c_blue}%s ${c_green}%s \n" " Usage: " "$0" "[OPTION]"
 }
 
 helpify() {

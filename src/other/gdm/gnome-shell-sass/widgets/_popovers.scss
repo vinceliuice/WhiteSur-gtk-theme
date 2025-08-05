@@ -1,0 +1,154 @@
+/* Popovers/Menus */
+
+$menu_bg_color: $bg_color;
+
+$menuitem_bg_color:  if($variant == 'light', darken($menu_bg_color, 5%),  lighten($menu_bg_color, 5%));
+$menuitem_border_radius: $base_border_radius * 1.5;
+
+$submenu_bg_color: if($variant == 'light', darken($menu_bg_color, 17%),  lighten($menu_bg_color, 13%));
+
+// the popover itself
+.popup-menu-boxpointer {
+  -arrow-rise: $base_padding; // distance from the panel & screen edge
+}
+
+// container of the popover menu
+.popup-menu {
+  min-width: 15em;
+  color: $fg_color;
+
+  //.popup-status-menu-item {font-weight: normal;  color: pink;} //dunno what that is
+  &.panel-menu {
+    margin-bottom: 1.75em; // so it doesn't touch the bottom of the screen
+  }
+}
+
+// popover content
+.popup-menu-content {
+  padding: $base_padding;
+  background-color: $bg_color;
+  border-radius: $modal_radius * 1.25;
+  border: 1px solid $outer_borders_color;
+  box-shadow: 0 2px 4px 0 $shadow_color;
+}
+
+// menu items
+.popup-menu-item {
+  @include menuitem($bg:$menuitem_bg_color);
+
+  border-radius: $menuitem_border_radius;
+
+  &:checked {
+    border-radius: $menuitem_border_radius $menuitem_border_radius 0 0 !important;
+
+    @if $contrast == 'high' {
+      border: 1px solid $hc_inset_color;
+      border-bottom-width:0;
+    }
+  }
+
+  // add margin to switches in menu items
+  .toggle-switch {
+    &:ltr { margin-left: $base_margin;}
+    &:rtl { margin-right: $base_margin;}
+  }
+}
+
+.popup-ornamented-menu-item {
+  &:ltr {padding-left: $base_padding;}
+  &:rtl {padding-right: $base_padding;}
+}
+
+// all other graphical elements (sliders)
+.popup-inactive-menu-item {
+  color: $fg_color;
+  &:insensitive { color: $insensitive_fg_color; }
+}
+
+// symbolic icons in popover
+.popup-menu-arrow,
+.popup-menu-icon {
+  icon-size: $scalable_icon_size;
+}
+
+// popover submenus
+.popup-sub-menu {
+  border-radius: 0 0 $menuitem_border_radius+1px $menuitem_border_radius+1px;
+  margin-bottom: $base_padding;
+  border: 1px solid transparent;
+  background-color: $submenu_bg_color;
+
+  @if $contrast == 'high' {
+    border-color: $hc_inset_color;
+  }
+
+  // submenu specific styles
+  .popup-menu-item {
+    border-radius: 0;
+    border-top-width:0;
+    @include menuitem($bg:$submenu_bg_color);
+
+    &:last-child {
+      border-radius: 0 0 $menuitem_border_radius $menuitem_border_radius;
+      border-bottom-width:0;
+    }
+  }
+
+  .popup-menu-section {
+    .popup-menu-item:last-child {
+      &:hover,&:focus { border-radius: 0;}
+    }
+    &:last-child .popup-menu-item:last-child {
+      border-radius: 0 0 $menuitem_border_radius $menuitem_border_radius;
+    }
+  }
+}
+
+// container for radio and check boxes
+.popup-menu-ornament {
+  icon-size: $scalable_icon_size !important;
+  width: $scalable_icon_size;
+}
+
+// separator
+.popup-separator-menu-item {
+  border:none !important;
+
+  .popup-separator-menu-item-separator {
+    height: 1px; //not really the whole box
+    background-color: $borders_color;
+  }
+
+  // separators in submenus
+  .popup-sub-menu & {
+    background-color: transparent;
+
+    // account for ornament
+    &:ltr { margin-right: 2.5em;}
+    &:rtl { margin-left: 2.5em;}
+
+    .popup-separator-menu-item-separator {
+      background-color: $borders_color;
+    }
+  }
+}
+
+// desktop background menu
+.background-menu {
+  -boxpointer-gap: 0px;
+  -arrow-rise: 0px; // hide the beak on the menu
+}
+
+// right-click (and panel) app menu
+.app-menu {
+  max-width: 27.25em;
+
+  .popup-inactive-menu-item:first-child {
+    // "Open Windows" label
+    > StLabel {
+      @extend %caption_heading;
+      &:ltr {margin-right: $base_margin * 2;}
+      &:rtl {margin-left: $base_margin * 2;}
+    }
+  }
+}

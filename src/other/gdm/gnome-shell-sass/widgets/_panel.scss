@@ -1,0 +1,165 @@
+/* Top Bar */
+// a.k.a. the panel
+
+$privacy_indicator_color: if($variant == 'light', $orange_4, $orange_3);
+$recording_indicator_color: $red_4;
+
+$transparent_panel_fg_color: $light_1;    // always white for transparent lock screens
+$system_panel_fg_color: $system_fg_color; // always light for lockscreen, overview
+
+$panel_height: 2.2em;
+$panel_transition_duration: 250ms; // same as the overview transition duration
+
+#panel {
+  background-color: $panel_bg_color;
+  font-weight: bold;
+  height: $panel_height;
+  @extend %numeric;
+  transition-duration: $panel_transition_duration;
+
+  @if $variant == 'light' {
+    // uses half a pixel to compensate for box-shadow weirdness
+    box-shadow: inset 0 -0.5px 0 0 $panel_border_color;
+  }
+
+  // panel menus
+  .panel-button {
+    @include panel_button();
+    -natural-hpadding: $base_padding * 2;
+    -minimum-hpadding: $base_padding;
+
+    // status area icons
+    .system-status-icon {
+      icon-size: $scalable_icon_size;
+      padding: 0 $base_padding;
+      margin: 0 $base_margin;
+    }
+
+    // reduce margin between icons in combined menu
+    .panel-status-indicators-box {
+      spacing: $base_margin;
+
+      > .system-status-icon {
+        padding: 0;
+      }
+    }
+
+    &#panelActivities {
+      & StBoxLayout {
+        padding: 0 $scaled_padding * 0.5; // use em padding to keep proportion
+        spacing: 5px;
+      }
+
+      & .workspace-dot {
+        border-radius: $forced_circular_radius;
+        min-width: $scalable_icon_size * 0.5;
+        min-height: $scalable_icon_size * 0.5;
+        background-color: $panel_fg_color;
+      }
+    }
+
+    // screen activity indicators
+    &.screen-recording-indicator,
+    &.screen-sharing-indicator {
+      StBoxLayout {
+        spacing: $scaled_padding;
+      }
+
+      StIcon {
+        icon-size: $scalable_icon_size;
+      }
+    }
+
+    &.screen-recording-indicator {
+      @include panel_button($bg:$recording_indicator_color, $fg:$_base_color_light, $style: filled);
+    }
+
+    &.screen-sharing-indicator {
+      @include panel_button($bg:$privacy_indicator_color, $fg:$_base_color_light, $style: filled);
+    }
+
+    // clock
+    &.clock-display {
+      // The clock display needs to have the background on .clock because
+      // we want to exclude the do-not-disturb indicator from the background
+      // see _drawing.scss for override details
+      @include panel_button($highlighted_child: true, $child_class: '.clock');
+
+      .clock {
+        // the highlighted child
+      }
+
+      .messages-indicator {
+        icon-size: $scalable_icon_size;
+      }
+    }
+  }
+
+  // transparent panel on overview, lock & login screens
+  &:overview,
+  &.unlock-screen,
+  &.login-screen {
+    background-color: transparent;
+
+    // unfortunate duplication to keep indicator style in these states
+    .panel-button {
+      &.screen-recording-indicator {
+        @include panel_button($bg:$recording_indicator_color, $fg:$_base_color_light, $style: filled);
+      }
+
+      &.screen-sharing-indicator {
+        @include panel_button($bg:$privacy_indicator_color, $fg:$_base_color_light, $style: filled);
+      }
+    }
+  }
+
+  // use transparent text styles for lock & login screen panels
+  &.unlock-screen,
+  &.login-screen {
+    .panel-button {
+      @include panel_button($fg:$transparent_panel_fg_color);
+
+      // clock
+      &.clock-display {
+        @include panel_button($fg:$transparent_panel_fg_color, $highlighted_child: true, $child_class: '.clock');
+      }
+    }
+  }
+
+  // use system text styles for overview panel
+  &:overview {
+    .panel-button {
+      @include panel_button($fg:$system_panel_fg_color);
+
+      &#panelActivities .workspace-dot {
+        background-color: $system_panel_fg_color;
+      }
+
+      // clock
+      &.clock-display {
+        @include panel_button($fg:$system_panel_fg_color, $highlighted_child: true, $child_class: '.clock');
+      }
+    }
+  }
+
+  .panel-status-indicators-box {
+    spacing: 2px;
+  }
+
+  // spacing between power icon and (optional) percentage label
+  .power-status.panel-status-indicators-box {
+    spacing: 0;
+  }
+
+  // important privacy related indicators
+  .privacy-indicator { color: $privacy_indicator_color; }
+}
+
+// Clock
+.clock-display-box {
+  spacing: 2px;
+  .clock {
+    padding-left: $scaled_padding * 2;
+    padding-right: $scaled_padding * 2;
+  }
+}

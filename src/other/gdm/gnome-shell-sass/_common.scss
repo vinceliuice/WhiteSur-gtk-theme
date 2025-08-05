@@ -1,0 +1,380 @@
+//This is the RIGHT PLACE to edit the stylesheet
+
+//let's start by telling people not to edit the generated CSS:
+$cakeisalie: "This stylesheet is generated, DO NOT EDIT";
+/* #{$cakeisalie} */
+
+/* Copyright 2009, 2015 Red Hat, Inc.
+ *
+ * Portions adapted from Mx's data/style/default.css
+ *   Copyright 2009 Intel Corporation
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms and conditions of the GNU Lesser General Public License,
+ * version 2.1, as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
+/* Global Values */
+
+// Base values of elements of the shell in their smallest "unit".
+// These are used in calculations elsewhere to have elements in proportion
+$base_font_size: 11pt;      // font size
+$base_padding: 6px;         // internal padding of elements
+$base_margin: 4px;          // margin between elements
+$base_border_radius: 8px;   // radii on all elements
+
+// Radius used to make sure elements that have rounded corners stay as such.
+// This is a workaround for 50% not working.
+$forced_circular_radius: 999px;
+
+// radii of things that display over other things, e.g. popovers
+$modal_radius: $base_border_radius * 2;
+
+// radii of dialogs
+$alert_radius: 18px;
+
+// Chroma key to flag when a background-color is always occluded, not visible.
+// This allows any box-shadow behind it to be rendered more efficiently by
+// omitting the middle rectangle.
+$invisible_occluded_bg_color: rgba(3,2,1,0);
+
+// Fixed icon sizes
+$base_icon_size: 16px;
+$medium_icon_size: $base_icon_size * 1.5; // 24px
+$large_icon_size: $base_icon_size * 2; // 32px
+
+// Scaled values
+// Used in elements that follow text scaling factors
+$scaled_padding: to_em(6px); // same as $base_padding
+
+// Used for symbolic icons that scale
+$scalable_icon_size: to_em(16px);
+$medium_scalable_icon_size: $scalable_icon_size * 1.5;
+$large_scalable_icon_size: $scalable_icon_size * 2;
+
+// animation definition
+$ease_out_quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+// Stage
+stage {
+  @include fontsize($base_font_size);
+  color: $fg_color;
+}
+
+/* Common Stylings */
+%reset {
+  background: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+// icon tiles
+%tile {
+  border-radius: $base_border_radius * 2;
+  padding: $base_padding;
+  spacing: $base_padding;
+  text-align: center;
+  transition-duration: 100ms;
+}
+
+// common button styling
+%button_common {
+  border-radius: $base_border_radius;
+  padding: $base_padding * .5 $base_padding * 4;
+  font-weight: bold;
+  transition: border-width 300ms $ease_out_quad,
+              box-shadow 300ms $ease_out_quad;
+}
+
+%button {
+  @extend %button_common;
+  @include button(normal);
+  &:focus { @include button(focus);}
+  &:hover { @include button(hover);}
+  &:insensitive { @include button(insensitive);}
+  &:selected,
+  &:active { @include button(active);}
+  &:checked { @include button(checked);}
+}
+
+%flat_button {
+  @include button(normal, $style: flat);
+  &:focus { @include button(focus, $style: flat);}
+  &:hover { @include button(hover, $style: flat);}
+  &:insensitive { @include button(insensitive, $style: flat);}
+  &:selected,
+  &:active { @include button(active, $style: flat);}
+  &:checked { @include button(checked, $style: flat);}
+}
+
+%default_button {
+  @include button(normal, $c:-st-accent-color, $tc:-st-accent-fg-color, $style: default);
+  &:focus { @include button(focus, $c:-st-accent-color, $tc:-st-accent-fg-color, $style: default);}
+  &:hover { @include button(hover, $c:-st-accent-color, $tc:-st-accent-fg-color, $style: default);}
+  &:insensitive { @include button(insensitive, $c:-st-accent-color, $tc:-st-accent-fg-color, $style: default);}
+  &:active { @include button(active, $c:-st-accent-color, $tc:-st-accent-fg-color, $style: default);}
+}
+
+// items in popover menus
+%menuitem {
+  font-weight: normal;
+  spacing: $base_padding;
+  transition-duration: 100ms;
+  padding: $base_padding * 1.5 $base_padding * 2;
+}
+
+// common style for card elements
+%card_common {
+  border-radius: $base_border_radius * 1.5;
+  padding: $scaled_padding * 2;
+  margin: $base_margin;
+  background-color: $card_bg_color;
+  box-shadow: 0 1px 2px 0 $card_shadow_color;
+  // bit of a hack here with border since we can't have double box-shadow
+  border: 1px solid $card_shadow_border_color;
+
+  @if $contrast == 'high' {
+    border-color: transparent;
+    box-shadow: none;
+  }
+}
+
+%card {
+  @extend %card_common;
+  @include button(normal, $style: card);
+  &:hover { @include button(hover, $style: card);}
+  &:active { @include button(active, $style: card);}
+  &:focus { @include button(focus, $style: card);}
+  &:insensitive { @include button(insensitive, $style: card);}
+}
+
+%card_flat {
+  @extend %card_common;
+  border: 1px solid transparent !important; // override of the button style needed here
+  @include button(undecorated, $style: flat);
+  &:hover { @include button(hover, $style: flat);}
+  &:active { @include button(active, $style: flat);}
+  &:focus { @include button(focus, $style: card);}
+  &:insensitive { @include button(insensitive, $style: card);}
+}
+
+
+// normal entry style
+%entry_common {
+  border-radius: $base_border_radius;
+  padding: $base_padding * 1.5 $base_padding * 1.5;
+
+  selection-background-color: st-transparentize(-st-accent-color, 0.7);
+  selected-color: $fg_color;
+}
+
+%entry {
+  @extend %entry_common;
+  @include entry(normal);
+  &:hover { @include entry(hover);}
+  &:focus { @include entry(focus);}
+  &:insensitive { @include entry(insensitive);}
+
+  StLabel.hint-text {
+    color: transparentize($fg_color, 0.3);
+  }
+}
+
+// buttons in notifications
+// use a rounded style and have a lighter background
+%notification_button {
+  font-weight: bold;
+  padding: $base_padding $base_padding * 2;
+  border-radius: $base_border_radius;
+
+  @include button(normal, $style: notification);
+  &:focus { @include button(focus, $style: notification);}
+  &:hover { @include button(hover, $style: notification);}
+  &:active { @include button(active, $style: notification);}
+  &:checked { @include button(checked, $style: notification);}
+  &:insensitive { @include button(insensitive, $style: notification);}
+}
+
+// buttons in dialogs
+%dialog_button {
+  font-weight: bold;
+  padding: $base_padding * 2;
+  border-radius: $base_border_radius * 1.5;
+
+  @include button(normal, $style: dialog);
+  &:focus { @include button(focus, $style: dialog);}
+  &:hover { @include button(hover, $style: dialog);}
+  &:active { @include button(active, $style: dialog);}
+  &:checked { @include button(checked, $style: dialog);}
+  &:insensitive { @include button(insensitive, $style: dialog);}
+}
+
+// tooltip
+%tooltip {
+  background-color: transparentize(black, 0.1);
+  border: 1px solid transparentize($light_1, 0.9);
+  color: $light_1;
+
+  border-radius: $forced_circular_radius;
+  padding: $base_padding $base_padding * 2;
+  text-align: center;
+
+  @if $contrast == 'high' {
+    background-color: black;
+    border-color: $hc_inset_color;
+  }
+}
+
+/* General Typography */
+%large_title {
+  font-weight: 300;
+  @include fontsize(24pt);
+}
+
+%title_1 {
+  font-weight: 800;
+  @include fontsize(20pt);
+}
+
+%title_2 {
+  font-weight: 800;
+  @include fontsize(15pt);
+}
+
+%title_3 {
+  font-weight: 700;
+  @include fontsize(15pt);
+}
+
+%title_4 {
+  font-weight: 700;
+  @include fontsize(13pt);
+}
+
+%heading {
+  font-weight: 700;
+  @include fontsize(11pt);
+}
+
+%caption_heading {
+  font-weight: 700;
+  @include fontsize(9pt);
+}
+
+%caption {
+  font-weight: 400;
+  @include fontsize(9pt);
+}
+
+%smaller {
+  font-weight: 400;
+  @include fontsize(9pt);
+}
+
+%monospace {font-family: monospace;}
+%numeric { font-feature-settings: "tnum";}
+
+
+/* OSD Elements */
+%osd_panel {
+  color: $osd_fg_color;
+  background-color: $osd_bg_color;
+  border: 1px solid $osd_outer_borders_color;
+  border-radius: $forced_circular_radius;
+  padding: $base_padding * 2;
+  @if $contrast == 'high' {
+    @include draw_hc_inset($width: 2px,$border: true);
+  }
+}
+
+// entries
+%osd_entry {
+  @extend %entry_common;
+  @include entry(normal, $c:$osd_fg_color, $bc:$osd_bg_color, $always_dark: true);
+  &:hover { @include entry(hover, $c:$osd_fg_color, $bc:$osd_bg_color, $always_dark: true);}
+  &:focus { @include entry(focus, $c:$osd_fg_color, $bc:$osd_bg_color, $always_dark: true);}
+  &:insensitive { @include entry(insensitive, $c:$osd_fg_color, $bc:$osd_bg_color, $always_dark: true);}
+
+  StLabel.hint-text {color: transparentize($osd_fg_color, 0.3); }
+}
+
+// buttons on OSD elements
+%osd_button {
+  @extend %button_common;
+  @include button(normal, $tc:$osd_fg_color, $c:$osd_bg_color, $always_dark: true);
+  &:focus { @include button(focus, $tc:$osd_fg_color, $c:$osd_bg_color, $always_dark: true);}
+  &:hover { @include button(hover, $tc:$osd_fg_color, $c:$osd_bg_color, $always_dark: true);}
+  &:active { @include button(active, $tc:$osd_fg_color, $c:$osd_bg_color, $always_dark: true);}
+  &:checked { @include button(checked, $tc:$osd_fg_color, $c:$osd_bg_color, $always_dark: true);}
+  &:insensitive { @include button(insensitive, $tc:$osd_fg_color, $c:$osd_bg_color, $always_dark: true);}
+}
+
+%osd_button_flat {
+  @extend %button_common;
+  @include button(normal, $tc:$osd_fg_color, $c:$osd_bg_color, $style: flat, $always_dark: true);
+  &:focus { @include button(focus, $tc:$osd_fg_color, $c:$osd_bg_color, $style: flat, $always_dark: true);}
+  &:hover { @include button(hover, $tc:$osd_fg_color, $c:$osd_bg_color, $style: flat, $always_dark: true);}
+  &:active { @include button(active, $tc:$osd_fg_color, $c:$osd_bg_color, $style: flat, $always_dark: true);}
+  &:checked { @include button(checked, $tc:$osd_fg_color, $c:$osd_bg_color, $style: flat, $always_dark: true);}
+  &:insensitive { @include button(insensitive, $tc:$osd_fg_color, $c:$osd_bg_color, $style: flat, $always_dark: true);}
+}
+
+/* System Elements */
+
+// entries
+%system_entry {
+  @extend %entry_common;
+  @include entry(normal, $c:$system_fg_color, $bc:$system_bg_color, $always_dark: true);
+  &:hover { @include entry(hover, $c:$system_fg_color, $bc:$system_bg_color, $always_dark: true);}
+  &:focus { @include entry(focus, $c:$system_fg_color, $bc:$system_bg_color, $always_dark: true);}
+  &:insensitive { @include entry(insensitive, $c:$system_fg_color, $bc:$system_bg_color, $always_dark: true);}
+
+  StLabel.hint-text { color: transparentize($system_fg_color, 0.3);}
+}
+
+// buttons
+%system_button {
+  @include button(normal, $tc:$system_fg_color, $c:$system_bg_color);
+  &:insensitive { @include button(insensitive, $tc:$system_fg_color, $c:$system_bg_color);}
+  &:focus { @include button(focus, $tc:$system_fg_color, $c:$system_bg_color);}
+  &:hover { @include button(hover, $tc:$system_fg_color, $c:$system_bg_color);}
+  &:active { @include button(active, $tc:$system_fg_color, $c:$system_bg_color);}
+  &:checked { @include button(checked, $tc:$system_fg_color, $c:$system_bg_color);}
+}
+
+/* Lockscreen Elements */
+
+// buttons
+%lockscreen_button {
+  @extend %button_common;
+  @include button(normal, $tc:$system_fg_color, $style: lockscreen);
+  &:focus { @include button(focus, $tc:$system_fg_color, $style: lockscreen);}
+  &:hover { @include button(hover, $tc:$system_fg_color, $style: lockscreen);}
+  &:active { @include button(active, $tc:$system_fg_color, $style: lockscreen);}
+  &:checked { @include button(checked, $tc:$system_fg_color, $style: lockscreen);}
+  &:insensitive { @include button(insensitive, $tc:$system_fg_color, $style: lockscreen);}
+}
+
+// entries
+%lockscreen_entry {
+  @extend %entry_common;
+  @include entry(normal, $c:$system_fg_color, $style: lockscreen, $always_dark: true);
+  &:hover { @include entry(hover, $c:$system_fg_color, $style: lockscreen, $always_dark: true);}
+  &:focus { @include entry(focus, $c:$system_fg_color, $style: lockscreen, $always_dark: true);}
+  &:insensitive { @include entry(insensitive, $c:$system_fg_color, $style: lockscreen, $always_dark: true);}
+
+  StLabel.hint-text { color: transparentize($system_fg_color, 0.3);}
+}
+

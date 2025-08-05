@@ -1,0 +1,82 @@
+/* App Switcher */
+
+// same as dash
+$switcher_padding: $base_padding * 2;
+$switcher_radius: $modal_radius + $switcher_padding;
+
+// the full screen container of the switcher
+.switcher-popup {
+  padding: 0;
+  spacing: $base_padding * 4;
+}
+
+// switcher onscreen panel
+.switcher-list {
+  @extend %osd_panel;
+  padding: $switcher_padding;
+  border-radius: $switcher_radius;
+  box-shadow: 0 8px 8px 0 $shadow_color;
+
+  // container for items in list
+  .switcher-list-item-container {
+    spacing: $base_padding * 2;
+  }
+
+  // each item in the list
+  .item-box {
+    @include tile_button($fg:$osd_fg_color, $bg:$osd_bg_color);
+    // override %tile style so mouse doesn't steal focus
+    &:hover {background: none;}
+
+    // brighter than normal selected style
+    &:selected {
+      background-color: transparentize($osd_fg_color, 0.8);
+    }
+
+    @if $contrast == 'high' {
+      &:selected {
+        background-color: transparentize($osd_fg_color, 0.7);
+      }
+    }
+  }
+
+  .separator {
+    width: 1px;
+    background: $borders_color;
+  }
+
+  // container of thumbnails
+  .thumbnail-box {
+    padding: 2px;
+    spacing: $base_padding;
+  }
+
+  // window thumbnail itself
+  .thumbnail {
+    width: 256px; // equal to THUMBNAIL_DEFAULT_SIZE in altTab.js
+    border-radius:$base_border_radius;
+  }
+}
+
+// arrow if app has multiple windows
+.switcher-arrow {
+  border-color: transparentize($osd_fg_color, 0.2);
+  color: transparentize($osd_fg_color, 0.2);
+
+  &:highlighted {
+    border-color: $osd_fg_color;
+    color: $osd_fg_color;
+  }
+}
+
+// Input Source Switcher
+.input-source-switcher-symbol {
+  font-size: 34pt;
+  width: 96px;
+  height: 96px;
+}
+
+// Window cycler highlight
+.cycler-highlight {
+  border: 5px solid -st-accent-color;
+}

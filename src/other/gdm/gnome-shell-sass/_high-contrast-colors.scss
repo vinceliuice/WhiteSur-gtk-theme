@@ -1,0 +1,81 @@
+//
+// High Contrast theme definitions
+//
+// this is an always dark theme, so no 'light' theme conditions
+
+@import '_palette.scss';
+@import '_default-colors.scss';
+
+// global colors
+$base_color: $dark_5;
+$bg_color: lighten($base_color, 10%);
+$fg_color: $light_1;
+
+// OSD elements
+$osd_fg_color: $light_1;
+$osd_bg_color: $base_color;
+
+// system elements
+$system_base_color: $dark_5;
+$system_fg_color: $light_1;
+
+// panel colors
+$panel_bg_color: $dark_5;
+$panel_fg_color: $light_1;
+
+// card elements
+$card_bg_color: $bg_color;
+$card_shadow_color: transparent;
+$card_shadow_border_color: $card_bg_color;
+
+//
+// Derived Colors
+//
+// colors based on the global defines above
+
+// borders
+$borders_color: transparentize($fg_color, $border_opacity);
+$outer_borders_color: $borders_color;
+
+// osd colors
+$osd_borders_color: transparentize($osd_fg_color, 0.8);
+$osd_outer_borders_color: $osd_borders_color;
+
+// system colors
+$system_bg_color: lighten($system_base_color, 5%);
+$system_borders_color: transparentize($system_fg_color, .9);
+$system_insensitive_fg_color: mix($system_bg_color, $system_fg_color, 30%);
+$system_overlay_bg_color: mix($system_bg_color, $system_fg_color, 90%);
+
+// insensitive state
+$insensitive_fg_color: $fg_color;
+$insensitive_bg_color: mix($bg_color, $base_color, 60%);
+$insensitive_borders_color: $borders_color;
+
+// checked state
+$checked_bg_color: lighten($bg_color, 18%);
+$checked_fg_color: lighten($fg_color, 18%);
+
+// hover state
+$hover_bg_color: lighten($bg_color, 20%);
+$hover_fg_color: lighten($fg_color, 20%);
+
+// active state
+$active_bg_color: lighten($bg_color, 22%);
+$active_fg_color: lighten($fg_color, 22%);
+
+// accent colors
+$accent_borders_color: st-lighten(-st-accent-color, 30%);
+
+//
+// High Contrast specific definitions
+//
+
+// color for outline drawn onto all elements (may be a border or a box-shadow)
+$hc_inset_color: transparentize($fg_color, 0.6);
+
+// color used in a mixin in _drawing to boost a color's contrast
+$hc_mix_color: $light_1;
+
+// the mix factor used to boost contrast of a color in the above mixin
+$hc_mix_factor: 87%;

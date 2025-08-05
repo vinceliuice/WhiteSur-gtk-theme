@@ -13,27 +13,28 @@
 // User icon
 .user-icon {
   background-size: contain;
-  color: $light_alt_fg_color;
+  color: $alt_fg_color;
   border-radius: $circular_radius;
   border: none;
   // box-shadow: 0 3px 8px rgba(black, 0.25);
   icon-size: $base_icon_size * 4; // 64px
 
   &:hover {
-    color: lighten($osd_fg_color, 30%);
+    color: $fg_color;
   }
 
   & StIcon {
-    background-color: $light_track_color;
+    background-color: $track_color;
     border-radius: $circular_radius;
     padding: $base_padding * 2; // 12px
     width: $base_icon_size * 2.5;
     height: $base_icon_size * 2.5; // 40px;
+    color: $light_fg_color;
   }
 
   &.user-avatar {
     border: none;
-    box-shadow: inset 0 0 0 1px transparentize($light_alt_fg_color, 0.9);
+    box-shadow: inset 0 2px 3px rgba(black, 0.05);
   }
 
   .popup-menu & {
@@ -41,6 +42,7 @@
 
     StIcon {
       background-color: $track_color;
+      color: $fg_color;
     }
   }
 }

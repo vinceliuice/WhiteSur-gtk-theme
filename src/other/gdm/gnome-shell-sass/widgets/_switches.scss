@@ -1,0 +1,53 @@
+/* Switches */
+
+$switch_width: 46px;
+$switch_handle_size: 20px;
+
+.toggle-switch {
+  width: $switch_width;
+  border-radius: $forced_circular_radius;
+  transition-duration: 100ms;
+  color: $fg_color;
+
+  @if $contrast == 'high' {
+    background: transparentize(if($variant == 'light', black, white), .7);
+
+    &:hover {
+      background: transparentize(if($variant == 'light', black, white), .6);
+    }
+  } @else {
+    background: transparentize(if($variant == 'light', black, white), .85);
+
+    &:hover {
+      background: transparentize(if($variant == 'light', black, white), .8);
+    }
+  }
+
+  StIcon {
+    icon-size: $base_icon_size;
+  }
+
+  .handle {
+    margin: 3px;
+    width: $switch_handle_size;
+    height: $switch_handle_size;
+    border-radius: $forced_circular_radius;
+    background: if($variant == 'light', white, mix(white, $bg_color, 80%));
+    box-shadow: 0 2px 4px transparentize(black, .8);
+    transition-duration: 100ms;
+  }
+
+  &:checked {
+    background: -st-accent-color;
+    color: -st-accent-fg-color;
+
+    &:hover {
+      background-color: st-lighten(-st-accent-color, 5%);
+      color: st-lighten(-st-accent-fg-color, 5%);
+    }
+
+    .handle {
+      background: white;
+    }
+  }
+}

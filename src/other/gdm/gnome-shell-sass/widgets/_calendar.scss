@@ -1,0 +1,286 @@
+/* Date/Time Menu */
+
+// overall menu
+#calendarArea {
+  padding: $base_margin;
+}
+
+.datemenu-popover {
+  border-radius: $base_border_radius * 1.5 + $base_padding * 3;
+}
+
+// calendar menu side column
+.datemenu-calendar-column {
+  spacing: $base_padding;
+  &:ltr { margin-left: $base_padding;}
+  &:rtl { margin-right: $base_padding;}
+  .datemenu-displays-box {
+    spacing: $base_padding;
+  }
+}
+
+// today button (the date)
+.datemenu-today-button {
+  @extend %card_flat;
+  padding: $base_padding * 1.5;
+
+  // weekday label
+  .day-label {
+    font-weight: bold;
+  }
+
+  // date label
+  .date-label {
+    @extend %title_2;
+  }
+}
+
+// the mini calendar
+.calendar {
+  @extend %card_flat;
+  margin-top: 0;
+  padding: 0;
+
+  // month header
+  .calendar-month-header {
+
+    // prev/next month icons
+    .calendar-change-month-back StIcon,
+    .calendar-change-month-forward StIcon {
+      icon-size: $scalable_icon_size;
+    }
+
+    // month label
+    .calendar-month-label {
+      @extend %heading;
+      @extend %flat_button;
+      color: $fg_color !important;
+      padding: 8px 0;
+      width: 10em;
+      border-radius: $forced_circular_radius;
+      text-align: center;
+    }
+
+    .pager-button {
+      @extend .icon-button, .flat;
+      height: 2.6em;
+      width: 2.6em;
+      padding: 0;
+    }
+  }
+
+  // day style
+  .calendar-day {
+    @extend %numeric;
+    @extend %smaller;
+    @extend %flat_button;
+    border-radius: $forced_circular_radius;
+    height: 3em;
+    width: 3em;
+    margin: 2px;
+    padding: 0;
+    font-weight: bold;
+    text-align: center;
+
+    &.calendar-weekday {}
+
+    &.calendar-weekend {
+      color: $insensitive_fg_color;
+      @if $contrast == 'high' {
+        font-style: italic;
+      }
+    }
+
+    &.calendar-other-month {
+      color: transparentize($fg_color, 0.5);
+      font-weight: normal;
+
+      &.calendar-weekend {
+        color: transparentize($fg_color, 0.5);
+        @if $contrast == 'high' {
+          color: $fg_color;
+        }
+      }
+
+      @if $contrast == 'high' {
+        color: $fg_color;
+        font-style: italic; // differentiate with a font-style instead of text color
+      }
+    }
+
+    &.calendar-today {
+      @extend %default_button;
+      // override colors above for when today is a weekend
+      color: -st-accent-fg-color !important;
+      &.calendar-day-with-events {
+        background-image: url("resource:///org/gnome/shell/theme/calendar-today.svg") !important; // always use light asset with .default style
+      }
+    }
+
+    &.calendar-day-with-events {
+      background-image: if($variant == 'light', url("resource:///org/gnome/shell/theme/calendar-today-light.svg"),url("resource:///org/gnome/shell/theme/calendar-today.svg"));
+      background-size: contain;
+    }
+  }
+
+  // day of week heading
+  .calendar-day-heading {
+    @extend %numeric;
+    @extend %smaller;
+    @extend %flat_button;
+    font-weight: bold;
+    text-align: center;
+    margin: $base_margin;
+    padding: $base_padding * 0.5 $base_padding;
+    border-radius: $base_border_radius;
+  }
+
+  // week number style
+  .calendar-week-number {
+    @extend %smaller;
+    font-weight: bold;
+    font-feature-settings: "tnum";
+    text-align: center;
+    margin: $base_padding;
+    padding: 0 $base_padding;
+    border-radius: $base_border_radius * 0.5;
+    background-color: transparentize($insensitive_fg_color, .8);
+    color: $insensitive_fg_color;
+  }
+}
+
+// common style for the date menu widgets
+.events-button,
+.world-clocks-button,
+.weather-button {
+  @extend %card;
+}
+
+// events
+.events-button {
+
+  .events-box {
+
+    // event title
+    .events-title {
+      @extend %heading;
+      color: $insensitive_fg_color;
+      padding-bottom: $base_padding;
+    }
+
+    // list of events
+    .events-list {
+      spacing: $base_padding;
+
+      // container for an event
+      .event-box {
+        spacing: $base_padding;
+        border-radius: $base_border_radius;
+
+        .event-summary {
+          @extend %heading;
+        }
+
+        .event-time {
+          @extend %numeric;
+          @extend %caption;
+          color: $insensitive_fg_color;
+        }
+      }
+
+      .event-placeholder {
+        color: $insensitive_fg_color;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+// world clocks
+.world-clocks-button {
+
+  // title
+  .world-clocks-header {
+    @extend %heading;
+    color: $insensitive_fg_color;
+
+    // change style when no world clocks are configured
+    &.no-world-clocks {
+      color: $fg_color;
+    }
+  }
+
+  // clocks
+  .world-clocks-grid {
+    spacing-rows: $base_padding;
+    spacing-columns: $base_padding * 2;
+
+    // city label
+    .world-clocks-city {
+    }
+
+    // timezone time
+    .world-clocks-time {
+      @extend %numeric;
+      font-weight: bold;
+
+      &:ltr {text-align: right;}
+      &:rtl {text-align: left;}
+    }
+
+    // timezone offset label
+    .world-clocks-timezone {
+      @extend %numeric;
+      @extend %caption;
+      color: $insensitive_fg_color;
+    }
+  }
+}
+
+// weather
+.weather-button {
+
+  .weather-box {
+    spacing: $base_padding;
+
+    // header
+    .weather-header-box {
+      spacing: $base_padding;
+
+      .weather-header {
+        @extend %heading;
+        color: $insensitive_fg_color;
+
+         // change style when no location is configured
+        &.no-location {
+          color: $fg_color;
+        }
+
+        &.location {
+          font-weight: normal;
+        }
+      }
+    }
+
+    // weather items
+    .weather-grid {
+      spacing-rows: $base_padding;
+      spacing-columns: $base_padding * 2;
+
+      .weather-forecast-time {
+        @extend %smaller;
+        padding-top: $base_padding;
+        padding-bottom: $base_padding;
+      }
+      .weather-forecast-icon {
+        icon-size: $large_scalable_icon_size;
+        margin-bottom: $base_margin;
+      }
+
+      .weather-forecast-temp {
+        @extend %numeric;
+        font-weight: bold;
+      }
+    }
+  }
+}

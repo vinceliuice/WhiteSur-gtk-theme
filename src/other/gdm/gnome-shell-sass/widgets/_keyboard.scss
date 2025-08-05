@@ -1,0 +1,119 @@
+/* On-screen Keyboard */
+
+$key_border_radius: to_em($base_border_radius);
+$key_bg_color:  darken($osd_fg_color, 70%);
+$default_key_bg_color: if($variant=='light', darken($key_bg_color, 11%), darken($key_bg_color, 10%));
+
+
+// draw keys using button function
+#keyboard {
+  // background-color: transparentize(if($variant=='light', darken($bg_color, 5%), darken($bg_color, 8%)), 0.1);
+  background-color: $osd_bg_color;
+  box-shadow: inset 0 1px 0 0 $osd_outer_borders_color;
+
+  .page-indicator {
+    padding: $base_padding;
+
+    .page-indicator-icon {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
+
+// the container for individual keys
+.key-container {
+  padding: $base_margin;
+  spacing: $base_margin;
+}
+
+// the keys
+.keyboard-key {
+  @include fontsize($base_font_size + 5pt);
+  font-weight: bold;
+  border-radius: $key_border_radius;
+  box-shadow: 0 1px 0 0 $shadow_color;
+
+  @include button(normal, $c:$key_bg_color, $tc:$osd_fg_color);
+
+  &:focus { @include button(focus);}
+  &:hover { @include button(hover, $c:$key_bg_color, $tc:$osd_fg_color);}
+  &:active { @include button(active, $c:$key_bg_color, $tc:$osd_fg_color); }
+  &:checked { @include button(checked, $c:$key_bg_color, $tc:$osd_fg_color); }
+
+  // non-character keys
+  &.default-key {
+    @include button(normal, $c:$default_key_bg_color, $tc:$osd_fg_color);
+    &:hover { @include button(hover, $c:$default_key_bg_color, $tc:$osd_fg_color);}
+    &:active { @include button(active, $c:$default_key_bg_color, $tc:$osd_fg_color);}
+    &:checked { @include button(checked, $c:$default_key_bg_color, $tc:$osd_fg_color);}
+    border:none;
+
+    // keys that may be latched: ctrl/alt/shift
+    &:latched {
+      background-color: -st-accent-color;
+    }
+  }
+
+  // size of icons on keys
+  StIcon { icon-size: $medium_scalable_icon_size; }
+}
+
+// long press on a key popup
+.keyboard-subkeys-boxpointer {
+  -arrow-border-radius: $base_border_radius * 2 + $base_padding;
+  -arrow-background-color: $osd_bg_color;
+  -arrow-border-width: 1px;
+  -arrow-border-color: lighten($osd_bg_color, 9%);
+  -arrow-base: 20px;
+  -arrow-rise: 10px;
+  -boxpointer-gap: $base_margin;
+
+  border-radius: $base_border_radius * 2 + $base_padding;
+  box-shadow: 0 0 12px 0 rgba(0,0,0,0.1);
+
+  .key-container {
+    padding: $base_padding * 2;
+    spacing: $base_margin * 2;
+  }
+}
+
+// emoji
+.emoji-page {
+  .keyboard-key {
+    background-color: transparent;
+    border: none;
+    color: initial;
+  }
+}
+
+.emoji-panel {
+  .keyboard-key:latched {
+    border-color: st-lighten(-st-accent-color, 5%);
+    background-color: -st-accent-color;
+  }
+}
+
+// suggestions
+.word-suggestions {
+  @extend %title_4;
+  spacing: 12px;
+  min-height: 17pt;
+  padding: $base_padding * 2;
+  color: $osd_fg_color;
+
+  // each suggestion
+  StButton {
+    margin: 0 3px;
+    min-width: 32px;
+    border-radius: 4px;
+    padding: $base_padding $base_padding * 3;
+
+    @include button(undecorated, $c:$key_bg_color, $tc:$osd_fg_color);
+
+    &:focus { @include button(focus);}
+    &:hover { @include button(hover, $c:$key_bg_color, $tc:$osd_fg_color);}
+    &:active { @include button(active, $c:$key_bg_color, $tc:$osd_fg_color); }
+    &:checked { @include button(checked, $c:$key_bg_color, $tc:$osd_fg_color); }
+  }
+}

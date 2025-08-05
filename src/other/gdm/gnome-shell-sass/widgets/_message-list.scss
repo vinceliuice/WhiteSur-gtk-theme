@@ -1,0 +1,268 @@
+/* Message List */
+// a.k.a. notifications in the menu
+
+// main list
+.message-list {
+  width: 29em;
+  border: solid $borders_color;
+
+  // padding and margins to account for scrollbar
+  &:ltr {margin-left: 0; margin-right: $base_margin; padding-right: $base_padding; border-right-width: 1px; }
+  &:rtl {margin-right: 0; margin-left: $base_margin; padding-left: $base_padding; border-left-width: 1px; }
+
+  .message-list-placeholder {
+    @extend %title_3;
+    color: transparentize($fg_color, .55);
+    @if $contrast == 'high' {
+      color: $fg_color;
+    }
+    // icon size and color
+    > StIcon {
+      icon-size: 96px; // non-em asset size
+      margin-bottom: $base_margin * 3;
+      -st-icon-style: symbolic;
+    }
+  }
+}
+
+.message-view {
+  // to account for scrollbar
+  &:ltr {margin-right: $base_margin * 3; }
+  &:rtl {margin-left: $base_margin * 3;}
+
+  -st-vfade-offset: 68px;
+
+  .message {
+    margin-bottom: $base_padding * 2 !important;
+    // manually adjust radius to account for popover corners
+    border-radius: $modal_radius + 2px;
+  }
+}
+
+// do-not-disturb + clear button
+.message-list-controls {
+  // NOTE: remove the padding if notification_bubble could remove margin for drop shadow
+  padding: $base_padding * 2;
+  padding-bottom: $base_padding * 1.5;
+  spacing: $base_padding;
+  @extend %heading;
+
+  .message-list-clear-button {
+    border-radius: $forced_circular_radius;
+  }
+}
+
+// message notification group
+.message-notification-group {
+  spacing: $base_padding * 2;
+
+  .message-group-header {
+    padding: $base_padding;
+    .message-group-title {
+      @extend %title_2;
+      margin: 0 $base_margin;
+    }
+  }
+
+  // close button
+  .message-collapse-button {
+    @extend .icon-button;
+    color: $fg_color;
+    background-color: transparentize($fg_color, 0.8);
+    padding: 4px !important;
+    border: 4px transparent solid;
+    &:hover {background-color: transparentize($fg_color, 0.7);}
+    &:active {background-color: transparentize($fg_color, 0.8);}
+  }
+}
+
+// message bubbles
+.message {
+  @extend %card;
+  padding: $base_padding;
+  margin: 0;
+  border-radius: $modal_radius;
+
+  background-color: if($variant == 'light', $card_bg_color, lighten($card_bg_color, 5%));
+
+  &:second-in-stack {
+    background-color: if($variant == 'light', darken($card_bg_color, 4%), darken($card_bg_color, 1%));
+    box-shadow: 0 1px 1px 0 $card_shadow_color;
+  }
+
+  &:lower-in-stack {
+    background-color: if($variant == 'light', darken($card_bg_color, 7%), darken($card_bg_color, 4%));
+    box-shadow: none;
+    border-color: if($variant == 'light', darken($card_bg_color, 10%), transparent); // a not ideal workaround for light theme
+  }
+
+  // message header
+  .message-header {
+    spacing: $base_padding;
+    color: $insensitive_fg_color;
+    padding:0 $base_padding;
+
+    // remove side padding to accommodate the close button
+    &:ltr { padding-right: 0; }
+    &:rtl { padding-left: 0; }
+
+    // header source icon
+    .message-source-icon {
+      icon-size: $scalable_icon_size; // 16px
+      -st-icon-style: symbolic;
+    }
+
+    // box that contains the source icon, source name and timestamp of the message
+    .message-header-content {
+      spacing: $base_padding;
+      min-height: to_em(24px);
+      padding-bottom: $base_padding;
+
+      // header source title
+      .message-source-title {
+        font-weight: bold;
+      }
+
+      // Time label
+      .event-time {
+        @extend %caption;
+        color: $insensitive_fg_color;
+        // Add bottom padding to align the app name with the time horizontally
+        padding-bottom: to_em(1px);
+
+        &:ltr { text-align: right; }
+        &:rtl { text-align: left; }
+      }
+    }
+
+    // buttons in the message header
+    .message-expand-button,
+    .message-close-button {
+      @extend .icon-button;
+      @extend %notification_button;
+      border-radius: $forced_circular_radius; // make circular
+      color: $fg_color;
+    }
+
+    // increase padding to expand button to make it larger
+    .message-expand-button {
+      padding: $base_padding;
+    }
+
+    // add margin to close button to balance it with the expand button
+    .message-close-button {
+      margin: $base_padding * 0.5;
+      padding: 4px;
+    }
+  }
+
+  // container for message contents
+  .message-box {
+    padding: $base_padding;
+    margin-top: 0;
+    spacing: $base_padding;
+
+    // icon of the message
+    .message-icon {
+      &:ltr { margin-right:$base_padding;}
+      &:rtl { margin-left:$base_padding;}
+
+      // icon size and color
+      icon-size: $base_icon_size * 3; // 48px
+
+      // a small symbolic icon on a circle background
+      &.message-themed-icon {
+        border-radius: $forced_circular_radius;
+        background-color: transparentize($fg_color, .93);
+        icon-size: $scalable_icon_size;
+        min-width: $base_icon_size * 3;
+        min-height: $base_icon_size * 3;
+      }
+    }
+
+    // If the header isn't displayed we need more top margin
+    &:first-child {
+      margin-top: $base_padding * 2;
+    }
+
+    // text of the message
+    .message-content {
+      spacing: $base_margin;
+
+      // message title
+      .message-title {
+        font-weight: bold;
+      }
+    }
+  }
+
+  // container for message buttons
+  .message-action-bin {
+    padding: $base_margin;
+    spacing: $base_padding;
+
+    // set margin on children
+    * {
+      margin: 0 $base_margin;
+      // remove margins
+      &:first-child {
+        &:ltr { margin-left:0;}
+        &:rtl { margin-right:0;}
+      }
+      &:last-child {
+        &:ltr { margin-right:0;}
+        &:rtl { margin-left:0;}
+      }
+    }
+  }
+}
+
+// URLs in messages
+.url-highlighter {
+  link-color: $link_color;
+}
+
+/* Media Controls */
+.message-media-control {
+  padding: 0 $base_padding * 3;
+  border-radius: $base_border_radius;
+  color: $fg_color;
+  border: 1px solid transparent;
+
+  @if $contrast == 'high' {
+    border-color: $hc_inset_color;
+    margin: $base_padding * 2 2px;
+  }
+
+  // colors are lightened since the media controls are in a card
+  &:hover {
+    background-color: lighten($hover_bg_color, 5%);
+    color: $fg_color;
+  }
+
+  &:active {
+    background-color: lighten($active_bg_color, 5%);
+    color: $fg_color;
+  }
+
+  &:insensitive {
+    color: lighten($insensitive_fg_color, 5%);
+
+    @if $contrast == 'high' {
+      border-color: transparent;
+    }
+  }
+
+  & StIcon { icon-size: $base_icon_size; }
+}
+
+.media-message {
+  // album-art
+  .message-icon {
+    border-radius: $base_border_radius !important;
+
+    &.message-themed-icon {
+      icon-size: $large_icon_size !important; // 32px
+    }
+  }
+}

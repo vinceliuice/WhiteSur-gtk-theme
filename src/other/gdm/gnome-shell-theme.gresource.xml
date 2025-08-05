@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/shell/theme">
+    <file>calendar-today.svg</file>
+    <file>calendar-today-light.svg</file>
+    <file>gnome-shell-dark.css</file>
+    <file>gnome-shell-light.css</file>
+    <file>gnome-shell-high-contrast.css</file>
+    <file>gnome-shell-start.svg</file>
+    <file>pad-osd.css</file>
+    <file>workspace-placeholder.svg</file>
+    <file>background.png</file>
+  </gresource>
+</gresources>

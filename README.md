@@ -195,20 +195,6 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
 ```bash
 
-OPTIONS:
-  -o, --opacity [normal|solid]
-   Set 'WhiteSur' GDM/Flatpak theme opacity variants. Default is 'normal'
-
-  -c, --color [light|dark]
-   Set 'WhiteSur' GDM/Flatpak theme color variants. Default is 'light'
-
-  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]
-   Set 'WhiteSur' GDM/Flatpak theme accent color. Default is BigSur-like theme
-
-  -s, --scheme [standard|nord]
-   Set 'WhiteSur' GDM/Flatpak theme colorscheme style. Default is 'standard'
-
-   
  Tweaks for GDM theme. options
 
   -g, --gdm    Without options default GDM theme will install... 
@@ -227,12 +213,20 @@ OPTIONS:
 
       7. -nb, -noblur    Don't blur 'WhiteSur' GDM theme background image 
 
+      8.  -o, --opacity [normal|solid]   Set 'WhiteSur' GDM theme opacity variants Default is 'normal'
+
+      9.  -c, --color [Light|Dark]   Set 'WhiteSur' GDM theme color variants Default is 'dark'
+
+      10. -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]   Set 'WhiteSur' GDM theme accent color Default is 'blue'
+
+      11. -s, --scheme [standard|nord]   Set 'WhiteSur' GDM theme colorscheme style Default is 'standard'
+
    
  Tweaks for firefox. options
 
   -f, --firefox         [(monterey|flat)|alt|(darker|adaptive)]   Without options default WhiteSur theme will install...   Options:
 
-      1. monterey       [3+3|3+4|3+5|4+3|4+4|4+5|5+3|5+4|5+5]   Topbar buttons number: 'a+b'   a: left side buttons number, b: right side buttons number
+      1. monterey       [3+3|3+4|3+5|4+3|4+4|4+5|5+3|5+4|5+5]   Topbar buttons (not window control buttons) number: 'a+b'   a: left side buttons number, b: right side buttons number
 
       2. flat           Monterey alt version    Flat round tabs...
 
@@ -256,7 +250,7 @@ OPTIONS:
 
       2.  -c, --color [Light|Dark]   Set 'WhiteSur' flatpak theme color variants Default is 'light'
 
-      3.  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]   Set 'WhiteSur' flatpak theme accent color Default is BigSur-like theme
+      3.  -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]   Set 'WhiteSur' flatpak theme accent color Default is 'blue'
 
       4.  -s, --scheme [standard|nord]   Set 'WhiteSur' flatpak theme colorscheme style Default is 'standard'
 

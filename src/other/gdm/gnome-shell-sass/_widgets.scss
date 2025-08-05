@@ -1,0 +1,49 @@
+//
+// Shell widgets stylesheets are placed in separate .scss files
+// in 'widgets' and imported into the main stylesheet in this file.
+// To create or update a widget for the shell modify the list below.
+//
+
+/* WIDGETS */
+
+// Primary widgets
+@import 'widgets/base';
+@import 'widgets/entries';
+@import 'widgets/buttons';
+@import 'widgets/check-box';
+@import 'widgets/switches';
+@import 'widgets/slider';
+@import 'widgets/scrollbars';
+// Popovers
+@import 'widgets/popovers';
+@import 'widgets/calendar';
+@import 'widgets/message-list';
+@import 'widgets/ibus-popup';
+// Notifications
+@import 'widgets/notifications';
+// Dialogs
+@import 'widgets/dialogs';
+// OSDs
+@import 'widgets/osd';
+@import 'widgets/switcher-popup';
+@import 'widgets/workspace-switcher';
+@import 'widgets/screenshot';
+// Panel
+@import 'widgets/panel';
+@import 'widgets/corner-ripple';
+@import 'widgets/quick-settings';
+// Overview
+@import 'widgets/overview';
+@import 'widgets/window-picker';
+@import 'widgets/search-entry';
+@import 'widgets/search-results';
+@import 'widgets/dash';
+@import 'widgets/app-grid';
+@import 'widgets/workspace-thumbnails';
+// A11y / misc
+@import 'widgets/a11y';
+@import 'widgets/misc';
+@import 'widgets/keyboard';
+@import 'widgets/looking-glass';
+// Lock / login screen
+@import 'widgets/login-lock';

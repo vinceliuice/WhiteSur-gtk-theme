@@ -322,29 +322,44 @@ install_flatpak_deps() {
 
 install_beggy() {
   local CONVERT_OPT=""
+  local BLUR_INFO="Not Blur"
+  local DARK_INFO="Not Darken"
 
-  [[ "${no_blur}" == "false" ]] && CONVERT_OPT+=" -scale 1280x -blur 0x50 "
-  [[ "${no_darken}" == "false" ]] && CONVERT_OPT+=" -fill black -colorize 45% "
+  if [[ "${no_blur}" == "false" ]]; then
+    CONVERT_OPT+=" -scale 1280x -blur 0x50 "
+    BLUR_INFO="Blur"
+  fi
+
+  if [[ "${no_darken}" == "false" ]]; then
+    CONVERT_OPT+=" -fill black -colorize 45% "
+    DARK_INFO="Darken"
+  fi
 
   case "${background}" in
     blank)
       cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blank.png"            "${WHITESUR_TMP_DIR}/beggy.png" ;;
     default)
       if [[ "${no_blur}" == "false" && "${no_darken}" == "true" ]]; then
+        prompt -i "Installed $BLUR_INFO but $DARK_INFO background! \n"
         cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blur.png"           "${WHITESUR_TMP_DIR}/beggy.png"
       elif [[ "${no_blur}" == "false" && "${no_darken}" == "false" ]]; then
+        prompt -i "Installed $BLUR_INFO and $DARK_INFO background! \n"
         cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-blur-darken.png"    "${WHITESUR_TMP_DIR}/beggy.png"
       elif [[ "${no_blur}" == "true" && "${no_darken}" == "true" ]]; then
+        prompt -i "Installed $BLUR_INFO and $DARK_INFO background! \n"
         cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-default.png"        "${WHITESUR_TMP_DIR}/beggy.png"
       else
+        prompt -i "Installed $BLUR_INFO but $DARK_INFO background! \n"
         cp -r "${THEME_SRC_DIR}/assets/gnome-shell/backgrounds/background-darken.png"         "${WHITESUR_TMP_DIR}/beggy.png"
       fi
       ;;
     *)
-      if [[ "${no_blur}" == "false" || "${darken}" == "true" ]]; then
+      if [[ "${no_blur}" == "false" || "${darken}" == "false" ]]; then
         install_beggy_deps
+        prompt -i "Installed Custome $BLUR_INFO $DARK_INFO ${background} picture for background! \n"
         convert "${background}" ${CONVERT_OPT}                                                "${WHITESUR_TMP_DIR}/beggy.png"
       else
+        prompt -i "Installed Custome ${background} picture for background! \n"
         cp -r "${background}"                                                                 "${WHITESUR_TMP_DIR}/beggy.png"
       fi
       ;;
@@ -629,12 +644,13 @@ install_gdm_theme() {
   local TARGET=
 
   # Let's go!
-  install_theme_deps
-  rm -rf "${WHITESUR_GS_DIR}"; install_beggy
-  gtk_base && shell_base
+  install_theme_deps; install_beggy
+
+  gtk_base && shell_base "${colors[1]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}"
 
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
-    install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
+    rm -rf "${WHITESUR_GS_DIR}"
+    install_shelly "${colors[1]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
     sed $SED_OPT "s|assets|${WHITESUR_GS_DIR}/assets|" "${WHITESUR_GS_DIR}/gnome-shell.css"
 
     if check_theme_file "${UBUNTU_CSS_FILE}"; then
@@ -654,7 +670,7 @@ install_gdm_theme() {
     # Fix previously installed WhiteSur
     restore_file "${ETC_CSS_FILE}"
   else # GR-based theme
-    install_shelly "${colors[0]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${WHITESUR_TMP_DIR}/shelly"
+    install_shelly "${colors[1]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${WHITESUR_TMP_DIR}/shelly"
     sed $SED_OPT "s|assets|resource:///org/gnome/shell/theme/assets|" "${WHITESUR_TMP_DIR}/shelly/gnome-shell.css"
 
     if check_theme_file "$POP_OS_GR_FILE"; then
@@ -673,6 +689,27 @@ install_gdm_theme() {
     # Fix previously installed WhiteSur
     restore_file "${ETC_GR_FILE}"
   fi
+}
+
+install_gdm_tmp() {
+  local TARGET_DIR="${1}"
+
+  mkdir -p                                                                                    "${TARGET_DIR}"
+  cp -r "${THEME_SRC_DIR}/other/gdm/theme"                                                    "${TARGET_DIR}"
+  cp -r "${WHITESUR_TMP_DIR}/beggy.png"                                                       "${TARGET_DIR}/theme/background.png"
+}
+
+install_only_gdm_theme() {
+  if check_theme_file "$MISC_GR_FILE"; then
+    TARGET="${MISC_GR_FILE}"
+  else
+    prompt -e "\n  $MISC_GR_FILE File not found! exit..."; exit 1
+  fi
+
+  install_theme_deps; install_beggy; install_gdm_tmp "${WHITESUR_TMP_DIR}/gdm"
+
+  backup_file "${TARGET}"
+  glib-compile-resources --sourcedir="${WHITESUR_TMP_DIR}/gdm/theme" --target="${TARGET}" "${GDM_GR_XML_FILE}"
 }
 
 revert_gdm_theme() {

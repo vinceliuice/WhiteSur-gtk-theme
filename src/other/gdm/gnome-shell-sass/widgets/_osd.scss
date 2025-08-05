@@ -1,0 +1,66 @@
+/* OSD */
+
+$osd_levelbar_height:6px;
+
+.osd-window {
+  @extend %osd_panel;
+  @extend %heading;
+  text-align: center;
+  font-weight: bold;
+  spacing: $base_padding * 2;
+  padding: $base_padding * 2 $base_padding * 3;
+  & > * { spacing: $base_margin * 2; }
+  margin-bottom: 4em;
+
+  StIcon { icon-size: $large_icon_size;}
+
+  StLabel {
+    &:ltr { margin-right: $base_padding; }
+    &:rtl { margin-left: $base_padding; }
+  }
+
+  .level {
+    margin-bottom: $base_margin;
+    &:first-child { margin-bottom: 0; }
+
+    min-width: 160px;
+    -barlevel-height: $osd_levelbar_height;
+    -barlevel-background-color: transparentize($osd_fg_color, if($variant=='light', 0.7, 0.9));
+    -barlevel-active-background-color: $osd_fg_color;
+    -barlevel-overdrive-color: $destructive_color;
+    -barlevel-overdrive-separator-width: $base_padding * 0.5;
+    &:ltr { margin-right: $base_padding; }
+    &:rtl { margin-left: $base_padding; }
+  }
+}
+
+// Monitor number label
+.osd-monitor-label, .osd-break-countdown-label {
+  background-color: -st-accent-color;
+  color: -st-accent-fg-color;
+  border-radius: $modal_radius;
+  font-size: 3em;
+  font-weight: bold;
+  font-feature-settings: "tnum";
+  margin: $base_margin * 3;
+  padding: $base_padding * 2;
+  text-align: center;
+  min-width: 1.5em;
+}
+
+/* Pad OSD */
+.pad-osd-window {
+  padding: 32px;
+  background-color: transparentize(#000, 0.2);
+
+  .pad-osd-title-box { spacing: 12px; }
+  .pad-osd-title-menu-box { spacing: 6px; }
+}
+
+.combo-box-label {
+  width: 15em;
+}
+
+.resize-popup {
+  @extend %osd_panel;
+}

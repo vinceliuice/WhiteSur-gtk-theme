@@ -1,0 +1,192 @@
+/* Modal Dialogs */
+
+// style for all dialogs
+.modal-dialog {
+  background-color: $bg_color;
+  border-radius: $alert_radius;
+  padding: $base_padding * 4;
+  spacing: $base_padding * 3;
+  box-shadow: 0 12px 8px 12px rgba(0,0,0,0.03);
+
+  .modal-dialog-content-box {
+    padding-top: $base_padding * 2;
+    spacing: $base_padding * 3;
+    max-width: 28em;
+  }
+
+  .modal-dialog-button-box {
+    padding-top: $base_padding;
+    .modal-dialog-button {
+      @extend %dialog_button;
+    }
+  }
+}
+
+// lists in dialogs
+.dialog-list {
+  spacing: $base_padding * 3;
+
+  .dialog-list-title {
+    @extend %heading;
+    text-align: center;
+  }
+
+  .dialog-list-scrollview { max-height: 200px; }
+  .dialog-list-box {
+    spacing: 1em;
+
+    .dialog-list-item {
+      spacing: 1em;
+
+      .dialog-list-item-title { font-weight: bold; }
+      .dialog-list-item-description {
+        @extend %caption;
+        color: darken($fg_color,5%);
+      }
+    }
+  }
+}
+
+/* End Session Dialog */
+.end-session-dialog {
+  width: 24em;
+
+  // special style for session warnings
+  .end-session-dialog-battery-warning,
+  .dialog-list-title {
+    color: $warning_color;
+    background-color: transparentize($warning_color, 0.9);
+    padding: $base_padding * 1.5;
+    border-radius: $base_border_radius;
+    margin: $base_margin 0;
+  }
+}
+
+/* Message Dialog */
+.message-dialog-content {
+  spacing: $base_padding * 3;
+
+  .message-dialog-title {
+    text-align: center;
+    @extend %title_2;
+
+    &.lightweight {
+      @extend %title_4;
+    }
+  }
+  .message-dialog-description {
+    text-align: center;
+  }
+}
+
+/* Run Dialog */
+.run-dialog {
+  width: 24em;
+
+  // run dialog needs to override bottom padding
+  // to account for inexplicable extra padding
+  padding-bottom: $base_padding;
+
+  .run-dialog-entry {
+    padding: $base_padding * 2 $base_padding * 1.5;
+  }
+  .run-dialog-description {
+    @extend %caption;
+    color: darken($fg_color, 20%);
+  }
+}
+
+/* Password or Authentication Dialog */
+.prompt-dialog {
+  width: 28em;
+
+  .prompt-dialog-password-grid {
+    spacing-rows: $base_margin * 2;
+    spacing-columns: $base_margin;
+
+    .prompt-dialog-password-entry {
+      width: auto;
+      // 4px (spacing) + 16px (spinner-width)
+      &:ltr { margin-left: $base_margin+$base_icon_size; }
+      &:rtl { margin-right: $base_margin+$base_icon_size; }
+    }
+  }
+
+  .prompt-dialog-password-layout {
+    spacing: $base_margin * 2;
+  }
+
+  .prompt-dialog-password-entry {
+    width: 20em;
+    padding: $base_padding * 2 $base_padding * 1.5;
+  }
+
+  .prompt-dialog-error-label,
+  .prompt-dialog-info-label,
+  .prompt-dialog-null-label {
+    @extend %caption;
+    text-align: center;
+  }
+
+  .prompt-dialog-error-label {
+    color: $warning_color;
+  }
+}
+
+/* Polkit Dialog */
+.polkit-dialog-user-layout {
+  text-align: center;
+  spacing: $base_margin * 2;
+  margin-bottom: $base_padding;
+
+  .polkit-dialog-user-label,
+  .polkit-dialog-user-root-label {
+    @extend %title_4;
+  }
+
+  .polkit-dialog-user-root-label {
+    color: $warning_color;
+  }
+}
+
+/* Audio selection dialog */
+.audio-device-selection-dialog {
+  min-width: 24em;
+
+  .audio-selection-box {
+    spacing: $base_padding * 2;
+
+    // styled similar to switcher-popup
+    .audio-selection-device {
+      @include tile_button($fg:$fg_color, $bg:$bg_color, $system:false);
+
+      .audio-selection-device-box {
+        padding: $base_padding * 2;
+        spacing: $base_padding * 2;
+      }
+
+      .audio-selection-device-icon {
+        icon-size: $base_icon_size * 4;
+      }
+    }
+  }
+}
+
+/* Welcome dialog */
+.welcome-dialog-image {
+  background-image: url("resource:///org/gnome/shell/theme/gnome-shell-start.svg");
+  background-size: contain;
+  /* Reasonable maximum dimensions */
+  height: 300px;
+  width: 300px;
+}
+
+/* Access portal dialog */
+.access-dialog {
+  text-align: center;
+}
+
+// specific label style for restart message
+.restart-message {
+  @extend %title_4;
+}

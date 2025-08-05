@@ -1,0 +1,4706 @@
+/* This stylesheet is generated, DO NOT EDIT */
+/* Copyright 2009, 2015 Red Hat, Inc.
+ *
+ * Portions adapted from Mx's data/style/default.css
+ *   Copyright 2009 Intel Corporation
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms and conditions of the GNU Lesser General Public License,
+ * version 2.1, as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+/* Global Values */
+stage {
+  font-size: 1em;
+  color: #222226;
+}
+
+/* Common Stylings */
+#dash .dash-item-container .show-apps,
+#dash .dash-item-container .overview-tile,
+#dash .dash-item-container .grid-search-result {
+  background: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.app-folder-dialog .overview-tile, .app-folder-dialog .grid-search-result, .app-folder, .overview-tile, .grid-search-result, #dash .dash-item-container .show-apps .overview-icon,
+#dash .dash-item-container .overview-tile .overview-icon,
+#dash .dash-item-container .grid-search-result .overview-icon, .list-search-result, .search-provider-icon, .switcher-list .item-box, .audio-device-selection-dialog .audio-selection-box .audio-selection-device {
+  border-radius: 16px;
+  padding: 6px;
+  spacing: 6px;
+  text-align: center;
+  transition-duration: 100ms;
+}
+
+.unlock-dialog .button,
+.unlock-dialog .icon-button,
+.unlock-dialog .message-notification-group .message-collapse-button,
+.message-notification-group .unlock-dialog .message-collapse-button,
+.unlock-dialog .message .message-header .message-expand-button,
+.message .message-header .unlock-dialog .message-expand-button,
+.unlock-dialog .message .message-header .message-close-button,
+.message .message-header .unlock-dialog .message-close-button,
+.unlock-dialog .screenshot-ui-show-pointer-button, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item, .unlock-dialog .login-dialog-auth-list-item, .login-dialog .login-dialog-auth-list-item, .login-dialog-not-listed-button, #LookingGlassDialog .notebook-tab, .screenshot-ui-show-pointer-button, .screenshot-ui-type-button, #LookingGlassDebugFlags .lg-debug-flag-button, #LookingGlassPropertyInspector .lg-obj-inspector-close-button,
+#LookingGlassPropertyInspector .lg-obj-inspector-button, #LookingGlassDialog > #Toolbar .lg-toolbar-button, .icon-button, .login-dialog-button.a11y-button, .login-dialog-button.cancel-button, .login-dialog-button.switch-user-button, .login-dialog-button.login-dialog-session-list-button, .message .message-header .message-expand-button,
+.message .message-header .message-close-button, .message-notification-group .message-collapse-button, .calendar .calendar-month-header .pager-button, .button {
+  border-radius: 8px;
+  padding: 3px 24px;
+  font-weight: bold;
+  transition: border-width 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.icon-button, .login-dialog-button.a11y-button, .login-dialog-button.cancel-button, .login-dialog-button.switch-user-button, .login-dialog-button.login-dialog-session-list-button, .screenshot-ui-show-pointer-button, .message .message-header .message-expand-button,
+.message .message-header .message-close-button, .message-notification-group .message-collapse-button, .calendar .calendar-month-header .pager-button, .button {
+  color: #222226;
+  background-color: st-mix(#222226, #fafafb, 12%);
+}
+
+.icon-button:focus, .login-dialog-button.a11y-button:focus, .login-dialog-button.cancel-button:focus, .login-dialog-button.switch-user-button:focus, .login-dialog-button.login-dialog-session-list-button:focus, .screenshot-ui-show-pointer-button:focus, .message .message-header .message-expand-button:focus,
+.message .message-header .message-close-button:focus, .message-notification-group .message-collapse-button:focus, .calendar .calendar-month-header .pager-button:focus, .button:focus {
+  color: #222226;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, st-mix(#222226, #fafafb, 12%), 5%);
+}
+
+.icon-button:focus:hover, .login-dialog-button.a11y-button:focus:hover, .login-dialog-button.cancel-button:focus:hover, .login-dialog-button.switch-user-button:focus:hover, .login-dialog-button.login-dialog-session-list-button:focus:hover, .screenshot-ui-show-pointer-button:focus:hover, .message .message-header .message-expand-button:focus:hover,
+.message .message-header .message-close-button:focus:hover, .message-notification-group .message-collapse-button:focus:hover, .calendar .calendar-month-header .pager-button:focus:hover, .button:focus:hover {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(#222226, #fafafb, 12%), 4%), 5%);
+}
+
+.icon-button:hover, .login-dialog-button.a11y-button:hover, .login-dialog-button.cancel-button:hover, .login-dialog-button.switch-user-button:hover, .login-dialog-button.login-dialog-session-list-button:hover, .screenshot-ui-show-pointer-button:hover, .message .message-header .message-expand-button:hover,
+.message .message-header .message-close-button:hover, .message-notification-group .message-collapse-button:hover, .calendar .calendar-month-header .pager-button:hover, .button:hover {
+  color: #222226;
+  background-color: st-darken(st-mix(#222226, #fafafb, 12%), 4%);
+}
+
+.icon-button:insensitive, .login-dialog-button.a11y-button:insensitive, .login-dialog-button.cancel-button:insensitive, .login-dialog-button.switch-user-button:insensitive, .login-dialog-button.login-dialog-session-list-button:insensitive, .screenshot-ui-show-pointer-button:insensitive, .message .message-header .message-expand-button:insensitive,
+.message .message-header .message-close-button:insensitive, .message-notification-group .message-collapse-button:insensitive, .calendar .calendar-month-header .pager-button:insensitive, .button:insensitive {
+  color: st-transparentize(#222226, 0.6);
+  background-color: st-lighten(st-mix(#222226, #fafafb, 12%), 3%);
+}
+
+.icon-button:selected, .login-dialog-button.a11y-button:selected, .login-dialog-button.cancel-button:selected, .login-dialog-button.switch-user-button:selected, .login-dialog-button.login-dialog-session-list-button:selected, .screenshot-ui-show-pointer-button:selected, .message .message-header .message-expand-button:selected,
+.message .message-header .message-close-button:selected, .message-notification-group .message-collapse-button:selected, .calendar .calendar-month-header .pager-button:selected, .button:selected, .icon-button:active, .login-dialog-button.a11y-button:active, .login-dialog-button.cancel-button:active, .login-dialog-button.switch-user-button:active, .login-dialog-button.login-dialog-session-list-button:active, .screenshot-ui-show-pointer-button:active, .message .message-header .message-expand-button:active,
+.message .message-header .message-close-button:active, .message-notification-group .message-collapse-button:active, .calendar .calendar-month-header .pager-button:active, .button:active {
+  color: #222226;
+  background-color: st-darken(st-mix(#222226, #fafafb, 12%), 9%);
+}
+
+.icon-button:selected:hover, .login-dialog-button.a11y-button:selected:hover, .login-dialog-button.cancel-button:selected:hover, .login-dialog-button.switch-user-button:selected:hover, .login-dialog-button.login-dialog-session-list-button:selected:hover, .screenshot-ui-show-pointer-button:selected:hover, .message .message-header .message-expand-button:selected:hover,
+.message .message-header .message-close-button:selected:hover, .message-notification-group .message-collapse-button:selected:hover, .calendar .calendar-month-header .pager-button:selected:hover, .button:selected:hover, .icon-button:active:hover, .login-dialog-button.a11y-button:active:hover, .login-dialog-button.cancel-button:active:hover, .login-dialog-button.switch-user-button:active:hover, .login-dialog-button.login-dialog-session-list-button:active:hover, .screenshot-ui-show-pointer-button:active:hover, .message .message-header .message-expand-button:active:hover,
+.message .message-header .message-close-button:active:hover, .message-notification-group .message-collapse-button:active:hover, .calendar .calendar-month-header .pager-button:active:hover, .button:active:hover {
+  background-color: st-darken(st-darken(st-mix(#222226, #fafafb, 12%), 9%), 4%);
+}
+
+.icon-button:selected:focus, .login-dialog-button.a11y-button:selected:focus, .login-dialog-button.cancel-button:selected:focus, .login-dialog-button.switch-user-button:selected:focus, .login-dialog-button.login-dialog-session-list-button:selected:focus, .screenshot-ui-show-pointer-button:selected:focus, .message .message-header .message-expand-button:selected:focus,
+.message .message-header .message-close-button:selected:focus, .message-notification-group .message-collapse-button:selected:focus, .calendar .calendar-month-header .pager-button:selected:focus, .button:selected:focus, .icon-button:active:focus, .login-dialog-button.a11y-button:active:focus, .login-dialog-button.cancel-button:active:focus, .login-dialog-button.switch-user-button:active:focus, .login-dialog-button.login-dialog-session-list-button:active:focus, .screenshot-ui-show-pointer-button:active:focus, .message .message-header .message-expand-button:active:focus,
+.message .message-header .message-close-button:active:focus, .message-notification-group .message-collapse-button:active:focus, .calendar .calendar-month-header .pager-button:active:focus, .button:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(#222226, #fafafb, 12%), 9%), 5%);
+}
+
+.icon-button:checked, .login-dialog-button.a11y-button:checked, .login-dialog-button.cancel-button:checked, .login-dialog-button.switch-user-button:checked, .login-dialog-button.login-dialog-session-list-button:checked, .screenshot-ui-show-pointer-button:checked, .message .message-header .message-expand-button:checked,
+.message .message-header .message-close-button:checked, .message-notification-group .message-collapse-button:checked, .calendar .calendar-month-header .pager-button:checked, .button:checked {
+  color: #222226;
+  background-color: st-darken(st-mix(#222226, #fafafb, 12%), 8%);
+}
+
+.icon-button:checked:hover, .login-dialog-button.a11y-button:checked:hover, .login-dialog-button.cancel-button:checked:hover, .login-dialog-button.switch-user-button:checked:hover, .login-dialog-button.login-dialog-session-list-button:checked:hover, .screenshot-ui-show-pointer-button:checked:hover, .message .message-header .message-expand-button:checked:hover,
+.message .message-header .message-close-button:checked:hover, .message-notification-group .message-collapse-button:checked:hover, .calendar .calendar-month-header .pager-button:checked:hover, .button:checked:hover {
+  background-color: st-darken(st-darken(st-mix(#222226, #fafafb, 12%), 8%), 4%);
+}
+
+.icon-button:checked:active, .login-dialog-button.a11y-button:checked:active, .login-dialog-button.cancel-button:checked:active, .login-dialog-button.switch-user-button:checked:active, .login-dialog-button.login-dialog-session-list-button:checked:active, .screenshot-ui-show-pointer-button:checked:active, .message .message-header .message-expand-button:checked:active,
+.message .message-header .message-close-button:checked:active, .message-notification-group .message-collapse-button:checked:active, .calendar .calendar-month-header .pager-button:checked:active, .button:checked:active {
+  background-color: st-darken(st-darken(st-mix(#222226, #fafafb, 12%), 8%), 9%);
+}
+
+.calendar .calendar-day-heading, .calendar .calendar-day, .calendar .calendar-month-header .calendar-month-label, .icon-button.flat, .flat.login-dialog-button.a11y-button, .flat.login-dialog-button.cancel-button, .flat.login-dialog-button.switch-user-button, .flat.login-dialog-button.login-dialog-session-list-button, .flat.screenshot-ui-show-pointer-button, .message .message-header .flat.message-expand-button,
+.message .message-header .flat.message-close-button, .message-notification-group .flat.message-collapse-button, .calendar .calendar-month-header .pager-button, .button.flat {
+  color: #222226;
+  background-color: #fafafb;
+}
+
+.calendar .calendar-day-heading:focus, .calendar .calendar-day:focus, .calendar .calendar-month-header .calendar-month-label:focus, .icon-button.flat:focus, .flat.login-dialog-button.a11y-button:focus, .flat.login-dialog-button.cancel-button:focus, .flat.login-dialog-button.switch-user-button:focus, .flat.login-dialog-button.login-dialog-session-list-button:focus, .flat.screenshot-ui-show-pointer-button:focus, .message .message-header .flat.message-expand-button:focus,
+.message .message-header .flat.message-close-button:focus, .message-notification-group .flat.message-collapse-button:focus, .calendar .calendar-month-header .pager-button:focus, .button.flat:focus {
+  color: #222226;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(250, 250, 251, 0.25), 5%);
+}
+
+.calendar .calendar-day-heading:focus:hover, .calendar .calendar-day:focus:hover, .calendar .calendar-month-header .calendar-month-label:focus:hover, .icon-button.flat:focus:hover, .flat.login-dialog-button.a11y-button:focus:hover, .flat.login-dialog-button.cancel-button:focus:hover, .flat.login-dialog-button.switch-user-button:focus:hover, .flat.login-dialog-button.login-dialog-session-list-button:focus:hover, .flat.screenshot-ui-show-pointer-button:focus:hover, .message .message-header .flat.message-expand-button:focus:hover,
+.message .message-header .flat.message-close-button:focus:hover, .message-notification-group .flat.message-collapse-button:focus:hover, .calendar .calendar-month-header .pager-button:focus:hover, .button.flat:focus:hover {
+  background-color: st-mix(-st-accent-color, st-darken(#fafafb, 7%), 5%);
+}
+
+.calendar .calendar-day-heading:hover, .calendar .calendar-day:hover, .calendar .calendar-month-header .calendar-month-label:hover, .icon-button.flat:hover, .flat.login-dialog-button.a11y-button:hover, .flat.login-dialog-button.cancel-button:hover, .flat.login-dialog-button.switch-user-button:hover, .flat.login-dialog-button.login-dialog-session-list-button:hover, .flat.screenshot-ui-show-pointer-button:hover, .message .message-header .flat.message-expand-button:hover,
+.message .message-header .flat.message-close-button:hover, .message-notification-group .flat.message-collapse-button:hover, .calendar .calendar-month-header .pager-button:hover, .button.flat:hover {
+  color: #222226;
+  background-color: st-darken(#fafafb, 7%);
+}
+
+.calendar .calendar-day-heading:insensitive, .calendar .calendar-day:insensitive, .calendar .calendar-month-header .calendar-month-label:insensitive, .icon-button.flat:insensitive, .flat.login-dialog-button.a11y-button:insensitive, .flat.login-dialog-button.cancel-button:insensitive, .flat.login-dialog-button.switch-user-button:insensitive, .flat.login-dialog-button.login-dialog-session-list-button:insensitive, .flat.screenshot-ui-show-pointer-button:insensitive, .message .message-header .flat.message-expand-button:insensitive,
+.message .message-header .flat.message-close-button:insensitive, .message-notification-group .flat.message-collapse-button:insensitive, .calendar .calendar-month-header .pager-button:insensitive, .button.flat:insensitive {
+  color: st-transparentize(#222226, 0.6);
+  background-color: #fafafb;
+}
+
+.calendar .calendar-day-heading:selected, .calendar .calendar-day:selected, .calendar .calendar-month-header .calendar-month-label:selected, .icon-button.flat:selected, .flat.login-dialog-button.a11y-button:selected, .flat.login-dialog-button.cancel-button:selected, .flat.login-dialog-button.switch-user-button:selected, .flat.login-dialog-button.login-dialog-session-list-button:selected, .flat.screenshot-ui-show-pointer-button:selected, .message .message-header .flat.message-expand-button:selected,
+.message .message-header .flat.message-close-button:selected, .message-notification-group .flat.message-collapse-button:selected, .calendar .calendar-month-header .pager-button:selected, .button.flat:selected, .calendar .calendar-day-heading:active, .calendar .calendar-day:active, .calendar .calendar-month-header .calendar-month-label:active, .icon-button.flat:active, .flat.login-dialog-button.a11y-button:active, .flat.login-dialog-button.cancel-button:active, .flat.login-dialog-button.switch-user-button:active, .flat.login-dialog-button.login-dialog-session-list-button:active, .flat.screenshot-ui-show-pointer-button:active, .message .message-header .flat.message-expand-button:active,
+.message .message-header .flat.message-close-button:active, .message-notification-group .flat.message-collapse-button:active, .calendar .calendar-month-header .pager-button:active, .button.flat:active {
+  color: #222226;
+  background-color: st-darken(#fafafb, 9%);
+}
+
+.calendar .calendar-day-heading:selected:hover, .calendar .calendar-day:selected:hover, .calendar .calendar-month-header .calendar-month-label:selected:hover, .icon-button.flat:selected:hover, .flat.login-dialog-button.a11y-button:selected:hover, .flat.login-dialog-button.cancel-button:selected:hover, .flat.login-dialog-button.switch-user-button:selected:hover, .flat.login-dialog-button.login-dialog-session-list-button:selected:hover, .flat.screenshot-ui-show-pointer-button:selected:hover, .message .message-header .flat.message-expand-button:selected:hover,
+.message .message-header .flat.message-close-button:selected:hover, .message-notification-group .flat.message-collapse-button:selected:hover, .calendar .calendar-month-header .pager-button:selected:hover, .button.flat:selected:hover, .calendar .calendar-day-heading:active:hover, .calendar .calendar-day:active:hover, .calendar .calendar-month-header .calendar-month-label:active:hover, .icon-button.flat:active:hover, .flat.login-dialog-button.a11y-button:active:hover, .flat.login-dialog-button.cancel-button:active:hover, .flat.login-dialog-button.switch-user-button:active:hover, .flat.login-dialog-button.login-dialog-session-list-button:active:hover, .flat.screenshot-ui-show-pointer-button:active:hover, .message .message-header .flat.message-expand-button:active:hover,
+.message .message-header .flat.message-close-button:active:hover, .message-notification-group .flat.message-collapse-button:active:hover, .calendar .calendar-month-header .pager-button:active:hover, .button.flat:active:hover {
+  background-color: st-darken(st-darken(#fafafb, 9%), 7%);
+}
+
+.calendar .calendar-day-heading:selected:focus, .calendar .calendar-day:selected:focus, .calendar .calendar-month-header .calendar-month-label:selected:focus, .icon-button.flat:selected:focus, .flat.login-dialog-button.a11y-button:selected:focus, .flat.login-dialog-button.cancel-button:selected:focus, .flat.login-dialog-button.switch-user-button:selected:focus, .flat.login-dialog-button.login-dialog-session-list-button:selected:focus, .flat.screenshot-ui-show-pointer-button:selected:focus, .message .message-header .flat.message-expand-button:selected:focus,
+.message .message-header .flat.message-close-button:selected:focus, .message-notification-group .flat.message-collapse-button:selected:focus, .calendar .calendar-month-header .pager-button:selected:focus, .button.flat:selected:focus, .calendar .calendar-day-heading:active:focus, .calendar .calendar-day:active:focus, .calendar .calendar-month-header .calendar-month-label:active:focus, .icon-button.flat:active:focus, .flat.login-dialog-button.a11y-button:active:focus, .flat.login-dialog-button.cancel-button:active:focus, .flat.login-dialog-button.switch-user-button:active:focus, .flat.login-dialog-button.login-dialog-session-list-button:active:focus, .flat.screenshot-ui-show-pointer-button:active:focus, .message .message-header .flat.message-expand-button:active:focus,
+.message .message-header .flat.message-close-button:active:focus, .message-notification-group .flat.message-collapse-button:active:focus, .calendar .calendar-month-header .pager-button:active:focus, .button.flat:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(#fafafb, 9%), 5%);
+}
+
+.calendar .calendar-day-heading:checked, .calendar .calendar-day:checked, .calendar .calendar-month-header .calendar-month-label:checked, .icon-button.flat:checked, .flat.login-dialog-button.a11y-button:checked, .flat.login-dialog-button.cancel-button:checked, .flat.login-dialog-button.switch-user-button:checked, .flat.login-dialog-button.login-dialog-session-list-button:checked, .flat.screenshot-ui-show-pointer-button:checked, .message .message-header .flat.message-expand-button:checked,
+.message .message-header .flat.message-close-button:checked, .message-notification-group .flat.message-collapse-button:checked, .calendar .calendar-month-header .pager-button:checked, .button.flat:checked {
+  color: #222226;
+  background-color: st-darken(#fafafb, 8%);
+}
+
+.calendar .calendar-day-heading:checked:hover, .calendar .calendar-day:checked:hover, .calendar .calendar-month-header .calendar-month-label:checked:hover, .icon-button.flat:checked:hover, .flat.login-dialog-button.a11y-button:checked:hover, .flat.login-dialog-button.cancel-button:checked:hover, .flat.login-dialog-button.switch-user-button:checked:hover, .flat.login-dialog-button.login-dialog-session-list-button:checked:hover, .flat.screenshot-ui-show-pointer-button:checked:hover, .message .message-header .flat.message-expand-button:checked:hover,
+.message .message-header .flat.message-close-button:checked:hover, .message-notification-group .flat.message-collapse-button:checked:hover, .calendar .calendar-month-header .pager-button:checked:hover, .button.flat:checked:hover {
+  background-color: st-darken(st-darken(#fafafb, 8%), 7%);
+}
+
+.calendar .calendar-day-heading:checked:active, .calendar .calendar-day:checked:active, .calendar .calendar-month-header .calendar-month-label:checked:active, .icon-button.flat:checked:active, .flat.login-dialog-button.a11y-button:checked:active, .flat.login-dialog-button.cancel-button:checked:active, .flat.login-dialog-button.switch-user-button:checked:active, .flat.login-dialog-button.login-dialog-session-list-button:checked:active, .flat.screenshot-ui-show-pointer-button:checked:active, .message .message-header .flat.message-expand-button:checked:active,
+.message .message-header .flat.message-close-button:checked:active, .message-notification-group .flat.message-collapse-button:checked:active, .calendar .calendar-month-header .pager-button:checked:active, .button.flat:checked:active {
+  background-color: st-darken(st-darken(#fafafb, 8%), 9%);
+}
+
+.keyboard-brightness-level .button:checked, .quick-toggle:checked, .calendar .calendar-day.calendar-today, .icon-button.default, .default.login-dialog-button.a11y-button, .default.login-dialog-button.cancel-button, .default.login-dialog-button.switch-user-button, .default.login-dialog-button.login-dialog-session-list-button, .default.screenshot-ui-show-pointer-button, .message .message-header .default.message-expand-button,
+.message .message-header .default.message-close-button, .message-notification-group .default.message-collapse-button, .calendar .calendar-month-header .default.pager-button, .button.default {
+  color: -st-accent-fg-color;
+  background-color: -st-accent-color;
+}
+
+.keyboard-brightness-level .button:focus:checked, .quick-toggle:focus:checked, .calendar .calendar-day.calendar-today:focus, .icon-button.default:focus, .default.login-dialog-button.a11y-button:focus, .default.login-dialog-button.cancel-button:focus, .default.login-dialog-button.switch-user-button:focus, .default.login-dialog-button.login-dialog-session-list-button:focus, .default.screenshot-ui-show-pointer-button:focus, .message .message-header .default.message-expand-button:focus,
+.message .message-header .default.message-close-button:focus, .message-notification-group .default.message-collapse-button:focus, .calendar .calendar-month-header .default.pager-button:focus, .button.default:focus {
+  color: -st-accent-fg-color;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  box-shadow: inset 0 0 0 2px st-transparentize(st-darken(-st-accent-color, 20%), 0.2) !important;
+  background-color: st-mix(-st-accent-color, -st-accent-color, 5%);
+}
+
+.keyboard-brightness-level .button:focus:hover:checked, .quick-toggle:focus:hover:checked, .calendar .calendar-day.calendar-today:focus:hover, .icon-button.default:focus:hover, .default.login-dialog-button.a11y-button:focus:hover, .default.login-dialog-button.cancel-button:focus:hover, .default.login-dialog-button.switch-user-button:focus:hover, .default.login-dialog-button.login-dialog-session-list-button:focus:hover, .default.screenshot-ui-show-pointer-button:focus:hover, .message .message-header .default.message-expand-button:focus:hover,
+.message .message-header .default.message-close-button:focus:hover, .message-notification-group .default.message-collapse-button:focus:hover, .calendar .calendar-month-header .default.pager-button:focus:hover, .button.default:focus:hover {
+  background-color: st-mix(-st-accent-color, st-darken(-st-accent-color, 4%), 5%);
+}
+
+.keyboard-brightness-level .button:hover:checked, .quick-toggle:hover:checked, .calendar .calendar-day.calendar-today:hover, .icon-button.default:hover, .default.login-dialog-button.a11y-button:hover, .default.login-dialog-button.cancel-button:hover, .default.login-dialog-button.switch-user-button:hover, .default.login-dialog-button.login-dialog-session-list-button:hover, .default.screenshot-ui-show-pointer-button:hover, .message .message-header .default.message-expand-button:hover,
+.message .message-header .default.message-close-button:hover, .message-notification-group .default.message-collapse-button:hover, .calendar .calendar-month-header .default.pager-button:hover, .button.default:hover {
+  color: -st-accent-fg-color;
+  background-color: st-darken(-st-accent-color, 4%);
+}
+
+.keyboard-brightness-level .button:insensitive:checked, .quick-toggle:insensitive:checked, .calendar .calendar-day.calendar-today:insensitive, .icon-button.default:insensitive, .default.login-dialog-button.a11y-button:insensitive, .default.login-dialog-button.cancel-button:insensitive, .default.login-dialog-button.switch-user-button:insensitive, .default.login-dialog-button.login-dialog-session-list-button:insensitive, .default.screenshot-ui-show-pointer-button:insensitive, .message .message-header .default.message-expand-button:insensitive,
+.message .message-header .default.message-close-button:insensitive, .message-notification-group .default.message-collapse-button:insensitive, .calendar .calendar-month-header .default.pager-button:insensitive, .button.default:insensitive {
+  color: st-transparentize(-st-accent-fg-color, 0.6);
+  background-color: st-lighten(-st-accent-color, 3%);
+}
+
+.keyboard-brightness-level .button:active:checked, .quick-toggle:active:checked, .calendar .calendar-day.calendar-today:active, .icon-button.default:active, .default.login-dialog-button.a11y-button:active, .default.login-dialog-button.cancel-button:active, .default.login-dialog-button.switch-user-button:active, .default.login-dialog-button.login-dialog-session-list-button:active, .default.screenshot-ui-show-pointer-button:active, .message .message-header .default.message-expand-button:active,
+.message .message-header .default.message-close-button:active, .message-notification-group .default.message-collapse-button:active, .calendar .calendar-month-header .default.pager-button:active, .button.default:active {
+  color: -st-accent-fg-color;
+  background-color: st-darken(-st-accent-color, 9%);
+}
+
+.keyboard-brightness-level .button:active:hover:checked, .quick-toggle:active:hover:checked, .calendar .calendar-day.calendar-today:active:hover, .icon-button.default:active:hover, .default.login-dialog-button.a11y-button:active:hover, .default.login-dialog-button.cancel-button:active:hover, .default.login-dialog-button.switch-user-button:active:hover, .default.login-dialog-button.login-dialog-session-list-button:active:hover, .default.screenshot-ui-show-pointer-button:active:hover, .message .message-header .default.message-expand-button:active:hover,
+.message .message-header .default.message-close-button:active:hover, .message-notification-group .default.message-collapse-button:active:hover, .calendar .calendar-month-header .default.pager-button:active:hover, .button.default:active:hover {
+  background-color: st-darken(st-darken(-st-accent-color, 9%), 4%);
+}
+
+.keyboard-brightness-level .button:active:focus:checked, .quick-toggle:active:focus:checked, .calendar .calendar-day.calendar-today:active:focus, .icon-button.default:active:focus, .default.login-dialog-button.a11y-button:active:focus, .default.login-dialog-button.cancel-button:active:focus, .default.login-dialog-button.switch-user-button:active:focus, .default.login-dialog-button.login-dialog-session-list-button:active:focus, .default.screenshot-ui-show-pointer-button:active:focus, .message .message-header .default.message-expand-button:active:focus,
+.message .message-header .default.message-close-button:active:focus, .message-notification-group .default.message-collapse-button:active:focus, .calendar .calendar-month-header .default.pager-button:active:focus, .button.default:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(-st-accent-color, 9%), 5%);
+}
+
+.popup-sub-menu .popup-menu-item, .popup-menu-item {
+  font-weight: normal;
+  spacing: 6px;
+  transition-duration: 100ms;
+  padding: 9px 12px;
+}
+
+#LookingGlassExtensions .lg-extension, #LookingGlassWindows .lg-window, .calendar, .datemenu-today-button, .quick-toggle-menu, .message, .events-button,
+.world-clocks-button,
+.weather-button {
+  border-radius: 12px;
+  padding: 0.818em;
+  margin: 4px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.quick-toggle-menu, .message, .events-button,
+.world-clocks-button,
+.weather-button {
+  color: #222226;
+  background-color: #ffffff;
+}
+
+.quick-toggle-menu:hover, .message:hover, .events-button:hover,
+.world-clocks-button:hover,
+.weather-button:hover {
+  color: #222226;
+  background-color: st-darken(#ffffff, 4%);
+}
+
+.quick-toggle-menu:active, .message:active, .events-button:active,
+.world-clocks-button:active,
+.weather-button:active {
+  color: #222226;
+  background-color: st-darken(#ffffff, 9%);
+}
+
+.quick-toggle-menu:active:hover, .message:active:hover, .events-button:active:hover,
+.world-clocks-button:active:hover,
+.weather-button:active:hover {
+  background-color: st-darken(st-darken(#ffffff, 9%), 4%);
+}
+
+.quick-toggle-menu:active:focus, .message:active:focus, .events-button:active:focus,
+.world-clocks-button:active:focus,
+.weather-button:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(#ffffff, 9%), 5%);
+}
+
+.quick-toggle-menu:focus, .message:focus, .events-button:focus,
+.world-clocks-button:focus,
+.weather-button:focus {
+  color: #222226;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, #ffffff, 5%);
+}
+
+.quick-toggle-menu:focus:hover, .message:focus:hover, .events-button:focus:hover,
+.world-clocks-button:focus:hover,
+.weather-button:focus:hover {
+  background-color: st-mix(-st-accent-color, st-darken(#ffffff, 4%), 5%);
+}
+
+.quick-toggle-menu:insensitive, .message:insensitive, .events-button:insensitive,
+.world-clocks-button:insensitive,
+.weather-button:insensitive {
+  color: st-transparentize(#222226, 0.6);
+  background-color: st-lighten(#ffffff, 3%);
+}
+
+.calendar, .datemenu-today-button {
+  border: 1px solid transparent !important;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.calendar:insensitive, .datemenu-today-button:insensitive {
+  background-color: transparent !important;
+}
+
+.calendar:hover, .datemenu-today-button:hover {
+  color: #222226;
+  background-color: st-darken(#fafafb, 7%);
+}
+
+.calendar:active, .datemenu-today-button:active {
+  color: #222226;
+  background-color: st-darken(#fafafb, 9%);
+}
+
+.calendar:active:hover, .datemenu-today-button:active:hover {
+  background-color: st-darken(st-darken(#fafafb, 9%), 7%);
+}
+
+.calendar:active:focus, .datemenu-today-button:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(#fafafb, 9%), 5%);
+}
+
+.calendar:focus, .datemenu-today-button:focus {
+  color: #222226;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, #ffffff, 5%);
+}
+
+.calendar:focus:hover, .datemenu-today-button:focus:hover {
+  background-color: st-mix(-st-accent-color, st-darken(#ffffff, 4%), 5%);
+}
+
+.calendar:insensitive, .datemenu-today-button:insensitive {
+  color: st-transparentize(#222226, 0.6);
+  background-color: st-lighten(#ffffff, 3%);
+}
+
+.unlock-dialog .login-dialog-prompt-entry, .login-dialog .login-dialog-prompt-entry, .app-folder-dialog .folder-name-container .folder-name-entry, .search-entry, .lg-dialog StEntry, StEntry {
+  border-radius: 8px;
+  padding: 9px 9px;
+  selection-background-color: st-transparentize(-st-accent-color, 0.7);
+  selected-color: #222226;
+}
+
+StEntry {
+  background-color: #e0e0e1;
+  color: rgba(34, 34, 38, 0.7);
+}
+
+StEntry:hover {
+  background-color: #d6d6d7;
+  color: #222226;
+}
+
+StEntry:focus {
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, #e0e0e1, 5%);
+  color: #222226;
+}
+
+StEntry:insensitive {
+  background-color: #e8e8e9;
+  color: rgba(34, 34, 38, 0.5);
+}
+
+StEntry StLabel.hint-text {
+  color: rgba(34, 34, 38, 0.7);
+}
+
+.notification-button, .message .message-header .message-expand-button,
+.message .message-header .message-close-button {
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #222226;
+  background-color: rgba(34, 34, 38, 0.15);
+}
+
+.notification-button:focus, .message .message-header .message-expand-button:focus,
+.message .message-header .message-close-button:focus {
+  color: #222226;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(34, 34, 38, 0.15), 5%);
+}
+
+.notification-button:focus:hover, .message .message-header .message-expand-button:focus:hover,
+.message .message-header .message-close-button:focus:hover {
+  background-color: st-mix(-st-accent-color, rgba(34, 34, 38, 0.3), 5%);
+}
+
+.notification-button:hover, .message .message-header .message-expand-button:hover,
+.message .message-header .message-close-button:hover {
+  color: #222226;
+  background-color: rgba(34, 34, 38, 0.3);
+}
+
+.notification-button:active, .message .message-header .message-expand-button:active,
+.message .message-header .message-close-button:active {
+  color: #222226;
+  background-color: rgba(34, 34, 38, 0.2);
+}
+
+.notification-button:active:hover, .message .message-header .message-expand-button:active:hover,
+.message .message-header .message-close-button:active:hover {
+  background-color: rgba(34, 34, 38, 0.2);
+}
+
+.notification-button:active:focus, .message .message-header .message-expand-button:active:focus,
+.message .message-header .message-close-button:active:focus {
+  background-color: st-mix(-st-accent-color, rgba(34, 34, 38, 0.2), 5%);
+}
+
+.notification-button:checked, .message .message-header .message-expand-button:checked,
+.message .message-header .message-close-button:checked {
+  color: #222226;
+  background-color: st-darken(st-mix(#222226, #fafafb, 12%), 8%);
+}
+
+.notification-button:checked:hover, .message .message-header .message-expand-button:checked:hover,
+.message .message-header .message-close-button:checked:hover {
+  background-color: st-darken(st-darken(st-mix(#222226, #fafafb, 12%), 8%), 4%);
+}
+
+.notification-button:checked:active, .message .message-header .message-expand-button:checked:active,
+.message .message-header .message-close-button:checked:active {
+  background-color: st-darken(st-darken(st-mix(#222226, #fafafb, 12%), 8%), 9%);
+}
+
+.notification-button:insensitive, .message .message-header .message-expand-button:insensitive,
+.message .message-header .message-close-button:insensitive {
+  color: st-transparentize(#222226, 0.6);
+  background-color: rgba(34, 34, 38, 0.1);
+}
+
+.modal-dialog .modal-dialog-button-box .modal-dialog-button {
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 12px;
+  color: #222226;
+  background-color: rgba(34, 34, 38, 0.1);
+}
+
+.modal-dialog .modal-dialog-button-box .modal-dialog-button:focus {
+  color: #222226;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(34, 34, 38, 0.1), 5%);
+}
+
+.modal-dialog .modal-dialog-button-box .modal-dialog-button:focus:hover {
+  background-color: st-mix(-st-accent-color, rgba(34, 34, 38, 0.13), 5%);
+}
+
+.modal-dialog .modal-dialog-button-box .modal-dialog-button:hover {
+  color: #222226;
+  background-color: rgba(34, 34, 38, 0.13);
+}
+
+.modal-dialog .modal-dialog-button-box .modal-dialog-button:active {
+  color: #222226;
+  background-color: rgba(34, 34, 38, 0.16);
+}
+
+.modal-dialog .modal-dialog-button-box .modal-dialog-button:active:hover {
+  background-color: rgba(34, 34, 38, 0.19);
+}
+
+.modal-dialog .modal-dialog-button-box .modal-dialog-button:active:focus {
+  background-color: st-mix(-st-accent-color, rgba(34, 34, 38, 0.16), 5%);
+}
+
+.modal-dialog .modal-dialog-button-box .modal-dialog-button:checked {
+  color: #222226;
+  background-color: st-darken(st-mix(#222226, #fafafb, 12%), 8%);
+}
+
+.modal-dialog .modal-dialog-button-box .modal-dialog-button:checked:hover {
+  background-color: st-darken(st-darken(st-mix(#222226, #fafafb, 12%), 8%), 4%);
+}
+
+.modal-dialog .modal-dialog-button-box .modal-dialog-button:checked:active {
+  background-color: st-darken(st-darken(st-mix(#222226, #fafafb, 12%), 8%), 9%);
+}
+
+.modal-dialog .modal-dialog-button-box .modal-dialog-button:insensitive {
+  color: st-transparentize(#222226, 0.6);
+  background-color: rgba(34, 34, 38, 0.05);
+}
+
+.dash-label, .window-caption, .screenshot-ui-tooltip {
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 6px 12px;
+  text-align: center;
+}
+
+/* General Typography */
+.unlock-dialog-clock .unlock-dialog-clock-date, .app-folder-dialog .folder-name-container .folder-name-label, .app-folder-dialog .folder-name-container .folder-name-entry, .search-statustext {
+  font-weight: 800;
+  font-size: 1.818em;
+}
+
+.conflicting-session-dialog-content .conflicting-session-dialog-title, .message-dialog-content .message-dialog-title, .message-notification-group .message-group-header .message-group-title, .datemenu-today-button .date-label {
+  font-weight: 800;
+  font-size: 1.364em;
+}
+
+.login-dialog .user-widget.horizontal .user-widget-label,
+.unlock-dialog .user-widget.horizontal .user-widget-label, .quick-toggle-menu .header .title, .message-list .message-list-placeholder {
+  font-weight: 700;
+  font-size: 1.364em;
+}
+
+.login-dialog-auth-list-label, #LookingGlassDebugFlags .lg-debug-flags-header, #LookingGlassExtensions .lg-extensions-none, .word-suggestions, .bt-menu-placeholder.popup-menu-item, .restart-message, .polkit-dialog-user-layout .polkit-dialog-user-label,
+.polkit-dialog-user-layout .polkit-dialog-user-root-label, .message-dialog-content .message-dialog-title.lightweight {
+  font-weight: 700;
+  font-size: 1.182em;
+}
+
+.login-dialog-not-listed-label, #LookingGlassExtensions .lg-extension .lg-extension-name, #LookingGlassWindows .lg-window .lg-window-name, #LookingGlassPropertyInspector .lg-obj-inspector-title, .background-app-item .title, .quick-toggle .quick-toggle-title, .osd-window, .dialog-list .dialog-list-title, .message-list-controls, .weather-button .weather-box .weather-header-box .weather-header, .world-clocks-button .world-clocks-header, .events-button .events-box .events-list .event-box .event-summary, .events-button .events-box .events-title, .calendar .calendar-month-header .calendar-month-label {
+  font-weight: 700;
+  font-size: 1em;
+}
+
+.quick-toggle-menu .header .subtitle, .app-menu .popup-inactive-menu-item:first-child > StLabel {
+  font-weight: 700;
+  font-size: 0.818em;
+}
+
+.lg-completions-text, .caps-lock-warning-label, .background-app-item .subtitle, .quick-toggle .quick-toggle-subtitle, .screenshot-ui-type-button .icon-label-button-container, .prompt-dialog .prompt-dialog-error-label,
+.prompt-dialog .prompt-dialog-info-label,
+.prompt-dialog .prompt-dialog-null-label, .run-dialog .run-dialog-description, .dialog-list .dialog-list-box .dialog-list-item .dialog-list-item-description, .message .message-header .message-header-content .event-time, .world-clocks-button .world-clocks-grid .world-clocks-timezone, .events-button .events-box .events-list .event-box .event-time {
+  font-weight: 400;
+  font-size: 0.818em;
+}
+
+.weather-button .weather-box .weather-grid .weather-forecast-time, .calendar .calendar-week-number, .calendar .calendar-day-heading, .calendar .calendar-day {
+  font-weight: 400;
+  font-size: 0.818em;
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button StLabel, #LookingGlassEvaluator .evaluator-results, .lg-dialog .actor-link {
+  font-family: monospace;
+}
+
+.unlock-dialog-clock .unlock-dialog-clock-time, #panel, .weather-button .weather-box .weather-grid .weather-forecast-temp, .world-clocks-button .world-clocks-grid .world-clocks-timezone, .world-clocks-button .world-clocks-grid .world-clocks-time, .events-button .events-box .events-list .event-box .event-time, .calendar .calendar-day-heading, .calendar .calendar-day {
+  font-feature-settings: "tnum";
+}
+
+/* OSD Elements */
+#LookingGlassDialog, .screenshot-ui-panel, .workspace-switcher, .switcher-list, .resize-popup, .osd-window {
+  color: #ffffff;
+  background-color: #2e2e33;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  border-radius: 999px;
+  padding: 12px;
+}
+
+.lg-dialog StEntry {
+  background-color: #47474c;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.lg-dialog StEntry:hover {
+  background-color: #515157;
+  color: #ffffff;
+}
+
+.lg-dialog StEntry:focus {
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, #47474c, 5%);
+  color: #ffffff;
+}
+
+.lg-dialog StEntry:insensitive {
+  background-color: #404044;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.lg-dialog StEntry StLabel.hint-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button, #LookingGlassPropertyInspector .lg-obj-inspector-close-button,
+#LookingGlassPropertyInspector .lg-obj-inspector-button, #LookingGlassDialog > #Toolbar .lg-toolbar-button {
+  color: #ffffff;
+  background-color: st-mix(#ffffff, #2e2e33, 12%);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button:focus, #LookingGlassPropertyInspector .lg-obj-inspector-close-button:focus,
+#LookingGlassPropertyInspector .lg-obj-inspector-button:focus, #LookingGlassDialog > #Toolbar .lg-toolbar-button:focus {
+  color: #ffffff;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, st-mix(#ffffff, #2e2e33, 12%), 5%);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button:focus:hover, #LookingGlassPropertyInspector .lg-obj-inspector-close-button:focus:hover,
+#LookingGlassPropertyInspector .lg-obj-inspector-button:focus:hover, #LookingGlassDialog > #Toolbar .lg-toolbar-button:focus:hover {
+  background-color: st-mix(-st-accent-color, st-lighten(st-mix(#ffffff, #2e2e33, 12%), 4%), 5%);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button:hover, #LookingGlassPropertyInspector .lg-obj-inspector-close-button:hover,
+#LookingGlassPropertyInspector .lg-obj-inspector-button:hover, #LookingGlassDialog > #Toolbar .lg-toolbar-button:hover {
+  color: #ffffff;
+  background-color: st-lighten(st-mix(#ffffff, #2e2e33, 12%), 4%);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button:active, #LookingGlassPropertyInspector .lg-obj-inspector-close-button:active,
+#LookingGlassPropertyInspector .lg-obj-inspector-button:active, #LookingGlassDialog > #Toolbar .lg-toolbar-button:active {
+  color: #ffffff;
+  background-color: st-lighten(st-mix(#ffffff, #2e2e33, 12%), 9%);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button:active:hover, #LookingGlassPropertyInspector .lg-obj-inspector-close-button:active:hover,
+#LookingGlassPropertyInspector .lg-obj-inspector-button:active:hover, #LookingGlassDialog > #Toolbar .lg-toolbar-button:active:hover {
+  background-color: st-lighten(st-lighten(st-mix(#ffffff, #2e2e33, 12%), 9%), 4%);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button:active:focus, #LookingGlassPropertyInspector .lg-obj-inspector-close-button:active:focus,
+#LookingGlassPropertyInspector .lg-obj-inspector-button:active:focus, #LookingGlassDialog > #Toolbar .lg-toolbar-button:active:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(st-mix(#ffffff, #2e2e33, 12%), 9%), 5%);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button:checked, #LookingGlassPropertyInspector .lg-obj-inspector-close-button:checked,
+#LookingGlassPropertyInspector .lg-obj-inspector-button:checked, #LookingGlassDialog > #Toolbar .lg-toolbar-button:checked {
+  color: #ffffff;
+  background-color: st-lighten(st-mix(#ffffff, #2e2e33, 12%), 8%);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button:checked:hover, #LookingGlassPropertyInspector .lg-obj-inspector-close-button:checked:hover,
+#LookingGlassPropertyInspector .lg-obj-inspector-button:checked:hover, #LookingGlassDialog > #Toolbar .lg-toolbar-button:checked:hover {
+  background-color: st-lighten(st-lighten(st-mix(#ffffff, #2e2e33, 12%), 8%), 4%);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button:checked:active, #LookingGlassPropertyInspector .lg-obj-inspector-close-button:checked:active,
+#LookingGlassPropertyInspector .lg-obj-inspector-button:checked:active, #LookingGlassDialog > #Toolbar .lg-toolbar-button:checked:active {
+  background-color: st-lighten(st-lighten(st-mix(#ffffff, #2e2e33, 12%), 8%), 9%);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button:insensitive, #LookingGlassPropertyInspector .lg-obj-inspector-close-button:insensitive,
+#LookingGlassPropertyInspector .lg-obj-inspector-button:insensitive, #LookingGlassDialog > #Toolbar .lg-toolbar-button:insensitive {
+  color: st-transparentize(#ffffff, 0.6);
+  background-color: st-darken(st-mix(#ffffff, #2e2e33, 12%), 3%);
+}
+
+#LookingGlassDialog .notebook-tab, .screenshot-ui-show-pointer-button, .screenshot-ui-type-button {
+  color: #ffffff;
+  background-color: #2e2e33;
+}
+
+#LookingGlassDialog .notebook-tab:focus, .screenshot-ui-show-pointer-button:focus, .screenshot-ui-type-button:focus {
+  color: #ffffff;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(46, 46, 51, 0.25), 5%);
+}
+
+#LookingGlassDialog .notebook-tab:focus:hover, .screenshot-ui-show-pointer-button:focus:hover, .screenshot-ui-type-button:focus:hover {
+  background-color: st-mix(-st-accent-color, st-lighten(#2e2e33, 7%), 5%);
+}
+
+#LookingGlassDialog .notebook-tab:hover, .screenshot-ui-show-pointer-button:hover, .screenshot-ui-type-button:hover {
+  color: #ffffff;
+  background-color: st-lighten(#2e2e33, 7%);
+}
+
+#LookingGlassDialog .notebook-tab:active, .screenshot-ui-show-pointer-button:active, .screenshot-ui-type-button:active {
+  color: #ffffff;
+  background-color: st-lighten(#2e2e33, 9%);
+}
+
+#LookingGlassDialog .notebook-tab:active:hover, .screenshot-ui-show-pointer-button:active:hover, .screenshot-ui-type-button:active:hover {
+  background-color: st-lighten(st-lighten(#2e2e33, 9%), 7%);
+}
+
+#LookingGlassDialog .notebook-tab:active:focus, .screenshot-ui-show-pointer-button:active:focus, .screenshot-ui-type-button:active:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(#2e2e33, 9%), 5%);
+}
+
+#LookingGlassDialog .notebook-tab:checked, .screenshot-ui-show-pointer-button:checked, .screenshot-ui-type-button:checked {
+  color: #ffffff;
+  background-color: st-lighten(#2e2e33, 8%);
+}
+
+#LookingGlassDialog .notebook-tab:checked:hover, .screenshot-ui-show-pointer-button:checked:hover, .screenshot-ui-type-button:checked:hover {
+  background-color: st-lighten(st-lighten(#2e2e33, 8%), 7%);
+}
+
+#LookingGlassDialog .notebook-tab:checked:active, .screenshot-ui-show-pointer-button:checked:active, .screenshot-ui-type-button:checked:active {
+  background-color: st-lighten(st-lighten(#2e2e33, 8%), 9%);
+}
+
+#LookingGlassDialog .notebook-tab:insensitive, .screenshot-ui-show-pointer-button:insensitive, .screenshot-ui-type-button:insensitive {
+  color: st-transparentize(#ffffff, 0.6);
+  background-color: #2e2e33;
+}
+
+/* System Elements */
+.app-folder-dialog .folder-name-container .folder-name-entry, .search-entry {
+  background-color: #47474b;
+  color: rgba(250, 250, 251, 0.7);
+}
+
+.app-folder-dialog .folder-name-container .folder-name-entry:hover, .search-entry:hover {
+  background-color: #515155;
+  color: #fafafb;
+}
+
+.app-folder-dialog .folder-name-container .folder-name-entry:focus, .search-entry:focus {
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, #47474b, 5%);
+  color: #fafafb;
+}
+
+.app-folder-dialog .folder-name-container .folder-name-entry:insensitive, .search-entry:insensitive {
+  background-color: #404043;
+  color: rgba(250, 250, 251, 0.5);
+}
+
+.app-folder-dialog .folder-name-container .folder-name-entry StLabel.hint-text, .search-entry StLabel.hint-text {
+  color: rgba(250, 250, 251, 0.7);
+}
+
+/* Lockscreen Elements */
+.unlock-dialog .button,
+.unlock-dialog .icon-button,
+.unlock-dialog .calendar .calendar-month-header .pager-button,
+.calendar .calendar-month-header .unlock-dialog .pager-button,
+.unlock-dialog .message-notification-group .message-collapse-button,
+.message-notification-group .unlock-dialog .message-collapse-button,
+.unlock-dialog .message .message-header .message-expand-button,
+.message .message-header .unlock-dialog .message-expand-button,
+.unlock-dialog .message .message-header .message-close-button,
+.message .message-header .unlock-dialog .message-close-button,
+.unlock-dialog .screenshot-ui-show-pointer-button, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item, .unlock-dialog .login-dialog-auth-list-item, .login-dialog .login-dialog-auth-list-item, .login-dialog-not-listed-button, .login-dialog-button.a11y-button, .login-dialog-button.cancel-button, .login-dialog-button.switch-user-button, .login-dialog-button.login-dialog-session-list-button {
+  color: #fafafb;
+  background-color: rgba(250, 250, 251, 0.1);
+}
+
+.unlock-dialog .button:focus,
+.unlock-dialog .icon-button:focus,
+.unlock-dialog .calendar .calendar-month-header .pager-button:focus,
+.calendar .calendar-month-header .unlock-dialog .pager-button:focus,
+.unlock-dialog .message-notification-group .message-collapse-button:focus,
+.message-notification-group .unlock-dialog .message-collapse-button:focus,
+.unlock-dialog .message .message-header .message-expand-button:focus,
+.message .message-header .unlock-dialog .message-expand-button:focus,
+.unlock-dialog .message .message-header .message-close-button:focus,
+.message .message-header .unlock-dialog .message-close-button:focus,
+.unlock-dialog .screenshot-ui-show-pointer-button:focus, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:focus, .unlock-dialog .login-dialog-auth-list-item:focus, .login-dialog .login-dialog-auth-list-item:focus, .login-dialog-not-listed-button:focus, .login-dialog-button.a11y-button:focus, .login-dialog-button.cancel-button:focus, .login-dialog-button.switch-user-button:focus, .login-dialog-button.login-dialog-session-list-button:focus {
+  color: #fafafb;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(250, 250, 251, 0.1), 5%);
+}
+
+.unlock-dialog .button:focus:hover,
+.unlock-dialog .icon-button:focus:hover,
+.unlock-dialog .calendar .calendar-month-header .pager-button:focus:hover,
+.calendar .calendar-month-header .unlock-dialog .pager-button:focus:hover,
+.unlock-dialog .message-notification-group .message-collapse-button:focus:hover,
+.message-notification-group .unlock-dialog .message-collapse-button:focus:hover,
+.unlock-dialog .message .message-header .message-expand-button:focus:hover,
+.message .message-header .unlock-dialog .message-expand-button:focus:hover,
+.unlock-dialog .message .message-header .message-close-button:focus:hover,
+.message .message-header .unlock-dialog .message-close-button:focus:hover,
+.unlock-dialog .screenshot-ui-show-pointer-button:focus:hover, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:focus:hover, .unlock-dialog .login-dialog-auth-list-item:focus:hover, .login-dialog .login-dialog-auth-list-item:focus:hover, .login-dialog-not-listed-button:focus:hover, .login-dialog-button.a11y-button:focus:hover, .login-dialog-button.cancel-button:focus:hover, .login-dialog-button.switch-user-button:focus:hover, .login-dialog-button.login-dialog-session-list-button:focus:hover {
+  background-color: st-mix(-st-accent-color, rgba(250, 250, 251, 0.13), 5%);
+}
+
+.unlock-dialog .button:hover,
+.unlock-dialog .icon-button:hover,
+.unlock-dialog .calendar .calendar-month-header .pager-button:hover,
+.calendar .calendar-month-header .unlock-dialog .pager-button:hover,
+.unlock-dialog .message-notification-group .message-collapse-button:hover,
+.message-notification-group .unlock-dialog .message-collapse-button:hover,
+.unlock-dialog .message .message-header .message-expand-button:hover,
+.message .message-header .unlock-dialog .message-expand-button:hover,
+.unlock-dialog .message .message-header .message-close-button:hover,
+.message .message-header .unlock-dialog .message-close-button:hover,
+.unlock-dialog .screenshot-ui-show-pointer-button:hover, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:hover, .unlock-dialog .login-dialog-auth-list-item:hover, .login-dialog .login-dialog-auth-list-item:hover, .login-dialog-not-listed-button:hover, .login-dialog-button.a11y-button:hover, .login-dialog-button.cancel-button:hover, .login-dialog-button.switch-user-button:hover, .login-dialog-button.login-dialog-session-list-button:hover {
+  color: #fafafb;
+  background-color: rgba(250, 250, 251, 0.13);
+}
+
+.unlock-dialog .button:active,
+.unlock-dialog .icon-button:active,
+.unlock-dialog .calendar .calendar-month-header .pager-button:active,
+.calendar .calendar-month-header .unlock-dialog .pager-button:active,
+.unlock-dialog .message-notification-group .message-collapse-button:active,
+.message-notification-group .unlock-dialog .message-collapse-button:active,
+.unlock-dialog .message .message-header .message-expand-button:active,
+.message .message-header .unlock-dialog .message-expand-button:active,
+.unlock-dialog .message .message-header .message-close-button:active,
+.message .message-header .unlock-dialog .message-close-button:active,
+.unlock-dialog .screenshot-ui-show-pointer-button:active, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:active, .unlock-dialog .login-dialog-auth-list-item:active, .login-dialog .login-dialog-auth-list-item:active, .login-dialog-not-listed-button:active, .login-dialog-button.a11y-button:active, .login-dialog-button.cancel-button:active, .login-dialog-button.switch-user-button:active, .login-dialog-button.login-dialog-session-list-button:active {
+  color: #fafafb;
+  background-color: rgba(250, 250, 251, 0.16);
+}
+
+.unlock-dialog .button:active:hover,
+.unlock-dialog .icon-button:active:hover,
+.unlock-dialog .calendar .calendar-month-header .pager-button:active:hover,
+.calendar .calendar-month-header .unlock-dialog .pager-button:active:hover,
+.unlock-dialog .message-notification-group .message-collapse-button:active:hover,
+.message-notification-group .unlock-dialog .message-collapse-button:active:hover,
+.unlock-dialog .message .message-header .message-expand-button:active:hover,
+.message .message-header .unlock-dialog .message-expand-button:active:hover,
+.unlock-dialog .message .message-header .message-close-button:active:hover,
+.message .message-header .unlock-dialog .message-close-button:active:hover,
+.unlock-dialog .screenshot-ui-show-pointer-button:active:hover, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:active:hover, .unlock-dialog .login-dialog-auth-list-item:active:hover, .login-dialog .login-dialog-auth-list-item:active:hover, .login-dialog-not-listed-button:active:hover, .login-dialog-button.a11y-button:active:hover, .login-dialog-button.cancel-button:active:hover, .login-dialog-button.switch-user-button:active:hover, .login-dialog-button.login-dialog-session-list-button:active:hover {
+  background-color: rgba(250, 250, 251, 0.19);
+}
+
+.unlock-dialog .button:active:focus,
+.unlock-dialog .icon-button:active:focus,
+.unlock-dialog .calendar .calendar-month-header .pager-button:active:focus,
+.calendar .calendar-month-header .unlock-dialog .pager-button:active:focus,
+.unlock-dialog .message-notification-group .message-collapse-button:active:focus,
+.message-notification-group .unlock-dialog .message-collapse-button:active:focus,
+.unlock-dialog .message .message-header .message-expand-button:active:focus,
+.message .message-header .unlock-dialog .message-expand-button:active:focus,
+.unlock-dialog .message .message-header .message-close-button:active:focus,
+.message .message-header .unlock-dialog .message-close-button:active:focus,
+.unlock-dialog .screenshot-ui-show-pointer-button:active:focus, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:active:focus, .unlock-dialog .login-dialog-auth-list-item:active:focus, .login-dialog .login-dialog-auth-list-item:active:focus, .login-dialog-not-listed-button:active:focus, .login-dialog-button.a11y-button:active:focus, .login-dialog-button.cancel-button:active:focus, .login-dialog-button.switch-user-button:active:focus, .login-dialog-button.login-dialog-session-list-button:active:focus {
+  background-color: st-mix(-st-accent-color, rgba(250, 250, 251, 0.16), 5%);
+}
+
+.unlock-dialog .button:checked,
+.unlock-dialog .icon-button:checked,
+.unlock-dialog .calendar .calendar-month-header .pager-button:checked,
+.calendar .calendar-month-header .unlock-dialog .pager-button:checked,
+.unlock-dialog .message-notification-group .message-collapse-button:checked,
+.message-notification-group .unlock-dialog .message-collapse-button:checked,
+.unlock-dialog .message .message-header .message-expand-button:checked,
+.message .message-header .unlock-dialog .message-expand-button:checked,
+.unlock-dialog .message .message-header .message-close-button:checked,
+.message .message-header .unlock-dialog .message-close-button:checked,
+.unlock-dialog .screenshot-ui-show-pointer-button:checked, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:checked, .unlock-dialog .login-dialog-auth-list-item:checked, .login-dialog .login-dialog-auth-list-item:checked, .login-dialog-not-listed-button:checked, .login-dialog-button.a11y-button:checked, .login-dialog-button.cancel-button:checked, .login-dialog-button.switch-user-button:checked, .login-dialog-button.login-dialog-session-list-button:checked {
+  color: #fafafb;
+  background-color: st-darken(st-mix(#fafafb, #fafafb, 12%), 8%);
+}
+
+.unlock-dialog .button:checked:hover,
+.unlock-dialog .icon-button:checked:hover,
+.unlock-dialog .calendar .calendar-month-header .pager-button:checked:hover,
+.calendar .calendar-month-header .unlock-dialog .pager-button:checked:hover,
+.unlock-dialog .message-notification-group .message-collapse-button:checked:hover,
+.message-notification-group .unlock-dialog .message-collapse-button:checked:hover,
+.unlock-dialog .message .message-header .message-expand-button:checked:hover,
+.message .message-header .unlock-dialog .message-expand-button:checked:hover,
+.unlock-dialog .message .message-header .message-close-button:checked:hover,
+.message .message-header .unlock-dialog .message-close-button:checked:hover,
+.unlock-dialog .screenshot-ui-show-pointer-button:checked:hover, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:checked:hover, .unlock-dialog .login-dialog-auth-list-item:checked:hover, .login-dialog .login-dialog-auth-list-item:checked:hover, .login-dialog-not-listed-button:checked:hover, .login-dialog-button.a11y-button:checked:hover, .login-dialog-button.cancel-button:checked:hover, .login-dialog-button.switch-user-button:checked:hover, .login-dialog-button.login-dialog-session-list-button:checked:hover {
+  background-color: st-darken(st-darken(st-mix(#fafafb, #fafafb, 12%), 8%), 4%);
+}
+
+.unlock-dialog .button:checked:active,
+.unlock-dialog .icon-button:checked:active,
+.unlock-dialog .calendar .calendar-month-header .pager-button:checked:active,
+.calendar .calendar-month-header .unlock-dialog .pager-button:checked:active,
+.unlock-dialog .message-notification-group .message-collapse-button:checked:active,
+.message-notification-group .unlock-dialog .message-collapse-button:checked:active,
+.unlock-dialog .message .message-header .message-expand-button:checked:active,
+.message .message-header .unlock-dialog .message-expand-button:checked:active,
+.unlock-dialog .message .message-header .message-close-button:checked:active,
+.message .message-header .unlock-dialog .message-close-button:checked:active,
+.unlock-dialog .screenshot-ui-show-pointer-button:checked:active, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:checked:active, .unlock-dialog .login-dialog-auth-list-item:checked:active, .login-dialog .login-dialog-auth-list-item:checked:active, .login-dialog-not-listed-button:checked:active, .login-dialog-button.a11y-button:checked:active, .login-dialog-button.cancel-button:checked:active, .login-dialog-button.switch-user-button:checked:active, .login-dialog-button.login-dialog-session-list-button:checked:active {
+  background-color: st-darken(st-darken(st-mix(#fafafb, #fafafb, 12%), 8%), 9%);
+}
+
+.unlock-dialog .button:insensitive,
+.unlock-dialog .icon-button:insensitive,
+.unlock-dialog .calendar .calendar-month-header .pager-button:insensitive,
+.calendar .calendar-month-header .unlock-dialog .pager-button:insensitive,
+.unlock-dialog .message-notification-group .message-collapse-button:insensitive,
+.message-notification-group .unlock-dialog .message-collapse-button:insensitive,
+.unlock-dialog .message .message-header .message-expand-button:insensitive,
+.message .message-header .unlock-dialog .message-expand-button:insensitive,
+.unlock-dialog .message .message-header .message-close-button:insensitive,
+.message .message-header .unlock-dialog .message-close-button:insensitive,
+.unlock-dialog .screenshot-ui-show-pointer-button:insensitive, .login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:insensitive, .unlock-dialog .login-dialog-auth-list-item:insensitive, .login-dialog .login-dialog-auth-list-item:insensitive, .login-dialog-not-listed-button:insensitive, .login-dialog-button.a11y-button:insensitive, .login-dialog-button.cancel-button:insensitive, .login-dialog-button.switch-user-button:insensitive, .login-dialog-button.login-dialog-session-list-button:insensitive {
+  color: st-transparentize(#fafafb, 0.6);
+  background-color: rgba(250, 250, 251, 0.05);
+}
+
+.unlock-dialog .login-dialog-prompt-entry, .login-dialog .login-dialog-prompt-entry {
+  background-color: rgba(250, 250, 251, 0.1);
+  color: rgba(250, 250, 251, 0.7);
+}
+
+.unlock-dialog .login-dialog-prompt-entry:hover, .login-dialog .login-dialog-prompt-entry:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fafafb;
+}
+
+.unlock-dialog .login-dialog-prompt-entry:focus, .login-dialog .login-dialog-prompt-entry:focus {
+  box-shadow: inset 0 0 0 2px st-transparentize(rgba(250, 250, 251, 0.4), 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(250, 250, 251, 0.1), 5%);
+  color: #fafafb;
+  box-shadow: inset 0 0 0 2px st-transparentize(rgba(250, 250, 251, 0.4), 0.2) !important;
+  background-color: st-mix(rgba(250, 250, 251, 0.4), rgba(250, 250, 251, 0.1), 5%);
+}
+
+.unlock-dialog .login-dialog-prompt-entry:insensitive, .login-dialog .login-dialog-prompt-entry:insensitive {
+  background-color: rgba(242, 242, 244, 0.1);
+  color: rgba(250, 250, 251, 0.5);
+}
+
+.unlock-dialog .login-dialog-prompt-entry StLabel.hint-text, .login-dialog .login-dialog-prompt-entry StLabel.hint-text {
+  color: rgba(250, 250, 251, 0.7);
+}
+
+/* WIDGETS */
+.shell-link {
+  color: st-darken(-st-accent-color, 10%);
+}
+
+.shell-link:hover {
+  color: st-lighten(st-darken(-st-accent-color, 10%), 10%);
+}
+
+.lowres-icon {
+  icon-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.icon-dropshadow {
+  icon-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Entries */
+StEntry StIcon.capslock-warning {
+  icon-size: 1.091em;
+  warning-color: #e5a50a;
+  padding: 0 4px;
+}
+
+StEntry StIcon.peek-password {
+  icon-size: 1.091em;
+  padding: 0 4px;
+}
+
+StEntry StLabel.hint-text {
+  margin-left: 2px;
+}
+
+/* Buttons */
+.button {
+  min-height: 1.5em;
+}
+
+.icon-button, .login-dialog-button.a11y-button, .login-dialog-button.cancel-button, .login-dialog-button.switch-user-button, .login-dialog-button.login-dialog-session-list-button, .screenshot-ui-show-pointer-button, .message .message-header .message-expand-button,
+.message .message-header .message-close-button, .message-notification-group .message-collapse-button, .calendar .calendar-month-header .pager-button {
+  border-radius: 999px;
+  padding: 0.818em;
+  min-height: 1.091em;
+}
+
+.icon-button StIcon, .login-dialog-button.a11y-button StIcon, .login-dialog-button.cancel-button StIcon, .login-dialog-button.switch-user-button StIcon, .login-dialog-button.login-dialog-session-list-button StIcon, .screenshot-ui-show-pointer-button StIcon, .message .message-header .message-expand-button StIcon,
+.message .message-header .message-close-button StIcon, .message-notification-group .message-collapse-button StIcon, .calendar .calendar-month-header .pager-button StIcon {
+  icon-size: 1.091em;
+  -st-icon-style: symbolic;
+}
+
+/* Check Boxes */
+.check-box StBoxLayout {
+  spacing: .8em;
+}
+
+.check-box StBin {
+  border-radius: 7px;
+  padding: 2px;
+}
+
+.check-box:focus StBin {
+  background-color: rgba(0, 0, 0, 0.01);
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.65);
+}
+
+.check-box StIcon {
+  icon-size: 14px;
+  padding: 1px;
+  color: transparent;
+  border-radius: 6px;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+.check-box:hover StIcon {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.check-box:active StIcon {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.check-box:checked StIcon {
+  background-color: -st-accent-color;
+  color: -st-accent-fg-color;
+  border-color: transparent;
+}
+
+.check-box:checked:hover StIcon {
+  background-color: st-lighten(-st-accent-color, 5%);
+  color: st-lighten(-st-accent-fg-color, 5%);
+}
+
+.check-box:checked:active StIcon {
+  background-color: st-darken(-st-accent-color, 7%);
+  color: st-darken(-st-accent-fg-color, 7%);
+}
+
+/* Switches */
+.toggle-switch {
+  width: 46px;
+  border-radius: 999px;
+  transition-duration: 100ms;
+  color: #222226;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.toggle-switch:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch StIcon {
+  icon-size: 16px;
+}
+
+.toggle-switch .handle {
+  margin: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition-duration: 100ms;
+}
+
+.toggle-switch:checked {
+  background: -st-accent-color;
+  color: -st-accent-fg-color;
+}
+
+.toggle-switch:checked:hover {
+  background-color: st-lighten(-st-accent-color, 5%);
+  color: st-lighten(-st-accent-fg-color, 5%);
+}
+
+.toggle-switch:checked .handle {
+  background: white;
+}
+
+/* Slider */
+.slider {
+  color: #222226;
+  -barlevel-height: 4px;
+  -barlevel-background-color: rgba(34, 34, 38, 0.1);
+  -barlevel-active-background-color: -st-accent-color;
+  -barlevel-overdrive-color: #e01b24;
+  -barlevel-overdrive-separator-width: 1px;
+  -slider-handle-radius: 0.5455em;
+}
+
+.slider:hover {
+  color: #333339;
+}
+
+/* Scrollbars */
+StScrollView.vfade {
+  -st-vfade-offset: 68px;
+}
+
+StScrollView.hfade {
+  -st-hfade-offset: 68px;
+}
+
+StScrollBar {
+  padding: 0;
+}
+
+StScrollView StScrollBar {
+  min-width: 8px;
+  min-height: 8px;
+}
+
+StScrollBar StBin#trough {
+  border-radius: 0;
+  background-color: transparent;
+}
+
+StScrollBar StButton#vhandle, StScrollBar StButton#hhandle {
+  border-radius: 8px;
+  background-color: #b9b9bb;
+  border: 3px solid transparent;
+  transition: 500ms all ease;
+}
+
+StScrollBar StButton#vhandle:hover, StScrollBar StButton#hhandle:hover {
+  background-color: #8e8e91;
+}
+
+StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
+  background-color: #a4a4a6;
+}
+
+/* Popovers/Menus */
+.popup-menu-boxpointer, .candidate-popup-boxpointer {
+  -arrow-rise: 6px;
+}
+
+.popup-menu {
+  min-width: 15em;
+  color: #222226;
+}
+
+.popup-menu.panel-menu {
+  margin-bottom: 1.75em;
+}
+
+.popup-menu-content, .candidate-popup-content {
+  padding: 6px;
+  background-color: #fafafb;
+  border-radius: 20px;
+  border: 1px solid #e6e6eb;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+.popup-menu-item {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  border-radius: 12px;
+}
+
+.popup-menu-item:insensitive {
+  background-color: transparent !important;
+}
+
+.popup-menu-item:active {
+  color: #222226;
+  background-color: st-darken(#ececf0, 9%);
+}
+
+.popup-menu-item:active:hover {
+  background-color: st-darken(st-darken(#ececf0, 9%), 7%);
+}
+
+.popup-menu-item:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(#ececf0, 9%), 5%);
+}
+
+.popup-menu-item:hover, .popup-menu-item:selected, .popup-menu-item:checked {
+  color: #222226;
+  background-color: st-darken(#ececf0, 7%);
+}
+
+.popup-menu-item:insensitive {
+  color: st-transparentize(#222226, 0.6);
+  background-color: #ececf0;
+}
+
+.popup-menu-item:checked {
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.popup-menu-item .toggle-switch:ltr {
+  margin-left: 4px;
+}
+
+.popup-menu-item .toggle-switch:rtl {
+  margin-right: 4px;
+}
+
+.popup-ornamented-menu-item:ltr {
+  padding-left: 6px;
+}
+
+.popup-ornamented-menu-item:rtl {
+  padding-right: 6px;
+}
+
+.popup-inactive-menu-item {
+  color: #222226;
+}
+
+.popup-inactive-menu-item:insensitive {
+  color: #78787b;
+}
+
+.popup-menu-arrow,
+.popup-menu-icon {
+  icon-size: 1.091em;
+}
+
+.popup-sub-menu {
+  border-radius: 0 0 13px 13px;
+  margin-bottom: 6px;
+  border: 1px solid transparent;
+  background-color: #cacad4;
+}
+
+.popup-sub-menu .popup-menu-item {
+  border-radius: 0;
+  border-top-width: 0;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.popup-sub-menu .popup-menu-item:insensitive {
+  background-color: transparent !important;
+}
+
+.popup-sub-menu .popup-menu-item:active {
+  color: #222226;
+  background-color: st-darken(#cacad4, 9%);
+}
+
+.popup-sub-menu .popup-menu-item:active:hover {
+  background-color: st-darken(st-darken(#cacad4, 9%), 7%);
+}
+
+.popup-sub-menu .popup-menu-item:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(#cacad4, 9%), 5%);
+}
+
+.popup-sub-menu .popup-menu-item:hover, .popup-sub-menu .popup-menu-item:selected, .popup-sub-menu .popup-menu-item:checked {
+  color: #222226;
+  background-color: st-darken(#cacad4, 7%);
+}
+
+.popup-sub-menu .popup-menu-item:insensitive {
+  color: st-transparentize(#222226, 0.6);
+  background-color: #cacad4;
+}
+
+.popup-sub-menu .popup-menu-item:last-child {
+  border-radius: 0 0 12px 12px;
+  border-bottom-width: 0;
+}
+
+.popup-sub-menu .popup-menu-section .popup-menu-item:last-child:hover, .popup-sub-menu .popup-menu-section .popup-menu-item:last-child:focus {
+  border-radius: 0;
+}
+
+.popup-sub-menu .popup-menu-section:last-child .popup-menu-item:last-child {
+  border-radius: 0 0 12px 12px;
+}
+
+.popup-menu-ornament {
+  icon-size: 1.091em !important;
+  width: 1.091em;
+}
+
+.popup-separator-menu-item {
+  border: none !important;
+}
+
+.popup-separator-menu-item .popup-separator-menu-item-separator {
+  height: 1px;
+  background-color: rgba(34, 34, 38, 0.15);
+}
+
+.popup-sub-menu .popup-separator-menu-item {
+  background-color: transparent;
+}
+
+.popup-sub-menu .popup-separator-menu-item:ltr {
+  margin-right: 2.5em;
+}
+
+.popup-sub-menu .popup-separator-menu-item:rtl {
+  margin-left: 2.5em;
+}
+
+.popup-sub-menu .popup-separator-menu-item .popup-separator-menu-item-separator {
+  background-color: rgba(34, 34, 38, 0.15);
+}
+
+.background-menu {
+  -boxpointer-gap: 0px;
+  -arrow-rise: 0px;
+}
+
+.app-menu {
+  max-width: 27.25em;
+}
+
+.app-menu .popup-inactive-menu-item:first-child > StLabel:ltr {
+  margin-right: 8px;
+}
+
+.app-menu .popup-inactive-menu-item:first-child > StLabel:rtl {
+  margin-left: 8px;
+}
+
+/* Date/Time Menu */
+#calendarArea {
+  padding: 4px;
+}
+
+.datemenu-popover {
+  border-radius: 30px;
+}
+
+.datemenu-calendar-column {
+  spacing: 6px;
+}
+
+.datemenu-calendar-column:ltr {
+  margin-left: 6px;
+}
+
+.datemenu-calendar-column:rtl {
+  margin-right: 6px;
+}
+
+.datemenu-calendar-column .datemenu-displays-box {
+  spacing: 6px;
+}
+
+.datemenu-today-button {
+  padding: 9px;
+}
+
+.datemenu-today-button .day-label {
+  font-weight: bold;
+}
+
+.calendar {
+  margin-top: 0;
+  padding: 0;
+}
+
+.calendar .calendar-month-header .calendar-change-month-back StIcon,
+.calendar .calendar-month-header .calendar-change-month-forward StIcon {
+  icon-size: 1.091em;
+}
+
+.calendar .calendar-month-header .calendar-month-label {
+  color: #222226 !important;
+  padding: 8px 0;
+  width: 10em;
+  border-radius: 999px;
+  text-align: center;
+}
+
+.calendar .calendar-month-header .pager-button {
+  height: 2.6em;
+  width: 2.6em;
+  padding: 0;
+}
+
+.calendar .calendar-day {
+  border-radius: 999px;
+  height: 3em;
+  width: 3em;
+  margin: 2px;
+  padding: 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.calendar .calendar-day.calendar-weekend {
+  color: #78787b;
+}
+
+.calendar .calendar-day.calendar-other-month {
+  color: rgba(34, 34, 38, 0.5);
+  font-weight: normal;
+}
+
+.calendar .calendar-day.calendar-other-month.calendar-weekend {
+  color: rgba(34, 34, 38, 0.5);
+}
+
+.calendar .calendar-day.calendar-today {
+  color: -st-accent-fg-color !important;
+}
+
+.calendar .calendar-day.calendar-today.calendar-day-with-events {
+  background-image: url("resource:///org/gnome/shell/theme/calendar-today.svg") !important;
+}
+
+.calendar .calendar-day.calendar-day-with-events {
+  background-image: url("resource:///org/gnome/shell/theme/calendar-today-light.svg");
+  background-size: contain;
+}
+
+.calendar .calendar-day-heading {
+  font-weight: bold;
+  text-align: center;
+  margin: 4px;
+  padding: 3px 6px;
+  border-radius: 8px;
+}
+
+.calendar .calendar-week-number {
+  font-weight: bold;
+  font-feature-settings: "tnum";
+  text-align: center;
+  margin: 6px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background-color: rgba(120, 120, 123, 0.2);
+  color: #78787b;
+}
+
+.events-button .events-box .events-title {
+  color: #78787b;
+  padding-bottom: 6px;
+}
+
+.events-button .events-box .events-list {
+  spacing: 6px;
+}
+
+.events-button .events-box .events-list .event-box {
+  spacing: 6px;
+  border-radius: 8px;
+}
+
+.events-button .events-box .events-list .event-box .event-time {
+  color: #78787b;
+}
+
+.events-button .events-box .events-list .event-placeholder {
+  color: #78787b;
+  font-style: italic;
+}
+
+.world-clocks-button .world-clocks-header {
+  color: #78787b;
+}
+
+.world-clocks-button .world-clocks-header.no-world-clocks {
+  color: #222226;
+}
+
+.world-clocks-button .world-clocks-grid {
+  spacing-rows: 6px;
+  spacing-columns: 12px;
+}
+
+.world-clocks-button .world-clocks-grid .world-clocks-time {
+  font-weight: bold;
+}
+
+.world-clocks-button .world-clocks-grid .world-clocks-time:ltr {
+  text-align: right;
+}
+
+.world-clocks-button .world-clocks-grid .world-clocks-time:rtl {
+  text-align: left;
+}
+
+.world-clocks-button .world-clocks-grid .world-clocks-timezone {
+  color: #78787b;
+}
+
+.weather-button .weather-box {
+  spacing: 6px;
+}
+
+.weather-button .weather-box .weather-header-box {
+  spacing: 6px;
+}
+
+.weather-button .weather-box .weather-header-box .weather-header {
+  color: #78787b;
+}
+
+.weather-button .weather-box .weather-header-box .weather-header.no-location {
+  color: #222226;
+}
+
+.weather-button .weather-box .weather-header-box .weather-header.location {
+  font-weight: normal;
+}
+
+.weather-button .weather-box .weather-grid {
+  spacing-rows: 6px;
+  spacing-columns: 12px;
+}
+
+.weather-button .weather-box .weather-grid .weather-forecast-time {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.weather-button .weather-box .weather-grid .weather-forecast-icon {
+  icon-size: 2.182em;
+  margin-bottom: 4px;
+}
+
+.weather-button .weather-box .weather-grid .weather-forecast-temp {
+  font-weight: bold;
+}
+
+/* Message List */
+.message-list {
+  width: 29em;
+  border: solid rgba(34, 34, 38, 0.15);
+}
+
+.message-list:ltr {
+  margin-left: 0;
+  margin-right: 4px;
+  padding-right: 6px;
+  border-right-width: 1px;
+}
+
+.message-list:rtl {
+  margin-right: 0;
+  margin-left: 4px;
+  padding-left: 6px;
+  border-left-width: 1px;
+}
+
+.message-list .message-list-placeholder {
+  color: rgba(34, 34, 38, 0.45);
+}
+
+.message-list .message-list-placeholder > StIcon {
+  icon-size: 96px;
+  margin-bottom: 12px;
+  -st-icon-style: symbolic;
+}
+
+.message-view {
+  -st-vfade-offset: 68px;
+}
+
+.message-view:ltr {
+  margin-right: 12px;
+}
+
+.message-view:rtl {
+  margin-left: 12px;
+}
+
+.message-view .message {
+  margin-bottom: 12px !important;
+  border-radius: 18px;
+}
+
+.message-list-controls {
+  padding: 12px;
+  padding-bottom: 9px;
+  spacing: 6px;
+}
+
+.message-list-controls .message-list-clear-button {
+  border-radius: 999px;
+}
+
+.message-notification-group {
+  spacing: 12px;
+}
+
+.message-notification-group .message-group-header {
+  padding: 6px;
+}
+
+.message-notification-group .message-group-header .message-group-title {
+  margin: 0 4px;
+}
+
+.message-notification-group .message-collapse-button {
+  color: #222226;
+  background-color: rgba(34, 34, 38, 0.2);
+  padding: 4px !important;
+  border: 4px transparent solid;
+}
+
+.message-notification-group .message-collapse-button:hover {
+  background-color: rgba(34, 34, 38, 0.3);
+}
+
+.message-notification-group .message-collapse-button:active {
+  background-color: rgba(34, 34, 38, 0.2);
+}
+
+.message {
+  padding: 6px;
+  margin: 0;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+.message:second-in-stack {
+  background-color: whitesmoke;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+.message:lower-in-stack {
+  background-color: #ededed;
+  box-shadow: none;
+  border-color: #e6e6e6;
+}
+
+.message .message-header {
+  spacing: 6px;
+  color: #78787b;
+  padding: 0 6px;
+}
+
+.message .message-header:ltr {
+  padding-right: 0;
+}
+
+.message .message-header:rtl {
+  padding-left: 0;
+}
+
+.message .message-header .message-source-icon {
+  icon-size: 1.091em;
+  -st-icon-style: symbolic;
+}
+
+.message .message-header .message-header-content {
+  spacing: 6px;
+  min-height: 1.637em;
+  padding-bottom: 6px;
+}
+
+.message .message-header .message-header-content .message-source-title {
+  font-weight: bold;
+}
+
+.message .message-header .message-header-content .event-time {
+  color: #78787b;
+  padding-bottom: 0.068em;
+}
+
+.message .message-header .message-header-content .event-time:ltr {
+  text-align: right;
+}
+
+.message .message-header .message-header-content .event-time:rtl {
+  text-align: left;
+}
+
+.message .message-header .message-expand-button,
+.message .message-header .message-close-button {
+  border-radius: 999px;
+  color: #222226;
+}
+
+.message .message-header .message-expand-button {
+  padding: 6px;
+}
+
+.message .message-header .message-close-button {
+  margin: 3px;
+  padding: 4px;
+}
+
+.message .message-box {
+  padding: 6px;
+  margin-top: 0;
+  spacing: 6px;
+}
+
+.message .message-box .message-icon {
+  icon-size: 48px;
+}
+
+.message .message-box .message-icon:ltr {
+  margin-right: 6px;
+}
+
+.message .message-box .message-icon:rtl {
+  margin-left: 6px;
+}
+
+.message .message-box .message-icon.message-themed-icon {
+  border-radius: 999px;
+  background-color: rgba(34, 34, 38, 0.07);
+  icon-size: 1.091em;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.message .message-box:first-child {
+  margin-top: 12px;
+}
+
+.message .message-box .message-content {
+  spacing: 4px;
+}
+
+.message .message-box .message-content .message-title {
+  font-weight: bold;
+}
+
+.message .message-action-bin {
+  padding: 4px;
+  spacing: 6px;
+}
+
+.message .message-action-bin * {
+  margin: 0 4px;
+}
+
+.message .message-action-bin *:first-child:ltr {
+  margin-left: 0;
+}
+
+.message .message-action-bin *:first-child:rtl {
+  margin-right: 0;
+}
+
+.message .message-action-bin *:last-child:ltr {
+  margin-right: 0;
+}
+
+.message .message-action-bin *:last-child:rtl {
+  margin-left: 0;
+}
+
+.url-highlighter {
+  link-color: st-darken(-st-accent-color, 10%);
+}
+
+/* Media Controls */
+.message-media-control {
+  padding: 0 18px;
+  border-radius: 8px;
+  color: #222226;
+  border: 1px solid transparent;
+}
+
+.message-media-control:hover {
+  background-color: #efeff2;
+  color: #222226;
+}
+
+.message-media-control:active {
+  background-color: #e9e9ed;
+  color: #222226;
+}
+
+.message-media-control:insensitive {
+  color: #858588;
+}
+
+.message-media-control StIcon {
+  icon-size: 16px;
+}
+
+.media-message .message-icon {
+  border-radius: 8px !important;
+}
+
+.media-message .message-icon.message-themed-icon {
+  icon-size: 32px !important;
+}
+
+.candidate-popup-content {
+  padding: 6px;
+  spacing: 6px;
+  border-radius: 12px;
+}
+
+.candidate-index {
+  padding: 0;
+  padding-right: 6px;
+  color: #78787b;
+}
+
+.candidate-box {
+  padding: 6px 12px 6px 12px;
+  border-radius: 8px;
+}
+
+.candidate-box:selected {
+  background-color: -st-accent-color;
+  color: -st-accent-fg-color;
+}
+
+.candidate-box:hover {
+  background-color: #e1e1e7;
+  color: #0c0c0e;
+}
+
+.candidate-page-button-box {
+  height: 2em;
+}
+
+.vertical .candidate-page-button-box {
+  padding-top: 12px;
+}
+
+.horizontal .candidate-page-button-box {
+  padding-left: 12px;
+}
+
+.candidate-page-button {
+  padding: 6px;
+}
+
+.candidate-page-button StIcon {
+  icon-size: 16px;
+}
+
+.candidate-page-button-previous {
+  border-radius: 8px 0px 0px 8px;
+  border-right-width: 0;
+  box-shadow: none;
+}
+
+.candidate-page-button-next {
+  border-radius: 0px 8px 8px 0px;
+  box-shadow: none;
+}
+
+/* Notifications & Message Tray */
+.notification-banner {
+  min-height: 64px;
+  width: 34em;
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  margin: 4px;
+}
+
+.notification-buttons-bin {
+  spacing: 0;
+}
+
+/* Modal Dialogs */
+.modal-dialog {
+  background-color: #fafafb;
+  border-radius: 18px;
+  padding: 24px;
+  spacing: 18px;
+  box-shadow: 0 12px 8px 12px rgba(0, 0, 0, 0.03);
+}
+
+.modal-dialog .modal-dialog-content-box {
+  padding-top: 12px;
+  spacing: 18px;
+  max-width: 28em;
+}
+
+.modal-dialog .modal-dialog-button-box {
+  padding-top: 6px;
+}
+
+.dialog-list {
+  spacing: 18px;
+}
+
+.dialog-list .dialog-list-title {
+  text-align: center;
+}
+
+.dialog-list .dialog-list-scrollview {
+  max-height: 200px;
+}
+
+.dialog-list .dialog-list-box {
+  spacing: 1em;
+}
+
+.dialog-list .dialog-list-box .dialog-list-item {
+  spacing: 1em;
+}
+
+.dialog-list .dialog-list-box .dialog-list-item .dialog-list-item-title {
+  font-weight: bold;
+}
+
+.dialog-list .dialog-list-box .dialog-list-item .dialog-list-item-description {
+  color: #161619;
+}
+
+/* End Session Dialog */
+.end-session-dialog {
+  width: 24em;
+}
+
+.end-session-dialog .end-session-dialog-battery-warning,
+.end-session-dialog .dialog-list-title {
+  color: #e5a50a;
+  background-color: rgba(229, 165, 10, 0.1);
+  padding: 9px;
+  border-radius: 8px;
+  margin: 4px 0;
+}
+
+/* Message Dialog */
+.message-dialog-content {
+  spacing: 18px;
+}
+
+.message-dialog-content .message-dialog-title {
+  text-align: center;
+}
+
+.message-dialog-content .message-dialog-description {
+  text-align: center;
+}
+
+/* Run Dialog */
+.run-dialog {
+  width: 24em;
+  padding-bottom: 6px;
+}
+
+.run-dialog .run-dialog-entry {
+  padding: 12px 9px;
+}
+
+.run-dialog .run-dialog-description {
+  color: black;
+}
+
+/* Password or Authentication Dialog */
+.prompt-dialog {
+  width: 28em;
+}
+
+.prompt-dialog .prompt-dialog-password-grid {
+  spacing-rows: 8px;
+  spacing-columns: 4px;
+}
+
+.prompt-dialog .prompt-dialog-password-grid .prompt-dialog-password-entry {
+  width: auto;
+}
+
+.prompt-dialog .prompt-dialog-password-grid .prompt-dialog-password-entry:ltr {
+  margin-left: 20px;
+}
+
+.prompt-dialog .prompt-dialog-password-grid .prompt-dialog-password-entry:rtl {
+  margin-right: 20px;
+}
+
+.prompt-dialog .prompt-dialog-password-layout {
+  spacing: 8px;
+}
+
+.prompt-dialog .prompt-dialog-password-entry {
+  width: 20em;
+  padding: 12px 9px;
+}
+
+.prompt-dialog .prompt-dialog-error-label,
+.prompt-dialog .prompt-dialog-info-label,
+.prompt-dialog .prompt-dialog-null-label {
+  text-align: center;
+}
+
+.prompt-dialog .prompt-dialog-error-label {
+  color: #e5a50a;
+}
+
+/* Polkit Dialog */
+.polkit-dialog-user-layout {
+  text-align: center;
+  spacing: 8px;
+  margin-bottom: 6px;
+}
+
+.polkit-dialog-user-layout .polkit-dialog-user-root-label {
+  color: #e5a50a;
+}
+
+/* Audio selection dialog */
+.audio-device-selection-dialog {
+  min-width: 24em;
+}
+
+.audio-device-selection-dialog .audio-selection-box {
+  spacing: 12px;
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device {
+  color: #222226;
+  background-color: #fafafb;
+  background-color: transparent;
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device:focus {
+  color: #222226;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(250, 250, 251, 0.25), 5%);
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device:focus:hover {
+  background-color: st-mix(-st-accent-color, st-darken(#fafafb, 7%), 5%);
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device:hover {
+  color: #222226;
+  background-color: st-darken(#fafafb, 7%);
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device:active {
+  color: #222226;
+  background-color: st-darken(#fafafb, 9%);
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device:active:hover {
+  background-color: st-darken(st-darken(#fafafb, 9%), 7%);
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(#fafafb, 9%), 5%);
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device:highlighted, .audio-device-selection-dialog .audio-selection-box .audio-selection-device:selected, .audio-device-selection-dialog .audio-selection-box .audio-selection-device:checked {
+  color: #222226;
+  background-color: st-darken(#fafafb, 8%);
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device:highlighted:hover, .audio-device-selection-dialog .audio-selection-box .audio-selection-device:selected:hover, .audio-device-selection-dialog .audio-selection-box .audio-selection-device:checked:hover {
+  background-color: st-darken(st-darken(#fafafb, 8%), 7%);
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device:highlighted:active, .audio-device-selection-dialog .audio-selection-box .audio-selection-device:selected:active, .audio-device-selection-dialog .audio-selection-box .audio-selection-device:checked:active {
+  background-color: st-darken(st-darken(#fafafb, 8%), 9%);
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device:insensitive {
+  color: st-transparentize(#222226, 0.6);
+  background-color: #fafafb;
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device:drop {
+  background-color: st-transparentize(-st-accent-color, 0.8);
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2);
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device .audio-selection-device-box {
+  padding: 12px;
+  spacing: 12px;
+}
+
+.audio-device-selection-dialog .audio-selection-box .audio-selection-device .audio-selection-device-icon {
+  icon-size: 64px;
+}
+
+/* Welcome dialog */
+.welcome-dialog-image {
+  background-image: url("resource:///org/gnome/shell/theme/gnome-shell-start.svg");
+  background-size: contain;
+  /* Reasonable maximum dimensions */
+  height: 300px;
+  width: 300px;
+}
+
+/* Access portal dialog */
+.access-dialog {
+  text-align: center;
+}
+
+/* OSD */
+.osd-window {
+  text-align: center;
+  font-weight: bold;
+  spacing: 12px;
+  padding: 12px 18px;
+  margin-bottom: 4em;
+}
+
+.osd-window > * {
+  spacing: 8px;
+}
+
+.osd-window StIcon {
+  icon-size: 32px;
+}
+
+.osd-window StLabel:ltr {
+  margin-right: 6px;
+}
+
+.osd-window StLabel:rtl {
+  margin-left: 6px;
+}
+
+.osd-window .level {
+  margin-bottom: 4px;
+  min-width: 160px;
+  -barlevel-height: 6px;
+  -barlevel-background-color: rgba(255, 255, 255, 0.3);
+  -barlevel-active-background-color: #ffffff;
+  -barlevel-overdrive-color: #e01b24;
+  -barlevel-overdrive-separator-width: 3px;
+}
+
+.osd-window .level:first-child {
+  margin-bottom: 0;
+}
+
+.osd-window .level:ltr {
+  margin-right: 6px;
+}
+
+.osd-window .level:rtl {
+  margin-left: 6px;
+}
+
+.osd-monitor-label, .osd-break-countdown-label {
+  background-color: -st-accent-color;
+  color: -st-accent-fg-color;
+  border-radius: 16px;
+  font-size: 3em;
+  font-weight: bold;
+  font-feature-settings: "tnum";
+  margin: 12px;
+  padding: 12px;
+  text-align: center;
+  min-width: 1.5em;
+}
+
+/* Pad OSD */
+.pad-osd-window {
+  padding: 32px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.pad-osd-window .pad-osd-title-box {
+  spacing: 12px;
+}
+
+.pad-osd-window .pad-osd-title-menu-box {
+  spacing: 6px;
+}
+
+.combo-box-label {
+  width: 15em;
+}
+
+/* App Switcher */
+.switcher-popup {
+  padding: 0;
+  spacing: 24px;
+}
+
+.switcher-list {
+  padding: 12px;
+  border-radius: 28px;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.05);
+}
+
+.switcher-list .switcher-list-item-container {
+  spacing: 12px;
+}
+
+.switcher-list .item-box {
+  color: #ffffff;
+  background-color: #2e2e33;
+  background-color: transparent;
+}
+
+.switcher-list .item-box:focus {
+  color: #ffffff;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(46, 46, 51, 0.25), 5%);
+}
+
+.switcher-list .item-box:focus:hover {
+  background-color: st-mix(-st-accent-color, st-lighten(#2e2e33, 7%), 5%);
+}
+
+.switcher-list .item-box:hover {
+  color: #ffffff;
+  background-color: st-lighten(#2e2e33, 7%);
+}
+
+.switcher-list .item-box:active {
+  color: #ffffff;
+  background-color: st-lighten(#2e2e33, 9%);
+}
+
+.switcher-list .item-box:active:hover {
+  background-color: st-lighten(st-lighten(#2e2e33, 9%), 7%);
+}
+
+.switcher-list .item-box:active:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(#2e2e33, 9%), 5%);
+}
+
+.switcher-list .item-box:highlighted, .switcher-list .item-box:selected, .switcher-list .item-box:checked {
+  color: #ffffff;
+  background-color: st-lighten(#2e2e33, 8%);
+}
+
+.switcher-list .item-box:highlighted:hover, .switcher-list .item-box:selected:hover, .switcher-list .item-box:checked:hover {
+  background-color: st-lighten(st-lighten(#2e2e33, 8%), 7%);
+}
+
+.switcher-list .item-box:highlighted:active, .switcher-list .item-box:selected:active, .switcher-list .item-box:checked:active {
+  background-color: st-lighten(st-lighten(#2e2e33, 8%), 9%);
+}
+
+.switcher-list .item-box:insensitive {
+  color: st-transparentize(#ffffff, 0.6);
+  background-color: #2e2e33;
+}
+
+.switcher-list .item-box:drop {
+  background-color: st-transparentize(-st-accent-color, 0.8);
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2);
+}
+
+.switcher-list .item-box:hover {
+  background: none;
+}
+
+.switcher-list .item-box:selected {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.switcher-list .separator {
+  width: 1px;
+  background: rgba(34, 34, 38, 0.15);
+}
+
+.switcher-list .thumbnail-box {
+  padding: 2px;
+  spacing: 6px;
+}
+
+.switcher-list .thumbnail {
+  width: 256px;
+  border-radius: 8px;
+}
+
+.switcher-arrow {
+  border-color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.switcher-arrow:highlighted {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.input-source-switcher-symbol {
+  font-size: 34pt;
+  width: 96px;
+  height: 96px;
+}
+
+.cycler-highlight {
+  border: 5px solid -st-accent-color;
+}
+
+/* Workspace Switcher */
+.workspace-switcher {
+  margin-bottom: 4em;
+  spacing: 12px;
+  padding: 12px 18px;
+}
+
+.ws-switcher-indicator {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 2.6666666667px;
+  margin: 13.3333333333px;
+  border-radius: 32px;
+}
+
+.ws-switcher-indicator:active {
+  background-color: #ffffff;
+  padding: 5.3333333333px;
+  margin: 10.6666666667px;
+}
+
+.screenshot-ui-panel {
+  border-radius: 32px;
+  padding: 18px;
+  padding-bottom: 12px;
+  margin-bottom: 4em;
+  spacing: 12px;
+}
+
+.screenshot-ui-close-button {
+  padding: 6px !important;
+  margin-top: 12px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+.screenshot-ui-close-button.left {
+  margin-left: 12px;
+}
+
+.screenshot-ui-close-button.right {
+  margin-right: 12px;
+}
+
+.screenshot-ui-type-button {
+  min-width: 48px;
+  padding: 12px 18px;
+  border-radius: 14px;
+}
+
+.screenshot-ui-type-button .icon-label-button-container {
+  spacing: 0.409em;
+}
+
+.screenshot-ui-type-button .icon-label-button-container > StIcon {
+  icon-size: 32px;
+}
+
+.screenshot-ui-capture-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 4px #ffffff;
+  padding: 4px;
+}
+
+.screenshot-ui-capture-button .screenshot-ui-capture-button-circle {
+  background-color: #ffffff;
+  transition-duration: 200ms;
+  border-radius: 999px;
+}
+
+.screenshot-ui-capture-button .screenshot-ui-capture-button-circle:hover, .screenshot-ui-capture-button .screenshot-ui-capture-button-circle:focus {
+  background-color: #e1e1e7;
+}
+
+.screenshot-ui-capture-button:hover .screenshot-ui-capture-button-circle, .screenshot-ui-capture-button:focus .screenshot-ui-capture-button-circle {
+  background-color: #cccccc;
+}
+
+.screenshot-ui-capture-button:active .screenshot-ui-capture-button-circle {
+  background-color: gray;
+}
+
+.screenshot-ui-capture-button:cast .screenshot-ui-capture-button-circle {
+  background-color: #c01c28;
+}
+
+.screenshot-ui-capture-button:cast:hover .screenshot-ui-capture-button-circle, .screenshot-ui-capture-button:cast:focus .screenshot-ui-capture-button-circle {
+  background-color: #d61f2d;
+}
+
+.screenshot-ui-capture-button:cast:active .screenshot-ui-capture-button-circle {
+  background-color: #a11722;
+}
+
+.screenshot-ui-shot-cast-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 3px;
+  spacing: 3px;
+}
+
+.screenshot-ui-shot-cast-button {
+  padding: 6px 12px;
+  background-color: transparent;
+  border-radius: 999px;
+}
+
+.screenshot-ui-shot-cast-button > StIcon {
+  icon-size: 16px;
+}
+
+.screenshot-ui-shot-cast-button:hover, .screenshot-ui-shot-cast-button:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.screenshot-ui-shot-cast-button:active {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.screenshot-ui-shot-cast-button:checked {
+  background-color: #ffffff;
+  color: #2e2e33;
+}
+
+.screenshot-ui-shot-cast-button:insensitive {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.screenshot-ui-area-indicator-shade {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.screenshot-ui-area-selector .screenshot-ui-area-indicator-shade {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.screenshot-ui-area-selector .screenshot-ui-area-indicator-selection {
+  border: 2px white;
+}
+
+.screenshot-ui-area-selector-handle {
+  border-radius: 999px;
+  background-color: white;
+  box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.05);
+  width: 24px;
+  height: 24px;
+}
+
+.screenshot-ui-window-selector {
+  background-color: #222226;
+}
+
+.screenshot-ui-window-selector .screenshot-ui-window-selector-window-container {
+  margin: 100px;
+}
+
+.screenshot-ui-window-selector:primary-monitor .screenshot-ui-window-selector-window-container {
+  margin-bottom: 200px;
+}
+
+.screenshot-ui-window-selector-window-border {
+  transition-duration: 200ms;
+  border-radius: 16px;
+  border: 6px transparent;
+}
+
+.screenshot-ui-window-selector-check {
+  transition-duration: 200ms;
+  color: transparent;
+  border-radius: 999px;
+  border-width: 12px;
+  icon-size: 24px;
+}
+
+.screenshot-ui-window-selector-window:hover .screenshot-ui-window-selector-window-border {
+  border-color: st-darken(-st-accent-color, 15%);
+}
+
+.screenshot-ui-window-selector-window:checked .screenshot-ui-window-selector-window-border {
+  border-color: -st-accent-color;
+  background-color: st-transparentize(-st-accent-color, 0.8);
+}
+
+.screenshot-ui-window-selector-window:checked .screenshot-ui-window-selector-check {
+  color: -st-accent-fg-color;
+  background-color: -st-accent-color;
+}
+
+.screenshot-ui-screen-selector {
+  transition-duration: 200ms;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.screenshot-ui-screen-selector:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.screenshot-ui-screen-selector:active {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.screenshot-ui-screen-selector:checked {
+  background-color: transparent;
+  border: 2px white;
+}
+
+.screenshot-ui-tooltip {
+  text-align: center;
+  -y-offset: 24px;
+}
+
+/* Top Bar */
+#panel {
+  background-color: #fafafb;
+  font-weight: bold;
+  height: 2.2em;
+  transition-duration: 250ms;
+  box-shadow: inset 0 -0.5px 0 0 rgba(34, 34, 38, 0.1);
+}
+
+#panel .panel-button {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  background-color: transparent;
+  border-radius: 999px;
+  font-weight: bold;
+  color: #222226;
+  box-shadow: inset 0 0 0 100px transparent;
+  -natural-hpadding: 12px;
+  -minimum-hpadding: 6px;
+}
+
+#panel .panel-button:focus, #panel .panel-button:hover {
+  box-shadow: inset 0 0 0 100px rgba(34, 34, 38, 0.17);
+}
+
+#panel .panel-button:active, #panel .panel-button:checked {
+  box-shadow: inset 0 0 0 100px rgba(34, 34, 38, 0.28);
+}
+
+#panel .panel-button:active:hover, #panel .panel-button:checked:hover {
+  box-shadow: inset 0 0 0 100px rgba(34, 34, 38, 0.32);
+}
+
+#panel .panel-button .system-status-icon {
+  icon-size: 1.091em;
+  padding: 0 6px;
+  margin: 0 4px;
+}
+
+#panel .panel-button .panel-status-indicators-box {
+  spacing: 4px;
+}
+
+#panel .panel-button .panel-status-indicators-box > .system-status-icon {
+  padding: 0;
+}
+
+#panel .panel-button#panelActivities StBoxLayout {
+  padding: 0 0.2045em;
+  spacing: 5px;
+}
+
+#panel .panel-button#panelActivities .workspace-dot {
+  border-radius: 999px;
+  min-width: 0.5455em;
+  min-height: 0.5455em;
+  background-color: #222226;
+}
+
+#panel .panel-button.screen-recording-indicator StBoxLayout, #panel .panel-button.screen-sharing-indicator StBoxLayout {
+  spacing: 0.409em;
+}
+
+#panel .panel-button.screen-recording-indicator StIcon, #panel .panel-button.screen-sharing-indicator StIcon {
+  icon-size: 1.091em;
+}
+
+#panel .panel-button.screen-recording-indicator {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  background-color: transparent;
+  border-radius: 999px;
+  font-weight: bold;
+  color: #fafafb;
+  box-shadow: inset 0 0 0 100px #c01c28;
+}
+
+#panel .panel-button.screen-recording-indicator:focus, #panel .panel-button.screen-recording-indicator:hover {
+  box-shadow: inset 0 0 0 100px #aa1923;
+}
+
+#panel .panel-button.screen-recording-indicator:active, #panel .panel-button.screen-recording-indicator:checked {
+  box-shadow: inset 0 0 0 100px #981620;
+}
+
+#panel .panel-button.screen-recording-indicator:active:hover, #panel .panel-button.screen-recording-indicator:checked:hover {
+  box-shadow: inset 0 0 0 100px #8f151e;
+}
+
+#panel .panel-button.screen-sharing-indicator {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  background-color: transparent;
+  border-radius: 999px;
+  font-weight: bold;
+  color: #fafafb;
+  box-shadow: inset 0 0 0 100px #e66100;
+}
+
+#panel .panel-button.screen-sharing-indicator:focus, #panel .panel-button.screen-sharing-indicator:hover {
+  box-shadow: inset 0 0 0 100px #cd5600;
+}
+
+#panel .panel-button.screen-sharing-indicator:active, #panel .panel-button.screen-sharing-indicator:checked {
+  box-shadow: inset 0 0 0 100px #b84e00;
+}
+
+#panel .panel-button.screen-sharing-indicator:active:hover, #panel .panel-button.screen-sharing-indicator:checked:hover {
+  box-shadow: inset 0 0 0 100px #ae4900;
+}
+
+#panel .panel-button.clock-display {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  background-color: transparent;
+  border-radius: 999px;
+  font-weight: bold;
+  color: #222226;
+  box-shadow: inset 0 0 0 100px transparent;
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+#panel .panel-button.clock-display:focus, #panel .panel-button.clock-display:hover {
+  box-shadow: inset 0 0 0 100px rgba(34, 34, 38, 0.17);
+}
+
+#panel .panel-button.clock-display:active, #panel .panel-button.clock-display:checked {
+  box-shadow: inset 0 0 0 100px rgba(34, 34, 38, 0.28);
+}
+
+#panel .panel-button.clock-display:active:hover, #panel .panel-button.clock-display:checked:hover {
+  box-shadow: inset 0 0 0 100px rgba(34, 34, 38, 0.32);
+}
+
+#panel .panel-button.clock-display .clock {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  border-radius: 999px;
+}
+
+#panel .panel-button.clock-display:focus .clock, #panel .panel-button.clock-display:hover .clock {
+  box-shadow: inset 0 0 0 100px rgba(34, 34, 38, 0.17);
+}
+
+#panel .panel-button.clock-display:active .clock, #panel .panel-button.clock-display:checked .clock {
+  box-shadow: inset 0 0 0 100px rgba(34, 34, 38, 0.28);
+}
+
+#panel .panel-button.clock-display:active .clock:hover, #panel .panel-button.clock-display:checked .clock:hover {
+  box-shadow: inset 0 0 0 100px rgba(34, 34, 38, 0.32);
+}
+
+#panel .panel-button.clock-display .messages-indicator {
+  icon-size: 1.091em;
+}
+
+#panel:overview, #panel.unlock-screen, #panel.login-screen {
+  background-color: transparent;
+}
+
+#panel:overview .panel-button.screen-recording-indicator, #panel.unlock-screen .panel-button.screen-recording-indicator, #panel.login-screen .panel-button.screen-recording-indicator {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  background-color: transparent;
+  border-radius: 999px;
+  font-weight: bold;
+  color: #fafafb;
+  box-shadow: inset 0 0 0 100px #c01c28;
+}
+
+#panel:overview .panel-button.screen-recording-indicator:focus, #panel:overview .panel-button.screen-recording-indicator:hover, #panel.unlock-screen .panel-button.screen-recording-indicator:focus, #panel.unlock-screen .panel-button.screen-recording-indicator:hover, #panel.login-screen .panel-button.screen-recording-indicator:focus, #panel.login-screen .panel-button.screen-recording-indicator:hover {
+  box-shadow: inset 0 0 0 100px #aa1923;
+}
+
+#panel:overview .panel-button.screen-recording-indicator:active, #panel:overview .panel-button.screen-recording-indicator:checked, #panel.unlock-screen .panel-button.screen-recording-indicator:active, #panel.unlock-screen .panel-button.screen-recording-indicator:checked, #panel.login-screen .panel-button.screen-recording-indicator:active, #panel.login-screen .panel-button.screen-recording-indicator:checked {
+  box-shadow: inset 0 0 0 100px #981620;
+}
+
+#panel:overview .panel-button.screen-recording-indicator:active:hover, #panel:overview .panel-button.screen-recording-indicator:checked:hover, #panel.unlock-screen .panel-button.screen-recording-indicator:active:hover, #panel.unlock-screen .panel-button.screen-recording-indicator:checked:hover, #panel.login-screen .panel-button.screen-recording-indicator:active:hover, #panel.login-screen .panel-button.screen-recording-indicator:checked:hover {
+  box-shadow: inset 0 0 0 100px #8f151e;
+}
+
+#panel:overview .panel-button.screen-sharing-indicator, #panel.unlock-screen .panel-button.screen-sharing-indicator, #panel.login-screen .panel-button.screen-sharing-indicator {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  background-color: transparent;
+  border-radius: 999px;
+  font-weight: bold;
+  color: #fafafb;
+  box-shadow: inset 0 0 0 100px #e66100;
+}
+
+#panel:overview .panel-button.screen-sharing-indicator:focus, #panel:overview .panel-button.screen-sharing-indicator:hover, #panel.unlock-screen .panel-button.screen-sharing-indicator:focus, #panel.unlock-screen .panel-button.screen-sharing-indicator:hover, #panel.login-screen .panel-button.screen-sharing-indicator:focus, #panel.login-screen .panel-button.screen-sharing-indicator:hover {
+  box-shadow: inset 0 0 0 100px #cd5600;
+}
+
+#panel:overview .panel-button.screen-sharing-indicator:active, #panel:overview .panel-button.screen-sharing-indicator:checked, #panel.unlock-screen .panel-button.screen-sharing-indicator:active, #panel.unlock-screen .panel-button.screen-sharing-indicator:checked, #panel.login-screen .panel-button.screen-sharing-indicator:active, #panel.login-screen .panel-button.screen-sharing-indicator:checked {
+  box-shadow: inset 0 0 0 100px #b84e00;
+}
+
+#panel:overview .panel-button.screen-sharing-indicator:active:hover, #panel:overview .panel-button.screen-sharing-indicator:checked:hover, #panel.unlock-screen .panel-button.screen-sharing-indicator:active:hover, #panel.unlock-screen .panel-button.screen-sharing-indicator:checked:hover, #panel.login-screen .panel-button.screen-sharing-indicator:active:hover, #panel.login-screen .panel-button.screen-sharing-indicator:checked:hover {
+  box-shadow: inset 0 0 0 100px #ae4900;
+}
+
+#panel.unlock-screen .panel-button, #panel.login-screen .panel-button {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  background-color: transparent;
+  border-radius: 999px;
+  font-weight: bold;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 100px transparent;
+}
+
+#panel.unlock-screen .panel-button:focus, #panel.unlock-screen .panel-button:hover, #panel.login-screen .panel-button:focus, #panel.login-screen .panel-button:hover {
+  box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.17);
+}
+
+#panel.unlock-screen .panel-button:active, #panel.unlock-screen .panel-button:checked, #panel.login-screen .panel-button:active, #panel.login-screen .panel-button:checked {
+  box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.28);
+}
+
+#panel.unlock-screen .panel-button:active:hover, #panel.unlock-screen .panel-button:checked:hover, #panel.login-screen .panel-button:active:hover, #panel.login-screen .panel-button:checked:hover {
+  box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.32);
+}
+
+#panel.unlock-screen .panel-button.clock-display, #panel.login-screen .panel-button.clock-display {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  background-color: transparent;
+  border-radius: 999px;
+  font-weight: bold;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 100px transparent;
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+#panel.unlock-screen .panel-button.clock-display:focus, #panel.unlock-screen .panel-button.clock-display:hover, #panel.login-screen .panel-button.clock-display:focus, #panel.login-screen .panel-button.clock-display:hover {
+  box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.17);
+}
+
+#panel.unlock-screen .panel-button.clock-display:active, #panel.unlock-screen .panel-button.clock-display:checked, #panel.login-screen .panel-button.clock-display:active, #panel.login-screen .panel-button.clock-display:checked {
+  box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.28);
+}
+
+#panel.unlock-screen .panel-button.clock-display:active:hover, #panel.unlock-screen .panel-button.clock-display:checked:hover, #panel.login-screen .panel-button.clock-display:active:hover, #panel.login-screen .panel-button.clock-display:checked:hover {
+  box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.32);
+}
+
+#panel.unlock-screen .panel-button.clock-display .clock, #panel.login-screen .panel-button.clock-display .clock {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  border-radius: 999px;
+}
+
+#panel.unlock-screen .panel-button.clock-display:focus .clock, #panel.unlock-screen .panel-button.clock-display:hover .clock, #panel.login-screen .panel-button.clock-display:focus .clock, #panel.login-screen .panel-button.clock-display:hover .clock {
+  box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.17);
+}
+
+#panel.unlock-screen .panel-button.clock-display:active .clock, #panel.unlock-screen .panel-button.clock-display:checked .clock, #panel.login-screen .panel-button.clock-display:active .clock, #panel.login-screen .panel-button.clock-display:checked .clock {
+  box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.28);
+}
+
+#panel.unlock-screen .panel-button.clock-display:active .clock:hover, #panel.unlock-screen .panel-button.clock-display:checked .clock:hover, #panel.login-screen .panel-button.clock-display:active .clock:hover, #panel.login-screen .panel-button.clock-display:checked .clock:hover {
+  box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.32);
+}
+
+#panel:overview .panel-button {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  background-color: transparent;
+  border-radius: 999px;
+  font-weight: bold;
+  color: #fafafb;
+  box-shadow: inset 0 0 0 100px transparent;
+}
+
+#panel:overview .panel-button:focus, #panel:overview .panel-button:hover {
+  box-shadow: inset 0 0 0 100px rgba(250, 250, 251, 0.17);
+}
+
+#panel:overview .panel-button:active, #panel:overview .panel-button:checked {
+  box-shadow: inset 0 0 0 100px rgba(250, 250, 251, 0.28);
+}
+
+#panel:overview .panel-button:active:hover, #panel:overview .panel-button:checked:hover {
+  box-shadow: inset 0 0 0 100px rgba(250, 250, 251, 0.32);
+}
+
+#panel:overview .panel-button#panelActivities .workspace-dot {
+  background-color: #fafafb;
+}
+
+#panel:overview .panel-button.clock-display {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  background-color: transparent;
+  border-radius: 999px;
+  font-weight: bold;
+  color: #fafafb;
+  box-shadow: inset 0 0 0 100px transparent;
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+#panel:overview .panel-button.clock-display:focus, #panel:overview .panel-button.clock-display:hover {
+  box-shadow: inset 0 0 0 100px rgba(250, 250, 251, 0.17);
+}
+
+#panel:overview .panel-button.clock-display:active, #panel:overview .panel-button.clock-display:checked {
+  box-shadow: inset 0 0 0 100px rgba(250, 250, 251, 0.28);
+}
+
+#panel:overview .panel-button.clock-display:active:hover, #panel:overview .panel-button.clock-display:checked:hover {
+  box-shadow: inset 0 0 0 100px rgba(250, 250, 251, 0.32);
+}
+
+#panel:overview .panel-button.clock-display .clock {
+  transition-duration: 150ms;
+  border: 3px solid transparent;
+  border-radius: 999px;
+}
+
+#panel:overview .panel-button.clock-display:focus .clock, #panel:overview .panel-button.clock-display:hover .clock {
+  box-shadow: inset 0 0 0 100px rgba(250, 250, 251, 0.17);
+}
+
+#panel:overview .panel-button.clock-display:active .clock, #panel:overview .panel-button.clock-display:checked .clock {
+  box-shadow: inset 0 0 0 100px rgba(250, 250, 251, 0.28);
+}
+
+#panel:overview .panel-button.clock-display:active .clock:hover, #panel:overview .panel-button.clock-display:checked .clock:hover {
+  box-shadow: inset 0 0 0 100px rgba(250, 250, 251, 0.32);
+}
+
+#panel .panel-status-indicators-box {
+  spacing: 2px;
+}
+
+#panel .power-status.panel-status-indicators-box {
+  spacing: 0;
+}
+
+#panel .privacy-indicator {
+  color: #e66100;
+}
+
+.clock-display-box {
+  spacing: 2px;
+}
+
+.clock-display-box .clock {
+  padding-left: 0.818em;
+  padding-right: 0.818em;
+}
+
+/* Activities Ripple */
+.ripple-box {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.2);
+  width: 52px;
+  height: 52px;
+  border-radius: 0 0 52px 0;
+}
+
+.ripple-box:rtl {
+  border-radius: 0 0 0 52px;
+}
+
+.quick-settings {
+  padding: 18px;
+  border-radius: 36px;
+}
+
+.quick-settings .icon-button, .quick-settings .login-dialog-button.a11y-button, .quick-settings .login-dialog-button.cancel-button, .quick-settings .login-dialog-button.switch-user-button, .quick-settings .login-dialog-button.login-dialog-session-list-button, .quick-settings .calendar .calendar-month-header .pager-button, .calendar .calendar-month-header .quick-settings .pager-button, .quick-settings .message-notification-group .message-collapse-button, .message-notification-group .quick-settings .message-collapse-button, .quick-settings .message .message-header .message-expand-button, .message .message-header .quick-settings .message-expand-button,
+.quick-settings .message .message-header .message-close-button,
+.message .message-header .quick-settings .message-close-button, .quick-settings .screenshot-ui-show-pointer-button, .quick-settings .button {
+  padding: 10.5px;
+}
+
+.quick-settings-grid {
+  spacing-rows: 12px;
+  spacing-columns: 12px;
+}
+
+.quick-toggle, .quick-toggle-has-menu {
+  border-radius: 999px;
+  min-width: 12em;
+  max-width: 12em;
+  min-height: 3.273em;
+}
+
+.quick-toggle {
+  /* Move padding into the box; this is to allow menu arrows
+     to extend to the border */
+}
+
+.quick-toggle > StBoxLayout {
+  spacing: 9px;
+}
+
+.quick-toggle.button {
+  padding: 0;
+}
+
+.quick-toggle > StBoxLayout {
+  padding: 0 12px;
+}
+
+.quick-toggle:ltr > StBoxLayout {
+  padding-left: 15px;
+}
+
+.quick-toggle:rtl > StBoxLayout {
+  padding-right: 15px;
+}
+
+.quick-toggle .quick-toggle-subtitle {
+  font-weight: normal;
+}
+
+.quick-toggle .quick-toggle-icon {
+  icon-size: 1.091em;
+}
+
+.quick-toggle-has-menu .quick-toggle {
+  min-width: auto;
+  max-width: auto;
+}
+
+.quick-toggle-has-menu .quick-toggle:ltr {
+  border-radius: 999px 0 0 999px;
+}
+
+.quick-toggle-has-menu .quick-toggle:ltr > StBoxLayout {
+  padding-right: 0.6135em;
+}
+
+.quick-toggle-has-menu .quick-toggle:rtl {
+  border-radius: 0 999px 999px 0;
+}
+
+.quick-toggle-has-menu .quick-toggle:rtl > StBoxLayout {
+  padding-left: 0.6135em;
+}
+
+.quick-toggle-has-menu .quick-toggle:ltr:last-child {
+  border-radius: 999px;
+}
+
+.quick-toggle-has-menu .quick-toggle:rtl:last-child {
+  border-radius: 999px;
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button {
+  padding: 0.409em 0.71575em;
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:ltr {
+  border-radius: 0 999px 999px 0;
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:rtl {
+  border-radius: 999px 0 0 999px;
+}
+
+.quick-toggle-has-menu .quick-toggle-separator {
+  width: 1px;
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button {
+  color: #222226;
+  background-color: st-mix(#222226, #ececf0, 12%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:focus {
+  color: #222226;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, st-mix(#222226, #ececf0, 12%), 5%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:focus:hover {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(#222226, #ececf0, 12%), 4%), 5%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:hover {
+  color: #222226;
+  background-color: st-darken(st-mix(#222226, #ececf0, 12%), 4%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:active {
+  color: #222226;
+  background-color: st-darken(st-mix(#222226, #ececf0, 12%), 9%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:active:hover {
+  background-color: st-darken(st-darken(st-mix(#222226, #ececf0, 12%), 9%), 4%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(#222226, #ececf0, 12%), 9%), 5%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:checked {
+  color: -st-accent-fg-color;
+  background-color: st-mix(-st-accent-color, #222226, 92%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:checked:focus {
+  color: -st-accent-fg-color;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  box-shadow: inset 0 0 0 2px st-transparentize(st-darken(-st-accent-color, 20%), 0.2) !important;
+  background-color: st-mix(-st-accent-color, st-mix(-st-accent-color, #222226, 92%), 5%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:checked:focus:hover {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(-st-accent-color, #222226, 92%), 4%), 5%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:checked:hover {
+  color: -st-accent-fg-color;
+  background-color: st-darken(st-mix(-st-accent-color, #222226, 92%), 4%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:checked:active {
+  color: -st-accent-fg-color;
+  background-color: st-darken(st-mix(-st-accent-color, #222226, 92%), 9%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:checked:active:hover {
+  background-color: st-darken(st-darken(st-mix(-st-accent-color, #222226, 92%), 9%), 4%);
+}
+
+.quick-toggle-has-menu .quick-toggle-menu-button:checked:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(-st-accent-color, #222226, 92%), 9%), 5%);
+}
+
+.quick-toggle-has-menu:checked .quick-toggle-separator {
+  background-color: st-mix(-st-accent-fg-color, -st-accent-color, 20%);
+}
+
+.quick-toggle-has-menu .quick-toggle-separator {
+  background-color: rgba(34, 34, 38, 0.25);
+}
+
+.quick-slider > StBoxLayout {
+  spacing: 6px;
+}
+
+.quick-slider .icon-button, .quick-slider .login-dialog-button.a11y-button, .quick-slider .login-dialog-button.cancel-button, .quick-slider .login-dialog-button.switch-user-button, .quick-slider .login-dialog-button.login-dialog-session-list-button, .quick-slider .calendar .calendar-month-header .pager-button, .calendar .calendar-month-header .quick-slider .pager-button, .quick-slider .message-notification-group .message-collapse-button, .message-notification-group .quick-slider .message-collapse-button, .quick-slider .message .message-header .message-expand-button, .message .message-header .quick-slider .message-expand-button,
+.quick-slider .message .message-header .message-close-button,
+.message .message-header .quick-slider .message-close-button, .quick-slider .screenshot-ui-show-pointer-button {
+  padding: 6px;
+}
+
+.quick-slider .slider-bin {
+  padding: 6px;
+  border-radius: 999px;
+}
+
+.quick-slider .slider-bin:focus {
+  color: #222226;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, st-mix(#222226, #fafafb, 12%), 5%);
+}
+
+.quick-slider .slider-bin:focus:hover {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(#222226, #fafafb, 12%), 4%), 5%);
+}
+
+.quick-toggle-menu {
+  border-radius: 24px;
+  margin: 12px 18px 0;
+}
+
+.quick-toggle-menu:insensitive {
+  color: #222226;
+  background-color: st-mix(#222226, #fafafb, 12%);
+}
+
+.quick-toggle-menu .popup-menu-item > StIcon {
+  -st-icon-style: symbolic;
+  icon-size: 1.091em;
+}
+
+.quick-toggle-menu .header {
+  spacing-rows: 3px;
+  spacing-columns: 12px;
+  padding-bottom: 12px;
+}
+
+.quick-toggle-menu .header .icon {
+  icon-size: 1.6365em;
+  border-radius: 999px;
+  padding: 9px;
+  background-color: rgba(34, 34, 38, 0.2);
+}
+
+.quick-toggle-menu .header .icon.active {
+  background-color: -st-accent-color;
+  color: -st-accent-fg-color;
+}
+
+.quick-settings-system-item > StBoxLayout {
+  spacing: 12px;
+}
+
+.quick-settings-system-item .power-item {
+  min-height: 0;
+  min-width: 0;
+}
+
+.quick-settings-system-item .power-item:insensitive {
+  color: #222226;
+  background-color: st-mix(#222226, #fafafb, 12%);
+  background-color: transparent;
+}
+
+.nm-network-item .wireless-secure-icon {
+  icon-size: 0.5455em;
+}
+
+.bt-device-item .popup-menu-icon {
+  -st-icon-style: symbolic;
+}
+
+.bt-menu-placeholder.popup-menu-item {
+  text-align: center;
+  padding: 2em 4em;
+}
+
+.device-subtitle {
+  color: rgba(34, 34, 38, 0.5);
+}
+
+.keyboard-brightness-level {
+  spacing: 6px;
+}
+
+.background-apps-quick-toggle {
+  min-height: 2.728em;
+  background-color: transparent;
+}
+
+.background-apps-quick-toggle StIcon {
+  icon-size: 1.091em !important;
+}
+
+.background-app-item .popup-menu-icon {
+  icon-size: 32px !important;
+  -st-icon-style: regular !important;
+}
+
+.background-app-item .icon-button, .background-app-item .login-dialog-button.a11y-button, .background-app-item .login-dialog-button.cancel-button, .background-app-item .login-dialog-button.switch-user-button, .background-app-item .login-dialog-button.login-dialog-session-list-button, .background-app-item .calendar .calendar-month-header .pager-button, .calendar .calendar-month-header .background-app-item .pager-button, .background-app-item .message-notification-group .message-collapse-button, .message-notification-group .background-app-item .message-collapse-button, .background-app-item .message .message-header .message-expand-button, .message .message-header .background-app-item .message-expand-button,
+.background-app-item .message .message-header .message-close-button,
+.message .message-header .background-app-item .message-close-button, .background-app-item .screenshot-ui-show-pointer-button {
+  padding: 6px;
+  background-color: rgba(34, 34, 38, 0.13);
+}
+
+.background-app-item .icon-button:hover, .background-app-item .login-dialog-button.a11y-button:hover, .background-app-item .login-dialog-button.cancel-button:hover, .background-app-item .login-dialog-button.switch-user-button:hover, .background-app-item .login-dialog-button.login-dialog-session-list-button:hover, .background-app-item .calendar .calendar-month-header .pager-button:hover, .calendar .calendar-month-header .background-app-item .pager-button:hover, .background-app-item .message-notification-group .message-collapse-button:hover, .message-notification-group .background-app-item .message-collapse-button:hover, .background-app-item .message .message-header .message-expand-button:hover, .message .message-header .background-app-item .message-expand-button:hover,
+.background-app-item .message .message-header .message-close-button:hover,
+.message .message-header .background-app-item .message-close-button:hover, .background-app-item .screenshot-ui-show-pointer-button:hover {
+  background-color: rgba(34, 34, 38, 0.22);
+}
+
+.background-app-item .icon-button:active, .background-app-item .login-dialog-button.a11y-button:active, .background-app-item .login-dialog-button.cancel-button:active, .background-app-item .login-dialog-button.switch-user-button:active, .background-app-item .login-dialog-button.login-dialog-session-list-button:active, .background-app-item .calendar .calendar-month-header .pager-button:active, .calendar .calendar-month-header .background-app-item .pager-button:active, .background-app-item .message-notification-group .message-collapse-button:active, .message-notification-group .background-app-item .message-collapse-button:active, .background-app-item .message .message-header .message-expand-button:active, .message .message-header .background-app-item .message-expand-button:active,
+.background-app-item .message .message-header .message-close-button:active,
+.message .message-header .background-app-item .message-close-button:active, .background-app-item .screenshot-ui-show-pointer-button:active {
+  background-color: rgba(34, 34, 38, 0.31);
+}
+
+.background-app-item .spinner {
+  padding: 6px;
+}
+
+.background-app-item.popup-inactive-menu-item {
+  color: #222226;
+}
+
+/* OVERVIEW */
+.secondary-monitor-workspaces {
+  spacing: 12px;
+}
+
+#overviewGroup {
+  background-color: #222226;
+}
+
+/* Window Picker */
+.window-picker {
+  spacing: 6px;
+}
+
+.window-close, .screenshot-ui-close-button {
+  background-color: rgba(63, 63, 70, 0.98);
+  color: #fafafb;
+  border-radius: 999px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  padding: 3px;
+  height: 32px;
+  width: 32px;
+  transition-duration: 100ms;
+  border: 2px solid transparent;
+}
+
+.window-close StIcon, .screenshot-ui-close-button StIcon {
+  icon-size: 24px;
+}
+
+.window-close:hover, .screenshot-ui-close-button:hover {
+  background-color: rgba(80, 80, 89, 0.98);
+}
+
+.window-close:active, .screenshot-ui-close-button:active {
+  background-color: rgba(94, 94, 105, 0.98);
+}
+
+.workspace-background {
+  border-radius: 30px;
+  background-color: rgba(3, 2, 1, 0);
+  box-shadow: 0 4px 16px 4px rgba(0, 0, 0, 0.05);
+}
+
+.search-entry {
+  border-radius: 999px;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  width: 24em;
+}
+
+.search-entry .search-entry-icon {
+  icon-size: 1.091em;
+  margin-top: 2px;
+  padding: 0 4px;
+}
+
+/* Search */
+#searchResults {
+  margin: 0 4px;
+}
+
+#searchResultsContent {
+  max-width: 1044px;
+}
+
+.search-section {
+  spacing: 18px;
+}
+
+.search-section .search-section-separator {
+  height: 8px;
+  background-color: transparent;
+}
+
+.search-section-content {
+  background-color: #38383b;
+  color: #fafafb;
+  border-radius: 24px;
+  padding: 12px;
+  margin: 0 12px;
+  border: 2px solid transparent;
+}
+
+.list-search-result, .search-provider-icon {
+  color: #fafafb;
+  background-color: #38383b;
+  background-color: transparent;
+  border-radius: 13.2px;
+}
+
+.list-search-result:focus, .search-provider-icon:focus {
+  color: #fafafb;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(56, 56, 59, 0.25), 5%);
+}
+
+.list-search-result:focus:hover, .search-provider-icon:focus:hover {
+  background-color: st-mix(-st-accent-color, st-lighten(#38383b, 7%), 5%);
+}
+
+.list-search-result:hover, .search-provider-icon:hover {
+  color: #fafafb;
+  background-color: st-lighten(#38383b, 7%);
+}
+
+.list-search-result:active, .search-provider-icon:active {
+  color: #fafafb;
+  background-color: st-lighten(#38383b, 9%);
+}
+
+.list-search-result:active:hover, .search-provider-icon:active:hover {
+  background-color: st-lighten(st-lighten(#38383b, 9%), 7%);
+}
+
+.list-search-result:active:focus, .search-provider-icon:active:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(#38383b, 9%), 5%);
+}
+
+.list-search-result:highlighted, .search-provider-icon:highlighted, .list-search-result:selected, .search-provider-icon:selected, .list-search-result:checked, .search-provider-icon:checked {
+  color: #fafafb;
+  background-color: st-lighten(#38383b, 8%);
+}
+
+.list-search-result:highlighted:hover, .search-provider-icon:highlighted:hover, .list-search-result:selected:hover, .search-provider-icon:selected:hover, .list-search-result:checked:hover, .search-provider-icon:checked:hover {
+  background-color: st-lighten(st-lighten(#38383b, 8%), 7%);
+}
+
+.list-search-result:highlighted:active, .search-provider-icon:highlighted:active, .list-search-result:selected:active, .search-provider-icon:selected:active, .list-search-result:checked:active, .search-provider-icon:checked:active {
+  background-color: st-lighten(st-lighten(#38383b, 8%), 9%);
+}
+
+.list-search-result:insensitive, .search-provider-icon:insensitive {
+  color: st-transparentize(#fafafb, 0.6);
+  background-color: #38383b;
+}
+
+.list-search-result:drop, .search-provider-icon:drop {
+  background-color: st-transparentize(-st-accent-color, 0.8);
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2);
+}
+
+.search-statustext {
+  color: rgba(250, 250, 251, 0.8);
+}
+
+.grid-search-results {
+  spacing: 30px;
+}
+
+.search-provider-icon:ltr {
+  margin-right: 4px;
+}
+
+.search-provider-icon:rtl {
+  margin-left: 4px;
+}
+
+.search-provider-icon .list-search-provider-content {
+  spacing: 12px;
+}
+
+.search-provider-icon .list-search-provider-content .list-search-provider-details {
+  width: 120px;
+  color: #fafafb;
+}
+
+.list-search-results {
+  spacing: 6px;
+}
+
+.list-search-result .list-search-result-content {
+  spacing: 6px;
+}
+
+.list-search-result .list-search-result-title {
+  spacing: 12px;
+}
+
+.list-search-result .list-search-result-description {
+  color: #afafb1;
+}
+
+/* Dash */
+#dash {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#dash .dash-background {
+  background-color: #38383b;
+  border-radius: 28px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#dash .dash-item-container .placeholder {
+  background-image: none;
+  background-size: contain;
+  height: 32px;
+}
+
+#dash .dash-item-container .empty-dash-drop-target {
+  width: 32px;
+  height: 32px;
+}
+
+#dash .dash-item-container .show-apps,
+#dash .dash-item-container .overview-tile,
+#dash .dash-item-container .grid-search-result {
+  margin: 0 2px;
+  padding-bottom: 12px;
+}
+
+#dash .dash-item-container .show-apps .overview-icon,
+#dash .dash-item-container .overview-tile .overview-icon,
+#dash .dash-item-container .grid-search-result .overview-icon {
+  color: #fafafb;
+  background-color: #38383b;
+}
+
+#dash .dash-item-container .show-apps:focus .overview-icon,
+#dash .dash-item-container .overview-tile:focus .overview-icon,
+#dash .dash-item-container .grid-search-result:focus .overview-icon {
+  color: #fafafb;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(56, 56, 59, 0.25), 5%);
+}
+
+#dash .dash-item-container .show-apps:focus .overview-icon:hover,
+#dash .dash-item-container .overview-tile:focus .overview-icon:hover,
+#dash .dash-item-container .grid-search-result:focus .overview-icon:hover {
+  background-color: st-mix(-st-accent-color, st-lighten(#38383b, 7%), 5%);
+}
+
+#dash .dash-item-container .show-apps:hover .overview-icon,
+#dash .dash-item-container .overview-tile:hover .overview-icon,
+#dash .dash-item-container .grid-search-result:hover .overview-icon {
+  color: #fafafb;
+  background-color: st-lighten(#38383b, 7%);
+}
+
+#dash .dash-item-container .show-apps:active .overview-icon,
+#dash .dash-item-container .overview-tile:active .overview-icon,
+#dash .dash-item-container .grid-search-result:active .overview-icon {
+  color: #fafafb;
+  background-color: st-lighten(#38383b, 9%);
+}
+
+#dash .dash-item-container .show-apps:active .overview-icon:hover,
+#dash .dash-item-container .overview-tile:active .overview-icon:hover,
+#dash .dash-item-container .grid-search-result:active .overview-icon:hover {
+  background-color: st-lighten(st-lighten(#38383b, 9%), 7%);
+}
+
+#dash .dash-item-container .show-apps:active .overview-icon:focus,
+#dash .dash-item-container .overview-tile:active .overview-icon:focus,
+#dash .dash-item-container .grid-search-result:active .overview-icon:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(#38383b, 9%), 5%);
+}
+
+#dash .dash-item-container .show-apps:checked .overview-icon,
+#dash .dash-item-container .overview-tile:checked .overview-icon,
+#dash .dash-item-container .grid-search-result:checked .overview-icon {
+  color: #fafafb;
+  background-color: st-lighten(#38383b, 8%);
+}
+
+#dash .dash-item-container .show-apps:checked .overview-icon:hover,
+#dash .dash-item-container .overview-tile:checked .overview-icon:hover,
+#dash .dash-item-container .grid-search-result:checked .overview-icon:hover {
+  background-color: st-lighten(st-lighten(#38383b, 8%), 7%);
+}
+
+#dash .dash-item-container .show-apps:checked .overview-icon:active,
+#dash .dash-item-container .overview-tile:checked .overview-icon:active,
+#dash .dash-item-container .grid-search-result:checked .overview-icon:active {
+  background-color: st-lighten(st-lighten(#38383b, 8%), 9%);
+}
+
+#dash .dash-item-container .app-grid-running-dot {
+  offset-y: -12px;
+}
+
+#dash .dash-separator {
+  width: 1px;
+  margin-left: 4px;
+  margin-right: 4px;
+  background-color: rgba(250, 250, 251, 0.1);
+}
+
+#dash .dash-separator,
+#dash .dash-background {
+  margin-bottom: 12px;
+}
+
+.dash-label {
+  -y-offset: 8px;
+}
+
+/* App Grid */
+.icon-grid {
+  row-spacing: 12px;
+  column-spacing: 12px;
+  max-row-spacing: 36px;
+  max-column-spacing: 36px;
+  page-padding-top: 24px;
+  page-padding-bottom: 24px;
+  page-padding-left: 18px;
+  page-padding-right: 18px;
+}
+
+/* App Icons */
+.overview-tile, .grid-search-result {
+  color: #fafafb;
+  background-color: #222226;
+  background-color: transparent;
+  border-radius: 24px;
+  padding: 12px;
+}
+
+.overview-tile:focus, .grid-search-result:focus {
+  color: #fafafb;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(34, 34, 38, 0.25), 5%);
+}
+
+.overview-tile:focus:hover, .grid-search-result:focus:hover {
+  background-color: st-mix(-st-accent-color, st-lighten(#222226, 7%), 5%);
+}
+
+.overview-tile:hover, .grid-search-result:hover {
+  color: #fafafb;
+  background-color: st-lighten(#222226, 7%);
+}
+
+.overview-tile:active, .grid-search-result:active {
+  color: #fafafb;
+  background-color: st-lighten(#222226, 9%);
+}
+
+.overview-tile:active:hover, .grid-search-result:active:hover {
+  background-color: st-lighten(st-lighten(#222226, 9%), 7%);
+}
+
+.overview-tile:active:focus, .grid-search-result:active:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(#222226, 9%), 5%);
+}
+
+.overview-tile:highlighted, .grid-search-result:highlighted, .overview-tile:selected, .grid-search-result:selected, .overview-tile:checked, .grid-search-result:checked {
+  color: #fafafb;
+  background-color: st-lighten(#222226, 8%);
+}
+
+.overview-tile:highlighted:hover, .grid-search-result:highlighted:hover, .overview-tile:selected:hover, .grid-search-result:selected:hover, .overview-tile:checked:hover, .grid-search-result:checked:hover {
+  background-color: st-lighten(st-lighten(#222226, 8%), 7%);
+}
+
+.overview-tile:highlighted:active, .grid-search-result:highlighted:active, .overview-tile:selected:active, .grid-search-result:selected:active, .overview-tile:checked:active, .grid-search-result:checked:active {
+  background-color: st-lighten(st-lighten(#222226, 8%), 9%);
+}
+
+.overview-tile:insensitive, .grid-search-result:insensitive {
+  color: st-transparentize(#fafafb, 0.6);
+  background-color: #222226;
+}
+
+.overview-tile:drop, .grid-search-result:drop {
+  background-color: st-transparentize(-st-accent-color, 0.8);
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2);
+}
+
+.overview-tile .overview-icon.overview-icon-with-label > StBoxLayout, .grid-search-result .overview-icon.overview-icon-with-label > StBoxLayout {
+  spacing: 6px;
+}
+
+.app-folder {
+  color: #fafafb;
+  background-color: st-mix(#fafafb, #222226, 12%);
+}
+
+.app-folder:focus {
+  color: #fafafb;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, st-mix(#fafafb, #222226, 12%), 5%);
+}
+
+.app-folder:focus:hover {
+  background-color: st-mix(-st-accent-color, st-lighten(st-mix(#fafafb, #222226, 12%), 4%), 5%);
+}
+
+.app-folder:hover {
+  color: #fafafb;
+  background-color: st-lighten(st-mix(#fafafb, #222226, 12%), 4%);
+}
+
+.app-folder:active {
+  color: #fafafb;
+  background-color: st-lighten(st-mix(#fafafb, #222226, 12%), 9%);
+}
+
+.app-folder:active:hover {
+  background-color: st-lighten(st-lighten(st-mix(#fafafb, #222226, 12%), 9%), 4%);
+}
+
+.app-folder:active:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(st-mix(#fafafb, #222226, 12%), 9%), 5%);
+}
+
+.app-folder:highlighted, .app-folder:selected, .app-folder:checked {
+  color: #fafafb;
+  background-color: st-lighten(st-mix(#fafafb, #222226, 12%), 8%);
+}
+
+.app-folder:highlighted:hover, .app-folder:selected:hover, .app-folder:checked:hover {
+  background-color: st-lighten(st-lighten(st-mix(#fafafb, #222226, 12%), 8%), 4%);
+}
+
+.app-folder:highlighted:active, .app-folder:selected:active, .app-folder:checked:active {
+  background-color: st-lighten(st-lighten(st-mix(#fafafb, #222226, 12%), 8%), 9%);
+}
+
+.app-folder:insensitive {
+  color: st-transparentize(#fafafb, 0.6);
+  background-color: st-darken(st-mix(#fafafb, #222226, 12%), 3%);
+}
+
+.app-folder:drop {
+  background-color: st-transparentize(-st-accent-color, 0.8);
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2);
+}
+
+.app-grid-running-dot {
+  height: 5px;
+  width: 5px;
+  border-radius: 5px;
+  background-color: #fafafb;
+  offset-y: 6px;
+}
+
+.app-folder-dialog-container {
+  padding-top: 2.2em;
+}
+
+.app-folder-dialog {
+  width: 720px;
+  height: 720px;
+  border-radius: 64px;
+  background-color: #38383b;
+  color: #fafafb;
+  padding: 0 1px;
+  box-shadow: inset 0 0 0 1px rgba(250, 250, 251, 0.1);
+}
+
+.app-folder-dialog .folder-name-container {
+  padding: 24px 36px;
+  padding-bottom: 0;
+}
+
+.app-folder-dialog .folder-name-container .folder-name-entry {
+  width: 12em;
+}
+
+.app-folder-dialog .icon-button, .app-folder-dialog .login-dialog-button.a11y-button, .app-folder-dialog .login-dialog-button.cancel-button, .app-folder-dialog .login-dialog-button.switch-user-button, .app-folder-dialog .login-dialog-button.login-dialog-session-list-button, .app-folder-dialog .calendar .calendar-month-header .pager-button, .calendar .calendar-month-header .app-folder-dialog .pager-button, .app-folder-dialog .message-notification-group .message-collapse-button, .message-notification-group .app-folder-dialog .message-collapse-button, .app-folder-dialog .message .message-header .message-expand-button, .message .message-header .app-folder-dialog .message-expand-button,
+.app-folder-dialog .message .message-header .message-close-button,
+.message .message-header .app-folder-dialog .message-close-button, .app-folder-dialog .screenshot-ui-show-pointer-button {
+  color: #fafafb;
+  background-color: st-mix(#fafafb, #38383b, 12%);
+}
+
+.app-folder-dialog .icon-button:hover, .app-folder-dialog .login-dialog-button.a11y-button:hover, .app-folder-dialog .login-dialog-button.cancel-button:hover, .app-folder-dialog .login-dialog-button.switch-user-button:hover, .app-folder-dialog .login-dialog-button.login-dialog-session-list-button:hover, .app-folder-dialog .calendar .calendar-month-header .pager-button:hover, .calendar .calendar-month-header .app-folder-dialog .pager-button:hover, .app-folder-dialog .message-notification-group .message-collapse-button:hover, .message-notification-group .app-folder-dialog .message-collapse-button:hover, .app-folder-dialog .message .message-header .message-expand-button:hover, .message .message-header .app-folder-dialog .message-expand-button:hover,
+.app-folder-dialog .message .message-header .message-close-button:hover,
+.message .message-header .app-folder-dialog .message-close-button:hover, .app-folder-dialog .screenshot-ui-show-pointer-button:hover {
+  color: #fafafb;
+  background-color: st-lighten(st-mix(#fafafb, #38383b, 12%), 4%);
+}
+
+.app-folder-dialog .icon-button:active, .app-folder-dialog .login-dialog-button.a11y-button:active, .app-folder-dialog .login-dialog-button.cancel-button:active, .app-folder-dialog .login-dialog-button.switch-user-button:active, .app-folder-dialog .login-dialog-button.login-dialog-session-list-button:active, .app-folder-dialog .calendar .calendar-month-header .pager-button:active, .calendar .calendar-month-header .app-folder-dialog .pager-button:active, .app-folder-dialog .message-notification-group .message-collapse-button:active, .message-notification-group .app-folder-dialog .message-collapse-button:active, .app-folder-dialog .message .message-header .message-expand-button:active, .message .message-header .app-folder-dialog .message-expand-button:active,
+.app-folder-dialog .message .message-header .message-close-button:active,
+.message .message-header .app-folder-dialog .message-close-button:active, .app-folder-dialog .screenshot-ui-show-pointer-button:active {
+  color: #fafafb;
+  background-color: st-lighten(st-mix(#fafafb, #38383b, 12%), 9%);
+}
+
+.app-folder-dialog .icon-button:active:hover, .app-folder-dialog .login-dialog-button.a11y-button:active:hover, .app-folder-dialog .login-dialog-button.cancel-button:active:hover, .app-folder-dialog .login-dialog-button.switch-user-button:active:hover, .app-folder-dialog .login-dialog-button.login-dialog-session-list-button:active:hover, .app-folder-dialog .calendar .calendar-month-header .pager-button:active:hover, .calendar .calendar-month-header .app-folder-dialog .pager-button:active:hover, .app-folder-dialog .message-notification-group .message-collapse-button:active:hover, .message-notification-group .app-folder-dialog .message-collapse-button:active:hover, .app-folder-dialog .message .message-header .message-expand-button:active:hover, .message .message-header .app-folder-dialog .message-expand-button:active:hover,
+.app-folder-dialog .message .message-header .message-close-button:active:hover,
+.message .message-header .app-folder-dialog .message-close-button:active:hover, .app-folder-dialog .screenshot-ui-show-pointer-button:active:hover {
+  background-color: st-lighten(st-lighten(st-mix(#fafafb, #38383b, 12%), 9%), 4%);
+}
+
+.app-folder-dialog .icon-button:active:focus, .app-folder-dialog .login-dialog-button.a11y-button:active:focus, .app-folder-dialog .login-dialog-button.cancel-button:active:focus, .app-folder-dialog .login-dialog-button.switch-user-button:active:focus, .app-folder-dialog .login-dialog-button.login-dialog-session-list-button:active:focus, .app-folder-dialog .calendar .calendar-month-header .pager-button:active:focus, .calendar .calendar-month-header .app-folder-dialog .pager-button:active:focus, .app-folder-dialog .message-notification-group .message-collapse-button:active:focus, .message-notification-group .app-folder-dialog .message-collapse-button:active:focus, .app-folder-dialog .message .message-header .message-expand-button:active:focus, .message .message-header .app-folder-dialog .message-expand-button:active:focus,
+.app-folder-dialog .message .message-header .message-close-button:active:focus,
+.message .message-header .app-folder-dialog .message-close-button:active:focus, .app-folder-dialog .screenshot-ui-show-pointer-button:active:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(st-mix(#fafafb, #38383b, 12%), 9%), 5%);
+}
+
+.app-folder-dialog .page-indicators {
+  margin-bottom: 24px;
+}
+
+.app-folder-dialog .page-navigation-arrow {
+  color: #fafafb;
+  background-color: #38383b;
+}
+
+.app-folder-dialog .page-navigation-arrow:hover {
+  color: #fafafb;
+  background-color: st-lighten(#38383b, 7%);
+}
+
+.app-folder-dialog .page-navigation-arrow:active {
+  color: #fafafb;
+  background-color: st-lighten(#38383b, 9%);
+}
+
+.app-folder-dialog .page-navigation-arrow:active:hover {
+  background-color: st-lighten(st-lighten(#38383b, 9%), 7%);
+}
+
+.app-folder-dialog .page-navigation-arrow:active:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(#38383b, 9%), 5%);
+}
+
+.app-folder-dialog .overview-tile, .app-folder-dialog .grid-search-result {
+  color: #fafafb;
+  background-color: #38383b;
+  background-color: transparent;
+}
+
+.app-folder-dialog .overview-tile:focus, .app-folder-dialog .grid-search-result:focus {
+  color: #fafafb;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, rgba(56, 56, 59, 0.25), 5%);
+}
+
+.app-folder-dialog .overview-tile:focus:hover, .app-folder-dialog .grid-search-result:focus:hover {
+  background-color: st-mix(-st-accent-color, st-lighten(#38383b, 7%), 5%);
+}
+
+.app-folder-dialog .overview-tile:hover, .app-folder-dialog .grid-search-result:hover {
+  color: #fafafb;
+  background-color: st-lighten(#38383b, 7%);
+}
+
+.app-folder-dialog .overview-tile:active, .app-folder-dialog .grid-search-result:active {
+  color: #fafafb;
+  background-color: st-lighten(#38383b, 9%);
+}
+
+.app-folder-dialog .overview-tile:active:hover, .app-folder-dialog .grid-search-result:active:hover {
+  background-color: st-lighten(st-lighten(#38383b, 9%), 7%);
+}
+
+.app-folder-dialog .overview-tile:active:focus, .app-folder-dialog .grid-search-result:active:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(#38383b, 9%), 5%);
+}
+
+.app-folder-dialog .overview-tile:highlighted, .app-folder-dialog .grid-search-result:highlighted, .app-folder-dialog .overview-tile:selected, .app-folder-dialog .grid-search-result:selected, .app-folder-dialog .overview-tile:checked, .app-folder-dialog .grid-search-result:checked {
+  color: #fafafb;
+  background-color: st-lighten(#38383b, 8%);
+}
+
+.app-folder-dialog .overview-tile:highlighted:hover, .app-folder-dialog .grid-search-result:highlighted:hover, .app-folder-dialog .overview-tile:selected:hover, .app-folder-dialog .grid-search-result:selected:hover, .app-folder-dialog .overview-tile:checked:hover, .app-folder-dialog .grid-search-result:checked:hover {
+  background-color: st-lighten(st-lighten(#38383b, 8%), 7%);
+}
+
+.app-folder-dialog .overview-tile:highlighted:active, .app-folder-dialog .grid-search-result:highlighted:active, .app-folder-dialog .overview-tile:selected:active, .app-folder-dialog .grid-search-result:selected:active, .app-folder-dialog .overview-tile:checked:active, .app-folder-dialog .grid-search-result:checked:active {
+  background-color: st-lighten(st-lighten(#38383b, 8%), 9%);
+}
+
+.app-folder-dialog .overview-tile:insensitive, .app-folder-dialog .grid-search-result:insensitive {
+  color: st-transparentize(#fafafb, 0.6);
+  background-color: #38383b;
+}
+
+.app-folder-dialog .overview-tile:drop, .app-folder-dialog .grid-search-result:drop {
+  background-color: st-transparentize(-st-accent-color, 0.8);
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2);
+}
+
+.rename-folder-popup .rename-folder-popup-item {
+  spacing: 6px;
+}
+
+.rename-folder-popup .rename-folder-popup-item:ltr, .rename-folder-popup .rename-folder-popup-item:rtl {
+  padding: 0 12px;
+}
+
+.page-indicator {
+  padding: 6px 12px 0;
+  transition-duration: 400ms;
+}
+
+.page-indicator .page-indicator-icon {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background-color: #fafafb;
+  transition-duration: 400ms;
+}
+
+.apps-scroll-view {
+  padding: 0;
+}
+
+.system-action-icon {
+  background-color: rgba(250, 250, 251, 0.1);
+  color: #fafafb;
+  border-radius: 999px;
+  icon-size: 48px;
+}
+
+.page-navigation-hint.dnd {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.page-navigation-hint.next:ltr, .page-navigation-hint.previous:rtl {
+  background-gradient-start: rgba(255, 255, 255, 0.05);
+  background-gradient-end: transparent;
+  background-gradient-direction: horizontal;
+  border-radius: 24px 0px 0px 24px;
+}
+
+.page-navigation-hint.previous:ltr, .page-navigation-hint.next:rtl {
+  background-gradient-start: transparent;
+  background-gradient-end: rgba(255, 255, 255, 0.05);
+  background-gradient-direction: horizontal;
+  border-radius: 0px 24px 24px 0px;
+}
+
+.page-navigation-arrow {
+  margin: 6px;
+  padding: 18px;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  transition-duration: 100ms;
+  color: #fafafb;
+  background-color: #222226;
+}
+
+.page-navigation-arrow > StIcon {
+  color: #fafafb;
+}
+
+.page-navigation-arrow:hover {
+  color: #fafafb;
+  background-color: st-lighten(#222226, 7%);
+}
+
+.page-navigation-arrow:active {
+  color: #fafafb;
+  background-color: st-lighten(#222226, 9%);
+}
+
+.page-navigation-arrow:active:hover {
+  background-color: st-lighten(st-lighten(#222226, 9%), 7%);
+}
+
+.page-navigation-arrow:active:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(#222226, 9%), 5%);
+}
+
+/* Workspace pager */
+.workspace-thumbnails {
+  visible-width: 32px;
+  spacing: 6px;
+  padding: 6px;
+}
+
+.workspace-thumbnails .workspace-thumbnail {
+  color: #fafafb;
+  background-color: #46464e;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.workspace-thumbnails .placeholder {
+  background-image: url("resource:///org/gnome/shell/theme/workspace-placeholder.svg");
+  background-size: contain;
+  width: 18px;
+}
+
+.workspace-thumbnail-indicator {
+  border: 3px solid -st-accent-color;
+  border-radius: 8px;
+}
+
+.ripple-pointer-location {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: st-lighten(st-transparentize(-st-accent-color, 0.7), 30%);
+  box-shadow: 0 0 2px 2px st-lighten(-st-accent-color, 20%);
+}
+
+.pie-timer {
+  width: 60px;
+  height: 60px;
+  -pie-border-width: 3px;
+  -pie-border-color: -st-accent-color;
+  -pie-background-color: st-lighten(st-transparentize(-st-accent-color, 0.7), 40%);
+}
+
+.magnifier-zoom-region {
+  border: 2px solid -st-accent-color;
+}
+
+.magnifier-zoom-region.full-screen {
+  border-width: 0;
+}
+
+.select-area-rubberband {
+  background-color: st-transparentize(-st-accent-color, 0.7);
+  border: 1px solid -st-accent-color;
+}
+
+.user-icon {
+  background-size: contain;
+  border-radius: 999px;
+  icon-size: 64px;
+  background-color: rgba(34, 34, 38, 0.05);
+  color: #222226;
+}
+
+.user-icon StIcon {
+  padding: 12px;
+}
+
+.user-icon.user-avatar {
+  box-shadow: inset 0 0 0 1px rgba(34, 34, 38, 0.1);
+}
+
+.lightbox {
+  background-color: black;
+}
+
+.flashspot {
+  background-color: white;
+}
+
+.hidden {
+  color: transparent;
+}
+
+.caps-lock-warning-label {
+  text-align: center;
+  padding-bottom: 8px;
+  color: #e5a50a;
+}
+
+/* Workspace animation */
+.workspace-animation {
+  background-color: #2e2e33;
+}
+
+/* Tiled window previews */
+.tile-preview {
+  background-color: st-transparentize(-st-accent-color, 0.5);
+  border: 1px solid -st-accent-color;
+}
+
+/* On-screen Keyboard */
+#keyboard {
+  background-color: #2e2e33;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.02);
+}
+
+#keyboard .page-indicator {
+  padding: 6px;
+}
+
+#keyboard .page-indicator .page-indicator-icon {
+  width: 8px;
+  height: 8px;
+}
+
+.key-container {
+  padding: 4px;
+  spacing: 4px;
+}
+
+.keyboard-key {
+  font-size: 1.455em;
+  font-weight: bold;
+  border-radius: 0.546em;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
+  color: #ffffff;
+  background-color: st-mix(#ffffff, #4d4d4d, 12%);
+}
+
+.keyboard-key:focus {
+  color: #222226;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, st-mix(#222226, #fafafb, 12%), 5%);
+}
+
+.keyboard-key:focus:hover {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(#222226, #fafafb, 12%), 4%), 5%);
+}
+
+.keyboard-key:hover {
+  color: #ffffff;
+  background-color: st-darken(st-mix(#ffffff, #4d4d4d, 12%), 4%);
+}
+
+.keyboard-key:active {
+  color: #ffffff;
+  background-color: st-darken(st-mix(#ffffff, #4d4d4d, 12%), 9%);
+}
+
+.keyboard-key:active:hover {
+  background-color: st-darken(st-darken(st-mix(#ffffff, #4d4d4d, 12%), 9%), 4%);
+}
+
+.keyboard-key:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(#ffffff, #4d4d4d, 12%), 9%), 5%);
+}
+
+.keyboard-key:checked {
+  color: #ffffff;
+  background-color: st-darken(st-mix(#ffffff, #4d4d4d, 12%), 8%);
+}
+
+.keyboard-key:checked:hover {
+  background-color: st-darken(st-darken(st-mix(#ffffff, #4d4d4d, 12%), 8%), 4%);
+}
+
+.keyboard-key:checked:active {
+  background-color: st-darken(st-darken(st-mix(#ffffff, #4d4d4d, 12%), 8%), 9%);
+}
+
+.keyboard-key.default-key {
+  color: #ffffff;
+  background-color: st-mix(#ffffff, #303030, 12%);
+  border: none;
+}
+
+.keyboard-key.default-key:hover {
+  color: #ffffff;
+  background-color: st-darken(st-mix(#ffffff, #303030, 12%), 4%);
+}
+
+.keyboard-key.default-key:active {
+  color: #ffffff;
+  background-color: st-darken(st-mix(#ffffff, #303030, 12%), 9%);
+}
+
+.keyboard-key.default-key:active:hover {
+  background-color: st-darken(st-darken(st-mix(#ffffff, #303030, 12%), 9%), 4%);
+}
+
+.keyboard-key.default-key:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(#ffffff, #303030, 12%), 9%), 5%);
+}
+
+.keyboard-key.default-key:checked {
+  color: #ffffff;
+  background-color: st-darken(st-mix(#ffffff, #303030, 12%), 8%);
+}
+
+.keyboard-key.default-key:checked:hover {
+  background-color: st-darken(st-darken(st-mix(#ffffff, #303030, 12%), 8%), 4%);
+}
+
+.keyboard-key.default-key:checked:active {
+  background-color: st-darken(st-darken(st-mix(#ffffff, #303030, 12%), 8%), 9%);
+}
+
+.keyboard-key.default-key:latched {
+  background-color: -st-accent-color;
+}
+
+.keyboard-key StIcon {
+  icon-size: 1.6365em;
+}
+
+.keyboard-subkeys-boxpointer {
+  -arrow-border-radius: 22px;
+  -arrow-background-color: #2e2e33;
+  -arrow-border-width: 1px;
+  -arrow-border-color: #44444c;
+  -arrow-base: 20px;
+  -arrow-rise: 10px;
+  -boxpointer-gap: 4px;
+  border-radius: 22px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.keyboard-subkeys-boxpointer .key-container {
+  padding: 12px;
+  spacing: 8px;
+}
+
+.emoji-page .keyboard-key {
+  background-color: transparent;
+  border: none;
+  color: initial;
+}
+
+.emoji-panel .keyboard-key:latched {
+  border-color: st-lighten(-st-accent-color, 5%);
+  background-color: -st-accent-color;
+}
+
+.word-suggestions {
+  spacing: 12px;
+  min-height: 17pt;
+  padding: 12px;
+  color: #ffffff;
+}
+
+.word-suggestions StButton {
+  margin: 0 3px;
+  min-width: 32px;
+  border-radius: 4px;
+  padding: 6px 18px;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.word-suggestions StButton:insensitive {
+  background-color: transparent !important;
+}
+
+.word-suggestions StButton:focus {
+  color: #222226;
+  box-shadow: inset 0 0 0 2px st-transparentize(-st-accent-color, 0.2) !important;
+  background-color: st-mix(-st-accent-color, st-mix(#222226, #fafafb, 12%), 5%);
+}
+
+.word-suggestions StButton:focus:hover {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(#222226, #fafafb, 12%), 4%), 5%);
+}
+
+.word-suggestions StButton:hover {
+  color: #ffffff;
+  background-color: st-darken(st-mix(#ffffff, #4d4d4d, 12%), 4%);
+}
+
+.word-suggestions StButton:active {
+  color: #ffffff;
+  background-color: st-darken(st-mix(#ffffff, #4d4d4d, 12%), 9%);
+}
+
+.word-suggestions StButton:active:hover {
+  background-color: st-darken(st-darken(st-mix(#ffffff, #4d4d4d, 12%), 9%), 4%);
+}
+
+.word-suggestions StButton:active:focus {
+  background-color: st-mix(-st-accent-color, st-darken(st-mix(#ffffff, #4d4d4d, 12%), 9%), 5%);
+}
+
+.word-suggestions StButton:checked {
+  color: #ffffff;
+  background-color: st-darken(st-mix(#ffffff, #4d4d4d, 12%), 8%);
+}
+
+.word-suggestions StButton:checked:hover {
+  background-color: st-darken(st-darken(st-mix(#ffffff, #4d4d4d, 12%), 8%), 4%);
+}
+
+.word-suggestions StButton:checked:active {
+  background-color: st-darken(st-darken(st-mix(#ffffff, #4d4d4d, 12%), 8%), 9%);
+}
+
+/* Looking Glass */
+.lg-dialog StEntry {
+  min-height: 1.5em;
+}
+
+.lg-dialog .shell-link {
+  color: st-lighten(-st-accent-color, 20%);
+}
+
+.lg-dialog .shell-link:hover {
+  color: st-lighten(st-lighten(-st-accent-color, 20%), 10%);
+}
+
+.lg-dialog .shell-link:active {
+  color: st-darken(st-lighten(-st-accent-color, 20%), 10%);
+}
+
+.lg-dialog .actor-link {
+  color: st-darken(#ffffff, 20%);
+}
+
+.lg-dialog .actor-link:hover {
+  color: #ffffff;
+}
+
+.lg-dialog .actor-link:active {
+  color: st-lighten(#ffffff, 20%);
+}
+
+.lg-dialog .actor-link StIcon {
+  icon-size: 12px;
+}
+
+.lg-completions-text {
+  font-style: italic;
+}
+
+#LookingGlassDialog {
+  background-color: rgba(46, 46, 51, 0.98);
+  color: #ffffff;
+  border-radius: 16px;
+  margin-top: 4px;
+  border: 2px solid transparent;
+  padding: 6px;
+  spacing: 6px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+#LookingGlassDialog > #Toolbar {
+  border: none;
+  padding: 6px;
+  border-radius: 0;
+  background-color: transparent;
+  spacing: 6px;
+}
+
+#LookingGlassDialog > #Toolbar .lg-toolbar-button {
+  padding: 6px 12px;
+}
+
+#LookingGlassDialog > #Toolbar .lg-toolbar-button > StIcon {
+  icon-size: 16px;
+}
+
+#LookingGlassDialog .labels {
+  spacing: 6px;
+}
+
+#LookingGlassDialog .notebook-tab {
+  background-color: transparent;
+  -natural-hpadding: 12px;
+  -minimum-hpadding: 12px;
+  padding: 6px 12px;
+}
+
+#LookingGlassDialog .notebook-tab:selected {
+  color: #ffffff;
+  background-color: st-lighten(st-mix(#ffffff, #2e2e33, 12%), 9%);
+}
+
+#LookingGlassDialog .notebook-tab:selected:hover {
+  background-color: st-lighten(st-lighten(st-mix(#ffffff, #2e2e33, 12%), 9%), 4%);
+}
+
+#LookingGlassDialog .notebook-tab:selected:focus {
+  background-color: st-mix(-st-accent-color, st-lighten(st-mix(#ffffff, #2e2e33, 12%), 9%), 5%);
+}
+
+#LookingGlassPropertyInspector {
+  background-color: #2e2e33;
+  color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px;
+}
+
+#LookingGlassPropertyInspector .lg-obj-inspector-title {
+  spacing: 4px;
+}
+
+#LookingGlassPropertyInspector .lg-obj-inspector-close-button,
+#LookingGlassPropertyInspector .lg-obj-inspector-button {
+  padding: 6px 12px;
+}
+
+#LookingGlassPropertyInspector .lg-obj-inspector-close-button {
+  margin: 4px;
+  padding: 6px;
+  border-radius: 999px;
+}
+
+#LookingGlassPropertyInspector .lg-obj-inspector-close-button > StIcon {
+  icon-size: 16px;
+}
+
+#LookingGlassEvaluator {
+  padding: 6px;
+}
+
+#LookingGlassEvaluator .evaluator-results {
+  spacing: 6px;
+}
+
+#LookingGlassWindows {
+  padding: 6px;
+  spacing: 6px;
+}
+
+#LookingGlassWindows .lg-window {
+  color: #ffffff;
+  background-color: st-mix(#ffffff, #2e2e33, 12%);
+  margin: 0;
+  padding: 12px;
+}
+
+#LookingGlassExtensions .lg-extensions-list {
+  padding: 6px;
+  spacing: 6px;
+}
+
+#LookingGlassExtensions .lg-extension {
+  color: #ffffff;
+  background-color: st-mix(#ffffff, #2e2e33, 12%);
+  margin: 0;
+  spacing: 4px;
+  padding: 12px;
+}
+
+#LookingGlassExtensions .lg-extension .lg-extension-name {
+  color: #ffffff !important;
+}
+
+#LookingGlassExtensions .lg-extension .lg-extension-meta {
+  spacing: 12px;
+}
+
+#LookingGlassExtensions .lg-extensions-none {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#LookingGlassActors {
+  padding: 6px;
+  spacing: 4px;
+}
+
+#LookingGlassDebugFlags .lg-debug-flags-header {
+  padding: 6px;
+  padding-top: 12px;
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button {
+  padding: 9px 12px;
+  margin-bottom: 6px;
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button StLabel {
+  font-weight: normal !important;
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button .toggle-switch {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button .toggle-switch:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button .toggle-switch:checked {
+  background: -st-accent-color;
+  color: -st-accent-fg-color;
+}
+
+#LookingGlassDebugFlags .lg-debug-flag-button .toggle-switch:checked:hover {
+  background-color: st-lighten(-st-accent-color, 5%);
+  color: st-lighten(-st-accent-fg-color, 5%);
+}
+
+.login-dialog,
+.unlock-dialog {
+  color: #fafafb;
+}
+
+.login-dialog .caps-lock-warning-label,
+.login-dialog .login-dialog-message-warning,
+.unlock-dialog .caps-lock-warning-label,
+.unlock-dialog .login-dialog-message-warning {
+  color: #fafafb;
+}
+
+.login-dialog .login-dialog-prompt-layout,
+.unlock-dialog .login-dialog-prompt-layout {
+  width: 25em;
+  spacing: 9px;
+}
+
+.login-dialog .login-dialog-prompt-entry {
+  border-radius: 1000px;
+}
+
+.login-dialog .login-dialog-prompt-entry:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.login-dialog-bottom-button-group {
+  padding: 32px;
+  spacing: 16px;
+}
+
+.login-dialog-button.a11y-button, .login-dialog-button.cancel-button, .login-dialog-button.switch-user-button, .login-dialog-button.login-dialog-session-list-button {
+  padding: 1.091em;
+  border-radius: 1000px;
+}
+
+.login-dialog-button.a11y-button:focus, .login-dialog-button.cancel-button:focus, .login-dialog-button.switch-user-button:focus, .login-dialog-button.login-dialog-session-list-button:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.login-dialog-button.cancel-button {
+  padding: 9px;
+}
+
+.login-dialog-button-box {
+  spacing: 12px;
+}
+
+.conflicting-session-dialog-content {
+  spacing: 20px;
+}
+
+.conflicting-session-dialog-content .conflicting-session-dialog-title {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.conflicting-session-dialog-content .conflicting-session-dialog-desc {
+  text-align: center;
+}
+
+.conflicting-session-dialog-content .conflicting-session-dialog-desc-warning {
+  text-align: center;
+  color: #e5a50a;
+}
+
+.login-dialog-logo-bin {
+  margin: 3em 0;
+  background: none !important;
+  icon-size: 0 !important;
+}
+
+.login-dialog-banner-view {
+  max-width: 25em;
+}
+
+.login-dialog-banner-view .login-dialog-banner {
+  color: #dedee4;
+}
+
+.login-dialog-message {
+  text-align: center;
+}
+
+.login-dialog-message-hint, .login-dialog-message {
+  color: #dedee4;
+  min-height: 2.75em;
+}
+
+.login-dialog-user-selection-box {
+  padding-top: 4em;
+  padding-bottom: 8em;
+}
+
+.login-dialog-not-listed-label {
+  padding: 6px;
+}
+
+.login-dialog-not-listed-button {
+  padding: 0 6px;
+  margin: 6px;
+}
+
+.login-dialog-not-listed-button:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.login-dialog-auth-list-view {
+  -st-vfade-offset: 3em;
+}
+
+.login-dialog-auth-list {
+  spacing: 6px;
+  margin-left: 2em;
+}
+
+.login-dialog-auth-list-title {
+  margin-left: 2em;
+  padding-bottom: 6px;
+}
+
+.login-dialog .login-dialog-auth-list-item {
+  border-radius: 9.6px;
+  padding: 7.2px;
+}
+
+.login-dialog .login-dialog-auth-list-item:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.unlock-dialog .login-dialog-auth-list-item {
+  border-radius: 9.6px;
+  padding: 7.2px;
+}
+
+.unlock-dialog .login-dialog-auth-list-item:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.login-dialog-auth-list-label:ltr {
+  padding-left: 15px;
+  text-align: left;
+}
+
+.login-dialog-auth-list-label:rtl {
+  padding-right: 15px;
+  text-align: right;
+}
+
+.login-dialog-user-list-view {
+  width: 25em;
+  -st-vfade-offset: 3em;
+}
+
+.login-dialog-user-list-view .login-dialog-user-list {
+  margin: 0 8px;
+  spacing: 12px;
+}
+
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item {
+  border-radius: 16px;
+  padding: 9px;
+}
+
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item .user-icon {
+  border: 2px solid transparent;
+}
+
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item .login-dialog-timed-login-indicator {
+  height: 2px;
+  margin-top: 6px;
+  background-color: rgba(250, 250, 251, 0.7);
+}
+
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:logged-in .user-icon {
+  border-color: -st-accent-color;
+}
+
+.login-dialog-user-list-view .login-dialog-user-list .login-dialog-user-list-item:logged-in .user-icon StIcon {
+  background-color: st-transparentize(-st-accent-color, 0.7);
+}
+
+.unlock-dialog {
+  background-color: transparent;
+}
+
+.unlock-dialog .login-dialog-prompt-entry {
+  border-radius: 1000px;
+}
+
+.unlock-dialog .login-dialog-prompt-entry:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.unlock-dialog .button,
+.unlock-dialog .icon-button,
+.unlock-dialog .calendar .calendar-month-header .pager-button,
+.calendar .calendar-month-header .unlock-dialog .pager-button,
+.unlock-dialog .message-notification-group .message-collapse-button,
+.message-notification-group .unlock-dialog .message-collapse-button,
+.unlock-dialog .message .message-header .message-expand-button,
+.message .message-header .unlock-dialog .message-expand-button,
+.unlock-dialog .message .message-header .message-close-button,
+.message .message-header .unlock-dialog .message-close-button,
+.unlock-dialog .screenshot-ui-show-pointer-button,
+.unlock-dialog .login-dialog-button.a11y-button,
+.unlock-dialog .login-dialog-button.cancel-button,
+.unlock-dialog .login-dialog-button.switch-user-button,
+.unlock-dialog .login-dialog-button.login-dialog-session-list-button {
+  border-radius: 1000px;
+}
+
+.unlock-dialog .button:focus,
+.unlock-dialog .icon-button:focus,
+.unlock-dialog .calendar .calendar-month-header .pager-button:focus,
+.calendar .calendar-month-header .unlock-dialog .pager-button:focus,
+.unlock-dialog .message-notification-group .message-collapse-button:focus,
+.message-notification-group .unlock-dialog .message-collapse-button:focus,
+.unlock-dialog .message .message-header .message-expand-button:focus,
+.message .message-header .unlock-dialog .message-expand-button:focus,
+.unlock-dialog .message .message-header .message-close-button:focus,
+.message .message-header .unlock-dialog .message-close-button:focus,
+.unlock-dialog .screenshot-ui-show-pointer-button:focus,
+.unlock-dialog .login-dialog-button.a11y-button:focus,
+.unlock-dialog .login-dialog-button.cancel-button:focus,
+.unlock-dialog .login-dialog-button.switch-user-button:focus,
+.unlock-dialog .login-dialog-button.login-dialog-session-list-button:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.screen-shield-background {
+  background: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+#lockDialogGroup {
+  background-color: #222226;
+  background-image: url("resource:///org/gnome/shell/theme/background.png");
+  background-size: cover;
+}
+
+.unlock-dialog-clock {
+  color: #fafafb;
+  spacing: 2em;
+}
+
+.unlock-dialog-clock .unlock-dialog-clock-time {
+  font-size: 6.546em;
+  font-weight: 800;
+}
+
+.unlock-dialog-clock .unlock-dialog-clock-date {
+  font-weight: 400;
+}
+
+.unlock-dialog-clock .unlock-dialog-clock-hint {
+  margin-top: 2em;
+  padding: 6px 18px;
+  border-radius: 16px;
+  font-weight: bold;
+}
+
+#unlockDialogNotifications StButton#vhandle, #unlockDialogNotifications StButton#hhandle {
+  background-color: rgba(250, 250, 251, 0.3);
+}
+
+#unlockDialogNotifications StButton#vhandle:hover, #unlockDialogNotifications StButton#vhandle:focus, #unlockDialogNotifications StButton#hhandle:hover, #unlockDialogNotifications StButton#hhandle:focus {
+  background-color: rgba(250, 250, 251, 0.5);
+}
+
+#unlockDialogNotifications StButton#vhandle:active, #unlockDialogNotifications StButton#hhandle:active {
+  background-color: st-transparentize(-st-accent-color, 0.5);
+}
+
+.unlock-dialog-notifications-container {
+  margin: 12px;
+  spacing: 6px;
+  width: 25em;
+  background-color: transparent;
+}
+
+.unlock-dialog-notifications-container .summary-notification-stack-scrollview {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.unlock-dialog-notifications-container .notification,
+.unlock-dialog-notifications-container .unlock-dialog-notification-source {
+  padding: 12px 16px;
+  border: none;
+  background-color: rgba(250, 250, 251, 0.1);
+  color: #fafafb;
+  border-radius: 16px;
+}
+
+.unlock-dialog-notifications-container .notification.critical,
+.unlock-dialog-notifications-container .unlock-dialog-notification-source.critical {
+  background-color: rgba(250, 250, 251, 0.2);
+}
+
+.unlock-dialog-notification-icon {
+  icon-size: 32px;
+}
+
+.unlock-dialog-notification-label {
+  padding-left: 12px;
+  padding-right: 0;
+}
+
+.unlock-dialog-notification-label:rtl {
+  padding-right: 12px;
+  padding-left: 0;
+}
+
+.unlock-dialog-notification-count-text {
+  font-weight: bold;
+  padding: 0 12px;
+  color: #fafafb;
+  background-color: rgba(250, 250, 251, 0.1);
+  border-radius: 999px;
+}
+
+.login-dialog .user-widget .user-widget-label,
+.unlock-dialog .user-widget .user-widget-label {
+  color: #fafafb;
+}
+
+.login-dialog .user-widget .user-icon,
+.unlock-dialog .user-widget .user-icon {
+  background-color: rgba(250, 250, 251, 0.13);
+  color: #fafafb;
+}
+
+.login-dialog .user-widget.horizontal,
+.unlock-dialog .user-widget.horizontal {
+  spacing: 18px;
+}
+
+.login-dialog .user-widget.vertical,
+.unlock-dialog .user-widget.vertical {
+  spacing: 24px;
+}
+
+.login-dialog .user-widget.vertical .user-widget-label,
+.unlock-dialog .user-widget.vertical .user-widget-label {
+  font-weight: 400;
+  font-size: 1.818em;
+  text-align: center;
+  margin-bottom: .75em;
+}
+
+.login-dialog .user-widget.vertical .user-icon,
+.unlock-dialog .user-widget.vertical .user-icon {
+  icon-size: 128px;
+}
+
+.login-dialog .user-widget.vertical .user-icon StIcon,
+.unlock-dialog .user-widget.vertical .user-icon StIcon {
+  padding: 30px;
+}

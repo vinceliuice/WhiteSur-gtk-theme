@@ -1,0 +1,272 @@
+.quick-settings {
+  padding: $base_padding * 3;
+  border-radius: $modal_radius * 2.25;
+
+  .icon-button, .button {
+    padding: $base_padding * 1.75;
+  }
+}
+
+.quick-settings-grid {
+  spacing-rows: $base_padding * 2;
+  spacing-columns: $base_padding * 2;
+}
+
+.quick-toggle, .quick-toggle-has-menu {
+  border-radius: $forced_circular_radius;
+  min-width: 12em;
+  max-width: 12em;
+  min-height: $scalable_icon_size * 3; // use icon size so the button scales
+}
+
+// standalone toggle button
+.quick-toggle {
+  &:checked { @extend %default_button;}
+
+  & > StBoxLayout { spacing: $base_padding * 1.5; }
+
+  /* Move padding into the box; this is to allow menu arrows
+     to extend to the border */
+  &.button { padding: 0; }
+  & > StBoxLayout {
+    padding: 0 $base_padding * 2;
+  }
+
+  &:ltr > StBoxLayout { padding-left: $base_padding * 2.5; }
+  &:rtl > StBoxLayout { padding-right: $base_padding * 2.5; }
+
+  .quick-toggle-title {
+    @extend %heading;
+  }
+
+  .quick-toggle-subtitle {
+    @extend %caption;
+    font-weight: normal;
+  }
+
+  .quick-toggle-icon { icon-size: $scalable_icon_size; }
+}
+
+// toggle with a menu button
+.quick-toggle-has-menu {
+  & .quick-toggle {
+    min-width: auto;
+    max-width: auto;
+
+    &:ltr {
+      border-radius: $forced_circular_radius 0 0 $forced_circular_radius;
+      > StBoxLayout { padding-right: $scaled_padding * 1.5; }
+    }
+
+    &:rtl {
+      border-radius: 0 $forced_circular_radius $forced_circular_radius 0;
+      > StBoxLayout { padding-left: $scaled_padding * 1.5; }
+    }
+
+    &:ltr:last-child { border-radius: $forced_circular_radius; }
+    &:rtl:last-child { border-radius: $forced_circular_radius; }
+  }
+
+  & .quick-toggle-menu-button {
+    padding: $scaled_padding $scaled_padding * 1.75;
+
+    &:ltr {
+      border-radius: 0 $forced_circular_radius $forced_circular_radius 0;
+    }
+    &:rtl {
+      border-radius: $forced_circular_radius 0 0 $forced_circular_radius;
+    }
+  }
+
+  & .quick-toggle-separator {
+    width: 1px;
+  }
+}
+
+
+// Set the color of separators and menu buttons within the toggle.
+// This is bit of a mess but needed to have working colors in
+// both light, dark and high contrast styles.
+
+// menu button colors
+$quick_toggle_menubutton_bg_color: if(
+  $contrast == 'high', lighten($bg_color, 22%),
+  if($variant == 'light', darken($bg_color, 5%), lighten($bg_color, 8%))
+);
+$quick_toggle_menubutton_checked_bg_color: if(
+  $contrast == 'high', st-mix(-st-accent-color, $fg_color, 75%),
+  if($variant == 'light', st-mix(-st-accent-color, $fg_color, 92%), st-mix(-st-accent-color, $fg_color, 85%))
+);
+
+// separator colors
+$quick_toggle_separator_color: if(
+  $contrast == 'high', transparent,
+  transparentize($fg_color, .75)
+);
+
+$quick_toggle_checked_separator_color: if(
+  $contrast == 'high', transparent,
+  if($variant == 'light', st-mix(-st-accent-fg-color, -st-accent-color, 20%), st-mix(-st-accent-fg-color, -st-accent-color, 30%),)
+);
+
+.quick-toggle-has-menu {
+  & .quick-toggle-menu-button {
+    @include button(normal, $c: $quick_toggle_menubutton_bg_color);
+    &:focus { @include button(focus, $c: $quick_toggle_menubutton_bg_color);}
+    &:hover { @include button(hover, $c: $quick_toggle_menubutton_bg_color);}
+    &:active { @include button(active, $c: $quick_toggle_menubutton_bg_color);}
+
+    &:checked {
+      @include button(normal, $c: $quick_toggle_menubutton_checked_bg_color, $tc:-st-accent-fg-color, $style: default);
+      &:focus { @include button(focus, $c: $quick_toggle_menubutton_checked_bg_color, $tc:-st-accent-fg-color, $style: default);}
+      &:hover { @include button(hover, $c: $quick_toggle_menubutton_checked_bg_color, $tc:-st-accent-fg-color, $style: default);}
+      &:active { @include button(active, $c: $quick_toggle_menubutton_checked_bg_color, $tc:-st-accent-fg-color, $style: default);}
+    }
+  }
+
+  &:checked {
+    & .quick-toggle-separator {
+      background-color: $quick_toggle_checked_separator_color;
+    }
+  }
+
+  & .quick-toggle-separator {
+    background-color: $quick_toggle_separator_color;
+  }
+}
+
+.quick-slider {
+  & > StBoxLayout { spacing: $base_padding; }
+
+  .icon-button { padding: $base_padding; }
+
+  .slider-bin {
+    &:focus {@include button(focus);}
+    padding: $base_padding;
+    border-radius: $forced_circular_radius;
+  }
+}
+
+.quick-toggle-menu {
+  @extend %card;
+
+  &:insensitive {
+    // override insensitive style on submenu
+    @include button(normal);
+  }
+
+  border-radius: $base_border_radius * 3;
+
+  margin: $base_padding * 2 $base_padding * 3 0;
+
+  .popup-menu-item > StIcon {
+    -st-icon-style: symbolic;
+    icon-size: $scalable_icon_size;
+  }
+
+  & .header {
+    spacing-rows: $base_padding * 0.5;
+    spacing-columns: $base_padding * 2;
+    padding-bottom: $base_padding * 2;
+
+    & .icon {
+      icon-size: $medium_scalable_icon_size;
+      border-radius: $forced_circular_radius;
+      padding: 1.5 * $base_padding;
+      background-color: transparentize($fg_color, 0.8);
+
+      &.active {
+        background-color: -st-accent-color;
+        color: -st-accent-fg-color;
+      }
+
+      // draw hc outline
+      @if $contrast == 'high' {
+        @include draw_hc_inset();
+        &.active {
+          @include draw_hc_inset($no_inset: true);
+        }
+      }
+    }
+
+    & .title {
+      @extend %title_3;
+    }
+
+    & .subtitle {
+      @extend %caption_heading;
+    }
+  }
+}
+
+.quick-toggle-menu-container {
+}
+
+.quick-settings-system-item {
+  & > StBoxLayout { spacing: $base_padding * 2; }
+
+  & .power-item {
+    min-height: 0;
+    min-width: 0;
+
+    &:insensitive {
+      @include button(normal);
+      background-color: transparent;
+    }
+  }
+}
+
+.nm-network-item {
+  .wireless-secure-icon { icon-size: $scalable_icon_size * 0.5; } // half-size symbolic
+}
+
+.bt-device-item {
+  .popup-menu-icon { -st-icon-style: symbolic; }
+}
+
+.bt-menu-placeholder.popup-menu-item {
+  @extend %title_4;
+  text-align: center;
+
+  padding: 2em 4em;
+}
+
+.device-subtitle { color: transparentize($fg_color, 0.5); }
+
+.keyboard-brightness-level {
+  spacing: $base_padding;
+
+  .button:checked { @extend %default_button; }
+}
+
+// background apps
+
+.background-apps-quick-toggle {
+  min-height: to_em(40px);
+  background-color: transparent;
+
+  & StIcon { icon-size: $scalable_icon_size !important; }
+}
+
+.background-app-item {
+  & .title { @extend %heading; }
+  & .subtitle { @extend %caption; }
+  & .popup-menu-icon {
+    icon-size: $large_icon_size !important;
+    -st-icon-style: regular !important;
+  }
+  & .icon-button {
+    padding: $base_padding;
+
+    // override some background colors since it's a button on an already styled background
+    // FIXME: may need a generic drawing method for button in menu item in future
+    background-color: transparentize($fg_color, 0.87);
+    &:hover { background-color: transparentize($fg_color, 0.78);}
+    &:active { background-color: transparentize($fg_color, 0.69);}
+  }
+  & .spinner {
+    padding: $base_padding;
+  }
+
+  &.popup-inactive-menu-item { color: $fg_color; }
+}

@@ -1,0 +1,235 @@
+/* Looking Glass */
+
+// common
+.lg-dialog {
+
+  StEntry {
+    @extend %osd_entry;
+    min-height: to_em(22px);
+  }
+
+  // override link color since OSD style
+  $lg_link_color: st-lighten(-st-accent-color, 20%);
+  .shell-link {
+    color: $lg_link_color;
+    &:hover { color: st-lighten($lg_link_color, 10%); }
+    &:active { color: st-darken($lg_link_color, 10%); }
+   }
+
+  .actor-link {
+    @extend %monospace;
+    color: st-darken($osd_fg_color, 20%);
+    &:hover { color:$osd_fg_color; }
+    &:active { color: st-lighten($osd_fg_color, 20%); }
+    & StIcon { icon-size: 12px; }
+   }
+}
+
+.lg-completions-text {
+  @extend %caption;
+  font-style: italic;
+}
+
+// Dialog
+#LookingGlassDialog {
+
+  @extend %osd_panel;
+  background-color: transparentize($osd_bg_color,0.02);
+  color: $osd_fg_color;
+
+  border-radius: $modal_radius;
+  margin-top: $base_margin;
+  border: 2px solid transparent;
+  padding: $base_padding;
+  spacing: $base_padding;
+  box-shadow: 0 2px 4px 0 $shadow_color;
+
+  @if $contrast == 'high' {
+    border-color: $hc_inset_color;
+    background-color: $osd_bg_color;
+    box-shadow:none;
+  }
+
+  & > #Toolbar {
+    border: none;
+    padding: $base_padding;
+    border-radius: 0;
+    background-color: transparent;
+    spacing: $base_padding;
+
+    .lg-toolbar-button {
+      @extend %osd_button;
+      padding: $base_padding $base_padding * 2;
+
+      & > StIcon { icon-size: $base_icon_size; }
+    }
+  }
+
+  .labels {
+    spacing: $base_padding;
+  }
+
+  .notebook-tab {
+    @extend %osd_button_flat;
+    background-color: transparent;
+    -natural-hpadding: $base_padding * 2;
+    -minimum-hpadding: $base_padding * 2;
+    padding: $base_padding $base_padding * 2;
+    &:selected {
+      @include button(active, $tc:$osd_fg_color, $c:$osd_bg_color, $always_dark: true);
+    }
+  }
+}
+
+// Inspector
+#LookingGlassPropertyInspector {
+
+  background-color: $osd_bg_color;
+  color: $osd_fg_color;
+  border-radius: $modal_radius;
+  border: 1px solid $osd_borders_color;
+  padding: $base_padding * 2;
+
+  @if $contrast == 'high' {
+    border-color: $hc_inset_color;
+  }
+
+  .lg-obj-inspector-title {
+    @extend %heading;
+    spacing: $base_margin;
+  }
+
+  .lg-obj-inspector-close-button,
+  .lg-obj-inspector-button {
+    @extend %osd_button;
+    padding: $base_padding $base_padding * 2;
+  }
+
+  .lg-obj-inspector-close-button {
+    margin: $base_margin;
+    padding: $base_padding;
+    border-radius: $forced_circular_radius;
+    > StIcon {
+      icon-size: $base_icon_size;
+    }
+  }
+}
+
+
+// Evaluator
+#LookingGlassEvaluator {
+  padding: $base_padding;
+
+  .evaluator-results {
+    @extend %monospace;
+    spacing: $base_padding;
+  }
+}
+
+// Window List
+#LookingGlassWindows {
+
+  padding: $base_padding;
+  spacing: $base_padding;
+
+  .lg-window {
+    @extend %card_common;
+    @include button(normal, $tc:$osd_fg_color, $c:$osd_bg_color, $always_dark: true);
+    margin: 0;
+    padding: $base_padding * 2;
+
+    .lg-window-name {
+      @extend %heading;
+    }
+
+    .lg-window-props-box {
+      .lg-window-props {
+      }
+    }
+  }
+}
+
+// Extensions
+#LookingGlassExtensions {
+
+  .lg-extensions-list {
+    padding: $base_padding;
+    spacing: $base_padding;
+  }
+
+  .lg-extension {
+    @extend %card_common;
+    @include button(normal, $tc:$osd_fg_color, $c:$osd_bg_color, $always_dark: true);
+    margin: 0;
+    spacing: $base_margin;
+    padding: $base_padding * 2;
+
+    .lg-extension-name {
+      @extend %heading;
+      color: $osd_fg_color !important;
+    }
+
+    .lg-extension-description {
+    }
+
+    .lg-extension-meta {
+      spacing: $base_padding * 2;
+    }
+  }
+
+  .lg-extensions-none {
+    @extend %title_4;
+    color: transparentize($osd_fg_color, 0.5);
+  }
+}
+
+// Actors
+#LookingGlassActors {
+  padding: $base_padding;
+  spacing: $base_margin;
+}
+
+// Debug
+#LookingGlassDebugFlags {
+
+  .lg-debug-flags-header {
+    padding: $base_padding;
+    padding-top: 2 * $base_padding;
+    @extend %title_4;
+  }
+
+  .lg-debug-flag-button {
+    @extend %osd_button;
+    padding: $base_padding * 1.5 $base_padding * 2;
+    margin-bottom: $base_padding;
+
+    StLabel {
+      @extend %monospace;
+      font-weight: normal !important;
+    }
+
+    // switch style overrides since lg is OSD style
+    .toggle-switch {
+      @if $contrast == 'high' {
+        background: transparentize(white, .7);
+        &:hover {
+          background: transparentize(white, .6);
+        }
+      } @else {
+        background: transparentize(white, .85);
+        &:hover {
+          background: transparentize(white, .8);
+        }
+      }
+      &:checked {
+        background: -st-accent-color;
+        color: -st-accent-fg-color;
+
+        &:hover {
+          background-color: st-lighten(-st-accent-color, 5%);
+          color: st-lighten(-st-accent-fg-color, 5%);
+        }
+      }
+    }
+  }
+}
