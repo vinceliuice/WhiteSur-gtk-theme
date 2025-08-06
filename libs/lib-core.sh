@@ -99,7 +99,7 @@ OPACITY_VARIANTS=('normal' 'solid')
 ALT_VARIANTS=('normal' 'alt')
 THEME_VARIANTS=('default' 'blue' 'purple' 'pink' 'red' 'orange' 'yellow' 'green' 'grey')
 SCHEME_VARIANTS=('standard' 'nord')
-ICON_VARIANTS=('apple' 'simple' 'gnome' 'ubuntu' 'tux' 'arch' 'manjaro' 'fedora' 'debian' 'void' 'opensuse' 'popos' 'mxlinux' 'zorin' 'budgie' 'gentoo')
+ICON_VARIANTS=('apple' 'simple' 'gnome' 'ubuntu' 'tux' 'arch' 'manjaro' 'fedora' 'debian' 'void' 'opensuse' 'popos' 'mxlinux' 'zorin' 'budgie' 'gentoo' 'kali')
 SIDEBAR_SIZE_VARIANTS=('default' '180' '220' '240' '260' '280')
 PANEL_OPACITY_VARIANTS=('default' '30' '45' '60' '75')
 PANEL_SIZE_VARIANTS=('default' 'smaller' 'bigger')
@@ -594,7 +594,7 @@ check_param() {
           fi
         done ;;
       -i)
-        for i in {0..13}; do
+        for i in {0..16}; do
           if [[ "${value}" == "${ICON_VARIANTS[i]}" ]]; then
             icon="${ICON_VARIANTS[i]}"; variant_found="true"; break
           fi
