@@ -746,6 +746,17 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 }
 }
 
+/* firefoxpwa */
+#pageAction-urlbar-firefoxpwa_filips_si {
+	list-style-image: url("../icons/page-action-install.svg") !important;
+}
+
+@media (prefers-color-scheme: dark) {
+#pageAction-urlbar-firefoxpwa_filips_si {
+	list-style-image: url("../icons/page-action-install-dark.svg") !important;
+}
+}
+
 /* Fix flat buttons icons aproach */
 button.close::before {
 	content: "";
