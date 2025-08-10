@@ -16,8 +16,8 @@ $cakeisalie: "This stylesheet is generated, DO NOT EDIT";
   -GtkWidget-text-handle-height: 20;
 
   -GtkDialog-button-spacing: 6;
-  -GtkDialog-action-area-border: 4; // This is necessary to align buttons and elements inside windows.
-  -GtkDialog-content-area-border: 4;
+  -GtkDialog-action-area-border: 6; // This is necessary to align buttons and elements inside windows.
+  -GtkDialog-content-area-border: 6;
 
   // We use the outline properties to signal the focus properties
   outline-color: gtkalpha(currentColor, 0.15);

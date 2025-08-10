@@ -46,6 +46,7 @@ usage() {
   sec_helpify "4. darker" "        Darker Firefox theme version"                    ""                                                                              "  Darker Firefox theme version"
   sec_helpify "5. nord" "          Nord Firefox colorscheme version"                ""                                                                              "  Nord Firefox colorscheme version"
   sec_helpify "6. adaptive" "      Adaptive color version"                          "  You need install adaptive-tab-bar-colour plugin first"                       "  https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/"
+  sec_helpify "7. link" "          Install links for theme"                         ""                                                                              ""
 
   helpify "-e, --edit-firefox"  "[(monterey|flat)|alt|(darker|adaptive)]"           "  Edit '${THEME_NAME}' theme for Firefox settings and also connect the theme to the current Firefox profiles" ""
 
@@ -175,6 +176,10 @@ while [[ $# -gt 0 ]]; do
             prompt -i "Firefox adaptive color version...\n"
             prompt -w "You need install adaptive-tab-bar-colour plugin first: https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/\n"
             shift ;;
+          link)
+            link="true"
+            prompt -i "Install links...\n"
+            shift ;;
         esac
       done
 
@@ -284,7 +289,8 @@ if [[ "${uninstall}" == 'true' ]]; then
     prompt -s "Done! '${firefoxtheme}' Firefox theme has been removed. \n"
   fi
 else
-  show_needed_dialogs; customize_theme
+#  show_needed_dialogs
+  customize_theme
 
   if [[ "${gdm}" == 'true' ]]; then
     if [[ "${firefox}" == 'true' || "${edit_firefox}" == 'true' || "${flatpak}" == 'true' || "${snap}" == 'true' || "${dash_to_dock}" == 'true' ]]; then
@@ -323,7 +329,11 @@ else
 
     if [[ "${firefox}" == 'true' && "${gdm}" != 'true' ]]; then
       prompt -i "Installing '${firefoxtheme}' Firefox theme... \n"
-      install_firefox_theme
+      if [[ "${link}" == 'true' ]]; then
+        link_firefox_theme
+      else
+        install_firefox_theme
+      fi
       prompt -s "Done! '${firefoxtheme}' Firefox theme has been installed. \n"
     fi
 

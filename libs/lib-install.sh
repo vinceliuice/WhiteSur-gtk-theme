@@ -758,9 +758,6 @@ install_firefox_theme() {
 
   remove_firefox_theme
 
-  udo mkdir -p                                                                                "${TARGET_DIR}"
-  udo cp -rf "${FIREFOX_SRC_DIR}"/customChrome.css                                            "${TARGET_DIR}"
-
   mkdir -p                                                                                    "${TARGET_DIR}"
   cp -rf "${FIREFOX_SRC_DIR}/${theme_name}"                                                   "${TARGET_DIR}"
   [[ -f "${TARGET_DIR}"/customChrome.css ]] && mv "${TARGET_DIR}"/customChrome.css            "${TARGET_DIR}"/customChrome.css.bak
@@ -796,6 +793,82 @@ install_firefox_theme() {
   fi
 
   config_firefox
+}
+
+link_firefox_theme() {
+  if has_snap_app firefox; then
+    local TARGET_DIR="${FIREFOX_SNAP_THEME_DIR}"
+  elif has_flatpak_app org.mozilla.firefox; then
+    local TARGET_DIR="${FIREFOX_FLATPAK_THEME_DIR}"
+  else
+    local TARGET_DIR="${FIREFOX_THEME_DIR}"
+  fi
+
+  if [[ "${colorscheme}" == '-nord' && "${adaptive}" == '-adaptive' ]]; then
+    local theme_type="${adaptive}"
+  else
+    local theme_type="${darker}${adaptive}${colorscheme}"
+  fi
+
+  remove_firefox_theme
+
+  mkdir -p                                                                                    "${TARGET_DIR}/${theme_name}"
+
+  ln -sf "${FIREFOX_SRC_DIR}/${theme_name}"/colors                                            "${TARGET_DIR}/${theme_name}"/colors
+
+  (
+  cd "${FIREFOX_SRC_DIR}/${theme_name}"
+  for file_name in `ls *.css`; do
+    ln -sf "${FIREFOX_SRC_DIR}/${theme_name}/${file_name}"                                    "${TARGET_DIR}/${theme_name}/${file_name}"
+  done
+  )
+
+  ln -sf "${FIREFOX_SRC_DIR}"/common/icons                                                    "${TARGET_DIR}/${theme_name}"/icons
+  ln -sf "${FIREFOX_SRC_DIR}"/common/pages                                                    "${TARGET_DIR}/${theme_name}"/pages
+
+  if [[ "${colorscheme}" == '-nord' ]]; then
+    ln -sf "${FIREFOX_SRC_DIR}"/common/titlebuttons-nord                                      "${TARGET_DIR}/${theme_name}"/titlebuttons
+  else
+    ln -sf "${FIREFOX_SRC_DIR}"/common/titlebuttons                                           "${TARGET_DIR}/${theme_name}"/titlebuttons
+  fi
+
+  (
+  cd "${FIREFOX_SRC_DIR}"/common
+  for file_name in `ls *.css`; do
+    ln -sf "${FIREFOX_SRC_DIR}"/common/"${file_name}"                                         "${TARGET_DIR}/${theme_name}/${file_name}"
+  done
+  )
+
+  mkdir -p                                                                                    "${TARGET_DIR}/${theme_name}"/parts
+
+  (
+  cd "${FIREFOX_SRC_DIR}/${theme_name}"/parts
+  for file_name in `ls *.css`; do
+    ln -sf "${FIREFOX_SRC_DIR}/${theme_name}/parts/${file_name}"                              "${TARGET_DIR}/${theme_name}/parts/${file_name}"
+  done
+  )
+
+  (
+  cd "${FIREFOX_SRC_DIR}"/common/parts
+  for file_name in `ls *.css`; do
+    ln -sf "${FIREFOX_SRC_DIR}"/common/parts/"${file_name}"                                   "${TARGET_DIR}/${theme_name}/parts/${file_name}"
+  done
+  )
+
+  [[ -f "${TARGET_DIR}"/userChrome.css ]] && mv "${TARGET_DIR}"/userChrome.css                "${TARGET_DIR}"/userChrome.css.bak
+  cp -rf "${FIREFOX_SRC_DIR}"/userChrome-"${theme_name}${theme_type}".css                     "${TARGET_DIR}"/userChrome.css
+  [[ -f "${TARGET_DIR}"/userContent.css ]] && mv "${TARGET_DIR}"/userContent.css              "${TARGET_DIR}"/userContent.css.bak
+  cp -rf "${FIREFOX_SRC_DIR}"/userContent-"${theme_name}${theme_type}".css                    "${TARGET_DIR}"/userContent.css
+
+  if [[  "${theme_name}" == 'Monterey' ]]; then
+    sed -i "s/left_header_button_3/left_header_button_${left_button}/g"                       "${TARGET_DIR}"/userChrome.css
+    sed -i "s/right_header_button_3/right_header_button_${right_button}/g"                    "${TARGET_DIR}"/userChrome.css
+  fi
+
+  if [[ "${firefoxtheme}" == 'Flat' && "${theme_name}" == 'Monterey' ]]; then
+    cp -rf "${FIREFOX_SRC_DIR}"/userChrome-Monterey-alt"${theme_type}".css                    "${TARGET_DIR}"/userChrome.css
+    ln -sf "${FIREFOX_SRC_DIR}"/WhiteSur/parts/headerbar-urlbar.css                           "${TARGET_DIR}"/Monterey/parts/headerbar-urlbar-alt.css
+  fi
 }
 
 config_firefox() {

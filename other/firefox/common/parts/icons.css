@@ -721,7 +721,7 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 
 /* side view extension */
 #pageAction-urlbar-side-view_mozilla_org,
-#sidebarswitcher_menu_side-view_mozilla_org-sidebar-action,
+#sidebarswitcher_menu_side-view_mozilla_org-sidebar-action.webextension-menuitem,
 #side-view_mozilla_org-BAP .toolbarbutton-icon,
 #sidebar-box[sidebarcommand="side-view_mozilla_org-sidebar-action"] > #sidebar-header > #sidebar-switcher-target > #sidebar-icon {
 	list-style-image: url("../icons/side-view.svg") !important;
@@ -729,6 +729,16 @@ toolbar:not([brighttext]) .webextension-browser-action:-moz-lwtheme {
 
 #side-view_mozilla_org-menuitem-_open-in-sidebar .menu-iconic-icon {
 	background-image: url("../icons/side-view.svg") !important;
+}
+
+@media (prefers-color-scheme: dark) {
+#side-view_mozilla_org-menuitem-_open-in-sidebar .menu-iconic-icon {
+	background-image: url("../icons/side-view-dark.svg") !important;
+}
+	
+#sidebarswitcher_menu_side-view_mozilla_org-sidebar-action.webextension-menuitem {
+	list-style-image: url("../icons/side-view-dark.svg") !important;
+}
 }
 
 /* Firefox note extension */
