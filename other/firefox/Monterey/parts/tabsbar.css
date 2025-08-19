@@ -276,3 +276,13 @@ tab[selected]:-moz-window-inactive .tab-label {
 .arrowscrollbox-overflow-end-indicator {
 	display: none;
 }
+
+/*Tab Group*/
+tab-group {
+  #tabbrowser-tabs[orient="horizontal"] &[collapsed] > .tabbrowser-tab {
+    min-width: 0 !important;
+    max-width: 0 !important;
+    padding: 0;
+    overflow-clip-margin: 0;
+  }
+}

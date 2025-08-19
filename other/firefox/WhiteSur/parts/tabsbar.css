@@ -486,3 +486,13 @@ tab[selected]:-moz-window-inactive {
 	margin-inline-end: 4px !important;
 	margin-inline-start: 4px !important;
 }
+
+/*Tab Group*/
+tab-group {
+  #tabbrowser-tabs[orient="horizontal"] &[collapsed] > .tabbrowser-tab {
+    min-width: 0 !important;
+    max-width: 0 !important;
+    padding: 0;
+    overflow-clip-margin: 0;
+  }
+}

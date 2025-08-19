@@ -234,7 +234,7 @@ install_theme_deps() {
 }
 
 install_beggy_deps() {
-  if ! has_command convert; then
+  if ! has_command magick; then
     prompt -w "DEPS: 'imagemagick' is required for background editing."
     prepare_deps; stop_animation
 
