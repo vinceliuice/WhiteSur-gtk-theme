@@ -195,31 +195,17 @@ Usage:  `./tweaks.sh [OPTIONS...]`
 
 ```bash
 
+ Usage: ./tweaks.sh [OPTION] 
+   
  Tweaks for GDM theme. options
 
   -g, --gdm    Without options default GDM theme will install... 
 
-      1. -i, -icon [apple|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin|budgie|gentoo]   Set GDM panel 'Activities' icon Default is 'standard'
+      1. -b, -background [default|blank|IMAGE_PATH]   Set GDM background image Default is BigSur-like wallpaper
 
-      2. -b, -background [default|blank|IMAGE_PATH]   Set GDM background image Default is BigSur-like wallpaper
+      2. -nd, -nodarken    Don't darken 'WhiteSur' GDM theme background image 
 
-      3. -p, -panelopacity [default|30|45|60|75]   Set GDM panel transparency Default is 15%
-
-      4. -h, -panelheight [default|smaller|bigger]   Set GDM panel height size Default is 32px
-
-      5. -sf, -smallerfont    Set GDM font size to smaller (10pt) Default is 11pt
-
-      6. -nd, -nodarken    Don't darken 'WhiteSur' GDM theme background image 
-
-      7. -nb, -noblur    Don't blur 'WhiteSur' GDM theme background image 
-
-      8.  -o, --opacity [normal|solid]   Set 'WhiteSur' GDM theme opacity variants Default is 'normal'
-
-      9.  -c, --color [Light|Dark]   Set 'WhiteSur' GDM theme color variants Default is 'dark'
-
-      10. -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey]   Set 'WhiteSur' GDM theme accent color Default is 'blue'
-
-      11. -s, --scheme [standard|nord]   Set 'WhiteSur' GDM theme colorscheme style Default is 'standard'
+      3. -nb, -noblur    Don't blur 'WhiteSur' GDM theme background image 
 
    
  Tweaks for firefox. options
@@ -237,6 +223,8 @@ Usage:  `./tweaks.sh [OPTIONS...]`
       5. nord           Nord Firefox colorscheme version    Nord Firefox colorscheme version
 
       6. adaptive       Adaptive color version   You need install adaptive-tab-bar-colour plugin first   https://addons.mozilla.org/firefox/addon/adaptive-tab-bar-colour/
+
+      7. link           Install links for theme    Link source file to theme folder
 
   -e, --edit-firefox [(monterey|flat)|alt|(darker|adaptive)]
    Edit 'WhiteSur' theme for Firefox settings and also connect the theme to the current Firefox profiles. 
