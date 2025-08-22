@@ -677,8 +677,10 @@ install_gdm_theme() {
       TARGET="${POP_OS_GR_FILE}"
     elif check_theme_file "$YARU_GR_FILE"; then
       TARGET="${YARU_GR_FILE}"
-    elif check_theme_file "$ZORIN_GR_FILE"; then
-      TARGET="${ZORIN_GR_FILE}"
+    elif check_theme_file "$ZORIN_GR_DARK_FILE"; then
+      TARGET="${ZORIN_GR_DARK_FILE}"
+    elif check_theme_file "$ZORIN_GR_LIGHT_FILE"; then
+      TARGET="${ZORIN_GR_LIGHT_FILE}"
     elif check_theme_file "$MISC_GR_FILE"; then
       TARGET="${MISC_GR_FILE}"
     fi
@@ -705,8 +707,10 @@ install_only_gdm_theme() {
     TARGET="${POP_OS_GR_FILE}"
   elif check_theme_file "$YARU_GR_FILE"; then
     TARGET="${YARU_GR_FILE}"
-  elif check_theme_file "$ZORIN_GR_FILE"; then
-    TARGET="${ZORIN_GR_FILE}"
+  elif check_theme_file "$ZORIN_GR_DARK_FILE"; then
+    TARGET="${ZORIN_GR_DARK_FILE}"
+  elif check_theme_file "$ZORIN_GR_LIGHT_FILE"; then
+    TARGET="${ZORIN_GR_LIGHT_FILE}"
   elif check_theme_file "$MISC_GR_FILE"; then
     TARGET="${MISC_GR_FILE}"
   else
