@@ -10,5 +10,10 @@
     <file>pad-osd.css</file>
     <file>workspace-placeholder.svg</file>
     <file>background.png</file>
+    <file alias="gdm.css">gnome-shell-dark.css</file>
+    <file alias="gdm3.css">gnome-shell-dark.css</file>
+    <file alias="Yaru/gnome-shell.css">gnome-shell-light.css</file>
+    <file alias="Yaru/gnome-shell-dark.css">gnome-shell-dark.css</file>
+    <file alias="Yaru-dark/gnome-shell.css">gnome-shell-dark.css</file>
   </gresource>
 </gresources>

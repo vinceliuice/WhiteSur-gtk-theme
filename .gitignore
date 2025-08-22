@@ -9,3 +9,4 @@ src/main/gnome-shell/gnome-shell-Dark.css
 src/main/gnome-shell/gnome-shell-Light.css
 src/other/dash-to-dock/stylesheet.css
 src/other/dash-to-dock/stylesheet-dark.css
+other/gdm/gnome-shell-theme.gresource
