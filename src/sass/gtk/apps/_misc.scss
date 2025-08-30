@@ -696,6 +696,32 @@ treeview#ObjectsTreeView.view {
 }
 
 //
+// GIMP
+//
+
+GimpSpinScale {
+  > entry {
+  }
+
+  > button {
+    @extend %flat_button;
+    margin-left: $container_padding / 2;
+  }
+}
+
+GimpDock {
+  combobox {
+    button.combo arrow {
+      margin: 2px 0;
+    }
+  }
+
+  spinbutton {
+    > entry { border-radius: $bt_radius 0 0 $bt_radius; } // Not Work
+  }
+}
+
+//
 // Synaptic
 //
 window > box.vertical > box.horizontal {

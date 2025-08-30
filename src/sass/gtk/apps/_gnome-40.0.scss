@@ -1,4 +1,3 @@
-
 //
 // Nautilus
 //
@@ -8,22 +7,22 @@ $nautilus_header_borders_image: image($header_border);
 $nautilus_borders_color: if($variant=='light', gtkmix(black, $dark_sidebar_bg, 12%), $header_border);
 $flap_sidebar_size: 240px;
 
-@if $nautilus_style == 'stable' {
+@if $nautilus_style =='stable' {
   $nautilus_header_image: linear-gradient(90deg, transparent $flap_sidebar_size,
-                                                 $nautilus_borders_color $flap_sidebar_size,
-                                                 $nautilus_borders_color ($flap_sidebar_size + 1px),
-                                                 $base_color ($flap_sidebar_size + 1px));
+      $nautilus_borders_color $flap_sidebar_size,
+      $nautilus_borders_color ($flap_sidebar_size + 1px),
+      $base_color ($flap_sidebar_size + 1px));
 
   $nautilus_header_borders_image: linear-gradient(90deg, transparent $flap_sidebar_size,
-                                                         $header_border $flap_sidebar_size);
+      $header_border $flap_sidebar_size);
 }
 
-@if $nautilus_style == 'glassy' {
+@if $nautilus_style =='glassy' {
   $nautilus_header_image: linear-gradient(90deg, transparent ($flap_sidebar_size / 2),
-                                                 if($trans == 'true', gtkalpha($base_color, 0.96), $base_color) 40%);
+      if($trans =='true', gtkalpha($base_color, 0.96), $base_color) 40%);
 
   $nautilus_header_borders_image: linear-gradient(90deg, gtkalpha($header_border, 0) (($flap_sidebar_size / 2) - 40px),
-                                                         $header_border 40%);
+      $header_border 40%);
 }
 
 %nautilus_view {
@@ -48,14 +47,18 @@ $flap_sidebar_size: 240px;
     color: $fg_color;
     background-color: $visit_color;
 
-    &:hover { background-color: $track_color; }
+    &:hover {
+      background-color: $track_color;
+    }
 
-    &:active { background-color: $active_color; }
+    &:active {
+      background-color: $active_color;
+    }
   }
 }
 
 .nautilus-window {
-  @if $nautilus_style == 'stable' or $nautilus_style == 'glassy' {
+  @if $nautilus_style =='stable' or $nautilus_style =='glassy' {
     &.background.csd {
       &, &:backdrop {
         background-color: $dark_sidebar_bg;
@@ -72,7 +75,7 @@ $flap_sidebar_size: 240px;
     }
   }
 
-  @if $nautilus_style == 'stable' {
+  @if $nautilus_style =='stable' {
     &:not(.view) headerbar {
       box.start > box {
         margin-left: 144px;
@@ -102,10 +105,12 @@ $flap_sidebar_size: 240px;
 
           &.sidebar-row {
             .sidebar-icon {
-              @if $gnome_version == 'old' {
-                color: if($variant == 'light', $selected_bg_color, lighten($selected_bg_color, 20%));
-              } @else {
-                color: if($variant == 'light', $selected_bg_color, color-mix(in srgb, white 20%, $selected_bg_color));
+              @if $gnome_version =='old' {
+                color: if($variant =='light', $selected_bg_color, lighten($selected_bg_color, 20%));
+              }
+
+              @else {
+                color: if($variant =='light', $selected_bg_color, color-mix(in srgb, white 20%, $selected_bg_color));
               }
             }
           }
@@ -119,6 +124,7 @@ $flap_sidebar_size: 240px;
   }
 
   .content-pane toolbarview {
+
     > .top-bar,
     > .bottom-bar {
       .collapse-spacing {
@@ -148,10 +154,12 @@ $flap_sidebar_size: 240px;
     margin: 0 -3px;
 
     .box {
-      @if $monterey == 'false' {
+      @if $monterey =='false' {
         background-color: gtkmix(black, $base_color, 6%);
         border-top: 1px solid $borders_color;
-      } @else {
+      }
+
+      @else {
         background-color: $base_color;
       }
     }
@@ -218,7 +226,8 @@ $flap_sidebar_size: 240px;
   }
 }
 
-#NautilusQueryEditor { // search entry
+#NautilusQueryEditor {
+  // search entry
   padding: 2px $container_padding;
   border-spacing: 0;
 
@@ -261,7 +270,9 @@ $flap_sidebar_size: 240px;
       }
     }
 
-    &:first-child { margin-left: 0; }
+    &:first-child {
+      margin-left: 0;
+    }
   }
 
   > menubutton {
@@ -286,8 +297,11 @@ navigation-view-page > toolbarview > scrolledwindow > viewport > clamp {
 //
 
 window.background.csd {
+
   > contents,
-  > widget { // 44.0
+  > widget {
+
+    // 44.0
     > leaflet.unfolded > box {
       > headerbar {
         @extend %side_headerbar_left;
@@ -313,10 +327,14 @@ window.background.csd {
           }
         }
 
-        > box > list.navigation-sidebar { background-color: $dark_sidebar_bg; }
+        > box > list.navigation-sidebar {
+          background-color: $dark_sidebar_bg;
+        }
       }
 
-      > stack.background { background-color: $base_color; }
+      > stack.background {
+        background-color: $base_color;
+      }
     }
   }
 }
@@ -367,63 +385,70 @@ preferencesgroup > box {
     }
   }
 
-  .cutout-button { background-color: $dialog_bg_color; }
+  .cutout-button {
+    background-color: $dialog_bg_color;
+  }
+}
 
-  @if $gnome_version == 'new' {
-    button.accent-button {
-      min-height: 24px;
-      min-width: 24px;
-      padding: $base_padding / 2;
-      border-radius: $circular_radius;
-      background: var(--accent-bg-color);
-      outline: none;
-      background-clip: content-box;
-      box-shadow: none;
-      border: none;
+@if $gnome_version =='new' {
+  button.accent, // GDM Setting
+  button.accent-button { // Gnome Control Center
+    min-height: 24px;
+    min-width: 24px;
+    padding: $base_padding / 2;
+    border-radius: $circular_radius;
+    background: var(--accent-bg-color);
+    outline: none;
+    background-clip: content-box;
+    box-shadow: none;
+    border: none;
 
-      &:hover { box-shadow: 0 0 0 3px $divider_color; }
+    &:hover {
+      box-shadow: 0 0 0 3px $divider_color;
+    }
 
-      &:checked { box-shadow: 0 0 0 3px var(--accent-bg-color); }
+    &:checked {
+      box-shadow: 0 0 0 3px var(--accent-bg-color);
+    }
 
-      &.blue, &.teal, &.green, &.yellow, &.orange, &.red, &.pink, &.purple, &.slate {
-        --accent-color: oklab(from var(--accent-bg-color) var(--standalone-color-oklab));
-      }
+    &.blue, &.teal, &.green, &.yellow, &.orange, &.red, &.pink, &.purple, &.slate {
+      --accent-color: oklab(from var(--accent-bg-color) var(--standalone-color-oklab));
+    }
 
-      &.blue {
-        --accent-bg-color: var(--accent-blue);
-      }
+    &.blue {
+      --accent-bg-color: var(--accent-blue);
+    }
 
-      &.teal {
-        --accent-bg-color: var(--accent-teal);
-      }
+    &.teal {
+      --accent-bg-color: var(--accent-teal);
+    }
 
-      &.green {
-        --accent-bg-color: var(--accent-green);
-      }
+    &.green {
+      --accent-bg-color: var(--accent-green);
+    }
 
-      &.yellow {
-        --accent-bg-color: var(--accent-yellow);
-      }
+    &.yellow {
+      --accent-bg-color: var(--accent-yellow);
+    }
 
-      &.orange {
-        --accent-bg-color: var(--accent-orange);
-      }
+    &.orange {
+      --accent-bg-color: var(--accent-orange);
+    }
 
-      &.red {
-        --accent-bg-color: var(--accent-red);
-      }
+    &.red {
+      --accent-bg-color: var(--accent-red);
+    }
 
-      &.pink {
-        --accent-bg-color: var(--accent-pink);
-      }
+    &.pink {
+      --accent-bg-color: var(--accent-pink);
+    }
 
-      &.purple {
-        --accent-bg-color: var(--accent-purple);
-      }
+    &.purple {
+      --accent-bg-color: var(--accent-purple);
+    }
 
-      &.slate {
-        --accent-bg-color: var(--accent-slate);
-      }
+    &.slate {
+      --accent-bg-color: var(--accent-slate);
     }
   }
 }
@@ -434,8 +459,11 @@ preferencesgroup > box {
 //
 
 window.background {
+
   > contents > toastoverlay > leaflet,
-  > widget > toastoverlay > leaflet { // 44.0
+  > widget > toastoverlay > leaflet {
+
+    // 44.0
     > box {
       background-color: $base_color;
 
@@ -470,6 +498,7 @@ window.background {
   }
 
   &.maximized, &.tiled {
+
     > contents > toastoverlay > leaflet,
     > widget > toastoverlay > leaflet {
       > box {
@@ -488,7 +517,7 @@ datechooser {
   .current-week {
     background-color: $fill_color;
   }
-  
+
   button.circular.day {
     border: none;
     box-shadow: none;
@@ -555,7 +584,9 @@ menubutton.flat.popup.sources-button {
 // Calculator
 //
 
-.history-view { background-color: $base_color; }
+.history-view {
+  background-color: $base_color;
+}
 
 .card {
   &.display-container, &.bit-panel {
@@ -903,11 +934,12 @@ flowboxchild.card:not(.category-tile) {
   }
 
   &.category-work {
-    padding: 1px; /* FIXME: work around https://gitlab.gnome.org/GNOME/gtk/-/issues/4324 */
+    padding: 1px;
+    /* FIXME: work around https://gitlab.gnome.org/GNOME/gtk/-/issues/4324 */
     color: #1c71d8;
-    background-color:#fdf8d7;
+    background-color: #fdf8d7;
     background-image: linear-gradient($borders_color 1px, transparent 1px),
-             linear-gradient(90deg, $borders_color 1px, transparent 1px);
+      linear-gradient(90deg, $borders_color 1px, transparent 1px);
     background-size: 10px 10px, 10px 10px;
     background-position: -1px -4px, center -1px;
 
@@ -915,14 +947,14 @@ flowboxchild.card:not(.category-tile) {
       color: #1c71d8;
       background-color: lighten(#fdf8d7, 5%);
       background-image: linear-gradient($borders_color 1px, transparent 1px),
-               linear-gradient(90deg, $borders_color 1px, transparent 1px);
+        linear-gradient(90deg, $borders_color 1px, transparent 1px);
     }
 
     &:active {
       color: #1c71d8;
       background-color: darken(#fdf8d7, 5%);
       background-image: linear-gradient($borders_color 1px, transparent 1px),
-               linear-gradient(90deg, $borders_color 1px, transparent 1px);
+        linear-gradient(90deg, $borders_color 1px, transparent 1px);
     }
   }
 }
@@ -962,9 +994,17 @@ clamp.large .category-tile:not(.category-tile-iconless) {
 }
 
 @keyframes install-progress-unknown-move {
-  0% { background-position: 0%; }
-  50% { background-position: 100%; }
-  100% { background-position: 0%; }
+  0% {
+    background-position: 0%;
+  }
+
+  50% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
 }
 
 .application-details-description .button {
@@ -980,13 +1020,17 @@ clamp.large .category-tile:not(.category-tile-iconless) {
   transition: none;
 }
 
-.install-progress:dir(rtl) { background-position: 100% bottom; }
+.install-progress:dir(rtl) {
+  background-position: 100% bottom;
+}
 
 .review-row > * {
   margin: $container_padding * 2;
 }
 
-.review-row button { font-size: smaller; }
+.review-row button {
+  font-size: smaller;
+}
 
 .review-row .vote-buttons button {
   margin-right: -1px;
@@ -1092,12 +1136,16 @@ scrolledwindow.list-page > viewport > clamp > box {
   margin-top: $container_padding * 3;
 }
 
-.section > label:not(:first-child) { margin-top: $container_padding; }
+.section > label:not(:first-child) {
+  margin-top: $container_padding;
+}
 
-.section > box:not(:first-child) { margin-top: $container_padding * 2; }
+.section > box:not(:first-child) {
+  margin-top: $container_padding * 2;
+}
 
 clamp.status-page {
-	margin: $container_padding * 6 $container_padding * 2;
+  margin: $container_padding * 6 $container_padding * 2;
 }
 
 clamp.status-page .iconbox {
@@ -1152,7 +1200,7 @@ app-context-bar {
 
   &.horizontal .context-tile,
   &.vertical box:first-child .context-tile {
-  	border-top: none;
+    border-top: none;
   }
 
   > box:not(:first-child) > button.flat {
@@ -1192,8 +1240,10 @@ carousel.card {
   &.large {
     font-size: 24px;
     padding: 16px;
-    min-width: 24px;  /* 60px minus the left and right padding */
-    min-height: 24px;  /* 60px minus the top and bottom padding */
+    min-width: 24px;
+    /* 60px minus the left and right padding */
+    min-height: 24px;
+    /* 60px minus the top and bottom padding */
   }
 
   &.wide-image image {
@@ -1201,7 +1251,9 @@ carousel.card {
     margin-bottom: -28px;
   }
 
-  image { -gtk-icon-style: symbolic; }
+  image {
+    -gtk-icon-style: symbolic;
+  }
 
   &.grey {
     color: $fg_color;
@@ -1253,10 +1305,21 @@ window.narrow .app-developer {
   font-feature-settings: "tnum";
 }
 
-scrolledwindow.fake-adw-status-page > viewport > box { margin: $container_padding * 6 $container_padding * 2; }
-scrolledwindow.fake-adw-status-page > viewport > box > clamp:not(:last-child) > box { margin-bottom: $container_padding * 6; }
-scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .icon:not(:last-child) { margin-bottom: $container_padding * 6; }
-scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .title:not(:last-child) { margin-bottom: $container_padding * 2; }
+scrolledwindow.fake-adw-status-page > viewport > box {
+  margin: $container_padding * 6 $container_padding * 2;
+}
+
+scrolledwindow.fake-adw-status-page > viewport > box > clamp:not(:last-child) > box {
+  margin-bottom: $container_padding * 6;
+}
+
+scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .icon:not(:last-child) {
+  margin-bottom: $container_padding * 6;
+}
+
+scrolledwindow.fake-adw-status-page > viewport > box > clamp > box > .title:not(:last-child) {
+  margin-bottom: $container_padding * 2;
+}
 
 window.info scrollbar.vertical {
   margin-top: 48px;
@@ -1291,12 +1354,19 @@ row.app label.warning {
 
 // Ensure the spinner is hidden before the animation is triggered.
 @keyframes pre-delay {
-  from { opacity: 0; }
-  to { opacity: 0; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes fade-in {
-  from { filter: opacity(0%); }
+  from {
+    filter: opacity(0%);
+  }
 }
 
 /* Give a fade-in animation to spinners. */
@@ -1342,7 +1412,9 @@ window.background.csd {
 //
 
 popover.background.global-search {
-  > arrow, > contents { padding: 0; }
+  > arrow, > contents {
+    padding: 0;
+  }
 }
 
 popover.background.pages-popover {
@@ -1394,7 +1466,9 @@ panelresizer .top-bar {
 }
 
 panelframeswitcher:not(.vertical) {
-  &.frameheader.header { padding: $container_padding / 2; }
+  &.frameheader.header {
+    padding: $container_padding / 2;
+  }
 
   > button.toggle.image-button {
     border: none;
@@ -1484,7 +1558,9 @@ popover.details-popover {
   .actions {
     border-spacing: 6px;
 
-    > button { padding: 8px; }
+    > button {
+      padding: 8px;
+    }
   }
 }
 
@@ -1534,17 +1610,17 @@ dialog-host > widget > widget > toolbarview {
 // Chrome
 //
 
-$chrome_bg_color: if($variant == 'light', #dedede, #242424);
-$chrome_fg_color: if($variant == 'light', #242424, #dedede);
+$chrome_bg_color: if($variant =='light', #dedede, #242424);
+$chrome_fg_color: if($variant =='light', #242424, #dedede);
 
 window.background.chromium {
   box-shadow: 0 12px 20px rgba(black, 0.35),
-              0 0 0 1px rgba(black, 0.75);
+    0 0 0 1px rgba(black, 0.75);
 
   &:backdrop {
     transition: $shadow_transition;
     box-shadow: 0 7px 12px rgba(black, 0.15),
-                0 0 0 1px rgba(black, 0.65);
+      0 0 0 1px rgba(black, 0.65);
   }
 
   &, headerbar {
@@ -1560,7 +1636,8 @@ window.background.chromium {
     box-shadow: inset 0 1px rgba(white, 0.1);
     border-radius: $wm_radius $wm_radius 0 0;
 
-    button.titlebutton { // title-buttons
+    button.titlebutton {
+      // title-buttons
       // define global titlebutton class sizing
       min-width: 22px;
       min-height: 22px;

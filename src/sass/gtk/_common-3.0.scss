@@ -2171,6 +2171,13 @@ menubar,
     color: transparentize($header_fg, 0.2);
   }
 
+  headerbar & {
+    background-color: transparent;
+    box-shadow: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
   > menuitem {
     transition: all 0.2s cubic-bezier(0.0, 0.0, 0.2, 1);
     padding: ($container_padding - 2px) $container_padding;
