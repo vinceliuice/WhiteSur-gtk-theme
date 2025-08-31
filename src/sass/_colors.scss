@@ -197,12 +197,12 @@ $solid_osd_bg_color:                if($darker == 'true', #1a1a1a, #2a2a2a);
 
 $osd_bg_color:                      if($trans == 'true', rgba($solid_osd_bg_color, $opacity), $solid_osd_bg_color);
 
-$osd_button_bg:                     rgba(lighten($solid_osd_bg_color, 22%), $opacity);
+$osd_button_bg:                     rgba($osd_fg_color, 0.1);
 $osd_button_border:                 $dark_borders_color;
-$osd_entry_bg:                      rgba(lighten($solid_osd_bg_color, 22%), $opacity);
+$osd_entry_bg:                      rgba($osd_fg_color, 0.1);
 $osd_entry_border:                  $dark_borders_color;
-$osd_disabled_bg_color:             darken($solid_osd_bg_color, 3%);
-$osd_disabled_fg_color:             rgba($solid_osd_bg_color, 0.35);
+$osd_disabled_bg_color:             $osd_bg_color;
+$osd_disabled_fg_color:             rgba($osd_fg_color, 0.35);
 $osd_borders_color:                 $dark_borders_color;
 
 // Menu colors

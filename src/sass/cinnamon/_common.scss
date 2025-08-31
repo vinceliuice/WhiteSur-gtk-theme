@@ -1,5 +1,11 @@
 $asset_path: assets;
 
+$active_color: if($variant =='light', rgba(black, 0.26), rgba(white, 0.2));
+$track_color: if($variant =='light', rgba(black, 0.20), rgba(white, 0.16));
+$visit_color: if($variant =='light', rgba(black, 0.16), rgba(white, 0.12));
+$divider_color: if($variant =='light', rgba(black, 0.12), rgba(white, 0.1));
+$fill_color: if($variant =='light', rgba(black, 0.06), rgba(white, 0.05));
+
 //
 // Globals
 //
@@ -116,7 +122,7 @@ stage {
 // Entries
 //
 %entry {
-  padding: 6px;
+  padding: $container_padding;
   caret-size: 1px;
   selection-background-color: $selected_bg_color;
   selected-color: $selected_fg_color;
@@ -136,7 +142,7 @@ stage {
 }
 
 %osd_entry {
-  padding: 7px;
+  padding: $container_padding;
   caret-size: 1px;
   caret-color: $osd_fg_color;
   selection-background-color: $selected_bg_color;
@@ -198,7 +204,7 @@ StScrollBar {
 .popup-slider-menu-item,
 .slider {
   -slider-height: 0.3em;
-  -slider-background-color: $button_border;            //background of the trough
+  -slider-background-color: $borders_color;            //background of the trough
   -slider-border-color: transparent;                //trough border color
   -slider-active-background-color: $selected_bg_color; //active trough fill
   -slider-active-border-color: transparent;            //active trough border
@@ -206,10 +212,11 @@ StScrollBar {
   -slider-handle-radius: 0.6em;
   height: 1.2em;
   min-width: 15em;
+  color: white;
 
   .popup-menu-item:active & {
-    -slider-background-color: transparentize(black, 0.8);
-    -slider-active-background-color: $selected_fg_color;
+    -slider-background-color: rgba(black, 0.2);
+    -slider-active-background-color: white;
   }
 }
 
@@ -427,8 +434,8 @@ StScrollBar {
 //
 #panel {
   font-weight: bold;
-  height: 27px;
-  width: 32px;
+  min-height: 20px;
+  min-width: 20px;
 
   &:highlight {
     border-image: none;
@@ -436,7 +443,7 @@ StScrollBar {
   }
 
   &Left {
-    spacing: 4px;
+    spacing: $base_margin;
 
     &:dnd {
       background-gradient-direction: vertical;
@@ -444,8 +451,8 @@ StScrollBar {
       background-gradient-end: rgba(255,0,0,0.2);
     }
 
-    &:ltr { padding-right: 4px; }
-    &:rtl { padding-left: 4px; }
+    &:ltr { padding-right: $base_padding; }
+    &:rtl { padding-left: $base_padding; }
 
     &.vertical {
       padding: 0;
@@ -462,8 +469,8 @@ StScrollBar {
       background-gradient-end: rgba(0,0,255,0.2);
     }
 
-    &:ltr { padding-left: 4px; spacing: 0px; }
-    &:rtl { padding-right: 4px; spacing: 0px; }
+    &:ltr { padding-left: $base_padding; spacing: 0px; }
+    &:rtl { padding-right: $base_padding; spacing: 0px; }
 
     &.vertical {
       padding: 0;
@@ -474,7 +481,7 @@ StScrollBar {
   }
 
   &Center {
-    spacing: 4px;
+    spacing: $base_margin;
 
     &:dnd {
       background-gradient-direction: vertical;
@@ -488,7 +495,7 @@ StScrollBar {
   &-top, &-bottom, &-left, &-right {
     color: $panel_fg;
     font-size: 1em;
-    padding: 0px;
+    padding: 0;
     background-color: $panel_bg;
     box-shadow: 0 0 5px rgba(#000, 0.5), 0 0 16px rgba(#000, 0.24);
 
@@ -503,6 +510,14 @@ StScrollBar {
         color: $selected_fg_color;
         background-color: $selected_bg_color;
       }
+    }
+  }
+
+  &-bottom {
+    padding: 0 $base_padding / 2;
+
+    .applet-box {
+      margin: $base_padding / 2 0;
     }
   }
 
@@ -1060,7 +1075,7 @@ StScrollBar {
 
     .notification-button, .notification-icon-button {
       @extend %flat_button;
-      padding: 5px;
+      padding: $container_padding;
     }
 
     StEntry { @extend %entry; }
@@ -1211,9 +1226,9 @@ StScrollBar {
   }
 
   &-button-box {
-    spacing: 0;
+    spacing: $container_padding;
     margin: 0;
-    padding: 14px 10px;
+    padding: $container_padding;
     background-color: transparent;
     border: none;
   }
@@ -1223,6 +1238,10 @@ StScrollBar {
     min-height: 24px;
     min-width: 100px;
     @extend %osd_button;
+
+    &:not(:last-child) {
+      margin-right: $container_padding;
+    }
 
     &:destructive-action {
       background-color: $destructive_color;
@@ -1295,7 +1314,7 @@ StScrollBar {
       .dialog-list-item-title { font-weight: bold; }
       .dialog-list-item-description {
         @extend %caption;
-        color: darken($fg_color, 5%);
+        color: darken($osd_fg_color, 5%);
       }
     }
   }
@@ -1351,9 +1370,8 @@ StScrollBar {
 
   &-description {
     @extend %caption;
-
     text-align: center;
-    color: darken($text_color, 20%);
+    color: $osd_fg_color;
 
     &.error { color: $error_color; }
   }
@@ -1379,16 +1397,7 @@ StScrollBar {
 
   &-entry {
     width: 21em;
-    height: 1.2em;
-    padding: $base_padding;
-    border-radius: $bt_radius;
-    caret-color: $osd_fg_color;
-    selected-color: $selected_fg_color;
-    selection-background-color: $selected_bg_color;
-
-    @include entry(osd);
-
-    &:focus { @include entry(osd-focus); }
+    @extend %osd_entry;
   }
 
   .dialog-button-box,
@@ -1411,11 +1420,11 @@ StScrollBar {
   }
 
   &-password-entry {
-    @extend %entry;
+    @extend %osd_entry;
     width: 20em;
   }
 
-  &-password-layout { spacing: $base_margin * 2;}
+  &-password-layout { spacing: $base_margin * 2; }
 
   &-error-label,
   &-info-label,
@@ -1430,23 +1439,22 @@ StScrollBar {
 // polkit dialog
 
 .polkit-dialog {
-
   &-user-layout {
     text-align: center;
-    spacing: 2px;
+    spacing: $container_padding;
   }
 
   &-user-combo {
-    @extend %flat_button;
+    @extend %osd_button;
     @extend %heading;
-
     border-radius: $bt_radius;
     padding: $base_padding $base_padding * 6;
+    margin: $base_padding * 2 0 $base_padding 0;
 
     // special case the :insensitive button sinc we want
     // the label to be the normal color when there are
     // not multiple users
-    &:insensitive { color: $text_color; }
+    &:insensitive { color: $osd_fg_color; }
   }
 }
 
@@ -1459,7 +1467,7 @@ StScrollBar {
     spacing: $base_padding *2;
 
     .audio-selection-device {
-      @extend %flat_button;
+      @extend %osd_button;
       border-radius: $bt_radius;
 
       .audio-selection-device-box {
@@ -1979,7 +1987,7 @@ StScrollBar {
 
 .grouped-window-list {
   &-thumbnail-label {
-    padding-left: 4px;
+    padding-left: $base_padding;
   }
 
   &-thumbnail-alert {
@@ -1988,7 +1996,7 @@ StScrollBar {
 
   &-thumbnail-menu {
     padding: $container_padding + 6px $container_padding + 6px $container_padding + 10px;
-    margin: 2px;
+    margin: $base_padding / 2;
 
     @if $trans == 'true' {
       border-image: url("assets/menu.svg") 20 20 23 20;
@@ -2002,7 +2010,7 @@ StScrollBar {
       padding: $container_padding;
       border-radius: $bt_radius;
       spacing: $container_padding;
-      margin: 2px;
+      margin: $base_padding / 2;
 
       &:outlined {
         background-color: rgba($fg_color, 0.1);
@@ -2024,7 +2032,7 @@ StScrollBar {
   }
 
   &-button-label {
-    padding-left: 4px;
+    padding-left: $base_padding;
   }
 
   &-number-label {
@@ -2046,11 +2054,27 @@ StScrollBar {
     border: none;
     margin: 0;
     color: rgba($panel_fg, 0.6);
-    border-radius: $bt_radius;
-    spacing: 0.5em;
+    border-radius: 0;
+    spacing: $base_padding / 2;
 
     &.top, &.bottom {
-      padding: 0 2px;
+      padding: 0 $base_padding / 2;
+    }
+
+    &.top {
+      border-top: 2px solid transparent;
+    }
+
+    &.bottom {
+      border-bottom: 2px solid transparent;
+    }
+
+    &.left {
+      border-left: 2px solid transparent;
+    }
+
+    &.right {
+      border-right: 2px solid transparent;
     }
 
     &:hover {
@@ -2062,7 +2086,8 @@ StScrollBar {
     &:active {
       color: $panel_fg;
       background-gradient-direction: none;
-      background-color: rgba($panel_fg, 0.08);
+      background-color: transparent;
+      border-color: rgba($panel_fg, 0.5);
 
       &:hover {
         background-color: rgba($panel_fg, 0.15);
@@ -2072,10 +2097,11 @@ StScrollBar {
     &:focus {
       color: $panel_fg;
       background-gradient-direction: none;
-      background-color: rgba($panel_fg, 0.3);
+      background-color: rgba($panel_fg, 0.2);
+      border-color: $selected_bg_color;
 
       &:hover {
-        background-color: rgba($panel_fg, 0.36);
+        background-color: rgba($panel_fg, 0.3);
       }
     }
 
@@ -2353,7 +2379,7 @@ StScrollBar {
 
   &-box {
     padding: 0 8px;
-    spacing: 4px;
+    spacing: $base_margin;
     color: $panel_fg;
     text-shadow: none;
     transition-duration: 100;
