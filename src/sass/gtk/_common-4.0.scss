@@ -4912,6 +4912,15 @@ window.background.messagedialog {
   }
 }
 
+dialog.alert {
+  .compact.response-area {
+    button {
+      min-height: 24px;
+      padding: $container_padding;
+    }
+  }
+}
+
 window.aboutdialog image.large-icons {
   -gtk-icon-size: 128px;
 }

@@ -39,6 +39,33 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  @media not (forced-colors) {
+    html|dialog,
+    .dialogBox {
+      --in-content-page-background: var(--gnome-content-page-dialog-background) !important;
+    }
+  }
+}
+
+/* Dialog */
+.dialogBox {
+	margin: 0 !important;
+	background-color: var(--gnome-content-page-dialog-background) !important;
+	border-radius: 12px !important;
+	border: none !important;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+.dialogBox window, .dialogBox dialog {
+	background: none !important;
+}
+
+.close-icon {
+	border-radius: 100px !important;
+	list-style-image: url("../icons/window-close-symbolic.svg") !important;
+}
+
 .toggle-button {
   --toggle-background-color: var(--gnome-switch-background) !important;
   --toggle-background-color-hover: var(--gnome-switch-hover-background) !important;
@@ -49,4 +76,36 @@
   --toggle-border-color: var(--gnome-switch-border-color) !important;
   --toggle-dot-background-color: var(--gnome-switch-slider-background) !important;
   --toggle-dot-background-color-on-pressed: var(--gnome-switch-slider-background) !important;
+}
+
+:host {
+  --input-text-min-height: var(--button-min-height);
+  --input-text-border-color: var(--gnome-urlbar-border-color) !important;
+  --input-text-border-color-disabled: var(--gnome-inactive-urlbar-border-color) !important;
+  --input-text-border: var(--border-width) solid var(--input-text-border-color);
+  --input-text-border-radius: 8px !important;
+  --input-text-background-color: var(--gnome-urlbar-background) !important;
+  --input-text-color: FieldText;
+  --input-text-background-color-disabled: var(--gnome-inactive-urlbar-background) !important;
+  --input-text-opacity-disabled: var(--button-opacity-disabled);
+}
+
+#input:not(.toggle-button) {
+  border: 1px solid var(--gnome-hover-urlbar-border-color) !important;
+  border-radius: 8px !important;
+  box-sizing: border-box;
+  background-color: var(--gnome-urlbar-background) !important;
+  outline: 2px solid transparent  !important;
+  outline-offset: -2px  !important;
+
+  &:focus {
+    border: 1px solid transparent !important;
+    border-radius: 8px !important;
+    outline: 2px solid var(--gnome-focused-urlbar-border-color) !important;
+  }
+
+  &:disabled {
+    border-color: var(--gnome-inactive-urlbar-border-color) !important;
+    background-color: var(--gnome-inactive-urlbar-background) !important;
+  }
 }

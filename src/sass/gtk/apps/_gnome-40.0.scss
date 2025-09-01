@@ -1667,3 +1667,25 @@ window.background.chromium {
     color: $chrome_fg_color;
   }
 }
+
+//
+// Rnote
+//
+
+.colorpad {
+  background-color: gtkcolor(colorpad_color);
+  color: gtkcolor(colorpad_fg_color);
+}
+
+.colorsetter {
+  &, &:hover, &:focus, &:active {
+    background-color: gtkcolor(colorsetter_color);
+    color: gtkcolor(colorsetter_fg_color);
+  }
+
+  &:checked {
+    background-color: gtkcolor(colorsetter_color);
+    color: gtkcolor(colorsetter_fg_color);
+    box-shadow: inset 0 -3px gtkcolor(colorsetter_fg_color);
+  }
+}

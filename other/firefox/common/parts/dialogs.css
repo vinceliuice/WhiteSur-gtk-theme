@@ -28,8 +28,11 @@ window {
 
 /* Dialog */
 .dialogBox {
-	border-radius: 12px !important;
 	margin: 0 !important;
+	background-color: var(--gnome-popover-background) !important;
+	border-radius: 12px !important;
+	border: none !important;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
 }
 
 window[role="dialog"] {
@@ -50,7 +53,7 @@ dialog#handling {
 dialog[subdialog] {
 	background-color: var(--gnome-popover-background) !important;
 	border-radius: 12px !important;
-	border: none !important;
+	border: 1px solid var(--gnome-menu-border-color) !important;
 	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
 }
 
