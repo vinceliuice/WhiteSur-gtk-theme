@@ -301,16 +301,3 @@ window.background.csd {
     }
   }
 }
-
-//
-// Xed
-//
-
-window.xed-window {
-  button.close-button { // Not work ?
-    min-height: 16px;
-    min-width: 16px;
-    padding: 4px;
-    -gtk-icon-size: 16px;
-  }
-}
