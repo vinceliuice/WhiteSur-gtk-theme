@@ -392,7 +392,9 @@ preferencesgroup > box {
 
 @if $gnome_version =='new' {
   button.accent, // GDM Setting
-  button.accent-button { // Gnome Control Center
+
+  button.accent-button {
+    // Gnome Control Center
     min-height: 24px;
     min-width: 24px;
     padding: $base_padding / 2;
@@ -1613,6 +1615,92 @@ dialog-host > widget > widget > toolbarview {
 $chrome_bg_color: if($variant =='light', #dedede, #242424);
 $chrome_fg_color: if($variant =='light', #242424, #dedede);
 
+$title_style: 'macos'; // 'normal' or 'macos'
+
+%normal_title_buttons {
+  min-width: 22px;
+  min-height: 22px;
+  margin: 0 3px;
+  padding: 0;
+  color: currentColor;
+  border: none;
+  border-radius: $circular_radius;
+  background-image: none;
+  background-color: gtkalpha(currentColor, 0.12);
+
+  &:hover {
+    background-color: gtkalpha(currentColor, 0.2);
+    transition-duration: $shorter_duration;
+  }
+
+  &:active {
+    background-color: gtkalpha(currentColor, 0.3);
+    transition-duration: $shorter_duration;
+  }
+}
+
+%macos_title_buttons {
+  min-width: 16px;
+  min-height: 16px;
+  margin: 0 3px;
+  padding: 0;
+  border-radius: $circular_radius;
+  background-image: none;
+  border: none;
+
+  @if $variant == 'light' {
+    box-shadow: inset 0 0 0 1px rgba(black, 0.2);
+  }
+
+  &.close {
+    background-color: $wm_button_close_bg;
+    color: $wm_button_close_bg;
+    -gtk-icon-source: -gtk-recolor(url("assets/scalable/window-close-symbolic.svg"));
+
+    &:hover {
+      background-color: $wm_button_close_hover_bg;
+      color: rgba(black, 0.35);
+    }
+
+    &:active {
+      background-color: $wm_button_close_active_bg;
+      color: rgba(black, 0.35);
+    }
+  }
+
+  &.minimize {
+    background-color: $wm_button_minimize_bg;
+    color: $wm_button_minimize_bg;
+    -gtk-icon-source: -gtk-recolor(url("assets/scalable/window-minimize-symbolic.svg"));
+
+    &:hover {
+      background-color: $wm_button_minimize_hover_bg;
+      color: rgba(black, 0.35);
+    }
+
+    &:active {
+      background-color: $wm_button_minimize_active_bg;
+      color: rgba(black, 0.35);
+    }
+  }
+
+  &.maximize {
+    background-color: $wm_button_maximize_bg;
+    color: $wm_button_maximize_bg;
+    -gtk-icon-source: -gtk-recolor(url("assets/scalable/window-maximize-symbolic.svg"));
+
+    &:hover {
+      background-color: $wm_button_maximize_hover_bg;
+      color: rgba(black, 0.35);
+    }
+
+    &:active {
+      background-color: $wm_button_maximize_active_bg;
+      color: rgba(black, 0.35);
+    }
+  }
+}
+
 window.background.chromium {
   box-shadow: 0 12px 20px rgba(black, 0.35),
     0 0 0 1px rgba(black, 0.75);
@@ -1637,26 +1725,10 @@ window.background.chromium {
     border-radius: $wm_radius $wm_radius 0 0;
 
     button.titlebutton {
-      // title-buttons
-      // define global titlebutton class sizing
-      min-width: 22px;
-      min-height: 22px;
-      margin: 0 3px; // unset margins
-      padding: 0;
-      color: currentColor; // hide stock icons
-      border: none;
-      border-radius: $circular_radius;
-      background-image: none;
-      background-color: gtkalpha(currentColor, 0.12);
-
-      &:hover {
-        background-color: gtkalpha(currentColor, 0.2);
-        transition-duration: $shorter_duration;
-      }
-
-      &:active {
-        background-color: gtkalpha(currentColor, 0.3);
-        transition-duration: $shorter_duration;
+      @if $title_style == 'normal' {
+        @extend %normal_title_buttons;
+      } @else {
+        @extend %macos_title_buttons;
       }
     }
   }
