@@ -244,6 +244,7 @@ $list_shadow: if($variant == 'light',
 //
 // Base States
 //
+
 .background {
   color: $fg_color;
   background-color: $bg_color;
@@ -290,7 +291,7 @@ textview {
   > text {
     background-color: $base_color;
     // @extend %view;
-    selection { &:focus, & { @extend %selected_items; }}
+    selection { &:focus-within, & { @extend %selected_items; }}
   }
 
   border {
@@ -625,7 +626,7 @@ entry {
     &:disabled { @include entry(osd-insensitive); border-image: none; }
 
     selection {
-      &:focus, & {
+      &:focus-within, & {
         color: $selected_bg_color;
         background-color: $selected_fg_color;
       }

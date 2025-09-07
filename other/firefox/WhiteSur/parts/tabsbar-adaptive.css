@@ -278,10 +278,6 @@ toolbarbutton[open=true] {
 	width: 32px !important;
 	height: 32px !important;
 }
-
-#alltabs-button {
-	display: none !important;
-}
 }
 
 :root[tabsintitlebar][inFullscreen] #TabsToolbar .toolbar-items {

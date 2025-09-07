@@ -326,11 +326,6 @@ tab[selected]:-moz-window-inactive .tab-label {
   }
 }
 
-#TabsToolbar #alltabs-button {
-	padding: 0 !important;
-	visibility: collapse !important;
-}
-
 #TabsToolbar .toolbarbutton-1,
 #TabsToolbar #tabs-newtab-button,
 #TabsToolbar #new-tab-button {

@@ -1612,8 +1612,13 @@ dialog-host > widget > widget > toolbarview {
 // Chrome
 //
 
-$chrome_bg_color: if($variant =='light', #dedede, #242424);
-$chrome_fg_color: if($variant =='light', #242424, #dedede);
+$chrome_bg_color: if($variant =='light', #f5f5f5, if($darker =='true', #1f1f1f, #242424));
+$chrome_fg_color: if($variant =='light', #2e2e2e, #e0e0e0);
+
+@if $scheme =='nord' {
+  $chrome_bg_color: if($variant =='light', #f3f4f6, if($darker =='true', #1d2025, #252932));
+  $chrome_fg_color: if($variant =='light', #3b4252, #e5e9f0);
+}
 
 $title_style: 'macos'; // 'normal' or 'macos'
 
@@ -1648,86 +1653,87 @@ $title_style: 'macos'; // 'normal' or 'macos'
   background-image: none;
   border: none;
 
-  @if $variant == 'light' {
+  @if $variant =='light' {
     box-shadow: inset 0 0 0 1px rgba(black, 0.2);
   }
 
   &.close {
     background-color: $wm_button_close_bg;
     color: $wm_button_close_bg;
-    -gtk-icon-source: -gtk-recolor(url("assets/scalable/window-close-symbolic.svg"));
 
     &:hover {
       background-color: $wm_button_close_hover_bg;
-      color: rgba(black, 0.35);
+      color: gtkmix(black, $wm_button_close_hover_bg, 50%);
     }
 
     &:active {
       background-color: $wm_button_close_active_bg;
-      color: rgba(black, 0.35);
+      color: gtkmix(black, $wm_button_close_active_bg, 50%);
     }
   }
 
   &.minimize {
     background-color: $wm_button_minimize_bg;
     color: $wm_button_minimize_bg;
-    -gtk-icon-source: -gtk-recolor(url("assets/scalable/window-minimize-symbolic.svg"));
 
     &:hover {
       background-color: $wm_button_minimize_hover_bg;
-      color: rgba(black, 0.35);
+      color: gtkmix(black, $wm_button_minimize_hover_bg, 50%);
     }
 
     &:active {
       background-color: $wm_button_minimize_active_bg;
-      color: rgba(black, 0.35);
+      color: gtkmix(black, $wm_button_minimize_active_bg, 50%);
     }
   }
 
   &.maximize {
     background-color: $wm_button_maximize_bg;
     color: $wm_button_maximize_bg;
-    -gtk-icon-source: -gtk-recolor(url("assets/scalable/window-maximize-symbolic.svg"));
 
     &:hover {
       background-color: $wm_button_maximize_hover_bg;
-      color: rgba(black, 0.35);
+      color: gtkmix(black, $wm_button_maximize_hover_bg, 50%);
     }
 
     &:active {
       background-color: $wm_button_maximize_active_bg;
-      color: rgba(black, 0.35);
+      color: gtkmix(black, $wm_button_maximize_active_bg, 50%);
     }
   }
 }
 
 window.background.chromium {
-  box-shadow: 0 12px 20px rgba(black, 0.35),
-    0 0 0 1px rgba(black, 0.75);
+  background-color: $chrome_bg_color;
+  color: $chrome_fg_color;
+  box-shadow: 0 12px 20px rgba(black, 0.35), 0 0 0 1px rgba(black, 0.75);
+  border-color: $borders_color;
 
   &:backdrop {
+    background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 10%);
+    color: rgba($chrome_fg_color, 0.5);
     transition: $shadow_transition;
-    box-shadow: 0 7px 12px rgba(black, 0.15),
-      0 0 0 1px rgba(black, 0.65);
-  }
-
-  &, headerbar {
-    &, &:backdrop {
-      background-color: $chrome_bg_color;
-      color: $chrome_fg_color;
-    }
+    box-shadow: 0 7px 12px rgba(black, 0.15), 0 0 0 1px rgba(black, 0.65);
   }
 
   headerbar.header-bar.titlebar {
     padding: 0 $container_padding * 2;
-    color: currentColor;
+    background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 10%);
+    color: $chrome_fg_color;
     box-shadow: inset 0 1px rgba(white, 0.1);
     border-radius: $wm_radius $wm_radius 0 0;
 
+    &:backdrop {
+      background-color: $chrome_bg_color;
+      color: rgba($chrome_fg_color, 0.5);
+    }
+
     button.titlebutton {
-      @if $title_style == 'normal' {
+      @if $title_style =='normal' {
         @extend %normal_title_buttons;
-      } @else {
+      }
+
+      @else {
         @extend %macos_title_buttons;
       }
     }
@@ -1735,7 +1741,7 @@ window.background.chromium {
 
   // internal region of toolbar's entry widget
   > textview.view, textview {
-    background-color: gtkalpha(currentColor, 0.1);
+    background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 10%);
     color: $chrome_fg_color;
   }
 }

@@ -5,34 +5,47 @@
 
 $theme_text: currentColor;
 
-@define-color theme_fg_color #{"" + $fg_color};
-@define-color theme_text_color #{"" + $theme_text};
 @define-color theme_bg_color #{"" + $bg_color};
+@define-color theme_fg_color #{"" + $fg_color};
+
 @define-color theme_base_color #{"" + $base_color};
+@define-color theme_text_color #{"" + $theme_text};
+
 @define-color theme_selected_bg_color #{"" + $selected_bg_color};
 @define-color theme_selected_fg_color #{"" + $selected_fg_color};
-@define-color fg_color #{"" + $fg_color};
-@define-color text_color #{"" + $theme_text};
+
 @define-color bg_color #{"" + $bg_color};
+@define-color fg_color #{"" + $fg_color};
+
 @define-color base_color #{"" + $base_color};
+@define-color text_color #{"" + $theme_text};
+
 @define-color selected_bg_color #{"" + $selected_bg_color};
 @define-color selected_fg_color #{"" + $selected_fg_color};
+
 @define-color insensitive_bg_color #{"" + gtkmix($bg_color, $base_color, 60%)};
 @define-color insensitive_fg_color #{"" + $disabled_fg_color};
 @define-color insensitive_base_color #{"" + $base_color};
-@define-color theme_unfocused_fg_color #{"" + $fg_color};
-@define-color theme_unfocused_text_color #{"" + $theme_text};
+
 @define-color theme_unfocused_bg_color #{"" + $bg_color};
+@define-color theme_unfocused_fg_color #{"" + $fg_color};
+
 @define-color theme_unfocused_base_color #{"" + $base_color};
-@define-color unfocused_insensitive_color #{"" + gtkmix($fg_color, $bg_color, 35%)};
+@define-color theme_unfocused_text_color #{"" + $theme_text};
+
 @define-color borders #{"" + $borders_color};
+
+@define-color unfocused_insensitive_color #{"" + gtkmix($fg_color, $bg_color, 35%)};
+
 @define-color unfocused_borders #{"" + $borders_color};
 
 @define-color warning_color #{"" + $warning_color};
 @define-color error_color #{"" + $error_color};
 @define-color success_color #{"" + $success_color};
-@define-color placeholder_text_color #{#A8A8A8};
+
+@define-color placeholder_text_color #{"" + $drop_target_color};
 @define-color link_color #{"" + $link_color};
+
 @define-color content_view_bg #{"" + $base_color};
 
 /* Very contrasty background for text views (@theme_text_color foreground) */

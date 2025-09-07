@@ -256,6 +256,52 @@ panelview toolbarbutton {
   }
 }
 
+/* Reset styles*/
+
+.menu-iconic.tab-group-icon,
+.menuitem-iconic.tab-group-icon,
+.subviewbutton-iconic.tab-group-icon {
+  .toolbarbutton-icon:not([class*="identity-color-"] .toolbarbutton-icon) {
+    border-radius: 3px !important;
+    box-shadow: inset 0 0 0 99px light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
+    fill: light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
+  }
+}
+
+.menu-iconic.tab-group-icon-collapsed,
+.menuitem-iconic.tab-group-icon-collapsed,
+.subviewbutton-iconic.tab-group-icon-collapsed {
+  .toolbarbutton-icon:not([class*="identity-color-"] .toolbarbutton-icon) {
+    border-radius: 3px !important;
+    box-shadow: inset 0 0 0 99px light-dark(var(--tab-group-color-pale), var(--tab-group-color)) !important;
+    fill: light-dark(var(--tab-group-color-pale), var(--tab-group-color)) !important;
+  }
+}
+
+.menu-iconic.tab-group-icon-closed,
+.menuitem-iconic.tab-group-icon-closed,
+.subviewbutton-iconic.tab-group-icon-closed {
+  .toolbarbutton-icon:not([class*="identity-color-"] .toolbarbutton-icon) {
+    fill: transparent !important;
+    box-shadow: inset 0 0 0 1px light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
+    border-radius: 3px !important;
+  }
+}
+
+.userContext-icon,
+.subviewbutton[usercontextid] > .toolbarbutton-icon:not(#hack):not(.close-button),
+#userContext-indicator {
+  background-image: var(--identity-icon) !important;
+  fill: var(--identity-icon-color) !important;
+}
+
+.menuitem-iconic[data-usercontextid] {
+  list-style-image: var(--identity-icon) !important;
+  fill: var(--identity-icon-color) !important;
+}
+
+/*......*/
+
 .bookmark-item .menu-right {
 	fill-opacity: 1 !important;
 }
