@@ -151,7 +151,7 @@ panelview {
 }
 
 .panel-header {
-	padding: 0 0 10px 0 !important;
+	padding-bottom: 10px !important;
 }
 .panel-header + toolbarseparator,
 #identity-popup-mainView-panel-header + toolbarseparator,

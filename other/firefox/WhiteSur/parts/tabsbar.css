@@ -262,6 +262,11 @@
 		border: none !important;
 	}
 
+	.toolbarbutton-1 + .toolbarbutton-1,
+	#tabbrowser-tabs + .toolbarbutton-1 {
+		border-left: 1px solid var(--gnome-tabbar-tab-border-color) !important;
+	}
+
 	.toolbarbutton-1 > .toolbarbutton-icon,
 	.toolbarbutton-1 > .toolbarbutton-text,
 	.toolbarbutton-1 > .toolbarbutton-badge-stack {
