@@ -73,7 +73,7 @@ OPTIONS:
   -c, --color [light|dark]
    Set theme color variants. Repeatable. Default is all variants
 
-  -a, --alt [normal|alt|all]
+  -a, --alt [normal|alt|adwaita|all]
    Set window control buttons variant. Repeatable. Default is 'normal'
 
   -t, --theme [default|blue|purple|pink|red|orange|yellow|green|grey|all]
@@ -142,6 +142,34 @@ OPTIONS:
 ```
 
 </details>
+
+## Window Button Variants
+
+The WhiteSur theme supports different window control button styles to match various desktop preferences:
+
+### Available Variants
+
+- **`normal`** (default): macOS-style traffic light buttons with circular design
+- **`alt`**: Alternative macOS-style buttons with different styling
+- **`adwaita`**: GNOME Adwaita-style buttons with traditional rectangular design
+
+### Usage Examples
+
+```bash
+# Install with default macOS-style buttons
+./install.sh
+
+# Install with Adwaita/GNOME-style buttons
+./install.sh -a adwaita
+
+# Install with alternative macOS-style buttons
+./install.sh -a alt
+
+# Install all button variants
+./install.sh -a all
+```
+
+The Adwaita variant is perfect for users who prefer the traditional GNOME window button style over the macOS traffic light design, providing better compatibility with applications that use default GTK theming.
 
 ## Fix for libadwaita (not perfect)
 
