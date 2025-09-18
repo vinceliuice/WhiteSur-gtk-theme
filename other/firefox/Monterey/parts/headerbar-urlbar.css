@@ -2,6 +2,7 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+#search-container,
 toolbarspring {
 	display: none !important;
 }
@@ -12,17 +13,21 @@ toolbarspring {
 	--urlbar-container-height: 32px !important;
 	--urlbar-toolbar-height: 32px !important;
 	--urlbar-inner-padding: 0 !important;
+	--urlbar-width: 360px !important;
 	box-shadow: none !important;
 	width: 360px !important;
 	min-width: 360px !important;
 }
 
-#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background {
+#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background,
+#urlbar[focused="true"]:not([suppress-focus-border]) > .urlbar-background {
 	outline-color: transparent !important;
 }
 
 #urlbar-container,
+.urlbar-container,
 #wrapper-urlbar-container,
+.wrapper-urlbar-container,
 #urlbar #urlbar-input-container,
 #urlbar .urlbar-input-container {
 	padding: 0 !important;
@@ -32,12 +37,15 @@ toolbarspring {
 
 :root[sizemode="maximized"] #urlbar,
 :root[sizemode="maximized"] #urlbar-container,
-:root[sizemode="maximized"] #wrapper-urlbar-container {
+:root[sizemode="maximized"] #wrapper-urlbar-container,
+:root[sizemode="maximized"] .urlbar-container,
+:root[sizemode="maximized"] .wrapper-urlbar-container {
 	width: 360px !important;
 	min-width: 360px !important;
 }
 
-#urlbar-background {
+#urlbar-background,
+.urlbar-background {
 	box-shadow: none !important;
 	border: none !important;
 	background: none !important;
@@ -71,7 +79,8 @@ toolbarspring {
 	border-color: var(--gnome-inactive-headerbar-background) !important;
 }
 
-#urlbar-input {
+#urlbar-input,
+.urlbar-input {
 	text-align: center !important;
 	padding: 0 28px 0 0 !important;
 }

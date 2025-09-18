@@ -214,10 +214,20 @@ treechildren::-moz-tree-image(query, OrganizerQuery_history____v) {
 
 /* Menu checkbox */
 menuitem[type="checkbox"] {
-	list-style-image: url("../icons/checkbox-symbolic.svg") !important;
+/*	list-style-image: url("../icons/checkbox-symbolic.svg") !important;*/
+
+	.menu-icon {
+		background-image:  url("../icons/checkbox-symbolic.svg") !important;
+		padding: 1px;
+		border-radius: 3px;
+	}
 }
 menuitem[type="checkbox"][checked="true"] {
-	list-style-image: url("../icons/checkbox-checked-symbolic.svg") !important;
+/*	list-style-image: url("../icons/checkbox-checked-symbolic.svg") !important;*/
+
+	.menu-icon {
+		background-image:  url("../icons/checkbox-checked-symbolic.svg") !important;
+	}
 }
 menuitem[type="checkbox"][disabled="true"] .menu-iconic-icon {
 	opacity: 0.5;
@@ -228,10 +238,20 @@ menuitem[type="checkbox"][disabled="true"] .menu-iconic-icon {
 
 /* Menu radio */
 menuitem[type="radio"] {
-	list-style-image: url("../icons/radio-symbolic.svg") !important;
+/*	list-style-image: url("../icons/radio-symbolic.svg") !important;*/
+	
+	.menu-icon {
+		background-image:  url("../icons/radio-symbolic.svg") !important;
+		padding: 1px;
+		border-radius: 3px;
+	}
 }
 menuitem[type="radio"][checked="true"] {
-	list-style-image: url("../icons/radio-checked-symbolic.svg") !important;
+/*	list-style-image: url("../icons/radio-checked-symbolic.svg") !important;*/
+
+	.menu-icon {
+		background-image:  url("../icons/radio-checked-symbolic.svg") !important;
+	}
 }
 menuitem[type="radio"][disabled="true"] .menu-iconic-icon {
 	opacity: 0.5;

@@ -20,7 +20,8 @@ toolbarspring {
 	padding-inline: 0 !important;
 }
 
-#urlbar-background {
+#urlbar-background,
+.urlbar-background {
 	box-shadow: none !important;
 	border: none !important;
 	background: transparent !important;
@@ -61,7 +62,8 @@ toolbarspring {
 	max-height: 32px !important;
 }
 
-#urlbar-input {
+#urlbar-input,
+.urlbar-input {
 	text-align: center !important;
 	padding: 0 28px 0 0 !important;
 }
