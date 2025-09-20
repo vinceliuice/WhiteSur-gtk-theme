@@ -20,6 +20,10 @@ toolbarspring {
 	padding-inline: 0 !important;
 }
 
+#urlbar:-moz-window-inactive {
+	border-color: var(--gnome-inactive-headerbar-background) !important;
+}
+
 #urlbar-background,
 .urlbar-background {
 	box-shadow: none !important;
@@ -34,10 +38,6 @@ toolbarspring {
 	border: none !important;
 	padding: 0 3px !important;
 	background: none !important;
-}
-
-#urlbar:-moz-window-inactive {
-	border-color: var(--gnome-inactive-headerbar-background) !important;
 }
 
 #urlbar[breakout][breakout-extend] {

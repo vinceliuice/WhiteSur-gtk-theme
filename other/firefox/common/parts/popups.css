@@ -146,10 +146,6 @@ panelview {
 	stroke: transparent !important;
 }
 
-.PanelUI-subView toolbarseparator:not([orient="vertical"]) {
-	margin: 10px 2px !important;
-}
-
 .panel-header {
 	padding-bottom: 10px !important;
 }
@@ -357,18 +353,24 @@ menupopup menu:not([disabled="true"]):is(:hover, [_moz-menuactive]),
 /* Style popover separators */
 toolbarseparator, menuseparator {
 	appearance: none !important;
-/*	border-color: var(--gnome-popover-separator-color) !important;*/
+	border-top: 1px solid var(--gnome-popover-separator-color) !important;
+	padding: 0 !important;
+	background: none !important;
 }
 #PlacesToolbar menupopup[placespopup="true"] menuseparator {
-	border: none !important;
 	padding: 0 !important;
 }
-toolbarseparator, menuseparator::before {
-	border-top: 1px solid var(--gnome-popover-separator-color) !important;
+toolbarseparator::before, menuseparator::before {
+	padding: 0 !important;
+	color: transparent !important;
+	background: none !important;
+	border: none !important;
+}
+.PanelUI-subView toolbarseparator:not([orient="vertical"]) {
+	margin: 8px 6px !important;
 }
 menupopup menuseparator {
-	border: none !important;
-	margin: 4px 0 !important;
+	margin: 6px !important;
 }
 toolbarseparator[orient="vertical"] {
 	margin: 0 4px !important;
