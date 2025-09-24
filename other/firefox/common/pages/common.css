@@ -2,6 +2,7 @@
   :host,
   :host(.anonymous-content-host),
   :root {
+    accent-color: var(--theme-primary-color) !important;
     --color-accent-primary: var(--theme-primary-active-color) !important;
     --in-content-page-color: var(--gnome-content-page-color) !important;
     --in-content-page-background: var(--gnome-content-page-background) !important;
@@ -21,6 +22,7 @@
     --in-content-primary-button-background-active: var(--theme-primary-active-color) !important;
 
     --in-content-table-background: var(--gnome-browser-before-load-background) !important;
+    --in-content-table-header-background: var(--theme-primary-color) !important;
 
     --newtab-background-color: var(--gnome-browser-before-load-background) !important;
     --newtab-background-color-secondary: var(--gnome-content-page-dialog-background) !important;
@@ -29,6 +31,7 @@
     --fxview-background-color-secondary: var(--gnome-menu-background) !important;
     scrollbar-color: rgba(250,250,250,.4) rgba(22,22,22,.3) !important;
     --background-color-box: var(--gnome-content-box-background) !important;
+    --background-color-canvas: var(--gnome-browser-before-load-background) !important;
   }
 
   @media not (prefers-contrast) {
@@ -36,6 +39,19 @@
     :host(dialog) {
       --in-content-page-background: var(--gnome-content-page-dialog-background) !important;
     }
+  }
+}
+
+@media (forced-colors) {
+  :host(.anonymous-content-host),
+  :root {
+    --in-content-box-info-background: var(--gnome-content-box-background) !important;
+
+    --in-content-item-hover: var(--theme-primary-color) !important;
+    --in-content-item-selected: var(--theme-primary-color) !important;
+
+    --in-content-table-background: var(--gnome-content-page-dialog-background) !important;
+    --in-content-table-header-background: var(--gnome-content-page-dialog-background) !important;
   }
 }
 
@@ -58,7 +74,12 @@
 }
 
 .dialogBox window, .dialogBox dialog {
-	background: none !important;
+	background-color: transparent !important;
+}
+
+:root[dialogroot], :host(dialog) {
+	--in-content-page-background: var(--gnome-toolbar-background) !important;
+	--background-color-canvas: var(--gnome-toolbar-background) !important;
 }
 
 .close-icon {
