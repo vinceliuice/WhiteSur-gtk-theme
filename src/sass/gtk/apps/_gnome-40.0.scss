@@ -1650,7 +1650,6 @@ $title_style: 'macos'; // 'normal' or 'macos'
   margin: 0 3px;
   padding: 0;
   border-radius: $circular_radius;
-  background-image: none;
   border: none;
 
   @if $variant =='light' {
@@ -1718,24 +1717,42 @@ window.background.chromium {
 
   headerbar.header-bar.titlebar {
     padding: 0 $container_padding * 2;
-    background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 10%);
+    background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 6%);
     color: $chrome_fg_color;
     box-shadow: inset 0 1px rgba(white, 0.1);
     border-radius: $wm_radius $wm_radius 0 0;
 
     &:backdrop {
-      background-color: $chrome_bg_color;
+      background-color: gtkmix($chrome_fg_color, $chrome_bg_color, 6%);
       color: rgba($chrome_fg_color, 0.5);
     }
 
     button.titlebutton {
-      @if $title_style =='normal' {
-        @extend %normal_title_buttons;
+      color: transparent;
+
+      &.minimize {
+        color: $wm_button_minimize_bg;
+
+        &:hover, &:active {
+          color: gtkmix(black, $wm_button_minimize_active_bg, 50%);
+        }
+
+        &:backdrop, &:disabled {
+          color: $wm_button_inactive_bg;
+
+          &:hover, &:active {
+            color: gtkmix(black, $wm_button_inactive_bg, 50%);
+          }
+        }
       }
 
-      @else {
-        @extend %macos_title_buttons;
-      }
+      // @if $title_style =='normal' {
+      //   @extend %normal_title_buttons;
+      // }
+
+      // @else {
+      //   @extend %macos_title_buttons;
+      // }
     }
   }
 

@@ -302,6 +302,8 @@ $wm_outline:                        if($variant=='light', $wm_outline_light, $wm
 
 // WM Buttons
 
+$wm_button_inactive_bg:             if($variant == 'light', #cecece, #5d5d5d);
+
 // Close
 $wm_button_close_bg:                if($variant == 'light', #fe6254, #e9524a);
 $wm_button_close_hover_bg:          if($variant == 'light', #fe6254, #e9524a);
