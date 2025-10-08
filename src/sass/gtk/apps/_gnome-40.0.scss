@@ -57,7 +57,8 @@ $flap_sidebar_size: 240px;
   }
 }
 
-.nautilus-window {
+.nautilus-window,
+#NautilusFileChooser {
   @if $nautilus_style =='stable' or $nautilus_style =='glassy' {
     &.background.csd {
       &, &:backdrop {
@@ -169,7 +170,21 @@ $flap_sidebar_size: 240px;
     background-color: $base_color;
 
     child.activatable {
+      padding: 0;
       @extend %nautilus_view;
+
+      #NautilusViewCell {
+        padding: 0;
+
+        .icon-ui-labels-box {
+          margin: 0 0 $base_padding * 2;
+          border-spacing: 0;
+        }
+
+        .dim-label {
+          border-spacing: 0;
+        }
+      }
     }
   }
 
@@ -193,8 +208,12 @@ $flap_sidebar_size: 240px;
           padding: 0;
 
           > widget#NautilusViewCell {
-            padding: $container_padding $container_padding * 1.5;
+            padding: $container_padding / 2 $container_padding * 1.5;
           }
+        }
+
+        &:nth-child(odd):not(:disabled) {
+          background-image: image(gtkalpha(currentColor, 0.03));
         }
       }
     }
