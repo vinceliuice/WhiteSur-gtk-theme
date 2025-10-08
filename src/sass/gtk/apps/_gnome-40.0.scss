@@ -65,14 +65,14 @@ $flap_sidebar_size: 240px;
         background-color: $dark_sidebar_bg;
       }
 
-      &:not(.view) headerbar {
-        &, &:backdrop {
-          background-color: transparent;
-          border: none;
-          background-image: $nautilus_header_image;
-          border-image: $nautilus_header_borders_image 0 0 1 / 0px 0px 1px stretch;
-        }
-      }
+      // &:not(.view) headerbar {
+      //   &, &:backdrop {
+      //     background-color: transparent;
+      //     border: none;
+      //     background-image: $nautilus_header_image;
+      //     border-image: $nautilus_header_borders_image 0 0 1 / 0px 0px 1px stretch;
+      //   }
+      // }
     }
   }
 
@@ -126,15 +126,21 @@ $flap_sidebar_size: 240px;
 
   .content-pane toolbarview {
 
-    > .top-bar,
-    > .bottom-bar {
-      .collapse-spacing {
-        headerbar {
-          > windowhandle > box {
-            padding-top: 7px;
-            padding-bottom: 7px;
-          }
+    .top-bar,
+    .bottom-bar {
+      headerbar {
+        > windowhandle > box {
+          padding-top: 7px;
+          padding-bottom: 7px;
         }
+      }
+    }
+
+    .bottom-bar {
+      &, &:backdrop {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
       }
     }
   }
