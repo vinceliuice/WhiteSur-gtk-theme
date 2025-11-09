@@ -353,10 +353,10 @@ gridview {
       @extend %selected_items;
     }
 
-    box { //cells
-      border-spacing: 8px; //label separation
-      margin: 12px;
-    }
+    // box { //cells
+    //   border-spacing: $container_padding; //label separation
+    //   // margin: 12px;
+    // }
   }
 }
 
