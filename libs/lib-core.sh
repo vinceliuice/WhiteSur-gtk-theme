@@ -24,7 +24,12 @@ export WHITESUR_PID=$$
 MY_USERNAME="${SUDO_USER:-$(logname 2> /dev/null || echo "${USER}")}"
 MY_HOME=$(getent passwd "${MY_USERNAME}" | cut -d: -f6)
 
-if command -v gnome-shell &> /dev/null; then
+# Check command availability
+has_command() {
+  command -v "$1" &> /dev/null
+}
+
+if has_command gnome-shell; then
   SHELL_VERSION="$(gnome-shell --version | cut -d ' ' -f 3 | cut -d . -f -1)"
   if [[ "${SHELL_VERSION:-}" -ge "48" ]]; then
     GNOME_VERSION="48-0"
@@ -185,11 +190,6 @@ anim=(
   "    ${c_blue}•${c_green}•${c_red}•${c_magenta}•"
 )
 
-# Check command availability
-has_command() {
-  command -v "$1" &> /dev/null
-}
-
 has_flatpak_app() {
   flatpak list --columns=application | grep "${1}" &> /dev/null || return 1
 }
@@ -332,11 +332,13 @@ signal_error() {
   prompt -e "\n  =========== SYSTEM INFO ========="
   prompt -e "DISTRO  : $(IFS=';'; echo "${dist_ids[*]}")"
   prompt -e "SUDO    : $([[ -w "/root" ]] && echo "yes" || echo "no")"
-  if command -v gnome-shell &> /dev/null; then
+
+  if has_command gnome-shell; then
     prompt -e "DESKTOP : $(gnome-shell --version)"
   else
     prompt -e "DESKTOP : ${DESKTOP_SESSION}"
   fi
+
   prompt -e "REPO    : ${repo_ver}\n"
 
   if [[ "$(grep -ril "Release" "${WHITESUR_TMP_DIR}/error_log.txt")" == "${WHITESUR_TMP_DIR}/error_log.txt" ]]; then

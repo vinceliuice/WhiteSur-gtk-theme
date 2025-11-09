@@ -188,7 +188,8 @@ $flap_sidebar_size: 240px;
         }
 
         .dim-label {
-          border-spacing: 0;
+          color: $fg_color;
+          margin: $base_padding / 2 $base_padding / 2 0 0;
         }
       }
     }

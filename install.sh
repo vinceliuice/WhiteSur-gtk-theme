@@ -184,6 +184,10 @@ else
   prompt -i "Start icon style : ${icon}"
   prompt -i "Nautilus style   : ${nautilus_style}"
 
+  if has_command gnome-shell; then
+    prompt -i "Desktop          : $(gnome-shell --version)"
+  fi
+ 
   if [[ "${libadwaita}" == 'true' ]]; then
     if [[ "$UID" != '0' ]]; then
       install_libadwaita
