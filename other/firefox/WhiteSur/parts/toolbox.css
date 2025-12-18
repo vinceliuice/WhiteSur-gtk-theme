@@ -58,8 +58,21 @@ findbar:-moz-window-inactive label,
   }
 }
 
-#toolbar-menubar:not([inactive=true]) {
-	margin-bottom: 0 !important;
+/* Menubar */
+#toolbar-menubar {
+  min-height: 0 !important;
+}
+
+@media -moz-pref("widget.gtk.global-menu.enabled") {
+  #toolbar-menubar {
+    display: none !important;
+  }
+}
+
+@media -moz-pref("widget.gtk.global-menu.wayland.enabled") {
+  #toolbar-menubar {
+    display: none !important;
+  }
 }
 
 #PersonalToolbar {

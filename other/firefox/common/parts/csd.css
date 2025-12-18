@@ -194,12 +194,6 @@
 	display: none !important;
 }
 
-/* Prevent menubar from breaking */
-#toolbar-menubar:not([inactive=true]) {
-	height: 30px !important;
-	margin-bottom: 8px;
-}
-
 /* Remove default style of titlebar */
 #titlebar {
 	-moz-appearance: none !important;
