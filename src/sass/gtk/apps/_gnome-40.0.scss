@@ -414,69 +414,68 @@ preferencesgroup > box {
   .cutout-button {
     background-color: $dialog_bg_color;
   }
-}
 
-@if $gnome_version =='new' {
-  button.accent, // GDM Setting
+  @if $gnome_version =='new' {
+    button.accent, // GDM Setting
+    button.accent-button {
+      // Gnome Control Center
+      min-height: 24px;
+      min-width: 24px;
+      padding: $base_padding / 2;
+      border-radius: $circular_radius;
+      background: var(--accent-bg-color);
+      outline: none;
+      background-clip: content-box;
+      box-shadow: none;
+      border: none;
 
-  button.accent-button {
-    // Gnome Control Center
-    min-height: 24px;
-    min-width: 24px;
-    padding: $base_padding / 2;
-    border-radius: $circular_radius;
-    background: var(--accent-bg-color);
-    outline: none;
-    background-clip: content-box;
-    box-shadow: none;
-    border: none;
+      &:hover {
+        box-shadow: 0 0 0 3px $divider_color;
+      }
 
-    &:hover {
-      box-shadow: 0 0 0 3px $divider_color;
-    }
+      &:checked {
+        box-shadow: 0 0 0 3px var(--accent-bg-color);
+      }
 
-    &:checked {
-      box-shadow: 0 0 0 3px var(--accent-bg-color);
-    }
+      &.blue, &.teal, &.green, &.yellow, &.orange, &.red, &.pink, &.purple, &.slate {
+        --accent-color: oklab(from var(--accent-bg-color) var(--standalone-color-oklab));
+      }
 
-    &.blue, &.teal, &.green, &.yellow, &.orange, &.red, &.pink, &.purple, &.slate {
-      --accent-color: oklab(from var(--accent-bg-color) var(--standalone-color-oklab));
-    }
+      &.blue {
+        --accent-bg-color: var(--accent-blue);
+      }
 
-    &.blue {
-      --accent-bg-color: var(--accent-blue);
-    }
+      &.teal {
+        --accent-bg-color: var(--accent-teal);
+      }
 
-    &.teal {
-      --accent-bg-color: var(--accent-teal);
-    }
+      &.green {
+        --accent-bg-color: var(--accent-green);
+      }
 
-    &.green {
-      --accent-bg-color: var(--accent-green);
-    }
+      &.yellow {
+        --accent-bg-color: var(--accent-yellow);
+      }
 
-    &.yellow {
-      --accent-bg-color: var(--accent-yellow);
-    }
+      &.orange {
+        --accent-bg-color: var(--accent-orange);
+      }
 
-    &.orange {
-      --accent-bg-color: var(--accent-orange);
-    }
+      &.red {
+        --accent-bg-color: var(--accent-red);
+      }
 
-    &.red {
-      --accent-bg-color: var(--accent-red);
-    }
+      &.pink {
+        --accent-bg-color: var(--accent-pink);
+      }
 
-    &.pink {
-      --accent-bg-color: var(--accent-pink);
-    }
+      &.purple {
+        --accent-bg-color: var(--accent-purple);
+      }
 
-    &.purple {
-      --accent-bg-color: var(--accent-purple);
-    }
-
-    &.slate {
-      --accent-bg-color: var(--accent-slate);
+      &.slate {
+        --accent-bg-color: var(--accent-slate);
+      }
     }
   }
 }

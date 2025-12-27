@@ -1004,6 +1004,28 @@ button {
     }
   }
 
+  &.accent {
+    color: $selected_bg_color;
+    background-color: gtkalpha(currentColor, 0.15);
+
+    &:hover {
+      background-color: gtkalpha(currentColor, 0.25);
+    }
+
+    &.keyboard-activating, &:active {
+      background-color: gtkalpha(currentColor, 0.35);
+    }
+
+    &:checked {
+      background-color: $selected_bg_color;
+      color: $selected_fg_color;
+
+      &:hover { background-color: gtkmix($selected_fg_color, $selected_bg_color, 15%); }
+
+      &.keyboard-activating, &:active { background-color: gtkmix($selected_fg_color, $selected_bg_color, 25%); }
+    }
+  }
+
   @at-root %button_basic_drop_active,
   &:drop(active) {
     color: $drop_target_color;
