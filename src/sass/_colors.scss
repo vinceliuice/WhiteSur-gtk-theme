@@ -152,7 +152,7 @@ $header_border_backdrop:            if($variant == 'light', gtkmix(black, $heade
 
 // Sidebar colors
 $dark_sidebar_bg: white;
-$opacity: 0.96;
+$opacity: 1.0;
 
 @if $trans=='true' {
   @if $variant=='light' {
@@ -213,7 +213,7 @@ $menu_bd:                           if($variant == 'light', rgba(black, 0.08), r
   $menu_bg:                         if($variant == 'light', rgba($base_color, $opacity), rgba($bg_color, $opacity));
 }
 
-$popover_opacity:                   if($trans == 'false', 1, if($shell_version == 'new', 0.92, 0.96));
+$popover_opacity:                   if($trans == 'false', 1, if($shell_version == 'new', 0.92, $opacity));
 $popover_bg_color:                  if($variant == 'light', rgba($bg_color, $popover_opacity), rgba($base_color, $popover_opacity));
 
 $submenu_bg_color:                  if($variant == 'light', rgba(white, 1), rgba(white, 0.1));
