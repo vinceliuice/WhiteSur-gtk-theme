@@ -162,8 +162,13 @@
   color: $text_color !important;
   border-radius: $base_border_radius * 3;
   padding: $base_padding * 3;
-  margin: $base_padding * 2 $base_padding * 6 0;
   border: none !important;
+
+  @if($GNOME_SHELL == '48') {
+    margin: $base_padding * 2 $base_padding * 6;
+  } @else {
+    margin: $base_padding * 2 0 0;
+  }
 
   .popup-menu-item {
     border-radius: $circular_radius !important;
