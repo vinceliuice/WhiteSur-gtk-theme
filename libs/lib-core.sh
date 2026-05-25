@@ -744,6 +744,18 @@ sudo() {
 udo() {
   local result="0"
 
+  if [[ "$(id -un)" == "${MY_USERNAME}" ]]; then
+    if [[ -p /dev/stdin ]]; then
+      "${@}" < /dev/stdin || result="${?}"
+    else
+      "${@}" || result="${?}"
+    fi
+
+    [[ "${result}" != "0" ]] && MACTAHOE_COMMAND="${*}"
+
+    return "${result}"
+  fi
+
   # Just in case. We put the prompt here to make it less annoying
   if ! ${SUDO_BIN} -u "${MY_USERNAME}" -n true &> /dev/null; then
     prompt -w "Executing '$(echo "${@}" | cut -c -35 )...' as user"
