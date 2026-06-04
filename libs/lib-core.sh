@@ -47,6 +47,7 @@ if has_command gnome-shell; then
     GNOME_VERSION="3-28"
   fi
 else
+  SHELL_VERSION="48"
   GNOME_VERSION="48-0"
 fi
 
