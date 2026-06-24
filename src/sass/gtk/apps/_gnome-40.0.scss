@@ -252,7 +252,7 @@ $flap_sidebar_size: 240px;
   }
 }
 
-#NautilusQueryEditor {
+#NautilusQueryEditor, .nautilus-query-editor {
   // search entry
   padding: 2px $container_padding;
   border-spacing: 0;
@@ -261,7 +261,7 @@ $flap_sidebar_size: 240px;
     margin: 0;
   }
 
-  #NautilusQueryEditorTag {
+  #NautilusQueryEditorTag, .nautilus-query-editor-tag {
     @extend .entry-tag;
 
     > button {
@@ -278,12 +278,12 @@ $flap_sidebar_size: 240px;
   }
 }
 
-#NautilusPathBar {
+#NautilusPathBar, .nautilus-pathbar {
   background-color: $fill_color;
   border-radius: $bt_radius;
   margin: 0;
 
-  #NautilusPathButton {
+  #NautilusPathButton, .nautilus-path-button {
     margin: 0 $container_padding / 2;
     border-radius: $bt_radius;
 
@@ -301,7 +301,7 @@ $flap_sidebar_size: 240px;
     }
   }
 
-  > menubutton {
+  > menubutton, > menubutton.flat.popup {
     margin: 0;
   }
 }
