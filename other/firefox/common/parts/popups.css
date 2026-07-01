@@ -7,9 +7,11 @@
 menupopup, panel {
 	-moz-appearance: none !important;
 	--panel-background: var(--gnome-menu-background) !important;
+	--panel-background-color: var(--gnome-menu-background) !important;
 	--panel-border-radius: 12px !important;
 	--panel-padding: 6px !important;
 	--panel-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-popover-border-color) !important;
+	--panel-box-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-popover-border-color) !important;
 	/* --panel-shadow-margin: 3px 8px 13px !important; */
 	--panel-separator-color: var(--gnome-popover-separator-color) !important;
 	--panel-border-color: transparent !important;
@@ -24,6 +26,7 @@ menupopup, panel {
 
 menupopup {
 	--panel-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-menu-border-color) !important;
+	--panel-box-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-menu-border-color) !important;
 }
 
 .cui-widget-panelview[id^="PanelUI-webext-"] {
@@ -113,14 +116,32 @@ menupopup menu[disabled="true"]:hover {
 }
 
 panel:not([remote]), #BMB_bookmarksPopup {
+	--panel-background: var(--gnome-popover-background) !important;
+	--panel-background-color: var(--gnome-popover-background) !important;
 	--arrowpanel-background: var(--gnome-popover-background) !important;
+}
+
+/* Remove frosted glass from search mode popup */
+*|panel-list,
+*|.searchmode-switcher-panel {
+	background: var(--gnome-popover-background) !important;
+	border: none !important;
+	box-shadow: none !important;
+	filter: none !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+	margin-left: -8px !important;
+	padding: 0 6px !important;
+	width: calc(100% + 16px) !important;
+	box-sizing: border-box !important;
 }
 
 /* Adjust popovers position */
 panel[type="arrow"] {
 	appearance: none !important;
-	background-color: transparent !important;
 	margin: 0 -18px !important;
+	--panel-shadow-margin: 0 0 0 0 !important;
+	overflow: visible !important;
 }
 
 /* Style popovers */
@@ -394,6 +415,8 @@ panel[type="autocomplete-richlistbox"] {
 	padding: 0 !important;
 	color: var(--gnome-toolbar-color) !important;
 	margin: 0 !important;
+	--panel-shadow: none !important;
+	--panel-box-shadow: none !important;
 }
 
 .autocomplete-richlistbox {
@@ -431,5 +454,16 @@ panel[type="autocomplete-richlistbox"] {
 
 /* Fixes for menu scrollbox */
 arrowscrollbox.menupopup-arrowscrollbox {
-	height: 100%;
+	height: auto;
+	min-height: 0;
+	max-height: calc(100vh - 24px) !important;
+}
+
+/* Keep long bookmark menus inside viewport and allow scroll buttons to appear */
+menupopup[placespopup="true"]::part(arrowscrollbox),
+#BMB_bookmarksPopup::part(arrowscrollbox),
+#BMB_bookmarksPopup menupopup::part(arrowscrollbox),
+menupopup[placespopup="true"] .menupopup-arrowscrollbox,
+#BMB_bookmarksPopup .menupopup-arrowscrollbox {
+	max-height: min(70vh, 540px) !important;
 }

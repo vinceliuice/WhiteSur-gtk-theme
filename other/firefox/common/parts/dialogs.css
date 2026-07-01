@@ -2,6 +2,33 @@
 
 @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 
+/* Keep common prompts (e.g. beforeunload) on system dialog colors for readability */
+.tab-prompt-dialog .dialogBox,
+.content-prompt-dialog .dialogBox,
+#window-modal-dialog .dialogBox {
+	background-color: -moz-dialog !important;
+	color: -moz-dialogtext !important;
+}
+
+@-moz-document url("chrome://global/content/commonDialog.xhtml") {
+	:root,
+	window,
+	dialog,
+	#commonDialog,
+	#dialogGrid,
+	#infoTitle,
+	#infoBody {
+		background-color: -moz-dialog !important;
+		color: -moz-dialogtext !important;
+	}
+
+	label,
+	description {
+		background-color: transparent !important;
+		color: -moz-dialogtext !important;
+	}
+}
+
 window {
 	padding: 0 !important;
 }
@@ -52,6 +79,8 @@ dialog[subdialog] {
 .dialogBox {
 	border-radius: 12px !important;
 	margin: 0 !important;
+	background-color: var(--gnome-content-page-dialog-background) !important;
+	color: var(--gnome-content-page-color) !important;
 
 	&:not(.spotlightBox) {
 		box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px #000000 !important;
@@ -59,6 +88,10 @@ dialog[subdialog] {
 		outline: 1px solid rgba(255, 255, 255, 0.15) !important;
 		outline-offset: -1px;
 	}
+}
+
+.dialogBox :is(description, label) {
+	color: inherit !important;
 }
 
 .dialogBox window, .dialogBox dialog {

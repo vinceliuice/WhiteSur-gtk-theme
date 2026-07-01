@@ -329,6 +329,9 @@ menu[disabled] > .menu-right {
 .search-go-button {
 	list-style-image: url("../icons/go-next-symbolic.svg") !important;
 }
+.urlbar-go-button {
+	content: url("../icons/go-next-symbolic.svg") !important;
+}
 /* Menu button */
 #PanelUI-menu-button {
 	list-style-image: url("../icons/open-menu-symbolic.svg") !important;

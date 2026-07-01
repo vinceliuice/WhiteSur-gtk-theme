@@ -13,6 +13,8 @@ toolbarspring {
 	--urlbar-container-height: 32px !important;
 	--urlbar-toolbar-height: 32px !important;
 	--urlbar-inner-padding: 0 !important;
+	--urlbar-box-hover-bgcolor: var(--gnome-headerbar-button-hover-background) !important;
+	--urlbar-box-active-bgcolor: var(--gnome-headerbar-button-active-background) !important;
 	box-shadow: none !important;
 	border: none !important;
 	padding: 0 !important;
@@ -31,6 +33,18 @@ toolbarspring {
 	background: transparent !important;
 	border-radius: 8px !important;
 	padding: 0 !important;
+}
+
+[focused]:not([suppress-focus-border]) > .urlbar-background,
+#searchbar:focus-within {
+	outline-color: var(--gnome-focused-urlbar-border-color) !important;
+	-moz-outline-radius: 8px !important;
+	border-radius: 8px !important;
+}
+
+[focused]:not([suppress-focus-border]):hover > .urlbar-background,
+#searchbar:focus-within:hover {
+	outline-color: transparent !important;
 }
 
 #urlbar-input-container,
@@ -98,13 +112,33 @@ toolbarspring {
 	border: 0 !important;
 }
 
-.urlbarView-row-inner, .urlbarView-no-wrap {
+.urlbarView-row-inner,
+.urlbarView-no-wrap {
 	align-items: center !important;
 }
 
 .urlbarView-row-inner {
 	padding-block: 5px !important;
 	border-radius: 5px !important;
+}
+
+.urlbarView-row {
+	border: none !important;
+	border-radius: 5px !important;
+
+	&[row-selectable]:not([selected]):hover {
+		background-color: var(--gnome-button-hover-color) !important;
+	}
+
+  &[selected] {
+		background-color: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.16)) !important;
+		color: light-dark(#1f1f1f, #f5f5f5) !important;
+  }
+}
+
+.urlbarView-row[selected] > .urlbarView-row-inner,
+.urlbarView-row[selected] :is(.urlbarView-title, .urlbarView-title-separator, .urlbarView-url, .urlbarView-action, .urlbarView-secondary) {
+	color: inherit !important;
 }
 
 .urlbarView-action {
@@ -136,7 +170,8 @@ toolbarspring {
 	border-radius: 0 !important;
 }
 
-.searchbar-engine-one-off-item:hover, .searchbar-engine-one-off-item[selected] {
+.searchbar-engine-one-off-item:hover,
+.searchbar-engine-one-off-item[selected] {
 	background-image: var(--gnome-button-hover-background) !important;
 	color: unset !important;
 }
@@ -146,7 +181,8 @@ toolbarspring {
 	border-left-width: 1px !important;
 }
 
-.searchbar-engine-one-off-item.last-engine, .searchbar-engine-one-off-item:not(.search-setting-button):last-child {
+.searchbar-engine-one-off-item.last-engine,
+.searchbar-engine-one-off-item:not(.search-setting-button):last-child {
 	border-radius: 0 5px 5px 0 !important;
 }
 
@@ -156,11 +192,6 @@ toolbarspring {
 	border-bottom: 1px solid var(--gnome-button-border-bottom-color) !important;
 	border-radius: 5px !important;
 	margin-left: 6px !important;
-}
-
-#identity-box[pageproxystate="invalid"] > .identity-box-button,
-#urlbar:not(.searchButton) > #urlbar-input-container > #identity-box[pageproxystate="invalid"] > .identity-box-button {
-	padding-inline: 6px !important;
 }
 
 /* URL bar and Search bar */
@@ -188,29 +219,104 @@ toolbarspring {
 	fill-opacity: 1 !important;
 }
 
-#notification-popup-box {
-	height: 26px !important;
-	width: 28px !important;
-	padding: 5px !important;
-	border-radius: 5px !important;
-}
-
 .notification-anchor-icon {
 	padding: 0 !important;
 }
 
-.urlbar-page-action,
-#urlbar-go-button,
-.urlbar-go-button,
 .search-go-button,
-#tracking-protection-icon-container {
-	width: 28px !important;
-	height: 26px !important;
-	margin: 3px 0 !important;
+.identity-box-button,
+#notification-popup-box,
+#tracking-protection-icon-container,
+#trust-icon-container {
+	min-width: 28px !important;
+	min-height: 26px !important;
+	margin: 3px 3px 3px 0 !important;
 	padding: 6px !important;
 	border-radius: 5px !important;
 }
 
+#trust-icon-container {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+#urlbar:not([pageproxystate="valid"]) #trust-icon-container {
+	display: none !important;
+}
+
+#trust-icon-container:not(.secure):not(.insecure) {
+	display: none !important;
+}
+
+.urlbar-page-action,
+.urlbar-revert-button,
+#star-button-box,
+#urlbar-go-button,
+.urlbar-go-button:not(.urlbar-icon) {
+	width: 28px !important;
+	height: 26px !important;
+	min-width: 28px !important;
+	min-height: 26px !important;
+	margin: 3px 0 3px 3px !important;
+	padding: 6px !important;
+	border-radius: 5px !important;
+}
+
+.urlbar-go-button.urlbar-icon {
+	width: 16px !important;
+	height: 16px !important;
+	padding: 6px !important;
+	border-radius: 5px !important;
+	margin: 3px 0 !important;
+}
+
+#identity-box[pageproxystate="valid"]:is(.notSecureText, .chromeUI, .extensionPage) > .identity-box-button,
+#urlbar-label-box {
+	background-color: var(--gnome-headerbar-button-combined-background) !important;
+	color: var(--gnome-urlbar-color) !important;
+	border-radius: 5px !important;
+}
+	
+#identity-icon-box.identity-box-button {
+	max-width: calc(28px + 13em) !important;
+}
+
+#tracking-protection-icon-container:hover,
+.urlbar-page-action:hover,
+.urlbar-revert-button:hover,
+#urlbar-go-button:hover,
+.urlbar-go-button:hover,
+.search-go-button:hover,
+.identity-box-button:hover,
+#identity-box[pageproxystate="valid"]:is(.notSecureText, .chromeUI, .extensionPage) > .identity-box-button:hover,
+#urlbar-label-box:hover {
+	background: var(--gnome-headerbar-button-hover-background) !important;
+}
+
+#tracking-protection-icon-container:active,
+.urlbar-page-action:active,
+.urlbar-revert-button:active,
+#urlbar-go-button:active,
+.urlbar-go-button:active,
+.search-go-button:active,
+.identity-box-button:active,
+#identity-box[pageproxystate="valid"]:is(.notSecureText, .chromeUI, .extensionPage) > .identity-box-button:active,
+#urlbar-label-box:active {
+	background: var(--gnome-headerbar-button-active-background) !important;
+}
+
+#tracking-protection-icon-container[open="true"],
+.urlbar-page-action[open="true"],
+.urlbar-revert-button[open="true"],
+#urlbar-go-button[open="true"],
+.urlbar-go-button[open="true"],
+.search-go-button[open="true"],
+.identity-box-button[open="true"] {
+	background: var(--gnome-headerbar-button-checked-background) !important;
+}
+
+/* Search mode indicator */
 #nav-bar #urlbar toolbarbutton#urlbar-searchmode-switcher:not(#urlbar-zoom-button):not(.subviewbutton):not(.titlebar-button):not(.close-button) {
 	appearance: none;
 	border-radius: 5px !important;
@@ -221,47 +327,47 @@ toolbarspring {
 	padding-inline: var(--urlbar-searchmodeswitcher-inline-padding);
 	min-width: 50px !important;
 	min-height: 26px !important;
+	box-shadow: none !important;
 
-  &.close-button {
-	margin-left: 6px !important;
-  }
+	&.close-button {
+		margin-left: 6px !important;
+	}
 
-  &:focus-visible {
-	outline: var(--focus-outline);
-	outline-offset: var(--focus-outline-inset);
-  }
+	&:focus-visible {
+		outline: var(--focus-outline);
+		outline-offset: var(--focus-outline-inset);
+	}
 
-  &[open] {
-	background-color: var(--urlbar-box-focus-bgcolor) !important;
-  }
+	&[open] {
+		background-color: var(--urlbar-box-focus-bgcolor) !important;
+	}
 
-  /* No need space if page information icons such as lock and shield is shown */
-  #urlbar[pageproxystate=valid] & {
-	margin-inline-end: 0;
-  }
+	/* No need space if page information icons such as lock and shield is shown */
+	#urlbar[pageproxystate=valid] & {
+		margin-inline-end: 0;
+	}
 
-  #urlbar[searchmode] & {
-	background-color: var(--urlbar-box-bgcolor) !important;
-	margin-inline-end: 0 !important;
-	border-start-end-radius: 0 !important;
-	border-end-end-radius: 0 !important;
-	min-width: 32px !important;
-  }
+	#urlbar[searchmode] & {
+		background-color: var(--gnome-headerbar-button-hover-background) !important;
+		margin-inline-end: 0 !important;
+		border-start-end-radius: 0 !important;
+		border-end-end-radius: 0 !important;
+		min-width: 32px !important;
+	}
 
-  /* The background rule should match to #searchmode-switcher-chicklet */
-  #urlbar[focused] & {
-	background-color: var(--urlbar-box-focus-bgcolor) !important;
-  }
+	/* The background rule should match to #searchmode-switcher-chicklet */
+	#urlbar[focused] & {
+		background-color: var(--gnome-headerbar-button-hover-background) !important;
+	}
 
-  /* stylelint-disable media-query-no-invalid */
-  @media (not -moz-pref("browser.urlbar.searchModeSwitcher.featureGate")) and
-         (not -moz-pref("browser.urlbar.scotchBonnet.enableOverride")) {
-	display: none;
-  }
+	/* stylelint-disable media-query-no-invalid */
+	@media (not -moz-pref("browser.urlbar.searchModeSwitcher.featureGate")) and (not -moz-pref("browser.urlbar.scotchBonnet.enableOverride")) {
+		display: none;
+	}
 }
 
 #searchmode-switcher-chicklet {
-	background-color: var(--urlbar-box-bgcolor);
+	background-color: var(--gnome-headerbar-button-combined-background) !important;
 	border-start-end-radius: 5px !important;
 	border-end-end-radius: 5px !important;
 	align-items: center;
@@ -270,50 +376,26 @@ toolbarspring {
 	display: none;
 	margin-top: 3px;
 	margin-bottom: 3px;
+	padding-left: 6px;
 }
 
-#urlbar-search-mode-indicator-close, #searchmode-switcher-close {
-	margin-left: 6px !important;
-}
-
-.urlbar-page-action {
-	padding: 5px 6px !important;
-}
-
-#identity-box {
-	margin: 3px 2px !important;
-	border-radius: 5px !important;
-}
-
-#identity-box[pageproxystate="valid"].chromeUI {
-	margin-left: 0 !important;
-}
-
-#tracking-protection-icon-container:hover,
-.urlbar-page-action:hover,
-#urlbar-go-button:hover,
-.urlbar-go-button:hover,
-.search-go-button:hover,
-#identity-box:hover {
-	background: var(--gnome-headerbar-button-hover-background) !important;
-}
-
-#tracking-protection-icon-container:active,
-#tracking-protection-icon-container[open="true"],
-.urlbar-page-action:active,
-#urlbar-go-button:active,
-.urlbar-go-button:active,
-.search-go-button:active,
-#identity-box:active {
-	background: var(--gnome-headerbar-button-active-background) !important;
-}
-
-.identity-box-button {
-	border-radius: 5px !important;
+#searchmode-switcher-chicklet:-moz-window-inactive {
 	background: none !important;
 }
 
-/* Search mode indicator */
+#urlbar-search-mode-indicator-close,
+#searchmode-switcher-close,
+.searchmode-switcher-close {
+	margin-left: 6px !important;
+	border-radius: 5px !important;
+}
+
+#urlbar-search-mode-indicator-close {
+	background-size: 12px 12px !important;
+	opacity: 0.8 !important;
+	fill: var(--gnome-toolbar-color) !important;
+}
+
 #urlbar-search-mode-indicator,
 #urlbar-label-box {
 	background: var(--gnome-headerbar-button-hover-background) !important;
@@ -323,46 +405,61 @@ toolbarspring {
 	margin-top: 3px !important;
 	margin-bottom: 3px !important;
 }
+
 #urlbar-search-mode-indicator-title {
-	padding-inline: 4px !important;;
-}
-#urlbar-search-mode-indicator-close {
-	background-size: 12px 12px !important;
-	border-radius: 3px !important;
-	opacity: 0.8 !important;
-	fill: var(--gnome-toolbar-color) !important;
+	padding-inline: 4px !important;
 }
 
 /*translations-button*/
 #translations-button[translationsactive] > #translations-button-icon {
-  fill: var(--theme-primary-active-color) !important;
-  fill-opacity: 1;
+	fill: var(--theme-primary-active-color) !important;
+	fill-opacity: 1;
 }
 
 #translations-button-circle-arrows {
-  height: 16px;
-  width: 16px;
-  list-style-image: url("chrome://browser/skin/sync.svg");
-  fill: var(--theme-primary-active-color) !important;
-  fill-opacity: 1;
-  margin-inline: 1px;
+	height: 16px;
+	width: 16px;
+	list-style-image: url("chrome://browser/skin/sync.svg");
+	fill: var(--theme-primary-active-color) !important;
+	fill-opacity: 1;
+	margin-inline: 1px;
 }
 
 #translations-button-locale {
-  background-color: var(--theme-primary-active-color) !important;
-  color: white !important;
-  border-radius: 4px;
-  font-size: 0.8em;
-  height: 20px;
-  min-width: 20px;
-  text-align: center;
-  padding-top: 3px;
-  padding-inline: 1px;
-  box-sizing: border-box;
-  margin-inline: 2px -2px;
-  margin-block: -2px;
+	background-color: var(--theme-primary-active-color) !important;
+	color: white !important;
+	border-radius: 4px;
+	font-size: 0.8em;
+	height: 20px;
+	min-width: 20px;
+	text-align: center;
+	padding-top: 3px;
+	padding-inline: 1px;
+	box-sizing: border-box;
+	margin-inline: 2px -2px;
+	margin-block: -2px;
 }
 
 #translations-button[translationsactive="true"] {
-  width: auto !important;
+	width: auto !important;
+}
+
+#main-button .button-background.labelled {
+	min-height: 26px !important;
+	min-width: 28px !important;
+	background: var(--gnome-headerbar-button-hover-background) !important;
+	border: none !important;
+	border-radius: 5px !important;
+	outline: 0 !important;
+	margin: 0 !important;
+	padding: 0 9px !important;
+}
+
+@media -moz-pref("browser.urlbar.trustPanel.featureGate") {
+	#trust-icon-container {
+		border-radius: 5px !important;
+		height: 26px !important;
+		min-width: 28px !important;
+		margin: 3px 0 !important;
+	}
 }
