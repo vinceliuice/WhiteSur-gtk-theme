@@ -309,8 +309,8 @@ tab[selected]:-moz-window-inactive .tab-label {
 	max-width: 100% !important;
 }
 
-.tabbrowser-tab:not([style^="max-width"]):not([pinned]):not([fadein]):not([selected], [visuallyselected], [multiselected]),
-.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]):not([fadein]):not([selected], [visuallyselected], [multiselected]) {
+.tabbrowser-tab:not([style^="max-width"]):not([pinned]):not([fadein]),
+.tabbrowser-tab[style^="max-width: 100px !important;"]:not([pinned]):not([fadein]) {
 	max-width: .1px !important;
 }
 
@@ -364,15 +364,8 @@ tab[selected]:-moz-window-inactive .tab-label {
   toolbarpaletteitem:not(#wrapper-firefox-view-button)
 ) + #tabbrowser-tabs {
 	border-inline-start: none !important;
-	margin-inline-start: 0 !important;
-}
-
-#TabsToolbar #tabbrowser-tabs[haspinnedtabs] {
 	padding-inline-start: calc(var(--tab-overflow-pinned-tabs-width)) !important;
-}
-
-#TabsToolbar #tabbrowser-tabs:not([haspinnedtabs]) {
-	padding-inline-start: 0 !important;
+	margin-inline-start: 0 !important;
 }
 
 #firefox-view-button {
