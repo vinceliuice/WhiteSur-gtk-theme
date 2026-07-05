@@ -228,6 +228,10 @@ tab[selected]:-moz-window-inactive .tab-label {
 	border-radius: 8px !important;
 }
 
+#TabsToolbar #alltabs-button {
+	padding: 0 !important;
+}
+
 #TabsToolbar .toolbarbutton-1 image,
 #TabsToolbar #tabs-newtab-button image,
 #TabsToolbar #new-tab-button image {
@@ -264,6 +268,21 @@ tab[selected]:-moz-window-inactive .tab-label {
 	filter: none !important;
 	box-shadow: none !important;
 	outline: none !important;
+}
+
+#TabsToolbar #tabbrowser-tabs[haspinnedtabs] {
+	padding-inline-start: calc(var(--tab-overflow-pinned-tabs-width)) !important;
+}
+
+#TabsToolbar #tabbrowser-tabs:not([haspinnedtabs]) {
+	padding-inline-start: 0 !important;
+}
+
+#tabbrowser-tabs[orient="horizontal"]::before {
+	display: none !important;
+	border-inline-start: none !important;
+	padding-inline-start: 0 !important;
+	margin-inline-start: 0 !important;
 }
 
 /* Remove shadow next to tab scroll buttons */

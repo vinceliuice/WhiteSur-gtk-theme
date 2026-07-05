@@ -7,10 +7,11 @@
 menupopup, panel {
 	-moz-appearance: none !important;
 	--panel-background: var(--gnome-menu-background) !important;
+	--panel-background-color: var(--gnome-menu-background) !important;
 	--panel-border-radius: 12px !important;
 	--panel-padding: 6px !important;
 	--panel-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-popover-border-color) !important;
-	/* --panel-shadow-margin: 3px 8px 13px !important; */
+	--panel-box-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-popover-border-color) !important;
 	--panel-separator-color: var(--gnome-popover-separator-color) !important;
 	--panel-border-color: transparent !important;
 	--panel-color: var(--gnome-toolbar-color) !important;
@@ -24,6 +25,7 @@ menupopup, panel {
 
 menupopup {
 	--panel-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-menu-border-color) !important;
+	--panel-box-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-menu-border-color) !important;
 }
 
 .cui-widget-panelview[id^="PanelUI-webext-"] {
@@ -113,6 +115,8 @@ menupopup menu[disabled="true"]:hover {
 }
 
 panel:not([remote]), #BMB_bookmarksPopup {
+	--panel-background: var(--gnome-popover-background) !important;
+	--panel-background-color: var(--gnome-popover-background) !important;
 	--arrowpanel-background: var(--gnome-popover-background) !important;
 }
 

@@ -386,6 +386,21 @@ tab[selected]:-moz-window-inactive .tab-label {
 	outline: none !important;
 }
 
+#TabsToolbar #tabbrowser-tabs[haspinnedtabs] {
+	padding-inline-start: calc(var(--tab-overflow-pinned-tabs-width)) !important;
+}
+
+#TabsToolbar #tabbrowser-tabs:not([haspinnedtabs]) {
+	padding-inline-start: 0 !important;
+}
+
+#tabbrowser-tabs[orient="horizontal"]::before {
+	display: none !important;
+	border-inline-start: none !important;
+	padding-inline-start: 0 !important;
+	margin-inline-start: 0 !important;
+}
+
 /*Tab Group*/
 tab-group {
   #tabbrowser-tabs[orient="horizontal"] &[collapsed] > .tabbrowser-tab {

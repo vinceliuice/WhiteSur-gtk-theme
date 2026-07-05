@@ -279,6 +279,14 @@
 	}
 }
 
+.tab-audio-button {
+	--button-border-radius: 999px !important;
+
+	.button-background {
+		border-radius: 999px !important;
+	}
+}
+
 :root[tabsintitlebar][inFullscreen] #TabsToolbar .toolbar-items {
 	margin-bottom: 0 !important;
 }
@@ -450,6 +458,21 @@ tab[selected]:-moz-window-inactive {
 ) + #tabbrowser-tabs {
 	border-inline-start: 1px solid var(--gnome-toolbar-border-color) !important;
 	padding-inline-start: calc(var(--tab-overflow-pinned-tabs-width)) !important;
+	margin-inline-start: 0 !important;
+}
+
+#TabsToolbar #tabbrowser-tabs[haspinnedtabs] {
+	padding-inline-start: calc(var(--tab-overflow-pinned-tabs-width)) !important;
+}
+
+#TabsToolbar #tabbrowser-tabs:not([haspinnedtabs]) {
+	padding-inline-start: 0 !important;
+}
+
+#tabbrowser-tabs[orient="horizontal"]::before {
+	display: none !important;
+	border-inline-start: none !important;
+	padding-inline-start: 0 !important;
 	margin-inline-start: 0 !important;
 }
 
