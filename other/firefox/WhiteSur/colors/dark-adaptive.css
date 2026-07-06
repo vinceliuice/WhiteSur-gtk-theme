@@ -33,8 +33,8 @@
 	--gnome-inactive-toolbar-border-color: var(--chrome-content-separator-color);
 
 	/* Sidebar */
-	--gnome-sidebar-background: var(--lwt-accent-color, #282828);
-	--gnome-inactive-sidebar-background: var(--lwt-accent-color, #282828);
+	--gnome-sidebar-background: var(--lwt-sidebar-background-color, var(--lwt-accent-color, #282828));
+	--gnome-inactive-sidebar-background: var(--lwt-sidebar-background-color, var(--lwt-accent-color, #282828));
 	--gnome-sidebar-border-color: color-mix(in srgb, var(--toolbar-color) 10%, var(--gnome-sidebar-background));
 
 	/* Popups */
