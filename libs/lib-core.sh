@@ -49,7 +49,6 @@ if has_command gnome-shell; then
 else
   SHELL_VERSION="48"
   GNOME_VERSION="48-0"
-  SHELL_VERSION="48"
 fi
 
 #----------Program options-------------#
