@@ -274,11 +274,16 @@ toolbarspring {
 #notification-popup-box,
 #tracking-protection-icon-container,
 #trust-icon-container {
+	background-color: var(--gnome-urlbar-background) !important; 
 	width: 28px !important;
 	height: 26px !important;
 	margin: 3px 0 !important;
 	padding: 6px !important;
 	border-radius: 5px !important;
+}
+
+#trust-icon-container.insecure #trust-label {
+	display: none !important;
 }
 
 .urlbar-page-action {
@@ -310,6 +315,7 @@ toolbarspring {
 #urlbar-go-button:hover,
 .urlbar-go-button:hover,
 .search-go-button:hover,
+#trust-icon-container:hover,
 #identity-box:hover {
 	background: var(--gnome-headerbar-button-hover-background) !important;
 }
@@ -320,6 +326,7 @@ toolbarspring {
 #urlbar-go-button:active,
 .urlbar-go-button:active,
 .search-go-button:active,
+#trust-icon-container:active,
 #identity-box:active {
 	background: var(--gnome-headerbar-button-active-background) !important;
 }
