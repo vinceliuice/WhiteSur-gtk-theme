@@ -135,6 +135,11 @@ panelview {
 	background: none !important;
 }
 
+.searchmode-switcher-panel-list {
+    --panel-list-background-color: transparent !important;
+    --panel-list-box-shadow: none !important;
+}
+
 panelview {
 	padding: var(--panel-padding) !important;
 }
