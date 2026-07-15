@@ -99,6 +99,11 @@ $popop_menuitem_radius: $po_radius - $base_padding - if($variant=='light', 0, 2p
   border-width: if($variant=='light', 0, 1px);
 }
 
+.astra-monitor-tooltip-menu .popup-menu-content {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .popup-menu-item {
   spacing: $base_spacing;
   padding: $base_padding * 1.5 $base_padding * 2;
