@@ -38,9 +38,9 @@
 	--gnome-sidebar-border-color: color-mix(in srgb, var(--toolbar-color) 12%, var(--gnome-sidebar-background));
 
 	/* Popups */
-	--gnome-menu-background: color-mix(in srgb, var(--toolbar-field-focus-background-color) 95%, transparent);
+	--gnome-menu-background: color-mix(in srgb, var(--toolbar-field-background-color) 95%, transparent);
 	--gnome-menu-border-color: rgba(0,0,0,.15);
-	--gnome-popover-background: color-mix(in srgb, var(--toolbar-field-focus-background-color) 95%, transparent);
+	--gnome-popover-background: color-mix(in srgb, var(--toolbar-field-background-color) 95%, transparent);
 	--gnome-popover-border-color: light-dark(rgba(0,0,0,.15), #000000);
 	--gnome-popover-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
 	--gnome-popover-button-hover-background: color-mix(in srgb, currentColor 10%, transparent);
