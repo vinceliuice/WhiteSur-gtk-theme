@@ -1093,3 +1093,26 @@ themeswitcher { // Gnome console
     }
   }
 }
+
+//
+// AdwTabOverview
+//
+
+tabthumbnail {
+  button.tab-close-button {
+    padding: 0;
+
+    &, &:hover, &:active, &:checked {
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .card,
+  picture {
+    border-radius: $wm_radius;
+    box-shadow: 0 1px 2px rgba(black, 0.02),
+                $wm_outline;
+  }
+}
