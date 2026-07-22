@@ -1599,6 +1599,38 @@ popover.details-popover {
   vte-terminal {
     background: none;
   }
+
+  toolbarview {
+    headerbar > windowhandle > box,
+    > .top-bar .collapse-spacing headerbar > windowhandle > box,
+    > .bottom-bar .collapse-spacing headerbar > windowhandle > box {
+      padding-block: 0;
+    }
+  }
+
+  headerbar {
+    splitbutton.horizontal.image-button > button.image-button {
+      border-top-right-radius: $bt_radius;
+      border-bottom-right-radius: $bt_radius;
+    }
+  }
+  
+  box.visual-bell-area {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+//
+// Bazaar
+//
+
+.app-context-bar {
+  .lozenge,
+  .grey.lozenge {
+    background: none;
+    background-image: none;
+  }
 }
 
 //
