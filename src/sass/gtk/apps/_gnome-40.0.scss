@@ -1604,11 +1604,18 @@ popover.details-popover {
     headerbar > windowhandle > box,
     > .top-bar .collapse-spacing headerbar > windowhandle > box,
     > .bottom-bar .collapse-spacing headerbar > windowhandle > box {
-      padding-block: 0;
+      padding-top: 0;
+      padding-bottom: 0;
     }
   }
 
   headerbar {
+    splitbutton.horizontal.image-button,
+    button.image-button.toggle {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+    
     splitbutton.horizontal.image-button > button.image-button {
       border-top-right-radius: $bt_radius;
       border-bottom-right-radius: $bt_radius;
