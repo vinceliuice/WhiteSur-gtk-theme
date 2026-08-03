@@ -2226,7 +2226,7 @@ menu {
   }
 
   > menuitem {
-    transition: background-color 50ms cubic-bezier(0.0, 0.0, 0.2, 1);
+    transition: if($remove_transitions=='false', background-color 50ms cubic-bezier(0.0, 0.0, 0.2, 1), none); 
     min-height: 12px;
     min-width: 40px;
     padding: $container_padding / 2 $container_padding;

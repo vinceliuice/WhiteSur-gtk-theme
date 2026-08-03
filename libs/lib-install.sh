@@ -1127,6 +1127,12 @@ customize_theme() {
     eval sed $SED_OPT "/\\\$darker/s/false/true/"                                      "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
+  # Remove context-menu transitions for GTK3 on macOS.
+  if is_mac; then
+    prompt -s "Removing context-menu transitions in GTK3 theme ...\n"
+    eval sed $SED_OPT "/\\\$remove_transitions/s/false/true/"                                      "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+  fi
+
   # Change Nautilus sidarbar size
   if [[ "${sidebar_size}" != 'default' ]]; then
     prompt -s "Changing Nautilus sidebar size ...\n"
