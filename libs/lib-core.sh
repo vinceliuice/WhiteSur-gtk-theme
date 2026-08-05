@@ -324,6 +324,7 @@ signal_error() {
   sleep 0.75; clear
 
   prompt -e "\n\n  Oops! Operation failed...\n"
+  prompt -e "\n\n  Error on file $1:$2\n"
   prompt -e "=========== ERROR LOG ==========="
 
   if [[ "${log}" ]] ; then
@@ -370,7 +371,7 @@ signal_error() {
 }
 
 trap 'signal_exit' EXIT
-trap 'signal_error' ERR
+trap 'signal_error $BASH_SOURCE $LINENO' ERR
 trap 'signal_abort' INT TERM TSTP
 
 ###############################################################################
