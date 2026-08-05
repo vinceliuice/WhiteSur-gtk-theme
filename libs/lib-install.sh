@@ -655,7 +655,7 @@ install_gdm_theme() {
   if check_theme_file "${COMMON_CSS_FILE}"; then # CSS-based theme
     rm -rf "${WHITESUR_GS_DIR}"
     install_shelly "${colors[1]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${WHITESUR_GS_DIR}"
-    sed $SED_OPT "s|assets|${WHITESUR_GS_DIR}/assets|" "${WHITESUR_GS_DIR}/gnome-shell.css"
+    eval sed $SED_OPT "s|assets|${WHITESUR_GS_DIR}/assets|" "${WHITESUR_GS_DIR}/gnome-shell.css"
 
     if check_theme_file "${UBUNTU_CSS_FILE}"; then
       TARGET="${UBUNTU_CSS_FILE}"
@@ -675,7 +675,7 @@ install_gdm_theme() {
     restore_file "${ETC_CSS_FILE}"
   else # GR-based theme
     install_shelly "${colors[1]}" "${opacities[0]}" "${alts[0]}" "${themes[0]}" "${schemes[0]}" "${icon}" "${WHITESUR_TMP_DIR}/shelly"
-    sed $SED_OPT "s|assets|resource:///org/gnome/shell/theme/assets|" "${WHITESUR_TMP_DIR}/shelly/gnome-shell.css"
+    eval sed $SED_OPT "s|assets|resource:///org/gnome/shell/theme/assets|" "${WHITESUR_TMP_DIR}/shelly/gnome-shell.css"
 
     if check_theme_file "$POP_OS_GR_FILE"; then
       TARGET="${POP_OS_GR_FILE}"
@@ -1068,19 +1068,19 @@ gtk_base() {
 
   # Theme base options
   if [[ "${compact}" == 'false' ]]; then
-    sed $SED_OPT "/\$laptop/s/true/false/"                                      "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+    eval sed $SED_OPT "/\\\$laptop/s/true/false/"                                      "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 
   if [[ "${opacity}" == 'solid' ]]; then
-    sed $SED_OPT "/\$trans/s/true/false/"                                       "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+    eval sed $SED_OPT "/\\\$trans/s/true/false/"                                       "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 
   if [[ "${theme}" != '' ]]; then
-    sed $SED_OPT "/\$theme/s/default/${theme}/"                                 "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+    eval sed $SED_OPT "/\\\$theme/s/default/${theme}/"                                 "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 
   if [[ "${scheme}" == 'nord' ]]; then
-    sed $SED_OPT "/\$scheme/s/standard/nord/"                                   "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+    eval sed $SED_OPT "/\\\$scheme/s/standard/nord/"                                   "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
     accent_type="fixed"
   fi
 }
@@ -1089,24 +1089,24 @@ libadwaita_base() {
   gtk_base
 
   if [[ "${GNOME_VERSION}" -ge '47-0' && "${libadwaita}" == 'true' ]]; then
-    sed $SED_OPT "/\$gnome_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+    eval sed $SED_OPT "/\\\$gnome_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 
   if [[ "${accent_type}" == 'fixed' ]]; then
-    sed $SED_OPT "/\$accent_type/s/default/fixed/"                              "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
+    eval sed $SED_OPT "/\\\$accent_type/s/default/fixed/"                              "${THEME_SRC_DIR}/sass/_gtk-base-temp.scss"
   fi
 }
 
 shell_base() {
   cp -rf "${THEME_SRC_DIR}/main/gnome-shell/_shell-base"{".scss","-temp.scss"}
 
-  sed $SED_OPT "/\GNOME_SHELL/s/46/$SHELL_VERSION/"                             "${THEME_SRC_DIR}/main/gnome-shell/_shell-base-temp.scss"
-  sed $SED_OPT "/\widgets/s/46-0/$GNOME_VERSION/"                               "${THEME_SRC_DIR}/main/gnome-shell/_shell-base-temp.scss"
+  eval sed $SED_OPT "/\GNOME_SHELL/s/46/$SHELL_VERSION/"                             "${THEME_SRC_DIR}/main/gnome-shell/_shell-base-temp.scss"
+  eval sed $SED_OPT "/\widgets/s/46-0/$GNOME_VERSION/"                               "${THEME_SRC_DIR}/main/gnome-shell/_shell-base-temp.scss"
 
   if [[ "${GNOME_VERSION}" == '3-28' ]]; then
-    sed $SED_OPT "/\extensions/s/46-0/3-28/"                                    "${THEME_SRC_DIR}/main/gnome-shell/_shell-base-temp.scss"
+    eval sed $SED_OPT "/\extensions/s/46-0/3-28/"                                    "${THEME_SRC_DIR}/main/gnome-shell/_shell-base-temp.scss"
   elif [[ "${GNOME_VERSION}" -gt '3-28' && "${GNOME_VERSION}" -lt '46-0' ]]; then
-    sed $SED_OPT "/\extensions/s/46-0/40-0/"                                    "${THEME_SRC_DIR}/main/gnome-shell/_shell-base-temp.scss"
+    eval sed $SED_OPT "/\extensions/s/46-0/40-0/"                                    "${THEME_SRC_DIR}/main/gnome-shell/_shell-base-temp.scss"
   fi
 }
 
@@ -1118,81 +1118,81 @@ customize_theme() {
   cp -rf "${THEME_SRC_DIR}/sass/_theme-options"{".scss","-temp.scss"}
 
   if [[ ! is_mac && "${GNOME_VERSION}" -ge '47-0' && "${accent_type}" != 'fixed' && "${scheme}" != 'nord' ]]; then
-    sed $SED_OPT "/\$shell_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$shell_version/s/old/new/"                                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Darker dark colors
   if [[ "${darker}" == 'true' ]]; then
     prompt -s "Changing dark color style to darker one ...\n"
-    sed $SED_OPT "/\$darker/s/false/true/"                                      "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$darker/s/false/true/"                                      "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus sidarbar size
   if [[ "${sidebar_size}" != 'default' ]]; then
     prompt -s "Changing Nautilus sidebar size ...\n"
-    sed $SED_OPT "/\$sidebar_size/s/200px/${sidebar_size}px/"                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$sidebar_size/s/200px/${sidebar_size}px/"                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus style
   if [[ "${nautilus_style}" != 'stable' ]]; then
     prompt -s "Changing Nautilus style ...\n"
-    sed $SED_OPT "/\$nautilus_style/s/stable/${nautilus_style}/"                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$nautilus_style/s/stable/${nautilus_style}/"                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change Nautilus titlebutton placement style
   if [[ "${nautilus_style}" == 'right' ]]; then
     prompt -s "Changing Nautilus titlebutton placement style ...\n"
-    sed $SED_OPT "/\$placement/s/left/right/"                                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$placement/s/left/right/"                                   "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change maximized window radius
   if [[ "${max_round}" == 'true' ]]; then
     prompt -s "Changing maximized window style ...\n"
-    sed $SED_OPT "/\$max_window_style/s/square/round/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$max_window_style/s/square/round/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change gnome-shell panel transparency
   if [[ "${panel_opacity}" != 'default' ]]; then
     prompt -s "Changing panel transparency to ${panel_opacity}% ...\n"
-    sed $SED_OPT "/\$panel_opacity/s/0.15/0.${panel_opacity}/"                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$panel_opacity/s/0.15/0.${panel_opacity}/"                  "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change gnome-shell panel height size
   if [[ "${panel_size}" != 'default' ]]; then
     prompt -s "Changing panel height size to '${panel_size}'...\n"
-    sed $SED_OPT "/\$panel_size/s/default/${panel_size}/"                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$panel_size/s/default/${panel_size}/"                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change gnome-shell show apps button style
   if [[ "${showapps_normal}" == 'true' ]]; then
     prompt -s "Changing gnome-shell show apps button style ...\n"
-    sed $SED_OPT "/\$showapps_button/s/bigsur/normal/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$showapps_button/s/bigsur/normal/"                          "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change gnome-shell font size
   if [[ "${smaller_font}" == 'true' ]]; then
     prompt -s "Changing gnome-shell font size to smaller ...\n"
-    sed $SED_OPT "/\$font_size/s/normal/smaller/"                               "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$font_size/s/normal/smaller/"                               "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change gnome-shell panel activities button style
   if [[ "${activities_icon}" == 'true' ]]; then
     prompt -s "Changing gnome-shell panel activities button style ...\n"
-    sed $SED_OPT "/\$activities/s/default/icon/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$activities/s/default/icon/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change panel font color
   if [[ "${monterey}" == 'true' ]]; then
     black_font="true"
     prompt -s "Changing to Monterey style ...\n"
-    sed $SED_OPT "/\$monterey/s/false/true/"                                    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
-    sed $SED_OPT "/\$panel_opacity/s/0.15/0.5/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$monterey/s/false/true/"                                    "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$panel_opacity/s/0.15/0.5/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   # Change panel font color
   if [[ "${black_font}" == 'true' ]]; then
     prompt -s "Changing panel font color ...\n"
-    sed $SED_OPT "/\$panel_font/s/white/black/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$panel_font/s/white/black/"                                 "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 
   if [[ "${compact}" == 'false' ]]; then
@@ -1202,7 +1202,7 @@ customize_theme() {
 
   if [[ "${scale}" == 'x2' ]]; then
     prompt -s "Changing GDM scaling to 200% ...\n"
-    sed $SED_OPT "/\$scale/s/default/x2/"                                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
+    eval sed $SED_OPT "/\\\$scale/s/default/x2/"                                       "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
 }
 

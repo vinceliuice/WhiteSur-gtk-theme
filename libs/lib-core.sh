@@ -60,9 +60,9 @@ fi
 SASSC_OPT="-t expanded"
 
 if [[ "$(uname -s)" =~ "BSD" || "$(uname -s)" == "Darwin" ]]; then
-  SED_OPT='-i ""'
+  export SED_OPT="-i ''"
 else
-  SED_OPT="-i"
+  export SED_OPT="-i"
 fi
 
 SUDO_BIN="$(which sudo)"
