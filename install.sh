@@ -12,7 +12,15 @@
 #                             VARIABLES & HELP                                #
 ###############################################################################
 
-readonly REPO_DIR="$(dirname "$(readlink -m "${0}")")"
+is_mac() {
+  [[ "$(uname -s)" == "Darwin" ]] && return 0 || return 1
+}
+
+if is_mac; then
+  export gnu_prefix="g"
+fi
+
+readonly REPO_DIR="$(dirname "$(${gnu_prefix}readlink -m "${0}")")"
 source "${REPO_DIR}/libs/lib-install.sh"
 
 # Customization, default values
@@ -199,7 +207,7 @@ else
 
   echo; install_themes; echo; prompt -s "Done!"
 
-  if (is_my_distro "solus") && (is_running "gnome-session"); then
+  if (! is_mac) && (is_my_distro "solus") && (is_running "gnome-session"); then
     msg="GNOME: you may need to disable 'User Themes' extension to fix your dock."
   fi
 

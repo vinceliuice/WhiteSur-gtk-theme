@@ -21,8 +21,13 @@ WHITESUR_SOURCE=("lib-core.sh")
 #--------------System--------------#
 
 export WHITESUR_PID=$$
-MY_USERNAME="${SUDO_USER:-$(logname 2> /dev/null || echo "${USER}")}"
-MY_HOME=$(getent passwd "${MY_USERNAME}" | cut -d: -f6)
+if is_mac; then
+  MY_USERNAME="${SUDO_USER:-$(logname 2> /dev/null || echo $(id -un))}"
+  MY_HOME=$(dscl . -read /Users/${MY_USERNAME} NFSHomeDirectory | awk '{print $2}')
+else
+  MY_USERNAME="${SUDO_USER:-$(logname 2> /dev/null || echo "${USER}")}"
+  MY_HOME=$(getent passwd "${MY_USERNAME}" | cut -d: -f6)
+fi
 
 # Check command availability
 has_command() {
@@ -55,7 +60,7 @@ fi
 SASSC_OPT="-t expanded"
 
 if [[ "$(uname -s)" =~ "BSD" || "$(uname -s)" == "Darwin" ]]; then
-  SED_OPT="-i """
+  SED_OPT='-i ""'
 else
   SED_OPT="-i"
 fi
@@ -219,7 +224,7 @@ is_running() {
 start_animation() {
   [[ "${silent_mode}" == "true" ]] && return 0
 
-  setterm -cursor off
+  [[ ! is_mac ]] && setterm -cursor off
 
   (
     while true; do
@@ -240,9 +245,12 @@ start_animation() {
 
 stop_animation() {
   [[ "${silent_mode}" == "true" ]] && return 0
-
-  [[ -e "/proc/${ANIM_PID}" ]] && kill -13 "${ANIM_PID}"
-  setterm -cursor on
+  if [[ is_mac ]]; then
+    ps -p ${ANIM_PID} &> /dev/null && kill -13 "${ANIM_PID}"
+  else
+    [[ -e "/proc/${ANIM_PID}" ]] && kill -13 "${ANIM_PID}"
+    setterm -cursor on
+  fi
 }
 
 # Echo like ... with flag type and display message colors
@@ -296,7 +304,11 @@ signal_error() {
 
   IFS=$'\n'
   local sources=($(basename -a "${WHITESUR_SOURCE[@]}" "${BASH_SOURCE[@]}" | sort -u))
-  local dist_ids=($(awk -F '=' '/ID/{print $2}' "/etc/os-release" | tr -d '"' | sort -Vru))
+  if is_mac; then 
+    local dist_ids="Darwin"
+  else
+    local dist_ids=$((awk -F '=' '/ID/{print $2}' "/etc/os-release" | tr -d '"' | sort -Vru))
+  fi
   local repo_ver=""
   local lines=()
   local log="$(awk '{printf "\033[1;31m  >>> %s\n", $0}' "${WHITESUR_TMP_DIR}/error_log.txt" || echo "")"
@@ -526,7 +538,7 @@ check_param() {
 
     case "${global_param}" in
       -d)
-        if [[ "$(readlink -m ${value})" =~ "${REPO_DIR}" ]]; then
+        if [[ "$(${gnu_prefix}readlink -m ${value})" =~ "${REPO_DIR}" ]]; then
           prompt -e "'${display_param}' ERROR: Can't install in the source directory."
           has_any_error="true"
         elif [[ ! -w "${value}" && ! -w "$(dirname ${value})" ]]; then
