@@ -244,13 +244,19 @@ start_animation() {
 }
 
 stop_animation() {
-  [[ "${silent_mode}" == "true" ]] && return 0
-  if [[ is_mac ]]; then
-    ps -p ${ANIM_PID} &> /dev/null && kill -13 "${ANIM_PID}"
+  [[ "${silent_mode}" == "true" || "${ANIM_PID}" == "0" ]] && return 0
+  if is_mac; then
+    if [[ $(ps -p "${ANIM_PID}" &> /dev/null ; echo $?) == 0 ]]; then
+      kill "${ANIM_PID}"
+      ANIM_PID=0
+    else
+      return 1
+    fi
   else
     [[ -e "/proc/${ANIM_PID}" ]] && kill -13 "${ANIM_PID}"
     setterm -cursor on
   fi
+  return 0
 }
 
 # Echo like ... with flag type and display message colors
