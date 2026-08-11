@@ -284,7 +284,7 @@ prompt() {
 ###       and lock dir removal after immediate terminal window closing
 
 if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
-  start_animation; sleep 2; stop_animation; echo
+  start_animation; sleep 2; stop_animation; echo ""
 
   if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
     prompt -e "ERROR: Whitesur installer or tweaks is already running. Probably it's run by '$(ls -ld "${WHITESUR_TMP_DIR}" | awk '{print $3}')'"
@@ -553,7 +553,7 @@ check_param() {
           has_any_error="true"
         else
           if [[ ! -d "${value}" ]]; then
-            prompt -w "Destination directory does not exist. Let's make a new one..."; echo
+            prompt -w "Destination directory does not exist. Let's make a new one..."; echo ""
             mkdir -p "${value}"
           fi
 
@@ -832,7 +832,7 @@ usage() {
 
 finalize_argument_parsing() {
   if [[ "${need_help}" == "true" ]]; then
-    echo; usage; echo
+    echo; usage; echo ""
     [[ "${has_any_error}" == "true" ]] && exit 1 || exit 0
   elif [[ "${has_any_error}" == "true" ]]; then
     echo; prompt -i "Try '$0 --help' for more information."; echo; exit 1

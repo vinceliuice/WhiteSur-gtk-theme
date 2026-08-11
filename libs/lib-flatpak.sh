@@ -41,7 +41,7 @@ pakitheme_gtk3() {
     prompt -i "-t, --theme   [$(IFS='|'; echo "${THEME_VARIANTS[*]}")|all]"
     prompt -i "-s, --scheme  [$(IFS='|'; echo "${SCHEME_VARIANTS[*]}")]"
     prompt -i "..."
-    echo
+    echo ""
     exit 0
   else
     prompt -e "Could not locate theme... install theme first! \n"

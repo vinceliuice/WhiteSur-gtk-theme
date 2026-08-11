@@ -69,7 +69,7 @@ usage() {
 
 #-----------------------------PARSE ARGUMENTS---------------------------------#
 
-echo
+echo ""
 
 while [[ $# -gt 0 ]]; do
   # Don't show any dialog here. Let this loop checks for errors or shows help
@@ -164,7 +164,7 @@ if [[ "${uninstall}" == 'true' ]]; then
       remove_libadwaita
       prompt -s "Removed gtk-4.0 theme files in '${HOME}/.config/gtk-4.0/'!"
     else
-      prompt -e "Do not run '--libadwaita' option with sudo!"; echo
+      prompt -e "Do not run '--libadwaita' option with sudo!"; echo ""
     fi
   else
     prompt -i "Removing '${name}' gtk themes in '${dest}'... \n"
@@ -221,4 +221,4 @@ else
   echo; prompt -i "${final_msg}"
 fi
 
-echo
+echo ""

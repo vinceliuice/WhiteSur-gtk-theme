@@ -95,7 +95,7 @@ prepare_swupd() {
 
   if has_command dnf; then
     prompt -w "CLEAR LINUX: You have 'dnf' installed in your system. It may break your system especially when you remove a package"
-    confirm remove "CLEAR LINUX: You wanna remove it?"; echo
+    confirm remove "CLEAR LINUX: You wanna remove it?"; echo ""
   fi
 
   if ! sudo swupd update -y; then
