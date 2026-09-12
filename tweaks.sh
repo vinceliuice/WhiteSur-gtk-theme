@@ -77,7 +77,7 @@ gdm_info() {
 
 #-----------------------------PARSE ARGUMENTS---------------------------------#
 
-echo
+echo ""
 
 while [[ $# -gt 0 ]]; do
   # Don't show any dialog here. Let this loop checks for errors or shows help

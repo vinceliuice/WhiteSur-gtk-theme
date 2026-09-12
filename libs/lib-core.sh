@@ -21,8 +21,13 @@ WHITESUR_SOURCE=("lib-core.sh")
 #--------------System--------------#
 
 export WHITESUR_PID=$$
-MY_USERNAME="${SUDO_USER:-$(logname 2> /dev/null || echo "${USER}")}"
-MY_HOME=$(getent passwd "${MY_USERNAME}" | cut -d: -f6)
+if is_mac; then
+  MY_USERNAME="${SUDO_USER:-$(logname 2> /dev/null || echo $(id -un))}"
+  MY_HOME=$(dscl . -read /Users/${MY_USERNAME} NFSHomeDirectory | awk '{print $2}')
+else
+  MY_USERNAME="${SUDO_USER:-$(logname 2> /dev/null || echo "${USER}")}"
+  MY_HOME=$(getent passwd "${MY_USERNAME}" | cut -d: -f6)
+fi
 
 # Check command availability
 has_command() {
@@ -55,9 +60,9 @@ fi
 SASSC_OPT="-t expanded"
 
 if [[ "$(uname -s)" =~ "BSD" || "$(uname -s)" == "Darwin" ]]; then
-  SED_OPT="-i """
+  export SED_OPT="-i ''"
 else
-  SED_OPT="-i"
+  export SED_OPT="-i"
 fi
 
 SUDO_BIN="$(which sudo)"
@@ -228,7 +233,7 @@ is_running() {
 start_animation() {
   [[ "${silent_mode}" == "true" ]] && return 0
 
-  setterm -cursor off
+  [[ ! is_mac ]] && setterm -cursor off
 
   (
     while true; do
@@ -248,10 +253,19 @@ start_animation() {
 }
 
 stop_animation() {
-  [[ "${silent_mode}" == "true" ]] && return 0
-
-  [[ -e "/proc/${ANIM_PID}" ]] && kill -13 "${ANIM_PID}"
-  setterm -cursor on
+  [[ "${silent_mode}" == "true" || "${ANIM_PID}" == "0" ]] && return 0
+  if is_mac; then
+    if [[ $(ps -p "${ANIM_PID}" &> /dev/null ; echo $?) == 0 ]]; then
+      kill "${ANIM_PID}"
+      ANIM_PID=0
+    else
+      return 1
+    fi
+  else
+    [[ -e "/proc/${ANIM_PID}" ]] && kill -13 "${ANIM_PID}"
+    setterm -cursor on
+  fi
+  return 0
 }
 
 # Echo like ... with flag type and display message colors
@@ -279,7 +293,7 @@ prompt() {
 ###       and lock dir removal after immediate terminal window closing
 
 if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
-  start_animation; sleep 2; stop_animation; echo
+  start_animation; sleep 2; stop_animation; echo ""
 
   if [[ -d "${WHITESUR_TMP_DIR}" ]]; then
     prompt -e "ERROR: Whitesur installer or tweaks is already running. Probably it's run by '$(ls -ld "${WHITESUR_TMP_DIR}" | awk '{print $3}')'"
@@ -305,7 +319,11 @@ signal_error() {
 
   IFS=$'\n'
   local sources=($(basename -a "${WHITESUR_SOURCE[@]}" "${BASH_SOURCE[@]}" | sort -u))
-  local dist_ids=($(awk -F '=' '/ID/{print $2}' "/etc/os-release" | tr -d '"' | sort -Vru))
+  if is_mac; then 
+    local dist_ids="Darwin"
+  else
+    local dist_ids=$((awk -F '=' '/ID/{print $2}' "/etc/os-release" | tr -d '"' | sort -Vru))
+  fi
   local repo_ver=""
   local lines=()
   local log="$(awk '{printf "\033[1;31m  >>> %s\n", $0}' "${WHITESUR_TMP_DIR}/error_log.txt" || echo "")"
@@ -321,6 +339,7 @@ signal_error() {
   sleep 0.75; clear
 
   prompt -e "\n\n  Oops! Operation failed...\n"
+  prompt -e "\n\n  Error on file $1:$2\n"
   prompt -e "=========== ERROR LOG ==========="
 
   if [[ "${log}" ]] ; then
@@ -367,7 +386,7 @@ signal_error() {
 }
 
 trap 'signal_exit' EXIT
-trap 'signal_error' ERR
+trap 'signal_error $BASH_SOURCE $LINENO' ERR
 trap 'signal_abort' INT TERM TSTP
 
 ###############################################################################
@@ -535,7 +554,7 @@ check_param() {
 
     case "${global_param}" in
       -d)
-        if [[ "$(readlink -m ${value})" =~ "${REPO_DIR}" ]]; then
+        if [[ "$(${gnu_prefix}readlink -m ${value})" =~ "${REPO_DIR}" ]]; then
           prompt -e "'${display_param}' ERROR: Can't install in the source directory."
           has_any_error="true"
         elif [[ ! -w "${value}" && ! -w "$(dirname ${value})" ]]; then
@@ -543,7 +562,7 @@ check_param() {
           has_any_error="true"
         else
           if [[ ! -d "${value}" ]]; then
-            prompt -w "Destination directory does not exist. Let's make a new one..."; echo
+            prompt -w "Destination directory does not exist. Let's make a new one..."; echo ""
             mkdir -p "${value}"
           fi
 
@@ -822,7 +841,7 @@ usage() {
 
 finalize_argument_parsing() {
   if [[ "${need_help}" == "true" ]]; then
-    echo; usage; echo
+    echo; usage; echo ""
     [[ "${has_any_error}" == "true" ]] && exit 1 || exit 0
   elif [[ "${has_any_error}" == "true" ]]; then
     echo; prompt -i "Try '$0 --help' for more information."; echo; exit 1

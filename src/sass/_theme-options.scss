@@ -40,3 +40,6 @@ $scale: 'default';
 
 // gnome-shell version
 $shell_version: 'old';
+
+// Remove context-menu transitions on GTK3 for macOS
+$remove_transitions: 'false';

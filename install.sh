@@ -12,7 +12,15 @@
 #                             VARIABLES & HELP                                #
 ###############################################################################
 
-readonly REPO_DIR="$(dirname "$(readlink -m "${0}")")"
+is_mac() {
+  [[ "$(uname -s)" == "Darwin" ]] && return 0 || return 1
+}
+
+if is_mac; then
+  export gnu_prefix="g"
+fi
+
+readonly REPO_DIR="$(dirname "$(${gnu_prefix}readlink -m "${0}")")"
 source "${REPO_DIR}/libs/lib-install.sh"
 
 # Customization, default values
@@ -61,7 +69,7 @@ usage() {
 
 #-----------------------------PARSE ARGUMENTS---------------------------------#
 
-echo
+echo ""
 
 while [[ $# -gt 0 ]]; do
   # Don't show any dialog here. Let this loop checks for errors or shows help
@@ -165,7 +173,7 @@ if [[ "${uninstall}" == 'true' ]]; then
       remove_libadwaita
       prompt -s "Removed gtk-4.0 theme files in '${HOME}/.config/gtk-4.0/'!"
     else
-      prompt -e "Do not run '--libadwaita' option with sudo!"; echo
+      prompt -e "Do not run '--libadwaita' option with sudo!"; echo ""
     fi
   else
     prompt -i "Removing '${name}' gtk themes in '${dest}'... \n"
@@ -216,7 +224,7 @@ else
 
   echo; install_themes; echo; prompt -s "Done!"
 
-  if (is_my_distro "solus") && (is_running "gnome-session"); then
+  if (! is_mac) && (is_my_distro "solus") && (is_running "gnome-session"); then
     msg="GNOME: you may need to disable 'User Themes' extension to fix your dock."
   fi
 
@@ -230,4 +238,4 @@ else
   echo; prompt -i "${final_msg}"
 fi
 
-echo
+echo ""

@@ -67,6 +67,6 @@ RELEASE_VERSION="48.0"
 install && compress
 prompt -i "Compress ${THEME_NAME} themes finished!\n"
 release_info
-prompt -s "Done!"; echo
+prompt -s "Done!"; echo ""
 
 exit 0
