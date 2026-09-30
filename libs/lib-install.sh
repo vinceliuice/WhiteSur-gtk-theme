@@ -479,12 +479,14 @@ install_theemy() {
 
   #----------------Misc------------------#
 
-  mkdir -p                                                                                    "${TARGET_DIR}/gtk-2.0"
-  cp -r "${THEME_SRC_DIR}/main/gtk-2.0/gtkrc${color}${theme}${scheme}"                        "${TARGET_DIR}/gtk-2.0/gtkrc"
-  cp -r "${THEME_SRC_DIR}/main/gtk-2.0/menubar-toolbar${color}.rc"                            "${TARGET_DIR}/gtk-2.0/menubar-toolbar.rc"
-  cp -r "${THEME_SRC_DIR}/main/gtk-2.0/common/"*".rc"                                         "${TARGET_DIR}/gtk-2.0"
-  cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets-common${color}${scheme}"                      "${TARGET_DIR}/gtk-2.0/assets"
-  cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets${color}${theme}${scheme}/"*".png"             "${TARGET_DIR}/gtk-2.0/assets"
+  if [[ "${no_gtk2}" != 'true' ]]; then
+    mkdir -p                                                                                    "${TARGET_DIR}/gtk-2.0"
+    cp -r "${THEME_SRC_DIR}/main/gtk-2.0/gtkrc${color}${theme}${scheme}"                        "${TARGET_DIR}/gtk-2.0/gtkrc"
+    cp -r "${THEME_SRC_DIR}/main/gtk-2.0/menubar-toolbar${color}.rc"                            "${TARGET_DIR}/gtk-2.0/menubar-toolbar.rc"
+    cp -r "${THEME_SRC_DIR}/main/gtk-2.0/common/"*".rc"                                         "${TARGET_DIR}/gtk-2.0"
+    cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets-common${color}${scheme}"                      "${TARGET_DIR}/gtk-2.0/assets"
+    cp -r "${THEME_SRC_DIR}/assets/gtk-2.0/assets${color}${theme}${scheme}/"*".png"             "${TARGET_DIR}/gtk-2.0/assets"
+  fi
 
   local HDPI_TARGET_DIR="${TARGET_DIR}-hdpi"
   local XHDPI_TARGET_DIR="${TARGET_DIR}-xhdpi"
