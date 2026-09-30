@@ -49,6 +49,7 @@ usage() {
   helpify "--round, --roundedmaxwindow"   ""                                                  "  Set maximized window to rounded"                 "Default is square"
   helpify "--black, --blackfont"          ""                                                  "  Set panel font color to black"                   "Default is white"
   helpify "--darker, --darkercolor"       ""                                                  "  Install darker '${THEME_NAME}' dark themes"      ""
+  helpify "--no-gtk2"                     ""                                                  "  Skip the GTK2 theme"                             "Needs gtk-engine-murrine"
   helpify "--dialog, --interactive"       ""                                                  "  Run this installer interactively, with dialogs"  ""
   helpify "--silent-mode"                 ""                                                  "  Meant for developers: ignore any confirm prompt and params become more strict" ""
   helpify "-r, --remove, -u, --uninstall" "[theme|app]"                                       "  Remove all installed ${THEME_NAME} themes"       ""
@@ -124,6 +125,8 @@ while [[ $# -gt 0 ]]; do
       black_font="true"; shift ;;
     --darker|--darkercolor)
       darker="true"; shift ;;
+    --no-gtk2)
+      no_gtk2="true"; shift ;;
     -HD|--highdefinition)
       compact="false"; shift ;;
     -m|--monterey)
