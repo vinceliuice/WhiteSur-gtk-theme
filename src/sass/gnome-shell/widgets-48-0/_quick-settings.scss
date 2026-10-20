@@ -15,7 +15,9 @@
   spacing-columns: $container_padding * 2;
 }
 
-.quick-toggle, .quick-toggle-has-menu {
+// Keep the GNOME 44-47 selectors alongside the GNOME 48 ones so that
+// a newer shell theme does not break split toggles on older Shell releases.
+.quick-toggle, .quick-toggle-has-menu, .quick-menu-toggle {
   border-radius: $circular_radius;
   min-width: 12em;
   max-width: 12em;
@@ -78,7 +80,7 @@
   .quick-toggle-icon { icon-size: $scalable_icon_size; }
 }
 
-.quick-toggle-has-menu {
+.quick-toggle-has-menu, .quick-menu-toggle {
   & .quick-toggle {
     min-width: auto;
     max-width: auto;
@@ -86,13 +88,13 @@
     &:ltr { border-radius: $circular_radius 0 0 $circular_radius; }
     &:ltr > StBoxLayout { padding-right: $base_padding * 2; }
     &:rtl { border-radius: 0 $circular_radius $circular_radius 0; }
-    &:rtr > StBoxLayout { padding-left: $base_padding * 2; }
+    &:rtl > StBoxLayout { padding-left: $base_padding * 2; }
 
     &:ltr:last-child { border-radius: $circular_radius; }
     &:rtl:last-child { border-radius: $circular_radius; }
   }
 
-  & .quick-toggle-menu-button {
+  & .quick-toggle-menu-button, & .quick-toggle-arrow {
     padding: $scaled_padding $scaled_padding * 2;
     border: none;
     background-color: $fill_color !important;
