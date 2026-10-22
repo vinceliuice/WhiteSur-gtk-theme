@@ -102,7 +102,7 @@ OPTIONS:
   --shell, --gnomeshell 
    Tweaks for gnome-shell. Options:
 
-     1. -i, -icon [apple|simple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin|budgie|gentoo]
+     1. -i, -icon [standard|apple|gnome|ubuntu|tux|arch|manjaro|fedora|debian|void|opensuse|popos|mxlinux|zorin|budgie|gentoo]
      Set gnome-shell panel 'Activities' icon. Default is 'standard'
 
      2. -b, -background [default|blank|IMAGE_PATH]

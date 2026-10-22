@@ -373,6 +373,8 @@ install_shelly() {
   local theme="$(destify ${4})"
   local scheme="$(destify ${5})"
   local icon="$(destify ${6})"
+  # Still copy activities.svg even if icon is empty
+  [[ -z "${icon}" ]] && icon="-apple"
   local TARGET_DIR=
 
   if [[ -z "${7}" ]]; then
@@ -1188,7 +1190,7 @@ customize_theme() {
   fi
 
   # Change gnome-shell panel activities button style
-  if [[ "${activities_icon}" == 'true' ]]; then
+  if [[ "${activities_icon}" == 'true' && "${icon}" != 'standard' ]]; then
     prompt -s "Changing gnome-shell panel activities button style ...\n"
     sed $SED_OPT "/\$activities/s/default/icon/"                                "${THEME_SRC_DIR}/sass/_theme-options-temp.scss"
   fi
