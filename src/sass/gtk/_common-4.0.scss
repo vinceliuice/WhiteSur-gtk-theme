@@ -4936,10 +4936,16 @@ window.background.messagedialog {
 }
 
 dialog.alert {
+  // libadwaita picks the response-area layout from its horizontal natural width;
+  // too-narrow buttons make the dialog oscillate between horizontal and vertical.
+  .response-area > button {
+    padding: ($container_padding - 2px) ($container_padding + 6px);
+  }
+
   .compact.response-area {
     button {
       min-height: 24px;
-      padding: $container_padding;
+      padding: $container_padding ($container_padding + 6px);
     }
   }
 }
