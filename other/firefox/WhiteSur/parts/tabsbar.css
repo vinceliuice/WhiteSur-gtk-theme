@@ -57,12 +57,12 @@
 		border-left: 1px solid transparent !important;
 	}
 
-	.tabbrowser-tab + .tabbrowser-tab:not([selected], :hover) {
+	/* Drop the separator next to the selected tab. */
+	.tabbrowser-tab + .tabbrowser-tab:not([selected]) {
 		border-color: var(--gnome-tabbar-tab-border-color) !important;
 	}
 
-	.tabbrowser-tab[selected] + .tabbrowser-tab,
-	.tabbrowser-tab:hover + .tabbrowser-tab {
+	.tabbrowser-tab[selected] + .tabbrowser-tab {
 		border-color: transparent !important;
 	}
 
@@ -206,8 +206,16 @@
 	/* Tab hover */
 	.tabbrowser-tab:not([selected=true]):hover .tab-background {
 		background-color: var(--gnome-tabbar-tab-hover-background) !important;
+		background-image: linear-gradient(to bottom,
+		        var(--gnome-tabbar-tab-hover-border-color) 0,
+		        var(--gnome-tabbar-tab-hover-border-color) 1px,
+		        transparent 1px) !important;
+		border: none !important;
 		border-image: none !important;
-		box-shadow: inset 0 1px var(--gnome-tabbar-tab-hover-border-color), inset 0 -1px var(--gnome-tabbar-tab-hover-border-color) !important;
+		border-radius: 0 !important;
+		/* Paint the top hairline as a gradient: an inset shadow merges into the seam. */
+		box-shadow: inset 0 1px var(--gnome-tabbar-tab-hover-border-color),
+		            inset 0 -1px var(--gnome-tabbar-tab-hover-border-color) !important;
 	}
 
 	/* Active tab */
@@ -223,6 +231,25 @@
 		box-shadow: 1px 0 var(--gnome-tabbar-tab-active-border-color), 1px 0 3px rgba(0, 0, 0, 0.08),
 		            -1px 0 var(--gnome-tabbar-tab-active-border-color), -1px 0 3px rgba(0, 0, 0, 0.08),
 		            inset 0 -1px var(--gnome-tabbar-tab-active-border-color) !important;
+	}
+
+	/* Selected tab on hover: hover gray, top hairline as a gradient. */
+	.tabbrowser-tab[selected]:hover .tab-background {
+		background-color: var(--gnome-tabbar-tab-hover-background) !important;
+		background-image: linear-gradient(to bottom,
+		        var(--gnome-tabbar-tab-hover-border-color) 0,
+		        var(--gnome-tabbar-tab-hover-border-color) 1px,
+		        transparent 1px) !important;
+		border: none !important;
+		border-image: none !important;
+		transition: none !important;
+		margin-left: -1px !important;
+		margin-right: -1px !important;
+		border-radius: 0 !important;
+		box-shadow: 1px 0 var(--gnome-tabbar-tab-active-border-color), 1px 0 3px rgba(0, 0, 0, 0.08),
+		            -1px 0 var(--gnome-tabbar-tab-active-border-color), -1px 0 3px rgba(0, 0, 0, 0.08),
+		            inset 0 1px var(--gnome-tabbar-tab-hover-border-color),
+		            inset 0 -1px var(--gnome-tabbar-tab-hover-border-color) !important;
 	}
 
 	.tab-background:is([selected]):-moz-window-inactive {

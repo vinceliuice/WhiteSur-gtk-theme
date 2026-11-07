@@ -35,6 +35,25 @@ toolbarspring {
 	min-width: 360px !important;
 }
 
+/* Pin the urlbar container to the 360px width. */
+#urlbar-container,
+.urlbar-container,
+#wrapper-urlbar-container,
+.wrapper-urlbar-container {
+	flex: 0 0 360px !important;
+}
+
+/* Push the trailing buttons to the far end. */
+#nav-bar-customization-target > #urlbar-container,
+#nav-bar-customization-target > #wrapper-urlbar-container {
+	margin-right: auto !important;
+}
+
+/* Keep toolbar button spacing in customize mode. */
+:root[customizing] #nav-bar-customization-target > toolbarpaletteitem {
+	min-width: 38px !important;
+}
+
 :root[sizemode="maximized"] #urlbar,
 :root[sizemode="maximized"] #urlbar-container,
 :root[sizemode="maximized"] #wrapper-urlbar-container,
@@ -122,9 +141,11 @@ toolbarspring {
 	padding-block: 5px !important;
 	border-radius: 5px !important;
 }
+/* Set only the color; the shorthand drops the open-tabs icon. */
 .urlbarView-action {
-	background: transparent !important;
+	background-color: transparent !important;
 }
+
 /* Search engines buttons */
 .search-one-offs {
 	margin: 0 0 2px !important;
@@ -182,6 +203,8 @@ toolbarspring {
 }
 
 /* URL bar and Search bar's icons */
+.urlbar-icon:hover,
+.urlbar-icon[open],
 .urlbar-icon-wrapper:hover,
 .urlbar-icon-wrapper[open],
 .urlbar-icon:hover:active,
@@ -205,7 +228,7 @@ toolbarspring {
 #notification-popup-box,
 #tracking-protection-icon-container,
 #trust-icon-container {
-	background-color: var(--gnome-urlbar-background) !important; 
+	background-color: var(--gnome-urlbar-background) !important;
 	width: 28px !important;
 	height: 26px !important;
 	margin: 3px 0 !important;
@@ -280,24 +303,6 @@ toolbarspring {
 	padding: 0 9px !important;
 }
 
-@media -moz-pref("browser.urlbar.trustPanel.featureGate") {
-	#trust-icon-container {
-		border-radius: 5px !important;
-		/* min-height: 26px !important;
-		min-width: 28px !important; */
-		margin: 3px 0 !important;
-		list-style-image: url("../icons/trust-active.svg") !important;
-	}
-
-	#trust-icon-container.insecure {
-		list-style-image: url("../icons/trust-inactive.svg") !important;
-	}
-
-	#trust-icon-container.warning {
-		list-style-image: url("../icons/trust-error.svg") !important;
-	}
-}
-
 /* Search mode switcher */
 #nav-bar #urlbar toolbarbutton#urlbar-searchmode-switcher:not(#urlbar-zoom-button):not(.subviewbutton):not(.titlebar-button):not(.close-button) {
 	appearance: none;
@@ -342,7 +347,9 @@ toolbarspring {
   }
 
   /* stylelint-disable media-query-no-invalid */
-  @media (not -moz-pref("browser.urlbar.searchModeSwitcher.featureGate")) and
+  @media (not (-moz-bool-pref: "browser.urlbar.searchModeSwitcher.featureGate")) and
+         (not (-moz-bool-pref: "browser.urlbar.scotchBonnet.enableOverride")),
+         (not -moz-pref("browser.urlbar.searchModeSwitcher.featureGate")) and
          (not -moz-pref("browser.urlbar.scotchBonnet.enableOverride")) {
 	display: none;
   }

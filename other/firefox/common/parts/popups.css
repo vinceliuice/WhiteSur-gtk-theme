@@ -15,6 +15,21 @@ menupopup, panel {
 	--panel-separator-color: var(--gnome-popover-separator-color) !important;
 	--panel-border-color: transparent !important;
 	--panel-color: var(--gnome-toolbar-color) !important;
+	/* Panel surface */
+	--panel-text-color: var(--gnome-toolbar-color) !important;
+	--panel-padding-block: 6px !important;
+	/* moz-button panel row metrics */
+	--panel-item-padding: 3px 6px !important;
+	--panel-item-button-border-radius: 6px !important;
+	--panel-item-button-margin: 0 !important;
+	--panel-item-button-padding: 3px 6px !important;
+	/* Keep the 6px radius on panel-item */
+	--panel-menuitem-border-radius: 6px !important;
+	/* Match the menu item fills */
+	--button-background-color-hover: var(--gnome-popover-button-hover-background) !important;
+	--button-background-color-active: var(--gnome-headerbar-button-active-background) !important;
+	--button-background-color-ghost-hover: var(--gnome-popover-button-hover-background) !important;
+	--button-background-color-ghost-active: var(--gnome-headerbar-button-active-background) !important;
 	--arrowpanel-border-radius: 12px !important;
 	--arrowpanel-background: var(--gnome-menu-background) !important;
 	--arrowpanel-border-color: transparent !important;
@@ -303,6 +318,13 @@ panelview toolbarbutton {
 .menuitem-iconic[data-usercontextid] {
   list-style-image: var(--identity-icon) !important;
   fill: var(--identity-icon-color) !important;
+}
+
+/* Keep the tinted container glyph */
+.menuitem-iconic[data-usercontextid] > .menu-icon {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  overflow-clip-margin: unset !important;
 }
 
 /*......*/

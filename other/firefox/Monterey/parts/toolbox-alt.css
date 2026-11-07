@@ -59,13 +59,15 @@
   min-height: 0 !important;
 }
 
-@media -moz-pref("widget.gtk.global-menu.enabled") {
+@media (-moz-bool-pref: "widget.gtk.global-menu.enabled"),
+       -moz-pref("widget.gtk.global-menu.enabled") {
   #toolbar-menubar {
     display: none !important;
   }
 }
 
-@media -moz-pref("widget.gtk.global-menu.wayland.enabled") {
+@media (-moz-bool-pref: "widget.gtk.global-menu.wayland.enabled"),
+       -moz-pref("widget.gtk.global-menu.wayland.enabled") {
   #toolbar-menubar {
     display: none !important;
   }

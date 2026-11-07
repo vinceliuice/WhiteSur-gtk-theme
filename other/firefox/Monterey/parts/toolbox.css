@@ -16,6 +16,12 @@
 	border-bottom: 1px solid var(--gnome-toolbar-border-color) !important;
 }
 
+/* Clear shadows along the seam. */
+#tabbrowser-tabbox,
+#tabbrowser-tabbox * {
+	box-shadow: none !important;
+}
+
 #nav-bar:-moz-window-inactive,
 #PersonalToolbar:-moz-window-inactive,
 #toolbar-menubar:-moz-window-inactive,
@@ -60,13 +66,15 @@
   min-height: 0 !important;
 }
 
-@media -moz-pref("widget.gtk.global-menu.enabled") {
+@media (-moz-bool-pref: "widget.gtk.global-menu.enabled"),
+       -moz-pref("widget.gtk.global-menu.enabled") {
   #toolbar-menubar {
     display: none !important;
   }
 }
 
-@media -moz-pref("widget.gtk.global-menu.wayland.enabled") {
+@media (-moz-bool-pref: "widget.gtk.global-menu.wayland.enabled"),
+       -moz-pref("widget.gtk.global-menu.wayland.enabled") {
   #toolbar-menubar {
     display: none !important;
   }

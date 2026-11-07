@@ -16,7 +16,8 @@
   }
 
   /* stylelint-disable-next-line media-query-no-invalid */
-  @media (-moz-bool-pref: "widget.gtk.rounded-bottom-corners.enabled") {
+  @media (-moz-bool-pref: "widget.gtk.rounded-bottom-corners.enabled"),
+         -moz-pref("widget.gtk.rounded-bottom-corners.enabled") {
     body,
     dialog,
     body::backdrop,
