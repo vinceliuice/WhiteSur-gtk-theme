@@ -1,28 +1,61 @@
 /* Sidebar */
-#sidebar-main,
+sidebar-main,
 #sidebar-box, #sidebar,
 .sidebar-panel[lwt-sidebar] {
 	color: var(--gnome-toolbar-color) !important;
 	background: var(--gnome-sidebar-background) !important;
 }
 
-#sidebar-main {
+sidebar-main {
 	padding: 8px 0;
 }
 
-@media (-moz-bool-pref: "sidebar.revamp") {
+/* Both pref spellings */
+@media (-moz-bool-pref: "sidebar.revamp"), -moz-pref("sidebar.revamp") {
 	#tabbrowser-tabbox {
 		outline: none !important;
 		box-shadow: none !important;
 	}
-	
+
+	/* Square the content area's top corners */
+	#tabbrowser-tabbox,
+	#tabbrowser-tabpanels,
+	#tabbrowser-tabpanels .browserSidebarContainer,
+	#tabbrowser-tabpanels .browserContainer {
+		--content-area-start-radius: 0 !important;
+		border-radius: 0 !important;
+	}
+
+	/* Square the sidebar box and surface */
+	#sidebar-box {
+		border-radius: 0 !important;
+	}
+
+	/* Square the card inside the sidebar document as well. */
+	.sidebar-panel,
+	.sidebar-browser-stack {
+		border-radius: 0 !important;
+	}
+
 	#sidebar {
-		border-radius: 12px !important;
-		box-shadow: var(--gnome-popover-shadow), 0 0 0 1px var(--gnome-popover-border-color) !important;
-		border: 1px solid rgba(255, 255, 255, 0.06) !important;
+		border-radius: 0 !important;
 		color: var(--gnome-toolbar-color) !important;
 		background: var(--gnome-menu-background) !important;
-		margin: 6px 6px 0 0 !important;
+		/* Fill the sidebar area edge to edge: no margin, frame or shadow. */
+		margin: 0 !important;
+		padding: 0 !important;
+		border: 0 !important;
+		box-shadow: none !important;
+	}
+
+	/* Keep only the splitter hairline: drop the extra borders and shadows. */
+	#sidebar-box,
+	#tabbrowser-tabpanels .browserContainer,
+	#tabbrowser-tabpanels .browserSidebarContainer {
+		/* Use border, not border-inline, to clear the block-start hairline */
+		border: 0 !important;
+		box-shadow: none !important;
+		outline: none !important;
 	}
 }
 
@@ -53,9 +86,52 @@ fxview-search-textbox {
 	background: var(--sidebar-background-color) !important;
 }
 
+/* Collapse the splitter box to its hairline so the page starts flush. */
 .sidebar-splitter {
+	width: 1px !important;
 	min-width: 1px !important;
-	background: var(--gnome-browser-before-load-background) !important;
-	border-left: 1px solid var(--gnome-sidebar-border-color) !important;
-	border-right: none !important;
+	border: 0 !important;
+	background: var(--gnome-sidebar-border-color) !important;
+}
+
+/* Sidebar buttons need their own radius: tokens do not cross documents. */
+.sidebar-panel {
+	--button-border-radius: 6px !important;
+}
+
+/* The GenAI panel has no .sidebar-panel; its radius is intentional */
+
+/* Sidebar list rows: a rounded rectangle in the theme primary, not a pill. */
+sidebar-tab-row {
+	border-radius: 6px !important;
+}
+
+sidebar-tab-row[selected] {
+	background-color: var(--theme-primary-color, #315bef) !important;
+	color: #ffffff !important;
+}
+
+/* XUL trees use the system selected color; force the theme primary. */
+treechildren::-moz-tree-row(selected),
+treechildren::-moz-tree-row(selected, focus) {
+	background-color: var(--theme-primary-color, #315bef) !important;
+}
+
+treechildren::-moz-tree-cell-text(selected),
+treechildren::-moz-tree-cell-text(selected, focus),
+treechildren::-moz-tree-image(selected),
+treechildren::-moz-tree-image(selected, focus),
+treechildren::-moz-tree-twisty(selected),
+treechildren::-moz-tree-twisty(selected, focus) {
+	color: #ffffff !important;
+}
+
+/* Feed 8px through --border-radius-xlarge for the launcher */
+#sidebar-container,
+#sidebar-container > *,
+sidebar-main {
+	--border-radius-xlarge: 8px !important;
+	--button-border-radius: 8px !important;
+	/* Drop the launcher button ring */
+	--button-border: 0 !important;
 }

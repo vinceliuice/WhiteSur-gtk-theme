@@ -108,9 +108,13 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 }
 
 #urlbar[breakout] {
-	position: static !important; 
+	position: static !important;
 }
 
+#urlbar[popover-open] #urlbar-input-container,
+#urlbar[popover-open] #urlbar-input-container:hover,
+#urlbar[popover-open] .urlbar-input-container,
+#urlbar[popover-open] .urlbar-input-container:hover,
 #urlbar[breakout][breakout-extend] #urlbar-input-container,
 #urlbar[breakout][breakout-extend] #urlbar-input-container:hover,
 #urlbar[breakout][breakout-extend] .urlbar-input-container,
@@ -121,7 +125,7 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 }
 
 /* New tab url bar focusing */
-#urlbar[focused]:not([suppress-focus-border]) > #urlbar-background, 
+#urlbar[focused]:not([suppress-focus-border]) > #urlbar-background,
 #searchbar:focus-within {
 	outline: none !important;
 }
@@ -130,4 +134,123 @@ toolbar .toolbaritem-combined-buttons > .toolbarbutton-1 {
 	border: none !important;
 	background: var(--gnome-urlbar-background) !important;
 	box-shadow: inset 0 0 0 2px var(--gnome-focused-urlbar-highlight-color) !important;
+}
+
+/* Use the theme primary for text selection. */
+.urlbar-input::selection,
+.searchbar-textbox::selection {
+	background-color: var(--theme-primary-color, #315bef) !important;
+	color: #ffffff !important;
+}
+
+/* URL bar results (shared) */
+
+/* Result list metrics and colors */
+:root {
+	--urlbarview-row-padding-inline: 6px !important;
+	--urlbarview-results-padding: 0px !important;
+	--urlbarview-row-padding-block: 5px !important;
+	--urlbarview-row-min-height: 32px !important;
+	/* Row background radius, clipped to the content box */
+	--urlbarview-border-radius: 5px !important;
+	--urlbarview-separator-color: var(--gnome-popover-separator-color) !important;
+
+	/* Keep the text color on selection */
+	--urlbarview-background-color-hover: var(--gnome-popover-button-hover-background) !important;
+	--urlbarview-background-color-selected: var(--gnome-headerbar-button-active-background) !important;
+	--urlbarview-text-color-selected: var(--gnome-toolbar-color) !important;
+	--urlbarview-text-color-action: var(--gnome-toolbar-color) !important;
+	--urlbarview-text-color-secondary: color-mix(in srgb, currentColor 70%, transparent) !important;
+}
+
+.urlbarView {
+	/* Use the theme primary for result links */
+	--link-color: var(--theme-primary-color, #315bef) !important;
+	/* Match the 6px panel padding */
+	padding-block: 6px !important;
+	padding-inline: 0 !important;
+}
+
+/* Keep the dropdown on its own surface */
+.urlbarView-background {
+	background: transparent !important;
+	box-shadow: none !important;
+	border: 0 !important;
+}
+
+/* Zero the row gutter */
+.urlbarView-row {
+	padding: 0 !important;
+}
+
+/* Keep title and URL on one line */
+.urlbarView-results[wrap] > .urlbarView-row[has-url] > .urlbarView-row-inner > .urlbarView-row-body > .urlbarView-row-body-top {
+	display: flex !important;
+	grid-template-columns: none !important;
+	grid-template-areas: none !important;
+}
+
+.urlbarView-results[wrap] > .urlbarView-row[has-url] > .urlbarView-row-inner > .urlbarView-row-body > .urlbarView-row-body-top > .urlbarView-row-body-top-no-wrap {
+	grid-area: auto !important;
+	max-width: max-content !important;
+	justify-self: auto !important;
+}
+
+.urlbarView-results[wrap] > .urlbarView-row[has-url] > .urlbarView-row-inner > .urlbarView-row-body > .urlbarView-row-body-top > .urlbarView-row-body-top-no-wrap > .urlbarView-title-separator {
+	display: inline !important;
+}
+
+.urlbarView-results[wrap] > .urlbarView-row[has-url] > .urlbarView-row-inner > .urlbarView-row-body > .urlbarView-row-body-top > .urlbarView-url,
+.urlbarView-results[wrap] > .urlbarView-row[has-url] > .urlbarView-row-inner > .urlbarView-row-body > .urlbarView-row-body-top > .urlbarView-explanation {
+	grid-area: auto !important;
+}
+
+.urlbarView:not(:has(> .urlbarView-body-outer)) > .urlbarView-results {
+	max-height: 40vh !important;
+	padding-inline: 6px !important;
+}
+
+/* Use the 5px radius */
+.urlbarView-action,
+.urlbarView-switchToTab-accessory,
+.urlbarView-action-btn {
+	border-radius: 5px !important;
+}
+
+/* Use the theme button border */
+.urlbarView-action:not(.urlbarView-user-context, .urlbarView-tab-group-container),
+.urlbarView-switchToTab-accessory:not(.urlbarView-user-context, .urlbarView-tab-group-container) {
+	border-color: var(--gnome-button-border-color) !important;
+}
+
+/* Search mode switcher */
+#urlbar .searchmode-switcher {
+	--button-border-radius: 5px !important;
+	--button-border-color-muted: transparent !important;
+	--button-background-color-muted: transparent !important;
+	--button-background-color-muted-hover: var(--gnome-headerbar-button-hover-background) !important;
+	--button-background-color-muted-active: var(--gnome-headerbar-button-active-background) !important;
+	--button-background-color-muted-selected: var(--gnome-headerbar-button-active-background) !important;
+	min-height: 26px !important;
+}
+
+#urlbar[searchmode] .searchmode-switcher {
+	--button-background-color-muted: var(--gnome-headerbar-button-combined-background) !important;
+}
+
+@media (-moz-bool-pref: "browser.urlbar.trustPanel.featureGate"),
+       -moz-pref("browser.urlbar.trustPanel.featureGate") {
+	#trust-icon-container {
+		border-radius: 5px !important;
+		margin: 3px 0 !important;
+		list-style-image: url("../icons/trust-active.svg") !important;
+	}
+
+	#trust-icon-container.insecure {
+		list-style-image: url("../icons/trust-inactive.svg") !important;
+	}
+
+	#trust-icon-container.warning {
+		list-style-image: url("../icons/trust-error.svg") !important;
+	}
 }

@@ -31,6 +31,8 @@ toolbarspring {
 	background: transparent !important;
 	border-radius: 8px !important;
 	padding: 0 !important;
+	/* Keep the overhanging joint background from swallowing clicks. */
+	pointer-events: none !important;
 }
 
 #urlbar-input-container,
@@ -38,10 +40,11 @@ toolbarspring {
 	border: none !important;
 	padding: 0 3px !important;
 	background: none !important;
+	/* The focus ring is drawn on #urlbar. */
+	outline: 0 !important;
 }
 
-#urlbar[breakout][breakout-extend] {
-	width: var(--urlbar-width) !important;
+#urlbar[popover-open] {
 	z-index: 5 !important;
 	padding: 0 !important;
 	border-radius: 8px !important;
@@ -51,13 +54,8 @@ toolbarspring {
 	transition: outline 100ms ease-out;
 }
 
-#urlbar[breakout][breakout-extend][open] {
-	height: auto !important;
-	max-height: unset !important;
-}
-
-#urlbar[breakout][breakout-extend] #urlbar-input-container,
-#urlbar[breakout][breakout-extend] > .urlbar-input-container {
+#urlbar[popover-open] #urlbar-input-container,
+#urlbar[popover-open] > .urlbar-input-container {
 	height: 32px !important;
 	max-height: 32px !important;
 }
@@ -108,8 +106,9 @@ toolbarspring {
 	border-radius: 5px !important;
 }
 
+/* Set only the color; the shorthand drops the open-tabs icon. */
 .urlbarView-action {
-	background: transparent !important;
+	background-color: transparent !important;
 }
 
 /* Search engines buttons */
@@ -180,6 +179,8 @@ toolbarspring {
 }
 
 /* URL bar and Search bar's icons */
+.urlbar-icon:hover,
+.urlbar-icon[open],
 .urlbar-icon-wrapper:hover,
 .urlbar-icon-wrapper[open],
 .urlbar-icon:hover:active,
@@ -202,6 +203,7 @@ toolbarspring {
 	padding: 0 !important;
 }
 
+/* Search mode switcher */
 #nav-bar #urlbar toolbarbutton#urlbar-searchmode-switcher:not(#urlbar-zoom-button):not(.subviewbutton):not(.titlebar-button):not(.close-button) {
 	appearance: none;
 	border-radius: 5px !important;
@@ -245,7 +247,10 @@ toolbarspring {
 	}
 
 	/* stylelint-disable media-query-no-invalid */
-	@media (not -moz-pref("browser.urlbar.searchModeSwitcher.featureGate")) and (not -moz-pref("browser.urlbar.scotchBonnet.enableOverride")) {
+	@media (not (-moz-bool-pref: "browser.urlbar.searchModeSwitcher.featureGate")) and
+	       (not (-moz-bool-pref: "browser.urlbar.scotchBonnet.enableOverride")),
+	       (not -moz-pref("browser.urlbar.searchModeSwitcher.featureGate")) and
+	       (not -moz-pref("browser.urlbar.scotchBonnet.enableOverride")) {
 		display: none;
 	}
 }
@@ -274,7 +279,7 @@ toolbarspring {
 #notification-popup-box,
 #tracking-protection-icon-container,
 #trust-icon-container {
-	background-color: var(--gnome-urlbar-background) !important; 
+	background-color: var(--gnome-urlbar-background) !important;
 	width: 28px !important;
 	height: 26px !important;
 	margin: 3px 0 !important;
@@ -354,24 +359,6 @@ toolbarspring {
 	outline: 0 !important;
 	margin: 0 !important;
 	padding: 0 9px !important;
-}
-
-@media -moz-pref("browser.urlbar.trustPanel.featureGate") {
-	#trust-icon-container {
-		border-radius: 5px !important;
-		/* min-height: 26px !important;
-		min-width: 28px !important; */
-		margin: 3px 0 !important;
-		list-style-image: url("../icons/trust-active.svg") !important;
-	}
-
-	#trust-icon-container.insecure {
-		list-style-image: url("../icons/trust-inactive.svg") !important;
-	}
-
-	#trust-icon-container.warning {
-		list-style-image: url("../icons/trust-error.svg") !important;
-	}
 }
 
 /* Search mode indicator */
